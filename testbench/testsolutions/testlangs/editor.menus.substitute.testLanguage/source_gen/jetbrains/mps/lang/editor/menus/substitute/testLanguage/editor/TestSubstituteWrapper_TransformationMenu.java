@@ -114,11 +114,11 @@ public class TestSubstituteWrapper_TransformationMenu extends TransformationMenu
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        SLinkOperations.setTarget(_context.getNode(), LINKS.child$K30t, createdNode);
-        SPropertyOperations.assign(_context.getNode(), PROPS.wrappedMatchingText$F7GJ, wrappedItem.getMatchingText(pattern));
-        SPropertyOperations.assign(_context.getNode(), PROPS.wrappedDescriptionText$F7HH, wrappedItem.getDescriptionText(pattern));
-        SPropertyOperations.assign(_context.getNode(), PROPS.wrappedConceptAlias$F7Ja, SConceptOperations.conceptAlias(wrappedItem.getOutputConcept()));
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.child$K30t), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SLinkOperations.setTarget(_context.getNode(), LINKS.child$hte3, createdNode);
+        SPropertyOperations.assign(_context.getNode(), PROPS.wrappedMatchingText$SIEL, wrappedItem.getMatchingText(pattern));
+        SPropertyOperations.assign(_context.getNode(), PROPS.wrappedDescriptionText$SJ8N, wrappedItem.getDescriptionText(pattern));
+        SPropertyOperations.assign(_context.getNode(), PROPS.wrappedConceptAlias$SJPQ, SConceptOperations.conceptAlias(wrappedItem.getOutputConcept()));
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.child$hte3), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
       @Override
@@ -157,12 +157,12 @@ public class TestSubstituteWrapper_TransformationMenu extends TransformationMenu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink child$K30t = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x401156263ff3470fL, "child");
+    /*package*/ static final SContainmentLink child$hte3 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x401156263ff3470fL, "child");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty wrappedMatchingText$F7GJ = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c00L, "wrappedMatchingText");
-    /*package*/ static final SProperty wrappedDescriptionText$F7HH = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c02L, "wrappedDescriptionText");
-    /*package*/ static final SProperty wrappedConceptAlias$F7Ja = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c05L, "wrappedConceptAlias");
+    /*package*/ static final SProperty wrappedMatchingText$SIEL = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c00L, "wrappedMatchingText");
+    /*package*/ static final SProperty wrappedDescriptionText$SJ8N = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c02L, "wrappedDescriptionText");
+    /*package*/ static final SProperty wrappedConceptAlias$SJPQ = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c05L, "wrappedConceptAlias");
   }
 }

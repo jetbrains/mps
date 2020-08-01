@@ -33,12 +33,12 @@ public final class MigrateFloatConstants_MigrationScript extends BaseMigrationSc
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SPropertyOperations.getString(node, PROPS.value$oKYE) != null && (SPropertyOperations.getString(node, PROPS.value$oKYE).endsWith("f") || SPropertyOperations.getString(node, PROPS.value$oKYE).endsWith("F"));
+        return SPropertyOperations.getString(node, PROPS.value$ZImm) != null && (SPropertyOperations.getString(node, PROPS.value$ZImm).endsWith("f") || SPropertyOperations.getString(node, PROPS.value$ZImm).endsWith("F"));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode f = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.FloatingPointFloatConstant$pv);
-        SPropertyOperations.assign(f, PROPS.value$CzwZ, SPropertyOperations.getString(node, PROPS.value$oKYE));
+        SPropertyOperations.assign(f, PROPS.value$DcYx, SPropertyOperations.getString(node, PROPS.value$ZImm));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -59,7 +59,7 @@ public final class MigrateFloatConstants_MigrationScript extends BaseMigrationSc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$oKYE = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value");
-    /*package*/ static final SProperty value$CzwZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
+    /*package*/ static final SProperty value$ZImm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value");
+    /*package*/ static final SProperty value$DcYx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
   }
 }

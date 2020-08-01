@@ -72,7 +72,7 @@ public class Option_makeDefault extends TransformationMenuBase {
   public class TMP_Group_xteztw_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.getIndexInParent(_context.getNode()) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$57Ad);
+      return SNodeOperations.getIndexInParent(_context.getNode()) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$uFwj);
     }
 
     @NotNull
@@ -128,7 +128,7 @@ public class Option_makeDefault extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$57Ad, SNodeOperations.getIndexInParent(_context.getNode()));
+          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$uFwj, SNodeOperations.getIndexInParent(_context.getNode()));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -162,6 +162,6 @@ public class Option_makeDefault extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty defaultOption$57Ad = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption");
+    /*package*/ static final SProperty defaultOption$uFwj = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption");
   }
 }

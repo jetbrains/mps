@@ -30,8 +30,8 @@
       <node id="3123291046851851267" at="58,14,59,58" concept="9" />
       <node id="3123291046851851267" at="65,48,66,22" concept="5" />
       <node id="3123291046851851267" at="71,40,72,19" concept="5" />
-      <node id="3123291046851851267" at="76,0,77,0" concept="6" trace="cardinality$x1g0" />
-      <node id="3123291046851851267" at="77,0,78,0" concept="6" trace="cardinalityVisible$x1gv" />
+      <node id="3123291046851851267" at="76,0,77,0" concept="6" trace="cardinality$ZAK0" />
+      <node id="3123291046851851267" at="77,0,78,0" concept="6" trace="cardinalityVisible$ZAZ1" />
       <node id="3123291046851851267" at="31,0,33,0" concept="0" trace="CompoundComponentWithCardinality__BehaviorDescriptor#()V" />
       <node id="3123291046851851267" at="41,49,44,5" concept="2" />
       <node id="3123291046851851267" at="53,49,56,5" concept="2" />
@@ -98,8 +98,8 @@
       <node id="6567999678833562064" at="59,14,60,58" concept="9" />
       <node id="6567999678833562064" at="66,48,67,22" concept="5" />
       <node id="6567999678833562064" at="72,40,73,19" concept="5" />
-      <node id="6567999678833562064" at="77,0,78,0" concept="6" trace="left$U$u8" />
-      <node id="6567999678833562064" at="78,0,79,0" concept="6" trace="right$U$v6" />
+      <node id="6567999678833562064" at="77,0,78,0" concept="6" trace="left$nE_S" />
+      <node id="6567999678833562064" at="78,0,79,0" concept="6" trace="right$nF3U" />
       <node id="6567999678833562064" at="82,0,83,0" concept="6" trace="EquationComponent$C$" />
       <node id="6567999678833562064" at="32,0,34,0" concept="0" trace="ChemEquation__BehaviorDescriptor#()V" />
       <node id="6567999678833562064" at="42,49,45,5" concept="2" />
@@ -167,7 +167,7 @@
       <node id="7995886393880881566" at="57,14,58,58" concept="9" />
       <node id="7995886393880881566" at="64,48,65,22" concept="5" />
       <node id="7995886393880881566" at="70,40,71,19" concept="5" />
-      <node id="7995886393880881566" at="75,0,76,0" concept="6" trace="ionization$$dJW" />
+      <node id="7995886393880881566" at="75,0,76,0" concept="6" trace="ionization$yEe4" />
       <node id="7995886393880881566" at="30,0,32,0" concept="0" trace="ElementRef__BehaviorDescriptor#()V" />
       <node id="7995886393880881566" at="25,0,28,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7995886393880881566" at="40,49,43,5" concept="2" />
@@ -234,8 +234,8 @@
       <node id="7995886393885134352" at="58,14,59,58" concept="9" />
       <node id="7995886393885134352" at="65,48,66,22" concept="5" />
       <node id="7995886393885134352" at="71,40,72,19" concept="5" />
-      <node id="7995886393885134352" at="76,0,77,0" concept="6" trace="cardinality$$dy0" />
-      <node id="7995886393885134352" at="77,0,78,0" concept="6" trace="cardinalityVisible$iY8b" />
+      <node id="7995886393885134352" at="76,0,77,0" concept="6" trace="cardinality$yzu0" />
+      <node id="7995886393885134352" at="77,0,78,0" concept="6" trace="cardinalityVisible$c5Xl" />
       <node id="7995886393885134352" at="31,0,33,0" concept="0" trace="Compound__BehaviorDescriptor#()V" />
       <node id="7995886393885134352" at="41,49,44,5" concept="2" />
       <node id="7995886393885134352" at="53,49,56,5" concept="2" />

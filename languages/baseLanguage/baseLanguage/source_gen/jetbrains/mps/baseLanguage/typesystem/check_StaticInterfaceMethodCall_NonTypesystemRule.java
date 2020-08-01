@@ -23,7 +23,7 @@ public class check_StaticInterfaceMethodCall_NonTypesystemRule extends AbstractN
   public check_StaticInterfaceMethodCall_NonTypesystemRule() {
   }
   public void applyRule(final SNode staticMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(staticMethodCall, LINKS.classConcept$BsUa), CONCEPTS.ClassConcept$IY)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(staticMethodCall, LINKS.classConcept$70aQ), CONCEPTS.ClassConcept$IY)) {
       return;
     }
 
@@ -46,7 +46,7 @@ public class check_StaticInterfaceMethodCall_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$BsUa = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
   }
 
   private static final class CONCEPTS {

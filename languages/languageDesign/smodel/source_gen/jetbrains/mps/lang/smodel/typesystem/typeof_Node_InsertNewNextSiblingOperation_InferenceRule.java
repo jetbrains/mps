@@ -24,7 +24,7 @@ public class typeof_Node_InsertNewNextSiblingOperation_InferenceRule extends Abs
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203712011547", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203712011549", true), (SNode) _quotation_createNode_q7m0pf_a1a0c0a0b(SLinkOperations.getTarget(op, LINKS.concept$$fXE)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203712011549", true), (SNode) _quotation_createNode_q7m0pf_a1a0c0a0b(SLinkOperations.getTarget(op, LINKS.concept$zIRm)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -45,7 +45,7 @@ public class typeof_Node_InsertNewNextSiblingOperation_InferenceRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$$fXE = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10964e26717L, 0x10964e34da0L, "concept");
+    /*package*/ static final SReferenceLink concept$zIRm = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10964e26717L, 0x10964e34da0L, "concept");
   }
 
   private static final class CONCEPTS {

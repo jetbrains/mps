@@ -37,8 +37,8 @@
       <node id="1237104580217" at="71,5,72,39" concept="1" />
       <node id="1237104580217" at="73,31,74,204" concept="1" />
       <node id="1237104580217" at="75,5,76,24" concept="6" />
-      <node id="1237104496404" at="80,0,81,0" concept="7" trace="denominator$e40P" />
-      <node id="1237104496404" at="81,0,82,0" concept="7" trace="numerator$a$pv" />
+      <node id="1237104496404" at="80,0,81,0" concept="7" trace="denominator$NWpF" />
+      <node id="1237104496404" at="81,0,82,0" concept="7" trace="numerator$7Cm1" />
       <node id="1237104496404" at="47,0,49,0" concept="0" trace="IntentionImplementation#()V" />
       <node id="1237104496404" at="25,0,28,0" concept="0" trace="DivExpressionFractionToDiv_Intention#()V" />
       <node id="1237104496404" at="40,99,43,5" concept="3" />
@@ -126,8 +126,8 @@
       <node id="1237104520251" at="71,5,72,39" concept="1" />
       <node id="1237104520251" at="73,31,74,203" concept="1" />
       <node id="1237104520251" at="75,5,76,24" concept="6" />
-      <node id="1237104500799" at="80,0,81,0" concept="7" trace="leftExpression$rxLZ" />
-      <node id="1237104500799" at="81,0,82,0" concept="7" trace="rightExpression$rxBl" />
+      <node id="1237104500799" at="80,0,81,0" concept="7" trace="leftExpression$lndx" />
+      <node id="1237104500799" at="81,0,82,0" concept="7" trace="rightExpression$li3b" />
       <node id="1237104500799" at="47,0,49,0" concept="0" trace="IntentionImplementation#()V" />
       <node id="1237104500799" at="25,0,28,0" concept="0" trace="DivExpressionDivToFraction_Intention#()V" />
       <node id="1237104500799" at="40,99,43,5" concept="3" />

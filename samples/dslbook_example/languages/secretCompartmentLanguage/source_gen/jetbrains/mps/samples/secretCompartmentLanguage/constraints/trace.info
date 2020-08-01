@@ -22,8 +22,8 @@
       <node id="1213107435706" at="37,119,38,61" concept="1" />
       <node id="1213107435705" at="38,61,39,22" concept="4" />
       <node id="1213107435705" at="43,0,44,0" concept="5" trace="StateMachine$z9" />
-      <node id="1213107435705" at="47,0,48,0" concept="5" trace="name$tAp1" />
-      <node id="1213107435705" at="48,0,49,0" concept="5" trace="stateMachineName$OEbJ" />
+      <node id="1213107435705" at="47,0,48,0" concept="5" trace="name$lA7v" />
+      <node id="1213107435705" at="48,0,49,0" concept="5" trace="stateMachineName$wrFL" />
       <node id="1213107435705" at="18,0,21,0" concept="0" trace="StateMachine_Constraints#()V" />
       <node id="1213107435706" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213107435706" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
@@ -61,7 +61,7 @@
       <node id="1213107435909" at="37,119,38,61" concept="1" />
       <node id="1213107435908" at="38,61,39,22" concept="4" />
       <node id="1213107435908" at="43,0,44,0" concept="5" trace="StateMachineTest$wd" />
-      <node id="1213107435908" at="47,0,48,0" concept="5" trace="name$tAp1" />
+      <node id="1213107435908" at="47,0,48,0" concept="5" trace="name$lA7v" />
       <node id="1213107435908" at="18,0,21,0" concept="0" trace="StateMachineTest_Constraints#()V" />
       <node id="1213107435909" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213107435909" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
@@ -99,8 +99,8 @@
       <node id="1213107436126" at="37,119,38,61" concept="1" />
       <node id="1213107436125" at="38,61,39,22" concept="4" />
       <node id="1213107436125" at="43,0,44,0" concept="5" trace="Event$1c" />
-      <node id="1213107436125" at="47,0,48,0" concept="5" trace="name$tAp1" />
-      <node id="1213107436125" at="48,0,49,0" concept="5" trace="eventName$fo50" />
+      <node id="1213107436125" at="47,0,48,0" concept="5" trace="name$lA7v" />
+      <node id="1213107436125" at="48,0,49,0" concept="5" trace="eventName$sEr0" />
       <node id="1213107436125" at="18,0,21,0" concept="0" trace="Event_Constraints#()V" />
       <node id="1213107436126" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213107436126" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
@@ -138,8 +138,8 @@
       <node id="1213107437475" at="37,119,38,61" concept="1" />
       <node id="1213107437474" at="38,61,39,22" concept="4" />
       <node id="1213107437474" at="43,0,44,0" concept="5" trace="State$lL" />
-      <node id="1213107437474" at="47,0,48,0" concept="5" trace="name$tAp1" />
-      <node id="1213107437474" at="48,0,49,0" concept="5" trace="stateName$FxSA" />
+      <node id="1213107437474" at="47,0,48,0" concept="5" trace="name$lA7v" />
+      <node id="1213107437474" at="48,0,49,0" concept="5" trace="stateName$5qqq" />
       <node id="1213107437474" at="18,0,21,0" concept="0" trace="State_Constraints#()V" />
       <node id="1213107437475" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213107437475" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />

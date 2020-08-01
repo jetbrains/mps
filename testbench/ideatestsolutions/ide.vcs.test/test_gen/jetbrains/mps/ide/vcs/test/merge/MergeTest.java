@@ -86,7 +86,7 @@ public class MergeTest extends ChangesTestBase {
   public void testOnlyMineChanges() {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
-        SPropertyOperations.assign(getMineClassRoot(), PROPS.name$tAp1, "ChangedName");
+        SPropertyOperations.assign(getMineClassRoot(), PROPS.name$lA7v, "ChangedName");
         return myMineModel;
       }
     });
@@ -96,7 +96,7 @@ public class MergeTest extends ChangesTestBase {
   public void testOnlyTheirsChanges() {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
-        SPropertyOperations.assign(getTheirsClassRoot(), PROPS.name$tAp1, "ChangedName");
+        SPropertyOperations.assign(getTheirsClassRoot(), PROPS.name$lA7v, "ChangedName");
         return myTheirsModel;
       }
     });
@@ -141,8 +141,8 @@ public class MergeTest extends ChangesTestBase {
   public void testSymmetricChanges_Comment() {
     testMergeNumberOfConflictingChanges(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
-        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$oYX5)).first());
-        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getTheirsClassRoot(), LINKS.member$oYX5)).first());
+        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$6v_r)).first());
+        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getTheirsClassRoot(), LINKS.member$6v_r)).first());
       }
     }, 2);
   }
@@ -173,8 +173,8 @@ public class MergeTest extends ChangesTestBase {
   public void testSymmetricChanges_RemoveChildAttribute() {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getMineClassRoot(), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$oYX5))).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$oYX5))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getMineClassRoot(), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$6v_r))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$6v_r))).first()));
         return myMineModel;
       }
     });
@@ -185,8 +185,8 @@ public class MergeTest extends ChangesTestBase {
   public void testSymmetricChanges_Property() {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
-        SPropertyOperations.assign(getMineClassRoot(), PROPS.name$tAp1, "ChangedName");
-        SPropertyOperations.assign(getTheirsClassRoot(), PROPS.name$tAp1, "ChangedName");
+        SPropertyOperations.assign(getMineClassRoot(), PROPS.name$lA7v, "ChangedName");
+        SPropertyOperations.assign(getTheirsClassRoot(), PROPS.name$lA7v, "ChangedName");
         return myMineModel;
       }
     });
@@ -198,8 +198,8 @@ public class MergeTest extends ChangesTestBase {
       public SModel createModel() {
         SNodeReference method1Decl = new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610");
         SNodeId method1NodeId = method1Decl.getNodeId();
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myMineModel.getNode(method1NodeId)), LINKS.returnType$WIkw), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myTheirsModel.getNode(method1NodeId)), LINKS.returnType$WIkw), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
+        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myMineModel.getNode(method1NodeId)), LINKS.returnType$qrVw), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
+        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(((SNode) myTheirsModel.getNode(method1NodeId)), LINKS.returnType$qrVw), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
         return myMineModel;
       }
     });
@@ -259,12 +259,12 @@ public class MergeTest extends ChangesTestBase {
   public void testRemoveChildAndRemoveChildAttribute() {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$oYX5)).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$oYX5))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$6v_r)).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$6v_r))).first()));
 
 
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getClassRoot(expectedModel), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$oYX5))).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getClassRoot(expectedModel), LINKS.member$oYX5)).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getClassRoot(expectedModel), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$6v_r))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getClassRoot(expectedModel), LINKS.member$6v_r)).first()));
       }
     });
   }
@@ -273,7 +273,7 @@ public class MergeTest extends ChangesTestBase {
   public void testAddChildAndChildAttributeAtSamePositionConflict() {
     testMergeNumberOfConflictingChanges(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
-        ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$oYX5)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
+        ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$6v_r)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
         ChangesTestUtil.addCommentedMethod(getTheirsClassRoot(), null);
       }
     }, 2);
@@ -294,8 +294,8 @@ public class MergeTest extends ChangesTestBase {
     testMergeNoConflictingChanges(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
 
-        ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$oYX5)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
-        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getTheirsClassRoot(), LINKS.member$oYX5)).first());
+        ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$6v_r)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
+        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(getTheirsClassRoot(), LINKS.member$6v_r)).first());
 
       }
     });
@@ -322,17 +322,17 @@ public class MergeTest extends ChangesTestBase {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
         SNode newChild = createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a15();
-        SPropertyOperations.assign(getMineClassRoot(), PROPS.name$tAp1, "ChangedName");
+        SPropertyOperations.assign(getMineClassRoot(), PROPS.name$lA7v, "ChangedName");
         insertMemberPreservingId(getTheirsClassRoot(), newChild, -1);
 
         insertMemberPreservingId(getClassRoot(expectedModel), newChild, -1);
-        SPropertyOperations.assign(getClassRoot(expectedModel), PROPS.name$tAp1, "ChangedName");
+        SPropertyOperations.assign(getClassRoot(expectedModel), PROPS.name$lA7v, "ChangedName");
       }
     });
   }
 
   private void insertPreservingId(SNode clazz, SNode member, int position, SContainmentLink link) {
-    Iterable<SNode> members = AttributeOperations.getChildNodesAndAttributes(clazz, LINKS.member$oYX5);
+    Iterable<SNode> members = AttributeOperations.getChildNodesAndAttributes(clazz, LINKS.member$6v_r);
     if (position < -1 && position > Sequence.fromIterable(members).count()) {
       throw new IllegalArgumentException("Wrong position to insert: " + position + ". Number of members and child attributes: " + Sequence.fromIterable(members).count());
     }
@@ -349,10 +349,10 @@ public class MergeTest extends ChangesTestBase {
 
   }
   private void insertMemberPreservingId(SNode clazz, SNode member, int position) {
-    insertPreservingId(clazz, member, position, LINKS.member$oYX5);
+    insertPreservingId(clazz, member, position, LINKS.member$6v_r);
   }
   private void insertCommentPreservingId(SNode clazz, SNode member, int position) {
-    insertPreservingId(clazz, member, position, LINKS.smodelAttribute$K8bJ);
+    insertPreservingId(clazz, member, position, LINKS.smodelAttribute$jXFL);
   }
 
 
@@ -440,29 +440,29 @@ public class MergeTest extends ChangesTestBase {
   }
   private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0y() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
-    n0.setProperty(PROPS.name$tAp1, "newMethod");
-    n0.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
-    n0.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
+    n0.setProperty(PROPS.name$lA7v, "newMethod");
+    n0.forChild(LINKS.body$qspy).init(CONCEPTS.StatementList$TN);
+    n0.forChild(LINKS.returnType$qrVw).init(CONCEPTS.VoidType$aT);
     return n0.getResult();
   }
   private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a15() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
-    n0.setProperty(PROPS.name$tAp1, "newMethod");
-    n0.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
-    n0.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
+    n0.setProperty(PROPS.name$lA7v, "newMethod");
+    n0.forChild(LINKS.body$qspy).init(CONCEPTS.StatementList$TN);
+    n0.forChild(LINKS.returnType$qrVw).init(CONCEPTS.VoidType$aT);
     return n0.getResult();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {

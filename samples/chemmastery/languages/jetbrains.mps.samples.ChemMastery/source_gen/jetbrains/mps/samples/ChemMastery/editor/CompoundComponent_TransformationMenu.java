@@ -290,7 +290,7 @@ public class CompoundComponent_TransformationMenu extends TransformationMenuBase
     }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(compound, PROPS.cardinalityVisible$iY8b)) && (SNodeOperations.getPrevSibling(_context.getNode()) == null);
+      return !(SPropertyOperations.getBoolean(compound, PROPS.cardinalityVisible$c5Xl)) && (SNodeOperations.getPrevSibling(_context.getNode()) == null);
     }
 
     @NotNull
@@ -346,8 +346,8 @@ public class CompoundComponent_TransformationMenu extends TransformationMenuBase
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(compound, PROPS.cardinality$$dy0, Integer.parseInt(pattern));
-          SPropertyOperations.assign(compound, PROPS.cardinalityVisible$iY8b, true);
+          SPropertyOperations.assign(compound, PROPS.cardinality$yzu0, Integer.parseInt(pattern));
+          SPropertyOperations.assign(compound, PROPS.cardinalityVisible$c5Xl, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), compound, SelectionManager.FIRST_EDITABLE_CELL, -1);
 
         }
@@ -637,7 +637,7 @@ public class CompoundComponent_TransformationMenu extends TransformationMenuBase
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$iY8b = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$$dy0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$c5Xl = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$yzu0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
   }
 }

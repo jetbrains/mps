@@ -76,15 +76,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_e4lyhc_a0a() {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.unit$IEHe), 0x102dc0b6d03L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.unit$AFTM), 0x102dc0b6d03L);
   }
   private boolean nodeCondition_e4lyhc_a2a() {
-    return !(SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.unit$IEHe), 0x102dc0b6d03L));
+    return !(SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.unit$AFTM), 0x102dc0b6d03L));
   }
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.unit$IEHe;
+      final SProperty property = PROPS.unit$AFTM;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no unit>");
@@ -111,7 +111,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new amountSingleRoleHandler_e4lyhc_b0(myNode, LINKS.amount$b2QZ, getEditorContext());
+    SingleRoleCellProvider provider = new amountSingleRoleHandler_e4lyhc_b0(myNode, LINKS.amount$moCx, getEditorContext());
     return provider.createCell();
   }
   private static class amountSingleRoleHandler_e4lyhc_b0 extends SingleRoleCellProvider {
@@ -131,8 +131,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.amount$b2QZ, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.amount$b2QZ, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.amount$moCx, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.amount$moCx, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -144,13 +144,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.amount$b2QZ);
+        editorCell.setSRole(LINKS.amount$moCx);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.amount$b2QZ));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.amount$moCx));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_amount");
@@ -168,7 +168,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.unit$IEHe;
+      final SProperty property = PROPS.unit$AFTM;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no unit>");
@@ -196,7 +196,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty unit$IEHe = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
+    /*package*/ static final SProperty unit$AFTM = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
   }
 
   private static final class CONCEPTS {
@@ -204,6 +204,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink amount$b2QZ = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c6b1dL, "amount");
+    /*package*/ static final SContainmentLink amount$moCx = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c6b1dL, "amount");
   }
 }

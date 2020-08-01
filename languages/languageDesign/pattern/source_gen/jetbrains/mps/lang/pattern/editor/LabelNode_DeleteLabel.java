@@ -27,7 +27,7 @@ public class LabelNode_DeleteLabel {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (isEmptyString(SPropertyOperations.getString(node, PROPS.name$tAp1)) || !(DeletionApproverUtil.approve(editorContext, node, "LABEL"))) {
+        if (isEmptyString(SPropertyOperations.getString(node, PROPS.name$lA7v)) || !(DeletionApproverUtil.approve(editorContext, node, "LABEL"))) {
           SNode replaced = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.NodeBuilderNode$RN);
           SelectionUtil.selectLabelCellWithSelection(editorContext, replaced, SelectionManager.FIRST_EDITABLE_CELL, 0, 0);
         }
@@ -85,6 +85,6 @@ public class LabelNode_DeleteLabel {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

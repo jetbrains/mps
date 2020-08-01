@@ -23,7 +23,7 @@ public class check_NonStaticAnonymousClassCreation_NonTypesystemRule extends Abs
   public check_NonStaticAnonymousClassCreation_NonTypesystemRule() {
   }
   public void applyRule(final SNode anonymousClassCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(anonymousClassCreator), CONCEPTS.NestedNewExpression$79) || (boolean) Classifier__BehaviorDescriptor.canInstantiateIn_id610WLfjPjne.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(anonymousClassCreator, LINKS.cls$xt3G), LINKS.classifier$1y5e), anonymousClassCreator))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(anonymousClassCreator), CONCEPTS.NestedNewExpression$79) || (boolean) Classifier__BehaviorDescriptor.canInstantiateIn_id610WLfjPjne.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(anonymousClassCreator, LINKS.cls$d4Mk), LINKS.classifier$JwxM), anonymousClassCreator))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(anonymousClassCreator, "Can't instantiate here", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1628645464084401139", null, errorTarget);
     }
@@ -44,7 +44,7 @@ public class check_NonStaticAnonymousClassCreation_NonTypesystemRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cls$xt3G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink cls$d4Mk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
   }
 }

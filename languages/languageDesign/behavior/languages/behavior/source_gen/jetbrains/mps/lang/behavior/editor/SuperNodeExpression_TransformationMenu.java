@@ -91,7 +91,7 @@ public class SuperNodeExpression_TransformationMenu extends TransformationMenuBa
   public class TMP_Group_gori8p_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.superConcept$i1FO) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.superConcept$IOec) == null);
     }
 
     @NotNull
@@ -149,9 +149,9 @@ public class SuperNodeExpression_TransformationMenu extends TransformationMenuBa
         public void execute(@NotNull String pattern) {
           SNode result = SuperExpression__BehaviorDescriptor.getSuperConcept_id2k7p7sTvKkn.invoke(_context.getNode());
           if (result == null) {
-            SLinkOperations.setPointer(_context.getNode(), LINKS.superConcept$i1FO, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
+            SLinkOperations.setPointer(_context.getNode(), LINKS.superConcept$IOec, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
           } else {
-            SLinkOperations.setTarget(_context.getNode(), LINKS.superConcept$i1FO, result);
+            SLinkOperations.setTarget(_context.getNode(), LINKS.superConcept$IOec, result);
           }
           // I expect superConcept to be the only editable cell there, so didn't bother with custom cell id 
           SelectionUtil.selectCell(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_EDITABLE_CELL);
@@ -187,6 +187,6 @@ public class SuperNodeExpression_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink superConcept$i1FO = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, 0x498a2c3387127040L, "superConcept");
+    /*package*/ static final SReferenceLink superConcept$IOec = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, 0x498a2c3387127040L, "superConcept");
   }
 }

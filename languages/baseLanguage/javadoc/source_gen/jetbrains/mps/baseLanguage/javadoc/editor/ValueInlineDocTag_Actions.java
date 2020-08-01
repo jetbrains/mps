@@ -22,7 +22,7 @@ public class ValueInlineDocTag_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.variableReference$lbmD, null);
+        SNodeFactoryOperations.setNewChild(node, LINKS.variableReference$gvXR, null);
       }
 
     };
@@ -70,6 +70,6 @@ public class ValueInlineDocTag_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variableReference$lbmD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e83bL, 0x2398cefbc25f6d46L, "variableReference");
+    /*package*/ static final SContainmentLink variableReference$gvXR = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e83bL, 0x2398cefbc25f6d46L, "variableReference");
   }
 }

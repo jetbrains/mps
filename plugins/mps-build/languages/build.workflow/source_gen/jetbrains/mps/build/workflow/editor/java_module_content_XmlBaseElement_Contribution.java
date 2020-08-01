@@ -144,8 +144,8 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode res = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.XmlElement$Pm);
-            SPropertyOperations.assign(res, PROPS.tagName$U00C, myParameterObject);
-            SPropertyOperations.assign(res, PROPS.shortEmptyNotation$5AI0, true);
+            SPropertyOperations.assign(res, PROPS.tagName$60jo, myParameterObject);
+            SPropertyOperations.assign(res, PROPS.shortEmptyNotation$HKi0, true);
             return res;
           }
 
@@ -186,7 +186,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tagName$U00C = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
-    /*package*/ static final SProperty shortEmptyNotation$5AI0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
+    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty shortEmptyNotation$HKi0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
   }
 }

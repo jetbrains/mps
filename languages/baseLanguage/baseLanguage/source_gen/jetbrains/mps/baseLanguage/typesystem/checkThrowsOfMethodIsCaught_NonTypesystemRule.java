@@ -21,11 +21,11 @@ public class checkThrowsOfMethodIsCaught_NonTypesystemRule extends AbstractNonTy
   public checkThrowsOfMethodIsCaught_NonTypesystemRule() {
   }
   public void applyRule(final SNode methodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode method = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$$A7i);
+    SNode method = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI);
     if ((method == null)) {
       return;
     }
-    Set<SNode> throwables = SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.getChildren(method, LINKS.throwsItem$gr7e));
+    Set<SNode> throwables = SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.getChildren(method, LINKS.throwsItem$X8vM));
     RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, methodCall);
   }
   public SAbstractConcept getApplicableConcept() {
@@ -39,8 +39,8 @@ public class checkThrowsOfMethodIsCaught_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
   }
 
   private static final class CONCEPTS {

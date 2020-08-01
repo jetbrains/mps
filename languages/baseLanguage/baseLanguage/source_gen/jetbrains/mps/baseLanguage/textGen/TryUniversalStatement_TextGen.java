@@ -23,10 +23,10 @@ public class TryUniversalStatement_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.indent();
     tgs.append("try");
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.resource$nWfw)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.resource$Abww)).isNotEmpty()) {
       tgs.append(" (");
       {
-        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.resource$nWfw);
+        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.resource$Abww);
         final SNode lastItem = Sequence.fromIterable(collection).last();
         for (SNode item : collection) {
           tgs.appendNode(item);
@@ -39,16 +39,16 @@ public class TryUniversalStatement_TextGen extends TextGenDescriptorBase {
     }
     tgs.append(" {");
     ctx.getBuffer().area().increaseIndent();
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.body$4P0u));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.body$lFey));
     ctx.getBuffer().area().decreaseIndent();
     tgs.newLine();
     tgs.indent();
     tgs.append("}");
-    for (SNode clause : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.catchClause$4PbB)) {
+    for (SNode clause : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.catchClause$lKBT)) {
       tgs.appendNode(clause);
     }
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.finallyClause$4P0X) != null)) {
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.finallyClause$4P0X));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.finallyClause$lFtz) != null)) {
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.finallyClause$lFtz));
     }
     if (tgs.needPositions()) {
       tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.TraceableConcept$kK)));
@@ -56,10 +56,10 @@ public class TryUniversalStatement_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resource$nWfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
-    /*package*/ static final SContainmentLink body$4P0u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
-    /*package*/ static final SContainmentLink catchClause$4PbB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
-    /*package*/ static final SContainmentLink finallyClause$4P0X = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink resource$Abww = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
+    /*package*/ static final SContainmentLink body$lFey = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
+    /*package*/ static final SContainmentLink catchClause$lKBT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
+    /*package*/ static final SContainmentLink finallyClause$lFtz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
   }
 
   private static final class CONCEPTS {

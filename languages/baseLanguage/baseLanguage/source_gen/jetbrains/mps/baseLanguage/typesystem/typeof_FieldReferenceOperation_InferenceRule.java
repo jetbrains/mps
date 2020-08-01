@@ -29,7 +29,7 @@ public class typeof_FieldReferenceOperation_InferenceRule extends AbstractInfere
   public typeof_FieldReferenceOperation_InferenceRule() {
   }
   public void applyRule(final SNode fieldReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final SNode fieldDecl = SLinkOperations.getTarget(fieldReference, LINKS.fieldDeclaration$mLBy);
+    final SNode fieldDecl = SLinkOperations.getTarget(fieldReference, LINKS.fieldDeclaration$229u);
     if ((fieldDecl == null)) {
       return;
     }
@@ -43,7 +43,7 @@ public class typeof_FieldReferenceOperation_InferenceRule extends AbstractInfere
       final SNode OT = typeCheckingContext.typeOf(operand, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2635728088959155037", true);
       typeCheckingContext.whenConcrete(OT, new Runnable() {
         public void run() {
-          SNode fieldType = SLinkOperations.getTarget(fieldDecl, LINKS.type$pLrO);
+          SNode fieldType = SLinkOperations.getTarget(fieldDecl, LINKS.type$uWuc);
           if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(OT), CONCEPTS.IGenericType$$h) && SNodeOperations.isInstanceOf(fieldType, CONCEPTS.IGenericType$$h)) {
             Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
             IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(typeCheckingContext.getExpandedNode(OT), CONCEPTS.IGenericType$$h), subs);
@@ -85,8 +85,8 @@ public class typeof_FieldReferenceOperation_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {

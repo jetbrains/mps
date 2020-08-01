@@ -17,42 +17,42 @@ public class SModelLanguageUtil {
   public static SNode getDatatypeFromLeft_SPropertyAccess(SNode operation) {
     SNode property = getPropertyDeclarationFromLeft_SPropertyAccess(operation);
     if ((property != null)) {
-      return SLinkOperations.getTarget(property, LINKS.dataType$fLUl);
+      return SLinkOperations.getTarget(property, LINKS.dataType$Dbgb);
     }
     return null;
   }
   private static SNode getPropertyDeclarationFromLeft_SPropertyAccess(SNode operation) {
-    SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(operation), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
-    SNode leftOp = SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8);
+    SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(operation), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
+    SNode leftOp = SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS);
     if (SNodeOperations.isInstanceOf(leftOp, CONCEPTS.SPropertyAccess$bD)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(leftOp, CONCEPTS.SPropertyAccess$bD), LINKS.property$He2);
+      return SLinkOperations.getTarget(SNodeOperations.cast(leftOp, CONCEPTS.SPropertyAccess$bD), LINKS.property$lTMY);
     }
     return null;
   }
   public static SNode getConcept(SNode expression) {
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.DotExpression$6a)) {
-      SNode operation = SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8);
+      SNode operation = SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS);
       if (SNodeOperations.isInstanceOf(operation, CONCEPTS.ILinkAccess$3K)) {
         return ILinkAccess__BehaviorDescriptor.getTargetConcept_id3vpu_siOTrr.invoke(SNodeOperations.cast(operation, CONCEPTS.ILinkAccess$3K));
       }
     }
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.VariableReference$sQ)) {
-      SNode type = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), LINKS.type$pLrO);
+      SNode type = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), LINKS.type$uWuc);
       if (SNodeOperations.isInstanceOf(type, CONCEPTS.SNodeType$gn)) {
-        return SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.SNodeType$gn), LINKS.concept$HWFQ);
+        return SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.SNodeType$gn), LINKS.concept$gpfa);
       }
     }
     return null;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink property$He2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 
   private static final class CONCEPTS {

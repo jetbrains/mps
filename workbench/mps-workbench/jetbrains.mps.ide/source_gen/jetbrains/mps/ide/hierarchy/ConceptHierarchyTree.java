@@ -56,7 +56,7 @@ public class ConceptHierarchyTree extends AbstractHierarchyTree {
   protected SNode getParent(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU)) {
       SNode concept = SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU);
-      SNode extendsConcept = SLinkOperations.getTarget(concept, LINKS.extends$LQV3);
+      SNode extendsConcept = SLinkOperations.getTarget(concept, LINKS.extends$9AAt);
       if (extendsConcept == null && !(SNodeOperations.is(concept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))) {
         extendsConcept = SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626");
       }
@@ -120,6 +120,6 @@ public class ConceptHierarchyTree extends AbstractHierarchyTree {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 }

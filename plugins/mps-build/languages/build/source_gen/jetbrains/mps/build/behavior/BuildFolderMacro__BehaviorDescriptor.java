@@ -43,15 +43,15 @@ public final class BuildFolderMacro__BehaviorDescriptor extends BaseBHDescriptor
       usedMacro = SetSequence.fromSet(new HashSet<String>());
       context.put(key, usedMacro);
     }
-    if (SetSequence.fromSet(usedMacro).contains(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1))) {
+    if (SetSequence.fromSet(usedMacro).contains(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v))) {
       // cycle 
       return null;
     }
-    SetSequence.fromSet(usedMacro).addElement(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    SetSequence.fromSet(usedMacro).addElement(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
     try {
-      return BuildSourcePath__BehaviorDescriptor.getLocalPath_id4Kip2_918Y$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.defaultPath$DdXd), context);
+      return BuildSourcePath__BehaviorDescriptor.getLocalPath_id4Kip2_918Y$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.defaultPath$XKDj), context);
     } finally {
-      SetSequence.fromSet(usedMacro).removeElement(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+      SetSequence.fromSet(usedMacro).removeElement(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
     }
 
 
@@ -104,10 +104,10 @@ public final class BuildFolderMacro__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultPath$DdXd = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, 0x668c6cfbafadf0eaL, "defaultPath");
+    /*package*/ static final SContainmentLink defaultPath$XKDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, 0x668c6cfbafadf0eaL, "defaultPath");
   }
 }

@@ -94,7 +94,7 @@ public class InterfaceConceptReference_TransformationMenu extends Transformation
   public class TMP_Group_fqowf9_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.intfc$fO5) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN) && (SNodeOperations.hasRole(_context.getNode(), LINKS.implements$oQDh) || SNodeOperations.hasRole(_context.getNode(), LINKS.extends$3Y1p));
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.intfc$7Eer) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN) && (SNodeOperations.hasRole(_context.getNode(), LINKS.implements$2tZf) || SNodeOperations.hasRole(_context.getNode(), LINKS.extends$V2F7));
     }
 
     @NotNull
@@ -151,10 +151,10 @@ public class InterfaceConceptReference_TransformationMenu extends Transformation
         @Override
         public void execute(@NotNull String pattern) {
           if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ConceptDeclaration$qU)) {
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ConceptDeclaration$qU), LINKS.implements$oQDh)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.InterfaceConceptReference$Yh, null)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ConceptDeclaration$qU), LINKS.implements$2tZf)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.InterfaceConceptReference$Yh, null)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
             return;
           } else {
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$3Y1p)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.InterfaceConceptReference$Yh, null)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$V2F7)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.InterfaceConceptReference$Yh, null)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
             return;
           }
         }
@@ -193,8 +193,8 @@ public class InterfaceConceptReference_TransformationMenu extends Transformation
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
   }
 }

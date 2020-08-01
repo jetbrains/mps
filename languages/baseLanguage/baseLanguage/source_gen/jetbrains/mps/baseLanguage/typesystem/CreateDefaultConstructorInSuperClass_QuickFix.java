@@ -19,11 +19,11 @@ public class CreateDefaultConstructorInSuperClass_QuickFix extends QuickFix_Runt
     return "Add public no-args constructor to " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(((SNode) CreateDefaultConstructorInSuperClass_QuickFix.this.getField("superClass")[0]));
   }
   public void execute(SNode node) {
-    SNodeFactoryOperations.addNewChild(((SNode) CreateDefaultConstructorInSuperClass_QuickFix.this.getField("superClass")[0]), LINKS.member$oYX5, CONCEPTS.ConstructorDeclaration$5U);
+    SNodeFactoryOperations.addNewChild(((SNode) CreateDefaultConstructorInSuperClass_QuickFix.this.getField("superClass")[0]), LINKS.member$6v_r, CONCEPTS.ConstructorDeclaration$5U);
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class CONCEPTS {

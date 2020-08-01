@@ -31,7 +31,7 @@ public final class MappingConfigExternalRef__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static boolean isComplete_id2n3WChplftH(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.generator$xuNv) != null) && (boolean) MappingConfigRefBase__BehaviorDescriptor.isComplete_id2n3WChplftH.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.innerRef$xuN0));
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.generator$dUW1) != null) && (boolean) MappingConfigRefBase__BehaviorDescriptor.isComplete_id2n3WChplftH.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.innerRef$dUH0));
   }
 
   /*package*/ MappingConfigExternalRef__BehaviorDescriptor() {
@@ -81,7 +81,7 @@ public final class MappingConfigExternalRef__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink innerRef$xuN0 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e2L, "innerRef");
-    /*package*/ static final SContainmentLink generator$xuNv = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e3L, "generator");
+    /*package*/ static final SContainmentLink innerRef$dUH0 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e2L, "innerRef");
+    /*package*/ static final SContainmentLink generator$dUW1 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e3L, "generator");
   }
 }

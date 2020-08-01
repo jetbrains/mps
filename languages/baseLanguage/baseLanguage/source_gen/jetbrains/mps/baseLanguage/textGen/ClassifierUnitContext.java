@@ -64,10 +64,10 @@ public class ClassifierUnitContext implements RootDependencies.Source {
   public void registerDependenciesOf(SNode cls) {
     boolean topClassifier = !((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(cls));
     if (SNodeOperations.isInstanceOf(cls, CONCEPTS.Interface$Kp)) {
-      registerExtendsRelation(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.Interface$Kp), LINKS.extendedInterface$rbvY), topClassifier);
+      registerExtendsRelation(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.Interface$Kp), LINKS.extendedInterface$a$v2), topClassifier);
     } else if (SNodeOperations.isInstanceOf(cls, CONCEPTS.ClassConcept$IY)) {
-      registerExtendsRelation(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$IY), LINKS.implementedInterface$mdc6), topClassifier);
-      registerExtendsRelation(Sequence.<SNode>singleton(SLinkOperations.getTarget(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$IY), LINKS.superclass$_pqe)), topClassifier);
+      registerExtendsRelation(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$IY), LINKS.implementedInterface$KoQU), topClassifier);
+      registerExtendsRelation(Sequence.<SNode>singleton(SLinkOperations.getTarget(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$IY), LINKS.superclass$7jGM)), topClassifier);
     }
   }
 
@@ -82,7 +82,7 @@ public class ClassifierUnitContext implements RootDependencies.Source {
 
     // set<string> dependencies = getUserObjects(isTopClassifier ? TextGen.EXTENDS : TextGen.DEPENDENCY); 
     HashSet<String> deps = (isTopClassifier ? myExtends : myDepends);
-    for (SNode c : SLinkOperations.collect(classifiers, LINKS.classifier$pQ_R)) {
+    for (SNode c : SLinkOperations.collect(classifiers, LINKS.classifier$xslD)) {
       deps.add(getTopmostClassifierName(c));
     }
   }
@@ -123,9 +123,9 @@ public class ClassifierUnitContext implements RootDependencies.Source {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

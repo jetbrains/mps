@@ -41,10 +41,10 @@ public final class ConceptConstraints__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.concept$rRWx);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.concept$w6jZ);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.concept$rRWx, baseConcept);
+    SLinkOperations.setTarget(__thisNode__, LINKS.concept$w6jZ, baseConcept);
   }
   /*package*/ static SNode getConstraintFunctionBodyUsingInheritance_id4jmriKirjWW(@NotNull SAbstractConcept __thisConcept__, SNode concept, final _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> constraintFunctionSpecifier) {
     _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> computePredicate = new _FunctionTypes._return_P1_E0<SNode, SNode>() {
@@ -56,7 +56,7 @@ public final class ConceptConstraints__BehaviorDescriptor extends BaseBHDescript
     if (method == null) {
       return _quotation_createNode_wrxfmp_a0a2a2();
     } else {
-      return SLinkOperations.getTarget(method, LINKS.body$pTP2);
+      return SLinkOperations.getTarget(method, LINKS.body$z0FY);
     }
   }
 
@@ -122,8 +122,8 @@ public final class ConceptConstraints__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$rRWx = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SReferenceLink concept$w6jZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 
   private static final class CONCEPTS {

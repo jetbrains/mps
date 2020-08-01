@@ -57,7 +57,7 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
   }
   public static class HasNoDefaultMember_Property extends BasePropertyConstraintsDescriptor {
     public HasNoDefaultMember_Property(ConstraintsDescriptor container) {
-      super(PROPS.hasNoDefaultMember$9RJG, container);
+      super(PROPS.hasNoDefaultMember$M06k, container);
     }
     @Override
     public boolean hasOwnSetter() {
@@ -68,21 +68,21 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
       staticSetPropertyValue(node, SPropertyOperations.castBoolean(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, boolean propertyValue) {
-      SPropertyOperations.assign(node, PROPS.hasNoDefaultMember$9RJG, propertyValue);
+      SPropertyOperations.assign(node, PROPS.hasNoDefaultMember$M06k, propertyValue);
       if (propertyValue == true) {
-        SLinkOperations.setTarget(node, LINKS.defaultMember$C9qo, null);
+        SLinkOperations.setTarget(node, LINKS.defaultMember$szLC, null);
       }
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.hasNoDefaultMember$9RJG, new HasNoDefaultMember_Property(this));
+    properties.put(PROPS.hasNoDefaultMember$M06k, new HasNoDefaultMember_Property(this));
     return properties;
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.defaultMember$C9qo, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.defaultMember$szLC, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -118,10 +118,10 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty hasNoDefaultMember$9RJG = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
+    /*package*/ static final SProperty hasNoDefaultMember$M06k = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink defaultMember$C9qo = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
+    /*package*/ static final SReferenceLink defaultMember$szLC = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
   }
 }

@@ -37,7 +37,7 @@ public final class BuildProjectDependency__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
-    String location = "${artifacts." + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.script$mz1x), PROPS.name$tAp1) + "}";
+    String location = "${artifacts." + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.script$UXIZ), PROPS.name$lA7v) + "}";
     helper.putContentLocation(__thisNode__, location);
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {
@@ -46,7 +46,7 @@ public final class BuildProjectDependency__BehaviorDescriptor extends BaseBHDesc
     return helper.getContentLocation(__thisNode__);
   }
   /*package*/ static void appendName_id1bWeed$ownT(@NotNull SNode __thisNode__, SNode parent, StringBuilder sb) {
-    sb.append(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.script$mz1x), PROPS.name$tAp1));
+    sb.append(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.script$UXIZ), PROPS.name$lA7v));
     sb.append("::");
   }
 
@@ -103,10 +103,10 @@ public final class BuildProjectDependency__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink script$mz1x = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+    /*package*/ static final SReferenceLink script$UXIZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

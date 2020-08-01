@@ -109,7 +109,7 @@ public class XmlModelPersistence implements ModelFactory {
     XmlPersistenceModelDescriptor newModelDescriptor = new XmlPersistenceModelDescriptor(ref, dataSource);
     SModelName name = newModelDescriptor.getName();
     SNode newDocument = XmlConverter.newDocument(name.getSimpleName());
-    SPropertyOperations.assign(newDocument, PROPS.name$tAp1, name.getLongName());
+    SPropertyOperations.assign(newDocument, PROPS.name$lA7v, name.getLongName());
     newModelDescriptor.addRootNode(newDocument);
     return newModelDescriptor;
   }
@@ -132,6 +132,6 @@ public class XmlModelPersistence implements ModelFactory {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

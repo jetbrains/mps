@@ -143,12 +143,12 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
       addNodeById("7060593544921882462");
       addNodeById("7060593544921942801");
       SNode container1 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Container"));
-      SPropertyOperations.setEnum(container1, PROPS.enumWODefault$6er9, 0x61fc446ba477f2ddL, "name_1");
-      SPropertyOperations.setEnum(container1, PROPS.enumWithDefault$6eqb, 0x125bc18df9d40efaL, "name_1");
+      SPropertyOperations.setEnum(container1, PROPS.enumWODefault$Z9n, 0x61fc446ba477f2ddL, "name_1");
+      SPropertyOperations.setEnum(container1, PROPS.enumWithDefault$YFl, 0x125bc18df9d40efaL, "name_1");
 
       SNode container2 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Container"));
-      SPropertyOperations.assignEnum(container2, PROPS.enumWODefault$6er9, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"));
-      SPropertyOperations.assignEnum(container2, PROPS.enumWithDefault$6eqb, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efaL, "name_1"));
+      SPropertyOperations.assignEnum(container2, PROPS.enumWODefault$Z9n, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"));
+      SPropertyOperations.assignEnum(container2, PROPS.enumWithDefault$YFl, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efaL, "name_1"));
 
       SNode container3 = SNodeOperations.cast(getNodeById("7060593544921942802"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x61fc446ba477f2e1L, "TestEnum_Container")));
 
@@ -162,12 +162,12 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
       SNode container_proto = SNodeOperations.cast(getNodeById("7060593544921942802"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x61fc446ba477f2e1L, "TestEnum_Container")));
 
       SNode container1 = SNodeOperations.copyNode(container_proto);
-      SPropertyOperations.remove(container1, PROPS.enumWODefault$6er9);
-      SPropertyOperations.remove(container1, PROPS.enumWithDefault$6eqb);
+      SPropertyOperations.remove(container1, PROPS.enumWODefault$Z9n);
+      SPropertyOperations.remove(container1, PROPS.enumWithDefault$YFl);
 
       SNode container2 = SNodeOperations.copyNode(container_proto);
-      SPropertyOperations.assignEnum(container2, PROPS.enumWODefault$6er9, null);
-      SPropertyOperations.assignEnum(container2, PROPS.enumWithDefault$6eqb, null);
+      SPropertyOperations.assignEnum(container2, PROPS.enumWODefault$Z9n, null);
+      SPropertyOperations.assignEnum(container2, PROPS.enumWithDefault$YFl, null);
 
       this.test_init(container1);
       this.test_init(container2);
@@ -176,29 +176,29 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
 
 
     public void test_init(SNode container) {
-      Assert.assertSame(SPropertyOperations.getEnum(container, PROPS.enumWODefault$6er9), null);
-      Assert.assertSame(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$6eqb), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efbL, "name_2_def"));
+      Assert.assertSame(SPropertyOperations.getEnum(container, PROPS.enumWODefault$Z9n), null);
+      Assert.assertSame(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$YFl), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efbL, "name_2_def"));
 
-      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWODefault$6er9), 0x61fc446ba477f2ddL));
-      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWODefault$6er9), 0x61fc446ba477f2deL));
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWODefault$Z9n), 0x61fc446ba477f2ddL));
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWODefault$Z9n), 0x61fc446ba477f2deL));
 
-      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$6eqb), 0x125bc18df9d40efaL));
-      Assert.assertTrue(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$6eqb), 0x125bc18df9d40efbL));
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$YFl), 0x125bc18df9d40efaL));
+      Assert.assertTrue(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$YFl), 0x125bc18df9d40efbL));
     }
     public void test_setfirst(SNode container) {
-      Assert.assertSame(SPropertyOperations.getEnum(container, PROPS.enumWODefault$6er9), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"));
-      Assert.assertSame(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$6eqb), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efaL, "name_1"));
+      Assert.assertSame(SPropertyOperations.getEnum(container, PROPS.enumWODefault$Z9n), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"));
+      Assert.assertSame(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$YFl), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efaL, "name_1"));
 
-      Assert.assertTrue(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWODefault$6er9), 0x61fc446ba477f2ddL));
-      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWODefault$6er9), 0x61fc446ba477f2deL));
+      Assert.assertTrue(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWODefault$Z9n), 0x61fc446ba477f2ddL));
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWODefault$Z9n), 0x61fc446ba477f2deL));
 
-      Assert.assertTrue(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$6eqb), 0x125bc18df9d40efaL));
-      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$6eqb), 0x125bc18df9d40efbL));
+      Assert.assertTrue(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$YFl), 0x125bc18df9d40efaL));
+      Assert.assertFalse(SEnumOperations.isMember(SPropertyOperations.getEnum(container, PROPS.enumWithDefault$YFl), 0x125bc18df9d40efbL));
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty enumWODefault$6er9 = MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault");
-    /*package*/ static final SProperty enumWithDefault$6eqb = MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault");
+    /*package*/ static final SProperty enumWODefault$Z9n = MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault");
+    /*package*/ static final SProperty enumWithDefault$YFl = MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault");
   }
 }

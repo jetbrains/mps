@@ -1461,7 +1461,7 @@
       <node id="4023783813281920010" at="229,0,230,0" concept="11" trace="doCollect#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljava/util/List;" />
       <node id="4023783813281515288" at="231,0,232,0" concept="11" trace="hasTests#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;)Z" />
       <node id="6062668769034855745" at="233,0,234,0" concept="11" trace="check#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;)Ljava/lang/String;" />
-      <node id="6062668769034855735" at="236,0,237,0" concept="16" trace="compileInMPS$8r6V" />
+      <node id="6062668769034855735" at="236,0,237,0" concept="16" trace="compileInMPS$58m_" />
       <node id="6062668769034855753" at="194,0,196,0" concept="3" trace="JUnitRunTypes#()V" />
       <node id="6062668769034856121" at="43,22,46,7" concept="10" />
       <node id="4023783813282010852" at="49,0,52,0" concept="11" trace="hasTests#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;)Z" />

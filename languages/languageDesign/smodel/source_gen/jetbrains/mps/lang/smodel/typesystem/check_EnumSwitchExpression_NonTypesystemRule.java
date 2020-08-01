@@ -28,8 +28,8 @@ public class check_EnumSwitchExpression_NonTypesystemRule extends AbstractNonTyp
   }
   public void applyRule(final SNode enumSwitchExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Set<SNode> visitedMembers = SetSequence.fromSet(new HashSet<SNode>());
-    for (SNode memberReference : Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.getChildren(enumSwitchExpression, LINKS.cases$L5D5), LINKS.members$4kGw))) {
-      SNode member = SLinkOperations.getTarget(memberReference, LINKS.decl$Hqa_);
+    for (SNode memberReference : Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.getChildren(enumSwitchExpression, LINKS.cases$LITr), LINKS.members$61zw))) {
+      SNode member = SLinkOperations.getTarget(memberReference, LINKS.decl$ZF7V);
       if (!(SetSequence.fromSet(visitedMembers).add(member))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -37,7 +37,7 @@ public class check_EnumSwitchExpression_NonTypesystemRule extends AbstractNonTyp
         }
       }
     }
-    if ((SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$i6_e) == null) && (boolean) EnumSwitchExpression__BehaviorDescriptor.evaluatesValue_id28aPEVwg1gU.invoke(enumSwitchExpression) && SetSequence.fromSet(visitedMembers).count() < ListSequence.fromList(SLinkOperations.getChildren(EnumSwitchExpression__BehaviorDescriptor.getEnumDecl_id28aPEVv7w3k.invoke(enumSwitchExpression), LINKS.members$qYq2)).count()) {
+    if ((SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$Lc1M) == null) && (boolean) EnumSwitchExpression__BehaviorDescriptor.evaluatesValue_id28aPEVwg1gU.invoke(enumSwitchExpression) && SetSequence.fromSet(visitedMembers).count() < ListSequence.fromList(SLinkOperations.getChildren(EnumSwitchExpression__BehaviorDescriptor.getEnumDecl_id28aPEVv7w3k.invoke(enumSwitchExpression), LINKS.members$4eAY)).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(enumSwitchExpression, "Switch is not exhaustive", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619908091", null, errorTarget);
@@ -55,11 +55,11 @@ public class check_EnumSwitchExpression_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$Hqa_ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, 0x414edd67c0112b98L, "decl");
-    /*package*/ static final SContainmentLink cases$L5D5 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf1fd3b7L, "cases");
-    /*package*/ static final SContainmentLink members$4kGw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1d75e4L, "members");
-    /*package*/ static final SContainmentLink otherwiseBody$i6_e = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
-    /*package*/ static final SContainmentLink members$qYq2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SReferenceLink decl$ZF7V = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, 0x414edd67c0112b98L, "decl");
+    /*package*/ static final SContainmentLink cases$LITr = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf1fd3b7L, "cases");
+    /*package*/ static final SContainmentLink members$61zw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1d75e4L, "members");
+    /*package*/ static final SContainmentLink otherwiseBody$Lc1M = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
+    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 
   private static final class CONCEPTS {

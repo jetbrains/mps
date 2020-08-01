@@ -89,7 +89,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.value$cK70;
+      final SProperty property = PROPS.value$bjp0;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("");
@@ -121,10 +121,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private boolean _StyleParameter_QueryFunction_8g1p9d_a2b0() {
-    return SPropertyOperations.getBoolean(getNode(), PROPS.underlined$WUs$) || isNotEmptyString(SPropertyOperations.getString(getNode(), PROPS.url$WUb8));
+    return SPropertyOperations.getBoolean(getNode(), PROPS.underlined$wjPs) || isNotEmptyString(SPropertyOperations.getString(getNode(), PROPS.url$wboS));
   }
   private String _StyleParameter_QueryFunction_8g1p9d_a3b0() {
-    return SPropertyOperations.getString(getNode(), PROPS.url$WUb8);
+    return SPropertyOperations.getString(getNode(), PROPS.url$wboS);
   }
   public static class ReplaceWith_TextElement_cellMenu_8g1p9d_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
     public ReplaceWith_TextElement_cellMenu_8g1p9d_a0b0() {
@@ -153,9 +153,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
-    /*package*/ static final SProperty underlined$WUs$ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty underlined$wjPs = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
   }
 
   private static final class CONCEPTS {

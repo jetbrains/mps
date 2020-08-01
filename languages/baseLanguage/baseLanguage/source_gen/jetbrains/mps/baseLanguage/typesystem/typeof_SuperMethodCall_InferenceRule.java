@@ -37,7 +37,7 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
   public typeof_SuperMethodCall_InferenceRule() {
   }
   public void applyRule(final SNode methodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final SNode mdecl = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$$A7i);
+    final SNode mdecl = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI);
     if (mdecl == null) {
       return;
     }
@@ -52,22 +52,22 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
     // check the inference context 
     if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(methodCall))) {
-      List<SNode> inferrableTypeVars = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(mdecl, LINKS.returnType$WIkw), CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
+      List<SNode> inferrableTypeVars = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(mdecl, LINKS.returnType$qrVw), CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$U0X4);
+          return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$6t$W);
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.getParent(it) == mdecl;
         }
       }).toListSequence();
-      List<SNode> boundTypeVars = ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.parameter$WIkZ)).translate(new ITranslator2<SNode, SNode>() {
+      List<SNode> boundTypeVars = ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.parameter$qsax)).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode p) {
           return SNodeOperations.getNodeDescendants(p, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{});
         }
       }).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$U0X4);
+          return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$6t$W);
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
@@ -79,8 +79,8 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
         MapSequence.fromMap(subs).put(tvd, _quotation_createNode_okooqp_a0b0c0k0b());
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$GDtv)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$ziZT)).isNotEmpty()) {
-      for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$ziZT))) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$C5i1)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$6cWB)).isNotEmpty()) {
+      for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$6cWB))) {
         if (!(MapSequence.fromMap(subs).containsKey(tvd))) {
           final SNode T_typevar_4837286298389139314 = typeCheckingContext.createNewRuntimeTypesVariable();
           MapSequence.fromMap(subs).put(tvd, typeCheckingContext.getRepresentative(T_typevar_4837286298389139314));
@@ -88,8 +88,8 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
       }
     } else {
       {
-        Iterator<SNode> tvd_it = ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$ziZT)).iterator();
-        Iterator<SNode> targ_it = ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$GDtv)).iterator();
+        Iterator<SNode> tvd_it = ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$6cWB)).iterator();
+        Iterator<SNode> targ_it = ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$C5i1)).iterator();
         SNode tvd_var;
         SNode targ_var;
         while (tvd_it.hasNext() && targ_it.hasNext()) {
@@ -107,7 +107,7 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(thisType, CONCEPTS.IGenericType$$h), subs);
     }
 
-    List<SNode> argl = SLinkOperations.getChildren(methodCall, LINKS.actualArgument$$A7L);
+    List<SNode> argl = SLinkOperations.getChildren(methodCall, LINKS.actualArgument$ItKJ);
     List<SNode> typel = ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(mdecl, ((int) ListSequence.fromList(argl).count()));
     for (SNode type : ListSequence.fromList(typel)) {
       if (SNodeOperations.isInstanceOf(type, CONCEPTS.IGenericType$$h)) {
@@ -115,7 +115,7 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
       }
     }
 
-    SNode retType = SLinkOperations.getTarget(mdecl, LINKS.returnType$WIkw);
+    SNode retType = SLinkOperations.getTarget(mdecl, LINKS.returnType$qrVw);
     if (SNodeOperations.isInstanceOf(retType, CONCEPTS.IGenericType$$h)) {
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$$h), subs);
       retType = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$$h), subs);
@@ -170,13 +170,13 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink typeArgument$GDtv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class CONCEPTS {

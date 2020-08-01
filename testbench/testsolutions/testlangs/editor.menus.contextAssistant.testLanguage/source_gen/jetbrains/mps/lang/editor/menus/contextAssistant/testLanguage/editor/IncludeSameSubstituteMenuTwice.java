@@ -82,7 +82,7 @@ public class IncludeSameSubstituteMenuTwice extends TransformationMenuBase {
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.childIncludeSameSubstituteMenuTwice$8rQZ;
+      return LINKS.childIncludeSameSubstituteMenuTwice$5vCx;
     }
     @Override
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext context) {
@@ -119,7 +119,7 @@ public class IncludeSameSubstituteMenuTwice extends TransformationMenuBase {
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.childIncludeSameSubstituteMenuTwice$8rQZ;
+      return LINKS.childIncludeSameSubstituteMenuTwice$5vCx;
     }
     @Override
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext context) {
@@ -133,7 +133,7 @@ public class IncludeSameSubstituteMenuTwice extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childIncludeSameSubstituteMenuTwice$8rQZ = MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a82caeL, "childIncludeSameSubstituteMenuTwice");
+    /*package*/ static final SContainmentLink childIncludeSameSubstituteMenuTwice$5vCx = MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a82caeL, "childIncludeSameSubstituteMenuTwice");
   }
 
   private static final class CONCEPTS {

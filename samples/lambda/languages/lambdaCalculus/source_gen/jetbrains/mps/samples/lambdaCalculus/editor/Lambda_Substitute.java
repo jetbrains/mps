@@ -90,7 +90,7 @@ public class Lambda_Substitute extends SubstituteMenuBase {
           smallPattern = smallPattern.substring(0, smallPattern.length() - 1);
         }
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.StringConstant$g_, null);
-        SPropertyOperations.assign(result, PROPS.value$bAtw, smallPattern);
+        SPropertyOperations.assign(result, PROPS.value$BCiw, smallPattern);
         return result;
       }
 
@@ -114,6 +114,6 @@ public class Lambda_Substitute extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$bAtw = MetaAdapterFactory.getProperty(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dc8L, 0x37d11ba7d7ee2dc9L, "value");
+    /*package*/ static final SProperty value$BCiw = MetaAdapterFactory.getProperty(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dc8L, 0x37d11ba7d7ee2dc9L, "value");
   }
 }

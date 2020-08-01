@@ -19,8 +19,8 @@ public class NodeBuilder_Replace {
       {
         final SNode sampleBuilderNode = sampleNode;
         if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$RN)) {
-          SLinkOperations.setTarget(newNode, LINKS.concept$lMG$, SLinkOperations.getTarget(sampleBuilderNode, LINKS.concept$lMG$));
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.values$oju9)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sampleBuilderNode, LINKS.values$oju9)));
+          SLinkOperations.setTarget(newNode, LINKS.concept$zz_s, SLinkOperations.getTarget(sampleBuilderNode, LINKS.concept$zz_s));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.values$LrAn)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sampleBuilderNode, LINKS.values$LrAn)));
         }
       }
     }
@@ -30,7 +30,7 @@ public class NodeBuilder_Replace {
       {
         final SNode sampleBuilderNode = sampleNode;
         if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$RN)) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.nodes$$MVw)).addElement(sampleBuilderNode);
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.nodes$OEOw)).addElement(sampleBuilderNode);
         }
       }
     }
@@ -41,8 +41,8 @@ public class NodeBuilder_Replace {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$lMG$ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
-    /*package*/ static final SContainmentLink values$oju9 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
-    /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
+    /*package*/ static final SReferenceLink concept$zz_s = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
+    /*package*/ static final SContainmentLink values$LrAn = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
+    /*package*/ static final SContainmentLink nodes$OEOw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
   }
 }

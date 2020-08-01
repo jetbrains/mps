@@ -39,9 +39,9 @@
       <node id="6813679070098910800" at="111,0,112,0" concept="7" trace="State$J2" />
       <node id="6813679070098910800" at="112,0,113,0" concept="7" trace="Event$H_" />
       <node id="6813679070098910800" at="113,0,114,0" concept="7" trace="ScopeProvider$M8" />
-      <node id="6813679070098910800" at="117,0,118,0" concept="7" trace="name$tAp1" />
-      <node id="6813679070098910800" at="121,0,122,0" concept="7" trace="states$Au54" />
-      <node id="6813679070098910800" at="122,0,123,0" concept="7" trace="availableTriggers$AtTV" />
+      <node id="6813679070098910800" at="117,0,118,0" concept="7" trace="name$lA7v" />
+      <node id="6813679070098910800" at="121,0,122,0" concept="7" trace="states$C$sW" />
+      <node id="6813679070098910800" at="122,0,123,0" concept="7" trace="availableTriggers$Cv3_" />
       <node id="6813679070098910800" at="41,0,43,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6813679070098935899" at="59,10,61,5" concept="0" />
       <node id="6813679070098910800" at="64,0,66,0" concept="1" trace="Stateful__BehaviorDescriptor#()V" />

@@ -24,10 +24,10 @@ public class check_TemplateDeclaration_NonTypesystemRule extends AbstractNonType
   public check_TemplateDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode td, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(td, LINKS.contentNode$UkrJ) != null) && ListSequence.fromList(SNodeOperations.getNodeDescendants(td, CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{})).isEmpty() && ListSequence.fromList(SNodeOperations.getNodeDescendants(td, CONCEPTS.IStubForAnotherConcept$W3, false, new SAbstractConcept[]{})).isEmpty()) {
+    if ((SLinkOperations.getTarget(td, LINKS.contentNode$fTrL) != null) && ListSequence.fromList(SNodeOperations.getNodeDescendants(td, CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{})).isEmpty() && ListSequence.fromList(SNodeOperations.getNodeDescendants(td, CONCEPTS.IStubForAnotherConcept$W3, false, new SAbstractConcept[]{})).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(td, LINKS.contentNode$UkrJ), "No template fragments found", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7952422520064723850", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(td, LINKS.contentNode$fTrL), "No template fragments found", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7952422520064723850", null, errorTarget);
       }
     }
     // FIXME copy-paste of identical code from InlineTemplateWithContext_RuleConsequence 
@@ -75,6 +75,6 @@ public class check_TemplateDeclaration_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink contentNode$UkrJ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+    /*package*/ static final SContainmentLink contentNode$fTrL = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
   }
 }

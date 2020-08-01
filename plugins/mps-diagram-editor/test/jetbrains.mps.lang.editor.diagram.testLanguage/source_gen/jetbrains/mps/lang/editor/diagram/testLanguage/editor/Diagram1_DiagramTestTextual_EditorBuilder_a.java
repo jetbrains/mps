@@ -125,7 +125,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.rectangles$ABW7;
+      return LINKS.rectangles$Hm7p;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.RectangleNode$ve;
@@ -138,7 +138,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(rectanglesListHandler_35xpgu_c2a.this.getNode(), LINKS.rectangles$ABW7));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(rectanglesListHandler_35xpgu_c2a.this.getNode(), LINKS.rectangles$Hm7p));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -189,7 +189,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rectangles$ABW7 = MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c017aL, 0x71771b7f74c01b6L, "rectangles");
+    /*package*/ static final SContainmentLink rectangles$Hm7p = MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x71771b7f74c017aL, 0x71771b7f74c01b6L, "rectangles");
   }
 
   private static final class CONCEPTS {

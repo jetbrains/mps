@@ -17,10 +17,10 @@ public class Quotation_DataFlow extends DataFlowBuilder {
     for (SNode antiquotation : SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.AbstractAntiquotation$Tk, false, new SAbstractConcept[]{})) {
       _context.getBuilder().build((SNode) antiquotation);
     }
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$$mAt));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$AWC3));
 
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$kInZ));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.nodeId_old$QEQA));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$2tBx));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.nodeId_old$uKsq));
   }
 
   private static final class CONCEPTS {
@@ -28,8 +28,8 @@ public class Quotation_DataFlow extends DataFlowBuilder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modelToCreate$$mAt = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2e06ff6184da16a8L, "modelToCreate");
-    /*package*/ static final SContainmentLink modelToCreate_old$kInZ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465bL, "modelToCreate_old");
-    /*package*/ static final SContainmentLink nodeId_old$QEQA = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2c22b7a3db809c05L, "nodeId_old");
+    /*package*/ static final SContainmentLink modelToCreate$AWC3 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2e06ff6184da16a8L, "modelToCreate");
+    /*package*/ static final SContainmentLink modelToCreate_old$2tBx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465bL, "modelToCreate_old");
+    /*package*/ static final SContainmentLink nodeId_old$uKsq = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2c22b7a3db809c05L, "nodeId_old");
   }
 }

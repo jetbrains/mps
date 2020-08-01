@@ -29,11 +29,11 @@ public class InlineTagCommentLinePart_Actions {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode commentLine = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CommentLine$vy);
         SNodeOperations.deleteNode(node);
-        for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$fv9R)).count() - 1; i++) {
-          SNode part1 = ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$fv9R)).getElement(i);
-          SNode part2 = ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$fv9R)).getElement(i + 1);
+        for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$w5LD)).count() - 1; i++) {
+          SNode part1 = ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$w5LD)).getElement(i);
+          SNode part2 = ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$w5LD)).getElement(i + 1);
           if (SNodeOperations.isInstanceOf(part1, CONCEPTS.TextCommentLinePart$RY) && SNodeOperations.isInstanceOf(part2, CONCEPTS.TextCommentLinePart$RY)) {
-            SPropertyOperations.set(SNodeOperations.cast(part1, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, SPropertyOperations.getString(SNodeOperations.cast(part1, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0) + SPropertyOperations.getString(SNodeOperations.cast(part2, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0));
+            SPropertyOperations.set(SNodeOperations.cast(part1, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, SPropertyOperations.getString(SNodeOperations.cast(part1, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0) + SPropertyOperations.getString(SNodeOperations.cast(part2, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0));
             SNodeOperations.deleteNode(part2);
             i--;
           }
@@ -91,10 +91,10 @@ public class InlineTagCommentLinePart_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$fv9R = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$5Ox0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

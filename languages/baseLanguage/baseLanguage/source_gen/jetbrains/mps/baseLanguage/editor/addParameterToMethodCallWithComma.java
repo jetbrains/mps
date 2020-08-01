@@ -78,7 +78,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
   public class TMP_Group_ewvzzq_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.hasRole(_context.getNode(), LINKS.actualArgument$$A7L);
+      return SNodeOperations.hasRole(_context.getNode(), LINKS.actualArgument$ItKJ);
     }
 
     @NotNull
@@ -170,7 +170,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
   public class TMP_Group_ewvzzq_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.hasRole(_context.getNode(), LINKS.actualArgument$$A7L);
+      return SNodeOperations.hasRole(_context.getNode(), LINKS.actualArgument$ItKJ);
     }
 
     @NotNull
@@ -261,7 +261,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class CONCEPTS {

@@ -172,8 +172,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 
     public void synchronize() {
-      myInputPort.set(MultiTuple.<SNode>from(SLinkOperations.getTarget(getSNode(), LINKS.src$C148)));
-      myOutputPort.set(MultiTuple.<SNode>from(SLinkOperations.getTarget(getSNode(), LINKS.dst$C6gT)));
+      myInputPort.set(MultiTuple.<SNode>from(SLinkOperations.getTarget(getSNode(), LINKS.src$owZS)));
+      myOutputPort.set(MultiTuple.<SNode>from(SLinkOperations.getTarget(getSNode(), LINKS.dst$r2bB)));
     }
     private PolyLineConnection createConnection() {
       PolyLineConnection connection = new PolyLineConnection();
@@ -190,7 +190,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink src$C148 = MetaAdapterFactory.getReferenceLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, 0x4ce40ecaf4106e5cL, "src");
-    /*package*/ static final SReferenceLink dst$C6gT = MetaAdapterFactory.getReferenceLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, 0x4ce40ecaf4106e6bL, "dst");
+    /*package*/ static final SReferenceLink src$owZS = MetaAdapterFactory.getReferenceLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, 0x4ce40ecaf4106e5cL, "src");
+    /*package*/ static final SReferenceLink dst$r2bB = MetaAdapterFactory.getReferenceLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, 0x4ce40ecaf4106e6bL, "dst");
   }
 }

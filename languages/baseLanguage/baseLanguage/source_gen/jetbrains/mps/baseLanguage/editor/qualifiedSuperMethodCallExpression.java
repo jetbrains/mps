@@ -157,7 +157,7 @@ public class qualifiedSuperMethodCallExpression extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode superCall = SNodeFactoryOperations.createNewNode(CONCEPTS.QualifiedSuperMethodCall$rT, null);
-            SLinkOperations.setTarget(superCall, LINKS.classifier$$cg$, myParameterObject);
+            SLinkOperations.setTarget(superCall, LINKS.classifier$xW1s, myParameterObject);
             return superCall;
           }
 
@@ -203,6 +203,6 @@ public class qualifiedSuperMethodCallExpression extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$$cg$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x37f722a7ce38076aL, 0x37f722a7ce38077dL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xW1s = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x37f722a7ce38076aL, 0x37f722a7ce38077dL, "classifier");
   }
 }

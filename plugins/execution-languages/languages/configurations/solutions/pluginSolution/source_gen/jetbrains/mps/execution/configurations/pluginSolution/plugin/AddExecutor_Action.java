@@ -41,11 +41,11 @@ public class AddExecutor_Action extends BaseAction {
     final SNode nodeFinal = event.getData(MPSCommonDataKeys.NODE);
     boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.AbstractRunConfigurationExecutor$YM)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.configuration$RmX0) == nodeFinal;
+        return SLinkOperations.getTarget(it, LINKS.configuration$O7z0) == nodeFinal;
       }
     });
     setEnabledState(event.getPresentation(), !(exists));
-    event.getPresentation().setText("Create Executor for " + SPropertyOperations.getString(nodeFinal, PROPS.name$tAp1));
+    event.getPresentation().setText("Create Executor for " + SPropertyOperations.getString(nodeFinal, PROPS.name$lA7v));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -72,8 +72,8 @@ public class AddExecutor_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     SNode executor = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.RunConfigurationExecutor$pj, null);
-    SLinkOperations.setTarget(executor, LINKS.configuration$RmX0, event.getData(MPSCommonDataKeys.NODE));
-    SPropertyOperations.set(executor, PROPS.virtualPackage$j19t, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$j19t));
+    SLinkOperations.setTarget(executor, LINKS.configuration$O7z0, event.getData(MPSCommonDataKeys.NODE));
+    SPropertyOperations.set(executor, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$dz_3));
     SModelOperations.addRootNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), executor);
     NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), executor, true, false);
 
@@ -86,11 +86,11 @@ public class AddExecutor_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink configuration$RmX0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
+    /*package*/ static final SReferenceLink configuration$O7z0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

@@ -32,7 +32,7 @@ public class typeof_AsSConcept_InferenceRule extends AbstractInferenceRule_Runti
             {
               SNode _nodeToCheck_1029348928467 = asSConcept;
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8828148184967395230", 0, null);
-              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8828148184967395095", true), (SNode) _quotation_createNode_24c979_a1a0c0a0a0a0a1a0b0a0b(SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.ConceptNodeType$7y), LINKS.conceptDeclaraton$Qe25)), _info_12389875345);
+              typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8828148184967395095", true), (SNode) _quotation_createNode_24c979_a1a0c0a0a0a0a1a0b0a0b(SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.ConceptNodeType$7y), LINKS.conceptDeclaraton$gN0r)), _info_12389875345);
             }
           } else if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SConceptType$nF) || SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SConceptTypeLiteral$4X)) {
             {
@@ -96,6 +96,6 @@ public class typeof_AsSConcept_InferenceRule extends AbstractInferenceRule_Runti
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaraton$Qe25 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink conceptDeclaraton$gN0r = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
   }
 }

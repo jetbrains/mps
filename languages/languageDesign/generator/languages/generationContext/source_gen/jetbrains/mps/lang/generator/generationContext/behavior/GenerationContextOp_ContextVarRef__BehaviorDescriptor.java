@@ -32,7 +32,7 @@ public final class GenerationContextOp_ContextVarRef__BehaviorDescriptor extends
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return (SPropertyOperations.getString(__thisNode__, PROPS.contextVarName$SNbV) == null ? SNodeOperations.getConcept(__thisNode__).getName() : SPropertyOperations.getString(__thisNode__, PROPS.contextVarName$SNbV));
+    return (SPropertyOperations.getString(__thisNode__, PROPS.contextVarName$wML_) == null ? SNodeOperations.getConcept(__thisNode__).getName() : SPropertyOperations.getString(__thisNode__, PROPS.contextVarName$wML_));
   }
 
   /*package*/ GenerationContextOp_ContextVarRef__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class GenerationContextOp_ContextVarRef__BehaviorDescriptor extends
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty contextVarName$SNbV = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
+    /*package*/ static final SProperty contextVarName$wML_ = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
   }
 }

@@ -13,20 +13,20 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Repeat_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    if (SPropertyOperations.getInteger(_context.getNode(), PROPS.count$yP4Z) <= 0) {
+    if (SPropertyOperations.getInteger(_context.getNode(), PROPS.count$RHqx) <= 0) {
       _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "end"), "r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469930424");
     }
     _context.getBuilder().emitLabel("loopStart");
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$yP5u));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$RHDy));
     _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "loopStart"), "r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469940985");
     _context.getBuilder().emitLabel("end");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty count$yP4Z = MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14eL, "count");
+    /*package*/ static final SProperty count$RHqx = MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14eL, "count");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$yP5u = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14fL, "body");
+    /*package*/ static final SContainmentLink body$RHDy = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14fL, "body");
   }
 }

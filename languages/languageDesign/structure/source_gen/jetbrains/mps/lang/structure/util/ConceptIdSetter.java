@@ -15,60 +15,60 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConceptIdSetter {
   public static void processConcept(SNode root, SModel m, boolean force) {
-    if (force || isEmptyString(SPropertyOperations.getString(root, PROPS.conceptId$TMc5))) {
-      SPropertyOperations.assign(root, PROPS.conceptId$TMc5, ConceptIdHelper.generateConceptId(m, root) + "");
+    if (force || isEmptyString(SPropertyOperations.getString(root, PROPS.conceptId$ZjQr))) {
+      SPropertyOperations.assign(root, PROPS.conceptId$ZjQr, ConceptIdHelper.generateConceptId(m, root) + "");
     }
 
-    for (SNode p : ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.propertyDeclaration$lL73))) {
+    for (SNode p : ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.propertyDeclaration$yMqt))) {
       processProperty(p, root, force);
     }
 
-    for (SNode l : ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.linkDeclaration$lL6$))) {
+    for (SNode l : ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.linkDeclaration$yMbs))) {
       processLink(l, root, force);
     }
   }
 
   public static void processProperty(SNode prop, SNode root, boolean force) {
-    if (force || isEmptyString(SPropertyOperations.getString(prop, PROPS.propertyId$cckp))) {
-      SPropertyOperations.assign(prop, PROPS.propertyId$cckp, ConceptIdHelper.generatePropertyId(root, prop) + "");
+    if (force || isEmptyString(SPropertyOperations.getString(prop, PROPS.propertyId$TXS7))) {
+      SPropertyOperations.assign(prop, PROPS.propertyId$TXS7, ConceptIdHelper.generatePropertyId(root, prop) + "");
     }
   }
 
   public static void processLink(SNode link, SNode root, boolean force) {
-    if (force || isEmptyString(SPropertyOperations.getString(link, PROPS.linkId$ccI3))) {
-      SPropertyOperations.assign(link, PROPS.linkId$ccI3, ConceptIdHelper.generateLinkId(root, link) + "");
+    if (force || isEmptyString(SPropertyOperations.getString(link, PROPS.linkId$Uajt))) {
+      SPropertyOperations.assign(link, PROPS.linkId$Uajt, ConceptIdHelper.generateLinkId(root, link) + "");
     }
   }
 
   public static void processDatatype(SNode root, SModel m) {
-    SPropertyOperations.assign(root, PROPS.datatypeId$Bvg3, ConceptIdHelper.generateDatatypeId(m, root) + "");
+    SPropertyOperations.assign(root, PROPS.datatypeId$88Lt, ConceptIdHelper.generateDatatypeId(m, root) + "");
 
     SNode enumm = SNodeOperations.as(root, CONCEPTS.EnumerationDeclaration$rG);
-    for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$qYq2))) {
+    for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$4eAY))) {
       processEnumMember(member, enumm);
     }
   }
 
 
   public static void processEnumMember(SNode member, SNode root) {
-    SPropertyOperations.assign(member, PROPS.memberId$d5NS, ConceptIdHelper.generateEnumMemberId(root, member) + "");
+    SPropertyOperations.assign(member, PROPS.memberId$lO88, ConceptIdHelper.generateEnumMemberId(root, member) + "");
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptId$TMc5 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty propertyId$cckp = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
-    /*package*/ static final SProperty linkId$ccI3 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
-    /*package*/ static final SProperty datatypeId$Bvg3 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
-    /*package*/ static final SProperty memberId$d5NS = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
+    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty propertyId$TXS7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
+    /*package*/ static final SProperty linkId$Uajt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
+    /*package*/ static final SProperty datatypeId$88Lt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
+    /*package*/ static final SProperty memberId$lO88 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-    /*package*/ static final SContainmentLink members$qYq2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 
   private static final class CONCEPTS {

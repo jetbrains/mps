@@ -22,11 +22,11 @@ public class check_BuildLayout_Zip_NonTypesystemRule extends AbstractNonTypesyst
   public check_BuildLayout_Zip_NonTypesystemRule() {
   }
   public void applyRule(final SNode zipArchive, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    String approxName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(zipArchive, LINKS.containerName$Mzv5), null);
+    String approxName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(zipArchive, LINKS.containerName$vc3r), null);
     if (!(approxName.endsWith("}")) && !(approxName.toLowerCase().endsWith(".zip"))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(zipArchive, LINKS.containerName$Mzv5), "should end with `.zip'", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "1979010778009332569", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(zipArchive, LINKS.containerName$vc3r), "should end with `.zip'", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "1979010778009332569", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.typesystem.fixContainerName_QuickFix", false);
           intentionProvider.putArgument("newExtension", ".zip");
@@ -46,7 +46,7 @@ public class check_BuildLayout_Zip_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink containerName$Mzv5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
+    /*package*/ static final SContainmentLink containerName$vc3r = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
   }
 
   private static final class CONCEPTS {

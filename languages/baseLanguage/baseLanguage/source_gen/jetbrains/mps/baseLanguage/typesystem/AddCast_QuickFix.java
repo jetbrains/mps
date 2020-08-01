@@ -26,7 +26,7 @@ public class AddCast_QuickFix extends QuickFix_Runtime {
       text = "right side of assignment";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableDeclaration$xe)) {
       text = "initializer";
-    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodCall$S9) || SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodCallOperation$1G) || SNodeOperations.hasRole(node, LINKS.actualArgument$$A7L)) {
+    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodCall$S9) || SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodCallOperation$1G) || SNodeOperations.hasRole(node, LINKS.actualArgument$ItKJ)) {
       int index = SNodeOperations.getIndexInParent(((SNode) AddCast_QuickFix.this.getField("expression")[0])) + 1;
       text = ((index != -1 ? ParameterNameUtil.buildOrdinalFromNumber(index) + " " : "")) + "parameter";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$TP) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ReturnStatement$SF) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ExpressionStatement$nm) && (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.ExpressionStatement$nm)))) {
@@ -42,13 +42,13 @@ public class AddCast_QuickFix extends QuickFix_Runtime {
     }
     SNode actualType = (SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$IG) ? ((SNode) AddCast_QuickFix.this.getField("desiredType")[0]) : TypecheckingFacade.getFromContext().getTypeOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])));
     SNode cast = SNodeOperations.replaceWithNewChild(((SNode) AddCast_QuickFix.this.getField("expression")[0]), CONCEPTS.CastExpression$7m);
-    SLinkOperations.setTarget(cast, LINKS.expression$8QPv, ((SNode) AddCast_QuickFix.this.getField("expression")[0]));
-    SLinkOperations.setTarget(cast, LINKS.type$8QP0, SNodeOperations.copyNode(actualType));
+    SLinkOperations.setTarget(cast, LINKS.expression$izU1, ((SNode) AddCast_QuickFix.this.getField("expression")[0]));
+    SLinkOperations.setTarget(cast, LINKS.type$izF0, SNodeOperations.copyNode(actualType));
     boolean needsParensAroundCastExpression = PrecedenceUtil.needsParensInsideCastExpression(cast);
     if (needsParensAroundCastExpression) {
       SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
-      SLinkOperations.setTarget(parens, LINKS.expression$4_F0, ((SNode) AddCast_QuickFix.this.getField("expression")[0]));
-      SLinkOperations.setTarget(cast, LINKS.expression$8QPv, parens);
+      SLinkOperations.setTarget(parens, LINKS.expression$efP0, ((SNode) AddCast_QuickFix.this.getField("expression")[0]));
+      SLinkOperations.setTarget(cast, LINKS.expression$izU1, parens);
     }
   }
 
@@ -65,9 +65,9 @@ public class AddCast_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink type$8QP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink type$izF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

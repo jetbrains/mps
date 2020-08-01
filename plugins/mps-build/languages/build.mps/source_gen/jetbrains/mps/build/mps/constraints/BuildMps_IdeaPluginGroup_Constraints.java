@@ -26,7 +26,7 @@ public class BuildMps_IdeaPluginGroup_Constraints extends BaseConstraintsDescrip
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.group$abww, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.group$V$Jw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -59,6 +59,6 @@ public class BuildMps_IdeaPluginGroup_Constraints extends BaseConstraintsDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink group$abww = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
+    /*package*/ static final SReferenceLink group$V$Jw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
   }
 }

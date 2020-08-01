@@ -21,7 +21,7 @@ public class typeof_NodeBuilderPropertyExpression_InferenceRule extends Abstract
     {
       SNode _nodeToCheck_1029348928467 = nodeBuilderPropertyExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "6985522012215083487", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "6985522012215082737", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(nodeBuilderPropertyExpression, LINKS.expression$j9T0), "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "6985522012215083503", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "6985522012215082737", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(nodeBuilderPropertyExpression, LINKS.expression$hMB0), "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "6985522012215083503", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_NodeBuilderPropertyExpression_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$j9T0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, 0x60f18f425c76d21bL, "expression");
+    /*package*/ static final SContainmentLink expression$hMB0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, 0x60f18f425c76d21bL, "expression");
   }
 
   private static final class CONCEPTS {

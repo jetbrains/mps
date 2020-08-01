@@ -22,9 +22,9 @@ public class check_DropAttributeRule_NonTypesystemRule extends AbstractNonTypesy
   public check_DropAttributeRule_NonTypesystemRule() {
   }
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(rule, LINKS.applicableConcept$Vjiu), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161")))) {
+    if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(rule, LINKS.applicableConcept$IlWy), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161")))) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$Vjiu);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$IlWy);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Rule shall specify Attribute subconcept", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7473026166162321613", null, errorTarget);
       }
     }
@@ -40,7 +40,7 @@ public class check_DropAttributeRule_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$Vjiu = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, 0x67b585b44f4d943eL, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$IlWy = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, 0x67b585b44f4d943eL, "applicableConcept");
   }
 
   private static final class CONCEPTS {

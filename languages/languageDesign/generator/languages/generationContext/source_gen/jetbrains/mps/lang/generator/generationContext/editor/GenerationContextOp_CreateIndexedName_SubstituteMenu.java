@@ -87,7 +87,7 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode rv = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.GenerationContextOp_CreateIndexedName$RK);
-        SPropertyOperations.assign(rv, PROPS.skipFirstIndex$B34V, false);
+        SPropertyOperations.assign(rv, PROPS.skipFirstIndex$Uvo_, false);
         return rv;
       }
 
@@ -147,7 +147,7 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode rv = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.GenerationContextOp_CreateIndexedName$RK);
-        SPropertyOperations.assign(rv, PROPS.skipFirstIndex$B34V, true);
+        SPropertyOperations.assign(rv, PROPS.skipFirstIndex$Uvo_, true);
         return rv;
       }
 
@@ -173,6 +173,6 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty skipFirstIndex$B34V = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, 0x107ac9fcd2448676L, "skipFirstIndex");
+    /*package*/ static final SProperty skipFirstIndex$Uvo_ = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, 0x107ac9fcd2448676L, "skipFirstIndex");
   }
 }

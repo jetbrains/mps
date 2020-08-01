@@ -28,21 +28,21 @@ public class check_NamedTupleDeclaration_extends_NonTypesystemRule extends Abstr
   public check_NamedTupleDeclaration_extends_NonTypesystemRule() {
   }
   public void applyRule(final SNode ntd, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(ntd, LINKS.extended$ojjy), LINKS.classifier$pQ_R) != null)) {
-      List<SNode> allExtends = NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(ntd, LINKS.extended$ojjy), LINKS.classifier$pQ_R));
+    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(ntd, LINKS.extended$Lmtu), LINKS.classifier$xslD) != null)) {
+      List<SNode> allExtends = NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(ntd, LINKS.extended$Lmtu), LINKS.classifier$xslD));
       if (!(!(ListSequence.fromList(allExtends).contains(ntd)))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(ntd, LINKS.extended$ojjy), "circular extends relation", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "7367153454745473434", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(ntd, LINKS.extended$Lmtu), "circular extends relation", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "7367153454745473434", null, errorTarget);
       }
-      for (final SNode cmp : ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$eWwg))) {
+      for (final SNode cmp : ListSequence.fromList(SLinkOperations.getChildren(ntd, LINKS.component$fjBK))) {
         if (cmp != null) {
           if (!(!(ListSequence.fromList(allExtends).translate(new ITranslator2<SNode, SNode>() {
             public Iterable<SNode> translate(SNode td) {
-              return SLinkOperations.getChildren(td, LINKS.component$eWwg);
+              return SLinkOperations.getChildren(td, LINKS.component$fjBK);
             }
           }).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode c) {
-              return SPropertyOperations.getString(cmp, PROPS.name$tAp1) == SPropertyOperations.getString(c, PROPS.name$tAp1);
+              return SPropertyOperations.getString(cmp, PROPS.name$lA7v) == SPropertyOperations.getString(c, PROPS.name$lA7v);
             }
           })))) {
             final MessageTarget errorTarget = new NodeMessageTarget();
@@ -63,13 +63,13 @@ public class check_NamedTupleDeclaration_extends_NonTypesystemRule extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extended$ojjy = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x479eb1f896fa444L, "extended");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink component$eWwg = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
+    /*package*/ static final SContainmentLink extended$Lmtu = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x479eb1f896fa444L, "extended");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink component$fjBK = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

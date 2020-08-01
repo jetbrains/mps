@@ -21,7 +21,7 @@ public class typeof_TemplateArgumentVarRefExpression2_InferenceRule extends Abst
     {
       SNode _nodeToCheck_1029348928467 = arg;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277989341368", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277989340275", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(arg, LINKS.vardecl$pgS0), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277989341384", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277989340275", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(arg, LINKS.vardecl$fb80), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277989341384", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_TemplateArgumentVarRefExpression2_InferenceRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink vardecl$pgS0 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl");
+    /*package*/ static final SReferenceLink vardecl$fb80 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl");
   }
 
   private static final class CONCEPTS {

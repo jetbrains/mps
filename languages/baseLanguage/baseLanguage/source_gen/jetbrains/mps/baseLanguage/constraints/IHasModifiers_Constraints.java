@@ -41,8 +41,8 @@ public class IHasModifiers_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAParent(SNode node, final SNode childNode, final SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.modifiers$akE0)) {
-      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$akE0)).all(new IWhereFilter<SNode>() {
+    if (Objects.equals(link, LINKS.modifiers$m0)) {
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(it, childNode) || !(Objects.equals(SNodeOperations.getConcept(it), childConcept));
         }
@@ -57,6 +57,6 @@ public class IHasModifiers_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 }

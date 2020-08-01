@@ -94,7 +94,7 @@ public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.CharacterSymbolClassPart$P_, null);
-        SPropertyOperations.assign(literal, PROPS.character$1gc9, (pattern.startsWith("\\") ? pattern.substring(1) : pattern));
+        SPropertyOperations.assign(literal, PROPS.character$APSn, (pattern.startsWith("\\") ? pattern.substring(1) : pattern));
         return literal;
       }
 
@@ -149,6 +149,6 @@ public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty character$1gc9 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, 0x111791b0b58L, "character");
+    /*package*/ static final SProperty character$APSn = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, 0x111791b0b58L, "character");
   }
 }

@@ -43,7 +43,7 @@ public final class QueryFunction_PasteWrapper__BehaviorDescriptor extends BaseBH
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PasteWrapper$7H, false, false);
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_cqz97t_a0a1(SLinkOperations.getTarget(QueryFunction_PasteWrapper__BehaviorDescriptor.getWrapper_idhLhtXcj.invoke(__thisNode__), LINKS.targetConcept$Sd7_));
+    return _quotation_createNode_cqz97t_a0a1(SLinkOperations.getTarget(QueryFunction_PasteWrapper__BehaviorDescriptor.getWrapper_idhLhtXcj.invoke(__thisNode__), LINKS.targetConcept$emEV));
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
@@ -115,6 +115,6 @@ public final class QueryFunction_PasteWrapper__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink targetConcept$Sd7_ = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, 0x11c517238bfL, "targetConcept");
+    /*package*/ static final SReferenceLink targetConcept$emEV = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, 0x11c517238bfL, "targetConcept");
   }
 }

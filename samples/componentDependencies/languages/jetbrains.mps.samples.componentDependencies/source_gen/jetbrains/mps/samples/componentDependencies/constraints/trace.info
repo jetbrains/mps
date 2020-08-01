@@ -24,8 +24,8 @@
       <node id="9095678365530422277" at="56,0,57,0" concept="5" trace="breakingNode_p94dcx_a0a0a0a0a1a0a0a0c" />
       <node id="9095678365530422277" at="59,0,60,0" concept="5" trace="Dependency$O_" />
       <node id="9095678365530422277" at="60,0,61,0" concept="5" trace="ComponentSet$pY" />
-      <node id="9095678365530422277" at="64,0,65,0" concept="5" trace="to$V$vW" />
-      <node id="9095678365530422277" at="65,0,66,0" concept="5" trace="component$CfKz" />
+      <node id="9095678365530422277" at="64,0,65,0" concept="5" trace="to$QFu4" />
+      <node id="9095678365530422277" at="65,0,66,0" concept="5" trace="component$vCwX" />
       <node id="9095678365530422277" at="26,0,29,0" concept="0" trace="Dependency_Constraints#()V" />
       <node id="9095678365530422329" at="33,0,37,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="9095678365530422329" at="41,0,45,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

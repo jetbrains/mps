@@ -33,7 +33,7 @@ public class PersistentPropertyReferenceOperation_Constraints extends BaseConstr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$2ov0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$9R10, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -48,12 +48,12 @@ public class PersistentPropertyReferenceOperation_Constraints extends BaseConstr
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+            SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
             SNode propertyHolderType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(instance), CONCEPTS.PersistentConfigurationType$e2);
-            if ((propertyHolderType == null) || (SLinkOperations.getTarget(propertyHolderType, LINKS.persistentConfiguration$28v0) == null)) {
+            if ((propertyHolderType == null) || (SLinkOperations.getTarget(propertyHolderType, LINKS.persistentConfiguration$2710) == null)) {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
             }
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(SLinkOperations.getTarget(propertyHolderType, LINKS.persistentConfiguration$28v0), LINKS.persistentProperty$2oY0));
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(SLinkOperations.getTarget(propertyHolderType, LINKS.persistentConfiguration$2710), LINKS.persistentProperty$a620));
           }
         };
       }
@@ -71,9 +71,9 @@ public class PersistentPropertyReferenceOperation_Constraints extends BaseConstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ov0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91010eL, 0xd244b712f91010fL, "variableDeclaration");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
-    /*package*/ static final SContainmentLink persistentProperty$2oY0 = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910122L, 0xd244b712f910123L, "persistentProperty");
+    /*package*/ static final SReferenceLink variableDeclaration$9R10 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91010eL, 0xd244b712f91010fL, "variableDeclaration");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SContainmentLink persistentProperty$a620 = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910122L, 0xd244b712f910123L, "persistentProperty");
   }
 }

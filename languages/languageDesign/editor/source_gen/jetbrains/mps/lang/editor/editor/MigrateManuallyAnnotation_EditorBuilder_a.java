@@ -76,7 +76,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_kasd0f_a1a0() {
-    return (SLinkOperations.getTarget(myNode, LINKS.migrateTo$aun0) != null);
+    return (SLinkOperations.getTarget(myNode, LINKS.migrateTo$4H90) != null);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "@Migrate manually");
@@ -102,14 +102,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefCell_0() {
-    final SReferenceLink referenceLink = LINKS.migrateTo$aun0;
+    final SReferenceLink referenceLink = LINKS.migrateTo$4H90;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
         EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
           public EditorCell compute() {
             return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
           }
-        }, targetNode, LINKS.migrateTo$aun0);
+        }, targetNode, LINKS.migrateTo$4H90);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_nullable_reference(cell);
@@ -122,10 +122,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     if (editorCell.getSRole() == null) {
       editorCell.setReferenceCell(true);
-      editorCell.setSRole(LINKS.migrateTo$aun0);
+      editorCell.setSRole(LINKS.migrateTo$4H90);
     }
     Style style = new StyleImpl();
-    style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.migrateTo$aun0);
+    style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.migrateTo$4H90);
     style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_BLUE));
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
     editorCell.getStyle().putAll(style);
@@ -164,7 +164,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     private EditorCell createReferencePresentation_0() {
-      EditorCell_Property editorCell = EditorCell_RefPresentation.create(getEditorContext(), myNode, myReferencingNode, IReferentPresentationProvider.getDefaultPresentation(LINKS.migrateTo$aun0));
+      EditorCell_Property editorCell = EditorCell_RefPresentation.create(getEditorContext(), myNode, myReferencingNode, IReferentPresentationProvider.getDefaultPresentation(LINKS.migrateTo$4H90));
       editorCell.setCellId("ReferencePresentation_kasd0f_a0b1a0");
       return editorCell;
     }
@@ -176,7 +176,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink migrateTo$aun0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7ce0198267c4eb2L, 0x7ce0198267c4eb3L, "migrateTo");
+    /*package*/ static final SReferenceLink migrateTo$4H90 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7ce0198267c4eb2L, 0x7ce0198267c4eb3L, "migrateTo");
   }
 
   private static final class CONCEPTS {

@@ -147,17 +147,17 @@
       <node id="317191294095137637" at="328,0,329,0" concept="14" trace="Classifier$hJ" />
       <node id="317191294095137637" at="329,0,330,0" concept="14" trace="UnitConcept$lf" />
       <node id="317191294095137637" at="330,0,331,0" concept="14" trace="INamedConcept$nV" />
-      <node id="317191294095137637" at="334,0,335,0" concept="14" trace="evaluatedStatements$MCTF" />
-      <node id="317191294095137637" at="335,0,336,0" concept="14" trace="variables$IsnY" />
-      <node id="317191294095137637" at="336,0,337,0" concept="14" trace="contextNode$Gl6w" />
-      <node id="317191294095137637" at="337,0,338,0" concept="14" trace="thisNode$Gl5y" />
-      <node id="317191294095137637" at="338,0,339,0" concept="14" trace="classifier$pQ_R" />
-      <node id="317191294095137637" at="339,0,340,0" concept="14" trace="baseVariableDeclaration$$Ls0" />
-      <node id="317191294095137637" at="343,0,344,0" concept="14" trace="isShowContext$IspU" />
-      <node id="317191294095137637" at="344,0,345,0" concept="14" trace="lowLevelName$A23$" />
-      <node id="317191294095137637" at="345,0,346,0" concept="14" trace="isOutOfScope$Tu$n" />
-      <node id="317191294095137637" at="346,0,347,0" concept="14" trace="highLevelNodeId$zEt$" />
-      <node id="317191294095137637" at="347,0,348,0" concept="14" trace="name$tAp1" />
+      <node id="317191294095137637" at="334,0,335,0" concept="14" trace="evaluatedStatements$xNVP" />
+      <node id="317191294095137637" at="335,0,336,0" concept="14" trace="variables$vJB2" />
+      <node id="317191294095137637" at="336,0,337,0" concept="14" trace="contextNode$ue9w" />
+      <node id="317191294095137637" at="337,0,338,0" concept="14" trace="thisNode$udFu" />
+      <node id="317191294095137637" at="338,0,339,0" concept="14" trace="classifier$xslD" />
+      <node id="317191294095137637" at="339,0,340,0" concept="14" trace="baseVariableDeclaration$NW$0" />
+      <node id="317191294095137637" at="343,0,344,0" concept="14" trace="isShowContext$vKz6" />
+      <node id="317191294095137637" at="344,0,345,0" concept="14" trace="lowLevelName$qZIs" />
+      <node id="317191294095137637" at="345,0,346,0" concept="14" trace="isOutOfScope$PNB9" />
+      <node id="317191294095137637" at="346,0,347,0" concept="14" trace="highLevelNodeId$h$ks" />
+      <node id="317191294095137637" at="347,0,348,0" concept="14" trace="name$lA7v" />
       <node id="5853070074417802688" at="95,17,98,5" concept="8" />
       <node id="1116503897828483849" at="106,0,109,0" concept="9" trace="visit#(Ljava/lang/String;)V" />
       <node id="317191294095137895" at="137,0,140,0" concept="9" trace="invoke#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -442,13 +442,13 @@
       <node id="4544608336420740104" at="68,5,69,73" concept="4" />
       <node id="4544608336420740111" at="69,73,70,67" concept="4" />
       <node id="4544608336420740118" at="70,67,71,18" concept="11" />
-      <node id="5600437724825447679" at="75,0,76,0" concept="14" trace="name$tAp1" />
-      <node id="5600437724825447679" at="76,0,77,0" concept="14" trace="highLevelNodeId$zEt$" />
-      <node id="5600437724825447679" at="77,0,78,0" concept="14" trace="lowLevelName$A23$" />
-      <node id="5600437724825447679" at="78,0,79,0" concept="14" trace="isHigh$UEby" />
-      <node id="5600437724825447679" at="82,0,83,0" concept="14" trace="type$pLrO" />
-      <node id="5600437724825447679" at="83,0,84,0" concept="14" trace="highType$UDHZ" />
-      <node id="5600437724825447679" at="84,0,85,0" concept="14" trace="lowType$UDHw" />
+      <node id="5600437724825447679" at="75,0,76,0" concept="14" trace="name$lA7v" />
+      <node id="5600437724825447679" at="76,0,77,0" concept="14" trace="highLevelNodeId$h$ks" />
+      <node id="5600437724825447679" at="77,0,78,0" concept="14" trace="lowLevelName$qZIs" />
+      <node id="5600437724825447679" at="78,0,79,0" concept="14" trace="isHigh$qr_u" />
+      <node id="5600437724825447679" at="82,0,83,0" concept="14" trace="type$uWuc" />
+      <node id="5600437724825447679" at="83,0,84,0" concept="14" trace="highType$qdhx" />
+      <node id="5600437724825447679" at="84,0,85,0" concept="14" trace="lowType$qd2w" />
       <node id="5600437724825447679" at="88,0,89,0" concept="14" trace="Type$IG" />
       <node id="5600437724825447679" at="89,0,90,0" concept="14" trace="INamedConcept$nV" />
       <node id="879095262721549464" at="37,10,39,5" concept="0" />
@@ -728,13 +728,13 @@
       <node id="7757449281563191149" at="399,228,400,39" concept="4" />
       <node id="7757449281563191149" at="401,31,402,203" concept="4" />
       <node id="7757449281563191149" at="403,5,404,24" concept="11" />
-      <node id="7757449281563190727" at="408,0,409,0" concept="14" trace="debuggedType$qJ$3" />
-      <node id="7757449281563190727" at="409,0,410,0" concept="14" trace="classifier$pQ_R" />
+      <node id="7757449281563190727" at="408,0,409,0" concept="14" trace="debuggedType$X2tt" />
+      <node id="7757449281563190727" at="409,0,410,0" concept="14" trace="classifier$xslD" />
       <node id="7757449281563190727" at="413,0,414,0" concept="14" trace="Classifier$hJ" />
       <node id="7757449281563190727" at="414,0,415,0" concept="14" trace="IClassifier$Cb" />
       <node id="7757449281563190727" at="415,0,416,0" concept="14" trace="ClassifierType$IZ" />
       <node id="7757449281563190727" at="416,0,417,0" concept="14" trace="INamedConcept$nV" />
-      <node id="7757449281563190727" at="420,0,421,0" concept="14" trace="highLevelNodeId$$QkD" />
+      <node id="7757449281563190727" at="420,0,421,0" concept="14" trace="highLevelNodeId$QjZR" />
       <node id="4544608336420740193" at="209,10,211,5" concept="0" />
       <node id="7757449281563190832" at="72,0,75,0" concept="2" trace="StackFrameContext#(Ljetbrains/mps/debugger/java/api/state/JavaUiState;)V" />
       <node id="8037631191974573554" at="86,125,89,9" concept="8" />

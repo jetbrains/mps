@@ -34,7 +34,7 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoring$cLLD, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoring$c72R, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,7 +52,7 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
             return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.Refactoring$J9)) {
               @Override
               public boolean isExcluded(SNode node) {
-                SNode refactoringConcept = check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Refactoring$J9), LINKS.target$oyxZ), CONCEPTS.NodeTarget$Oa));
+                SNode refactoringConcept = check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Refactoring$J9), LINKS.target$SItx), CONCEPTS.NodeTarget$Oa));
                 if ((refactoringConcept == null)) {
                   return true;
                 }
@@ -71,7 +71,7 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
   }
   private static SNode check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.concept$XTiS);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.concept$YK98);
     }
     return null;
   }
@@ -97,8 +97,8 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoring$cLLD = MetaAdapterFactory.getReferenceLink(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x41bc200f660dc377L, 0x41bc200f660dc37aL, "refactoring");
-    /*package*/ static final SContainmentLink target$oyxZ = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
-    /*package*/ static final SReferenceLink concept$XTiS = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept");
+    /*package*/ static final SReferenceLink refactoring$c72R = MetaAdapterFactory.getReferenceLink(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x41bc200f660dc377L, 0x41bc200f660dc37aL, "refactoring");
+    /*package*/ static final SContainmentLink target$SItx = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
+    /*package*/ static final SReferenceLink concept$YK98 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept");
   }
 }

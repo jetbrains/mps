@@ -208,10 +208,10 @@
       <node id="2614955748379717994" at="259,60,260,40" concept="1" />
       <node id="2614955748379717994" at="260,40,261,34" concept="1" />
       <node id="2614955748379717994" at="261,34,262,22" concept="6" />
-      <node id="2614955748379717746" at="266,0,267,0" concept="8" trace="name$tAp1" />
-      <node id="2614955748379717746" at="267,0,268,0" concept="8" trace="debug$rsx5" />
-      <node id="2614955748379717746" at="268,0,269,0" concept="8" trace="inScope$rszw" />
-      <node id="2614955748379717746" at="269,0,270,0" concept="8" trace="inScopeAdvanced$dYuu" />
+      <node id="2614955748379717746" at="266,0,267,0" concept="8" trace="name$lA7v" />
+      <node id="2614955748379717746" at="267,0,268,0" concept="8" trace="debug$iO1r" />
+      <node id="2614955748379717746" at="268,0,269,0" concept="8" trace="inScope$iPcw" />
+      <node id="2614955748379717746" at="269,0,270,0" concept="8" trace="inScopeAdvanced$LgKy" />
       <node id="2614955748379717746" at="273,0,274,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="2614955748379717746" at="34,0,36,0" concept="2" trace="myNode" />
       <node id="2614955748379717746" at="48,0,51,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -455,10 +455,10 @@
       <node id="2614955748379718320" at="155,91,156,147" concept="6" />
       <node id="2614955748379718320" at="157,14,158,26" concept="6" />
       <node id="2614955748379718320" at="159,17,160,42" concept="1" />
-      <node id="2614955748379718087" at="166,0,167,0" concept="8" trace="target$rEaS" />
+      <node id="2614955748379718087" at="166,0,167,0" concept="8" trace="target$prh8" />
       <node id="2614955748379718087" at="170,0,171,0" concept="8" trace="LinkAttribute$7j" />
       <node id="2614955748379718087" at="171,0,172,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="2614955748379718087" at="175,0,176,0" concept="8" trace="name$tAp1" />
+      <node id="2614955748379718087" at="175,0,176,0" concept="8" trace="name$lA7v" />
       <node id="2614955748379718087" at="41,0,43,0" concept="2" trace="myNode" />
       <node id="2614955748379718318" at="118,0,120,0" concept="2" trace="myNode" />
       <node id="2614955748379718087" at="55,0,58,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -637,10 +637,10 @@
       <node id="2614955748379718642" at="155,91,156,147" concept="6" />
       <node id="2614955748379718642" at="157,14,158,26" concept="6" />
       <node id="2614955748379718642" at="159,17,160,42" concept="1" />
-      <node id="2614955748379718395" at="166,0,167,0" concept="8" trace="target$rEaS" />
+      <node id="2614955748379718395" at="166,0,167,0" concept="8" trace="target$prh8" />
       <node id="2614955748379718395" at="170,0,171,0" concept="8" trace="LinkAttribute$7j" />
       <node id="2614955748379718395" at="171,0,172,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="2614955748379718395" at="175,0,176,0" concept="8" trace="name$tAp1" />
+      <node id="2614955748379718395" at="175,0,176,0" concept="8" trace="name$lA7v" />
       <node id="2614955748379718395" at="41,0,43,0" concept="2" trace="myNode" />
       <node id="2614955748379718634" at="118,0,120,0" concept="2" trace="myNode" />
       <node id="2614955748379718395" at="55,0,58,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -945,9 +945,9 @@
       <node id="2614955748379807484" at="379,60,380,40" concept="1" />
       <node id="2614955748379807484" at="380,40,381,34" concept="1" />
       <node id="2614955748379807484" at="381,34,382,22" concept="6" />
-      <node id="2614955748379807236" at="386,0,387,0" concept="8" trace="references_scoping$r$2w" />
-      <node id="2614955748379807236" at="387,0,388,0" concept="8" trace="references_handler$gIe6" />
-      <node id="2614955748379807236" at="388,0,389,0" concept="8" trace="targets$r$3X" />
+      <node id="2614955748379807236" at="386,0,387,0" concept="8" trace="references_scoping$mtdw" />
+      <node id="2614955748379807236" at="387,0,388,0" concept="8" trace="references_handler$6oOU" />
+      <node id="2614955748379807236" at="388,0,389,0" concept="8" trace="targets$mtUz" />
       <node id="2614955748379807236" at="392,0,393,0" concept="8" trace="TestRefConstraints_BaseReference_Scoping$qT" />
       <node id="2614955748379807236" at="393,0,394,0" concept="8" trace="TestRefConstraints_BaseReference_Handler$Qt" />
       <node id="2614955748379807236" at="394,0,395,0" concept="8" trace="TestRefConstraints_Target$ro" />
@@ -1285,10 +1285,10 @@
       <node id="2614955748379967692" at="155,91,156,147" concept="6" />
       <node id="2614955748379967692" at="157,14,158,26" concept="6" />
       <node id="2614955748379967692" at="159,17,160,42" concept="1" />
-      <node id="2614955748379967667" at="166,0,167,0" concept="8" trace="target$b4zu" />
+      <node id="2614955748379967667" at="166,0,167,0" concept="8" trace="target$ndby" />
       <node id="2614955748379967667" at="170,0,171,0" concept="8" trace="LinkAttribute$7j" />
       <node id="2614955748379967667" at="171,0,172,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="2614955748379967667" at="175,0,176,0" concept="8" trace="name$tAp1" />
+      <node id="2614955748379967667" at="175,0,176,0" concept="8" trace="name$lA7v" />
       <node id="2614955748379967667" at="41,0,43,0" concept="2" trace="myNode" />
       <node id="2614955748379967684" at="118,0,120,0" concept="2" trace="myNode" />
       <node id="2614955748379967667" at="55,0,58,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1467,10 +1467,10 @@
       <node id="2614955748379967745" at="155,91,156,147" concept="6" />
       <node id="2614955748379967745" at="157,14,158,26" concept="6" />
       <node id="2614955748379967745" at="159,17,160,42" concept="1" />
-      <node id="2614955748379967720" at="166,0,167,0" concept="8" trace="target$b4zu" />
+      <node id="2614955748379967720" at="166,0,167,0" concept="8" trace="target$ndby" />
       <node id="2614955748379967720" at="170,0,171,0" concept="8" trace="LinkAttribute$7j" />
       <node id="2614955748379967720" at="171,0,172,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="2614955748379967720" at="175,0,176,0" concept="8" trace="name$tAp1" />
+      <node id="2614955748379967720" at="175,0,176,0" concept="8" trace="name$lA7v" />
       <node id="2614955748379967720" at="41,0,43,0" concept="2" trace="myNode" />
       <node id="2614955748379967737" at="118,0,120,0" concept="2" trace="myNode" />
       <node id="2614955748379967720" at="55,0,58,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1771,11 +1771,11 @@
       <node id="5816870305080488276" at="325,60,326,40" concept="1" />
       <node id="5816870305080488276" at="326,40,327,34" concept="1" />
       <node id="5816870305080488276" at="327,34,328,22" concept="6" />
-      <node id="5816870305080488241" at="332,0,333,0" concept="8" trace="triggerBase$I1dp" />
-      <node id="5816870305080488241" at="333,0,334,0" concept="8" trace="triggerD1$I1en" />
-      <node id="5816870305080488241" at="334,0,335,0" concept="8" trace="triggerD2$I1fO" />
+      <node id="5816870305080488241" at="332,0,333,0" concept="8" trace="triggerBase$i_v7" />
+      <node id="5816870305080488241" at="333,0,334,0" concept="8" trace="triggerD1$i_X9" />
+      <node id="5816870305080488241" at="334,0,335,0" concept="8" trace="triggerD2$iAEc" />
       <node id="5816870305080488241" at="338,0,339,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="5816870305080488241" at="342,0,343,0" concept="8" trace="node$I1cr" />
+      <node id="5816870305080488241" at="342,0,343,0" concept="8" trace="node$i_15" />
       <node id="5816870305080488241" at="42,0,44,0" concept="2" trace="myNode" />
       <node id="5816870305080488241" at="267,0,269,0" concept="2" trace="myNode" />
       <node id="5816870305080488241" at="56,0,59,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

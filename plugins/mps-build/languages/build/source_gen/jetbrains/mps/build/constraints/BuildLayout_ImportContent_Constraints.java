@@ -31,7 +31,7 @@ public class BuildLayout_ImportContent_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$pRHZ, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$xZhx, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -74,6 +74,6 @@ public class BuildLayout_ImportContent_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$pRHZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
+    /*package*/ static final SReferenceLink target$xZhx = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
   }
 }

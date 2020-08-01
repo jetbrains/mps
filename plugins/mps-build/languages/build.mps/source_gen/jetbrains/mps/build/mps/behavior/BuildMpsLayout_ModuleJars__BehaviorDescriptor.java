@@ -45,13 +45,13 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     SNode parent = helper.parent(__thisNode__);
     String parentLocation = helper.getContentLocation(parent);
-    String languageLocation = parentLocation + "/" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.module$5MWZ), PROPS.name$tAp1) + ".jar";
+    String languageLocation = parentLocation + "/" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.module$NFyx), PROPS.name$lA7v) + ".jar";
     helper.putLocation(__thisNode__, languageLocation);
     // XXX next is location() implementation moved to a proper moment of time, for the reason see BuildMpsLayout_Plugin_Behavior#unpack 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.module$5MWZ), CONCEPTS.BuildMps_Language$re)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.module$NFyx), CONCEPTS.BuildMps_Language$re)) {
       languageLocation = languageLocation.substring(0, languageLocation.length() - ".jar".length());
       int i = 0;
-      for (SNode gm : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.module$5MWZ), CONCEPTS.BuildMps_Language$re), LINKS.managedGenerators$8HoD), LINKS.generator$$sLb))) {
+      for (SNode gm : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.module$NFyx), CONCEPTS.BuildMps_Language$re), LINKS.managedGenerators$dYVR), LINKS.generator$DVOl))) {
         // see property macro for module-generator.jar name in reduce_BuildMpsLayout_ModuleJars 
         helper.putLayoutRelativePath(__thisNode__, gm, languageLocation + ((i > 0 ? String.format("-%d-generator.jar", i) : "-generator.jar")));
         i++;
@@ -83,16 +83,16 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
     if (object instanceof SNode) {
       SNode node = (SNode) object;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_Generator$ru)) {
-        return SLinkOperations.getTarget(__thisNode__, LINKS.module$5MWZ) == BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(node, CONCEPTS.BuildMps_Generator$ru));
+        return SLinkOperations.getTarget(__thisNode__, LINKS.module$NFyx) == BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(node, CONCEPTS.BuildMps_Generator$ru));
       }
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$fB)) {
-        return SLinkOperations.getTarget(__thisNode__, LINKS.module$5MWZ) == node;
+        return SLinkOperations.getTarget(__thisNode__, LINKS.module$NFyx) == node;
       }
     }
     return false;
   }
   /*package*/ static String getSourceModuleJarName_id6v5CVv8csP9(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.module$5MWZ), PROPS.name$tAp1) + "-src.jar";
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.module$NFyx), PROPS.name$lA7v) + "-src.jar";
   }
 
   /*package*/ BuildMpsLayout_ModuleJars__BehaviorDescriptor() {
@@ -149,13 +149,13 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$5MWZ = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
-    /*package*/ static final SContainmentLink managedGenerators$8HoD = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x6d1df6c2700aeb88L, "managedGenerators");
-    /*package*/ static final SReferenceLink generator$$sLb = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, 0x6d1df6c2700aeb82L, "generator");
+    /*package*/ static final SReferenceLink module$NFyx = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
+    /*package*/ static final SContainmentLink managedGenerators$dYVR = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x6d1df6c2700aeb88L, "managedGenerators");
+    /*package*/ static final SReferenceLink generator$DVOl = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, 0x6d1df6c2700aeb82L, "generator");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

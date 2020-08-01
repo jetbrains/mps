@@ -20,9 +20,9 @@ public class check_BuildFileExcludeSelector_NonTypesystemRule extends AbstractNo
   public check_BuildFileExcludeSelector_NonTypesystemRule() {
   }
   public void applyRule(final SNode ex, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isNotEmptyString(SPropertyOperations.getString(ex, PROPS.pattern$qoT0)) && (SPropertyOperations.getString(ex, PROPS.pattern$qoT0).contains(" ") || SPropertyOperations.getString(ex, PROPS.pattern$qoT0).contains("\t") || SPropertyOperations.getString(ex, PROPS.pattern$qoT0).contains(","))) {
+    if (isNotEmptyString(SPropertyOperations.getString(ex, PROPS.pattern$M3B0)) && (SPropertyOperations.getString(ex, PROPS.pattern$M3B0).contains(" ") || SPropertyOperations.getString(ex, PROPS.pattern$M3B0).contains("\t") || SPropertyOperations.getString(ex, PROPS.pattern$M3B0).contains(","))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.pattern$qoT0);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.pattern$M3B0);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ex, "exclude selector cannot contain spaces or comma: use excludes", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "6592112598314485628", null, errorTarget);
       }
     }
@@ -41,7 +41,7 @@ public class check_BuildFileExcludeSelector_NonTypesystemRule extends AbstractNo
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty pattern$qoT0 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9262fa7L, 0x48d5d03db9262fa8L, "pattern");
+    /*package*/ static final SProperty pattern$M3B0 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9262fa7L, 0x48d5d03db9262fa8L, "pattern");
   }
 
   private static final class CONCEPTS {

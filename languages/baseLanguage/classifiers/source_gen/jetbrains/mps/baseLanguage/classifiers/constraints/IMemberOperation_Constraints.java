@@ -36,7 +36,7 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.member$hrpI, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.member$shti, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,7 +52,7 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
-            SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+            SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
             List<SNode> applicableMembers = new ArrayList<SNode>();
             {
               SNode coercedNode_dyvyal_d0b0a0a0b0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(operand), CONCEPTS.BaseClassifierType$Sj);
@@ -83,7 +83,7 @@ public class IMemberOperation_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$hrpI = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

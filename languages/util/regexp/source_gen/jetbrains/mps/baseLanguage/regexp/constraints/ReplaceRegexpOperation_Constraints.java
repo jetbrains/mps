@@ -41,7 +41,7 @@ public class ReplaceRegexpOperation_Constraints extends BaseConstraintsDescripto
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     boolean can = false;
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a)) {
-      SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
+      SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
       can = TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.StringType$2b) != null;
     }
     return can;
@@ -55,6 +55,6 @@ public class ReplaceRegexpOperation_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

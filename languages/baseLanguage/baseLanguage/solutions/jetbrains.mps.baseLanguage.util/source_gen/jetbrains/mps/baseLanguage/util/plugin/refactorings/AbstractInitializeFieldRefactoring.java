@@ -35,7 +35,7 @@ public abstract class AbstractInitializeFieldRefactoring {
 
   public boolean isApplicable(SNode field) {
     SNode classifier = SNodeOperations.getNodeAncestor(field, CONCEPTS.ClassConcept$IY, false, false);
-    if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$hIht)) || SLinkOperations.getTarget(field, LINKS.initializer$KgD) != null || classifier == null) {
+    if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$_qt3)) || SLinkOperations.getTarget(field, LINKS.initializer$no3R) != null || classifier == null) {
       return false;
     }
 
@@ -53,10 +53,10 @@ public abstract class AbstractInitializeFieldRefactoring {
         }
         for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(member, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps);
+            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps);
           }
         }).toListSequence()) {
-          if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$2ky6) == field && CheckingUtil.isAssigned(reference)) {
+          if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$7WwU) == field && CheckingUtil.isAssigned(reference)) {
             ListSequence.fromList(doNotInitialize).removeElement(member);
             if (SNodeOperations.isInstanceOf(member, CONCEPTS.InstanceInitializer$BJ)) {
               initializedInInitializer = true;
@@ -65,7 +65,7 @@ public abstract class AbstractInitializeFieldRefactoring {
           }
         }
         for (SNode reference : SNodeOperations.getNodeDescendants(member, CONCEPTS.FieldReferenceOperation$N8, false, new SAbstractConcept[]{})) {
-          if (SLinkOperations.getTarget(reference, LINKS.fieldDeclaration$mLBy) == field && CheckingUtil.isAssigned(reference)) {
+          if (SLinkOperations.getTarget(reference, LINKS.fieldDeclaration$229u) == field && CheckingUtil.isAssigned(reference)) {
             ListSequence.fromList(doNotInitialize).removeElement(member);
             if (SNodeOperations.isInstanceOf(member, CONCEPTS.InstanceInitializer$BJ)) {
               initializedInInitializer = true;
@@ -90,12 +90,12 @@ public abstract class AbstractInitializeFieldRefactoring {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 }

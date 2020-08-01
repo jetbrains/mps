@@ -17,7 +17,7 @@ public class ElementFactories {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.ElementRef$i$)) {
-          SPropertyOperations.assign(newNode, PROPS.ionization$$dJW, SPropertyOperations.getInteger(original, PROPS.ionization$$dJW));
+          SPropertyOperations.assign(newNode, PROPS.ionization$yEe4, SPropertyOperations.getInteger(original, PROPS.ionization$yEe4));
         }
       }
     }
@@ -27,8 +27,8 @@ public class ElementFactories {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.CompoundComponentWithCardinality$dw)) {
-          SPropertyOperations.assign(newNode, PROPS.cardinality$x1g0, SPropertyOperations.getInteger(original, PROPS.cardinality$x1g0));
-          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$x1gv, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$x1gv));
+          SPropertyOperations.assign(newNode, PROPS.cardinality$ZAK0, SPropertyOperations.getInteger(original, PROPS.cardinality$ZAK0));
+          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$ZAZ1, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$ZAZ1));
         }
       }
     }
@@ -38,8 +38,8 @@ public class ElementFactories {
       {
         final SNode original = sampleNode;
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.Compound$6W)) {
-          SPropertyOperations.assign(newNode, PROPS.cardinality$$dy0, SPropertyOperations.getInteger(original, PROPS.cardinality$$dy0));
-          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$iY8b, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$iY8b));
+          SPropertyOperations.assign(newNode, PROPS.cardinality$yzu0, SPropertyOperations.getInteger(original, PROPS.cardinality$yzu0));
+          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$c5Xl, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$c5Xl));
         }
       }
     }
@@ -52,10 +52,10 @@ public class ElementFactories {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty ionization$$dJW = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba62980L, "ionization");
-    /*package*/ static final SProperty cardinality$x1g0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
-    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$$dy0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
-    /*package*/ static final SProperty cardinalityVisible$iY8b = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
+    /*package*/ static final SProperty ionization$yEe4 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba62980L, "ionization");
+    /*package*/ static final SProperty cardinality$ZAK0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$ZAZ1 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$yzu0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$c5Xl = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
   }
 }

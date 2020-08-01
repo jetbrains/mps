@@ -104,7 +104,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.attrName$j_5Y;
+      final SProperty property = PROPS.attrName$uXT2;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no attrName>");
@@ -180,7 +180,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.value$RZKQ;
+      return LINKS.value$7SEa;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.XmlValuePart$Ad;
@@ -199,7 +199,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(valueListHandler_1uorir_a3a0.this.getNode(), LINKS.value$RZKQ));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(valueListHandler_1uorir_a3a0.this.getNode(), LINKS.value$7SEa));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -273,7 +273,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.attrName$j_5Y;
+      final SProperty property = PROPS.attrName$uXT2;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no attrName>");
@@ -342,7 +342,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.value$RZKQ;
+      return LINKS.value$7SEa;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.XmlValuePart$Ad;
@@ -361,7 +361,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(valueListHandler_1uorir_d0a.this.getNode(), LINKS.value$RZKQ));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(valueListHandler_1uorir_d0a.this.getNode(), LINKS.value$7SEa));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_6();
@@ -411,7 +411,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private boolean nodeCondition_1uorir_a3a0() {
-    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.value$RZKQ)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.value$7SEa)).isEmpty();
   }
   private EditorCell createConstant_7() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "\"");
@@ -427,7 +427,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty attrName$j_5Y = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
+    /*package*/ static final SProperty attrName$uXT2 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
   }
 
   private static final class CONCEPTS {
@@ -437,6 +437,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$RZKQ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
+    /*package*/ static final SContainmentLink value$7SEa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
   }
 }

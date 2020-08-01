@@ -27,11 +27,11 @@ public class MethodCallsFixer_Rule_NonTypesystemRule extends AbstractNonTypesyst
     SNode newTarget = resolveResult._0();
     boolean goodReplacement = (boolean) resolveResult._1();
 
-    SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCallNode, LINKS.baseMethodDeclaration$$A7i);
+    SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCallNode, LINKS.baseMethodDeclaration$ItxI);
     if (newTarget != null) {
       if (baseMethodDeclaration == null) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.baseMethodDeclaration$$A7i);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.baseMethodDeclaration$ItxI);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodCallNode, "Unresolved reference to method declaration", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "869282237625475452", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MethodCallsFixer_Quickfix_QuickFix", true);
@@ -42,7 +42,7 @@ public class MethodCallsFixer_Rule_NonTypesystemRule extends AbstractNonTypesyst
         }
       } else if (goodReplacement) {
         if (!(newTarget == baseMethodDeclaration)) {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.baseMethodDeclaration$$A7i);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.baseMethodDeclaration$ItxI);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(methodCallNode, "Reference to wrong overriden method", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "869282237625479726", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MethodCallsFixer_Quickfix_QuickFix", true);
@@ -65,7 +65,7 @@ public class MethodCallsFixer_Rule_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {

@@ -179,8 +179,8 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
 
       @Override
       public void execute(@NotNull String pattern) {
-        SLinkOperations.setTarget(_context.getNode(), LINKS.tail$vKD0, createBuildCompositePath_a4cilw_a0a0a0b1(SLinkOperations.getTarget(_context.getNode(), LINKS.tail$vKD0)));
-        SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.tail$vKD0), "*" + CellIdManager.createPropertyId("head"));
+        SLinkOperations.setTarget(_context.getNode(), LINKS.tail$ozR0, createBuildCompositePath_a4cilw_a0a0a0b1(SLinkOperations.getTarget(_context.getNode(), LINKS.tail$ozR0)));
+        SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.tail$ozR0), "*" + CellIdManager.createPropertyId("head"));
       }
 
 
@@ -204,7 +204,7 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
   }
   private static SNode createBuildCompositePath_a4cilw_a0a0a0b1(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildCompositePath$7I);
-    n0.forChild(LINKS.tail$vKD0).initNode(p0, CONCEPTS.BuildCompositePath$7I, true);
+    n0.forChild(LINKS.tail$ozR0).initNode(p0, CONCEPTS.BuildCompositePath$7I, true);
     return n0.getResult();
   }
 
@@ -214,6 +214,6 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tail$vKD0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
+    /*package*/ static final SContainmentLink tail$ozR0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
   }
 }

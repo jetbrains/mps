@@ -100,7 +100,7 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
           SModel migrationModel = SModuleOperations.getAspect(depModule, "migration");
           final SNode log = ListSequence.fromList(SModelOperations.roots(migrationModel, CONCEPTS.RefactoringLog$eD)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SPropertyOperations.getInteger(it, PROPS.fromVersion$jArZ) == current;
+              return SPropertyOperations.getInteger(it, PROPS.fromVersion$vBzx) == current;
             }
           }).first();
           if (log == null && !(silent)) {
@@ -114,22 +114,22 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
               return it;
             }
           });
-          List<RefactoringScriptReference> executeAfter = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(log, LINKS.executeAfter$jArw), LINKS.refactoring$jAH0)).select(new ISelector<SNode, RefactoringScriptReference>() {
+          List<RefactoringScriptReference> executeAfter = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(log, LINKS.executeAfter$vBkw), LINKS.refactoring$vJN0)).select(new ISelector<SNode, RefactoringScriptReference>() {
             public RefactoringScriptReference select(SNode it) {
               return ((RefactoringScriptReference) (RefactoringScriptReference) BHReflection.invoke0(it, CONCEPTS.RefactoringLog$eD, SMethodTrimmedId.create("getDescriptor", CONCEPTS.RefactoringLog$eD, "4uVwhQyPQ_Z")));
             }
           }).toListSequence();
           List<RefactoringPartImpl> parts = Sequence.fromIterable(participants).select(new ISelector<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>, RefactoringPartImpl>() {
             public RefactoringPartImpl select(final RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?> participant) {
-              List<SNode> participantParts = ListSequence.fromList(SLinkOperations.getChildren(log, LINKS.part$jAsu)).where(new IWhereFilter<SNode>() {
+              List<SNode> participantParts = ListSequence.fromList(SLinkOperations.getChildren(log, LINKS.part$vBMy)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return Objects.equals(SPropertyOperations.getString(it, PROPS.participant$hcv6), participant.getId());
+                  return Objects.equals(SPropertyOperations.getString(it, PROPS.participant$l33U), participant.getId());
                 }
               }).toListSequence();
-              return new RefactoringPartImpl(SLinkOperations.getTarget(log, LINKS.options$RRJg), participantParts, participant);
+              return new RefactoringPartImpl(SLinkOperations.getTarget(log, LINKS.options$3ZSK), participantParts, participant);
             }
           }).toListSequence();
-          implementation.value = new BaseRefactoringScript(SPropertyOperations.getString(log, PROPS.name$tAp1), ((RefactoringScriptReference) BHReflection.invoke0(log, CONCEPTS.RefactoringLog$eD, SMethodTrimmedId.create("getDescriptor", CONCEPTS.RefactoringLog$eD, "4uVwhQyPQ_Z"))), executeAfter, parts);
+          implementation.value = new BaseRefactoringScript(SPropertyOperations.getString(log, PROPS.name$lA7v), ((RefactoringScriptReference) BHReflection.invoke0(log, CONCEPTS.RefactoringLog$eD, SMethodTrimmedId.create("getDescriptor", CONCEPTS.RefactoringLog$eD, "4uVwhQyPQ_Z"))), executeAfter, parts);
         }
       }
     });
@@ -141,15 +141,15 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fromVersion$jArZ = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d91L, "fromVersion");
-    /*package*/ static final SProperty participant$hcv6 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, 0x325b97b223b9e3aaL, "participant");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty fromVersion$vBzx = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d91L, "fromVersion");
+    /*package*/ static final SProperty participant$l33U = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, 0x325b97b223b9e3aaL, "participant");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink executeAfter$jArw = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d90L, "executeAfter");
-    /*package*/ static final SReferenceLink refactoring$jAH0 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d9dL, 0x1bf9eb43276b6d9eL, "refactoring");
-    /*package*/ static final SContainmentLink part$jAsu = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d92L, "part");
-    /*package*/ static final SContainmentLink options$RRJg = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x31ee543051f2333cL, "options");
+    /*package*/ static final SContainmentLink executeAfter$vBkw = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d90L, "executeAfter");
+    /*package*/ static final SReferenceLink refactoring$vJN0 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d9dL, 0x1bf9eb43276b6d9eL, "refactoring");
+    /*package*/ static final SContainmentLink part$vBMy = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d92L, "part");
+    /*package*/ static final SContainmentLink options$3ZSK = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x31ee543051f2333cL, "options");
   }
 }

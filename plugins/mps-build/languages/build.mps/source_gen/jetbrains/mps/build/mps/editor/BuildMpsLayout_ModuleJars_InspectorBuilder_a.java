@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.jarLocations$7dX6;
+      return LINKS.jarLocations$vK_U;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.BuildMpsLayout_ModuleXml_CustomJarLocation$Ef;
@@ -121,7 +121,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(jarLocationsListHandler_aqxvre_b0.this.getNode(), LINKS.jarLocations$7dX6));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(jarLocationsListHandler_aqxvre_b0.this.getNode(), LINKS.jarLocations$vK_U));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_1();
@@ -182,7 +182,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.stripImplementation$dObm;
+      final SProperty property = PROPS.stripImplementation$GhvE;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no stripImplementation>");
@@ -219,7 +219,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.customContent$3c_1;
+      final SProperty property = PROPS.customContent$z5Vv;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no customContent>");
@@ -246,7 +246,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink jarLocations$7dX6 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x3c765492deb27a75L, "jarLocations");
+    /*package*/ static final SContainmentLink jarLocations$vK_U = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x3c765492deb27a75L, "jarLocations");
   }
 
   private static final class CONCEPTS {
@@ -255,7 +255,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stripImplementation$dObm = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x6de50fcfc3523742L, "stripImplementation");
-    /*package*/ static final SProperty customContent$3c_1 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x2e490987db3dd40dL, "customContent");
+    /*package*/ static final SProperty stripImplementation$GhvE = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x6de50fcfc3523742L, "stripImplementation");
+    /*package*/ static final SProperty customContent$z5Vv = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x2e490987db3dd40dL, "customContent");
   }
 }

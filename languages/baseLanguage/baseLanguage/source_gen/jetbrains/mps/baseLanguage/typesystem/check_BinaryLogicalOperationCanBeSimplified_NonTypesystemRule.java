@@ -30,8 +30,8 @@ public class check_BinaryLogicalOperationCanBeSimplified_NonTypesystemRule exten
     if (!(SNodeOperations.isInstanceOf(binaryOperation, CONCEPTS.AndExpression$zq)) && !(SNodeOperations.isInstanceOf(binaryOperation, CONCEPTS.OrExpression$uY))) {
       return;
     }
-    SNode left = SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ);
-    SNode right = SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl);
+    SNode left = SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx);
+    SNode right = SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b);
     SNode remainingNode;
     Boolean value;
     SModule module = SNodeOperations.getModel(binaryOperation).getModule();
@@ -68,10 +68,10 @@ public class check_BinaryLogicalOperationCanBeSimplified_NonTypesystemRule exten
     }
     if (SNodeOperations.isInstanceOf(binaryOperation, CONCEPTS.AndExpression$zq) && !(value)) {
       remainingNode = SNodeFactoryOperations.createNewNode(CONCEPTS.BooleanConstant$Ui, null);
-      SPropertyOperations.assign(SNodeOperations.cast(remainingNode, CONCEPTS.BooleanConstant$Ui), PROPS.value$WIn0, false);
+      SPropertyOperations.assign(SNodeOperations.cast(remainingNode, CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90, false);
     } else if (SNodeOperations.isInstanceOf(binaryOperation, CONCEPTS.OrExpression$uY) && value) {
       remainingNode = SNodeFactoryOperations.createNewNode(CONCEPTS.BooleanConstant$Ui, null);
-      SPropertyOperations.assign(SNodeOperations.cast(remainingNode, CONCEPTS.BooleanConstant$Ui), PROPS.value$WIn0, true);
+      SPropertyOperations.assign(SNodeOperations.cast(remainingNode, CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90, true);
     }
 
     {
@@ -104,11 +104,11 @@ public class check_BinaryLogicalOperationCanBeSimplified_NonTypesystemRule exten
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

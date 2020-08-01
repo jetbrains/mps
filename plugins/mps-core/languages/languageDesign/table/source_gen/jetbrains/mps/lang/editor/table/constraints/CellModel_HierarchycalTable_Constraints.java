@@ -33,7 +33,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.headerRowLinkDeclaration$_gzE, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.headerRowLinkDeclaration$31hm, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -57,7 +57,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.rowsLinkDeclaration$_g$9, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.rowsLinkDeclaration$31wn, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -81,7 +81,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d2 = new BaseReferenceConstraintsDescriptor(LINKS.cellsInRowLinkDeclaration$_g$C, this) {
+    BaseReferenceConstraintsDescriptor d2 = new BaseReferenceConstraintsDescriptor(LINKS.cellsInRowLinkDeclaration$31Jo, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -96,10 +96,10 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            if ((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$_g$9) == null)) {
+            if ((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$31wn) == null)) {
               return null;
             }
-            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$_g$9), LINKS.target$egp8))).where(new IWhereFilter<SNode>() {
+            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$31wn), LINKS.target$TWaS))).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it));
               }
@@ -123,9 +123,9 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink headerRowLinkDeclaration$_gzE = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d11L, "headerRowLinkDeclaration");
-    /*package*/ static final SReferenceLink rowsLinkDeclaration$_g$9 = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d12L, "rowsLinkDeclaration");
-    /*package*/ static final SReferenceLink cellsInRowLinkDeclaration$_g$C = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d13L, "cellsInRowLinkDeclaration");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink headerRowLinkDeclaration$31hm = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d11L, "headerRowLinkDeclaration");
+    /*package*/ static final SReferenceLink rowsLinkDeclaration$31wn = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d12L, "rowsLinkDeclaration");
+    /*package*/ static final SReferenceLink cellsInRowLinkDeclaration$31Jo = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d13L, "cellsInRowLinkDeclaration");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

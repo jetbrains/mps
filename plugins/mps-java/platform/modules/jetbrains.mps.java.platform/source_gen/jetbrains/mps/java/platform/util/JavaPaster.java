@@ -129,7 +129,7 @@ public class JavaPaster {
           break;
         case STATEMENTS:
           for (SNode node : ListSequence.fromList(nodes)) {
-            pasteAtAnchorInRole(node, anchor, CONCEPTS.StatementList$TN, LINKS.statement$WHn8);
+            pasteAtAnchorInRole(node, anchor, CONCEPTS.StatementList$TN, LINKS.statement$pYcS);
           }
           break;
         default:
@@ -173,12 +173,12 @@ public class JavaPaster {
     }
     int index = -1;
     if (SNodeOperations.isInstanceOf(anchor, CONCEPTS.ClassifierMember$9F)) {
-      index = ListSequence.fromList(SNodeOperations.getChildren(parent, LINKS.member$oYX5)).indexOf(SNodeOperations.cast(anchor, CONCEPTS.ClassifierMember$9F));
+      index = ListSequence.fromList(SNodeOperations.getChildren(parent, LINKS.member$6v_r)).indexOf(SNodeOperations.cast(anchor, CONCEPTS.ClassifierMember$9F));
     }
     if (index == -1) {
-      ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.member$oYX5)).addElement(member);
+      ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.member$6v_r)).addElement(member);
     } else {
-      ListSequence.fromList(SNodeOperations.getChildren(parent, LINKS.member$oYX5)).insertElement(index, member);
+      ListSequence.fromList(SNodeOperations.getChildren(parent, LINKS.member$6v_r)).insertElement(index, member);
     }
     return true;
   }
@@ -209,7 +209,7 @@ public class JavaPaster {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

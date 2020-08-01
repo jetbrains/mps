@@ -68,7 +68,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode node) {
-          return SNodeOperations.hasRole(node, LINKS.throwable$5XW_) && (SNodeOperations.hasRole(SNodeOperations.getParent(node), LINKS.catchClause$jGNt) || SNodeOperations.hasRole(SNodeOperations.getParent(node), LINKS.catchClause$GIrD)) && ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(SNodeOperations.getParent(node)), CONCEPTS.Attribute$RJ, false, new SAbstractConcept[]{})).isEmpty();
+          return SNodeOperations.hasRole(node, LINKS.throwable$T0lV) && (SNodeOperations.hasRole(SNodeOperations.getParent(node), LINKS.catchClause$yGV3) || SNodeOperations.hasRole(SNodeOperations.getParent(node), LINKS.catchClause$EvoR)) && ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(SNodeOperations.getParent(node)), CONCEPTS.Attribute$RJ, false, new SAbstractConcept[]{})).isEmpty();
         }
       }).sort(new ISelector<SNode, Integer>() {
         public Integer select(SNode it) {
@@ -100,7 +100,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
             public void invoke(SNode before, SNode after) {
               SNodeId anchorId = before.getNodeId();
               if (anchorId instanceof jetbrains.mps.smodel.SNodeId.Regular) {
-                ((jetbrains.mps.smodel.SNode) SNodeOperations.cast(SLinkOperations.getTarget(after, LINKS.type$pLrO), CONCEPTS.AlternativeType$aM)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, ALTERNATIVE_TYPE_ID_GEN));
+                ((jetbrains.mps.smodel.SNode) SNodeOperations.cast(SLinkOperations.getTarget(after, LINKS.type$uWuc), CONCEPTS.AlternativeType$aM)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, ALTERNATIVE_TYPE_ID_GEN));
               }
             }
           });
@@ -123,7 +123,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode node) {
-          return (SNodeOperations.hasRole(node, LINKS.catchClause$jGNt) || SNodeOperations.hasRole(node, LINKS.catchClause$GIrD)) && ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(node), CONCEPTS.Attribute$RJ, false, new SAbstractConcept[]{})).isEmpty() && SNodeOperations.isInstanceOf(pattern.getMatchedNode("throwable"), CONCEPTS.CatchVariable$6W);
+          return (SNodeOperations.hasRole(node, LINKS.catchClause$yGV3) || SNodeOperations.hasRole(node, LINKS.catchClause$EvoR)) && ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getParent(node), CONCEPTS.Attribute$RJ, false, new SAbstractConcept[]{})).isEmpty() && SNodeOperations.isInstanceOf(pattern.getMatchedNode("throwable"), CONCEPTS.CatchVariable$6W);
         }
       }).sort(new ISelector<SNode, Integer>() {
         public Integer select(SNode it) {
@@ -167,7 +167,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode node) {
-          return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$jGNt)).all(new IWhereFilter<SNode>() {
+          return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$yGV3)).all(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return SNodeOperations.isInstanceOf(((SNode) it), CONCEPTS.MultipleCatchClause$U5);
             }
@@ -219,7 +219,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode node) {
-          return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$GIrD)).all(new IWhereFilter<SNode>() {
+          return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$EvoR)).all(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return SNodeOperations.isInstanceOf(((SNode) it), CONCEPTS.MultipleCatchClause$U5);
             }
@@ -256,7 +256,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
             public void invoke(SNode before, SNode after) {
               SNodeId anchorId = before.getNodeId();
               if (anchorId instanceof jetbrains.mps.smodel.SNodeId.Regular) {
-                ((jetbrains.mps.smodel.SNode) SLinkOperations.getTarget(after, LINKS.finallyClause$4P0X)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, FINALLY_CLAUSE_ID_GEN));
+                ((jetbrains.mps.smodel.SNode) SLinkOperations.getTarget(after, LINKS.finallyClause$lFtz)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, FINALLY_CLAUSE_ID_GEN));
               }
             }
           });
@@ -317,14 +317,14 @@ public class MigrateTryStatement extends MigrationScriptBase {
   }
   private static SNode createCatchVariable_5idd3j_a0a0a0l(Iterable<? extends SNode> p0, boolean p1, Iterable<? extends SNode> p2, String p3) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CatchVariable$6W);
-    n0.forChild(LINKS.annotation$oVP4).initNodeList(p0, CONCEPTS.AnnotationInstance$5z);
-    n0.forChild(LINKS.initializer$KgD).initNull();
-    n0.setProperty(PROPS.isFinal$hIht, "" + (p1));
+    n0.forChild(LINKS.annotation$4YGW).initNodeList(p0, CONCEPTS.AnnotationInstance$5z);
+    n0.forChild(LINKS.initializer$no3R).initNull();
+    n0.setProperty(PROPS.isFinal$_qt3, "" + (p1));
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.type$pLrO).init(CONCEPTS.AlternativeType$aM);
-      n1.forChild(LINKS.alternative$Fu70).initNodeList(p2, CONCEPTS.Type$IG);
+      SNodeBuilder n1 = n0.forChild(LINKS.type$uWuc).init(CONCEPTS.AlternativeType$aM);
+      n1.forChild(LINKS.alternative$3_p0).initNodeList(p2, CONCEPTS.Type$IG);
     }
-    n0.setProperty(PROPS.name$tAp1, p3);
+    n0.setProperty(PROPS.name$lA7v, p3);
     return n0.getResult();
   }
   private static SNode _quotation_createNode_5idd3j_a0a1a11() {
@@ -344,8 +344,8 @@ public class MigrateTryStatement extends MigrationScriptBase {
   }
   private static SNode createMultipleCatchClause_5idd3j_a0a0b0l(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MultipleCatchClause$U5);
-    n0.forChild(LINKS.throwable$pijh).initNode(p0, CONCEPTS.CatchVariable$6W, true);
-    n0.forChild(LINKS.catchBody$pijK).initNode(p1, CONCEPTS.StatementList$TN, true);
+    n0.forChild(LINKS.throwable$fRlf).initNode(p0, CONCEPTS.CatchVariable$6W, true);
+    n0.forChild(LINKS.catchBody$fR$g).initNode(p1, CONCEPTS.StatementList$TN, true);
     return n0.getResult();
   }
   private static SNode _quotation_createNode_5idd3j_a0a2a11() {
@@ -373,9 +373,9 @@ public class MigrateTryStatement extends MigrationScriptBase {
   }
   private static SNode createTryUniversalStatement_5idd3j_a0a0c0l(SNode p0, Iterable<? extends SNode> p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TryUniversalStatement$80);
-    n0.forChild(LINKS.body$4P0u).initNode(p0, CONCEPTS.StatementList$TN, true);
-    n0.forChild(LINKS.catchClause$4PbB).initNodeList(p1, CONCEPTS.MultipleCatchClause$U5);
-    n0.forChild(LINKS.finallyClause$4P0X).initNull();
+    n0.forChild(LINKS.body$lFey).initNode(p0, CONCEPTS.StatementList$TN, true);
+    n0.forChild(LINKS.catchClause$lKBT).initNodeList(p1, CONCEPTS.MultipleCatchClause$U5);
+    n0.forChild(LINKS.finallyClause$lFtz).initNull();
     return n0.getResult();
   }
   private static SNode _quotation_createNode_5idd3j_a0a3a11() {
@@ -406,11 +406,11 @@ public class MigrateTryStatement extends MigrationScriptBase {
   }
   private static SNode createTryUniversalStatement_5idd3j_a0a0d0l(SNode p0, Iterable<? extends SNode> p1, SNode p2) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TryUniversalStatement$80);
-    n0.forChild(LINKS.body$4P0u).initNode(p0, CONCEPTS.StatementList$TN, true);
-    n0.forChild(LINKS.catchClause$4PbB).initNodeList(p1, CONCEPTS.MultipleCatchClause$U5);
+    n0.forChild(LINKS.body$lFey).initNode(p0, CONCEPTS.StatementList$TN, true);
+    n0.forChild(LINKS.catchClause$lKBT).initNodeList(p1, CONCEPTS.MultipleCatchClause$U5);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.finallyClause$4P0X).init(CONCEPTS.FinallyClause$qj);
-      n1.forChild(LINKS.finallyBody$oGY4).initNode(p2, CONCEPTS.StatementList$TN, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.finallyClause$lFtz).init(CONCEPTS.FinallyClause$qj);
+      n1.forChild(LINKS.finallyBody$XM3W).initNode(p2, CONCEPTS.StatementList$TN, true);
     }
     return n0.getResult();
   }
@@ -431,23 +431,23 @@ public class MigrateTryStatement extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$5XW_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
-    /*package*/ static final SContainmentLink catchClause$jGNt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
-    /*package*/ static final SContainmentLink catchClause$GIrD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink finallyClause$4P0X = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink alternative$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
-    /*package*/ static final SContainmentLink throwable$pijh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
-    /*package*/ static final SContainmentLink catchBody$pijK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
-    /*package*/ static final SContainmentLink body$4P0u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
-    /*package*/ static final SContainmentLink catchClause$4PbB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
-    /*package*/ static final SContainmentLink finallyBody$oGY4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, 0x72ddc71312b89bbaL, "finallyBody");
+    /*package*/ static final SContainmentLink throwable$T0lV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
+    /*package*/ static final SContainmentLink catchClause$yGV3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
+    /*package*/ static final SContainmentLink catchClause$EvoR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink finallyClause$lFtz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink alternative$3_p0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
+    /*package*/ static final SContainmentLink throwable$fRlf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
+    /*package*/ static final SContainmentLink catchBody$fR$g = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
+    /*package*/ static final SContainmentLink body$lFey = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
+    /*package*/ static final SContainmentLink catchClause$lKBT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
+    /*package*/ static final SContainmentLink finallyBody$XM3W = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, 0x72ddc71312b89bbaL, "finallyBody");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

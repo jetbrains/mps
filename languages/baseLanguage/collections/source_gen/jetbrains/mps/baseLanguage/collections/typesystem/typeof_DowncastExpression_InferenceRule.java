@@ -21,7 +21,7 @@ public class typeof_DowncastExpression_InferenceRule extends AbstractInferenceRu
   }
   public void applyRule(final SNode expression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      final SNode expType = typeCheckingContext.typeOf(SLinkOperations.getTarget(expression, LINKS.expression$WV$5), "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1228231559409", true);
+      final SNode expType = typeCheckingContext.typeOf(SLinkOperations.getTarget(expression, LINKS.expression$wQur), "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1228231559409", true);
       typeCheckingContext.whenConcrete(expType, new Runnable() {
         public void run() {
           {
@@ -50,7 +50,7 @@ public class typeof_DowncastExpression_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$WV$5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11df825e596L, 0x11df8269ecfL, "expression");
+    /*package*/ static final SContainmentLink expression$wQur = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11df825e596L, 0x11df8269ecfL, "expression");
   }
 
   private static final class CONCEPTS {

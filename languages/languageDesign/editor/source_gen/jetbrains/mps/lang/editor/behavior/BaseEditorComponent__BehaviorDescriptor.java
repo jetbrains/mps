@@ -43,34 +43,34 @@ public final class BaseEditorComponent__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PropertyDeclaration$c5)) {
-      return new SimpleScope(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$sbgS))) {
+      return new SimpleScope(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8))) {
         @Nullable
         public String getReferenceText(@NotNull SNode target) {
-          return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.PropertyDeclaration$c5), PROPS.name$tAp1);
+          return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.PropertyDeclaration$c5), PROPS.name$lA7v);
         }
       };
     }
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.LinkDeclaration$bA)) {
-      return new SimpleScope(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$sbgS))) {
+      return new SimpleScope(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8))) {
         @Nullable
         public String getReferenceText(@NotNull SNode target) {
-          return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.LinkDeclaration$bA), PROPS.role$r_O$);
+          return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.LinkDeclaration$bA), PROPS.role$nkts);
         }
       };
     }
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ReferenceLinkDeclartionScopeKind$yb)) {
-      return new SimpleScope(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$sbgS))) {
+      return new SimpleScope(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8))) {
         @Nullable
         public String getReferenceText(@NotNull SNode target) {
-          return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.LinkDeclaration$bA), PROPS.role$r_O$);
+          return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.LinkDeclaration$bA), PROPS.role$nkts);
         }
       };
     }
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AggregationLinkDeclarationScopeKind$Pn)) {
-      return new SimpleScope(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$sbgS))) {
+      return new SimpleScope(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8))) {
         @Nullable
         public String getReferenceText(@NotNull SNode target) {
-          return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.LinkDeclaration$bA), PROPS.role$r_O$);
+          return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.LinkDeclaration$bA), PROPS.role$nkts);
         }
       };
     }
@@ -78,7 +78,7 @@ public final class BaseEditorComponent__BehaviorDescriptor extends BaseBHDescrip
       return new EditorComponentDeclarationScope(__thisNode__);
     }
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$UN)) {
-      return new NamedElementsScope(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$sbgS), ((boolean) true)));
+      return new NamedElementsScope(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8), ((boolean) true)));
     }
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child));
   }
@@ -130,7 +130,7 @@ public final class BaseEditorComponent__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$sbgS = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -144,7 +144,7 @@ public final class BaseEditorComponent__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 }

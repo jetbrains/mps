@@ -11,11 +11,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PatternCondition_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.pattern$ag0O));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.pattern$XKpc));
     _context.getBuilder().emitWrite(_context.getNode(), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/1207243215435");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink pattern$ag0O = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
+    /*package*/ static final SContainmentLink pattern$XKpc = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
   }
 }

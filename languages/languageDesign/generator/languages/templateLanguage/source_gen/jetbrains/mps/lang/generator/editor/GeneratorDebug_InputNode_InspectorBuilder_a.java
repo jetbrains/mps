@@ -71,7 +71,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.modelName$WtbM;
+      final SProperty property = PROPS.modelName$i8He;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no modelName>");
@@ -94,7 +94,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
   }
   private EditorCell createRefCell_0() {
-    CellProviderWithRole provider = new RefCellCellProvider(myNode, LINKS.node$Sga_, CONCEPTS.NodeIdentity$K7, "node", getEditorContext()) {
+    CellProviderWithRole provider = new RefCellCellProvider(myNode, LINKS.node$fP7V, CONCEPTS.NodeIdentity$K7, "node", getEditorContext()) {
 
       @Override
       protected EditorCell createRefCell(EditorContext context, SNode effectiveNode, SNode node) {
@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     editorCell = provider.createEditorCell(getEditorContext());
     if (editorCell.getSRole() == null) {
       editorCell.setReferenceCell(true);
-      editorCell.setSRole(LINKS.node$Sga_);
+      editorCell.setSRole(LINKS.node$fP7V);
     }
     editorCell.setSubstituteInfo(provider.createDefaultSubstituteInfo());
     SNode attributeConcept = provider.getRoleAttribute();
@@ -157,7 +157,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
         public String getText() {
           SNode tn = SNodeOperations.cast(myNode, CONCEPTS.TrivialNodeId$s2);
-          return ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(tn, LINKS.cncpt$r9nB)).getName() + '[' + SPropertyOperations.getString(tn, PROPS.nodeId$vxF7) + ']';
+          return ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(tn, LINKS.cncpt$9yrT)).getName() + '[' + SPropertyOperations.getString(tn, PROPS.nodeId$hjSp) + ']';
         }
       }, myNode);
       editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -177,8 +177,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty modelName$WtbM = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a9989481dbL, "modelName");
-    /*package*/ static final SProperty nodeId$vxF7 = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x7d58bd9fd9b64468L, "nodeId");
+    /*package*/ static final SProperty modelName$i8He = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a9989481dbL, "modelName");
+    /*package*/ static final SProperty nodeId$hjSp = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x7d58bd9fd9b64468L, "nodeId");
   }
 
   private static final class CONCEPTS {
@@ -188,7 +188,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$Sga_ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f0aeL, "node");
-    /*package*/ static final SContainmentLink cncpt$r9nB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x76c27c67a4605f07L, "cncpt");
+    /*package*/ static final SContainmentLink node$fP7V = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f0aeL, "node");
+    /*package*/ static final SContainmentLink cncpt$9yrT = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x76c27c67a4605f07L, "cncpt");
   }
 }

@@ -73,7 +73,7 @@ public class ConvertIntention extends IntentionsFactory {
 
 
   public void copyFunctionBody(SNode from, SNode to) {
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(to, LINKS.body$WIlu), LINKS.statement$WHn8)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.statement$WHn8)).select(new ISelector<SNode, SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(to, LINKS.body$qspy), LINKS.statement$pYcS)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.statement$pYcS)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return SNodeOperations.copyNode(it);
       }
@@ -81,7 +81,7 @@ public class ConvertIntention extends IntentionsFactory {
   }
   public SNode createParameterReference(List<SNode> parameters, int argumentNumber) {
     SNode nodeRef = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$sQ, null);
-    SLinkOperations.setTarget(nodeRef, LINKS.variableDeclaration$2ky6, ListSequence.fromList(parameters).getElement(argumentNumber));
+    SLinkOperations.setTarget(nodeRef, LINKS.variableDeclaration$7WwU, ListSequence.fromList(parameters).getElement(argumentNumber));
     return nodeRef;
   }
   public void resolveChildFilterRefernce(SNode root, SNode node) {
@@ -89,15 +89,15 @@ public class ConvertIntention extends IntentionsFactory {
     boolean noneMatched = true;
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ConceptFunctionParameter_node$W5)) {
       noneMatched = false;
-      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$WIkZ), 0));
+      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$qsax), 0));
     }
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ConceptFunctionParameter_childNode$DO)) {
       noneMatched = false;
-      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$WIkZ), 1));
+      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$qsax), 1));
     }
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ConceptFunctionParameter_editorContext$di)) {
       noneMatched = false;
-      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$WIkZ), 2));
+      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$qsax), 2));
     }
 
     for (SNode child : SNodeOperations.getChildren(node)) {
@@ -106,9 +106,9 @@ public class ConvertIntention extends IntentionsFactory {
   }
   public void resolveReference(SNode root, SNode node) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ConceptFunctionParameter_node$W5)) {
-      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$WIkZ), 0));
+      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$qsax), 0));
     } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ConceptFunctionParameter_editorContext$di)) {
-      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$WIkZ), 1));
+      SNodeOperations.replaceWithAnother(node, createParameterReference(SLinkOperations.getChildren(root, LINKS.parameter$qsax), 1));
     }
 
     for (SNode child : SNodeOperations.getChildren(node)) {
@@ -116,12 +116,12 @@ public class ConvertIntention extends IntentionsFactory {
     }
   }
   public void execute(SNode node, EditorContext editorContext) {
-    boolean oldIsErrorIntention = SPropertyOperations.getBoolean(node, PROPS.isErrorIntention$AoZt);
-    boolean oldIsAvailableInChildNodes = SPropertyOperations.getBoolean(node, PROPS.isAvailableInChildNodes$AoZW);
-    SNode oldExecute = SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.executeFunction$SvUb), LINKS.body$pTP2);
-    SNode oldDescription = SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.descriptionFunction$I7Ms), LINKS.body$pTP2);
-    SNode oldIsApplicable = SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.isApplicableFunction$I7Nq), LINKS.body$pTP2);
-    SNode oldChildFilter = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.childFilterFunction$I7MV), CONCEPTS.ChildFilterFunction$E8), LINKS.body$pTP2);
+    boolean oldIsErrorIntention = SPropertyOperations.getBoolean(node, PROPS.isErrorIntention$A6J3);
+    boolean oldIsAvailableInChildNodes = SPropertyOperations.getBoolean(node, PROPS.isAvailableInChildNodes$A6Y4);
+    SNode oldExecute = SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.executeFunction$ntbl), LINKS.body$z0FY);
+    SNode oldDescription = SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.descriptionFunction$lLr$), LINKS.body$z0FY);
+    SNode oldIsApplicable = SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.isApplicableFunction$lLTA), LINKS.body$z0FY);
+    SNode oldChildFilter = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.childFilterFunction$lLE_), CONCEPTS.ChildFilterFunction$E8), LINKS.body$z0FY);
 
     // create new intention 
     SNode newIntention = SNodeFactoryOperations.createNewNode(CONCEPTS.Intention$MV, null);
@@ -135,14 +135,14 @@ public class ConvertIntention extends IntentionsFactory {
       SNodeOperations.replaceWithAnother(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7271443492837194032"), newIntention)).first(), DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7271443492837194032"), SNodeOperations.getModel(node)));
       SNode newIsApplicableInChild = SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7271443492837194032"), newIntention)).first(), CONCEPTS.MethodInstance$XT);
       if ((oldChildFilter == null)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(newIsApplicableInChild, LINKS.body$WIlu), LINKS.statement$WHn8)).addElement(_quotation_createNode_lf8yx8_a0a0a2a51a8());
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(newIsApplicableInChild, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(_quotation_createNode_lf8yx8_a0a0a2a51a8());
       } else {
         copyFunctionBody(oldChildFilter, newIsApplicableInChild);
         resolveChildFilterRefernce(newIsApplicableInChild, newIsApplicableInChild);
       }
     }
 
-    if ((SLinkOperations.getTarget(node, LINKS.isApplicableFunction$I7Nq) != null)) {
+    if ((SLinkOperations.getTarget(node, LINKS.isApplicableFunction$lLTA) != null)) {
       SNodeOperations.replaceWithAnother(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.findPlaceholders_id5ZzANK5B6wZ.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982606"), newIntention)).first(), DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982606"), SNodeOperations.getModel(node)));
       SNode newIsApplicable = SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982606"), newIntention)).first(), CONCEPTS.MethodInstance$XT);
 
@@ -151,8 +151,8 @@ public class ConvertIntention extends IntentionsFactory {
     }
 
     // set members 
-    SPropertyOperations.assign(newIntention, PROPS.name$tAp1, SPropertyOperations.getString(node, PROPS.name$tAp1));
-    SLinkOperations.setTarget(newIntention, LINKS.forConcept$G_IT, SLinkOperations.getTarget(node, LINKS.forConcept$SvTG));
+    SPropertyOperations.assign(newIntention, PROPS.name$lA7v, SPropertyOperations.getString(node, PROPS.name$lA7v));
+    SLinkOperations.setTarget(newIntention, LINKS.forConcept$AhHB, SLinkOperations.getTarget(node, LINKS.forConcept$nsWk));
 
     copyFunctionBody(oldDescription, newDescription);
     resolveReference(newDescription, newDescription);
@@ -161,11 +161,11 @@ public class ConvertIntention extends IntentionsFactory {
     resolveReference(newExecute, newExecute);
 
     if (oldIsErrorIntention) {
-      SLinkOperations.setTarget(newIntention, LINKS.priority$GsqG, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x59427edd75744615L, "jetbrains.mps.lang.intentions.structure.ErrorIntentionPriority")));
+      SLinkOperations.setTarget(newIntention, LINKS.priority$xKVk, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x59427edd75744615L, "jetbrains.mps.lang.intentions.structure.ErrorIntentionPriority")));
     }
 
 
-    SPropertyOperations.set(newIntention, PROPS.virtualPackage$j19t, SPropertyOperations.getString(node, PROPS.virtualPackage$j19t));
+    SPropertyOperations.set(newIntention, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(node, PROPS.virtualPackage$dz_3));
     SModelOperations.addRootNode(SNodeOperations.getModel(node), newIntention);
   }
   public String description(SNode node, EditorContext editorContext) {
@@ -207,24 +207,24 @@ public class ConvertIntention extends IntentionsFactory {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink executeFunction$SvUb = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3e6813L, "executeFunction");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SContainmentLink descriptionFunction$I7Ms = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cd0a9L, "descriptionFunction");
-    /*package*/ static final SContainmentLink isApplicableFunction$I7Nq = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cd0abL, "isApplicableFunction");
-    /*package*/ static final SContainmentLink childFilterFunction$I7MV = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cd0aaL, "childFilterFunction");
-    /*package*/ static final SReferenceLink forConcept$G_IT = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x10d005a50b96761L, "forConcept");
-    /*package*/ static final SReferenceLink forConcept$SvTG = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3e6812L, "forConcept");
-    /*package*/ static final SContainmentLink priority$GsqG = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x59427edd75744671L, "priority");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink executeFunction$ntbl = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3e6813L, "executeFunction");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink descriptionFunction$lLr$ = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cd0a9L, "descriptionFunction");
+    /*package*/ static final SContainmentLink isApplicableFunction$lLTA = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cd0abL, "isApplicableFunction");
+    /*package*/ static final SContainmentLink childFilterFunction$lLE_ = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cd0aaL, "childFilterFunction");
+    /*package*/ static final SReferenceLink forConcept$AhHB = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x10d005a50b96761L, "forConcept");
+    /*package*/ static final SReferenceLink forConcept$nsWk = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3e6812L, "forConcept");
+    /*package*/ static final SContainmentLink priority$xKVk = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x59427edd75744671L, "priority");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isErrorIntention$AoZt = MetaAdapterFactory.getProperty(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cc679L, "isErrorIntention");
-    /*package*/ static final SProperty isAvailableInChildNodes$AoZW = MetaAdapterFactory.getProperty(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cc67aL, "isAvailableInChildNodes");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty isErrorIntention$A6J3 = MetaAdapterFactory.getProperty(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cc679L, "isErrorIntention");
+    /*package*/ static final SProperty isAvailableInChildNodes$A6Y4 = MetaAdapterFactory.getProperty(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3cc67aL, "isAvailableInChildNodes");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

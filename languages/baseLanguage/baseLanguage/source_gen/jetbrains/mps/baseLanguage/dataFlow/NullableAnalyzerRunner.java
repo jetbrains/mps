@@ -77,7 +77,7 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
           nullableState = NullableState.NULL;
         }
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableReference$sQ)) {
-          node = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6);
+          node = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
         }
         if (node != null) {
           result.put(node, nullableState);
@@ -87,7 +87,7 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
         WriteInstruction write = (WriteInstruction) instruction;
         SNode value = (SNode) write.getValue();
         if (SNodeOperations.isInstanceOf(value, CONCEPTS.VariableReference$sQ)) {
-          value = SLinkOperations.getTarget(SNodeOperations.cast(value, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6);
+          value = SLinkOperations.getTarget(SNodeOperations.cast(value, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
         }
         NullableState valueState = result.get(value);
         if (valueState == null) {
@@ -116,6 +116,6 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

@@ -80,7 +80,7 @@ public final class ForbidIncomingReferencesInSubconcepts_Intention extends Abstr
           ListSequence.fromList(allSupers).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
 
           if (ListSequence.fromList(allSupers).contains(node)) {
-            SPropertyOperations.setEnum(cd, PROPS.staticScope$SzuZ, 0x4b014033eedc8becL, "none");
+            SPropertyOperations.setEnum(cd, PROPS.staticScope$pc0x, 0x4b014033eedc8becL, "none");
           }
         }
       }
@@ -92,7 +92,7 @@ public final class ForbidIncomingReferencesInSubconcepts_Intention extends Abstr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty staticScope$SzuZ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope");
+    /*package*/ static final SProperty staticScope$pc0x = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope");
   }
 
   private static final class CONCEPTS {

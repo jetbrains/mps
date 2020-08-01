@@ -94,10 +94,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_n0gj60_a2a() {
-    return !(Objects.equals(SPropertyOperations.getEnum(myNode, PROPS.style$Ncgx), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), 0x11c47b3e786L, "QUERY")));
+    return !(Objects.equals(SPropertyOperations.getEnum(myNode, PROPS.style$MVZZ), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), 0x11c47b3e786L, "QUERY")));
   }
   private boolean nodeCondition_n0gj60_a3a() {
-    return Objects.equals(SPropertyOperations.getEnum(myNode, PROPS.style$Ncgx), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), 0x11c47b3e786L, "QUERY"));
+    return Objects.equals(SPropertyOperations.getEnum(myNode, PROPS.style$MVZZ), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), 0x11c47b3e786L, "QUERY"));
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "font-style");
@@ -129,7 +129,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.style$Ncgx;
+      final SProperty property = PROPS.style$MVZZ;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no style>");
@@ -162,9 +162,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.setEnum(node, PROPS.style$Ncgx, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), SEnumOperations.getMemberName0(parameterObject)));
+      SPropertyOperations.setEnum(node, PROPS.style$MVZZ, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), SEnumOperations.getMemberName0(parameterObject)));
       if (Objects.equals(parameterObject, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), 0x11c47b3e786L, "QUERY"))) {
-        SLinkOperations.setTarget(node, LINKS.query$7Yu1, SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_FontStyle$xJ, null));
+        SLinkOperations.setTarget(node, LINKS.query$Rgyv, SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_FontStyle$xJ, null));
       }
     }
     public boolean isReferentPresentation() {
@@ -177,7 +177,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new querySingleRoleHandler_n0gj60_d0(myNode, LINKS.query$7Yu1, getEditorContext());
+    SingleRoleCellProvider provider = new querySingleRoleHandler_n0gj60_d0(myNode, LINKS.query$Rgyv, getEditorContext());
     return provider.createCell();
   }
   private static class querySingleRoleHandler_n0gj60_d0 extends SingleRoleCellProvider {
@@ -197,8 +197,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.query$7Yu1, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.query$7Yu1, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.query$Rgyv, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.query$Rgyv, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -207,10 +207,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.query$7Yu1, CONCEPTS.QueryFunction_FontStyle$xJ), new SubstituteInfoPartExt[]{new FontStyleStyleClassItem_generic_cellMenu_n0gj60_a0d0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.query$Rgyv, CONCEPTS.QueryFunction_FontStyle$xJ), new SubstituteInfoPartExt[]{new FontStyleStyleClassItem_generic_cellMenu_n0gj60_a0d0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.query$7Yu1);
+        editorCell.setSRole(LINKS.query$Rgyv);
       }
       if (true) {
         editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_RECURSIVELY);
@@ -219,7 +219,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.query$7Yu1));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.query$Rgyv));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_query");
@@ -244,8 +244,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
         this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
       }
       public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$7Yu1));
-        SPropertyOperations.setEnum(node, PROPS.style$Ncgx, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), SEnumOperations.getMemberName0(parameterObject)));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$Rgyv));
+        SPropertyOperations.setEnum(node, PROPS.style$MVZZ, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1006551b180L, "jetbrains.mps.lang.editor.structure._FontStyle_Enum"), SEnumOperations.getMemberName0(parameterObject)));
       }
       public boolean isReferentPresentation() {
         return false;
@@ -259,7 +259,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty style$Ncgx = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2c9756L, 0x1143b2ce41fL, "style");
+    /*package*/ static final SProperty style$MVZZ = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2c9756L, 0x1143b2ce41fL, "style");
   }
 
   private static final class CONCEPTS {
@@ -269,6 +269,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$7Yu1 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2c9756L, 0x11c47cb352dL, "query");
+    /*package*/ static final SContainmentLink query$Rgyv = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2c9756L, 0x11c47cb352dL, "query");
   }
 }

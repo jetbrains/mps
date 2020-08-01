@@ -32,18 +32,18 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
   }
   public void applyRule(final SNode switchCase, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME: almost duplicate code with MultipleFilesParser 
-    SNode caseExp = SLinkOperations.getTarget(switchCase, LINKS.expression$zuuG);
+    SNode caseExp = SLinkOperations.getTarget(switchCase, LINKS.expression$bKRk);
     if (!(SNodeOperations.isInstanceOf(caseExp, CONCEPTS.VariableReference$sQ))) {
       return;
     }
-    SReference ref = SNodeOperations.getReference(SNodeOperations.cast(caseExp, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6);
+    SReference ref = SNodeOperations.getReference(SNodeOperations.cast(caseExp, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
     if (!(ref instanceof DynamicReference)) {
       return;
     }
 
     final String enumConstName = ((DynamicReference) ref).getResolveInfo();
 
-    SNode scrutenee = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(caseExp, CONCEPTS.SwitchStatement$S1, false, false), LINKS.expression$z0sO);
+    SNode scrutenee = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(caseExp, CONCEPTS.SwitchStatement$S1, false, false), LINKS.expression$XdXc);
     if ((scrutenee == null)) {
       return;
     }
@@ -53,19 +53,19 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
       return;
     }
 
-    SNode claz = SLinkOperations.getTarget(SNodeOperations.cast(scruteneeType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+    SNode claz = SLinkOperations.getTarget(SNodeOperations.cast(scruteneeType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
     if (!(SNodeOperations.isInstanceOf(claz, CONCEPTS.EnumClass$uy))) {
       return;
     }
 
-    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy), LINKS.enumConstant$urAQ)).findFirst(new IWhereFilter<SNode>() {
+    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy), LINKS.enumConstant$JnOa)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).equals(enumConstName);
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).equals(enumConstName);
       }
     });
     SNode qualifiedEnumRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-    SLinkOperations.setTarget(qualifiedEnumRef, LINKS.enumClass$9jPZ, SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy));
-    SLinkOperations.setTarget(qualifiedEnumRef, LINKS.enumConstantDeclaration$fB6v, enumConst);
+    SLinkOperations.setTarget(qualifiedEnumRef, LINKS.enumClass$wB9x, SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy));
+    SLinkOperations.setTarget(qualifiedEnumRef, LINKS.enumConstantDeclaration$zW91, enumConst);
 
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
@@ -88,13 +88,13 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$zuuG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink expression$z0sO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink enumConstant$urAQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
-    /*package*/ static final SReferenceLink enumClass$9jPZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
-    /*package*/ static final SReferenceLink enumConstantDeclaration$fB6v = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SContainmentLink expression$bKRk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink expression$XdXc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -106,6 +106,6 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

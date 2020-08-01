@@ -13,10 +13,10 @@ public class FieldReferenceOperation_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.fieldDeclaration$mLBy), ctx);
+    BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.fieldDeclaration$229u), ctx);
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 }

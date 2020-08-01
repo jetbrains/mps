@@ -44,7 +44,7 @@ public class AnnotationInstanceValue_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_lyrsmi_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.AnnotationInstanceValue$sl, LINKS.key$y5Ln);
+      super((SAbstractConcept) CONCEPTS.AnnotationInstanceValue$sl, LINKS.key$wMU9);
     }
     @NotNull
     @Override
@@ -65,6 +65,6 @@ public class AnnotationInstanceValue_SmartReference extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink key$y5Ln = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
+    /*package*/ static final SReferenceLink key$wMU9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
   }
 }

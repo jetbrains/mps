@@ -84,14 +84,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.values$cEr0;
+      return LINKS.values$8z50;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.IntegerConstant$mo;
     }
 
     private String getSeparatorText(SNode prevNode, SNode nextNode) {
-      return " " + SPropertyOperations.getInteger(prevNode, PROPS.value$ZeO0) + "x" + SPropertyOperations.getInteger(nextNode, PROPS.value$ZeO0);
+      return " " + SPropertyOperations.getInteger(prevNode, PROPS.value$Cbc0) + "x" + SPropertyOperations.getInteger(nextNode, PROPS.value$Cbc0);
     }
     public EditorCell createNodeCell(SNode elementNode) {
       EditorCell elementCell = getUpdateSession().updateChildNodeCell(elementNode);
@@ -100,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(valuesListHandler_uyeg5t_b0.this.getNode(), LINKS.values$cEr0));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(valuesListHandler_uyeg5t_b0.this.getNode(), LINKS.values$8z50));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -160,7 +160,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink values$cEr0 = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x519d8422a025727aL, 0x519d8422a025727bL, "values");
+    /*package*/ static final SContainmentLink values$8z50 = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x519d8422a025727aL, 0x519d8422a025727bL, "values");
   }
 
   private static final class CONCEPTS {
@@ -168,6 +168,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
   }
 }

@@ -12,10 +12,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class Not_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     _context.getBuilder().emitNop("r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469874871");
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.original$ixu));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.original$8Ydy));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink original$ixu = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, 0x2de971c785ecb8b3L, "original");
+    /*package*/ static final SContainmentLink original$8Ydy = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, 0x2de971c785ecb8b3L, "original");
   }
 }

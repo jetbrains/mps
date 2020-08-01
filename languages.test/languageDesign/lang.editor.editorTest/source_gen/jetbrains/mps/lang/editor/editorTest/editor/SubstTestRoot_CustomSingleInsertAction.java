@@ -26,15 +26,15 @@ public class SubstTestRoot_CustomSingleInsertAction {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode child = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestBooleanPropertyChild"));
-        SPropertyOperations.assign(child, PROPS.myProperty$b9XD, true);
-        SLinkOperations.setTarget(node, LINKS.singleChildWithCustomInsert$tcWc, child);
+        SPropertyOperations.assign(child, PROPS.myProperty$pOQR, true);
+        SLinkOperations.setTarget(node, LINKS.singleChildWithCustomInsert$9h9O, child);
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return (SLinkOperations.getTarget(node, LINKS.singleChildWithCustomInsert$tcWc) == null);
+        return (SLinkOperations.getTarget(node, LINKS.singleChildWithCustomInsert$9h9O) == null);
       }
 
     };
@@ -82,10 +82,10 @@ public class SubstTestRoot_CustomSingleInsertAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty myProperty$b9XD = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, 0xd4944c0b03c7179L, "myProperty");
+    /*package*/ static final SProperty myProperty$pOQR = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, 0xd4944c0b03c7179L, "myProperty");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink singleChildWithCustomInsert$tcWc = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c33b7L, 0x8958eefaab00098L, "singleChildWithCustomInsert");
+    /*package*/ static final SContainmentLink singleChildWithCustomInsert$9h9O = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c33b7L, 0x8958eefaab00098L, "singleChildWithCustomInsert");
   }
 }

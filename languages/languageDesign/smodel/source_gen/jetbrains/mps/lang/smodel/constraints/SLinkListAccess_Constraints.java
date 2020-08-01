@@ -34,7 +34,7 @@ public class SLinkListAccess_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$4J5w, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$iNEw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -74,6 +74,6 @@ public class SLinkListAccess_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$4J5w = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
+    /*package*/ static final SReferenceLink link$iNEw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
   }
 }

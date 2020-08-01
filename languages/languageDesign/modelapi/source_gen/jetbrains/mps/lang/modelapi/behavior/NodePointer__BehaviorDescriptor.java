@@ -44,12 +44,12 @@ public final class NodePointer__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static SNode create_id4nxIQVL$eu9(@NotNull SAbstractConcept __thisConcept__, SModel where, SNodeReference target) {
     SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.NodePointer$qL);
-    SPropertyOperations.assign(rv, PROPS.nodeId$nNh1, check_c22mgr_a0b0a(target.getNodeId()));
-    SLinkOperations.setTarget(rv, LINKS.modelRef$nNf5, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2LQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$rg), where, target.getModelReference()));
+    SPropertyOperations.assign(rv, PROPS.nodeId$xPfv, check_c22mgr_a0b0a(target.getNodeId()));
+    SLinkOperations.setTarget(rv, LINKS.modelRef$xOjr, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2LQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$rg), where, target.getModelReference()));
     return rv;
   }
   /*package*/ static SNodeReference toNodeReference_id4nxIQVLmsc4(@NotNull SNode __thisNode__) {
-    return new SNodePointer(ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.modelRef$nNf5)), PersistenceFacade.getInstance().createNodeId(StringUtil.emptyIfNull(SPropertyOperations.getString(__thisNode__, PROPS.nodeId$nNh1))));
+    return new SNodePointer(ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.modelRef$xOjr)), PersistenceFacade.getInstance().createNodeId(StringUtil.emptyIfNull(SPropertyOperations.getString(__thisNode__, PROPS.nodeId$xPfv))));
   }
 
   /*package*/ NodePointer__BehaviorDescriptor() {
@@ -112,10 +112,10 @@ public final class NodePointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeId$nNh1 = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf88L, "nodeId");
+    /*package*/ static final SProperty nodeId$xPfv = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf88L, "nodeId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modelRef$nNf5 = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf84L, "modelRef");
+    /*package*/ static final SContainmentLink modelRef$xOjr = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf84L, "modelRef");
   }
 }

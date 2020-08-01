@@ -29,28 +29,28 @@ public class check_CellModel_DiagramNode_NonTypesystemRule extends AbstractNonTy
   public check_CellModel_DiagramNode_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.figure$dCMb))), CONCEPTS.AbstractFigureReference$TJ)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.figure$AKjl))), CONCEPTS.AbstractFigureReference$TJ)) {
       return;
     }
 
     Set<String> parameterNames = SetSequence.fromSet(new HashSet<String>());
-    for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameters$qdiu))) {
-      if (SetSequence.fromSet(parameterNames).contains(SPropertyOperations.getString(parameter, PROPS.name$tAp1))) {
+    for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameters$GrWy))) {
+      if (SetSequence.fromSet(parameterNames).contains(SPropertyOperations.getString(parameter, PROPS.name$lA7v))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "Parameter with this name was already specified", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "4088443785018451028", null, errorTarget);
         }
-      } else if (AbstractFigureReference__BehaviorDescriptor.getFigureParameter_id1iN4mn3oxt8.invoke(SLinkOperations.getTarget(node, LINKS.figure$dCMb), SPropertyOperations.getString(parameter, PROPS.name$tAp1)) == null) {
+      } else if (AbstractFigureReference__BehaviorDescriptor.getFigureParameter_id1iN4mn3oxt8.invoke(SLinkOperations.getTarget(node, LINKS.figure$AKjl), SPropertyOperations.getString(parameter, PROPS.name$lA7v)) == null) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "Parameter \'" + SPropertyOperations.getString(parameter, PROPS.name$tAp1) + "\' not found in specified figure", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "4115105161237224614", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "Parameter \'" + SPropertyOperations.getString(parameter, PROPS.name$lA7v) + "\' not found in specified figure", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "4115105161237224614", null, errorTarget);
         }
       } else {
-        SetSequence.fromSet(parameterNames).addElement(SPropertyOperations.getString(parameter, PROPS.name$tAp1));
+        SetSequence.fromSet(parameterNames).addElement(SPropertyOperations.getString(parameter, PROPS.name$lA7v));
       }
     }
 
-    if (SetSequence.fromSet(parameterNames).count() < ListSequence.fromList(AbstractFigureReference__BehaviorDescriptor.getFigureParameterNames_id1iN4mn3lWCq.invoke(SLinkOperations.getTarget(node, LINKS.figure$dCMb))).count()) {
+    if (SetSequence.fromSet(parameterNames).count() < ListSequence.fromList(AbstractFigureReference__BehaviorDescriptor.getFigureParameterNames_id1iN4mn3lWCq.invoke(SLinkOperations.getTarget(node, LINKS.figure$AKjl))).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, "Some figure parameters were not mapperd", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "4115105161237164068", null, errorTarget);
@@ -68,8 +68,8 @@ public class check_CellModel_DiagramNode_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink figure$dCMb = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
-    /*package*/ static final SContainmentLink parameters$qdiu = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a7d7b2L, "parameters");
+    /*package*/ static final SContainmentLink figure$AKjl = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
+    /*package*/ static final SContainmentLink parameters$GrWy = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a7d7b2L, "parameters");
   }
 
   private static final class CONCEPTS {
@@ -78,6 +78,6 @@ public class check_CellModel_DiagramNode_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -33,10 +33,10 @@ public final class MethodToClassifierMethod_PasteWrapper_0 implements PasteWrapp
   @Override
   public SNode wrap(SNode sourceNode) {
     Map<SNode, SNode> paramMapping = MapSequence.fromMap(new HashMap<SNode, SNode>());
-    List<SNode> typeParam = CopyUtil.copy(SLinkOperations.getChildren(sourceNode, LINKS.typeVariableDeclaration$ziZT), paramMapping);
-    List<SNode> types = CopyUtil.copy(SLinkOperations.getChildren(sourceNode, LINKS.parameter$WIkZ), paramMapping);
-    List<SNode> body = CopyUtil.copy(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceNode, LINKS.body$WIlu), LINKS.statement$WHn8), paramMapping);
-    return _quotation_createNode_sqg5bj_a4a0a(types, SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.visibility$2GiC)), SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.returnType$WIkw)), body, SPropertyOperations.getString(sourceNode, PROPS.name$tAp1), typeParam);
+    List<SNode> typeParam = CopyUtil.copy(SLinkOperations.getChildren(sourceNode, LINKS.typeVariableDeclaration$6cWB), paramMapping);
+    List<SNode> types = CopyUtil.copy(SLinkOperations.getChildren(sourceNode, LINKS.parameter$qsax), paramMapping);
+    List<SNode> body = CopyUtil.copy(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceNode, LINKS.body$qspy), LINKS.statement$pYcS), paramMapping);
+    return _quotation_createNode_sqg5bj_a4a0a(types, SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.visibility$jt1o)), SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.returnType$qrVw)), body, SPropertyOperations.getString(sourceNode, PROPS.name$lA7v), typeParam);
   }
   private static SNode _quotation_createNode_sqg5bj_a4a0a(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5, Object parameter_6) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -89,15 +89,15 @@ public final class MethodToClassifierMethod_PasteWrapper_0 implements PasteWrapp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

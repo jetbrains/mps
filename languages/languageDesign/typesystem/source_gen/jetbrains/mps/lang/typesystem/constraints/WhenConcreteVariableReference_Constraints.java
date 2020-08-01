@@ -33,7 +33,7 @@ public class WhenConcreteVariableReference_Constraints extends BaseConstraintsDe
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.whenConcreteVar$7HuF, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.whenConcreteVar$J1QP, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,7 +51,7 @@ public class WhenConcreteVariableReference_Constraints extends BaseConstraintsDe
             List<SNode> whenConcreteStatements = SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.WhenConcreteStatement$JZ, false);
             List<SNode> declarations = new ArrayList<SNode>();
             for (SNode whenConcreteStatement : whenConcreteStatements) {
-              SNode variableDeclaration = SLinkOperations.getTarget(whenConcreteStatement, LINKS.argumentRepresentator$kQNj);
+              SNode variableDeclaration = SLinkOperations.getTarget(whenConcreteStatement, LINKS.argumentRepresentator$6yQd);
               if (variableDeclaration != null) {
                 ListSequence.fromList(declarations).addElement(variableDeclaration);
               }
@@ -73,7 +73,7 @@ public class WhenConcreteVariableReference_Constraints extends BaseConstraintsDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink whenConcreteVar$7HuF = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
-    /*package*/ static final SContainmentLink argumentRepresentator$kQNj = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x118bd03e53bL, "argumentRepresentator");
+    /*package*/ static final SReferenceLink whenConcreteVar$J1QP = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
+    /*package*/ static final SContainmentLink argumentRepresentator$6yQd = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x118bd03e53bL, "argumentRepresentator");
   }
 }

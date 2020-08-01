@@ -27,7 +27,7 @@ public class Abstraction_Variable_actions {
         if (DeletionApproverUtil.approve(editorContext, node, "variableCollection")) {
           return;
         }
-        SNode body = SLinkOperations.getTarget(node, LINKS.body$y0b4);
+        SNode body = SLinkOperations.getTarget(node, LINKS.body$u5mW);
         SNodeOperations.replaceWithAnother(node, body);
       }
 
@@ -76,6 +76,6 @@ public class Abstraction_Variable_actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$y0b4 = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, 0x37d11ba7d7ee2dc5L, "body");
+    /*package*/ static final SContainmentLink body$u5mW = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, 0x37d11ba7d7ee2dc5L, "body");
   }
 }

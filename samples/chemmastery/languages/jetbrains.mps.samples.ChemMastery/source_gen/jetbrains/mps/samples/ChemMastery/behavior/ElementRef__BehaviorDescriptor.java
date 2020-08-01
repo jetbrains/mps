@@ -23,7 +23,7 @@ public final class ElementRef__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.ionization$$dJW, 0);
+    SPropertyOperations.assign(__thisNode__, PROPS.ionization$yEe4, 0);
   }
 
 
@@ -72,6 +72,6 @@ public final class ElementRef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty ionization$$dJW = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba62980L, "ionization");
+    /*package*/ static final SProperty ionization$yEe4 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba62980L, "ionization");
   }
 }

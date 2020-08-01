@@ -53,7 +53,7 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
             List<SNode> result = new ArrayList<SNode>();
             List<SNode> tgList = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.LanguageTextGenDeclaration$8b);
             for (SNode tg : tgList) {
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(tg, LINKS.operation$J$cU)));
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(tg, LINKS.operation$2yg6)));
             }
             return ListScope.forResolvableElements(result);
           }
@@ -63,7 +63,7 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
   }
   public static class OperationName_Property extends BasePropertyConstraintsDescriptor {
     public OperationName_Property(ConstraintsDescriptor container) {
-      super(PROPS.operationName$QlUU, container);
+      super(PROPS.operationName$kBy6, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -71,7 +71,7 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
     }
     @Override
     public Object getValue(SNode node) {
-      String name = SPropertyOperations.getString(node, PROPS.name$tAp1);
+      String name = SPropertyOperations.getString(node, PROPS.name$lA7v);
       if (name == null) {
         return null;
       }
@@ -90,7 +90,7 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.operationName$QlUU, new OperationName_Property(this));
+    properties.put(PROPS.operationName$kBy6, new OperationName_Property(this));
     return properties;
   }
   private static final SNodePointer breakingNode_617hs5_a0a0a0a0a0a0a0a2 = new SNodePointer("r:472e3702-e789-4c3f-b300-132c65ad44f1(jetbrains.mps.lang.textGen.constraints)", "6836281137582805508");
@@ -101,11 +101,11 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$J$cU = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f4b821fc5L, "operation");
+    /*package*/ static final SContainmentLink operation$2yg6 = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f4b821fc5L, "operation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty operationName$QlUU = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b80e9d3L, 0x11f5fdf3bedL, "operationName");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty operationName$kBy6 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b80e9d3L, 0x11f5fdf3bedL, "operationName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

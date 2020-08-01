@@ -30,11 +30,11 @@ public class delComponent {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, final SNode node) {
-        List<SNode> list = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.ComponentSet$pY, false, false), LINKS.component$CfKz)).translate(new ITranslator2<SNode, SNode>() {
+        List<SNode> list = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.ComponentSet$pY, false, false), LINKS.component$vCwX)).translate(new ITranslator2<SNode, SNode>() {
           public Iterable<SNode> translate(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.dep$oYBD)).where(new IWhereFilter<SNode>() {
+            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.dep$6lcR)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.to$V$vW) == node;
+                return SLinkOperations.getTarget(it, LINKS.to$QFu4) == node;
               }
             });
           }
@@ -96,8 +96,8 @@ public class delComponent {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink component$CfKz = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814242bL, 0x565e197638146fa8L, "component");
-    /*package*/ static final SContainmentLink dep$oYBD = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
-    /*package*/ static final SReferenceLink to$V$vW = MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to");
+    /*package*/ static final SContainmentLink component$vCwX = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814242bL, 0x565e197638146fa8L, "component");
+    /*package*/ static final SContainmentLink dep$6lcR = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
+    /*package*/ static final SReferenceLink to$QFu4 = MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to");
   }
 }

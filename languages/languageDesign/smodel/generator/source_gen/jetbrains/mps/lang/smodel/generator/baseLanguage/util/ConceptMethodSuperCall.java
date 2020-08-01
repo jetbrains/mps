@@ -52,7 +52,7 @@ public final class ConceptMethodSuperCall {
   public InvokationTarget getMethodCallTarget() {
     SNode leftExpression = SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(myCall);
     assert SNodeOperations.isInstanceOf(leftExpression, CONCEPTS.SuperExpression$y6);
-    SNode methodDecl = SLinkOperations.getTarget(myCall, LINKS.baseMethodDeclaration$$A7i);
+    SNode methodDecl = SLinkOperations.getTarget(myCall, LINKS.baseMethodDeclaration$ItxI);
     if (!((boolean) Node_ConceptMethodCall__BehaviorDescriptor.isVirtualMethodCall_idhEwIWlZ.invoke(myCall))) {
       return new InvokationTarget(null, methodDecl, InvokationType.INVOKE_SPECIAL);
     } else {
@@ -65,7 +65,7 @@ public final class ConceptMethodSuperCall {
       } else {
         SNode behavior = SNodeOperations.getNodeAncestor(myCall, CONCEPTS.ConceptBehavior$8P, false, true);
         assert behavior != null;
-        return new InvokationTarget(SLinkOperations.getTarget(behavior, LINKS.concept$v6ns), methodDecl, InvokationType.INVOKE_SUPER);
+        return new InvokationTarget(SLinkOperations.getTarget(behavior, LINKS.concept$45m$), methodDecl, InvokationType.INVOKE_SUPER);
       }
     }
   }
@@ -76,7 +76,7 @@ public final class ConceptMethodSuperCall {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 }

@@ -135,9 +135,9 @@ public class EquationComponent_SubstituteMenu extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         int num = Integer.parseInt(pattern);
         SNode compound = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound"));
-        SPropertyOperations.assign(compound, PROPS.cardinality$$dy0, num);
-        SPropertyOperations.assign(compound, PROPS.cardinalityVisible$iY8b, true);
-        SLinkOperations.addNewChild(compound, LINKS.elements$Eg3r, null);
+        SPropertyOperations.assign(compound, PROPS.cardinality$yzu0, num);
+        SPropertyOperations.assign(compound, PROPS.cardinalityVisible$c5Xl, true);
+        SLinkOperations.addNewChild(compound, LINKS.elements$tLE5, null);
         return compound;
       }
 
@@ -159,7 +159,7 @@ public class EquationComponent_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return PatternDetectionUtil.isNumeric(pattern) && (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Compound$6W)) || !(SPropertyOperations.getBoolean(SNodeOperations.as(_context.getParentNode(), CONCEPTS.Compound$6W), PROPS.cardinalityVisible$iY8b)));
+        return PatternDetectionUtil.isNumeric(pattern) && (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Compound$6W)) || !(SPropertyOperations.getBoolean(SNodeOperations.as(_context.getParentNode(), CONCEPTS.Compound$6W), PROPS.cardinalityVisible$c5Xl)));
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {
@@ -198,10 +198,10 @@ public class EquationComponent_SubstituteMenu extends SubstituteMenuBase {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode compound = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound"));
-          ListSequence.fromList(SLinkOperations.getChildren(compound, LINKS.elements$Eg3r)).addElement(nodeToWrap);
+          ListSequence.fromList(SLinkOperations.getChildren(compound, LINKS.elements$tLE5)).addElement(nodeToWrap);
           if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Compound$6W)) {
-            SPropertyOperations.assign(compound, PROPS.cardinality$$dy0, SPropertyOperations.getInteger(SNodeOperations.as(_context.getParentNode(), CONCEPTS.Compound$6W), PROPS.cardinality$$dy0));
-            SPropertyOperations.assign(compound, PROPS.cardinalityVisible$iY8b, SPropertyOperations.getBoolean(SNodeOperations.as(_context.getParentNode(), CONCEPTS.Compound$6W), PROPS.cardinalityVisible$iY8b));
+            SPropertyOperations.assign(compound, PROPS.cardinality$yzu0, SPropertyOperations.getInteger(SNodeOperations.as(_context.getParentNode(), CONCEPTS.Compound$6W), PROPS.cardinality$yzu0));
+            SPropertyOperations.assign(compound, PROPS.cardinalityVisible$c5Xl, SPropertyOperations.getBoolean(SNodeOperations.as(_context.getParentNode(), CONCEPTS.Compound$6W), PROPS.cardinalityVisible$c5Xl));
           }
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), compound, SelectionManager.LAST_EDITABLE_CELL, -1);
           return compound;
@@ -241,11 +241,11 @@ public class EquationComponent_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinality$$dy0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
-    /*package*/ static final SProperty cardinalityVisible$iY8b = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$yzu0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$c5Xl = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$Eg3r = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba6e3a3L, "elements");
+    /*package*/ static final SContainmentLink elements$tLE5 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba6e3a3L, "elements");
   }
 }

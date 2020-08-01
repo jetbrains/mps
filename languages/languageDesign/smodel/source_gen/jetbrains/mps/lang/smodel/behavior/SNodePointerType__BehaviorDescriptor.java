@@ -44,22 +44,22 @@ public final class SNodePointerType__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    SNode concept = SLinkOperations.getTarget(__thisNode__, LINKS.concept$fJMt);
+    SNode concept = SLinkOperations.getTarget(__thisNode__, LINKS.concept$C9s3);
     if (concept == null) {
       return "node-ptr<>";
     }
-    return "node-ptr<" + SPropertyOperations.getString(concept, PROPS.name$tAp1) + ">";
+    return "node-ptr<" + SPropertyOperations.getString(concept, PROPS.name$lA7v) + ">";
   }
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> variableSuffixes = ListSequence.fromListAndArray(new ArrayList<String>(), "node", "nodePtr");
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.concept$fJMt) != null) {
-      String name = NameUtil.decapitalize(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.concept$fJMt), PROPS.name$tAp1));
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.concept$C9s3) != null) {
+      String name = NameUtil.decapitalize(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.concept$C9s3), PROPS.name$lA7v));
       ListSequence.fromList(variableSuffixes).addSequence(ListSequence.fromList(NameUtil.splitByCamels(name)));
     }
     return variableSuffixes;
   }
   /*package*/ static boolean hasMissingParameters_id32KZwowVoMu(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.concept$fJMt) == null);
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.concept$C9s3) == null);
   }
   /*package*/ static SNode getErasure_idB1mAlA38Mq(@NotNull SNode __thisNode__) {
     return ((SNode) Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(__thisNode__));
@@ -130,10 +130,10 @@ public final class SNodePointerType__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$fJMt = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
+    /*package*/ static final SReferenceLink concept$C9s3 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

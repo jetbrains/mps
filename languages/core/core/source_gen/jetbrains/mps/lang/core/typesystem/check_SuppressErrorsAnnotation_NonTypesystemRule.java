@@ -23,7 +23,7 @@ public class check_SuppressErrorsAnnotation_NonTypesystemRule extends AbstractNo
   }
   public void applyRule(final SNode suppressErrorsAnnotation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     try {
-      String serializedPredicate = SPropertyOperations.getString(suppressErrorsAnnotation, PROPS.filter$UuSh);
+      String serializedPredicate = SPropertyOperations.getString(suppressErrorsAnnotation, PROPS.filter$kXgf);
       FlavouredItem.ReportItemPredicate.deserialize((serializedPredicate == null ? "" : serializedPredicate));
     } catch (IllegalArgumentException e) {
       {
@@ -49,7 +49,7 @@ public class check_SuppressErrorsAnnotation_NonTypesystemRule extends AbstractNo
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty filter$UuSh = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
+    /*package*/ static final SProperty filter$kXgf = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
   }
 
   private static final class CONCEPTS {

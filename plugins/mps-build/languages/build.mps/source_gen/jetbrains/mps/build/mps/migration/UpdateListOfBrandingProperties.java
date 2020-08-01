@@ -41,23 +41,23 @@ public class UpdateListOfBrandingProperties extends MigrationScriptBase {
         }
       };
       for (SNode branding : CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_Branding$lC, true)) {
-        if ((SLinkOperations.getTarget(branding, LINKS.script$K6vZ) == null)) {
-          SNode productCopy = SNodeOperations.copyNode(SLinkOperations.getTarget(branding, LINKS.product$6Y2U));
-          for (SNode part : SLinkOperations.getChildren(productCopy, LINKS.parts$aVY3)) {
+        if ((SLinkOperations.getTarget(branding, LINKS.script$j9vx) == null)) {
+          SNode productCopy = SNodeOperations.copyNode(SLinkOperations.getTarget(branding, LINKS.product$o3q6));
+          for (SNode part : SLinkOperations.getChildren(productCopy, LINKS.parts$j33t)) {
             if (part instanceof SNode) {
-              SPropertyOperations.set(((SNode) part), PROPS.text$2p89, SPropertyOperations.getString(((SNode) part), PROPS.text$2p89).toLowerCase());
+              SPropertyOperations.set(((SNode) part), PROPS.text$aaWn, SPropertyOperations.getString(((SNode) part), PROPS.text$aaWn).toLowerCase());
             }
           }
-          SLinkOperations.setTarget(branding, LINKS.script$K6vZ, productCopy);
+          SLinkOperations.setTarget(branding, LINKS.script$j9vx, productCopy);
         }
-        if ((SLinkOperations.getTarget(branding, LINKS.icon32opaque$3swL) != null)) {
-          SLinkOperations.setTarget(branding, LINKS.icon32opaque$3swL, null);
+        if ((SLinkOperations.getTarget(branding, LINKS.icon32opaque$ENRJ) != null)) {
+          SLinkOperations.setTarget(branding, LINKS.icon32opaque$ENRJ, null);
         }
-        if ((SLinkOperations.getTarget(branding, LINKS.iconToolWindow$oNwo) != null)) {
-          SLinkOperations.setTarget(branding, LINKS.iconToolWindow$oNwo, null);
+        if ((SLinkOperations.getTarget(branding, LINKS.iconToolWindow$WFC) != null)) {
+          SLinkOperations.setTarget(branding, LINKS.iconToolWindow$WFC, null);
         }
-        if ((SLinkOperations.getTarget(branding, LINKS.editorBGUrl$9uCF) != null)) {
-          SLinkOperations.setTarget(branding, LINKS.editorBGUrl$9uCF, null);
+        if ((SLinkOperations.getTarget(branding, LINKS.editorBGUrl$_PGP) != null)) {
+          SLinkOperations.setTarget(branding, LINKS.editorBGUrl$_PGP, null);
         }
       }
     }
@@ -71,15 +71,15 @@ public class UpdateListOfBrandingProperties extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink product$6Y2U = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230afL, "product");
-    /*package*/ static final SContainmentLink parts$aVY3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
-    /*package*/ static final SContainmentLink script$K6vZ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0xccf01929cb3b53bL, "script");
-    /*package*/ static final SContainmentLink icon32opaque$3swL = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb0001cL, "icon32opaque");
-    /*package*/ static final SContainmentLink iconToolWindow$oNwo = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x5efec015d9c0dee8L, "iconToolWindow");
-    /*package*/ static final SContainmentLink editorBGUrl$9uCF = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54a6365f080e9d69L, "editorBGUrl");
+    /*package*/ static final SContainmentLink product$o3q6 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230afL, "product");
+    /*package*/ static final SContainmentLink parts$j33t = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
+    /*package*/ static final SContainmentLink script$j9vx = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0xccf01929cb3b53bL, "script");
+    /*package*/ static final SContainmentLink icon32opaque$ENRJ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb0001cL, "icon32opaque");
+    /*package*/ static final SContainmentLink iconToolWindow$WFC = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x5efec015d9c0dee8L, "iconToolWindow");
+    /*package*/ static final SContainmentLink editorBGUrl$_PGP = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54a6365f080e9d69L, "editorBGUrl");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$2p89 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 }

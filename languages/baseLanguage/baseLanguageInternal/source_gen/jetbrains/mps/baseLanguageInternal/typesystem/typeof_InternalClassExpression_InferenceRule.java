@@ -25,7 +25,7 @@ public class typeof_InternalClassExpression_InferenceRule extends AbstractInfere
     {
       SNode _nodeToCheck_1029348928467 = e;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "1196525371913", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "1196525371915", true), (SNode) _quotation_createNode_qvdecd_a1a0c0a0b(SLinkOperations.getTarget(e, LINKS.type$nPkF)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "1196525371915", true), (SNode) _quotation_createNode_qvdecd_a1a0c0a0b(SLinkOperations.getTarget(e, LINKS.type$yP0P)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -51,7 +51,7 @@ public class typeof_InternalClassExpression_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$nPkF = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1117461827dL, 0x11174623062L, "type");
+    /*package*/ static final SContainmentLink type$yP0P = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1117461827dL, 0x11174623062L, "type");
   }
 
   private static final class CONCEPTS {

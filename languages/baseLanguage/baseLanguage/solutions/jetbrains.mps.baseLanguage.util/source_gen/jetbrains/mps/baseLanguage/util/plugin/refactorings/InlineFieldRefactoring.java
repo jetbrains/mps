@@ -23,14 +23,14 @@ public abstract class InlineFieldRefactoring {
   public Iterable<SNode> findAllReferences(final SNode variable) {
     return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.VariableReference$sQ)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6) == variable;
+        return SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU) == variable;
       }
     });
   }
   public Iterable<SNode> findAllReferenceOperations(final SNode variable) {
     return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.FieldReferenceOperation$N8)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.fieldDeclaration$mLBy) == variable;
+        return SLinkOperations.getTarget(it, LINKS.fieldDeclaration$229u) == variable;
       }
     });
   }
@@ -56,7 +56,7 @@ public abstract class InlineFieldRefactoring {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 }

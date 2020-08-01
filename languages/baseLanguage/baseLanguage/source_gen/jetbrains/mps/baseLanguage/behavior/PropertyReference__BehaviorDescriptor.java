@@ -35,11 +35,11 @@ public final class PropertyReference__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static boolean isLValue_idhEwIP$w(@NotNull SNode __thisNode__) {
-    return (boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.property$64$K));
+    return (boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.property$WdNg));
   }
   /*package*/ static boolean isBeingAssigned_id5WTl5xTCF5s(@NotNull SNode __thisNode__) {
     SNode parent = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$6a);
-    return SNodeOperations.hasRole(parent, LINKS.lValue$J0D4);
+    return SNodeOperations.hasRole(parent, LINKS.lValue$LjSW);
   }
 
   /*package*/ PropertyReference__BehaviorDescriptor() {
@@ -91,8 +91,8 @@ public final class PropertyReference__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$64$K = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, 0x117b823ed57L, "property");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SReferenceLink property$WdNg = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, 0x117b823ed57L, "property");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
   }
 
   private static final class CONCEPTS {

@@ -127,8 +127,8 @@ public class TryFinallyStatement_TransformationMenu extends TransformationMenuBa
       @Override
       public void execute(@NotNull String pattern) {
         SNode catchClause = SNodeFactoryOperations.createNewNode(CONCEPTS.CatchClause$hu, null);
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$GIrD)).insertElement(0, catchClause);
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$GIrD)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$EvoR)).insertElement(0, catchClause);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$EvoR)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
@@ -163,6 +163,6 @@ public class TryFinallyStatement_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$GIrD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
+    /*package*/ static final SContainmentLink catchClause$EvoR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
   }
 }

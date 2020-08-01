@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createTable_0() {
     TableModelFactory creator = new TableModelFactory() {
       public TableModel createTableModel() {
-        return new HierarchycalTableModelWithHeader(myNode, LINKS.rows$jkCZ, LINKS.cells$jpVw, LINKS.headers$P_dD);
+        return new HierarchycalTableModelWithHeader(myNode, LINKS.rows$mZQx, LINKS.cells$pzOw, LINKS.headers$X1AR);
       }
     };
     jetbrains.mps.openapi.editor.cells.EditorCell_Collection editorCell = EditorCell_Table.createTable(getEditorContext(), myNode, creator.createTableModel(), "Table_sl01pn_c0");
@@ -117,7 +117,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -125,8 +125,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rows$jkCZ = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea0L, 0x28004d411fa3bea2L, "rows");
-    /*package*/ static final SContainmentLink cells$jpVw = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea6L, 0x28004d411fa3bea7L, "cells");
-    /*package*/ static final SContainmentLink headers$P_dD = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x760c9302beb3e1d1L, 0x760c9302beb3e1d4L, "headers");
+    /*package*/ static final SContainmentLink rows$mZQx = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea0L, 0x28004d411fa3bea2L, "rows");
+    /*package*/ static final SContainmentLink cells$pzOw = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea6L, 0x28004d411fa3bea7L, "cells");
+    /*package*/ static final SContainmentLink headers$X1AR = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x760c9302beb3e1d1L, 0x760c9302beb3e1d4L, "headers");
   }
 }

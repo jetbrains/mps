@@ -35,7 +35,7 @@ public final class ReviewMigration_old__BehaviorDescriptor extends BaseBHDescrip
     return true;
   }
   /*package*/ static String getResultsMessage_id29O0pTxWdnZ(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.reasonShort$7yZv);
+    return SPropertyOperations.getString(__thisNode__, PROPS.reasonShort$DWK1);
   }
 
   /*package*/ ReviewMigration_old__BehaviorDescriptor() {
@@ -87,6 +87,6 @@ public final class ReviewMigration_old__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reasonShort$7yZv = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
+    /*package*/ static final SProperty reasonShort$DWK1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
   }
 }

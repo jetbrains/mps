@@ -26,7 +26,7 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
   public check_UnneededMethodTypeParameters_NonTypesystemRule() {
   }
   public void applyRule(final SNode baseMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.typeVariableDeclaration$ziZT)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.typeVariableDeclaration$6cWB)).visitAll(new IVisitor<SNode>() {
       public void visit(final SNode typeVarDeclaration) {
         boolean unused = ListSequence.fromList(SNodeOperations.getNodeDescendants(baseMethodDeclaration, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -34,7 +34,7 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
           }
         }).all(new IWhereFilter<SNode>() {
           public boolean accept(SNode ref) {
-            return !(Objects.equals(SLinkOperations.getTarget(ref, LINKS.typeVariableDeclaration$U0X4), typeVarDeclaration));
+            return !(Objects.equals(SLinkOperations.getTarget(ref, LINKS.typeVariableDeclaration$6t$W), typeVarDeclaration));
           }
         });
         if (unused) {
@@ -57,8 +57,8 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {

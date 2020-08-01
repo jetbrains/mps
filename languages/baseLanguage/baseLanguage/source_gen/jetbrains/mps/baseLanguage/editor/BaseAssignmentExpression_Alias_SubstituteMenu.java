@@ -87,8 +87,8 @@ public class BaseAssignmentExpression_Alias_SubstituteMenu extends SubstituteMen
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SLinkOperations.setTarget(nodeToWrap, LINKS.leftExpression$rxLZ, SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.lValue$J0D4));
-          SLinkOperations.setTarget(nodeToWrap, LINKS.rightExpression$rxBl, SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.rValue$J0E2));
+          SLinkOperations.setTarget(nodeToWrap, LINKS.leftExpression$lndx, SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.lValue$LjSW));
+          SLinkOperations.setTarget(nodeToWrap, LINKS.rightExpression$li3b, SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.rValue$LkmY));
           return nodeToWrap;
         }
 
@@ -124,9 +124,9 @@ public class BaseAssignmentExpression_Alias_SubstituteMenu extends SubstituteMen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 }

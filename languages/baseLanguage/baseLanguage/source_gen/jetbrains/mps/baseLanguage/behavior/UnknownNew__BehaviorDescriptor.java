@@ -42,11 +42,11 @@ public final class UnknownNew__BehaviorDescriptor extends BaseBHDescriptor {
     return ResolveUnknownUtil.resolveNew(__thisNode__);
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode claz = ResolveUnknownUtil.findClass(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.className$qoJZ));
+    SNode claz = ResolveUnknownUtil.findClass(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.className$LZfx));
     if ((claz == null)) {
       return ListSequence.fromList(new ArrayList<SNode>());
     }
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(claz, LINKS.member$oYX5), CONCEPTS.ConstructorDeclaration$5U);
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(claz, LINKS.member$6v_r), CONCEPTS.ConstructorDeclaration$5U);
   }
 
   /*package*/ UnknownNew__BehaviorDescriptor() {
@@ -98,11 +98,11 @@ public final class UnknownNew__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty className$qoJZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, 0x2dda7700ec3bb537L, "className");
+    /*package*/ static final SProperty className$LZfx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, 0x2dda7700ec3bb537L, "className");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class CONCEPTS {

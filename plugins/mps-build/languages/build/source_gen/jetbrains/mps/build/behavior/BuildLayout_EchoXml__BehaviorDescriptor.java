@@ -40,7 +40,7 @@ public final class BuildLayout_EchoXml__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ static String getOutputPath_WithMacro_id41K1b4v58vm(@NotNull SNode __thisNode__, Context context) {
     if ((SNodeOperations.getParent(__thisNode__) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Container$WW)) {
       String parentChildrenTargetDir = BuildLayout_Container__BehaviorDescriptor.getChildrenOutputDir_WithMacro_id450ejGzh8bb.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Container$WW), context);
-      return parentChildrenTargetDir + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fileName$Sj4Z), context.getMacros(__thisNode__));
+      return parentChildrenTargetDir + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fileName$hfqx), context.getMacros(__thisNode__));
     }
     return null;
   }
@@ -98,6 +98,6 @@ public final class BuildLayout_EchoXml__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fileName$Sj4Z = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6a3e160a3eff6a94L, 0x6a3e160a3eff6a96L, "fileName");
+    /*package*/ static final SContainmentLink fileName$hfqx = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6a3e160a3eff6a94L, 0x6a3e160a3eff6a96L, "fileName");
   }
 }

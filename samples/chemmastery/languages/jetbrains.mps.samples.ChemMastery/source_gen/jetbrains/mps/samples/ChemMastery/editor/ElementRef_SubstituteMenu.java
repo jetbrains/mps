@@ -49,7 +49,7 @@ public class ElementRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_srjwog_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ElementRef$i$, LINKS.element$$dI0);
+      super((SAbstractConcept) CONCEPTS.ElementRef$i$, LINKS.element$yDi0);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class ElementRef_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.id$sqos);
+        return SPropertyOperations.getString(referencedNode, PROPS.id$KLP$);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -89,7 +89,7 @@ public class ElementRef_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public String getDescriptionText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
       }
 
       @Override
@@ -104,11 +104,11 @@ public class ElementRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink element$$dI0 = MetaAdapterFactory.getReferenceLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297cL, "element");
+    /*package*/ static final SReferenceLink element$yDi0 = MetaAdapterFactory.getReferenceLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297cL, "element");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty id$sqos = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x5b2638e8bdcd7deaL, "id");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty id$KLP$ = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x5b2638e8bdcd7deaL, "id");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

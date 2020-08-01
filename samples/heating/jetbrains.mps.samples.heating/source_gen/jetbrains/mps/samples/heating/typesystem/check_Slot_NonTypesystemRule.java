@@ -25,7 +25,7 @@ public class check_Slot_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
   public check_Slot_NonTypesystemRule() {
   }
   public void applyRule(final SNode slot, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getInteger(slot, PROPS.start$fZpo) == -1) {
+    if (SPropertyOperations.getInteger(slot, PROPS.start$JHiC) == -1) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(slot, "Not a valid value", "r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)", "2978080762093971534", null, errorTarget);
@@ -38,7 +38,7 @@ public class check_Slot_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
     }
     SNode prev = SNodeOperations.cast(SNodeOperations.getPrevSibling(slot), CONCEPTS.Slot$bv);
     if ((prev != null)) {
-      if (!(SPropertyOperations.getInteger(prev, PROPS.start$fZpo) <= SPropertyOperations.getInteger(slot, PROPS.start$fZpo))) {
+      if (!(SPropertyOperations.getInteger(prev, PROPS.start$JHiC) <= SPropertyOperations.getInteger(slot, PROPS.start$JHiC))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(slot, "The event should be scheduled after the one above it", "r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)", "5063359128233240887", null, errorTarget);
         {
@@ -46,7 +46,7 @@ public class check_Slot_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
-      if (SPropertyOperations.getInteger(SLinkOperations.getTarget(prev, LINKS.event$CDE2), PROPS.temperature$MPBu) == SPropertyOperations.getInteger(SLinkOperations.getTarget(slot, LINKS.event$CDE2), PROPS.temperature$MPBu)) {
+      if (SPropertyOperations.getInteger(SLinkOperations.getTarget(prev, LINKS.event$GbmY), PROPS.temperature$BY7y) == SPropertyOperations.getInteger(SLinkOperations.getTarget(slot, LINKS.event$GbmY), PROPS.temperature$BY7y)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(slot, "This event is not changing the temperature.", "r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)", "4664795093170882120", null, errorTarget);
@@ -58,7 +58,7 @@ public class check_Slot_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
       }
     }
     SNode customizedSlot = Slot__BehaviorDescriptor.getCustomizedSlot_idNU25Mr18Am.invoke(slot);
-    if ((customizedSlot != null) && SPropertyOperations.getInteger(SLinkOperations.getTarget(customizedSlot, LINKS.event$CDE2), PROPS.temperature$MPBu) == SPropertyOperations.getInteger(SLinkOperations.getTarget(slot, LINKS.event$CDE2), PROPS.temperature$MPBu)) {
+    if ((customizedSlot != null) && SPropertyOperations.getInteger(SLinkOperations.getTarget(customizedSlot, LINKS.event$GbmY), PROPS.temperature$BY7y) == SPropertyOperations.getInteger(SLinkOperations.getTarget(slot, LINKS.event$GbmY), PROPS.temperature$BY7y)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(slot, "The customizing event is setting the same temperature as the original one", "r:6d78acb4-911e-4959-8535-0a1b3e5c1b7e(jetbrains.mps.samples.heating.typesystem)", "935069066463792184", null, errorTarget);
@@ -80,8 +80,8 @@ public class check_Slot_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty start$fZpo = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe28827cL, "start");
-    /*package*/ static final SProperty temperature$MPBu = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, 0x4644aa4ce08aec70L, "temperature");
+    /*package*/ static final SProperty start$JHiC = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe28827cL, "start");
+    /*package*/ static final SProperty temperature$BY7y = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, 0x4644aa4ce08aec70L, "temperature");
   }
 
   private static final class CONCEPTS {
@@ -89,6 +89,6 @@ public class check_Slot_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink event$CDE2 = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe289dd1L, "event");
+    /*package*/ static final SContainmentLink event$GbmY = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe289dd1L, "event");
   }
 }

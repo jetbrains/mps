@@ -65,11 +65,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     if (di == null) {
       return null;
     }
-    List<SNodeReference> tracedNodes = di.getTracedNodesForPosition(SPropertyOperations.getString(root, PROPS.name$tAp1) + ".java", line);
+    List<SNodeReference> tracedNodes = di.getTracedNodesForPosition(SPropertyOperations.getString(root, PROPS.name$lA7v) + ".java", line);
     return (tracedNodes.isEmpty() ? null : tracedNodes.get(0).resolve(myProject.getRepository()));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -130,7 +130,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.references_scoping$r$2w;
+      return LINKS.references_scoping$mtdw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.TestRefConstraints_BaseReference_Scoping$qT;
@@ -143,7 +143,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(references_scopingListHandler_u9s8t6_c2a.this.getNode(), LINKS.references_scoping$r$2w));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(references_scopingListHandler_u9s8t6_c2a.this.getNode(), LINKS.references_scoping$mtdw));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -224,7 +224,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.references_handler$gIe6;
+      return LINKS.references_handler$6oOU;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.TestRefConstraints_BaseReference_Handler$Qt;
@@ -237,7 +237,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(references_handlerListHandler_u9s8t6_f2a.this.getNode(), LINKS.references_handler$gIe6));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(references_handlerListHandler_u9s8t6_f2a.this.getNode(), LINKS.references_handler$6oOU));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -319,7 +319,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.targets$r$3X;
+      return LINKS.targets$mtUz;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.TestRefConstraints_Target$ro;
@@ -332,7 +332,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(targetsListHandler_u9s8t6_i2a.this.getNode(), LINKS.targets$r$3X));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(targetsListHandler_u9s8t6_i2a.this.getNode(), LINKS.targets$mtUz));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -383,9 +383,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink references_scoping$r$2w = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce0L, "references_scoping");
-    /*package*/ static final SContainmentLink references_handler$gIe6 = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a30660589f1aaL, "references_handler");
-    /*package*/ static final SContainmentLink targets$r$3X = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
+    /*package*/ static final SContainmentLink references_scoping$mtdw = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce0L, "references_scoping");
+    /*package*/ static final SContainmentLink references_handler$6oOU = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a30660589f1aaL, "references_handler");
+    /*package*/ static final SContainmentLink targets$mtUz = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
   }
 
   private static final class CONCEPTS {

@@ -56,8 +56,8 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
     List<SNode> rules = GoToRulesHelper.getRules(node, true);
     return ListSequence.fromList(rules).sort(new Comparator<SNode>() {
       public int compare(SNode a, SNode b) {
-        boolean aConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(a, LINKS.applicableNode$lCke), CONCEPTS.ConceptReference$Je);
-        boolean bConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(b, LINKS.applicableNode$lCke), CONCEPTS.ConceptReference$Je);
+        boolean aConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(a, LINKS.applicableNode$uxMM), CONCEPTS.ConceptReference$Je);
+        boolean bConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(b, LINKS.applicableNode$uxMM), CONCEPTS.ConceptReference$Je);
 
         // rules with concept references go first 
         if (aConceptRef && !(bConceptRef)) {
@@ -69,8 +69,8 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
 
         // rules with concept references - more specific goes first 
         if (aConceptRef && bConceptRef) {
-          SNode aConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, LINKS.applicableNode$lCke), CONCEPTS.ConceptReference$Je), LINKS.concept$Q1Nr);
-          SNode bConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(b, LINKS.applicableNode$lCke), CONCEPTS.ConceptReference$Je), LINKS.concept$Q1Nr);
+          SNode aConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, LINKS.applicableNode$uxMM), CONCEPTS.ConceptReference$Je), LINKS.concept$aRU5);
+          SNode bConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(b, LINKS.applicableNode$uxMM), CONCEPTS.ConceptReference$Je), LINKS.concept$aRU5);
           if (((boolean) (Boolean) BHReflection.invoke0(aConcept, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("isSubconceptOf", CONCEPTS.AbstractConceptDeclaration$UN, "73yVtVlWOga"), bConcept))) {
             return 1;
           }
@@ -99,7 +99,7 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$lCke = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
-    /*package*/ static final SReferenceLink concept$Q1Nr = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
+    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SReferenceLink concept$aRU5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
   }
 }

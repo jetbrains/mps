@@ -41,7 +41,7 @@ public final class FigureParameterAttributeViewProperty__BehaviorDescriptor exte
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.StaticFieldDeclaration$R5);
   }
   /*package*/ static SNode getParameterType_idiZqVFYvBew(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SLinkOperations.getTarget(FigureParameterAttributeViewProperty__BehaviorDescriptor.getStaticFieldDeclaration_id6RaK14zkc88.invoke(__thisNode__), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ);
+    return SNodeOperations.as(SLinkOperations.getTarget(FigureParameterAttributeViewProperty__BehaviorDescriptor.getStaticFieldDeclaration_id6RaK14zkc88.invoke(__thisNode__), LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ);
   }
 
   /*package*/ FigureParameterAttributeViewProperty__BehaviorDescriptor() {
@@ -100,6 +100,6 @@ public final class FigureParameterAttributeViewProperty__BehaviorDescriptor exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

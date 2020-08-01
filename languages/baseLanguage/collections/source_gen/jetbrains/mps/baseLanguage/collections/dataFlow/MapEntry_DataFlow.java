@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MapEntry_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.key$zkFq));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.value$czbr));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.key$711A));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.value$52y5));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink key$zkFq = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118f249550fL, 0x118f24b00ccL, "key");
-    /*package*/ static final SContainmentLink value$czbr = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118f249550fL, 0x118f24b224fL, "value");
+    /*package*/ static final SContainmentLink key$711A = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118f249550fL, 0x118f24b00ccL, "key");
+    /*package*/ static final SContainmentLink value$52y5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118f249550fL, 0x118f24b224fL, "value");
   }
 }

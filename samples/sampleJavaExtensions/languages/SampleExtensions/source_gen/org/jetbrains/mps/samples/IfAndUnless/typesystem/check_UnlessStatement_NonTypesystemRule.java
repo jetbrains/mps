@@ -22,10 +22,10 @@ public class check_UnlessStatement_NonTypesystemRule extends AbstractNonTypesyst
   public check_UnlessStatement_NonTypesystemRule() {
   }
   public void applyRule(final SNode us, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(us, LINKS.body$9e1t), LINKS.statement$WHn8)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(us, LINKS.body$tMH3), LINKS.statement$pYcS)).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(us, LINKS.body$9e1t), "Empty statement block", "r:7da49c71-e19f-4b55-806c-76b351ee48dd(org.jetbrains.mps.samples.IfAndUnless.typesystem)", "1608374556136064235", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(us, LINKS.body$tMH3), "Empty statement block", "r:7da49c71-e19f-4b55-806c-76b351ee48dd(org.jetbrains.mps.samples.IfAndUnless.typesystem)", "1608374556136064235", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("org.jetbrains.mps.samples.IfAndUnless.typesystem.Remove_empty_unless_block_QuickFix", false);
           intentionProvider.putArgument("node", us);
@@ -45,8 +45,8 @@ public class check_UnlessStatement_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$9e1t = MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0x57547b70f36dc0dL, 0x57547b70f36dc1cL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$tMH3 = MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0x57547b70f36dc0dL, 0x57547b70f36dc1cL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {

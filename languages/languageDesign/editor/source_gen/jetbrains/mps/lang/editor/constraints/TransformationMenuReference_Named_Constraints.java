@@ -25,7 +25,7 @@ public class TransformationMenuReference_Named_Constraints extends BaseConstrain
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.menu$qYc0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.menu$47O0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -60,6 +60,6 @@ public class TransformationMenuReference_Named_Constraints extends BaseConstrain
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink menu$qYc0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, 0x5d3b34577b3cff0aL, "menu");
+    /*package*/ static final SReferenceLink menu$47O0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, 0x5d3b34577b3cff0aL, "menu");
   }
 }

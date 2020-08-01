@@ -65,7 +65,7 @@ public class UpdateDeprecatedBlockDocTags extends MigrationScriptBase {
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode node) {
-          return (int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(node) == 0 && (SLinkOperations.getTarget(node, LINKS.text$e7yL) == null);
+          return (int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(node) == 0 && (SLinkOperations.getTarget(node, LINKS.text$PDPJ) == null);
         }
       }).sort(new ISelector<SNode, Integer>() {
         public Integer select(SNode it) {
@@ -104,7 +104,7 @@ public class UpdateDeprecatedBlockDocTags extends MigrationScriptBase {
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.text$e7yL) == null);
+          return (SLinkOperations.getTarget(it, LINKS.text$PDPJ) == null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -138,7 +138,7 @@ public class UpdateDeprecatedBlockDocTags extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$e7yL = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
+    /*package*/ static final SContainmentLink text$PDPJ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
   }
 
   private static final class CONCEPTS {

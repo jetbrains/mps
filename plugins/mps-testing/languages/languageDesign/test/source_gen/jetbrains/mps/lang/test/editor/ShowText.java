@@ -104,13 +104,13 @@ public class ShowText extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SLinkOperations.setTarget(_context.getNode(), LINKS.expectedMessage$gXqz, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, "jetbrains.mps.lang.test.structure.ExpectedMessageContainer")));
-        SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.expectedMessage$gXqz), SelectionManager.FIRST_EDITABLE_CELL);
+        SLinkOperations.setTarget(_context.getNode(), LINKS.expectedMessage$dJQX, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, "jetbrains.mps.lang.test.structure.ExpectedMessageContainer")));
+        SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.expectedMessage$dJQX), SelectionManager.FIRST_EDITABLE_CELL);
       }
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        return SLinkOperations.getTarget(_context.getNode(), LINKS.expectedMessage$gXqz) == null;
+        return SLinkOperations.getTarget(_context.getNode(), LINKS.expectedMessage$dJQX) == null;
       }
 
 
@@ -133,6 +133,6 @@ public class ShowText extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expectedMessage$gXqz = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
+    /*package*/ static final SContainmentLink expectedMessage$dJQX = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
   }
 }

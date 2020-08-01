@@ -27,7 +27,7 @@ public class MethodRefactoringUtils {
   public static List<SNode> findOverridingMethods(SearchScope scope, SNode method, ProgressMonitor progressMonitor) {
     List<SNode> results = new ArrayList<SNode>();
     if (SNodeOperations.isInstanceOf(method, CONCEPTS.InstanceMethodDeclaration$An)) {
-      if (SPropertyOperations.getBoolean(method, PROPS.isFinal$I$Qu) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$An), LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+      if (SPropertyOperations.getBoolean(method, PROPS.isFinal$zQoy) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$An), LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
         return results;
       }
       SearchResults<SNode> searchResults;
@@ -62,10 +62,10 @@ public class MethodRefactoringUtils {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 }

@@ -26,7 +26,7 @@ public class BootstrapToken {
         if (DeletionApproverUtil.approve(editorContext, node, "bootstrapKeyword")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.bootstrap$eHdX, false);
+        SPropertyOperations.assign(node, PROPS.bootstrap$7TKz, false);
       }
 
     };
@@ -74,6 +74,6 @@ public class BootstrapToken {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty bootstrap$eHdX = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, 0x2399a1550482726bL, "bootstrap");
+    /*package*/ static final SProperty bootstrap$7TKz = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, 0x2399a1550482726bL, "bootstrap");
   }
 }

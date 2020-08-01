@@ -18,10 +18,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @Generated
 public class QueriesGenerated {
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.InputRoot$eR), PROPS.useInTest$QJWm), 0x4bddbad571550d6L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.InputRoot$eR), PROPS.useInTest$xeeE), 0x4bddbad571550d6L);
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), PROPS.useInTest$QJWm), 0x4bddbad571550d6L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), PROPS.useInTest$xeeE), 0x4bddbad571550d6L);
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
     return false;
@@ -38,6 +38,6 @@ public class QueriesGenerated {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty useInTest$QJWm = MetaAdapterFactory.getProperty(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, 0x117eb48fdf5L, "useInTest");
+    /*package*/ static final SProperty useInTest$xeeE = MetaAdapterFactory.getProperty(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, 0x117eb48fdf5L, "useInTest");
   }
 }

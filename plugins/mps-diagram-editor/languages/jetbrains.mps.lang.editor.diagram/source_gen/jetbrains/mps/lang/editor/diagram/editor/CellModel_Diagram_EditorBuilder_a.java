@@ -124,7 +124,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.diagramElements$Byy;
+      return LINKS.diagramElements$j9Iu;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.DiagramElement$I6;
@@ -140,7 +140,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(diagramElementsListHandler_7br2q0_e0.this.getNode(), LINKS.diagramElements$Byy));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(diagramElementsListHandler_7br2q0_e0.this.getNode(), LINKS.diagramElements$j9Iu));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -203,7 +203,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new paletteDeclarationSingleRoleHandler_7br2q0_g0(myNode, LINKS.paletteDeclaration$fK9V, getEditorContext());
+    SingleRoleCellProvider provider = new paletteDeclarationSingleRoleHandler_7br2q0_g0(myNode, LINKS.paletteDeclaration$CkN_, getEditorContext());
     return provider.createCell();
   }
   private static class paletteDeclarationSingleRoleHandler_7br2q0_g0 extends SingleRoleCellProvider {
@@ -223,8 +223,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.paletteDeclaration$fK9V, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.paletteDeclaration$fK9V, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.paletteDeclaration$CkN_, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.paletteDeclaration$CkN_, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -236,7 +236,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.paletteDeclaration$fK9V);
+        editorCell.setSRole(LINKS.paletteDeclaration$CkN_);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
@@ -246,7 +246,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.paletteDeclaration$fK9V));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.paletteDeclaration$CkN_));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_paletteDeclaration");
@@ -271,8 +271,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink diagramElements$Byy = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x4a53d4fb31a6b00cL, "diagramElements");
-    /*package*/ static final SContainmentLink paletteDeclaration$fK9V = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x5bdb7aaec1476e7cL, "paletteDeclaration");
+    /*package*/ static final SContainmentLink diagramElements$j9Iu = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x4a53d4fb31a6b00cL, "diagramElements");
+    /*package*/ static final SContainmentLink paletteDeclaration$CkN_ = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x5bdb7aaec1476e7cL, "paletteDeclaration");
   }
 
   private static final class CONCEPTS {

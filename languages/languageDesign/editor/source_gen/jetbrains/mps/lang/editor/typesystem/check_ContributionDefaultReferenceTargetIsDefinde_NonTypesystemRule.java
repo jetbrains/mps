@@ -23,7 +23,7 @@ public class check_ContributionDefaultReferenceTargetIsDefinde_NonTypesystemRule
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode menuReference = IMenu_Contribution__BehaviorDescriptor.getMenuReference_id1quYWAD2_PI.invoke(node);
-    if (SNodeOperations.isInstanceOf(menuReference, CONCEPTS.IMenuReference_Default$Hp) && (SLinkOperations.getTarget(SNodeOperations.cast(menuReference, CONCEPTS.IMenuReference_Default$Hp), LINKS.concept$x5r) == null)) {
+    if (SNodeOperations.isInstanceOf(menuReference, CONCEPTS.IMenuReference_Default$Hp) && (SLinkOperations.getTarget(SNodeOperations.cast(menuReference, CONCEPTS.IMenuReference_Default$Hp), LINKS.concept$g1C5) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(menuReference, "Target concept should be defined", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "3011610118025607849", null, errorTarget);
@@ -46,6 +46,6 @@ public class check_ContributionDefaultReferenceTargetIsDefinde_NonTypesystemRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$x5r = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
+    /*package*/ static final SReferenceLink concept$g1C5 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
   }
 }

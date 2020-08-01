@@ -21,10 +21,10 @@ public class check_ExpressionPatternProvider_NonTypesystemRule extends AbstractN
   public check_ExpressionPatternProvider_NonTypesystemRule() {
   }
   public void applyRule(final SNode expressionPatternProvider, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(expressionPatternProvider, LINKS.expression$2how) != null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(expressionPatternProvider, LINKS.expression$2how), CONCEPTS.QualifiedPatternReference$kN))) {
+    if ((SLinkOperations.getTarget(expressionPatternProvider, LINKS.expression$6qRw) != null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(expressionPatternProvider, LINKS.expression$6qRw), CONCEPTS.QualifiedPatternReference$kN))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(expressionPatternProvider, LINKS.expression$2how), "pattern expected", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "7939357357339332222", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(expressionPatternProvider, LINKS.expression$6qRw), "pattern expected", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "7939357357339332222", null, errorTarget);
       }
     }
   }
@@ -39,7 +39,7 @@ public class check_ExpressionPatternProvider_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$2how = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
+    /*package*/ static final SContainmentLink expression$6qRw = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
   }
 
   private static final class CONCEPTS {

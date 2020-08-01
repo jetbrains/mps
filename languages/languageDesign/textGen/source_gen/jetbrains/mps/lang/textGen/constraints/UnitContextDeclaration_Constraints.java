@@ -22,7 +22,7 @@ public class UnitContextDeclaration_Constraints extends BaseConstraintsDescripto
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$w2Xj, container);
+      super(PROPS.shortDescription$xrGd, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -30,14 +30,14 @@ public class UnitContextDeclaration_Constraints extends BaseConstraintsDescripto
     }
     @Override
     public Object getValue(SNode node) {
-      String container = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.LanguageTextGenDeclaration$8b, false, false), PROPS.name$tAp1);
+      String container = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.LanguageTextGenDeclaration$8b, false, false), PROPS.name$lA7v);
       return String.format("context object from %s", container);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.shortDescription$w2Xj, new ShortDescription_Property(this));
+    properties.put(PROPS.shortDescription$xrGd, new ShortDescription_Property(this));
     return properties;
   }
 
@@ -47,7 +47,7 @@ public class UnitContextDeclaration_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortDescription$w2Xj = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

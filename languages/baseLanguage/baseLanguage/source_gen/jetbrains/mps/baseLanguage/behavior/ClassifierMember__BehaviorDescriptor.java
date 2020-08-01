@@ -64,22 +64,22 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
     }
 
     // public 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe)) {
       return true;
     }
     // private 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       return VisibilityUtil.topClassifier(contextNode) == VisibilityUtil.topClassifier(_contextClassifier.value);
     }
     // default 
     String contextNodePackage = VisibilityUtil.packageName(contextNode);
     String contextClassifierPackage = VisibilityUtil.packageName(_contextClassifier.value);
     String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$hJ), __thisNode__));
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o) == null)) {
       return Objects.equals(contextNodePackage, contextClassifierPackage);
     }
     // protected 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC), CONCEPTS.ProtectedVisibility$OD)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o), CONCEPTS.ProtectedVisibility$OD)) {
       if (Objects.equals(contextNodePackage, declarationClassifierPackage)) {
         return true;
       }
@@ -197,6 +197,6 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

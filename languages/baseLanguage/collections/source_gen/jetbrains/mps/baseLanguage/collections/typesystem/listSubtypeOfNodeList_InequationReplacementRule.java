@@ -27,12 +27,12 @@ public class listSubtypeOfNodeList_InequationReplacementRule extends AbstractIne
       SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2938222244302954902", 0, null);
       _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$xJJW), (SNode) _quotation_createNode_ty2fp4_a1a0d0a0b(SLinkOperations.getTarget(supertype, LINKS.elementConcept$AB72)), false, inequalityIsWeak, inequalityIsLessThan, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$m8e4), (SNode) _quotation_createNode_ty2fp4_a1a0d0a0b(SLinkOperations.getTarget(supertype, LINKS.elementConcept$GWpY)), false, inequalityIsWeak, inequalityIsLessThan, _info_12389875345);
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$xJJW), (SNode) _quotation_createNode_ty2fp4_a1a0a0a0a0b0c(SLinkOperations.getTarget(supertype, LINKS.elementConcept$AB72)));
+    result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$m8e4), (SNode) _quotation_createNode_ty2fp4_a1a0a0a0a0b0c(SLinkOperations.getTarget(supertype, LINKS.elementConcept$GWpY)));
     return result_14532009;
   }
   public boolean isWeak() {
@@ -67,8 +67,8 @@ public class listSubtypeOfNodeList_InequationReplacementRule extends AbstractIne
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$xJJW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
-    /*package*/ static final SReferenceLink elementConcept$AB72 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept");
+    /*package*/ static final SContainmentLink elementType$m8e4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
+    /*package*/ static final SReferenceLink elementConcept$GWpY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept");
   }
 
   private static final class CONCEPTS {

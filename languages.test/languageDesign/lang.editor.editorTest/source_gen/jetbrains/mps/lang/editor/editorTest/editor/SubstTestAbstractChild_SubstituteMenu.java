@@ -127,7 +127,7 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode child = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SubstTestEnumPropertyChild$1d, null);
-          SPropertyOperations.assignEnum(child, PROPS.myEnumProperty$BvH1, myParameterObject);
+          SPropertyOperations.assignEnum(child, PROPS.myEnumProperty$8mNv, myParameterObject);
           return child;
         }
 
@@ -225,7 +225,7 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode child = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SubstTestBooleanPropertyChild$3a, null);
-          SPropertyOperations.set(child, PROPS.myProperty$b9XD, myParameterObject.booleanValue());
+          SPropertyOperations.set(child, PROPS.myProperty$pOQR, myParameterObject.booleanValue());
           return child;
         }
 
@@ -285,7 +285,7 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty myEnumProperty$BvH1 = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c35aeL, 0xd4944c0b03fa02eL, "myEnumProperty");
-    /*package*/ static final SProperty myProperty$b9XD = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, 0xd4944c0b03c7179L, "myProperty");
+    /*package*/ static final SProperty myEnumProperty$8mNv = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c35aeL, 0xd4944c0b03fa02eL, "myEnumProperty");
+    /*package*/ static final SProperty myProperty$pOQR = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, 0xd4944c0b03c7179L, "myProperty");
   }
 }

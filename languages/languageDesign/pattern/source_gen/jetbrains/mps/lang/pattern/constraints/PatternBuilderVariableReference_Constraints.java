@@ -27,7 +27,7 @@ public class PatternBuilderVariableReference_Constraints extends BaseConstraints
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$GelY, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$qWD2, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -60,6 +60,6 @@ public class PatternBuilderVariableReference_Constraints extends BaseConstraints
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$GelY = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, 0x26c46d140aa61088L, "declaration");
+    /*package*/ static final SReferenceLink declaration$qWD2 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, 0x26c46d140aa61088L, "declaration");
   }
 }

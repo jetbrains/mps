@@ -16,7 +16,7 @@ public class InstanceInitializer_TextGen extends TextGenDescriptorBase {
     tgs.indent();
     tgs.append("{");
     ctx.getBuffer().area().increaseIndent();
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.statementList$nSOm));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.statementList$$xmE));
     ctx.getBuffer().area().decreaseIndent();
     tgs.newLine();
     tgs.indent();
@@ -25,6 +25,6 @@ public class InstanceInitializer_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$nSOm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, 0x118f0b95a3bL, "statementList");
+    /*package*/ static final SContainmentLink statementList$$xmE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, 0x118f0b95a3bL, "statementList");
   }
 }

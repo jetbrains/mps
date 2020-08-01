@@ -36,11 +36,11 @@ public final class BwfJavaModule__BehaviorDescriptor extends BaseBHDescriptor {
     return Arrays.asList(new String[]{"modern", "IntelliJ", "jikes", "gcj"});
   }
   /*package*/ static String getAntTargetName_id6pYRYgn8i1z(@NotNull SNode __thisNode__) {
-    return "java.compile." + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+    return "java.compile." + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
   }
   /*package*/ static boolean needsFork_id3Par5_LaArg(@NotNull SNode __thisNode__) {
-    boolean userFork = SPropertyOperations.getBoolean(__thisNode__, PROPS.fork$RER2);
-    boolean compilerForkedByDefault = isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.compiler$Rqm0)) && !(SPropertyOperations.getString(__thisNode__, PROPS.compiler$Rqm0).equals("IntelliJ")) && !(SPropertyOperations.getString(__thisNode__, PROPS.compiler$Rqm0).equals("modern"));
+    boolean userFork = SPropertyOperations.getBoolean(__thisNode__, PROPS.fork$XKDY);
+    boolean compilerForkedByDefault = isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.compiler$PKE0)) && !(SPropertyOperations.getString(__thisNode__, PROPS.compiler$PKE0).equals("IntelliJ")) && !(SPropertyOperations.getString(__thisNode__, PROPS.compiler$PKE0).equals("modern"));
     return !(compilerForkedByDefault) && userFork;
   }
 
@@ -98,8 +98,8 @@ public final class BwfJavaModule__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty fork$RER2 = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x3d4a6c597112f405L, "fork");
-    /*package*/ static final SProperty compiler$Rqm0 = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x1c936d31d30fdf98L, "compiler");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty fork$XKDY = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x3d4a6c597112f405L, "fork");
+    /*package*/ static final SProperty compiler$PKE0 = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x1c936d31d30fdf98L, "compiler");
   }
 }

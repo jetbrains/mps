@@ -100,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new fillColorSingleRoleHandler_zihja6_d0(myNode, LINKS.fillColor$izv2, getEditorContext());
+    SingleRoleCellProvider provider = new fillColorSingleRoleHandler_zihja6_d0(myNode, LINKS.fillColor$Zc1Y, getEditorContext());
     return provider.createCell();
   }
   private static class fillColorSingleRoleHandler_zihja6_d0 extends SingleRoleCellProvider {
@@ -120,8 +120,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.fillColor$izv2, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.fillColor$izv2, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.fillColor$Zc1Y, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.fillColor$Zc1Y, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -133,13 +133,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.fillColor$izv2);
+        editorCell.setSRole(LINKS.fillColor$Zc1Y);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.fillColor$izv2));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.fillColor$Zc1Y));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_fillColor");
@@ -180,7 +180,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new borderColorSingleRoleHandler_zihja6_h0(myNode, LINKS.borderColor$izEb, getEditorContext());
+    SingleRoleCellProvider provider = new borderColorSingleRoleHandler_zihja6_h0(myNode, LINKS.borderColor$Zhrl, getEditorContext());
     return provider.createCell();
   }
   private static class borderColorSingleRoleHandler_zihja6_h0 extends SingleRoleCellProvider {
@@ -200,8 +200,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.borderColor$izEb, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.borderColor$izEb, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.borderColor$Zhrl, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.borderColor$Zhrl, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -213,13 +213,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.borderColor$izEb);
+        editorCell.setSRole(LINKS.borderColor$Zhrl);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.borderColor$izEb));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.borderColor$Zhrl));
       try {
         EditorCell editorCell = createConstant_6();
         installCellInfo(null, editorCell, true);
@@ -267,7 +267,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.r$z1on;
+      final SProperty property = PROPS.r$XEN9;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no r>");
@@ -291,12 +291,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fillColor$izv2 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
-    /*package*/ static final SContainmentLink borderColor$izEb = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
+    /*package*/ static final SContainmentLink fillColor$Zc1Y = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
+    /*package*/ static final SContainmentLink borderColor$Zhrl = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty r$z1on = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e60L, 0x26417c37742e28c1L, "r");
+    /*package*/ static final SProperty r$XEN9 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e60L, 0x26417c37742e28c1L, "r");
   }
 
   private static final class CONCEPTS {

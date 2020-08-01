@@ -46,11 +46,11 @@ public final class Node_ConceptMethodCall__BehaviorDescriptor extends BaseBHDesc
     return ConceptNodeUtil.isSuper(SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(__thisNode__));
   }
   /*package*/ static SNode getVirtualMethodDeclaration_idhEwIWm8(@NotNull SNode __thisNode__) {
-    SNode methodDeclaration = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i);
-    if ((SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$6dmw) != null)) {
-      return SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$6dmw);
+    SNode methodDeclaration = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI);
+    if ((SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$tTw) != null)) {
+      return SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$tTw);
     } else
-    if (SPropertyOperations.getBoolean(methodDeclaration, PROPS.isVirtual$6dmZ)) {
+    if (SPropertyOperations.getBoolean(methodDeclaration, PROPS.isVirtual$u8x)) {
       return methodDeclaration;
     } else {
       return null;
@@ -58,7 +58,7 @@ public final class Node_ConceptMethodCall__BehaviorDescriptor extends BaseBHDesc
   }
   /*package*/ static String getVariableExpectedName_idhEwIP$B(@NotNull SNode __thisNode__) {
     String variableExpectedName;
-    variableExpectedName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1);
+    variableExpectedName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v);
     if (variableExpectedName.startsWith("get")) {
       variableExpectedName = variableExpectedName.substring(3);
     } else
@@ -136,12 +136,12 @@ public final class Node_ConceptMethodCall__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink overriddenMethod$6dmw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isVirtual$6dmZ = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isVirtual$u8x = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -35,13 +35,13 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_2_0(final BaseMappingRuleContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1).equals("button");
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v).equals("button");
   }
   public static boolean rule_Condition_2_1(final BaseMappingRuleContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1).equals("label");
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v).equals("label");
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.rootElement$_ZjZ);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.rootElement$pEFx);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.Document$kT);
@@ -138,11 +138,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rootElement$_ZjZ = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, 0x11d45f8a8b8L, "rootElement");
+    /*package*/ static final SContainmentLink rootElement$pEFx = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, 0x11d45f8a8b8L, "rootElement");
   }
 
   private static final class CONCEPTS {

@@ -20,39 +20,39 @@ public class MethodDocComment_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     DocCommentTextGen.docCommentStart(ctx.getPrimaryInput(), ctx);
 
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterBlockDocTag$w1);
       }
     })) {
       tgs.appendNode(item);
     }
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.param$pEic)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.param$ruNO)) {
       tgs.appendNode(item);
     }
-    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+    for (SNode item : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.ThrowsBlockDocTag$ph);
       }
     })) {
       tgs.appendNode(item);
     }
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.throwsTag$3WQN)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.throwsTag$UuyH)) {
       tgs.appendNode(item);
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$LJD$)).any(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$658s)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$Ys);
       }
     })) {
-      tgs.appendNode(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+      tgs.appendNode(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$Ys);
         }
       }).first());
     } else {
-      if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.return$3XgX) != null)) {
-        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.return$3XgX));
+      if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.return$UFdz) != null)) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.return$UFdz));
       }
     }
 
@@ -61,10 +61,10 @@ public class MethodDocComment_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
-    /*package*/ static final SContainmentLink param$pEic = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
-    /*package*/ static final SContainmentLink throwsTag$3WQN = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
-    /*package*/ static final SContainmentLink return$3XgX = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink param$ruNO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
+    /*package*/ static final SContainmentLink throwsTag$UuyH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
+    /*package*/ static final SContainmentLink return$UFdz = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
   }
 
   private static final class CONCEPTS {

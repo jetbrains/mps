@@ -12,91 +12,91 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Properties {
   public void stringProperty(SNode clazz) {
-    boolean hasName = SPropertyOperations.getString(clazz, PROPS.name$tAp1) != null;
-    String name = SPropertyOperations.getString(clazz, PROPS.name$tAp1);
-    String text = "Name is " + SPropertyOperations.getString(clazz, PROPS.name$tAp1);
-    SPropertyOperations.set(clazz, PROPS.name$tAp1, "Sample");
-    boolean ok_not_safely = SPropertyOperations.getString(clazz, PROPS.name$tAp1).equals("Sample");
-    boolean ok_safely = SPropertyOperations.hasValue(clazz, PROPS.name$tAp1, "Sample");
-    boolean ok_in_java = SPropertyOperations.getString(clazz, PROPS.name$tAp1) == "Sample";
+    boolean hasName = SPropertyOperations.getString(clazz, PROPS.name$lA7v) != null;
+    String name = SPropertyOperations.getString(clazz, PROPS.name$lA7v);
+    String text = "Name is " + SPropertyOperations.getString(clazz, PROPS.name$lA7v);
+    SPropertyOperations.set(clazz, PROPS.name$lA7v, "Sample");
+    boolean ok_not_safely = SPropertyOperations.getString(clazz, PROPS.name$lA7v).equals("Sample");
+    boolean ok_safely = SPropertyOperations.hasValue(clazz, PROPS.name$lA7v, "Sample");
+    boolean ok_in_java = SPropertyOperations.getString(clazz, PROPS.name$lA7v) == "Sample";
   }
   public void stringProperty2(SNode clazz1, SNode clazz2) {
-    SPropertyOperations.set(clazz1, PROPS.name$tAp1, "Sample");
-    SPropertyOperations.set(clazz2, PROPS.name$tAp1, SPropertyOperations.getString(clazz1, PROPS.name$tAp1));
-    boolean ok = SPropertyOperations.getString(clazz1, PROPS.name$tAp1) == SPropertyOperations.getString(clazz2, PROPS.name$tAp1);
+    SPropertyOperations.set(clazz1, PROPS.name$lA7v, "Sample");
+    SPropertyOperations.set(clazz2, PROPS.name$lA7v, SPropertyOperations.getString(clazz1, PROPS.name$lA7v));
+    boolean ok = SPropertyOperations.getString(clazz1, PROPS.name$lA7v) == SPropertyOperations.getString(clazz2, PROPS.name$lA7v);
   }
   public void stringProperty3(SNode node) {
-    SPropertyOperations.assign(node, PROPS.name$tAp1, "Class1");
-    SPropertyOperations.set(node, PROPS.name$tAp1, null);
-    SPropertyOperations.assign(node, PROPS.name$tAp1, null);
-    SPropertyOperations.remove(node, PROPS.name$tAp1);
-    SPropertyOperations.plusAssignStringProp(node, PROPS.name$tAp1, "_suffix");
+    SPropertyOperations.assign(node, PROPS.name$lA7v, "Class1");
+    SPropertyOperations.set(node, PROPS.name$lA7v, null);
+    SPropertyOperations.assign(node, PROPS.name$lA7v, null);
+    SPropertyOperations.remove(node, PROPS.name$lA7v);
+    SPropertyOperations.plusAssignStringProp(node, PROPS.name$lA7v, "_suffix");
   }
   public void booleanProperty(SNode boolConst) {
     boolean isTrue = false;
-    if (SPropertyOperations.getBoolean(boolConst, PROPS.value$WIn0)) {
+    if (SPropertyOperations.getBoolean(boolConst, PROPS.value$qt90)) {
       isTrue = true;
     }
-    boolean isTrue2 = SPropertyOperations.getBoolean(boolConst, PROPS.value$WIn0);
-    boolean isTrue3 = SPropertyOperations.getBoolean(boolConst, PROPS.value$WIn0) && true;
-    SPropertyOperations.set(boolConst, PROPS.value$WIn0, !(SPropertyOperations.getBoolean(boolConst, PROPS.value$WIn0)));
+    boolean isTrue2 = SPropertyOperations.getBoolean(boolConst, PROPS.value$qt90);
+    boolean isTrue3 = SPropertyOperations.getBoolean(boolConst, PROPS.value$qt90) && true;
+    SPropertyOperations.set(boolConst, PROPS.value$qt90, !(SPropertyOperations.getBoolean(boolConst, PROPS.value$qt90)));
   }
   public void booleanProperty2(SNode node) {
-    SPropertyOperations.assign(node, PROPS.value$WIn0, true);
-    SPropertyOperations.remove(node, PROPS.value$WIn0);
+    SPropertyOperations.assign(node, PROPS.value$qt90, true);
+    SPropertyOperations.remove(node, PROPS.value$qt90);
   }
   public void integerProperty(SNode intConst) {
-    int i = SPropertyOperations.getInteger(intConst, PROPS.value$ZeO0);
-    int i2 = SPropertyOperations.getInteger(intConst, PROPS.value$ZeO0) + 10;
-    if (SPropertyOperations.getInteger(intConst, PROPS.value$ZeO0) > 100) {
-      SPropertyOperations.set(intConst, PROPS.value$ZeO0, SPropertyOperations.getInteger(intConst, PROPS.value$ZeO0) - 100);
+    int i = SPropertyOperations.getInteger(intConst, PROPS.value$Cbc0);
+    int i2 = SPropertyOperations.getInteger(intConst, PROPS.value$Cbc0) + 10;
+    if (SPropertyOperations.getInteger(intConst, PROPS.value$Cbc0) > 100) {
+      SPropertyOperations.set(intConst, PROPS.value$Cbc0, SPropertyOperations.getInteger(intConst, PROPS.value$Cbc0) - 100);
     }
   }
   public void integerProperty2(SNode node) {
-    SPropertyOperations.assign(node, PROPS.value$ZeO0, 10);
-    SPropertyOperations.remove(node, PROPS.value$ZeO0);
-    BLOperations.plusAssign(SPropertyOperations.intPropRef(node, PROPS.value$ZeO0), 10);
-    BLOperations.minusAssign(SPropertyOperations.intPropRef(node, PROPS.value$ZeO0), 10);
+    SPropertyOperations.assign(node, PROPS.value$Cbc0, 10);
+    SPropertyOperations.remove(node, PROPS.value$Cbc0);
+    BLOperations.plusAssign(SPropertyOperations.intPropRef(node, PROPS.value$Cbc0), 10);
+    BLOperations.minusAssign(SPropertyOperations.intPropRef(node, PROPS.value$Cbc0), 10);
   }
   public void enumProperty_string(SNode link) {
-    String s = SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$$E8z));
-    boolean ok1 = SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$$E8z)) == s;
-    SPropertyOperations.setEnum(link, PROPS.sourceCardinality$$E8z, 0xfc6f3944c5L, "_0__n");
-    boolean ok2 = SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$$E8z), 0xfc6f3944c5L);
+    String s = SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$Kq8X));
+    boolean ok1 = SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$Kq8X)) == s;
+    SPropertyOperations.setEnum(link, PROPS.sourceCardinality$Kq8X, 0xfc6f3944c5L, "_0__n");
+    boolean ok2 = SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$Kq8X), 0xfc6f3944c5L);
   }
   public void enumProperty_string2(SNode link1, SNode link2) {
-    if (SPropertyOperations.getEnum(link1, PROPS.metaClass$tHD7) != SPropertyOperations.getEnum(link2, PROPS.metaClass$tHD7)) {
-      SPropertyOperations.setEnum(link1, PROPS.metaClass$tHD7, SPropertyOperations.getEnum(link2, PROPS.metaClass$tHD7));
+    if (SPropertyOperations.getEnum(link1, PROPS.metaClass$p6Up) != SPropertyOperations.getEnum(link2, PROPS.metaClass$p6Up)) {
+      SPropertyOperations.setEnum(link1, PROPS.metaClass$p6Up, SPropertyOperations.getEnum(link2, PROPS.metaClass$p6Up));
     }
-    boolean ok1 = SPropertyOperations.getEnum(link1, PROPS.metaClass$tHD7) == SPropertyOperations.getEnum(link2, PROPS.metaClass$tHD7);
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(link1, PROPS.metaClass$tHD7), 0xfc6f4e95b9L)) {
-      boolean ok2 = SEnumOperations.isMember(SPropertyOperations.getEnum(link2, PROPS.metaClass$tHD7), 0xfc6f4e95b9L);
+    boolean ok1 = SPropertyOperations.getEnum(link1, PROPS.metaClass$p6Up) == SPropertyOperations.getEnum(link2, PROPS.metaClass$p6Up);
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(link1, PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
+      boolean ok2 = SEnumOperations.isMember(SPropertyOperations.getEnum(link2, PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
     }
   }
   public void enumProperty_string3(SNode link1, SNode link2) {
-    SPropertyOperations.assignEnum(link1, PROPS.metaClass$tHD7, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass"), 0xfc6f4e95b9L, "aggregation"));
-    SPropertyOperations.assignEnum(link1, PROPS.metaClass$tHD7, SPropertyOperations.getEnum(link2, PROPS.metaClass$tHD7));
-    SPropertyOperations.setEnum(link1, PROPS.metaClass$tHD7, SPropertyOperations.getEnum(link2, PROPS.metaClass$tHD7));
+    SPropertyOperations.assignEnum(link1, PROPS.metaClass$p6Up, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass"), 0xfc6f4e95b9L, "aggregation"));
+    SPropertyOperations.assignEnum(link1, PROPS.metaClass$p6Up, SPropertyOperations.getEnum(link2, PROPS.metaClass$p6Up));
+    SPropertyOperations.setEnum(link1, PROPS.metaClass$p6Up, SPropertyOperations.getEnum(link2, PROPS.metaClass$p6Up));
   }
   public void enumProperty_integer(SNode cellModel) {
-    int i = ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, "jetbrains.mps.lang.editor.structure.FocusPolicy"))).indexOf(SPropertyOperations.getEnum(cellModel, PROPS.attractsFocus$V6CQ));
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(cellModel, PROPS.attractsFocus$V6CQ), 0x1075079c86cL)) {
-      SPropertyOperations.setEnum(cellModel, PROPS.attractsFocus$V6CQ, 0x107507a7b34L, "firstEditableCell");
+    int i = ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, "jetbrains.mps.lang.editor.structure.FocusPolicy"))).indexOf(SPropertyOperations.getEnum(cellModel, PROPS.attractsFocus$CdMa));
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(cellModel, PROPS.attractsFocus$CdMa), 0x1075079c86cL)) {
+      SPropertyOperations.setEnum(cellModel, PROPS.attractsFocus$CdMa, 0x107507a7b34L, "firstEditableCell");
     }
   }
   public void enumProperty_integer2(SNode cellModel) {
-    SPropertyOperations.assignEnum(cellModel, PROPS.attractsFocus$V6CQ, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, "jetbrains.mps.lang.editor.structure.FocusPolicy"), 0x107507a4fafL, "attractsFocus"));
-    SPropertyOperations.assignEnum(cellModel, PROPS.attractsFocus$V6CQ, SPropertyOperations.getEnum(cellModel, PROPS.attractsFocus$V6CQ));
-    SPropertyOperations.setEnum(cellModel, PROPS.attractsFocus$V6CQ, SPropertyOperations.getEnum(cellModel, PROPS.attractsFocus$V6CQ));
-    SPropertyOperations.setEnum(cellModel, PROPS.attractsFocus$V6CQ, ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, "jetbrains.mps.lang.editor.structure.FocusPolicy"))).getElement(10));
+    SPropertyOperations.assignEnum(cellModel, PROPS.attractsFocus$CdMa, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, "jetbrains.mps.lang.editor.structure.FocusPolicy"), 0x107507a4fafL, "attractsFocus"));
+    SPropertyOperations.assignEnum(cellModel, PROPS.attractsFocus$CdMa, SPropertyOperations.getEnum(cellModel, PROPS.attractsFocus$CdMa));
+    SPropertyOperations.setEnum(cellModel, PROPS.attractsFocus$CdMa, SPropertyOperations.getEnum(cellModel, PROPS.attractsFocus$CdMa));
+    SPropertyOperations.setEnum(cellModel, PROPS.attractsFocus$CdMa, ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1075079c80dL, "jetbrains.mps.lang.editor.structure.FocusPolicy"))).getElement(10));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
-    /*package*/ static final SProperty sourceCardinality$$E8z = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty attractsFocus$V6CQ = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x1074c7a5760L, "attractsFocus");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty sourceCardinality$Kq8X = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty attractsFocus$CdMa = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x1074c7a5760L, "attractsFocus");
   }
 }

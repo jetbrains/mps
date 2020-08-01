@@ -131,7 +131,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         SNode cmd = SNodeFactoryOperations.createNewNode(CONCEPTS.IncompleteCommand$Ck, null);
         SNodeOperations.replaceWithAnother(_context.getNode(), cmd);
-        SLinkOperations.setTarget(cmd, LINKS.lineStyle$R$Bp, createdNode);
+        SLinkOperations.setTarget(cmd, LINKS.lineStyle$UJ57, createdNode);
         _context.getEditorContext().selectWRTFocusPolicy(cmd);
       }
 
@@ -164,6 +164,6 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lineStyle$R$Bp = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
+    /*package*/ static final SContainmentLink lineStyle$UJ57 = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
   }
 }

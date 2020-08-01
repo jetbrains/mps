@@ -19,7 +19,7 @@ public class typeOf_Link_SetTargetOperation_InferenceRule extends AbstractInfere
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // checking 
-    SNode parameter = SLinkOperations.getTarget(op, LINKS.linkTarget$RxOw);
+    SNode parameter = SLinkOperations.getTarget(op, LINKS.linkTarget$Torw);
     if ((parameter != null)) {
       final SNode ExpectedType_typevar_1206101371703 = typeCheckingContext.createNewRuntimeTypesVariable();
       RulesUtil.equate_inputNodeType(typeCheckingContext, op, typeCheckingContext.getRepresentative(ExpectedType_typevar_1206101371703));
@@ -34,7 +34,7 @@ public class typeOf_Link_SetTargetOperation_InferenceRule extends AbstractInfere
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225406438063", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225406429482", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.linkTarget$RxOw), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225406448709", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225406429482", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(op, LINKS.linkTarget$Torw), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225406448709", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -48,7 +48,7 @@ public class typeOf_Link_SetTargetOperation_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink linkTarget$RxOw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1099887af60L, 0x1099887af61L, "linkTarget");
+    /*package*/ static final SContainmentLink linkTarget$Torw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1099887af60L, 0x1099887af61L, "linkTarget");
   }
 
   private static final class CONCEPTS {

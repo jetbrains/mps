@@ -127,7 +127,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     final Set<SNode> classifiers = SetSequence.fromSet(new HashSet<SNode>());
     SetSequence.fromSet(classifiers).addSequence(ListSequence.fromList(types.value).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.classifier$pQ_R);
+        return SLinkOperations.getTarget(it, LINKS.classifier$xslD);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -205,7 +205,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

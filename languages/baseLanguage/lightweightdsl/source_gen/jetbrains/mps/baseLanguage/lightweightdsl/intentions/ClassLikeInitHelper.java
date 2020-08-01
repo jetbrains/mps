@@ -25,7 +25,7 @@ public class ClassLikeInitHelper {
   public static void init(final SNode node, SNode descriptor, final SModel futureModel) {
     if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AutoInitDSLClass$sF))) {
       AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation")));
-      SLinkOperations.setTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)), LINKS.descriptor$Zoot, descriptor);
+      SLinkOperations.setTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)), LINKS.descriptor$GNQ3, descriptor);
     }
     Sequence.fromIterable(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descriptor)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -33,19 +33,19 @@ public class ClassLikeInitHelper {
         if ((newMember == null)) {
           return;
         }
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$oYX5)).addElement(newMember);
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).addElement(newMember);
       }
     });
     DSLDescriptor__BehaviorDescriptor.initializeInstance_id2VRROcY8CaS.invoke(descriptor, node, futureModel);
   }
 
   public static void renew(final SNode node, SNode descriptor) {
-    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$oYX5), CONCEPTS.MemberPlaceholder$Wb)).toListSequence().visitAll(new IVisitor<SNode>() {
+    Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$6v_r), CONCEPTS.MemberPlaceholder$Wb)).toListSequence().visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         SNodeOperations.deleteNode(it);
       }
     });
-    final SNode first = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$oYX5)).first();
+    final SNode first = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).first();
     Sequence.fromIterable(DSLDescriptor__BehaviorDescriptor.getClassLikeMembers_id2iCqkkxuhoj.invoke(descriptor)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyMemberDescriptor$HD));
@@ -58,7 +58,7 @@ public class ClassLikeInitHelper {
         }
 
         if ((first == null)) {
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$oYX5)).addElement(newMember);
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).addElement(newMember);
         } else {
           SNodeOperations.insertPrevSiblingChild(first, newMember);
         }
@@ -74,7 +74,7 @@ public class ClassLikeInitHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$Zoot = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SReferenceLink descriptor$GNQ3 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

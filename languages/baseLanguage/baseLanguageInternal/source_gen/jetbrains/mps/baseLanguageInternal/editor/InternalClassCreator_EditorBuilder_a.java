@@ -94,7 +94,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new typeSingleRoleHandler_xdoz7h_b0(myNode, LINKS.type$Y1cW, getEditorContext());
+    SingleRoleCellProvider provider = new typeSingleRoleHandler_xdoz7h_b0(myNode, LINKS.type$2_h4, getEditorContext());
     return provider.createCell();
   }
   private static class typeSingleRoleHandler_xdoz7h_b0 extends SingleRoleCellProvider {
@@ -114,8 +114,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.type$Y1cW, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.type$Y1cW, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.type$2_h4, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.type$2_h4, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -127,13 +127,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.type$Y1cW);
+        editorCell.setSRole(LINKS.type$2_h4);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.type$Y1cW));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.type$2_h4));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_type");
@@ -160,7 +160,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.fqClassName$Y1bv;
+      final SProperty property = PROPS.fqClassName$2$$1;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no fqClassName>");
@@ -215,7 +215,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.parameter$Y1bY;
+      return LINKS.parameter$2$N2;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Type$IG;
@@ -228,7 +228,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(parameterListHandler_xdoz7h_f0.this.getNode(), LINKS.parameter$Y1bY));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(parameterListHandler_xdoz7h_f0.this.getNode(), LINKS.parameter$2$N2));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -322,7 +322,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.actualArgument$Y1ct;
+      return LINKS.actualArgument$2_23;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Expression$TP;
@@ -335,7 +335,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(actualArgumentListHandler_xdoz7h_b7a.this.getNode(), LINKS.actualArgument$Y1ct));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(actualArgumentListHandler_xdoz7h_b7a.this.getNode(), LINKS.actualArgument$2_23));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_5();
@@ -413,13 +413,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$Y1cW = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50935L, "type");
-    /*package*/ static final SContainmentLink parameter$Y1bY = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50933L, "parameter");
-    /*package*/ static final SContainmentLink actualArgument$Y1ct = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50934L, "actualArgument");
+    /*package*/ static final SContainmentLink type$2_h4 = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50935L, "type");
+    /*package*/ static final SContainmentLink parameter$2$N2 = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50933L, "parameter");
+    /*package*/ static final SContainmentLink actualArgument$2_23 = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50934L, "actualArgument");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fqClassName$Y1bv = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50932L, "fqClassName");
+    /*package*/ static final SProperty fqClassName$2$$1 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0xf46f1c42ee50930L, 0xf46f1c42ee50932L, "fqClassName");
   }
 
   private static final class CONCEPTS {

@@ -122,8 +122,8 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
   protected SNode createEvaluatorNode() {
     // FIXME remove Evaluator concept as it's no longer in use (has been part of EvaluationContainer.createEvaluatorNode(), recently removed) 
     SNode evaluatorConcept = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept"));
-    SLinkOperations.setNewChild(evaluatorConcept, LINKS.evaluatedStatements$MCTF, null);
-    SPropertyOperations.set(evaluatorConcept, PROPS.isShowContext$IspU, myIsInWatch);
+    SLinkOperations.setNewChild(evaluatorConcept, LINKS.evaluatedStatements$xNVP, null);
+    SPropertyOperations.set(evaluatorConcept, PROPS.isShowContext$vKz6, myIsInWatch);
     return evaluatorConcept;
   }
 
@@ -141,8 +141,8 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       Map<String, VariableDescription> contextVariables = myEvaluationContext.getVariables(createClassifierType);
 
       Map<String, SNode> declaredVariables = MapSequence.fromMap(new LinkedHashMap<String, SNode>(16, (float) 0.75, false));
-      for (SNode var : ListSequence.fromList(SLinkOperations.getChildren(evaluatorConcept, LINKS.variables$IsnY))) {
-        MapSequence.fromMap(declaredVariables).put(SPropertyOperations.getString(var, PROPS.lowLevelName$A23$), var);
+      for (SNode var : ListSequence.fromList(SLinkOperations.getChildren(evaluatorConcept, LINKS.variables$vJB2))) {
+        MapSequence.fromMap(declaredVariables).put(SPropertyOperations.getString(var, PROPS.lowLevelName$qZIs), var);
       }
 
       final Set<SNode> foundVars = SetSequence.fromSet(new HashSet<SNode>());
@@ -155,7 +155,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
           // we should update variables if we are first time here or if we do not show context (i.e. in evaluation) 
           if (lowLevelVarNode == null) {
             lowLevelVarNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariable"));
-            ListSequence.fromList(SLinkOperations.getChildren(evaluatorConcept, LINKS.variables$IsnY)).addElement(lowLevelVarNode);
+            ListSequence.fromList(SLinkOperations.getChildren(evaluatorConcept, LINKS.variables$vJB2)).addElement(lowLevelVarNode);
             MapSequence.fromMap(declaredVariables).put(name, lowLevelVarNode);
           }
           MapSequence.fromMap(contextVariables).get(variable).updateLowLevelVariable(lowLevelVarNode);
@@ -167,15 +167,15 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       // now mark vars which are currently out of scope 
       Sequence.fromIterable(MapSequence.fromMap(declaredVariables).values()).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.set(it, PROPS.isOutOfScope$Tu$n, !(SetSequence.fromSet(foundVars).contains(it)));
+          SPropertyOperations.set(it, PROPS.isOutOfScope$PNB9, !(SetSequence.fromSet(foundVars).contains(it)));
         }
       });
 
       if (needUpdateVariables()) {
         // create static context type 
-        SLinkOperations.setTarget(evaluatorConcept, LINKS.contextNode$Gl6w, myEvaluationContext.getStaticContextType(createClassifierType));
+        SLinkOperations.setTarget(evaluatorConcept, LINKS.contextNode$ue9w, myEvaluationContext.getStaticContextType(createClassifierType));
         // create this 
-        SLinkOperations.setTarget(evaluatorConcept, LINKS.thisNode$Gl5y, myEvaluationContext.getThisClassifierType(createClassifierType));
+        SLinkOperations.setTarget(evaluatorConcept, LINKS.thisNode$udFu, myEvaluationContext.getThisClassifierType(createClassifierType));
       }
       // todo highlight when this type or static context type are invalid 
     } catch (InvalidStackFrameException e) {
@@ -207,7 +207,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       return null;
     }
     SNode classifierType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-    SLinkOperations.setTarget(classifierType, LINKS.classifier$pQ_R, SNodeOperations.cast(unit, CONCEPTS.Classifier$hJ));
+    SLinkOperations.setTarget(classifierType, LINKS.classifier$xslD, SNodeOperations.cast(unit, CONCEPTS.Classifier$hJ));
     return classifierType;
   }
   public SNode findUnit(final String unitName) {
@@ -257,7 +257,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       @Override
       protected SNode createEvaluatorNode() {
         SNode newEvaluator = (SNode) CopyUtil.copyAndPreserveId(reference.resolve(myDebuggerRepository), true);
-        SPropertyOperations.set(newEvaluator, PROPS.isShowContext$IspU, isInWatch);
+        SPropertyOperations.set(newEvaluator, PROPS.isShowContext$vKz6, isInWatch);
         return newEvaluator;
       }
     };
@@ -300,15 +300,15 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     }
     @Override
     public SNode findVariable(final SReference variableReference) {
-      SNode matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$IsnY)).findFirst(new IWhereFilter<SNode>() {
+      SNode matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$vJB2)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode variable) {
-          return Objects.equals(SNodePointer.deserialize(SPropertyOperations.getString(variable, PROPS.highLevelNodeId$zEt$)), SNodeOperations.getPointer(SLinkOperations.getTargetNode(variableReference)));
+          return Objects.equals(SNodePointer.deserialize(SPropertyOperations.getString(variable, PROPS.highLevelNodeId$h$ks)), SNodeOperations.getPointer(SLinkOperations.getTargetNode(variableReference)));
         }
       });
       if (matchingVar == null) {
-        matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$IsnY)).findFirst(new IWhereFilter<SNode>() {
+        matchingVar = ListSequence.fromList(SLinkOperations.getChildren(myEvaluatorNode, LINKS.variables$vJB2)).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode variable) {
-            return Objects.equals(SPropertyOperations.getString(variable, PROPS.name$tAp1), SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTargetNode(variableReference), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1));
+            return Objects.equals(SPropertyOperations.getString(variable, PROPS.name$lA7v), SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTargetNode(variableReference), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v));
           }
         });
       }
@@ -317,7 +317,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     @Override
     public SNode createVariableReference(SNode variable) {
       SNode newVariableReference = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7d9a547f857a394bL, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariableReference"));
-      SLinkOperations.setTarget(newVariableReference, LINKS.baseVariableDeclaration$$Ls0, variable);
+      SLinkOperations.setTarget(newVariableReference, LINKS.baseVariableDeclaration$NW$0, variable);
       return newVariableReference;
     }
   }
@@ -331,19 +331,19 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink evaluatedStatements$MCTF = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x10093bb8b0669700L, "evaluatedStatements");
-    /*package*/ static final SContainmentLink variables$IsnY = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c797L, "variables");
-    /*package*/ static final SContainmentLink contextNode$Gl6w = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23615L, "contextNode");
-    /*package*/ static final SContainmentLink thisNode$Gl5y = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23613L, "thisNode");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SReferenceLink baseVariableDeclaration$$Ls0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
+    /*package*/ static final SContainmentLink evaluatedStatements$xNVP = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x10093bb8b0669700L, "evaluatedStatements");
+    /*package*/ static final SContainmentLink variables$vJB2 = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c797L, "variables");
+    /*package*/ static final SContainmentLink contextNode$ue9w = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23615L, "contextNode");
+    /*package*/ static final SContainmentLink thisNode$udFu = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23613L, "thisNode");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink baseVariableDeclaration$NW$0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isShowContext$IspU = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c79bL, "isShowContext");
-    /*package*/ static final SProperty lowLevelName$A23$ = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x4db8c07036eb94eeL, "lowLevelName");
-    /*package*/ static final SProperty isOutOfScope$Tu$n = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x554b4e03d5950431L, "isOutOfScope");
-    /*package*/ static final SProperty highLevelNodeId$zEt$ = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x6db8b4aef007e84fL, "highLevelNodeId");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isShowContext$vKz6 = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c79bL, "isShowContext");
+    /*package*/ static final SProperty lowLevelName$qZIs = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x4db8c07036eb94eeL, "lowLevelName");
+    /*package*/ static final SProperty isOutOfScope$PNB9 = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x554b4e03d5950431L, "isOutOfScope");
+    /*package*/ static final SProperty highLevelNodeId$h$ks = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x6db8b4aef007e84fL, "highLevelNodeId");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -37,78 +37,78 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$f2Hs), PROPS.height$aNp2);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$ik0$), PROPS.height$eT7Y);
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$f2Hs), PROPS.width$aNoz);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$ik0$), PROPS.width$eSSX);
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
-    String path = SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$f2Hs), PROPS.file$s3gA);
+    String path = SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$ik0$), PROPS.file$__2q);
     int index = path.lastIndexOf("/");
     return "images" + path.substring(index);
 
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
-    if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.language$5AFb)) && !(SPropertyOperations.getString(_context.getNode(), PROPS.language$5AFb).equals("en"))) {
-      return "tips_" + SPropertyOperations.getString(_context.getNode(), PROPS.language$5AFb) + "/" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), PROPS.name$tAp1);
+    if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.language$HIUl)) && !(SPropertyOperations.getString(_context.getNode(), PROPS.language$HIUl).equals("en"))) {
+      return "tips_" + SPropertyOperations.getString(_context.getNode(), PROPS.language$HIUl) + "/" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), PROPS.name$lA7v);
     } else {
-      return "tips/" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), PROPS.name$tAp1);
+      return "tips/" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), PROPS.name$lA7v);
     }
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
-    if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.language$5AFb)) && !(SPropertyOperations.getString(_context.getNode(), PROPS.language$5AFb).equals("en"))) {
-      return "${tips_home}/tips_" + SPropertyOperations.getString(_context.getNode(), PROPS.language$5AFb) + "/" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks_Tip$nU, false, false), PROPS.name$tAp1) + ".xml";
+    if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.language$HIUl)) && !(SPropertyOperations.getString(_context.getNode(), PROPS.language$HIUl).equals("en"))) {
+      return "${tips_home}/tips_" + SPropertyOperations.getString(_context.getNode(), PROPS.language$HIUl) + "/" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks_Tip$nU, false, false), PROPS.name$lA7v) + ".xml";
     } else {
-      return "${tips_home}/tips/" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks_Tip$nU, false, false), PROPS.name$tAp1) + ".xml";
+      return "${tips_home}/tips/" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks_Tip$nU, false, false), PROPS.name$lA7v) + ".xml";
     }
   }
   public static Object propertyMacro_GetValue_2_2(final PropertyMacroContext _context) {
     SNode ancestor = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks$dS, false, false);
 
-    return MPSTipsAndTricks__BehaviorDescriptor.getLocatedDirectory_id4Y6KxqQN2O7.invoke(ancestor, SPropertyOperations.getString(_context.getNode(), PROPS.language$5AFb)) + "/" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks_Tip$nU, false, false), PROPS.name$tAp1) + ".html";
+    return MPSTipsAndTricks__BehaviorDescriptor.getLocatedDirectory_id4Y6KxqQN2O7.invoke(ancestor, SPropertyOperations.getString(_context.getNode(), PROPS.language$HIUl)) + "/" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks_Tip$nU, false, false), PROPS.name$lA7v) + ".html";
   }
   public static Object propertyMacro_GetValue_2_3(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$f2Hs), PROPS.file$s3gA);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$ik0$), PROPS.file$__2q);
   }
   public static Object propertyMacro_GetValue_2_4(final PropertyMacroContext _context) {
-    return MPSTipsAndTricks__BehaviorDescriptor.getLocatedDirectory_id4Y6KxqQN2O7.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks$dS, false, false), SPropertyOperations.getString(_context.getNode(), PROPS.language$5AFb)) + "/images";
+    return MPSTipsAndTricks__BehaviorDescriptor.getLocatedDirectory_id4Y6KxqQN2O7.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks$dS, false, false), SPropertyOperations.getString(_context.getNode(), PROPS.language$HIUl)) + "/images";
   }
   public static Object propertyMacro_GetValue_2_5(final PropertyMacroContext _context) {
     return MPSTipsAndTricks__BehaviorDescriptor.getPath_id4Y6KxqQL3ag.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks$dS, false, false)) + "/tips/css";
   }
   public static Object propertyMacro_GetValue_2_6(final PropertyMacroContext _context) {
-    return MPSTipsAndTricks__BehaviorDescriptor.getLocatedDirectory_id4Y6KxqQN2O7.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks$dS, false, false), SPropertyOperations.getString(_context.getNode(), PROPS.language$5AFb)) + "/css";
+    return MPSTipsAndTricks__BehaviorDescriptor.getLocatedDirectory_id4Y6KxqQN2O7.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MPSTipsAndTricks$dS, false, false), SPropertyOperations.getString(_context.getNode(), PROPS.language$HIUl)) + "/css";
   }
   public static Object propertyMacro_GetValue_2_7(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
-    return isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$f2Hs), PROPS.height$aNp2));
+    return isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$ik0$), PROPS.height$eT7Y));
   }
   public static boolean ifMacro_Condition_1_1(final IfMacroContext _context) {
-    return isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$f2Hs), PROPS.width$aNoz));
+    return isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$ik0$), PROPS.width$eSSX));
   }
   public static boolean ifMacro_Condition_1_2(final IfMacroContext _context) {
-    return isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$f2Hs), PROPS.file$s3gA));
+    return isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MPSTipsAndTricks_Tip$nU), LINKS.image$ik0$), PROPS.file$__2q));
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.element$bOEE);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.element$IwEm);
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.collectMany(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$E5e2), LINKS.text$SKy8);
+    return SLinkOperations.collectMany(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$oxMY), LINKS.text$vwxS);
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.collectMany(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$E5e2)).where(new IWhereFilter<SNode>() {
+    return SLinkOperations.collectMany(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$oxMY)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.image$f2Hs) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.image$f2Hs), PROPS.file$s3gA));
+        return (SLinkOperations.getTarget(it, LINKS.image$ik0$) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.image$ik0$), PROPS.file$__2q));
       }
-    }), LINKS.text$SKy8);
+    }), LINKS.text$vwxS);
   }
   public static Iterable<SNode> sourceNodesQuery_2_2(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.collectMany(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$E5e2), LINKS.text$SKy8);
+    return SLinkOperations.collectMany(SLinkOperations.getChildren(_context.getNode(), LINKS.tips$oxMY), LINKS.text$vwxS);
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
@@ -256,17 +256,17 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink image$f2Hs = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L, 0x1377553280f7a6a7L, "image");
-    /*package*/ static final SContainmentLink element$bOEE = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf38a2a2L, "element");
-    /*package*/ static final SContainmentLink tips$E5e2 = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, 0x5ea1926fdf2fb911L, "tips");
-    /*package*/ static final SContainmentLink text$SKy8 = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L, 0x5ea1926fdf32687eL, "text");
+    /*package*/ static final SContainmentLink image$ik0$ = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L, 0x1377553280f7a6a7L, "image");
+    /*package*/ static final SContainmentLink element$IwEm = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf38a2a2L, "element");
+    /*package*/ static final SContainmentLink tips$oxMY = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, 0x5ea1926fdf2fb911L, "tips");
+    /*package*/ static final SContainmentLink text$vwxS = MetaAdapterFactory.getContainmentLink(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2fb910L, 0x5ea1926fdf32687eL, "text");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty height$aNp2 = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f5dba3L, "height");
-    /*package*/ static final SProperty width$aNoz = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f5dba2L, "width");
-    /*package*/ static final SProperty file$s3gA = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f17f4bL, "file");
-    /*package*/ static final SProperty language$5AFb = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf40725aL, "language");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty height$eT7Y = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f5dba3L, "height");
+    /*package*/ static final SProperty width$eSSX = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f5dba2L, "width");
+    /*package*/ static final SProperty file$__2q = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x1377553280f03b1dL, 0x1377553280f17f4bL, "file");
+    /*package*/ static final SProperty language$HIUl = MetaAdapterFactory.getProperty(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf32687cL, 0x5ea1926fdf40725aL, "language");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -21,7 +21,7 @@ public class typeof_ParenthesisExpression_InferenceRule extends AbstractInferenc
     {
       SNode _nodeToCheck_1029348928467 = parenthesisExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "8899433705215955377", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "8899433705215952418", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(parenthesisExpression, LINKS.expression$1ODw), "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "8899433705215955382", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "8899433705215952418", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(parenthesisExpression, LINKS.expression$Sw6w), "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "8899433705215955382", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_ParenthesisExpression_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$1ODw = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, 0x3735fdad52687b5aL, "expression");
+    /*package*/ static final SContainmentLink expression$Sw6w = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, 0x3735fdad52687b5aL, "expression");
   }
 
   private static final class CONCEPTS {

@@ -22,11 +22,11 @@ public class check_FinalVariableReferenceNotAssigned_NonTypesystemRule extends A
   public check_FinalVariableReferenceNotAssigned_NonTypesystemRule() {
   }
   public void applyRule(final SNode variableReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6), PROPS.isFinal$hIht)) {
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), PROPS.isFinal$_qt3)) {
       if (!(VariableReferenceUtil.isUninitializedOrBad(variableReference))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Cannot assign a value to final variable '" + SPropertyOperations.getString(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6), PROPS.name$tAp1) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4705425356437995912", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Cannot assign a value to final variable '" + SPropertyOperations.getString(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), PROPS.name$lA7v) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4705425356437995912", null, errorTarget);
         }
       }
     }
@@ -42,12 +42,12 @@ public class check_FinalVariableReferenceNotAssigned_NonTypesystemRule extends A
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class CONCEPTS {

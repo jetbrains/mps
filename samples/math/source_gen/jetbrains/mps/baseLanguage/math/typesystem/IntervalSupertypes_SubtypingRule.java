@@ -21,7 +21,7 @@ public class IntervalSupertypes_SubtypingRule extends SubtypingRule_Runtime impl
   public IntervalSupertypes_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode intervalType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_7ws3t7_a0a1(SLinkOperations.getTarget(intervalType, LINKS.elementType$AkW0));
+    return _quotation_createNode_7ws3t7_a0a1(SLinkOperations.getTarget(intervalType, LINKS.elementType$$940));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.IntervalType$i8;
@@ -46,7 +46,7 @@ public class IntervalSupertypes_SubtypingRule extends SubtypingRule_Runtime impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$AkW0 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb8483972L, 0x11fb8483973L, "elementType");
+    /*package*/ static final SContainmentLink elementType$$940 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb8483972L, 0x11fb8483973L, "elementType");
   }
 
   private static final class CONCEPTS {

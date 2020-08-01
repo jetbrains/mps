@@ -36,7 +36,7 @@ public class TestVariableReference_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$a6$0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$Tbs0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -55,9 +55,9 @@ public class TestVariableReference_Constraints extends BaseConstraintsDescriptor
             List<SNode> result = new ArrayList<SNode>();
             Set<String> names = new HashSet<String>();
             for (SNode var : variables) {
-              if (!(names.contains(SPropertyOperations.getString(var, PROPS.name$tAp1)))) {
+              if (!(names.contains(SPropertyOperations.getString(var, PROPS.name$lA7v)))) {
                 ListSequence.fromList(result).addElement(var);
-                names.add(SPropertyOperations.getString(var, PROPS.name$tAp1));
+                names.add(SPropertyOperations.getString(var, PROPS.name$lA7v));
               }
             }
             return ListScope.forResolvableElements(result);
@@ -78,10 +78,10 @@ public class TestVariableReference_Constraints extends BaseConstraintsDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$a6$0 = MetaAdapterFactory.getReferenceLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x78d6da5e3799eb11L, 0x78d6da5e3799eb12L, "declaration");
+    /*package*/ static final SReferenceLink declaration$Tbs0 = MetaAdapterFactory.getReferenceLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x78d6da5e3799eb11L, 0x78d6da5e3799eb12L, "declaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

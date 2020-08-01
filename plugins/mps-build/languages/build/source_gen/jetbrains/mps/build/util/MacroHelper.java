@@ -39,14 +39,14 @@ public final class MacroHelper {
     this.context = context;
   }
   public void init() {
-    for (SNode m : SLinkOperations.getChildren(project, LINKS.macros$tpFt)) {
-      if (usedNames.contains(SPropertyOperations.getString(m, PROPS.name$tAp1))) {
+    for (SNode m : SLinkOperations.getChildren(project, LINKS.macros$fs33)) {
+      if (usedNames.contains(SPropertyOperations.getString(m, PROPS.name$lA7v))) {
         context.reportProblem("duplicate macro name", m);
       }
-      add(m, null, ((boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(m) ? SPropertyOperations.getString(project, PROPS.name$tAp1) + "." + SPropertyOperations.getString(m, PROPS.name$tAp1) : null));
+      add(m, null, ((boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(m) ? SPropertyOperations.getString(project, PROPS.name$lA7v) + "." + SPropertyOperations.getString(m, PROPS.name$lA7v) : null));
     }
-    for (SNode dep : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$tpR5), CONCEPTS.BuildProjectDependency$Ug)) {
-      SNode depProject = SLinkOperations.getTarget(dep, LINKS.script$mz1x);
+    for (SNode dep : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$fxFr), CONCEPTS.BuildProjectDependency$Ug)) {
+      SNode depProject = SLinkOperations.getTarget(dep, LINKS.script$UXIZ);
       MacroHelper depHelper = context.getMacros(depProject);
       if (depHelper == null) {
         continue;
@@ -63,7 +63,7 @@ public final class MacroHelper {
         }
         String depprefix = depPrefixes.get(dep);
         if (depprefix == null) {
-          depprefix = makeUnique("import." + SPropertyOperations.getString(SLinkOperations.getTarget(dep, LINKS.script$mz1x), PROPS.name$tAp1), usedPrefixes);
+          depprefix = makeUnique("import." + SPropertyOperations.getString(SLinkOperations.getTarget(dep, LINKS.script$UXIZ), PROPS.name$lA7v), usedPrefixes);
           depPrefixes.put(dep, depprefix);
         }
         add(m, depprefix + "." + exportName, exportName);
@@ -76,7 +76,7 @@ public final class MacroHelper {
       context.reportProblem("macro is defined outside of the project", macro);
       return;
     }
-    String name = makeUnique((macroProject == project ? SPropertyOperations.getString(macro, PROPS.name$tAp1) : macroProject + "." + SPropertyOperations.getString(macro, PROPS.name$tAp1)), usedNames);
+    String name = makeUnique((macroProject == project ? SPropertyOperations.getString(macro, PROPS.name$lA7v) : macroProject + "." + SPropertyOperations.getString(macro, PROPS.name$lA7v)), usedNames);
     macroToName.put(macro, name);
     availableMacros.add(macro);
     if (importName != null) {
@@ -99,7 +99,7 @@ public final class MacroHelper {
     return availableMacros;
   }
   public Iterable<SNode> getVarsContainers() {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(this.project, LINKS.dependencies$tpR5), CONCEPTS.BuildProjectDependency$Ug)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(this.project, LINKS.dependencies$fxFr), CONCEPTS.BuildProjectDependency$Ug)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return depPrefixes.containsKey(it);
       }
@@ -132,7 +132,7 @@ public final class MacroHelper {
     return depPrefixes.get(context.getOriginalDep(dep));
   }
   public String getProjectName() {
-    return SPropertyOperations.getString(project, PROPS.name$tAp1);
+    return SPropertyOperations.getString(project, PROPS.name$lA7v);
   }
   public void report(String message, SNode node) {
     context.reportProblem(message, node);
@@ -181,13 +181,13 @@ public final class MacroHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink macros$tpFt = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
-    /*package*/ static final SContainmentLink dependencies$tpR5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
-    /*package*/ static final SReferenceLink script$mz1x = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+    /*package*/ static final SContainmentLink macros$fs33 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SContainmentLink dependencies$fxFr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SReferenceLink script$UXIZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

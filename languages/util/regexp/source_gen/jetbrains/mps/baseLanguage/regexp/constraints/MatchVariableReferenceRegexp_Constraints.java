@@ -32,7 +32,7 @@ public class MatchVariableReferenceRegexp_Constraints extends BaseConstraintsDes
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.match$3_90, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.match$IZn0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -74,6 +74,6 @@ public class MatchVariableReferenceRegexp_Constraints extends BaseConstraintsDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink match$3_90 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118e0a1c55L, 0x1118e0a5335L, "match");
+    /*package*/ static final SReferenceLink match$IZn0 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118e0a1c55L, 0x1118e0a5335L, "match");
   }
 }

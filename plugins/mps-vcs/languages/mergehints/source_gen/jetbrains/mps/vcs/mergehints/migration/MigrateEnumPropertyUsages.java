@@ -48,7 +48,7 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
       };
       EnumUsagesMigration migration = new EnumUsagesMigration();
       for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyVCSDescriptor$S8, false))) {
-        migration.migratePropertyReference(propMessageTarget, LINKS.prop$DMff);
+        migration.migratePropertyReference(propMessageTarget, LINKS.prop$floh);
       }
     }
   }
@@ -64,11 +64,11 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyVCSDescriptor$S8, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.prop$DMff)), CONCEPTS.EnumPropertyMigrationInfo$Yg);
+          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.prop$floh)), CONCEPTS.EnumPropertyMigrationInfo$Yg);
         }
       }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
         public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.prop$DMff));
+          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.prop$floh));
         }
       });
     }
@@ -81,7 +81,7 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink prop$DMff = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop");
+    /*package*/ static final SReferenceLink prop$floh = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop");
   }
 
   private static final class CONCEPTS {

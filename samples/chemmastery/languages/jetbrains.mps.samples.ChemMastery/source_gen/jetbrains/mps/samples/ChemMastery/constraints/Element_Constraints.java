@@ -21,7 +21,7 @@ public class Element_Constraints extends BaseConstraintsDescriptor {
 
   public static class Details_url_Property extends BasePropertyConstraintsDescriptor {
     public Details_url_Property(ConstraintsDescriptor container) {
-      super(PROPS.details_url$JA4A, container);
+      super(PROPS.details_url$3seq, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -29,7 +29,7 @@ public class Element_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      String id = SPropertyOperations.getString(node, PROPS.id$sqos);
+      String id = SPropertyOperations.getString(node, PROPS.id$KLP$);
       if (id != null) {
         return "https://www.periodni.com/" + id.toLowerCase() + ".html";
       } else {
@@ -40,7 +40,7 @@ public class Element_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.details_url$JA4A, new Details_url_Property(this));
+    properties.put(PROPS.details_url$3seq, new Details_url_Property(this));
     return properties;
   }
 
@@ -49,7 +49,7 @@ public class Element_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty details_url$JA4A = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x2b5828a8c1e2ab18L, "details_url");
-    /*package*/ static final SProperty id$sqos = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x5b2638e8bdcd7deaL, "id");
+    /*package*/ static final SProperty details_url$3seq = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x2b5828a8c1e2ab18L, "details_url");
+    /*package*/ static final SProperty id$KLP$ = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x5b2638e8bdcd7deaL, "id");
   }
 }

@@ -51,10 +51,10 @@ public class Option_unmakeDefault extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return SNodeOperations.getIndexInParent(node) == SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$57Ad);
+      return SNodeOperations.getIndexInParent(node) == SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$uFwj);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$57Ad, -1);
+      SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$Ga), PROPS.defaultOption$uFwj, -1);
     }
     public String getKeyStroke() {
       return " DELETE";
@@ -67,6 +67,6 @@ public class Option_unmakeDefault extends KeyMapImpl {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty defaultOption$57Ad = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption");
+    /*package*/ static final SProperty defaultOption$uFwj = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption");
   }
 }

@@ -141,15 +141,15 @@ public class CustomOperatorUsageTransform_Contribution extends TransformationMen
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
         }
 
         @Override
         public void execute(@NotNull String pattern) {
           SNode usage = SNodeFactoryOperations.createNewNode(CONCEPTS.CustomOperatorUsage$2Y, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), usage);
-          SLinkOperations.setTarget(usage, LINKS.operator$FZbb, myParameterObject);
-          SLinkOperations.setTarget(usage, LINKS.leftExpression$rxLZ, _context.getNode());
+          SLinkOperations.setTarget(usage, LINKS.operator$jAql, myParameterObject);
+          SLinkOperations.setTarget(usage, LINKS.leftExpression$lndx, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), usage, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -184,11 +184,11 @@ public class CustomOperatorUsageTransform_Contribution extends TransformationMen
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink operator$FZbb = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, 0x15c86fdc60847670L, "operator");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SReferenceLink operator$jAql = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, 0x15c86fdc60847670L, "operator");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 }

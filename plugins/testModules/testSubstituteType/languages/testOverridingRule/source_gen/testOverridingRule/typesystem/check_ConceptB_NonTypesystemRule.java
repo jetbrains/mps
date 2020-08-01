@@ -36,7 +36,7 @@ public class check_ConceptB_NonTypesystemRule extends AbstractNonTypesystemRule_
         matches_umd1d4_a0a = matchingPattern_umd1d4_a0a.match(matchedNode_umd1d4_a0);
         if (matches_umd1d4_a0a) {
           {
-            final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.conceptBProp$RzYw);
+            final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.conceptBProp$Urhw);
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(matchedNode_umd1d4_a0, "error from ConceptB", "r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520441", null, errorTarget);
           }
         }
@@ -62,7 +62,7 @@ public class check_ConceptB_NonTypesystemRule extends AbstractNonTypesystemRule_
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptBProp$RzYw = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa4L, 0x7aa4e26e6874caa5L, "conceptBProp");
+    /*package*/ static final SProperty conceptBProp$Urhw = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa4L, 0x7aa4e26e6874caa5L, "conceptBProp");
   }
 
   private static final class CONCEPTS {

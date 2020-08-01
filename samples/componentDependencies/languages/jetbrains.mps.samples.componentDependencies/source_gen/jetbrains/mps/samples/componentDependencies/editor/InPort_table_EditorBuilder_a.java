@@ -39,7 +39,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
   private EditorCell createModelAccess_0() {
     ModelAccessor modelAccessor = new ModelAccessor() {
       public String getText() {
-        return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(myNode, CONCEPTS.Component$vB, false, false), PROPS.name$tAp1);
+        return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(myNode, CONCEPTS.Component$vB, false, false), PROPS.name$lA7v);
       }
       public void setText(String text) {
       }
@@ -62,6 +62,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

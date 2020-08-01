@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public abstract class ElementCreator {
   public static void byElement(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    SNode element = SLinkOperations.getTarget(node, LINKS.rootElement$_ZjZ);
+    SNode element = SLinkOperations.getTarget(node, LINKS.rootElement$pEFx);
     Element result = ElementCreator.createElement(element, ctx);
     Document document = new Document();
     document.setRootElement(result);
@@ -37,19 +37,19 @@ public abstract class ElementCreator {
   }
   protected static Element createElement(SNode element, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    Element result = new Element(SPropertyOperations.getString(element, PROPS.name$tAp1));
-    for (SNode attribute : SLinkOperations.getChildren(element, LINKS.attribute$_Zl0)) {
-      if (SPropertyOperations.getString(attribute, PROPS.value$_YOv) != null) {
-        result.setAttribute(SPropertyOperations.getString(attribute, PROPS.name$tAp1), SPropertyOperations.getString(attribute, PROPS.value$_YOv));
+    Element result = new Element(SPropertyOperations.getString(element, PROPS.name$lA7v));
+    for (SNode attribute : SLinkOperations.getChildren(element, LINKS.attribute$pFb0)) {
+      if (SPropertyOperations.getString(attribute, PROPS.value$prr1) != null) {
+        result.setAttribute(SPropertyOperations.getString(attribute, PROPS.name$lA7v), SPropertyOperations.getString(attribute, PROPS.value$prr1));
       }
     }
     boolean first = true;
-    for (SNode part : SLinkOperations.getChildren(element, LINKS.content$_Zlv)) {
+    for (SNode part : SLinkOperations.getChildren(element, LINKS.content$pFq1)) {
       if (SNodeOperations.isInstanceOf(part, CONCEPTS.Text$$p)) {
         if (!(first)) {
           result.addContent("\n");
         }
-        result.addContent(SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.Text$$p), PROPS.text$_Zzw));
+        result.addContent(SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.Text$$p), PROPS.text$pMcw));
       }
       if (SNodeOperations.isInstanceOf(part, CONCEPTS.Element$mm)) {
         result.addContent(ElementCreator.createElement(SNodeOperations.cast(part, CONCEPTS.Element$mm), ctx));
@@ -60,15 +60,15 @@ public abstract class ElementCreator {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rootElement$_ZjZ = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, 0x11d45f8a8b8L, "rootElement");
-    /*package*/ static final SContainmentLink attribute$_Zl0 = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8baL, "attribute");
-    /*package*/ static final SContainmentLink content$_Zlv = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8bbL, "content");
+    /*package*/ static final SContainmentLink rootElement$pEFx = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, 0x11d45f8a8b8L, "rootElement");
+    /*package*/ static final SContainmentLink attribute$pFb0 = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8baL, "attribute");
+    /*package*/ static final SContainmentLink content$pFq1 = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8bbL, "content");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$_YOv = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value");
-    /*package*/ static final SProperty text$_Zzw = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, 0x11d45f8a8c2L, "text");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$prr1 = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value");
+    /*package*/ static final SProperty text$pMcw = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, 0x11d45f8a8c2L, "text");
   }
 
   private static final class CONCEPTS {

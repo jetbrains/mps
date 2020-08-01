@@ -24,7 +24,7 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
   }
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> list = new ArrayList<SNode>();
-    SNode concept = SLinkOperations.getTarget(type, LINKS.concept$fJMt);
+    SNode concept = SLinkOperations.getTarget(type, LINKS.concept$C9s3);
     // COPIED FROM supertypesOf_SNodeType_SNodeType 
     // DO NOT TOUCH THIS. CONCEPT MIGHT BE A TYPE VARIABLE 
     if (concept != null && SNodeOperations.isInstanceOf(concept, CONCEPTS.AbstractConceptDeclaration$UN)) {
@@ -47,7 +47,7 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
   }
   private static SNode createSNodePointerType_to4p90_a0a0a1a4a1(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
-    n0.setReferenceTarget(LINKS.concept$fJMt, p0);
+    n0.setReferenceTarget(LINKS.concept$C9s3, p0);
     return n0.getResult();
   }
   private static SNode createSNodePointerType_to4p90_a0a2a4a1() {
@@ -56,7 +56,7 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$fJMt = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
+    /*package*/ static final SReferenceLink concept$C9s3 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
   }
 
   private static final class CONCEPTS {

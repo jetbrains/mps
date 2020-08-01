@@ -17,17 +17,17 @@ public class InternalPartialFieldReference_TextGen extends TextGenDescriptorBase
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$qki$) != null)) {
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$qki$), CONCEPTS.InternalThisExpression$XS))) {
-        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$qki$));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$JOZs) != null)) {
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$JOZs), CONCEPTS.InternalThisExpression$XS))) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$JOZs));
         tgs.append(".");
       }
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fieldName$sFGL));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fieldName$TaFJ));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink instance$qki$ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd6bbc3L, "instance");
+    /*package*/ static final SContainmentLink instance$JOZs = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd6bbc3L, "instance");
   }
 
   private static final class CONCEPTS {
@@ -35,6 +35,6 @@ public class InternalPartialFieldReference_TextGen extends TextGenDescriptorBase
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fieldName$sFGL = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd65055L, "fieldName");
+    /*package*/ static final SProperty fieldName$TaFJ = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd65055L, "fieldName");
   }
 }

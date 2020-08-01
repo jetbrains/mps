@@ -49,7 +49,7 @@ public class XMLSAXAttributeReference_Constraints extends BaseConstraintsDescrip
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.attribute$YvIw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.attribute$hnxw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -87,6 +87,6 @@ public class XMLSAXAttributeReference_Constraints extends BaseConstraintsDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attribute$YvIw = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, 0x1f6c736337b5e2caL, "attribute");
+    /*package*/ static final SReferenceLink attribute$hnxw = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, 0x1f6c736337b5e2caL, "attribute");
   }
 }

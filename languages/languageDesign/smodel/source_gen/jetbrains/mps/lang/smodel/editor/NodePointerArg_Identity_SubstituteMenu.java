@@ -90,7 +90,7 @@ public class NodePointerArg_Identity_SubstituteMenu extends SubstituteMenuBase {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode nodePointerArg = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.NodePointerArg_Identity$5_);
-          SLinkOperations.setTarget(nodePointerArg, LINKS.ref$ryyU, nodeToWrap);
+          SLinkOperations.setTarget(nodePointerArg, LINKS.ref$lIU6, nodeToWrap);
           return nodePointerArg;
         }
         @Override
@@ -127,6 +127,6 @@ public class NodePointerArg_Identity_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ref$ryyU = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
+    /*package*/ static final SContainmentLink ref$lIU6 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
   }
 }

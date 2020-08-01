@@ -67,8 +67,8 @@
       <node id="1186668032201" at="99,89,100,145" concept="7" />
       <node id="1186668032201" at="101,12,102,24" concept="7" />
       <node id="1186668032201" at="103,15,104,40" concept="1" />
-      <node id="1186667875272" at="109,0,110,0" concept="8" trace="amount$mBsY" />
-      <node id="1186667875272" at="110,0,111,0" concept="8" trace="currency$6DWb" />
+      <node id="1186667875272" at="109,0,110,0" concept="8" trace="amount$X722" />
+      <node id="1186667875272" at="110,0,111,0" concept="8" trace="currency$ek9l" />
       <node id="1186667875272" at="114,0,115,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="1186667875272" at="30,0,32,0" concept="2" trace="myNode" />
       <node id="1186667875272" at="44,0,47,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -228,8 +228,8 @@
       <node id="1187343637158" at="193,83,194,40" concept="1" />
       <node id="1187343637158" at="194,40,195,34" concept="1" />
       <node id="1187343637158" at="195,34,196,22" concept="7" />
-      <node id="1187343582397" at="200,0,201,0" concept="8" trace="amount$tKZ5" />
-      <node id="1187343582397" at="201,0,202,0" concept="8" trace="currency$nyBV" />
+      <node id="1187343582397" at="200,0,201,0" concept="8" trace="amount$qIzr" />
+      <node id="1187343582397" at="201,0,202,0" concept="8" trace="currency$pLl_" />
       <node id="1187343582397" at="27,0,29,0" concept="2" trace="myNode" />
       <node id="1187343582397" at="78,0,80,0" concept="2" trace="myNode" />
       <node id="1187343582397" at="139,0,141,0" concept="2" trace="myNode" />
@@ -415,7 +415,7 @@
       <node id="2886182022232400446" at="110,34,111,47" concept="1" />
       <node id="2886182022232400445" at="111,47,112,40" concept="1" />
       <node id="2886182022232400445" at="112,40,113,22" concept="7" />
-      <node id="1187703306349" at="117,0,118,0" concept="8" trace="instance$VRCO" />
+      <node id="1187703306349" at="117,0,118,0" concept="8" trace="instance$ZWLc" />
       <node id="1187703306349" at="26,0,28,0" concept="2" trace="myNode" />
       <node id="1187703306349" at="58,0,60,0" concept="2" trace="myNode" />
       <node id="1187703306349" at="40,0,43,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -589,7 +589,7 @@
       <node id="1741258697587199953" at="294,0,295,0" concept="8" trace="MoneyType$Dd" />
       <node id="1741258697587199953" at="295,0,296,0" concept="8" trace="MoneyIsZeroMethodCall$2V" />
       <node id="1741258697587199953" at="296,0,297,0" concept="8" trace="MoneyGetAmountMethodCall$$J" />
-      <node id="1741258697587199953" at="300,0,301,0" concept="8" trace="instance$VRCO" />
+      <node id="1741258697587199953" at="300,0,301,0" concept="8" trace="instance$ZWLc" />
       <node id="1741258697587199953" at="45,0,48,0" concept="0" trace="MoneyMethods_Contribution#()V" />
       <node id="1741258697587199959" at="102,0,105,0" concept="0" trace="Item#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)V" />
       <node id="1741258697587199959" at="105,0,108,0" concept="5" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />

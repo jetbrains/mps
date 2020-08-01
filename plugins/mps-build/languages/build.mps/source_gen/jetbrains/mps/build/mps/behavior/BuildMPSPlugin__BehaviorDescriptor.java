@@ -62,7 +62,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getLayoutScope_id13YBgBBRSOA(@NotNull SNode __thisNode__, SAbstractConcept kind) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$fB) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$iO) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_IdeaPlugin$X0)) {
-      return DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$tgxg, kind);
+      return DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$b06K, kind);
     }
 
     return null;
@@ -76,7 +76,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     // fetch stuff for ant task classpath 
     DependenciesHelper helper = new DependenciesHelper(builder.getGenContext(), project);
     SNode originalProject = project;
-    SNode antMpsModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(originalProject, CONCEPTS.BuildSource_JavaModule$h5, LINKS.parts$tgxg, ((int) 0)).resolve(originalProject, "ant-mps"), CONCEPTS.BuildSource_JavaModule$h5);
+    SNode antMpsModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(originalProject, CONCEPTS.BuildSource_JavaModule$h5, LINKS.parts$b06K, ((int) 0)).resolve(originalProject, "ant-mps"), CONCEPTS.BuildSource_JavaModule$h5);
     if ((antMpsModule != null)) {
       SNode antMpsJar = SNodeOperations.as(artifacts.findArtifact(antMpsModule), CONCEPTS.BuildLayout_Node$kC);
       if ((antMpsJar != null)) {
@@ -86,19 +86,19 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     }
     // FIXME consider JavaExternalLibraryHelper re-use 
     // XXX isn't it odd to populate DependenciesHelper here, and not in unpack? 
-    SNode jdomLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$zR, LINKS.parts$tgxg, ((int) 0)).resolve(project, "jdom-lib"), CONCEPTS.BuildSource_JavaLibrary$zR);
+    SNode jdomLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$zR, LINKS.parts$b06K, ((int) 0)).resolve(project, "jdom-lib"), CONCEPTS.BuildSource_JavaLibrary$zR);
     if (jdomLib != null) {
-      SNode jdomJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(jdomLib, LINKS.elements$cwi3), CONCEPTS.BuildSource_JavaLibraryCP$VQ)).first(), LINKS.classpath$Tk_v), CONCEPTS.BuildSource_JavaLibraryExternalJar$I0), LINKS.extJar$MD00);
-      SNode jdomArtifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(jdomJarRef, LINKS.jar$jJDw)), CONCEPTS.BuildLayout_Node$kC);
+      SNode jdomJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(jdomLib, LINKS.elements$3CJt), CONCEPTS.BuildSource_JavaLibraryCP$VQ)).first(), LINKS.classpath$KYa1), CONCEPTS.BuildSource_JavaLibraryExternalJar$I0), LINKS.extJar$xR00);
+      SNode jdomArtifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(jdomJarRef, LINKS.jar$$56w)), CONCEPTS.BuildLayout_Node$kC);
       if (jdomArtifact != null) {
         helper.putArtifact("jdom", jdomArtifact);
         builder.add(jdomArtifact);
       }
     }
-    SNode log4jLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$zR, LINKS.parts$tgxg, ((int) 0)).resolve(project, "log4j-lib"), CONCEPTS.BuildSource_JavaLibrary$zR);
+    SNode log4jLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$zR, LINKS.parts$b06K, ((int) 0)).resolve(project, "log4j-lib"), CONCEPTS.BuildSource_JavaLibrary$zR);
     if (log4jLib != null) {
-      SNode log4jJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(log4jLib, LINKS.elements$cwi3), CONCEPTS.BuildSource_JavaLibraryCP$VQ)).first(), LINKS.classpath$Tk_v), CONCEPTS.BuildSource_JavaLibraryExternalJar$I0), LINKS.extJar$MD00);
-      SNode log4jArtifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(log4jJarRef, LINKS.jar$jJDw)), CONCEPTS.BuildLayout_Node$kC);
+      SNode log4jJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(log4jLib, LINKS.elements$3CJt), CONCEPTS.BuildSource_JavaLibraryCP$VQ)).first(), LINKS.classpath$KYa1), CONCEPTS.BuildSource_JavaLibraryExternalJar$I0), LINKS.extJar$xR00);
+      SNode log4jArtifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(log4jJarRef, LINKS.jar$$56w)), CONCEPTS.BuildLayout_Node$kC);
       if (log4jArtifact != null) {
         helper.putArtifact("log4j", log4jArtifact);
         builder.add(log4jArtifact);
@@ -130,10 +130,10 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$fB) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_IdeaPlugin$X0) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$iO)) {
       Iterable<DescendantsScope> forAllVisible = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), ((boolean) false))).select(new ISelector<SNode, DescendantsScope>() {
         public DescendantsScope select(SNode it) {
-          return DescendantsScope.forNamedElements(it, LINKS.parts$tgxg, kind);
+          return DescendantsScope.forNamedElements(it, LINKS.parts$b06K, kind);
         }
       });
-      Iterable<DescendantsScope> forThis = Sequence.<DescendantsScope>singleton(DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$tgxg, kind));
+      Iterable<DescendantsScope> forThis = Sequence.<DescendantsScope>singleton(DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$b06K, kind));
       return new CompositeScope(Sequence.fromIterable(forAllVisible).concat(Sequence.fromIterable(forThis)).toGenericArray(DescendantsScope.class));
     }
     return null;
@@ -142,7 +142,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     return Sequence.<SNode>singleton(BuildMPSPlugin__BehaviorDescriptor.getMpsLibrary_id3zFnP6MM9ge.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildMPSPlugin$y$)));
   }
   /*package*/ static SNode getMpsLibrary_id3zFnP6MM9ge(@NotNull SAbstractConcept __thisConcept__) {
-    return SLinkOperations.getTarget(createBwfTaskLibraryDependency_6x52oe_a0a0e(), LINKS.target$LSxw);
+    return SLinkOperations.getTarget(createBwfTaskLibraryDependency_6x52oe_a0a0e(), LINKS.target$aoew);
   }
   /*package*/ static void fetchGenerationDeps_id3WZD5LHqDLU(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     MPSModulesPartitioner partitioner = new MPSModulesPartitioner(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__));
@@ -237,17 +237,17 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   private static SNode createBwfTaskLibraryDependency_6x52oe_a0a0e() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BwfTaskLibraryDependency$Kt);
-    n0.setReference(LINKS.target$LSxw, new SNodePointer(facade.createModelReference("r:4c16a3e9-db56-4447-9b0d-14adce23db0d(jetbrains.mps.build.mps.accessories)"), facade.createNodeId("398731435597190701")));
+    n0.setReference(LINKS.target$aoew, new SNodePointer(facade.createModelReference("r:4c16a3e9-db56-4447-9b0d-14adce23db0d(jetbrains.mps.build.mps.accessories)"), facade.createNodeId("398731435597190701")));
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$tgxg = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
-    /*package*/ static final SContainmentLink elements$cwi3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, 0x540febaa6144e311L, "elements");
-    /*package*/ static final SContainmentLink classpath$Tk_v = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
-    /*package*/ static final SContainmentLink extJar$MD00 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb50da7L, 0x4ddcec86afb50da8L, "extJar");
-    /*package*/ static final SReferenceLink jar$jJDw = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
-    /*package*/ static final SReferenceLink target$LSxw = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target");
+    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink elements$3CJt = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, 0x540febaa6144e311L, "elements");
+    /*package*/ static final SContainmentLink classpath$KYa1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
+    /*package*/ static final SContainmentLink extJar$xR00 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb50da7L, 0x4ddcec86afb50da8L, "extJar");
+    /*package*/ static final SReferenceLink jar$$56w = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
+    /*package*/ static final SReferenceLink target$aoew = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target");
   }
 
   private static final class CONCEPTS {

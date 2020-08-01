@@ -20,19 +20,19 @@ public class Arrays_InequationReplacementRule extends AbstractInequationReplacem
   public Arrays_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.componentType$10w), CONCEPTS.PrimitiveType$5)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.componentType$10w), CONCEPTS.NullType$do)) && (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.componentType$10w), CONCEPTS.PrimitiveType$5)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.componentType$10w), CONCEPTS.NullType$do));
+    return (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.componentType$vfw), CONCEPTS.PrimitiveType$5)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.componentType$vfw), CONCEPTS.NullType$do)) && (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.componentType$vfw), CONCEPTS.PrimitiveType$5)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.componentType$vfw), CONCEPTS.NullType$do));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     {
       SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5108287150803754723", 0, null);
       _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.componentType$10w), (SNode) SLinkOperations.getTarget(supertype, LINKS.componentType$10w), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.componentType$vfw), (SNode) SLinkOperations.getTarget(supertype, LINKS.componentType$vfw), false, true, _info_12389875345);
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.componentType$10w), (SNode) SLinkOperations.getTarget(supertype, LINKS.componentType$10w));
+    result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.componentType$vfw), (SNode) SLinkOperations.getTarget(supertype, LINKS.componentType$vfw));
     return result_14532009;
   }
   public boolean isWeak() {
@@ -53,7 +53,7 @@ public class Arrays_InequationReplacementRule extends AbstractInequationReplacem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {

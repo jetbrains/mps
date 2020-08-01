@@ -83,7 +83,7 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
       super.initialize(_context);
       condition = new Computable<Boolean>() {
         public Boolean compute() {
-          return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BaseMethodDeclaration$RR) && Objects.equals(_context.getLink(), LINKS.throwsItem$gr7e);
+          return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BaseMethodDeclaration$RR) && Objects.equals(_context.getLink(), LINKS.throwsItem$X8vM);
         }
       }.compute();
     }
@@ -146,7 +146,7 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
         protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
           return ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getParentNode(), CONCEPTS.GenericDeclaration$IQ, true)).translate(new ITranslator2<SNode, SNode>() {
             public Iterable<SNode> translate(SNode it) {
-              return SLinkOperations.getChildren(it, LINKS.typeVariableDeclaration$ziZT);
+              return SLinkOperations.getChildren(it, LINKS.typeVariableDeclaration$6cWB);
             }
           }).toListSequence();
         }
@@ -300,7 +300,7 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
             @Override
             public SNode createNode(@NotNull String pattern) {
               SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierType$IZ, null);
-              SLinkOperations.setTarget(result, LINKS.classifier$pQ_R, myParameterObject);
+              SLinkOperations.setTarget(result, LINKS.classifier$xslD, myParameterObject);
               return result;
             }
 
@@ -401,7 +401,7 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SPropertyOperations.assign(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ParameterDeclaration$qU), PROPS.isFinal$hIht, true);
+            SPropertyOperations.assign(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ParameterDeclaration$qU), PROPS.isFinal$_qt3, true);
             return _context.getCurrentTargetNode();
           }
 
@@ -418,7 +418,7 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
             return canExecute_internal(pattern, true);
           }
           public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-            return (!(strictly) || Objects.equals(pattern, "final")) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ParameterDeclaration$qU) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ParameterDeclaration$qU), PROPS.isFinal$hIht));
+            return (!(strictly) || Objects.equals(pattern, "final")) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ParameterDeclaration$qU) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.ParameterDeclaration$qU), PROPS.isFinal$_qt3));
           }
           @Nullable
           @Override
@@ -436,7 +436,7 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
           }).collect(Collectors.toList());
         }
         private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-          return (boolean) Type__BehaviorDescriptor.isValueType_id4bFkYVCcmm2.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(concept, CONCEPTS.Type$IG))) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IGenericType$$h) || (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassCreator$yU) && Objects.equals(_context.getLink(), LINKS.typeParameter$swNi));
+          return (boolean) Type__BehaviorDescriptor.isValueType_id4bFkYVCcmm2.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(concept, CONCEPTS.Type$IG))) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IGenericType$$h) || (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassCreator$yU) && Objects.equals(_context.getLink(), LINKS.typeParameter$NSPI));
         }
         @NotNull
         @Override
@@ -477,13 +477,13 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

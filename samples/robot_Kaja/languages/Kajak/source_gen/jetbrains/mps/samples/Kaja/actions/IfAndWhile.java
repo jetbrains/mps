@@ -17,8 +17,8 @@ public class IfAndWhile {
       {
         final SNode whileCmd = sampleNode;
         if (SNodeOperations.isInstanceOf(whileCmd, CONCEPTS.While$1T)) {
-          SLinkOperations.setTarget(newNode, LINKS.condition$rbdE, SLinkOperations.getTarget(whileCmd, LINKS.condition$WoNZ));
-          SLinkOperations.setTarget(newNode, LINKS.trueBranch$rbfA, SLinkOperations.getTarget(whileCmd, LINKS.body$WoOu));
+          SLinkOperations.setTarget(newNode, LINKS.condition$arBm, SLinkOperations.getTarget(whileCmd, LINKS.condition$g1bx));
+          SLinkOperations.setTarget(newNode, LINKS.trueBranch$aszq, SLinkOperations.getTarget(whileCmd, LINKS.body$g1qy));
         }
       }
     }
@@ -28,8 +28,8 @@ public class IfAndWhile {
       {
         final SNode ifCmd = sampleNode;
         if (SNodeOperations.isInstanceOf(ifCmd, CONCEPTS.IfStatement$GU)) {
-          SLinkOperations.setTarget(newNode, LINKS.condition$WoNZ, SLinkOperations.getTarget(ifCmd, LINKS.condition$rbdE));
-          SLinkOperations.setTarget(newNode, LINKS.body$WoOu, SLinkOperations.getTarget(ifCmd, LINKS.trueBranch$rbfA));
+          SLinkOperations.setTarget(newNode, LINKS.condition$g1bx, SLinkOperations.getTarget(ifCmd, LINKS.condition$arBm));
+          SLinkOperations.setTarget(newNode, LINKS.body$g1qy, SLinkOperations.getTarget(ifCmd, LINKS.trueBranch$aszq));
         }
       }
     }
@@ -41,9 +41,9 @@ public class IfAndWhile {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$rbdE = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, 0x2de971c785ec9fc0L, "condition");
-    /*package*/ static final SContainmentLink condition$WoNZ = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece2L, "condition");
-    /*package*/ static final SContainmentLink trueBranch$rbfA = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, 0x2de971c785ec9fc4L, "trueBranch");
-    /*package*/ static final SContainmentLink body$WoOu = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece3L, "body");
+    /*package*/ static final SContainmentLink condition$arBm = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, 0x2de971c785ec9fc0L, "condition");
+    /*package*/ static final SContainmentLink condition$g1bx = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece2L, "condition");
+    /*package*/ static final SContainmentLink trueBranch$aszq = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, 0x2de971c785ec9fc4L, "trueBranch");
+    /*package*/ static final SContainmentLink body$g1qy = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L, 0x2de971c785ecece3L, "body");
   }
 }

@@ -23,7 +23,7 @@ public class XmlWhitespace_Constraints extends BaseConstraintsDescriptor {
 
   public static class Value_Property extends BasePropertyConstraintsDescriptor {
     public Value_Property(ConstraintsDescriptor container) {
-      super(PROPS.value$xCh4, container);
+      super(PROPS.value$iwgW, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class XmlWhitespace_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.value$xCh4, new Value_Property(this));
+    properties.put(PROPS.value$iwgW, new Value_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class XmlWhitespace_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$xCh4 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value");
+    /*package*/ static final SProperty value$iwgW = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value");
   }
 }

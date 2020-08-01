@@ -114,7 +114,7 @@ public class ctor_IncompleteFromModifier extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode decl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"));
-          ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.modifiers$akE0)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.DefaultModifier$Z2, null));
+          ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.modifiers$m0)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.DefaultModifier$Z2, null));
           return decl;
         }
 
@@ -142,6 +142,6 @@ public class ctor_IncompleteFromModifier extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 }

@@ -101,7 +101,7 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
     // XXX why not node.getFqName or node/.getPresentation? 
     String nodeName;
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV)) {
-      nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+      nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
     } else {
       nodeName = node.getNodeId().toString();
     }
@@ -117,6 +117,6 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

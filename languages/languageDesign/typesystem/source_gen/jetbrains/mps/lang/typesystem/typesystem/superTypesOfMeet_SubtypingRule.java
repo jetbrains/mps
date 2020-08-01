@@ -22,7 +22,7 @@ public class superTypesOfMeet_SubtypingRule extends SubtypingRule_Runtime implem
   }
   public List<SNode> getSubOrSuperTypes(SNode meet, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(meet, LINKS.argument$kHNt))) {
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(meet, LINKS.argument$2bV3))) {
       ListSequence.fromList(result).addElement(SNodeOperations.copyNode(arg));
     }
     return result;
@@ -38,7 +38,7 @@ public class superTypesOfMeet_SubtypingRule extends SubtypingRule_Runtime implem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$kHNt = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 
   private static final class CONCEPTS {

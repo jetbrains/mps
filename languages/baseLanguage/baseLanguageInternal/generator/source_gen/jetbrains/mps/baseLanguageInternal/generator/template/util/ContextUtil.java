@@ -41,7 +41,7 @@ public class ContextUtil {
   }
 
   public static SNode getContextForMethod(TemplateQueryContext genContext, SNode node, boolean topmost) {
-    SNode usage = genContext.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(node, LINKS.inner$eZj0), "methUsageExpr");
+    SNode usage = genContext.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(node, LINKS.inner$gEd0), "methUsageExpr");
     if ((usage != null)) {
       if (topmost) {
         return ListSequence.fromList(SNodeOperations.getNodeAncestors(usage, CONCEPTS.ClassConcept$IY, false)).last();
@@ -62,9 +62,9 @@ public class ContextUtil {
   }
 
   public static SNode getContextForInnerClass(TemplateQueryContext genContext, SNode node, boolean topmost) {
-    SNode usage = genContext.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(node, LINKS.inner$N25_), "classUsageExpr");
+    SNode usage = genContext.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(node, LINKS.inner$I0GV), "classUsageExpr");
     if ((usage != null)) {
-      if (SPropertyOperations.getBoolean(node, PROPS.nonStatic$2caW)) {
+      if (SPropertyOperations.getBoolean(node, PROPS.nonStatic$3Tj4)) {
         return SNodeOperations.getNodeAncestor(usage, CONCEPTS.ClassConcept$IY, false, false);
       }
       if (topmost) {
@@ -90,11 +90,11 @@ public class ContextUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inner$eZj0 = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, 0x31c3f88088ea0ac5L, "inner");
-    /*package*/ static final SContainmentLink inner$N25_ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, 0x6b63d434472420ceL, "inner");
+    /*package*/ static final SContainmentLink inner$gEd0 = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, 0x31c3f88088ea0ac5L, "inner");
+    /*package*/ static final SContainmentLink inner$I0GV = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, 0x6b63d434472420ceL, "inner");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nonStatic$2caW = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, 0x38fdeea21cec83e5L, "nonStatic");
+    /*package*/ static final SProperty nonStatic$3Tj4 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, 0x38fdeea21cec83e5L, "nonStatic");
   }
 }

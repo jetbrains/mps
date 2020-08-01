@@ -21,7 +21,7 @@ public class typeof_RefactoringParameterReference_InferenceRule extends Abstract
     {
       SNode _nodeToCheck_1029348928467 = reference;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "478744034994505047", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "478744034994505044", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(reference, LINKS.refactoringParameter$ZFC0), "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "478744034994505052", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "478744034994505044", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(reference, LINKS.refactoringParameter$Q8o0), "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "478744034994505052", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_RefactoringParameterReference_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoringParameter$ZFC0 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, 0x5fb04b74a77cda07L, "refactoringParameter");
+    /*package*/ static final SReferenceLink refactoringParameter$Q8o0 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, 0x5fb04b74a77cda07L, "refactoringParameter");
   }
 
   private static final class CONCEPTS {

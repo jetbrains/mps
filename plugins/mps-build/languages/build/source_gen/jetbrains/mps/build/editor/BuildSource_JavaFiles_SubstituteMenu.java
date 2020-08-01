@@ -90,7 +90,7 @@ public class BuildSource_JavaFiles_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode n = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BuildSource_JavaFiles$tl);
-          SLinkOperations.setTarget(n, LINKS.resset$kO5w, nodeToWrap);
+          SLinkOperations.setTarget(n, LINKS.resset$5eEw, nodeToWrap);
           return n;
         }
 
@@ -127,6 +127,6 @@ public class BuildSource_JavaFiles_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resset$kO5w = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x14d3fb6fb8480882L, 0x14d3fb6fb8480883L, "resset");
+    /*package*/ static final SContainmentLink resset$5eEw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x14d3fb6fb8480882L, 0x14d3fb6fb8480883L, "resset");
   }
 }

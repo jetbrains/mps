@@ -58,23 +58,23 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
       Collection<SNode> SCAs = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SubstituteMenuPart_AddConcept$UH, false);
 
       for (SNode sca : CollectionSequence.fromCollection(SCAs)) {
-        final SNode conceptNode = SLinkOperations.getTarget(sca, LINKS.concept$UyDc);
+        final SNode conceptNode = SLinkOperations.getTarget(sca, LINKS.concept$mLWO);
 
         SNode smartRefAttr = SmartRefAttributeUtil.extractAttribute(conceptNode);
         if ((smartRefAttr != null)) {
-          SNode charactersticReference = SLinkOperations.getTarget(smartRefAttr, LINKS.charactersticReference$hNpW);
-          SNode template = SLinkOperations.getTarget(smartRefAttr, LINKS.refPresentationTemplate$RgQc);
+          SNode charactersticReference = SLinkOperations.getTarget(smartRefAttr, LINKS.charactersticReference$BT$4);
+          SNode template = SLinkOperations.getTarget(smartRefAttr, LINKS.refPresentationTemplate$LafO);
 
-          SNode entity = ListSequence.fromList(SLinkOperations.getChildren(MapSequence.fromMap(data).get(check_6mkphx_a0a0a0d0d0c0b0e(SNodeOperations.getModel(SLinkOperations.getTarget(sca, LINKS.concept$UyDc)))), LINKS.entities$fdG0)).where(new IWhereFilter<SNode>() {
+          SNode entity = ListSequence.fromList(SLinkOperations.getChildren(MapSequence.fromMap(data).get(check_6mkphx_a0a0a0d0d0c0b0e(SNodeOperations.getModel(SLinkOperations.getTarget(sca, LINKS.concept$mLWO)))), LINKS.entities$nCk0)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptNode$fdeu), conceptNode);
+              return Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptNode$nq0y), conceptNode);
             }
           }).first();
 
           if ((entity != null)) {
-            SNodeOperations.replaceWithAnother(sca, _quotation_createNode_6mkphx_a0a0a5a3a2a0a6(SLinkOperations.getTarget(entity, LINKS.generatedMenu$fdfV)));
+            SNodeOperations.replaceWithAnother(sca, _quotation_createNode_6mkphx_a0a0a5a3a2a0a6(SLinkOperations.getTarget(entity, LINKS.generatedMenu$nqH_)));
           } else if ((template != null)) {
-            SNodeOperations.replaceWithAnother(sca, RefScopeFactories.template(charactersticReference, SPropertyOperations.getString(template, PROPS.prefix$CMHd), SPropertyOperations.getString(template, PROPS.suffix$CMSP), conceptNode));
+            SNodeOperations.replaceWithAnother(sca, RefScopeFactories.template(charactersticReference, SPropertyOperations.getString(template, PROPS.prefix$KzTj), SPropertyOperations.getString(template, PROPS.suffix$KDxF), conceptNode));
           } else {
             SNodeOperations.replaceWithAnother(sca, RefScopeFactories.simple(charactersticReference, conceptNode));
           }
@@ -113,16 +113,16 @@ public class Migrate_SCAPartsForSmartReferences extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$UyDc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, 0x9aeec2e0d781773L, "concept");
-    /*package*/ static final SReferenceLink charactersticReference$hNpW = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference");
-    /*package*/ static final SContainmentLink refPresentationTemplate$RgQc = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d66ac37L, "refPresentationTemplate");
-    /*package*/ static final SContainmentLink entities$fdG0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debaL, 0x29e124551692ded1L, "entities");
-    /*package*/ static final SReferenceLink conceptNode$fdeu = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692debeL, "conceptNode");
-    /*package*/ static final SReferenceLink generatedMenu$fdfV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692dec1L, "generatedMenu");
+    /*package*/ static final SReferenceLink concept$mLWO = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, 0x9aeec2e0d781773L, "concept");
+    /*package*/ static final SReferenceLink charactersticReference$BT$4 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference");
+    /*package*/ static final SContainmentLink refPresentationTemplate$LafO = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d66ac37L, "refPresentationTemplate");
+    /*package*/ static final SContainmentLink entities$nCk0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debaL, 0x29e124551692ded1L, "entities");
+    /*package*/ static final SReferenceLink conceptNode$nq0y = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692debeL, "conceptNode");
+    /*package*/ static final SReferenceLink generatedMenu$nqH_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692dec1L, "generatedMenu");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty prefix$CMHd = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d66855eL, 0x3bc83bac475c4b59L, "prefix");
-    /*package*/ static final SProperty suffix$CMSP = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d66855eL, 0x3bc83bac475c4b5cL, "suffix");
+    /*package*/ static final SProperty prefix$KzTj = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d66855eL, 0x3bc83bac475c4b59L, "prefix");
+    /*package*/ static final SProperty suffix$KDxF = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d66855eL, 0x3bc83bac475c4b5cL, "suffix");
   }
 }

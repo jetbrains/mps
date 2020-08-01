@@ -25,7 +25,7 @@ public class check_FactoryMigrationScriptPath_NonTypesystemRule extends Abstract
   public check_FactoryMigrationScriptPath_NonTypesystemRule() {
   }
   public void applyRule(final SNode part, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode returnType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(part, LINKS.factoryMethod$1qwv));
+    SNode returnType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(part, LINKS.factoryMethod$FPJ1));
     if (!(TypecheckingFacade.getFromContext().isSubtype(returnType, _quotation_createNode_5hdosv_b0a0b0b()))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -55,7 +55,7 @@ public class check_FactoryMigrationScriptPath_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink factoryMethod$1qwv = MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x24105a807c757c2dL, 0x24105a807c757c2fL, "factoryMethod");
+    /*package*/ static final SContainmentLink factoryMethod$FPJ1 = MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x24105a807c757c2dL, 0x24105a807c757c2fL, "factoryMethod");
   }
 
   private static final class CONCEPTS {

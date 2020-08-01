@@ -35,8 +35,8 @@ public final class ShowMessage__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.problem$7FCD), CONCEPTS.ScopeProvider$M8)) {
-      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.problem$7FCD), CONCEPTS.ScopeProvider$M8), kind, child);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.problem$I8FR), CONCEPTS.ScopeProvider$M8)) {
+      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.problem$I8FR), CONCEPTS.ScopeProvider$M8), kind, child);
     }
     return null;
   }
@@ -88,7 +88,7 @@ public final class ShowMessage__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink problem$7FCD = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
+    /*package*/ static final SContainmentLink problem$I8FR = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
   }
 
   private static final class CONCEPTS {

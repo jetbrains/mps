@@ -139,7 +139,7 @@ public class loopLabelsAndIfStatement extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        SLinkOperations.setTarget(createdNode, LINKS.ifTrue$WJ1E, SLinkOperations.getTarget(_context.getNode(), LINKS.body$OFes));
+        SLinkOperations.setTarget(createdNode, LINKS.ifTrue$qLNm, SLinkOperations.getTarget(_context.getNode(), LINKS.body$wVZ$));
         SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
       }
 
@@ -172,7 +172,7 @@ public class loopLabelsAndIfStatement extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink body$OFes = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
   }
 }

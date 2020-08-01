@@ -42,7 +42,7 @@ public final class SurroundWithParenthesis_Intention extends AbstractIntentionDe
       return false;
     }
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.AssignmentExpression$rS)) {
-      if (SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AssignmentExpression$rS), LINKS.lValue$J0D4) == node) {
+      if (SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AssignmentExpression$rS), LINKS.lValue$LjSW) == node) {
         return false;
       }
     }
@@ -69,7 +69,7 @@ public final class SurroundWithParenthesis_Intention extends AbstractIntentionDe
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode p = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$vE, null);
       SNode replacing = SNodeOperations.replaceWithAnother(node, p);
-      SLinkOperations.setTarget(p, LINKS.expression$4_F0, node);
+      SLinkOperations.setTarget(p, LINKS.expression$efP0, node);
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacing, "openParen", -1);
     }
     @Override
@@ -84,7 +84,7 @@ public final class SurroundWithParenthesis_Intention extends AbstractIntentionDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

@@ -20,7 +20,7 @@ public class TurnWordIntoLink_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode w = SNodeOperations.as(node, CONCEPTS.Word$AM);
-    SPropertyOperations.assign(w, PROPS.url$WUb8, SPropertyOperations.getString(w, PROPS.value$cK70));
+    SPropertyOperations.assign(w, PROPS.url$wboS, SPropertyOperations.getString(w, PROPS.value$bjp0));
   }
 
   private static final class CONCEPTS {
@@ -28,7 +28,7 @@ public class TurnWordIntoLink_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

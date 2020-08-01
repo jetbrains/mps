@@ -60,12 +60,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
       SNode newElement = createNewElement();
 
       // Test if a new Line following the current Line should be created 
-      if (currentSibling != null || myIncludeCurrentElement || currentLine == lineContainer || isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(newElement, CONCEPTS.Word$AM), PROPS.value$cK70))) {
+      if (currentSibling != null || myIncludeCurrentElement || currentLine == lineContainer || isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(newElement, CONCEPTS.Word$AM), PROPS.value$bjp0))) {
         SNode newLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-        ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$eRew)).addElement(newElement);
+        ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$cK1w)).addElement(newElement);
         while (currentSibling != null) {
           SNode next = SNodeOperations.cast(SNodeOperations.getNextSibling(currentSibling), CONCEPTS.TextElement$Ue);
-          ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$eRew)).addElement(currentSibling);
+          ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$cK1w)).addElement(currentSibling);
           currentSibling = next;
         }
 
@@ -100,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     @Override
     /*package*/ void execute() {
-      SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$AM), PROPS.value$cK70, mySplitter.getLeftText());
+      SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$AM), PROPS.value$bjp0, mySplitter.getLeftText());
       super.execute();
     }
 
@@ -150,9 +150,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
     @Override
     /*package*/ void execute() {
       if (myAddNext) {
-        SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$AM), PROPS.value$cK70, mySplitter.getLeftText());
+        SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$AM), PROPS.value$bjp0, mySplitter.getLeftText());
       } else {
-        SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$AM), PROPS.value$cK70, mySplitter.getRightText());
+        SPropertyOperations.assign(SNodeOperations.cast(myElement, CONCEPTS.Word$AM), PROPS.value$bjp0, mySplitter.getRightText());
       }
       super.execute();
     }
@@ -175,9 +175,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
     private int mySelectionEnd;
     /*package*/ WordSplitter(SNode word, EditorContext editorContext) {
       myWord = word;
-      myCurrentText = (SPropertyOperations.getString(myWord, PROPS.value$cK70) == null ? "" : SPropertyOperations.getString(myWord, PROPS.value$cK70));
+      myCurrentText = (SPropertyOperations.getString(myWord, PROPS.value$bjp0) == null ? "" : SPropertyOperations.getString(myWord, PROPS.value$bjp0));
       Selection selection = editorContext.getSelectionManager().getSelection();
-      String value = (SPropertyOperations.getString(myWord, PROPS.value$cK70) == null ? "" : SPropertyOperations.getString(myWord, PROPS.value$cK70));
+      String value = (SPropertyOperations.getString(myWord, PROPS.value$bjp0) == null ? "" : SPropertyOperations.getString(myWord, PROPS.value$bjp0));
       if (selection instanceof EditorCellLabelSelection) {
         mySelectionStart = ((EditorCellLabelSelection) selection).getSelectionStart();
         mySelectionEnd = ((EditorCellLabelSelection) selection).getSelectionEnd();
@@ -200,9 +200,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     /*package*/ SNode copyWord(String text) {
       SNode copy = SNodeOperations.copyNode(myWord);
-      SPropertyOperations.assign(copy, PROPS.value$cK70, text);
-      if (isEmptyString(SPropertyOperations.getString(copy, PROPS.value$cK70))) {
-        SPropertyOperations.assign(copy, PROPS.url$WUb8, null);
+      SPropertyOperations.assign(copy, PROPS.value$bjp0, text);
+      if (isEmptyString(SPropertyOperations.getString(copy, PROPS.value$bjp0))) {
+        SPropertyOperations.assign(copy, PROPS.url$wboS, null);
       }
       return copy;
     }
@@ -219,11 +219,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 }

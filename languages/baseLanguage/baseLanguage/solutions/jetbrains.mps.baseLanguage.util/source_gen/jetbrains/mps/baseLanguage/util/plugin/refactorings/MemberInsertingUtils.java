@@ -21,13 +21,13 @@ public class MemberInsertingUtils {
   public static void insertClassifierMemberInBestPlace(SNode container, SNode memberToInsert) {
     int memberRank = getMemberRank(memberToInsert);
     int indexToInsert = 0;
-    for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.member$oYX5))) {
+    for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.member$6v_r))) {
       if (getMemberRank(member) > memberRank) {
         break;
       }
       indexToInsert++;
     }
-    ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.member$oYX5)).insertElement(indexToInsert, memberToInsert);
+    ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.member$6v_r)).insertElement(indexToInsert, memberToInsert);
   }
   private static int getMemberRank(SNode member) {
     int memberRank = ListSequence.fromList(MEMBERS_ORDER).indexOf(member.getConcept());
@@ -45,6 +45,6 @@ public class MemberInsertingUtils {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

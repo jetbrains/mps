@@ -28,7 +28,7 @@
       <node id="3990190717072396550" at="27,50,28,41" concept="5" />
       <node id="3990190717072396550" at="30,68,31,102" concept="5" />
       <node id="3990190717072396550" at="33,30,34,17" concept="5" />
-      <node id="3990190717072396550" at="38,0,39,0" concept="6" trace="original$mmvb" />
+      <node id="3990190717072396550" at="38,0,39,0" concept="6" trace="original$OT6l" />
       <node id="3990190717072396550" at="42,0,43,0" concept="6" trace="ConstantReference$Cm" />
       <node id="3990190717072396550" at="18,0,20,0" concept="1" trace="typeof_ConstantReference_InferenceRule#()V" />
       <node id="3990190717072396550" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -77,7 +77,7 @@
       <node id="3990190717072396570" at="27,50,28,32" concept="5" />
       <node id="3990190717072396570" at="30,68,31,102" concept="5" />
       <node id="3990190717072396570" at="33,30,34,17" concept="5" />
-      <node id="3990190717072396570" at="38,0,39,0" concept="6" trace="initializer$o06Y" />
+      <node id="3990190717072396570" at="38,0,39,0" concept="6" trace="initializer$C3o2" />
       <node id="3990190717072396570" at="42,0,43,0" concept="6" trace="Constant$9C" />
       <node id="3990190717072396570" at="18,0,20,0" concept="1" trace="typeof_Constant_InferenceRule#()V" />
       <node id="3990190717072396570" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

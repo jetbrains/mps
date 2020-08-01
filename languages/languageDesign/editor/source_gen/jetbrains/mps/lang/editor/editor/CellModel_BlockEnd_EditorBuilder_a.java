@@ -52,7 +52,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.closeBrace$nmQ4;
+      final SProperty property = PROPS.closeBrace$k4bW;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("}");
@@ -83,7 +83,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty closeBrace$nmQ4 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x116fdba37cdL, 0x1170c8fe13bL, "closeBrace");
+    /*package*/ static final SProperty closeBrace$k4bW = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x116fdba37cdL, 0x1170c8fe13bL, "closeBrace");
   }
 
   private static final class CONCEPTS {

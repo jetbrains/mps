@@ -26,7 +26,7 @@ public class TemplateArgumentVarRefExpression2_Constraints extends BaseConstrain
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.vardecl$pgS0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.vardecl$fb80, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -59,6 +59,6 @@ public class TemplateArgumentVarRefExpression2_Constraints extends BaseConstrain
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink vardecl$pgS0 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl");
+    /*package*/ static final SReferenceLink vardecl$fb80 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl");
   }
 }

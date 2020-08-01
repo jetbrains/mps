@@ -38,7 +38,7 @@ public final class BuildLayout_ToBinaryCopyProcessor__BehaviorDescriptor extends
     return "copyModels";
   }
   /*package*/ static Map<String, String> getTaskArguments_id6R_3WZ31H2E(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.stripImplementation$ITXC)) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.stripImplementation$I4Qo)) {
       return Collections.singletonMap("stripImplementation", "true");
     }
     return Collections.emptyMap();
@@ -93,6 +93,6 @@ public final class BuildLayout_ToBinaryCopyProcessor__BehaviorDescriptor extends
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stripImplementation$ITXC = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x127671bd5d8bb460L, 0x6de50fcfc2febc8aL, "stripImplementation");
+    /*package*/ static final SProperty stripImplementation$I4Qo = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x127671bd5d8bb460L, 0x6de50fcfc2febc8aL, "stripImplementation");
   }
 }

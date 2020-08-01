@@ -40,7 +40,7 @@ public class ExtensionMethodCall_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$$A7i, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -57,10 +57,10 @@ public class ExtensionMethodCall_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
             List<SNode> result = new ArrayList<SNode>();
-            SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+            SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
             for (SNode extension : ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.TypeExtension$sE))) {
-              if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(operand), Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(SLinkOperations.getTarget(extension, LINKS.type$UU3), SetSequence.fromSet(new HashSet<SNode>())))) {
-                for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(extension, LINKS.methods$uEwv))) {
+              if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(operand), Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(SLinkOperations.getTarget(extension, LINKS.type$sy7t), SetSequence.fromSet(new HashSet<SNode>())))) {
+                for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(extension, LINKS.methods$Q_J1))) {
                   if (VisibilityUtil.isVisible(enclosingNode, method)) {
                     ListSequence.fromList(result).addElement(method);
                   }
@@ -68,8 +68,8 @@ public class ExtensionMethodCall_Constraints extends BaseConstraintsDescriptor {
               }
             }
             for (SNode container : ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.SimpleExtensionMethodsContainer$5i))) {
-              for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.methods$uEwv))) {
-                if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(operand), Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(SLinkOperations.getTarget(method, LINKS.extendedType$S0L), SetSequence.fromSet(new HashSet<SNode>())))) {
+              for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.methods$Q_J1))) {
+                if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(operand), Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(SLinkOperations.getTarget(method, LINKS.extendedType$r8nJ), SetSequence.fromSet(new HashSet<SNode>())))) {
                   if (VisibilityUtil.isVisible(enclosingNode, method)) {
                     ListSequence.fromList(result).addElement(method);
                   }
@@ -99,10 +99,10 @@ public class ExtensionMethodCall_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink methods$uEwv = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x6f5433076549f51bL, "methods");
-    /*package*/ static final SContainmentLink type$UU3 = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1a4abaca2a94ce10L, 0x1a4abaca2a959cfeL, "type");
-    /*package*/ static final SContainmentLink extendedType$S0L = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, 0x6f54330765374812L, "extendedType");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink methods$Q_J1 = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x6f5433076549f51bL, "methods");
+    /*package*/ static final SContainmentLink type$sy7t = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1a4abaca2a94ce10L, 0x1a4abaca2a959cfeL, "type");
+    /*package*/ static final SContainmentLink extendedType$r8nJ = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, 0x6f54330765374812L, "extendedType");
   }
 }

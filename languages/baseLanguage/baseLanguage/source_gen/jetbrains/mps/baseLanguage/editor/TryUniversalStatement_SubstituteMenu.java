@@ -159,7 +159,7 @@ public class TryUniversalStatement_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.TryUniversalStatement$80, _context.getCurrentTargetNode());
-        SNodeFactoryOperations.addNewChild(result, LINKS.resource$nWfw, null);
+        SNodeFactoryOperations.addNewChild(result, LINKS.resource$Abww, null);
         return result;
       }
 
@@ -200,6 +200,6 @@ public class TryUniversalStatement_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resource$nWfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
+    /*package*/ static final SContainmentLink resource$Abww = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
   }
 }

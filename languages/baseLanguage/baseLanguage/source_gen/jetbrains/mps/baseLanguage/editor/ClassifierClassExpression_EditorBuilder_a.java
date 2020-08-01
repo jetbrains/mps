@@ -84,14 +84,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private EditorCell createRefCell_0() {
-    final SReferenceLink referenceLink = LINKS.classifier$V09;
+    final SReferenceLink referenceLink = LINKS.classifier$s_4n;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
         EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
           public EditorCell compute() {
             return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
           }
-        }, targetNode, LINKS.classifier$V09);
+        }, targetNode, LINKS.classifier$s_4n);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_notnull_smartReference(cell);
@@ -111,7 +111,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
     if (editorCell.getSRole() == null) {
       editorCell.setReferenceCell(true);
-      editorCell.setSRole(LINKS.classifier$V09);
+      editorCell.setSRole(LINKS.classifier$s_4n);
     }
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.ClassifierClassExpression$T1, "jetbrains.mps.baseLanguage.editor.ClassifierClassExpressionToArray"));
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new ReferenceCellContext(getNode(), getNode(), referenceLink), new SubstituteInfoPartExt[]{new ClassifierClassExpression_generic_cellMenu_ejwutq_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
@@ -165,7 +165,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SLinkOperations.setTarget(node, LINKS.classifier$V09, SNodeOperations.cast(parameterObject, CONCEPTS.Classifier$hJ));
+      SLinkOperations.setTarget(node, LINKS.classifier$s_4n, SNodeOperations.cast(parameterObject, CONCEPTS.Classifier$hJ));
     }
     public boolean isReferentPresentation() {
       return false;
@@ -204,7 +204,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$V09 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
+    /*package*/ static final SReferenceLink classifier$s_4n = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
   }
 
   private static final class CONCEPTS {

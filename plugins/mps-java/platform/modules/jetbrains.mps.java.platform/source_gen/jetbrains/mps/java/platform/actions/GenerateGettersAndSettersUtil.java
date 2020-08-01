@@ -36,7 +36,7 @@ public class GenerateGettersAndSettersUtil {
   }
   public static String getFieldGetterName(SNode fieldDeclaration, Project project) {
     String get = "get";
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(fieldDeclaration, LINKS.type$pLrO), CONCEPTS.BooleanType$8G)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(fieldDeclaration, LINKS.type$uWuc), CONCEPTS.BooleanType$8G)) {
       get = "is";
     }
     return get + NameUtil.capitalize(getPreparedFieldName(fieldDeclaration, project));
@@ -61,7 +61,7 @@ public class GenerateGettersAndSettersUtil {
     return paramName;
   }
   public static String getPreparedFieldName(SNode fieldDeclaration, Project project) {
-    String rawName = SPropertyOperations.getString(fieldDeclaration, PROPS.name$tAp1);
+    String rawName = SPropertyOperations.getString(fieldDeclaration, PROPS.name$lA7v);
     if (rawName == null || rawName.length() == 0) {
       return "unnamedField";
     }
@@ -73,7 +73,7 @@ public class GenerateGettersAndSettersUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {
@@ -81,6 +81,6 @@ public class GenerateGettersAndSettersUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

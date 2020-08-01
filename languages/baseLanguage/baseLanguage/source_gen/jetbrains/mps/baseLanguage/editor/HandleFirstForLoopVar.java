@@ -27,15 +27,15 @@ public class HandleFirstForLoopVar {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.variable$H$_G))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.variable$4Igk))) {
           return;
         }
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$$Q$J)).isEmpty()) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.variable$H$_G));
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).isEmpty()) {
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.variable$4Igk));
         } else {
-          SNode var = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$$Q$J)).removeElementAt(0);
+          SNode var = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).removeElementAt(0);
           SNode n = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$Bf, var);
-          SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.variable$H$_G), n);
+          SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.variable$4Igk), n);
         }
       }
 
@@ -47,7 +47,7 @@ public class HandleFirstForLoopVar {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$$Q$J)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.AdditionalForLoopVariable$KW, SLinkOperations.getTarget(node, LINKS.variable$H$_G)));
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.AdditionalForLoopVariable$KW, SLinkOperations.getTarget(node, LINKS.variable$4Igk)));
       }
 
     };
@@ -99,8 +99,8 @@ public class HandleFirstForLoopVar {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$H$_G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink additionalVar$$Q$J = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
+    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink additionalVar$QrML = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
   }
 
   private static final class CONCEPTS {

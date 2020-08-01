@@ -157,7 +157,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
         }
         @Nullable
         @Override
@@ -261,7 +261,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
         }
         @Nullable
         @Override
@@ -373,7 +373,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return (String) AbstractConceptDeclaration__BehaviorDescriptor.getPresentation_id280s3ZNTXNS.invoke(SLinkOperations.getTarget(myParameterObject, LINKS.cncpt$4E7Y));
+          return (String) AbstractConceptDeclaration__BehaviorDescriptor.getPresentation_id280s3ZNTXNS.invoke(SLinkOperations.getTarget(myParameterObject, LINKS.cncpt$gpR2));
         }
       }
     }
@@ -391,10 +391,10 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cncpt$4E7Y = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt");
+    /*package*/ static final SReferenceLink cncpt$gpR2 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt");
   }
 }

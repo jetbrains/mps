@@ -42,24 +42,24 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$8QP0), CONCEPTS.SNodeType$gn))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$izF0), CONCEPTS.SNodeType$gn))) {
           return false;
         }
-        if (ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(node, LINKS.type$8QP0), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
+        if (ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(node, LINKS.type$izF0), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
           return false;
         }
-        SNode nodeConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$8QP0), CONCEPTS.SNodeType$gn), LINKS.concept$HWFQ);
+        SNode nodeConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$izF0), CONCEPTS.SNodeType$gn), LINKS.concept$gpfa);
         if (nodeConcept == null) {
           return false;
         }
         if (ListSequence.fromList(AttributeOperations.getAttributeList(nodeConcept, new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
           return false;
         }
-        SNode realType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.expression$8QPv));
+        SNode realType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.expression$izU1));
         if (SNodeOperations.isInstanceOf(realType, CONCEPTS.SNodeType$gn)) {
           return true;
         }
-        if ((SNodeOperations.isInstanceOf(realType, CONCEPTS.ClassifierType$IZ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(realType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY) && (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(realType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0a7a0a(), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY)))) {
+        if ((SNodeOperations.isInstanceOf(realType, CONCEPTS.ClassifierType$IZ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(realType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY) && (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(realType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0a7a0a(), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY)))) {
           return true;
         }
         return false;
@@ -67,8 +67,8 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode newExpr = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.SNodeTypeCastExpression$Sg);
-        SLinkOperations.setTarget(newExpr, LINKS.leftExpression$NqCX, SLinkOperations.getTarget(node, LINKS.expression$8QPv));
-        SLinkOperations.setTarget(newExpr, LINKS.concept$NIQI, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$8QP0), CONCEPTS.SNodeType$gn), LINKS.concept$HWFQ));
+        SLinkOperations.setTarget(newExpr, LINKS.leftExpression$TTPz, SLinkOperations.getTarget(node, LINKS.expression$izU1));
+        SLinkOperations.setTarget(newExpr, LINKS.concept$3Gwi, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$izF0), CONCEPTS.SNodeType$gn), LINKS.concept$gpfa));
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ParenthesizedExpression$vE)) {
           SNodeOperations.replaceWithAnother(SNodeOperations.getParent(node), newExpr);
         } else {
@@ -120,24 +120,24 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ))) {
           return false;
         }
-        if (ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(node, LINKS.type$pLrO), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
+        if (ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(node, LINKS.type$uWuc), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
           return false;
         }
-        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
         if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY))) {
           return false;
         }
-        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0e0a2(), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY)))) {
+        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0e0a2(), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY)))) {
           return false;
         }
         return true;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SLinkOperations.setNewChild(node, LINKS.type$pLrO, CONCEPTS.SNodeType$gn);
+        SLinkOperations.setNewChild(node, LINKS.type$uWuc, CONCEPTS.SNodeType$gn);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -159,24 +159,24 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ))) {
           return false;
         }
-        if (ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(node, LINKS.type$pLrO), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
+        if (ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(node, LINKS.type$uWuc), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
           return false;
         }
-        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
         if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY))) {
           return false;
         }
-        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0e0a3(), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY)))) {
+        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0e0a3(), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY)))) {
           return false;
         }
         return true;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SLinkOperations.setNewChild(node, LINKS.type$pLrO, CONCEPTS.SModelType$II);
+        SLinkOperations.setNewChild(node, LINKS.type$uWuc, CONCEPTS.SModelType$II);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -198,10 +198,10 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY))) {
           return false;
         }
-        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0b0a4(), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY)))) {
+        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0b0a4(), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY)))) {
           return false;
         }
         return true;
@@ -229,10 +229,10 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY))) {
           return false;
         }
-        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0b0a5(), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY)))) {
+        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY), SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_z38w7e_a0a0a0b0a5(), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY)))) {
           return false;
         }
         return true;
@@ -302,12 +302,12 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$8QP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink leftExpression$NqCX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
-    /*package*/ static final SReferenceLink concept$NIQI = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$izF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink leftExpression$TTPz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
+    /*package*/ static final SReferenceLink concept$3Gwi = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

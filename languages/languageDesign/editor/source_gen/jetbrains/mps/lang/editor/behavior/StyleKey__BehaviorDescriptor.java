@@ -37,10 +37,10 @@ public final class StyleKey__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.value$kiE0);
+    return SPropertyOperations.getString(__thisNode__, PROPS.value$P2m0);
   }
   /*package*/ static String getClassName_id3w77Jl_kKl7(@NotNull SNode __thisNode__) {
-    return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.value$kiE0)) + "_StyleKey";
+    return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.value$P2m0)) + "_StyleKey";
   }
   /*package*/ static String getClassFQName_id3w77Jl_kKlh(@NotNull SNode __thisNode__) {
     return StyleKeyPack__BehaviorDescriptor.getClassFqName_id3w77Jl_kWGD.invoke(StyleKey__BehaviorDescriptor.getStyleKeyPack_id3w77Jl_kPZ_.invoke(__thisNode__)) + "." + StyleKey__BehaviorDescriptor.getClassName_id3w77Jl_kKl7.invoke(__thisNode__);
@@ -102,7 +102,7 @@ public final class StyleKey__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 
   private static final class CONCEPTS {

@@ -21,14 +21,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class IExtensibleMenuPart_factory {
   public static class NodeFactory_7985135009829579183 implements NodeFactory {
     public void setup(final SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      Iterable<SConcept> requiredFeatures = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(enclosingNode, CONCEPTS.TransformationMenuSection$H0, true, false), LINKS.locations$aTw0)).translate(new ITranslator2<SNode, SConcept>() {
+      Iterable<SConcept> requiredFeatures = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(enclosingNode, CONCEPTS.TransformationMenuSection$H0, true, false), LINKS.locations$hQw0)).translate(new ITranslator2<SNode, SConcept>() {
         public Iterable<SConcept> translate(SNode it) {
           return (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getRequiredFeatures_id7L5lpRJHK_w.invoke(it);
         }
       });
       Sequence.fromIterable(requiredFeatures).visitAll(new IVisitor<SConcept>() {
         public void visit(SConcept it) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.features$645q)).addElement(SNodeFactoryOperations.createNewNode(it, null));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.features$VYBA)).addElement(SNodeFactoryOperations.createNewNode(it, null));
         }
       });
     }
@@ -39,7 +39,7 @@ public class IExtensibleMenuPart_factory {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink locations$aTw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
-    /*package*/ static final SContainmentLink features$645q = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
+    /*package*/ static final SContainmentLink locations$hQw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
+    /*package*/ static final SContainmentLink features$VYBA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
   }
 }

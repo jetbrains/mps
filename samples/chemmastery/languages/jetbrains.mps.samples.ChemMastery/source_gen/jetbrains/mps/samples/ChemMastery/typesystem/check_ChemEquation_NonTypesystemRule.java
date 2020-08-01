@@ -24,24 +24,24 @@ public class check_ChemEquation_NonTypesystemRule extends AbstractNonTypesystemR
   public check_ChemEquation_NonTypesystemRule() {
   }
   public void applyRule(final SNode chemEquation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.left$U$u8)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.left$nE_S)).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(chemEquation, "The list of chemicals entering the equation is empty", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "7995886393880688056", null, errorTarget);
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.right$U$v6)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.right$nF3U)).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(chemEquation, "The list of chemicals produced by the equation is empty", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "7995886393880688207", null, errorTarget);
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.left$U$u8)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.right$U$v6)).isNotEmpty()) {
-      ElementSummary sumL = new ElementSummary(SNodeOperations.ofConcept(SLinkOperations.getChildren(chemEquation, LINKS.left$U$u8), CONCEPTS.Compound$6W));
-      ElementSummary sumR = new ElementSummary(SNodeOperations.ofConcept(SLinkOperations.getChildren(chemEquation, LINKS.right$U$v6), CONCEPTS.Compound$6W));
+    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.left$nE_S)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.right$nF3U)).isNotEmpty()) {
+      ElementSummary sumL = new ElementSummary(SNodeOperations.ofConcept(SLinkOperations.getChildren(chemEquation, LINKS.left$nE_S), CONCEPTS.Compound$6W));
+      ElementSummary sumR = new ElementSummary(SNodeOperations.ofConcept(SLinkOperations.getChildren(chemEquation, LINKS.right$nF3U), CONCEPTS.Compound$6W));
       if (!(sumL.isSameAs(sumR))) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.condition$2Qh4);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.condition$oigW);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(chemEquation, sumL.comparisonReport(sumR), "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "3709490473851308833", null, errorTarget);
         }
       }
@@ -58,8 +58,8 @@ public class check_ChemEquation_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$U$u8 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
-    /*package*/ static final SContainmentLink right$U$v6 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
+    /*package*/ static final SContainmentLink left$nE_S = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
+    /*package*/ static final SContainmentLink right$nF3U = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
   }
 
   private static final class CONCEPTS {
@@ -68,6 +68,6 @@ public class check_ChemEquation_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty condition$2Qh4 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184faba451a7L, "condition");
+    /*package*/ static final SProperty condition$oigW = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184faba451a7L, "condition");
   }
 }

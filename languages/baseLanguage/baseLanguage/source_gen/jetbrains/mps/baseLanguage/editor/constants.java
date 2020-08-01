@@ -106,9 +106,9 @@ public class constants extends SubstituteMenuBase {
         SNode intConst = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.IntegerConstant$mo, null);
         Object result = SPrimitiveTypes.INTEGER.fromString(pattern);
         if (result == null || result == SType.NOT_A_VALUE) {
-          SPropertyOperations.set(intConst, PROPS.value$ZeO0, 0);
+          SPropertyOperations.set(intConst, PROPS.value$Cbc0, 0);
         } else {
-          SPropertyOperations.set(intConst, PROPS.value$ZeO0, (int) result);
+          SPropertyOperations.set(intConst, PROPS.value$Cbc0, (int) result);
         }
         return intConst;
       }
@@ -176,7 +176,7 @@ public class constants extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.LongLiteral$5g, null);
-        SPropertyOperations.assign(result, PROPS.value$ODo0, pattern);
+        SPropertyOperations.assign(result, PROPS.value$w2C0, pattern);
         return result;
       }
 
@@ -269,7 +269,7 @@ public class constants extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode integerConst = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.BooleanConstant$Ui, null);
-          SPropertyOperations.set(integerConst, PROPS.value$WIn0, myParameterObject.booleanValue());
+          SPropertyOperations.set(integerConst, PROPS.value$qt90, myParameterObject.booleanValue());
           return integerConst;
         }
 
@@ -340,7 +340,7 @@ public class constants extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode doubleConstant = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.FloatingPointConstant$AA, null);
-        SPropertyOperations.set(doubleConstant, PROPS.value$oKYE, pattern);
+        SPropertyOperations.set(doubleConstant, PROPS.value$ZImm, pattern);
         return doubleConstant;
       }
 
@@ -406,7 +406,7 @@ public class constants extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode floatConst = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.FloatingPointFloatConstant$pv, null);
-        SPropertyOperations.set(floatConst, PROPS.value$CzwZ, pattern);
+        SPropertyOperations.set(floatConst, PROPS.value$DcYx, pattern);
         return floatConst;
       }
 
@@ -476,7 +476,7 @@ public class constants extends SubstituteMenuBase {
           Pattern _pattern_0 = REGEXP_w0ulk7_a0a0b0g2k;
           Matcher _matcher_0 = _pattern_0.matcher(pattern);
           if (_matcher_0.matches()) {
-            SPropertyOperations.set(stringLiteral, PROPS.value$kiE0, _matcher_0.group(1));
+            SPropertyOperations.set(stringLiteral, PROPS.value$P2m0, _matcher_0.group(1));
           }
         }
         return stringLiteral;
@@ -559,11 +559,11 @@ public class constants extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
-    /*package*/ static final SProperty value$ODo0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value");
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
-    /*package*/ static final SProperty value$oKYE = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value");
-    /*package*/ static final SProperty value$CzwZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$w2C0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$ZImm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value");
+    /*package*/ static final SProperty value$DcYx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

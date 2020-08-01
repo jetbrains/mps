@@ -38,7 +38,7 @@
       <node id="1082824515535528661" at="73,14,74,58" concept="10" />
       <node id="1082824515535528661" at="80,48,81,22" concept="5" />
       <node id="1082824515535528661" at="86,40,87,19" concept="5" />
-      <node id="1082824515535528661" at="91,0,92,0" concept="7" trace="name$tAp1" />
+      <node id="1082824515535528661" at="91,0,92,0" concept="7" trace="name$lA7v" />
       <node id="1082824515535528661" at="32,0,34,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1082824515535528661" at="43,0,45,0" concept="0" trace="Canvas__BehaviorDescriptor#()V" />
       <node id="1082824515535528661" at="53,49,56,5" concept="2" />
@@ -120,7 +120,7 @@
       <node id="1082824515535573728" at="75,14,76,58" concept="10" />
       <node id="1082824515535573728" at="82,48,83,22" concept="5" />
       <node id="1082824515535573728" at="88,40,89,19" concept="5" />
-      <node id="1082824515535573728" at="93,0,94,0" concept="7" trace="colorRef$OQpK" />
+      <node id="1082824515535573728" at="93,0,94,0" concept="7" trace="colorRef$Amug" />
       <node id="1082824515535573728" at="32,0,34,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1082824515535573728" at="42,0,44,0" concept="0" trace="Shape__BehaviorDescriptor#()V" />
       <node id="1082824515535573728" at="35,0,38,0" concept="8" trace="drawShape_idW6XMzE_hbz#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/awt/Graphics;)V" />
@@ -212,9 +212,9 @@
       <node id="1082824515535622258" at="85,48,86,22" concept="5" />
       <node id="1082824515535622258" at="91,40,92,19" concept="5" />
       <node id="1082824515535622258" at="96,0,97,0" concept="7" trace="Circle$yH" />
-      <node id="1082824515535622258" at="100,0,101,0" concept="7" trace="x$Srpw" />
-      <node id="1082824515535622258" at="101,0,102,0" concept="7" trace="y$Srqu" />
-      <node id="1082824515535622258" at="102,0,103,0" concept="7" trace="radius$SrrV" />
+      <node id="1082824515535622258" at="100,0,101,0" concept="7" trace="x$lhmw" />
+      <node id="1082824515535622258" at="101,0,102,0" concept="7" trace="y$lhOy" />
+      <node id="1082824515535622258" at="102,0,103,0" concept="7" trace="radius$lix_" />
       <node id="1082824515535622258" at="33,0,35,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1082824515535622258" at="45,0,47,0" concept="0" trace="Circle__BehaviorDescriptor#()V" />
       <node id="1082824515535622258" at="55,49,58,5" concept="2" />
@@ -307,9 +307,9 @@
       <node id="1082824515535631875" at="85,48,86,22" concept="5" />
       <node id="1082824515535631875" at="91,40,92,19" concept="5" />
       <node id="1082824515535631875" at="96,0,97,0" concept="7" trace="Square$LI" />
-      <node id="1082824515535631875" at="100,0,101,0" concept="7" trace="upperLeftX$SrD0" />
-      <node id="1082824515535631875" at="101,0,102,0" concept="7" trace="upperLeftY$SrDY" />
-      <node id="1082824515535631875" at="102,0,103,0" concept="7" trace="size$SrFr" />
+      <node id="1082824515535631875" at="100,0,101,0" concept="7" trace="upperLeftX$loR0" />
+      <node id="1082824515535631875" at="101,0,102,0" concept="7" trace="upperLeftY$lpl2" />
+      <node id="1082824515535631875" at="102,0,103,0" concept="7" trace="size$lq25" />
       <node id="1082824515535631875" at="33,0,35,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1082824515535631875" at="45,0,47,0" concept="0" trace="Square__BehaviorDescriptor#()V" />
       <node id="1082824515535631875" at="55,49,58,5" concept="2" />
@@ -401,8 +401,8 @@
       <node id="2097561739636354491" at="83,14,84,58" concept="10" />
       <node id="2097561739636354491" at="90,48,91,22" concept="5" />
       <node id="2097561739636354491" at="96,40,97,19" concept="5" />
-      <node id="2097561739636354491" at="101,0,102,0" concept="7" trace="target$oYjX" />
-      <node id="2097561739636354491" at="105,0,106,0" concept="7" trace="name$tAp1" />
+      <node id="2097561739636354491" at="101,0,102,0" concept="7" trace="target$6bEz" />
+      <node id="2097561739636354491" at="105,0,106,0" concept="7" trace="name$lA7v" />
       <node id="2097561739636354491" at="33,0,35,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2097561739636354491" at="54,0,56,0" concept="0" trace="ColorReference__BehaviorDescriptor#()V" />
       <node id="1082824515534510641" at="37,77,40,5" concept="2" />
@@ -486,7 +486,7 @@
       <node id="4001135958239205268" at="28,43,29,86" concept="1" />
       <node id="4001135958239205281" at="37,43,38,39" concept="5" />
       <node id="4001135958239205292" at="42,33,43,51" concept="5" />
-      <node id="4001135958239008473" at="49,0,50,0" concept="7" trace="shapes$NwZ7" />
+      <node id="4001135958239008473" at="49,0,50,0" concept="7" trace="shapes$WY$p" />
       <node id="4001135958239205266" at="28,0,31,0" concept="3" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4001135958239205277" at="36,0,40,0" concept="3" trace="getPreferredSize#()Ljava/awt/Dimension;" />
       <node id="4001135958239205288" at="41,0,45,0" concept="3" trace="getBorder#()Ljavax/swing/border/Border;" />

@@ -26,9 +26,9 @@ public class ExtractMethodWithExitPoints extends ExtractMethodFromStatementsRefa
   public void replaceMatch(MethodMatch match, SNode methodDeclaration) {
     SNode methodCall = this.createMethodCall(match, methodDeclaration);
     SNode ifNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
-    SLinkOperations.setTarget(ifNode, LINKS.condition$WJ1b, methodCall);
-    SLinkOperations.setTarget(ifNode, LINKS.ifTrue$WJ1E, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifNode, LINKS.ifTrue$WJ1E), LINKS.statement$WHn8)).addElement(ListSequence.fromList(this.myAnalyzer.getIntenalExitPoints()).first());
+    SLinkOperations.setTarget(ifNode, LINKS.condition$qL$l, methodCall);
+    SLinkOperations.setTarget(ifNode, LINKS.ifTrue$qLNm, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifNode, LINKS.ifTrue$qLNm), LINKS.statement$pYcS)).addElement(ListSequence.fromList(this.myAnalyzer.getIntenalExitPoints()).first());
     SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(this.myStatements).first(), ifNode);
     for (SNode statement : ListSequence.fromList(this.myStatements)) {
       SNodeOperations.deleteNode(statement);
@@ -38,23 +38,23 @@ public class ExtractMethodWithExitPoints extends ExtractMethodFromStatementsRefa
   protected void modifyPartToExtract() {
     SNode ret = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement"));
     SNode constant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant"));
-    SPropertyOperations.assign(constant, PROPS.value$WIn0, false);
-    SLinkOperations.setTarget(ret, LINKS.expression$EsbK, constant);
+    SPropertyOperations.assign(constant, PROPS.value$qt90, false);
+    SLinkOperations.setTarget(ret, LINKS.expression$zDGg, constant);
     ListSequence.fromList(this.myStatements).addElement(SNodeOperations.copyNode(ret));
-    SPropertyOperations.assign(constant, PROPS.value$WIn0, true);
+    SPropertyOperations.assign(constant, PROPS.value$qt90, true);
     for (SNode exitPoint : ListSequence.fromList(this.myAnalyzer.getIntenalExitPoints())) {
       SNodeOperations.replaceWithAnother(exitPoint, SNodeOperations.copyNode(ret));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

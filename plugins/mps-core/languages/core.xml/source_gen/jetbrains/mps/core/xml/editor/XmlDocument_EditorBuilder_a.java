@@ -51,7 +51,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new prologSingleRoleHandler_aohue5_a0(myNode, LINKS.prolog$3nDT, getEditorContext());
+    SingleRoleCellProvider provider = new prologSingleRoleHandler_aohue5_a0(myNode, LINKS.prolog$CtiB, getEditorContext());
     return provider.createCell();
   }
   private static class prologSingleRoleHandler_aohue5_a0 extends SingleRoleCellProvider {
@@ -71,8 +71,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.prolog$3nDT, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.prolog$3nDT, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.prolog$CtiB, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.prolog$CtiB, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -84,7 +84,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.prolog$3nDT);
+        editorCell.setSRole(LINKS.prolog$CtiB);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
@@ -93,7 +93,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.prolog$3nDT));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.prolog$CtiB));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_prolog");
@@ -109,7 +109,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new rootElementSingleRoleHandler_aohue5_b0(myNode, LINKS.rootElement$3ntj, getEditorContext());
+    SingleRoleCellProvider provider = new rootElementSingleRoleHandler_aohue5_b0(myNode, LINKS.rootElement$Cncd, getEditorContext());
     return provider.createCell();
   }
   private static class rootElementSingleRoleHandler_aohue5_b0 extends SingleRoleCellProvider {
@@ -129,8 +129,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.rootElement$3ntj, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.rootElement$3ntj, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.rootElement$Cncd, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.rootElement$Cncd, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -142,13 +142,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.rootElement$3ntj);
+        editorCell.setSRole(LINKS.rootElement$Cncd);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.rootElement$3ntj));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.rootElement$Cncd));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_rootElement");
@@ -165,7 +165,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink prolog$3nDT = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c5494874L, "prolog");
-    /*package*/ static final SContainmentLink rootElement$3ntj = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c549486fL, "rootElement");
+    /*package*/ static final SContainmentLink prolog$CtiB = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c5494874L, "prolog");
+    /*package*/ static final SContainmentLink rootElement$Cncd = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c549486fL, "rootElement");
   }
 }

@@ -113,7 +113,7 @@ public class Expression_wrapWithPassByRef extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
-        SLinkOperations.setTarget(createdNode, LINKS.expr$NNix, _context.getNode());
+        SLinkOperations.setTarget(createdNode, LINKS.expr$5PXZ, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
 
       }
@@ -146,6 +146,6 @@ public class Expression_wrapWithPassByRef extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$NNix = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, 0x5fc1cc47cb462337L, "expr");
+    /*package*/ static final SContainmentLink expr$5PXZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, 0x5fc1cc47cb462337L, "expr");
   }
 }

@@ -32,10 +32,10 @@ public class check_IMenu_Concept_SingleDefault_NonTypesystemRule extends Abstrac
       if (other == menu) {
         continue;
       }
-      if ((boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(other) && Objects.equals(SNodeOperations.getConcept(other), SNodeOperations.getConcept(menu)) && SLinkOperations.getTarget(other, LINKS.conceptDeclaration$acmt) == SLinkOperations.getTarget(menu, LINKS.conceptDeclaration$acmt)) {
+      if ((boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(other) && Objects.equals(SNodeOperations.getConcept(other), SNodeOperations.getConcept(menu)) && SLinkOperations.getTarget(other, LINKS.conceptDeclaration$VYS3) == SLinkOperations.getTarget(menu, LINKS.conceptDeclaration$VYS3)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(menu, "Default " + SNodeOperations.getConcept(menu).getName() + " already exists for " + SLinkOperations.getTarget(menu, LINKS.conceptDeclaration$acmt), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "5219382839344260898", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(menu, "Default " + SNodeOperations.getConcept(menu).getName() + " already exists for " + SLinkOperations.getTarget(menu, LINKS.conceptDeclaration$VYS3), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "5219382839344260898", null, errorTarget);
         }
       }
     }
@@ -51,7 +51,7 @@ public class check_IMenu_Concept_SingleDefault_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$acmt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {

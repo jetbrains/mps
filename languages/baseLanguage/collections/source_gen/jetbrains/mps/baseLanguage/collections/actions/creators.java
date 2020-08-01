@@ -16,82 +16,82 @@ public class creators {
   public static class NodeFactory_1241474531795 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractContainerCreator$Yg)) {
-        SLinkOperations.setTarget(newNode, LINKS.elementType$K4zo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$K4zo)));
-        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$K4zR))) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$K4zR)).addElement(SNodeOperations.deleteNode(v));
+        SLinkOperations.setTarget(newNode, LINKS.elementType$id8C, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$id8C)));
+        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$idnD))) {
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$idnD)).addElement(SNodeOperations.deleteNode(v));
         }
-        SLinkOperations.setTarget(newNode, LINKS.copyFrom$oKp$, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$oKp$)));
+        SLinkOperations.setTarget(newNode, LINKS.copyFrom$Zsos, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$Zsos)));
       }
     }
   }
   public static class NodeFactory_1241474511499 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractContainerCreator$Yg)) {
-        SLinkOperations.setTarget(newNode, LINKS.elementType$K4zo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$K4zo)));
-        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$K4zR))) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$K4zR)).addElement(SNodeOperations.deleteNode(v));
+        SLinkOperations.setTarget(newNode, LINKS.elementType$id8C, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$id8C)));
+        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$idnD))) {
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$idnD)).addElement(SNodeOperations.deleteNode(v));
         }
-        SLinkOperations.setTarget(newNode, LINKS.copyFrom$oKp$, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$oKp$)));
+        SLinkOperations.setTarget(newNode, LINKS.copyFrom$Zsos, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$Zsos)));
       }
     }
   }
   public static class NodeFactory_1241475097267 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractContainerCreator$Yg)) {
-        SLinkOperations.setTarget(newNode, LINKS.elementType$K4zo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$K4zo)));
-        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$K4zR))) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$K4zR)).addElement(SNodeOperations.deleteNode(v));
+        SLinkOperations.setTarget(newNode, LINKS.elementType$id8C, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$id8C)));
+        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$idnD))) {
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$idnD)).addElement(SNodeOperations.deleteNode(v));
         }
-        SLinkOperations.setTarget(newNode, LINKS.copyFrom$oKp$, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$oKp$)));
+        SLinkOperations.setTarget(newNode, LINKS.copyFrom$Zsos, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$Zsos)));
       }
     }
   }
   public static class NodeFactory_1241475118079 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractContainerCreator$Yg)) {
-        SLinkOperations.setTarget(newNode, LINKS.elementType$K4zo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$K4zo)));
-        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$K4zR))) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$K4zR)).addElement(SNodeOperations.deleteNode(v));
+        SLinkOperations.setTarget(newNode, LINKS.elementType$id8C, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$id8C)));
+        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$idnD))) {
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$idnD)).addElement(SNodeOperations.deleteNode(v));
         }
-        SLinkOperations.setTarget(newNode, LINKS.copyFrom$oKp$, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$oKp$)));
+        SLinkOperations.setTarget(newNode, LINKS.copyFrom$Zsos, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$Zsos)));
       }
     }
   }
   public static class NodeFactory_1241475137153 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractContainerCreator$Yg)) {
-        SLinkOperations.setTarget(newNode, LINKS.elementType$K4zo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$K4zo)));
-        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$K4zR))) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$K4zR)).addElement(SNodeOperations.deleteNode(v));
+        SLinkOperations.setTarget(newNode, LINKS.elementType$id8C, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.elementType$id8C)));
+        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$idnD))) {
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.initValue$idnD)).addElement(SNodeOperations.deleteNode(v));
         }
-        SLinkOperations.setTarget(newNode, LINKS.copyFrom$oKp$, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$oKp$)));
+        SLinkOperations.setTarget(newNode, LINKS.copyFrom$Zsos, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractContainerCreator$Yg), LINKS.copyFrom$Zsos)));
       }
     }
   }
   public static class NodeFactory_1241475150554 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.HashMapCreator$8D)) {
-        SLinkOperations.setTarget(newNode, LINKS.keyType$j6a1, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.keyType$j6a1)));
-        SLinkOperations.setTarget(newNode, LINKS.valueType$WE1r, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.valueType$WE1r)));
-        SLinkOperations.setTarget(newNode, LINKS.initializer$ZdmC, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.initializer$ZdmC)));
+        SLinkOperations.setTarget(newNode, LINKS.keyType$fYQv, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.keyType$fYQv)));
+        SLinkOperations.setTarget(newNode, LINKS.valueType$omG5, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.valueType$omG5)));
+        SLinkOperations.setTarget(newNode, LINKS.initializer$BtXo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.initializer$BtXo)));
       }
     }
   }
   public static class NodeFactory_1241475270085 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.HashMapCreator$8D)) {
-        SLinkOperations.setTarget(newNode, LINKS.keyType$j6a1, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.keyType$j6a1)));
-        SLinkOperations.setTarget(newNode, LINKS.valueType$WE1r, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.valueType$WE1r)));
-        SLinkOperations.setTarget(newNode, LINKS.initializer$ZdmC, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.initializer$ZdmC)));
+        SLinkOperations.setTarget(newNode, LINKS.keyType$fYQv, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.keyType$fYQv)));
+        SLinkOperations.setTarget(newNode, LINKS.valueType$omG5, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.valueType$omG5)));
+        SLinkOperations.setTarget(newNode, LINKS.initializer$BtXo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.initializer$BtXo)));
       }
     }
   }
   public static class NodeFactory_1241475279119 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.HashMapCreator$8D)) {
-        SLinkOperations.setTarget(newNode, LINKS.keyType$j6a1, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.keyType$j6a1)));
-        SLinkOperations.setTarget(newNode, LINKS.valueType$WE1r, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.valueType$WE1r)));
-        SLinkOperations.setTarget(newNode, LINKS.initializer$ZdmC, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.initializer$ZdmC)));
+        SLinkOperations.setTarget(newNode, LINKS.keyType$fYQv, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.keyType$fYQv)));
+        SLinkOperations.setTarget(newNode, LINKS.valueType$omG5, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.valueType$omG5)));
+        SLinkOperations.setTarget(newNode, LINKS.initializer$BtXo, SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.HashMapCreator$8D), LINKS.initializer$BtXo)));
       }
     }
   }
@@ -102,11 +102,11 @@ public class creators {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$K4zo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
-    /*package*/ static final SContainmentLink initValue$K4zR = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue");
-    /*package*/ static final SContainmentLink copyFrom$oKp$ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
-    /*package*/ static final SContainmentLink keyType$j6a1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
-    /*package*/ static final SContainmentLink valueType$WE1r = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
-    /*package*/ static final SContainmentLink initializer$ZdmC = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x118f24c9eb0L, "initializer");
+    /*package*/ static final SContainmentLink elementType$id8C = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
+    /*package*/ static final SContainmentLink initValue$idnD = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue");
+    /*package*/ static final SContainmentLink copyFrom$Zsos = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
+    /*package*/ static final SContainmentLink keyType$fYQv = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
+    /*package*/ static final SContainmentLink valueType$omG5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
+    /*package*/ static final SContainmentLink initializer$BtXo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x118f24c9eb0L, "initializer");
   }
 }

@@ -44,12 +44,12 @@ public final class BuildLayout_JarManifest__BehaviorDescriptor extends BaseBHDes
     if ((SNodeOperations.getParent(__thisNode__) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Container$WW)) {
       if (((boolean) BuildLayout_JarManifest__BehaviorDescriptor.isInJar_id5V$ev8kKReX.invoke(__thisNode__))) {
         SNode nlayout = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildNamedLayout$t9, true, false);
-        return context.getTempPath(__thisNode__, BuildLayout_JarManifest__BehaviorDescriptor.defaultManifestName_id7N6lJotVTmG.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_JarManifest$Ns)), ((nlayout != null) ? SPropertyOperations.getString(nlayout, PROPS.name$tAp1) : "default"));
+        return context.getTempPath(__thisNode__, BuildLayout_JarManifest__BehaviorDescriptor.defaultManifestName_id7N6lJotVTmG.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_JarManifest$Ns)), ((nlayout != null) ? SPropertyOperations.getString(nlayout, PROPS.name$lA7v) : "default"));
       } else {
         String parentChildrenTargetDir = BuildLayout_Container__BehaviorDescriptor.getChildrenOutputDir_WithMacro_id450ejGzh8bb.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Container$WW), context);
         String name;
-        if ((SLinkOperations.getTarget(__thisNode__, LINKS.name$X9sf) != null)) {
-          name = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.name$X9sf), context.getMacros(__thisNode__));
+        if ((SLinkOperations.getTarget(__thisNode__, LINKS.name$B$Fh) != null)) {
+          name = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.name$B$Fh), context.getMacros(__thisNode__));
         } else {
           name = BuildLayout_JarManifest__BehaviorDescriptor.defaultManifestName_id7N6lJotVTmG.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_JarManifest$Ns));
         }
@@ -62,10 +62,10 @@ public final class BuildLayout_JarManifest__BehaviorDescriptor extends BaseBHDes
     return (SNodeOperations.getParent(__thisNode__) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Jar$CE);
   }
   /*package*/ static Iterable<SNode> getSections_id7ro1Zzt_n6o(@NotNull SNode __thisNode__) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.parts$PkC2), CONCEPTS.BuildLayout_JarManifest_Section$zw);
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.parts$OZoY), CONCEPTS.BuildLayout_JarManifest_Section$zw);
   }
   /*package*/ static Iterable<SNode> getAttributes_id7ro1Zzt_na1(@NotNull SNode __thisNode__) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.parts$PkC2), CONCEPTS.BuildLayout_JarManifest_Attribute$Oq);
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.parts$OZoY), CONCEPTS.BuildLayout_JarManifest_Attribute$Oq);
   }
   /*package*/ static String defaultManifestName_id7N6lJotVTmG(@NotNull SAbstractConcept __thisConcept__) {
     return "MANIFEST.MF";
@@ -135,11 +135,11 @@ public final class BuildLayout_JarManifest__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink name$X9sf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, 0x67af4eb97391dfc1L, "name");
-    /*package*/ static final SContainmentLink parts$PkC2 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, 0x76d807f8dd957193L, "parts");
+    /*package*/ static final SContainmentLink name$B$Fh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, 0x67af4eb97391dfc1L, "name");
+    /*package*/ static final SContainmentLink parts$OZoY = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, 0x76d807f8dd957193L, "parts");
   }
 }

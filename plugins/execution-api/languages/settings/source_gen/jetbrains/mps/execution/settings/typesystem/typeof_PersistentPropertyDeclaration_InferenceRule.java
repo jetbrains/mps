@@ -33,7 +33,7 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
     {
       SNode _nodeToCheck_1029348928467 = persistentPropertyDeclaration;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477761", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(persistentPropertyDeclaration, LINKS.type$pLrO), (SNode) createJoinType_sacma3_a1a0c0i0b(), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(persistentPropertyDeclaration, LINKS.type$uWuc), (SNode) createJoinType_sacma3_a1a0c0i0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -49,12 +49,12 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.argument$xIHX).init(CONCEPTS.ClassifierType$IZ);
-      n1.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Cloneable")));
+      SNodeBuilder n1 = n0.forChild(LINKS.argument$lCgz).init(CONCEPTS.ClassifierType$IZ);
+      n1.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Cloneable")));
       SNodeBuilder n2 = n1.forSibling().init(CONCEPTS.ClassifierType$IZ);
-      n2.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Enum")));
+      n2.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Enum")));
       SNodeBuilder n3 = n2.forSibling().init(CONCEPTS.ClassifierType$IZ);
-      n3.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String")));
+      n3.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String")));
       SNodeBuilder n4 = n3.forSibling().init(CONCEPTS.BooleanType$8G);
       SNodeBuilder n5 = n4.forSibling().init(CONCEPTS.IntegerType$Eo);
       SNodeBuilder n6 = n5.forSibling().init(CONCEPTS.FloatType$1B);
@@ -69,9 +69,9 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink argument$xIHX = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink argument$lCgz = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

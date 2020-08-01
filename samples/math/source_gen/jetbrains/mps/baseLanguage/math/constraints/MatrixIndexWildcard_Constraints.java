@@ -43,7 +43,7 @@ public class MatrixIndexWildcard_Constraints extends BaseConstraintsDescriptor {
       return false;
     } else {
       SNode expr = SNodeOperations.cast(parentNode, CONCEPTS.MatrixElementAccessExpression$Dk);
-      return !(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.expression$jVHU)), CONCEPTS.VectorType$q7));
+      return !(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.expression$DVf6)), CONCEPTS.VectorType$q7));
     }
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)", "1227128029536582620");
@@ -55,6 +55,6 @@ public class MatrixIndexWildcard_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$jVHU = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433cL, "expression");
+    /*package*/ static final SContainmentLink expression$DVf6 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433cL, "expression");
   }
 }

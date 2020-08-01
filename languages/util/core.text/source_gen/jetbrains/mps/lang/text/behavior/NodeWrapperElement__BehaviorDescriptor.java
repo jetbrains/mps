@@ -33,7 +33,7 @@ public final class NodeWrapperElement__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static String getTextualRepresentation_idfB3l81it7u(@NotNull SNode __thisNode__) {
     // todo maybe a better way to visualize the wrapped node should be used 
-    return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.node$daCF));
+    return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.node$o9GP));
   }
 
   /*package*/ NodeWrapperElement__BehaviorDescriptor() {
@@ -83,6 +83,6 @@ public final class NodeWrapperElement__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$daCF = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
+    /*package*/ static final SContainmentLink node$o9GP = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
   }
 }

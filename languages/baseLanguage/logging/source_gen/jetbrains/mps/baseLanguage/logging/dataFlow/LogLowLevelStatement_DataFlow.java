@@ -11,14 +11,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LogLowLevelStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.message$b$_u));
-    if (SLinkOperations.getTarget(_context.getNode(), LINKS.throwable$b$As) != null) {
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.throwable$b$As));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.message$AI9y));
+    if (SLinkOperations.getTarget(_context.getNode(), LINKS.throwable$AIB$) != null) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.throwable$AIB$));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$b$_u = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
-    /*package*/ static final SContainmentLink throwable$b$As = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
+    /*package*/ static final SContainmentLink message$AI9y = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
+    /*package*/ static final SContainmentLink throwable$AIB$ = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
   }
 }

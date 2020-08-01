@@ -128,7 +128,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Collection$CD, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$usNp, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$JWT7, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
         return result;
       }
 
@@ -188,7 +188,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_Collection$CD, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$usNp, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$JWT7, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
         if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.CellModel_Collection$CD, true, false) != null)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
@@ -251,7 +251,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_Collection$CD, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$usNp, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$JWT7, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
         return result;
       }
 
@@ -311,7 +311,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_Collection$CD, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$usNp, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$JWT7, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
         if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.CellModel_Collection$CD, true, false) != null)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
@@ -374,7 +374,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_Collection$CD, _context.getCurrentTargetNode());
-        SNodeFactoryOperations.setNewChild(result, LINKS.cellLayout$usNp, CONCEPTS.CellLayout_Indent$tI);
+        SNodeFactoryOperations.setNewChild(result, LINKS.cellLayout$JWT7, CONCEPTS.CellLayout_Indent$tI);
         return result;
       }
 
@@ -434,7 +434,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_Collection$CD, _context.getCurrentTargetNode());
-        SNodeFactoryOperations.setNewChild(result, LINKS.cellLayout$usNp, CONCEPTS.CellLayout_Indent$tI);
+        SNodeFactoryOperations.setNewChild(result, LINKS.cellLayout$JWT7, CONCEPTS.CellLayout_Indent$tI);
         if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.CellModel_Collection$CD, true, false) != null)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
@@ -497,7 +497,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_RefNodeList$IL, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$63td, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$VF9j, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
         return result;
       }
 
@@ -557,7 +557,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_RefNodeList$IL, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$63td, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$VF9j, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Indent$tI, null));
         return result;
       }
 
@@ -617,7 +617,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_RefNodeList$IL, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$63td, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$VF9j, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
         return result;
       }
 
@@ -677,7 +677,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_RefNodeList$IL, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$63td, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$VF9j, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
         if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.CellModel_Collection$CD)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
@@ -740,7 +740,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_RefNodeList$IL, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$63td, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$VF9j, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
         return result;
       }
 
@@ -800,7 +800,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_RefNodeList$IL, _context.getCurrentTargetNode());
-        SLinkOperations.setTarget(result, LINKS.cellLayout$63td, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
+        SLinkOperations.setTarget(result, LINKS.cellLayout$VF9j, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
         if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.CellModel_Collection$CD)) {
           EditorCellModel__BehaviorDescriptor.setSelectable_idi4bRWUe.invoke(result, ((boolean) false));
         }
@@ -1096,7 +1096,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_Constant$SB, _context.getCurrentTargetNode());
-        SPropertyOperations.set(result, PROPS.text$ZxWw, NameUtil.stripQuotes(pattern, "\"", "\""));
+        SPropertyOperations.set(result, PROPS.text$Lsjw, NameUtil.stripQuotes(pattern, "\"", "\""));
         return result;
       }
 
@@ -1167,7 +1167,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode constant = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Constant$SB, _context.getCurrentTargetNode());
-        SPropertyOperations.assign(constant, PROPS.text$ZxWw, NameUtil.stripQuotes(pattern, "\"", "\""));
+        SPropertyOperations.assign(constant, PROPS.text$Lsjw, NameUtil.stripQuotes(pattern, "\"", "\""));
         return constant;
       }
 
@@ -1238,7 +1238,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Error$J9, _context.getCurrentTargetNode());
-        SPropertyOperations.set(result, PROPS.text$webw, NameUtil.stripQuotes(pattern, "!", "!"));
+        SPropertyOperations.set(result, PROPS.text$AR$w, NameUtil.stripQuotes(pattern, "!", "!"));
         return result;
       }
 
@@ -1348,7 +1348,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode component = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellModel_Component$1X, null);
-          SLinkOperations.setTarget(component, LINKS.editorComponent$AnLw, myParameterObject);
+          SLinkOperations.setTarget(component, LINKS.editorComponent$_wYw, myParameterObject);
           return component;
         }
 
@@ -1379,7 +1379,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return "#" + SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1) + "#";
+          return "#" + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + "#";
         }
       }
     }
@@ -1425,14 +1425,14 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink cellLayout$63td = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
-    /*package*/ static final SReferenceLink editorComponent$AnLw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$VF9j = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
+    /*package*/ static final SReferenceLink editorComponent$_wYw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$ZxWw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
-    /*package*/ static final SProperty text$webw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfa61615ec3L, 0xfa61615ec4L, "text");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty text$Lsjw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
+    /*package*/ static final SProperty text$AR$w = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfa61615ec3L, 0xfa61615ec4L, "text");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

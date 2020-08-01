@@ -45,7 +45,7 @@ public class ParallelLoopVariable_Constraints extends BaseConstraintsDescriptor 
   }
   public static class IsFinal_Property extends BasePropertyConstraintsDescriptor {
     public IsFinal_Property(ConstraintsDescriptor container) {
-      super(PROPS.isFinal$hIht, container);
+      super(PROPS.isFinal$_qt3, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -67,7 +67,7 @@ public class ParallelLoopVariable_Constraints extends BaseConstraintsDescriptor 
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.isFinal$hIht, new IsFinal_Property(this));
+    properties.put(PROPS.isFinal$_qt3, new IsFinal_Property(this));
     return properties;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
@@ -81,6 +81,6 @@ public class ParallelLoopVariable_Constraints extends BaseConstraintsDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

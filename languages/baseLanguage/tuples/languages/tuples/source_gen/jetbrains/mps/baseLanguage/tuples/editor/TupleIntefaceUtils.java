@@ -37,14 +37,14 @@ public class TupleIntefaceUtils {
     List<Property> mutators = ListSequence.fromList(new ArrayList<Property>());
     int ignored = 0;
     for (SNode method : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(myIntefaceNode))) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).isEmpty() && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$WIkw), CONCEPTS.VoidType$aT))) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).isEmpty() && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.VoidType$aT))) {
         ListSequence.fromList(accessors).addElement(new Property(method));
-      } else if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count() == 1 && MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$WIkw), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).toListSequence().first())) {
+      } else if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count() == 1 && MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).toListSequence().first())) {
         // matchNodes(RETURNTYPE, FIRST PARAMETER) (sic!) we use tuples in a way that we want set(X) to return X for immediate use 
         ListSequence.fromList(mutators).addElement(new Property(method));
-      } else if ("equals".equals(SPropertyOperations.getString(method, PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$WIkw), CONCEPTS.BooleanType$8G)) {
+      } else if ("equals".equals(SPropertyOperations.getString(method, PROPS.name$lA7v)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.BooleanType$8G)) {
         ignored++;
-      } else if ("hashCode".equals(SPropertyOperations.getString(method, PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$WIkw), CONCEPTS.IntegerType$Eo)) {
+      } else if ("hashCode".equals(SPropertyOperations.getString(method, PROPS.name$lA7v)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.IntegerType$Eo)) {
         ignored++;
       }
     }
@@ -87,14 +87,14 @@ public class TupleIntefaceUtils {
     /*package*/ SNode type;
     public Property(SNode method) {
       isFinal = true;
-      name = SPropertyOperations.getString(method, PROPS.name$tAp1);
-      type = SLinkOperations.getTarget(method, LINKS.returnType$WIkw);
+      name = SPropertyOperations.getString(method, PROPS.name$lA7v);
+      type = SLinkOperations.getTarget(method, LINKS.returnType$qrVw);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 
   private static final class CONCEPTS {
@@ -104,6 +104,6 @@ public class TupleIntefaceUtils {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

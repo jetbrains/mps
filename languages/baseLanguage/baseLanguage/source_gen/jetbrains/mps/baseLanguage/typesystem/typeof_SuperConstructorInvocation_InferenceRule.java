@@ -32,7 +32,7 @@ public class typeof_SuperConstructorInvocation_InferenceRule extends AbstractInf
   public typeof_SuperConstructorInvocation_InferenceRule() {
   }
   public void applyRule(final SNode sci, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode cdecl = SLinkOperations.getTarget(sci, LINKS.baseMethodDeclaration$$A7i);
+    SNode cdecl = SLinkOperations.getTarget(sci, LINKS.baseMethodDeclaration$ItxI);
     if (cdecl == null) {
       return;
     }
@@ -45,7 +45,7 @@ public class typeof_SuperConstructorInvocation_InferenceRule extends AbstractInf
     SNode thisType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(thisClassifier);
     IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(thisType, subs);
 
-    List<SNode> argl = SLinkOperations.getChildren(sci, LINKS.actualArgument$$A7L);
+    List<SNode> argl = SLinkOperations.getChildren(sci, LINKS.actualArgument$ItKJ);
     List<SNode> typel = ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(cdecl, ((int) ListSequence.fromList(argl).count()));
     for (SNode type : ListSequence.fromList(typel)) {
       if (SNodeOperations.isInstanceOf(type, CONCEPTS.IGenericType$$h)) {
@@ -100,8 +100,8 @@ public class typeof_SuperConstructorInvocation_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class CONCEPTS {

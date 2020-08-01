@@ -35,7 +35,7 @@ public class StaticMethodCall_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$$A7i, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -53,15 +53,15 @@ public class StaticMethodCall_Constraints extends BaseConstraintsDescriptor {
             if (!(SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.StaticMethodCall$eu))) {
               return new EmptyScope();
             }
-            if ((SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.StaticMethodCall$eu), LINKS.classConcept$BsUa) == null)) {
+            if ((SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.StaticMethodCall$eu), LINKS.classConcept$70aQ) == null)) {
               return new EmptyScope();
             }
-            return new MethodsScope(Members.visibleStaticMethods(SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.StaticMethodCall$eu), LINKS.classConcept$BsUa), _context.getContextNode()));
+            return new MethodsScope(Members.visibleStaticMethods(SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.StaticMethodCall$eu), LINKS.classConcept$70aQ), _context.getContextNode()));
           }
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.classConcept$BsUa, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.classConcept$70aQ, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -109,7 +109,7 @@ public class StaticMethodCall_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classConcept$BsUa = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
   }
 }

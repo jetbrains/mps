@@ -127,8 +127,8 @@
       <node id="3855706930655035090" at="93,134,94,72" concept="5" />
       <node id="681803901115522149" at="94,72,95,47" concept="11" />
       <node id="1706452255240565482" at="99,0,100,0" concept="14" trace="BuildMpsLayout_Plugin$JV" />
-      <node id="1706452255240565482" at="103,0,104,0" concept="14" trace="plugin$hRNK" />
-      <node id="1706452255240565482" at="107,0,108,0" concept="14" trace="id$rLiV" />
+      <node id="1706452255240565482" at="103,0,104,0" concept="14" trace="plugin$E24g" />
+      <node id="1706452255240565482" at="107,0,108,0" concept="14" trace="id$sSa_" />
       <node id="3855706930655216099" at="38,0,41,0" concept="9" trace="apply#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="5133679254725649081" at="43,0,46,0" concept="3" trace="PluginsListPanel#(Lcom/intellij/openapi/project/Project;)V" />
       <node id="6153102918915063964" at="61,47,64,9" concept="8" />
@@ -564,12 +564,12 @@
       <node id="33324785349900508" at="70,30,71,235" concept="5" />
       <node id="33324785349900508" at="71,235,72,203" concept="5" />
       <node id="33324785349900508" at="72,203,73,24" concept="11" />
-      <node id="33324785348706117" at="77,0,78,0" concept="14" trace="name$tAp1" />
-      <node id="33324785348706117" at="78,0,79,0" concept="14" trace="fileName$L1hm" />
-      <node id="33324785348706117" at="82,0,83,0" concept="14" trace="plugins$97JG" />
-      <node id="33324785348706117" at="83,0,84,0" concept="14" trace="dependencies$tpR5" />
-      <node id="33324785348706117" at="84,0,85,0" concept="14" trace="layout$tpCz" />
-      <node id="33324785348706117" at="85,0,86,0" concept="14" trace="children$aiMf" />
+      <node id="33324785348706117" at="77,0,78,0" concept="14" trace="name$lA7v" />
+      <node id="33324785348706117" at="78,0,79,0" concept="14" trace="fileName$JBpE" />
+      <node id="33324785348706117" at="82,0,83,0" concept="14" trace="plugins$qK6k" />
+      <node id="33324785348706117" at="83,0,84,0" concept="14" trace="dependencies$fxFr" />
+      <node id="33324785348706117" at="84,0,85,0" concept="14" trace="layout$fqCX" />
+      <node id="33324785348706117" at="85,0,86,0" concept="14" trace="children$Z6lh" />
       <node id="33324785349247839" at="40,0,43,0" concept="9" trace="select#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="33324785349513725" at="45,0,48,0" concept="9" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="33324785349515121" at="49,0,52,5" concept="7" />
@@ -1206,7 +1206,7 @@
       <node id="5930496931442015699" at="139,47,140,54" concept="11" />
       <node id="93303204049968958" at="143,33,144,19" concept="12" />
       <node id="93303204049957503" at="144,19,145,19" concept="11" />
-      <node id="5057842142812510296" at="150,0,151,0" concept="14" trace="name$tAp1" />
+      <node id="5057842142812510296" at="150,0,151,0" concept="14" trace="name$lA7v" />
       <node id="3559545331494382886" at="83,0,86,0" concept="9" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Boolean;" />
       <node id="3818729150937328072" at="94,54,97,9" concept="8" />
       <node id="5057842142813065861" at="105,0,108,0" concept="9" trace="getArtifactsPath#()Ljava/lang/String;" />
@@ -2048,8 +2048,8 @@
       <node id="6062668769033909683" at="180,0,181,0" concept="14" trace="Classifier$hJ" />
       <node id="6062668769033909683" at="181,0,182,0" concept="14" trace="IMainClass$SQ" />
       <node id="6062668769033909683" at="182,0,183,0" concept="14" trace="INamedConcept$nV" />
-      <node id="6062668769033909683" at="186,0,187,0" concept="14" trace="compileInMPS$8r6V" />
-      <node id="6062668769033909683" at="187,0,188,0" concept="14" trace="name$tAp1" />
+      <node id="6062668769033909683" at="186,0,187,0" concept="14" trace="compileInMPS$58m_" />
+      <node id="6062668769033909683" at="187,0,188,0" concept="14" trace="name$lA7v" />
       <node id="6062668769033909683" at="41,5,44,5" concept="8" />
       <node id="6062668769033909685" at="53,0,56,0" concept="3" trace="ProducerPart_NodeClassConcept_d1i8dk_a#(Lcom/intellij/execution/configurations/ConfigurationFactory;)V" />
       <node id="6062668769033909688" at="64,73,67,7" concept="8" />
@@ -2795,7 +2795,7 @@
       <node id="6062668769034010995" at="442,0,443,0" concept="14" trace="BaseConcept$Sz" />
       <node id="6062668769034010995" at="443,0,444,0" concept="14" trace="ITestCase$uo" />
       <node id="6062668769034010995" at="444,0,445,0" concept="14" trace="ITestMethod$1l" />
-      <node id="6062668769034010995" at="448,0,449,0" concept="14" trace="name$tAp1" />
+      <node id="6062668769034010995" at="448,0,449,0" concept="14" trace="name$lA7v" />
       <node id="6062668769034010995" at="55,5,58,5" concept="8" />
       <node id="6062668769034011095" at="71,0,74,0" concept="3" trace="ProducerPart_MPSProject_f2w1m9_a#(Lcom/intellij/execution/configurations/ConfigurationFactory;)V" />
       <node id="6062668769034011095" at="90,131,93,7" concept="8" />

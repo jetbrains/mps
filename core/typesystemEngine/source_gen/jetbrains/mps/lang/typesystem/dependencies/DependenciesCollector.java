@@ -31,7 +31,7 @@ public class DependenciesCollector {
   public void collectDependencies(SNode inferenceRule, Map<SNode, Pair<SNode, SNode>> dependencies, Set<SNode> leaves) {
     Set<SNode> roots = SetSequence.fromSet(new HashSet<SNode>());
     for (SNode applicableNodeReference : SNodeOperations.getNodeDescendants(inferenceRule, CONCEPTS.ApplicableNodeReference$VP, false, new SAbstractConcept[]{})) {
-      if (SLinkOperations.getTarget(applicableNodeReference, LINKS.applicableNode$z$o5) == SLinkOperations.getTarget(inferenceRule, LINKS.applicableNode$lCke)) {
+      if (SLinkOperations.getTarget(applicableNodeReference, LINKS.applicableNode$eBEr) == SLinkOperations.getTarget(inferenceRule, LINKS.applicableNode$uxMM)) {
         SetSequence.fromSet(roots).addElement(applicableNodeReference);
       }
     }
@@ -68,8 +68,8 @@ public class DependenciesCollector {
                 }
               }
               if (matches_bcwvc2_b1a2a5a1) {
-                if (SLinkOperations.getTarget(matchedNode_bcwvc2_b0c0f0b, LINKS.rValue$J0E2) == node) {
-                  MapSequence.fromMap(dependencies).put(SLinkOperations.getTarget(matchedNode_bcwvc2_b0c0f0b, LINKS.lValue$J0D4), new Pair<SNode, SNode>(node, _quotation_createNode_bcwvc2_b0a0a0a0a0c0a2a1a1a2a5a1()));
+                if (SLinkOperations.getTarget(matchedNode_bcwvc2_b0c0f0b, LINKS.rValue$LkmY) == node) {
+                  MapSequence.fromMap(dependencies).put(SLinkOperations.getTarget(matchedNode_bcwvc2_b0c0f0b, LINKS.lValue$LjSW), new Pair<SNode, SNode>(node, _quotation_createNode_bcwvc2_b0a0a0a0a0c0a2a1a1a2a5a1()));
                 }
               } else {
                 boolean matches_bcwvc2_c1a2a5a1 = false;
@@ -80,7 +80,7 @@ public class DependenciesCollector {
                   }
                 }
                 if (matches_bcwvc2_c1a2a5a1) {
-                  if (SLinkOperations.getTarget(matchedNode_bcwvc2_b0c0f0b, LINKS.initializer$KgD) == node) {
+                  if (SLinkOperations.getTarget(matchedNode_bcwvc2_b0c0f0b, LINKS.initializer$no3R) == node) {
                     MapSequence.fromMap(dependencies).put(matchedNode_bcwvc2_b0c0f0b, new Pair<SNode, SNode>(node, _quotation_createNode_bcwvc2_b0a0a0a0a0c0a2a0c0b0b0c0f0b()));
                   }
                 } else {
@@ -95,7 +95,7 @@ public class DependenciesCollector {
                     }
                     if (matches_bcwvc2_a0b0c0f0b) {
                       for (SNode variableReference : SNodeOperations.getNodeDescendants(inferenceRule, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})) {
-                        if (SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6) == node) {
+                        if (SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU) == node) {
                           MapSequence.fromMap(dependencies).put(variableReference, new Pair<SNode, SNode>(node, _quotation_createNode_bcwvc2_b0a0a0a0a0a0c0b0a2a0c0a2a1a1a2a5a1()));
                         }
                       }
@@ -109,9 +109,9 @@ public class DependenciesCollector {
                       }
                       if (matches_bcwvc2_b0b0c0f0b) {
                         {
-                          SNode variableDeclaration = SLinkOperations.getTarget(matchedNode_bcwvc2_a1a2a5a1, LINKS.variableDeclaration$2ky6);
+                          SNode variableDeclaration = SLinkOperations.getTarget(matchedNode_bcwvc2_a1a2a5a1, LINKS.variableDeclaration$7WwU);
                           for (SNode reference : SNodeOperations.getNodeDescendants(inferenceRule, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})) {
-                            if (SLinkOperations.getTarget(matchedNode_bcwvc2_a1a2a5a1, LINKS.variableDeclaration$2ky6) == variableDeclaration) {
+                            if (SLinkOperations.getTarget(matchedNode_bcwvc2_a1a2a5a1, LINKS.variableDeclaration$7WwU) == variableDeclaration) {
                               SNode nodeStatement = SNodeOperations.getNodeAncestor(matchedNode_bcwvc2_a1a2a5a1, CONCEPTS.Statement$ok, false, false);
                               SNode usageStatement = SNodeOperations.getNodeAncestor(reference, CONCEPTS.Statement$ok, false, false);
                               while (SNodeOperations.getParent(nodeStatement) != SNodeOperations.getParent(usageStatement)) {
@@ -299,11 +299,11 @@ public class DependenciesCollector {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$lCke = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
-    /*package*/ static final SReferenceLink applicableNode$z$o5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, 0x1117e9f2a5aL, "applicableNode");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SReferenceLink applicableNode$eBEr = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, 0x1117e9f2a5aL, "applicableNode");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

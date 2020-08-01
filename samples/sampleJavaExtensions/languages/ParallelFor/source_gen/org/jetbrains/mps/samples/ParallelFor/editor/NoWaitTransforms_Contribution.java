@@ -61,7 +61,7 @@ public class NoWaitTransforms_Contribution extends TransformationMenuBase {
   public class TMP_Group_uv3amh_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ParallelFor$GE) && SNodeOperations.hasRole(_context.getNode(), LINKS.threadPool$1iZ4);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ParallelFor$GE) && SNodeOperations.hasRole(_context.getNode(), LINKS.threadPool$CcyW);
     }
 
     @NotNull
@@ -102,7 +102,7 @@ public class NoWaitTransforms_Contribution extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink threadPool$1iZ4 = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
+    /*package*/ static final SContainmentLink threadPool$CcyW = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
   }
 
   private static final class CONCEPTS {

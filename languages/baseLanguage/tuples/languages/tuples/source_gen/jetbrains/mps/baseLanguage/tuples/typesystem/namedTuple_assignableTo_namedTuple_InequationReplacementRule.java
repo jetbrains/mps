@@ -27,15 +27,15 @@ public class namedTuple_assignableTo_namedTuple_InequationReplacementRule extend
   public namedTuple_assignableTo_namedTuple_InequationReplacementRule() {
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    if (SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R) == SLinkOperations.getTarget(supertype, LINKS.classifier$pQ_R)) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$dQne)).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$dQne)).count())) {
+    if (SLinkOperations.getTarget(subtype, LINKS.classifier$xslD) == SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$HlfM)).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$HlfM)).count())) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(equationInfo.getNodeWithError(), "Parameter types counts don't match", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "1239968591797", null, errorTarget);
         HUtil.addAdditionalRuleIdsFromInfo(_reporter_2309309498, equationInfo);
       }
       {
-        Iterator<SNode> lp_it = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$dQne)).iterator();
-        Iterator<SNode> rp_it = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$dQne)).iterator();
+        Iterator<SNode> lp_it = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$HlfM)).iterator();
+        Iterator<SNode> rp_it = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$HlfM)).iterator();
         SNode lp_var;
         SNode rp_var;
         while (lp_it.hasNext() && rp_it.hasNext()) {
@@ -50,7 +50,7 @@ public class namedTuple_assignableTo_namedTuple_InequationReplacementRule extend
         }
       }
     } else {
-      if (!(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R))).contains(SLinkOperations.getTarget(supertype, LINKS.classifier$pQ_R)))) {
+      if (!(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$xslD))).contains(SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(equationInfo.getNodeWithError(), "Incompatible named closure", "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "2213502935616215826", null, errorTarget);
         HUtil.addAdditionalRuleIdsFromInfo(_reporter_2309309498, equationInfo);
@@ -59,13 +59,13 @@ public class namedTuple_assignableTo_namedTuple_InequationReplacementRule extend
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    if (SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R) == SLinkOperations.getTarget(supertype, LINKS.classifier$pQ_R)) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$dQne)).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$dQne)).count())) {
+    if (SLinkOperations.getTarget(subtype, LINKS.classifier$xslD) == SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$HlfM)).count() == ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$HlfM)).count())) {
         result_14532009 = false;
       }
       {
-        Iterator<SNode> lp_it = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$dQne)).iterator();
-        Iterator<SNode> rp_it = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$dQne)).iterator();
+        Iterator<SNode> lp_it = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$HlfM)).iterator();
+        Iterator<SNode> rp_it = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$HlfM)).iterator();
         SNode lp_var;
         SNode rp_var;
         while (lp_it.hasNext() && rp_it.hasNext()) {
@@ -75,7 +75,7 @@ public class namedTuple_assignableTo_namedTuple_InequationReplacementRule extend
         }
       }
     } else {
-      if (!(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R))).contains(SLinkOperations.getTarget(supertype, LINKS.classifier$pQ_R)))) {
+      if (!(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$xslD))).contains(SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)))) {
         result_14532009 = false;
       }
     }
@@ -99,8 +99,8 @@ public class namedTuple_assignableTo_namedTuple_InequationReplacementRule extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

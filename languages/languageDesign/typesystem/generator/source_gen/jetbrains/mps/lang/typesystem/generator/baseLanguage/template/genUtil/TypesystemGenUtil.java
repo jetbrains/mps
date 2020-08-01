@@ -29,7 +29,7 @@ public class TypesystemGenUtil {
       oldCurrent = current;
       current = SNodeOperations.getNodeAncestor(current, CONCEPTS.AnonymousClass$aF, false, false);
     }
-    return "checkInequation".equals(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(oldCurrent, CONCEPTS.BaseMethodDeclaration$RR, false, false), PROPS.name$tAp1));
+    return "checkInequation".equals(SPropertyOperations.getString(SNodeOperations.getNodeAncestor(oldCurrent, CONCEPTS.BaseMethodDeclaration$RR, false, false), PROPS.name$lA7v));
   }
   public static boolean isInRuleWithContext(SNode node) {
     SNode root = SNodeOperations.getContainingRoot(node);
@@ -38,8 +38,8 @@ public class TypesystemGenUtil {
     }
     SNode baseMethodDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, false, false);
     if ((baseMethodDeclaration != null)) {
-      for (SNode annotationInstance : SLinkOperations.getChildren(baseMethodDeclaration, LINKS.annotation$oVP4)) {
-        SNode annotation = SLinkOperations.getTarget(annotationInstance, LINKS.annotation$zNxu);
+      for (SNode annotationInstance : SLinkOperations.getChildren(baseMethodDeclaration, LINKS.annotation$4YGW)) {
+        SNode annotation = SLinkOperations.getTarget(annotationInstance, LINKS.annotation$lXdy);
         if (SNodeOperations.is(annotation, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1196177069451")) || SNodeOperations.is(annotation, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1223644778913"))) {
           return true;
         }
@@ -50,13 +50,13 @@ public class TypesystemGenUtil {
   public static boolean returnsNode(SNode subtypingRule) {
     List<SNode> returnStatements = SNodeOperations.getNodeDescendants(subtypingRule, CONCEPTS.ReturnStatement$SF, false, new SAbstractConcept[]{CONCEPTS.ClosureLiteral$zJ, CONCEPTS.AnonymousClass$aF, CONCEPTS.BaseMethodDeclaration$RR});
     for (SNode retSt : returnStatements) {
-      if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(retSt, LINKS.expression$EsbK)), _quotation_createNode_y65bbo_b0a0a0b0d()))) {
+      if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(retSt, LINKS.expression$zDGg)), _quotation_createNode_y65bbo_b0a0a0b0d()))) {
         return false;
       }
     }
     SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(subtypingRule);
     if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ExpressionStatement$nm)) {
-      if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0)), _quotation_createNode_y65bbo_b0a0a0d0d()))) {
+      if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0)), _quotation_createNode_y65bbo_b0a0a0d0d()))) {
         return false;
       }
     }
@@ -85,13 +85,13 @@ public class TypesystemGenUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 }

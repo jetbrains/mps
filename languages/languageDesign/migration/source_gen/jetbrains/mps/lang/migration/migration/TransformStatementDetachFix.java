@@ -80,19 +80,19 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
 
   private void addAnnotationVariableReference(SNode expression) {
     SNode ann = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
-    SPropertyOperations.set(ann, PROPS.createdByScript$1_lw, this.getReference().serialize());
-    SPropertyOperations.assign(ann, PROPS.reasonShort$1$U0, "language semantic changed");
-    SPropertyOperations.assign(ann, PROPS.todo$1_4E, "Pattern variable references now are not detached from their model on first variable read. If detach is needed for the code to work properly, perform detach manually.");
-    SPropertyOperations.assign(ann, PROPS.readableId$1_59, "Transform Detach Changed");
+    SPropertyOperations.set(ann, PROPS.createdByScript$L5qw, this.getReference().serialize());
+    SPropertyOperations.assign(ann, PROPS.reasonShort$KS60, "language semantic changed");
+    SPropertyOperations.assign(ann, PROPS.todo$KXgm, "Pattern variable references now are not detached from their model on first variable read. If detach is needed for the code to work properly, perform detach manually.");
+    SPropertyOperations.assign(ann, PROPS.readableId$KXvn, "Transform Detach Changed");
     AttributeOperations.setAttribute(expression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$Kc), ann);
   }
 
   private void addAnnotationAntiquotation(SNode expression) {
     SNode ann = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
-    SPropertyOperations.set(ann, PROPS.createdByScript$1_lw, this.getReference().serialize());
-    SPropertyOperations.assign(ann, PROPS.reasonShort$1$U0, "language semantic changed");
-    SPropertyOperations.assign(ann, PROPS.todo$1_4E, "When embedded into transform statement, quotations behave quite differently: instead of copying node while inserting in into the antiquotation, the node is detached from its parent. If copying is needed for the code to work properly, perform copy manually.");
-    SPropertyOperations.assign(ann, PROPS.readableId$1_59, "Transform Detach Changed");
+    SPropertyOperations.set(ann, PROPS.createdByScript$L5qw, this.getReference().serialize());
+    SPropertyOperations.assign(ann, PROPS.reasonShort$KS60, "language semantic changed");
+    SPropertyOperations.assign(ann, PROPS.todo$KXgm, "When embedded into transform statement, quotations behave quite differently: instead of copying node while inserting in into the antiquotation, the node is detached from its parent. If copying is needed for the code to work properly, perform copy manually.");
+    SPropertyOperations.assign(ann, PROPS.readableId$KXvn, "Transform Detach Changed");
     AttributeOperations.setAttribute(expression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$Kc), ann);
   }
 
@@ -153,9 +153,9 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty createdByScript$1_lw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
-    /*package*/ static final SProperty reasonShort$1$U0 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e07L, "reasonShort");
-    /*package*/ static final SProperty todo$1_4E = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e08L, "todo");
-    /*package*/ static final SProperty readableId$1_59 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e09L, "readableId");
+    /*package*/ static final SProperty createdByScript$L5qw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
+    /*package*/ static final SProperty reasonShort$KS60 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e07L, "reasonShort");
+    /*package*/ static final SProperty todo$KXgm = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e08L, "todo");
+    /*package*/ static final SProperty readableId$KXvn = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e09L, "readableId");
   }
 }

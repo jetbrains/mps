@@ -91,8 +91,8 @@ public class EnumSwitchCase_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode switchCase = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCase"));
-          ListSequence.fromList(SLinkOperations.getChildren(switchCase, LINKS.members$4kGw)).addElement(nodeToWrap);
-          SNodeFactoryOperations.setNewChild(switchCase, LINKS.body$UK79, null);
+          ListSequence.fromList(SLinkOperations.getChildren(switchCase, LINKS.members$61zw)).addElement(nodeToWrap);
+          SNodeFactoryOperations.setNewChild(switchCase, LINKS.body$tjtn, null);
           return switchCase;
         }
 
@@ -107,7 +107,7 @@ public class EnumSwitchCase_SubstituteMenu extends SubstituteMenuBase {
         }
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-          SelectionUtil.selectNode(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.body$UK79));
+          SelectionUtil.selectNode(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.body$tjtn));
         }
       };
     }
@@ -129,7 +129,7 @@ public class EnumSwitchCase_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink members$4kGw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1d75e4L, "members");
-    /*package*/ static final SContainmentLink body$UK79 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
+    /*package*/ static final SContainmentLink members$61zw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1d75e4L, "members");
+    /*package*/ static final SContainmentLink body$tjtn = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
   }
 }

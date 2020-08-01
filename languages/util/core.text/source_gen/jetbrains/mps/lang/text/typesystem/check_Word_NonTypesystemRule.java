@@ -22,10 +22,10 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
   public check_Word_NonTypesystemRule() {
   }
   public void applyRule(final SNode word, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(word, PROPS.value$cK70))) {
+    if (isEmptyString(SPropertyOperations.getString(word, PROPS.value$bjp0))) {
       return;
     }
-    if (SPropertyOperations.getString(word, PROPS.value$cK70).contains(" ")) {
+    if (SPropertyOperations.getString(word, PROPS.value$bjp0).contains(" ")) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(word, "Words should not contain spaces", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "4338813632905423080", null, errorTarget);
@@ -35,8 +35,8 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
         }
       }
     } else {
-      if ((SPropertyOperations.getString(word, PROPS.value$cK70).matches("[a-zA-Z]+://.+"))) {
-        if (isEmptyString(SPropertyOperations.getString(word, PROPS.url$WUb8))) {
+      if ((SPropertyOperations.getString(word, PROPS.value$bjp0).matches("[a-zA-Z]+://.+"))) {
+        if (isEmptyString(SPropertyOperations.getString(word, PROPS.url$wboS))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(word, "This word can be turned into a link", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "7260264510303289199", null, errorTarget);
@@ -45,7 +45,7 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
           }
-        } else if (!(Objects.equals(SPropertyOperations.getString(word, PROPS.url$WUb8), SPropertyOperations.getString(word, PROPS.value$cK70)))) {
+        } else if (!(Objects.equals(SPropertyOperations.getString(word, PROPS.url$wboS), SPropertyOperations.getString(word, PROPS.value$bjp0)))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(word, "The text and the associated url differ.", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "7260264510303272851", null, errorTarget);
@@ -72,8 +72,8 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 
   private static final class CONCEPTS {

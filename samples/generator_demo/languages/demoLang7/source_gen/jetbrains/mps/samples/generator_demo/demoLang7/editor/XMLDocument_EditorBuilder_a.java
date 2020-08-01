@@ -90,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.element$8WTD;
+      return LINKS.element$lvUR;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Element$mm;
@@ -103,7 +103,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(elementListHandler_rkc9p_a1a.this.getNode(), LINKS.element$8WTD));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(elementListHandler_rkc9p_a1a.this.getNode(), LINKS.element$lvUR));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -145,7 +145,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink element$8WTD = MetaAdapterFactory.getContainmentLink(0xb1ccc903f5a942d1L, 0xadd980ac0e69d662L, 0x3236df431b7f1b53L, 0x3236df431b7f27a0L, "element");
+    /*package*/ static final SContainmentLink element$lvUR = MetaAdapterFactory.getContainmentLink(0xb1ccc903f5a942d1L, 0xadd980ac0e69d662L, 0x3236df431b7f1b53L, 0x3236df431b7f27a0L, "element");
   }
 
   private static final class CONCEPTS {

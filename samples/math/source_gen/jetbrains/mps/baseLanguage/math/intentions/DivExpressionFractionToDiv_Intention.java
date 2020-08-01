@@ -52,7 +52,7 @@ public final class DivExpressionFractionToDiv_Intention extends AbstractIntentio
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeOperations.replaceWithAnother(node, _quotation_createNode_smjisl_a0a0a0(SLinkOperations.getTarget(node, LINKS.denominator$e40P), SLinkOperations.getTarget(node, LINKS.numerator$a$pv)));
+      SNodeOperations.replaceWithAnother(node, _quotation_createNode_smjisl_a0a0a0(SLinkOperations.getTarget(node, LINKS.denominator$NWpF), SLinkOperations.getTarget(node, LINKS.numerator$7Cm1)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -77,7 +77,7 @@ public final class DivExpressionFractionToDiv_Intention extends AbstractIntentio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink denominator$e40P = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x12009149b1aL, "denominator");
-    /*package*/ static final SContainmentLink numerator$a$pv = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x1200914977fL, "numerator");
+    /*package*/ static final SContainmentLink denominator$NWpF = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x12009149b1aL, "denominator");
+    /*package*/ static final SContainmentLink numerator$7Cm1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12008f4e805L, 0x1200914977fL, "numerator");
   }
 }

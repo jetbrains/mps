@@ -29,12 +29,12 @@ public class check_MpsTips_NonTypesystemRule extends AbstractNonTypesystemRule_R
   public void applyRule(final SNode mpsTips, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(mpsTips, false), CONCEPTS.BuildMps_Tips$aF)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return isEmptyString(SPropertyOperations.getString(it, PROPS.name$tAp1));
+        return isEmptyString(SPropertyOperations.getString(it, PROPS.name$lA7v));
       }
     }))) {
       if (Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(mpsTips, false), CONCEPTS.BuildMps_Tips$aF)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$tAp1).equals(SPropertyOperations.getString(mpsTips, PROPS.name$tAp1));
+          return SPropertyOperations.getString(it, PROPS.name$lA7v).equals(SPropertyOperations.getString(mpsTips, PROPS.name$lA7v));
         }
       })) {
         {
@@ -43,15 +43,15 @@ public class check_MpsTips_NonTypesystemRule extends AbstractNonTypesystemRule_R
         }
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(mpsTips, LINKS.imports$GuO5)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(mpsTips, LINKS.imports$yVer)).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(mpsTips, "No tips & tricks imported", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "6437930869738031200", null, errorTarget);
       }
     }
-    if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(mpsTips, CONCEPTS.BuildProject$BF, false, false), LINKS.layout$tpCz), CONCEPTS.BuildMps_TipsPackage$2r, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
+    if (!(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(mpsTips, CONCEPTS.BuildProject$BF, false, false), LINKS.layout$fqCX), CONCEPTS.BuildMps_TipsPackage$2r, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.tips$aWHS) == mpsTips;
+        return SLinkOperations.getTarget(it, LINKS.tips$jqe8) == mpsTips;
       }
     }))) {
       {
@@ -80,12 +80,12 @@ public class check_MpsTips_NonTypesystemRule extends AbstractNonTypesystemRule_R
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink imports$GuO5 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a201d7bcL, 0x71731b16a2289997L, "imports");
-    /*package*/ static final SContainmentLink layout$tpCz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
-    /*package*/ static final SReferenceLink tips$aWHS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, 0x65a11ce3e4101393L, "tips");
+    /*package*/ static final SContainmentLink imports$yVer = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a201d7bcL, 0x71731b16a2289997L, "imports");
+    /*package*/ static final SContainmentLink layout$fqCX = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
+    /*package*/ static final SReferenceLink tips$jqe8 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, 0x65a11ce3e4101393L, "tips");
   }
 }

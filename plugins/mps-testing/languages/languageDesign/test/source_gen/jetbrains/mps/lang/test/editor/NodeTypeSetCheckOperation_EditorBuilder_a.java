@@ -70,7 +70,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     setCellContext(editorCell);
     editorCell.addEditorCell(createComponent_0());
     editorCell.addEditorCell(createRefNodeList_0());
-    if (SNodeAccessUtil.hasProperty(myNode, PROPS.name$tAp1)) {
+    if (SNodeAccessUtil.hasProperty(myNode, PROPS.name$lA7v)) {
       editorCell.addEditorCell(createNonEmptyProperty_0());
     }
     return editorCell;
@@ -105,7 +105,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.type$JZFw;
+      return LINKS.type$fQ4w;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.BaseConcept$Sz;
@@ -118,7 +118,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(typeListHandler_95e583_b0.this.getNode(), LINKS.type$JZFw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(typeListHandler_95e583_b0.this.getNode(), LINKS.type$fQ4w));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -174,7 +174,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createNonEmptyProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("<no name>");
@@ -201,11 +201,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$JZFw = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x15404cb86444497L, 0x15404cb86444498L, "type");
+    /*package*/ static final SContainmentLink type$fQ4w = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x15404cb86444497L, 0x15404cb86444498L, "type");
   }
 
   private static final class CONCEPTS {

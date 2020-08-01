@@ -35,7 +35,7 @@ public class Producer_TabDescriptor extends RelationDescriptor {
   }
   public SNode getBaseNode(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.RunConfigurationProducer$Ul)) {
-      return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.RunConfigurationProducer$Ul), LINKS.configuration$zpA6), LINKS.persistentConfiguration$28v0);
+      return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.RunConfigurationProducer$Ul), LINKS.configuration$9psU), LINKS.persistentConfiguration$2710);
     }
     return null;
   }
@@ -46,7 +46,7 @@ public class Producer_TabDescriptor extends RelationDescriptor {
     final SNode nodeFinal = node;
     return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.RunConfigurationProducer$Ul)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$zpA6), LINKS.persistentConfiguration$28v0) == nodeFinal;
+        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$9psU), LINKS.persistentConfiguration$2710) == nodeFinal;
       }
     }).toListSequence();
   }
@@ -58,13 +58,13 @@ public class Producer_TabDescriptor extends RelationDescriptor {
   }
   public SNode createAspect(final SNode node, final SConcept concept) {
     SNode producer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer"));
-    SLinkOperations.setTarget(producer, LINKS.configuration$zpA6, createPersistentConfigurationType_rqzr2x_a0b0a0(node));
+    SLinkOperations.setTarget(producer, LINKS.configuration$9psU, createPersistentConfigurationType_rqzr2x_a0b0a0(node));
     SModelOperations.addRootNode(SNodeOperations.getModel(node), producer);
     return producer;
   }
   private static SNode createPersistentConfigurationType_rqzr2x_a0b0a0(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
-    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$2710, p0);
     return n0.getResult();
   }
 
@@ -75,7 +75,7 @@ public class Producer_TabDescriptor extends RelationDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink configuration$zpA6 = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SContainmentLink configuration$9psU = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 }

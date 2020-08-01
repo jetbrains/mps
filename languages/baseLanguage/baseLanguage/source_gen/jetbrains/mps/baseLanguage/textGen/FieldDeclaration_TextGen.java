@@ -20,22 +20,22 @@ public class FieldDeclaration_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createPositionInfo();
     BaseLanguageTextGen.annotations(ctx.getPrimaryInput(), ctx);
-    BaseLanguageTextGen.visibilityWithIndent(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.visibility$2GiC), ctx);
-    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isTransient$cz2$)) {
+    BaseLanguageTextGen.visibilityWithIndent(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.visibility$jt1o), ctx);
+    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isTransient$4Yfs)) {
       tgs.append("transient ");
     }
-    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isVolatile$v3l9)) {
+    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isVolatile$2Bfn)) {
       tgs.append("volatile ");
     }
-    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isFinal$hIht)) {
+    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isFinal$_qt3)) {
       tgs.append("final ");
     }
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$pLrO));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$uWuc));
     tgs.append(" ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1));
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.initializer$KgD) != null)) {
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.initializer$no3R) != null)) {
       tgs.append(" = ");
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.initializer$KgD));
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.initializer$no3R));
     }
     tgs.append(";");
     tgs.newLine();
@@ -45,16 +45,16 @@ public class FieldDeclaration_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isTransient$cz2$ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient");
-    /*package*/ static final SProperty isVolatile$v3l9 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isTransient$4Yfs = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient");
+    /*package*/ static final SProperty isVolatile$2Bfn = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

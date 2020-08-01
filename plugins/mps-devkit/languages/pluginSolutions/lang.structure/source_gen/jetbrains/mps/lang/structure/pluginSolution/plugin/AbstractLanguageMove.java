@@ -20,7 +20,7 @@ public abstract class AbstractLanguageMove implements MoveNodesAction {
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         deployedConcept.value = MetaAdapterByDeclaration.getConcept(concept);
-        conceptName.value = SPropertyOperations.getString(concept, PROPS.name$tAp1);
+        conceptName.value = SPropertyOperations.getString(concept, PROPS.name$lA7v);
       }
     });
     if (!(deployedConcept.value.isValid())) {
@@ -33,6 +33,6 @@ public abstract class AbstractLanguageMove implements MoveNodesAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

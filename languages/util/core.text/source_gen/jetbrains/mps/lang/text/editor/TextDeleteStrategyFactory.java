@@ -37,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     if (SNodeOperations.isInstanceOf(currentNode, CONCEPTS.Word$AM) && (neighbour != null)) {
       if (SNodeOperations.isInstanceOf(neighbour, CONCEPTS.Word$AM)) {
         return new GlueNeighbourWordStrategy(SNodeOperations.cast(currentNode, CONCEPTS.Word$AM), SNodeOperations.cast(neighbour, CONCEPTS.Word$AM), editorContext, isForward);
-      } else if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(currentNode, CONCEPTS.Word$AM), PROPS.value$cK70))) {
+      } else if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(currentNode, CONCEPTS.Word$AM), PROPS.value$bjp0))) {
         return new DeleteEmptyWordStrategy(SNodeOperations.cast(currentNode, CONCEPTS.Word$AM), neighbour, editorContext, isForward);
       }
     }
@@ -72,8 +72,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       super(editorContext, isForward);
       myCurrentWord = currentWord;
       myNeighbour = neighbourWord;
-      myCurrentWordValue = getValueOrEmpty(SPropertyOperations.getString(myCurrentWord, PROPS.value$cK70));
-      myNeighbourValue = getValueOrEmpty(SPropertyOperations.getString(myNeighbour, PROPS.value$cK70));
+      myCurrentWordValue = getValueOrEmpty(SPropertyOperations.getString(myCurrentWord, PROPS.value$bjp0));
+      myNeighbourValue = getValueOrEmpty(SPropertyOperations.getString(myNeighbour, PROPS.value$bjp0));
     }
 
     @Override
@@ -85,7 +85,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       } else {
         newWord = SNodeOperations.copyNode(myCurrentWord);
       }
-      SPropertyOperations.assign(newWord, PROPS.value$cK70, getNewValue());
+      SPropertyOperations.assign(newWord, PROPS.value$bjp0, getNewValue());
       SNodeOperations.deleteNode(myNeighbour);
       SNodeOperations.replaceWithAnother(myCurrentWord, newWord);
       SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, newWord, "*" + CellIdManager.createPropertyId("value"), selectionIndex);
@@ -196,17 +196,17 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     /*package*/ void execute() {
       SNode edgeElement;
       if (myIsForward) {
-        edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$eRew)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$eRew)).visitAll(new IVisitor<SNode>() {
+        edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$cK1w)).first();
+        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$cK1w)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$eRew)).addElement(it);
+            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$cK1w)).addElement(it);
           }
         });
       } else {
-        edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$eRew)).last();
-        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$eRew)).reversedList().visitAll(new IVisitor<SNode>() {
+        edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$cK1w)).last();
+        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$cK1w)).reversedList().visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$eRew)).insertElement(0, it);
+            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$cK1w)).insertElement(0, it);
           }
         });
       }
@@ -227,10 +227,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

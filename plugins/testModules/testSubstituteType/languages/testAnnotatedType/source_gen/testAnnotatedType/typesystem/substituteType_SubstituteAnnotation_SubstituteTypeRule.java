@@ -24,8 +24,8 @@ public class substituteType_SubstituteAnnotation_SubstituteTypeRule extends Abst
   public TypeSubstitution substitution(final SNode substituteAnnotation, SNode originalType, final TypeCheckingContext typeCheckingContext, final IsApplicableStatus status) {
     return new TypeSubstitution(originalType, new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
-        if ((boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(substituteAnnotation, LINKS.condition$x8xZ))) {
-          return PrimType__BehaviorDescriptor.substituteWith_id1hDKT6wB3pH.invoke(SNodeOperations.cast(SNodeOperations.getParent(substituteAnnotation), CONCEPTS.PrimType$$J), SLinkOperations.getTarget(substituteAnnotation, LINKS.substitute$x8iY));
+        if ((boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(substituteAnnotation, LINKS.condition$38tx))) {
+          return PrimType__BehaviorDescriptor.substituteWith_id1hDKT6wB3pH.invoke(SNodeOperations.cast(SNodeOperations.getParent(substituteAnnotation), CONCEPTS.PrimType$$J), SLinkOperations.getTarget(substituteAnnotation, LINKS.substitute$31c2));
         }
         return null;
       }
@@ -44,7 +44,7 @@ public class substituteType_SubstituteAnnotation_SubstituteTypeRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink substitute$x8iY = MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1baL, "substitute");
-    /*package*/ static final SContainmentLink condition$x8xZ = MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1c4L, "condition");
+    /*package*/ static final SContainmentLink substitute$31c2 = MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1baL, "substitute");
+    /*package*/ static final SContainmentLink condition$38tx = MetaAdapterFactory.getContainmentLink(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, 0x58e32a0782beb1c4L, "condition");
   }
 }

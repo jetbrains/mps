@@ -23,7 +23,7 @@ public class BuildLayout_NamedContainer_Constraints extends BaseConstraintsDescr
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$tAp1, container);
+      super(PROPS.name$lA7v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -31,13 +31,13 @@ public class BuildLayout_NamedContainer_Constraints extends BaseConstraintsDescr
     }
     @Override
     public Object getValue(SNode node) {
-      return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(node, LINKS.containerName$Mzv5), null);
+      return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(node, LINKS.containerName$vc3r), null);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$tAp1, new Name_Property(this));
+    properties.put(PROPS.name$lA7v, new Name_Property(this));
     return properties;
   }
 
@@ -46,10 +46,10 @@ public class BuildLayout_NamedContainer_Constraints extends BaseConstraintsDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink containerName$Mzv5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
+    /*package*/ static final SContainmentLink containerName$vc3r = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
   }
 }

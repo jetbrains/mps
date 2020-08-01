@@ -26,7 +26,7 @@ public class MakeFieldStatic_Target implements IRefactoringTarget {
     if (!(this.isApplicableToEntityType(entity))) {
       return false;
     }
-    return SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.FieldDeclaration$Ps) || SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.FieldReferenceOperation$N8) || (SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) entity), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps));
+    return SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.FieldDeclaration$Ps) || SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.FieldReferenceOperation$N8) || (SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) entity), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps));
   }
 
   private static final class CONCEPTS {
@@ -36,6 +36,6 @@ public class MakeFieldStatic_Target implements IRefactoringTarget {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

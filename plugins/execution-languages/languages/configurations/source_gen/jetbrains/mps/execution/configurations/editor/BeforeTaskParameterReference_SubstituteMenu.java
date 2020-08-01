@@ -50,7 +50,7 @@ public class BeforeTaskParameterReference_SubstituteMenu extends SubstituteMenuB
 
     public SMP_ReferenceScope_3p5155_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BeforeTaskParameterReference$zy, LINKS.variableDeclaration$2ky6);
+      super((SAbstractConcept) CONCEPTS.BeforeTaskParameterReference$zy, LINKS.variableDeclaration$7WwU);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class BeforeTaskParameterReference_SubstituteMenu extends SubstituteMenuB
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

@@ -33,14 +33,14 @@ public class check_EnumConstantOverridingMethods_NonTypesystemRule extends Abstr
     OverridingMethodsCalculator finder = new OverridingMethodsCalculator(SNodeOperations.cast(SNodeOperations.getParent(enumConstant), CONCEPTS.EnumClass$uy), enumConstant);
     for (SNode overridingMethod : SetSequence.fromSet(finder.getOverridingMethods())) {
       for (SNode baseMethod : SetSequence.fromSet(finder.getBaseMethods(overridingMethod))) {
-        SNode returnType = SLinkOperations.getTarget(baseMethod, LINKS.returnType$WIkw);
+        SNode returnType = SLinkOperations.getTarget(baseMethod, LINKS.returnType$qrVw);
         SNode ancestor = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), CONCEPTS.Classifier$hJ);
         SNode overridingMethodParent = SNodeOperations.getParent(overridingMethod);
         SNode resolvedReturnType;
         if (SNodeOperations.isInstanceOf(overridingMethodParent, CONCEPTS.EnumConstantDeclaration$ma)) {
           SNode enumClass = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(overridingMethodParent, CONCEPTS.EnumConstantDeclaration$ma)), CONCEPTS.EnumClass$uy);
           SNode dummy = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"));
-          SLinkOperations.setTarget(dummy, LINKS.classifier$1y5e, enumClass);
+          SLinkOperations.setTarget(dummy, LINKS.classifier$JwxM, enumClass);
           resolvedReturnType = Classifier__BehaviorDescriptor.getWithResolvedTypevars_id2RtWPFZ0VAJ.invoke(dummy, returnType, ancestor, overridingMethod, baseMethod);
         } else {
           {
@@ -50,10 +50,10 @@ public class check_EnumConstantOverridingMethods_NonTypesystemRule extends Abstr
           return;
         }
 
-        if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(overridingMethod, LINKS.returnType$WIkw), resolvedReturnType))) {
+        if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(overridingMethod, LINKS.returnType$qrVw), resolvedReturnType))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(overridingMethod, LINKS.returnType$WIkw), "Method's return type is incompatible with overridden method ", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8960718351573012062", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(overridingMethod, LINKS.returnType$qrVw), "Method's return type is incompatible with overridden method ", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8960718351573012062", null, errorTarget);
           }
           break;
         }
@@ -77,7 +77,7 @@ public class check_EnumConstantOverridingMethods_NonTypesystemRule extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
   }
 }

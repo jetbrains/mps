@@ -21,7 +21,7 @@ public class check_PullUpMethod_NonTypesystemRule extends AbstractNonTypesystemR
   public check_PullUpMethod_NonTypesystemRule() {
   }
   public void applyRule(final SNode pullUpMethod, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(pullUpMethod, LINKS.newMethodDeclaration$swRl) == null && SLinkOperations.getTarget(pullUpMethod, LINKS.oldMethodSpecification$_KKh) == null) {
+    if (SLinkOperations.getTarget(pullUpMethod, LINKS.newMethodDeclaration$NUNb) == null && SLinkOperations.getTarget(pullUpMethod, LINKS.oldMethodSpecification$iBof) == null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(pullUpMethod, "Either old or new method should be specified", "r:00000000-0000-4000-0000-011c89590320(jetbrains.mps.lang.script.typesystem)", "7867202088808423945", null, errorTarget);
@@ -39,8 +39,8 @@ public class check_PullUpMethod_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink oldMethodSpecification$_KKh = MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x4243146ba1b41281L, "oldMethodSpecification");
-    /*package*/ static final SReferenceLink newMethodDeclaration$swRl = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x3ae1f3a73b9e55daL, "newMethodDeclaration");
+    /*package*/ static final SContainmentLink oldMethodSpecification$iBof = MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x4243146ba1b41281L, "oldMethodSpecification");
+    /*package*/ static final SReferenceLink newMethodDeclaration$NUNb = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x3ae1f3a73b9e55daL, "newMethodDeclaration");
   }
 
   private static final class CONCEPTS {

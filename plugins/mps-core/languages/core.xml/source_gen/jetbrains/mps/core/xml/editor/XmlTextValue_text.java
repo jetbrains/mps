@@ -65,23 +65,23 @@ public class XmlTextValue_text extends KeyMapImpl {
       if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.XmlValuePart$Ad)) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$UQ))) {
         return false;
       }
-      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$$xPb));
+      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$GoKl));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       int index = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
       SNode attr = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$UQ);
-      int currIndex = ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$RZKQ)).indexOf(node);
+      int currIndex = ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).indexOf(node);
 
-      String currText = SPropertyOperations.getString(node, PROPS.text$$xPb);
+      String currText = SPropertyOperations.getString(node, PROPS.text$GoKl);
       if (index < currText.length()) {
         SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlTextValue$BE);
-        SPropertyOperations.assign(newText, PROPS.text$$xPb, currText.substring(index));
-        SPropertyOperations.assign(node, PROPS.text$$xPb, currText.substring(0, index));
-        ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$RZKQ)).insertElement(currIndex + 1, newText);
+        SPropertyOperations.assign(newText, PROPS.text$GoKl, currText.substring(index));
+        SPropertyOperations.assign(node, PROPS.text$GoKl, currText.substring(0, index));
+        ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).insertElement(currIndex + 1, newText);
       }
       SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlEntityRefValue$MN);
-      SPropertyOperations.assign(newRef, PROPS.entityName$EMB8, "quot");
-      ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$RZKQ)).insertElement(currIndex + 1, newRef);
+      SPropertyOperations.assign(newRef, PROPS.entityName$IwWS, "quot");
+      ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).insertElement(currIndex + 1, newRef);
       editorContext.selectWRTFocusPolicy(newRef);
     }
     public String getKeyStroke() {
@@ -127,22 +127,22 @@ public class XmlTextValue_text extends KeyMapImpl {
       if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.XmlValuePart$Ad)) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$UQ))) {
         return false;
       }
-      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$$xPb));
+      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$GoKl));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       int index = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
       SNode attr = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$UQ);
-      int currIndex = ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$RZKQ)).indexOf(node);
+      int currIndex = ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).indexOf(node);
 
-      String currText = SPropertyOperations.getString(node, PROPS.text$$xPb);
+      String currText = SPropertyOperations.getString(node, PROPS.text$GoKl);
       if (index < currText.length()) {
         SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlTextValue$BE);
-        SPropertyOperations.assign(newText, PROPS.text$$xPb, currText.substring(index));
-        SPropertyOperations.assign(node, PROPS.text$$xPb, currText.substring(0, index));
-        ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$RZKQ)).insertElement(currIndex + 1, newText);
+        SPropertyOperations.assign(newText, PROPS.text$GoKl, currText.substring(index));
+        SPropertyOperations.assign(node, PROPS.text$GoKl, currText.substring(0, index));
+        ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).insertElement(currIndex + 1, newText);
       }
       SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlEntityRefValue$MN);
-      ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$RZKQ)).insertElement(currIndex + 1, newRef);
+      ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).insertElement(currIndex + 1, newRef);
       editorContext.selectWRTFocusPolicy(newRef);
     }
     public String getKeyStroke() {
@@ -161,11 +161,11 @@ public class XmlTextValue_text extends KeyMapImpl {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$$xPb = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
-    /*package*/ static final SProperty entityName$EMB8 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
+    /*package*/ static final SProperty text$GoKl = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
+    /*package*/ static final SProperty entityName$IwWS = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$RZKQ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
+    /*package*/ static final SContainmentLink value$7SEa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
   }
 }

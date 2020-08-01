@@ -52,10 +52,10 @@ public final class DemoApplication_Producer {
     @Override
     protected DemoApplication_Configuration doCreateConfiguration(final SNode source) {
       setSourceElement(MPSPsiElement.createFor(source, getMpsProject()));
-      if (!(SPropertyOperations.getBoolean(source, PROPS.valid$$Z1J))) {
+      if (!(SPropertyOperations.getBoolean(source, PROPS.valid$UxPL))) {
         return null;
       }
-      DemoApplication_Configuration configuration = ((DemoApplication_Configuration) getConfigurationFactory().createConfiguration("" + "SomeNode " + SPropertyOperations.getString(source, PROPS.name$tAp1), getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
+      DemoApplication_Configuration configuration = ((DemoApplication_Configuration) getConfigurationFactory().createConfiguration("" + "SomeNode " + SPropertyOperations.getString(source, PROPS.name$lA7v), getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getNode().setNode(source);
       return configuration;
     }
@@ -72,7 +72,7 @@ public final class DemoApplication_Producer {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty valid$$Z1J = MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty valid$UxPL = MetaAdapterFactory.getProperty(0xe6081818930c4926L, 0xbdef3537bcc59087L, 0x446739e63be33684L, 0x446739e63be7cbc4L, "valid");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

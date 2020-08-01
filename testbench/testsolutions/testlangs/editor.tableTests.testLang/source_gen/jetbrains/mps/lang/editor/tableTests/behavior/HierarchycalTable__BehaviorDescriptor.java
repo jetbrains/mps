@@ -36,8 +36,8 @@ public final class HierarchycalTable__BehaviorDescriptor extends BaseBHDescripto
   private static void ___init___(@NotNull SNode __thisNode__) {
     for (int i = 0; i < (int) Table__BehaviorDescriptor.getInitialColumnCount_id1653mnvAgqE.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))); i++) {
       SNode dataCell = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea4L, "jetbrains.mps.lang.editor.tableTests.structure.DataCell"));
-      SPropertyOperations.assign(dataCell, PROPS.value$jpUw, "h-" + i);
-      ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.headers$P_dD)).addElement(dataCell);
+      SPropertyOperations.assign(dataCell, PROPS.value$pzlw, "h-" + i);
+      ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.headers$X1AR)).addElement(dataCell);
     }
   }
 
@@ -97,10 +97,10 @@ public final class HierarchycalTable__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$jpUw = MetaAdapterFactory.getProperty(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea4L, 0x28004d411fa3bea5L, "value");
+    /*package*/ static final SProperty value$pzlw = MetaAdapterFactory.getProperty(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea4L, 0x28004d411fa3bea5L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink headers$P_dD = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x760c9302beb3e1d1L, 0x760c9302beb3e1d4L, "headers");
+    /*package*/ static final SContainmentLink headers$X1AR = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x760c9302beb3e1d1L, 0x760c9302beb3e1d4L, "headers");
   }
 }

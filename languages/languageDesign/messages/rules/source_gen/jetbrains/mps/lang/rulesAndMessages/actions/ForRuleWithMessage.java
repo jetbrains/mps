@@ -15,15 +15,15 @@ public class ForRuleWithMessage {
   public static class NodeFactory_6990313848119162803 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.RuleWithMessage$jq)) {
-        if (SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$jq), LINKS.messageProvider$Rd0S) != null) {
-          SLinkOperations.setTarget(newNode, LINKS.messageProvider$Rd0S, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$jq), LINKS.messageProvider$Rd0S));
+        if (SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$jq), LINKS.messageProvider$Jjr8) != null) {
+          SLinkOperations.setTarget(newNode, LINKS.messageProvider$Jjr8, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$jq), LINKS.messageProvider$Jjr8));
         }
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink messageProvider$Rd0S = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider");
+    /*package*/ static final SContainmentLink messageProvider$Jjr8 = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider");
   }
 
   private static final class CONCEPTS {

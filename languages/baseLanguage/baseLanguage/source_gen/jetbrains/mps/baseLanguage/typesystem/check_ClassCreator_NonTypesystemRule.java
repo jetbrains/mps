@@ -25,8 +25,8 @@ public class check_ClassCreator_NonTypesystemRule extends AbstractNonTypesystemR
   public check_ClassCreator_NonTypesystemRule() {
   }
   public void applyRule(final SNode classCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$$A7i) == null && ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$$A7L)).isEmpty()) {
-      String refText = SLinkOperations.getResolveInfo(SNodeOperations.getReference(classCreator, LINKS.baseMethodDeclaration$$A7i));
+    if (SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$ItxI) == null && ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$ItKJ)).isEmpty()) {
+      String refText = SLinkOperations.getResolveInfo(SNodeOperations.getReference(classCreator, LINKS.baseMethodDeclaration$ItxI));
 
       if ((refText != null && refText.length() > 0)) {
         SNode clazz = SNodeOperations.cast(ClassifierScopes.getVisibleClassifiersWithDefaultConstructors(classCreator).resolve(classCreator, refText), CONCEPTS.ClassConcept$IY);
@@ -54,8 +54,8 @@ public class check_ClassCreator_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {

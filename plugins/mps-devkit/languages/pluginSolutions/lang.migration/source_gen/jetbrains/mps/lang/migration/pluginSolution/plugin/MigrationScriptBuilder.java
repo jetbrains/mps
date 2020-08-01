@@ -34,7 +34,7 @@ public class MigrationScriptBuilder {
   }
 
   public MigrationScriptBuilder setName(String name) {
-    SPropertyOperations.assign(myScript, PROPS.name$tAp1, name);
+    SPropertyOperations.assign(myScript, PROPS.name$lA7v, name);
     return this;
   }
 
@@ -48,7 +48,7 @@ public class MigrationScriptBuilder {
   }
 
   public MigrationScriptBuilder appendExecuteStatements(Iterable<SNode> statements) {
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getExecuteMethod(), LINKS.body$WIlu), LINKS.statement$WHn8)).addSequence(Sequence.fromIterable(statements));
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getExecuteMethod(), LINKS.body$qspy), LINKS.statement$pYcS)).addSequence(Sequence.fromIterable(statements));
     return this;
   }
 
@@ -62,7 +62,7 @@ public class MigrationScriptBuilder {
   }
 
   public SNode getExecuteMethodModuleParameter() {
-    return ListSequence.fromList(SLinkOperations.getChildren(getExecuteMethod(), LINKS.parameter$WIkZ)).first();
+    return ListSequence.fromList(SLinkOperations.getChildren(getExecuteMethod(), LINKS.parameter$qsax)).first();
   }
 
   public SNode getScript() {
@@ -74,12 +74,12 @@ public class MigrationScriptBuilder {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

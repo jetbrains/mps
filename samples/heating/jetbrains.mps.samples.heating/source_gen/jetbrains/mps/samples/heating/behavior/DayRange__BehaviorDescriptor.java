@@ -32,7 +32,7 @@ public final class DayRange__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return "From " + SEnumOperations.getMemberName0(SPropertyOperations.getEnum(__thisNode__, PROPS.start$$dXJ)) + " to " + SEnumOperations.getMemberName0(SPropertyOperations.getEnum(__thisNode__, PROPS.end$$dYH));
+    return "From " + SEnumOperations.getMemberName0(SPropertyOperations.getEnum(__thisNode__, PROPS.start$yKTL)) + " to " + SEnumOperations.getMemberName0(SPropertyOperations.getEnum(__thisNode__, PROPS.end$yLnN));
   }
 
   /*package*/ DayRange__BehaviorDescriptor() {
@@ -82,7 +82,7 @@ public final class DayRange__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty end$$dYH = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e6bc56bL, 0x40bcae6c0e6bc5a1L, "end");
-    /*package*/ static final SProperty start$$dXJ = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e6bc56bL, 0x40bcae6c0e6bc59fL, "start");
+    /*package*/ static final SProperty end$yLnN = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e6bc56bL, 0x40bcae6c0e6bc5a1L, "end");
+    /*package*/ static final SProperty start$yKTL = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e6bc56bL, 0x40bcae6c0e6bc59fL, "start");
   }
 }

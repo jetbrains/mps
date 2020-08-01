@@ -52,7 +52,7 @@ public final class AddSetElementOperation_replace_Intention extends AbstractInte
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeOperations.replaceWithAnother(node, _quotation_createNode_1vref4_a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.argument$hDsv))));
+      SNodeOperations.replaceWithAnother(node, _quotation_createNode_1vref4_a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.argument$z4N1))));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -72,6 +72,6 @@ public final class AddSetElementOperation_replace_Intention extends AbstractInte
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$hDsv = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d9514ebd8L, 0x11d951a651bL, "argument");
+    /*package*/ static final SContainmentLink argument$z4N1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d9514ebd8L, 0x11d951a651bL, "argument");
   }
 }

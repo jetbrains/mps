@@ -34,7 +34,7 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
 
     SNode ed = SNodeOperations.as(SNodeOperations.getParent(emd), CONCEPTS.EnumerationDeclaration$rG);
 
-    if (isEmptyString(SPropertyOperations.getString(emd, PROPS.memberId$d5NS))) {
+    if (isEmptyString(SPropertyOperations.getString(emd, PROPS.memberId$lO88))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(emd, "Absent member id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1421157252384318991", null, errorTarget);
@@ -45,9 +45,9 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
-    } else if (ListSequence.fromList(SLinkOperations.getChildren(ed, LINKS.members$qYq2)).any(new IWhereFilter<SNode>() {
+    } else if (ListSequence.fromList(SLinkOperations.getChildren(ed, LINKS.members$4eAY)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != emd && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$d5NS), SPropertyOperations.getString(emd, PROPS.memberId$d5NS));
+        return it != emd && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$lO88), SPropertyOperations.getString(emd, PROPS.memberId$lO88));
       }
     })) {
       {
@@ -81,10 +81,10 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty memberId$d5NS = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
+    /*package*/ static final SProperty memberId$lO88 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink members$qYq2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 }

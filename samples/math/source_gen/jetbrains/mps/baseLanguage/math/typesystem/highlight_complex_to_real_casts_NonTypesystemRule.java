@@ -22,13 +22,13 @@ public class highlight_complex_to_real_casts_NonTypesystemRule extends AbstractN
   public highlight_complex_to_real_casts_NonTypesystemRule() {
   }
   public void applyRule(final SNode castExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(castExpression, LINKS.expression$8QPv)), CONCEPTS.ComplexType$Aj) && TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(castExpression), MathTypeUtil.qDouble)) {
+    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(castExpression, LINKS.expression$izU1)), CONCEPTS.ComplexType$Aj) && TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(castExpression), MathTypeUtil.qDouble)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(castExpression, "There is no canonical way to cast from complex to real type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238333233602", null, errorTarget);
       }
     }
-    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(castExpression, LINKS.expression$8QPv)), CONCEPTS.BigComplexType$Ke) && TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(castExpression), MathTypeUtil.qBigDecimal)) {
+    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(castExpression, LINKS.expression$izU1)), CONCEPTS.BigComplexType$Ke) && TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(castExpression), MathTypeUtil.qBigDecimal)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(castExpression, "There is no canonical way to cast from complex to real type", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1238333311126", null, errorTarget);
@@ -46,7 +46,7 @@ public class highlight_complex_to_real_casts_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
   }
 
   private static final class CONCEPTS {

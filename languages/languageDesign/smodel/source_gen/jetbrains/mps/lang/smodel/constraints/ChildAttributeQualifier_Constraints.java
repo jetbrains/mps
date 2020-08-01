@@ -28,7 +28,7 @@ public class ChildAttributeQualifier_Constraints extends BaseConstraintsDescript
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.attributeConcept$OUQZ, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.attributeConcept$CwCx, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -60,6 +60,6 @@ public class ChildAttributeQualifier_Constraints extends BaseConstraintsDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attributeConcept$OUQZ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, 0x9d98713f24a0e5dL, "attributeConcept");
+    /*package*/ static final SReferenceLink attributeConcept$CwCx = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, 0x9d98713f24a0e5dL, "attributeConcept");
   }
 }

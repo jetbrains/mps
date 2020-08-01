@@ -27,7 +27,7 @@ public class check_CellKeyMapDeclarationUsed_NonTypesystemRule extends AbstractN
   public void applyRule(final SNode cellKeyMapDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellKeyMapDeclaration), CONCEPTS.EditorCellModel$5c)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.keyMap$Bdn), cellKeyMapDeclaration);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.keyMap$iZu9), cellKeyMapDeclaration);
       }
     }) == null)) {
       {
@@ -52,6 +52,6 @@ public class check_CellKeyMapDeclarationUsed_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink keyMap$Bdn = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0xfbc4dbd371L, "keyMap");
+    /*package*/ static final SReferenceLink keyMap$iZu9 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0xfbc4dbd371L, "keyMap");
   }
 }

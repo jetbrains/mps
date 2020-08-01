@@ -24,7 +24,7 @@ public class typeof_SimpleBuilderPropertyParent_InferenceRule extends AbstractIn
     {
       SNode _nodeToCheck_1029348928467 = simpleBuilderPropertyParent;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "5389689214217248386", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "5389689214217248388", true), (SNode) SLinkOperations.getTarget(builder, LINKS.type$rcE9), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "5389689214217248388", true), (SNode) SLinkOperations.getTarget(builder, LINKS.type$b8qn), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -43,6 +43,6 @@ public class typeof_SimpleBuilderPropertyParent_InferenceRule extends AbstractIn
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$rcE9 = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x34f5c07463dbda0bL, "type");
+    /*package*/ static final SContainmentLink type$b8qn = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x34f5c07463dbda0bL, "type");
   }
 }

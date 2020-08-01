@@ -62,7 +62,7 @@ public final class SuppressSpecificErrors_Intention extends AbstractIntentionDes
   private List<IssueKindReportItem> parameter(final SNode node, final EditorContext editorContext) {
     EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
     List<IssueKindReportItem> reportItemsForCell = ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), editorComponent.getReportItemsForCell(editorComponent.getSelectedCell()));
-    if (SNodeOperations.hasRole(node, LINKS.smodelAttribute$K8bJ)) {
+    if (SNodeOperations.hasRole(node, LINKS.smodelAttribute$jXFL)) {
       ListSequence.fromList(reportItemsForCell).addSequence(CollectionSequence.fromCollection(editorComponent.getReportItemsForCell(editorComponent.findNodeCell(SNodeOperations.getParent(node)))));
     }
     return ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), ListSequence.fromList(reportItemsForCell).where(new IWhereFilter<IssueKindReportItem>() {
@@ -83,8 +83,8 @@ public final class SuppressSpecificErrors_Intention extends AbstractIntentionDes
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode annotation = ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ))).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.SuppressErrorsAnnotation$gJ, null));
-      SPropertyOperations.assign(annotation, PROPS.filter$UuSh, myParameter.toPredicate(myParameter.getIdFlavours()).serialize());
-      SPropertyOperations.assign(annotation, PROPS.message$PX4b, myParameter.getMessage());
+      SPropertyOperations.assign(annotation, PROPS.filter$kXgf, myParameter.toPredicate(myParameter.getIdFlavours()).serialize());
+      SPropertyOperations.assign(annotation, PROPS.message$8_1l, myParameter.getMessage());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -96,7 +96,7 @@ public final class SuppressSpecificErrors_Intention extends AbstractIntentionDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class CONCEPTS {
@@ -104,7 +104,7 @@ public final class SuppressSpecificErrors_Intention extends AbstractIntentionDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty filter$UuSh = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
-    /*package*/ static final SProperty message$PX4b = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
+    /*package*/ static final SProperty filter$kXgf = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
+    /*package*/ static final SProperty message$8_1l = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
   }
 }

@@ -25,7 +25,7 @@ public class QueriesUtil {
       // closure is not in class 
       enclosingClass = getJavaLangObject();
     }
-    return SLinkOperations.getChildren(enclosingClass, LINKS.typeVariableDeclaration$ziZT);
+    return SLinkOperations.getChildren(enclosingClass, LINKS.typeVariableDeclaration$6cWB);
   }
   public static SNode create_enclosingClassObject(SNode nodeInsideClosure) {
     // 
@@ -40,21 +40,21 @@ public class QueriesUtil {
     if (SNodeOperations.isInstanceOf(enclosingMethodOrClosure, CONCEPTS.Closure$5Q)) {
       SNode fieldRef = _quotation_createNode_w9106s_a0a0h0c();
       SNode typeOfField = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-      SLinkOperations.setTarget(typeOfField, LINKS.classifier$pQ_R, enclosingClass);
-      SLinkOperations.setTarget(fieldRef, LINKS.fieldType$Pz5$, typeOfField);
+      SLinkOperations.setTarget(typeOfField, LINKS.classifier$xslD, enclosingClass);
+      SLinkOperations.setTarget(fieldRef, LINKS.fieldType$VZGs, typeOfField);
       return fieldRef;
     }
     // --- in instance method 
     if (SNodeOperations.isInstanceOf(enclosingMethodOrClosure, CONCEPTS.InstanceMethodDeclaration$An) || SNodeOperations.isInstanceOf(enclosingMethodOrClosure, CONCEPTS.ConstructorDeclaration$5U)) {
       SNode thisExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression"));
-      SLinkOperations.setTarget(thisExpr, LINKS.classConcept$Hbij, enclosingClass);
+      SLinkOperations.setTarget(thisExpr, LINKS.classConcept$StRd, enclosingClass);
       return thisExpr;
     }
     // --- none of above 
     return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"));
   }
   private static SNode getJavaLangObject() {
-    return SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_w9106s_a0a0a3(), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+    return SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_w9106s_a0a0a3(), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
   }
   private static SNode _quotation_createNode_w9106s_a0a0h0c() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -86,9 +86,9 @@ public class QueriesUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink fieldType$Pz5$ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd662a5L, "fieldType");
-    /*package*/ static final SReferenceLink classConcept$Hbij = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink fieldType$VZGs = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd662a5L, "fieldType");
+    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 }

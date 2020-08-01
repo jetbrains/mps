@@ -41,21 +41,21 @@ public final class RunConfigurationExecutor__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static boolean isDebuggable_idoym_8btfV8(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.debuggerConfiguration$VJZD) != null) || (((boolean) RunConfigurationExecutor__BehaviorDescriptor.isSimple_id5pE1_aqYZtD.invoke(__thisNode__)) && SPropertyOperations.getBoolean(__thisNode__, PROPS.canDebug$yms8));
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.debuggerConfiguration$WfOR) != null) || (((boolean) RunConfigurationExecutor__BehaviorDescriptor.isSimple_id5pE1_aqYZtD.invoke(__thisNode__)) && SPropertyOperations.getBoolean(__thisNode__, PROPS.canDebug$CRBS));
   }
   /*package*/ static boolean canBeSimple_id5pE1_aqYssM(@NotNull SNode __thisNode__) {
-    return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.execute$7pEw)), _quotation_createNode_wnz9gp_b0a0a1());
+    return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.execute$_r_w)), _quotation_createNode_wnz9gp_b0a0a1());
   }
   /*package*/ static boolean isSimple_id5pE1_aqYZtD(@NotNull SNode __thisNode__) {
-    return ((boolean) RunConfigurationExecutor__BehaviorDescriptor.canBeSimple_id5pE1_aqYssM.invoke(__thisNode__)) && (SLinkOperations.getTarget(__thisNode__, LINKS.debuggerConfiguration$VJZD) == null);
+    return ((boolean) RunConfigurationExecutor__BehaviorDescriptor.canBeSimple_id5pE1_aqYssM.invoke(__thisNode__)) && (SLinkOperations.getTarget(__thisNode__, LINKS.debuggerConfiguration$WfOR) == null);
   }
   @Nullable
   /*package*/ static SNode getCommand_id5pE1_aqZ2LK(@NotNull SNode __thisNode__) {
     {
-      SNode coercedNode_wnz9gp_a0d = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.execute$7pEw)), CONCEPTS.CommandProcessType$Cb);
+      SNode coercedNode_wnz9gp_a0d = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.execute$_r_w)), CONCEPTS.CommandProcessType$Cb);
       if (coercedNode_wnz9gp_a0d != null) {
-        if ((SLinkOperations.getTarget(coercedNode_wnz9gp_a0d, LINKS.commandDeclaration$shaw) != null)) {
-          return SLinkOperations.getTarget(coercedNode_wnz9gp_a0d, LINKS.commandDeclaration$shaw);
+        if ((SLinkOperations.getTarget(coercedNode_wnz9gp_a0d, LINKS.commandDeclaration$Gk5w) != null)) {
+          return SLinkOperations.getTarget(coercedNode_wnz9gp_a0d, LINKS.commandDeclaration$Gk5w);
         }
       } else {
       }
@@ -122,13 +122,13 @@ public final class RunConfigurationExecutor__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty canDebug$yms8 = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x566a06529af9d7ddL, "canDebug");
+    /*package*/ static final SProperty canDebug$CRBS = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x566a06529af9d7ddL, "canDebug");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink debuggerConfiguration$VJZD = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration");
-    /*package*/ static final SContainmentLink execute$7pEw = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x6e425276ab38aea1L, "execute");
-    /*package*/ static final SReferenceLink commandDeclaration$shaw = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, 0x87f99370d7e1ea4L, "commandDeclaration");
+    /*package*/ static final SContainmentLink debuggerConfiguration$WfOR = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration");
+    /*package*/ static final SContainmentLink execute$_r_w = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x6e425276ab38aea1L, "execute");
+    /*package*/ static final SReferenceLink commandDeclaration$Gk5w = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, 0x87f99370d7e1ea4L, "commandDeclaration");
   }
 
   private static final class CONCEPTS {

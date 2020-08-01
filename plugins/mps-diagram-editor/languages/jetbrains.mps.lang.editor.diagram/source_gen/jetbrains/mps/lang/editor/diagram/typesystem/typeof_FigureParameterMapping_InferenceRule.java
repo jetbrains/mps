@@ -26,7 +26,7 @@ public class typeof_FigureParameterMapping_InferenceRule extends AbstractInferen
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(mapping, LINKS.argument$m9B7);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(mapping, LINKS.argument$IDWp);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547580710609", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547580708533", true), (SNode) typeCheckingContext.typeOf(FigureParameterMapping__BehaviorDescriptor.getParameterDeclaration_id3$rM_t_1zAw.invoke(mapping), "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547580710824", true), true, true, _info_12389875345);
       }
@@ -43,7 +43,7 @@ public class typeof_FigureParameterMapping_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$m9B7 = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a7d7c7L, 0x3f6e840fdd824ddL, "argument");
+    /*package*/ static final SContainmentLink argument$IDWp = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a7d7c7L, 0x3f6e840fdd824ddL, "argument");
   }
 
   private static final class CONCEPTS {

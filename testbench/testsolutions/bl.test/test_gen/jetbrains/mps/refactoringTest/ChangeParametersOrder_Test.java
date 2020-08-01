@@ -50,11 +50,11 @@ public class ChangeParametersOrder_Test extends BaseTransformationTest {
       addNodeById("1230052943947");
       addNodeById("1230052943971");
       ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(SNodeOperations.cast(getNodeById("1230052943949"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
-      SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$WIkZ)).first();
-      SNode p0 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$WIkZ)).getElement(1);
-      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$WIkZ)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$WIkZ)).addElement(p0);
-      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$WIkZ)).addElement(p1);
+      SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$qsax)).first();
+      SNode p0 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$qsax)).getElement(1);
+      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$qsax)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$qsax)).addElement(p0);
+      ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$qsax)).addElement(p1);
       ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, SNodeOperations.cast(getNodeById("1230052943949"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
       List<SNode> ussages = ListSequence.fromList(new ArrayList<SNode>());
       ListSequence.fromList(ussages).addElement(SNodeOperations.cast(getNodeById("1230052943965"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation"))));
@@ -71,6 +71,6 @@ public class ChangeParametersOrder_Test extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

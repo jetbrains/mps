@@ -62,7 +62,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.modelUID$xn50;
+      final SProperty property = PROPS.modelUID$abr0;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no modelUID>");
@@ -98,7 +98,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_x6ljyw_a1b0() {
-    return isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.mcName$bAwu)) && !(Objects.equals(SPropertyOperations.getString(myNode, PROPS.mcName$bAwu), SPropertyOperations.getString(myNode, PROPS.nodeID$xn5v)));
+    return isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.mcName$BDIy)) && !(Objects.equals(SPropertyOperations.getString(myNode, PROPS.mcName$BDIy), SPropertyOperations.getString(myNode, PROPS.nodeID$abE1)));
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "->");
@@ -119,7 +119,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.mcName$bAwu;
+      final SProperty property = PROPS.mcName$BDIy;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no mcName>");
@@ -150,7 +150,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_2() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.nodeID$xn5v;
+      final SProperty property = PROPS.nodeID$abE1;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no nodeID>");
@@ -177,9 +177,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty modelUID$xn50 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572778L, "modelUID");
-    /*package*/ static final SProperty mcName$bAwu = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x600daa40a8a549d9L, "mcName");
-    /*package*/ static final SProperty nodeID$xn5v = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572779L, "nodeID");
+    /*package*/ static final SProperty modelUID$abr0 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572778L, "modelUID");
+    /*package*/ static final SProperty mcName$BDIy = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x600daa40a8a549d9L, "mcName");
+    /*package*/ static final SProperty nodeID$abE1 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572779L, "nodeID");
   }
 
   private static final class CONCEPTS {

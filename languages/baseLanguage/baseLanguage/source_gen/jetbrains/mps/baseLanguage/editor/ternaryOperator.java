@@ -112,17 +112,17 @@ public class ternaryOperator extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode to = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.TernaryOperatorExpression$HC, null);
         SNode current = _context.getNode();
-        while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.BinaryOperation$vf) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(current), CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$rxBl) == current) {
+        while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.BinaryOperation$vf) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(current), CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$li3b) == current) {
           current = SNodeOperations.cast(SNodeOperations.getParent(current), CONCEPTS.BinaryOperation$vf);
         }
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.BinaryOperation$vf) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.TernaryOperatorExpression$HC) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(current), CONCEPTS.TernaryOperatorExpression$HC), LINKS.condition$CEb4), current))) {
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.BinaryOperation$vf) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.TernaryOperatorExpression$HC) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(current), CONCEPTS.TernaryOperatorExpression$HC), LINKS.condition$GrmW), current))) {
           SNode parens = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ParenthesizedExpression$vE, null);
-          SLinkOperations.setTarget(parens, LINKS.expression$4_F0, to);
+          SLinkOperations.setTarget(parens, LINKS.expression$efP0, to);
           SNodeOperations.replaceWithAnother(current, parens);
         } else {
           SNodeOperations.replaceWithAnother(current, to);
         }
-        SLinkOperations.setTarget(to, LINKS.condition$CEb4, current);
+        SLinkOperations.setTarget(to, LINKS.condition$GrmW, current);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), to, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -162,8 +162,8 @@ public class ternaryOperator extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink condition$CEb4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
   }
 }

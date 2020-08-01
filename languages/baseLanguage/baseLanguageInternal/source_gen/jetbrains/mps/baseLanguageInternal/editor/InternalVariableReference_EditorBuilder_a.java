@@ -99,7 +99,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new typeSingleRoleHandler_7tajt9_b0(myNode, LINKS.type$Ttix, getEditorContext());
+    SingleRoleCellProvider provider = new typeSingleRoleHandler_7tajt9_b0(myNode, LINKS.type$PbXZ, getEditorContext());
     return provider.createCell();
   }
   private static class typeSingleRoleHandler_7tajt9_b0 extends SingleRoleCellProvider {
@@ -119,8 +119,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.type$Ttix, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.type$Ttix, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.type$PbXZ, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.type$PbXZ, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -132,13 +132,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.type$Ttix);
+        editorCell.setSRole(LINKS.type$PbXZ);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.type$Ttix));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.type$PbXZ));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_type");
@@ -165,7 +165,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tMiD;
+      final SProperty property = PROPS.name$rn1R;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -213,7 +213,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
       List<String> result;
-      SNode nodeType = SLinkOperations.getTarget(node, LINKS.type$Ttix);
+      SNode nodeType = SLinkOperations.getTarget(node, LINKS.type$PbXZ);
       if (nodeType != null) {
         result = Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(nodeType);
       } else {
@@ -221,19 +221,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       // we need this because of smart input 
       // DO NOT REMOVE IT 
-      if (SPropertyOperations.getString(node, PROPS.name$tMiD) != null) {
-        ListSequence.fromList(result).addElement(SPropertyOperations.getString(node, PROPS.name$tMiD));
+      if (SPropertyOperations.getString(node, PROPS.name$rn1R) != null) {
+        ListSequence.fromList(result).addElement(SPropertyOperations.getString(node, PROPS.name$rn1R));
       }
       return result;
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$Ttix = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5c4f4cL, "type");
+    /*package*/ static final SContainmentLink type$PbXZ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5c4f4cL, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tMiD = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name");
+    /*package*/ static final SProperty name$rn1R = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name");
   }
 
   private static final class CONCEPTS {

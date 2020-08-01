@@ -74,7 +74,7 @@ public class ClassConceptModifiersExtendsAndImplements extends TransformationMen
   public class TMP_Group_qsmppp_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.implementedInterface$mdc6)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.implementedInterface$KoQU)).isEmpty();
     }
 
     @NotNull
@@ -130,7 +130,7 @@ public class ClassConceptModifiersExtendsAndImplements extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.implementedInterface$mdc6, null);
+          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.implementedInterface$KoQU, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -157,7 +157,7 @@ public class ClassConceptModifiersExtendsAndImplements extends TransformationMen
   public class TMP_Group_qsmppp_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SLinkOperations.getTarget(_context.getNode(), LINKS.superclass$_pqe) == null && !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.EnumClass$uy));
+      return SLinkOperations.getTarget(_context.getNode(), LINKS.superclass$7jGM) == null && !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.EnumClass$uy));
     }
 
     @NotNull
@@ -213,7 +213,7 @@ public class ClassConceptModifiersExtendsAndImplements extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.superclass$_pqe, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.superclass$7jGM, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -239,8 +239,8 @@ public class ClassConceptModifiersExtendsAndImplements extends TransformationMen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
   }
 
   private static final class CONCEPTS {

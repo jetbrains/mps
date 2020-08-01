@@ -249,14 +249,14 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   protected Iterable<SNode> createBuildScripts(SModel targetModelDescriptor, String name, List<NodeData> selectedData) {
     // setup build project 
     SNode buildProject = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
-    SPropertyOperations.set(buildProject, PROPS.name$tAp1, name);
-    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.plugins$97JG)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin")));
-    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.plugins$97JG)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin")));
+    SPropertyOperations.set(buildProject, PROPS.name$lA7v, name);
+    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.plugins$qK6k)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin")));
+    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.plugins$qK6k)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin")));
 
     // internal base dir is a project base dir 
     try {
       String relativeToModuleProjectPath = RelativePathHelper.forModule(targetModelDescriptor.getModule()).makeRelative(getBasePath());
-      SPropertyOperations.set(buildProject, PROPS.internalBaseDirectory$E778, relativeToModuleProjectPath);
+      SPropertyOperations.set(buildProject, PROPS.internalBaseDirectory$pssS, relativeToModuleProjectPath);
     } catch (RelativePathHelper.PathException e) {
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("Can't calculate project path relative to module " + targetModelDescriptor.getModule(), e);
@@ -300,13 +300,13 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
       userMacroNames.remove("date");
       userMacroNames.remove("build.number");
       branding = _quotation_createNode_un708i_a0n0b71a52(ICONS, buildNumber, ICONS, name, name, ICONS, dateMacro, ICONS, ICONS, name.toLowerCase());
-      ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg)).addElement(branding);
+      ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$b06K)).addElement(branding);
     }
     for (String macro : userMacroNames) {
       ListSequence.fromList(macros).addElement(_quotation_createNode_un708i_a0a0a81a52(macro));
     }
-    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.macros$tpFt)).addSequence(ListSequence.fromList(macros));
-    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.dependencies$tpR5)).addSequence(ListSequence.fromList(dependencies));
+    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.macros$fs33)).addSequence(ListSequence.fromList(macros));
+    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.dependencies$fxFr)).addSequence(ListSequence.fromList(dependencies));
 
     // project structure and layout 
     Set<ModuleData> moduleData = SetSequence.fromSet(new LinkedHashSet<ModuleData>());
@@ -337,20 +337,20 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     SNode tips = _quotation_createNode_un708i_a0cb0z();
 
     if (this.getDependencyKind() == DependencyStep.DependencyKind.STANDALONE) {
-      ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg)).addElement(tips);
+      ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$b06K)).addElement(tips);
     }
 
-    SLinkOperations.setNewChild(buildProject, LINKS.layout$tpCz, null);
-    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg)).addElement(plugin);
-    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg)).addElement(group);
+    SLinkOperations.setNewChild(buildProject, LINKS.layout$fqCX, null);
+    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$b06K)).addElement(plugin);
+    ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$b06K)).addElement(group);
     if (Objects.equals(getDependencyKind(), DependencyStep.DependencyKind.STANDALONE)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), LINKS.children$aiMf)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_quotation_createNode_un708i_a0a0a0jb0z(buildNumber, convertToMacroRelative(_quotation_createNode_un708i_a0a0b2a0a0a0a53a52(), SNodeOperations.cast(ListSequence.fromList(macros).findFirst(new IWhereFilter<SNode>() {
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$fqCX), LINKS.children$Z6lh)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_quotation_createNode_un708i_a0a0a0jb0z(buildNumber, convertToMacroRelative(_quotation_createNode_un708i_a0a0b2a0a0a0a53a52(), SNodeOperations.cast(ListSequence.fromList(macros).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), "mps_home");
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), "mps_home");
         }
-      }), CONCEPTS.BuildFolderMacro$Ok)), tips, branding, plugin, buildNumber, dateMacro), LINKS.children$aiMf)));
+      }), CONCEPTS.BuildFolderMacro$Ok)), tips, branding, plugin, buildNumber, dateMacro), LINKS.children$Z6lh)));
     } else {
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), LINKS.children$aiMf)).addElement(_quotation_createNode_un708i_a0a0a0jb0z_0(name + ".zip", plugin));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$fqCX), LINKS.children$Z6lh)).addElement(_quotation_createNode_un708i_a0a0a0jb0z_0(name + ".zip", plugin));
     }
 
     // add mps layout to the target model 
@@ -370,26 +370,26 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
 
   private SNode addStandaloneBuild(SModel targetSModel, SNode buildProject) {
     SNode buildStandalone = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
-    SPropertyOperations.set(buildStandalone, PROPS.name$tAp1, SPropertyOperations.getString(buildProject, PROPS.name$tAp1) + "Distribution");
-    SPropertyOperations.set(buildStandalone, PROPS.fileName$L1hm, "buildDistribution.xml");
-    ListSequence.fromList(SLinkOperations.getChildren(buildStandalone, LINKS.dependencies$tpR5)).addElement(_quotation_createNode_un708i_a0a3a72(buildProject));
-    SLinkOperations.setNewChild(buildStandalone, LINKS.layout$tpCz, null);
-    SPropertyOperations.set(buildStandalone, PROPS.internalBaseDirectory$E778, SPropertyOperations.getString(buildProject, PROPS.internalBaseDirectory$E778));
+    SPropertyOperations.set(buildStandalone, PROPS.name$lA7v, SPropertyOperations.getString(buildProject, PROPS.name$lA7v) + "Distribution");
+    SPropertyOperations.set(buildStandalone, PROPS.fileName$JBpE, "buildDistribution.xml");
+    ListSequence.fromList(SLinkOperations.getChildren(buildStandalone, LINKS.dependencies$fxFr)).addElement(_quotation_createNode_un708i_a0a3a72(buildProject));
+    SLinkOperations.setNewChild(buildStandalone, LINKS.layout$fqCX, null);
+    SPropertyOperations.set(buildStandalone, PROPS.internalBaseDirectory$pssS, SPropertyOperations.getString(buildProject, PROPS.internalBaseDirectory$pssS));
 
     SNode mpsHomeMacro = _quotation_createNode_un708i_a0h0bb();
     SNode version = _quotation_createNode_un708i_a0i0bb();
-    ListSequence.fromList(SLinkOperations.getChildren(buildStandalone, LINKS.macros$tpFt)).addElement(mpsHomeMacro);
-    ListSequence.fromList(SLinkOperations.getChildren(buildStandalone, LINKS.macros$tpFt)).addElement(version);
-    SNode buildNumber = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.macros$tpFt)).findFirst(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(buildStandalone, LINKS.macros$fs33)).addElement(mpsHomeMacro);
+    ListSequence.fromList(SLinkOperations.getChildren(buildStandalone, LINKS.macros$fs33)).addElement(version);
+    SNode buildNumber = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.macros$fs33)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildVariableMacro$kL) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(SLinkOperations.getTarget(_quotation_createNode_un708i_a0a0a0a0a0a0l0bb(), LINKS.macro$lql0), PROPS.name$tAp1));
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildVariableMacro$kL) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(SLinkOperations.getTarget(_quotation_createNode_un708i_a0a0a0a0a0a0l0bb(), LINKS.macro$nKb0), PROPS.name$lA7v));
       }
     }), CONCEPTS.BuildVariableMacro$kL);
 
     SNode solution = SNodeOperations.as(SModelOperations.getModuleStub(targetSModel), CONCEPTS.Solution$k0);
 
     String prefix = myProject.getProject().getBasePath() + "/";
-    String outPath = (SPropertyOperations.getString(solution, PROPS.outputPath$_V06).startsWith(prefix) ? SPropertyOperations.getString(solution, PROPS.outputPath$_V06).substring(prefix.length()) : SPropertyOperations.getString(solution, PROPS.outputPath$_V06));
+    String outPath = (SPropertyOperations.getString(solution, PROPS.outputPath$n_2U).startsWith(prefix) ? SPropertyOperations.getString(solution, PROPS.outputPath$n_2U).substring(prefix.length()) : SPropertyOperations.getString(solution, PROPS.outputPath$n_2U));
 
     String generatedOutputPath = outPath + "/" + SModelOperations.getModelName(targetSModel).replace('.', '/') + "/";
     final String scriptName = getProjectName().toLowerCase();
@@ -405,21 +405,21 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     // we do not want to invent something complicated just before release 
     // copy-pasting, really, is better than what we had with custommps 
 
-    SNode linuxTar = _quotation_createNode_un708i_a0gb0bb(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), convertToMacroRelative(_quotation_createNode_un708i_a0a0a1b0a0gb0bb(), mpsHomeMacro), vmoptions, vmoptions64, shLinux, SPropertyOperations.getString(buildProject, PROPS.name$tAp1), buildNumber);
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildStandalone, LINKS.layout$tpCz), LINKS.children$aiMf)).addElement(linuxTar);
+    SNode linuxTar = _quotation_createNode_un708i_a0gb0bb(SLinkOperations.getTarget(buildProject, LINKS.layout$fqCX), convertToMacroRelative(_quotation_createNode_un708i_a0a0a1b0a0gb0bb(), mpsHomeMacro), vmoptions, vmoptions64, shLinux, SPropertyOperations.getString(buildProject, PROPS.name$lA7v), buildNumber);
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildStandalone, LINKS.layout$fqCX), LINKS.children$Z6lh)).addElement(linuxTar);
 
-    SNode winZip = _quotation_createNode_un708i_a0jb0bb(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), scriptName + ".exe.vmoptions", vmoptions, scriptName + "64.exe.vmoptions", vmoptions64, convertToMacroRelative(_quotation_createNode_un708i_a0a0e1a0a53a72(), mpsHomeMacro), convertToMacroRelative(_quotation_createNode_un708i_a0a0a6b0a0jb0bb(), mpsHomeMacro), batWindows, SPropertyOperations.getString(buildProject, PROPS.name$tAp1), buildNumber);
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildStandalone, LINKS.layout$tpCz), LINKS.children$aiMf)).addElement(winZip);
+    SNode winZip = _quotation_createNode_un708i_a0jb0bb(SLinkOperations.getTarget(buildProject, LINKS.layout$fqCX), scriptName + ".exe.vmoptions", vmoptions, scriptName + "64.exe.vmoptions", vmoptions64, convertToMacroRelative(_quotation_createNode_un708i_a0a0e1a0a53a72(), mpsHomeMacro), convertToMacroRelative(_quotation_createNode_un708i_a0a0a6b0a0jb0bb(), mpsHomeMacro), batWindows, SPropertyOperations.getString(buildProject, PROPS.name$lA7v), buildNumber);
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildStandalone, LINKS.layout$fqCX), LINKS.children$Z6lh)).addElement(winZip);
 
-    SNode macosZip = _quotation_createNode_un708i_a0mb0bb(SPropertyOperations.getString(buildProject, PROPS.name$tAp1), buildNumber, SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), convertToMacroRelative(_quotation_createNode_un708i_a0a0b1a0a0a83a72(), mpsHomeMacro), convertToMacroRelative(_quotation_createNode_un708i_a0a0a3a0a0a83a72(), mpsHomeMacro), scriptName, infoPlistMac, version, buildNumber, convertToMacroRelative(_quotation_createNode_un708i_a0a0a1g0a0a0mb0bb(), mpsHomeMacro), convertToMacroRelative(_quotation_createNode_un708i_a0a0a3g0a0a0mb0bb(), mpsHomeMacro), convertToMacroRelative(_quotation_createNode_un708i_a0a0a5g0a0a0mb0bb(), mpsHomeMacro), vmoptions64, scriptName + "64.vmoptions", scriptName + ".vmoptions", SPropertyOperations.getString(buildProject, PROPS.name$tAp1) + " ", version);
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildStandalone, LINKS.layout$tpCz), LINKS.children$aiMf)).addElement(macosZip);
+    SNode macosZip = _quotation_createNode_un708i_a0mb0bb(SPropertyOperations.getString(buildProject, PROPS.name$lA7v), buildNumber, SLinkOperations.getTarget(buildProject, LINKS.layout$fqCX), convertToMacroRelative(_quotation_createNode_un708i_a0a0b1a0a0a83a72(), mpsHomeMacro), convertToMacroRelative(_quotation_createNode_un708i_a0a0a3a0a0a83a72(), mpsHomeMacro), scriptName, infoPlistMac, version, buildNumber, convertToMacroRelative(_quotation_createNode_un708i_a0a0a1g0a0a0mb0bb(), mpsHomeMacro), convertToMacroRelative(_quotation_createNode_un708i_a0a0a3g0a0a0mb0bb(), mpsHomeMacro), convertToMacroRelative(_quotation_createNode_un708i_a0a0a5g0a0a0mb0bb(), mpsHomeMacro), vmoptions64, scriptName + "64.vmoptions", scriptName + ".vmoptions", SPropertyOperations.getString(buildProject, PROPS.name$lA7v) + " ", version);
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildStandalone, LINKS.layout$fqCX), LINKS.children$Z6lh)).addElement(macosZip);
 
     SModelOperations.addRootNode(targetSModel, buildStandalone);
     return buildStandalone;
   }
 
   private SNode addStartupScripts(SModel targetSModel, SNode buildProject) {
-    SNode startupScript = _quotation_createNode_un708i_a0a0db(SPropertyOperations.getString(buildProject, PROPS.name$tAp1) + "Scripts", Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg), CONCEPTS.BuildMps_Branding$lC)).first());
+    SNode startupScript = _quotation_createNode_un708i_a0a0db(SPropertyOperations.getString(buildProject, PROPS.name$lA7v) + "Scripts", Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.parts$b06K), CONCEPTS.BuildMps_Branding$lC)).first());
 
     SModelOperations.addRootNode(targetSModel, startupScript);
     return startupScript;
@@ -432,12 +432,12 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     Iterator<String> iterator = Sequence.fromIterable(Sequence.fromArray(path.split("/"))).iterator();
     while (iterator.hasNext()) {
       String pathPart = iterator.next();
-      if (isEmptyString(SPropertyOperations.getString(pathBuilder, PROPS.head$vKDv))) {
-        SPropertyOperations.set(pathBuilder, PROPS.head$vKDv, pathPart);
+      if (isEmptyString(SPropertyOperations.getString(pathBuilder, PROPS.head$o$61))) {
+        SPropertyOperations.set(pathBuilder, PROPS.head$o$61, pathPart);
       } else {
         SNode tmp = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath"));
-        SPropertyOperations.set(tmp, PROPS.head$vKDv, pathPart);
-        SLinkOperations.setTarget(pathBuilder, LINKS.tail$vKD0, tmp);
+        SPropertyOperations.set(tmp, PROPS.head$o$61, pathPart);
+        SLinkOperations.setTarget(pathBuilder, LINKS.tail$ozR0, tmp);
         pathBuilder = tmp;
       }
     }
@@ -446,8 +446,8 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
 
   private SNode convertToMacroRelative(SNode projectRelative, SNode macro) {
     SNode macroRelative = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath"));
-    SLinkOperations.setTarget(macroRelative, LINKS.compositePart$gwj7, SNodeOperations.copyNode(SLinkOperations.getTarget(projectRelative, LINKS.compositePart$gwj7)));
-    SLinkOperations.setTarget(macroRelative, LINKS.macro$p38a, macro);
+    SLinkOperations.setTarget(macroRelative, LINKS.compositePart$ZDgp, SNodeOperations.copyNode(SLinkOperations.getTarget(projectRelative, LINKS.compositePart$ZDgp)));
+    SLinkOperations.setTarget(macroRelative, LINKS.macro$8wWQ, macro);
     return macroRelative;
   }
 
@@ -490,11 +490,11 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   private SNode createPath(String relativePath) {
     String[] parts = relativePath.split("/");
     SNode path = _quotation_createNode_un708i_a0b0ob();
-    SNode compositePart = SLinkOperations.getTarget(path, LINKS.compositePart$gwj7);
+    SNode compositePart = SLinkOperations.getTarget(path, LINKS.compositePart$ZDgp);
     for (String part : parts) {
-      SPropertyOperations.set(compositePart, PROPS.head$vKDv, part);
-      SLinkOperations.setNewChild(compositePart, LINKS.tail$vKD0, null);
-      compositePart = SLinkOperations.getTarget(compositePart, LINKS.tail$vKD0);
+      SPropertyOperations.set(compositePart, PROPS.head$o$61, part);
+      SLinkOperations.setNewChild(compositePart, LINKS.tail$ozR0, null);
+      compositePart = SLinkOperations.getTarget(compositePart, LINKS.tail$ozR0);
     }
     SNodeOperations.deleteNode(compositePart);
 
@@ -1898,24 +1898,24 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty internalBaseDirectory$E778 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x48387ebae1a07a23L, "internalBaseDirectory");
-    /*package*/ static final SProperty fileName$L1hm = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4438b4de59410ebcL, "fileName");
-    /*package*/ static final SProperty outputPath$_V06 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x3be012d639e8a6eL, "outputPath");
-    /*package*/ static final SProperty head$vKDv = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty internalBaseDirectory$pssS = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x48387ebae1a07a23L, "internalBaseDirectory");
+    /*package*/ static final SProperty fileName$JBpE = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4438b4de59410ebcL, "fileName");
+    /*package*/ static final SProperty outputPath$n_2U = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x3be012d639e8a6eL, "outputPath");
+    /*package*/ static final SProperty head$o$61 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink plugins$97JG = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
-    /*package*/ static final SContainmentLink parts$tgxg = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
-    /*package*/ static final SContainmentLink macros$tpFt = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
-    /*package*/ static final SContainmentLink dependencies$tpR5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
-    /*package*/ static final SContainmentLink layout$tpCz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
-    /*package*/ static final SContainmentLink children$aiMf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
-    /*package*/ static final SReferenceLink macro$lql0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro");
-    /*package*/ static final SContainmentLink tail$vKD0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
-    /*package*/ static final SContainmentLink compositePart$gwj7 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
-    /*package*/ static final SReferenceLink macro$p38a = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro");
+    /*package*/ static final SContainmentLink plugins$qK6k = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
+    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink macros$fs33 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SContainmentLink dependencies$fxFr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SContainmentLink layout$fqCX = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
+    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SReferenceLink macro$nKb0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro");
+    /*package*/ static final SContainmentLink tail$ozR0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
+    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SReferenceLink macro$8wWQ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro");
   }
 
   private static final class CONCEPTS {

@@ -135,7 +135,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -179,7 +179,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.topPriorityGroup$tTnx;
+      final SProperty property = PROPS.topPriorityGroup$uMoZ;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no topPriorityGroup>");
@@ -271,7 +271,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.mappingLabel$9pST;
+      return LINKS.mappingLabel$zyzB;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.MappingLabelDeclaration$7f;
@@ -284,7 +284,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(mappingLabelListHandler_g6pxeq_b1d0.this.getNode(), LINKS.mappingLabel$9pST));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(mappingLabelListHandler_g6pxeq_b1d0.this.getNode(), LINKS.mappingLabel$zyzB));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -390,7 +390,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.generationParameters$j6TT;
+      return LINKS.generationParameters$gm2B;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.GeneratorParameterReference$GX;
@@ -403,7 +403,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(generationParametersListHandler_g6pxeq_b1f0.this.getNode(), LINKS.generationParameters$j6TT));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(generationParametersListHandler_g6pxeq_b1f0.this.getNode(), LINKS.generationParameters$gm2B));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -485,7 +485,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new conditionSingleRoleHandler_g6pxeq_b1h0(myNode, LINKS.condition$GHuM, getEditorContext());
+    SingleRoleCellProvider provider = new conditionSingleRoleHandler_g6pxeq_b1h0(myNode, LINKS.condition$E1Ue, getEditorContext());
     return provider.createCell();
   }
   private static class conditionSingleRoleHandler_g6pxeq_b1h0 extends SingleRoleCellProvider {
@@ -505,8 +505,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.condition$GHuM, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.condition$GHuM, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.condition$E1Ue, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.condition$E1Ue, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -518,13 +518,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.condition$GHuM);
+        editorCell.setSRole(LINKS.condition$E1Ue);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.condition$GHuM));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.condition$E1Ue));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_condition");
@@ -606,7 +606,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.createRootRule$gnQA;
+      return LINKS.createRootRule$Vzsq;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.CreateRootRule$Pj;
@@ -619,7 +619,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(createRootRuleListHandler_g6pxeq_b1j0.this.getNode(), LINKS.createRootRule$gnQA));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(createRootRuleListHandler_g6pxeq_b1j0.this.getNode(), LINKS.createRootRule$Vzsq));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -728,7 +728,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.rootMappingRule$gaRA;
+      return LINKS.rootMappingRule$PgVq;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Root_MappingRule$81;
@@ -741,7 +741,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(rootMappingRuleListHandler_g6pxeq_b1l0.this.getNode(), LINKS.rootMappingRule$gaRA));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(rootMappingRuleListHandler_g6pxeq_b1l0.this.getNode(), LINKS.rootMappingRule$PgVq));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -850,7 +850,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.weavingMappingRule$4s0_;
+      return LINKS.weavingMappingRule$9$hV;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Weaving_MappingRule$Iv;
@@ -863,7 +863,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weavingMappingRuleListHandler_g6pxeq_b1n0.this.getNode(), LINKS.weavingMappingRule$4s0_));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weavingMappingRuleListHandler_g6pxeq_b1n0.this.getNode(), LINKS.weavingMappingRule$9$hV));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -972,7 +972,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.reductionMappingRule$H54E;
+      return LINKS.reductionMappingRule$Ptgm;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Reduction_MappingRule$uh;
@@ -985,7 +985,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(reductionMappingRuleListHandler_g6pxeq_b1p0.this.getNode(), LINKS.reductionMappingRule$H54E));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(reductionMappingRuleListHandler_g6pxeq_b1p0.this.getNode(), LINKS.reductionMappingRule$Ptgm));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -1094,7 +1094,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.patternReductionRule$mvqy;
+      return LINKS.patternReductionRule$TdQu;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.PatternReduction_MappingRule$g5;
@@ -1107,7 +1107,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(patternReductionRuleListHandler_g6pxeq_b1r0.this.getNode(), LINKS.patternReductionRule$mvqy));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(patternReductionRuleListHandler_g6pxeq_b1r0.this.getNode(), LINKS.patternReductionRule$TdQu));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -1217,7 +1217,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.referenceReductionRule$IH$g;
+      return LINKS.referenceReductionRule$C4zK;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.ReferenceReductionRule$Lk;
@@ -1230,7 +1230,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(referenceReductionRuleListHandler_g6pxeq_b1t0.this.getNode(), LINKS.referenceReductionRule$IH$g));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(referenceReductionRuleListHandler_g6pxeq_b1t0.this.getNode(), LINKS.referenceReductionRule$C4zK));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -1340,7 +1340,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.dropRootRule$yiwI;
+      return LINKS.dropRootRule$AXQi;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.DropRootRule$d7;
@@ -1353,7 +1353,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(dropRootRuleListHandler_g6pxeq_b1v0.this.getNode(), LINKS.dropRootRule$yiwI));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(dropRootRuleListHandler_g6pxeq_b1v0.this.getNode(), LINKS.dropRootRule$AXQi));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -1464,7 +1464,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.dropAttrubuteRule$AwEA;
+      return LINKS.dropAttrubuteRule$DOCq;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.DropAttributeRule$EX;
@@ -1477,7 +1477,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(dropAttrubuteRuleListHandler_g6pxeq_b1x0.this.getNode(), LINKS.dropAttrubuteRule$AwEA));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(dropAttrubuteRuleListHandler_g6pxeq_b1x0.this.getNode(), LINKS.dropAttrubuteRule$DOCq));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -1584,7 +1584,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.preMappingScript$DukP;
+      return LINKS.preMappingScript$5G5F;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.MappingScriptReference$4z;
@@ -1597,7 +1597,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(preMappingScriptListHandler_g6pxeq_b1z0.this.getNode(), LINKS.preMappingScript$DukP));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(preMappingScriptListHandler_g6pxeq_b1z0.this.getNode(), LINKS.preMappingScript$5G5F));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -1707,7 +1707,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.postMappingScript$AdUs;
+      return LINKS.postMappingScript$wJj$;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.MappingScriptReference$4z;
@@ -1720,7 +1720,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(postMappingScriptListHandler_g6pxeq_b1bb0.this.getNode(), LINKS.postMappingScript$AdUs));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(postMappingScriptListHandler_g6pxeq_b1bb0.this.getNode(), LINKS.postMappingScript$wJj$));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -1762,8 +1762,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty topPriorityGroup$tTnx = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x113e48b50faL, "topPriorityGroup");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty topPriorityGroup$uMoZ = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x113e48b50faL, "topPriorityGroup");
   }
 
   private static final class CONCEPTS {
@@ -1782,18 +1782,18 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink mappingLabel$9pST = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel");
-    /*package*/ static final SContainmentLink generationParameters$j6TT = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x2215c240569d3bc2L, "generationParameters");
-    /*package*/ static final SContainmentLink condition$GHuM = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x6cab949e66d5b3bbL, "condition");
-    /*package*/ static final SContainmentLink createRootRule$gnQA = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fbbe00519L, "createRootRule");
-    /*package*/ static final SContainmentLink rootMappingRule$gaRA = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fd54c33e7L, "rootMappingRule");
-    /*package*/ static final SContainmentLink weavingMappingRule$4s0_ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fc0e18af2L, "weavingMappingRule");
-    /*package*/ static final SContainmentLink reductionMappingRule$H54E = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fca310cd5L, "reductionMappingRule");
-    /*package*/ static final SContainmentLink patternReductionRule$mvqy = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x190d31fe6a177473L, "patternReductionRule");
-    /*package*/ static final SContainmentLink referenceReductionRule$IH$g = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x7786936d61bf9231L, "referenceReductionRule");
-    /*package*/ static final SContainmentLink dropRootRule$yiwI = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x11c0adbe243L, "dropRootRule");
-    /*package*/ static final SContainmentLink dropAttrubuteRule$AwEA = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x67b585b44f4e06dbL, "dropAttrubuteRule");
-    /*package*/ static final SContainmentLink preMappingScript$DukP = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597a610dL, "preMappingScript");
-    /*package*/ static final SContainmentLink postMappingScript$AdUs = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597e20a5L, "postMappingScript");
+    /*package*/ static final SContainmentLink mappingLabel$zyzB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel");
+    /*package*/ static final SContainmentLink generationParameters$gm2B = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x2215c240569d3bc2L, "generationParameters");
+    /*package*/ static final SContainmentLink condition$E1Ue = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x6cab949e66d5b3bbL, "condition");
+    /*package*/ static final SContainmentLink createRootRule$Vzsq = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fbbe00519L, "createRootRule");
+    /*package*/ static final SContainmentLink rootMappingRule$PgVq = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fd54c33e7L, "rootMappingRule");
+    /*package*/ static final SContainmentLink weavingMappingRule$9$hV = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fc0e18af2L, "weavingMappingRule");
+    /*package*/ static final SContainmentLink reductionMappingRule$Ptgm = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fca310cd5L, "reductionMappingRule");
+    /*package*/ static final SContainmentLink patternReductionRule$TdQu = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x190d31fe6a177473L, "patternReductionRule");
+    /*package*/ static final SContainmentLink referenceReductionRule$C4zK = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x7786936d61bf9231L, "referenceReductionRule");
+    /*package*/ static final SContainmentLink dropRootRule$AXQi = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x11c0adbe243L, "dropRootRule");
+    /*package*/ static final SContainmentLink dropAttrubuteRule$DOCq = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x67b585b44f4e06dbL, "dropAttrubuteRule");
+    /*package*/ static final SContainmentLink preMappingScript$5G5F = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597a610dL, "preMappingScript");
+    /*package*/ static final SContainmentLink postMappingScript$wJj$ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597e20a5L, "postMappingScript");
   }
 }

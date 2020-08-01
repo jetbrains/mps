@@ -36,12 +36,12 @@ public final class PreferencePage__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getGeneratedName_idhI3nUHP(@NotNull SNode __thisNode__) {
-    String componentName = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PreferencesComponentDeclaration$6j, false, false), PROPS.name$tAp1);
-    String pageName = NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    String componentName = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PreferencesComponentDeclaration$6j, false, false), PROPS.name$lA7v);
+    String pageName = NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
     return componentName + "_" + pageName + "_PreferencesPage";
   }
   /*package*/ static PropertyReference getPropertyToCheck_id4cWf37B8oYh(@NotNull SNode __thisNode__) {
-    return new PropertyReference(__thisNode__, PROPS.name$tAp1);
+    return new PropertyReference(__thisNode__, PROPS.name$lA7v);
   }
 
   /*package*/ PreferencePage__BehaviorDescriptor() {
@@ -97,6 +97,6 @@ public final class PreferencePage__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

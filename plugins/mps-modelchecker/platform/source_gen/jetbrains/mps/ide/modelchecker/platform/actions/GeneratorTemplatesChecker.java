@@ -68,9 +68,9 @@ public class GeneratorTemplatesChecker extends SpecificChecker {
       }
       SNode node = it.next();
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractMacro$vG)) {
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.IfMacro$hQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfMacro$hQ), LINKS.alternativeConsequence$yuVJ), CONCEPTS.InlineTemplate_RuleConsequence$Mt)) {
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.IfMacro$hQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfMacro$hQ), LINKS.alternativeConsequence$GYVL), CONCEPTS.InlineTemplate_RuleConsequence$Mt)) {
           // afaik IF/ELSE consequence is the only place we need to treat in a distinct way 
-          scanTemplateNode(results, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfMacro$hQ), LINKS.alternativeConsequence$yuVJ), CONCEPTS.InlineTemplate_RuleConsequence$Mt), LINKS.templateNode$7wRg), progressMonitor);
+          scanTemplateNode(results, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfMacro$hQ), LINKS.alternativeConsequence$GYVL), CONCEPTS.InlineTemplate_RuleConsequence$Mt), LINKS.templateNode$CUKK), progressMonitor);
         }
         it.skipChildren();
         continue;
@@ -125,7 +125,7 @@ public class GeneratorTemplatesChecker extends SpecificChecker {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink alternativeConsequence$yuVJ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, 0x1163aea5803L, "alternativeConsequence");
-    /*package*/ static final SContainmentLink templateNode$7wRg = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
+    /*package*/ static final SContainmentLink alternativeConsequence$GYVL = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, 0x1163aea5803L, "alternativeConsequence");
+    /*package*/ static final SContainmentLink templateNode$CUKK = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
   }
 }

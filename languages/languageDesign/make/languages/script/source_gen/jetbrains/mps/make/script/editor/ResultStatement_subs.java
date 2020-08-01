@@ -145,7 +145,7 @@ public class ResultStatement_subs extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode rs = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ResultStatement$hP, null);
-            SPropertyOperations.assignEnum(rs, PROPS.result$3hPw, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a9472daL, "jetbrains.mps.make.script.structure.Result"), SEnumOperations.getMemberName0(myParameterObject)));
+            SPropertyOperations.assignEnum(rs, PROPS.result$_CUw, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a9472daL, "jetbrains.mps.make.script.structure.Result"), SEnumOperations.getMemberName0(myParameterObject)));
             return rs;
           }
 
@@ -186,6 +186,6 @@ public class ResultStatement_subs extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty result$3hPw = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL, 0x6237d5bb8b2a942eL, "result");
+    /*package*/ static final SProperty result$_CUw = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL, 0x6237d5bb8b2a942eL, "result");
   }
 }

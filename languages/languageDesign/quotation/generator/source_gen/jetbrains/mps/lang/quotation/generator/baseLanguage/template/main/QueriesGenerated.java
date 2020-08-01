@@ -58,63 +58,63 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 @Generated
 public class QueriesGenerated {
   public static boolean rule_Condition_4_0(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.NodeBuilderPropertyExpression$_e) && (boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.NodeBuilderPropertyExpression$_e), LINKS.expression$j9T0));
+    return SNodeOperations.isInstanceOf(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.NodeBuilderPropertyExpression$_e) && (boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.NodeBuilderPropertyExpression$_e), LINKS.expression$hMB0));
   }
   public static boolean rule_Condition_4_1(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.NodeBuilderPropertyExpression$_e) && !((boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.NodeBuilderPropertyExpression$_e), LINKS.expression$j9T0)));
+    return SNodeOperations.isInstanceOf(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.NodeBuilderPropertyExpression$_e) && !((boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.NodeBuilderPropertyExpression$_e), LINKS.expression$hMB0)));
   }
   public static boolean rule_Condition_4_2(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$az);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx), PROPS.metaClass$p6Up), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$az);
 
   }
   public static boolean rule_Condition_4_3(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub) && (boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$JCaZ));
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx), PROPS.metaClass$p6Up), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub) && (boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$4tkx));
   }
   public static boolean rule_Condition_4_4(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub) && !((boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$JCaZ)));
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx), PROPS.metaClass$p6Up), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub) && !((boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$4tkx)));
   }
   public static boolean rule_Condition_4_5(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b9L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub) && !((boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$JCaZ))) && Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$JCaZ), SNodeOperations.getModel(_context.getNode()).getModule()) == null;
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx), PROPS.metaClass$p6Up), 0xfc6f4e95b9L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub) && !((boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$4tkx))) && Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$4tkx), SNodeOperations.getModel(_context.getNode()).getModule()) == null;
   }
   public static boolean rule_Condition_4_6(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b9L) && ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ)) || SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderNode$RN)) && (!(SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub)) || (boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$JCaZ)) || Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$JCaZ), SNodeOperations.getModel(_context.getNode()).getModule()) != null);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx), PROPS.metaClass$p6Up), 0xfc6f4e95b9L) && ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx)) || SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderNode$RN)) && (!(SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub)) || (boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$4tkx)) || Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$4tkx), SNodeOperations.getModel(_context.getNode()).getModule()) != null);
   }
   public static boolean rule_Condition_4_7(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b9L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub) && !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ)));
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx), PROPS.metaClass$p6Up), 0xfc6f4e95b9L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub) && !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx)));
   }
   public static boolean rule_Condition_4_8(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b9L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderList$lD);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx), PROPS.metaClass$p6Up), 0xfc6f4e95b9L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderList$lD);
   }
   public static boolean rule_Condition_5_0(final BaseMappingRuleContext _context) {
-    return ((Boolean) _context.getVariable("forceDeclare")) || ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(_context.getNode(), CONCEPTS.NodeBuilderNode$RN), LINKS.values$oju9)).isNotEmpty();
+    return ((Boolean) _context.getVariable("forceDeclare")) || ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(_context.getNode(), CONCEPTS.NodeBuilderNode$RN), LINKS.values$LrAn)).isNotEmpty();
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
-    return (boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(_context.getNode(), LINKS.expression$JCaZ));
+    return (boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(_context.getNode(), LINKS.expression$4tkx));
   }
   public static boolean rule_Condition_6_1(final BaseMappingRuleContext _context) {
-    return !((boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(_context.getNode(), LINKS.expression$JCaZ)));
+    return !((boolean) NodeBuilderNode__BehaviorDescriptor.isExpressionExternal_id4IuFl2JvP6C.invoke(SNodeOperations.asSConcept(CONCEPTS.NodeBuilderNode$RN), SLinkOperations.getTarget(_context.getNode(), LINKS.expression$4tkx)));
   }
   public static boolean rule_Condition_7_0(final BaseMappingRuleContext _context) {
     return (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.NodeBuilder$Gb, false, false) != null);
   }
   public static boolean rule_Condition_8_0(final BaseMappingRuleContext _context) {
-    return SNodeOperations.hasRole(_context.getNode(), LINKS.expression$NDf$) || SNodeOperations.hasRole(_context.getNode(), LINKS.initValue$nhHN) || SNodeOperations.hasRole(_context.getNode(), LINKS.expression$j9T0);
+    return SNodeOperations.hasRole(_context.getNode(), LINKS.expression$Yys) || SNodeOperations.hasRole(_context.getNode(), LINKS.initValue$h_bH) || SNodeOperations.hasRole(_context.getNode(), LINKS.expression$hMB0);
   }
   public static boolean rule_Condition_8_1(final BaseMappingRuleContext _context) {
-    return SNodeOperations.hasRole(_context.getNode(), LINKS.expression$JCaZ) && (SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.expression$NDf$) || SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.initValue$UJfh)) && !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$ckAZ)));
+    return SNodeOperations.hasRole(_context.getNode(), LINKS.expression$4tkx) && (SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.expression$Yys) || SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.initValue$sSpf)) && !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx)));
   }
   public static boolean rule_Condition_8_2(final BaseMappingRuleContext _context) {
-    return SNodeOperations.hasRole(_context.getNode(), LINKS.expression$JCaZ) && (SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.expression$NDf$) || SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.initValue$UJfh)) && (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$ckAZ)) || SNodeOperations.hasRole(_context.getNode(), LINKS.expression$JCaZ) && SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.nodes$$MVw);
+    return SNodeOperations.hasRole(_context.getNode(), LINKS.expression$4tkx) && (SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.expression$Yys) || SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.initValue$sSpf)) && (boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx)) || SNodeOperations.hasRole(_context.getNode(), LINKS.expression$4tkx) && SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.nodes$OEOw);
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
-    String value = SPropertyOperations.getString(_context.getNode(), PROPS.propertyValue$aUmr);
+    String value = SPropertyOperations.getString(_context.getNode(), PROPS.propertyValue$igR5);
     return NameUtil.escapeString(value);
   }
   public static Object propertyMacro_GetValue_0_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.targetModel$hTil);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.targetModel$EJSb);
   }
   public static Object propertyMacro_GetValue_0_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.targetNodeId$_WXv);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.targetNodeId$oxM1);
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
     //  the 'node' expression may have been already mapped and unique name created for it 
@@ -134,16 +134,16 @@ public class QueriesGenerated {
     return _context.createIndexedName("n", SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.INodeBuilderContainer$cS, false, false), false);
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
-    return _context.createUniqueName("create" + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw), LINKS.concept$lMG$), PROPS.name$tAp1), _context.getNode());
+    return _context.createUniqueName("create" + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$eQ5w), LINKS.concept$zz_s), PROPS.name$lA7v), _context.getNode());
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
     return "p" + ((Integer) _context.getVariable("cv:c"));
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$az), LINKS.target$dU9a).getModel().getReference().toString();
+    return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$az), LINKS.target$JarQ).getModel().getReference().toString();
   }
   public static Object propertyMacro_GetValue_4_1(final PropertyMacroContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$az), LINKS.target$dU9a).getNodeId().toString();
+    return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$az), LINKS.target$JarQ).getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_5_0(final PropertyMacroContext _context) {
     return _context.createIndexedName("n", SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.INodeBuilderContainer$cS, false, false), false);
@@ -156,12 +156,12 @@ public class QueriesGenerated {
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
     SNode quotation = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false);
-    SNode modelToCreate_old = ((SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$kInZ) != null) ? SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$kInZ) : SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt), LINKS.modelToCreate$GU4w));
+    SNode modelToCreate_old = ((SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$2tBx) != null) ? SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$2tBx) : SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3), LINKS.modelToCreate$K8bw));
     return _context.getOutputNodeByInputNodeAndMappingLabel(modelToCreate_old, "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_0_1(final ReferenceMacroContext _context) {
     SNode quotation = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false);
-    SNode nodeId = ((SLinkOperations.getTarget(quotation, LINKS.nodeId_old$QEQA) != null) ? SLinkOperations.getTarget(quotation, LINKS.nodeId_old$QEQA) : SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt), LINKS.nodeId$GU4Z));
+    SNode nodeId = ((SLinkOperations.getTarget(quotation, LINKS.nodeId_old$uKsq) != null) ? SLinkOperations.getTarget(quotation, LINKS.nodeId_old$uKsq) : SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3), LINKS.nodeId$K8qx));
     return _context.getOutputNodeByInputNodeAndMappingLabel(nodeId, "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_0_2(final ReferenceMacroContext _context) {
@@ -174,13 +174,13 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_0_5(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$kIm0), "parametersFromExpressionsQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$2sE0), "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_0_6(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_0_7(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$kIm0), "parametersFromExpressionsQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$2sE0), "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_0_8(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
@@ -192,7 +192,7 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_0_11(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$kIm0), "parametersFromExpressionsQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$2sE0), "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_0_12(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getParent(_context.getNode()), "nodeVariableQ");
@@ -208,7 +208,7 @@ public class QueriesGenerated {
     if (antiquotation == null) {
       return null;
     }
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(antiquotation, LINKS.expression$kIm0), "parametersFromExpressionsQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(antiquotation, LINKS.expression$2sE0), "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_0_16(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "nodeVariableQ");
@@ -230,29 +230,29 @@ public class QueriesGenerated {
     if (antiquotation == null) {
       return null;
     }
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(antiquotation, LINKS.expression$kIm0), "parametersFromExpressionsQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(antiquotation, LINKS.expression$2sE0), "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_0_20(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getParent(_context.getNode()), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNode$DFe$), "nodeVariableQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNode$bW3s), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_2_1(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.targetNode$DF02), "nodeVariableQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.targetNode$bP0Y), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_2_2(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$kInw), "nodeVariableQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$2tow), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
-    SNode modelToCreate = ((SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate_old$8JaZ) != null) ? SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate_old$8JaZ) : SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate$MRab), LINKS.modelToCreate$GU4w));
+    SNode modelToCreate = ((SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate_old$eQkx) != null) ? SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate_old$eQkx) : SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate$CHVl), LINKS.modelToCreate$K8bw));
     return _context.getOutputNodeByInputNodeAndMappingLabel(modelToCreate, "parametersFromExpressionsL");
   }
   public static Object referenceMacro_GetReferent_3_1(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z), "parametersFromExpressionsL");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate$CHVl), LINKS.nodeId$K8qx), "parametersFromExpressionsL");
   }
   public static Object referenceMacro_GetReferent_3_2(final ReferenceMacroContext _context) {
-    return SNodeOperations.cast(_context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw), "nodeVariableL"), CONCEPTS.LocalVariableDeclaration$Bf);
+    return SNodeOperations.cast(_context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$eQ5w), "nodeVariableL"), CONCEPTS.LocalVariableDeclaration$Bf);
   }
   public static Object referenceMacro_GetReferent_4_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
@@ -261,13 +261,13 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(NodeBuilderInitProperty__BehaviorDescriptor.getInitValueInternal_idMyKVmwIJUM.invoke(_context.getNode()), "parametersFromExpressionsL");
   }
   public static Object referenceMacro_GetReferent_4_2(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.property$NCMw), LINKS.dataType$fLUl);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.property$Ktw), LINKS.dataType$Dbgb);
   }
   public static Object referenceMacro_GetReferent_4_3(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
   }
   public static Object referenceMacro_GetReferent_4_4(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.property$NCMw), LINKS.dataType$fLUl);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.property$Ktw), LINKS.dataType$Dbgb);
   }
   public static Object referenceMacro_GetReferent_4_5(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
@@ -276,7 +276,7 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
   }
   public static Object referenceMacro_GetReferent_4_7(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$JCaZ), "parametersFromExpressionsL");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$4tkx), "parametersFromExpressionsL");
   }
   public static Object referenceMacro_GetReferent_4_8(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
@@ -288,10 +288,10 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
   }
   public static Object referenceMacro_GetReferent_4_11(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$JCaZ), "parametersFromExpressionsL");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$4tkx), "parametersFromExpressionsL");
   }
   public static Object referenceMacro_GetReferent_4_12(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), LINKS.target$egp8);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx), LINKS.target$TWaS);
   }
   public static Object referenceMacro_GetReferent_5_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
@@ -300,7 +300,7 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
   }
   public static Object referenceMacro_GetReferent_6_0(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$JCaZ), "parametersFromExpressionsL");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$4tkx), "parametersFromExpressionsL");
   }
   public static Object referenceMacro_GetReferent_6_1(final ReferenceMacroContext _context) {
     return ((SNode) _context.getVariable("targetConcept"));
@@ -313,14 +313,14 @@ public class QueriesGenerated {
   }
   public static boolean ifMacro_Condition_0_1(final IfMacroContext _context) {
     SNode quotation = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false);
-    return (SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$kInZ) == null) && (SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt) == null);
+    return (SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$2tBx) == null) && (SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3) == null);
   }
   public static boolean ifMacro_Condition_0_2(final IfMacroContext _context) {
     SNode quotation = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false);
-    return SLinkOperations.getTarget(quotation, LINKS.quotedNode$kInw) != ((SNode) _context.getVariable("var:quotedNode")) || (SLinkOperations.getTarget(quotation, LINKS.nodeId_old$QEQA) == null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt), LINKS.nodeId$GU4Z) == null);
+    return SLinkOperations.getTarget(quotation, LINKS.quotedNode$2tow) != ((SNode) _context.getVariable("var:quotedNode")) || (SLinkOperations.getTarget(quotation, LINKS.nodeId_old$uKsq) == null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3), LINKS.nodeId$K8qx) == null);
   }
   public static boolean ifMacro_Condition_0_3(final IfMacroContext _context) {
-    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.stringValueMigrated$gFe8);
+    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.stringValueMigrated$4VPS);
   }
   public static boolean ifMacro_Condition_0_4(final IfMacroContext _context) {
     return SNodeOperations.getParent(_context.getNode()) != SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false);
@@ -353,28 +353,28 @@ public class QueriesGenerated {
     });
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$8JaZ) != null) || (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab) != null);
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$eQkx) != null) || (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$CHVl) != null);
   }
   public static boolean ifMacro_Condition_3_1(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z) != null);
+    return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$CHVl), LINKS.nodeId$K8qx) != null);
   }
   public static boolean ifMacro_Condition_3_2(final IfMacroContext _context) {
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.NodeBuilderRef$az, false, new SAbstractConcept[]{})).isNotEmpty();
   }
   public static boolean ifMacro_Condition_3_3(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate_old$8JaZ) != null) || (SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate$MRab) != null);
+    return (SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate_old$eQkx) != null) || (SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate$CHVl) != null);
   }
   public static boolean ifMacro_Condition_3_4(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z) != null);
+    return (SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("var:container")), LINKS.modelToCreate$CHVl), LINKS.nodeId$K8qx) != null);
   }
   public static boolean ifMacro_Condition_3_5(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$8JaZ) != null) || (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab) != null);
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$eQkx) != null) || (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$CHVl) != null);
   }
   public static boolean ifMacro_Condition_3_6(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z) != null);
+    return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$CHVl), LINKS.nodeId$K8qx) != null);
   }
   public static boolean ifMacro_Condition_4_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderNode$RN), LINKS.values$oju9)).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderNode$RN), LINKS.values$LrAn)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_5_0(final IfMacroContext _context) {
     return !(((Boolean) _context.getVariable("sibling")));
@@ -392,7 +392,7 @@ public class QueriesGenerated {
     return c;
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.propertyIdentity$qKOm);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.propertyIdentity$XDmE);
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
     SNode pid = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.PropertyId$Ig);
@@ -400,7 +400,7 @@ public class QueriesGenerated {
     return pid;
   }
   public static SNode sourceNodeQuery_0_3(final SourceSubstituteMacroNodeContext _context) {
-    SNode dataType = SLinkOperations.getTarget(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(_context.getNode()), LINKS.dataType$fLUl);
+    SNode dataType = SLinkOperations.getTarget(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(_context.getNode()), LINKS.dataType$Dbgb);
     return RulesUtil.datatypeBLType(dataType);
   }
   public static SNode sourceNodeQuery_0_4(final SourceSubstituteMacroNodeContext _context) {
@@ -409,10 +409,10 @@ public class QueriesGenerated {
     return pid;
   }
   public static SNode sourceNodeQuery_0_5(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$y0S0);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$ur80);
   }
   public static SNode sourceNodeQuery_0_6(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$y0S0);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$ur80);
   }
   public static SNode sourceNodeQuery_0_7(final SourceSubstituteMacroNodeContext _context) {
     SNode id = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ReferenceLinkId$Ic);
@@ -435,55 +435,55 @@ public class QueriesGenerated {
     return cid;
   }
   public static SNode sourceNodeQuery_2_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$kInw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$2tow);
   }
   public static SNode sourceNodeQuery_2_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$ZYnV);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$Zd__);
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.modelToCreate$GU4w);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$CHVl), LINKS.modelToCreate$K8bw);
   }
   public static SNode sourceNodeQuery_3_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$CHVl), LINKS.nodeId$K8qx);
   }
   public static SNode sourceNodeQuery_3_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$eQ5w);
   }
   public static SNode sourceNodeQuery_3_3(final SourceSubstituteMacroNodeContext _context) {
     return _context.getNode();
   }
   public static SNode sourceNodeQuery_3_4(final SourceSubstituteMacroNodeContext _context) {
-    if (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$8JaZ) != null) {
-      return SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$8JaZ);
+    if (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$eQkx) != null) {
+      return SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$eQkx);
     }
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.modelToCreate$GU4w);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$CHVl), LINKS.modelToCreate$K8bw);
   }
   public static SNode sourceNodeQuery_3_5(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$CHVl), LINKS.nodeId$K8qx);
   }
   public static SNode sourceNodeQuery_4_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.property$NCMw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.property$Ktw);
   }
   public static SNode sourceNodeQuery_4_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.property$NCMw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.property$Ktw);
   }
   public static SNode sourceNodeQuery_4_2(final SourceSubstituteMacroNodeContext _context) {
     return (SNode) NodeBuilderInitProperty__BehaviorDescriptor.getInitValueInternal_idMyKVmwIJUM.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_4_3(final SourceSubstituteMacroNodeContext _context) {
-    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ));
+    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx));
   }
   public static SNode sourceNodeQuery_4_4(final SourceSubstituteMacroNodeContext _context) {
-    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ));
+    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx));
   }
   public static SNode sourceNodeQuery_4_5(final SourceSubstituteMacroNodeContext _context) {
-    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ));
+    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx));
   }
   public static SNode sourceNodeQuery_4_6(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$JCaZ);
+    return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderExpression$Ub), LINKS.expression$4tkx);
   }
   public static SNode sourceNodeQuery_4_7(final SourceSubstituteMacroNodeContext _context) {
-    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ));
+    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx));
   }
   public static SNode sourceNodeQuery_4_8(final SourceSubstituteMacroNodeContext _context) {
     return (SNode) NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode());
@@ -492,25 +492,25 @@ public class QueriesGenerated {
     return (SNode) NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_4_10(final SourceSubstituteMacroNodeContext _context) {
-    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ));
+    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$XYSx));
   }
   public static SNode sourceNodeQuery_4_11(final SourceSubstituteMacroNodeContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderList$lD), LINKS.nodes$$MVw)).first();
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderList$lD), LINKS.nodes$OEOw)).first();
   }
   public static SNode sourceNodeQuery_5_0(final SourceSubstituteMacroNodeContext _context) {
-    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("link")), LINKS.link$ckAZ));
+    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("link")), LINKS.link$XYSx));
   }
   public static SNode sourceNodeQuery_5_1(final SourceSubstituteMacroNodeContext _context) {
-    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("link")), LINKS.link$ckAZ));
+    return (SNode) LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("link")), LINKS.link$XYSx));
   }
   public static SNode sourceNodeQuery_6_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$JCaZ);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.expression$4tkx);
   }
   public static SNode sourceNodeQuery_6_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$lMG$);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$zz_s);
   }
   public static SNode sourceNodeQuery_8_0(final SourceSubstituteMacroNodeContext _context) {
-    return (SNode) DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.NodeBuilderInitProperty$wV, false, false), LINKS.property$NCMw), LINKS.dataType$fLUl));
+    return (SNode) DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.NodeBuilderInitProperty$wV, false, false), LINKS.property$Ktw), LINKS.dataType$Dbgb));
   }
   public static Object templateArgumentQuery_3_0(final TemplateArgumentContext _context) {
     return SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NodeBuilderNode$RN);
@@ -531,16 +531,16 @@ public class QueriesGenerated {
     return _context.getNode();
   }
   public static Object templateArgumentQuery_4_3(final TemplateArgumentContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(((SNode) _context.getVariable("var:outer"))), CONCEPTS.NodeBuilderList$lD), LINKS.nodes$$MVw)).getElement(SNodeOperations.getIndexInParent(_context.getNode()) - 1);
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(((SNode) _context.getVariable("var:outer"))), CONCEPTS.NodeBuilderList$lD), LINKS.nodes$OEOw)).getElement(SNodeOperations.getIndexInParent(_context.getNode()) - 1);
   }
   public static Object templateArgumentQuery_5_1(final TemplateArgumentContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("link")), LINKS.link$ckAZ), LINKS.target$egp8);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("link")), LINKS.link$XYSx), LINKS.target$TWaS);
   }
   public static Object templateArgumentQuery_5_2(final TemplateArgumentContext _context) {
     return Optional.of(((Boolean) _context.getVariable("allowNull")));
   }
   public static Object templateArgumentQuery_5_3(final TemplateArgumentContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("link")), LINKS.link$ckAZ), LINKS.target$egp8);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("link")), LINKS.link$XYSx), LINKS.target$TWaS);
   }
   public static Object templateArgumentQuery_5_4(final TemplateArgumentContext _context) {
     return Optional.of(((Boolean) _context.getVariable("allowNull")));
@@ -554,8 +554,8 @@ public class QueriesGenerated {
       SNode propertyNode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_PropertyDescriptor$BZ);
       SNode pid = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.PropertyId$Ig);
       PropertyId__BehaviorDescriptor.setProperty_id5ZE7FBYZ2jW.invoke(pid, property);
-      SLinkOperations.setTarget(propertyNode, LINKS.propertyIdentity$qKOm, pid);
-      SPropertyOperations.assign(propertyNode, PROPS.propertyValue$aUmr, _context.getNode().getProperty(property));
+      SLinkOperations.setTarget(propertyNode, LINKS.propertyIdentity$XDmE, pid);
+      SPropertyOperations.assign(propertyNode, PROPS.propertyValue$igR5, _context.getNode().getProperty(property));
       ListSequence.fromList(result).addElement(propertyNode);
     }
     return result;
@@ -611,11 +611,11 @@ public class QueriesGenerated {
       // This is merely to replace smodel.SModelReference.update() call which used to be here, I'm not 100% confident there's any reason to update references this way 
       SModel targetModel = ref.getTargetSModelReference().resolve(repo);
       final PersistenceFacade pf = PersistenceFacade.getInstance();
-      SPropertyOperations.assign(referenceNode, PROPS.targetModel$hTil, pf.asString((targetModel == null ? ref.getTargetSModelReference() : targetModel.getReference())));
-      SNode rid = SLinkOperations.setNewChild(referenceNode, LINKS.linkId$y0S0, null);
+      SPropertyOperations.assign(referenceNode, PROPS.targetModel$EJSb, pf.asString((targetModel == null ? ref.getTargetSModelReference() : targetModel.getReference())));
+      SNode rid = SLinkOperations.setNewChild(referenceNode, LINKS.linkId$ur80, null);
       ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(rid, ref.getLink());
       if (targetNode != null) {
-        SPropertyOperations.assign(referenceNode, PROPS.targetNodeId$_WXv, targetNode.getNodeId().toString());
+        SPropertyOperations.assign(referenceNode, PROPS.targetNodeId$oxM1, targetNode.getNodeId().toString());
       }
       ListSequence.fromList(result).addElement(referenceNode);
     }
@@ -640,40 +640,40 @@ public class QueriesGenerated {
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> result = new ArrayList<SNode>();
     SNode quotation = _context.getNode();
-    if (SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$kInZ) != null) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$kInZ));
-    } else if (SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt) != null) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt), LINKS.modelToCreate$GU4w));
+    if (SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$2tBx) != null) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$2tBx));
+    } else if (SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3) != null) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3), LINKS.modelToCreate$K8bw));
     }
-    if (SLinkOperations.getTarget(quotation, LINKS.nodeId_old$QEQA) != null) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(quotation, LINKS.nodeId_old$QEQA));
-    } else if (SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt), LINKS.nodeId$GU4Z) != null) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt), LINKS.nodeId$GU4Z));
+    if (SLinkOperations.getTarget(quotation, LINKS.nodeId_old$uKsq) != null) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(quotation, LINKS.nodeId_old$uKsq));
+    } else if (SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3), LINKS.nodeId$K8qx) != null) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3), LINKS.nodeId$K8qx));
     }
     for (SNode child : SNodeOperations.getNodeDescendants(quotation, CONCEPTS.AbstractAntiquotation$Tk, false, new SAbstractConcept[]{})) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(child, LINKS.expression$kIm0));
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(child, LINKS.expression$2sE0));
     }
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> result = new ArrayList<SNode>();
-    if (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$kInZ) != null) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$kInZ));
-    } else if (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$$mAt) != null) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$$mAt), LINKS.modelToCreate$GU4w));
+    if (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$2tBx) != null) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$2tBx));
+    } else if (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$AWC3) != null) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$AWC3), LINKS.modelToCreate$K8bw));
     }
-    if (SLinkOperations.getTarget(_context.getNode(), LINKS.nodeId_old$QEQA) != null) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(_context.getNode(), LINKS.nodeId_old$QEQA));
-    } else if (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$$mAt), LINKS.nodeId$GU4Z) != null) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$$mAt), LINKS.nodeId$GU4Z));
+    if (SLinkOperations.getTarget(_context.getNode(), LINKS.nodeId_old$uKsq) != null) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(_context.getNode(), LINKS.nodeId_old$uKsq));
+    } else if (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$AWC3), LINKS.nodeId$K8qx) != null) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$AWC3), LINKS.nodeId$K8qx));
     }
     for (SNode child : SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.AbstractAntiquotation$Tk, false, new SAbstractConcept[]{})) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(child, LINKS.expression$kIm0));
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(child, LINKS.expression$2sE0));
     }
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_2_2(final SourceSubstituteMacroNodesContext _context) {
-    SNode root = SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$kInw);
+    SNode root = SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$2tow);
     List<SNode> result = new ArrayList<SNode>();
     List<SNode> frontier = new ArrayList<SNode>();
     ListSequence.fromList(result).addElement(root);
@@ -694,7 +694,7 @@ public class QueriesGenerated {
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_2_3(final SourceSubstituteMacroNodesContext _context) {
-    SNode root = SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$kInw);
+    SNode root = SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$2tow);
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     List<SNode> frontier = ListSequence.fromList(new ArrayList<SNode>());
     ListSequence.fromList(frontier).addElement(root);
@@ -710,10 +710,10 @@ public class QueriesGenerated {
               SNode targetNode = reference.getTargetNode();
               if (SNodeOperations.getNodeAncestor(targetNode, CONCEPTS.Quotation$UL, false, false) == SNodeOperations.getNodeAncestor(child, CONCEPTS.Quotation$UL, false, false)) {
                 SNode referenceNode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_InternalReferenceHolder$FK);
-                SNode rid = SLinkOperations.setNewChild(referenceNode, LINKS.linkId$ZYnV, null);
+                SNode rid = SLinkOperations.setNewChild(referenceNode, LINKS.linkId$Zd__, null);
                 ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(rid, reference.getLink());
-                SLinkOperations.setTarget(referenceNode, LINKS.targetNode$DF02, targetNode);
-                SLinkOperations.setTarget(referenceNode, LINKS.sourceNode$DFe$, child);
+                SLinkOperations.setTarget(referenceNode, LINKS.targetNode$bP0Y, targetNode);
+                SLinkOperations.setTarget(referenceNode, LINKS.sourceNode$bW3s, child);
                 ListSequence.fromList(result).addElement(referenceNode);
               }
             }
@@ -727,21 +727,21 @@ public class QueriesGenerated {
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw), LINKS.values$oju9);
+    return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$eQ5w), LINKS.values$LrAn);
   }
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
-    return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw));
+    return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$eQ5w));
   }
   public static Iterable<SNode> sourceNodesQuery_3_2(final SourceSubstituteMacroNodesContext _context) {
-    return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw));
+    return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$eQ5w));
   }
   public static Iterable<SNode> sourceNodesQuery_4_0(final SourceSubstituteMacroNodesContext _context) {
-    List<SNode> initElements = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderList$lD), LINKS.nodes$$MVw));
+    List<SNode> initElements = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderList$lD), LINKS.nodes$OEOw));
     ListSequence.fromList(initElements).removeElementAt(0);
     return initElements;
   }
   public static Iterable<SNode> sourceNodesQuery_5_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(SNodeOperations.as(_context.getNode(), CONCEPTS.NodeBuilderNode$RN), LINKS.values$oju9);
+    return SLinkOperations.getChildren(SNodeOperations.as(_context.getNode(), CONCEPTS.NodeBuilderNode$RN), LINKS.values$LrAn);
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
     return _context.getNode();
@@ -785,42 +785,42 @@ public class QueriesGenerated {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$j9T0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, 0x60f18f425c76d21bL, "expression");
-    /*package*/ static final SReferenceLink link$ckAZ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
-    /*package*/ static final SContainmentLink expression$JCaZ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, 0x718e3f4cb7a31330L, "expression");
-    /*package*/ static final SContainmentLink values$oju9 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
-    /*package*/ static final SContainmentLink expression$NDf$ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
-    /*package*/ static final SContainmentLink initValue$nhHN = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
-    /*package*/ static final SContainmentLink initValue$UJfh = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
-    /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
-    /*package*/ static final SContainmentLink quotedNode$8Jaw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x4bb51009d20a4a9eL, "quotedNode");
-    /*package*/ static final SReferenceLink concept$lMG$ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
-    /*package*/ static final SReferenceLink target$dU9a = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a0fa93L, 0x718e3f4cb7a0fa95L, "target");
-    /*package*/ static final SContainmentLink modelToCreate_old$kInZ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465bL, "modelToCreate_old");
-    /*package*/ static final SContainmentLink modelToCreate$$mAt = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2e06ff6184da16a8L, "modelToCreate");
-    /*package*/ static final SContainmentLink modelToCreate$GU4w = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da106fL, "modelToCreate");
-    /*package*/ static final SContainmentLink nodeId_old$QEQA = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2c22b7a3db809c05L, "nodeId_old");
-    /*package*/ static final SContainmentLink nodeId$GU4Z = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da1070L, "nodeId");
-    /*package*/ static final SContainmentLink expression$kIm0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression");
-    /*package*/ static final SReferenceLink sourceNode$DFe$ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1c4b068f93acf228L, 0x1c4b068f93ad27c5L, "sourceNode");
-    /*package*/ static final SReferenceLink targetNode$DF02 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1c4b068f93acf228L, 0x1c4b068f93ad27bcL, "targetNode");
-    /*package*/ static final SContainmentLink quotedNode$kInw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
-    /*package*/ static final SContainmentLink modelToCreate_old$8JaZ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x4bb51009d20a4a9fL, "modelToCreate_old");
-    /*package*/ static final SContainmentLink modelToCreate$MRab = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x2e06ff6184e8ee39L, "modelToCreate");
-    /*package*/ static final SReferenceLink property$NCMw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SContainmentLink propertyIdentity$qKOm = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x746e600f0bda67c7L, 0x166bab613f6f633aL, "propertyIdentity");
-    /*package*/ static final SContainmentLink linkId$y0S0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x6e238a9f74e89138L, "linkId");
-    /*package*/ static final SContainmentLink linkId$ZYnV = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1c4b068f93acf228L, 0x6e238a9f74e89133L, "linkId");
+    /*package*/ static final SContainmentLink expression$hMB0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, 0x60f18f425c76d21bL, "expression");
+    /*package*/ static final SReferenceLink link$XYSx = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
+    /*package*/ static final SContainmentLink expression$4tkx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, 0x718e3f4cb7a31330L, "expression");
+    /*package*/ static final SContainmentLink values$LrAn = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
+    /*package*/ static final SContainmentLink expression$Yys = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
+    /*package*/ static final SContainmentLink initValue$h_bH = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
+    /*package*/ static final SContainmentLink initValue$sSpf = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
+    /*package*/ static final SContainmentLink nodes$OEOw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
+    /*package*/ static final SContainmentLink quotedNode$eQ5w = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x4bb51009d20a4a9eL, "quotedNode");
+    /*package*/ static final SReferenceLink concept$zz_s = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
+    /*package*/ static final SReferenceLink target$JarQ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a0fa93L, 0x718e3f4cb7a0fa95L, "target");
+    /*package*/ static final SContainmentLink modelToCreate_old$2tBx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465bL, "modelToCreate_old");
+    /*package*/ static final SContainmentLink modelToCreate$AWC3 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2e06ff6184da16a8L, "modelToCreate");
+    /*package*/ static final SContainmentLink modelToCreate$K8bw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da106fL, "modelToCreate");
+    /*package*/ static final SContainmentLink nodeId_old$uKsq = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2c22b7a3db809c05L, "nodeId_old");
+    /*package*/ static final SContainmentLink nodeId$K8qx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da1070L, "nodeId");
+    /*package*/ static final SContainmentLink expression$2sE0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression");
+    /*package*/ static final SReferenceLink sourceNode$bW3s = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1c4b068f93acf228L, 0x1c4b068f93ad27c5L, "sourceNode");
+    /*package*/ static final SReferenceLink targetNode$bP0Y = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1c4b068f93acf228L, 0x1c4b068f93ad27bcL, "targetNode");
+    /*package*/ static final SContainmentLink quotedNode$2tow = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
+    /*package*/ static final SContainmentLink modelToCreate_old$eQkx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x4bb51009d20a4a9fL, "modelToCreate_old");
+    /*package*/ static final SContainmentLink modelToCreate$CHVl = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x2e06ff6184e8ee39L, "modelToCreate");
+    /*package*/ static final SReferenceLink property$Ktw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink propertyIdentity$XDmE = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x746e600f0bda67c7L, 0x166bab613f6f633aL, "propertyIdentity");
+    /*package*/ static final SContainmentLink linkId$ur80 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x6e238a9f74e89138L, "linkId");
+    /*package*/ static final SContainmentLink linkId$Zd__ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1c4b068f93acf228L, 0x6e238a9f74e89133L, "linkId");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty propertyValue$aUmr = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x746e600f0bda67c7L, 0x746e600f0bda67f9L, "propertyValue");
-    /*package*/ static final SProperty targetModel$hTil = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x24cfe382a480044dL, "targetModel");
-    /*package*/ static final SProperty targetNodeId$_WXv = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x24cfe382a47f973fL, "targetNodeId");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty stringValueMigrated$gFe8 = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty propertyValue$igR5 = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x746e600f0bda67c7L, 0x746e600f0bda67f9L, "propertyValue");
+    /*package*/ static final SProperty targetModel$EJSb = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x24cfe382a480044dL, "targetModel");
+    /*package*/ static final SProperty targetNodeId$oxM1 = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x24cfe382a47f973fL, "targetNodeId");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty stringValueMigrated$4VPS = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
   }
 }

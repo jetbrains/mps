@@ -18,7 +18,7 @@ public class customType_InequationReplacementRule extends AbstractInequationRepl
   public customType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return String.valueOf(SPropertyOperations.getString(subtype, PROPS.name$tAp1)).startsWith(String.valueOf(SPropertyOperations.getString(supertype, PROPS.name$tAp1)));
+    return String.valueOf(SPropertyOperations.getString(subtype, PROPS.name$lA7v)).startsWith(String.valueOf(SPropertyOperations.getString(supertype, PROPS.name$lA7v)));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     // ok 
@@ -46,7 +46,7 @@ public class customType_InequationReplacementRule extends AbstractInequationRepl
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

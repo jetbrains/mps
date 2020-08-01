@@ -17,9 +17,9 @@ public class FixInstanceOfExpressionPrecedences_QuickFix extends QuickFix_Runtim
   }
   public void execute(SNode node) {
     SNode instanceOfExpression = SNodeOperations.cast(node, CONCEPTS.InstanceOfExpression$JG);
-    SNodeOperations.replaceWithAnother(instanceOfExpression, SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$zxNn));
+    SNodeOperations.replaceWithAnother(instanceOfExpression, SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$dnS9));
     SNodeOperations.replaceWithAnother(((SNode) FixInstanceOfExpressionPrecedences_QuickFix.this.getField("expressionRoot")[0]), instanceOfExpression);
-    SLinkOperations.setTarget(instanceOfExpression, LINKS.leftExpression$zxNn, ((SNode) FixInstanceOfExpressionPrecedences_QuickFix.this.getField("expressionRoot")[0]));
+    SLinkOperations.setTarget(instanceOfExpression, LINKS.leftExpression$dnS9, ((SNode) FixInstanceOfExpressionPrecedences_QuickFix.this.getField("expressionRoot")[0]));
   }
 
   private static final class CONCEPTS {
@@ -27,6 +27,6 @@ public class FixInstanceOfExpressionPrecedences_QuickFix extends QuickFix_Runtim
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$zxNn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
   }
 }

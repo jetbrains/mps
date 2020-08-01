@@ -42,16 +42,16 @@ public final class AttributedFigureReference__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static List<String> getFigureParameterNames_id1iN4mn3lWCq(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(FigureAttribute__BehaviorDescriptor.getPrameterAttributes_id4H19mAwT3wD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.figureAttribute$Fuko))).select(new ISelector<SNode, String>() {
+    return Sequence.fromIterable(FigureAttribute__BehaviorDescriptor.getPrameterAttributes_id4H19mAwT3wD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.figureAttribute$3FRC))).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(SNodeOperations.cast(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(it), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+        return SPropertyOperations.getString(SNodeOperations.cast(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(it), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
       }
     }).toListSequence();
   }
   /*package*/ static SNode getFigureParameter_id1iN4mn3oxt8(@NotNull SNode __thisNode__, final String name) {
-    return Sequence.fromIterable(FigureAttribute__BehaviorDescriptor.getPrameterAttributes_id4H19mAwT3wD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.figureAttribute$Fuko))).findFirst(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(FigureAttribute__BehaviorDescriptor.getPrameterAttributes_id4H19mAwT3wD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.figureAttribute$3FRC))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(it), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1), name);
+        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(FigureParameterAttribute__BehaviorDescriptor.getParameterMember_id4H19mAwT7Py.invoke(it), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v), name);
       }
     });
   }
@@ -105,7 +105,7 @@ public final class AttributedFigureReference__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink figureAttribute$Fuko = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, 0x4b412569a0e43041L, "figureAttribute");
+    /*package*/ static final SReferenceLink figureAttribute$3FRC = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, 0x4b412569a0e43041L, "figureAttribute");
   }
 
   private static final class CONCEPTS {
@@ -113,6 +113,6 @@ public final class AttributedFigureReference__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

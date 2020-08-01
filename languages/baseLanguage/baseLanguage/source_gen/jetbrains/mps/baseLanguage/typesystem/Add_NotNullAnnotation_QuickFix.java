@@ -21,12 +21,12 @@ public class Add_NotNullAnnotation_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode instance = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance"));
-    SLinkOperations.setPointer(instance, LINKS.annotation$zNxu, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"));
-    ListSequence.fromList(SLinkOperations.getChildren(((SNode) Add_NotNullAnnotation_QuickFix.this.getField("method")[0]), LINKS.annotation$oVP4)).addElement(instance);
+    SLinkOperations.setPointer(instance, LINKS.annotation$lXdy, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"));
+    ListSequence.fromList(SLinkOperations.getChildren(((SNode) Add_NotNullAnnotation_QuickFix.this.getField("method")[0]), LINKS.annotation$4YGW)).addElement(instance);
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 }

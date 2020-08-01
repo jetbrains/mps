@@ -20,30 +20,30 @@ public final class BuildProjectBTestCaseHelper {
 
   public SNode createLang(String name) {
     SNode lang = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language"));
-    SPropertyOperations.assign(lang, PROPS.name$tAp1, name);
-    ListSequence.fromList(SLinkOperations.getChildren(myProject, LINKS.parts$tgxg)).addElement(lang);
+    SPropertyOperations.assign(lang, PROPS.name$lA7v, name);
+    ListSequence.fromList(SLinkOperations.getChildren(myProject, LINKS.parts$b06K)).addElement(lang);
     return lang;
   }
 
   public SNode createSolution(String name) {
     SNode sln = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution"));
-    SPropertyOperations.assign(sln, PROPS.name$tAp1, name);
-    ListSequence.fromList(SLinkOperations.getChildren(myProject, LINKS.parts$tgxg)).addElement(sln);
+    SPropertyOperations.assign(sln, PROPS.name$lA7v, name);
+    ListSequence.fromList(SLinkOperations.getChildren(myProject, LINKS.parts$b06K)).addElement(sln);
     return sln;
   }
 
   public SNode createDevkit(String name) {
     SNode devkit = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, "jetbrains.mps.build.mps.structure.BuildMps_DevKit"));
-    SPropertyOperations.assign(devkit, PROPS.name$tAp1, name);
-    ListSequence.fromList(SLinkOperations.getChildren(myProject, LINKS.parts$tgxg)).addElement(devkit);
+    SPropertyOperations.assign(devkit, PROPS.name$lA7v, name);
+    ListSequence.fromList(SLinkOperations.getChildren(myProject, LINKS.parts$b06K)).addElement(devkit);
     return devkit;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$tgxg = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
   }
 }

@@ -21,7 +21,7 @@ public class typeof_Configuration_Parameter_InferenceRule extends AbstractInfere
   public typeof_Configuration_Parameter_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode rc = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(node), CONCEPTS.RunConfigurationProducer$Ul), LINKS.configuration$zpA6), LINKS.persistentConfiguration$28v0), CONCEPTS.RunConfiguration$UX);
+    SNode rc = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(node), CONCEPTS.RunConfigurationProducer$Ul), LINKS.configuration$9psU), LINKS.persistentConfiguration$2710), CONCEPTS.RunConfiguration$UX);
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "8678466257545579220", 0, null);
@@ -39,7 +39,7 @@ public class typeof_Configuration_Parameter_InferenceRule extends AbstractInfere
   }
   private static SNode createRunConfigurationType_luyquc_a1a0c0b0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.RunConfigurationType$qY);
-    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$2710, p0);
     return n0.getResult();
   }
 
@@ -51,7 +51,7 @@ public class typeof_Configuration_Parameter_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink configuration$zpA6 = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SContainmentLink configuration$9psU = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 }

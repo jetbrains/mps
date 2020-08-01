@@ -76,7 +76,7 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Make the class a " + SPropertyOperations.getString(myParameter, PROPS.name$tAp1);
+      return "Make the class a " + SPropertyOperations.getString(myParameter, PROPS.name$lA7v);
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
@@ -93,7 +93,7 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
   }
   private static SNode createDSLAnnotation_qk2y7i_a0a0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DSLAnnotation$dI);
-    n0.setReferenceTarget(LINKS.descriptor$Zoot, p0);
+    n0.setReferenceTarget(LINKS.descriptor$GNQ3, p0);
     return n0.getResult();
   }
 
@@ -104,10 +104,10 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$Zoot = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
+    /*package*/ static final SReferenceLink descriptor$GNQ3 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
   }
 }

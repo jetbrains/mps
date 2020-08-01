@@ -27,9 +27,9 @@ public class ChildDeleteInContainer {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (!(DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.child$mTLv)))) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.child$mTLv));
-          BLOperations.plusAssign(SPropertyOperations.intPropRef(node, PROPS.prop$nuxs), 1);
+        if (!(DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.child$5YY1)))) {
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.child$5YY1));
+          BLOperations.plusAssign(SPropertyOperations.intPropRef(node, PROPS.prop$nMc$), 1);
         }
       }
 
@@ -78,10 +78,10 @@ public class ChildDeleteInContainer {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink child$mTLv = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4f6652678b62bcf0L, 0x4f6652678b62bcf2L, "child");
+    /*package*/ static final SContainmentLink child$5YY1 = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4f6652678b62bcf0L, 0x4f6652678b62bcf2L, "child");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty prop$nuxs = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4f6652678b62bcf0L, 0x4f6652678b644b10L, "prop");
+    /*package*/ static final SProperty prop$nMc$ = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x4f6652678b62bcf0L, 0x4f6652678b644b10L, "prop");
   }
 }

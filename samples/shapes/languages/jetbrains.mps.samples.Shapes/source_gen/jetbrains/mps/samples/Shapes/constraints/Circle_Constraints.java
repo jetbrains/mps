@@ -21,7 +21,7 @@ public class Circle_Constraints extends BaseConstraintsDescriptor {
 
   public static class Radius_Property extends BasePropertyConstraintsDescriptor {
     public Radius_Property(ConstraintsDescriptor container) {
-      super(PROPS.radius$SrrV, container);
+      super(PROPS.radius$lix_, container);
     }
     @Override
     public boolean hasOwnSetter() {
@@ -32,14 +32,14 @@ public class Circle_Constraints extends BaseConstraintsDescriptor {
       staticSetPropertyValue(node, SPropertyOperations.castInteger(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, int propertyValue) {
-      SPropertyOperations.assign(node, PROPS.radius$SrrV, 11110);
-      SPropertyOperations.assign(node, PROPS.radius$SrrV, propertyValue);
+      SPropertyOperations.assign(node, PROPS.radius$lix_, 11110);
+      SPropertyOperations.assign(node, PROPS.radius$lix_, propertyValue);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.radius$SrrV, new Radius_Property(this));
+    properties.put(PROPS.radius$lix_, new Radius_Property(this));
     return properties;
   }
 
@@ -48,6 +48,6 @@ public class Circle_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty radius$SrrV = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius");
+    /*package*/ static final SProperty radius$lix_ = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius");
   }
 }

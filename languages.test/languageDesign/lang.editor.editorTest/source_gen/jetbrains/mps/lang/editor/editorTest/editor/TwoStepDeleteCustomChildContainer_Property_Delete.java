@@ -28,7 +28,7 @@ public class TwoStepDeleteCustomChildContainer_Property_Delete {
         if (DeletionApproverUtil.approve(editorContext, node, "*" + CellIdManager.createPropertyId("stringProperty"))) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.stringProperty$x3wt, "");
+        SPropertyOperations.assign(node, PROPS.stringProperty$GI3, "");
         SelectionUtil.selectCell(editorContext, node, "*" + CellIdManager.createPropertyId("stringProperty"));
       }
 
@@ -77,6 +77,6 @@ public class TwoStepDeleteCustomChildContainer_Property_Delete {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringProperty$x3wt = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33f4f9L, "stringProperty");
+    /*package*/ static final SProperty stringProperty$GI3 = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33f4f9L, "stringProperty");
   }
 }

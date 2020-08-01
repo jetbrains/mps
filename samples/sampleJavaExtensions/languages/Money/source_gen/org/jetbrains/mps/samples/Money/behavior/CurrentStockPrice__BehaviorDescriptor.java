@@ -36,10 +36,10 @@ public final class CurrentStockPrice__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static Money getCurrentPrice_id3u6SZi0yq4L(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.symbol$$8qH) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.symbol$w4VN) == null)) {
       return new Money(BigDecimal.ZERO, "USD");
     }
-    Money currentPrice = StockPriceDownloader.getInstance().getCurrentPrice(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.symbol$$8qH), PROPS.symbol$3J4D));
+    Money currentPrice = StockPriceDownloader.getInstance().getCurrentPrice(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.symbol$w4VN), PROPS.symbol$NNfR));
     if (currentPrice == null) {
       return new Money(BigDecimal.ZERO, "USD");
     }
@@ -93,10 +93,10 @@ public final class CurrentStockPrice__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink symbol$$8qH = MetaAdapterFactory.getContainmentLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f4808999c3L, 0x3786e3f480b0926aL, "symbol");
+    /*package*/ static final SContainmentLink symbol$w4VN = MetaAdapterFactory.getContainmentLink(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f4808999c3L, 0x3786e3f480b0926aL, "symbol");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty symbol$3J4D = MetaAdapterFactory.getProperty(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f480a9b18aL, 0x3786e3f480afac5bL, "symbol");
+    /*package*/ static final SProperty symbol$NNfR = MetaAdapterFactory.getProperty(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f480a9b18aL, 0x3786e3f480afac5bL, "symbol");
   }
 }

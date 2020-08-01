@@ -40,7 +40,7 @@
       <node id="1000993208133080057" at="91,48,92,154" concept="7" />
       <node id="8258351465735794199" at="96,0,97,0" concept="9" trace="TestConcept$2C" />
       <node id="8258351465735794199" at="97,0,98,0" concept="9" trace="INamedConcept$nV" />
-      <node id="8258351465735794199" at="101,0,102,0" concept="9" trace="name$tAp1" />
+      <node id="8258351465735794199" at="101,0,102,0" concept="9" trace="name$lA7v" />
       <node id="1000993208133072633" at="91,0,94,0" concept="5" trace="testPackagedLanguageModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
       <node id="2002276751247819642" at="75,67,79,11" concept="4" />
       <node id="8258351465735794199" at="87,0,91,0" concept="5" trace="setUp#()V" />

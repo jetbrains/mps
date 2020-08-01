@@ -75,7 +75,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.make$Gjyb;
+      final SProperty property = PROPS.make$ttzl;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no make>");
@@ -106,7 +106,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.power$Gj$A;
+      final SProperty property = PROPS.power$tuIq;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no power>");
@@ -137,7 +137,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_2() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.weight$GN4w;
+      final SProperty property = PROPS.weight$GJbw;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no weight>");
@@ -168,7 +168,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_3() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.age$Gjz9;
+      final SProperty property = PROPS.age$tu1n;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no age>");
@@ -192,10 +192,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty make$Gjyb = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae79f4defL, 0x34c8853ae79f4df0L, "make");
-    /*package*/ static final SProperty power$Gj$A = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae79f4defL, 0x34c8853ae79f4df5L, "power");
-    /*package*/ static final SProperty weight$GN4w = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae79f4fc1L, 0x34c8853ae79f4fc2L, "weight");
-    /*package*/ static final SProperty age$Gjz9 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae79f4defL, 0x34c8853ae79f4df2L, "age");
+    /*package*/ static final SProperty make$ttzl = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae79f4defL, 0x34c8853ae79f4df0L, "make");
+    /*package*/ static final SProperty power$tuIq = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae79f4defL, 0x34c8853ae79f4df5L, "power");
+    /*package*/ static final SProperty weight$GJbw = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae79f4fc1L, 0x34c8853ae79f4fc2L, "weight");
+    /*package*/ static final SProperty age$tu1n = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae79f4defL, 0x34c8853ae79f4df2L, "age");
   }
 
   private static final class CONCEPTS {

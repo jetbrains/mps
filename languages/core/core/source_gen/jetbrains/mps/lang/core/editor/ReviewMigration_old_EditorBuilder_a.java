@@ -73,7 +73,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_9e78o7_a1a0() {
-    return isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.reasonShort$7yZv));
+    return isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.reasonShort$DWK1));
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "@Review");
@@ -109,7 +109,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.reasonShort$7yZv;
+      final SProperty property = PROPS.reasonShort$DWK1;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, true, false), myNode);
       editorCell.setDefaultText("<no reasonShort>");
@@ -159,7 +159,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reasonShort$7yZv = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
+    /*package*/ static final SProperty reasonShort$DWK1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
   }
 
   private static final class CONCEPTS {

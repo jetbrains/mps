@@ -50,7 +50,7 @@ public class PersistentConfigurationTemplateInitializer_SubstituteMenu extends S
 
     public SMP_ReferenceScope_tc85xz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PersistentConfigurationTemplateInitializer$W5, LINKS.template$2oHw);
+      super((SAbstractConcept) CONCEPTS.PersistentConfigurationTemplateInitializer$W5, LINKS.template$9Y2w);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class PersistentConfigurationTemplateInitializer_SubstituteMenu extends S
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$2oHw = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, 0xd244b712f910117L, "template");
+    /*package*/ static final SReferenceLink template$9Y2w = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, 0xd244b712f910117L, "template");
   }
 }

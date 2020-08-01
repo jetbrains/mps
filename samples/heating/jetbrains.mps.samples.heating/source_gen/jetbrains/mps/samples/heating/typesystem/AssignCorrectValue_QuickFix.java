@@ -21,9 +21,9 @@ public class AssignCorrectValue_QuickFix extends QuickFix_Runtime {
   public void execute(SNode node) {
     SNode prev = SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.Slot$bv);
     if ((prev != null)) {
-      SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.Slot$bv), PROPS.start$fZpo, SPropertyOperations.getInteger(prev, PROPS.start$fZpo) + 1);
+      SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.Slot$bv), PROPS.start$JHiC, SPropertyOperations.getInteger(prev, PROPS.start$JHiC) + 1);
     } else {
-      SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.Slot$bv), PROPS.start$fZpo, 0);
+      SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.Slot$bv), PROPS.start$JHiC, 0);
     }
   }
 
@@ -32,6 +32,6 @@ public class AssignCorrectValue_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty start$fZpo = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe28827cL, "start");
+    /*package*/ static final SProperty start$JHiC = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe28827cL, "start");
   }
 }

@@ -38,10 +38,10 @@ public class ActionAsPattern_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (link == LINKS.action$dtRs) {
+    if (link == LINKS.action$xtQ$) {
       return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.ActionStatement$wS);
     }
-    if (link == LINKS.position$2Q2_) {
+    if (link == LINKS.position$obfV) {
       return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.InsertPosition$Ux);
     }
     return false;
@@ -55,7 +55,7 @@ public class ActionAsPattern_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink action$dtRs = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L, 0x3d3ef1fc1814cb59L, "action");
-    /*package*/ static final SContainmentLink position$2Q2_ = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L, 0x7cc3195fc1d254beL, "position");
+    /*package*/ static final SContainmentLink action$xtQ$ = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L, 0x3d3ef1fc1814cb59L, "action");
+    /*package*/ static final SContainmentLink position$obfV = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L, 0x7cc3195fc1d254beL, "position");
   }
 }

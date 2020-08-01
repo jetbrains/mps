@@ -31,7 +31,7 @@ public final class ChildNodeRefExpression__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static SNode getTargetNode_id36vPRrqnscn(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.targetNode$a4u7);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.targetNode$Sa_p);
   }
 
   /*package*/ ChildNodeRefExpression__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ChildNodeRefExpression__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink targetNode$a4u7 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x84baf20c71f8a79L, 0x84baf20c71f9250L, "targetNode");
+    /*package*/ static final SReferenceLink targetNode$Sa_p = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x84baf20c71f8a79L, 0x84baf20c71f9250L, "targetNode");
   }
 }

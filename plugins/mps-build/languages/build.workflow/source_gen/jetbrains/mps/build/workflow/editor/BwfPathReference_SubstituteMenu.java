@@ -54,7 +54,7 @@ public class BwfPathReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_51lqj5_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BwfPathReference$gi, LINKS.target$ezn0);
+      super((SAbstractConcept) CONCEPTS.BwfPathReference$gi, LINKS.target$3890);
     }
     @NotNull
     @Override
@@ -126,6 +126,6 @@ public class BwfPathReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$ezn0 = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, 0x5c3f3e2c1cef4c20L, "target");
+    /*package*/ static final SReferenceLink target$3890 = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, 0x5c3f3e2c1cef4c20L, "target");
   }
 }

@@ -110,13 +110,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
     return editorCell;
   }
   private boolean nodeCondition_dgsw3q_a0b0a0() {
-    return (SLinkOperations.getTarget(myNode, LINKS.customizes$a6Ia) != null);
+    return (SLinkOperations.getTarget(myNode, LINKS.customizes$TgmQ) != null);
   }
   private boolean nodeCondition_dgsw3q_a2b0a0() {
-    return (SLinkOperations.getTarget(myNode, LINKS.customizes$a6Ia) == null);
+    return (SLinkOperations.getTarget(myNode, LINKS.customizes$TgmQ) == null);
   }
   private boolean nodeCondition_dgsw3q_a3b0a0() {
-    return (SLinkOperations.getTarget(myNode, LINKS.customizes$a6Ia) != null);
+    return (SLinkOperations.getTarget(myNode, LINKS.customizes$TgmQ) != null);
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "customizing the");
@@ -129,7 +129,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new customizesSingleRoleHandler_dgsw3q_b1a0a(myNode, LINKS.customizes$a6Ia, getEditorContext());
+    SingleRoleCellProvider provider = new customizesSingleRoleHandler_dgsw3q_b1a0a(myNode, LINKS.customizes$TgmQ, getEditorContext());
     return provider.createCell();
   }
   private static class customizesSingleRoleHandler_dgsw3q_b1a0a extends SingleRoleCellProvider {
@@ -149,8 +149,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.customizes$a6Ia, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.customizes$a6Ia, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.customizes$TgmQ, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.customizes$TgmQ, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -162,7 +162,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.customizes$a6Ia);
+        editorCell.setSRole(LINKS.customizes$TgmQ);
       }
       Style style = new StyleImpl();
       new FieldStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
@@ -172,7 +172,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.customizes$a6Ia));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.customizes$TgmQ));
       try {
         EditorCell editorCell = createCollection_4();
         installCellInfo(null, editorCell, true);
@@ -223,18 +223,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
           }
           @Override
           public int getRowCount() {
-            return 1 + ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$MJQp)).count();
+            return 1 + ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$_bm7)).count();
           }
           @Override
           public SNode getValueAt(int row, int column) {
             if (row == 0 && column > 0) {
-              return SLinkOperations.getTarget(myNode, LINKS.applicability$hdHX);
+              return SLinkOperations.getTarget(myNode, LINKS.applicability$lDgz);
             }
             if (column == 0 && row > 0) {
-              return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$MJQp)).getElement(row - 1);
+              return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$_bm7)).getElement(row - 1);
             }
             if (row > 0 && column > 0) {
-              SNode item = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$MJQp)).getElement(row - 1), LINKS.event$CDE2);
+              SNode item = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$_bm7)).getElement(row - 1), LINKS.event$GbmY);
               return item;
             }
             return null;
@@ -244,9 +244,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
             if (row > 0 && column > 0) {
               SNode slot = DailyPlan__BehaviorDescriptor.slotByStartTime_id2XgRSpVOzcU.invoke(myNode, ((int) (row - 1)));
               if (slot == null) {
-                SNode item = SNodeFactoryOperations.addNewChild(myNode, LINKS.items$MJQp, null);
-                SPropertyOperations.set(item, PROPS.start$fZpo, row - 1);
-                SPropertyOperations.set(SLinkOperations.getTarget(item, LINKS.event$CDE2), PROPS.temperature$MPBu, 20);
+                SNode item = SNodeFactoryOperations.addNewChild(myNode, LINKS.items$_bm7, null);
+                SPropertyOperations.set(item, PROPS.start$JHiC, row - 1);
+                SPropertyOperations.set(SLinkOperations.getTarget(item, LINKS.event$GbmY), PROPS.temperature$BY7y, 20);
               }
             }
           }
@@ -260,14 +260,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
               return;
             }
             SNode slot = SNodeFactoryOperations.createNewNode(CONCEPTS.Slot$bv, null);
-            SPropertyOperations.set(SLinkOperations.getTarget(slot, LINKS.event$CDE2), PROPS.temperature$MPBu, 20);
-            SNode prevSlot = (rowNumber == 1 ? null : ((ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$MJQp)).count() > rowNumber - 2 ? ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$MJQp)).getElement(rowNumber - 2) : ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$MJQp)).last())));
+            SPropertyOperations.set(SLinkOperations.getTarget(slot, LINKS.event$GbmY), PROPS.temperature$BY7y, 20);
+            SNode prevSlot = (rowNumber == 1 ? null : ((ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$_bm7)).count() > rowNumber - 2 ? ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$_bm7)).getElement(rowNumber - 2) : ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$_bm7)).last())));
             if (prevSlot != null) {
-              SPropertyOperations.set(slot, PROPS.start$fZpo, SPropertyOperations.getInteger(prevSlot, PROPS.start$fZpo) + 1);
+              SPropertyOperations.set(slot, PROPS.start$JHiC, SPropertyOperations.getInteger(prevSlot, PROPS.start$JHiC) + 1);
             } else {
-              SPropertyOperations.set(slot, PROPS.start$fZpo, 0);
+              SPropertyOperations.set(slot, PROPS.start$JHiC, 0);
             }
-            ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$MJQp)).insertElement(rowNumber - 1, slot);
+            ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$_bm7)).insertElement(rowNumber - 1, slot);
             return;
           }
           @Override
@@ -279,7 +279,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
             if (rowNumber <= 0) {
               return;
             }
-            ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$MJQp)).removeElementAt(rowNumber - 1);
+            ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.items$_bm7)).removeElementAt(rowNumber - 1);
             return;
           }
         };
@@ -305,14 +305,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customizes$a6Ia = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
-    /*package*/ static final SContainmentLink items$MJQp = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x4644aa4ce08aec57L, "items");
-    /*package*/ static final SContainmentLink applicability$hdHX = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x40bcae6c0e686ffeL, "applicability");
-    /*package*/ static final SContainmentLink event$CDE2 = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe289dd1L, "event");
+    /*package*/ static final SContainmentLink customizes$TgmQ = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
+    /*package*/ static final SContainmentLink items$_bm7 = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x4644aa4ce08aec57L, "items");
+    /*package*/ static final SContainmentLink applicability$lDgz = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x40bcae6c0e686ffeL, "applicability");
+    /*package*/ static final SContainmentLink event$GbmY = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe289dd1L, "event");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty start$fZpo = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe28827cL, "start");
-    /*package*/ static final SProperty temperature$MPBu = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, 0x4644aa4ce08aec70L, "temperature");
+    /*package*/ static final SProperty start$JHiC = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe28827cL, "start");
+    /*package*/ static final SProperty temperature$BY7y = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, 0x4644aa4ce08aec70L, "temperature");
   }
 }

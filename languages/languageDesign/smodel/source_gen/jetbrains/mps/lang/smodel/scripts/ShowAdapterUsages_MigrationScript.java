@@ -65,10 +65,10 @@ public final class ShowAdapterUsages_MigrationScript extends BaseMigrationScript
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if ((SLinkOperations.getTarget(node, LINKS.classifier$pQ_R) == null)) {
+        if ((SLinkOperations.getTarget(node, LINKS.classifier$xslD) == null)) {
           return false;
         }
-        String className = NameUtil.nodeFQName(SLinkOperations.getTarget(node, LINKS.classifier$pQ_R));
+        String className = NameUtil.nodeFQName(SLinkOperations.getTarget(node, LINKS.classifier$xslD));
         String namespace = NameUtil.namespaceFromLongName(className);
         return namespace.endsWith(".structure");
       }
@@ -94,6 +94,6 @@ public final class ShowAdapterUsages_MigrationScript extends BaseMigrationScript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

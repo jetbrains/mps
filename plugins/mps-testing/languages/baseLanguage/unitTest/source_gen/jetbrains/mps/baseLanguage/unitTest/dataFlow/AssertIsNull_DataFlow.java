@@ -11,10 +11,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AssertIsNull_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$jc9T));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$iSMB));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$jc9T = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e252ba91L, 0x110e253a30fL, "expression");
+    /*package*/ static final SContainmentLink expression$iSMB = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e252ba91L, 0x110e253a30fL, "expression");
   }
 }

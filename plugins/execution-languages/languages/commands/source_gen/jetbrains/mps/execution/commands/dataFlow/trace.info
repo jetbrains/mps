@@ -13,8 +13,8 @@
     <file name="RedirectOutputExpression_DataFlow.java">
       <node id="1594211126127687503" at="13,60,14,114" concept="0" />
       <node id="1594211126127687512" at="14,114,15,108" concept="0" />
-      <node id="1594211126127613592" at="19,0,20,0" concept="3" trace="processHandler$nvtw" />
-      <node id="1594211126127613592" at="20,0,21,0" concept="3" trace="listener$nvtZ" />
+      <node id="1594211126127613592" at="19,0,20,0" concept="3" trace="processHandler$ofiw" />
+      <node id="1594211126127613592" at="20,0,21,0" concept="3" trace="listener$ofxx" />
       <node id="1594211126127613592" at="13,0,17,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1594211126127613594" at="13,60,15,108" />
       <scope id="1594211126127613592" at="13,0,17,0">
@@ -29,8 +29,8 @@
       <node id="2228878981387200509" at="12,60,13,209" concept="0" />
       <node id="2228878981387200518" at="13,209,14,207" concept="0" />
       <node id="2228878981387200528" at="14,207,15,139" concept="0" />
-      <node id="2228878981387200506" at="19,0,20,0" concept="3" trace="exception$npUt" />
-      <node id="2228878981387200506" at="20,0,21,0" concept="3" trace="message$npTY" />
+      <node id="2228878981387200506" at="19,0,20,0" concept="3" trace="exception$lzk3" />
+      <node id="2228878981387200506" at="20,0,21,0" concept="3" trace="message$lz52" />
       <node id="2228878981387200506" at="12,0,17,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="2228878981387200508" at="12,60,15,139" />
       <scope id="2228878981387200506" at="12,0,17,0">
@@ -43,8 +43,8 @@
   <root nodeRef="r:106d443d-ed4f-44b7-91fa-ab9e0bf2751b(jetbrains.mps.execution.commands.dataFlow)/856705193941282484">
     <file name="CommandBuilderExpression_DataFlow.java">
       <node id="856705193941282493" at="15,115,16,92" concept="0" />
-      <node id="856705193941282484" at="21,0,22,0" concept="3" trace="value$npbZ" />
-      <node id="856705193941282484" at="22,0,23,0" concept="3" trace="argument$npCw" />
+      <node id="856705193941282484" at="21,0,22,0" concept="3" trace="value$lcNx" />
+      <node id="856705193941282484" at="22,0,23,0" concept="3" trace="argument$lqBw" />
       <node id="856705193941282487" at="14,60,17,5" concept="1" />
       <node id="856705193941282484" at="14,0,19,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="856705193941282492" at="15,115,16,92" />
@@ -63,8 +63,8 @@
     <file name="NewProcessBuilderExpression_DataFlow.java">
       <node id="889694274152095761" at="15,119,16,48" concept="0" />
       <node id="889694274152095765" at="17,5,18,116" concept="0" />
-      <node id="889694274152095752" at="22,0,23,0" concept="3" trace="commandPart$irOY" />
-      <node id="889694274152095752" at="23,0,24,0" concept="3" trace="workingDirectory$irPt" />
+      <node id="889694274152095752" at="22,0,23,0" concept="3" trace="commandPart$VuE2" />
+      <node id="889694274152095752" at="23,0,24,0" concept="3" trace="workingDirectory$VuT3" />
       <node id="889694274152095755" at="14,60,17,5" concept="1" />
       <node id="889694274152095752" at="14,0,20,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="889694274152095760" at="15,119,16,48" />

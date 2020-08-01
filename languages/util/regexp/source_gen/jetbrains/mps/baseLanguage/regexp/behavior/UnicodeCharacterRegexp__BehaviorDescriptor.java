@@ -31,7 +31,7 @@ public final class UnicodeCharacterRegexp__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    return "\\u" + SPropertyOperations.getString(__thisNode__, PROPS.code$jCcU);
+    return "\\u" + SPropertyOperations.getString(__thisNode__, PROPS.code$wug6);
   }
 
   /*package*/ UnicodeCharacterRegexp__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class UnicodeCharacterRegexp__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty code$jCcU = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11831260718L, 0x1183127443bL, "code");
+    /*package*/ static final SProperty code$wug6 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11831260718L, 0x1183127443bL, "code");
   }
 }

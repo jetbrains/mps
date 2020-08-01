@@ -38,10 +38,10 @@ public final class RunConfigurationProducerPart__BehaviorDescriptor extends Base
 
   @NonNls
   /*package*/ static String getSuffix_idO$iR4JBsSb(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.source$6PyJ) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.source$jVOL) == null)) {
       return "";
     }
-    return ((String) IGeneratedToClass__BehaviorDescriptor.getValidClassName_id2eOtvO7hJjT.invoke(__thisNode__, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.source$6PyJ)), CONCEPTS.BaseConcept$Sz))));
+    return ((String) IGeneratedToClass__BehaviorDescriptor.getValidClassName_id2eOtvO7hJjT.invoke(__thisNode__, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.source$jVOL)), CONCEPTS.BaseConcept$Sz))));
   }
 
   /*package*/ RunConfigurationProducerPart__BehaviorDescriptor() {
@@ -91,7 +91,7 @@ public final class RunConfigurationProducerPart__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink source$6PyJ = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x6552f0adf298f24fL, "source");
+    /*package*/ static final SContainmentLink source$jVOL = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x6552f0adf298f24fL, "source");
   }
 
   private static final class CONCEPTS {

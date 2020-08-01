@@ -92,17 +92,17 @@ public class quantity_Contribution extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode fpConstant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, "jetbrains.mps.samples.formulaLanguage.structure.FloatingPointConstant"));
-        SPropertyOperations.set(fpConstant, PROPS.value$zHkc, "0.0");
+        SPropertyOperations.set(fpConstant, PROPS.value$iWLO, "0.0");
         if (pattern.length() > 1) {
           if (pattern.endsWith(".")) {
-            SPropertyOperations.set(fpConstant, PROPS.value$zHkc, pattern.substring(1) + "0");
+            SPropertyOperations.set(fpConstant, PROPS.value$iWLO, pattern.substring(1) + "0");
           } else {
-            SPropertyOperations.set(fpConstant, PROPS.value$zHkc, pattern.substring(1));
+            SPropertyOperations.set(fpConstant, PROPS.value$iWLO, pattern.substring(1));
           }
         }
         SNode quantity = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"));
-        SPropertyOperations.setEnum(quantity, PROPS.unit$IEHe, 0x102dc0b6d03L, "USD");
-        SLinkOperations.setTarget(quantity, LINKS.amount$b2QZ, fpConstant);
+        SPropertyOperations.setEnum(quantity, PROPS.unit$AFTM, 0x102dc0b6d03L, "USD");
+        SLinkOperations.setTarget(quantity, LINKS.amount$moCx, fpConstant);
         return quantity;
       }
 
@@ -174,13 +174,13 @@ public class quantity_Contribution extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         SNode fpConstant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, "jetbrains.mps.samples.formulaLanguage.structure.FloatingPointConstant"));
         if (pattern.endsWith(".")) {
-          SPropertyOperations.set(fpConstant, PROPS.value$zHkc, pattern + 1);
+          SPropertyOperations.set(fpConstant, PROPS.value$iWLO, pattern + 1);
         } else {
-          SPropertyOperations.set(fpConstant, PROPS.value$zHkc, pattern);
+          SPropertyOperations.set(fpConstant, PROPS.value$iWLO, pattern);
         }
         SNode quantity = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"));
-        SPropertyOperations.setEnum(quantity, PROPS.unit$IEHe, 0x102dc0a9c92L, "USD_KWH");
-        SLinkOperations.setTarget(quantity, LINKS.amount$b2QZ, fpConstant);
+        SPropertyOperations.setEnum(quantity, PROPS.unit$AFTM, 0x102dc0a9c92L, "USD_KWH");
+        SLinkOperations.setTarget(quantity, LINKS.amount$moCx, fpConstant);
         return quantity;
       }
 
@@ -217,11 +217,11 @@ public class quantity_Contribution extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$zHkc = MetaAdapterFactory.getProperty(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, 0x1033349beb2L, "value");
-    /*package*/ static final SProperty unit$IEHe = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
+    /*package*/ static final SProperty value$iWLO = MetaAdapterFactory.getProperty(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, 0x1033349beb2L, "value");
+    /*package*/ static final SProperty unit$AFTM = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink amount$b2QZ = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c6b1dL, "amount");
+    /*package*/ static final SContainmentLink amount$moCx = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c6b1dL, "amount");
   }
 }

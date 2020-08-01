@@ -72,7 +72,7 @@ public class add_dependencies_BwfTaskPart extends TransformationMenuBase {
   public class TMP_Group_5stah4_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.additionalDependencies$QRrD)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.additionalDependencies$$QoR)).isEmpty();
     }
 
     @NotNull
@@ -128,7 +128,7 @@ public class add_dependencies_BwfTaskPart extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.additionalDependencies$QRrD)).addElement(SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfTaskDependency$zp));
+          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.additionalDependencies$$QoR)).addElement(SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfTaskDependency$zp));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -154,7 +154,7 @@ public class add_dependencies_BwfTaskPart extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink additionalDependencies$QRrD = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd37a1c2L, "additionalDependencies");
+    /*package*/ static final SContainmentLink additionalDependencies$$QoR = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd37a1c2L, "additionalDependencies");
   }
 
   private static final class CONCEPTS {

@@ -154,32 +154,32 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
       }
       // check both java stub and regular node for EnvironmentAware as  j.m.tool.environment is part of MPS build (unlike j.m.testbench) 
       // IMPORTANT! there are TWO checks is(EnvironmentAware). Please make sure one points to java stub while another points to regular node! 
-      if (ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$mdc6)).any(new IWhereFilter<SNode>() {
+      if (ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$KoQU)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SLinkOperations.hasPointer(it, LINKS.classifier$pQ_R, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.tool.environment(Testbench/)", "~EnvironmentAware")) || SLinkOperations.hasPointer(it, LINKS.classifier$pQ_R, new SNodePointer("r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)", "8946405811982722281"));
+          return SLinkOperations.hasPointer(it, LINKS.classifier$xslD, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.tool.environment(Testbench/)", "~EnvironmentAware")) || SLinkOperations.hasPointer(it, LINKS.classifier$xslD, new SNodePointer("r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)", "8946405811982722281"));
         }
       })) {
         return true;
       }
-      clazz = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(clazz, LINKS.superclass$_pqe), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+      clazz = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(clazz, LINKS.superclass$7jGM), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
     }
     return false;
   }
   /*package*/ static boolean isAnnotatedToLaunch(SNode withAnnotation) {
     // MPSLaunch lives in j.m.testbench which is not part of MPS build, therefore check here for java stub only 
-    return ListSequence.fromList(SLinkOperations.getChildren(withAnnotation, LINKS.annotation$oVP4)).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(withAnnotation, LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.hasPointer(it, LINKS.annotation$zNxu, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps(Testbench/)", "~MPSLaunch"));
+        return SLinkOperations.hasPointer(it, LINKS.annotation$lXdy, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps(Testbench/)", "~MPSLaunch"));
       }
     });
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 
   private static final class CONCEPTS {

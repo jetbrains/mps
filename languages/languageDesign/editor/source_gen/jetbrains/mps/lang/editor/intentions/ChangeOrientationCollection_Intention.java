@@ -38,7 +38,7 @@ public final class ChangeOrientationCollection_Intention extends AbstractIntenti
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Horizontal$Ss) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Vertical$vP);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Horizontal$Ss) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Vertical$vP);
   }
   @Override
   public boolean isSurroundWith() {
@@ -55,14 +55,14 @@ public final class ChangeOrientationCollection_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Vertical$vP) ? "Make Horizontal" : "Make Vertical");
+      return (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Vertical$vP) ? "Make Horizontal" : "Make Vertical");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((boolean) CellModel_Collection__BehaviorDescriptor.isVertical_idi0pAV23.invoke(node)) {
-        SLinkOperations.setTarget(node, LINKS.cellLayout$usNp, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
+        SLinkOperations.setTarget(node, LINKS.cellLayout$JWT7, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Horizontal$Ss, null));
       } else {
-        SLinkOperations.setTarget(node, LINKS.cellLayout$usNp, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
+        SLinkOperations.setTarget(node, LINKS.cellLayout$JWT7, SNodeFactoryOperations.createNewNode(CONCEPTS.CellLayout_Vertical$vP, null));
       }
     }
     @Override
@@ -72,7 +72,7 @@ public final class ChangeOrientationCollection_Intention extends AbstractIntenti
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
   }
 
   private static final class CONCEPTS {

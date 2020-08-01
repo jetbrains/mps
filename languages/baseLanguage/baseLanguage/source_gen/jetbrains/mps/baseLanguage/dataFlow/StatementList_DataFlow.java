@@ -19,19 +19,19 @@ public class StatementList_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseMethodDeclaration$RR)) {
       SNode bmd = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseMethodDeclaration$RR);
-      for (SNode param : ListSequence.fromList(SLinkOperations.getChildren(bmd, LINKS.parameter$WIkZ))) {
+      for (SNode param : ListSequence.fromList(SLinkOperations.getChildren(bmd, LINKS.parameter$qsax))) {
         _context.getBuilder().build((SNode) param);
       }
     }
     _context.getBuilder().emitNop("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206464445632");
     SNode lastStatement = null;
-    if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.statement$WHn8)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.statement$pYcS)).isNotEmpty()) {
       SNode methodLike = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IMethodLike$kl, false, false);
       if ((methodLike != null)) {
         lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodLike);
       }
     }
-    for (SNode s : SLinkOperations.getChildren(_context.getNode(), LINKS.statement$WHn8)) {
+    for (SNode s : SLinkOperations.getChildren(_context.getNode(), LINKS.statement$pYcS)) {
       _context.getBuilder().build((SNode) s);
       if (s == lastStatement && SNodeOperations.isInstanceOf(s, CONCEPTS.ExpressionStatement$nm) && (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.cast(s, CONCEPTS.ExpressionStatement$nm))) {
         _context.getBuilder().emitRet("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/4447433352191878575");
@@ -46,7 +46,7 @@ public class StatementList_DataFlow extends DataFlowBuilder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

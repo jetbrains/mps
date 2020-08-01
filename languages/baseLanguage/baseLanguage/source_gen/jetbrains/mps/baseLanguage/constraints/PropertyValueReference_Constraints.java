@@ -58,7 +58,7 @@ public class PropertyValueReference_Constraints extends BaseConstraintsDescripto
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.owningProperty$Mo8u, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.owningProperty$pG6y, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -113,6 +113,6 @@ public class PropertyValueReference_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink owningProperty$Mo8u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2463999e524f3bf5L, 0x2463999e5366cff1L, "owningProperty");
+    /*package*/ static final SReferenceLink owningProperty$pG6y = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2463999e524f3bf5L, 0x2463999e5366cff1L, "owningProperty");
   }
 }

@@ -28,12 +28,12 @@ public class ArrayCreator_Delete {
         SNode creator = SNodeOperations.getNodeAncestor(node, CONCEPTS.ArrayCreatorWithInitializer$aE, true, false);
         if ((creator != null)) {
           SNode replacingCreator = SNodeFactoryOperations.replaceWithNewChild(creator, CONCEPTS.ArrayCreator$IL);
-          SNode componentType = SLinkOperations.getTarget(creator, LINKS.componentType$5JdX);
+          SNode componentType = SLinkOperations.getTarget(creator, LINKS.componentType$LRKz);
           while (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ArrayType$Yv)) {
-            componentType = SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ArrayType$Yv), LINKS.componentType$10w);
-            SNodeFactoryOperations.addNewChild(replacingCreator, LINKS.dimensionExpression$uV5v, null);
+            componentType = SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw);
+            SNodeFactoryOperations.addNewChild(replacingCreator, LINKS.dimensionExpression$YBE1, null);
           }
-          SLinkOperations.setTarget(replacingCreator, LINKS.componentType$aKPo, componentType);
+          SLinkOperations.setTarget(replacingCreator, LINKS.componentType$dDQC, componentType);
         }
       }
 
@@ -88,9 +88,9 @@ public class ArrayCreator_Delete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$5JdX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SContainmentLink dimensionExpression$uV5v = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
-    /*package*/ static final SContainmentLink componentType$aKPo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
+    /*package*/ static final SContainmentLink componentType$LRKz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink dimensionExpression$YBE1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
+    /*package*/ static final SContainmentLink componentType$dDQC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
   }
 }

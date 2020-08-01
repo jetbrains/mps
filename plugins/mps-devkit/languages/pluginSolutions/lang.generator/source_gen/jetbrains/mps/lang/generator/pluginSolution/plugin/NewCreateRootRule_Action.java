@@ -48,7 +48,7 @@ public class NewCreateRootRule_Action extends BaseAction {
     if (annotation == null) {
       return false;
     }
-    if (SLinkOperations.getTarget(annotation, LINKS.applicableConcept$jo4f) != null) {
+    if (SLinkOperations.getTarget(annotation, LINKS.applicableConcept$oE3h) != null) {
       return false;
     }
     List<SNode> configs = SModelOperations.roots(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.MappingConfiguration$rB);
@@ -56,9 +56,9 @@ public class NewCreateRootRule_Action extends BaseAction {
       return false;
     }
     //  not used in a rule yet? 
-    return !(Sequence.fromIterable(SLinkOperations.collectMany(configs, LINKS.createRootRule$gnQA)).any(new IWhereFilter<SNode>() {
+    return !(Sequence.fromIterable(SLinkOperations.collectMany(configs, LINKS.createRootRule$Vzsq)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.templateNode$RXGY) == event.getData(MPSCommonDataKeys.NODE);
+        return SLinkOperations.getTarget(it, LINKS.templateNode$6SM2) == event.getData(MPSCommonDataKeys.NODE);
       }
     }));
   }
@@ -89,10 +89,10 @@ public class NewCreateRootRule_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     List<SNode> configs = SModelOperations.roots(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.MappingConfiguration$rB);
     if (ListSequence.fromList(configs).count() > 1) {
-      final String virtualPackage = SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$j19t);
+      final String virtualPackage = SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$dz_3);
       Iterable<SNode> sameVPackConfigs = ListSequence.fromList(configs).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$j19t), virtualPackage);
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$dz_3), virtualPackage);
         }
       });
       if (Sequence.fromIterable(sameVPackConfigs).isNotEmpty()) {
@@ -103,8 +103,8 @@ public class NewCreateRootRule_Action extends BaseAction {
       // TODO: let user to choose mapping config? 
     }
     //  add new rule 
-    SNode rule = SNodeFactoryOperations.addNewChild(ListSequence.fromList(configs).first(), LINKS.createRootRule$gnQA, null);
-    SLinkOperations.setTarget(rule, LINKS.templateNode$RXGY, event.getData(MPSCommonDataKeys.NODE));
+    SNode rule = SNodeFactoryOperations.addNewChild(ListSequence.fromList(configs).first(), LINKS.createRootRule$Vzsq, null);
+    SLinkOperations.setTarget(rule, LINKS.templateNode$6SM2, event.getData(MPSCommonDataKeys.NODE));
     //  open in editor 
     NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), rule, true, true);
   }
@@ -115,12 +115,12 @@ public class NewCreateRootRule_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$jo4f = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
-    /*package*/ static final SContainmentLink createRootRule$gnQA = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fbbe00519L, "createRootRule");
-    /*package*/ static final SReferenceLink templateNode$RXGY = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, 0x10fbbd5854dL, "templateNode");
+    /*package*/ static final SReferenceLink applicableConcept$oE3h = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
+    /*package*/ static final SContainmentLink createRootRule$Vzsq = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fbbe00519L, "createRootRule");
+    /*package*/ static final SReferenceLink templateNode$6SM2 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, 0x10fbbd5854dL, "templateNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

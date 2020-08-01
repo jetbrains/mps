@@ -115,7 +115,7 @@ public class IntroduceVariable_Action extends BaseAction {
     }
   }
   /*package*/ SNode getNodeToRefactor(final Map<String, Object> _params) {
-    return (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ExpressionStatement$nm) ? SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0) : SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$TP, true, false));
+    return (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ExpressionStatement$nm) ? SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0) : SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$TP, true, false));
   }
 
   private static final class CONCEPTS {
@@ -124,6 +124,6 @@ public class IntroduceVariable_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 }

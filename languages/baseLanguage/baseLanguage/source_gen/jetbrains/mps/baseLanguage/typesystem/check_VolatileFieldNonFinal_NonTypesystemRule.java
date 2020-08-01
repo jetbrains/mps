@@ -20,7 +20,7 @@ public class check_VolatileFieldNonFinal_NonTypesystemRule extends AbstractNonTy
   public check_VolatileFieldNonFinal_NonTypesystemRule() {
   }
   public void applyRule(final SNode fieldDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getBoolean(fieldDeclaration, PROPS.isVolatile$v3l9) && SPropertyOperations.getBoolean(fieldDeclaration, PROPS.isFinal$hIht)) {
+    if (SPropertyOperations.getBoolean(fieldDeclaration, PROPS.isVolatile$2Bfn) && SPropertyOperations.getBoolean(fieldDeclaration, PROPS.isFinal$_qt3)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(fieldDeclaration, "Illegal combination of modifiers: final and volatile", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6468716278917710843", null, errorTarget);
@@ -38,8 +38,8 @@ public class check_VolatileFieldNonFinal_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty isVolatile$v3l9 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isVolatile$2Bfn = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
   }
 
   private static final class CONCEPTS {

@@ -33,8 +33,8 @@ public final class FromNToMTimesRegexp__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    String s = Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$sryo), vars);
-    return ((((boolean) UnaryRegexp__BehaviorDescriptor.inParentheses_id1b8uQvZyDW8.invoke(__thisNode__)) ? Regexp__BehaviorDescriptor.par_idhMuIPHY.invoke(__thisNode__, s) : s)) + "{" + SPropertyOperations.getInteger(__thisNode__, PROPS.n$FECA) + "," + SPropertyOperations.getInteger(__thisNode__, PROPS.m$ZZL8) + "}";
+    String s = Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$LlDC), vars);
+    return ((((boolean) UnaryRegexp__BehaviorDescriptor.inParentheses_id1b8uQvZyDW8.invoke(__thisNode__)) ? Regexp__BehaviorDescriptor.par_idhMuIPHY.invoke(__thisNode__, s) : s)) + "{" + SPropertyOperations.getInteger(__thisNode__, PROPS.n$9DEq) + "," + SPropertyOperations.getInteger(__thisNode__, PROPS.m$ZSMS) + "}";
   }
 
   /*package*/ FromNToMTimesRegexp__BehaviorDescriptor() {
@@ -84,11 +84,11 @@ public final class FromNToMTimesRegexp__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink regexp$sryo = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
+    /*package*/ static final SContainmentLink regexp$LlDC = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty n$FECA = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, 0x1118dc5bf75L, "n");
-    /*package*/ static final SProperty m$ZZL8 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, 0x1118dc5ca73L, "m");
+    /*package*/ static final SProperty n$9DEq = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, 0x1118dc5bf75L, "n");
+    /*package*/ static final SProperty m$ZSMS = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, 0x1118dc5ca73L, "m");
   }
 }

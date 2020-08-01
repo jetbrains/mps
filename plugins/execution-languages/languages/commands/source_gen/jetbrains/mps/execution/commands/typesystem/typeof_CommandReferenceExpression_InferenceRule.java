@@ -22,7 +22,7 @@ public class typeof_CommandReferenceExpression_InferenceRule extends AbstractInf
     {
       SNode _nodeToCheck_1029348928467 = commandReferenceExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "946964771156863741", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "946964771156863754", true), (SNode) createCommandType_ec8mha_a1a0c0a0b(SLinkOperations.getTarget(commandReferenceExpression, LINKS.command$noVZ)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "946964771156863754", true), (SNode) createCommandType_ec8mha_a1a0c0a0b(SLinkOperations.getTarget(commandReferenceExpression, LINKS.command$l53x)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,13 +36,13 @@ public class typeof_CommandReferenceExpression_InferenceRule extends AbstractInf
   }
   private static SNode createCommandType_ec8mha_a1a0c0a0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CommandType$8c);
-    n0.setReferenceTarget(LINKS.classifier$LHKW, p0);
+    n0.setReferenceTarget(LINKS.classifier$5aH4, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink command$noVZ = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, 0xbe3a0d5ba1a2bdbL, "command");
-    /*package*/ static final SReferenceLink classifier$LHKW = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL, 0x118bc796c90L, "classifier");
+    /*package*/ static final SReferenceLink command$l53x = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, 0xbe3a0d5ba1a2bdbL, "command");
+    /*package*/ static final SReferenceLink classifier$5aH4 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL, 0x118bc796c90L, "classifier");
   }
 
   private static final class CONCEPTS {

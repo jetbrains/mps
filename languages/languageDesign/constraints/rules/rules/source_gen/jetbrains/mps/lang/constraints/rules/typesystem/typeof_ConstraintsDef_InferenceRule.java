@@ -20,9 +20,9 @@ public class typeof_ConstraintsDef_InferenceRule extends AbstractInferenceRule_R
   public void applyRule(final SNode def, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SLinkOperations.getTarget(def, LINKS.expr$Pmm2), LINKS.expression$GH5k);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SLinkOperations.getTarget(def, LINKS.expr$POEY), LINKS.expression$DP$G);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "7201029305263591251", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "7201029305263590539", true), (SNode) SLinkOperations.getTarget(def, LINKS.type$loHZ), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "7201029305263590539", true), (SNode) SLinkOperations.getTarget(def, LINKS.type$mYhx), true, true, _info_12389875345);
       }
     }
   }
@@ -37,9 +37,9 @@ public class typeof_ConstraintsDef_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$Pmm2 = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x126f1320a26da4abL, "expr");
-    /*package*/ static final SContainmentLink expression$GH5k = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression");
-    /*package*/ static final SContainmentLink type$loHZ = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x4bf59690bc00f6afL, "type");
+    /*package*/ static final SContainmentLink expr$POEY = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x126f1320a26da4abL, "expr");
+    /*package*/ static final SContainmentLink expression$DP$G = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, 0x126f1320a26d350dL, "expression");
+    /*package*/ static final SContainmentLink type$mYhx = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, 0x4bf59690bc00f6afL, "type");
   }
 
   private static final class CONCEPTS {

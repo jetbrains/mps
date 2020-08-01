@@ -67,7 +67,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.keymap$bYfr;
+      final SProperty property = PROPS.keymap$N9u5;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no keymap>");
@@ -96,7 +96,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new keystrokeSingleRoleHandler_nczmp2_c0(myNode, LINKS.keystroke$5Qdi, getEditorContext());
+    SingleRoleCellProvider provider = new keystrokeSingleRoleHandler_nczmp2_c0(myNode, LINKS.keystroke$PgrI, getEditorContext());
     return provider.createCell();
   }
   private static class keystrokeSingleRoleHandler_nczmp2_c0 extends SingleRoleCellProvider {
@@ -116,8 +116,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.keystroke$5Qdi, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.keystroke$5Qdi, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.keystroke$PgrI, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.keystroke$PgrI, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -129,13 +129,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.keystroke$5Qdi);
+        editorCell.setSRole(LINKS.keystroke$PgrI);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.keystroke$5Qdi));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.keystroke$PgrI));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_keystroke");
@@ -152,7 +152,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty keymap$bYfr = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap");
+    /*package*/ static final SProperty keymap$N9u5 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap");
   }
 
   private static final class CONCEPTS {
@@ -160,6 +160,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keystroke$5Qdi = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b76126L, "keystroke");
+    /*package*/ static final SContainmentLink keystroke$PgrI = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b76126L, "keystroke");
   }
 }

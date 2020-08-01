@@ -33,7 +33,7 @@ public class PropertyRefExpression_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyDeclaration$BSPZ, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyDeclaration$ky9x, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -48,10 +48,10 @@ public class PropertyRefExpression_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            if (!(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.nodeExpr$BSPw)), CONCEPTS.SNodeType$gn))) {
+            if (!(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.nodeExpr$kxUw)), CONCEPTS.SNodeType$gn))) {
               return ListScope.forResolvableElements(new ArrayList<SNode>());
             }
-            return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.nodeExpr$BSPw)), CONCEPTS.SNodeType$gn), LINKS.concept$HWFQ)));
+            return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.nodeExpr$kxUw)), CONCEPTS.SNodeType$gn), LINKS.concept$gpfa)));
           }
         };
       }
@@ -68,8 +68,8 @@ public class PropertyRefExpression_Constraints extends BaseConstraintsDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyDeclaration$BSPZ = MetaAdapterFactory.getReferenceLink(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f39L, 0x433c3c31e7218f3bL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink nodeExpr$BSPw = MetaAdapterFactory.getContainmentLink(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f39L, 0x433c3c31e7218f3aL, "nodeExpr");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink propertyDeclaration$ky9x = MetaAdapterFactory.getReferenceLink(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f39L, 0x433c3c31e7218f3bL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink nodeExpr$kxUw = MetaAdapterFactory.getContainmentLink(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f39L, 0x433c3c31e7218f3aL, "nodeExpr");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 }

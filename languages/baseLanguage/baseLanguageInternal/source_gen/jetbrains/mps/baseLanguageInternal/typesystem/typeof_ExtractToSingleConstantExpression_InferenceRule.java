@@ -21,7 +21,7 @@ public class typeof_ExtractToSingleConstantExpression_InferenceRule extends Abst
     {
       SNode _nodeToCheck_1029348928467 = expression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "4927083583736821490", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "4927083583736821497", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(expression, LINKS.expression$XBEb), "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "4927083583736821492", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "4927083583736821497", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(expression, LINKS.expression$Qdrl), "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "4927083583736821492", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_ExtractToSingleConstantExpression_InferenceRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$XBEb = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x4460846a234a2626L, 0x4460846a234ab020L, "expression");
+    /*package*/ static final SContainmentLink expression$Qdrl = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x4460846a234a2626L, 0x4460846a234ab020L, "expression");
   }
 
   private static final class CONCEPTS {

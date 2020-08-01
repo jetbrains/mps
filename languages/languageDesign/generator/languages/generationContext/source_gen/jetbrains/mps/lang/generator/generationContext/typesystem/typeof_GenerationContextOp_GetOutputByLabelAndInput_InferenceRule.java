@@ -25,13 +25,13 @@ public class typeof_GenerationContextOp_GetOutputByLabelAndInput_InferenceRule e
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931341", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931352", true), (SNode) _quotation_createNode_mhpw2a_a1a0c0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$GKSw), LINKS.targetConcept$f8gl)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931352", true), (SNode) _quotation_createNode_mhpw2a_a1a0c0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$FFnw), LINKS.targetConcept$kZUb)), _info_12389875345);
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.inputNode$GL4B);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.inputNode$FLeT);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931354", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931356", true), (SNode) _quotation_createNode_mhpw2a_a1a0c0a0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$GKSw), LINKS.sourceConcept$T1Uo)), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1216860931356", true), (SNode) _quotation_createNode_mhpw2a_a1a0c0a0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$FFnw), LINKS.sourceConcept$BVhC)), true, true, _info_12389875345);
       }
     }
   }
@@ -60,10 +60,10 @@ public class typeof_GenerationContextOp_GetOutputByLabelAndInput_InferenceRule e
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink label$GKSw = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0dbL, 0x11b5282d0dcL, "label");
-    /*package*/ static final SReferenceLink targetConcept$f8gl = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
-    /*package*/ static final SContainmentLink inputNode$GL4B = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0dbL, 0x11b5282d0e0L, "inputNode");
-    /*package*/ static final SReferenceLink sourceConcept$T1Uo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
+    /*package*/ static final SReferenceLink label$FFnw = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0dbL, 0x11b5282d0dcL, "label");
+    /*package*/ static final SReferenceLink targetConcept$kZUb = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
+    /*package*/ static final SContainmentLink inputNode$FLeT = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0dbL, 0x11b5282d0e0L, "inputNode");
+    /*package*/ static final SReferenceLink sourceConcept$BVhC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
   }
 
   private static final class CONCEPTS {

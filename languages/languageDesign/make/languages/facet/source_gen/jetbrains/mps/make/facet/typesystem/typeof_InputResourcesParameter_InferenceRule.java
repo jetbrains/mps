@@ -28,8 +28,8 @@ public class typeof_InputResourcesParameter_InferenceRule extends AbstractInfere
   public void applyRule(final SNode inres, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode tdecl = SNodeOperations.getNodeAncestor(inres, CONCEPTS.TargetDeclaration$7n, false, false);
     if ((tdecl != null)) {
-      List<SNode> resourceType = SLinkOperations.getChildren(SLinkOperations.getTarget(tdecl, LINKS.input$2Rlo), LINKS.resourceType$oBTu);
-      SNode cls = Sequence.fromIterable(SLinkOperations.collect(resourceType, LINKS.classifier$pQ_R)).first();
+      List<SNode> resourceType = SLinkOperations.getChildren(SLinkOperations.getTarget(tdecl, LINKS.input$oNmC), LINKS.resourceType$VkPy);
+      SNode cls = Sequence.fromIterable(SLinkOperations.collect(resourceType, LINKS.classifier$xslD)).first();
       if (SNodeOperations.isInstanceOf(cls, CONCEPTS.NamedTupleDeclaration$51)) {
         SNode ntt = _quotation_createNode_3tga6z_a0a0c0b0b(cls);
         {
@@ -116,8 +116,8 @@ public class typeof_InputResourcesParameter_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink input$2Rlo = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x1a6da65e8aab1e0L, "input");
-    /*package*/ static final SContainmentLink resourceType$oBTu = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aab1d4L, 0x1a6da65e8aab1d7L, "resourceType");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink input$oNmC = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x1a6da65e8aab1e0L, "input");
+    /*package*/ static final SContainmentLink resourceType$VkPy = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aab1d4L, 0x1a6da65e8aab1d7L, "resourceType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

@@ -26,10 +26,10 @@ public class XmlDoctypeDeclaration_TextGen extends TextGenDescriptorBase {
     }
     tgs.append("<!DOCTYPE");
     tgs.append(" ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.doctypeName$ETfD));
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.externalId$sRaL) != null)) {
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.doctypeName$LI$R));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.externalId$YIdJ) != null)) {
       tgs.append(" ");
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.externalId$sRaL));
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.externalId$YIdJ));
     }
     tgs.append(">");
   }
@@ -39,10 +39,10 @@ public class XmlDoctypeDeclaration_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty doctypeName$ETfD = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f4069eL, "doctypeName");
+    /*package*/ static final SProperty doctypeName$LI$R = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f4069eL, "doctypeName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink externalId$sRaL = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f60340L, "externalId");
+    /*package*/ static final SContainmentLink externalId$YIdJ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f60340L, "externalId");
   }
 }

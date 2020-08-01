@@ -68,12 +68,12 @@ public class CreateReferenceConcept_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     // structure 
-    SNode concept = _quotation_createNode_vn7eng_a0b0a(NameUtil.decapitalize(SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$tAp1)), event.getData(MPSCommonDataKeys.NODE), SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$tAp1) + "Reference");
+    SNode concept = _quotation_createNode_vn7eng_a0b0a(NameUtil.decapitalize(SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$lA7v)), event.getData(MPSCommonDataKeys.NODE), SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$lA7v) + "Reference");
     SModelOperations.addRootNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), concept);
-    SPropertyOperations.assign(concept, PROPS.conceptId$TMc5, ConceptIdHelper.generateConceptId(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), concept) + "");
-    SNode link = ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$lL6$)).first();
-    SPropertyOperations.assign(link, PROPS.linkId$ccI3, ConceptIdHelper.generateLinkId(concept, link) + "");
-    SPropertyOperations.set(concept, PROPS.virtualPackage$j19t, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$j19t));
+    SPropertyOperations.assign(concept, PROPS.conceptId$ZjQr, ConceptIdHelper.generateConceptId(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), concept) + "");
+    SNode link = ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$yMbs)).first();
+    SPropertyOperations.assign(link, PROPS.linkId$Uajt, ConceptIdHelper.generateLinkId(concept, link) + "");
+    SPropertyOperations.set(concept, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$dz_3));
 
     // find editor model 
     Language language = Language.getLanguageFor(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)));
@@ -82,7 +82,7 @@ public class CreateReferenceConcept_Action extends BaseAction {
     // editor 
     SNode editor = _quotation_createNode_vn7eng_a0n0a(concept, link);
     SModelOperations.addRootNode(editorModel, editor);
-    SPropertyOperations.set(editor, PROPS.virtualPackage$j19t, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$j19t));
+    SPropertyOperations.set(editor, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$dz_3));
 
     NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), concept, true, true);
   }
@@ -126,13 +126,13 @@ public class CreateReferenceConcept_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty conceptId$TMc5 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty linkId$ccI3 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty linkId$Uajt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
   }
 }

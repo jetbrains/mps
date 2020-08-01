@@ -21,7 +21,7 @@ public class JUnit3MethodWrapper extends AbstractTestWrapper<SNode> {
   public JUnit3MethodWrapper(@NotNull ITestNodeWrapper testCase, SNode method) {
     super(method, true, AbstractTestWrapper.isAnnotatedToLaunch(method) || AbstractTestWrapper.needsMPS(SNodeOperations.getNodeAncestor(method, CONCEPTS.ClassConcept$IY, false, false)));
     myTestCase = testCase;
-    myName = SPropertyOperations.getString(method, PROPS.name$tAp1);
+    myName = SPropertyOperations.getString(method, PROPS.name$lA7v);
   }
 
   @Override
@@ -41,7 +41,7 @@ public class JUnit3MethodWrapper extends AbstractTestWrapper<SNode> {
   }
 
   public static boolean isTestMethod(@NotNull SNode method) {
-    return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method)) && (SLinkOperations.getTarget(method, LINKS.visibility$2GiC) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe) && (SPropertyOperations.getString(method, PROPS.name$tAp1) != null) && SPropertyOperations.getString(method, PROPS.name$tAp1).startsWith("test");
+    return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method)) && (SLinkOperations.getTarget(method, LINKS.visibility$jt1o) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe) && (SPropertyOperations.getString(method, PROPS.name$lA7v) != null) && SPropertyOperations.getString(method, PROPS.name$lA7v).startsWith("test");
   }
 
   private static final class CONCEPTS {
@@ -50,10 +50,10 @@ public class JUnit3MethodWrapper extends AbstractTestWrapper<SNode> {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

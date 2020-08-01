@@ -31,13 +31,13 @@ public class BLCommand_to_Expression {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        Iterable<SNode> statements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$78zK), LINKS.statement$WHn8)).where(new IWhereFilter<SNode>() {
+        Iterable<SNode> statements = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$t9kg), LINKS.statement$pYcS)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(Objects.equals(SNodeOperations.getConcept(it), CONCEPTS.Statement$ok));
           }
         });
         if (Sequence.fromIterable(statements).count() == 1 && SNodeOperations.isInstanceOf(Sequence.fromIterable(statements).first(), CONCEPTS.ExpressionStatement$nm)) {
-          SNode replacement = createBLExpression_6b3zvz_a0a0b0a0(SLinkOperations.getTarget(SNodeOperations.cast(Sequence.fromIterable(statements).first(), CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0));
+          SNode replacement = createBLExpression_6b3zvz_a0a0b0a0(SLinkOperations.getTarget(SNodeOperations.cast(Sequence.fromIterable(statements).first(), CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0));
           SNodeOperations.replaceWithAnother(node, replacement);
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacement, SelectionManager.LAST_CELL, -1);
         } else if (Sequence.fromIterable(statements).isEmpty()) {
@@ -92,15 +92,15 @@ public class BLCommand_to_Expression {
   }
   private static SNode createBLExpression_6b3zvz_a0a0b0a0(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
-    n0.forChild(LINKS.expression$HQe6).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.expression$dgOU).initNode(p0, CONCEPTS.Expression$TP, true);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$78zK = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4bd43869e610f3e9L, 0x188f8efcef6cea65L, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink expression$HQe6 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
+    /*package*/ static final SContainmentLink body$t9kg = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4bd43869e610f3e9L, 0x188f8efcef6cea65L, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$dgOU = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
   }
 
   private static final class CONCEPTS {

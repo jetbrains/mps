@@ -18,10 +18,10 @@ public class XmlLiteral_DataFlow extends DataFlowBuilder {
     List<SNode> items = SNodeOperations.getNodeDescendantsWhereConceptInList(_context.getNode(), new SAbstractConcept[]{CONCEPTS.ElementMacro$N_, CONCEPTS.TextMacro$9U}, false, new SAbstractConcept[]{});
     for (SNode item : items) {
       if (SNodeOperations.isInstanceOf(item, CONCEPTS.ElementMacro$N_)) {
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(item, CONCEPTS.ElementMacro$N_), LINKS.expression$2$ZV));
+        _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(item, CONCEPTS.ElementMacro$N_), LINKS.expression$fUX_));
       }
       if (SNodeOperations.isInstanceOf(item, CONCEPTS.TextMacro$9U)) {
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(item, CONCEPTS.TextMacro$9U), LINKS.expression$jGz0));
+        _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(item, CONCEPTS.TextMacro$9U), LINKS.expression$y$X0));
       }
     }
   }
@@ -32,7 +32,7 @@ public class XmlLiteral_DataFlow extends DataFlowBuilder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$2$ZV = MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, 0x7f05a5bbee380870L, "expression");
-    /*package*/ static final SContainmentLink expression$jGz0 = MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee374ae1L, 0x7f05a5bbee374ae2L, "expression");
+    /*package*/ static final SContainmentLink expression$fUX_ = MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, 0x7f05a5bbee380870L, "expression");
+    /*package*/ static final SContainmentLink expression$y$X0 = MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee374ae1L, 0x7f05a5bbee374ae2L, "expression");
   }
 }

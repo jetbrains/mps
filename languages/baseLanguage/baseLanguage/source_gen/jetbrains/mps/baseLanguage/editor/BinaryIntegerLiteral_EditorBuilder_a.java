@@ -83,12 +83,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_rvxhrh_a0a() {
-    return isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.value$Uj74));
+    return isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.value$fgqW));
   }
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.value$Uj74;
+      final SProperty property = PROPS.value$fgqW;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no value>");
@@ -124,6 +124,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Uj74 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10872a073bf6450aL, 0x11297628b3cL, "value");
+    /*package*/ static final SProperty value$fgqW = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10872a073bf6450aL, 0x11297628b3cL, "value");
   }
 }

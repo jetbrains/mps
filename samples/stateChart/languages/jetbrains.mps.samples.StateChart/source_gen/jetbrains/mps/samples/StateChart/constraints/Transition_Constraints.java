@@ -35,7 +35,7 @@ public class Transition_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.trigger$m8b0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.trigger$HXl0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,19 +52,19 @@ public class Transition_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             Iterable<SNode> allEventsInPath = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.Stateful$8, true)).translate(new ITranslator2<SNode, SNode>() {
               public Iterable<SNode> translate(SNode it) {
-                return SLinkOperations.getChildren(it, LINKS.availableTriggers$AtTV);
+                return SLinkOperations.getChildren(it, LINKS.availableTriggers$Cv3_);
               }
             });
             return new ListScope(allEventsInPath) {
               public String getName(SNode child) {
-                return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.Event$H_), PROPS.name$tAp1);
+                return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.Event$H_), PROPS.name$lA7v);
               }
             };
           }
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.target$m8bY, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.target$HXN2, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -101,12 +101,12 @@ public class Transition_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink trigger$m8b0 = MetaAdapterFactory.getReferenceLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a9L, 0x148d06483264e4aaL, "trigger");
-    /*package*/ static final SContainmentLink availableTriggers$AtTV = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b1L, "availableTriggers");
-    /*package*/ static final SReferenceLink target$m8bY = MetaAdapterFactory.getReferenceLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a9L, 0x148d06483264e4acL, "target");
+    /*package*/ static final SReferenceLink trigger$HXl0 = MetaAdapterFactory.getReferenceLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a9L, 0x148d06483264e4aaL, "trigger");
+    /*package*/ static final SContainmentLink availableTriggers$Cv3_ = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b1L, "availableTriggers");
+    /*package*/ static final SReferenceLink target$HXN2 = MetaAdapterFactory.getReferenceLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a9L, 0x148d06483264e4acL, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

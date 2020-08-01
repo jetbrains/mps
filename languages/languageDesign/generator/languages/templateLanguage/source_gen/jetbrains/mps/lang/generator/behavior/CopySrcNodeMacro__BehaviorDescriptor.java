@@ -37,7 +37,7 @@ public final class CopySrcNodeMacro__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static SNode getInputNodeTypeInsideOfMacro_idhEwIosJ(@NotNull SNode __thisNode__) {
     {
       GeneratedMatchingPattern pattern_7c1mz_a0a = new Pattern_7c1mz_a0a0a0a(_quotation_createNode_7c1mz_a0a0a0a0a());
-      SNode coercedNode_7c1mz_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodeQuery$u9yb)), pattern_7c1mz_a0a);
+      SNode coercedNode_7c1mz_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodeQuery$ABzl)), pattern_7c1mz_a0a);
       if (coercedNode_7c1mz_a0a != null) {
         return pattern_7c1mz_a0a.getMatchedNode("concept");
       } else {
@@ -99,6 +99,6 @@ public final class CopySrcNodeMacro__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink sourceNodeQuery$u9yb = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10389b50fefL, 0x10ff3aea96eL, "sourceNodeQuery");
+    /*package*/ static final SContainmentLink sourceNodeQuery$ABzl = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10389b50fefL, 0x10ff3aea96eL, "sourceNodeQuery");
   }
 }

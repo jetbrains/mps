@@ -83,7 +83,7 @@ public class MethodMatch {
         return false;
       }
     }
-    if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(nodes).getElement(0)), SLinkOperations.getTarget(parameter, LINKS.type$pLrO)))) {
+    if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(nodes).getElement(0)), SLinkOperations.getTarget(parameter, LINKS.type$uWuc)))) {
       return false;
     }
     return true;
@@ -116,7 +116,7 @@ public class MethodMatch {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {

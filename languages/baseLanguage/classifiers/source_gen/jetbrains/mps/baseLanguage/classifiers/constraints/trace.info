@@ -36,8 +36,8 @@
       <node id="1213104844334" at="80,0,81,0" concept="9" trace="IMemberOperation$jb" />
       <node id="1213104844334" at="81,0,82,0" concept="9" trace="DotExpression$6a" />
       <node id="1213104844334" at="82,0,83,0" concept="9" trace="BaseClassifierType$Sj" />
-      <node id="1213104844334" at="86,0,87,0" concept="9" trace="member$hrpI" />
-      <node id="1213104844334" at="87,0,88,0" concept="9" trace="operand$Lcrr" />
+      <node id="1213104844334" at="86,0,87,0" concept="9" trace="member$shti" />
+      <node id="1213104844334" at="87,0,88,0" concept="9" trace="operand$P1i5" />
       <node id="1213104844334" at="33,0,36,0" concept="1" trace="IMemberOperation_Constraints#()V" />
       <node id="6836281137582646467" at="60,180,63,19" concept="4" />
       <node id="1213104844335" at="40,0,44,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -107,7 +107,7 @@
       <node id="1213107438049" at="85,0,86,0" concept="9" trace="ThisClassifierExpression$xN" />
       <node id="1213107438049" at="86,0,87,0" concept="9" trace="IClassifier$Cb" />
       <node id="1213107438049" at="87,0,88,0" concept="9" trace="IClassifierPart$U9" />
-      <node id="1213107438049" at="91,0,92,0" concept="9" trace="classifier$Xpfr" />
+      <node id="1213107438049" at="91,0,92,0" concept="9" trace="classifier$Jeu5" />
       <node id="1213107438049" at="33,0,36,0" concept="1" trace="ThisClassifierExpression_Constraints#()V" />
       <node id="1213107438049" at="43,0,46,9" concept="4" />
       <node id="1213107438049" at="78,0,81,0" concept="10" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -177,7 +177,7 @@
       <node id="1216915253694" at="68,0,69,0" concept="9" trace="breakingNode_8s7bhl_a0a0a0a0a1a0a0a0c" />
       <node id="1216915253694" at="71,0,72,0" concept="9" trace="DefaultClassifierType$iz" />
       <node id="1216915253694" at="72,0,73,0" concept="9" trace="IClassifier$Cb" />
-      <node id="1216915253694" at="76,0,77,0" concept="9" trace="classifier$LHKW" />
+      <node id="1216915253694" at="76,0,77,0" concept="9" trace="classifier$5aH4" />
       <node id="1216915253694" at="32,0,35,0" concept="1" trace="DefaultClassifierType_Constraints#()V" />
       <node id="6836281137582646399" at="55,0,58,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1216915256179" at="39,0,43,0" concept="5" trace="hasOwnScopeProvider#()Z" />

@@ -222,7 +222,7 @@
       <node id="8447707653679062868" at="263,223,264,80" concept="3" />
       <node id="5085963682937673227" at="268,164,269,213" concept="3" />
       <node id="5085963682937954247" at="271,193,272,139" concept="3" />
-      <node id="3327932925618643963" at="276,0,277,0" concept="11" trace="nodeName$KMmO" />
+      <node id="3327932925618643963" at="276,0,277,0" concept="11" trace="nodeName$Cp3c" />
       <node id="647583388922274045" at="55,0,58,0" concept="2" trace="UpdateReferencesParticipant_extension#()V" />
       <node id="647583388922274052" at="58,0,61,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/MoveNodeRefactoringParticipant;" />
       <node id="9088427053756758052" at="67,0,70,0" concept="7" trace="beforeMove#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/core/pluginSolution/plugin/UpdateReferencesParticipantBase/NodeData;" />

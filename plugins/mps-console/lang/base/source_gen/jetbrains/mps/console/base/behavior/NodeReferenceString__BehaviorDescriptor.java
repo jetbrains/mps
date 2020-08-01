@@ -32,7 +32,7 @@ public final class NodeReferenceString__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getText_id5E451QuvdoB(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.referencePresentation$ap3S);
+    return SPropertyOperations.getString(__thisNode__, PROPS.referencePresentation$28S8);
   }
   /*package*/ static String getTextWhenBroken_idigjXyuNrou(@NotNull SNode __thisNode__) {
     return "(deleted node)";
@@ -87,6 +87,6 @@ public final class NodeReferenceString__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty referencePresentation$ap3S = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e75e1c4L, "referencePresentation");
+    /*package*/ static final SProperty referencePresentation$28S8 = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e75e1c4L, "referencePresentation");
   }
 }

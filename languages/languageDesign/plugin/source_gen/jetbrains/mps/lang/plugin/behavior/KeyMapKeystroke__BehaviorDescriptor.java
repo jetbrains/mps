@@ -35,20 +35,20 @@ public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static String getKeyStroke_idhEwIlzu(@NotNull SNode __thisNode__) {
-    String modifiers = SPropertyOperations.getString(__thisNode__, PROPS.modifiers$PoTw);
+    String modifiers = SPropertyOperations.getString(__thisNode__, PROPS.modifiers$R3Qw);
     if (modifiers == null) {
       modifiers = "";
     }
     modifiers = modifiers.replaceAll("\\+", " ");
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.keycode$PoTZ))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.keycode$R45x))) {
       return modifiers;
     }
 
     String keyName;
-    if (SPropertyOperations.getString(__thisNode__, PROPS.keycode$PoTZ).startsWith("VK_")) {
-      keyName = SPropertyOperations.getString(__thisNode__, PROPS.keycode$PoTZ).substring(3);
+    if (SPropertyOperations.getString(__thisNode__, PROPS.keycode$R45x).startsWith("VK_")) {
+      keyName = SPropertyOperations.getString(__thisNode__, PROPS.keycode$R45x).substring(3);
     } else {
-      keyName = SPropertyOperations.getString(__thisNode__, PROPS.keycode$PoTZ);
+      keyName = SPropertyOperations.getString(__thisNode__, PROPS.keycode$R45x);
     }
     return modifiers + " " + keyName;
   }
@@ -56,10 +56,10 @@ public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor 
     return ((boolean) KeyMapKeystroke__BehaviorDescriptor.hasRemove_id4qYinf8$eal.invoke(__thisNode__)) || ((boolean) KeyMapKeystroke__BehaviorDescriptor.hasReplaceAll_id4qYinf8$enm.invoke(__thisNode__));
   }
   /*package*/ static boolean hasRemove_id4qYinf8$eal(@NotNull SNode __thisNode__) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$CymG), 0x5e2b603c8f03666aL);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$CCZk), 0x5e2b603c8f03666aL);
   }
   /*package*/ static boolean hasReplaceAll_id4qYinf8$enm(@NotNull SNode __thisNode__) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$CymG), 0x5e2b603c8f036669L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.change$CCZk), 0x5e2b603c8f036669L);
   }
 
   /*package*/ KeyMapKeystroke__BehaviorDescriptor() {
@@ -118,8 +118,8 @@ public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty modifiers$PoTw = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d5L, "modifiers");
-    /*package*/ static final SProperty keycode$PoTZ = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d6L, "keycode");
-    /*package*/ static final SProperty change$CymG = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change");
+    /*package*/ static final SProperty modifiers$R3Qw = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d5L, "modifiers");
+    /*package*/ static final SProperty keycode$R45x = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d6L, "keycode");
+    /*package*/ static final SProperty change$CCZk = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x5e2b603c8f03ab4dL, "change");
   }
 }

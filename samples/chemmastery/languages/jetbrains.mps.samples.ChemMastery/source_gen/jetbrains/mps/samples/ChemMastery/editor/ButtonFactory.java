@@ -36,9 +36,9 @@ public class ButtonFactory {
       @Override
       public void run() {
         SNode doc = SNodeFactoryOperations.createNewNode(CONCEPTS.DocumentationEntry$Ox, null);
-        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(doc, LINKS.text$$Pvw), LINKS.lines$$cru)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).clear();
-        SLinkOperations.addNewChild(l, LINKS.elements$eRew, CONCEPTS.Word$AM);
+        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(doc, LINKS.text$PUgw), LINKS.lines$y1jy)).first();
+        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).clear();
+        SLinkOperations.addNewChild(l, LINKS.elements$cK1w, CONCEPTS.Word$AM);
         SNodeOperations.insertNextSiblingChild(node, doc);
         SelectionUtil.selectCell(editorContext, doc, SelectionManager.FIRST_EDITABLE_CELL);
       }
@@ -51,9 +51,9 @@ public class ButtonFactory {
       public void run() {
         SNode entry = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e0L, "jetbrains.mps.samples.ChemMastery.structure.EquationEntry"));
         SNode eq = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, "jetbrains.mps.samples.ChemMastery.structure.ChemEquation"));
-        SLinkOperations.setTarget(entry, LINKS.equation$$Km6, eq);
+        SLinkOperations.setTarget(entry, LINKS.equation$NqGU, eq);
         SNodeOperations.insertNextSiblingChild(node, entry);
-        SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(entry, LINKS.equation$$Km6), "LEFT_EQ", 0);
+        SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(entry, LINKS.equation$NqGU), "LEFT_EQ", 0);
       }
     });
     return button;
@@ -63,9 +63,9 @@ public class ButtonFactory {
       @Override
       public void run() {
         SNode doc = SNodeFactoryOperations.createNewNode(CONCEPTS.DocumentationEntry$Ox, null);
-        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(doc, LINKS.text$$Pvw), LINKS.lines$$cru)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).clear();
-        SLinkOperations.addNewChild(l, LINKS.elements$eRew, CONCEPTS.Word$AM);
+        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(doc, LINKS.text$PUgw), LINKS.lines$y1jy)).first();
+        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).clear();
+        SLinkOperations.addNewChild(l, LINKS.elements$cK1w, CONCEPTS.Word$AM);
         SNodeOperations.insertPrevSiblingChild(node, doc);
         SelectionUtil.selectCell(editorContext, doc, SelectionManager.FIRST_EDITABLE_CELL);
       }
@@ -90,9 +90,9 @@ public class ButtonFactory {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$$Pvw = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, 0x6ef7184fab9f24e3L, "text");
-    /*package*/ static final SContainmentLink lines$$cru = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink equation$$Km6 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e0L, 0x6ef7184fab9f24dbL, "equation");
+    /*package*/ static final SContainmentLink text$PUgw = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, 0x6ef7184fab9f24e3L, "text");
+    /*package*/ static final SContainmentLink lines$y1jy = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink equation$NqGU = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e0L, 0x6ef7184fab9f24dbL, "equation");
   }
 }

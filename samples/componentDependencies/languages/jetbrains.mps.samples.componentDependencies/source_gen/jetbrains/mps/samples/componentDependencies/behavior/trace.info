@@ -31,8 +31,8 @@
       <node id="9095678365528900259" at="72,14,73,58" concept="9" />
       <node id="9095678365528900259" at="79,48,80,22" concept="5" />
       <node id="9095678365528900259" at="85,40,86,19" concept="5" />
-      <node id="9095678365528900259" at="90,0,91,0" concept="6" trace="component$CfKz" />
-      <node id="9095678365528900259" at="91,0,92,0" concept="6" trace="dep$oYBD" />
+      <node id="9095678365528900259" at="90,0,91,0" concept="6" trace="component$vCwX" />
+      <node id="9095678365528900259" at="91,0,92,0" concept="6" trace="dep$6lcR" />
       <node id="9095678365528900259" at="32,0,34,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="9095678365528900259" at="43,0,45,0" concept="0" trace="ComponentSet__BehaviorDescriptor#()V" />
       <node id="9095678365528919651" at="37,0,40,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
@@ -175,8 +175,8 @@
       <node id="9095678365530118209" at="58,14,59,58" concept="9" />
       <node id="9095678365530118209" at="65,48,66,22" concept="5" />
       <node id="9095678365530118209" at="71,40,72,19" concept="5" />
-      <node id="9095678365530118209" at="76,0,77,0" concept="6" trace="x$FXkA" />
-      <node id="9095678365530118209" at="77,0,78,0" concept="6" trace="y$FXl$" />
+      <node id="9095678365530118209" at="76,0,77,0" concept="6" trace="x$iGYq" />
+      <node id="9095678365530118209" at="77,0,78,0" concept="6" trace="y$iHss" />
       <node id="9095678365530118209" at="31,0,33,0" concept="0" trace="Component__BehaviorDescriptor#()V" />
       <node id="9095678365530118209" at="41,49,44,5" concept="2" />
       <node id="9095678365530118209" at="53,49,56,5" concept="2" />

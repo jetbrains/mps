@@ -80,7 +80,7 @@
       <node id="8032286684682209790" at="187,51,188,29" concept="5" />
       <node id="8032286684682209809" at="192,64,193,25" concept="5" />
       <node id="8032286684683045672" at="200,0,201,0" concept="7" trace="TestSubstituteChild$sN" />
-      <node id="8032286684683045672" at="204,0,205,0" concept="7" trace="name$tAp1" />
+      <node id="8032286684683045672" at="204,0,205,0" concept="7" trace="name$lA7v" />
       <node id="8032286684683045672" at="30,0,33,0" concept="0" trace="SubstituteMenu_Group_CanExecute#()V" />
       <node id="8032286684682299183" at="87,0,90,0" concept="3" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="8032286684682299183" at="111,0,114,0" concept="3" trace="canExecute_internal#(Ljava/lang/String;Z)Z" />
@@ -258,7 +258,7 @@
       <node id="8998492695587537855" at="97,49,98,27" concept="5" />
       <node id="8998492695587548943" at="102,62,103,29" concept="5" />
       <node id="8998492695587537706" at="109,0,110,0" concept="7" trace="TestSubstituteChild$sN" />
-      <node id="8998492695587537706" at="113,0,114,0" concept="7" trace="name$tAp1" />
+      <node id="8998492695587537706" at="113,0,114,0" concept="7" trace="name$lA7v" />
       <node id="8998492695587537706" at="28,0,31,0" concept="0" trace="NamedContribution#()V" />
       <node id="8998492695587537855" at="84,0,87,0" concept="3" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="8998492695587537855" at="79,0,83,0" concept="0" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />

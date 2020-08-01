@@ -29,10 +29,10 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
     if ((enumClass == null)) {
       return;
     }
-    SNode constructorDeclaration = SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$$A7i);
+    SNode constructorDeclaration = SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$ItxI);
 
     if ((constructorDeclaration != null)) {
-      if (Objects.equals(SNodeOperations.getParent(SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$$A7i)), enumClass)) {
+      if (Objects.equals(SNodeOperations.getParent(SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$ItxI)), enumClass)) {
         return;
       }
       if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(enumClass)).isNotEmpty()) {
@@ -75,6 +75,6 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

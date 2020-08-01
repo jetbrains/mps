@@ -31,12 +31,12 @@ public class typeof_Property_SetOperation_InferenceRule extends AbstractInferenc
       return;
     }
     SNode propertyAccessOp = SNodeOperations.cast(leftOperation, CONCEPTS.SPropertyAccess$bD);
-    SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(propertyAccessOp, LINKS.property$He2), LINKS.dataType$fLUl);
+    SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(propertyAccessOp, LINKS.property$lTMY), LINKS.dataType$Dbgb);
     if (!((dataType != null))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "couldn't define accessed property datatype", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1186059295963", null, errorTarget);
     }
-    SNode value = SLinkOperations.getTarget(op, LINKS.value$KfC2);
+    SNode value = SLinkOperations.getTarget(op, LINKS.value$n$oY);
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8123644447409533255", 0, null);
@@ -72,8 +72,8 @@ public class typeof_Property_SetOperation_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$He2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SContainmentLink value$KfC2 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091d8a1d53L, 0x1091d8c01aaL, "value");
+    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink value$n$oY = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091d8a1d53L, 0x1091d8c01aaL, "value");
   }
 }

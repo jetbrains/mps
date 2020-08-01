@@ -102,10 +102,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private boolean nodeCondition_azr75j_a2a() {
-    return SLinkOperations.getTarget(myNode, LINKS.query$o5Tm) == null;
+    return SLinkOperations.getTarget(myNode, LINKS.query$EQLE) == null;
   }
   private boolean nodeCondition_azr75j_a3a() {
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.query$o5Tm)).isNotEmpty();
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.query$EQLE)).isNotEmpty();
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
@@ -135,7 +135,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.color$cEqb;
+      final SProperty property = PROPS.color$8yFl;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no color>");
@@ -168,8 +168,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$o5Tm));
-      SPropertyOperations.setEnum(node, PROPS.color$cEqb, parameterObject);
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$EQLE));
+      SPropertyOperations.setEnum(node, PROPS.color$8yFl, parameterObject);
     }
     public boolean isReferentPresentation() {
       return false;
@@ -202,7 +202,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SNodeFactoryOperations.setNewChild(node, LINKS.query$o5Tm, CONCEPTS.RGBColor$1P);
+      SNodeFactoryOperations.setNewChild(node, LINKS.query$EQLE, CONCEPTS.RGBColor$1P);
     }
     public String getMatchingText() {
       return "#RRGGBB";
@@ -230,7 +230,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SNodeFactoryOperations.setNewChild(node, LINKS.query$o5Tm, CONCEPTS.QueryFunction_Color$az);
+      SNodeFactoryOperations.setNewChild(node, LINKS.query$EQLE, CONCEPTS.QueryFunction_Color$az);
     }
     public String getMatchingText() {
       return "query";
@@ -258,14 +258,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SNodeFactoryOperations.setNewChild(node, LINKS.query$o5Tm, CONCEPTS.QueryFunction_ColorComposit$sA);
+      SNodeFactoryOperations.setNewChild(node, LINKS.query$EQLE, CONCEPTS.QueryFunction_ColorComposit$sA);
     }
     public String getMatchingText() {
       return "default/dark";
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new querySingleRoleHandler_azr75j_d0(myNode, LINKS.query$o5Tm, getEditorContext());
+    SingleRoleCellProvider provider = new querySingleRoleHandler_azr75j_d0(myNode, LINKS.query$EQLE, getEditorContext());
     return provider.createCell();
   }
   private static class querySingleRoleHandler_azr75j_d0 extends SingleRoleCellProvider {
@@ -285,8 +285,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.query$o5Tm, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.query$o5Tm, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.query$EQLE, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.query$EQLE, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -295,10 +295,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.query$o5Tm, CONCEPTS.IQueryFunction_Color$xH), new SubstituteInfoPartExt[]{new ColorStyleClassItem_generic_cellMenu_azr75j_a0d0(), new ColorStyleClassItem_generic_cellMenu_azr75j_b0d0(), new ColorStyleClassItem_generic_cellMenu_azr75j_c0d0(), new ColorStyleClassItem_generic_cellMenu_azr75j_d0d0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.query$EQLE, CONCEPTS.IQueryFunction_Color$xH), new SubstituteInfoPartExt[]{new ColorStyleClassItem_generic_cellMenu_azr75j_a0d0(), new ColorStyleClassItem_generic_cellMenu_azr75j_b0d0(), new ColorStyleClassItem_generic_cellMenu_azr75j_c0d0(), new ColorStyleClassItem_generic_cellMenu_azr75j_d0d0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.query$o5Tm);
+        editorCell.setSRole(LINKS.query$EQLE);
       }
       if (true) {
         editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_RECURSIVELY);
@@ -307,7 +307,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.query$o5Tm));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.query$EQLE));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_query");
@@ -332,8 +332,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
       }
       public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$o5Tm));
-        SPropertyOperations.setEnum(node, PROPS.color$cEqb, parameterObject);
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$EQLE));
+        SPropertyOperations.setEnum(node, PROPS.color$8yFl, parameterObject);
       }
       public boolean isReferentPresentation() {
         return false;
@@ -366,7 +366,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       }
 
       public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.query$o5Tm, CONCEPTS.RGBColor$1P);
+        SNodeFactoryOperations.setNewChild(node, LINKS.query$EQLE, CONCEPTS.RGBColor$1P);
       }
       public String getMatchingText() {
         return "#RRGGBB";
@@ -394,7 +394,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       }
 
       public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.query$o5Tm, CONCEPTS.QueryFunction_Color$az);
+        SNodeFactoryOperations.setNewChild(node, LINKS.query$EQLE, CONCEPTS.QueryFunction_Color$az);
       }
       public String getMatchingText() {
         return "query";
@@ -422,7 +422,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       }
 
       public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.query$o5Tm, CONCEPTS.QueryFunction_ColorComposit$sA);
+        SNodeFactoryOperations.setNewChild(node, LINKS.query$EQLE, CONCEPTS.QueryFunction_ColorComposit$sA);
       }
       public String getMatchingText() {
         return "default/dark";
@@ -431,7 +431,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$o5Tm = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query");
+    /*package*/ static final SContainmentLink query$EQLE = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query");
   }
 
   private static final class CONCEPTS {
@@ -444,6 +444,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty color$cEqb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color");
+    /*package*/ static final SProperty color$8yFl = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color");
   }
 }

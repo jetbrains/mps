@@ -26,7 +26,7 @@ public class State_Constraints extends BaseConstraintsDescriptor {
 
   public static class IsInitial_Property extends BasePropertyConstraintsDescriptor {
     public IsInitial_Property(ConstraintsDescriptor container) {
-      super(PROPS.isInitial$lrt8, container);
+      super(PROPS.isInitial$oj6S, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -44,7 +44,7 @@ public class State_Constraints extends BaseConstraintsDescriptor {
     private static boolean staticValidateProperty(SNode node, boolean propertyValue) {
       return propertyValue == false || Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(node, false), CONCEPTS.State$J2)).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isInitial$lrt8) == false;
+          return SPropertyOperations.getBoolean(it, PROPS.isInitial$oj6S) == false;
         }
       });
     }
@@ -52,7 +52,7 @@ public class State_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.isInitial$lrt8, new IsInitial_Property(this));
+    properties.put(PROPS.isInitial$oj6S, new IsInitial_Property(this));
     return properties;
   }
 
@@ -61,6 +61,6 @@ public class State_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isInitial$lrt8 = MetaAdapterFactory.getProperty(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x148d064832658c3eL, "isInitial");
+    /*package*/ static final SProperty isInitial$oj6S = MetaAdapterFactory.getProperty(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x148d064832658c3eL, "isInitial");
   }
 }

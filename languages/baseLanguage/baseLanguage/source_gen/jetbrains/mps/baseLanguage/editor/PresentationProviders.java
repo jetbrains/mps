@@ -49,7 +49,7 @@ public class PresentationProviders {
       if ((SNodeOperations.getNodeAncestor(sourceNode, CONCEPTS.NestedNewExpression$79, false, false) == null)) {
         return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(targetNode, SNodeOperations.getParent(sourceNode));
       } else {
-        return SPropertyOperations.getString(targetNode, PROPS.name$tAp1);
+        return SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
       }
     }
   };
@@ -64,7 +64,7 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.name$tAp1);
+      return SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_53xyyk_a1a1a_0 = new IReferentPresentationProvider() {
@@ -78,7 +78,7 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.name$tAp1) + "()";
+      return SPropertyOperations.getString(targetNode, PROPS.name$lA7v) + "()";
     }
   };
 
@@ -88,6 +88,6 @@ public class PresentationProviders {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

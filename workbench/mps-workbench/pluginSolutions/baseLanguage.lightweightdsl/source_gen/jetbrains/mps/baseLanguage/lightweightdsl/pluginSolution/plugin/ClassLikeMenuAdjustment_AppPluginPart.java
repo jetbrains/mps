@@ -69,7 +69,7 @@ public class ClassLikeMenuAdjustment_AppPluginPart extends ApplicationPluginPart
               }
             }).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.preferredConcept$ybbQ);
+                return SLinkOperations.getTarget(it, LINKS.preferredConcept$zqJa);
               }
             }).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
@@ -118,6 +118,6 @@ public class ClassLikeMenuAdjustment_AppPluginPart extends ApplicationPluginPart
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink preferredConcept$ybbQ = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept");
+    /*package*/ static final SReferenceLink preferredConcept$zqJa = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept");
   }
 }

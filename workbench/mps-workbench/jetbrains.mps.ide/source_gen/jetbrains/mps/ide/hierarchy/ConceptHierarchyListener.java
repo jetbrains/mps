@@ -48,7 +48,7 @@ public final class ConceptHierarchyListener {
     public void referenceChanged(@NotNull SReferenceChangeEvent event) {
       if (event.getNode().isInstanceOfConcept(CONCEPTS.ConceptDeclaration$qU)) {
         SReferenceLink link = event.getAssociationLink();
-        if (Objects.equals(link, LINKS.extends$LQV3) || Objects.equals(link, LINKS.implements$oQDh)) {
+        if (Objects.equals(link, LINKS.extends$9AAt) || Objects.equals(link, LINKS.implements$2tZf)) {
         }
       }
     }
@@ -110,8 +110,8 @@ public final class ConceptHierarchyListener {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 
   private static final class CONCEPTS {

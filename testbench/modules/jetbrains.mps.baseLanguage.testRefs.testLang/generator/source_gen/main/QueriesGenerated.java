@@ -24,13 +24,13 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.valueDeclReference$3jO_);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.valueDeclReference$AAtV);
   }
   public static SNode sourceNodeQuery_1_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.valueDeclReference$3jO_);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.valueDeclReference$AAtV);
   }
   public static SNode sourceNodeQuery_1_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.referenceDeclReference$3jPz);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.referenceDeclReference$AAVX);
   }
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
@@ -69,7 +69,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink valueDeclReference$3jO_ = MetaAdapterFactory.getContainmentLink(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, 0x745d0a037f5a099bL, "valueDeclReference");
-    /*package*/ static final SContainmentLink referenceDeclReference$3jPz = MetaAdapterFactory.getContainmentLink(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, 0x745d0a037f5a099dL, "referenceDeclReference");
+    /*package*/ static final SContainmentLink valueDeclReference$AAtV = MetaAdapterFactory.getContainmentLink(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, 0x745d0a037f5a099bL, "valueDeclReference");
+    /*package*/ static final SContainmentLink referenceDeclReference$AAVX = MetaAdapterFactory.getContainmentLink(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, 0x745d0a037f5a099dL, "referenceDeclReference");
   }
 }

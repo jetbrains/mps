@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionInstance_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    for (SNode expression : SLinkOperations.getChildren(_context.getNode(), LINKS.actualParameter$KFu_)) {
+    for (SNode expression : SLinkOperations.getChildren(_context.getNode(), LINKS.actualParameter$_3NV)) {
       _context.getBuilder().build((SNode) expression);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualParameter$KFu_ = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, 0x11daf965303L, "actualParameter");
+    /*package*/ static final SContainmentLink actualParameter$_3NV = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, 0x11daf965303L, "actualParameter");
   }
 }

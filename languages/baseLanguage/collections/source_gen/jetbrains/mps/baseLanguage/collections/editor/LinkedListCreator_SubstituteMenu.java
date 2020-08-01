@@ -108,7 +108,7 @@ public class LinkedListCreator_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.LinkedListCreator$nK, null);
-        SNodeFactoryOperations.setNewChild(creator, LINKS.elementType$K4zo, null);
+        SNodeFactoryOperations.setNewChild(creator, LINKS.elementType$id8C, null);
         return creator;
       }
 
@@ -150,6 +150,6 @@ public class LinkedListCreator_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$K4zo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
+    /*package*/ static final SContainmentLink elementType$id8C = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
   }
 }

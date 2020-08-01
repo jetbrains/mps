@@ -28,7 +28,7 @@ public class check_ClassLike_allRequired_NonTypesystemRule extends AbstractNonTy
       return;
     }
 
-    for (SNode memberDescriptor : ListSequence.fromList(SLinkOperations.getChildren(DSLDescriptorUtil.getDescriptor(classLike), LINKS.classLikeMember$UT6r))) {
+    for (SNode memberDescriptor : ListSequence.fromList(SLinkOperations.getChildren(DSLDescriptorUtil.getDescriptor(classLike), LINKS.classLikeMember$xE75))) {
       if ((boolean) DSLClassMember__BehaviorDescriptor.isRequired_id2WSWNq1VhVM.invoke(memberDescriptor)) {
         if (!(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(memberDescriptor, classLike)).isNotEmpty())) {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -48,7 +48,7 @@ public class check_ClassLike_allRequired_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classLikeMember$UT6r = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x72b255a0447fe4c8L, "classLikeMember");
+    /*package*/ static final SContainmentLink classLikeMember$xE75 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x72b255a0447fe4c8L, "classLikeMember");
   }
 
   private static final class CONCEPTS {

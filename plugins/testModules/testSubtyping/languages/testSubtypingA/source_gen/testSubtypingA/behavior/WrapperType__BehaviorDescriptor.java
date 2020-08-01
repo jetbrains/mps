@@ -34,7 +34,7 @@ public final class WrapperType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + "<" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.wrapped$moMx)) + ">";
+    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + "<" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.wrapped$Q0tZ)) + ">";
   }
 
   /*package*/ WrapperType__BehaviorDescriptor() {
@@ -84,6 +84,6 @@ public final class WrapperType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink wrapped$moMx = MetaAdapterFactory.getContainmentLink(0x36a4d1c56ec1426fL, 0x81921875a7cc48deL, 0x1cd6df1ae5a17c9cL, 0x1cd6df1ae5a1e20fL, "wrapped");
+    /*package*/ static final SContainmentLink wrapped$Q0tZ = MetaAdapterFactory.getContainmentLink(0x36a4d1c56ec1426fL, 0x81921875a7cc48deL, 0x1cd6df1ae5a17c9cL, 0x1cd6df1ae5a1e20fL, "wrapped");
   }
 }

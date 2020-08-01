@@ -27,17 +27,17 @@ public class Interface_TextGen extends TextGenDescriptorBase {
     BaseLanguageTextGen.fileHeader(ctx.getPrimaryInput(), ctx);
     BaseLanguageTextGen.annotations(ctx.getPrimaryInput(), ctx);
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Interface$Kp))) {
-      BaseLanguageTextGen.visibilityWithIndent(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.visibility$2GiC), ctx);
+      BaseLanguageTextGen.visibilityWithIndent(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.visibility$jt1o), ctx);
     } else {
       tgs.indent();
     }
     tgs.append("interface ");
-    tgs.append(JavaNameUtil.shortName(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1)));
+    tgs.append(JavaNameUtil.shortName(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v)));
     GenericDeclarationTextGen2.typeDeclarations(ctx.getPrimaryInput(), ctx);
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.extendedInterface$rbvY)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.extendedInterface$a$v2)).isNotEmpty()) {
       tgs.append(" extends ");
       {
-        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.extendedInterface$rbvY);
+        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.extendedInterface$a$v2);
         final SNode lastItem = Sequence.fromIterable(collection).last();
         for (SNode item : collection) {
           tgs.appendNode(item);
@@ -56,8 +56,8 @@ public class Interface_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
   }
 
   private static final class CONCEPTS {
@@ -66,6 +66,6 @@ public class Interface_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

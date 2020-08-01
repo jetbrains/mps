@@ -39,7 +39,7 @@ public final class SubstituteMenuPart_IncludeMenu__BehaviorDescriptor extends Ba
   }
 
   /*package*/ static SNode getReference_id3rSzFHWOe4u(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$mfCY);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$L$Q2);
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     final SNode applicableConcept = IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ISubstituteMenu$zI, false, false));
@@ -109,7 +109,7 @@ public final class SubstituteMenuPart_IncludeMenu__BehaviorDescriptor extends Ba
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$mfCY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference");
+    /*package*/ static final SContainmentLink menuReference$L$Q2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference");
   }
 
   private static final class CONCEPTS {

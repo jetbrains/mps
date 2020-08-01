@@ -25,7 +25,7 @@ public class IntervalSymbolClassPart_removeRight {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode cn = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CharacterSymbolClassPart$P_);
-        SPropertyOperations.assign(cn, PROPS.character$1gc9, SPropertyOperations.getString(node, PROPS.start$kd8P));
+        SPropertyOperations.assign(cn, PROPS.character$APSn, SPropertyOperations.getString(node, PROPS.start$MnhF));
       }
 
     };
@@ -77,7 +77,7 @@ public class IntervalSymbolClassPart_removeRight {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty character$1gc9 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, 0x111791b0b58L, "character");
-    /*package*/ static final SProperty start$kd8P = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11179215e8bL, 0x1117921931aL, "start");
+    /*package*/ static final SProperty character$APSn = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, 0x111791b0b58L, "character");
+    /*package*/ static final SProperty start$MnhF = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11179215e8bL, 0x1117921931aL, "start");
   }
 }

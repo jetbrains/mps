@@ -22,7 +22,7 @@ public class checkBeforeContainsCellAnnotation_EditorTestCase_NonTypesystemRule 
   public checkBeforeContainsCellAnnotation_EditorTestCase_NonTypesystemRule() {
   }
   public void applyRule(final SNode test, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(test, LINKS.testNodeBefore$BOcn), LINKS.nodeToCheck$Pz43) != null) && ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SLinkOperations.getTarget(test, LINKS.testNodeBefore$BOcn), LINKS.nodeToCheck$Pz43), CONCEPTS.AnonymousCellAnnotation$28, false, new SAbstractConcept[]{})).isEmpty()) {
+    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(test, LINKS.testNodeBefore$ihZ9), LINKS.nodeToCheck$VYXt) != null) && ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SLinkOperations.getTarget(test, LINKS.testNodeBefore$ihZ9), LINKS.nodeToCheck$VYXt), CONCEPTS.AnonymousCellAnnotation$28, false, new SAbstractConcept[]{})).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(test, "The 'before' section must have an AnonymousCellAnnotation attached", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "5960383906433090718", null, errorTarget);
@@ -40,8 +40,8 @@ public class checkBeforeContainsCellAnnotation_EditorTestCase_NonTypesystemRule 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink testNodeBefore$BOcn = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore");
-    /*package*/ static final SContainmentLink nodeToCheck$Pz43 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
+    /*package*/ static final SContainmentLink testNodeBefore$ihZ9 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore");
+    /*package*/ static final SContainmentLink nodeToCheck$VYXt = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
   }
 
   private static final class CONCEPTS {

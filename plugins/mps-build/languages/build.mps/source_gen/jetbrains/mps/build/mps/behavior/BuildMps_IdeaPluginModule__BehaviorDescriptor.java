@@ -36,7 +36,7 @@ public final class BuildMps_IdeaPluginModule__BehaviorDescriptor extends BaseBHD
     if (object instanceof SNode) {
       SNode node = (SNode) object;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$fB)) {
-        return SLinkOperations.getTarget(__thisNode__, LINKS.target$umH0) == node;
+        return SLinkOperations.getTarget(__thisNode__, LINKS.target$GZN0) == node;
       }
     }
     return ((boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildMps_IdeaPluginModule$ZA, object));
@@ -89,7 +89,7 @@ public final class BuildMps_IdeaPluginModule__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$umH0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
+    /*package*/ static final SReferenceLink target$GZN0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
   }
 
   private static final class CONCEPTS {

@@ -21,9 +21,9 @@ public class SwitchGenUtil {
   public SwitchGenUtil() {
   }
   public static Iterable<SNode> getNodes(SNode node) {
-    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.case$31$8), LINKS.expression$zuuG)).sort(new ISelector<SNode, String>() {
+    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.case$tKvS), LINKS.expression$bKRk)).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.StringLiteral$4G), PROPS.value$kiE0);
+        return SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0);
       }
     }, true);
   }
@@ -37,15 +37,15 @@ public class SwitchGenUtil {
     m = MapSequence.fromMap(new HashMap<String, Integer>());
     int index = 0;
     for (SNode e : nodes) {
-      MapSequence.fromMap(m).put(SPropertyOperations.getString(SNodeOperations.cast(e, CONCEPTS.StringLiteral$4G), PROPS.value$kiE0), index++);
+      MapSequence.fromMap(m).put(SPropertyOperations.getString(SNodeOperations.cast(e, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0), index++);
     }
     genContext.putTransientObject("switch" + node.getNodeId().toString(), m);
     return m;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink case$31$8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
-    /*package*/ static final SContainmentLink expression$zuuG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
+    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SContainmentLink expression$bKRk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
   }
 
   private static final class CONCEPTS {
@@ -53,6 +53,6 @@ public class SwitchGenUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

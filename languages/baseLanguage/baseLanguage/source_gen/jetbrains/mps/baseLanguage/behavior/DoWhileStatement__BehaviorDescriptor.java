@@ -31,12 +31,12 @@ public final class DoWhileStatement__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$h1yE)) {
+    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$fJMm)) {
       return null;
     }
     if (value) {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.body$OFes) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.body$OFes), false);
+      if (SLinkOperations.getTarget(__thisNode__, LINKS.body$wVZ$) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.body$wVZ$), false);
       } else {
         return NextProgramPoint.continueAt(__thisNode__, true);
       }
@@ -92,7 +92,7 @@ public final class DoWhileStatement__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$h1yE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, 0x11232679422L, "condition");
-    /*package*/ static final SContainmentLink body$OFes = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink condition$fJMm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, 0x11232679422L, "condition");
+    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
   }
 }

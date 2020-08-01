@@ -75,7 +75,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
   }
 
   private void processStreams(Iterable<String> names, SModelData into) throws ModelLoadException {
-    SContainmentLink containmentOfProperties = LINKS.properties$F1qm;
+    SContainmentLink containmentOfProperties = LINKS.properties$PFKE;
     for (String fileName : names) {
       Set<SNode> oldNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), MapSequence.fromMap(myRootsPerFile).get(fileName));
       try {
@@ -151,13 +151,13 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
 
   private static SNode createPropertyCollection_fmf8ck_a0c0b0b0b0m(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PropertyCollection$cr);
-    n0.setProperty(PROPS.name$tAp1, p0);
+    n0.setProperty(PROPS.name$lA7v, p0);
     return n0.getResult();
   }
   private static SNode createProperty_fmf8ck_a0c0a1a6a1a1a1a21(String p0, String p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Property$dS);
-    n0.setProperty(PROPS.name$tAp1, p0);
-    n0.setProperty(PROPS.value$EV4Y, p1);
+    n0.setProperty(PROPS.name$lA7v, p0);
+    n0.setProperty(PROPS.value$MBq2, p1);
     return n0.getResult();
   }
   public static String trim_fmf8ck_a0a0a0b0g0b0b0b0m(String str) {
@@ -168,7 +168,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink properties$F1qm = MetaAdapterFactory.getContainmentLink(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46eeL, 0x4d8762f6d73a4730L, "properties");
+    /*package*/ static final SContainmentLink properties$PFKE = MetaAdapterFactory.getContainmentLink(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46eeL, 0x4d8762f6d73a4730L, "properties");
   }
 
   private static final class CONCEPTS {
@@ -177,7 +177,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$EV4Y = MetaAdapterFactory.getProperty(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46f1L, 0x4d8762f6d73a46f4L, "value");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$MBq2 = MetaAdapterFactory.getProperty(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46f1L, 0x4d8762f6d73a46f4L, "value");
   }
 }

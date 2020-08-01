@@ -84,12 +84,12 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
   }
   private static SNode createNodePointerExpression_vfdyfl_a0a0a0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
-    n0.forChild(LINKS.ref$Xkjz).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+    n0.forChild(LINKS.ref$GPtX).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
     return n0.getResult();
   }
   private static SNode createNodePointerExpression_vfdyfl_a0a1a0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
-    n0.forChild(LINKS.ref$Xkjz).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+    n0.forChild(LINKS.ref$GPtX).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
     return n0.getResult();
   }
 
@@ -104,6 +104,6 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ref$Xkjz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
+    /*package*/ static final SContainmentLink ref$GPtX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
   }
 }

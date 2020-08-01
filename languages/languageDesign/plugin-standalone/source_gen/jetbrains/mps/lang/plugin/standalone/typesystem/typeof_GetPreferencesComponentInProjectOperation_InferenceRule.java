@@ -22,7 +22,7 @@ public class typeof_GetPreferencesComponentInProjectOperation_InferenceRule exte
     {
       SNode _nodeToCheck_1029348928467 = operation;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "681855071694758186", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "681855071694758194", true), (SNode) IClassifier__BehaviorDescriptor.createType_idhEwJimy.invoke(SLinkOperations.getTarget(operation, LINKS.componentDeclaration$ho40)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "681855071694758194", true), (SNode) IClassifier__BehaviorDescriptor.createType_idhEwJimy.invoke(SLinkOperations.getTarget(operation, LINKS.componentDeclaration$qDW0)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,7 +36,7 @@ public class typeof_GetPreferencesComponentInProjectOperation_InferenceRule exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink componentDeclaration$ho40 = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2118L, 0x9766f9338aa2119L, "componentDeclaration");
+    /*package*/ static final SReferenceLink componentDeclaration$qDW0 = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2118L, 0x9766f9338aa2119L, "componentDeclaration");
   }
 
   private static final class CONCEPTS {

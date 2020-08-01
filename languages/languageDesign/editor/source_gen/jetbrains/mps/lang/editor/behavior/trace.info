@@ -46,7 +46,7 @@
       <node id="1022705369068700931" at="70,14,71,58" concept="21" />
       <node id="1022705369068700931" at="77,48,78,22" concept="13" />
       <node id="1022705369068700931" at="83,40,84,19" concept="13" />
-      <node id="1022705369068700931" at="88,0,89,0" concept="16" trace="family$ktrw" />
+      <node id="1022705369068700931" at="88,0,89,0" concept="16" trace="family$Ugkw" />
       <node id="1022705369068700931" at="31,0,33,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1022705369068700931" at="41,0,43,0" concept="3" trace="FontFamilyContainer__BehaviorDescriptor#()V" />
       <node id="1022705369068719142" at="34,85,37,5" concept="10" />
@@ -144,10 +144,10 @@
       <node id="1213877183870" at="122,14,123,58" concept="21" />
       <node id="1213877183870" at="129,48,130,22" concept="13" />
       <node id="1213877183870" at="135,40,136,19" concept="13" />
-      <node id="1213877183870" at="140,0,141,0" concept="16" trace="relationDeclaration$wbRV" />
-      <node id="1213877183870" at="141,0,142,0" concept="16" trace="target$egp8" />
-      <node id="1213877183870" at="145,0,146,0" concept="16" trace="role$r_O$" />
-      <node id="1213877183870" at="146,0,147,0" concept="16" trace="metaClass$tHD7" />
+      <node id="1213877183870" at="140,0,141,0" concept="16" trace="relationDeclaration$_K5_" />
+      <node id="1213877183870" at="141,0,142,0" concept="16" trace="target$TWaS" />
+      <node id="1213877183870" at="145,0,146,0" concept="16" trace="role$nkts" />
+      <node id="1213877183870" at="146,0,147,0" concept="16" trace="metaClass$p6Up" />
       <node id="1213877183870" at="150,0,151,0" concept="16" trace="AbstractConceptDeclaration$UN" />
       <node id="1213877183870" at="151,0,152,0" concept="16" trace="CellModel_RefCell$VD" />
       <node id="1213877183870" at="48,0,50,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -300,7 +300,7 @@
       <node id="1213877280244" at="124,0,125,0" concept="16" trace="CellMenuPart_ReplaceChild_currentChild$Bk" />
       <node id="1213877280244" at="125,0,126,0" concept="16" trace="CellMenuPart_AbstractGroup_parameterObject$RF" />
       <node id="1213877280244" at="126,0,127,0" concept="16" trace="CellMenuPart_ReplaceChild_defaultConceptOfChild$jv" />
-      <node id="1213877280244" at="130,0,131,0" concept="16" trace="target$egp8" />
+      <node id="1213877280244" at="130,0,131,0" concept="16" trace="target$TWaS" />
       <node id="1213877280244" at="38,0,40,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877280244" at="62,0,64,0" concept="3" trace="CellMenuPart_ReplaceChild_Group_Create__BehaviorDescriptor#()V" />
       <node id="1213877280247" at="41,89,44,5" concept="10" />
@@ -406,8 +406,8 @@
       <node id="1213877296560" at="87,14,88,58" concept="21" />
       <node id="1213877296560" at="94,48,95,22" concept="13" />
       <node id="1213877296560" at="100,40,101,19" concept="13" />
-      <node id="1213877296560" at="105,0,106,0" concept="16" trace="editorComponent$AnLw" />
-      <node id="1213877296560" at="109,0,110,0" concept="16" trace="name$tAp1" />
+      <node id="1213877296560" at="105,0,106,0" concept="16" trace="editorComponent$_wYw" />
+      <node id="1213877296560" at="109,0,110,0" concept="16" trace="name$lA7v" />
       <node id="1213877296560" at="36,0,38,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877296560" at="52,0,54,0" concept="3" trace="CellModel_Component__BehaviorDescriptor#()V" />
       <node id="1213877296560" at="39,0,42,0" concept="17" trace="getDefaultCellId_id3VYF6qfIQs_#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -518,8 +518,8 @@
       <node id="1213877309981" at="105,14,106,58" concept="21" />
       <node id="1213877309981" at="112,48,113,22" concept="13" />
       <node id="1213877309981" at="118,40,119,19" concept="13" />
-      <node id="1213877309981" at="123,0,124,0" concept="16" trace="relationDeclaration$wbRV" />
-      <node id="1213877309981" at="127,0,128,0" concept="16" trace="name$tAp1" />
+      <node id="1213877309981" at="123,0,124,0" concept="16" trace="relationDeclaration$_K5_" />
+      <node id="1213877309981" at="127,0,128,0" concept="16" trace="name$lA7v" />
       <node id="1213877309981" at="39,0,41,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877309981" at="64,0,66,0" concept="3" trace="CellModel_Property__BehaviorDescriptor#()V" />
       <node id="1213877309981" at="42,0,45,0" concept="17" trace="getRoleForCell_idhGPLstu#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -789,7 +789,7 @@
       <node id="1213877323455" at="131,0,132,0" concept="16" trace="CellMenuPart_ReplaceChild_currentChild$Bk" />
       <node id="1213877323455" at="132,0,133,0" concept="16" trace="CellMenuPart_ReplaceChild_defaultChildConcept$X3" />
       <node id="1213877323455" at="133,0,134,0" concept="16" trace="CellMenuPart_ReplaceChild_defaultConceptOfChild$jv" />
-      <node id="1213877323455" at="137,0,138,0" concept="16" trace="parameterObjectType$tUfN" />
+      <node id="1213877323455" at="137,0,138,0" concept="16" trace="parameterObjectType$vdDH" />
       <node id="1213877323455" at="37,0,39,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877323455" at="58,0,60,0" concept="3" trace="CellMenuPart_ReplaceChild_Group_Query__BehaviorDescriptor#()V" />
       <node id="1213877323471" at="42,104,45,5" concept="10" />
@@ -993,10 +993,10 @@
       <node id="1213877341316" at="123,14,124,58" concept="21" />
       <node id="1213877341316" at="130,48,131,22" concept="13" />
       <node id="1213877341316" at="136,40,137,19" concept="13" />
-      <node id="1213877341316" at="141,0,142,0" concept="16" trace="relationDeclaration$wbRV" />
-      <node id="1213877341316" at="142,0,143,0" concept="16" trace="emptyCellModel$GqNr" />
-      <node id="1213877341316" at="143,0,144,0" concept="16" trace="target$egp8" />
-      <node id="1213877341316" at="147,0,148,0" concept="16" trace="role$r_O$" />
+      <node id="1213877341316" at="141,0,142,0" concept="16" trace="relationDeclaration$_K5_" />
+      <node id="1213877341316" at="142,0,143,0" concept="16" trace="emptyCellModel$wYU5" />
+      <node id="1213877341316" at="143,0,144,0" concept="16" trace="target$TWaS" />
+      <node id="1213877341316" at="147,0,148,0" concept="16" trace="role$nkts" />
       <node id="1213877341316" at="151,0,152,0" concept="16" trace="AbstractConceptDeclaration$UN" />
       <node id="1213877341316" at="152,0,153,0" concept="16" trace="LinkDeclaration$bA" />
       <node id="1213877341316" at="153,0,154,0" concept="16" trace="CellModel_RefNode$Ox" />
@@ -1142,16 +1142,16 @@
       <node id="1213877342152" at="130,14,131,58" concept="21" />
       <node id="1213877342152" at="137,48,138,22" concept="13" />
       <node id="1213877342152" at="143,40,144,19" concept="13" />
-      <node id="1213877342152" at="148,0,149,0" concept="16" trace="emptyCellModel$63iz" />
-      <node id="1213877342152" at="149,0,150,0" concept="16" trace="relationDeclaration$wbRV" />
-      <node id="1213877342152" at="150,0,151,0" concept="16" trace="target$egp8" />
-      <node id="1213877342152" at="151,0,152,0" concept="16" trace="cellLayout$63td" />
+      <node id="1213877342152" at="148,0,149,0" concept="16" trace="emptyCellModel$V_YX" />
+      <node id="1213877342152" at="149,0,150,0" concept="16" trace="relationDeclaration$_K5_" />
+      <node id="1213877342152" at="150,0,151,0" concept="16" trace="target$TWaS" />
+      <node id="1213877342152" at="151,0,152,0" concept="16" trace="cellLayout$VF9j" />
       <node id="1213877342152" at="155,0,156,0" concept="16" trace="AbstractConceptDeclaration$UN" />
       <node id="1213877342152" at="156,0,157,0" concept="16" trace="LinkDeclaration$bA" />
       <node id="1213877342152" at="157,0,158,0" concept="16" trace="CellModel_ListWithRole$Pv" />
       <node id="1213877342152" at="158,0,159,0" concept="16" trace="CellLayout_Vertical$vP" />
       <node id="1213877342152" at="159,0,160,0" concept="16" trace="CellLayout_Indent$tI" />
-      <node id="1213877342152" at="163,0,164,0" concept="16" trace="role$r_O$" />
+      <node id="1213877342152" at="163,0,164,0" concept="16" trace="role$nkts" />
       <node id="1213877342152" at="46,0,48,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877342152" at="91,0,93,0" concept="3" trace="CellModel_RefNodeList__BehaviorDescriptor#()V" />
       <node id="3103463882977876419" at="56,0,59,5" concept="10" />
@@ -1277,7 +1277,7 @@
       <node id="1213877372456" at="115,14,116,58" concept="21" />
       <node id="1213877372456" at="122,48,123,22" concept="13" />
       <node id="1213877372456" at="128,40,129,19" concept="13" />
-      <node id="1213877372456" at="133,0,134,0" concept="16" trace="conceptDeclaration$sbgS" />
+      <node id="1213877372456" at="133,0,134,0" concept="16" trace="conceptDeclaration$Dtb8" />
       <node id="1213877372456" at="137,0,138,0" concept="16" trace="PropertyDeclaration$c5" />
       <node id="1213877372456" at="138,0,139,0" concept="16" trace="LinkDeclaration$bA" />
       <node id="1213877372456" at="139,0,140,0" concept="16" trace="ReferenceLinkDeclartionScopeKind$yb" />
@@ -1285,8 +1285,8 @@
       <node id="1213877372456" at="141,0,142,0" concept="16" trace="EditorComponentDeclaration$Lb" />
       <node id="1213877372456" at="142,0,143,0" concept="16" trace="AbstractConceptDeclaration$UN" />
       <node id="1213877372456" at="143,0,144,0" concept="16" trace="ScopeProvider$M8" />
-      <node id="1213877372456" at="147,0,148,0" concept="16" trace="name$tAp1" />
-      <node id="1213877372456" at="148,0,149,0" concept="16" trace="role$r_O$" />
+      <node id="1213877372456" at="147,0,148,0" concept="16" trace="name$lA7v" />
+      <node id="1213877372456" at="148,0,149,0" concept="16" trace="role$nkts" />
       <node id="1213877372456" at="41,0,43,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877372456" at="86,0,88,0" concept="3" trace="BaseEditorComponent__BehaviorDescriptor#()V" />
       <node id="7348800710866336730" at="76,5,79,5" concept="10" />
@@ -1471,11 +1471,11 @@
       <node id="1219420129206" at="161,77,162,80" concept="13" />
       <node id="1219420247316" at="164,82,165,232" concept="12" />
       <node id="1219420255414" at="166,30,167,18" concept="13" />
-      <node id="1219420257265" at="168,5,169,69" concept="13" />
+      <node id="1219420257265" at="168,5,169,70" concept="13" />
       <node id="1241444783108" at="171,103,172,232" concept="12" />
       <node id="1241444829049" at="173,30,174,204" concept="6" />
       <node id="1241445352935" at="174,204,175,115" concept="6" />
-      <node id="1241444858162" at="176,5,177,70" concept="6" />
+      <node id="1241444858162" at="176,5,177,71" concept="6" />
       <node id="1225468896184" at="180,30,181,18" concept="13" />
       <node id="1225468896193" at="185,13,186,176" concept="13" />
       <node id="1225470030423" at="187,45,188,22" concept="13" />
@@ -1514,7 +1514,7 @@
       <node id="1220340136450" at="265,85,266,23" concept="12" />
       <node id="1220340167221" at="267,91,268,20" concept="6" />
       <node id="1220340264476" at="269,5,270,35" concept="12" />
-      <node id="1220340323580" at="271,233,272,28" concept="6" />
+      <node id="1220340323580" at="271,234,272,28" concept="6" />
       <node id="1220340268934" at="274,232,275,28" concept="6" />
       <node id="1220340286623" at="277,25,278,20" concept="6" />
       <node id="1220340389068" at="280,120,281,20" concept="6" />
@@ -1525,7 +1525,7 @@
       <node id="1229948612803" at="294,89,295,17" concept="13" />
       <node id="1237383471002" at="297,132,298,197" concept="12" />
       <node id="1237383498346" at="299,25,300,26" concept="13" />
-      <node id="1237383504258" at="301,5,302,64" concept="13" />
+      <node id="1237383504258" at="301,5,302,65" concept="13" />
       <node id="1237383530267" at="304,79,305,177" concept="13" />
       <node id="1237385424175" at="307,81,308,179" concept="13" />
       <node id="1237383545640" at="310,80,311,176" concept="13" />
@@ -1576,23 +1576,23 @@
       <node id="1213877386047" at="424,48,425,22" concept="13" />
       <node id="1213877386047" at="430,40,431,19" concept="13" />
       <node id="4323500428134085197" at="433,55,434,43" concept="13" />
-      <node id="1213877386047" at="438,0,439,0" concept="16" trace="id$8c7F" />
-      <node id="1213877386047" at="439,0,440,0" concept="16" trace="inspectedCellModel$3S0d" />
-      <node id="1213877386047" at="440,0,441,0" concept="16" trace="parentStyleClass$H$F1" />
-      <node id="1213877386047" at="441,0,442,0" concept="16" trace="styleItem$$mEY" />
-      <node id="1213877386047" at="442,0,443,0" concept="16" trace="query$o5Tm" />
-      <node id="1213877386047" at="443,0,444,0" concept="16" trace="renderingCondition$P9Ly" />
-      <node id="1213877386047" at="444,0,445,0" concept="16" trace="actionMap$hbq5" />
-      <node id="1213877386047" at="445,0,446,0" concept="16" trace="menuDescriptor$6S7z" />
-      <node id="1213877386047" at="446,0,447,0" concept="16" trace="keyMap$Bdn" />
-      <node id="1213877386047" at="447,0,448,0" concept="16" trace="elementMenuDescriptor$waYV" />
-      <node id="1213877386047" at="451,0,452,0" concept="16" trace="name$tAp1" />
-      <node id="1213877386047" at="452,0,453,0" concept="16" trace="flag$7rl" />
-      <node id="1213877386047" at="453,0,454,0" concept="16" trace="color$cEqb" />
-      <node id="1213877386047" at="454,0,455,0" concept="16" trace="underlined$8qgz" />
-      <node id="1213877386047" at="455,0,456,0" concept="16" trace="value$ig$N" />
-      <node id="1213877386047" at="456,0,457,0" concept="16" trace="style$Ncgx" />
-      <node id="1213877386047" at="457,0,458,0" concept="16" trace="attractsFocus$V6CQ" />
+      <node id="1213877386047" at="438,0,439,0" concept="16" trace="id$XRHP" />
+      <node id="1213877386047" at="439,0,440,0" concept="16" trace="inspectedCellModel$S86j" />
+      <node id="1213877386047" at="440,0,441,0" concept="16" trace="parentStyleClass$4KPv" />
+      <node id="1213877386047" at="441,0,442,0" concept="16" trace="styleItem$AYO2" />
+      <node id="1213877386047" at="442,0,443,0" concept="16" trace="query$EQLE" />
+      <node id="1213877386047" at="443,0,444,0" concept="16" trace="renderingCondition$JIZu" />
+      <node id="1213877386047" at="444,0,445,0" concept="16" trace="actionMap$kxCr" />
+      <node id="1213877386047" at="445,0,446,0" concept="16" trace="menuDescriptor$lbDX" />
+      <node id="1213877386047" at="446,0,447,0" concept="16" trace="keyMap$iZu9" />
+      <node id="1213877386047" at="447,0,448,0" concept="16" trace="elementMenuDescriptor$_ku_" />
+      <node id="1213877386047" at="451,0,452,0" concept="16" trace="name$lA7v" />
+      <node id="1213877386047" at="452,0,453,0" concept="16" trace="flag$3Afb" />
+      <node id="1213877386047" at="453,0,454,0" concept="16" trace="color$8yFl" />
+      <node id="1213877386047" at="454,0,455,0" concept="16" trace="underlined$4I0X" />
+      <node id="1213877386047" at="455,0,456,0" concept="16" trace="value$Q1OH" />
+      <node id="1213877386047" at="456,0,457,0" concept="16" trace="style$MVZZ" />
+      <node id="1213877386047" at="457,0,458,0" concept="16" trace="attractsFocus$CdMa" />
       <node id="1213877386047" at="461,0,462,0" concept="16" trace="INamedConcept$nV" />
       <node id="1213877386047" at="462,0,463,0" concept="16" trace="ConceptEditorDeclaration$s6" />
       <node id="1213877386047" at="463,0,464,0" concept="16" trace="EditorComponentDeclaration$Lb" />
@@ -1720,7 +1720,7 @@
       <scope id="1220339714060" at="259,83,260,14" />
       <scope id="1220339738646" at="262,83,263,14" />
       <scope id="1220340158030" at="267,91,268,20" />
-      <scope id="1220340318569" at="271,233,272,28" />
+      <scope id="1220340318569" at="271,234,272,28" />
       <scope id="1220340174405" at="274,232,275,28" />
       <scope id="1220340274784" at="277,25,278,20" />
       <scope id="1220340378220" at="280,120,281,20" />
@@ -1873,7 +1873,7 @@
         <var name="result" id="1216811688237" />
       </scope>
       <scope id="8288068497640838574" at="133,45,138,7" />
-      <scope id="1219420196675" at="164,82,169,69">
+      <scope id="1219420196675" at="164,82,169,70">
         <var name="firstItem" id="1219420247317" />
       </scope>
       <scope id="1225468896192" at="184,150,189,9" />
@@ -1886,12 +1886,12 @@
       <scope id="1221216397368" at="233,77,238,71">
         <var name="firstItem" id="1221216423620" />
       </scope>
-      <scope id="1237383442525" at="297,132,302,64">
+      <scope id="1237383442525" at="297,132,302,65">
         <var name="item" id="1237383471003" />
       </scope>
       <scope id="1213877386047" at="422,0,427,0" />
       <scope id="1213877386047" at="428,0,433,0" />
-      <scope id="1241444765329" at="171,103,177,70">
+      <scope id="1241444765329" at="171,103,177,71">
         <var name="firstItem" id="1241444783109" />
       </scope>
       <scope id="1213877386047" at="81,0,88,0">
@@ -2041,7 +2041,7 @@
       <node id="1213877438486" at="122,0,123,0" concept="16" trace="ConceptFunctionParameter_model$i4" />
       <node id="1213877438486" at="123,0,124,0" concept="16" trace="CellMenuPart_Abstract_editedNode$AC" />
       <node id="1213877438486" at="124,0,125,0" concept="16" trace="CellMenuPart_ReplaceChild_defaultConceptOfChild$jv" />
-      <node id="1213877438486" at="128,0,129,0" concept="16" trace="target$egp8" />
+      <node id="1213877438486" at="128,0,129,0" concept="16" trace="target$TWaS" />
       <node id="1213877438486" at="38,0,40,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877438486" at="61,0,63,0" concept="3" trace="CellMenuPart_ReplaceChild_Item_Create__BehaviorDescriptor#()V" />
       <node id="1213877438489" at="41,89,44,5" concept="10" />
@@ -2152,7 +2152,7 @@
       <node id="1213877510877" at="100,14,101,58" concept="21" />
       <node id="1213877510877" at="107,48,108,22" concept="13" />
       <node id="1213877510877" at="113,40,114,19" concept="13" />
-      <node id="1213877510877" at="118,0,119,0" concept="16" trace="conceptDeclaration$sbgS" />
+      <node id="1213877510877" at="118,0,119,0" concept="16" trace="conceptDeclaration$Dtb8" />
       <node id="1213877510877" at="122,0,123,0" concept="16" trace="ConceptEditorDeclaration$s6" />
       <node id="1213877510877" at="37,0,39,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2970389781192939034" at="58,10,60,5" concept="1" />
@@ -2267,7 +2267,7 @@
       <node id="1213877515584" at="78,14,79,58" concept="21" />
       <node id="1213877515584" at="85,48,86,22" concept="13" />
       <node id="1213877515584" at="91,40,92,19" concept="13" />
-      <node id="1213877515584" at="96,0,97,0" concept="16" trace="name$tAp1" />
+      <node id="1213877515584" at="96,0,97,0" concept="16" trace="name$lA7v" />
       <node id="1213877515584" at="33,0,35,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877515584" at="47,0,49,0" concept="3" trace="StyleSheet__BehaviorDescriptor#()V" />
       <node id="1213877515599" at="37,93,40,5" concept="10" />
@@ -2373,7 +2373,7 @@
       <node id="1213877516036" at="118,0,119,0" concept="16" trace="ConceptFunctionParameter_operationContext$Gv" />
       <node id="1213877516036" at="119,0,120,0" concept="16" trace="CellMenuPart_Abstract_editedNode$AC" />
       <node id="1213877516036" at="120,0,121,0" concept="16" trace="ConceptFunctionParameter_editorContext$k8" />
-      <node id="1213877516036" at="124,0,125,0" concept="16" trace="parameterObjectType$tUfN" />
+      <node id="1213877516036" at="124,0,125,0" concept="16" trace="parameterObjectType$vdDH" />
       <node id="1213877516036" at="37,0,39,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877516036" at="56,0,58,0" concept="3" trace="CellMenuPart_AbstractGroup_Query__BehaviorDescriptor#()V" />
       <node id="1213877516053" at="42,105,45,5" concept="10" />
@@ -3309,7 +3309,7 @@
       <node id="1219409807383" at="108,40,109,19" concept="13" />
       <node id="1219409807383" at="113,0,114,0" concept="16" trace="CellMenuDescriptor$$G" />
       <node id="1219409807383" at="114,0,115,0" concept="16" trace="LinkDeclaration$bA" />
-      <node id="1219409807383" at="118,0,119,0" concept="16" trace="metaClass$tHD7" />
+      <node id="1219409807383" at="118,0,119,0" concept="16" trace="metaClass$p6Up" />
       <node id="1219409807383" at="36,0,38,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1219409807383" at="60,0,62,0" concept="3" trace="CellMenuPart_Abstract__BehaviorDescriptor#()V" />
       <node id="1219409807383" at="39,0,42,0" concept="17" trace="getEditedFeature_idhJEvH7P#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -3421,7 +3421,7 @@
       <node id="1219419899728" at="96,14,97,58" concept="21" />
       <node id="1219419899728" at="103,48,104,22" concept="13" />
       <node id="1219419899728" at="109,40,110,19" concept="13" />
-      <node id="1219419899728" at="114,0,115,0" concept="16" trace="styleItem$$mEY" />
+      <node id="1219419899728" at="114,0,115,0" concept="16" trace="styleItem$AYO2" />
       <node id="1219419899728" at="39,0,41,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1219419899728" at="62,0,64,0" concept="3" trace="IStyleContainer__BehaviorDescriptor#()V" />
       <node id="1219419899728" at="42,0,45,0" concept="17" trace="getParent_idhJF64sU#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -3659,17 +3659,17 @@
       <node id="1220339802197" at="185,14,186,58" concept="21" />
       <node id="1220339802197" at="192,48,193,22" concept="13" />
       <node id="1220339802197" at="198,40,199,19" concept="13" />
-      <node id="1220339802197" at="203,0,204,0" concept="16" trace="cellLayout$usNp" />
-      <node id="1220339802197" at="204,0,205,0" concept="16" trace="usesFoldingCondition$UESv" />
-      <node id="1220339802197" at="205,0,206,0" concept="16" trace="childCellModel$3prw" />
-      <node id="1220339802197" at="206,0,207,0" concept="16" trace="foldedCellModel$YcIy" />
+      <node id="1220339802197" at="203,0,204,0" concept="16" trace="cellLayout$JWT7" />
+      <node id="1220339802197" at="204,0,205,0" concept="16" trace="usesFoldingCondition$qLn1" />
+      <node id="1220339802197" at="205,0,206,0" concept="16" trace="childCellModel$Dkkw" />
+      <node id="1220339802197" at="206,0,207,0" concept="16" trace="foldedCellModel$8ayu" />
       <node id="1220339802197" at="210,0,211,0" concept="16" trace="CellLayout_Vertical$vP" />
       <node id="1220339802197" at="211,0,212,0" concept="16" trace="CellLayout_VerticalGrid$ae" />
       <node id="1220339802197" at="212,0,213,0" concept="16" trace="CellLayout_Horizontal$Ss" />
       <node id="1220339802197" at="213,0,214,0" concept="16" trace="CellLayout_Indent$tI" />
       <node id="1220339802197" at="214,0,215,0" concept="16" trace="CellModel_Collection$CD" />
       <node id="1220339802197" at="215,0,216,0" concept="16" trace="Synchronizeable$94" />
-      <node id="1220339802197" at="219,0,220,0" concept="16" trace="usesFolding$L3QX" />
+      <node id="1220339802197" at="219,0,220,0" concept="16" trace="usesFolding$KRBz" />
       <node id="1220339802197" at="50,0,52,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1237382108946" at="58,10,60,5" concept="1" />
       <node id="1237382128525" at="67,10,69,5" concept="1" />
@@ -4213,9 +4213,9 @@
       <node id="1220342012302" at="99,0,100,0" concept="16" trace="EditorCellModel$5c" />
       <node id="1220342012302" at="100,0,101,0" concept="16" trace="CellMenuComponent$EO" />
       <node id="1220342012302" at="101,0,102,0" concept="16" trace="CellModel_WithRole$8K" />
-      <node id="1220342012302" at="105,0,106,0" concept="16" trace="relationDeclaration$wbRV" />
-      <node id="1220342012302" at="106,0,107,0" concept="16" trace="applicableFeature$h527" />
-      <node id="1220342012302" at="107,0,108,0" concept="16" trace="relationDeclaration$y4$D" />
+      <node id="1220342012302" at="105,0,106,0" concept="16" trace="relationDeclaration$_K5_" />
+      <node id="1220342012302" at="106,0,107,0" concept="16" trace="applicableFeature$hs1p" />
+      <node id="1220342012302" at="107,0,108,0" concept="16" trace="relationDeclaration$wdJR" />
       <node id="1220342012302" at="33,0,35,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1220342066992" at="47,10,49,5" concept="1" />
       <node id="1220342012302" at="52,0,54,0" concept="3" trace="CellMenuDescriptor__BehaviorDescriptor#()V" />
@@ -4638,7 +4638,7 @@
       <node id="1223387360724" at="30,0,31,0" concept="16" trace="BH_METHODS" />
       <node id="1262585326112237472" at="32,63,33,128" concept="12" />
       <node id="1262585326112242113" at="34,21,35,13" concept="13" />
-      <node id="1239623990905" at="36,5,37,88" concept="6" />
+      <node id="1239623990905" at="36,5,37,89" concept="6" />
       <node id="1223387385077" at="40,78,41,16" concept="13" />
       <node id="1223387360724" at="48,114,49,21" concept="6" />
       <node id="1223387360724" at="53,114,54,49" concept="12" />
@@ -4650,7 +4650,7 @@
       <node id="1223387360724" at="73,14,74,58" concept="21" />
       <node id="1223387360724" at="80,48,81,22" concept="13" />
       <node id="1223387360724" at="86,40,87,19" concept="13" />
-      <node id="1223387360724" at="91,0,92,0" concept="16" trace="flag$7rl" />
+      <node id="1223387360724" at="91,0,92,0" concept="16" trace="flag$3Afb" />
       <node id="1223387360724" at="44,0,46,0" concept="3" trace="BooleanStyleSheetItem__BehaviorDescriptor#()V" />
       <node id="1262585326112238730" at="33,128,36,5" concept="10" />
       <node id="1223387360724" at="40,0,43,0" concept="17" trace="useQuery_idhNn$rq2#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -4684,7 +4684,7 @@
         <var name="node" id="1223387360724" />
         <var name="parameters" id="1223387360724" />
       </scope>
-      <scope id="1223387360724" at="32,63,37,88">
+      <scope id="1223387360724" at="32,63,37,89">
         <var name="sa" id="1262585326112237473" />
       </scope>
       <scope id="1223387360724" at="78,0,83,0" />
@@ -4812,7 +4812,7 @@
       <node id="1225463370896" at="72,14,73,58" concept="21" />
       <node id="1225463370896" at="79,48,80,22" concept="13" />
       <node id="1225463370896" at="85,40,86,19" concept="13" />
-      <node id="1225463370896" at="90,0,91,0" concept="16" trace="value$QcLX" />
+      <node id="1225463370896" at="90,0,91,0" concept="16" trace="value$gccz" />
       <node id="1225463370896" at="31,0,33,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1225463370896" at="41,0,43,0" concept="3" trace="RGBColor__BehaviorDescriptor#()V" />
       <node id="1225463370896" at="34,0,37,0" concept="17" trace="isFunction_idhPjjBbV#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -5411,7 +5411,7 @@
       <node id="1239873851199" at="45,80,46,137" concept="13" />
       <node id="1239873867715" at="48,84,49,141" concept="13" />
       <node id="1239873867739" at="51,82,52,215" concept="13" />
-      <node id="4601216887035799536" at="54,90,55,165" concept="13" />
+      <node id="4601216887035799536" at="54,90,55,166" concept="13" />
       <node id="4202667662395160903" at="58,192,59,111" concept="14" />
       <node id="4202667662395160905" at="59,111,60,90" concept="14" />
       <node id="4202667662395160907" at="60,90,61,113" concept="14" />
@@ -5433,15 +5433,15 @@
       <node id="1239873372471" at="109,14,110,58" concept="21" />
       <node id="1239873372471" at="116,48,117,22" concept="13" />
       <node id="1239873372471" at="122,40,123,19" concept="13" />
-      <node id="1239873372471" at="127,0,128,0" concept="16" trace="cellLayout$63td" />
-      <node id="1239873372471" at="128,0,129,0" concept="16" trace="usesFoldingCondition$RAL" />
-      <node id="1239873372471" at="129,0,130,0" concept="16" trace="emptyCellModel$63iz" />
+      <node id="1239873372471" at="127,0,128,0" concept="16" trace="cellLayout$VF9j" />
+      <node id="1239873372471" at="128,0,129,0" concept="16" trace="usesFoldingCondition$qVLJ" />
+      <node id="1239873372471" at="129,0,130,0" concept="16" trace="emptyCellModel$V_YX" />
       <node id="1239873372471" at="133,0,134,0" concept="16" trace="CellLayout_Vertical$vP" />
       <node id="1239873372471" at="134,0,135,0" concept="16" trace="CellLayout_VerticalGrid$ae" />
       <node id="1239873372471" at="135,0,136,0" concept="16" trace="CellLayout_Horizontal$Ss" />
       <node id="1239873372471" at="136,0,137,0" concept="16" trace="AbstractConceptDeclaration$UN" />
       <node id="1239873372471" at="137,0,138,0" concept="16" trace="CellModel_ListWithRole$Pv" />
-      <node id="1239873372471" at="141,0,142,0" concept="16" trace="usesFolding$REMQ" />
+      <node id="1239873372471" at="141,0,142,0" concept="16" trace="usesFolding$XICa" />
       <node id="1239873372471" at="42,0,44,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1239873372471" at="70,0,72,0" concept="3" trace="CellModel_ListWithRole__BehaviorDescriptor#()V" />
       <node id="1239873372471" at="45,0,48,0" concept="17" trace="isVertical_idi2IdWzG#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -5465,7 +5465,7 @@
       <scope id="1239873472751" at="45,80,46,137" />
       <scope id="1239873867714" at="48,84,49,141" />
       <scope id="1239873867738" at="51,82,52,215" />
-      <scope id="4601216887035799535" at="54,90,55,165" />
+      <scope id="4601216887035799535" at="54,90,55,166" />
       <scope id="332515575062761843" at="66,80,67,74" />
       <scope id="1239873372471" at="74,114,75,21" />
       <scope id="1239873372471" at="81,26,82,56" />
@@ -6912,7 +6912,7 @@
       <node id="1597643335227099818" at="66,14,67,58" concept="21" />
       <node id="1597643335227099818" at="73,48,74,22" concept="13" />
       <node id="1597643335227099818" at="79,40,80,19" concept="13" />
-      <node id="1597643335227099818" at="84,0,85,0" concept="16" trace="menuReference$SAAL" />
+      <node id="1597643335227099818" at="84,0,85,0" concept="16" trace="menuReference$qGLJ" />
       <node id="1597643335227099818" at="30,0,32,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1597643335227099818" at="37,0,39,0" concept="3" trace="TransformationMenuContribution__BehaviorDescriptor#()V" />
       <node id="1597643335227099818" at="33,0,36,0" concept="17" trace="getMenuReference_id1quYWAD2_PI#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -7351,7 +7351,7 @@
       <node id="1630016958697286852" at="76,48,77,22" concept="13" />
       <node id="1630016958697286852" at="82,40,83,19" concept="13" />
       <node id="1630016958697286852" at="87,0,88,0" concept="16" trace="IParameterizableMenuPart$eI" />
-      <node id="1630016958697286852" at="91,0,92,0" concept="16" trace="parameterType$wXkw" />
+      <node id="1630016958697286852" at="91,0,92,0" concept="16" trace="parameterType$XGVw" />
       <node id="1630016958697286852" at="32,0,34,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1630016958697286852" at="40,0,42,0" concept="3" trace="QueryFunctionParameter_parameterObject__BehaviorDescriptor#()V" />
       <node id="1630016958697286852" at="50,49,53,5" concept="10" />
@@ -7432,7 +7432,7 @@
       <node id="1630016958697312259" at="77,14,78,58" concept="21" />
       <node id="1630016958697312259" at="84,48,85,22" concept="13" />
       <node id="1630016958697312259" at="90,40,91,19" concept="13" />
-      <node id="1630016958697312259" at="95,0,96,0" concept="16" trace="part$1bCw" />
+      <node id="1630016958697312259" at="95,0,96,0" concept="16" trace="part$$CBw" />
       <node id="1630016958697312259" at="99,0,100,0" concept="16" trace="IMenuPartWithOutputConcept$Tt" />
       <node id="1630016958697312259" at="33,0,35,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1630016958697312259" at="46,0,48,0" concept="3" trace="TransformationMenuPart_Parameterized__BehaviorDescriptor#()V" />
@@ -7520,7 +7520,7 @@
       <node id="1630016958697312870" at="77,14,78,58" concept="21" />
       <node id="1630016958697312870" at="84,48,85,22" concept="13" />
       <node id="1630016958697312870" at="90,40,91,19" concept="13" />
-      <node id="1630016958697312870" at="95,0,96,0" concept="16" trace="part$TSKS" />
+      <node id="1630016958697312870" at="95,0,96,0" concept="16" trace="part$2vF8" />
       <node id="1630016958697312870" at="99,0,100,0" concept="16" trace="IMenuPartWithOutputConcept$Tt" />
       <node id="1630016958697312870" at="33,0,35,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1630016958697312870" at="46,0,48,0" concept="3" trace="SubstituteMenuPart_Parameterized__BehaviorDescriptor#()V" />
@@ -7730,7 +7730,7 @@
       <node id="1630016958697718246" at="24,0,25,0" concept="16" trace="CONCEPT" />
       <node id="1630016958697718246" at="26,0,27,0" concept="16" trace="getApplicableConcept_id1quYWAD4TFX" />
       <node id="1630016958697718246" at="28,0,29,0" concept="16" trace="BH_METHODS" />
-      <node id="1630016958698373345" at="33,92,34,70" concept="13" />
+      <node id="1630016958698373345" at="33,92,34,71" concept="13" />
       <node id="1630016958697718246" at="41,114,42,21" concept="6" />
       <node id="1630016958697718246" at="46,114,47,49" concept="12" />
       <node id="1630016958697718246" at="48,26,49,56" concept="21" />
@@ -7741,7 +7741,7 @@
       <node id="1630016958697718246" at="66,14,67,58" concept="21" />
       <node id="1630016958697718246" at="73,48,74,22" concept="13" />
       <node id="1630016958697718246" at="79,40,80,19" concept="13" />
-      <node id="1630016958697718246" at="84,0,85,0" concept="16" trace="concept$x5r" />
+      <node id="1630016958697718246" at="84,0,85,0" concept="16" trace="concept$g1C5" />
       <node id="1630016958697718246" at="30,0,32,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1630016958697718246" at="37,0,39,0" concept="3" trace="IMenuReference_Default__BehaviorDescriptor#()V" />
       <node id="1630016958697718246" at="33,0,36,0" concept="17" trace="getApplicableConcept_id1quYWAD4TFX#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -7756,7 +7756,7 @@
       <node id="1630016958697718246" at="45,0,58,0" concept="11" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <scope id="1630016958697718246" at="30,63,30,63" />
       <scope id="1630016958697718246" at="37,60,37,60" />
-      <scope id="1630016958698373171" at="33,92,34,70" />
+      <scope id="1630016958698373171" at="33,92,34,71" />
       <scope id="1630016958697718246" at="41,114,42,21" />
       <scope id="1630016958697718246" at="48,26,49,56" />
       <scope id="1630016958697718246" at="52,13,53,70" />
@@ -8000,8 +8000,8 @@
       <node id="1630016958698295267" at="117,14,118,58" concept="21" />
       <node id="1630016958698295267" at="124,48,125,22" concept="13" />
       <node id="1630016958698295267" at="130,40,131,19" concept="13" />
-      <node id="1630016958698295267" at="135,0,136,0" concept="16" trace="conceptDeclaration$acmt" />
-      <node id="1630016958698295267" at="136,0,137,0" concept="16" trace="type$gsXC" />
+      <node id="1630016958698295267" at="135,0,136,0" concept="16" trace="conceptDeclaration$VYS3" />
+      <node id="1630016958698295267" at="136,0,137,0" concept="16" trace="type$Y1Qo" />
       <node id="1630016958698295267" at="140,0,141,0" concept="16" trace="AbstractConceptDeclaration$UN" />
       <node id="1630016958698295267" at="141,0,142,0" concept="16" trace="ScopeProvider$M8" />
       <node id="1630016958698295267" at="142,0,143,0" concept="16" trace="MenuTypeDefault$Sb" />
@@ -8119,7 +8119,7 @@
       <node id="1630016958698449705" at="66,14,67,58" concept="21" />
       <node id="1630016958698449705" at="73,48,74,22" concept="13" />
       <node id="1630016958698449705" at="79,40,80,19" concept="13" />
-      <node id="1630016958698449705" at="84,0,85,0" concept="16" trace="menuReference$N38f" />
+      <node id="1630016958698449705" at="84,0,85,0" concept="16" trace="menuReference$IwZh" />
       <node id="1630016958698449705" at="30,0,32,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1630016958698449705" at="37,0,39,0" concept="3" trace="SubstituteMenu_Contribution__BehaviorDescriptor#()V" />
       <node id="1630016958698449705" at="33,0,36,0" concept="17" trace="getMenuReference_id1quYWAD2_PI#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -8797,7 +8797,7 @@
       <node id="1896914160037421073" at="75,14,76,58" concept="21" />
       <node id="1896914160037421073" at="82,48,83,22" concept="13" />
       <node id="1896914160037421073" at="88,40,89,19" concept="13" />
-      <node id="1896914160037421073" at="93,0,94,0" concept="16" trace="menuReference$X0fw" />
+      <node id="1896914160037421073" at="93,0,94,0" concept="16" trace="menuReference$z7ww" />
       <node id="1896914160037421073" at="97,0,98,0" concept="16" trace="QueryFunctionParameter_pattern$hZ" />
       <node id="1896914160037421073" at="98,0,99,0" concept="16" trace="QueryFunctionParameter_SubstituteMenu_WrappedItem$PJ" />
       <node id="1896914160037421073" at="34,0,36,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -8892,7 +8892,7 @@
       <node id="7782821550199518167" at="100,30,101,228" concept="6" />
       <node id="7782821550199518167" at="101,228,102,24" concept="13" />
       <node id="1896914160037437389" at="106,0,107,0" concept="16" trace="TransformationMenuPart_WrapSubstituteMenu$f1" />
-      <node id="1896914160037437389" at="110,0,111,0" concept="16" trace="menuReference$X0fw" />
+      <node id="1896914160037437389" at="110,0,111,0" concept="16" trace="menuReference$z7ww" />
       <node id="1896914160037437389" at="35,0,37,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1896914160037437389" at="46,0,48,0" concept="3" trace="QueryFunctionParameter_TransformationMenu_CreatedNode__BehaviorDescriptor#()V" />
       <node id="7782821550199516545" at="39,136,42,5" concept="10" />
@@ -9033,18 +9033,18 @@
       <node id="1938068300780663539" at="169,14,170,58" concept="21" />
       <node id="1938068300780663539" at="176,48,177,22" concept="13" />
       <node id="1938068300780663539" at="182,40,183,19" concept="13" />
-      <node id="1938068300780663539" at="187,0,188,0" concept="16" trace="dominates$fqs2" />
-      <node id="1938068300780663539" at="188,0,189,0" concept="16" trace="dominatesStyleClassList$U6hR" />
-      <node id="1938068300780663539" at="189,0,190,0" concept="16" trace="element$VLR9" />
-      <node id="1938068300780663539" at="190,0,191,0" concept="16" trace="styleClass$B_Tb" />
-      <node id="1938068300780663539" at="191,0,192,0" concept="16" trace="styleItem$$mEY" />
-      <node id="1938068300780663539" at="192,0,193,0" concept="16" trace="target$WJAT" />
-      <node id="1938068300780663539" at="193,0,194,0" concept="16" trace="style$pN77" />
+      <node id="1938068300780663539" at="187,0,188,0" concept="16" trace="dominates$tN$Y" />
+      <node id="1938068300780663539" at="188,0,189,0" concept="16" trace="dominatesStyleClassList$92DD" />
+      <node id="1938068300780663539" at="189,0,190,0" concept="16" trace="element$X9Hn" />
+      <node id="1938068300780663539" at="190,0,191,0" concept="16" trace="styleClass$bmGl" />
+      <node id="1938068300780663539" at="191,0,192,0" concept="16" trace="styleItem$AYO2" />
+      <node id="1938068300780663539" at="192,0,193,0" concept="16" trace="target$r3PB" />
+      <node id="1938068300780663539" at="193,0,194,0" concept="16" trace="style$vKsp" />
       <node id="1938068300780663539" at="197,0,198,0" concept="16" trace="StyleClassReference$zy" />
       <node id="1938068300780663539" at="198,0,199,0" concept="16" trace="ApplyStyleClass$CE" />
       <node id="1938068300780663539" at="199,0,200,0" concept="16" trace="StyleClass$qa" />
       <node id="1938068300780663539" at="200,0,201,0" concept="16" trace="StyleSheet$GD" />
-      <node id="1938068300780663539" at="204,0,205,0" concept="16" trace="name$tAp1" />
+      <node id="1938068300780663539" at="204,0,205,0" concept="16" trace="name$lA7v" />
       <node id="1938068300780663539" at="49,0,51,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1938068300780663539" at="128,0,130,0" concept="3" trace="StyleClass__BehaviorDescriptor#()V" />
       <node id="1938068300780663539" at="52,0,55,0" concept="17" trace="hasCycles_id6rIuTvxpF4l#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -9821,8 +9821,8 @@
       <node id="2687536747036610313" at="27,39,28,24" concept="6" />
       <node id="2687536747036614939" at="28,24,29,123" concept="6" />
       <node id="2687536747036624228" at="30,5,31,25" concept="13" />
-      <node id="2807758855639154501" at="35,0,36,0" concept="16" trace="cellActionMap$jBrw" />
-      <node id="2807758855639154501" at="39,0,40,0" concept="16" trace="name$tAp1" />
+      <node id="2807758855639154501" at="35,0,36,0" concept="16" trace="cellActionMap$w6kw" />
+      <node id="2807758855639154501" at="39,0,40,0" concept="16" trace="name$lA7v" />
       <node id="2807758855639157769" at="16,0,19,0" concept="3" trace="ImportCycle#(Ljava/lang/Iterable;)V" />
       <node id="2807758855639807803" at="20,0,23,0" concept="11" trace="getFirstImport#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2687536747036607240" at="26,43,30,5" concept="9" />
@@ -10150,8 +10150,8 @@
       <node id="2970389781192938032" at="240,50,241,82" concept="12" />
       <node id="2970389781192938038" at="241,82,242,231" concept="12" />
       <node id="2970389781192938053" at="242,231,243,74" concept="12" />
-      <node id="2970389781192938059" at="243,74,244,64" concept="6" />
-      <node id="2970389781192938065" at="244,64,245,105" concept="6" />
+      <node id="2970389781192938059" at="243,74,244,65" concept="6" />
+      <node id="2970389781192938065" at="244,65,245,105" concept="6" />
       <node id="2970389781192938076" at="247,38,248,82" concept="12" />
       <node id="2970389781192938082" at="248,82,249,231" concept="12" />
       <node id="2970389781192938097" at="249,231,250,101" concept="6" />
@@ -10211,14 +10211,14 @@
       <node id="2970389781192938668" at="361,7,362,19" concept="13" />
       <node id="2970389781192938670" at="363,5,364,0" concept="15" />
       <node id="2970389781192938671" at="364,0,365,22" concept="13" />
-      <node id="2970389781192937388" at="369,0,370,0" concept="16" trace="name$tAp1" />
-      <node id="2970389781192937388" at="370,0,371,0" concept="16" trace="metaClass$tHD7" />
-      <node id="2970389781192937388" at="371,0,372,0" concept="16" trace="role$r_O$" />
-      <node id="2970389781192937388" at="372,0,373,0" concept="16" trace="text$ZxWw" />
-      <node id="2970389781192937388" at="373,0,374,0" concept="16" trace="labelName$73GX" />
-      <node id="2970389781192937388" at="374,0,375,0" concept="16" trace="flag$7rl" />
-      <node id="2970389781192937388" at="375,0,376,0" concept="16" trace="separatorText$aYq0" />
-      <node id="2970389781192937388" at="376,0,377,0" concept="16" trace="sourceCardinality$$E8z" />
+      <node id="2970389781192937388" at="369,0,370,0" concept="16" trace="name$lA7v" />
+      <node id="2970389781192937388" at="370,0,371,0" concept="16" trace="metaClass$p6Up" />
+      <node id="2970389781192937388" at="371,0,372,0" concept="16" trace="role$nkts" />
+      <node id="2970389781192937388" at="372,0,373,0" concept="16" trace="text$Lsjw" />
+      <node id="2970389781192937388" at="373,0,374,0" concept="16" trace="labelName$qMLz" />
+      <node id="2970389781192937388" at="374,0,375,0" concept="16" trace="flag$3Afb" />
+      <node id="2970389781192937388" at="375,0,376,0" concept="16" trace="separatorText$keA0" />
+      <node id="2970389781192937388" at="376,0,377,0" concept="16" trace="sourceCardinality$Kq8X" />
       <node id="2970389781192937388" at="380,0,381,0" concept="16" trace="IndentLayoutNewLineChildrenStyleClassItem$SG" />
       <node id="2970389781192937388" at="381,0,382,0" concept="16" trace="CellModel_Collection$CD" />
       <node id="2970389781192937388" at="382,0,383,0" concept="16" trace="CellLayout_Indent$tI" />
@@ -10233,16 +10233,16 @@
       <node id="2970389781192937388" at="391,0,392,0" concept="16" trace="CellModel_RefNodeList$IL" />
       <node id="2970389781192937388" at="392,0,393,0" concept="16" trace="CellModel_RefCell$VD" />
       <node id="2970389781192937388" at="393,0,394,0" concept="16" trace="InlineEditorComponent$CM" />
-      <node id="2970389781192937388" at="397,0,398,0" concept="16" trace="cellLayout$usNp" />
-      <node id="2970389781192937388" at="398,0,399,0" concept="16" trace="childCellModel$3prw" />
-      <node id="2970389781192937388" at="399,0,400,0" concept="16" trace="cellModel$3wIV" />
-      <node id="2970389781192937388" at="400,0,401,0" concept="16" trace="styleItem$$mEY" />
-      <node id="2970389781192937388" at="401,0,402,0" concept="16" trace="relationDeclaration$wbRV" />
-      <node id="2970389781192937388" at="402,0,403,0" concept="16" trace="cellLayout$63td" />
-      <node id="2970389781192937388" at="403,0,404,0" concept="16" trace="editorComponent$36e$" />
-      <node id="2970389781192937388" at="404,0,405,0" concept="16" trace="target$egp8" />
-      <node id="2970389781192937388" at="405,0,406,0" concept="16" trace="dataType$fLUl" />
-      <node id="2970389781192937388" at="406,0,407,0" concept="16" trace="specializedLink$3uH0" />
+      <node id="2970389781192937388" at="397,0,398,0" concept="16" trace="cellLayout$JWT7" />
+      <node id="2970389781192937388" at="398,0,399,0" concept="16" trace="childCellModel$Dkkw" />
+      <node id="2970389781192937388" at="399,0,400,0" concept="16" trace="cellModel$GQI_" />
+      <node id="2970389781192937388" at="400,0,401,0" concept="16" trace="styleItem$AYO2" />
+      <node id="2970389781192937388" at="401,0,402,0" concept="16" trace="relationDeclaration$_K5_" />
+      <node id="2970389781192937388" at="402,0,403,0" concept="16" trace="cellLayout$VF9j" />
+      <node id="2970389781192937388" at="403,0,404,0" concept="16" trace="editorComponent$w13s" />
+      <node id="2970389781192937388" at="404,0,405,0" concept="16" trace="target$TWaS" />
+      <node id="2970389781192937388" at="405,0,406,0" concept="16" trace="dataType$Dbgb" />
+      <node id="2970389781192937388" at="406,0,407,0" concept="16" trace="specializedLink$FRN0" />
       <node id="2970389781192937603" at="109,10,111,5" concept="1" />
       <node id="2970389781192937854" at="190,14,192,9" concept="1" />
       <node id="2970389781192937925" at="209,10,211,5" concept="1" />
@@ -13507,7 +13507,7 @@
       <node id="3634216896999238815" at="71,14,72,58" concept="21" />
       <node id="3634216896999238815" at="78,48,79,22" concept="13" />
       <node id="3634216896999238815" at="84,40,85,19" concept="13" />
-      <node id="3634216896999238815" at="89,0,90,0" concept="16" trace="outputConcept$Tr8y" />
+      <node id="3634216896999238815" at="89,0,90,0" concept="16" trace="outputConcept$O98u" />
       <node id="3634216896999238815" at="93,0,94,0" concept="16" trace="ISubstituteMenu$zI" />
       <node id="3634216896999238815" at="32,0,34,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3634216896999238815" at="42,0,44,0" concept="3" trace="AbstractOutputConceptContainerSubstituteMenuPart__BehaviorDescriptor#()V" />
@@ -13744,8 +13744,8 @@
       <node id="3696012239575646494" at="86,14,87,58" concept="21" />
       <node id="3696012239575646494" at="93,48,94,22" concept="13" />
       <node id="3696012239575646494" at="99,40,100,19" concept="13" />
-      <node id="3696012239575646494" at="104,0,105,0" concept="16" trace="relationDeclaration$wbRV" />
-      <node id="3696012239575646494" at="108,0,109,0" concept="16" trace="name$tAp1" />
+      <node id="3696012239575646494" at="104,0,105,0" concept="16" trace="relationDeclaration$_K5_" />
+      <node id="3696012239575646494" at="108,0,109,0" concept="16" trace="name$lA7v" />
       <node id="3696012239575646494" at="35,0,37,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3696012239575646494" at="51,0,53,0" concept="3" trace="CellModel_URL__BehaviorDescriptor#()V" />
       <node id="3696012239575646494" at="38,0,41,0" concept="17" trace="getRoleForCell_idhGPLstu#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -13838,7 +13838,7 @@
       <node id="3861697222582448988" at="66,14,67,58" concept="21" />
       <node id="3861697222582448988" at="73,48,74,22" concept="13" />
       <node id="3861697222582448988" at="79,40,80,19" concept="13" />
-      <node id="3861697222582448988" at="84,0,85,0" concept="16" trace="concept$UyDc" />
+      <node id="3861697222582448988" at="84,0,85,0" concept="16" trace="concept$mLWO" />
       <node id="3861697222582448988" at="30,0,32,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3861697222582448988" at="37,0,39,0" concept="3" trace="SubstituteMenuPart_AddConcept__BehaviorDescriptor#()V" />
       <node id="3861697222582448988" at="33,0,36,0" concept="17" trace="getOutputConcept_id3mnwiBI8ZE2#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -13984,9 +13984,9 @@
       <node id="3961072808173261030" at="95,14,96,58" concept="21" />
       <node id="3961072808173261030" at="102,48,103,22" concept="13" />
       <node id="3961072808173261030" at="108,40,109,19" concept="13" />
-      <node id="3961072808173261030" at="113,0,114,0" concept="16" trace="menuReference$QRij" />
-      <node id="3961072808173261030" at="114,0,115,0" concept="16" trace="link$QLFo" />
-      <node id="3961072808173261030" at="115,0,116,0" concept="16" trace="target$egp8" />
+      <node id="3961072808173261030" at="113,0,114,0" concept="16" trace="menuReference$$LRd" />
+      <node id="3961072808173261030" at="114,0,115,0" concept="16" trace="link$y40C" />
+      <node id="3961072808173261030" at="115,0,116,0" concept="16" trace="target$TWaS" />
       <node id="3961072808173261030" at="119,0,120,0" concept="16" trace="IIncludeSubstituteMenuPart$A$" />
       <node id="3961072808173261030" at="120,0,121,0" concept="16" trace="AbstractConceptDeclaration$UN" />
       <node id="3961072808173261030" at="121,0,122,0" concept="16" trace="SubstituteMenu_Named$J" />
@@ -14272,7 +14272,7 @@
       <node id="3961072808176447909" at="94,14,95,58" concept="21" />
       <node id="3961072808176447909" at="101,48,102,22" concept="13" />
       <node id="3961072808176447909" at="107,40,108,19" concept="13" />
-      <node id="3961072808176447909" at="112,0,113,0" concept="16" trace="menuReference$mfCY" />
+      <node id="3961072808176447909" at="112,0,113,0" concept="16" trace="menuReference$L$Q2" />
       <node id="3961072808176447909" at="116,0,117,0" concept="16" trace="ISubstituteMenu$zI" />
       <node id="3961072808176447909" at="117,0,118,0" concept="16" trace="IIncludeSubstituteMenuPart$A$" />
       <node id="3961072808176447909" at="118,0,119,0" concept="16" trace="AbstractConceptDeclaration$UN" />
@@ -14380,7 +14380,7 @@
       <node id="3961072808176449545" at="81,14,82,58" concept="21" />
       <node id="3961072808176449545" at="88,48,89,22" concept="13" />
       <node id="3961072808176449545" at="94,40,95,19" concept="13" />
-      <node id="3961072808176449545" at="99,0,100,0" concept="16" trace="reference$Othg" />
+      <node id="3961072808176449545" at="99,0,100,0" concept="16" trace="reference$qbmK" />
       <node id="3961072808176449545" at="103,0,104,0" concept="16" trace="QueryFunctionParameter_SubstituteMenu_WrappedItem$PJ" />
       <node id="3961072808176449545" at="35,0,37,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3961072808176449545" at="48,0,50,0" concept="3" trace="SubstituteMenuPart_Wrapper__BehaviorDescriptor#()V" />
@@ -14633,8 +14633,8 @@
       <node id="3982520150125054532" at="76,48,77,22" concept="13" />
       <node id="3982520150125054532" at="82,40,83,19" concept="13" />
       <node id="3982520150125054532" at="87,0,88,0" concept="16" trace="AttributeStyleClassItem$u_" />
-      <node id="3982520150125054532" at="91,0,92,0" concept="16" trace="attribute$g2fs" />
-      <node id="3982520150125054532" at="92,0,93,0" concept="16" trace="valueType$A7Sx" />
+      <node id="3982520150125054532" at="91,0,92,0" concept="16" trace="attribute$L5u$" />
+      <node id="3982520150125054532" at="92,0,93,0" concept="16" trace="valueType$tOnZ" />
       <node id="3982520150125054532" at="33,0,35,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3982520150125054532" at="40,0,42,0" concept="3" trace="QueryFunction_AttributeStyleParameter__BehaviorDescriptor#()V" />
       <node id="3982520150125054532" at="36,0,39,0" concept="17" trace="getExpectedReturnType_idhEwIGRD#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -14718,8 +14718,8 @@
       <node id="3982520150138519998" at="87,14,88,58" concept="21" />
       <node id="3982520150138519998" at="94,48,95,22" concept="13" />
       <node id="3982520150138519998" at="100,40,101,19" concept="13" />
-      <node id="3982520150138519998" at="105,0,106,0" concept="16" trace="defaultValue$fHfJ" />
-      <node id="3982520150138519998" at="106,0,107,0" concept="16" trace="valueType$A7Sx" />
+      <node id="3982520150138519998" at="105,0,106,0" concept="16" trace="defaultValue$AUBL" />
+      <node id="3982520150138519998" at="106,0,107,0" concept="16" trace="valueType$tOnZ" />
       <node id="3982520150138519998" at="110,0,111,0" concept="16" trace="ClassifierType$IZ" />
       <node id="3982520150138519998" at="36,0,38,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3982520150138519998" at="52,0,54,0" concept="3" trace="StyleAttributeDeclaration__BehaviorDescriptor#()V" />
@@ -14818,7 +14818,7 @@
       <node id="4037229630275755085" at="78,14,79,58" concept="21" />
       <node id="4037229630275755085" at="85,48,86,22" concept="13" />
       <node id="4037229630275755085" at="91,40,92,19" concept="13" />
-      <node id="4037229630275755085" at="96,0,97,0" concept="16" trace="name$tAp1" />
+      <node id="4037229630275755085" at="96,0,97,0" concept="16" trace="name$lA7v" />
       <node id="4037229630275755085" at="33,0,35,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4037229630275755085" at="47,0,49,0" concept="3" trace="StyleKeyPack__BehaviorDescriptor#()V" />
       <node id="4037229630275755085" at="36,0,39,0" concept="17" trace="getClassName_id3w77Jl_h9LF#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -14976,7 +14976,7 @@
       <node id="4151393920407069289" at="87,14,88,58" concept="21" />
       <node id="4151393920407069289" at="94,48,95,22" concept="13" />
       <node id="4151393920407069289" at="100,40,101,19" concept="13" />
-      <node id="4151393920407069289" at="105,0,106,0" concept="16" trace="value$kiE0" />
+      <node id="4151393920407069289" at="105,0,106,0" concept="16" trace="value$P2m0" />
       <node id="4151393920407069289" at="109,0,110,0" concept="16" trace="StyleKeyPack$Yl" />
       <node id="4151393920407069289" at="36,0,38,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4151393920407069289" at="52,0,54,0" concept="3" trace="StyleKey__BehaviorDescriptor#()V" />
@@ -15083,7 +15083,7 @@
       <node id="4233361609415255752" at="104,36,105,84" concept="13" />
       <node id="4233361609415255752" at="106,5,107,16" concept="13" />
       <node id="4233361609415247974" at="111,0,112,0" concept="16" trace="TransformationMenuPart_Parameterized$hf" />
-      <node id="4233361609415247974" at="115,0,116,0" concept="16" trace="parameterType$wXkw" />
+      <node id="4233361609415247974" at="115,0,116,0" concept="16" trace="parameterType$XGVw" />
       <node id="4233361609415247974" at="35,0,37,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4233361609415247974" at="45,0,47,0" concept="3" trace="QueryFunction_TransformationMenu_Parameter__BehaviorDescriptor#()V" />
       <node id="4233361609415247974" at="38,0,41,0" concept="17" trace="getExpectedReturnType_idhEwIGRD#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -15286,8 +15286,8 @@
       <node id="4307758654696953526" at="90,228,91,196" concept="6" />
       <node id="4307758654696953526" at="91,196,92,24" concept="13" />
       <node id="4307758654696953014" at="96,0,97,0" concept="16" trace="SubstituteMenuPart_ReferenceScope$po" />
-      <node id="4307758654696953014" at="100,0,101,0" concept="16" trace="reference$w67J" />
-      <node id="4307758654696953014" at="101,0,102,0" concept="16" trace="target$egp8" />
+      <node id="4307758654696953014" at="100,0,101,0" concept="16" trace="reference$yXJL" />
+      <node id="4307758654696953014" at="101,0,102,0" concept="16" trace="target$TWaS" />
       <node id="4307758654696953014" at="35,0,37,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4307758654696953014" at="42,0,44,0" concept="3" trace="QueryFunctionParameter_SubstituteMenu_ReferencedNode__BehaviorDescriptor#()V" />
       <node id="4307758654696953014" at="38,0,41,0" concept="17" trace="getType_id27DJnJtIQ9C#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -15375,7 +15375,7 @@
       <node id="4323500428151580058" at="76,114,77,266" concept="13" />
       <node id="4323500428151054325" at="81,0,82,0" concept="16" trace="EditorCellId$LQ" />
       <node id="4323500428151054325" at="82,0,83,0" concept="16" trace="IConceptAspect$9g" />
-      <node id="4323500428151054325" at="86,0,87,0" concept="16" trace="name$tAp1" />
+      <node id="4323500428151054325" at="86,0,87,0" concept="16" trace="name$lA7v" />
       <node id="2859854489140332472" at="41,0,44,0" concept="11" trace="select#(Ljetbrains/mps/smodel/Language;)Lorg/jetbrains/mps/openapi/model/SModel;" />
       <node id="2859854489140557115" at="45,0,48,0" concept="11" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="2859854489140047972" at="55,67,58,9" concept="10" />
@@ -15891,11 +15891,11 @@
       <node id="5270353093116090438" at="222,14,223,58" concept="21" />
       <node id="5270353093116090438" at="229,48,230,22" concept="13" />
       <node id="5270353093116090438" at="235,40,236,19" concept="13" />
-      <node id="5270353093116090438" at="240,0,241,0" concept="16" trace="applicableConcept$VI7Z" />
-      <node id="5270353093116090438" at="241,0,242,0" concept="16" trace="imports$AMF8" />
-      <node id="5270353093116090438" at="242,0,243,0" concept="16" trace="cellActionMap$jBrw" />
-      <node id="5270353093116090438" at="243,0,244,0" concept="16" trace="selector$zy1K" />
-      <node id="5270353093116090438" at="244,0,245,0" concept="16" trace="item$VI8u" />
+      <node id="5270353093116090438" at="240,0,241,0" concept="16" trace="applicableConcept$VlRx" />
+      <node id="5270353093116090438" at="241,0,242,0" concept="16" trace="imports$MySS" />
+      <node id="5270353093116090438" at="242,0,243,0" concept="16" trace="cellActionMap$w6kw" />
+      <node id="5270353093116090438" at="243,0,244,0" concept="16" trace="selector$duQg" />
+      <node id="5270353093116090438" at="244,0,245,0" concept="16" trace="item$Vm6y" />
       <node id="5270353093116090438" at="248,0,249,0" concept="16" trace="CellActionMapDeclaration$Fh" />
       <node id="5270353093116090438" at="249,0,250,0" concept="16" trace="ScopeProvider$M8" />
       <node id="5270353093116090438" at="62,0,64,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -16114,7 +16114,7 @@
       <node id="5270353093116096534" at="73,14,74,58" concept="21" />
       <node id="5270353093116096534" at="80,48,81,22" concept="13" />
       <node id="5270353093116096534" at="86,40,87,19" concept="13" />
-      <node id="5270353093116096534" at="91,0,92,0" concept="16" trace="applicableConcept$meOh" />
+      <node id="5270353093116096534" at="91,0,92,0" concept="16" trace="applicableConcept$Lbkf" />
       <node id="5270353093116096534" at="31,0,33,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5270353093116096534" at="41,0,43,0" concept="3" trace="CellKeyMapDeclaration__BehaviorDescriptor#()V" />
       <node id="5270353093116096534" at="34,0,37,0" concept="17" trace="getBaseConcept_id2hxg_BDjKM8#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -16199,7 +16199,7 @@
       <node id="5270353093116097657" at="73,14,74,58" concept="21" />
       <node id="5270353093116097657" at="80,48,81,22" concept="13" />
       <node id="5270353093116097657" at="86,40,87,19" concept="13" />
-      <node id="5270353093116097657" at="91,0,92,0" concept="16" trace="conceptDeclaration$sbgS" />
+      <node id="5270353093116097657" at="91,0,92,0" concept="16" trace="conceptDeclaration$Dtb8" />
       <node id="5270353093116097657" at="31,0,33,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5270353093116097657" at="41,0,43,0" concept="3" trace="CellMenuComponent__BehaviorDescriptor#()V" />
       <node id="5270353093116097657" at="34,0,37,0" concept="17" trace="getBaseConcept_id2hxg_BDjKM8#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -16295,9 +16295,9 @@
       <node id="5270353093116097895" at="100,14,101,58" concept="21" />
       <node id="5270353093116097895" at="107,48,108,22" concept="13" />
       <node id="5270353093116097895" at="113,40,114,19" concept="13" />
-      <node id="5270353093116097895" at="118,0,119,0" concept="16" trace="conceptDeclaration$sbgS" />
-      <node id="5270353093116097895" at="119,0,120,0" concept="16" trace="overridenEditorComponent$GNSC" />
-      <node id="5270353093116097895" at="120,0,121,0" concept="16" trace="editorComponent$okXt" />
+      <node id="5270353093116097895" at="118,0,119,0" concept="16" trace="conceptDeclaration$Dtb8" />
+      <node id="5270353093116097895" at="119,0,120,0" concept="16" trace="overridenEditorComponent$H8ro" />
+      <node id="5270353093116097895" at="120,0,121,0" concept="16" trace="editorComponent$M9L3" />
       <node id="5270353093116097895" at="37,0,39,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5270353093116097895" at="64,0,66,0" concept="3" trace="EditorComponentDeclaration__BehaviorDescriptor#()V" />
       <node id="5270353093116097895" at="40,0,43,0" concept="17" trace="getBaseConcept_id2hxg_BDjKM8#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -16574,7 +16574,7 @@
       <node id="540685334799965985" at="76,48,77,22" concept="13" />
       <node id="540685334799965985" at="82,40,83,19" concept="13" />
       <node id="540685334799965985" at="87,0,88,0" concept="16" trace="TransformationMenuVariableDeclaration$Ff" />
-      <node id="540685334799965985" at="91,0,92,0" concept="16" trace="type$pLrO" />
+      <node id="540685334799965985" at="91,0,92,0" concept="16" trace="type$uWuc" />
       <node id="540685334799965985" at="32,0,34,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="540685334799965985" at="40,0,42,0" concept="3" trace="QueryFunction_TransformationMenuVariable_Initializer__BehaviorDescriptor#()V" />
       <node id="540685334799965985" at="50,49,53,5" concept="10" />
@@ -16797,7 +16797,7 @@
       <node id="540685334802085346" at="76,48,77,22" concept="13" />
       <node id="540685334802085346" at="82,40,83,19" concept="13" />
       <node id="540685334802085346" at="87,0,88,0" concept="16" trace="SubstituteMenuVariableDeclaration$vw" />
-      <node id="540685334802085346" at="91,0,92,0" concept="16" trace="type$pLrO" />
+      <node id="540685334802085346" at="91,0,92,0" concept="16" trace="type$uWuc" />
       <node id="540685334802085346" at="32,0,34,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="540685334802085346" at="40,0,42,0" concept="3" trace="QueryFunction_SubstituteMenuVariable_Initializer__BehaviorDescriptor#()V" />
       <node id="540685334802085346" at="50,49,53,5" concept="10" />
@@ -17533,8 +17533,8 @@
       <node id="5944657839039098923" at="76,14,77,58" concept="21" />
       <node id="5944657839039098923" at="83,48,84,22" concept="13" />
       <node id="5944657839039098923" at="89,40,90,19" concept="13" />
-      <node id="5944657839039098923" at="94,0,95,0" concept="16" trace="showInUI$LTH$" />
-      <node id="5944657839039098923" at="95,0,96,0" concept="16" trace="name$tAp1" />
+      <node id="5944657839039098923" at="94,0,95,0" concept="16" trace="showInUI$aX4s" />
+      <node id="5944657839039098923" at="95,0,96,0" concept="16" trace="name$lA7v" />
       <node id="5944657839039098923" at="99,0,100,0" concept="16" trace="ConceptEditorContextHints$aY" />
       <node id="5944657839039098923" at="45,0,47,0" concept="3" trace="ConceptEditorHintDeclaration__BehaviorDescriptor#()V" />
       <node id="5944657839039098923" at="34,0,37,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -17764,7 +17764,7 @@
       <node id="6089045305654944353" at="66,14,67,58" concept="21" />
       <node id="6089045305654944353" at="73,48,74,22" concept="13" />
       <node id="6089045305654944353" at="79,40,80,19" concept="13" />
-      <node id="6089045305654944353" at="84,0,85,0" concept="16" trace="menu$6o5e" />
+      <node id="6089045305654944353" at="84,0,85,0" concept="16" trace="menu$5ExM" />
       <node id="6089045305654944353" at="30,0,32,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6089045305654944353" at="37,0,39,0" concept="3" trace="SubstituteMenuReference_Named__BehaviorDescriptor#()V" />
       <node id="6089045305654944353" at="33,0,36,0" concept="17" trace="getNamedMenu_id1quYWAD2$7e#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -18007,7 +18007,7 @@
       <node id="6524522039911208608" at="93,40,94,19" concept="13" />
       <node id="6524522039911208608" at="98,0,99,0" concept="16" trace="SubstituteMenuVariableDeclaration$vw" />
       <node id="6524522039911208608" at="99,0,100,0" concept="16" trace="ScopeProvider$M8" />
-      <node id="6524522039911208608" at="103,0,104,0" concept="16" trace="variables$GkSh" />
+      <node id="6524522039911208608" at="103,0,104,0" concept="16" trace="variables$u7gf" />
       <node id="6524522039911208608" at="39,0,41,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6524522039911208608" at="51,0,53,0" concept="3" trace="SubstituteMenuPart_Group__BehaviorDescriptor#()V" />
       <node id="6524522039911208608" at="61,49,64,5" concept="10" />
@@ -18174,8 +18174,8 @@
       <node id="6546895743634580755" at="76,14,77,58" concept="21" />
       <node id="6546895743634580755" at="83,48,84,22" concept="13" />
       <node id="6546895743634580755" at="89,40,90,19" concept="13" />
-      <node id="6546895743634580755" at="94,0,95,0" concept="16" trace="outputConceptReference$$wf5" />
-      <node id="6546895743634580755" at="95,0,96,0" concept="16" trace="concept$p8e0" />
+      <node id="6546895743634580755" at="94,0,95,0" concept="16" trace="outputConceptReference$FBjr" />
+      <node id="6546895743634580755" at="95,0,96,0" concept="16" trace="concept$aYM0" />
       <node id="6546895743634580755" at="99,0,100,0" concept="16" trace="ITransformationMenu$lF" />
       <node id="6546895743634580755" at="33,0,35,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6546895743634580755" at="47,0,49,0" concept="3" trace="AbstractOutputConceptContainerTransformationMenuPart__BehaviorDescriptor#()V" />
@@ -18640,7 +18640,7 @@
       <node id="6718020819489960607" at="66,14,67,58" concept="21" />
       <node id="6718020819489960607" at="73,48,74,22" concept="13" />
       <node id="6718020819489960607" at="79,40,80,19" concept="13" />
-      <node id="6718020819489960607" at="84,0,85,0" concept="16" trace="menu$qYc0" />
+      <node id="6718020819489960607" at="84,0,85,0" concept="16" trace="menu$47O0" />
       <node id="6718020819489960607" at="30,0,32,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6718020819489960607" at="37,0,39,0" concept="3" trace="TransformationMenuReference_Named__BehaviorDescriptor#()V" />
       <node id="6718020819489960607" at="33,0,36,0" concept="17" trace="getNamedMenu_id1quYWAD2$7e#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -18813,7 +18813,7 @@
       <node id="6903010549535033320" at="122,5,123,16" concept="13" />
       <node id="6903010549534595055" at="127,0,128,0" concept="16" trace="AbstractConceptDeclaration$UN" />
       <node id="6903010549534595055" at="128,0,129,0" concept="16" trace="TransformationMenu_Named$1E" />
-      <node id="6903010549534595055" at="132,0,133,0" concept="16" trace="menuReference$5IwX" />
+      <node id="6903010549534595055" at="132,0,133,0" concept="16" trace="menuReference$LxXz" />
       <node id="6903010549534595055" at="42,0,44,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6903010549534595055" at="71,0,73,0" concept="3" trace="TransformationMenuPart_IncludeMenu__BehaviorDescriptor#()V" />
       <node id="6903010549534595055" at="67,0,70,0" concept="17" trace="getTargetConcept_id5ZcqSl_NIg2#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -19015,7 +19015,7 @@
       <node id="7055725856388417600" at="66,14,67,58" concept="21" />
       <node id="7055725856388417600" at="73,48,74,22" concept="13" />
       <node id="7055725856388417600" at="79,40,80,19" concept="13" />
-      <node id="7055725856388417600" at="84,0,85,0" concept="16" trace="conceptDeclaration$sbgS" />
+      <node id="7055725856388417600" at="84,0,85,0" concept="16" trace="conceptDeclaration$Dtb8" />
       <node id="7055725856388417600" at="30,0,32,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7055725856388417600" at="37,0,39,0" concept="3" trace="AbstractComponent__BehaviorDescriptor#()V" />
       <node id="7055725856388417600" at="33,0,36,0" concept="17" trace="getConceptDeclaration_id67EYkym$wx3#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -19096,8 +19096,8 @@
       <node id="7055725856388840245" at="98,0,99,0" concept="16" trace="CellModel_RefCell$VD" />
       <node id="7055725856388840245" at="99,0,100,0" concept="16" trace="AbstractConceptDeclaration$UN" />
       <node id="7055725856388840245" at="100,0,101,0" concept="16" trace="InlineEditorComponent$CM" />
-      <node id="7055725856388840245" at="104,0,105,0" concept="16" trace="relationDeclaration$wbRV" />
-      <node id="7055725856388840245" at="105,0,106,0" concept="16" trace="target$egp8" />
+      <node id="7055725856388840245" at="104,0,105,0" concept="16" trace="relationDeclaration$_K5_" />
+      <node id="7055725856388840245" at="105,0,106,0" concept="16" trace="target$TWaS" />
       <node id="7055725856388840245" at="36,0,38,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7055725856388840245" at="49,0,51,0" concept="3" trace="InlineEditorComponent__BehaviorDescriptor#()V" />
       <node id="7055725856388840245" at="39,0,42,0" concept="17" trace="getConceptDeclaration_id67EYkym$wx3#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -19272,8 +19272,8 @@
       <node id="7291101478617146523" at="100,14,101,58" concept="21" />
       <node id="7291101478617146523" at="107,48,108,22" concept="13" />
       <node id="7291101478617146523" at="113,40,114,19" concept="13" />
-      <node id="7291101478617146523" at="118,0,119,0" concept="16" trace="features$645q" />
-      <node id="7291101478617146523" at="119,0,120,0" concept="16" trace="locations$aTw0" />
+      <node id="7291101478617146523" at="118,0,119,0" concept="16" trace="features$VYBA" />
+      <node id="7291101478617146523" at="119,0,120,0" concept="16" trace="locations$hQw0" />
       <node id="7291101478617146523" at="123,0,124,0" concept="16" trace="TransformationMenuSection$H0" />
       <node id="7291101478617146523" at="43,0,45,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7291101478617146523" at="67,0,69,0" concept="3" trace="IExtensibleTransformationMenuPart__BehaviorDescriptor#()V" />
@@ -19531,7 +19531,7 @@
       <node id="7348800710868357963" at="47,41,48,93" concept="12" />
       <node id="7348800710868393474" at="48,93,49,346" concept="13" />
       <node id="7348800710866869604" at="53,0,54,0" concept="16" trace="EditorComponentDeclaration$Lb" />
-      <node id="7348800710866869604" at="57,0,58,0" concept="16" trace="overridenEditorComponent$GNSC" />
+      <node id="7348800710866869604" at="57,0,58,0" concept="16" trace="overridenEditorComponent$H8ro" />
       <node id="7348800710866892497" at="30,0,33,0" concept="3" trace="EditorComponentDeclarationScope#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7348800710867980053" at="38,89,41,9" concept="10" />
       <node id="7348800710866951279" at="26,0,30,0" concept="3" trace="EditorComponentDeclarationScope#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -20073,7 +20073,7 @@
       <node id="7655327340756281165" at="93,40,94,19" concept="13" />
       <node id="7655327340756281165" at="98,0,99,0" concept="16" trace="TransformationMenuVariableDeclaration$Ff" />
       <node id="7655327340756281165" at="99,0,100,0" concept="16" trace="ScopeProvider$M8" />
-      <node id="7655327340756281165" at="103,0,104,0" concept="16" trace="variables$bs8A" />
+      <node id="7655327340756281165" at="103,0,104,0" concept="16" trace="variables$yCaq" />
       <node id="7655327340756281165" at="39,0,41,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7655327340756281165" at="51,0,53,0" concept="3" trace="TransformationMenuPart_Group__BehaviorDescriptor#()V" />
       <node id="7655327340756281165" at="61,49,64,5" concept="10" />
@@ -20477,7 +20477,7 @@
       <node id="772883491827578850" at="92,0,93,0" concept="16" trace="ConceptFunctionParameterCustomize_CompletionItemInformation$Fy" />
       <node id="772883491827578850" at="93,0,94,0" concept="16" trace="ConceptFunctionParameterCustomize_Style$A9" />
       <node id="772883491827578850" at="94,0,95,0" concept="16" trace="CompletionStyling$sP" />
-      <node id="772883491827578850" at="98,0,99,0" concept="16" trace="specificator$U6Kz" />
+      <node id="772883491827578850" at="98,0,99,0" concept="16" trace="specificator$9hwX" />
       <node id="772883491827578850" at="34,0,36,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="772883491827578850" at="45,0,47,0" concept="3" trace="CompletionCustomization_CustomizeFunction__BehaviorDescriptor#()V" />
       <node id="772883491827578850" at="55,49,58,5" concept="10" />
@@ -20727,7 +20727,7 @@
       <node id="772883491827672736" at="91,228,92,196" concept="6" />
       <node id="772883491827672736" at="92,196,93,24" concept="13" />
       <node id="772883491827672287" at="97,0,98,0" concept="16" trace="CompletionStyling$sP" />
-      <node id="772883491827672287" at="101,0,102,0" concept="16" trace="specificator$U6Kz" />
+      <node id="772883491827672287" at="101,0,102,0" concept="16" trace="specificator$9hwX" />
       <node id="772883491827672287" at="35,0,37,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="772883491827672287" at="43,0,45,0" concept="3" trace="ConceptFunctionParameterCustomize_ContextNode__BehaviorDescriptor#()V" />
       <node id="772883491827672287" at="53,49,56,5" concept="10" />
@@ -21148,11 +21148,11 @@
       <node id="7783170064875550262" at="84,14,85,58" concept="21" />
       <node id="7783170064875550262" at="91,48,92,22" concept="13" />
       <node id="7783170064875550262" at="97,40,98,19" concept="13" />
-      <node id="7783170064875550262" at="102,0,103,0" concept="16" trace="matchingText$KPlJ" />
-      <node id="7783170064875550262" at="103,0,104,0" concept="16" trace="editorComponent$36e$" />
-      <node id="7783170064875550262" at="104,0,105,0" concept="16" trace="cellModel$3wIV" />
-      <node id="7783170064875550262" at="105,0,106,0" concept="16" trace="referentPresentation$z_4O" />
-      <node id="7783170064875550262" at="106,0,107,0" concept="16" trace="visibleMatchingText$_Wck" />
+      <node id="7783170064875550262" at="102,0,103,0" concept="16" trace="matchingText$DPxL" />
+      <node id="7783170064875550262" at="103,0,104,0" concept="16" trace="editorComponent$w13s" />
+      <node id="7783170064875550262" at="104,0,105,0" concept="16" trace="cellModel$GQI_" />
+      <node id="7783170064875550262" at="105,0,106,0" concept="16" trace="referentPresentation$eXlc" />
+      <node id="7783170064875550262" at="106,0,107,0" concept="16" trace="visibleMatchingText$o9XG" />
       <node id="7783170064875550262" at="110,0,111,0" concept="16" trace="CellModel_RefCell$VD" />
       <node id="7783170064875550262" at="111,0,112,0" concept="16" trace="CellModel_ReferencePresentation$Wr" />
       <node id="7783170064875550262" at="33,0,35,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -21270,7 +21270,7 @@
       <node id="7806530711846755629" at="125,0,126,0" concept="16" trace="ConceptFunction$Tt" />
       <node id="7806530711846755629" at="126,0,127,0" concept="16" trace="ConceptFunctionParameter_selectedNode$IB" />
       <node id="7806530711846755629" at="127,0,128,0" concept="16" trace="ConceptFunctionParameter_editorContext$k8" />
-      <node id="7806530711846755629" at="131,0,132,0" concept="16" trace="type$bAu$" />
+      <node id="7806530711846755629" at="131,0,132,0" concept="16" trace="type$BCNs" />
       <node id="7806530711846755629" at="37,0,39,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7806530711846755629" at="55,0,57,0" concept="3" trace="QueryFunction_ParametersList__BehaviorDescriptor#()V" />
       <node id="7806530711846849330" at="42,78,45,5" concept="10" />
@@ -22047,7 +22047,7 @@
       <node id="8371900013785948389" at="98,36,99,84" concept="13" />
       <node id="8371900013785948389" at="100,5,101,16" concept="13" />
       <node id="8371900013785948370" at="105,0,106,0" concept="16" trace="SubstituteMenuPart_Parameterized$Ua" />
-      <node id="8371900013785948370" at="109,0,110,0" concept="16" trace="parameterType$wXkw" />
+      <node id="8371900013785948370" at="109,0,110,0" concept="16" trace="parameterType$XGVw" />
       <node id="8371900013785948370" at="34,0,36,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8371900013785948370" at="41,0,43,0" concept="3" trace="QueryFunction_SubstituteMenu_Parameter__BehaviorDescriptor#()V" />
       <node id="8371900013785948370" at="37,0,40,0" concept="17" trace="getExpectedReturnType_idhEwIGRD#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -22418,7 +22418,7 @@
       <node id="8537008540390178105" at="82,48,83,22" concept="13" />
       <node id="8537008540390178105" at="88,40,89,19" concept="13" />
       <node id="8537008540390178105" at="93,0,94,0" concept="16" trace="ConceptFunctionParameter_targetNode$XK" />
-      <node id="8537008540390178105" at="97,0,98,0" concept="16" trace="referenceLink$XROw" />
+      <node id="8537008540390178105" at="97,0,98,0" concept="16" trace="referenceLink$Y2rw" />
       <node id="8537008540390178105" at="34,0,36,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8537008540390178105" at="44,0,46,0" concept="3" trace="TransformationMenuPart_ReferenceMenu__BehaviorDescriptor#()V" />
       <node id="8537008540390178105" at="37,0,40,0" concept="17" trace="getAdditionalFeatureParameters_id6kJcyCQ_bk0#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
@@ -22697,8 +22697,8 @@
       <node id="858085313519752795" at="90,14,91,58" concept="21" />
       <node id="858085313519752795" at="97,48,98,22" concept="13" />
       <node id="858085313519752795" at="103,40,104,19" concept="13" />
-      <node id="858085313519752795" at="108,0,109,0" concept="16" trace="actionId$YSaD" />
-      <node id="858085313519752795" at="109,0,110,0" concept="16" trace="name$tAp1" />
+      <node id="858085313519752795" at="108,0,109,0" concept="16" trace="actionId$td9R" />
+      <node id="858085313519752795" at="109,0,110,0" concept="16" trace="name$lA7v" />
       <node id="858085313519752795" at="37,0,39,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="858085313519752795" at="55,0,57,0" concept="3" trace="CellActionMapImportSelectorByActionId__BehaviorDescriptor#()V" />
       <node id="858085313519752795" at="40,0,43,0" concept="17" trace="getActionId_id3XXPjz_5Jxc#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/language/SEnumerationLiteral;" />
@@ -22795,7 +22795,7 @@
       <node id="858085313522671655" at="67,14,68,58" concept="21" />
       <node id="858085313522671655" at="74,48,75,22" concept="13" />
       <node id="858085313522671655" at="80,40,81,19" concept="13" />
-      <node id="858085313522671655" at="85,0,86,0" concept="16" trace="actionId$TiJc" />
+      <node id="858085313522671655" at="85,0,86,0" concept="16" trace="actionId$K4QO" />
       <node id="858085313522671655" at="31,0,33,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="858085313522671655" at="38,0,40,0" concept="3" trace="CellActionMapItem__BehaviorDescriptor#()V" />
       <node id="858085313522671655" at="34,0,37,0" concept="17" trace="getActionId_idJCy0JrvU0M#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/language/SEnumerationLiteral;" />
@@ -23355,8 +23355,8 @@
       <node id="8979250711609513468" at="134,0,135,0" concept="16" trace="PropertyDeclaration$c5" />
       <node id="8979250711609513468" at="135,0,136,0" concept="16" trace="EditorCellId$LQ" />
       <node id="8979250711609513468" at="136,0,137,0" concept="16" trace="ScopeProvider$M8" />
-      <node id="8979250711609513468" at="140,0,141,0" concept="16" trace="concept$HWFQ" />
-      <node id="8979250711609513468" at="144,0,145,0" concept="16" trace="name$tAp1" />
+      <node id="8979250711609513468" at="140,0,141,0" concept="16" trace="concept$gpfa" />
+      <node id="8979250711609513468" at="144,0,145,0" concept="16" trace="name$lA7v" />
       <node id="8979250711609513468" at="45,0,47,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8979250711609513468" at="80,0,82,0" concept="3" trace="AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor#()V" />
       <node id="4323500428150938089" at="52,46,55,11" concept="10" />
@@ -24163,7 +24163,7 @@
       <node id="9115396979021131995" at="66,14,67,58" concept="21" />
       <node id="9115396979021131995" at="73,48,74,22" concept="13" />
       <node id="9115396979021131995" at="79,40,80,19" concept="13" />
-      <node id="9115396979021131995" at="84,0,85,0" concept="16" trace="conceptDeclaration$UwJH" />
+      <node id="9115396979021131995" at="84,0,85,0" concept="16" trace="conceptDeclaration$lR6N" />
       <node id="9115396979021131995" at="30,0,32,0" concept="17" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="9115396979021131995" at="37,0,39,0" concept="3" trace="CompletionCustomizationContextSpecificator_Concept__BehaviorDescriptor#()V" />
       <node id="9115396979021131995" at="33,0,36,0" concept="17" trace="getConcept_id7U0pk79eiL7#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />

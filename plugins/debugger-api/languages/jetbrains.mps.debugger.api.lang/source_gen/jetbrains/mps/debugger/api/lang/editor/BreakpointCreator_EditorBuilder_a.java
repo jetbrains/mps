@@ -94,7 +94,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.breakpointableConcepts$RElD;
+      return LINKS.breakpointableConcepts$XwuR;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.BreakpointableNodeItem$BI;
@@ -107,7 +107,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(breakpointableConceptsListHandler_q67mwo_b1a.this.getNode(), LINKS.breakpointableConcepts$RElD));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(breakpointableConceptsListHandler_q67mwo_b1a.this.getNode(), LINKS.breakpointableConcepts$XwuR));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -149,7 +149,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink breakpointableConcepts$RElD = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb3a4L, 0x11a2c8c0148e6233L, "breakpointableConcepts");
+    /*package*/ static final SContainmentLink breakpointableConcepts$XwuR = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb3a4L, 0x11a2c8c0148e6233L, "breakpointableConcepts");
   }
 
   private static final class CONCEPTS {

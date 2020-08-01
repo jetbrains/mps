@@ -82,13 +82,13 @@ public class BuildScript_Configuration_RunProfileState implements RunProfileStat
           // It dated back to initial revision, and I see no reason to keep it, assume default target is better. 
           // Perhaps, shall ask user to specify one (or leave it to extra ant options 
           mainTaskName.value = null;
-          undefinedMacro.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(projectNode, LINKS.macros$tpFt), CONCEPTS.BuildFolderMacro$Ok)).where(new IWhereFilter<SNode>() {
+          undefinedMacro.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(projectNode, LINKS.macros$fs33), CONCEPTS.BuildFolderMacro$Ok)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return (SLinkOperations.getTarget(it, LINKS.defaultPath$DdXd) == null);
+              return (SLinkOperations.getTarget(it, LINKS.defaultPath$XKDj) == null);
             }
           }).select(new ISelector<SNode, String>() {
             public String select(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$tAp1);
+              return SPropertyOperations.getString(it, PROPS.name$lA7v);
             }
           }).toListSequence();
         }
@@ -123,11 +123,11 @@ public class BuildScript_Configuration_RunProfileState implements RunProfileStat
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink macros$tpFt = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
-    /*package*/ static final SContainmentLink defaultPath$DdXd = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, 0x668c6cfbafadf0eaL, "defaultPath");
+    /*package*/ static final SContainmentLink macros$fs33 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SContainmentLink defaultPath$XKDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, 0x668c6cfbafadf0eaL, "defaultPath");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

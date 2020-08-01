@@ -82,7 +82,7 @@
       <node id="5365453833390705323" at="48,0,49,0" concept="7" trace="EditorOperationDeclaration$mT" />
       <node id="5365453833390705323" at="49,0,50,0" concept="7" trace="DotExpression$6a" />
       <node id="5365453833390705323" at="50,0,51,0" concept="7" trace="PersistentConfigurationType$e2" />
-      <node id="5365453833390705323" at="54,0,55,0" concept="7" trace="operand$Lcrr" />
+      <node id="5365453833390705323" at="54,0,55,0" concept="7" trace="operand$P1i5" />
       <node id="5365453833390705323" at="22,0,25,0" concept="0" trace="GetEditorOperation_Constraints#()V" />
       <node id="5365453833390705323" at="32,0,35,9" concept="2" />
       <node id="5365453833390705323" at="41,0,44,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -135,8 +135,8 @@
       <node id="946964771156067043" at="87,0,88,0" concept="7" trace="breakingNode_hn11y1_a0a0a0a0a1a0a0a0d" />
       <node id="946964771156067043" at="90,0,91,0" concept="7" trace="TemplateParameterReference$t$" />
       <node id="946964771156067043" at="91,0,92,0" concept="7" trace="PersistentConfigurationTemplate$Kt" />
-      <node id="946964771156067043" at="95,0,96,0" concept="7" trace="variableDeclaration$2ky6" />
-      <node id="946964771156067043" at="96,0,97,0" concept="7" trace="templateParameter$2oGa" />
+      <node id="946964771156067043" at="95,0,96,0" concept="7" trace="variableDeclaration$7WwU" />
+      <node id="946964771156067043" at="96,0,97,0" concept="7" trace="templateParameter$9XoQ" />
       <node id="946964771156067043" at="34,0,37,0" concept="0" trace="TemplateParameterReference_Constraints#()V" />
       <node id="946964771156067043" at="44,0,47,9" concept="2" />
       <node id="6836281137582822914" at="70,147,73,13" concept="2" />
@@ -212,10 +212,10 @@
       <node id="946964771156067088" at="68,0,69,0" concept="7" trace="PersistentPropertyReferenceOperation$I2" />
       <node id="946964771156067088" at="69,0,70,0" concept="7" trace="DotExpression$6a" />
       <node id="946964771156067088" at="70,0,71,0" concept="7" trace="PersistentConfigurationType$e2" />
-      <node id="946964771156067088" at="74,0,75,0" concept="7" trace="variableDeclaration$2ov0" />
-      <node id="946964771156067088" at="75,0,76,0" concept="7" trace="operand$Lcrr" />
-      <node id="946964771156067088" at="76,0,77,0" concept="7" trace="persistentConfiguration$28v0" />
-      <node id="946964771156067088" at="77,0,78,0" concept="7" trace="persistentProperty$2oY0" />
+      <node id="946964771156067088" at="74,0,75,0" concept="7" trace="variableDeclaration$9R10" />
+      <node id="946964771156067088" at="75,0,76,0" concept="7" trace="operand$P1i5" />
+      <node id="946964771156067088" at="76,0,77,0" concept="7" trace="persistentConfiguration$2710" />
+      <node id="946964771156067088" at="77,0,78,0" concept="7" trace="persistentProperty$a620" />
       <node id="946964771156067088" at="30,0,33,0" concept="0" trace="PersistentPropertyReferenceOperation_Constraints#()V" />
       <node id="6836281137582823635" at="52,190,55,13" concept="2" />
       <node id="946964771156067089" at="37,0,41,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -276,8 +276,8 @@
       <node id="946964771156067128" at="98,0,99,0" concept="7" trace="PersistentConfiguration$fY" />
       <node id="946964771156067128" at="99,0,100,0" concept="7" trace="EditorOperationDeclaration$mT" />
       <node id="946964771156067128" at="100,0,101,0" concept="7" trace="TemplatePersistentConfigurationType$ht" />
-      <node id="946964771156067128" at="104,0,105,0" concept="7" trace="persistentPropertyDeclaration$2oKw" />
-      <node id="946964771156067128" at="105,0,106,0" concept="7" trace="type$pLrO" />
+      <node id="946964771156067128" at="104,0,105,0" concept="7" trace="persistentPropertyDeclaration$9Zvw" />
+      <node id="946964771156067128" at="105,0,106,0" concept="7" trace="type$uWuc" />
       <node id="946964771156067128" at="37,0,40,0" concept="0" trace="EditorExpression_Constraints#()V" />
       <node id="946964771156067128" at="47,0,50,9" concept="2" />
       <node id="6836281137582824294" at="74,0,77,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -363,10 +363,10 @@
       <node id="946964771156067148" at="79,0,80,0" concept="7" trace="DotExpression$6a" />
       <node id="946964771156067148" at="80,0,81,0" concept="7" trace="SettingsEditorType$Bn" />
       <node id="946964771156067148" at="81,0,82,0" concept="7" trace="SettingsEditor$MZ" />
-      <node id="946964771156067148" at="85,0,86,0" concept="7" trace="editorOperationDeclaration$2ukY" />
-      <node id="946964771156067148" at="86,0,87,0" concept="7" trace="operand$Lcrr" />
-      <node id="946964771156067148" at="87,0,88,0" concept="7" trace="configuration$2u$w" />
-      <node id="946964771156067148" at="88,0,89,0" concept="7" trace="editor$28x0" />
+      <node id="946964771156067148" at="85,0,86,0" concept="7" trace="editorOperationDeclaration$cGa2" />
+      <node id="946964771156067148" at="86,0,87,0" concept="7" trace="operand$P1i5" />
+      <node id="946964771156067148" at="87,0,88,0" concept="7" trace="configuration$cNFw" />
+      <node id="946964771156067148" at="88,0,89,0" concept="7" trace="editor$27Z0" />
       <node id="946964771156067148" at="35,0,38,0" concept="0" trace="EditorOperationCall_Constraints#()V" />
       <node id="6836281137582823072" at="57,173,60,13" concept="2" />
       <node id="6836281137582823594" at="63,0,66,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -431,8 +431,8 @@
       <node id="946964771156067190" at="81,0,82,0" concept="7" trace="breakingNode_fgw7og_a0a0a0a0a1a0a0a0d" />
       <node id="946964771156067190" at="84,0,85,0" concept="7" trace="EditorPropertyReference$zY" />
       <node id="946964771156067190" at="85,0,86,0" concept="7" trace="SettingsEditor$MZ" />
-      <node id="946964771156067190" at="89,0,90,0" concept="7" trace="variableDeclaration$2ky6" />
-      <node id="946964771156067190" at="90,0,91,0" concept="7" trace="propertyDeclaration$2uMs" />
+      <node id="946964771156067190" at="89,0,90,0" concept="7" trace="variableDeclaration$7WwU" />
+      <node id="946964771156067190" at="90,0,91,0" concept="7" trace="propertyDeclaration$cUr$" />
       <node id="946964771156067190" at="32,0,35,0" concept="0" trace="EditorPropertyReference_Constraints#()V" />
       <node id="946964771156067190" at="42,0,45,9" concept="2" />
       <node id="946964771156067190" at="77,0,80,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

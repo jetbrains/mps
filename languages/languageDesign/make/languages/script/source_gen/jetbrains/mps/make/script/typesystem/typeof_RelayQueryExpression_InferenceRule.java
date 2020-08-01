@@ -26,7 +26,7 @@ public class typeof_RelayQueryExpression_InferenceRule extends AbstractInference
     {
       SNode _nodeToCheck_1029348928467 = rqe;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "1977954644795311540", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "1977954644795311552", true), (SNode) _quotation_createNode_7onn49_a1a0c0a0b(SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(rqe, LINKS.query$hcA9), LINKS.expected$qiXY), CONCEPTS.ExpectedOption$Ga)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "1977954644795311552", true), (SNode) _quotation_createNode_7onn49_a1a0c0a0b(SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(rqe, LINKS.query$l6un), LINKS.expected$Jc12), CONCEPTS.ExpectedOption$Ga)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -47,8 +47,8 @@ public class typeof_RelayQueryExpression_InferenceRule extends AbstractInference
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink query$hcA9 = MetaAdapterFactory.getReferenceLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x1b731b4510dbc59fL, 0x1b731b4510dbc5a2L, "query");
-    /*package*/ static final SContainmentLink expected$qiXY = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc49b2bL, 0x70276038dc4d7c4L, "expected");
+    /*package*/ static final SReferenceLink query$l6un = MetaAdapterFactory.getReferenceLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x1b731b4510dbc59fL, 0x1b731b4510dbc5a2L, "query");
+    /*package*/ static final SContainmentLink expected$Jc12 = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc49b2bL, 0x70276038dc4d7c4L, "expected");
   }
 
   private static final class CONCEPTS {

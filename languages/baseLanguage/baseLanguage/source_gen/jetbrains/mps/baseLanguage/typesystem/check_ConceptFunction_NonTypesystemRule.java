@@ -19,12 +19,12 @@ public class check_ConceptFunction_NonTypesystemRule extends AbstractNonTypesyst
   public check_ConceptFunction_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(nodeToCheck, LINKS.body$pTP2) != null) {
+    if (SLinkOperations.getTarget(nodeToCheck, LINKS.body$z0FY) != null) {
       boolean checkReturns = false;
       if (ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(nodeToCheck) != null && !(SNodeOperations.isInstanceOf(ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(nodeToCheck), CONCEPTS.VoidType$aT))) {
         checkReturns = true;
       }
-      DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$pTP2), checkReturns);
+      DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$z0FY), checkReturns);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -43,6 +43,6 @@ public class check_ConceptFunction_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 }

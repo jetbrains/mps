@@ -82,8 +82,8 @@ public class ClassifierLoader {
       case CLASS:
         lazyRoot = new LazySNode(CONCEPTS.ClassConcept$IY, nodeId);
 
-        SPropertyOperations.assign(SNodeOperations.cast(lazyRoot, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$gY5l, (myClassReader.getAccess() & Opcodes.ACC_ABSTRACT) != 0);
-        SPropertyOperations.assign(SNodeOperations.cast(lazyRoot, CONCEPTS.ClassConcept$IY), PROPS.isFinal$dzaH, (myClassReader.getAccess() & Opcodes.ACC_FINAL) != 0);
+        SPropertyOperations.assign(SNodeOperations.cast(lazyRoot, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$e4_b, (myClassReader.getAccess() & Opcodes.ACC_ABSTRACT) != 0);
+        SPropertyOperations.assign(SNodeOperations.cast(lazyRoot, CONCEPTS.ClassConcept$IY), PROPS.isFinal$$2bN, (myClassReader.getAccess() & Opcodes.ACC_FINAL) != 0);
         break;
       case INTERFACE:
         lazyRoot = new LazySNode(CONCEPTS.Interface$Kp, nodeId);
@@ -99,7 +99,7 @@ public class ClassifierLoader {
 
     }
     SNode rv = SNodeOperations.as(lazyRoot, CONCEPTS.Classifier$hJ);
-    SPropertyOperations.assign(rv, PROPS.name$tAp1, shortName);
+    SPropertyOperations.assign(rv, PROPS.name$lA7v, shortName);
 
     if (myInnerClassDescriptor != null) {
       // static, protected, private are accessible from inner class structure only, 
@@ -108,11 +108,11 @@ public class ClassifierLoader {
       boolean isProtected = (myInnerClassDescriptor.access & Opcodes.ACC_PROTECTED) != 0;
       boolean isPrivate = (myInnerClassDescriptor.access & Opcodes.ACC_PRIVATE) != 0;
       // public, final, abstract are taken from the class, JLS 4.1, table 4.1 
-      SPropertyOperations.assign(rv, PROPS.nonStatic$pNlE, !(isStatic));
+      SPropertyOperations.assign(rv, PROPS.nonStatic$vRvm, !(isStatic));
       if (isProtected) {
-        SLinkOperations.setTarget(rv, LINKS.visibility$2GiC, createProtectedVisibility_eoyrbu_a0a0h0l0o());
+        SLinkOperations.setTarget(rv, LINKS.visibility$jt1o, createProtectedVisibility_eoyrbu_a0a0h0l0o());
       } else if (isPrivate) {
-        SLinkOperations.setTarget(rv, LINKS.visibility$2GiC, createPrivateVisibility_eoyrbu_a0a0a7a11a41());
+        SLinkOperations.setTarget(rv, LINKS.visibility$jt1o, createPrivateVisibility_eoyrbu_a0a0a7a11a41());
       }
     }
     return rv;
@@ -165,7 +165,7 @@ public class ClassifierLoader {
     for (ClassifierLoader innerLoader : getInnerClassifiers(ac)) {
       SNode inner = innerLoader.createClassifier();
       if (inner != null) {
-        ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.member$oYX5)).addElement(inner);
+        ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.member$6v_r)).addElement(inner);
         innerLoader.updateClassifier(inner, refFactory, docSupplier);
       }
     }
@@ -217,14 +217,14 @@ public class ClassifierLoader {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
-    /*package*/ static final SProperty isFinal$dzaH = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty nonStatic$pNlE = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty nonStatic$vRvm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

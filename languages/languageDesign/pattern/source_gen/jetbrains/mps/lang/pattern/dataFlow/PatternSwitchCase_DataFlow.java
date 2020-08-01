@@ -11,10 +11,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PatternSwitchCase_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$6jgq));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$3kWA));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$6jgq = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a9a3416L, 0x10ef02d8048L, "body");
+    /*package*/ static final SContainmentLink body$3kWA = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a9a3416L, 0x10ef02d8048L, "body");
   }
 }

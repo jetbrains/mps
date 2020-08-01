@@ -145,7 +145,7 @@ public class BLC_rtansform extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode mapElement = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.MapElement$_s);
-          SLinkOperations.setTarget(mapElement, LINKS.map$KWLJ, _context.getNode());
+          SLinkOperations.setTarget(mapElement, LINKS.map$Hs5L, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), mapElement, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -157,7 +157,7 @@ public class BLC_rtansform extends TransformationMenuBase {
         }
         @Override
         public SNode getActionType(@NotNull String pattern) {
-          return SLinkOperations.getTarget(mapType, LINKS.valueType$ZdlW);
+          return SLinkOperations.getTarget(mapType, LINKS.valueType$BtC4);
         }
 
 
@@ -185,7 +185,7 @@ public class BLC_rtansform extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink map$KWLJ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea576ac7L, "map");
-    /*package*/ static final SContainmentLink valueType$ZdlW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType");
+    /*package*/ static final SContainmentLink map$Hs5L = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea576ac7L, "map");
+    /*package*/ static final SContainmentLink valueType$BtC4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType");
   }
 }

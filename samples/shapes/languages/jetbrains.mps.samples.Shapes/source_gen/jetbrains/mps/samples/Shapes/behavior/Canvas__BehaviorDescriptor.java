@@ -33,7 +33,7 @@ public final class Canvas__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void interpret_idW6XMzE_6ci(@NotNull SNode __thisNode__) {
-    JFrame frame = new JFrame("Preview: " + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    JFrame frame = new JFrame("Preview: " + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
     final JPanel panel = PreviewFactory.createPanel(__thisNode__);
     frame.add(panel);
     frame.setVisible(true);
@@ -88,6 +88,6 @@ public final class Canvas__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

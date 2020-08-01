@@ -33,39 +33,39 @@ public final class Tokens__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String firstToken_id17WpDCYRWCz(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu) == null) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y) == null) {
       return null;
     }
 
-    int firstDot = SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu).indexOf('.');
+    int firstDot = SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y).indexOf('.');
     if (firstDot < 0) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu);
+      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y);
     } else {
-      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu).substring(0, firstDot);
+      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y).substring(0, firstDot);
     }
   }
   /*package*/ static String lastToken_id17WpDCYLyrY(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu) == null) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y) == null) {
       return null;
     }
 
-    int lastDot = SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu).lastIndexOf('.');
+    int lastDot = SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y).lastIndexOf('.');
     if (lastDot < 0) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu);
+      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y);
     } else {
-      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu).substring(lastDot + 1);
+      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y).substring(lastDot + 1);
     }
   }
   /*package*/ static String withoutLastToken_id5ll4uk6512$(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu) == null) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y) == null) {
       return null;
     }
 
-    int lastDot = SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu).lastIndexOf('.');
+    int lastDot = SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y).lastIndexOf('.');
     if (lastDot < 0) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu);
+      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y);
     } else {
-      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$DqHu).substring(0, lastDot);
+      return SPropertyOperations.getString(__thisNode__, PROPS.tokens$3W1y).substring(0, lastDot);
     }
   }
 
@@ -120,6 +120,6 @@ public final class Tokens__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tokens$DqHu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
+    /*package*/ static final SProperty tokens$3W1y = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
   }
 }

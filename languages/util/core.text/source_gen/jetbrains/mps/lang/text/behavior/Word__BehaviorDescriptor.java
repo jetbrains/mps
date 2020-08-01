@@ -31,20 +31,20 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(normalize_id3yV2h2COV$s, getTextualRepresentation_idfB3l81it7u);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.value$cK70, "");
+    SPropertyOperations.assign(__thisNode__, PROPS.value$bjp0, "");
   }
 
   /*package*/ static SNode normalize_id3yV2h2COV$s(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.value$cK70).contains(" ")) {
-      String[] chunks = SPropertyOperations.getString(__thisNode__, PROPS.value$cK70).split(" ");
+    if (SPropertyOperations.getString(__thisNode__, PROPS.value$bjp0).contains(" ")) {
+      String[] chunks = SPropertyOperations.getString(__thisNode__, PROPS.value$bjp0).split(" ");
       if (chunks.length == 0) {
         return __thisNode__;
       }
-      SPropertyOperations.assign(__thisNode__, PROPS.value$cK70, chunks[0]);
+      SPropertyOperations.assign(__thisNode__, PROPS.value$bjp0, chunks[0]);
       SNode latestWordAdded = __thisNode__;
       for (int i = 1; i < chunks.length; i++) {
         SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
-        SPropertyOperations.assign(w, PROPS.value$cK70, chunks[i]);
+        SPropertyOperations.assign(w, PROPS.value$bjp0, chunks[i]);
         latestWordAdded = SNodeOperations.insertNextSiblingChild(latestWordAdded, w);
       }
       return latestWordAdded;
@@ -52,7 +52,7 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
     return __thisNode__;
   }
   /*package*/ static String getTextualRepresentation_idfB3l81it7u(@NotNull SNode __thisNode__) {
-    return (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$cK70)) ? SPropertyOperations.getString(__thisNode__, PROPS.value$cK70) : "");
+    return (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$bjp0)) ? SPropertyOperations.getString(__thisNode__, PROPS.value$bjp0) : "");
   }
 
   /*package*/ Word__BehaviorDescriptor() {
@@ -107,6 +107,6 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

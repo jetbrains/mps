@@ -60,14 +60,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_wfu8o0_a0a() {
-    return isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.separator$6WSy));
+    return isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.separator$nvou));
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_wfu8o0_1");
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createConstant_1());
-    if (SNodeAccessUtil.hasProperty(myNode, PROPS.separator$6WSy)) {
+    if (SNodeAccessUtil.hasProperty(myNode, PROPS.separator$nvou)) {
       editorCell.addEditorCell(createNonEmptyProperty_0());
     }
     return editorCell;
@@ -87,7 +87,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createNonEmptyProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.separator$6WSy;
+      final SProperty property = PROPS.separator$nvou;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("<no separator>");
@@ -114,7 +114,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty separator$6WSy = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
+    /*package*/ static final SProperty separator$nvou = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
   }
 
   private static final class CONCEPTS {

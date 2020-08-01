@@ -21,17 +21,17 @@ public class ClassifierType_comparableTo_raw_ClassifierType_ComparisonRule exten
   public ClassifierType_comparableTo_raw_ClassifierType_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    if ((ListSequence.fromList(SLinkOperations.getChildren(node1, LINKS.parameter$dQne)).isNotEmpty() ^ ListSequence.fromList(SLinkOperations.getChildren(node2, LINKS.parameter$dQne)).isNotEmpty()) || ListSequence.fromList(SLinkOperations.getChildren(node1, LINKS.parameter$dQne)).all(new IWhereFilter<SNode>() {
+    if ((ListSequence.fromList(SLinkOperations.getChildren(node1, LINKS.parameter$HlfM)).isNotEmpty() ^ ListSequence.fromList(SLinkOperations.getChildren(node2, LINKS.parameter$HlfM)).isNotEmpty()) || ListSequence.fromList(SLinkOperations.getChildren(node1, LINKS.parameter$HlfM)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.WildCardType$29) || SNodeOperations.isInstanceOf(it, CONCEPTS.TypeVariableReference$vZ);
       }
-    }) || ListSequence.fromList(SLinkOperations.getChildren(node2, LINKS.parameter$dQne)).all(new IWhereFilter<SNode>() {
+    }) || ListSequence.fromList(SLinkOperations.getChildren(node2, LINKS.parameter$HlfM)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.WildCardType$29) || SNodeOperations.isInstanceOf(it, CONCEPTS.TypeVariableReference$vZ);
       }
     })) {
       // formatting 
-      return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(node1, LINKS.classifier$pQ_R), SLinkOperations.getTarget(node2, LINKS.classifier$pQ_R)) || (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(node2, LINKS.classifier$pQ_R), SLinkOperations.getTarget(node1, LINKS.classifier$pQ_R));
+      return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(node1, LINKS.classifier$xslD), SLinkOperations.getTarget(node2, LINKS.classifier$xslD)) || (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(node2, LINKS.classifier$xslD), SLinkOperations.getTarget(node1, LINKS.classifier$xslD));
     }
     return false;
   }
@@ -53,8 +53,8 @@ public class ClassifierType_comparableTo_raw_ClassifierType_ComparisonRule exten
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

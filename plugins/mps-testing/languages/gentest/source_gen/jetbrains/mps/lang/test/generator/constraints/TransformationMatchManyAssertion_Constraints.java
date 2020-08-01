@@ -43,8 +43,8 @@ public class TransformationMatchManyAssertion_Constraints extends BaseConstraint
     // this assertion is allowed to reference arguments that point to model only. 
     // FIXME introduce an argument kind to hold collection of models and allow to reference it from referenceModels 
     if (childNode != null && SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.ArgumentReference$Ma)) {
-      if (link.equals(LINKS.inputModel$jHWZ) || link.equals(LINKS.referenceModels$jHXX) || link.equals(LINKS.transformationPlan$lkCw)) {
-        SNode arg = SLinkOperations.getTarget(SNodeOperations.as(childNode, CONCEPTS.ArgumentReference$Ma), LINKS.arg$lkr0);
+      if (link.equals(LINKS.inputModel$zgyx) || link.equals(LINKS.referenceModels$zh0z) || link.equals(LINKS.transformationPlan$kZBw)) {
+        SNode arg = SLinkOperations.getTarget(SNodeOperations.as(childNode, CONCEPTS.ArgumentReference$Ma), LINKS.arg$kT50);
         return (arg == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(arg)), CONCEPTS.ModelArgument$U$);
       }
     }
@@ -59,9 +59,9 @@ public class TransformationMatchManyAssertion_Constraints extends BaseConstraint
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink arg$lkr0 = MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg");
-    /*package*/ static final SContainmentLink inputModel$jHWZ = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d05eL, "inputModel");
-    /*package*/ static final SContainmentLink referenceModels$jHXX = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d060L, "referenceModels");
-    /*package*/ static final SContainmentLink transformationPlan$lkCw = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d063L, "transformationPlan");
+    /*package*/ static final SReferenceLink arg$kT50 = MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg");
+    /*package*/ static final SContainmentLink inputModel$zgyx = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d05eL, "inputModel");
+    /*package*/ static final SContainmentLink referenceModels$zh0z = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x5812b95d667f29d9L, 0x7b1db36ecf0d060L, "referenceModels");
+    /*package*/ static final SContainmentLink transformationPlan$kZBw = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d063L, "transformationPlan");
   }
 }

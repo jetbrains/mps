@@ -22,7 +22,7 @@ public class supertypesOf_SetType_ClassifierTypeSet_SubtypingRule extends Subtyp
   public supertypesOf_SetType_ClassifierTypeSet_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode setType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode et = SLinkOperations.getTarget(setType, LINKS.elementType$ZAgX);
+    SNode et = SLinkOperations.getTarget(setType, LINKS.elementType$Nydz);
     if (SNodeOperations.isInstanceOf(et, CONCEPTS.PrimitiveType$5)) {
       et = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(et);
     }
@@ -51,7 +51,7 @@ public class supertypesOf_SetType_ClassifierTypeSet_SubtypingRule extends Subtyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$ZAgX = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType");
+    /*package*/ static final SContainmentLink elementType$Nydz = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType");
   }
 
   private static final class CONCEPTS {

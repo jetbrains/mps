@@ -21,7 +21,7 @@ public class check_BuildSource_JavaLibraryJar_NonTypesystemRule extends Abstract
   public check_BuildSource_JavaLibraryJar_NonTypesystemRule() {
   }
   public void applyRule(final SNode jarEntry, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    String relativePath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarEntry, LINKS.path$MMuL));
+    String relativePath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarEntry, LINKS.path$AsTJ));
     if (!(relativePath.endsWith("}")) && !(relativePath.endsWith(".jar"))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -40,7 +40,7 @@ public class check_BuildSource_JavaLibraryJar_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink path$MMuL = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x3395e884b61c23e2L, "path");
+    /*package*/ static final SContainmentLink path$AsTJ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x3395e884b61c23e2L, "path");
   }
 
   private static final class CONCEPTS {

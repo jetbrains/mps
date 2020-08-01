@@ -25,8 +25,8 @@ public class QueryParameterScopeValue_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.value$M3Hb))), CONCEPTS.ScopeParameter$rr))) {
-          SLinkOperations.setTarget(node, LINKS.value$M3Hb, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a2L, "jetbrains.mps.lang.smodel.query.structure.ScopeParameter")));
+        if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.value$fMSl))), CONCEPTS.ScopeParameter$rr))) {
+          SLinkOperations.setTarget(node, LINKS.value$fMSl, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a2L, "jetbrains.mps.lang.smodel.query.structure.ScopeParameter")));
           return;
         }
         CellAction action = editorContext.getEditorComponent().findNodeCell(node).getAction(CellActionType.DELETE);
@@ -82,7 +82,7 @@ public class QueryParameterScopeValue_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$M3Hb = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, 0x20c897bb39bb07a4L, "value");
+    /*package*/ static final SContainmentLink value$fMSl = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, 0x20c897bb39bb07a4L, "value");
   }
 
   private static final class CONCEPTS {

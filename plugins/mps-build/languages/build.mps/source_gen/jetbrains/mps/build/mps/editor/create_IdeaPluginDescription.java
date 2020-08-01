@@ -49,10 +49,10 @@ public class create_IdeaPluginDescription extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return (SLinkOperations.getTarget(node, LINKS.description$OCrO) == null);
+      return (SLinkOperations.getTarget(node, LINKS.description$v_uc) == null);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.setNewChild(node, LINKS.description$OCrO, null);
+      SNodeFactoryOperations.setNewChild(node, LINKS.description$v_uc, null);
     }
     public String getKeyStroke() {
       return " letter or digit";
@@ -64,6 +64,6 @@ public class create_IdeaPluginDescription extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink description$OCrO = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x1e274e75c23f88b2L, "description");
+    /*package*/ static final SContainmentLink description$v_uc = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x1e274e75c23f88b2L, "description");
   }
 }

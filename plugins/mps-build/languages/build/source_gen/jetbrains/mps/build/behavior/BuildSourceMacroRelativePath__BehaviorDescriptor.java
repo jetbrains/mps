@@ -35,11 +35,11 @@ public final class BuildSourceMacroRelativePath__BehaviorDescriptor extends Base
   }
 
   /*package*/ static String getBasePath_id4jjtc7WZMYz(@NotNull SNode __thisNode__, Context context) {
-    return (String) BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.macro$p38a), context);
+    return (String) BuildFolderMacro__BehaviorDescriptor.evaluate_id4jjtc7WZOzA.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.macro$8wWQ), context);
   }
   /*package*/ static String getRelativePath_id4Kip2_918YF(@NotNull SNode __thisNode__) {
     String tail = BuildRelativePath__BehaviorDescriptor.getPathTail_id15RAxQX0M4T.invoke(__thisNode__);
-    return ((tail == null || tail.length() == 0) ? "${" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$p38a), PROPS.name$tAp1) + "}" : "${" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$p38a), PROPS.name$tAp1) + "}/" + tail);
+    return ((tail == null || tail.length() == 0) ? "${" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$8wWQ), PROPS.name$lA7v) + "}" : "${" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.macro$8wWQ), PROPS.name$lA7v) + "}/" + tail);
   }
 
   /*package*/ BuildSourceMacroRelativePath__BehaviorDescriptor() {
@@ -91,10 +91,10 @@ public final class BuildSourceMacroRelativePath__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink macro$p38a = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro");
+    /*package*/ static final SReferenceLink macro$8wWQ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

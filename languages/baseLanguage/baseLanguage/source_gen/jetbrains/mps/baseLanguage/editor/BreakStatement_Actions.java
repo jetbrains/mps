@@ -22,7 +22,7 @@ public class BreakStatement_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.set(node, PROPS.label$Xol$, null);
+        SPropertyOperations.set(node, PROPS.label$IMss, null);
       }
 
     };
@@ -70,6 +70,6 @@ public class BreakStatement_Actions {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$Xol$ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x11745bfb2d8L, "label");
+    /*package*/ static final SProperty label$IMss = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x11745bfb2d8L, "label");
   }
 }

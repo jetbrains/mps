@@ -82,7 +82,7 @@ public final class PersistentConfigurationTemplate__BehaviorDescriptor extends B
   }
   private static SNode createTemplatePersistentConfigurationType_3swbqk_a0a0(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
-    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$2710, p0);
     return n0.getResult();
   }
 
@@ -91,6 +91,6 @@ public final class PersistentConfigurationTemplate__BehaviorDescriptor extends B
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 }

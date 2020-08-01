@@ -90,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.number$5Dx6;
+      final SProperty property = PROPS.number$J71U;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no number>");
@@ -150,7 +150,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        return "Alt-" + SPropertyOperations.getString(myNode, PROPS.number$5Dx6) + "/" + "Meta-" + SPropertyOperations.getString(myNode, PROPS.number$5Dx6);
+        return "Alt-" + SPropertyOperations.getString(myNode, PROPS.number$J71U) + "/" + "Meta-" + SPropertyOperations.getString(myNode, PROPS.number$J71U);
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -176,7 +176,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty number$5Dx6 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
+    /*package*/ static final SProperty number$J71U = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
   }
 
   private static final class CONCEPTS {

@@ -136,7 +136,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
     {
       SNode coercedNode_smb55n_a0n = TypecheckingFacade.getFromContext().coerceType(__thisNode__, CONCEPTS.ClassifierType$IZ);
       if (coercedNode_smb55n_a0n != null) {
-        return _quotation_createNode_smb55n_a0a1a0a31(SLinkOperations.getTarget(coercedNode_smb55n_a0n, LINKS.classifier$pQ_R));
+        return _quotation_createNode_smb55n_a0a1a0a31(SLinkOperations.getTarget(coercedNode_smb55n_a0n, LINKS.classifier$xslD));
       } else {
         throw new UnsupportedOperationException();
       }
@@ -155,7 +155,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean isSupersetOf_id7PgshREdQKp(@NotNull SNode __thisNode__, SNode t, Map<SNode, SNode> substitutions) {
     if (SNodeOperations.isInstanceOf(t, CONCEPTS.TypeVariableReference$vZ)) {
-      t = SNodeOperations.cast(MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$U0X4)), CONCEPTS.Type$IG);
+      t = SNodeOperations.cast(MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$6t$W)), CONCEPTS.Type$IG);
       if (t == null) {
         return false;
       }
@@ -304,7 +304,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
   }
 }

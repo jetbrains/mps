@@ -112,7 +112,7 @@ public class MethodCallFixer_AddFirstArgument extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$$A7L)).addElement(createdNode);
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ItKJ)).addElement(createdNode);
         MethodResolveUtil.replaceFromEditor(_context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL, -1);
       }
@@ -145,6 +145,6 @@ public class MethodCallFixer_AddFirstArgument extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

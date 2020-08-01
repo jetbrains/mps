@@ -19,15 +19,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class ParameterFactory {
   public static class NodeFactory_4958616572666533619 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SPropertyOperations.assign(newNode, PROPS.name$tAp1, "parameter");
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$WIkZ)).addElement(createForConceptMethodParameter_3abd0g_a0a1a0a());
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$WIkZ)).addElement(_quotation_createNode_3abd0g_a0a2a0a());
-      SLinkOperations.setTarget(newNode, LINKS.returnType$WIkw, _quotation_createNode_3abd0g_a0d0a0());
+      SPropertyOperations.assign(newNode, PROPS.name$lA7v, "parameter");
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$qsax)).addElement(createForConceptMethodParameter_3abd0g_a0a1a0a());
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$qsax)).addElement(_quotation_createNode_3abd0g_a0a2a0a());
+      SLinkOperations.setTarget(newNode, LINKS.returnType$qrVw, _quotation_createNode_3abd0g_a0d0a0());
     }
     private static SNode createForConceptMethodParameter_3abd0g_a0a1a0a() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ForConceptMethodParameter$Dz);
-      n0.setProperty(PROPS.name$tAp1, "node");
-      n0.forChild(LINKS.type$pLrO).init(CONCEPTS.SNodeType$gn);
+      n0.setProperty(PROPS.name$lA7v, "node");
+      n0.forChild(LINKS.type$uWuc).init(CONCEPTS.SNodeType$gn);
       return n0.getResult();
     }
     private static SNode _quotation_createNode_3abd0g_a0a2a0a() {
@@ -54,13 +54,13 @@ public class ParameterFactory {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {

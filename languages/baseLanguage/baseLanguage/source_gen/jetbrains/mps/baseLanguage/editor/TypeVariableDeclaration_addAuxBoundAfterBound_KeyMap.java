@@ -70,7 +70,7 @@ public class TypeVariableDeclaration_addAuxBoundAfterBound_KeyMap extends KeyMap
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode typeVarDeclaration = SNodeOperations.getNodeAncestor(ListSequence.fromList(selectedNodes).first(), CONCEPTS.TypeVariableDeclaration$Cc, true, false);
-      SNodeFactoryOperations.addNewChild(typeVarDeclaration, LINKS.auxBounds$jS6R, null);
+      SNodeFactoryOperations.addNewChild(typeVarDeclaration, LINKS.auxBounds$CbkD, null);
     }
     public String getKeyStroke() {
       return " &";
@@ -82,6 +82,6 @@ public class TypeVariableDeclaration_addAuxBoundAfterBound_KeyMap extends KeyMap
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink auxBounds$jS6R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
+    /*package*/ static final SContainmentLink auxBounds$CbkD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
   }
 }

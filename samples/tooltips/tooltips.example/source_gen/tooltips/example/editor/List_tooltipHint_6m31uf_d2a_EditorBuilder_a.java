@@ -64,7 +64,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.a$vYp3;
+      final SProperty property = PROPS.a$ve8t;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no a>");
@@ -88,7 +88,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty a$vYp3 = MetaAdapterFactory.getProperty(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x2e602a53d6175dbaL, 0x61349daa9dd5fb71L, "a");
+    /*package*/ static final SProperty a$ve8t = MetaAdapterFactory.getProperty(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x2e602a53d6175dbaL, 0x61349daa9dd5fb71L, "a");
   }
 
   private static final class CONCEPTS {

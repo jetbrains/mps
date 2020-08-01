@@ -84,8 +84,8 @@
       <node id="1741258697587208457" at="181,0,182,0" concept="8" trace="PrivateStaticFieldReference$6t" />
       <node id="1741258697587208457" at="182,0,183,0" concept="8" trace="Classifier$hJ" />
       <node id="1741258697587208457" at="183,0,184,0" concept="8" trace="IVisible$6G" />
-      <node id="1741258697587208457" at="187,0,188,0" concept="8" trace="classifier$ZTjE" />
-      <node id="1741258697587208457" at="191,0,192,0" concept="8" trace="name$tAp1" />
+      <node id="1741258697587208457" at="187,0,188,0" concept="8" trace="classifier$WKxm" />
+      <node id="1741258697587208457" at="191,0,192,0" concept="8" trace="name$lA7v" />
       <node id="1741258697587208457" at="42,0,45,0" concept="0" trace="privateStaticAccess_Contribution#()V" />
       <node id="1741258697587208509" at="94,0,97,0" concept="4" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1741258697587208460" at="102,0,105,0" concept="0" trace="SMP_Action_53df4d_a0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -357,8 +357,8 @@
       <node id="5619723216767159066" at="325,215,326,28" concept="6" />
       <node id="5619723216767159066" at="330,8,331,71" concept="6" />
       <node id="5619723216767159069" at="334,121,335,101" concept="5" />
-      <node id="5619723216767159075" at="335,101,336,116" concept="1" />
-      <node id="5619723216767159083" at="336,116,337,53" concept="1" />
+      <node id="5619723216767159075" at="335,101,336,117" concept="1" />
+      <node id="5619723216767159083" at="336,117,337,53" concept="1" />
       <node id="5619723216767159066" at="339,37,340,21" concept="6" />
       <node id="6405552206789866677" at="352,41,353,232" concept="6" />
       <node id="5619723216767159093" at="355,9,356,129" concept="6" />
@@ -369,10 +369,10 @@
       <node id="5619723216767159101" at="366,7,367,134" concept="6" />
       <node id="5619723216767159089" at="369,45,370,18" concept="6" />
       <node id="5619723216767159089" at="373,84,374,303" concept="6" />
-      <node id="5619723216767159054" at="380,0,381,0" concept="8" trace="classifier$ZTjE" />
-      <node id="5619723216767159054" at="381,0,382,0" concept="8" trace="variableDeclaration$2ky6" />
-      <node id="5619723216767159054" at="382,0,383,0" concept="8" trace="staticFieldDeclaration$PKj2" />
-      <node id="5619723216767159054" at="383,0,384,0" concept="8" trace="classifier$V09" />
+      <node id="5619723216767159054" at="380,0,381,0" concept="8" trace="classifier$WKxm" />
+      <node id="5619723216767159054" at="381,0,382,0" concept="8" trace="variableDeclaration$7WwU" />
+      <node id="5619723216767159054" at="382,0,383,0" concept="8" trace="staticFieldDeclaration$2pdY" />
+      <node id="5619723216767159054" at="383,0,384,0" concept="8" trace="classifier$s_4n" />
       <node id="5619723216767159054" at="387,0,388,0" concept="8" trace="LinkAttribute$7j" />
       <node id="5619723216767159054" at="388,0,389,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="5619723216767159054" at="389,0,390,0" concept="8" trace="PrivateStaticFieldReference$6t" />
@@ -381,7 +381,7 @@
       <node id="5619723216767159054" at="392,0,393,0" concept="8" trace="StaticFieldDeclaration$R5" />
       <node id="5619723216767159054" at="393,0,394,0" concept="8" trace="StaticMethodDeclaration$eX" />
       <node id="5619723216767159054" at="394,0,395,0" concept="8" trace="PrivateStaticMethodCall$m1" />
-      <node id="5619723216767159054" at="398,0,399,0" concept="8" trace="name$tAp1" />
+      <node id="5619723216767159054" at="398,0,399,0" concept="8" trace="name$lA7v" />
       <node id="5619723216767159054" at="73,0,75,0" concept="2" trace="myNode" />
       <node id="5619723216767159059" at="145,0,147,0" concept="2" trace="myNode" />
       <node id="4747359941571314101" at="192,0,194,0" concept="0" trace="PrivateStaticFieldReference_classifier_cellMenu_62ivzp_a0a0a#()V" />

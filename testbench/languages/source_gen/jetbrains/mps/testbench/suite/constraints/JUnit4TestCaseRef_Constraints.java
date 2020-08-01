@@ -28,7 +28,7 @@ public class JUnit4TestCaseRef_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.klass$fEdo, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.klass$_suC, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -60,6 +60,6 @@ public class JUnit4TestCaseRef_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink klass$fEdo = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass");
+    /*package*/ static final SReferenceLink klass$_suC = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass");
   }
 }

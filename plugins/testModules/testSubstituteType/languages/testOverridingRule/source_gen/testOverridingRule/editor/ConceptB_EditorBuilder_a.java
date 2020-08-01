@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.conceptAProp$RtNb;
+      final SProperty property = PROPS.conceptAProp$RrMl;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no conceptAProp>");
@@ -151,7 +151,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.conceptBProp$RzYw;
+      final SProperty property = PROPS.conceptBProp$Urhw;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no conceptBProp>");
@@ -187,8 +187,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptAProp$RtNb = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L, 0x7aa4e26e6874ca74L, "conceptAProp");
-    /*package*/ static final SProperty conceptBProp$RzYw = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa4L, 0x7aa4e26e6874caa5L, "conceptBProp");
+    /*package*/ static final SProperty conceptAProp$RrMl = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L, 0x7aa4e26e6874ca74L, "conceptAProp");
+    /*package*/ static final SProperty conceptBProp$Urhw = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa4L, 0x7aa4e26e6874caa5L, "conceptBProp");
   }
 
   private static final class CONCEPTS {

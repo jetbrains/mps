@@ -521,9 +521,9 @@
       <node id="3196918548952834929" at="71,14,72,58" concept="10" />
       <node id="3196918548952834929" at="78,48,79,22" concept="6" />
       <node id="3196918548952834929" at="84,40,85,19" concept="6" />
-      <node id="3196918548952834929" at="89,0,90,0" concept="7" trace="stmts$6Cok" />
-      <node id="3196918548952834929" at="90,0,91,0" concept="7" trace="statement$WHn8" />
-      <node id="3196918548952834929" at="91,0,92,0" concept="7" trace="innerExpr$Zn8s" />
+      <node id="3196918548952834929" at="89,0,90,0" concept="7" trace="stmts$dzLG" />
+      <node id="3196918548952834929" at="90,0,91,0" concept="7" trace="statement$pYcS" />
+      <node id="3196918548952834929" at="91,0,92,0" concept="7" trace="innerExpr$Gd5$" />
       <node id="3196918548952834929" at="32,0,34,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3196918548952834929" at="42,0,44,0" concept="0" trace="ExtractStatementListExpression__BehaviorDescriptor#()V" />
       <node id="3196918548952834929" at="52,49,55,5" concept="3" />
@@ -632,8 +632,8 @@
       <node id="3421461530438560202" at="147,30,148,234" concept="1" />
       <node id="3421461530438560202" at="148,234,149,435" concept="1" />
       <node id="3421461530438560202" at="149,435,150,24" concept="6" />
-      <node id="3421461530438560191" at="154,0,155,0" concept="7" trace="nonStatic$pNlE" />
-      <node id="3421461530438560191" at="155,0,156,0" concept="7" trace="name$tAp1" />
+      <node id="3421461530438560191" at="154,0,155,0" concept="7" trace="nonStatic$vRvm" />
+      <node id="3421461530438560191" at="155,0,156,0" concept="7" trace="name$lA7v" />
       <node id="3421461530438560191" at="159,0,160,0" concept="7" trace="Classifier$hJ" />
       <node id="3421461530438560191" at="160,0,161,0" concept="7" trace="AnonymousClass$aF" />
       <node id="3421461530438560191" at="161,0,162,0" concept="7" trace="InternalAnonymousClass$Lf" />
@@ -796,9 +796,9 @@
       <node id="3585982959253821896" at="125,0,126,0" concept="7" trace="StaticMethodDeclaration$eX" />
       <node id="3585982959253821896" at="126,0,127,0" concept="7" trace="ExtractStaticMethod_CallExpression$Wu" />
       <node id="3585982959253821896" at="127,0,128,0" concept="7" trace="ExtractStaticMethodExpression$kq" />
-      <node id="3585982959253821896" at="131,0,132,0" concept="7" trace="name$tAp1" />
-      <node id="3585982959253821896" at="135,0,136,0" concept="7" trace="baseMethodDeclaration$$A7i" />
-      <node id="3585982959253821896" at="136,0,137,0" concept="7" trace="method$eZjv" />
+      <node id="3585982959253821896" at="131,0,132,0" concept="7" trace="name$lA7v" />
+      <node id="3585982959253821896" at="135,0,136,0" concept="7" trace="baseMethodDeclaration$ItxI" />
+      <node id="3585982959253821896" at="136,0,137,0" concept="7" trace="method$gEs1" />
       <node id="3585982959253821896" at="40,0,42,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3585982959253821896" at="72,0,74,0" concept="0" trace="ExtractStaticMethod_CallExpression__BehaviorDescriptor#()V" />
       <node id="3585982959253823855" at="46,131,49,7" concept="3" />

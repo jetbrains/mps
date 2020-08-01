@@ -40,7 +40,7 @@ public class QualifiedSuperMethodCall_Constraints extends BaseConstraintsDescrip
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$$cg$, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$xW1s, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -70,7 +70,7 @@ public class QualifiedSuperMethodCall_Constraints extends BaseConstraintsDescrip
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$$A7i, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -85,14 +85,14 @@ public class QualifiedSuperMethodCall_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode superClassifier = SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.classifier$$cg$);
+            SNode superClassifier = SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.classifier$xW1s);
             if (superClassifier == null) {
               return new EmptyScope();
             }
 
             SNode extendedClassifierType = ListSequence.fromList(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(superClassifier)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+                return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
               }
             }).first();
             MethodsScope scope = new MethodsScope(extendedClassifierType, Sequence.fromIterable(Members.visibleInstanceMethods(extendedClassifierType, _context.getContextNode())).where(new IWhereFilter<SNode>() {
@@ -121,8 +121,8 @@ public class QualifiedSuperMethodCall_Constraints extends BaseConstraintsDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$$cg$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x37f722a7ce38076aL, 0x37f722a7ce38077dL, "classifier");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xW1s = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x37f722a7ce38076aL, 0x37f722a7ce38077dL, "classifier");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

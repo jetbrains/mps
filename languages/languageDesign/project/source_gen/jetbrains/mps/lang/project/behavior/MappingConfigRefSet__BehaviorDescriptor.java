@@ -32,7 +32,7 @@ public final class MappingConfigRefSet__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean isComplete_id2n3WChplftH(@NotNull SNode __thisNode__) {
-    for (SNode r : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.refs$OuB0))) {
+    for (SNode r : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.refs$qOT0))) {
       if (!((boolean) MappingConfigRefBase__BehaviorDescriptor.isComplete_id2n3WChplftH.invoke(r))) {
         return false;
       }
@@ -87,6 +87,6 @@ public final class MappingConfigRefSet__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink refs$OuB0 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, 0x25c3f2845957030cL, "refs");
+    /*package*/ static final SContainmentLink refs$qOT0 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, 0x25c3f2845957030cL, "refs");
   }
 }

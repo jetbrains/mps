@@ -102,8 +102,8 @@
       <node id="1157549163016210773" at="143,89,144,145" concept="6" />
       <node id="1157549163016210773" at="145,12,146,24" concept="6" />
       <node id="1157549163016210773" at="147,15,148,40" concept="1" />
-      <node id="1157549163016181399" at="153,0,154,0" concept="7" trace="fontFamily$yHn_" />
-      <node id="1157549163016181399" at="154,0,155,0" concept="7" trace="fontSize$dgUi" />
+      <node id="1157549163016181399" at="153,0,154,0" concept="7" trace="fontFamily$NYqV" />
+      <node id="1157549163016181399" at="154,0,155,0" concept="7" trace="fontSize$rceI" />
       <node id="1157549163016181399" at="158,0,159,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="1157549163016181399" at="35,0,37,0" concept="2" trace="myNode" />
       <node id="1157549163016181399" at="49,0,52,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -310,7 +310,7 @@
       <node id="4078300376847951564" at="198,92,199,40" concept="1" />
       <node id="4078300376847951564" at="199,40,200,34" concept="1" />
       <node id="4078300376847951564" at="200,34,201,22" concept="6" />
-      <node id="4078300376847951548" at="205,0,206,0" concept="7" trace="node$_a4Q" />
+      <node id="4078300376847951548" at="205,0,206,0" concept="7" trace="node$ZSma" />
       <node id="4078300376847951548" at="209,0,210,0" concept="7" trace="NodeContainer$3D" />
       <node id="4078300376847951548" at="33,0,35,0" concept="2" trace="myNode" />
       <node id="4078300376847951548" at="106,0,108,0" concept="2" trace="myNode" />
@@ -538,7 +538,7 @@
       <node id="4078300376847989966" at="90,89,91,145" concept="6" />
       <node id="4078300376847989966" at="92,12,93,24" concept="6" />
       <node id="4078300376847989966" at="94,15,95,40" concept="1" />
-      <node id="4078300376847989961" at="100,0,101,0" concept="7" trace="value$agC0" />
+      <node id="4078300376847989961" at="100,0,101,0" concept="7" trace="value$Y3o0" />
       <node id="4078300376847989961" at="104,0,105,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="4078300376847989961" at="34,0,36,0" concept="2" trace="myNode" />
       <node id="4078300376847989961" at="48,0,51,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -645,7 +645,7 @@
       <node id="4078300376848002936" at="90,89,91,145" concept="6" />
       <node id="4078300376848002936" at="92,12,93,24" concept="6" />
       <node id="4078300376848002936" at="94,15,95,40" concept="1" />
-      <node id="4078300376848002931" at="100,0,101,0" concept="7" trace="value$7Ew0" />
+      <node id="4078300376848002931" at="100,0,101,0" concept="7" trace="value$H_w0" />
       <node id="4078300376848002931" at="104,0,105,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="4078300376848002931" at="34,0,36,0" concept="2" trace="myNode" />
       <node id="4078300376848002931" at="48,0,51,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -875,7 +875,7 @@
       <node id="4078300376848327587" at="45,178,46,40" concept="1" />
       <node id="4078300376848327587" at="46,40,47,22" concept="6" />
       <node id="4078300376848328757" at="49,61,50,70" concept="6" />
-      <node id="4078300376848327587" at="54,0,55,0" concept="7" trace="value$agC0" />
+      <node id="4078300376848327587" at="54,0,55,0" concept="7" trace="value$Y3o0" />
       <node id="4078300376848327587" at="19,0,21,0" concept="2" trace="myNode" />
       <node id="4078300376848327587" at="33,0,36,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="4078300376848327696" at="49,0,52,0" concept="4" trace="_StyleParameter_QueryFunction_twhn5o_a0a#()Ljava/lang/String;" />
@@ -930,7 +930,7 @@
       <node id="4078300376848374175" at="45,176,46,40" concept="1" />
       <node id="4078300376848374175" at="46,40,47,22" concept="6" />
       <node id="4078300376848374940" at="49,62,50,71" concept="6" />
-      <node id="4078300376848374175" at="54,0,55,0" concept="7" trace="value$7Ew0" />
+      <node id="4078300376848374175" at="54,0,55,0" concept="7" trace="value$H_w0" />
       <node id="4078300376848374175" at="19,0,21,0" concept="2" trace="myNode" />
       <node id="4078300376848374175" at="33,0,36,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="4078300376848374284" at="49,0,52,0" concept="4" trace="_StyleParameter_QueryFunction_cfre1m_a0a#()Z" />
@@ -1586,7 +1586,7 @@
       <node id="7577899271414667648" at="122,40,123,34" concept="1" />
       <node id="7577899271414667648" at="123,34,124,22" concept="6" />
       <node id="2542823481375781857" at="126,62,127,74" concept="6" />
-      <node id="7577899271414667648" at="131,0,132,0" concept="7" trace="customUrl$IY8F" />
+      <node id="7577899271414667648" at="131,0,132,0" concept="7" trace="customUrl$K6cP" />
       <node id="7577899271414667648" at="135,0,136,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="7577899271414667648" at="35,0,37,0" concept="2" trace="myNode" />
       <node id="7577899271414667648" at="49,0,52,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1686,8 +1686,8 @@
       <node id="8545423393708171850" at="47,40,48,22" concept="6" />
       <node id="6965157697221106523" at="50,61,51,75" concept="6" />
       <node id="8545423393708482331" at="53,58,54,151" concept="6" />
-      <node id="8545423393708171850" at="58,0,59,0" concept="7" trace="fontFamily$yHn_" />
-      <node id="8545423393708171850" at="59,0,60,0" concept="7" trace="fontSize$dgUi" />
+      <node id="8545423393708171850" at="58,0,59,0" concept="7" trace="fontFamily$NYqV" />
+      <node id="8545423393708171850" at="59,0,60,0" concept="7" trace="fontSize$rceI" />
       <node id="8545423393708171850" at="19,0,21,0" concept="2" trace="myNode" />
       <node id="8545423393708171850" at="33,0,36,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6965157697221105985" at="50,0,53,0" concept="4" trace="_StyleParameter_QueryFunction_vguxxx_a0a#()Ljava/lang/String;" />

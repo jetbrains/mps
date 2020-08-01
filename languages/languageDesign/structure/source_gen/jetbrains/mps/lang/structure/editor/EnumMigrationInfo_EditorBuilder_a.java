@@ -111,7 +111,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new oldEnumSingleRoleHandler_vivu3s_b2a(myNode, LINKS.oldEnum$$YcT, getEditorContext());
+    SingleRoleCellProvider provider = new oldEnumSingleRoleHandler_vivu3s_b2a(myNode, LINKS.oldEnum$U8fB, getEditorContext());
     return provider.createCell();
   }
   private static class oldEnumSingleRoleHandler_vivu3s_b2a extends SingleRoleCellProvider {
@@ -131,8 +131,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.oldEnum$$YcT, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.oldEnum$$YcT, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.oldEnum$U8fB, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.oldEnum$U8fB, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -144,7 +144,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.oldEnum$$YcT);
+        editorCell.setSRole(LINKS.oldEnum$U8fB);
       }
       Style style = new StyleImpl();
       new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
@@ -154,7 +154,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.oldEnum$$YcT));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.oldEnum$U8fB));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_oldEnum");
@@ -198,7 +198,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.valueOpMigration$SI5x;
+      final SProperty property = PROPS.valueOpMigration$ukEZ;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no valueOpMigration>");
@@ -246,7 +246,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.nameOpMigration$4Nqv;
+      final SProperty property = PROPS.nameOpMigration$kTP1;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no nameOpMigration>");
@@ -284,12 +284,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink oldEnum$$YcT = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035942799cL, "oldEnum");
+    /*package*/ static final SContainmentLink oldEnum$U8fB = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035942799cL, "oldEnum");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty valueOpMigration$SI5x = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration");
-    /*package*/ static final SProperty nameOpMigration$4Nqv = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration");
+    /*package*/ static final SProperty valueOpMigration$ukEZ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f103596433e4L, "valueOpMigration");
+    /*package*/ static final SProperty nameOpMigration$kTP1 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, 0x5a14f1035964062eL, "nameOpMigration");
   }
 
   private static final class CONCEPTS {

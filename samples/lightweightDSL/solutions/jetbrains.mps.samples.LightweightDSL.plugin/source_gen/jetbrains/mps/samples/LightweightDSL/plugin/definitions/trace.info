@@ -39,14 +39,14 @@
       <node id="8445921194412759815" at="24,231,25,77" concept="0" />
       <node id="8445921194412793958" at="25,77,26,243" concept="0" />
       <node id="8445921194412909934" at="28,39,29,223" concept="3" />
-      <node id="8724345312461265566" at="35,0,36,0" concept="4" trace="member$oYX5" />
-      <node id="8724345312461265566" at="36,0,37,0" concept="4" trace="type$pLrO" />
-      <node id="8724345312461265566" at="37,0,38,0" concept="4" trace="visibility$2GiC" />
-      <node id="8724345312461265566" at="38,0,39,0" concept="4" trace="decl$Ails" />
-      <node id="8724345312461265566" at="39,0,40,0" concept="4" trace="classLikeMember$UT6r" />
+      <node id="8724345312461265566" at="35,0,36,0" concept="4" trace="member$6v_r" />
+      <node id="8724345312461265566" at="36,0,37,0" concept="4" trace="type$uWuc" />
+      <node id="8724345312461265566" at="37,0,38,0" concept="4" trace="visibility$jt1o" />
+      <node id="8724345312461265566" at="38,0,39,0" concept="4" trace="decl$ySo$" />
+      <node id="8724345312461265566" at="39,0,40,0" concept="4" trace="classLikeMember$xE75" />
       <node id="8724345312461265566" at="43,0,44,0" concept="4" trace="BooleanPropertyInstance$g3" />
       <node id="8724345312461265566" at="44,0,45,0" concept="4" trace="PropertyDescriptor$hh" />
-      <node id="8724345312461265566" at="48,0,49,0" concept="4" trace="name$tAp1" />
+      <node id="8724345312461265566" at="48,0,49,0" concept="4" trace="name$lA7v" />
       <node id="8445921194412909196" at="28,0,31,0" concept="1" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8445921194412768317" at="26,243,31,41" concept="0" />
       <node id="8724345312461265566" at="22,0,33,0" concept="5" trace="init#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />

@@ -26,7 +26,7 @@ public class typeof_ArithmSymbol_InferenceRule extends AbstractInferenceRule_Run
     {
       SNode _nodeToCheck_1029348928467 = symbol;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042199446", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042199450", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(symbol, LINKS.expression$8M9C), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042201546", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042199450", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(symbol, LINKS.expression$giEo), "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042201546", true), _info_12389875345);
     }
     {
       final SNode t = typeCheckingContext.typeOf(symbol, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1418611629042132166", true);
@@ -69,7 +69,7 @@ public class typeof_ArithmSymbol_InferenceRule extends AbstractInferenceRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$8M9C = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae874L, "expression");
+    /*package*/ static final SContainmentLink expression$giEo = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae874L, "expression");
   }
 
   private static final class CONCEPTS {

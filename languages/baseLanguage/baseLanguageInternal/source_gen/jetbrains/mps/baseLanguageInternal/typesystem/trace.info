@@ -45,9 +45,9 @@
       <node id="1100832983841501794" at="60,250,61,194" concept="2" />
       <node id="1100832983841501794" at="61,194,62,199" concept="2" />
       <node id="1100832983841501794" at="62,199,63,24" concept="7" />
-      <node id="1100832983841501763" at="67,0,68,0" concept="8" trace="type$Y1cW" />
-      <node id="1100832983841501763" at="68,0,69,0" concept="8" trace="classifier$pQ_R" />
-      <node id="1100832983841501763" at="72,0,73,0" concept="8" trace="fqClassName$Y1bv" />
+      <node id="1100832983841501763" at="67,0,68,0" concept="8" trace="type$2_h4" />
+      <node id="1100832983841501763" at="68,0,69,0" concept="8" trace="classifier$xslD" />
+      <node id="1100832983841501763" at="72,0,73,0" concept="8" trace="fqClassName$2$$1" />
       <node id="1100832983841501763" at="76,0,77,0" concept="8" trace="ClassifierType$IZ" />
       <node id="1100832983841501763" at="77,0,78,0" concept="8" trace="InternalClassCreator$8E" />
       <node id="1100832983841501763" at="26,0,28,0" concept="1" trace="typeof_InternalClassCreator_InferenceRule#()V" />
@@ -136,10 +136,10 @@
       <node id="3102959500546034593" at="65,5,66,52" concept="6" />
       <node id="3102959500546034593" at="67,33,68,196" concept="2" />
       <node id="3102959500546034593" at="70,5,71,24" concept="7" />
-      <node id="1196525371871" at="75,0,76,0" concept="8" trace="type$c_fF" />
-      <node id="1196525371871" at="76,0,77,0" concept="8" trace="classifier$pQ_R" />
-      <node id="1196525371871" at="77,0,78,0" concept="8" trace="parameter$dQne" />
-      <node id="1196525371871" at="81,0,82,0" concept="8" trace="fqClassName$ZGAb" />
+      <node id="1196525371871" at="75,0,76,0" concept="8" trace="type$62_P" />
+      <node id="1196525371871" at="76,0,77,0" concept="8" trace="classifier$xslD" />
+      <node id="1196525371871" at="77,0,78,0" concept="8" trace="parameter$HlfM" />
+      <node id="1196525371871" at="81,0,82,0" concept="8" trace="fqClassName$QAvl" />
       <node id="1196525371871" at="85,0,86,0" concept="8" trace="ClassifierType$IZ" />
       <node id="1196525371871" at="86,0,87,0" concept="8" trace="InternalNewExpression$zx" />
       <node id="1196525371871" at="27,0,29,0" concept="1" trace="typeof_InternalNewExpression_InferenceRule#()V" />
@@ -222,7 +222,7 @@
       <node id="1196525371903" at="27,50,28,57" concept="7" />
       <node id="1196525371903" at="30,68,31,102" concept="7" />
       <node id="1196525371903" at="33,30,34,17" concept="7" />
-      <node id="1196525371903" at="38,0,39,0" concept="8" trace="returnType$IUIl" />
+      <node id="1196525371903" at="38,0,39,0" concept="8" trace="returnType$Issb" />
       <node id="1196525371903" at="42,0,43,0" concept="8" trace="InternalPartialInstanceMethodCall$bN" />
       <node id="1196525371903" at="18,0,20,0" concept="1" trace="typeof_InternalPartialInstanceMethodCall_InferenceRule#()V" />
       <node id="1196525371903" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -279,7 +279,7 @@
       <node id="1196525371918" at="45,434,46,39" concept="2" />
       <node id="1196525371918" at="47,31,48,201" concept="2" />
       <node id="1196525371918" at="49,5,50,24" concept="7" />
-      <node id="1196525371911" at="54,0,55,0" concept="8" trace="type$nPkF" />
+      <node id="1196525371911" at="54,0,55,0" concept="8" trace="type$yP0P" />
       <node id="1196525371911" at="58,0,59,0" concept="8" trace="InternalClassExpression$7q" />
       <node id="1196525371911" at="22,0,24,0" concept="1" trace="typeof_InternalClassExpression_InferenceRule#()V" />
       <node id="1196525371911" at="31,0,34,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -339,7 +339,7 @@
       <node id="1196525371926" at="27,50,28,48" concept="7" />
       <node id="1196525371926" at="30,68,31,102" concept="7" />
       <node id="1196525371926" at="33,30,34,16" concept="7" />
-      <node id="1196525371926" at="38,0,39,0" concept="8" trace="returnType$_l1g" />
+      <node id="1196525371926" at="38,0,39,0" concept="8" trace="returnType$5bAK" />
       <node id="1196525371926" at="42,0,43,0" concept="8" trace="InternalStaticMethodCall$Kj" />
       <node id="1196525371926" at="18,0,20,0" concept="1" trace="typeof_InternalStaticMethodCall_InferenceRule#()V" />
       <node id="1196525371926" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -388,7 +388,7 @@
       <node id="1196525371937" at="27,50,28,49" concept="7" />
       <node id="1196525371937" at="30,68,31,102" concept="7" />
       <node id="1196525371937" at="33,30,34,17" concept="7" />
-      <node id="1196525371937" at="38,0,39,0" concept="8" trace="type$Ttix" />
+      <node id="1196525371937" at="38,0,39,0" concept="8" trace="type$PbXZ" />
       <node id="1196525371937" at="42,0,43,0" concept="8" trace="InternalVariableReference$M_" />
       <node id="1196525371937" at="18,0,20,0" concept="1" trace="typeof_InternalVariableReference_InferenceRule#()V" />
       <node id="1196525371937" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -437,7 +437,7 @@
       <node id="1196525371948" at="27,50,28,53" concept="7" />
       <node id="1196525371948" at="30,68,31,102" concept="7" />
       <node id="1196525371948" at="33,30,34,17" concept="7" />
-      <node id="1196525371948" at="38,0,39,0" concept="8" trace="fieldType$Pz5$" />
+      <node id="1196525371948" at="38,0,39,0" concept="8" trace="fieldType$VZGs" />
       <node id="1196525371948" at="42,0,43,0" concept="8" trace="InternalPartialFieldReference$bf" />
       <node id="1196525371948" at="18,0,20,0" concept="1" trace="typeof_InternalPartialFieldReference_InferenceRule#()V" />
       <node id="1196525371948" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -486,7 +486,7 @@
       <node id="1199964800663" at="27,50,28,42" concept="7" />
       <node id="1199964800663" at="30,68,31,102" concept="7" />
       <node id="1199964800663" at="33,30,34,17" concept="7" />
-      <node id="1199964800663" at="38,0,39,0" concept="8" trace="typeHint$ZnDq" />
+      <node id="1199964800663" at="38,0,39,0" concept="8" trace="typeHint$Gt3A" />
       <node id="1199964800663" at="42,0,43,0" concept="8" trace="TypeHintExpression$Yp" />
       <node id="1199964800663" at="18,0,20,0" concept="1" trace="typeof_TypeHintExpression_InferenceRule#()V" />
       <node id="1199964800663" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -544,10 +544,10 @@
       <node id="1202838220710" at="46,30,47,17" concept="7" />
       <node id="1202838220710" at="51,0,52,0" concept="8" trace="Classifier$hJ" />
       <node id="1202838220710" at="52,0,53,0" concept="8" trace="InternalThisExpression$XS" />
-      <node id="1202838220710" at="56,0,57,0" concept="8" trace="classifier$pQ_R" />
-      <node id="1202838220710" at="57,0,58,0" concept="8" trace="typeVariableDeclaration$ziZT" />
-      <node id="1202838220710" at="58,0,59,0" concept="8" trace="typeVariableDeclaration$U0X4" />
-      <node id="1202838220710" at="59,0,60,0" concept="8" trace="parameter$dQne" />
+      <node id="1202838220710" at="56,0,57,0" concept="8" trace="classifier$xslD" />
+      <node id="1202838220710" at="57,0,58,0" concept="8" trace="typeVariableDeclaration$6cWB" />
+      <node id="1202838220710" at="58,0,59,0" concept="8" trace="typeVariableDeclaration$6t$W" />
+      <node id="1202838220710" at="59,0,60,0" concept="8" trace="parameter$HlfM" />
       <node id="1202838220710" at="22,0,24,0" concept="1" trace="typeof_InternalThisExpression_InferenceRule#()V" />
       <node id="1202838220710" at="40,0,43,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1202838220710" at="43,0,46,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -605,7 +605,7 @@
       <node id="1238253384653" at="27,50,28,51" concept="7" />
       <node id="1238253384653" at="30,68,31,102" concept="7" />
       <node id="1238253384653" at="33,30,34,17" concept="7" />
-      <node id="1238253384653" at="38,0,39,0" concept="8" trace="expression$kCPy" />
+      <node id="1238253384653" at="38,0,39,0" concept="8" trace="expression$ZLVu" />
       <node id="1238253384653" at="42,0,43,0" concept="8" trace="ExtractToConstantExpression$kt" />
       <node id="1238253384653" at="18,0,20,0" concept="1" trace="typeof_ExtractToConstantExpression_InferenceRule#()V" />
       <node id="1238253384653" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -648,7 +648,7 @@
       <node id="1293230950168564359" at="35,73,36,107" concept="7" />
       <node id="1293230950168564359" at="39,57,40,46" concept="7" />
       <node id="1293230950168564359" at="42,59,43,46" concept="7" />
-      <node id="1293230950168564359" at="47,0,48,0" concept="8" trace="classifier$pQ_R" />
+      <node id="1293230950168564359" at="47,0,48,0" concept="8" trace="classifier$xslD" />
       <node id="1293230950168564359" at="51,0,52,0" concept="8" trace="InternalClassifierType$bm" />
       <node id="1293230950168564359" at="18,0,20,0" concept="1" trace="InternalClassifierType_subtypeOf_InternalClassifierType_InequationReplacementRule#()V" />
       <node id="1293230950168564359" at="23,0,25,0" concept="5" trace="processInequation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/EquationInfo;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicable2Status;ZZ)V" />
@@ -731,7 +731,7 @@
       <node id="1585405235656400053" at="27,50,28,37" concept="7" />
       <node id="1585405235656400053" at="30,68,31,102" concept="7" />
       <node id="1585405235656400053" at="33,30,34,17" concept="7" />
-      <node id="1585405235656400053" at="38,0,39,0" concept="8" trace="constant$43G0" />
+      <node id="1585405235656400053" at="38,0,39,0" concept="8" trace="constant$XMk0" />
       <node id="1585405235656400053" at="42,0,43,0" concept="8" trace="ConstantValue$$C" />
       <node id="1585405235656400053" at="18,0,20,0" concept="1" trace="typeof_WeakConstantReference_InferenceRule#()V" />
       <node id="1585405235656400053" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -780,8 +780,8 @@
       <node id="3196918548952839984" at="27,50,28,54" concept="7" />
       <node id="3196918548952839984" at="30,68,31,102" concept="7" />
       <node id="3196918548952839984" at="33,30,34,17" concept="7" />
-      <node id="3196918548952839984" at="38,0,39,0" concept="8" trace="innerExpr$Zn8s" />
-      <node id="3196918548952839984" at="39,0,40,0" concept="8" trace="inner$Mjpw" />
+      <node id="3196918548952839984" at="38,0,39,0" concept="8" trace="innerExpr$Gd5$" />
+      <node id="3196918548952839984" at="39,0,40,0" concept="8" trace="inner$npmw" />
       <node id="3196918548952839984" at="43,0,44,0" concept="8" trace="ExtractStatementListExpression$jD" />
       <node id="3196918548952839984" at="18,0,20,0" concept="1" trace="typeof_ExtractStatementList_InferenceRule#()V" />
       <node id="3196918548952839984" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -830,7 +830,7 @@
       <node id="3421461530438560035" at="27,50,28,53" concept="7" />
       <node id="3421461530438560035" at="30,68,31,102" concept="7" />
       <node id="3421461530438560035" at="33,30,34,17" concept="7" />
-      <node id="3421461530438560035" at="38,0,39,0" concept="8" trace="cls$L8yX" />
+      <node id="3421461530438560035" at="38,0,39,0" concept="8" trace="cls$N8Vz" />
       <node id="3421461530438560035" at="42,0,43,0" concept="8" trace="InternalAnonymousClassCreator$KK" />
       <node id="3421461530438560035" at="18,0,20,0" concept="1" trace="typeof_InternalAnonymousClassCreator_InferenceRule#()V" />
       <node id="3421461530438560035" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -879,7 +879,7 @@
       <node id="3421461530438560540" at="28,50,29,46" concept="7" />
       <node id="3421461530438560540" at="31,68,32,102" concept="7" />
       <node id="3421461530438560540" at="34,30,35,17" concept="7" />
-      <node id="3421461530438560540" at="39,0,40,0" concept="8" trace="type$$EDw" />
+      <node id="3421461530438560540" at="39,0,40,0" concept="8" trace="type$KE6w" />
       <node id="3421461530438560540" at="43,0,44,0" concept="8" trace="InternalAnonymousClass$Lf" />
       <node id="3421461530438560540" at="19,0,21,0" concept="1" trace="typeof_InternalAnonymousClass_InferenceRule#()V" />
       <node id="3421461530438560540" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -923,7 +923,7 @@
       <node id="3584941796637370689" at="36,30,37,234" concept="2" />
       <node id="3584941796637370689" at="37,234,38,199" concept="2" />
       <node id="3584941796637370689" at="38,199,39,24" concept="7" />
-      <node id="3584941796637350105" at="43,0,44,0" concept="8" trace="classifier$pQ_R" />
+      <node id="3584941796637350105" at="43,0,44,0" concept="8" trace="classifier$xslD" />
       <node id="3584941796637350105" at="47,0,48,0" concept="8" trace="InternalClassifierType$bm" />
       <node id="3584941796637350105" at="20,0,22,0" concept="1" trace="InternalClassifierType_subtypeOf_ClassifierType_SubtypingRule#()V" />
       <node id="3584941796637350105" at="22,0,25,0" concept="5" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -983,7 +983,7 @@
       <node id="3731567766880819190" at="27,50,28,56" concept="7" />
       <node id="3731567766880819190" at="30,68,31,102" concept="7" />
       <node id="3731567766880819190" at="33,30,34,17" concept="7" />
-      <node id="3731567766880819190" at="38,0,39,0" concept="8" trace="returnType$W9Ju" />
+      <node id="3731567766880819190" at="38,0,39,0" concept="8" trace="returnType$8HZy" />
       <node id="3731567766880819190" at="42,0,43,0" concept="8" trace="InternalSuperMethodCallOperation$r3" />
       <node id="3731567766880819190" at="18,0,20,0" concept="1" trace="typeof_InternalSuperMethodCallOperation_InferenceRule#()V" />
       <node id="3731567766880819190" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1032,7 +1032,7 @@
       <node id="4927083583736821483" at="27,50,28,57" concept="7" />
       <node id="4927083583736821483" at="30,68,31,102" concept="7" />
       <node id="4927083583736821483" at="33,30,34,17" concept="7" />
-      <node id="4927083583736821483" at="38,0,39,0" concept="8" trace="expression$XBEb" />
+      <node id="4927083583736821483" at="38,0,39,0" concept="8" trace="expression$Qdrl" />
       <node id="4927083583736821483" at="42,0,43,0" concept="8" trace="ExtractToSingleConstantExpression$Vl" />
       <node id="4927083583736821483" at="18,0,20,0" concept="1" trace="typeof_ExtractToSingleConstantExpression_InferenceRule#()V" />
       <node id="4927083583736821483" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1081,7 +1081,7 @@
       <node id="7738261905749582062" at="27,50,28,57" concept="7" />
       <node id="7738261905749582062" at="30,68,31,102" concept="7" />
       <node id="7738261905749582062" at="33,30,34,17" concept="7" />
-      <node id="7738261905749582062" at="38,0,39,0" concept="8" trace="inner$N25_" />
+      <node id="7738261905749582062" at="38,0,39,0" concept="8" trace="inner$I0GV" />
       <node id="7738261905749582062" at="42,0,43,0" concept="8" trace="ExtractStaticInnerClassExpression$2p" />
       <node id="7738261905749582062" at="18,0,20,0" concept="1" trace="typeof_ExtractStaticInnerClassExpression_InferenceRule#()V" />
       <node id="7738261905749582062" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1130,7 +1130,7 @@
       <node id="8228699960986553989" at="27,50,28,57" concept="7" />
       <node id="8228699960986553989" at="30,68,31,102" concept="7" />
       <node id="8228699960986553989" at="33,30,34,17" concept="7" />
-      <node id="8228699960986553989" at="38,0,39,0" concept="8" trace="returnType$BplA" />
+      <node id="8228699960986553989" at="38,0,39,0" concept="8" trace="returnType$5htq" />
       <node id="8228699960986553989" at="42,0,43,0" concept="8" trace="InternalTypedStaticFieldReference$zB" />
       <node id="8228699960986553989" at="18,0,20,0" concept="1" trace="typeof_InternalTypedStaticFieldReference_InferenceRule#()V" />
       <node id="8228699960986553989" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1237,7 +1237,7 @@
       <node id="8881995820265138570" at="38,68,39,102" concept="7" />
       <node id="8881995820265138570" at="41,30,42,17" concept="7" />
       <node id="8881995820265138570" at="46,0,47,0" concept="8" trace="ExtractStaticMethod_CallExpression$Wu" />
-      <node id="8881995820265138570" at="50,0,51,0" concept="8" trace="baseMethodDeclaration$$A7i" />
+      <node id="8881995820265138570" at="50,0,51,0" concept="8" trace="baseMethodDeclaration$ItxI" />
       <node id="8881995820265138570" at="24,0,26,0" concept="1" trace="check_ExtractStaticMethodCall_NonTypesystemRule#()V" />
       <node id="8881995820265138570" at="35,0,38,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8881995820265138570" at="38,0,41,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -1289,7 +1289,7 @@
       <node id="8881995820265343417" at="27,50,28,53" concept="7" />
       <node id="8881995820265343417" at="30,68,31,102" concept="7" />
       <node id="8881995820265343417" at="33,30,34,17" concept="7" />
-      <node id="8881995820265343417" at="38,0,39,0" concept="8" trace="inner$eZj0" />
+      <node id="8881995820265343417" at="38,0,39,0" concept="8" trace="inner$gEd0" />
       <node id="8881995820265343417" at="42,0,43,0" concept="8" trace="ExtractStaticMethodExpression$kq" />
       <node id="8881995820265343417" at="18,0,20,0" concept="1" trace="typeof_ExtractStaticMethodExpression_InferenceRule#()V" />
       <node id="8881995820265343417" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1338,8 +1338,8 @@
       <node id="99767819676010108" at="28,50,29,54" concept="7" />
       <node id="99767819676010108" at="31,68,32,102" concept="7" />
       <node id="99767819676010108" at="34,30,35,17" concept="7" />
-      <node id="99767819676010108" at="39,0,40,0" concept="8" trace="original$N4_w" />
-      <node id="99767819676010108" at="40,0,41,0" concept="8" trace="expression$kCPy" />
+      <node id="99767819676010108" at="39,0,40,0" concept="8" trace="original$Jeaw" />
+      <node id="99767819676010108" at="40,0,41,0" concept="8" trace="expression$ZLVu" />
       <node id="99767819676010108" at="44,0,45,0" concept="8" trace="ExtractToConstantRefExpression$sl" />
       <node id="99767819676010108" at="19,0,21,0" concept="1" trace="typeof_ExtractToConstantRefExpression_InferenceRule#()V" />
       <node id="99767819676010108" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

@@ -31,7 +31,7 @@ public final class CustomConstructor__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.returnType$gTs5);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.returnType$bOAr);
   }
 
   /*package*/ CustomConstructor__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class CustomConstructor__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$gTs5 = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e013L, "returnType");
+    /*package*/ static final SContainmentLink returnType$bOAr = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e013L, "returnType");
   }
 }

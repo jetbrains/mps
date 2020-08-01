@@ -49,9 +49,9 @@ public class OfConceptOperation_SubstituteMenu extends SubstituteMenuBase {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$6a)) {
-        SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+        SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
         SNode seqType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(operand), CONCEPTS.SequenceType$n9);
-        SNode elemType = TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(seqType, LINKS.elementType$2gFy), CONCEPTS.SNodeType$gn);
+        SNode elemType = TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(seqType, LINKS.elementType$655u), CONCEPTS.SNodeType$gn);
         if (elemType != null) {
           return true;
         }
@@ -97,7 +97,7 @@ public class OfConceptOperation_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink elementType$2gFy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
   }
 }

@@ -33,10 +33,10 @@ public class typeof_JoinOperation_InferenceRule extends AbstractInferenceRule_Ru
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120539", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_mb39ki_a0a0c0c0b(typeCheckingContext.getRepresentative(STRING_typevar_1240688053371)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240687848904", true), false, true, _info_12389875345);
     }
-    if ((SLinkOperations.getTarget(operation, LINKS.delimiter$MX$A) != null)) {
+    if ((SLinkOperations.getTarget(operation, LINKS.delimiter$FOIq) != null)) {
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
-          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.delimiter$MX$A);
+          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.delimiter$FOIq);
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240687879037", 0, null);
           typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240687870949", true), (SNode) typeCheckingContext.getRepresentative(STRING_typevar_1240688053371), true, true, _info_12389875345);
         }
@@ -76,7 +76,7 @@ public class typeof_JoinOperation_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink delimiter$MX$A = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, 0x120debf4541L, "delimiter");
+    /*package*/ static final SContainmentLink delimiter$FOIq = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, 0x120debf4541L, "delimiter");
   }
 
   private static final class CONCEPTS {

@@ -29,24 +29,24 @@ public class CheckNoDuplicatedConceptHints_NonTypesystemRule extends AbstractNon
   public CheckNoDuplicatedConceptHints_NonTypesystemRule() {
   }
   public void applyRule(final SNode cd, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(cd, LINKS.cncpt$4YHz) == null)) {
+    if ((SLinkOperations.getTarget(cd, LINKS.cncpt$qo3X) == null)) {
       return;
     }
 
     // check only one hint is specified for exact concept 
     Iterable<SNode> sameConceptHints = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(cd), CONCEPTS.VCSHints$JZ)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.concepts$4Kgw);
+        return SLinkOperations.getChildren(it, LINKS.concepts$jnZw);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.cncpt$4YHz) == SLinkOperations.getTarget(cd, LINKS.cncpt$4YHz);
+        return SLinkOperations.getTarget(it, LINKS.cncpt$qo3X) == SLinkOperations.getTarget(cd, LINKS.cncpt$qo3X);
       }
     });
     if (Sequence.fromIterable(sameConceptHints).count() != 1) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.cncpt$4YHz);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cd, "Multiple hints are defined for concept " + SPropertyOperations.getString(SLinkOperations.getTarget(cd, LINKS.cncpt$4YHz), PROPS.name$tAp1), "r:09da38a1-d679-467f-8975-eacacbd1c0a3(jetbrains.mps.vcs.mergehints.typesystem)", "6556262262332720020", null, errorTarget);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.cncpt$qo3X);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cd, "Multiple hints are defined for concept " + SPropertyOperations.getString(SLinkOperations.getTarget(cd, LINKS.cncpt$qo3X), PROPS.name$lA7v), "r:09da38a1-d679-467f-8975-eacacbd1c0a3(jetbrains.mps.vcs.mergehints.typesystem)", "6556262262332720020", null, errorTarget);
       }
     }
   }
@@ -61,8 +61,8 @@ public class CheckNoDuplicatedConceptHints_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cncpt$4YHz = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
-    /*package*/ static final SContainmentLink concepts$4Kgw = MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, 0x39744cf955c648faL, "concepts");
+    /*package*/ static final SReferenceLink cncpt$qo3X = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
+    /*package*/ static final SContainmentLink concepts$jnZw = MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, 0x39744cf955c648faL, "concepts");
   }
 
   private static final class CONCEPTS {
@@ -71,6 +71,6 @@ public class CheckNoDuplicatedConceptHints_NonTypesystemRule extends AbstractNon
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

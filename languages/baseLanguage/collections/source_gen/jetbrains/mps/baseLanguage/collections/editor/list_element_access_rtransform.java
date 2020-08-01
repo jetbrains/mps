@@ -131,7 +131,7 @@ public class list_element_access_rtransform extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode lea = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ListElementAccessExpression$d_);
-          SLinkOperations.setTarget(lea, LINKS.list$ByKw, _context.getNode());
+          SLinkOperations.setTarget(lea, LINKS.list$9Pvw, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), lea, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -166,6 +166,6 @@ public class list_element_access_rtransform extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink list$ByKw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621460b5L, "list");
+    /*package*/ static final SContainmentLink list$9Pvw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621460b5L, "list");
   }
 }

@@ -41,7 +41,7 @@ public class ArrayLiteral_Constraints extends BaseConstraintsDescriptor {
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.VariableDeclaration$xe)) {
       SNode variableDeclaration = SNodeOperations.cast(parentNode, CONCEPTS.VariableDeclaration$xe);
-      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableDeclaration, LINKS.type$pLrO), CONCEPTS.ArrayType$Yv) && Objects.equals(link, LINKS.initializer$KgD);
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableDeclaration, LINKS.type$uWuc), CONCEPTS.ArrayType$Yv) && Objects.equals(link, LINKS.initializer$no3R);
     }
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ArrayLiteral$dK) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ArrayCreatorWithInitializer$aE)) {
       return true;
@@ -70,7 +70,7 @@ public class ArrayLiteral_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

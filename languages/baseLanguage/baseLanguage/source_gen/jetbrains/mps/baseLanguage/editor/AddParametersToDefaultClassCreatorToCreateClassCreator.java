@@ -87,9 +87,9 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
       super.initialize(_context);
       constructorsWithParams = new Computable<Iterable<SNode>>() {
         public Iterable<SNode> compute() {
-          return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$bk50), CONCEPTS.ClassConcept$IY))).where(new IWhereFilter<SNode>() {
+          return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$uIr0), CONCEPTS.ClassConcept$IY))).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$WIkZ)).isNotEmpty();
+              return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$qsax)).isNotEmpty();
             }
           });
         }
@@ -157,8 +157,8 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
           SNode cc = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ClassCreator$yU);
-          SLinkOperations.setTarget(cc, LINKS.baseMethodDeclaration$$A7i, Sequence.fromIterable(constructorsWithParams).first());
-          ListSequence.fromList(SLinkOperations.getChildren(cc, LINKS.actualArgument$$A7L)).addElement(createdNode);
+          SLinkOperations.setTarget(cc, LINKS.baseMethodDeclaration$ItxI, Sequence.fromIterable(constructorsWithParams).first());
+          ListSequence.fromList(SLinkOperations.getChildren(cc, LINKS.actualArgument$ItKJ)).addElement(createdNode);
           MethodResolveUtil.replaceFromEditor(cc);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL, -1);
         }
@@ -188,10 +188,10 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class CONCEPTS {

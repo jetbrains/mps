@@ -146,7 +146,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
   }
 
   private Iterable<SNode> getDirectSupers(SNode currentClassifier) {
-    return SLinkOperations.collect(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(currentClassifier), LINKS.classifier$pQ_R);
+    return SLinkOperations.collect(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(currentClassifier), LINKS.classifier$xslD);
   }
 
   private void reportCyclicHierarchy() {
@@ -245,7 +245,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
       public void report(final TypeCheckingContext typeCheckingContext) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, "The classifier '" + SPropertyOperations.getString(myClassifier, PROPS.name$tAp1) + "' inherits unrelated defaults for '" + SPropertyOperations.getString(baseMethod1, PROPS.name$tAp1) + "' from types '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod1), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1) + "' and '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod2), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782408159407", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, "The classifier '" + SPropertyOperations.getString(myClassifier, PROPS.name$lA7v) + "' inherits unrelated defaults for '" + SPropertyOperations.getString(baseMethod1, PROPS.name$lA7v) + "' from types '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod1), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v) + "' and '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod2), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782408159407", null, errorTarget);
         }
       }
     };
@@ -275,13 +275,13 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
   }
 
   private Signature createSignature(SNode method) {
-    return Signature.create(SPropertyOperations.getString(method, PROPS.name$tAp1), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count(), createParamErasedSignature(method));
+    return Signature.create(SPropertyOperations.getString(method, PROPS.name$lA7v), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count(), createParamErasedSignature(method));
   }
 
   private String createParamErasedSignature(SNode method) {
     StringBuilder result = new StringBuilder();
-    for (SNode param : SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)) {
-      SNode type = SLinkOperations.getTarget(param, LINKS.type$pLrO);
+    for (SNode param : SLinkOperations.getChildren(method, LINKS.parameter$qsax)) {
+      SNode type = SLinkOperations.getTarget(param, LINKS.type$uWuc);
       type = GenericTypesUtil.getTypeWithResolvedTypeVars(type, myTypeByTypeVar);
       if (result.length() > 0) {
         result.append(',');
@@ -349,7 +349,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
   }
 
   private boolean trackMethod(SNode clMethod) {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(clMethod, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se));
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(clMethod, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se));
   }
 
   @Override
@@ -364,10 +364,10 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
   private final Set<SNode> insideVertex = SetSequence.fromSet(new HashSet<SNode>());
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {
@@ -378,6 +378,6 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

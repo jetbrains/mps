@@ -43,7 +43,7 @@ public class CellAction_Uncomment extends AbstractCommentAction {
   }
   @Override
   protected RestorableSelection createRestorableSelection(EditorContext editorContext) {
-    SNode commentedNode = SLinkOperations.getTarget(myNode, LINKS.commentedNode$I8FA);
+    SNode commentedNode = SLinkOperations.getTarget(myNode, LINKS.commentedNode$md7q);
     if (commentedNode == null) {
       return new RestorableSelectionByNode(SNodeOperations.getParent(myNode));
     } else {
@@ -84,6 +84,6 @@ public class CellAction_Uncomment extends AbstractCommentAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentedNode$I8FA = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
+    /*package*/ static final SContainmentLink commentedNode$md7q = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
   }
 }

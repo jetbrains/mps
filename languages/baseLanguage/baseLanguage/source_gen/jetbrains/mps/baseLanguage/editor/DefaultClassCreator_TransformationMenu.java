@@ -131,14 +131,14 @@ public class DefaultClassCreator_TransformationMenu extends TransformationMenuBa
       public void execute(@NotNull String pattern) {
         SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.AnonymousClassCreator$N6, null);
         final SNode cls = SNodeFactoryOperations.createNewNode(CONCEPTS.AnonymousClass$aF, null);
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$PRff)).visitAll(new IVisitor<SNode>() {
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$5Koh)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.typeParameter$uY4E)).addElement(it);
+            ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.typeParameter$4gm)).addElement(it);
           }
         });
-        SLinkOperations.setPointer(cls, LINKS.baseMethodDeclaration$$A7i, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"));
-        SLinkOperations.setTarget(cls, LINKS.classifier$1y5e, SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$bk50));
-        SLinkOperations.setTarget(creator, LINKS.cls$xt3G, cls);
+        SLinkOperations.setPointer(cls, LINKS.baseMethodDeclaration$ItxI, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"));
+        SLinkOperations.setTarget(cls, LINKS.classifier$JwxM, SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$uIr0));
+        SLinkOperations.setTarget(creator, LINKS.cls$d4Mk, cls);
         SNodeOperations.replaceWithAnother(_context.getNode(), creator);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), creator, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -179,11 +179,11 @@ public class DefaultClassCreator_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeParameter$PRff = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
-    /*package*/ static final SContainmentLink typeParameter$uY4E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
-    /*package*/ static final SContainmentLink cls$xt3G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
+    /*package*/ static final SContainmentLink typeParameter$5Koh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
+    /*package*/ static final SContainmentLink typeParameter$4gm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SContainmentLink cls$d4Mk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
   }
 }

@@ -23,8 +23,8 @@ public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_R
   public typeOf_CastExpression_InferenceRule() {
   }
   public void applyRule(final SNode castExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(castExpression, LINKS.type$8QP0) != null)) {
-      SNode castType = SLinkOperations.getTarget(castExpression, LINKS.type$8QP0);
+    if ((SLinkOperations.getTarget(castExpression, LINKS.type$izF0) != null)) {
+      SNode castType = SLinkOperations.getTarget(castExpression, LINKS.type$izF0);
       {
         SNode _nodeToCheck_1029348928467 = castExpression;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223981485155", 0, null);
@@ -32,12 +32,12 @@ public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_R
       }
 
       if (SNodeOperations.isInstanceOf(castType, CONCEPTS.ClassifierType$IZ)) {
-        castType = _quotation_createNode_sr53ct_a0a0d0a0b(SLinkOperations.getTarget(SNodeOperations.cast(castType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R));
+        castType = _quotation_createNode_sr53ct_a0a0d0a0b(SLinkOperations.getTarget(SNodeOperations.cast(castType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD));
       }
       {
         SNode _nodeToCheck_1029348928467 = castExpression;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1178271928127", 0, null);
-        typeCheckingContext.createComparableEquation((SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(castExpression, LINKS.expression$8QPv), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1178271928128", true), (SNode) castType, false, _info_12389875345);
+        typeCheckingContext.createComparableEquation((SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(castExpression, LINKS.expression$izU1), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1178271928128", true), (SNode) castType, false, _info_12389875345);
       }
     }
   }
@@ -59,9 +59,9 @@ public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$8QP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink type$izF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
   }
 
   private static final class CONCEPTS {

@@ -12,14 +12,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class UtilityMethodCall_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().emitRead(SLinkOperations.getTarget(_context.getNode(), LINKS.function$m8VX), "r:812dd537-4bc6-4b23-8ff0-eed686398e8b(jetbrains.mps.lang.textGen.dataFlow)/1237297502590");
-    for (SNode arg : SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$7Ebg)) {
+    _context.getBuilder().emitRead(SLinkOperations.getTarget(_context.getNode(), LINKS.function$Il2z), "r:812dd537-4bc6-4b23-8ff0-eed686398e8b(jetbrains.mps.lang.textGen.dataFlow)/1237297502590");
+    for (SNode arg : SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$HrsK)) {
       _context.getBuilder().build((SNode) arg);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink function$m8VX = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, 0x11f6fac17ecL, "function");
-    /*package*/ static final SContainmentLink parameter$7Ebg = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, 0x11f6fac4585L, "parameter");
+    /*package*/ static final SReferenceLink function$Il2z = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, 0x11f6fac17ecL, "function");
+    /*package*/ static final SContainmentLink parameter$HrsK = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, 0x11f6fac4585L, "parameter");
   }
 }

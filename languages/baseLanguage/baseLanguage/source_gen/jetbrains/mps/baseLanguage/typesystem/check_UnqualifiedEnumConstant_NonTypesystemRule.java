@@ -43,7 +43,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
 
     // FIXME: duplicate code with JavaToMpsConverter 
 
-    SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$2ky6);
+    SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$7WwU);
     if (!(ref instanceof DynamicReference)) {
       return;
     }
@@ -57,7 +57,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
     for (SNode enclosingEnum : ListSequence.fromList(SNodeOperations.getNodeAncestors(varRef, CONCEPTS.EnumClass$uy, false))) {
       SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(enclosingEnum)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
         }
       });
       if ((enumConst == null)) {
@@ -65,8 +65,8 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
       }
 
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-      SLinkOperations.setTarget(result, LINKS.enumClass$9jPZ, enclosingEnum);
-      SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$fB6v, enumConst);
+      SLinkOperations.setTarget(result, LINKS.enumClass$wB9x, enclosingEnum);
+      SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$zW91, enumConst);
 
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -108,7 +108,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
       // Q: maybe not findFirst, but rather fail if there are more than one... 
       SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$uy))).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
         }
       });
 
@@ -118,8 +118,8 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
 
       // success 
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-      SLinkOperations.setTarget(result, LINKS.enumClass$9jPZ, SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$uy));
-      SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$fB6v, enumConst);
+      SLinkOperations.setTarget(result, LINKS.enumClass$wB9x, SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$uy));
+      SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$zW91, enumConst);
 
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -134,7 +134,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
     }
 
     for (SNode onDemandImport : Sequence.fromIterable(JavaImports__BehaviorDescriptor.staticOnDemand_id4ykJ8Y6iCVz.invoke(javaImports))) {
-      SNode claz = ResolveUnknownUtil.findClass(varRef, SPropertyOperations.getString(onDemandImport, PROPS.tokens$DqHu));
+      SNode claz = ResolveUnknownUtil.findClass(varRef, SPropertyOperations.getString(onDemandImport, PROPS.tokens$3W1y));
       if ((claz == null)) {
         continue;
       }
@@ -144,7 +144,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
 
       SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy))).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+          return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
         }
       });
       if ((enumConst == null)) {
@@ -152,8 +152,8 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
       }
 
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-      SLinkOperations.setTarget(result, LINKS.enumClass$9jPZ, SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy));
-      SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$fB6v, enumConst);
+      SLinkOperations.setTarget(result, LINKS.enumClass$wB9x, SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy));
+      SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$zW91, enumConst);
 
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -185,13 +185,13 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink enumClass$9jPZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
-    /*package*/ static final SReferenceLink enumConstantDeclaration$fB6v = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty tokens$DqHu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty tokens$3W1y = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
   }
 }

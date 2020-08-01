@@ -24,12 +24,12 @@ public class typeof_InternalThisExpression_InferenceRule extends AbstractInferen
   public void applyRule(final SNode ite, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode c = SNodeOperations.getNodeAncestor(ite, CONCEPTS.Classifier$hJ, false, false);
     SNode ct = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-    SLinkOperations.setTarget(ct, LINKS.classifier$pQ_R, c);
-    SLinkOperations.getChildren(c, LINKS.typeVariableDeclaration$ziZT);
-    for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.typeVariableDeclaration$ziZT))) {
+    SLinkOperations.setTarget(ct, LINKS.classifier$xslD, c);
+    SLinkOperations.getChildren(c, LINKS.typeVariableDeclaration$6cWB);
+    for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.typeVariableDeclaration$6cWB))) {
       SNode tvr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference"));
-      SLinkOperations.setTarget(tvr, LINKS.typeVariableDeclaration$U0X4, tvd);
-      ListSequence.fromList(SLinkOperations.getChildren(ct, LINKS.parameter$dQne)).addElement(tvr);
+      SLinkOperations.setTarget(tvr, LINKS.typeVariableDeclaration$6t$W, tvd);
+      ListSequence.fromList(SLinkOperations.getChildren(ct, LINKS.parameter$HlfM)).addElement(tvr);
     }
     {
       SNode _nodeToCheck_1029348928467 = ite;
@@ -53,9 +53,9 @@ public class typeof_InternalThisExpression_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 }

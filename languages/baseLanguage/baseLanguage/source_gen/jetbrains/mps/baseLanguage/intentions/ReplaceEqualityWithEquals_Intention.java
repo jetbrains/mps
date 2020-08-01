@@ -63,13 +63,13 @@ public final class ReplaceEqualityWithEquals_Intention extends AbstractIntention
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode leftExpr = SLinkOperations.getTarget(node, LINKS.leftExpression$rxLZ);
-      SNode rightExpression = SLinkOperations.getTarget(node, LINKS.rightExpression$rxBl);
+      SNode leftExpr = SLinkOperations.getTarget(node, LINKS.leftExpression$lndx);
+      SNode rightExpression = SLinkOperations.getTarget(node, LINKS.rightExpression$li3b);
       SNode equalsExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
-      SLinkOperations.setTarget(equalsExpression, LINKS.operand$Lcrr, leftExpr);
-      SNode operation = SNodeFactoryOperations.setNewChild(equalsExpression, LINKS.operation$X4R8, CONCEPTS.InstanceMethodCallOperation$1G);
-      SLinkOperations.setTarget(operation, LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_1rm795_a0a0a0f0a(), LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.baseMethodDeclaration$$A7i));
-      ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.actualArgument$$A7L)).insertElement(0, rightExpression);
+      SLinkOperations.setTarget(equalsExpression, LINKS.operand$P1i5, leftExpr);
+      SNode operation = SNodeFactoryOperations.setNewChild(equalsExpression, LINKS.operation$_mGS, CONCEPTS.InstanceMethodCallOperation$1G);
+      SLinkOperations.setTarget(operation, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_1rm795_a0a0a0f0a(), LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.baseMethodDeclaration$ItxI));
+      ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.actualArgument$ItKJ)).insertElement(0, rightExpression);
       SNodeOperations.replaceWithAnother(node, equalsExpression);
     }
     @Override
@@ -100,12 +100,12 @@ public final class ReplaceEqualityWithEquals_Intention extends AbstractIntention
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class CONCEPTS {

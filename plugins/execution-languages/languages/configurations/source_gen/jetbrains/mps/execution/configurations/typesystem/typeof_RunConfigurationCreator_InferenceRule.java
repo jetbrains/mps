@@ -25,10 +25,10 @@ public class typeof_RunConfigurationCreator_InferenceRule extends AbstractInfere
     {
       SNode _nodeToCheck_1029348928467 = creator;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "3642991921658122741", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "3642991921658122738", true), (SNode) _quotation_createNode_ijawlg_a1a0c0a0b(SLinkOperations.getTarget(creator, LINKS.configuration$Kvew)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "3642991921658122738", true), (SNode) _quotation_createNode_ijawlg_a1a0c0a0b(SLinkOperations.getTarget(creator, LINKS.configuration$v81w)), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.configurationName$L2S2);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.configurationName$Kp8Y);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "529406319400385987", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "529406319400385979", true), (SNode) _quotation_createNode_ijawlg_a1a0c0b0b(), _info_12389875345);
     }
@@ -57,8 +57,8 @@ public class typeof_RunConfigurationCreator_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink configuration$Kvew = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x328e81d9f20cd1deL, 0x328e81d9f20cd1dfL, "configuration");
-    /*package*/ static final SContainmentLink configurationName$L2S2 = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x328e81d9f20cd1deL, 0x758d43e19b4fdb6L, "configurationName");
+    /*package*/ static final SReferenceLink configuration$v81w = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x328e81d9f20cd1deL, 0x328e81d9f20cd1dfL, "configuration");
+    /*package*/ static final SContainmentLink configurationName$Kp8Y = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x328e81d9f20cd1deL, 0x758d43e19b4fdb6L, "configurationName");
   }
 
   private static final class CONCEPTS {

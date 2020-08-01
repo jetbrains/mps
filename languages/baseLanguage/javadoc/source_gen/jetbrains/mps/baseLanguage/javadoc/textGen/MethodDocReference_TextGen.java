@@ -21,24 +21,24 @@ public class MethodDocReference_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    SNode method = SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.methodDeclaration$Q6Bw);
+    SNode method = SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.methodDeclaration$dd8w);
     tgs.append(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNodeAncestor(method, CONCEPTS.Classifier$hJ, false, false)));
     tgs.append("#");
-    tgs.append(SPropertyOperations.getString(method, PROPS.name$tAp1));
+    tgs.append(SPropertyOperations.getString(method, PROPS.name$lA7v));
     tgs.append("(");
-    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count(); i++) {
+    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count(); i++) {
       if (i != 0) {
         tgs.append(", ");
       }
-      tgs.appendNode(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).getElement(i), LINKS.type$pLrO));
+      tgs.appendNode(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).getElement(i), LINKS.type$uWuc));
     }
     tgs.append(")");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink methodDeclaration$Q6Bw = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, 0x1ec532ec2531d2d4L, "methodDeclaration");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink methodDeclaration$dd8w = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, 0x1ec532ec2531d2d4L, "methodDeclaration");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {
@@ -46,6 +46,6 @@ public class MethodDocReference_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

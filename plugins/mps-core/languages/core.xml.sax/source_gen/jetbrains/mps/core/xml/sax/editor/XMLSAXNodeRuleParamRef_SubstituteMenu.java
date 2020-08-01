@@ -50,7 +50,7 @@ public class XMLSAXNodeRuleParamRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_rfbwj4_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.XMLSAXNodeRuleParamRef$ma, LINKS.param$YnW5);
+      super((SAbstractConcept) CONCEPTS.XMLSAXNodeRuleParamRef$ma, LINKS.param$dA6r);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class XMLSAXNodeRuleParamRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink param$YnW5 = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x4180d2369b1f16c6L, 0x4180d2369b1f17e0L, "param");
+    /*package*/ static final SReferenceLink param$dA6r = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x4180d2369b1f16c6L, 0x4180d2369b1f17e0L, "param");
   }
 }

@@ -40,7 +40,7 @@ public final class SuperConstructorInvocation__BehaviorDescriptor extends BaseBH
       return new ArrayList<SNode>();
     }
 
-    SNode superClassifier = SLinkOperations.getTarget(superclassType, LINKS.classifier$pQ_R);
+    SNode superClassifier = SLinkOperations.getTarget(superclassType, LINKS.classifier$xslD);
 
     if ((superClassifier == null) || !(SNodeOperations.isInstanceOf(superClassifier, CONCEPTS.ClassConcept$IY))) {
       return new ArrayList<SNode>();
@@ -101,6 +101,6 @@ public final class SuperConstructorInvocation__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

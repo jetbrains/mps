@@ -27,12 +27,12 @@ public class StaticFieldReference_DeleteToDot {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if ((SLinkOperations.getTarget(node, LINKS.variableDeclaration$2ky6) != null)) {
+        if ((SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU) != null)) {
           if (!(DeletionApproverUtil.approve(editorContext, node, "field"))) {
-            SLinkOperations.setTarget(node, LINKS.variableDeclaration$2ky6, null);
+            SLinkOperations.setTarget(node, LINKS.variableDeclaration$7WwU, null);
           }
         } else {
-          SNodeOperations.replaceWithAnother(node, _quotation_createNode_ek0tjl_a0a0a0a0a0(SLinkOperations.getTarget(node, LINKS.classifier$ZTjE)));
+          SNodeOperations.replaceWithAnother(node, _quotation_createNode_ek0tjl_a0a0a0a0a0(SLinkOperations.getTarget(node, LINKS.classifier$WKxm)));
         }
       }
 
@@ -88,7 +88,7 @@ public class StaticFieldReference_DeleteToDot {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 }

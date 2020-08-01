@@ -20,7 +20,7 @@ public class typeof_CatchVariable_InferenceRule extends AbstractInferenceRule_Ru
   public typeof_CatchVariable_InferenceRule() {
   }
   public void applyRule(final SNode catchVariable, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(catchVariable, LINKS.type$pLrO), CONCEPTS.AlternativeType$aM), LINKS.alternative$Fu70))) {
+    for (SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(catchVariable, LINKS.type$uWuc), CONCEPTS.AlternativeType$aM), LINKS.alternative$3_p0))) {
       {
         SNode _nodeToCheck_1029348928467 = catchVariable;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6735953169129852600", 0, null);
@@ -39,8 +39,8 @@ public class typeof_CatchVariable_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink alternative$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink alternative$3_p0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
   }
 
   private static final class CONCEPTS {

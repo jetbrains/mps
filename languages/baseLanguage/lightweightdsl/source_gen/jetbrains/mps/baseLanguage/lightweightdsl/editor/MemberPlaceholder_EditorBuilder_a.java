@@ -48,7 +48,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         return new AbstractCellProvider(myNode) {
           public EditorCell createEditorCell(EditorContext context) {
             EditorCell_Label cell = new EditorCell_Constant(context, myNode, "");
-            cell.setDefaultText(SPropertyOperations.getString(myNode, PROPS.caption$l7aw));
+            cell.setDefaultText(SPropertyOperations.getString(myNode, PROPS.caption$eu5w));
             cell.setSelectable(true);
             cell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ClassLikeMemberPlaceholderMenu()}));
 
@@ -74,6 +74,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty caption$l7aw = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db3L, "caption");
+    /*package*/ static final SProperty caption$eu5w = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db3L, "caption");
   }
 }

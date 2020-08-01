@@ -53,7 +53,7 @@ public class subs_AttributedNodeExpression_Contribution extends SubstituteMenuBa
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode absRule = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.AbstractRule$6j, false, false);
-      return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(absRule, LINKS.applicableNode$lCke)), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "3364660638048049748"));
+      return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(absRule, LINKS.applicableNode$uxMM)), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "3364660638048049748"));
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class subs_AttributedNodeExpression_Contribution extends SubstituteMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$lCke = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
   }
 }

@@ -29,17 +29,17 @@ public class check_IfModuleUsesResources_NonTypesystemRule extends AbstractNonTy
   public check_IfModuleUsesResources_NonTypesystemRule() {
   }
   public void applyRule(final SNode buildModule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildModule, LINKS.sources$Pqd_), CONCEPTS.BuildMps_ModuleResources$lI)).isNotEmpty()) {
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildModule, LINKS.sources$RG$V), CONCEPTS.BuildMps_ModuleResources$lI)).isNotEmpty()) {
       return;
     }
     if ((SNodeOperations.getNodeAncestor(buildModule, CONCEPTS.BuildProject$BF, false, false) == null) || (boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(buildModule)) {
       return;
     }
-    if (isEmptyString(SPropertyOperations.getString(buildModule, PROPS.uuid$XKnR))) {
+    if (isEmptyString(SPropertyOperations.getString(buildModule, PROPS.uuid$UrzD))) {
       return;
     }
     SRepository repo = SNodeOperations.getModel(buildModule).getRepository();
-    SModule module = repo.getModule(PersistenceFacade.getInstance().createModuleId(SPropertyOperations.getString(buildModule, PROPS.uuid$XKnR)));
+    SModule module = repo.getModule(PersistenceFacade.getInstance().createModuleId(SPropertyOperations.getString(buildModule, PROPS.uuid$UrzD)));
     if (module == null) {
       return;
     }
@@ -68,7 +68,7 @@ public class check_IfModuleUsesResources_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink sources$Pqd_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
+    /*package*/ static final SContainmentLink sources$RG$V = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
   }
 
   private static final class CONCEPTS {
@@ -78,6 +78,6 @@ public class check_IfModuleUsesResources_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty uuid$XKnR = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
+    /*package*/ static final SProperty uuid$UrzD = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
   }
 }

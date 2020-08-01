@@ -54,7 +54,7 @@ public final class BuildLayout_CopyProcessor__BehaviorDescriptor extends BaseBHD
     String name = "default";
     SNode copyNode = SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_CustomCopy$CW);
     if ((copyNode != null)) {
-      name = BuildLayout_CopyProcessor__BehaviorDescriptor.filesetName_id19QsrPvClqt.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_CopyProcessor$UZ), SLinkOperations.getTarget(copyNode, LINKS.fileset$K4_c));
+      name = BuildLayout_CopyProcessor__BehaviorDescriptor.filesetName_id19QsrPvClqt.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_CopyProcessor$UZ), SLinkOperations.getTarget(copyNode, LINKS.fileset$ie0O));
     }
     outpath = Context.defaultContext(genContext).getTempPath(__thisNode__, name, "customProcessors", BuildLayout_CopyProcessor__BehaviorDescriptor.getTaskName_id19QsrPtc4wK.invoke(__thisNode__));
     map.put(__thisNode__, outpath);
@@ -63,9 +63,9 @@ public final class BuildLayout_CopyProcessor__BehaviorDescriptor extends BaseBHD
   /*package*/ static String representativeName_id19QsrPvAva7(@NotNull SAbstractConcept __thisConcept__, SNode path) {
     StringBuilder res = new StringBuilder();
     if (SNodeOperations.isInstanceOf(path, CONCEPTS.BuildRelativePath$dD)) {
-      SNode compositePart = SLinkOperations.getTarget(SNodeOperations.cast(path, CONCEPTS.BuildRelativePath$dD), LINKS.compositePart$gwj7);
+      SNode compositePart = SLinkOperations.getTarget(SNodeOperations.cast(path, CONCEPTS.BuildRelativePath$dD), LINKS.compositePart$ZDgp);
       while (compositePart != null) {
-        String name = SPropertyOperations.getString(compositePart, PROPS.head$vKDv);
+        String name = SPropertyOperations.getString(compositePart, PROPS.head$o$61);
         if (name.indexOf("{") == -1 && name.indexOf("}") == -1 && name.indexOf("$") == -1) {
           if (res.length() > 0) {
             res.append("-");
@@ -84,9 +84,9 @@ public final class BuildLayout_CopyProcessor__BehaviorDescriptor extends BaseBHD
   }
   /*package*/ static String filesetName_id19QsrPvClqt(@NotNull SAbstractConcept __thisConcept__, SNode fileset) {
     if (SNodeOperations.isInstanceOf(fileset, CONCEPTS.BuildInputSingleFile$yn)) {
-      return BuildLayout_CopyProcessor__BehaviorDescriptor.representativeName_id19QsrPvAva7.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_CopyProcessor$UZ), SLinkOperations.getTarget(SNodeOperations.cast(fileset, CONCEPTS.BuildInputSingleFile$yn), LINKS.path$6h5X));
+      return BuildLayout_CopyProcessor__BehaviorDescriptor.representativeName_id19QsrPvAva7.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_CopyProcessor$UZ), SLinkOperations.getTarget(SNodeOperations.cast(fileset, CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz));
     } else if (SNodeOperations.isInstanceOf(fileset, CONCEPTS.BuildInputFiles$Nk)) {
-      return BuildLayout_CopyProcessor__BehaviorDescriptor.representativeName_id19QsrPvAva7.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_CopyProcessor$UZ), SLinkOperations.getTarget(SNodeOperations.cast(fileset, CONCEPTS.BuildInputFiles$Nk), LINKS.dir$6hmv));
+      return BuildLayout_CopyProcessor__BehaviorDescriptor.representativeName_id19QsrPvAva7.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_CopyProcessor$UZ), SLinkOperations.getTarget(SNodeOperations.cast(fileset, CONCEPTS.BuildInputFiles$Nk), LINKS.dir$2pT1));
     }
     return "copy";
   }
@@ -151,13 +151,13 @@ public final class BuildLayout_CopyProcessor__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fileset$K4_c = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
-    /*package*/ static final SContainmentLink compositePart$gwj7 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
-    /*package*/ static final SContainmentLink path$6h5X = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
-    /*package*/ static final SContainmentLink dir$6hmv = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
+    /*package*/ static final SContainmentLink fileset$ie0O = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SContainmentLink path$2hSz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
+    /*package*/ static final SContainmentLink dir$2pT1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty head$vKDv = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
+    /*package*/ static final SProperty head$o$61 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
   }
 }

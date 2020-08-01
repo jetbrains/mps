@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OtherChild_IntraProcedural_BuilderMode_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.child$NoPp));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.child$T1R7));
     _context.getBuilder().emitNop("r:11be8b48-b45e-48e5-98ad-b77dc1b202b1(testCustomAnalyzer.dataFlow)/7078910619969196244");
   }
   @Override
@@ -24,6 +24,6 @@ public class OtherChild_IntraProcedural_BuilderMode_DataFlow extends DataFlowBui
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink child$NoPp = MetaAdapterFactory.getContainmentLink(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6bbL, 0x623d57b40400d6faL, "child");
+    /*package*/ static final SContainmentLink child$T1R7 = MetaAdapterFactory.getContainmentLink(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x623d57b40400d6bbL, 0x623d57b40400d6faL, "child");
   }
 }

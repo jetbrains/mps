@@ -120,7 +120,7 @@ public class StyleClassReferenceList_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createStyleClassReferenceList_cyyevv_a0a0a(Iterable<? extends SNode> p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StyleClassReferenceList$9U);
-    n0.forChild(LINKS.element$VLR9).initNodeList(p0, CONCEPTS.StyleClassReference$zy);
+    n0.forChild(LINKS.element$X9Hn).initNodeList(p0, CONCEPTS.StyleClassReference$zy);
     return n0.getResult();
   }
 
@@ -130,6 +130,6 @@ public class StyleClassReferenceList_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink element$VLR9 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element");
+    /*package*/ static final SContainmentLink element$X9Hn = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element");
   }
 }

@@ -71,7 +71,7 @@ public class AbstractContainerCreator_add_elementType extends TransformationMenu
   public class TMP_Group_alwvmr_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.elementType$K4zo) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.elementType$id8C) == null);
     }
 
     @NotNull
@@ -127,7 +127,7 @@ public class AbstractContainerCreator_add_elementType extends TransformationMenu
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.elementType$K4zo, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.elementType$id8C, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -157,6 +157,6 @@ public class AbstractContainerCreator_add_elementType extends TransformationMenu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$K4zo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
+    /*package*/ static final SContainmentLink elementType$id8C = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
   }
 }

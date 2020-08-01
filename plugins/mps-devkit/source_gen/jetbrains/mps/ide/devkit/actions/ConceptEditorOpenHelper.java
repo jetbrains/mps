@@ -71,8 +71,8 @@ public class ConceptEditorOpenHelper {
     SNode baseNode = null;
     if (jetbrains.mps.util.SNodeOperations.isRoot(node)) {
       SNode annotation = AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8));
-      if ((annotation != null) && (SLinkOperations.getTarget(annotation, LINKS.applicableConcept$jo4f) != null)) {
-        baseNode = SLinkOperations.getTarget(annotation, LINKS.applicableConcept$jo4f);
+      if ((annotation != null) && (SLinkOperations.getTarget(annotation, LINKS.applicableConcept$oE3h) != null)) {
+        baseNode = SLinkOperations.getTarget(annotation, LINKS.applicableConcept$oE3h);
       }
     }
     if ((baseNode == null)) {
@@ -99,6 +99,6 @@ public class ConceptEditorOpenHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$jo4f = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$oE3h = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
   }
 }

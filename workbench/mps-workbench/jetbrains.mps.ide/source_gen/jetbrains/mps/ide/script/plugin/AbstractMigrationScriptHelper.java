@@ -71,7 +71,7 @@ public abstract class AbstractMigrationScriptHelper {
     }
     // try name match if none matched by node reference 
     for (RefactoringScript rs : scriptAspect.getRefactoringScripts()) {
-      if (rs.getName().equals(SPropertyOperations.getString(scriptNode, PROPS.title$cHtL))) {
+      if (rs.getName().equals(SPropertyOperations.getString(scriptNode, PROPS.title$a1qJ))) {
         return rs;
       }
     }
@@ -123,6 +123,6 @@ public abstract class AbstractMigrationScriptHelper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty title$cHtL = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x11225f2354aL, "title");
+    /*package*/ static final SProperty title$a1qJ = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x11225f2354aL, "title");
   }
 }

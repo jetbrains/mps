@@ -22,7 +22,7 @@ public class ModuleReferenceExpression_Constraints extends BaseConstraintsDescri
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$IIew, container);
+      super(PROPS.name$Cp1w, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -40,7 +40,7 @@ public class ModuleReferenceExpression_Constraints extends BaseConstraintsDescri
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$IIew, new Name_Property(this));
+    properties.put(PROPS.name$Cp1w, new Name_Property(this));
     return properties;
   }
 
@@ -49,6 +49,6 @@ public class ModuleReferenceExpression_Constraints extends BaseConstraintsDescri
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$IIew = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name");
+    /*package*/ static final SProperty name$Cp1w = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name");
   }
 }

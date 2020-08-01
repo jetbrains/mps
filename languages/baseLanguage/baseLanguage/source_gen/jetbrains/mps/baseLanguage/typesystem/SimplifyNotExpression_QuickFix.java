@@ -20,7 +20,7 @@ public class SimplifyNotExpression_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode constant = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BooleanConstant$Ui);
-    SPropertyOperations.assign(constant, PROPS.value$WIn0, !(((Boolean) SimplifyNotExpression_QuickFix.this.getField("value")[0])));
+    SPropertyOperations.assign(constant, PROPS.value$qt90, !(((Boolean) SimplifyNotExpression_QuickFix.this.getField("value")[0])));
   }
 
   private static final class CONCEPTS {
@@ -28,6 +28,6 @@ public class SimplifyNotExpression_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

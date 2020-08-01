@@ -138,7 +138,7 @@ public class ExpressionStatement_TransformationMenu extends TransformationMenuBa
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        return (SLinkOperations.getTarget(_context.getNode(), LINKS.expression$WIP0) == null);
+        return (SLinkOperations.getTarget(_context.getNode(), LINKS.expression$qFF0) == null);
       }
 
 
@@ -166,6 +166,6 @@ public class ExpressionStatement_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 }

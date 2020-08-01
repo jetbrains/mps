@@ -69,7 +69,7 @@
       <node id="2559059706675052980" at="54,0,55,0" concept="7" trace="breakingNode_sla41h_a0a0a0a0a1a0a0a0c" />
       <node id="2559059706675052980" at="57,0,58,0" concept="7" trace="ProblemPointsToKindRoot$nW" />
       <node id="2559059706675052980" at="58,0,59,0" concept="7" trace="ProblemKind$14" />
-      <node id="2559059706675052980" at="62,0,63,0" concept="7" trace="kind$Wl20" />
+      <node id="2559059706675052980" at="62,0,63,0" concept="7" trace="kind$ebY0" />
       <node id="2559059706675052980" at="23,0,26,0" concept="0" trace="ProblemPointsToKindRoot_Constraints#()V" />
       <node id="2559059706675052981" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="2559059706675052981" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

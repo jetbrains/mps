@@ -32,10 +32,10 @@ public final class CellKeyMapDeclaration__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$meOh);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$Lbkf);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.applicableConcept$meOh, baseConcept);
+    SLinkOperations.setTarget(__thisNode__, LINKS.applicableConcept$Lbkf, baseConcept);
   }
 
   /*package*/ CellKeyMapDeclaration__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class CellKeyMapDeclaration__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$meOh = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x1094c452c15L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$Lbkf = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x1094c452c15L, "applicableConcept");
   }
 }

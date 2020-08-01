@@ -35,9 +35,9 @@
       <node id="8758390115029091794" at="102,0,103,0" concept="5" trace="ReferenceContainer$DU" />
       <node id="8758390115029091794" at="103,0,104,0" concept="5" trace="Root$mF" />
       <node id="8758390115029091794" at="104,0,105,0" concept="5" trace="Child$jL" />
-      <node id="8758390115029091794" at="108,0,109,0" concept="5" trace="root$mWz0" />
-      <node id="8758390115029091794" at="109,0,110,0" concept="5" trace="rightChild$n1Du" />
-      <node id="8758390115029091794" at="110,0,111,0" concept="5" trace="leftChild$n1CZ" />
+      <node id="8758390115029091794" at="108,0,109,0" concept="5" trace="root$7kX0" />
+      <node id="8758390115029091794" at="109,0,110,0" concept="5" trace="rightChild$9N5y" />
+      <node id="8758390115029091794" at="110,0,111,0" concept="5" trace="leftChild$9MQx" />
       <node id="8758390115029091794" at="25,0,28,0" concept="0" trace="ReferenceContainer_Constraints#()V" />
       <node id="8758390115029091795" at="32,0,36,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="8758390115029091795" at="40,0,44,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

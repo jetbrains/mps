@@ -53,8 +53,8 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode tool) {
-          SLinkOperations.setTarget(tool, LINKS.shortcut$qnAW, createNumberToolShortcut_p58wrf_a0a0a0a0a0a6(SPropertyOperations.getString(tool, PROPS.number$xWxm)));
-          SPropertyOperations.set(tool, PROPS.number$xWxm, null);
+          SLinkOperations.setTarget(tool, LINKS.shortcut$LrR4, createNumberToolShortcut_p58wrf_a0a0a0a0a0a6(SPropertyOperations.getString(tool, PROPS.number$sk9E)));
+          SPropertyOperations.set(tool, PROPS.number$sk9E, null);
         }
       });
     }
@@ -91,7 +91,7 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
 
   private static SNode createNumberToolShortcut_p58wrf_a0a0a0a0a0a6(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NumberToolShortcut$zP);
-    n0.setProperty(PROPS.number$5Dx6, p0);
+    n0.setProperty(PROPS.number$J71U, p0);
     return n0.getResult();
   }
 
@@ -101,11 +101,11 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink shortcut$qnAW = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x68b8d4843b815aeL, "shortcut");
+    /*package*/ static final SContainmentLink shortcut$LrR4 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x68b8d4843b815aeL, "shortcut");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty number$xWxm = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf2dL, "number");
-    /*package*/ static final SProperty number$5Dx6 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
+    /*package*/ static final SProperty number$sk9E = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf2dL, "number");
+    /*package*/ static final SProperty number$J71U = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
   }
 }

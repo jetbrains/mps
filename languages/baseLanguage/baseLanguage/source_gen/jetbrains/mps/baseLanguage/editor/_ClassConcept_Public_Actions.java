@@ -22,7 +22,7 @@ public class _ClassConcept_Public_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SLinkOperations.setTarget(node, LINKS.visibility$2GiC, null);
+        SLinkOperations.setTarget(node, LINKS.visibility$jt1o, null);
       }
 
     };
@@ -70,6 +70,6 @@ public class _ClassConcept_Public_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

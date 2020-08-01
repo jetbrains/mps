@@ -37,7 +37,7 @@ public class EditorDeclarationScanner {
   public EditorDeclarationScanner scan(SModel m) {
     SModule owner = m.getModule();
     for (SNode ac : SModelOperations.roots(m, CONCEPTS.AbstractComponent$Ng)) {
-      SNode cd = SLinkOperations.getTarget(ac, LINKS.conceptDeclaration$sbgS);
+      SNode cd = SLinkOperations.getTarget(ac, LINKS.conceptDeclaration$Dtb8);
       if (cd != null && SNodeOperations.getModel(cd).getModule() != owner) {
         myExternalConcepts.add(cd);
         myExtendedModels.add(SNodeOperations.getModel(cd));
@@ -69,7 +69,7 @@ public class EditorDeclarationScanner {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$sbgS = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {

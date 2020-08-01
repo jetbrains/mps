@@ -26,7 +26,7 @@ public class TemplateArgumentVariableRefExpression_Constraints extends BaseConst
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.varmacro$CKSt, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.varmacro$JFm3, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -59,6 +59,6 @@ public class TemplateArgumentVariableRefExpression_Constraints extends BaseConst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink varmacro$CKSt = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, 0x25c655ce6e80fddaL, "varmacro");
+    /*package*/ static final SReferenceLink varmacro$JFm3 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, 0x25c655ce6e80fddaL, "varmacro");
   }
 }

@@ -45,12 +45,12 @@ public final class MapType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + "<" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$lJzv)) + "," + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.valueType$ZdlW)) + ">";
+    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + "<" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$y2c1)) + "," + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.valueType$BtC4)) + ">";
   }
   /*package*/ static List<SNode> getAbstractCreators_id6A07P3f4z36(@NotNull SNode __thisNode__, SModel targetModel) {
     List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(result).addElement(_quotation_createNode_icy1a5_a0a1a1(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$lJzv), SLinkOperations.getTarget(__thisNode__, LINKS.valueType$ZdlW)));
-    ListSequence.fromList(result).addElement(_quotation_createNode_icy1a5_a0a2a1(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$lJzv), SLinkOperations.getTarget(__thisNode__, LINKS.valueType$ZdlW)));
+    ListSequence.fromList(result).addElement(_quotation_createNode_icy1a5_a0a1a1(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$y2c1), SLinkOperations.getTarget(__thisNode__, LINKS.valueType$BtC4)));
+    ListSequence.fromList(result).addElement(_quotation_createNode_icy1a5_a0a2a1(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$y2c1), SLinkOperations.getTarget(__thisNode__, LINKS.valueType$BtC4)));
     ListSequence.fromList(result).addSequence(Sequence.fromIterable(CustomContainersUtil.containerCreators(targetModel, __thisNode__)));
     return result;
   }
@@ -158,8 +158,8 @@ public final class MapType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keyType$lJzv = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType");
-    /*package*/ static final SContainmentLink valueType$ZdlW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType");
+    /*package*/ static final SContainmentLink keyType$y2c1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f62a8L, "keyType");
+    /*package*/ static final SContainmentLink valueType$BtC4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, 0x116db7f8516L, "valueType");
   }
 
   private static final class CONCEPTS {

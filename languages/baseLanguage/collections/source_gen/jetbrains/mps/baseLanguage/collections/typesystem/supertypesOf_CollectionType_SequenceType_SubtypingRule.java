@@ -20,7 +20,7 @@ public class supertypesOf_CollectionType_SequenceType_SubtypingRule extends Subt
   public supertypesOf_CollectionType_SequenceType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode ct, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_ligzty_a0a1(SLinkOperations.getTarget(ct, LINKS.elementType$B4nw));
+    return _quotation_createNode_ligzty_a0a1(SLinkOperations.getTarget(ct, LINKS.elementType$V7ow));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.CollectionType$jq;
@@ -44,7 +44,7 @@ public class supertypesOf_CollectionType_SequenceType_SubtypingRule extends Subt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$B4nw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
+    /*package*/ static final SContainmentLink elementType$V7ow = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
   }
 
   private static final class CONCEPTS {

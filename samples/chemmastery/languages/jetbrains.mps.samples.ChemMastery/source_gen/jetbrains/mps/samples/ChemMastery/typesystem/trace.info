@@ -31,7 +31,7 @@
       <node id="3123291046850595872" at="31,50,32,30" concept="8" />
       <node id="3123291046850595872" at="34,68,35,102" concept="8" />
       <node id="3123291046850595872" at="37,30,38,17" concept="8" />
-      <node id="3123291046850595872" at="42,0,43,0" concept="9" trace="elements$Cbl0" />
+      <node id="3123291046850595872" at="42,0,43,0" concept="9" trace="elements$tvb0" />
       <node id="3123291046850595872" at="46,0,47,0" concept="9" trace="Parens$Ym" />
       <node id="3123291046850595872" at="21,0,23,0" concept="1" trace="check_Parens_NonTypesystemRule#()V" />
       <node id="3123291046850595872" at="31,0,34,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -161,14 +161,14 @@
       <node id="3709490473851466511" at="83,59,84,150" concept="8" />
       <node id="3709490473851466526" at="87,55,88,195" concept="2" />
       <node id="3709490473851366357" at="90,7,91,30" concept="8" />
-      <node id="3709490473851161602" at="95,0,96,0" concept="9" trace="cardinality$$dy0" />
-      <node id="3709490473851161602" at="96,0,97,0" concept="9" trace="cardinalityVisible$iY8b" />
-      <node id="3709490473851161602" at="97,0,98,0" concept="9" trace="cardinality$x1g0" />
-      <node id="3709490473851161602" at="98,0,99,0" concept="9" trace="cardinalityVisible$x1gv" />
-      <node id="3709490473851161602" at="99,0,100,0" concept="9" trace="id$sqos" />
-      <node id="3709490473851161602" at="103,0,104,0" concept="9" trace="elements$Eg3r" />
-      <node id="3709490473851161602" at="104,0,105,0" concept="9" trace="elements$Cbl0" />
-      <node id="3709490473851161602" at="105,0,106,0" concept="9" trace="element$$dI0" />
+      <node id="3709490473851161602" at="95,0,96,0" concept="9" trace="cardinality$yzu0" />
+      <node id="3709490473851161602" at="96,0,97,0" concept="9" trace="cardinalityVisible$c5Xl" />
+      <node id="3709490473851161602" at="97,0,98,0" concept="9" trace="cardinality$ZAK0" />
+      <node id="3709490473851161602" at="98,0,99,0" concept="9" trace="cardinalityVisible$ZAZ1" />
+      <node id="3709490473851161602" at="99,0,100,0" concept="9" trace="id$KLP$" />
+      <node id="3709490473851161602" at="103,0,104,0" concept="9" trace="elements$tLE5" />
+      <node id="3709490473851161602" at="104,0,105,0" concept="9" trace="elements$tvb0" />
+      <node id="3709490473851161602" at="105,0,106,0" concept="9" trace="element$yDi0" />
       <node id="3709490473851161602" at="109,0,110,0" concept="9" trace="CompoundComponentWithCardinality$dw" />
       <node id="3709490473851161602" at="110,0,111,0" concept="9" trace="ElementRef$i$" />
       <node id="3709490473851161602" at="111,0,112,0" concept="9" trace="Parens$Ym" />
@@ -292,8 +292,8 @@
       <node id="6567999678834787901" at="35,50,36,56" concept="8" />
       <node id="6567999678834787901" at="38,68,39,102" concept="8" />
       <node id="6567999678834787901" at="41,30,42,17" concept="8" />
-      <node id="6567999678834787901" at="46,0,47,0" concept="9" trace="cardinalityVisible$x1gv" />
-      <node id="6567999678834787901" at="47,0,48,0" concept="9" trace="cardinality$x1g0" />
+      <node id="6567999678834787901" at="46,0,47,0" concept="9" trace="cardinalityVisible$ZAZ1" />
+      <node id="6567999678834787901" at="47,0,48,0" concept="9" trace="cardinality$ZAK0" />
       <node id="6567999678834787901" at="51,0,52,0" concept="9" trace="CompoundComponentWithCardinality$dw" />
       <node id="6567999678834787901" at="21,0,23,0" concept="1" trace="check_CardinalityVisibility_NonTypesystemRule#()V" />
       <node id="6567999678834787901" at="35,0,38,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -338,7 +338,7 @@
       <node id="6567999678834800344" at="18,44,19,42" concept="8" />
       <node id="6567999678834800600" at="21,35,22,119" concept="2" />
       <node id="6567999678834800028" at="26,0,27,0" concept="9" trace="ElementRef$i$" />
-      <node id="6567999678834800028" at="30,0,31,0" concept="9" trace="cardinalityVisible$x1gv" />
+      <node id="6567999678834800028" at="30,0,31,0" concept="9" trace="cardinalityVisible$ZAZ1" />
       <node id="6567999678834800028" at="15,0,18,0" concept="1" trace="HideCardinalityOne_QuickFix#()V" />
       <node id="6567999678834800028" at="18,0,21,0" concept="6" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="6567999678834800028" at="21,0,24,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -378,11 +378,11 @@
       <node id="7995886393880673819" at="50,50,51,36" concept="8" />
       <node id="7995886393880673819" at="53,68,54,102" concept="8" />
       <node id="7995886393880673819" at="56,30,57,17" concept="8" />
-      <node id="7995886393880673819" at="61,0,62,0" concept="9" trace="left$U$u8" />
-      <node id="7995886393880673819" at="62,0,63,0" concept="9" trace="right$U$v6" />
+      <node id="7995886393880673819" at="61,0,62,0" concept="9" trace="left$nE_S" />
+      <node id="7995886393880673819" at="62,0,63,0" concept="9" trace="right$nF3U" />
       <node id="7995886393880673819" at="66,0,67,0" concept="9" trace="Compound$6W" />
       <node id="7995886393880673819" at="67,0,68,0" concept="9" trace="ChemEquation$$Y" />
-      <node id="7995886393880673819" at="71,0,72,0" concept="9" trace="condition$2Qh4" />
+      <node id="7995886393880673819" at="71,0,72,0" concept="9" trace="condition$oigW" />
       <node id="7995886393880673819" at="24,0,26,0" concept="1" trace="check_ChemEquation_NonTypesystemRule#()V" />
       <node id="7995886393880673819" at="50,0,53,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7995886393880673819" at="53,0,56,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

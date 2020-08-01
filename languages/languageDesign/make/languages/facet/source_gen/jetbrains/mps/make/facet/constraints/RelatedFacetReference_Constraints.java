@@ -31,7 +31,7 @@ public class RelatedFacetReference_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.facet$M0dw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.facet$e6yw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -71,6 +71,6 @@ public class RelatedFacetReference_Constraints extends BaseConstraintsDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink facet$M0dw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
+    /*package*/ static final SReferenceLink facet$e6yw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
   }
 }

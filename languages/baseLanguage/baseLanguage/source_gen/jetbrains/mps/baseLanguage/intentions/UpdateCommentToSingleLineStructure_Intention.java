@@ -38,7 +38,7 @@ public final class UpdateCommentToSingleLineStructure_Intention extends Abstract
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.text$BOhB)).isNotEmpty() && (SLinkOperations.getTarget(node, LINKS.line$32mp) == null);
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.text$ikxT)).isNotEmpty() && (SLinkOperations.getTarget(node, LINKS.line$u8Q7) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -59,10 +59,10 @@ public final class UpdateCommentToSingleLineStructure_Intention extends Abstract
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.text$BOhB)).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.text$ikxT)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode line) {
           SNode comment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-          SLinkOperations.setTarget(comment, LINKS.line$32mp, SNodeOperations.copyNode(line));
+          SLinkOperations.setTarget(comment, LINKS.line$u8Q7, SNodeOperations.copyNode(line));
           SNodeOperations.insertPrevSiblingChild(node, comment);
         }
       });
@@ -75,7 +75,7 @@ public final class UpdateCommentToSingleLineStructure_Intention extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$32mp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
-    /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    /*package*/ static final SContainmentLink line$u8Q7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink text$ikxT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
   }
 }

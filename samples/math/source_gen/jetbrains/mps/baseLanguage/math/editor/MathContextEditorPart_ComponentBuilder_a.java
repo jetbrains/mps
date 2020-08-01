@@ -64,10 +64,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_qri1nn_a1a() {
-    return SPropertyOperations.getEnum(myNode, PROPS.precisionSetting$YdW5) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "jetbrains.mps.baseLanguage.math.structure.PrecisionSetting"), 0x12056af4e38L, "CUSTOM");
+    return SPropertyOperations.getEnum(myNode, PROPS.precisionSetting$8K6r) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "jetbrains.mps.baseLanguage.math.structure.PrecisionSetting"), 0x12056af4e38L, "CUSTOM");
   }
   private boolean nodeCondition_qri1nn_a2a() {
-    return SPropertyOperations.getEnum(myNode, PROPS.precisionSetting$YdW5) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "jetbrains.mps.baseLanguage.math.structure.PrecisionSetting"), 0x12056af4e38L, "CUSTOM");
+    return SPropertyOperations.getEnum(myNode, PROPS.precisionSetting$8K6r) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "jetbrains.mps.baseLanguage.math.structure.PrecisionSetting"), 0x12056af4e38L, "CUSTOM");
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
@@ -89,7 +89,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.precisionSetting$YdW5;
+      final SProperty property = PROPS.precisionSetting$8K6r;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no precisionSetting>");
@@ -131,7 +131,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.roundingMode$YdV7;
+      final SProperty property = PROPS.roundingMode$8JCp;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no roundingMode>");
@@ -173,7 +173,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_2() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.precision$YdVA;
+      final SProperty property = PROPS.precision$8JRq;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no precision>");
@@ -197,9 +197,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty precisionSetting$YdW5 = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting");
-    /*package*/ static final SProperty roundingMode$YdV7 = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3533L, "roundingMode");
-    /*package*/ static final SProperty precision$YdVA = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3534L, "precision");
+    /*package*/ static final SProperty precisionSetting$8K6r = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting");
+    /*package*/ static final SProperty roundingMode$8JCp = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3533L, "roundingMode");
+    /*package*/ static final SProperty precision$8JRq = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3534L, "precision");
   }
 
   private static final class CONCEPTS {

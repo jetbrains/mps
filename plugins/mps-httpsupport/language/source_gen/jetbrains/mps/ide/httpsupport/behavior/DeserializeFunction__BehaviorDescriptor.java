@@ -37,7 +37,7 @@ public final class DeserializeFunction__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ParameterConverterDeclaration$QQ), LINKS.parameterType$vj6Q);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ParameterConverterDeclaration$QQ), LINKS.parameterType$agka);
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.SerializedValueParameter$YN);
@@ -102,6 +102,6 @@ public final class DeserializeFunction__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$vj6Q = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, 0x3d1bb14fe83869abL, "parameterType");
+    /*package*/ static final SContainmentLink parameterType$agka = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, 0x3d1bb14fe83869abL, "parameterType");
   }
 }

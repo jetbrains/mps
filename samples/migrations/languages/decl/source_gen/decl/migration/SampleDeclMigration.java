@@ -72,12 +72,12 @@ public class SampleDeclMigration extends MigrationScriptBase {
       // for each old instance create a new one 
       ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
         public void visit(SNode oldNode) {
-          SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, LINKS.member$b5zN), SPropertyOperations.getString(oldNode, PROPS.name$tAp1));
+          SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, LINKS.member$nGlH), SPropertyOperations.getString(oldNode, PROPS.name$lA7v));
           // add it to the model 
           SModelOperations.addRootNode(SNodeOperations.getModel(oldNode), newNode);
 
           // create the data annotation to hold mapping between old and new ids of the instances 
-          SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(AttributeOperations.createAndAddAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$gb), CONCEPTS.MigrationDataAnnotation$gb), LINKS.dataNode$wNKg, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$gb), PROPS.createdByScript$1_lw, SampleDeclMigration.this.getReference().serialize());
+          SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(AttributeOperations.createAndAddAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$gb), CONCEPTS.MigrationDataAnnotation$gb), LINKS.dataNode$T4nK, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$gb), PROPS.createdByScript$L5qw, SampleDeclMigration.this.getReference().serialize());
 
         }
       });
@@ -132,8 +132,8 @@ public class SampleDeclMigration extends MigrationScriptBase {
   }
   private static SNode createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(String p0, String p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeclMigrationData$E1);
-    n0.setProperty(PROPS.oldId$W$wZ, p0);
-    n0.setProperty(PROPS.newId$W$xu, p1);
+    n0.setProperty(PROPS.oldId$lFYx, p0);
+    n0.setProperty(PROPS.newId$lGdy, p1);
     return n0.getResult();
   }
 
@@ -144,14 +144,14 @@ public class SampleDeclMigration extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$b5zN = MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL, 0x6aff2c104931bb27L, "member");
-    /*package*/ static final SContainmentLink dataNode$wNKg = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, 0x5e7aa366c292fcceL, "dataNode");
+    /*package*/ static final SContainmentLink member$nGlH = MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL, 0x6aff2c104931bb27L, "member");
+    /*package*/ static final SContainmentLink dataNode$T4nK = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, 0x5e7aa366c292fcceL, "dataNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty createdByScript$1_lw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
-    /*package*/ static final SProperty oldId$W$wZ = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdeL, "oldId");
-    /*package*/ static final SProperty newId$W$xu = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdfL, "newId");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty createdByScript$L5qw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
+    /*package*/ static final SProperty oldId$lFYx = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdeL, "oldId");
+    /*package*/ static final SProperty newId$lGdy = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdfL, "newId");
   }
 }

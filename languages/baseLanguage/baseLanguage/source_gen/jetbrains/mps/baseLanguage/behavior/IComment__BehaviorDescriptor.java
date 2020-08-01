@@ -44,7 +44,7 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getTextualRepresentation_idfB3l80ylIb(@NotNull SNode __thisNode__) {
     return IterableUtils.join(ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(__thisNode__)).select(new ISelector<SNode, String>() {
       public String select(SNode line) {
-        return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$eRew)).select(new ISelector<SNode, String>() {
+        return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$cK1w)).select(new ISelector<SNode, String>() {
           public String select(SNode element) {
             return (String) TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(element);
           }
@@ -55,17 +55,17 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isTODOComment_idfB3l7ZufMD(@NotNull SNode __thisNode__) {
     SNode firstLineWithText = ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(__thisNode__)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode l) {
-        return (l != null) && ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).any(new IWhereFilter<SNode>() {
+        return (l != null) && ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode w) {
-            return SNodeOperations.isInstanceOf(w, CONCEPTS.Word$AM) && isNotEmptyString(trim_63o2sb_a0a0a0a0a0a0a0a0a0a0a0a0k(SPropertyOperations.getString(SNodeOperations.cast(w, CONCEPTS.Word$AM), PROPS.value$cK70)));
+            return SNodeOperations.isInstanceOf(w, CONCEPTS.Word$AM) && isNotEmptyString(trim_63o2sb_a0a0a0a0a0a0a0a0a0a0a0a0k(SPropertyOperations.getString(SNodeOperations.cast(w, CONCEPTS.Word$AM), PROPS.value$bjp0)));
           }
         });
       }
     });
     if ((firstLineWithText != null)) {
-      SNode firstElement = ListSequence.fromList(SLinkOperations.getChildren(firstLineWithText, LINKS.elements$eRew)).first();
+      SNode firstElement = ListSequence.fromList(SLinkOperations.getChildren(firstLineWithText, LINKS.elements$cK1w)).first();
       if (SNodeOperations.isInstanceOf(firstElement, CONCEPTS.Word$AM)) {
-        String text = SPropertyOperations.getString(SNodeOperations.cast(firstElement, CONCEPTS.Word$AM), PROPS.value$cK70);
+        String text = SPropertyOperations.getString(SNodeOperations.cast(firstElement, CONCEPTS.Word$AM), PROPS.value$bjp0);
         if (text != null) {
           text = text.trim().toLowerCase();
           return text.startsWith("todo") || text.startsWith("fix");
@@ -130,7 +130,7 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {
@@ -138,6 +138,6 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

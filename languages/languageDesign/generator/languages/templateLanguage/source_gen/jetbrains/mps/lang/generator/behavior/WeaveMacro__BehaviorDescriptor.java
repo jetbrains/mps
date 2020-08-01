@@ -36,7 +36,7 @@ public final class WeaveMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getInputNodeTypeInsideOfMacro_idhEwIosJ(@NotNull SNode __thisNode__) {
-    SNode queryType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.nodesToWeaveQuery$C6dv));
+    SNode queryType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.nodesToWeaveQuery$r0y1));
     {
       GeneratedMatchingPattern pattern_bvvctf_b0a = new Pattern_bvvctf_a0a0b0a(_quotation_createNode_bvvctf_a0a0a0b0a());
       SNode coercedNode_bvvctf_b0a = TypecheckingFacade.getFromContext().coerceType(queryType, pattern_bvvctf_b0a);
@@ -104,7 +104,7 @@ public final class WeaveMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodesToWeaveQuery$C6dv = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x300c02df884261ebL, "nodesToWeaveQuery");
+    /*package*/ static final SContainmentLink nodesToWeaveQuery$r0y1 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x300c02df884235d3L, 0x300c02df884261ebL, "nodesToWeaveQuery");
   }
 
   private static final class CONCEPTS {

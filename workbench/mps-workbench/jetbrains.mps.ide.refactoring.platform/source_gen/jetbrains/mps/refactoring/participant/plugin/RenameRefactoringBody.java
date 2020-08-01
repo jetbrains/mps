@@ -42,7 +42,7 @@ public class RenameRefactoringBody implements RefactoringProcessor.RefactoringBo
     // do nothing 
   }
   public void doRefactor(Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SNode, String, SNode, String>> participantStates, RefactoringSession refactoringSession) {
-    SPropertyOperations.assign(myNode, PROPS.name$tAp1, myNewNodeName);
+    SPropertyOperations.assign(myNode, PROPS.name$lA7v, myNewNodeName);
   }
   @Override
   public String getFinalStateFor(SNode initialState) {
@@ -58,6 +58,6 @@ public class RenameRefactoringBody implements RefactoringProcessor.RefactoringBo
 
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

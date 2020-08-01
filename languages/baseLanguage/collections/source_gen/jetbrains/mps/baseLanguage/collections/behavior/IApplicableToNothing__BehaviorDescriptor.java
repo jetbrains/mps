@@ -85,7 +85,7 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
         if (ListSequence.fromList(SNodeOperations.getChildren(rt)).isNotEmpty()) {
           SNodeOperations.replaceWithAnother(ListSequence.fromList(SNodeOperations.getChildren(rt)).first(), SNodeOperations.copyNode(elementType));
         }
-        ListSequence.fromList(SLinkOperations.getChildren(jt, LINKS.argument$xIHX)).addElement(rt);
+        ListSequence.fromList(SLinkOperations.getChildren(jt, LINKS.argument$lCgz)).addElement(rt);
       }
     }
     return jt;
@@ -146,6 +146,6 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$xIHX = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SContainmentLink argument$lCgz = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
   }
 }

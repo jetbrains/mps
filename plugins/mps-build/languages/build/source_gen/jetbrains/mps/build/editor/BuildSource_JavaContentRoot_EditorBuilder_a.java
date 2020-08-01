@@ -90,7 +90,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new basePathSingleRoleHandler_p3v1g4_b0(myNode, LINKS.basePath$kzZw, getEditorContext());
+    SingleRoleCellProvider provider = new basePathSingleRoleHandler_p3v1g4_b0(myNode, LINKS.basePath$XrKw, getEditorContext());
     return provider.createCell();
   }
   private static class basePathSingleRoleHandler_p3v1g4_b0 extends SingleRoleCellProvider {
@@ -110,8 +110,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.basePath$kzZw, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.basePath$kzZw, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.basePath$XrKw, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.basePath$XrKw, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -123,7 +123,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.basePath$kzZw);
+        editorCell.setSRole(LINKS.basePath$XrKw);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
@@ -132,7 +132,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.basePath$kzZw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.basePath$XrKw));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_basePath");
@@ -173,7 +173,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.folders$OLlM;
+      return LINKS.folders$zTze;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.BuildSource_JavaContentFolder$aT;
@@ -186,7 +186,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(foldersListHandler_p3v1g4_c0.this.getNode(), LINKS.folders$OLlM));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(foldersListHandler_p3v1g4_c0.this.getNode(), LINKS.folders$zTze));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -239,7 +239,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink basePath$kzZw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc52L, 0x668c6cfbafacdc53L, "basePath");
-    /*package*/ static final SContainmentLink folders$OLlM = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc52L, 0x263ae7d4319546cdL, "folders");
+    /*package*/ static final SContainmentLink basePath$XrKw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc52L, 0x668c6cfbafacdc53L, "basePath");
+    /*package*/ static final SContainmentLink folders$zTze = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc52L, 0x263ae7d4319546cdL, "folders");
   }
 }

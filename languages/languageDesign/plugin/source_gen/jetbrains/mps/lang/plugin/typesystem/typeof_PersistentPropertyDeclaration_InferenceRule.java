@@ -23,11 +23,11 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
   public typeof_PersistentPropertyDeclaration_InferenceRule() {
   }
   public void applyRule(final SNode persistentPropertyDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode primitive = SLinkOperations.getTarget(_quotation_createNode_sacma3_a0a0a1(), LINKS.descriptor$ZkDR);
+    SNode primitive = SLinkOperations.getTarget(_quotation_createNode_sacma3_a0a0a1(), LINKS.descriptor$F0hD);
     {
       SNode _nodeToCheck_1029348928467 = persistentPropertyDeclaration;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5527296032508935722", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(persistentPropertyDeclaration, LINKS.type$pLrO), (SNode) _quotation_createNode_sacma3_a1a0c0b0b(primitive), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(persistentPropertyDeclaration, LINKS.type$uWuc), (SNode) _quotation_createNode_sacma3_a1a0c0b0b(primitive), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -71,8 +71,8 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {

@@ -15,13 +15,13 @@ public class printStatement_NodeFactories {
   public static class NodeFactory_7284872370241013667 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractPrintExpression$cC)) {
-        SLinkOperations.setTarget(newNode, LINKS.object$gmkA, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractPrintExpression$cC), LINKS.object$gmkA));
+        SLinkOperations.setTarget(newNode, LINKS.object$UNYq, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractPrintExpression$cC), LINKS.object$UNYq));
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink object$gmkA = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
+    /*package*/ static final SContainmentLink object$UNYq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
   }
 
   private static final class CONCEPTS {

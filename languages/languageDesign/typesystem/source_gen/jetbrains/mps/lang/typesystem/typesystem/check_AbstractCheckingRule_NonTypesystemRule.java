@@ -18,8 +18,8 @@ public class check_AbstractCheckingRule_NonTypesystemRule extends AbstractNonTyp
   public check_AbstractCheckingRule_NonTypesystemRule() {
   }
   public void applyRule(final SNode abstractCheckingRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(abstractCheckingRule, LINKS.body$uYGk) != null) {
-      DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(abstractCheckingRule, LINKS.body$uYGk));
+    if (SLinkOperations.getTarget(abstractCheckingRule, LINKS.body$ntG) != null) {
+      DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(abstractCheckingRule, LINKS.body$ntG));
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -33,7 +33,7 @@ public class check_AbstractCheckingRule_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$uYGk = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1164848bdf4L, "body");
+    /*package*/ static final SContainmentLink body$ntG = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1164848bdf4L, "body");
   }
 
   private static final class CONCEPTS {

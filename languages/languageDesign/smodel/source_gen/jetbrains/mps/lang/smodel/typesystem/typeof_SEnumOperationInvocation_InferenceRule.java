@@ -21,7 +21,7 @@ public class typeof_SEnumOperationInvocation_InferenceRule extends AbstractInfer
     {
       SNode _nodeToCheck_1029348928467 = invocation;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240934965174", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240934961905", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(invocation, LINKS.operation$wqzp), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240934968367", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240934961905", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(invocation, LINKS.operation$GR97), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1240934968367", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_SEnumOperationInvocation_InferenceRule extends AbstractInfer
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$wqzp = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, 0x120ed35f667L, "operation");
+    /*package*/ static final SContainmentLink operation$GR97 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, 0x120ed35f667L, "operation");
   }
 
   private static final class CONCEPTS {

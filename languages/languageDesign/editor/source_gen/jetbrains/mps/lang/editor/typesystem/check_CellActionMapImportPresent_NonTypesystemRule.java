@@ -23,7 +23,7 @@ public class check_CellActionMapImportPresent_NonTypesystemRule extends Abstract
   public check_CellActionMapImportPresent_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellActionMapImport, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    CheckingResult result = CellActionMapImportSelector__BehaviorDescriptor.checkPresenceOfImportee_id3XXPjz_qqny.invoke(SLinkOperations.getTarget(cellActionMapImport, LINKS.selector$zy1K), SLinkOperations.getTarget(cellActionMapImport, LINKS.cellActionMap$jBrw));
+    CheckingResult result = CellActionMapImportSelector__BehaviorDescriptor.checkPresenceOfImportee_id3XXPjz_qqny.invoke(SLinkOperations.getTarget(cellActionMapImport, LINKS.selector$duQg), SLinkOperations.getTarget(cellActionMapImport, LINKS.cellActionMap$w6kw));
     if (!(result.isOK())) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -42,8 +42,8 @@ public class check_CellActionMapImportPresent_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink selector$zy1K = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x4f883d04113872dbL, "selector");
-    /*package*/ static final SReferenceLink cellActionMap$jBrw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
+    /*package*/ static final SContainmentLink selector$duQg = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x4f883d04113872dbL, "selector");
+    /*package*/ static final SReferenceLink cellActionMap$w6kw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
   }
 
   private static final class CONCEPTS {

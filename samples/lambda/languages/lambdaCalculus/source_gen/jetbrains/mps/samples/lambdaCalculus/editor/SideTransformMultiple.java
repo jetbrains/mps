@@ -111,7 +111,7 @@ public class SideTransformMultiple extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode multiple = SNodeFactoryOperations.createNewNode(CONCEPTS.MultipleExpression$p8, null);
         SNodeOperations.replaceWithAnother(_context.getNode(), multiple);
-        ListSequence.fromList(SLinkOperations.getChildren(multiple, LINKS.expressions$31s0)).insertElement(0, _context.getNode());
+        ListSequence.fromList(SLinkOperations.getChildren(multiple, LINKS.expressions$tG$0)).insertElement(0, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), multiple, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -145,6 +145,6 @@ public class SideTransformMultiple extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expressions$31s0 = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x15b75b54f176d1a3L, 0x15b75b54f176d1a4L, "expressions");
+    /*package*/ static final SContainmentLink expressions$tG$0 = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x15b75b54f176d1a3L, 0x15b75b54f176d1a4L, "expressions");
   }
 }

@@ -16,13 +16,13 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public abstract class Comments {
   public static void commentLine(SNode line, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    for (SNode el : SLinkOperations.getChildren(line, LINKS.elements$eRew)) {
+    for (SNode el : SLinkOperations.getChildren(line, LINKS.elements$cK1w)) {
       if (SNodeOperations.isInstanceOf(el, CONCEPTS.Word$AM)) {
         SNode word = SNodeOperations.cast(el, CONCEPTS.Word$AM);
-        tgs.append(SPropertyOperations.getString(word, PROPS.value$cK70));
-        if (isNotEmptyString(SPropertyOperations.getString(word, PROPS.url$WUb8))) {
+        tgs.append(SPropertyOperations.getString(word, PROPS.value$bjp0));
+        if (isNotEmptyString(SPropertyOperations.getString(word, PROPS.url$wboS))) {
           tgs.append(" (");
-          tgs.append(SPropertyOperations.getString(word, PROPS.url$WUb8));
+          tgs.append(SPropertyOperations.getString(word, PROPS.url$wboS));
           tgs.append(")");
         }
         tgs.append(" ");
@@ -42,11 +42,11 @@ public abstract class Comments {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

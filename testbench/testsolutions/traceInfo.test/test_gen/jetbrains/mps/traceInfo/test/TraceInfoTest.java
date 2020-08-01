@@ -167,9 +167,9 @@ public class TraceInfoTest implements EnvironmentAware {
         SNode testClass = SNodeOperations.cast(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()), CONCEPTS.ClassConcept$IY);
         SNode statement = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(testClass)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$tAp1).equals("internalClassTest");
+            return SPropertyOperations.getString(it, PROPS.name$lA7v).equals("internalClassTest");
           }
-        }), LINKS.body$WIlu), LINKS.statement$WHn8)).first();
+        }), LINKS.body$qspy), LINKS.statement$pYcS)).first();
         BreakpointLocation location = new BreakpointLocation(statement);
         Assert.assertEquals("jetbrains.mps.traceInfo.test.TestClass", location.getTargetUnitName());
       }
@@ -205,11 +205,11 @@ public class TraceInfoTest implements EnvironmentAware {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

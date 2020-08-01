@@ -20,9 +20,9 @@ public class ReturnStatement_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.indent();
     tgs.append("return");
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$EsbK) != null)) {
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$zDGg) != null)) {
       tgs.append(" ");
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$EsbK));
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$zDGg));
     }
     tgs.append(";");
     if (tgs.needPositions()) {
@@ -31,7 +31,7 @@ public class ReturnStatement_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 
   private static final class CONCEPTS {

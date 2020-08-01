@@ -13,12 +13,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class ForEachFoundNode {
   public static class NodeFactory_1237139122106539383 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNodeFactoryOperations.addNewChild(newNode, LINKS.parameter$WRt7, CONCEPTS.ForEachNodeFoundClosureParameterDeclaration$4h);
+      SNodeFactoryOperations.addNewChild(newNode, LINKS.parameter$uR6p, CONCEPTS.ForEachNodeFoundClosureParameterDeclaration$4h);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WRt7 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink parameter$uR6p = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
   }
 
   private static final class CONCEPTS {

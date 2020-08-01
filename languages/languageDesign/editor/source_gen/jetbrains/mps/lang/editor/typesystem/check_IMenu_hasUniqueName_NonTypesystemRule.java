@@ -30,7 +30,7 @@ public class check_IMenu_hasUniqueName_NonTypesystemRule extends AbstractNonType
       }
       if (Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(otherNode), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(node))) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Duplicate menu or contribution defined: " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(node), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "286080166051471253", null, errorTarget);
         }
       }
@@ -47,7 +47,7 @@ public class check_IMenu_hasUniqueName_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

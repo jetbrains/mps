@@ -25,11 +25,11 @@ public class check_FieldDocReference_NonTypesystemRule extends AbstractNonTypesy
   public check_FieldDocReference_NonTypesystemRule() {
   }
   public void applyRule(final SNode fieldDocReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode field = SLinkOperations.getTarget(fieldDocReference, LINKS.declaration$tTXa);
+    SNode field = SLinkOperations.getTarget(fieldDocReference, LINKS.declaration$v4BQ);
     if (!(VisibilityUtil.isVisible(fieldDocReference, SNodeOperations.as(field, CONCEPTS.IVisible$6G)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(fieldDocReference, "Symbol " + SPropertyOperations.getString(field, PROPS.name$tAp1) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538859686", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(fieldDocReference, "Symbol " + SPropertyOperations.getString(field, PROPS.name$lA7v) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538859686", null, errorTarget);
       }
     }
   }
@@ -44,11 +44,11 @@ public class check_FieldDocReference_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$tTXa = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, 0x4d316b5973d644c4L, "declaration");
+    /*package*/ static final SReferenceLink declaration$v4BQ = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, 0x4d316b5973d644c4L, "declaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

@@ -114,7 +114,7 @@ public class ShowSuppressedErrors_Action extends BaseAction {
         Tuples._2<SNode, List<SNode>> suppressedPair = ShowSuppressedErrors_Action.this.getSuppressed(_params);
         for (final SNode suppress : ListSequence.fromList(suppressedPair._1())) {
           Map<String, String> predicateFlavours = new HashMap<String, String>();
-          final String errorSpecialization = SPropertyOperations.getString(suppress, PROPS.filter$UuSh);
+          final String errorSpecialization = SPropertyOperations.getString(suppress, PROPS.filter$kXgf);
           try {
             if ((errorSpecialization != null && errorSpecialization.length() > 0)) {
               predicateFlavours = FlavouredItem.ReportItemPredicate.deserialize(errorSpecialization).getFlavours();
@@ -122,7 +122,7 @@ public class ShowSuppressedErrors_Action extends BaseAction {
           } catch (RuntimeException exception) {
           }
           List<RuleIdFlavouredItem.TypesystemRuleId> rules = ListSequence.fromList(new ArrayList<RuleIdFlavouredItem.TypesystemRuleId>());
-          String message = SPropertyOperations.getString(suppress, PROPS.message$PX4b);
+          String message = SPropertyOperations.getString(suppress, PROPS.message$8_1l);
           DefaultActionGroup actionGroup = new DefaultActionGroup();
           actionGroup.add(new AnAction("Stop Suppressing", "Do not suppress error", MPSIcons.Actions.SuppressedError) {
             public void actionPerformed(@NotNull AnActionEvent event) {
@@ -209,8 +209,8 @@ public class ShowSuppressedErrors_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty filter$UuSh = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
-    /*package*/ static final SProperty message$PX4b = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
+    /*package*/ static final SProperty filter$kXgf = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
+    /*package*/ static final SProperty message$8_1l = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
   }
 
   private static final class CONCEPTS {

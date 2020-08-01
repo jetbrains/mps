@@ -27,9 +27,9 @@ public class check_DefaultSuperConstructorThrowables_NonTypesystemRule extends A
       SNode superConstructor = ConstructorDeclaration__BehaviorDescriptor.getSuperDefaultConstructor_id6d19RW5J1tP.invoke(constructorDeclaration);
       if (superConstructor != null) {
         Set<SNode> throwables = SetSequence.fromSet(new HashSet<SNode>());
-        for (SNode superThrowable : ListSequence.fromList(SLinkOperations.getChildren(superConstructor, LINKS.throwsItem$gr7e))) {
+        for (SNode superThrowable : ListSequence.fromList(SLinkOperations.getChildren(superConstructor, LINKS.throwsItem$X8vM))) {
           boolean toAdd = true;
-          for (SNode throwable : ListSequence.fromList(SLinkOperations.getChildren(constructorDeclaration, LINKS.throwsItem$gr7e))) {
+          for (SNode throwable : ListSequence.fromList(SLinkOperations.getChildren(constructorDeclaration, LINKS.throwsItem$X8vM))) {
             if (TypecheckingFacade.getFromContext().isSubtype(superThrowable, throwable)) {
               toAdd = false;
             }
@@ -38,7 +38,7 @@ public class check_DefaultSuperConstructorThrowables_NonTypesystemRule extends A
             SetSequence.fromSet(throwables).addElement(superThrowable);
           }
         }
-        RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, SLinkOperations.getTarget(constructorDeclaration, LINKS.body$WIlu), "Unhandled exceptions in super constructor:");
+        RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, SLinkOperations.getTarget(constructorDeclaration, LINKS.body$qspy), "Unhandled exceptions in super constructor:");
       }
     }
   }
@@ -53,8 +53,8 @@ public class check_DefaultSuperConstructorThrowables_NonTypesystemRule extends A
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {

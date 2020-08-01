@@ -26,7 +26,7 @@ public class check_ExpressionStatement_NonTypesystemRule extends AbstractNonType
   public check_ExpressionStatement_NonTypesystemRule() {
   }
   public void applyRule(final SNode expressionStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) Expression__BehaviorDescriptor.isLegalAsStatement_idi26MfYG.invoke(SLinkOperations.getTarget(expressionStatement, LINKS.expression$WIP0)) || (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(expressionStatement)) {
+    if ((boolean) Expression__BehaviorDescriptor.isLegalAsStatement_idi26MfYG.invoke(SLinkOperations.getTarget(expressionStatement, LINKS.expression$qFF0)) || (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(expressionStatement)) {
       return;
     }
 
@@ -47,7 +47,7 @@ public class check_ExpressionStatement_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 
   private static final class CONCEPTS {

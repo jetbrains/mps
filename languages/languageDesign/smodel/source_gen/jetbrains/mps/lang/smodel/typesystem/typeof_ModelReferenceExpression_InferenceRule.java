@@ -27,9 +27,9 @@ public class typeof_ModelReferenceExpression_InferenceRule extends AbstractInfer
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "559557797393151938", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "559557797393151935", true), (SNode) _quotation_createNode_siar27_a1a0c0a0b(), _info_12389875345);
     }
-    if ((SLinkOperations.getTarget(modelRef, LINKS.repo$s903) != null)) {
+    if ((SLinkOperations.getTarget(modelRef, LINKS.repo$Cn1t) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelRef, LINKS.repo$s903);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelRef, LINKS.repo$Cn1t);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1423104411233531120", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1423104411233529827", true), (SNode) createClassifierType_siar27_a1a0c0a0b0b(), _info_12389875345);
       }
@@ -53,13 +53,13 @@ public class typeof_ModelReferenceExpression_InferenceRule extends AbstractInfer
   private static SNode createClassifierType_siar27_a1a0c0a0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    n0.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)"), facade.createNodeId("~SRepository")));
+    n0.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)"), facade.createNodeId("~SRepository")));
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink repo$s903 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x13bfe1ec0ddbc5f8L, "repo");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink repo$Cn1t = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x13bfe1ec0ddbc5f8L, "repo");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

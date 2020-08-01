@@ -23,7 +23,7 @@ public class XmlCharRef_Constraints extends BaseConstraintsDescriptor {
 
   public static class CharCode_Property extends BasePropertyConstraintsDescriptor {
     public CharCode_Property(ConstraintsDescriptor container) {
-      super(PROPS.charCode$ocV0, container);
+      super(PROPS.charCode$Ig_0, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class XmlCharRef_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.charCode$ocV0, new CharCode_Property(this));
+    properties.put(PROPS.charCode$Ig_0, new CharCode_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class XmlCharRef_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty charCode$ocV0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, 0x2abf08504ffe9887L, "charCode");
+    /*package*/ static final SProperty charCode$Ig_0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, 0x2abf08504ffe9887L, "charCode");
   }
 }

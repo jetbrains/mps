@@ -46,11 +46,11 @@ public class InlineIconExpressions extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IconExpression$_h, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$gh7Z), CONCEPTS.FileIcon$ne), LINKS.iconExpression$nMMS) != null);
+          return (SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$SiRx), CONCEPTS.FileIcon$ne), LINKS.iconExpression$xAD8) != null);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$gh7Z), CONCEPTS.FileIcon$ne), LINKS.iconExpression$nMMS));
+          SNodeOperations.replaceWithAnother(it, SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$SiRx), CONCEPTS.FileIcon$ne), LINKS.iconExpression$xAD8));
         }
       });
     }
@@ -67,7 +67,7 @@ public class InlineIconExpressions extends MigrationScriptBase {
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IconExpression$_h, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$gh7Z), CONCEPTS.FileIcon$ne), LINKS.iconExpression$nMMS) != null);
+          return (SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(it, LINKS.icon$SiRx), CONCEPTS.FileIcon$ne), LINKS.iconExpression$xAD8) != null);
         }
       }).select(new ISelector<SNode, NotMigratedNode>() {
         public NotMigratedNode select(SNode it) {
@@ -90,7 +90,7 @@ public class InlineIconExpressions extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink icon$gh7Z = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c3L, 0x7c8b08a50a39c6c5L, "icon");
-    /*package*/ static final SContainmentLink iconExpression$nMMS = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression");
+    /*package*/ static final SContainmentLink icon$SiRx = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c3L, 0x7c8b08a50a39c6c5L, "icon");
+    /*package*/ static final SContainmentLink iconExpression$xAD8 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression");
   }
 }

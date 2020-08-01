@@ -32,7 +32,7 @@ public final class TemplateArgumentPatternVarRefExpression__BehaviorDescriptor e
   }
 
   /*package*/ static String getVariableName_id2x5YKzmc1bX(@NotNull SNode __thisNode__) {
-    return PatternVarsUtil.getFieldName(SLinkOperations.getTarget(__thisNode__, LINKS.patternVarDecl$d45m));
+    return PatternVarsUtil.getFieldName(SLinkOperations.getTarget(__thisNode__, LINKS.patternVarDecl$kY_E));
   }
 
   /*package*/ TemplateArgumentPatternVarRefExpression__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class TemplateArgumentPatternVarRefExpression__BehaviorDescriptor e
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink patternVarDecl$d45m = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x40be82ad503b3c88L, 0x40be82ad503b3ec4L, "patternVarDecl");
+    /*package*/ static final SReferenceLink patternVarDecl$kY_E = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x40be82ad503b3c88L, 0x40be82ad503b3ec4L, "patternVarDecl");
   }
 }

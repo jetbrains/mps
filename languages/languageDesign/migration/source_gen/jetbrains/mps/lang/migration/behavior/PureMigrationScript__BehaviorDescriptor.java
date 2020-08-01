@@ -52,39 +52,39 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static int fromVersion_id4uVwhQyFcnl(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getInteger(__thisNode__, PROPS.fromVersion$jLy0);
+    return SPropertyOperations.getInteger(__thisNode__, PROPS.fromVersion$$Zu0);
   }
   /*package*/ static boolean isVersionSet_id4uVwhQyFpOe(@NotNull SNode __thisNode__) {
-    return __thisNode__.getProperty(PROPS.fromVersion$jLy0) != null;
+    return __thisNode__.getProperty(PROPS.fromVersion$$Zu0) != null;
   }
   /*package*/ static String getDescription_id1RqXnPV415t(@NotNull SNode __thisNode__) {
-    if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.description$9$QN))) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.description$9$QN);
+    if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.description$CQyH))) {
+      return SPropertyOperations.getString(__thisNode__, PROPS.description$CQyH);
     }
     // todo: make description property mandatory and remove this heuristic 
     StringBuilder result = new StringBuilder();
-    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr), CONCEPTS.IncludeMigrationPart$zz)).count() == 1 && (SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr), CONCEPTS.IncludeMigrationPart$zz)).first(), LINKS.target$s$xW) != null)) {
-      result.append("Addition to: ").append(IMigrationUnit__BehaviorDescriptor.getDescription_id1RqXnPV415t.invoke(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr), CONCEPTS.IncludeMigrationPart$zz)).first(), LINKS.target$s$xW)));
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$2ba5), CONCEPTS.IncludeMigrationPart$zz)).count() == 1 && (SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$2ba5), CONCEPTS.IncludeMigrationPart$zz)).first(), LINKS.target$PGs4) != null)) {
+      result.append("Addition to: ").append(IMigrationUnit__BehaviorDescriptor.getDescription_id1RqXnPV415t.invoke(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$2ba5), CONCEPTS.IncludeMigrationPart$zz)).first(), LINKS.target$PGs4)));
       return result.toString();
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr)).all(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$2ba5)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.MoveNodeMigrationPart$gB);
       }
     })) {
-      List<Tuples._2<SNode, SNode>> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr)).select(new ISelector<SNode, Tuples._2<SNode, SNode>>() {
+      List<Tuples._2<SNode, SNode>> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$2ba5)).select(new ISelector<SNode, Tuples._2<SNode, SNode>>() {
         public Tuples._2<SNode, SNode> select(SNode it) {
-          return MultiTuple.<SNode,SNode>from(((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$gB), LINKS.fromNode$JVN3)).resolve(SNodeOperations.getModel(it).getRepository())), ((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$gB), LINKS.toNode$JVO1)).resolve(SNodeOperations.getModel(it).getRepository())));
+          return MultiTuple.<SNode,SNode>from(((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$gB), LINKS.fromNode$dXIt)).resolve(SNodeOperations.getModel(it).getRepository())), ((SNode) AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$gB), LINKS.toNode$dYcv)).resolve(SNodeOperations.getModel(it).getRepository())));
         }
       }).toListSequence();
       if (ListSequence.fromList(movedNodes).isNotEmpty() && SNodeOperations.isInstanceOf(ListSequence.fromList(movedNodes).first()._0(), CONCEPTS.INamedConcept$nV) && ListSequence.fromList(movedNodes).isNotEmpty() && SNodeOperations.isInstanceOf(ListSequence.fromList(movedNodes).first()._1(), CONCEPTS.INamedConcept$nV)) {
         result.append("Automatic migration");
-        result.append(": move node `").append(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(movedNodes).first()._1(), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)).append("`");
+        result.append(": move node `").append(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(movedNodes).first()._1(), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v)).append("`");
         if (SNodeOperations.getParent(ListSequence.fromList(movedNodes).first()._0()) != null && SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(ListSequence.fromList(movedNodes).first()._0()), CONCEPTS.INamedConcept$nV)) {
-          result.append(" from `").append(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(ListSequence.fromList(movedNodes).first()._0()), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)).append("`");
+          result.append(" from `").append(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(ListSequence.fromList(movedNodes).first()._0()), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v)).append("`");
         }
         if (SNodeOperations.getParent(ListSequence.fromList(movedNodes).first()._1()) != null && SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(ListSequence.fromList(movedNodes).first()._1()), CONCEPTS.INamedConcept$nV)) {
-          result.append(" to `").append(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(ListSequence.fromList(movedNodes).first()._1()), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)).append("`");
+          result.append(" to `").append(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(ListSequence.fromList(movedNodes).first()._1()), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v)).append("`");
         }
         if (ListSequence.fromList(movedNodes).count() > 1) {
           result.append(" and ").append(ListSequence.fromList(movedNodes).count() - 1).append(" others");
@@ -92,13 +92,13 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
       }
     }
     if (result.length() == 0) {
-      result.append(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+      result.append(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
       result.append(" (automatic migration)");
     }
     return result.toString();
   }
   /*package*/ static Iterable<SNode> getExecuteAfter_id2bWK$jI6RRp(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.executeAfter$w13r);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.executeAfter$wwE5);
   }
   /*package*/ static Iterable<SNode> getRequiredData_id7s$_UJMVosT(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(Collections.<SNode>emptyList());
@@ -182,17 +182,17 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fromVersion$jLy0 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836cabcL, "fromVersion");
-    /*package*/ static final SProperty description$9$QN = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x1ddaf57d7b0038e8L, "description");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty fromVersion$$Zu0 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836cabcL, "fromVersion");
+    /*package*/ static final SProperty description$CQyH = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x1ddaf57d7b0038e8L, "description");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$x6zr = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
-    /*package*/ static final SReferenceLink target$s$xW = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, 0x267418e6b5c2b960L, "target");
-    /*package*/ static final SContainmentLink fromNode$JVN3 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode");
-    /*package*/ static final SContainmentLink toNode$JVO1 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode");
-    /*package*/ static final SContainmentLink executeAfter$w13r = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x47bb811da2d68dd0L, "executeAfter");
+    /*package*/ static final SContainmentLink part$2ba5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
+    /*package*/ static final SReferenceLink target$PGs4 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, 0x267418e6b5c2b960L, "target");
+    /*package*/ static final SContainmentLink fromNode$dXIt = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode");
+    /*package*/ static final SContainmentLink toNode$dYcv = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode");
+    /*package*/ static final SContainmentLink executeAfter$wwE5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x47bb811da2d68dd0L, "executeAfter");
   }
 
   private static final class CONCEPTS {

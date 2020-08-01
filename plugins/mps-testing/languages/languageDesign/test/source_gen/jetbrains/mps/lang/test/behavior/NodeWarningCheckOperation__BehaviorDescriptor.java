@@ -41,11 +41,11 @@ public final class NodeWarningCheckOperation__BehaviorDescriptor extends BaseBHD
   }
   /*package*/ static void attachReference_id2wBFdLy8qmn(@NotNull SNode __thisNode__, SNode reference) {
     assert ((boolean) IReferenceAttachable__BehaviorDescriptor.canAttachReference_id2wBFdLy7HtS.invoke(__thisNode__, reference));
-    SLinkOperations.setTarget(__thisNode__, LINKS.warningRef$tsRa, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3ee2cbee8b386d76L, "jetbrains.mps.lang.test.structure.WarningStatementReference")));
-    SLinkOperations.setTarget(SLinkOperations.getTarget(__thisNode__, LINKS.warningRef$tsRa), LINKS.declaration$tW8o, SNodeOperations.cast(reference, CONCEPTS.WarningStatement$15));
+    SLinkOperations.setTarget(__thisNode__, LINKS.warningRef$gYHQ, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3ee2cbee8b386d76L, "jetbrains.mps.lang.test.structure.WarningStatementReference")));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(__thisNode__, LINKS.warningRef$gYHQ), LINKS.declaration$w83C, SNodeOperations.cast(reference, CONCEPTS.WarningStatement$15));
   }
   /*package*/ static SNode getReference_id7eBNsYUkslm(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.warningRef$tsRa);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.warningRef$gYHQ);
   }
 
   /*package*/ NodeWarningCheckOperation__BehaviorDescriptor() {
@@ -104,7 +104,7 @@ public final class NodeWarningCheckOperation__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink warningRef$tsRa = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0224b421L, 0x75cf259aa047ff8bL, "warningRef");
-    /*package*/ static final SReferenceLink declaration$tW8o = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
+    /*package*/ static final SContainmentLink warningRef$gYHQ = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0224b421L, 0x75cf259aa047ff8bL, "warningRef");
+    /*package*/ static final SReferenceLink declaration$w83C = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
   }
 }

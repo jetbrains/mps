@@ -35,7 +35,7 @@ public final class TransformationMenuPart_WrapSubstituteMenu__BehaviorDescriptor
   }
 
   /*package*/ static SNode getReference_id3rSzFHWOe4u(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$X0fw);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$z7ww);
   }
   /*package*/ static List<SConcept> getAdditionalFeatureParameters_id6kJcyCQ_bk0(@NotNull SNode __thisNode__) {
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.QueryFunctionParameter_pattern$hZ, CONCEPTS.QueryFunctionParameter_SubstituteMenu_WrappedItem$PJ);
@@ -90,7 +90,7 @@ public final class TransformationMenuPart_WrapSubstituteMenu__BehaviorDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$X0fw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1a533160d670600cL, 0x1a533160d670600dL, "menuReference");
+    /*package*/ static final SContainmentLink menuReference$z7ww = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1a533160d670600cL, 0x1a533160d670600dL, "menuReference");
   }
 
   private static final class CONCEPTS {

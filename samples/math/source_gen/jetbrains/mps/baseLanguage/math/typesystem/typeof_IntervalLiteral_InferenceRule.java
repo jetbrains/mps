@@ -22,16 +22,16 @@ public class typeof_IntervalLiteral_InferenceRule extends AbstractInferenceRule_
   }
   public void applyRule(final SNode literal, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode elementType_typevar_1235747425275 = typeCheckingContext.createNewRuntimeTypesVariable();
-    if ((SLinkOperations.getTarget(literal, LINKS.end$AkTa) != null)) {
+    if ((SLinkOperations.getTarget(literal, LINKS.end$$7FQ) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(literal, LINKS.end$AkTa);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(literal, LINKS.end$$7FQ);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1236434335326", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(elementType_typevar_1235747425275), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1236434335330", true), _info_12389875345);
       }
     }
-    if ((SLinkOperations.getTarget(literal, LINKS.start$AkIw) != null)) {
+    if ((SLinkOperations.getTarget(literal, LINKS.start$$2xw) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(literal, LINKS.start$AkIw);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(literal, LINKS.start$$2xw);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1236434330693", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(elementType_typevar_1235747425275), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "1236434330697", true), _info_12389875345);
       }
@@ -64,8 +64,8 @@ public class typeof_IntervalLiteral_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink end$AkTa = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb848396cL, 0x11fb848396eL, "end");
-    /*package*/ static final SContainmentLink start$AkIw = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb848396cL, 0x11fb848396dL, "start");
+    /*package*/ static final SContainmentLink end$$7FQ = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb848396cL, 0x11fb848396eL, "end");
+    /*package*/ static final SContainmentLink start$$2xw = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb848396cL, 0x11fb848396dL, "start");
   }
 
   private static final class CONCEPTS {

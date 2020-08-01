@@ -42,8 +42,8 @@ public class TransformationMatchAssertion_Constraints extends BaseConstraintsDes
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     // this assertion is allowed to reference arguments that point to model only. 
     if (childNode != null && SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.ArgumentReference$Ma)) {
-      if (link.equals(LINKS.inputModel$lkA5) || link.equals(LINKS.referenceModel$lkB3) || link.equals(LINKS.transformationPlan$lkCw)) {
-        SNode arg = SLinkOperations.getTarget(SNodeOperations.as(childNode, CONCEPTS.ArgumentReference$Ma), LINKS.arg$lkr0);
+      if (link.equals(LINKS.inputModel$kYsr) || link.equals(LINKS.referenceModel$kYUt) || link.equals(LINKS.transformationPlan$kZBw)) {
+        SNode arg = SLinkOperations.getTarget(SNodeOperations.as(childNode, CONCEPTS.ArgumentReference$Ma), LINKS.arg$kT50);
         return (arg == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(arg)), CONCEPTS.ModelArgument$U$);
       }
       // fall through 
@@ -59,9 +59,9 @@ public class TransformationMatchAssertion_Constraints extends BaseConstraintsDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink arg$lkr0 = MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg");
-    /*package*/ static final SContainmentLink transformationPlan$lkCw = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d063L, "transformationPlan");
-    /*package*/ static final SContainmentLink referenceModel$lkB3 = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d060L, "referenceModel");
-    /*package*/ static final SContainmentLink inputModel$lkA5 = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d05eL, "inputModel");
+    /*package*/ static final SReferenceLink arg$kT50 = MetaAdapterFactory.getReferenceLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d05bL, 0x7b1db36ecf0d05cL, "arg");
+    /*package*/ static final SContainmentLink transformationPlan$kZBw = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d063L, "transformationPlan");
+    /*package*/ static final SContainmentLink referenceModel$kYUt = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d060L, "referenceModel");
+    /*package*/ static final SContainmentLink inputModel$kYsr = MetaAdapterFactory.getContainmentLink(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf0d057L, 0x7b1db36ecf0d05eL, "inputModel");
   }
 }

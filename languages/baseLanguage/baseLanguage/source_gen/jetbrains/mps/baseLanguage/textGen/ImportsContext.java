@@ -44,7 +44,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     for (SNode classifier : SModelOperations.roots(SNodeOperations.getModel(rootNode), CONCEPTS.Classifier$hJ)) {
       String fqName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classifier);
       if (myPackageName.equals(JavaNameUtil.packageName(fqName))) {
-        myPackageSimpleNames.add(SPropertyOperations.getString(classifier, PROPS.name$tAp1));
+        myPackageSimpleNames.add(SPropertyOperations.getString(classifier, PROPS.name$lA7v));
       }
     }
   }
@@ -70,7 +70,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       // Is the root of the target the same as the root of the context node 
       if (Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(myRootNode), rootClassifierFqName)) {
         // Can we use a shorter path than the full path from the root 
-        if (ListSequence.fromList(distinctClassifierPath).count() > 0 && SNodeOperations.getParent(ListSequence.fromList(distinctClassifierPath).getElement(0)) != null && SNodeOperations.hasRole(ListSequence.fromList(distinctClassifierPath).getElement(0), LINKS.member$oYX5)) {
+        if (ListSequence.fromList(distinctClassifierPath).count() > 0 && SNodeOperations.getParent(ListSequence.fromList(distinctClassifierPath).getElement(0)) != null && SNodeOperations.hasRole(ListSequence.fromList(distinctClassifierPath).getElement(0), LINKS.member$6v_r)) {
           return new ImportEntry(Classifier__BehaviorDescriptor.buildClassifierPath_id2qKFNTWoqtI.invoke(target, distinctClassifierPath));
         }
       }
@@ -124,7 +124,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -132,6 +132,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

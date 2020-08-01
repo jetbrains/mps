@@ -34,7 +34,7 @@ public final class ConstraintsMigrationUtil {
       SNode parent = SNodeOperations.getParent(param);
 
       if (SNodeOperations.isInstanceOf(parent, CONCEPTS.DotExpression$6a)) {
-        SNode operation = SLinkOperations.getTarget((SNodeOperations.as(parent, CONCEPTS.DotExpression$6a)), LINKS.operation$X4R8);
+        SNode operation = SLinkOperations.getTarget((SNodeOperations.as(parent, CONCEPTS.DotExpression$6a)), LINKS.operation$_mGS);
         if (SNodeOperations.isInstanceOf(operation, CONCEPTS.SNodeOperation$o6)) {
           SNode snodeOperation = SNodeOperations.as(operation, CONCEPTS.SNodeOperation$o6);
           if ((boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(snodeOperation)))) {
@@ -46,10 +46,10 @@ public final class ConstraintsMigrationUtil {
 
       if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BinaryOperation$vf)) {
         SNode parentBO = SNodeOperations.as(parent, CONCEPTS.BinaryOperation$vf);
-        SNode other = (SLinkOperations.getTarget(parentBO, LINKS.leftExpression$rxLZ) == param ? SLinkOperations.getTarget(parentBO, LINKS.rightExpression$rxBl) : SLinkOperations.getTarget(parentBO, LINKS.leftExpression$rxLZ));
+        SNode other = (SLinkOperations.getTarget(parentBO, LINKS.leftExpression$lndx) == param ? SLinkOperations.getTarget(parentBO, LINKS.rightExpression$li3b) : SLinkOperations.getTarget(parentBO, LINKS.leftExpression$lndx));
         if (SNodeOperations.isInstanceOf(other, CONCEPTS.ConceptRefExpression$$E)) {
           SNode otherNew = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce180eb54L, "jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression"));
-          SLinkOperations.setTarget(otherNew, LINKS.conceptDeclaration$EQY0, SLinkOperations.getTarget((SNodeOperations.as(other, CONCEPTS.ConceptRefExpression$$E)), LINKS.conceptDeclaration$fBIf));
+          SLinkOperations.setTarget(otherNew, LINKS.conceptDeclaration$KC20, SLinkOperations.getTarget((SNodeOperations.as(other, CONCEPTS.ConceptRefExpression$$E)), LINKS.conceptDeclaration$$fph));
           SNodeOperations.replaceWithAnother(other, otherNew);
           SNodeOperations.replaceWithAnother(param, newParam);
           continue;
@@ -70,11 +70,11 @@ public final class ConstraintsMigrationUtil {
 
       if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BinaryOperation$vf)) {
         SNode parentBO = SNodeOperations.as(parent, CONCEPTS.BinaryOperation$vf);
-        SNode other = (SLinkOperations.getTarget(parentBO, LINKS.leftExpression$rxLZ) == param ? SLinkOperations.getTarget(parentBO, LINKS.rightExpression$rxBl) : SLinkOperations.getTarget(parentBO, LINKS.leftExpression$rxLZ));
+        SNode other = (SLinkOperations.getTarget(parentBO, LINKS.leftExpression$lndx) == param ? SLinkOperations.getTarget(parentBO, LINKS.rightExpression$li3b) : SLinkOperations.getTarget(parentBO, LINKS.leftExpression$lndx));
         if (SNodeOperations.isInstanceOf(other, CONCEPTS.LinkRefExpression$mg)) {
           SNode otherNew = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce1957615L, "jetbrains.mps.lang.smodel.structure.LinkIdRefExpression"));
-          SLinkOperations.setTarget(otherNew, LINKS.conceptDeclaration$Si60, SLinkOperations.getTarget((SNodeOperations.as(other, CONCEPTS.LinkRefExpression$mg)), LINKS.conceptDeclaration$AgS0));
-          SLinkOperations.setTarget(otherNew, LINKS.linkDeclaration$Si6v, SLinkOperations.getTarget((SNodeOperations.as(other, CONCEPTS.LinkRefExpression$mg)), LINKS.linkDeclaration$_cVO));
+          SLinkOperations.setTarget(otherNew, LINKS.conceptDeclaration$gKU0, SLinkOperations.getTarget((SNodeOperations.as(other, CONCEPTS.LinkRefExpression$mg)), LINKS.conceptDeclaration$yb80));
+          SLinkOperations.setTarget(otherNew, LINKS.linkDeclaration$gL91, SLinkOperations.getTarget((SNodeOperations.as(other, CONCEPTS.LinkRefExpression$mg)), LINKS.linkDeclaration$1gYc));
           SNodeOperations.replaceWithAnother(other, otherNew);
           SNodeOperations.replaceWithAnother(param, newParam);
           continue;
@@ -189,14 +189,14 @@ public final class ConstraintsMigrationUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SReferenceLink conceptDeclaration$EQY0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce180eb54L, 0x24b2bf7ce180eb55L, "conceptDeclaration");
-    /*package*/ static final SReferenceLink conceptDeclaration$fBIf = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9eb64c6L, 0x110f9ec0c2aL, "conceptDeclaration");
-    /*package*/ static final SReferenceLink conceptDeclaration$Si60 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce1957615L, 0x24b2bf7ce1957616L, "conceptDeclaration");
-    /*package*/ static final SReferenceLink conceptDeclaration$AgS0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11d88b27d15L, 0x11d88b27d16L, "conceptDeclaration");
-    /*package*/ static final SReferenceLink linkDeclaration$Si6v = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce1957615L, 0x24b2bf7ce1957617L, "linkDeclaration");
-    /*package*/ static final SReferenceLink linkDeclaration$_cVO = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11d88b27d15L, 0x11d88b43a97L, "linkDeclaration");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SReferenceLink conceptDeclaration$KC20 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce180eb54L, 0x24b2bf7ce180eb55L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$$fph = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9eb64c6L, 0x110f9ec0c2aL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$gKU0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce1957615L, 0x24b2bf7ce1957616L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$yb80 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11d88b27d15L, 0x11d88b27d16L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink linkDeclaration$gL91 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce1957615L, 0x24b2bf7ce1957617L, "linkDeclaration");
+    /*package*/ static final SReferenceLink linkDeclaration$1gYc = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11d88b27d15L, 0x11d88b43a97L, "linkDeclaration");
   }
 }

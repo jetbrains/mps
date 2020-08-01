@@ -23,7 +23,7 @@ public class typeof_CellActionMap_FunctionParm_selectedNode_InferenceRule extend
   public typeof_CellActionMap_FunctionParm_selectedNode_InferenceRule() {
   }
   public void applyRule(final SNode cellActionMap_FunctionParm_selectedNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellActionMap_FunctionParm_selectedNode, CONCEPTS.CellActionMapDeclaration$Fh, false, false), LINKS.applicableConcept$VI7Z);
+    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellActionMap_FunctionParm_selectedNode, CONCEPTS.CellActionMapDeclaration$Fh, false, false), LINKS.applicableConcept$VlRx);
     if (applicableConcept == null) {
       applicableConcept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(SNodeOperations.getNodeAncestor(cellActionMap_FunctionParm_selectedNode, CONCEPTS.BaseEditorComponent$Sy, false, false));
     }
@@ -57,6 +57,6 @@ public class typeof_CellActionMap_FunctionParm_selectedNode_InferenceRule extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$VI7Z = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x10951978d00L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$VlRx = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x10951978d00L, "applicableConcept");
   }
 }

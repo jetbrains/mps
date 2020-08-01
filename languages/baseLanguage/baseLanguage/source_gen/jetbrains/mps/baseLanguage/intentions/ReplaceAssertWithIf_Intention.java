@@ -65,14 +65,14 @@ public final class ReplaceAssertWithIf_Intention extends AbstractIntentionDescri
       // produce throw statement 
       SNode throwStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ThrowStatement$yK, null);
       SNode newExpr = _quotation_createNode_a1x6vi_a0c0a();
-      SLinkOperations.setTarget(throwStatement, LINKS.throwable$o3ty, newExpr);
+      SLinkOperations.setTarget(throwStatement, LINKS.throwable$DFju, newExpr);
       // produce if statement 
       SNode ifStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$pi, null);
-      SNode notExpr = SNodeFactoryOperations.setNewChild(ifStatement, LINKS.condition$WJ1b, CONCEPTS.NotExpression$oq);
-      SLinkOperations.setTarget(notExpr, LINKS.expression$bUD_, SLinkOperations.getTarget(node, LINKS.condition$SNPo));
+      SNode notExpr = SNodeFactoryOperations.setNewChild(ifStatement, LINKS.condition$qL$l, CONCEPTS.NotExpression$oq);
+      SLinkOperations.setTarget(notExpr, LINKS.expression$Lq8V, SLinkOperations.getTarget(node, LINKS.condition$x6QC));
       IntentionUtils.addParensToNotIfNeeded(notExpr);
-      SNodeFactoryOperations.setNewChild(ifStatement, LINKS.ifTrue$WJ1E, null);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$WJ1E), LINKS.statement$WHn8)).insertElement(0, throwStatement);
+      SNodeFactoryOperations.setNewChild(ifStatement, LINKS.ifTrue$qLNm, null);
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$qLNm), LINKS.statement$pYcS)).insertElement(0, throwStatement);
       // replace assert with if 
       SNodeOperations.replaceWithAnother(node, ifStatement);
     }
@@ -99,11 +99,11 @@ public final class ReplaceAssertWithIf_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$o3ty = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink condition$SNPo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed44ceL, "condition");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink throwable$DFju = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink condition$x6QC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed44ceL, "condition");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

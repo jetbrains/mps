@@ -33,7 +33,7 @@ public final class LookRegexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$hfFF), vars) + ")";
+    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$mA9P), vars) + ")";
   }
 
   /*package*/ LookRegexp__BehaviorDescriptor() {
@@ -83,6 +83,6 @@ public final class LookRegexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink regexp$hfFF = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de32185L, 0x1118de377b8L, "regexp");
+    /*package*/ static final SContainmentLink regexp$mA9P = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de32185L, 0x1118de377b8L, "regexp");
   }
 }

@@ -26,7 +26,7 @@ public class AbstractUnariOperationActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$7Rjy));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$NMtu));
       }
 
     };
@@ -74,6 +74,6 @@ public class AbstractUnariOperationActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 }

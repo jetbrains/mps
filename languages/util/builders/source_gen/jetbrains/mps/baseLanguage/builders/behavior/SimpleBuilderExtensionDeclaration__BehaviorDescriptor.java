@@ -31,7 +31,7 @@ public final class SimpleBuilderExtensionDeclaration__BehaviorDescriptor extends
   }
 
   /*package*/ static SNode getContextDeclaration_id5rdgdYBzN9n(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.extended$kCrY);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.extended$Z_z2);
   }
 
   /*package*/ SimpleBuilderExtensionDeclaration__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class SimpleBuilderExtensionDeclaration__BehaviorDescriptor extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extended$kCrY = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78dcaf3L, 0x56cd40dfa78dcaf6L, "extended");
+    /*package*/ static final SReferenceLink extended$Z_z2 = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78dcaf3L, 0x56cd40dfa78dcaf6L, "extended");
   }
 }

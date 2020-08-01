@@ -129,7 +129,7 @@ public class ShowDefinition_Action extends BaseAction {
     return nodes;
   }
   private SNode getUnwrapped(final Map<String, Object> _params) {
-    return (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$IZ) ? SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R) : ((SNode) MapSequence.fromMap(_params).get("node")));
+    return (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$IZ) ? SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD) : ((SNode) MapSequence.fromMap(_params).get("node")));
   }
   private boolean isInterface(final Map<String, Object> _params) {
     return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.Interface$Kp);
@@ -159,6 +159,6 @@ public class ShowDefinition_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

@@ -37,7 +37,7 @@ public class BooleanProperty_Customization implements EditorMenuItemCustomizer {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
         protected boolean doMatchesContext_(SNode contextNode, SContainmentLink containmentLink, SReferenceLink referenceLink, SProperty property) {
-          return Objects.equals(property, PROPS.booleanProperty$aV2x);
+          return Objects.equals(property, PROPS.booleanProperty$iAdZ);
         }
       }.matchesContext(context);
     }
@@ -74,7 +74,7 @@ public class BooleanProperty_Customization implements EditorMenuItemCustomizer {
 
 
   private static final class PROPS {
-    /*package*/ static final SProperty booleanProperty$aV2x = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x49b1109510b71d68L, "booleanProperty");
+    /*package*/ static final SProperty booleanProperty$iAdZ = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x49b1109510b71d68L, "booleanProperty");
   }
 
   private static final class CONCEPTS {

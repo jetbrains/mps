@@ -38,7 +38,7 @@ public final class ListCreatorWithInit__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode createType_idi0I0ppH(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_42nh7a_a0a0(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$K4zo));
+    return _quotation_createNode_42nh7a_a0a0(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$id8C));
   }
   /*package*/ static boolean hasInitSize_id1653mnvAgtY(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -113,7 +113,7 @@ public final class ListCreatorWithInit__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$K4zo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
+    /*package*/ static final SContainmentLink elementType$id8C = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
   }
 
   private static final class CONCEPTS {

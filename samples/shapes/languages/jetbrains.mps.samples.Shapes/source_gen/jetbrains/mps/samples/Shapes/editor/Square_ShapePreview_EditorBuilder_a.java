@@ -90,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.upperLeftX$SrD0;
+      final SProperty property = PROPS.upperLeftX$loR0;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no upperLeftX>");
@@ -121,7 +121,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.upperLeftY$SrDY;
+      final SProperty property = PROPS.upperLeftY$lpl2;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no upperLeftY>");
@@ -152,7 +152,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_2() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.size$SrFr;
+      final SProperty property = PROPS.size$lq25;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no size>");
@@ -203,8 +203,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
         SNodeOperations.getModel(myNode).getRepository().getModelAccess().runReadAction(new Runnable() {
           public void run() {
-            dimension.width = 20 + SPropertyOperations.getInteger(myNode, PROPS.size$SrFr);
-            dimension.height = 20 + SPropertyOperations.getInteger(myNode, PROPS.size$SrFr);
+            dimension.width = 20 + SPropertyOperations.getInteger(myNode, PROPS.size$lq25);
+            dimension.height = 20 + SPropertyOperations.getInteger(myNode, PROPS.size$lq25);
           }
         });
         return dimension;
@@ -214,9 +214,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty upperLeftX$SrD0 = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc1a2L, 0x51dcaa29974fc1a3L, "upperLeftX");
-    /*package*/ static final SProperty upperLeftY$SrDY = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc1a2L, 0x51dcaa29974fc1a5L, "upperLeftY");
-    /*package*/ static final SProperty size$SrFr = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc1a2L, 0x51dcaa29974fc1a8L, "size");
+    /*package*/ static final SProperty upperLeftX$loR0 = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc1a2L, 0x51dcaa29974fc1a3L, "upperLeftX");
+    /*package*/ static final SProperty upperLeftY$lpl2 = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc1a2L, 0x51dcaa29974fc1a5L, "upperLeftY");
+    /*package*/ static final SProperty size$lq25 = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc1a2L, 0x51dcaa29974fc1a8L, "size");
   }
 
   private static final class CONCEPTS {

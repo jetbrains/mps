@@ -28,8 +28,8 @@ public final class SwitchExpressionPW_PasteWrapper_5 implements PasteWrapper {
   private static SNode createEnumSwitchCaseBody_StatementList_degi1_a0a0f(Iterable<? extends SNode> p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.EnumSwitchCaseBody_StatementList$Ze);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.statementList$6WT0).init(CONCEPTS.StatementList$TN);
-      n1.forChild(LINKS.statement$WHn8).initNodeList(p0, CONCEPTS.Statement$ok);
+      SNodeBuilder n1 = n0.forChild(LINKS.statementList$nvB0).init(CONCEPTS.StatementList$TN);
+      n1.forChild(LINKS.statement$pYcS).initNodeList(p0, CONCEPTS.Statement$ok);
     }
     return n0.getResult();
   }
@@ -42,7 +42,7 @@ public final class SwitchExpressionPW_PasteWrapper_5 implements PasteWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$6WT0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statementList$nvB0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

@@ -32,7 +32,7 @@
       <node id="7291101478621596288" at="62,78,63,83" concept="1" />
       <node id="7291101478621544792" at="66,48,67,44" concept="7" />
       <node id="7291101478621544792" at="69,34,70,25" concept="7" />
-      <node id="7291101478621544792" at="75,0,76,0" concept="8" trace="name$tAp1" />
+      <node id="7291101478621544792" at="75,0,76,0" concept="8" trace="name$lA7v" />
       <node id="7291101478621544792" at="24,0,27,0" concept="0" trace="AddLetterToName_Intention#()V" />
       <node id="7291101478621544792" at="42,28,45,7" concept="3" />
       <node id="7291101478621544792" at="49,0,52,0" concept="5" trace="parameter#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/List;" />

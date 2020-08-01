@@ -119,7 +119,7 @@ public class BinaryOperation_TransformationMenu extends TransformationMenuBase {
 
     @Override
     protected SNode getTargetNode(TransformationMenuContext _context) {
-      return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$rxLZ);
+      return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx);
     }
 
     private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem {
@@ -189,7 +189,7 @@ public class BinaryOperation_TransformationMenu extends TransformationMenuBase {
 
     @Override
     protected SNode getTargetNode(TransformationMenuContext _context) {
-      return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$rxBl);
+      return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b);
     }
 
     private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem {
@@ -240,7 +240,7 @@ public class BinaryOperation_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 }

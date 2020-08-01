@@ -160,7 +160,7 @@ public abstract class MigrationScriptBase implements MigrationScript {
       return false;
     }
     SNode enclosingPattern = SNodeOperations.getNodeAncestor(node, CONCEPTS.PatternExpression$Lc, false, false);
-    return (enclosingPattern != null) && SNodeOperations.hasRole(enclosingPattern, LINKS.pattern$O6Rt);
+    return (enclosingPattern != null) && SNodeOperations.hasRole(enclosingPattern, LINKS.pattern$fkR3);
   }
 
   protected void markAnnotatedNodeForReview(SNode n, List<SNode> unknownAttrs) {
@@ -174,10 +174,10 @@ public abstract class MigrationScriptBase implements MigrationScript {
     }
 
     SNode ann = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
-    SPropertyOperations.set(ann, PROPS.createdByScript$1_lw, this.getReference().serialize());
-    SPropertyOperations.assign(ann, PROPS.reasonShort$1$U0, "unknown attributes");
-    SPropertyOperations.assign(ann, PROPS.todo$1_4E, "This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: " + SNodeOperations.getConcept(ListSequence.fromList(unknownAttrs).first()).getQualifiedName());
-    SPropertyOperations.assign(ann, PROPS.readableId$1_59, getCaption());
+    SPropertyOperations.set(ann, PROPS.createdByScript$L5qw, this.getReference().serialize());
+    SPropertyOperations.assign(ann, PROPS.reasonShort$KS60, "unknown attributes");
+    SPropertyOperations.assign(ann, PROPS.todo$KXgm, "This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: " + SNodeOperations.getConcept(ListSequence.fromList(unknownAttrs).first()).getQualifiedName());
+    SPropertyOperations.assign(ann, PROPS.readableId$KXvn, getCaption());
     AttributeOperations.setAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$Kc), ann);
 
     // we want this annotation to be shown as outermost one 
@@ -227,13 +227,13 @@ public abstract class MigrationScriptBase implements MigrationScript {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink pattern$O6Rt = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529eeeL, "pattern");
+    /*package*/ static final SContainmentLink pattern$fkR3 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529eeeL, "pattern");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty createdByScript$1_lw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
-    /*package*/ static final SProperty reasonShort$1$U0 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e07L, "reasonShort");
-    /*package*/ static final SProperty todo$1_4E = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e08L, "todo");
-    /*package*/ static final SProperty readableId$1_59 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e09L, "readableId");
+    /*package*/ static final SProperty createdByScript$L5qw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
+    /*package*/ static final SProperty reasonShort$KS60 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e07L, "reasonShort");
+    /*package*/ static final SProperty todo$KXgm = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e08L, "todo");
+    /*package*/ static final SProperty readableId$KXvn = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, 0x78c7e79625a38e09L, "readableId");
   }
 }

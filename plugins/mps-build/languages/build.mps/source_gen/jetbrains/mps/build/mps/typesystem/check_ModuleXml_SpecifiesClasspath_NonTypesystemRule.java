@@ -24,13 +24,13 @@ public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends Abstra
   public check_ModuleXml_SpecifiesClasspath_NonTypesystemRule() {
   }
   public void applyRule(final SNode n, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.classpathEntries$4ReF)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.classpathEntries$mK6P)).isNotEmpty()) {
       return;
     }
     SNode containerJar = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(n), CONCEPTS.BuildLayout_Folder$4a)), CONCEPTS.BuildLayout_Jar$CE);
-    if ((containerJar != null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(containerJar, LINKS.children$aiMf), CONCEPTS.BuildLayout_CompileOutputOf$v7)).isNotEmpty()) {
+    if ((containerJar != null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(containerJar, LINKS.children$Z6lh), CONCEPTS.BuildLayout_CompileOutputOf$v7)).isNotEmpty()) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.classpathEntries$4ReF);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.classpathEntries$mK6P);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(n, "Module descriptor inside a jar with compiled classes doesn't specify classpath", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "8488591998065913053", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.SetModuleJarClasspathEntry_QuickFix", false);
@@ -50,8 +50,8 @@ public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classpathEntries$4ReF = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries");
-    /*package*/ static final SContainmentLink children$aiMf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SContainmentLink classpathEntries$mK6P = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries");
+    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
   }
 
   private static final class CONCEPTS {

@@ -23,7 +23,7 @@ public class ChildNodeRefExpression_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.parent$a4t9));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.parent$Sa7n));
       }
 
     };
@@ -71,6 +71,6 @@ public class ChildNodeRefExpression_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parent$a4t9 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x84baf20c71f8a79L, 0x84baf20c71f924eL, "parent");
+    /*package*/ static final SContainmentLink parent$Sa7n = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x84baf20c71f8a79L, 0x84baf20c71f924eL, "parent");
   }
 }

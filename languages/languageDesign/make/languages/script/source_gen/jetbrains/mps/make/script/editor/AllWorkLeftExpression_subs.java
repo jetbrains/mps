@@ -46,7 +46,7 @@ public class AllWorkLeftExpression_subs extends SubstituteMenuBase {
   public class SMP_Group_q0pmcw_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BeginWorkStatement$C0) && Objects.equals(LINKS.ofTotal$yDYa, _context.getLink());
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BeginWorkStatement$C0) && Objects.equals(LINKS.ofTotal$Ml6Q, _context.getLink());
     }
     @NotNull
     @Override
@@ -85,6 +85,6 @@ public class AllWorkLeftExpression_subs extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ofTotal$yDYa = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x29929a95c9f45e7L, "ofTotal");
+    /*package*/ static final SContainmentLink ofTotal$Ml6Q = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x29929a95c9f45e7L, "ofTotal");
   }
 }

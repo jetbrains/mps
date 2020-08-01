@@ -77,19 +77,19 @@ public final class DataTypeDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
   /*package*/ static boolean isEnumOfString_idhKtGw8K(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)) {
-      return (boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isString_idhKtFRO6.invoke(SLinkOperations.getTarget(SNodeOperations.cast(__thisNode__, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$IU7B));
+      return (boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isString_idhKtFRO6.invoke(SLinkOperations.getTarget(SNodeOperations.cast(__thisNode__, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$I9FT));
     }
     return false;
   }
   /*package*/ static boolean isEnumOfInteger_idhKtGCmu(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)) {
-      return (boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isInteger_idhKtFYCF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(__thisNode__, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$IU7B));
+      return (boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isInteger_idhKtFYCF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(__thisNode__, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$I9FT));
     }
     return false;
   }
   /*package*/ static boolean isEnumOfBoolean_idhKtGHoM(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)) {
-      return (boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isBoolean_idhKtG1tp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(__thisNode__, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$IU7B));
+      return (boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isBoolean_idhKtG1tp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(__thisNode__, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), LINKS.memberDataType$I9FT));
     }
     return false;
   }
@@ -184,6 +184,6 @@ public final class DataTypeDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink memberDataType$IU7B = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
+    /*package*/ static final SReferenceLink memberDataType$I9FT = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3210ef05L, "memberDataType");
   }
 }

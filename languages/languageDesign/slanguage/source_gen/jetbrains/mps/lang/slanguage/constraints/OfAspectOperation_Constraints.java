@@ -32,7 +32,7 @@ public class OfAspectOperation_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.requestedAspect$cPm6, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.requestedAspect$dPGU, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,7 +52,7 @@ public class OfAspectOperation_Constraints extends BaseConstraintsDescriptor {
               public SModel select(SModule it) {
                 return SModuleOperations.getAspect(it, "plugin");
               }
-            }), true, LINKS.requestedAspect$cPm6.getTargetConcept());
+            }), true, LINKS.requestedAspect$dPGU.getTargetConcept());
           }
         };
       }
@@ -68,6 +68,6 @@ public class OfAspectOperation_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink requestedAspect$cPm6 = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, 0x7cd422dbfa7b06f8L, "requestedAspect");
+    /*package*/ static final SReferenceLink requestedAspect$dPGU = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, 0x7cd422dbfa7b06f8L, "requestedAspect");
   }
 }

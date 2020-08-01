@@ -21,20 +21,20 @@ public class typeof_SmartCompletionParent_InferenceRule extends AbstractInferenc
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "11689459117366883", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "11689459117366221", true), (SNode) SLinkOperations.getTarget(node, LINKS.type$ddOt), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "11689459117366221", true), (SNode) SLinkOperations.getTarget(node, LINKS.type$pGq3), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.childToComplete$de0$);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.childToComplete$pMhs);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "6999890265143289592", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "6999890265143290745", true), (SNode) typeCheckingContext.typeOf(node, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "11689459117368243", true), false, true, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.childSimpleRef$4um);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.childSimpleRef$2aGE);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "4151313971380039939", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "4151313971380039941", true), (SNode) typeCheckingContext.typeOf(node, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "4151313971380039946", true), false, true, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.childSmartRef$dqVS);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.childSmartRef$w308);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "6999890265143308471", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "6999890265143308477", true), (SNode) typeCheckingContext.typeOf(node, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "11689459117368451", true), false, true, _info_12389875345);
     }
@@ -50,10 +50,10 @@ public class typeof_SmartCompletionParent_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$ddOt = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c95L, "type");
-    /*package*/ static final SContainmentLink childToComplete$de0$ = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c99L, "childToComplete");
-    /*package*/ static final SContainmentLink childSimpleRef$4um = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x399c6e0ff7392f15L, "childSimpleRef");
-    /*package*/ static final SContainmentLink childSmartRef$dqVS = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876d1eL, "childSmartRef");
+    /*package*/ static final SContainmentLink type$pGq3 = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c95L, "type");
+    /*package*/ static final SContainmentLink childToComplete$pMhs = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c99L, "childToComplete");
+    /*package*/ static final SContainmentLink childSimpleRef$2aGE = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x399c6e0ff7392f15L, "childSimpleRef");
+    /*package*/ static final SContainmentLink childSmartRef$w308 = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876d1eL, "childSmartRef");
   }
 
   private static final class CONCEPTS {

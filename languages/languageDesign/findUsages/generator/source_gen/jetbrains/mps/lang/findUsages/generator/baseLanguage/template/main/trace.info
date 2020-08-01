@@ -139,7 +139,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959035c(jetbrains.mps.lang.findUsages.generator.baseLanguage.template.main@generator)/1197207280624">
     <file name="QueriesGenerated.java">
       <node id="1197207280709" at="75,88,76,117" concept="4" />
-      <node id="1202839664538" at="78,88,79,85" concept="4" />
+      <node id="1202839664538" at="78,88,79,84" concept="4" />
       <node id="1202839713937" at="81,88,82,89" concept="4" />
       <node id="2577576048760658395" at="84,88,85,132" concept="3" />
       <node id="7810572934689530084" at="85,132,86,279" concept="4" />
@@ -148,7 +148,7 @@
       <node id="1216396974864" at="133,78,134,92" concept="4" />
       <node id="6297023828538114344" at="136,78,137,92" concept="4" />
       <node id="100784871543542644" at="139,78,140,95" concept="4" />
-      <node id="1216397273191" at="142,78,143,184" concept="4" />
+      <node id="1216397273191" at="142,78,143,182" concept="4" />
       <node id="1216397328105" at="145,78,146,98" concept="4" />
       <node id="8441762775552332525" at="148,78,149,282" concept="4" />
       <node id="1218978346567" at="151,78,152,96" concept="4" />
@@ -224,14 +224,14 @@
       <node id="1206462965299" at="210,0,213,0" concept="6" trace="sourceNodeQuery_1_5#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7810572934689530075" at="84,0,88,0" concept="6" trace="propertyMacro_GetValue_1_3#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <scope id="1197207280708" at="75,88,76,117" />
-      <scope id="1202839664537" at="78,88,79,85" />
+      <scope id="1202839664537" at="78,88,79,84" />
       <scope id="1202839710233" at="81,88,82,89" />
       <scope id="5697304327500975269" at="88,88,89,75" />
       <scope id="8928180329700848725" at="117,93,118,80" />
       <scope id="1216396960792" at="133,78,134,92" />
       <scope id="6297023828538094165" at="136,78,137,92" />
       <scope id="100784871543542638" at="139,78,140,95" />
-      <scope id="1216397265034" at="142,78,143,184" />
+      <scope id="1216397265034" at="142,78,143,182" />
       <scope id="1216397326229" at="145,78,146,98" />
       <scope id="8441762775552326218" at="148,78,149,282" />
       <scope id="1218978335316" at="151,78,152,96" />

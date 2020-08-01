@@ -79,7 +79,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
             sb.append(", ");
 
           }
-          sb.append(SPropertyOperations.getString(SLinkOperations.getTarget(producingData, LINKS.migration$RUsw), PROPS.name$tAp1));
+          sb.append(SPropertyOperations.getString(SLinkOperations.getTarget(producingData, LINKS.migration$5jNw), PROPS.name$lA7v));
         }
         return sb.toString();
       }
@@ -98,10 +98,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink migration$RUsw = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
+    /*package*/ static final SReferenceLink migration$5jNw = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

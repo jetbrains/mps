@@ -39,14 +39,14 @@ public final class ApplicationPluginDeclaration__BehaviorDescriptor extends Base
   }
 
   /*package*/ static String getGeneratedName_idqKmr2orM46(@NotNull SNode __thisNode__) {
-    return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) + "_AppPluginPart";
+    return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) + "_AppPluginPart";
   }
   /*package*/ static String getGeneratedClassFQName_idqKmr2orM4h(@NotNull SNode __thisNode__) {
     return JavaNameUtil.fqClassName(SNodeOperations.getModel(__thisNode__), ApplicationPluginDeclaration__BehaviorDescriptor.getGeneratedName_idqKmr2orM46.invoke(__thisNode__));
   }
   /*package*/ static SNode createType_idhEwJimy(@NotNull SNode __thisNode__) {
     SNode type = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x6b059b0986f204fL, "jetbrains.mps.lang.plugin.standalone.structure.ApplicationPluginType"));
-    SLinkOperations.setTarget(type, LINKS.plugin$P8kv, __thisNode__);
+    SLinkOperations.setTarget(type, LINKS.plugin$J1V1, __thisNode__);
     return type;
   }
 
@@ -101,10 +101,10 @@ public final class ApplicationPluginDeclaration__BehaviorDescriptor extends Base
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink plugin$P8kv = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x6b059b0986f204fL, 0x6b059b0986f2051L, "plugin");
+    /*package*/ static final SReferenceLink plugin$J1V1 = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x6b059b0986f204fL, 0x6b059b0986f2051L, "plugin");
   }
 }

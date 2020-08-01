@@ -49,7 +49,7 @@ public class ExtractToConstantRefExpression_SmartReference extends SubstituteMen
 
     public SMP_ReferenceScope_ultiz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ExtractToConstantRefExpression$sl, LINKS.original$N4_w);
+      super((SAbstractConcept) CONCEPTS.ExtractToConstantRefExpression$sl, LINKS.original$Jeaw);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class ExtractToConstantRefExpression_SmartReference extends SubstituteMen
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.fieldName$SVPF);
+        return SPropertyOperations.getString(referencedNode, PROPS.fieldName$$YZP);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -100,10 +100,10 @@ public class ExtractToConstantRefExpression_SmartReference extends SubstituteMen
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink original$N4_w = MetaAdapterFactory.getReferenceLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, 0x162724dabcdc672L, "original");
+    /*package*/ static final SReferenceLink original$Jeaw = MetaAdapterFactory.getReferenceLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, 0x162724dabcdc672L, "original");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fieldName$SVPF = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1204d897032L, 0x1204d89aadaL, "fieldName");
+    /*package*/ static final SProperty fieldName$$YZP = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1204d897032L, 0x1204d89aadaL, "fieldName");
   }
 }

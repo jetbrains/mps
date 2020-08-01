@@ -38,10 +38,10 @@ public final class ConceptEditorDeclaration__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$sbgS);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$sbgS, baseConcept);
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8, baseConcept);
   }
   /*package*/ static boolean isApplicable_id6NcFj35FbEV(@NotNull SNode __thisNode__, SNode candidate) {
     List<SNode> createdEditors = AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(candidate, LanguageAspect.EDITOR);
@@ -115,7 +115,7 @@ public final class ConceptEditorDeclaration__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$sbgS = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {

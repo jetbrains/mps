@@ -43,15 +43,15 @@ public final class RequestHandler__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.QueryParameter$k9)) {
-      return SimpleRoleScope.forNamedElements(__thisNode__, LINKS.queryParameters$y7wE);
+      return SimpleRoleScope.forNamedElements(__thisNode__, LINKS.queryParameters$xCOm);
     }
     return ScopeUtils.lazyParentScope(__thisNode__, kind);
   }
   /*package*/ static Iterable<SNode> getRequieredParameters_id40BYgsZXRLw(@NotNull SNode __thisNode__) {
-    Iterable<SNode> ret = SLinkOperations.getChildren(__thisNode__, LINKS.queryParameters$y7wE);
+    Iterable<SNode> ret = SLinkOperations.getChildren(__thisNode__, LINKS.queryParameters$xCOm);
     return Sequence.fromIterable(ret).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.required$JbR8);
+        return SPropertyOperations.getBoolean(it, PROPS.required$QJGS);
       }
     });
   }
@@ -105,7 +105,7 @@ public final class RequestHandler__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink queryParameters$y7wE = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, 0x205f4376c585d782L, "queryParameters");
+    /*package*/ static final SContainmentLink queryParameters$xCOm = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, 0x205f4376c585d782L, "queryParameters");
   }
 
   private static final class CONCEPTS {
@@ -113,6 +113,6 @@ public final class RequestHandler__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty required$JbR8 = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, 0x205f4376c585b43dL, "required");
+    /*package*/ static final SProperty required$QJGS = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, 0x205f4376c585b43dL, "required");
   }
 }

@@ -31,13 +31,13 @@ public class check_AnnotationDuplication_NonTypesystemRule extends AbstractNonTy
       return;
     }
     SNode parent = SNodeOperations.cast(SNodeOperations.getParent(annotationInstance), CONCEPTS.HasAnnotation$cu);
-    ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.annotation$oVP4)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.annotation$4YGW)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getIndexInParent(it) > SNodeOperations.getIndexInParent(annotationInstance);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$zNxu), SLinkOperations.getTarget(annotationInstance, LINKS.annotation$zNxu));
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.annotation$lXdy), SLinkOperations.getTarget(annotationInstance, LINKS.annotation$lXdy));
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -64,7 +64,7 @@ public class check_AnnotationDuplication_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 }

@@ -23,7 +23,7 @@ public class typeof_XMLSAXNodeRuleParamRef_InferenceRule extends AbstractInferen
     {
       SNode _nodeToCheck_1029348928467 = paramRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "4720003541456866438", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "4720003541456865939", true), (SNode) SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(paramRef, LINKS.param$YnW5), LINKS.type$pLrO)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "4720003541456865939", true), (SNode) SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(paramRef, LINKS.param$dA6r), LINKS.type$uWuc)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -37,8 +37,8 @@ public class typeof_XMLSAXNodeRuleParamRef_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink param$YnW5 = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x4180d2369b1f16c6L, 0x4180d2369b1f17e0L, "param");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink param$dA6r = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x4180d2369b1f16c6L, 0x4180d2369b1f17e0L, "param");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {

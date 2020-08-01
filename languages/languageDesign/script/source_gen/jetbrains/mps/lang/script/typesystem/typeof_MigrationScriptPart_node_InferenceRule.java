@@ -22,7 +22,7 @@ public class typeof_MigrationScriptPart_node_InferenceRule extends AbstractInfer
   public typeof_MigrationScriptPart_node_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode affectedConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.MigrationScriptPart_Instance$AE, false, false), LINKS.affectedInstanceConcept$EvED);
+    SNode affectedConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.MigrationScriptPart_Instance$AE, false, false), LINKS.affectedInstanceConcept$_lDR);
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590320(jetbrains.mps.lang.script.typesystem)", "1209063748602", 0, null);
@@ -52,6 +52,6 @@ public class typeof_MigrationScriptPart_node_InferenceRule extends AbstractInfer
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink affectedInstanceConcept$EvED = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225f4f883L, 0x11225f69a65L, "affectedInstanceConcept");
+    /*package*/ static final SReferenceLink affectedInstanceConcept$_lDR = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225f4f883L, 0x11225f69a65L, "affectedInstanceConcept");
   }
 }

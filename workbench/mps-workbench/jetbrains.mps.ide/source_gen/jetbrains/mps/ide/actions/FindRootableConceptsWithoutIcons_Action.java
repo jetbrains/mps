@@ -87,7 +87,7 @@ public class FindRootableConceptsWithoutIcons_Action extends BaseAction {
             results.value = ListSequence.fromList(((List<SearchResult<SNode>>) concepts.value.getSearchResults())).where(new IWhereFilter<SearchResult<SNode>>() {
               public boolean accept(SearchResult<SNode> it) {
                 SNode node = (SNode) it.getObject();
-                return SPropertyOperations.getBoolean(node, PROPS.rootable$vg$g) && (SLinkOperations.getTarget(node, LINKS.icon$2CxW) == null);
+                return SPropertyOperations.getBoolean(node, PROPS.rootable$91zK) && (SLinkOperations.getTarget(node, LINKS.icon$hCs4) == null);
               }
             }).toListSequence();
           }
@@ -112,10 +112,10 @@ public class FindRootableConceptsWithoutIcons_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink icon$2CxW = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x57cf4eb14c4f9ef5L, "icon");
+    /*package*/ static final SContainmentLink icon$hCs4 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x57cf4eb14c4f9ef5L, "icon");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rootable$vg$g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
   }
 }

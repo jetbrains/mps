@@ -100,12 +100,12 @@ public class AnnotationInstanceValue_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.ImplicitAnnotationInstanceValue$o4, null);
-          SLinkOperations.setTarget(result, LINKS.value$Bis, nodeToWrap);
+          SLinkOperations.setTarget(result, LINKS.value$j1V$, nodeToWrap);
           if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.AnnotationInstance$5z)) {
             SNode annotationInstance = SNodeOperations.cast(_context.getParentNode(), CONCEPTS.AnnotationInstance$5z);
-            List<SNode> annotationMethodDeclarations = SLinkOperations.getChildren(SLinkOperations.getTarget(annotationInstance, LINKS.annotation$zNxu), LINKS.method$oAl2);
+            List<SNode> annotationMethodDeclarations = SLinkOperations.getChildren(SLinkOperations.getTarget(annotationInstance, LINKS.annotation$lXdy), LINKS.method$U$bY);
             if (ListSequence.fromList(annotationMethodDeclarations).count() == 1) {
-              SLinkOperations.setTarget(result, LINKS.key$y5Ln, ListSequence.fromList(annotationMethodDeclarations).first());
+              SLinkOperations.setTarget(result, LINKS.key$wMU9, ListSequence.fromList(annotationMethodDeclarations).first());
             }
           }
           return result;
@@ -191,9 +191,9 @@ public class AnnotationInstanceValue_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$Bis = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71c0fc4L, "value");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink method$oAl2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
-    /*package*/ static final SReferenceLink key$y5Ln = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
+    /*package*/ static final SContainmentLink value$j1V$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71c0fc4L, "value");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink method$U$bY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
+    /*package*/ static final SReferenceLink key$wMU9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
   }
 }

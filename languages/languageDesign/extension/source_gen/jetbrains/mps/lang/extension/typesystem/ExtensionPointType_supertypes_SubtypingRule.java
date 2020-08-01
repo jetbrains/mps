@@ -25,7 +25,7 @@ public class ExtensionPointType_supertypes_SubtypingRule extends SubtypingRule_R
   public ExtensionPointType_supertypes_SubtypingRule() {
   }
   public List<SNode> getSubOrSuperTypes(SNode ept, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_bg8j1f_a0a0a1(SLinkOperations.getTarget(SLinkOperations.getTarget(ept, LINKS.extensionPoint$Ohsw), LINKS.objectType$NJyf)));
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_bg8j1f_a0a0a1(SLinkOperations.getTarget(SLinkOperations.getTarget(ept, LINKS.extensionPoint$ksNw), LINKS.objectType$41_h)));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.ExtensionPointType$TB;
@@ -50,8 +50,8 @@ public class ExtensionPointType_supertypes_SubtypingRule extends SubtypingRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extensionPoint$Ohsw = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint");
-    /*package*/ static final SContainmentLink objectType$NJyf = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
+    /*package*/ static final SReferenceLink extensionPoint$ksNw = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint");
+    /*package*/ static final SContainmentLink objectType$41_h = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
   }
 
   private static final class CONCEPTS {

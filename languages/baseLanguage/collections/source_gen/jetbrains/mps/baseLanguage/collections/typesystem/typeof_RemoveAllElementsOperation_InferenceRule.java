@@ -31,7 +31,7 @@ public class typeof_RemoveAllElementsOperation_InferenceRule extends AbstractInf
       typeCheckingContext.createGreaterThanInequality((SNode) IApplicableToNothing__BehaviorDescriptor.expectedOperandType_id5xvLnyYzY1Q.invoke(op, typeCheckingContext.getRepresentative(elementType_typevar_7668447476859120280)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120284", true), false, true, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.argument$I6hw);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.argument$l2uw);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120293", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_9j9g7f_a0a0c0d0b(typeCheckingContext.getRepresentative(expectedElementType_typevar_7668447476859120281)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120295", true), false, true, _info_12389875345);
     }
@@ -76,7 +76,7 @@ public class typeof_RemoveAllElementsOperation_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$I6hw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
+    /*package*/ static final SContainmentLink argument$l2uw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
   }
 
   private static final class CONCEPTS {

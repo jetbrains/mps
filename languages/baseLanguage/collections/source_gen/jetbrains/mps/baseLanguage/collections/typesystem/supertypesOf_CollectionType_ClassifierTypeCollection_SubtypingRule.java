@@ -22,7 +22,7 @@ public class supertypesOf_CollectionType_ClassifierTypeCollection_SubtypingRule 
   public supertypesOf_CollectionType_ClassifierTypeCollection_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode ct, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode et = SLinkOperations.getTarget(ct, LINKS.elementType$B4nw);
+    SNode et = SLinkOperations.getTarget(ct, LINKS.elementType$V7ow);
     if (SNodeOperations.isInstanceOf(et, CONCEPTS.PrimitiveType$5)) {
       et = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(et);
     }
@@ -51,7 +51,7 @@ public class supertypesOf_CollectionType_ClassifierTypeCollection_SubtypingRule 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$B4nw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
+    /*package*/ static final SContainmentLink elementType$V7ow = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
   }
 
   private static final class CONCEPTS {

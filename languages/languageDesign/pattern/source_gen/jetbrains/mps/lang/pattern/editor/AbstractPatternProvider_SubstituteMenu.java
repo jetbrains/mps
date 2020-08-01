@@ -65,7 +65,7 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_mehu0s_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.LocalPatternReference$Mm, LINKS.declaration$6hl0);
+      super((SAbstractConcept) CONCEPTS.LocalPatternReference$Mm, LINKS.declaration$2pb0);
     }
     @NotNull
     @Override
@@ -200,12 +200,12 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createInlinePatternProvider_mehu0s_a0a0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InlinePatternProvider$43);
-    n0.forChild(LINKS.pattern$65eZ).initNode(p0, CONCEPTS.PatternBuilder$Pa, true);
+    n0.forChild(LINKS.pattern$Wygx).initNode(p0, CONCEPTS.PatternBuilder$Pa, true);
     return n0.getResult();
   }
   private static SNode createExpressionPatternProvider_mehu0s_a0a0c(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExpressionPatternProvider$PJ);
-    n0.forChild(LINKS.expression$2how).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.expression$6qRw).initNode(p0, CONCEPTS.Expression$TP, true);
     return n0.getResult();
   }
 
@@ -220,8 +220,8 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$6hl0 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, 0x174c7ed18b16ecfdL, "declaration");
-    /*package*/ static final SContainmentLink pattern$65eZ = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x7c36ae76ea76f63bL, 0x7c36ae76ea76f63dL, "pattern");
-    /*package*/ static final SContainmentLink expression$2how = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
+    /*package*/ static final SReferenceLink declaration$2pb0 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, 0x174c7ed18b16ecfdL, "declaration");
+    /*package*/ static final SContainmentLink pattern$Wygx = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x7c36ae76ea76f63bL, 0x7c36ae76ea76f63dL, "pattern");
+    /*package*/ static final SContainmentLink expression$6qRw = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
   }
 }

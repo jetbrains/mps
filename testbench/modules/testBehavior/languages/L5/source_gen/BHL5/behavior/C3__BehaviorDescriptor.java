@@ -24,7 +24,7 @@ public final class C3__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.a$5ih$, TestResults.C3_DEFAULT_VALUE);
+    SPropertyOperations.assign(__thisNode__, PROPS.a$zQws, TestResults.C3_DEFAULT_VALUE);
   }
 
 
@@ -73,6 +73,6 @@ public final class C3__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty a$5ih$ = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL, 0x355d469f0ba114e9L, "a");
+    /*package*/ static final SProperty a$zQws = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL, 0x355d469f0ba114e9L, "a");
   }
 }

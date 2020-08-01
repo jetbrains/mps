@@ -40,7 +40,7 @@ public final class RefTestClass__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.RefTestMethod$F5)) {
-      return CompositeScope.createComposite(SimpleRoleScope.forNamedElements(__thisNode__, LINKS.methods$UM92), (SLinkOperations.getTarget(__thisNode__, LINKS.extends$ULcv) != null ? ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extends$ULcv), kind, __thisNode__) : null));
+      return CompositeScope.createComposite(SimpleRoleScope.forNamedElements(__thisNode__, LINKS.methods$uinY), (SLinkOperations.getTarget(__thisNode__, LINKS.extends$tP31) != null ? ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extends$tP31), kind, __thisNode__) : null));
     }
     return null;
   }
@@ -96,7 +96,7 @@ public final class RefTestClass__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink methods$UM92 = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfbL, 0x2e0420fbd0995e26L, "methods");
-    /*package*/ static final SReferenceLink extends$ULcv = MetaAdapterFactory.getReferenceLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfbL, 0x2e0420fbd0995dfdL, "extends");
+    /*package*/ static final SContainmentLink methods$uinY = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfbL, 0x2e0420fbd0995e26L, "methods");
+    /*package*/ static final SReferenceLink extends$tP31 = MetaAdapterFactory.getReferenceLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfbL, 0x2e0420fbd0995dfdL, "extends");
   }
 }

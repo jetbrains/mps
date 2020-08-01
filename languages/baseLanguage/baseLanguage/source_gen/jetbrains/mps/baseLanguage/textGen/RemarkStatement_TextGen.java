@@ -17,11 +17,11 @@ public class RemarkStatement_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createPositionInfo();
-    if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$ATQL) != null) {
+    if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$Q1xJ) != null) {
       tgs.newLine();
       tgs.indent();
       tgs.append("// ");
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$ATQL));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$Q1xJ));
     } else {
       tgs.newLine();
       tgs.indent();
@@ -33,7 +33,7 @@ public class RemarkStatement_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ATQL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
+    /*package*/ static final SProperty value$Q1xJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
   }
 
   private static final class CONCEPTS {

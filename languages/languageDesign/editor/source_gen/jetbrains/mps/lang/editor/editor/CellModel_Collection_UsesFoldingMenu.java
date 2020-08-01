@@ -86,7 +86,7 @@ public class CellModel_Collection_UsesFoldingMenu extends TransformationMenuBase
 
     @Override
     protected SProperty getProperty(TransformationMenuContext context) {
-      return PROPS.usesFolding$L3QX;
+      return PROPS.usesFolding$KRBz;
     }
   }
   private class TMP_Action_o10pqt_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
@@ -127,7 +127,7 @@ public class CellModel_Collection_UsesFoldingMenu extends TransformationMenuBase
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.usesFoldingCondition$UESv, null);
+        SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.usesFoldingCondition$qLn1, null);
       }
 
 
@@ -151,10 +151,10 @@ public class CellModel_Collection_UsesFoldingMenu extends TransformationMenuBase
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty usesFolding$L3QX = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10e3893660fL, "usesFolding");
+    /*package*/ static final SProperty usesFolding$KRBz = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10e3893660fL, "usesFolding");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink usesFoldingCondition$UESv = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x78de9e36d994f770L, "usesFoldingCondition");
+    /*package*/ static final SContainmentLink usesFoldingCondition$qLn1 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x78de9e36d994f770L, "usesFoldingCondition");
   }
 }

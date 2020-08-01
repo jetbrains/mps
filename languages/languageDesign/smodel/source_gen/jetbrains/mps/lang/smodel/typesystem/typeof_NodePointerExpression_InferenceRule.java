@@ -22,7 +22,7 @@ public class typeof_NodePointerExpression_InferenceRule extends AbstractInferenc
   public typeof_NodePointerExpression_InferenceRule() {
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(SLinkOperations.getTarget(expr, LINKS.ref$Xkjz), SNodeOperations.getModel(expr).getRepository());
+    SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(SLinkOperations.getTarget(expr, LINKS.ref$GPtX), SNodeOperations.getModel(expr).getRepository());
     {
       SNode _nodeToCheck_1029348928467 = expr;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7400021826775224134", 0, null);
@@ -40,13 +40,13 @@ public class typeof_NodePointerExpression_InferenceRule extends AbstractInferenc
   }
   private static SNode createSNodePointerType_xp3gkt_a1a0c0b0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
-    n0.setReferenceTarget(LINKS.concept$fJMt, p0);
+    n0.setReferenceTarget(LINKS.concept$C9s3, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ref$Xkjz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
-    /*package*/ static final SReferenceLink concept$fJMt = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
+    /*package*/ static final SContainmentLink ref$GPtX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
+    /*package*/ static final SReferenceLink concept$C9s3 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
   }
 
   private static final class CONCEPTS {

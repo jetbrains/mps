@@ -72,7 +72,7 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
   public class SMP_Group_n7g34w_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return Objects.equals(_context.getLink(), LINKS.addMenu_wrapperSubstitute$cB9b);
+      return Objects.equals(_context.getLink(), LINKS.addMenu_wrapperSubstitute$6Xsl);
     }
     @NotNull
     @Override
@@ -130,10 +130,10 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
             tmpVar = tmpVar && nodeToWrap != null;
 
             // Check if we have read access here 
-            String name = SPropertyOperations.getString(nodeToWrap, PROPS.name$tAp1);
+            String name = SPropertyOperations.getString(nodeToWrap, PROPS.name$lA7v);
 
             SNode wrapperNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChildWrapper"));
-            SLinkOperations.setTarget(wrapperNode, LINKS.childToWrap$zyl5, nodeToWrap);
+            SLinkOperations.setTarget(wrapperNode, LINKS.childToWrap$dCdr, nodeToWrap);
             return wrapperNode;
           }
 
@@ -156,9 +156,9 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
             tmpVar = tmpVar && _context.getEditorContext() != null;
 
             // Check if we have read access here 
-            String name = SPropertyOperations.getString(SLinkOperations.getTarget(createdNode, LINKS.childToWrap$zyl5), PROPS.name$tAp1);
-            if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(createdNode, LINKS.childToWrap$zyl5), CONCEPTS.ActionTestChildToWrap2$ZB)) {
-              SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.childToWrap$zyl5), SelectionManager.FIRST_CELL, 5);
+            String name = SPropertyOperations.getString(SLinkOperations.getTarget(createdNode, LINKS.childToWrap$dCdr), PROPS.name$lA7v);
+            if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(createdNode, LINKS.childToWrap$dCdr), CONCEPTS.ActionTestChildToWrap2$ZB)) {
+              SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.childToWrap$dCdr), SelectionManager.FIRST_CELL, 5);
               return;
             }
             // selecting a custom cell 
@@ -191,8 +191,8 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink addMenu_wrapperSubstitute$cB9b = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x47ad1fca2ec50831L, "addMenu_wrapperSubstitute");
-    /*package*/ static final SContainmentLink childToWrap$zyl5 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, 0x47ad1fca2ec9ad5fL, "childToWrap");
+    /*package*/ static final SContainmentLink addMenu_wrapperSubstitute$6Xsl = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x47ad1fca2ec50831L, "addMenu_wrapperSubstitute");
+    /*package*/ static final SContainmentLink childToWrap$dCdr = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, 0x47ad1fca2ec9ad5fL, "childToWrap");
   }
 
   private static final class CONCEPTS {
@@ -202,6 +202,6 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -21,9 +21,9 @@ public class typeof_CreateBreakpointOperation_InferenceRule extends AbstractInfe
   }
   public void applyRule(final SNode createBreakpointOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode parent = SNodeOperations.getParent(createBreakpointOperation);
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.DotExpression$6a) && (SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr) != null)) {
+    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.DotExpression$6a) && (SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:31e73d62-e873-4ed6-bd22-16d8721ebfa3(jetbrains.mps.debugger.api.lang.typesystem)", "5365453833390548276", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:31e73d62-e873-4ed6-bd22-16d8721ebfa3(jetbrains.mps.debugger.api.lang.typesystem)", "5365453833390548258", true), (SNode) createDebuggerType_btj441_a1a0c0a0b0b(), false, false, _info_12389875345);
       }
@@ -50,6 +50,6 @@ public class typeof_CreateBreakpointOperation_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

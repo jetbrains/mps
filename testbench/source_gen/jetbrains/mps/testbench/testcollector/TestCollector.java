@@ -47,13 +47,13 @@ public class TestCollector {
     public boolean collectTests(SModel model, final List<SNode> into) {
       final Wrappers._boolean any = new Wrappers._boolean(false);
       List<SNode> nodes;
-      final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a2a1c(), LINKS.annotation$zNxu);
+      final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a2a1c(), LINKS.annotation$lXdy);
 
       nodes = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ITestCase$uo)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode itc) {
-          return !(SPropertyOperations.getBoolean(SNodeOperations.as(itc, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$gY5l)) && !(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(itc, CONCEPTS.ClassConcept$IY), LINKS.annotation$oVP4)).any(new IWhereFilter<SNode>() {
+          return !(SPropertyOperations.getBoolean(SNodeOperations.as(itc, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$e4_b)) && !(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(itc, CONCEPTS.ClassConcept$IY), LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode cann) {
-              return SLinkOperations.getTarget(cann, LINKS.annotation$zNxu) == ignoreAnn;
+              return SLinkOperations.getTarget(cann, LINKS.annotation$lXdy) == ignoreAnn;
             }
           }));
         }
@@ -61,7 +61,7 @@ public class TestCollector {
       ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
         public void visit(SNode itc) {
           SNode tref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, "jetbrains.mps.testbench.suite.structure.TestCaseRef"));
-          SLinkOperations.setTarget(tref, LINKS.testCase$fEcz, itc);
+          SLinkOperations.setTarget(tref, LINKS.testCase$_s4X, itc);
           ListSequence.fromList(into).addElement(tref);
           any.value = true;
         }
@@ -83,22 +83,22 @@ public class TestCollector {
     public boolean collectTests(SModel model, final List<SNode> into) {
       final Wrappers._boolean any = new Wrappers._boolean(false);
       List<SNode> nodes;
-      final SNode testAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a2a1d(), LINKS.annotation$zNxu);
-      final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a3a1d(), LINKS.annotation$zNxu);
+      final SNode testAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a2a1d(), LINKS.annotation$lXdy);
+      final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a3a1d(), LINKS.annotation$lXdy);
 
       nodes = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode cls) {
-          return !(SPropertyOperations.getBoolean(cls, PROPS.abstractClass$gY5l)) && !(ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.annotation$oVP4)).any(new IWhereFilter<SNode>() {
+          return !(SPropertyOperations.getBoolean(cls, PROPS.abstractClass$e4_b)) && !(ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode cann) {
-              return SLinkOperations.getTarget(cann, LINKS.annotation$zNxu) == ignoreAnn;
+              return SLinkOperations.getTarget(cann, LINKS.annotation$lXdy) == ignoreAnn;
             }
           })) && Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(cls, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$hJ, "4_LVZ3pBKCn")))).translate(new ITranslator2<SNode, SNode>() {
             public Iterable<SNode> translate(SNode m) {
-              return SLinkOperations.getChildren(m, LINKS.annotation$oVP4);
+              return SLinkOperations.getChildren(m, LINKS.annotation$4YGW);
             }
           }).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode ani) {
-              return SLinkOperations.getTarget(ani, LINKS.annotation$zNxu) == testAnn;
+              return SLinkOperations.getTarget(ani, LINKS.annotation$lXdy) == testAnn;
             }
           });
         }
@@ -106,7 +106,7 @@ public class TestCollector {
       ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
         public void visit(SNode tc) {
           SNode tref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, "jetbrains.mps.testbench.suite.structure.JUnit4TestCaseRef"));
-          SLinkOperations.setTarget(tref, LINKS.klass$fEdo, SNodeOperations.cast(tc, CONCEPTS.ClassConcept$IY));
+          SLinkOperations.setTarget(tref, LINKS.klass$_suC, SNodeOperations.cast(tc, CONCEPTS.ClassConcept$IY));
           ListSequence.fromList(into).addElement(tref);
           any.value = true;
         }
@@ -135,21 +135,21 @@ public class TestCollector {
     public boolean collectTests(SModel model, final List<SNode> into) {
       final Wrappers._boolean any = new Wrappers._boolean(false);
       List<SNode> nodes;
-      final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a2a1e(), LINKS.annotation$zNxu);
+      final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a2a1e(), LINKS.annotation$lXdy);
 
       nodes = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode cls) {
-          return !(SNodeOperations.isInstanceOf(cls, CONCEPTS.ITestCase$uo)) && !(SPropertyOperations.getBoolean(cls, PROPS.abstractClass$gY5l)) && !(ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.annotation$oVP4)).any(new IWhereFilter<SNode>() {
+          return !(SNodeOperations.isInstanceOf(cls, CONCEPTS.ITestCase$uo)) && !(SPropertyOperations.getBoolean(cls, PROPS.abstractClass$e4_b)) && !(ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode cann) {
-              return SLinkOperations.getTarget(cann, LINKS.annotation$zNxu) == ignoreAnn;
+              return SLinkOperations.getTarget(cann, LINKS.annotation$lXdy) == ignoreAnn;
             }
-          })) && ((boolean) (Boolean) BHReflection.invoke0(cls, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("isDescendant", null, "6dL7A1DpKo1"), SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a0a0a0a0a0e0b4(), LINKS.classifier$pQ_R)));
+          })) && ((boolean) (Boolean) BHReflection.invoke0(cls, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("isDescendant", null, "6dL7A1DpKo1"), SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a0a0a0a0a0e0b4(), LINKS.classifier$xslD)));
         }
       }).toListSequence();
       ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
         public void visit(SNode tc) {
           SNode tref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, "jetbrains.mps.testbench.suite.structure.JUnit3TestCaseRef"));
-          SLinkOperations.setTarget(tref, LINKS.klass$Q7$q, SNodeOperations.cast(tc, CONCEPTS.ClassConcept$IY));
+          SLinkOperations.setTarget(tref, LINKS.klass$dECA, SNodeOperations.cast(tc, CONCEPTS.ClassConcept$IY));
           ListSequence.fromList(into).addElement(tref);
           any.value = true;
         }
@@ -173,12 +173,12 @@ public class TestCollector {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink testCase$fEcz = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase");
-    /*package*/ static final SReferenceLink klass$fEdo = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SReferenceLink klass$Q7$q = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink testCase$_s4X = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb7L, 0x3e81ed1e2be77cc0L, "testCase");
+    /*package*/ static final SReferenceLink klass$_suC = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink klass$dECA = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
   }
 
   private static final class CONCEPTS {
@@ -188,6 +188,6 @@ public class TestCollector {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

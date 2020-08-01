@@ -436,7 +436,7 @@ public class Math extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode m = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.MatrixConstructor$8L);
-          SPropertyOperations.assign(m, PROPS.column$5PEh, true);
+          SPropertyOperations.assign(m, PROPS.column$OZuf, true);
         }
 
 
@@ -1290,6 +1290,6 @@ public class Math extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty column$5PEh = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
+    /*package*/ static final SProperty column$OZuf = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
   }
 }

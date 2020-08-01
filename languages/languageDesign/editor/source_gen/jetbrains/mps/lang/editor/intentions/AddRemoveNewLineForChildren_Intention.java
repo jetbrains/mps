@@ -42,11 +42,11 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_Collection$CD)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$usNp), CONCEPTS.CellLayout_Indent$tI)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Indent$tI)) {
         return true;
       }
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_RefNodeList$IL)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$IL), LINKS.cellLayout$63td), CONCEPTS.CellLayout_Indent$tI)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$IL), LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Indent$tI)) {
         return true;
       }
     }
@@ -77,8 +77,8 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
     public void execute(final SNode node, final EditorContext editorContext) {
       if (ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$SG)).isEmpty()) {
         SNode styleItem = SNodeFactoryOperations.createNewNode(CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$SG, null);
-        SPropertyOperations.assign(styleItem, PROPS.flag$7rl, true);
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$$mEY)).addElement(styleItem);
+        SPropertyOperations.assign(styleItem, PROPS.flag$3Afb, true);
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$AYO2)).addElement(styleItem);
       } else {
         SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$SG)).first());
       }
@@ -97,12 +97,12 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$usNp = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink cellLayout$63td = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
-    /*package*/ static final SContainmentLink styleItem$$mEY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$VF9j = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
+    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty flag$7rl = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
+    /*package*/ static final SProperty flag$3Afb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
   }
 }

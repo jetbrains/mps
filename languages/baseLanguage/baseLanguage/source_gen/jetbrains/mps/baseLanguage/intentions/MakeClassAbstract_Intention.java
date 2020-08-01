@@ -44,7 +44,7 @@ public final class MakeClassAbstract_Intention extends AbstractIntentionDescript
     return !(SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$aF)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.EnumClass$uy));
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return SNodeOperations.hasRole(childNode, LINKS.visibility$2GiC) && Objects.equals(SNodeOperations.getParent(childNode), node);
+    return SNodeOperations.hasRole(childNode, LINKS.visibility$jt1o) && Objects.equals(SNodeOperations.getParent(childNode), node);
   }
   @Override
   public boolean isSurroundWith() {
@@ -61,11 +61,11 @@ public final class MakeClassAbstract_Intention extends AbstractIntentionDescript
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Make Class" + ((SPropertyOperations.getBoolean(node, PROPS.abstractClass$gY5l) ? " Non" : "")) + " Abstract";
+      return "Make Class" + ((SPropertyOperations.getBoolean(node, PROPS.abstractClass$e4_b) ? " Non" : "")) + " Abstract";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.abstractClass$gY5l, !(SPropertyOperations.getBoolean(node, PROPS.abstractClass$gY5l)));
+      SPropertyOperations.set(node, PROPS.abstractClass$e4_b, !(SPropertyOperations.getBoolean(node, PROPS.abstractClass$e4_b)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -79,10 +79,10 @@ public final class MakeClassAbstract_Intention extends AbstractIntentionDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

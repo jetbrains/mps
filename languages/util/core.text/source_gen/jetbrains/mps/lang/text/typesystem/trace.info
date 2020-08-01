@@ -42,8 +42,8 @@
       <node id="1732176556415487960" at="64,68,65,102" concept="6" />
       <node id="1732176556415487960" at="67,30,68,17" concept="6" />
       <node id="4338813632905423009" at="70,52,71,44" concept="6" />
-      <node id="1732176556415487960" at="75,0,76,0" concept="7" trace="value$cK70" />
-      <node id="1732176556415487960" at="76,0,77,0" concept="7" trace="url$WUb8" />
+      <node id="1732176556415487960" at="75,0,76,0" concept="7" trace="value$bjp0" />
+      <node id="1732176556415487960" at="76,0,77,0" concept="7" trace="url$wboS" />
       <node id="1732176556415487960" at="80,0,81,0" concept="7" trace="Word$AM" />
       <node id="1732176556415487960" at="22,0,24,0" concept="1" trace="check_Word_NonTypesystemRule#()V" />
       <node id="4338813632905418321" at="24,117,27,5" concept="3" />
@@ -177,7 +177,7 @@
       <node id="1805128714903411503" at="21,35,22,122" concept="2" />
       <node id="1805128714903411097" at="26,0,27,0" concept="7" trace="Line$w3" />
       <node id="1805128714903411097" at="27,0,28,0" concept="7" trace="Word$AM" />
-      <node id="1805128714903411097" at="31,0,32,0" concept="7" trace="elements$eRew" />
+      <node id="1805128714903411097" at="31,0,32,0" concept="7" trace="elements$cK1w" />
       <node id="1805128714903411097" at="15,0,18,0" concept="1" trace="AddWordToEmptyLine_QuickFix#()V" />
       <node id="1805128714903411097" at="18,0,21,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1805128714903411097" at="21,0,24,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -203,8 +203,8 @@
       <node id="7260264510303247375" at="21,35,22,57" concept="5" />
       <node id="7260264510303246613" at="22,57,23,102" concept="2" />
       <node id="7260264510303245232" at="27,0,28,0" concept="7" trace="Word$AM" />
-      <node id="7260264510303245232" at="31,0,32,0" concept="7" trace="url$WUb8" />
-      <node id="7260264510303245232" at="32,0,33,0" concept="7" trace="value$cK70" />
+      <node id="7260264510303245232" at="31,0,32,0" concept="7" trace="url$wboS" />
+      <node id="7260264510303245232" at="32,0,33,0" concept="7" trace="value$bjp0" />
       <node id="7260264510303245232" at="15,0,18,0" concept="1" trace="TurnWordIntoLink_QuickFix#()V" />
       <node id="7260264510303245232" at="18,0,21,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="7260264510303245232" at="21,0,25,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />

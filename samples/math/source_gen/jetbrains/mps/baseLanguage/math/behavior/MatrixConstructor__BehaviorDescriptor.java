@@ -23,7 +23,7 @@ public final class MatrixConstructor__BehaviorDescriptor extends BaseBHDescripto
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.column$5PEh, false);
+    SPropertyOperations.assign(__thisNode__, PROPS.column$OZuf, false);
   }
 
 
@@ -72,6 +72,6 @@ public final class MatrixConstructor__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty column$5PEh = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
+    /*package*/ static final SProperty column$OZuf = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
   }
 }

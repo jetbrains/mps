@@ -32,7 +32,7 @@ public final class MatchVariableReferenceRegexp__BehaviorDescriptor extends Base
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    return "\\" + (ListSequence.fromList(vars).indexOf(SLinkOperations.getTarget(__thisNode__, LINKS.match$3_90)) + 1);
+    return "\\" + (ListSequence.fromList(vars).indexOf(SLinkOperations.getTarget(__thisNode__, LINKS.match$IZn0)) + 1);
   }
 
   /*package*/ MatchVariableReferenceRegexp__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class MatchVariableReferenceRegexp__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink match$3_90 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118e0a1c55L, 0x1118e0a5335L, "match");
+    /*package*/ static final SReferenceLink match$IZn0 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118e0a1c55L, 0x1118e0a5335L, "match");
   }
 }

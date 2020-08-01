@@ -35,7 +35,7 @@ public final class OldIconReference__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + "<" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$gh9w), PROPS.name$tAp1) + ">";
+    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + "<" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$SjAw), PROPS.name$lA7v) + ">";
   }
 
   /*package*/ OldIconReference__BehaviorDescriptor() {
@@ -85,10 +85,10 @@ public final class OldIconReference__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$gh9w = MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, 0x7c8b08a50a39c6c8L, "declaration");
+    /*package*/ static final SReferenceLink declaration$SjAw = MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, 0x7c8b08a50a39c6c8L, "declaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

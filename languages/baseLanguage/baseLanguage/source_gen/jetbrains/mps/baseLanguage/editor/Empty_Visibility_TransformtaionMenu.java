@@ -85,7 +85,7 @@ public class Empty_Visibility_TransformtaionMenu extends TransformationMenuBase 
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.visibility$2GiC;
+      return LINKS.visibility$jt1o;
     }
     @Override
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext context) {
@@ -114,7 +114,7 @@ public class Empty_Visibility_TransformtaionMenu extends TransformationMenuBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {

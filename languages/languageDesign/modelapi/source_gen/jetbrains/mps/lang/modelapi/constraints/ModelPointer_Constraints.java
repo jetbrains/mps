@@ -24,7 +24,7 @@ public class ModelPointer_Constraints extends BaseConstraintsDescriptor {
 
   public static class ModelId_Property extends BasePropertyConstraintsDescriptor {
     public ModelId_Property(ConstraintsDescriptor container) {
-      super(PROPS.modelId$bfR, container);
+      super(PROPS.modelId$5sFD, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -53,7 +53,7 @@ public class ModelPointer_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.modelId$bfR, new ModelId_Property(this));
+    properties.put(PROPS.modelId$5sFD, new ModelId_Property(this));
     return properties;
   }
 
@@ -62,6 +62,6 @@ public class ModelPointer_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty modelId$bfR = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645c7f56L, "modelId");
+    /*package*/ static final SProperty modelId$5sFD = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645c7f56L, "modelId");
   }
 }

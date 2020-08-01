@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MultipleCatchClause_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.throwable$pijh), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/8276990574895944485");
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.catchBody$pijK));
+    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.throwable$fRlf), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/8276990574895944485");
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.catchBody$fR$g));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$pijh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
-    /*package*/ static final SContainmentLink catchBody$pijK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
+    /*package*/ static final SContainmentLink throwable$fRlf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
+    /*package*/ static final SContainmentLink catchBody$fR$g = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
   }
 }

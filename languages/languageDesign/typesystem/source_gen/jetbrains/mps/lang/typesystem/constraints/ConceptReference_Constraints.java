@@ -31,7 +31,7 @@ public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.concept$Q1Nr, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.concept$aRU5, this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
@@ -43,9 +43,9 @@ public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
       @Override
       public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         if ((newReferentNode != null) && newReferentNode != oldReferentNode) {
-          SPropertyOperations.set(referenceNode, PROPS.name$tAp1, NameUtil.decapitalize(SPropertyOperations.getString(newReferentNode, PROPS.name$tAp1)));
+          SPropertyOperations.set(referenceNode, PROPS.name$lA7v, NameUtil.decapitalize(SPropertyOperations.getString(newReferentNode, PROPS.name$lA7v)));
           if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$Ad)) {
-            SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$Ad), PROPS.name$tAp1, "typeof_" + SPropertyOperations.getString(newReferentNode, PROPS.name$tAp1));
+            SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$Ad), PROPS.name$lA7v, "typeof_" + SPropertyOperations.getString(newReferentNode, PROPS.name$lA7v));
           }
         }
       }
@@ -81,10 +81,10 @@ public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$Q1Nr = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
+    /*package*/ static final SReferenceLink concept$aRU5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

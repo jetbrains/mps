@@ -44,9 +44,9 @@ public final class AddMissingOverrideAnnotations_MigrationScript extends BaseMig
       public boolean isApplicableInstanceNode(SNode node) {
         List<SNode> instanceMethods = Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(node)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return OverridingMethodsCalculator.canOverride(it) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$oVP4)).all(new IWhereFilter<SNode>() {
+            return OverridingMethodsCalculator.canOverride(it) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$4YGW)).all(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return !("java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$zNxu))));
+                return !("java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$lXdy))));
               }
             });
           }
@@ -61,16 +61,16 @@ public final class AddMissingOverrideAnnotations_MigrationScript extends BaseMig
       public void doUpdateInstanceNode(SNode node) {
         List<SNode> instanceMethods = Sequence.fromIterable(OverridingMethodsCalculator.getInstanceMethods(node)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return OverridingMethodsCalculator.canOverride(it) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$oVP4)).all(new IWhereFilter<SNode>() {
+            return OverridingMethodsCalculator.canOverride(it) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$4YGW)).all(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return !("java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$zNxu))));
+                return !("java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$lXdy))));
               }
             });
           }
         }).toListSequence();
         OverridingMethodsCalculator finder = new OverridingMethodsCalculator(node, instanceMethods);
         for (SNode meth : SetSequence.fromSet(finder.getOverridingMethods())) {
-          ListSequence.fromList(SLinkOperations.getChildren(meth, LINKS.annotation$oVP4)).addElement(createAnnotationInstance_eltaeh_a0a0a2a0a());
+          ListSequence.fromList(SLinkOperations.getChildren(meth, LINKS.annotation$4YGW)).addElement(createAnnotationInstance_eltaeh_a0a0a2a0a());
         }
       }
       @Override
@@ -88,7 +88,7 @@ public final class AddMissingOverrideAnnotations_MigrationScript extends BaseMig
   private static SNode createAnnotationInstance_eltaeh_a0a0a2a0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.AnnotationInstance$5z);
-    n0.setReference(LINKS.annotation$zNxu, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Override")));
+    n0.setReference(LINKS.annotation$lXdy, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Override")));
     return n0.getResult();
   }
 
@@ -98,7 +98,7 @@ public final class AddMissingOverrideAnnotations_MigrationScript extends BaseMig
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 }

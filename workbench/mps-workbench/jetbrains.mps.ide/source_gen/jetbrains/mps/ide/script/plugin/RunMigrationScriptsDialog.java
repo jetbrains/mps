@@ -229,12 +229,12 @@ public class RunMigrationScriptsDialog extends JDialog {
           if (column == 0) {
             result.value = mySelectedScriptIds.contains(SNodeOperations.getPointer(sn));
           } else if (column == 1) {
-            result.value = "  " + SPropertyOperations.getString(sn, PROPS.title$cHtL);
+            result.value = "  " + SPropertyOperations.getString(sn, PROPS.title$a1qJ);
           } else if (column == 2) {
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(sn, PROPS.type$wKbU), 0x498b4f71ee081152L)) {
-              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$wKbU)) + " (" + SPropertyOperations.getString(sn, PROPS.toBuild$wKcS) + ")";
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(sn, PROPS.type$RlL6), 0x498b4f71ee081152L)) {
+              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$RlL6)) + " (" + SPropertyOperations.getString(sn, PROPS.toBuild$Rmf8) + ")";
             } else {
-              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$wKbU));
+              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$RlL6));
             }
           } else if (column == 3) {
             result.value = SNodeOperations.getModel(sn).getModule().getModuleName();
@@ -436,8 +436,8 @@ public class RunMigrationScriptsDialog extends JDialog {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty title$cHtL = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x11225f2354aL, "title");
-    /*package*/ static final SProperty toBuild$wKcS = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081155L, "toBuild");
-    /*package*/ static final SProperty type$wKbU = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type");
+    /*package*/ static final SProperty title$a1qJ = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x11225f2354aL, "title");
+    /*package*/ static final SProperty toBuild$Rmf8 = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081155L, "toBuild");
+    /*package*/ static final SProperty type$RlL6 = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type");
   }
 }

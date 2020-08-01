@@ -118,7 +118,7 @@ public class TestNode_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createTestNode_e27ds2_a0a0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TestNode$kc);
-    n0.forChild(LINKS.nodeToCheck$Pz43).initNode(p0, CONCEPTS.BaseConcept$Sz, true);
+    n0.forChild(LINKS.nodeToCheck$VYXt).initNode(p0, CONCEPTS.BaseConcept$Sz, true);
     return n0.getResult();
   }
 
@@ -128,6 +128,6 @@ public class TestNode_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeToCheck$Pz43 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
+    /*package*/ static final SContainmentLink nodeToCheck$VYXt = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
   }
 }

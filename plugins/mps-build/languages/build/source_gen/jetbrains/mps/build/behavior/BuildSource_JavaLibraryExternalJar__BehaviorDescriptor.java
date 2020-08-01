@@ -34,7 +34,7 @@ public final class BuildSource_JavaLibraryExternalJar__BehaviorDescriptor extend
   }
 
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
-    Tuples._2<SNode, Boolean> artifact = BuildSource_JavaExternalJarRef__BehaviorDescriptor.getDependencyTarget_id4RsV8qJGJqY.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extJar$MD00), artifacts);
+    Tuples._2<SNode, Boolean> artifact = BuildSource_JavaExternalJarRef__BehaviorDescriptor.getDependencyTarget_id4RsV8qJGJqY.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extJar$xR00), artifacts);
     if (artifact != null) {
       if ((boolean) artifact._1()) {
         builder.addWithContent(artifact._0());
@@ -92,6 +92,6 @@ public final class BuildSource_JavaLibraryExternalJar__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extJar$MD00 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb50da7L, 0x4ddcec86afb50da8L, "extJar");
+    /*package*/ static final SContainmentLink extJar$xR00 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb50da7L, 0x4ddcec86afb50da8L, "extJar");
   }
 }

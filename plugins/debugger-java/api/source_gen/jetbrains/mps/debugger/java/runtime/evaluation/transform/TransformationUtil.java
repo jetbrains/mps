@@ -42,17 +42,17 @@ public class TransformationUtil {
   }
   public static void replaceArrayConstructor(SNode newArrayExpression, SNode fqNameNode, SNode size) {
     SNode invokeConstructorMethodCall = _quotation_createNode_crriw5_a0a0c(fqNameNode);
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(invokeConstructorMethodCall, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.actualArgument$$A7L)).addElement(size);
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(invokeConstructorMethodCall, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.actualArgument$ItKJ)).addElement(size);
     SNodeOperations.replaceWithAnother(newArrayExpression, invokeConstructorMethodCall);
   }
   public static void replaceArrayWithInitializerConstructor(SNode newArrayExpression, SNode fqNameNode, List<SNode> values) {
     SNode invokeConstructorMethodCall = _quotation_createNode_crriw5_a0a0d(fqNameNode);
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(invokeConstructorMethodCall, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(values));
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(invokeConstructorMethodCall, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(values));
     SNodeOperations.replaceWithAnother(newArrayExpression, invokeConstructorMethodCall);
   }
   public static void replaceConstructor(SNode newExpression, SNode fqNameNode, SNode jnSignature, List<SNode> actualArguments) {
     SNode invokeConstructorMethodCall = _quotation_createNode_crriw5_a0a0e(fqNameNode, jnSignature);
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(invokeConstructorMethodCall, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(actualArguments));
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(invokeConstructorMethodCall, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(actualArguments));
     SNodeOperations.replaceWithAnother(newExpression, invokeConstructorMethodCall);
   }
   public static void replaceThisExpression(SNode thisExpression) {
@@ -62,7 +62,7 @@ public class TransformationUtil {
     SNode returnProxyType = getValueProxyTypeFromType(returnType);
     SNode thisNode = TransformationUtil.createThisNodeReplacement();
     SNode invokeMethodCall = _quotation_createNode_crriw5_a0c0g(createStringLiteral(methodName), createStringLiteral(jniSignature), returnProxyType, thisNode);
-    ListSequence.fromList(SLinkOperations.getChildren(invokeMethodCall, LINKS.actualArgument$FkBm)).addSequence(ListSequence.fromList(arguments));
+    ListSequence.fromList(SLinkOperations.getChildren(invokeMethodCall, LINKS.actualArgument$YZ3E)).addSequence(ListSequence.fromList(arguments));
     SNodeOperations.replaceWithAnother(superMethodCall, _quotation_createNode_crriw5_a0a4a6(invokeMethodCall, returnProxyType));
   }
   public static void replaceAssignment(SNode baseAssignment) {
@@ -72,29 +72,29 @@ public class TransformationUtil {
 
     SNode rightExpression;
     if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.AndAssignmentExpression$C8)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0f0h(SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2), SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4));
+      rightExpression = _quotation_createNode_crriw5_a0a0f0h(SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY), SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW));
     } else if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.DivAssignmentExpression$_e)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0a5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2));
+      rightExpression = _quotation_createNode_crriw5_a0a0a5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY));
     } else if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.LeftShiftAssignmentExpression$Of)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0b5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2));
+      rightExpression = _quotation_createNode_crriw5_a0a0b5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY));
     } else if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.MinusAssignmentExpression$Qf)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0c5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2));
+      rightExpression = _quotation_createNode_crriw5_a0a0c5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY));
     } else if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.MulAssignmentExpression$1e)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0d5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2));
+      rightExpression = _quotation_createNode_crriw5_a0a0d5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY));
     } else if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.OrAssignmentExpression$Ba)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0e5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2));
+      rightExpression = _quotation_createNode_crriw5_a0a0e5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY));
     } else if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.PlusAssignmentExpression$Kc)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0f5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2));
+      rightExpression = _quotation_createNode_crriw5_a0a0f5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY));
     } else if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.RemAssignmentExpression$Ac)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0g5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2));
+      rightExpression = _quotation_createNode_crriw5_a0a0g5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY));
     } else if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.RightShiftAssignmentExpression$Pd)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0h5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2));
+      rightExpression = _quotation_createNode_crriw5_a0a0h5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY));
     } else if (SNodeOperations.isInstanceOf(baseAssignment, CONCEPTS.XorAssignmentExpression$Nh)) {
-      rightExpression = _quotation_createNode_crriw5_a0a0i5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2));
+      rightExpression = _quotation_createNode_crriw5_a0a0i5a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY));
     } else {
       return;
     }
-    SNodeOperations.replaceWithAnother(baseAssignment, _quotation_createNode_crriw5_a0a6a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4), rightExpression));
+    SNodeOperations.replaceWithAnother(baseAssignment, _quotation_createNode_crriw5_a0a6a7(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW), rightExpression));
     rightExpression.putUserObject(TransformatorImpl.LTYPE, SNodeOperations.copyNode(lvalueType));
     rightExpression.putUserObject(TransformatorImpl.RTYPE, SNodeOperations.copyNode(rvalueType));
     AttributeOperations.createAndSetAttrbiute(rightExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$wE), CONCEPTS.UnprocessedAnnotation$wE);
@@ -113,13 +113,13 @@ public class TransformationUtil {
   }
   public static void replaceStaticMethodCall(SNode staticMethodCall, SNode classFqNameNode, String methodName, String jniSignature, SNode returnType, List<SNode> arguments) {
     SNode methodCall = _quotation_createNode_crriw5_a0a0l(classFqNameNode, createStringLiteral(methodName), createStringLiteral(jniSignature));
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(methodCall, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(arguments));
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(methodCall, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(arguments));
     SNodeOperations.replaceWithAnother(staticMethodCall, _quotation_createNode_crriw5_a0a2a11(getValueProxyTypeFromType(returnType), methodCall));
   }
   public static void replaceMethodCall(SNode wholeExpression, SNode instance, SNode methodCall, String methodName, String jniSignature, SNode returnType, List<SNode> arguments) {
     SNode valueProxyReturnType = getValueProxyTypeFromType(returnType);
     SNode invokeMethodCall = _quotation_createNode_crriw5_a0b0m(createStringLiteral(methodName), createStringLiteral(jniSignature), valueProxyReturnType, instance);
-    ListSequence.fromList(SLinkOperations.getChildren(invokeMethodCall, LINKS.actualArgument$FkBm)).addSequence(ListSequence.fromList(arguments));
+    ListSequence.fromList(SLinkOperations.getChildren(invokeMethodCall, LINKS.actualArgument$YZ3E)).addSequence(ListSequence.fromList(arguments));
     SNodeOperations.replaceWithAnother(wholeExpression, _quotation_createNode_crriw5_a0a3a21(valueProxyReturnType, invokeMethodCall));
   }
   public static void replaceReturnedExpressionIfNeeded(SNode expression) {
@@ -149,8 +149,8 @@ public class TransformationUtil {
     if (SNodeOperations.isInstanceOf(variableRef, CONCEPTS.LowLevelVariableReference$zj)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(variableRef, CONCEPTS.VariableReference$sQ) && (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variableRef, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variableRef, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.ParameterDeclaration$qU))) {
-      return SNodeOperations.getContainingRoot(SLinkOperations.getTarget(variableRef, LINKS.baseVariableDeclaration$$Ls0)) != SNodeOperations.getContainingRoot(variableRef);
+    if (SNodeOperations.isInstanceOf(variableRef, CONCEPTS.VariableReference$sQ) && (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variableRef, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variableRef, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU))) {
+      return SNodeOperations.getContainingRoot(SLinkOperations.getTarget(variableRef, LINKS.baseVariableDeclaration$NW$0)) != SNodeOperations.getContainingRoot(variableRef);
     }
     return false;
   }
@@ -158,13 +158,13 @@ public class TransformationUtil {
     // TODO use this method everywhere 
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator, CONCEPTS.InstanceMethodDeclaration$An, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).equals("evaluate");
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).equals("evaluate");
       }
     });
   }
   public static SNode getBoxedTypeIfNeeded(SNode rawType) {
     if (SNodeOperations.isInstanceOf(rawType, CONCEPTS.DebuggedType$q5)) {
-      rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(rawType, CONCEPTS.DebuggedType$q5), LINKS.lowType$UDHw));
+      rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(rawType, CONCEPTS.DebuggedType$q5), LINKS.lowType$qd2w));
     }
     // we can't cast from Object to primitive, so we must box primitive types 
     // stupid java "everything is an object, except the things which are not" 
@@ -204,7 +204,7 @@ public class TransformationUtil {
   }
   public static SNode getValueProxyTypeFromType(SNode type) {
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.DebuggedType$q5)) {
-      type = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.DebuggedType$q5), LINKS.lowType$UDHw);
+      type = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.DebuggedType$q5), LINKS.lowType$qd2w);
     }
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.ArrayType$Yv)) {
       return _quotation_createNode_crriw5_a0a1a32();
@@ -221,15 +221,15 @@ public class TransformationUtil {
     return _quotation_createNode_crriw5_a3a32();
   }
   public static SNode getPrimitiveType() {
-    SNode primitive = SLinkOperations.getTarget(_quotation_createNode_crriw5_a0a0a42(), LINKS.descriptor$ZkDR);
+    SNode primitive = SLinkOperations.getTarget(_quotation_createNode_crriw5_a0a0a42(), LINKS.descriptor$F0hD);
     return _quotation_createNode_crriw5_a1a42(primitive);
   }
   public static String getJniSignature(SNode methodDeclaration) {
-    return getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(methodDeclaration, LINKS.parameter$WIkZ)).select(new ISelector<SNode, SNode>() {
+    return getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(methodDeclaration, LINKS.parameter$qsax)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.type$pLrO);
+        return SLinkOperations.getTarget(it, LINKS.type$uWuc);
       }
-    }), SLinkOperations.getTarget(methodDeclaration, LINKS.returnType$WIkw));
+    }), SLinkOperations.getTarget(methodDeclaration, LINKS.returnType$qrVw));
   }
   public static String getJniSignature(Iterable<SNode> arguments, SNode returnType) {
     final Wrappers._T<String> signature = new Wrappers._T<String>("(");
@@ -247,7 +247,7 @@ public class TransformationUtil {
       return "V";
     }
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.DebuggedType$q5)) {
-      type = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.DebuggedType$q5), LINKS.lowType$UDHw);
+      type = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.DebuggedType$q5), LINKS.lowType$qd2w);
     }
     // why subtyping? 
     // I do not know 
@@ -270,7 +270,7 @@ public class TransformationUtil {
     } else if (TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_crriw5_b0a7e0bb())) {
       return "V";
     } else if (SNodeOperations.isInstanceOf(type, CONCEPTS.ArrayType$Yv)) {
-      return "[" + getJniSignatureFromType(SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ArrayType$Yv), LINKS.componentType$10w));
+      return "[" + getJniSignatureFromType(SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw));
     } else if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) || (TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.ClassifierType$IZ) != null)) {
       SNode typeCopy;
       if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ)) {
@@ -278,18 +278,18 @@ public class TransformationUtil {
       } else {
         typeCopy = SNodeOperations.copyNode(TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.ClassifierType$IZ));
       }
-      SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(typeCopy, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+      SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(typeCopy, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
       assert classifier != null;
       // we have to deal with the fact that inners in stubs are not inners 
       String realFqName;
-      if (SPropertyOperations.getString(classifier, PROPS.name$tAp1).contains(".")) {
+      if (SPropertyOperations.getString(classifier, PROPS.name$lA7v).contains(".")) {
         String fqName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
-        realFqName = fqName.substring(0, fqName.length() - SPropertyOperations.getString(classifier, PROPS.name$tAp1).length()) + SPropertyOperations.getString(classifier, PROPS.name$tAp1).replace(".", "$");
+        realFqName = fqName.substring(0, fqName.length() - SPropertyOperations.getString(classifier, PROPS.name$lA7v).length()) + SPropertyOperations.getString(classifier, PROPS.name$lA7v).replace(".", "$");
       } else {
         SNode rootClassifier = classifier;
         String suffix = "";
         while (((boolean) (Boolean) BHReflection.invoke0(rootClassifier, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("isInner", CONCEPTS.Classifier$hJ, "sWroEc0xXl")))) {
-          suffix = "$" + SPropertyOperations.getString(rootClassifier, PROPS.name$tAp1);
+          suffix = "$" + SPropertyOperations.getString(rootClassifier, PROPS.name$lA7v);
           rootClassifier = SNodeOperations.cast(SNodeOperations.getParent(rootClassifier), CONCEPTS.Classifier$hJ);
         }
         realFqName = (((String) BHReflection.invoke0(rootClassifier, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))).replace(".", "/")) + suffix;
@@ -304,11 +304,11 @@ public class TransformationUtil {
   }
   public static SNode createStringLiteral(String value) {
     SNode stringLiteral = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
-    SPropertyOperations.set(stringLiteral, PROPS.value$kiE0, value);
+    SPropertyOperations.set(stringLiteral, PROPS.value$P2m0, value);
     return stringLiteral;
   }
   public static void replaceTypeWithArrayProxyType(SNode variableDeclaration) {
-    SLinkOperations.setTarget(variableDeclaration, LINKS.type$pLrO, _quotation_createNode_crriw5_a0a0a92(TransformationUtil.getValueProxyTypeFromType(SLinkOperations.getTarget(variableDeclaration, LINKS.type$pLrO))));
+    SLinkOperations.setTarget(variableDeclaration, LINKS.type$uWuc, _quotation_createNode_crriw5_a0a0a92(TransformationUtil.getValueProxyTypeFromType(SLinkOperations.getTarget(variableDeclaration, LINKS.type$uWuc))));
   }
   public static void replaceExpressionWithProxy(SNode expression) {
     SNodeOperations.replaceWithAnother(expression, _quotation_createNode_crriw5_a0a0a03(expression, getValueProxyTypeFromType(TypecheckingFacade.getFromContext().getTypeOf(expression))));
@@ -341,22 +341,22 @@ public class TransformationUtil {
     return !(TypecheckingFacade.getFromContext().isSubtype(expressionType, _quotation_createNode_crriw5_b0a0a0a43())) && (TypecheckingFacade.getFromContext().isSubtype(expressionType, getPrimitiveType()) || TypecheckingFacade.getFromContext().isSubtype(expressionType, _quotation_createNode_crriw5_b0a0a0a0a43()) || TypecheckingFacade.getFromContext().isSubtype(expressionType, _quotation_createNode_crriw5_b0a0a0a0ib()));
   }
   public static void replaceForEachStatement(SNode foreachStatement) {
-    SNode valueProxyType = getValueProxyTypeFromType(SLinkOperations.getTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$H$_G), LINKS.type$pLrO));
-    if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$9EB2)), _quotation_createNode_crriw5_b0a1a53())) {
-      SLinkOperations.setTarget(foreachStatement, LINKS.iterable$9EB2, _quotation_createNode_crriw5_a0a0a1a53(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$9EB2)));
+    SNode valueProxyType = getValueProxyTypeFromType(SLinkOperations.getTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$4Igk), LINKS.type$uWuc));
+    if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$FCTY)), _quotation_createNode_crriw5_b0a1a53())) {
+      SLinkOperations.setTarget(foreachStatement, LINKS.iterable$FCTY, _quotation_createNode_crriw5_a0a0a1a53(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$FCTY)));
     } else {
-      SLinkOperations.setTarget(foreachStatement, LINKS.iterable$9EB2, _quotation_createNode_crriw5_a0a0a0b0jb(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$9EB2)));
+      SLinkOperations.setTarget(foreachStatement, LINKS.iterable$FCTY, _quotation_createNode_crriw5_a0a0a0b0jb(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$FCTY)));
     }
     // next two lines add type parameters in a specific magical way so the test would pass 
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$9EB2), CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.typeArgument$GDtv)).addElement(SNodeOperations.copyNode(valueProxyType));
-    SLinkOperations.setTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$H$_G), LINKS.type$pLrO, _quotation_createNode_crriw5_a0a4a53(valueProxyType));
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$FCTY), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.typeArgument$C5i1)).addElement(SNodeOperations.copyNode(valueProxyType));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$4Igk), LINKS.type$uWuc, _quotation_createNode_crriw5_a0a4a53(valueProxyType));
   }
   public static SNode getVariableDeclaration(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableReference$sQ)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6);
+      return SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
     }
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr), CONCEPTS.ThisExpression$7A) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.FieldReferenceOperation$N8)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$mLBy);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5), CONCEPTS.ThisExpression$7A) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$229u);
     }
     return null;
   }
@@ -372,7 +372,7 @@ public class TransformationUtil {
       parent = SNodeOperations.getParent(blockStatement);
       if (SNodeOperations.isInstanceOf(parent, CONCEPTS.StatementList$TN)) {
         SNode bsStatementList = SNodeOperations.cast(parent, CONCEPTS.StatementList$TN);
-        List<SNode> statements = SLinkOperations.getChildren(bsStatementList, LINKS.statement$WHn8);
+        List<SNode> statements = SLinkOperations.getChildren(bsStatementList, LINKS.statement$pYcS);
         if (ListSequence.fromList(statements).getElement(ListSequence.fromList(statements).count() - 1) == blockStatement) {
           parent = SNodeOperations.getParent(bsStatementList);
         }
@@ -387,14 +387,14 @@ public class TransformationUtil {
     SNode returnType = null;
     if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BaseMethodDeclaration$RR)) {
       SNode methodDeclaration = SNodeOperations.cast(parent, CONCEPTS.BaseMethodDeclaration$RR);
-      returnType = SLinkOperations.getTarget(methodDeclaration, LINKS.returnType$WIkw);
+      returnType = SLinkOperations.getTarget(methodDeclaration, LINKS.returnType$qrVw);
     } else
     if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ConceptFunction$Tt)) {
       SNode conceptFunction = SNodeOperations.cast(parent, CONCEPTS.ConceptFunction$Tt);
       returnType = ((SNode) BHReflection.invoke0(conceptFunction, CONCEPTS.ConceptFunction$Tt, SMethodTrimmedId.create("getExpectedReturnType", null, "hEwIGRD")));
     } else if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ClosureLiteral$zJ)) {
       SNode closure = SNodeOperations.cast(parent, CONCEPTS.ClosureLiteral$zJ);
-      returnType = SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(closure), CONCEPTS.FunctionType$ig), LINKS.resultType$ln42);
+      returnType = SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(closure), CONCEPTS.FunctionType$ig), LINKS.resultType$maWY);
     }
     if (returnType != null && !(SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$aT))) {
       canAdjust = true;
@@ -1560,27 +1560,27 @@ public class TransformationUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink actualArgument$FkBm = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ad1a966L, "actualArgument");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SReferenceLink baseVariableDeclaration$$Ls0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink lowType$UDHw = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25ed9L, "lowType");
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink variable$H$_G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink iterable$9EB2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
-    /*package*/ static final SContainmentLink typeArgument$GDtv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink resultType$ln42 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$YZ3E = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ad1a966L, "actualArgument");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SReferenceLink baseVariableDeclaration$NW$0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink lowType$qd2w = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25ed9L, "lowType");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink iterable$FCTY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
+    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink resultType$maWY = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType");
   }
 
   private static final class CONCEPTS {
@@ -1637,7 +1637,7 @@ public class TransformationUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

@@ -21,7 +21,7 @@ public class typeof_SomeForm_InferenceRule extends AbstractInferenceRule_Runtime
   }
   public void applyRule(final SNode someForm, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(someForm, LINKS.validation$os$q);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(someForm, LINKS.validation$PPCA);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:57b97f02-ce1d-4dd3-9cf3-3248a9233d2c(jetbrains.mps.samples.languagePatterns.Basic.typesystem)", "5235060235298589136", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:57b97f02-ce1d-4dd3-9cf3-3248a9233d2c(jetbrains.mps.samples.languagePatterns.Basic.typesystem)", "5235060235298588055", true), (SNode) _quotation_createNode_549726_a1a0c0a0b(), _info_12389875345);
     }
@@ -43,7 +43,7 @@ public class typeof_SomeForm_InferenceRule extends AbstractInferenceRule_Runtime
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink validation$os$q = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x48a6ab8c26b3f406L, 0x48a6ab8c26b3f44fL, "validation");
+    /*package*/ static final SContainmentLink validation$PPCA = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x48a6ab8c26b3f406L, 0x48a6ab8c26b3f44fL, "validation");
   }
 
   private static final class CONCEPTS {

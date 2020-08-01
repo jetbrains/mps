@@ -34,7 +34,7 @@
       <node id="1210176706194" at="66,5,67,24" concept="6" />
       <node id="1210176650661" at="71,0,72,0" concept="8" trace="VariableDeclaration$xe" />
       <node id="1210176650661" at="72,0,73,0" concept="8" trace="IMessage$PR" />
-      <node id="1210176650661" at="76,0,77,0" concept="8" trace="name$tAp1" />
+      <node id="1210176650661" at="76,0,77,0" concept="8" trace="name$lA7v" />
       <node id="2423165640493149430" at="24,0,26,0" concept="0" trace="LoggingGenerationUtil#()V" />
       <node id="1210176706185" at="30,88,33,7" concept="2" />
       <node id="2698960852100988709" at="43,0,46,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

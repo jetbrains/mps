@@ -90,8 +90,8 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
       if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ))).isEmpty()) {
         SNode annotation = SNodeFactoryOperations.addNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ), CONCEPTS.SuppressErrorsAnnotation$gJ);
         Map<String, String> flavours = MapSequence.<String, String>fromMapAndKeysArray(new HashMap<String, String>(), IssueKindReportItem.FLAVOUR_ISSUE_KIND.getId()).withValues(IssueKindReportItem.TYPESYSTEM.deriveItemKind().toString());
-        SPropertyOperations.assign(annotation, PROPS.filter$UuSh, new FlavouredItem.ReportItemPredicate(flavours).serialize());
-        SPropertyOperations.assign(annotation, PROPS.message$PX4b, "all typesystem messages");
+        SPropertyOperations.assign(annotation, PROPS.filter$kXgf, new FlavouredItem.ReportItemPredicate(flavours).serialize());
+        SPropertyOperations.assign(annotation, PROPS.message$8_1l, "all typesystem messages");
       } else {
         ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ))).clear();
       }
@@ -107,7 +107,7 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty filter$UuSh = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
-    /*package*/ static final SProperty message$PX4b = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
+    /*package*/ static final SProperty filter$kXgf = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
+    /*package*/ static final SProperty message$8_1l = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
   }
 }

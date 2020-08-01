@@ -33,13 +33,13 @@ public class _ClassConcept_Extends_Delete {
         if (DeletionApproverUtil.approve(editorContext, node, "extendsCollection")) {
           return;
         }
-        SLinkOperations.setTarget(node, LINKS.superclass$_pqe, null);
-        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.superclass$_pqe))).visitAll(new IVisitor<SNode>() {
+        SLinkOperations.setTarget(node, LINKS.superclass$7jGM, null);
+        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.superclass$7jGM))).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             SNodeOperations.deleteNode(it);
           }
         });
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.implementedInterface$mdc6)).isNotEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.implementedInterface$KoQU)).isNotEmpty()) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "ImplementsCell", 0);
         } else {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "OpenBraceClassCell", 0);
@@ -91,8 +91,8 @@ public class _ClassConcept_Extends_Delete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
   }
 
   private static final class CONCEPTS {

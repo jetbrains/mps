@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubSetOperation_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.fromElement$amQP));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.toElement$JAPN));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.fromElement$14zF));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.toElement$3O3H));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fromElement$amQP = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4c28b15L, 0x120c4c2a92aL, "fromElement");
-    /*package*/ static final SContainmentLink toElement$JAPN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4c28b15L, 0x120c4c2c53bL, "toElement");
+    /*package*/ static final SContainmentLink fromElement$14zF = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4c28b15L, 0x120c4c2a92aL, "fromElement");
+    /*package*/ static final SContainmentLink toElement$3O3H = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4c28b15L, 0x120c4c2c53bL, "toElement");
   }
 }

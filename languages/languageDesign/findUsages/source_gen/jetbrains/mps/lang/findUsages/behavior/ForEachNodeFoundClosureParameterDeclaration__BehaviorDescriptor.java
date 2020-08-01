@@ -27,8 +27,8 @@ public final class ForEachNodeFoundClosureParameterDeclaration__BehaviorDescript
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.name$tAp1, "foundNode");
-    SLinkOperations.setTarget(__thisNode__, LINKS.type$pLrO, _quotation_createNode_nh75h9_a0b0a());
+    SPropertyOperations.assign(__thisNode__, PROPS.name$lA7v, "foundNode");
+    SLinkOperations.setTarget(__thisNode__, LINKS.type$uWuc, _quotation_createNode_nh75h9_a0b0a());
   }
 
 
@@ -83,10 +83,10 @@ public final class ForEachNodeFoundClosureParameterDeclaration__BehaviorDescript
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

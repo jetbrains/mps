@@ -46,30 +46,30 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return "Running code from " + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$HMJF), PROPS.name$tAp1) + " solution in MPS";
+    return "Running code from " + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$b_5P), PROPS.name$lA7v) + " solution in MPS";
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.path$7q6F);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.path$_DeP);
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.id$7q7a);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.id$_DtQ);
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.path$LlSY);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.path$TAA2);
   }
   public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
   }
   public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
-    return "${" + SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1) + "}";
+    return "${" + SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) + "}";
   }
   public static Object propertyMacro_GetValue_1_6(final PropertyMacroContext _context) {
-    SNode mpsAspect = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) _context.getVariable("var:buildProject")), LINKS.aspects$85Cd), CONCEPTS.BuildMpsAspect$ea)).first();
+    SNode mpsAspect = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) _context.getVariable("var:buildProject")), LINKS.aspects$UIuj), CONCEPTS.BuildMpsAspect$ea)).first();
 
     int heapSize;
     // 0 as default value and 0 as heap size should be distinguished 
-    if ((mpsAspect != null) && (isNotEmptyString(mpsAspect.getProperty(PROPS.generationMaxHeapSizeInMb$pKUn)))) {
-      heapSize = SPropertyOperations.getInteger(mpsAspect, PROPS.generationMaxHeapSizeInMb$pKUn);
+    if ((mpsAspect != null) && (isNotEmptyString(mpsAspect.getProperty(PROPS.generationMaxHeapSizeInMb$uGh9)))) {
+      heapSize = SPropertyOperations.getInteger(mpsAspect, PROPS.generationMaxHeapSizeInMb$uGh9);
     } else {
       // default size 
       heapSize = 512;
@@ -78,7 +78,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "-Xmx" + heapSize + "m";
   }
   public static Object propertyMacro_GetValue_1_7(final PropertyMacroContext _context) {
-    return (String) BuildMps_AbstractModule__BehaviorDescriptor.getModuleReference_id41K1b4v5ZCB.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$HMJF));
+    return (String) BuildMps_AbstractModule__BehaviorDescriptor.getModuleReference_id41K1b4v5ZCB.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$b_5P));
   }
   public static Object propertyMacro_GetValue_1_8(final PropertyMacroContext _context) {
     return (String) BuildSolutionRunnerAspect__BehaviorDescriptor.getFQClassName_id1aYLt$9eyUg.invoke(_context.getNode());
@@ -87,14 +87,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) BuildSolutionRunnerAspect__BehaviorDescriptor.getMethodName_id1aYLt$9dX0a.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_1_10(final PropertyMacroContext _context) {
-    return "run." + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$HMJF), PROPS.name$tAp1);
+    return "run." + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$b_5P), PROPS.name$lA7v);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     ModulePlugins modulePlugins = new ModulePlugins(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$BF, false, false), _context);
     Iterable<SNode> allModules = ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
-    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.requiredPlugin$DNIY)).select(new ISelector<SNode, SNode>() {
+    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.requiredPlugin$g3K2)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.plugin$MEr0);
+        return SLinkOperations.getTarget(it, LINKS.plugin$yz50);
       }
     }).toListSequence();
     modulePlugins.collect(allModules, additionalPlugins);
@@ -110,10 +110,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return ModuleFinder.findModules(libs, _context, _context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) _context.getVariable("var:buildProject")), LINKS.macros$tpFt), CONCEPTS.BuildFolderMacro$Ok);
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) _context.getVariable("var:buildProject")), LINKS.macros$fs33), CONCEPTS.BuildFolderMacro$Ok);
   }
   public static Object varMacro_Value_1_0(final TemplateVarContext _context) {
-    return new MPSModulesClosure(Sequence.<SNode>singleton(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$HMJF)), new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).designtimeClosure();
+    return new MPSModulesClosure(Sequence.<SNode>singleton(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$b_5P)), new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).designtimeClosure();
   }
   public static Object varMacro_Value_1_1(final TemplateVarContext _context) {
     return SNodeOperations.as(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$BF);
@@ -246,8 +246,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private static SNode createGeneratorInternal_PluginExpanded_x583g4_a0a0a0e0m(String p0, String p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_PluginExpanded$8B);
-    n0.setProperty(PROPS.path$7q6F, p0);
-    n0.setProperty(PROPS.id$7q7a, p1);
+    n0.setProperty(PROPS.path$_DeP, p0);
+    n0.setProperty(PROPS.id$_DtQ, p1);
     return n0.getResult();
   }
   private static boolean isNotEmptyString(String str) {
@@ -255,19 +255,19 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink solution$HMJF = MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x54b085b5945c6691L, "solution");
-    /*package*/ static final SContainmentLink aspects$85Cd = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x31292e1a60db57afL, "aspects");
-    /*package*/ static final SContainmentLink requiredPlugin$DNIY = MetaAdapterFactory.getContainmentLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x3283ab1237cb7bddL, "requiredPlugin");
-    /*package*/ static final SReferenceLink plugin$MEr0 = MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
-    /*package*/ static final SContainmentLink macros$tpFt = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
+    /*package*/ static final SReferenceLink solution$b_5P = MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x54b085b5945c6691L, "solution");
+    /*package*/ static final SContainmentLink aspects$UIuj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x31292e1a60db57afL, "aspects");
+    /*package*/ static final SContainmentLink requiredPlugin$g3K2 = MetaAdapterFactory.getContainmentLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x3283ab1237cb7bddL, "requiredPlugin");
+    /*package*/ static final SReferenceLink plugin$yz50 = MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
+    /*package*/ static final SContainmentLink macros$fs33 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty path$7q6F = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4aL, "path");
-    /*package*/ static final SProperty id$7q7a = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4bL, "id");
-    /*package*/ static final SProperty path$LlSY = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, 0xd94b027412f0827L, "path");
-    /*package*/ static final SProperty generationMaxHeapSizeInMb$pKUn = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x6ec3e043947b1eedL, "generationMaxHeapSizeInMb");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty path$_DeP = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4aL, "path");
+    /*package*/ static final SProperty id$_DtQ = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4bL, "id");
+    /*package*/ static final SProperty path$TAA2 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, 0xd94b027412f0827L, "path");
+    /*package*/ static final SProperty generationMaxHeapSizeInMb$uGh9 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x6ec3e043947b1eedL, "generationMaxHeapSizeInMb");
   }
 
   private static final class CONCEPTS {

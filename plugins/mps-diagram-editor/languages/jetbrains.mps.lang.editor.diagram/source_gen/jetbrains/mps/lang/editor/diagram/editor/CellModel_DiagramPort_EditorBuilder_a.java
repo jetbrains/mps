@@ -81,7 +81,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_inwiug_a0a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.input$Aaiu);
+    return SPropertyOperations.getBoolean(myNode, PROPS.input$uYWy);
   }
   public static class CellModel_DiagramPort_generic_cellMenu_inwiug_a0a0 extends AbstractCellMenuPart_Generic_Item {
     public CellModel_DiagramPort_generic_cellMenu_inwiug_a0a0() {
@@ -105,7 +105,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.input$Aaiu, true);
+      SPropertyOperations.assign(node, PROPS.input$uYWy, true);
     }
     public String getMatchingText() {
       return "input";
@@ -133,7 +133,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.input$Aaiu, false);
+      SPropertyOperations.assign(node, PROPS.input$uYWy, false);
     }
     public String getMatchingText() {
       return "output";
@@ -162,6 +162,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty input$Aaiu = MetaAdapterFactory.getProperty(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x3f6e840fd120282L, 0x3f6e840fd12753fL, "input");
+    /*package*/ static final SProperty input$uYWy = MetaAdapterFactory.getProperty(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x3f6e840fd120282L, 0x3f6e840fd12753fL, "input");
   }
 }

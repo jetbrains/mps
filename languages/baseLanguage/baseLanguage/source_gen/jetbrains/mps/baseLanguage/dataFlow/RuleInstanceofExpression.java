@@ -41,7 +41,7 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
           if (((Program) o).contains(object)) {
             boolean before = false;
             int position = ((Program) (o)).getEnd(object);
-            Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.leftExpression$zxNn));
+            Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.leftExpression$dnS9));
             instruction.setRuleReference("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7701013275659709424");
             instruction.setSource(node);
             ((Program) (o)).insert(instruction, position, true, before);
@@ -53,7 +53,7 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
           if (((Program) o).contains(object)) {
             boolean before = true;
             int position = ((Program) (o)).getStart(pp.getSucceedingNode());
-            Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.leftExpression$zxNn));
+            Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.leftExpression$dnS9));
             instruction.setRuleReference("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7701013275659713511");
             instruction.setSource(node);
             ((Program) (o)).insert(instruction, position, true, before);
@@ -70,6 +70,6 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$zxNn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
   }
 }

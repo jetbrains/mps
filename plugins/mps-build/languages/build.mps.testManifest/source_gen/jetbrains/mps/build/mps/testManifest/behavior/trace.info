@@ -48,7 +48,7 @@
       <node id="3298469228705200587" at="100,14,101,58" concept="11" />
       <node id="3298469228705200587" at="107,48,108,22" concept="6" />
       <node id="3298469228705200587" at="113,40,114,19" concept="6" />
-      <node id="3298469228705200587" at="118,0,119,0" concept="8" trace="language$c5DN" />
+      <node id="3298469228705200587" at="118,0,119,0" concept="8" trace="language$QJfH" />
       <node id="3298469228705200587" at="41,0,43,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3298469228705200587" at="69,0,71,0" concept="0" trace="TestModuleManifest__BehaviorDescriptor#()V" />
       <node id="3298469228705200587" at="79,49,82,5" concept="3" />

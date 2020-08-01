@@ -36,12 +36,12 @@ public final class ConvertIfConditionToTernaryOperator_Intention extends Abstrac
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$uXBQ)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$ZQja)).isNotEmpty()) {
       return false;
     }
 
-    SNode s1 = IntentionUtils.optimizeNode(SLinkOperations.getTarget(node, LINKS.ifTrue$WJ1E));
-    SNode s2 = IntentionUtils.optimizeNode(SLinkOperations.getTarget(node, LINKS.ifFalseStatement$Xnu2));
+    SNode s1 = IntentionUtils.optimizeNode(SLinkOperations.getTarget(node, LINKS.ifTrue$qLNm));
+    SNode s2 = IntentionUtils.optimizeNode(SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY));
     return (s1 != null) && (s2 != null) && IntentionUtils.canBeConvertedToTernary(s1, s2);
   }
   @Override
@@ -63,7 +63,7 @@ public final class ConvertIfConditionToTernaryOperator_Intention extends Abstrac
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode result = IntentionUtils.convertToTernary(IntentionUtils.optimizeNode(SLinkOperations.getTarget(node, LINKS.ifTrue$WJ1E)), IntentionUtils.optimizeNode(SLinkOperations.getTarget(node, LINKS.ifFalseStatement$Xnu2)), SLinkOperations.getTarget(node, LINKS.condition$WJ1b));
+      SNode result = IntentionUtils.convertToTernary(IntentionUtils.optimizeNode(SLinkOperations.getTarget(node, LINKS.ifTrue$qLNm)), IntentionUtils.optimizeNode(SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY)), SLinkOperations.getTarget(node, LINKS.condition$qL$l));
       if (result != null) {
         SNodeOperations.replaceWithAnother(node, result);
       }
@@ -75,9 +75,9 @@ public final class ConvertIfConditionToTernaryOperator_Intention extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elsifClauses$uXBQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink ifFalseStatement$Xnu2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink elsifClauses$ZQja = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
   }
 }

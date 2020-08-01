@@ -50,13 +50,13 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationTestCase$Sn, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.migration_old$otou) != null);
+          return (SLinkOperations.getTarget(it, LINKS.migration_old$QeQy) != null);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.migration$wvkx)).addElement(createMigrationReference_y0ige7_a0a0a0a0a0a0d(SLinkOperations.getTarget(it, LINKS.migration_old$otou)));
-          SPropertyOperations.assign(it, PROPS.name$tAp1, SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.migration_old$otou), PROPS.name$tAp1) + "_Test");
-          SLinkOperations.setTarget(it, LINKS.migration_old$otou, null);
+          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.migration$JaVZ)).addElement(createMigrationReference_y0ige7_a0a0a0a0a0a0d(SLinkOperations.getTarget(it, LINKS.migration_old$QeQy)));
+          SPropertyOperations.assign(it, PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.migration_old$QeQy), PROPS.name$lA7v) + "_Test");
+          SLinkOperations.setTarget(it, LINKS.migration_old$QeQy, null);
         }
       });
     }
@@ -73,11 +73,11 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationTestCase$Sn, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.migration_old$otou) != null);
+          return (SLinkOperations.getTarget(it, LINKS.migration_old$QeQy) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedReferenceLink(it, LINKS.migration_old$otou);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedReferenceLink(it, LINKS.migration_old$QeQy);
         }
       });
     }
@@ -89,7 +89,7 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
 
   private static SNode createMigrationReference_y0ige7_a0a0a0a0a0a0d(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MigrationReference$BB);
-    n0.setReferenceTarget(LINKS.migration$RUsw, p0);
+    n0.setReferenceTarget(LINKS.migration$5jNw, p0);
     return n0.getResult();
   }
 
@@ -99,12 +99,12 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink migration_old$otou = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x4c010b30d9be54a3L, "migration_old");
-    /*package*/ static final SContainmentLink migration$wvkx = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x5bf7864595df8b02L, "migration");
-    /*package*/ static final SReferenceLink migration$RUsw = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
+    /*package*/ static final SReferenceLink migration_old$QeQy = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x4c010b30d9be54a3L, "migration_old");
+    /*package*/ static final SContainmentLink migration$JaVZ = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x5bf7864595df8b02L, "migration");
+    /*package*/ static final SReferenceLink migration$5jNw = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

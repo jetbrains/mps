@@ -115,8 +115,8 @@ public class varType extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        if (SNodeOperations.hasRole(_context.getNode(), LINKS.type$pLrO) && SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getNode()))), CONCEPTS.LocalVariableDeclaration$Bf)) {
-          SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VarVariableDeclaration$Of), LINKS.type$pLrO, createdNode);
+        if (SNodeOperations.hasRole(_context.getNode(), LINKS.type$uWuc) && SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getNode()))), CONCEPTS.LocalVariableDeclaration$Bf)) {
+          SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VarVariableDeclaration$Of), LINKS.type$uWuc, createdNode);
         } else {
           SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
         }
@@ -152,6 +152,6 @@ public class varType extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

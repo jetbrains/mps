@@ -98,7 +98,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -140,19 +140,19 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   private class DiagramCellImpl_e8klwn_d0 extends DiagramCell {
     private DiagramCellImpl_e8klwn_d0(EditorContext editorContext, SNode node) {
       super(editorContext, node);
-      setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Thought$K8, LINKS.thoughts$tHHY, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
+      setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Thought$K8, LINKS.thoughts$p9h2, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
         public void invoke(SNode node, Integer x, Integer y) {
           SNode thought = SNodeOperations.cast(node, CONCEPTS.Thought$K8);
-          SPropertyOperations.assign(thought, PROPS.name$tAp1, "new thought");
+          SPropertyOperations.assign(thought, PROPS.name$lA7v, "new thought");
         }
-      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.Relationship$ZC, LINKS.relationships$tHU$, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
+      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.Relationship$ZC, LINKS.relationships$pfns, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
         public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
           return SNodeOperations.isInstanceOf(from, CONCEPTS.Thought$K8) && SNodeOperations.isInstanceOf(to, CONCEPTS.Thought$K8) && !(Objects.equals(from, to));
         }
       }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
         public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
-          SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.Relationship$ZC), LINKS.source$jsja, SNodeOperations.cast(from, CONCEPTS.Thought$K8));
-          SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.Relationship$ZC), LINKS.target$$xE0, SNodeOperations.cast(to, CONCEPTS.Thought$K8));
+          SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.Relationship$ZC), LINKS.source$qHhQ, SNodeOperations.cast(from, CONCEPTS.Thought$K8));
+          SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.Relationship$ZC), LINKS.target$Gjm0, SNodeOperations.cast(to, CONCEPTS.Thought$K8));
         }
       })}));
       setPalette(new DiagramPaletteImpl_e8klwn_a3a(this));
@@ -160,22 +160,22 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Thought$K8, LINKS.thoughts$tHHY, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Thought$K8, LINKS.thoughts$p9h2, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
         public void invoke(SNode node, Integer x, Integer y) {
           SNode thought = SNodeOperations.cast(node, CONCEPTS.Thought$K8);
-          SPropertyOperations.assign(thought, PROPS.name$tAp1, "new thought");
+          SPropertyOperations.assign(thought, PROPS.name$lA7v, "new thought");
         }
       })};
     }
     protected SubstituteInfoPartExt[] createPaletteConnectorSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.Relationship$ZC, LINKS.relationships$tHU$, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
+      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.Relationship$ZC, LINKS.relationships$pfns, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
         public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
           return SNodeOperations.isInstanceOf(from, CONCEPTS.Thought$K8) && SNodeOperations.isInstanceOf(to, CONCEPTS.Thought$K8) && !(Objects.equals(from, to));
         }
       }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
         public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
-          SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.Relationship$ZC), LINKS.source$jsja, SNodeOperations.cast(from, CONCEPTS.Thought$K8));
-          SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.Relationship$ZC), LINKS.target$$xE0, SNodeOperations.cast(to, CONCEPTS.Thought$K8));
+          SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.Relationship$ZC), LINKS.source$qHhQ, SNodeOperations.cast(from, CONCEPTS.Thought$K8));
+          SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.Relationship$ZC), LINKS.target$Gjm0, SNodeOperations.cast(to, CONCEPTS.Thought$K8));
         }
       })};
     }
@@ -242,8 +242,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       ListIterator<SNode> blocksIterator = myBlocks.listIterator();
       Set<SNode> existingConnectors = new HashSet<SNode>(myConnectors);
       ListIterator<SNode> connectorsIterator = myConnectors.listIterator();
-      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.thoughts$tHHY), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
-      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.relationships$tHU$), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
+      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.thoughts$p9h2), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
+      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.relationships$pfns), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
       purgeTailNodes(blocksIterator);
       purgeTailNodes(connectorsIterator);
     }
@@ -254,10 +254,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     private class DiagramPaletteImpl_e8klwn_a3a extends DiagramPalette {
       private DiagramPaletteImpl_e8klwn_a3a(DiagramCell diagramCell) {
         super(diagramCell);
-        addPaletteElement(new PaletteElementsCreationActionGroup(diagramCell, getSNode(), CONCEPTS.Thought$K8, LINKS.thoughts$tHHY, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
+        addPaletteElement(new PaletteElementsCreationActionGroup(diagramCell, getSNode(), CONCEPTS.Thought$K8, LINKS.thoughts$p9h2, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
           public void invoke(SNode node, Integer x, Integer y) {
             SNode thought = SNodeOperations.cast(node, CONCEPTS.Thought$K8);
-            SPropertyOperations.assign(thought, PROPS.name$tAp1, "new thought");
+            SPropertyOperations.assign(thought, PROPS.name$lA7v, "new thought");
           }
         }) {
           @Override
@@ -272,7 +272,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -282,9 +282,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink thoughts$tHHY = MetaAdapterFactory.getContainmentLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14758fL, 0x1198689ff14c5d6L, "thoughts");
-    /*package*/ static final SContainmentLink relationships$tHU$ = MetaAdapterFactory.getContainmentLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14758fL, 0x1198689ff14c5dbL, "relationships");
-    /*package*/ static final SReferenceLink source$jsja = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x517b79625769ba9eL, "source");
-    /*package*/ static final SReferenceLink target$$xE0 = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x1198689ff14c5dfL, "target");
+    /*package*/ static final SContainmentLink thoughts$p9h2 = MetaAdapterFactory.getContainmentLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14758fL, 0x1198689ff14c5d6L, "thoughts");
+    /*package*/ static final SContainmentLink relationships$pfns = MetaAdapterFactory.getContainmentLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14758fL, 0x1198689ff14c5dbL, "relationships");
+    /*package*/ static final SReferenceLink source$qHhQ = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x517b79625769ba9eL, "source");
+    /*package*/ static final SReferenceLink target$Gjm0 = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x1198689ff14c5dfL, "target");
   }
 }

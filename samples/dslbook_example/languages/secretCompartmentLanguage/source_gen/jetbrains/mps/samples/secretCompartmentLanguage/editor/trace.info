@@ -242,15 +242,15 @@
       <node id="1197149586039" at="412,34,413,69" concept="1" />
       <node id="1197149586039" at="413,69,414,146" concept="1" />
       <node id="1197149586039" at="418,34,419,91" concept="1" />
-      <node id="1197149586039" at="426,0,427,0" concept="8" trace="stateMachineName$OEbJ" />
-      <node id="1197149586039" at="427,0,428,0" concept="8" trace="stateName$FxSA" />
+      <node id="1197149586039" at="426,0,427,0" concept="8" trace="stateMachineName$wrFL" />
+      <node id="1197149586039" at="427,0,428,0" concept="8" trace="stateName$5qqq" />
       <node id="1197149586039" at="431,0,432,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="1197149586039" at="432,0,433,0" concept="8" trace="Event$1c" />
       <node id="1197149586039" at="433,0,434,0" concept="8" trace="LinkAttribute$7j" />
       <node id="1197149586039" at="434,0,435,0" concept="8" trace="State$lL" />
-      <node id="1197149586039" at="438,0,439,0" concept="8" trace="event$iYTc" />
-      <node id="1197149586039" at="439,0,440,0" concept="8" trace="startState$fO9A" />
-      <node id="1197149586039" at="440,0,441,0" concept="8" trace="state$CCFW" />
+      <node id="1197149586039" at="438,0,439,0" concept="8" trace="event$ctGO" />
+      <node id="1197149586039" at="439,0,440,0" concept="8" trace="startState$EgDq" />
+      <node id="1197149586039" at="440,0,441,0" concept="8" trace="state$FHi4" />
       <node id="1197149586039" at="53,0,55,0" concept="2" trace="myNode" />
       <node id="1197149586039" at="166,0,168,0" concept="2" trace="myNode" />
       <node id="1197239442209" at="298,0,300,0" concept="2" trace="myNode" />
@@ -604,8 +604,8 @@
       <node id="1197169429473" at="99,89,100,145" concept="6" />
       <node id="1197169429473" at="101,12,102,24" concept="6" />
       <node id="1197169429473" at="103,15,104,40" concept="1" />
-      <node id="1197169421748" at="109,0,110,0" concept="8" trace="eventName$fo50" />
-      <node id="1197169421748" at="110,0,111,0" concept="8" trace="code$Fynp" />
+      <node id="1197169421748" at="109,0,110,0" concept="8" trace="eventName$sEr0" />
+      <node id="1197169421748" at="110,0,111,0" concept="8" trace="code$5Dl7" />
       <node id="1197169421748" at="114,0,115,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="1197169421748" at="30,0,32,0" concept="2" trace="myNode" />
       <node id="1197169421748" at="44,0,47,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -772,10 +772,10 @@
       <node id="1197240922534" at="208,93,209,47" concept="1" />
       <node id="1197240922534" at="209,47,210,34" concept="1" />
       <node id="1197240922534" at="210,34,211,22" concept="6" />
-      <node id="1197170596685" at="215,0,216,0" concept="8" trace="stateName$FxSA" />
+      <node id="1197170596685" at="215,0,216,0" concept="8" trace="stateName$5qqq" />
       <node id="1197170596685" at="219,0,220,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="1197170596685" at="220,0,221,0" concept="8" trace="Transition$tP" />
-      <node id="1197170596685" at="224,0,225,0" concept="8" trace="transition$LZ9O" />
+      <node id="1197170596685" at="224,0,225,0" concept="8" trace="transition$d_Kc" />
       <node id="1197170596685" at="45,0,47,0" concept="2" trace="myNode" />
       <node id="1197170596685" at="141,0,143,0" concept="2" trace="myNode" />
       <node id="1197170596685" at="59,0,62,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1015,12 +1015,12 @@
       <node id="1197240239176" at="228,91,229,147" concept="6" />
       <node id="1197240239176" at="230,14,231,26" concept="6" />
       <node id="1197240239176" at="232,17,233,42" concept="1" />
-      <node id="1197240201006" at="239,0,240,0" concept="8" trace="trigger$PSOQ" />
-      <node id="1197240201006" at="240,0,241,0" concept="8" trace="target$bIep" />
+      <node id="1197240201006" at="239,0,240,0" concept="8" trace="trigger$6xAa" />
+      <node id="1197240201006" at="240,0,241,0" concept="8" trace="target$FoY7" />
       <node id="1197240201006" at="244,0,245,0" concept="8" trace="LinkAttribute$7j" />
       <node id="1197240201006" at="245,0,246,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="1197240201006" at="249,0,250,0" concept="8" trace="eventName$fo50" />
-      <node id="1197240201006" at="250,0,251,0" concept="8" trace="stateName$FxSA" />
+      <node id="1197240201006" at="249,0,250,0" concept="8" trace="eventName$sEr0" />
+      <node id="1197240201006" at="250,0,251,0" concept="8" trace="stateName$5qqq" />
       <node id="1197240201006" at="37,0,39,0" concept="2" trace="myNode" />
       <node id="1197240213354" at="102,0,104,0" concept="2" trace="myNode" />
       <node id="1197240235674" at="191,0,193,0" concept="2" trace="myNode" />
@@ -1307,12 +1307,12 @@
       <node id="1197246925130" at="255,34,256,69" concept="1" />
       <node id="1197246925130" at="256,69,257,146" concept="1" />
       <node id="1197246925130" at="261,34,262,91" concept="1" />
-      <node id="1197246925130" at="269,0,270,0" concept="8" trace="stateMachine$YJgr" />
-      <node id="1197246925130" at="270,0,271,0" concept="8" trace="testMethod$LfVC" />
+      <node id="1197246925130" at="269,0,270,0" concept="8" trace="stateMachine$oSX5" />
+      <node id="1197246925130" at="270,0,271,0" concept="8" trace="testMethod$QHSo" />
       <node id="1197246925130" at="274,0,275,0" concept="8" trace="LinkAttribute$7j" />
       <node id="1197246925130" at="275,0,276,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="1197246925130" at="276,0,277,0" concept="8" trace="StateMachineTestMethod$vX" />
-      <node id="1197246925130" at="280,0,281,0" concept="8" trace="stateMachineName$OEbJ" />
+      <node id="1197246925130" at="280,0,281,0" concept="8" trace="stateMachineName$wrFL" />
       <node id="1197246925130" at="53,0,55,0" concept="2" trace="myNode" />
       <node id="1197247831195" at="135,0,137,0" concept="2" trace="myNode" />
       <node id="1197246925130" at="201,0,203,0" concept="2" trace="myNode" />
@@ -1649,13 +1649,13 @@
       <node id="1197255269330" at="321,91,322,147" concept="6" />
       <node id="1197255269330" at="323,14,324,26" concept="6" />
       <node id="1197255269330" at="325,17,326,42" concept="1" />
-      <node id="1197252730365" at="332,0,333,0" concept="8" trace="methodName$sohf" />
-      <node id="1197252730365" at="333,0,334,0" concept="8" trace="stateName$FxSA" />
+      <node id="1197252730365" at="332,0,333,0" concept="8" trace="methodName$JKmh" />
+      <node id="1197252730365" at="333,0,334,0" concept="8" trace="stateName$5qqq" />
       <node id="1197252730365" at="337,0,338,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="1197252730365" at="338,0,339,0" concept="8" trace="HandleEvent$fh" />
       <node id="1197252730365" at="339,0,340,0" concept="8" trace="LinkAttribute$7j" />
-      <node id="1197252730365" at="343,0,344,0" concept="8" trace="handleEvent$TbIn" />
-      <node id="1197252730365" at="344,0,345,0" concept="8" trace="finalState$YINP" />
+      <node id="1197252730365" at="343,0,344,0" concept="8" trace="handleEvent$GFt9" />
+      <node id="1197252730365" at="344,0,345,0" concept="8" trace="finalState$oF6F" />
       <node id="1197252730365" at="53,0,55,0" concept="2" trace="myNode" />
       <node id="1197252730365" at="158,0,160,0" concept="2" trace="myNode" />
       <node id="1197255262343" at="284,0,286,0" concept="2" trace="myNode" />
@@ -1952,10 +1952,10 @@
       <node id="1197255805558" at="155,91,156,147" concept="6" />
       <node id="1197255805558" at="157,14,158,26" concept="6" />
       <node id="1197255805558" at="159,17,160,42" concept="1" />
-      <node id="1197255791393" at="166,0,167,0" concept="8" trace="event$Fwsr" />
+      <node id="1197255791393" at="166,0,167,0" concept="8" trace="event$4HL5" />
       <node id="1197255791393" at="170,0,171,0" concept="8" trace="LinkAttribute$7j" />
       <node id="1197255791393" at="171,0,172,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="1197255791393" at="175,0,176,0" concept="8" trace="eventName$fo50" />
+      <node id="1197255791393" at="175,0,176,0" concept="8" trace="eventName$sEr0" />
       <node id="1197255791393" at="41,0,43,0" concept="2" trace="myNode" />
       <node id="1197255802947" at="118,0,120,0" concept="2" trace="myNode" />
       <node id="1197255791393" at="55,0,58,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

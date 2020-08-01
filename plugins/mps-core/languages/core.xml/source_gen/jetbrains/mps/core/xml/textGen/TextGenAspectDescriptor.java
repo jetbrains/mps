@@ -84,10 +84,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return node.getName();
   }
   private static String getFileExtension_XmlFile(SNode node) {
-    if (isEmptyString(SPropertyOperations.getString(node, PROPS.fileExtension$KaCu))) {
+    if (isEmptyString(SPropertyOperations.getString(node, PROPS.fileExtension$l9Ay))) {
       return "xml";
     } else {
-      return SPropertyOperations.getString(node, PROPS.fileExtension$KaCu);
+      return SPropertyOperations.getString(node, PROPS.fileExtension$l9Ay);
     }
   }
   private static boolean isEmptyString(String str) {
@@ -99,6 +99,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fileExtension$KaCu = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, 0x6abfad232d929dfbL, "fileExtension");
+    /*package*/ static final SProperty fileExtension$l9Ay = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, 0x6abfad232d929dfbL, "fileExtension");
   }
 }

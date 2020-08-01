@@ -23,7 +23,7 @@ public class check_RequestHandler_inPluginModel_NonTypesystemRule extends Abstra
   }
   public void applyRule(final SNode requestHandler, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     String modelName = SModelOperations.getModelName(SNodeOperations.getModel(requestHandler));
-    String correctName = SPropertyOperations.getString(SModelOperations.getModuleStub(SNodeOperations.getModel(requestHandler)), PROPS.namespace$8m0W) + ".plugin";
+    String correctName = SPropertyOperations.getString(SModelOperations.getModuleStub(SNodeOperations.getModel(requestHandler)), PROPS.namespace$2Et4) + ".plugin";
 
     if (!(modelName.equals(correctName))) {
       {
@@ -43,7 +43,7 @@ public class check_RequestHandler_inPluginModel_NonTypesystemRule extends Abstra
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty namespace$8m0W = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace");
+    /*package*/ static final SProperty namespace$2Et4 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace");
   }
 
   private static final class CONCEPTS {

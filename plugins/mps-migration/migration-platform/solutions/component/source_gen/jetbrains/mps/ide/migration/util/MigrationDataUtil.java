@@ -49,8 +49,8 @@ public class MigrationDataUtil {
       model = factory.create(dataSource, new SModelName("migrationData"));
       for (Tuples._2<MigrationScriptReference, SNode> p : Sequence.fromIterable(data)) {
         SNode stepData = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0x9882f4ad195546feL, 0x826994189e5dbbf2L, 0x66eed171c5f82709L, "jetbrains.mps.lang.migration.util.structure.StepData"));
-        SPropertyOperations.assign(stepData, PROPS.script$TY1G, p._0().serialize());
-        SLinkOperations.setTarget(stepData, LINKS.data$3bsC, p._1());
+        SPropertyOperations.assign(stepData, PROPS.script$52Ok, p._0().serialize());
+        SLinkOperations.setTarget(stepData, LINKS.data$yyRo, p._1());
       }
       factory.save(model, dataSource);
     } catch (IOException e) {
@@ -80,7 +80,7 @@ public class MigrationDataUtil {
     }
 
     for (SNode root : ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.StepData$Ad))) {
-      ListSequence.fromList(result).addElement(MultiTuple.<MigrationScriptReference,SNode>from(MigrationScriptReference.deserialize(SPropertyOperations.getString(root, PROPS.script$TY1G)), SLinkOperations.getTarget(root, LINKS.data$3bsC)));
+      ListSequence.fromList(result).addElement(MultiTuple.<MigrationScriptReference,SNode>from(MigrationScriptReference.deserialize(SPropertyOperations.getString(root, PROPS.script$52Ok)), SLinkOperations.getTarget(root, LINKS.data$yyRo)));
     }
     return result;
   }
@@ -120,11 +120,11 @@ public class MigrationDataUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty script$TY1G = MetaAdapterFactory.getProperty(0x9882f4ad195546feL, 0x826994189e5dbbf2L, 0x66eed171c5f82709L, 0x1b62b551c10bc5f4L, "script");
+    /*package*/ static final SProperty script$52Ok = MetaAdapterFactory.getProperty(0x9882f4ad195546feL, 0x826994189e5dbbf2L, 0x66eed171c5f82709L, 0x1b62b551c10bc5f4L, "script");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink data$3bsC = MetaAdapterFactory.getContainmentLink(0x9882f4ad195546feL, 0x826994189e5dbbf2L, 0x66eed171c5f82709L, 0x66eed171c5f90226L, "data");
+    /*package*/ static final SContainmentLink data$yyRo = MetaAdapterFactory.getContainmentLink(0x9882f4ad195546feL, 0x826994189e5dbbf2L, 0x66eed171c5f82709L, 0x66eed171c5f90226L, "data");
   }
 
   private static final class CONCEPTS {

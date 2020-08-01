@@ -148,7 +148,7 @@ __switch__:
                       assert false : "Internal error";
                       return false;
                     case 2:
-                      this._2_label_it = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.mappingLabel$9pST)).iterator();
+                      this._2_label_it = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.mappingLabel$zyzB)).iterator();
                     case 3:
                       if (!(this._2_label_it.hasNext())) {
                         this.__CP__ = 1;
@@ -158,7 +158,7 @@ __switch__:
                       this.__CP__ = 4;
                       break;
                     case 5:
-                      if (isNotEmptyString(SPropertyOperations.getString(_2_label, PROPS.name$tAp1))) {
+                      if (isNotEmptyString(SPropertyOperations.getString(_2_label, PROPS.name$lA7v))) {
                         this.__CP__ = 6;
                         break;
                       }
@@ -166,7 +166,7 @@ __switch__:
                       break;
                     case 7:
                       this.__CP__ = 3;
-                      this.yield(SPropertyOperations.getString(_2_label, PROPS.name$tAp1));
+                      this.yield(SPropertyOperations.getString(_2_label, PROPS.name$lA7v));
                       return true;
                     case 0:
                       this.__CP__ = 2;
@@ -212,10 +212,10 @@ __switch__:
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink mappingLabel$9pST = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel");
+    /*package*/ static final SContainmentLink mappingLabel$zyzB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

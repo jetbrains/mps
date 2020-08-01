@@ -62,18 +62,18 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode replacement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.NotExpression$oq);
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.ParenthesizedExpression$vE)) {
-        SLinkOperations.setTarget(replacement, LINKS.expression$bUD_, node);
+        SLinkOperations.setTarget(replacement, LINKS.expression$Lq8V, node);
       } else {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(replacement, LINKS.expression$bUD_), CONCEPTS.ParenthesizedExpression$vE)) {
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$bUD_), CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$4_F0, node);
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(replacement, LINKS.expression$Lq8V), CONCEPTS.ParenthesizedExpression$vE)) {
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$Lq8V), CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$efP0, node);
         } else {
           if (!(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.BooleanType$8G))) {
             // It seems to be convenient to wrap non-boolean expressions in parens since the user is likely to edit the negated expression further 
             SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
-            SLinkOperations.setTarget(parens, LINKS.expression$4_F0, node);
-            SLinkOperations.setTarget(replacement, LINKS.expression$bUD_, parens);
+            SLinkOperations.setTarget(parens, LINKS.expression$efP0, node);
+            SLinkOperations.setTarget(replacement, LINKS.expression$Lq8V, parens);
           } else {
-            SLinkOperations.setTarget(replacement, LINKS.expression$bUD_, node);
+            SLinkOperations.setTarget(replacement, LINKS.expression$Lq8V, node);
           }
         }
       }
@@ -91,7 +91,7 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

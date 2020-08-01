@@ -39,7 +39,7 @@ public class VarVariableDeclaration_Constraints extends BaseConstraintsDescripto
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.type$pLrO) && childNode != null) {
+    if (Objects.equals(link, LINKS.type$uWuc) && childNode != null) {
       return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.VarType$lr);
     }
     return true;
@@ -52,6 +52,6 @@ public class VarVariableDeclaration_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

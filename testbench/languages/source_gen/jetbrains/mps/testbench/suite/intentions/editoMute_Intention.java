@@ -45,11 +45,11 @@ public final class editoMute_Intention extends AbstractIntentionDescriptor imple
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.muted$Piv7) ? "Unmute TestCase" : "Mute TestCase");
+      return (SPropertyOperations.getBoolean(node, PROPS.muted$NX4p) ? "Unmute TestCase" : "Mute TestCase");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.muted$Piv7, !(SPropertyOperations.getBoolean(node, PROPS.muted$Piv7)));
+      SPropertyOperations.assign(node, PROPS.muted$NX4p, !(SPropertyOperations.getBoolean(node, PROPS.muted$NX4p)));
       editorContext.getEditorComponent().rebuildEditorContent();
     }
     @Override
@@ -59,6 +59,6 @@ public final class editoMute_Intention extends AbstractIntentionDescriptor imple
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty muted$Piv7 = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, 0x776b1eb017f5bc5eL, "muted");
+    /*package*/ static final SProperty muted$NX4p = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, 0x776b1eb017f5bc5eL, "muted");
   }
 }

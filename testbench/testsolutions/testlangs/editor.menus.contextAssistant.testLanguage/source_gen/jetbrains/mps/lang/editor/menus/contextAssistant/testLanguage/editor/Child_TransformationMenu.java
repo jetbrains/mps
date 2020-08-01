@@ -96,7 +96,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_qk1e79_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      if ("error".equals(SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1))) {
+      if ("error".equals(SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v))) {
         throw new RuntimeException("Intentional exception - ignore this");
       }
       return true;
@@ -360,7 +360,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_qk1e79_d1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return check_qk1e79_a0a0d1(SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1));
+      return check_qk1e79_a0a0d1(SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v));
     }
 
     @NotNull
@@ -416,7 +416,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.name$tAp1, SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1).replaceAll("a", ""));
+          SPropertyOperations.assign(_context.getNode(), PROPS.name$lA7v, SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v).replaceAll("a", ""));
         }
 
 
@@ -485,7 +485,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_qk1e79_e1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(check_qk1e79_a0a0a4b(SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1)));
+      return !(check_qk1e79_a0a0a4b(SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v)));
     }
 
     @NotNull
@@ -536,12 +536,12 @@ public class Child_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return "ensure name ends with 'a' (" + SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1) + "a)";
+          return "ensure name ends with 'a' (" + SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) + "a)";
         }
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.name$tAp1, SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1) + "a");
+          SPropertyOperations.assign(_context.getNode(), PROPS.name$lA7v, SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) + "a");
         }
 
 
@@ -644,7 +644,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

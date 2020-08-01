@@ -32,8 +32,8 @@ public class RegexpSequenceByEnter {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode nt = SNodeFactoryOperations.createNewNode(CONCEPTS.SeqRegexp$2i, null);
         SNodeOperations.replaceWithAnother(node, nt);
-        SLinkOperations.setTarget(nt, LINKS.right$HLYL, node);
-        SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(nt, LINKS.left$j7nn), SelectionManager.FIRST_CELL);
+        SLinkOperations.setTarget(nt, LINKS.right$bdpJ, node);
+        SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(nt, LINKS.left$g$k9), SelectionManager.FIRST_CELL);
       }
 
     };
@@ -49,8 +49,8 @@ public class RegexpSequenceByEnter {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode nt = SNodeFactoryOperations.createNewNode(CONCEPTS.SeqRegexp$2i, null);
         SNodeOperations.replaceWithAnother(node, nt);
-        SLinkOperations.setTarget(nt, LINKS.left$j7nn, node);
-        SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(nt, LINKS.right$HLYL), SelectionManager.FIRST_CELL);
+        SLinkOperations.setTarget(nt, LINKS.left$g$k9, node);
+        SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(nt, LINKS.right$bdpJ), SelectionManager.FIRST_CELL);
       }
 
     };
@@ -106,7 +106,7 @@ public class RegexpSequenceByEnter {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink right$HLYL = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right");
-    /*package*/ static final SContainmentLink left$j7nn = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
+    /*package*/ static final SContainmentLink right$bdpJ = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right");
+    /*package*/ static final SContainmentLink left$g$k9 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
   }
 }

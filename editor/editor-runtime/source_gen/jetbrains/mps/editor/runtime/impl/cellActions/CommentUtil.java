@@ -83,7 +83,7 @@ public class CommentUtil {
     return SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$Zd);
   }
   public static SNode getCommentedNode(SNode comment) {
-    return SLinkOperations.getTarget(comment, LINKS.commentedNode$I8FA);
+    return SLinkOperations.getTarget(comment, LINKS.commentedNode$md7q);
   }
 
   private static final class CONCEPTS {
@@ -92,6 +92,6 @@ public class CommentUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentedNode$I8FA = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
+    /*package*/ static final SContainmentLink commentedNode$md7q = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
   }
 }

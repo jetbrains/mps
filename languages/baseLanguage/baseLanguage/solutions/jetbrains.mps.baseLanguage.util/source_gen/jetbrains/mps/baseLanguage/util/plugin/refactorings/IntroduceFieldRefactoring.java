@@ -46,7 +46,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
       newDeclaration = _quotation_createNode_baxqxe_a0a0a2a5(myVisibilityLevel.getNode(), SNodeOperations.copyNode(this.getExpressionType()), this.getName());
     }
     if (myIsFinal) {
-      SPropertyOperations.assign(newDeclaration, PROPS.isFinal$hIht, true);
+      SPropertyOperations.assign(newDeclaration, PROPS.isFinal$_qt3, true);
     }
     SNode classConcept = SNodeOperations.as(myContainer, CONCEPTS.ClassConcept$IY);
     MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, newDeclaration);
@@ -62,7 +62,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
       }
 
       for (SNode constructor : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$IY, "4_LVZ3pCvsd"))))) {
-        List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(constructor, LINKS.body$WIlu), LINKS.statement$WHn8);
+        List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(constructor, LINKS.body$qspy), LINKS.statement$pYcS);
         if (ListSequence.fromList(statement).isNotEmpty()) {
           SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statement).first(), SNodeOperations.copyNode(assignStatement));
         } else {
@@ -81,9 +81,9 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
 
   private void createTheFirstConstructor(SNode classConcept) {
     SNode c = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"));
-    SLinkOperations.setTarget(c, LINKS.visibility$2GiC, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility")));
-    SLinkOperations.setTarget(c, LINKS.body$WIlu, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-    SLinkOperations.setTarget(c, LINKS.returnType$WIkw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
+    SLinkOperations.setTarget(c, LINKS.visibility$jt1o, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility")));
+    SLinkOperations.setTarget(c, LINKS.body$qspy, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+    SLinkOperations.setTarget(c, LINKS.returnType$qrVw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
     MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, c);
   }
 
@@ -169,7 +169,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class CONCEPTS {
@@ -178,9 +178,9 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 }

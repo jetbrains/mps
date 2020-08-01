@@ -104,7 +104,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.componentType$62ij;
+      return LINKS.componentType$V6Rd;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Type$IG;
@@ -117,7 +117,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(componentTypeListHandler_kdtlb1_b0.this.getNode(), LINKS.componentType$62ij));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(componentTypeListHandler_kdtlb1_b0.this.getNode(), LINKS.componentType$V6Rd));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_0();
@@ -195,7 +195,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$62ij = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
+    /*package*/ static final SContainmentLink componentType$V6Rd = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
   }
 
   private static final class CONCEPTS {

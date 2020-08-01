@@ -27,7 +27,7 @@ public class typeof_ModelProperties_InferenceRule extends AbstractInferenceRule_
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelProperties, LINKS.targetModel$Qcg0);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelProperties, LINKS.targetModel$fVK0);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5582028874769074343", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5582028874769074348", true), (SNode) _quotation_createNode_era7ya_a1a0c0a0b0b(), true, _info_12389875345);
       }
@@ -56,7 +56,7 @@ public class typeof_ModelProperties_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targetModel$Qcg0 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587b0L, 0x4d7759afce9587b1L, "targetModel");
+    /*package*/ static final SContainmentLink targetModel$fVK0 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587b0L, 0x4d7759afce9587b1L, "targetModel");
   }
 
   private static final class CONCEPTS {

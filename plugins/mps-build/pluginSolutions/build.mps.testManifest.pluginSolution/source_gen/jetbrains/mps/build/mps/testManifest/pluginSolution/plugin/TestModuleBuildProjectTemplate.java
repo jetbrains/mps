@@ -48,7 +48,7 @@ public class TestModuleBuildProjectTemplate {
     List<SNode> testsElements;
     SNode testGroup;
 
-    SNode root = _quotation_createNode_gglig1_a0e0d(SPropertyOperations.getString(conf, PROPS.name$tAp1) + "-test-languages", (languageElements = createLanguageElements(tmms)), SPropertyOperations.getString(conf, PROPS.name$tAp1) + "-tests", (testsElements = createTestElements(tmms)), createLanguageFolderElements(languageElements), createTestFolderElements(testsElements), SPropertyOperations.getString(conf, PROPS.name$tAp1) + ".xml", (testGroup = createTestModuleGroup()), SPropertyOperations.getString(conf, PROPS.name$tAp1), SPropertyOperations.getString(conf, PROPS.name$tAp1));
+    SNode root = _quotation_createNode_gglig1_a0e0d(SPropertyOperations.getString(conf, PROPS.name$lA7v) + "-test-languages", (languageElements = createLanguageElements(tmms)), SPropertyOperations.getString(conf, PROPS.name$lA7v) + "-tests", (testsElements = createTestElements(tmms)), createLanguageFolderElements(languageElements), createTestFolderElements(testsElements), SPropertyOperations.getString(conf, PROPS.name$lA7v) + ".xml", (testGroup = createTestModuleGroup()), SPropertyOperations.getString(conf, PROPS.name$lA7v), SPropertyOperations.getString(conf, PROPS.name$lA7v));
 
     return updateReferences(root, testGroup);
   }
@@ -69,19 +69,19 @@ public class TestModuleBuildProjectTemplate {
 
       for (Tuples._3<String, String, String> t : triples) {
         SNode la = SModelOperations.createNewNode(target, null, CONCEPTS.BuildMps_Language$re);
-        SPropertyOperations.set(la, PROPS.name$tAp1, t._0());
-        SPropertyOperations.set(la, PROPS.uuid$XKnR, t._2());
+        SPropertyOperations.set(la, PROPS.name$lA7v, t._0());
+        SPropertyOperations.set(la, PROPS.uuid$UrzD, t._2());
         try {
           PathBuilder pathBuilder = new PathBuilder(target);
           String moduleFile = relativePathHelper.makeRelative(t._1());
           SNode path = pathBuilder.buildRelative(moduleFile);
-          SLinkOperations.setTarget(la, LINKS.path$g7Oh, path);
+          SLinkOperations.setTarget(la, LINKS.path$NMkf, path);
 
-          SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(la, LINKS.sources$Pqd_, CONCEPTS.BuildMps_ModuleResources$lI), LINKS.files$_9D0, null);
+          SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(la, LINKS.sources$RG$V, CONCEPTS.BuildMps_ModuleResources$lI), LINKS.files$ZER0, null);
           // XXX this is not nice way to find module root location, but I can't come up with a better one now. 
           String moduleDir = moduleFile.substring(0, moduleFile.lastIndexOf('/'));
-          SLinkOperations.setTarget(resourcesSelector, LINKS.dir$6hmv, pathBuilder.buildRelative(moduleDir));
-          SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, LINKS.selectors$6oar, CONCEPTS.BuildFileIncludesSelector$LC), PROPS.pattern$Odcv, "icons/**, resources/**");
+          SLinkOperations.setTarget(resourcesSelector, LINKS.dir$2pT1, pathBuilder.buildRelative(moduleDir));
+          SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, LINKS.selectors$5H35, CONCEPTS.BuildFileIncludesSelector$LC), PROPS.pattern$ip31, "icons/**, resources/**");
 
           ListSequence.fromList(result).addElement(la);
         } catch (RelativePathHelper.PathException ex) {
@@ -112,20 +112,20 @@ public class TestModuleBuildProjectTemplate {
       List<Tuples._3<String, String, String>> triples = TestModuleManifest__BehaviorDescriptor.testModulesToInclude_id7vU6U5026IG.invoke(testManifest, project);
       for (Tuples._3<String, String, String> t : triples) {
         SNode sol = SModelOperations.createNewNode(target, null, CONCEPTS.BuildMps_Solution$qJ);
-        SPropertyOperations.set(sol, PROPS.name$tAp1, t._0());
-        SPropertyOperations.set(sol, PROPS.uuid$XKnR, t._2());
+        SPropertyOperations.set(sol, PROPS.name$lA7v, t._0());
+        SPropertyOperations.set(sol, PROPS.uuid$UrzD, t._2());
 
-        SPropertyOperations.setEnum(sol, PROPS.sourcesKind$ZoTF, 0x3be316509db4553L, "sources_and_tests");
+        SPropertyOperations.setEnum(sol, PROPS.sourcesKind$H3VP, 0x3be316509db4553L, "sources_and_tests");
         try {
           PathBuilder pathBuilder = new PathBuilder(target);
           String moduleFile = relativePathHelper.makeRelative(t._1());
           SNode path = pathBuilder.buildRelative(moduleFile);
-          SLinkOperations.setTarget(sol, LINKS.path$g7Oh, path);
-          SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(sol, LINKS.sources$Pqd_, CONCEPTS.BuildMps_ModuleResources$lI), LINKS.files$_9D0, null);
+          SLinkOperations.setTarget(sol, LINKS.path$NMkf, path);
+          SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(sol, LINKS.sources$RG$V, CONCEPTS.BuildMps_ModuleResources$lI), LINKS.files$ZER0, null);
           // XXX this is not nice way to find module root location, but I can't come up with a better one now. 
           String moduleDir = moduleFile.substring(0, moduleFile.lastIndexOf('/'));
-          SLinkOperations.setTarget(resourcesSelector, LINKS.dir$6hmv, pathBuilder.buildRelative(moduleDir));
-          SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, LINKS.selectors$6oar, CONCEPTS.BuildFileIncludesSelector$LC), PROPS.pattern$Odcv, "icons/**, resources/**");
+          SLinkOperations.setTarget(resourcesSelector, LINKS.dir$2pT1, pathBuilder.buildRelative(moduleDir));
+          SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, LINKS.selectors$5H35, CONCEPTS.BuildFileIncludesSelector$LC), PROPS.pattern$ip31, "icons/**, resources/**");
           ListSequence.fromList(result).addElement(sol);
         } catch (RelativePathHelper.PathException ex) {
           if (LOG.isEnabledFor(Level.ERROR)) {
@@ -144,7 +144,7 @@ public class TestModuleBuildProjectTemplate {
 
     for (SNode la : languageElements) {
       SNode jars = SModelOperations.createNewNode(target, null, CONCEPTS.BuildMpsLayout_ModuleJars$mB);
-      SLinkOperations.setTarget(jars, LINKS.module$5MWZ, la);
+      SLinkOperations.setTarget(jars, LINKS.module$NFyx, la);
       ListSequence.fromList(result).addElement(jars);
     }
 
@@ -156,7 +156,7 @@ public class TestModuleBuildProjectTemplate {
 
     for (SNode sol : testElements) {
       SNode jars = SModelOperations.createNewNode(target, null, CONCEPTS.BuildMpsLayout_ModuleJars$mB);
-      SLinkOperations.setTarget(jars, LINKS.module$5MWZ, sol);
+      SLinkOperations.setTarget(jars, LINKS.module$NFyx, sol);
       ListSequence.fromList(result).addElement(jars);
     }
 
@@ -170,10 +170,10 @@ public class TestModuleBuildProjectTemplate {
   private SNode updateReferences(SNode root, SNode testGroup) {
     SNode group = ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.BuildMps_Group$iO, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).endsWith("-tests");
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).endsWith("-tests");
       }
     });
-    SLinkOperations.setTarget(testGroup, LINKS.group$mNtw, group);
+    SLinkOperations.setTarget(testGroup, LINKS.group$2Viw, group);
 
     return root;
   }
@@ -333,10 +333,10 @@ public class TestModuleBuildProjectTemplate {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty uuid$XKnR = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
-    /*package*/ static final SProperty pattern$Odcv = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern");
-    /*package*/ static final SProperty sourcesKind$ZoTF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty uuid$UrzD = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
+    /*package*/ static final SProperty pattern$ip31 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern");
+    /*package*/ static final SProperty sourcesKind$H3VP = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind");
   }
 
   private static final class CONCEPTS {
@@ -350,12 +350,12 @@ public class TestModuleBuildProjectTemplate {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink path$g7Oh = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path");
-    /*package*/ static final SContainmentLink sources$Pqd_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
-    /*package*/ static final SContainmentLink files$_9D0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, 0xa99ab51d1ecc307L, "files");
-    /*package*/ static final SContainmentLink dir$6hmv = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
-    /*package*/ static final SContainmentLink selectors$6oar = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
-    /*package*/ static final SReferenceLink module$5MWZ = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
-    /*package*/ static final SReferenceLink group$mNtw = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, 0x3f496e80bd8ef36cL, "group");
+    /*package*/ static final SContainmentLink path$NMkf = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path");
+    /*package*/ static final SContainmentLink sources$RG$V = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
+    /*package*/ static final SContainmentLink files$ZER0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, 0xa99ab51d1ecc307L, "files");
+    /*package*/ static final SContainmentLink dir$2pT1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
+    /*package*/ static final SContainmentLink selectors$5H35 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
+    /*package*/ static final SReferenceLink module$NFyx = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
+    /*package*/ static final SReferenceLink group$2Viw = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, 0x3f496e80bd8ef36cL, "group");
   }
 }

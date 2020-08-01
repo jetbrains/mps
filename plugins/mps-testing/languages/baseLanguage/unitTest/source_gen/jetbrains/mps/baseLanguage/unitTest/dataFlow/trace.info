@@ -13,8 +13,8 @@
     <file name="AssertTrue_DataFlow.java">
       <node id="1207074081597" at="13,60,14,109" concept="0" />
       <node id="2032731141110258720" at="14,109,15,107" concept="0" />
-      <node id="1207074074329" at="19,0,20,0" concept="3" trace="condition$dko7" />
-      <node id="1207074074329" at="20,0,21,0" concept="3" trace="message$Lko2" />
+      <node id="1207074074329" at="19,0,20,0" concept="3" trace="condition$sRFp" />
+      <node id="1207074074329" at="20,0,21,0" concept="3" trace="message$SRCY" />
       <node id="1207074074329" at="13,0,17,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207074074331" at="13,60,15,107" />
       <scope id="1207074074329" at="13,0,17,0">
@@ -28,8 +28,8 @@
     <file name="AssertEquals_DataFlow.java">
       <node id="1207074239000" at="13,60,14,108" concept="0" />
       <node id="1207074249343" at="14,108,15,106" concept="0" />
-      <node id="1207074236137" at="19,0,20,0" concept="3" trace="expected$yNt5" />
-      <node id="1207074236137" at="20,0,21,0" concept="3" trace="actual$yNt$" />
+      <node id="1207074236137" at="19,0,20,0" concept="3" trace="expected$QV5r" />
+      <node id="1207074236137" at="20,0,21,0" concept="3" trace="actual$QVks" />
       <node id="1207074236137" at="13,0,17,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207074236139" at="13,60,15,106" />
       <scope id="1207074236137" at="13,0,17,0">
@@ -42,7 +42,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902d3(jetbrains.mps.baseLanguage.unitTest.dataFlow)/1207074444912">
     <file name="AssertFalse_DataFlow.java">
       <node id="1207074447618" at="13,60,14,109" concept="0" />
-      <node id="1207074444912" at="18,0,19,0" concept="3" trace="condition$xgQs" />
+      <node id="1207074444912" at="18,0,19,0" concept="3" trace="condition$7an$" />
       <node id="1207074444912" at="13,0,16,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207074444914" at="13,60,14,109" />
       <scope id="1207074444912" at="13,0,16,0">
@@ -55,7 +55,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902d3(jetbrains.mps.baseLanguage.unitTest.dataFlow)/1207074533735">
     <file name="AssertIsNull_DataFlow.java">
       <node id="1207074535832" at="13,60,14,110" concept="0" />
-      <node id="1207074533735" at="18,0,19,0" concept="3" trace="expression$jc9T" />
+      <node id="1207074533735" at="18,0,19,0" concept="3" trace="expression$iSMB" />
       <node id="1207074533735" at="13,0,16,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207074533737" at="13,60,14,110" />
       <scope id="1207074533735" at="13,0,16,0">
@@ -70,8 +70,8 @@
       <node id="1228580727025" at="13,60,14,108" concept="0" />
       <node id="1228580741986" at="14,108,15,106" concept="0" />
       <node id="1228580760685" at="15,106,16,136" concept="0" />
-      <node id="1228580711772" at="20,0,21,0" concept="3" trace="expected$yNt5" />
-      <node id="1228580711772" at="21,0,22,0" concept="3" trace="actual$yNt$" />
+      <node id="1228580711772" at="20,0,21,0" concept="3" trace="expected$QV5r" />
+      <node id="1228580711772" at="21,0,22,0" concept="3" trace="actual$QVks" />
       <node id="1228580711772" at="13,0,18,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1228580711774" at="13,60,16,136" />
       <scope id="1228580711772" at="13,0,18,0">
@@ -84,7 +84,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902d3(jetbrains.mps.baseLanguage.unitTest.dataFlow)/1947329772147538398">
     <file name="AssertThrows_DataFlow.java">
       <node id="1947329772147538401" at="13,60,14,109" concept="0" />
-      <node id="1947329772147538398" at="18,0,19,0" concept="3" trace="statement$$0lK" />
+      <node id="1947329772147538398" at="18,0,19,0" concept="3" trace="statement$sayg" />
       <node id="1947329772147538398" at="13,0,16,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1947329772147538400" at="13,60,14,109" />
       <scope id="1947329772147538398" at="13,0,16,0">
@@ -97,7 +97,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902d3(jetbrains.mps.baseLanguage.unitTest.dataFlow)/2032731141110253737">
     <file name="Message_DataFlow.java">
       <node id="2032731141110253759" at="14,84,15,109" concept="0" />
-      <node id="2032731141110253737" at="20,0,21,0" concept="3" trace="message$$wk_" />
+      <node id="2032731141110253737" at="20,0,21,0" concept="3" trace="message$FDXV" />
       <node id="2032731141110253740" at="13,60,16,5" concept="1" />
       <node id="2032731141110253737" at="13,0,18,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="2032731141110253742" at="14,84,15,109" />
@@ -112,7 +112,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902d3(jetbrains.mps.baseLanguage.unitTest.dataFlow)/7080278351417106693">
     <file name="AssertIsNotNull_DataFlow.java">
       <node id="7080278351417106696" at="13,60,14,110" concept="0" />
-      <node id="7080278351417106693" at="18,0,19,0" concept="3" trace="expression$Y71a" />
+      <node id="7080278351417106693" at="18,0,19,0" concept="3" trace="expression$5pzQ" />
       <node id="7080278351417106693" at="13,0,16,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="7080278351417106695" at="13,60,14,110" />
       <scope id="7080278351417106693" at="13,0,16,0">

@@ -104,7 +104,7 @@ __switch__:
                       assert false : "Internal error";
                       return false;
                     case 2:
-                      this._2__yield_6gh6m3_a0a0a0c_it = Sequence.fromIterable(SLinkOperations.collectMany(ListSequence.fromList(new ArrayList<SNode>()), LINKS.statement$WHn8)).iterator();
+                      this._2__yield_6gh6m3_a0a0a0c_it = Sequence.fromIterable(SLinkOperations.collectMany(ListSequence.fromList(new ArrayList<SNode>()), LINKS.statement$pYcS)).iterator();
                     case 3:
                       if (!(this._2__yield_6gh6m3_a0a0a0c_it.hasNext())) {
                         this.__CP__ = 5;
@@ -160,7 +160,7 @@ __switch__:
                     case 2:
                       this._2__yield_6gh6m3_a0a0a0e_it = Sequence.fromIterable(ListSequence.fromList(ListSequence.fromList(new ArrayList<SNode>())).translate(new ITranslator2<SNode, SNode>() {
                         public Iterable<SNode> translate(SNode it) {
-                          return AttributeOperations.getChildNodesAndAttributes(it, LINKS.statement$WHn8);
+                          return AttributeOperations.getChildNodesAndAttributes(it, LINKS.statement$pYcS);
                         }
                       })).iterator();
                     case 3:
@@ -244,6 +244,6 @@ __switch__:
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

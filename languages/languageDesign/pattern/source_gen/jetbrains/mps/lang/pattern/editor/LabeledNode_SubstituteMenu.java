@@ -92,7 +92,7 @@ public class LabeledNode_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.LabeledNode$iM, _context.getCurrentTargetNode());
-        if (!(Objects.equals(pattern, "%" + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.concept$lMG$), PROPS.name$tAp1)))) {
+        if (!(Objects.equals(pattern, "%" + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.concept$zz_s), PROPS.name$lA7v)))) {
           String wrapped = pattern;
           if (!(wrapped.startsWith("%"))) {
             wrapped = "%" + wrapped;
@@ -100,7 +100,7 @@ public class LabeledNode_SubstituteMenu extends SubstituteMenuBase {
           if (!(wrapped.substring(1).endsWith("%"))) {
             wrapped = wrapped + "%";
           }
-          SPropertyOperations.assign(result, PROPS.name$tAp1, wrapped.substring(1, wrapped.length() - 1));
+          SPropertyOperations.assign(result, PROPS.name$lA7v, wrapped.substring(1, wrapped.length() - 1));
         }
         return result;
       }
@@ -159,10 +159,10 @@ public class LabeledNode_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$lMG$ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
+    /*package*/ static final SReferenceLink concept$zz_s = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
   }
 }

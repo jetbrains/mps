@@ -54,7 +54,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     c.anchor = GridBagConstraints.LINE_END;
     myEditorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        myTextField = new JTextField(SPropertyOperations.getString(myWord, PROPS.value$cK70), 20);
+        myTextField = new JTextField(SPropertyOperations.getString(myWord, PROPS.value$bjp0), 20);
       }
     });
     mainPanel.add(myTextField, c);
@@ -104,8 +104,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public void actionPerformed(ActionEvent event) {
       myEditorComponent.getEditorContext().getRepository().getModelAccess().executeCommand(new EditorCommand(myEditorComponent) {
         protected void doExecute() {
-          SPropertyOperations.assign(myWord, PROPS.value$cK70, myTextField.getText());
-          SPropertyOperations.assign(myWord, PROPS.url$WUb8, myLinkField.getText());
+          SPropertyOperations.assign(myWord, PROPS.value$bjp0, myTextField.getText());
+          SPropertyOperations.assign(myWord, PROPS.url$wboS, myLinkField.getText());
           myPopup.closeOk(null);
         }
       });
@@ -113,7 +113,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 }

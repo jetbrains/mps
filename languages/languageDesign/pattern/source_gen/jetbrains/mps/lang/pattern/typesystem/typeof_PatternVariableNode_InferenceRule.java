@@ -24,29 +24,29 @@ public class typeof_PatternVariableNode_InferenceRule extends AbstractInferenceR
   public typeof_PatternVariableNode_InferenceRule() {
   }
   public void applyRule(final SNode nodeVar, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.hasRole(nodeVar, LINKS.initValue$UJfh)) {
-      SNode link = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeVar), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$ckAZ);
+    if (SNodeOperations.hasRole(nodeVar, LINKS.initValue$sSpf)) {
+      SNode link = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeVar), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx);
       // todo: Why cannot I use an enum switch here? 
       if ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(link)) {
         {
           SNode _nodeToCheck_1029348928467 = nodeVar;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "2793477601722933437", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "2793477601722933439", true), (SNode) _quotation_createNode_gft897_a1a0c0a0c0a0b(SLinkOperations.getTarget(link, LINKS.target$egp8)), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "2793477601722933439", true), (SNode) _quotation_createNode_gft897_a1a0c0a0c0a0b(SLinkOperations.getTarget(link, LINKS.target$TWaS)), _info_12389875345);
         }
       } else {
         {
           SNode _nodeToCheck_1029348928467 = nodeVar;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366641155383", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366641155385", true), (SNode) _quotation_createNode_gft897_a1a0c0a0a2a0a1(SLinkOperations.getTarget(link, LINKS.target$egp8)), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366641155385", true), (SNode) _quotation_createNode_gft897_a1a0c0a0a2a0a1(SLinkOperations.getTarget(link, LINKS.target$TWaS)), _info_12389875345);
         }
       }
     }
-    if (SNodeOperations.hasRole(nodeVar, LINKS.nodes$$MVw) && SNodeOperations.hasRole(SNodeOperations.getParent(nodeVar), LINKS.initValue$UJfh)) {
-      SNode link = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(nodeVar)), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$ckAZ);
+    if (SNodeOperations.hasRole(nodeVar, LINKS.nodes$OEOw) && SNodeOperations.hasRole(SNodeOperations.getParent(nodeVar), LINKS.initValue$sSpf)) {
+      SNode link = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(nodeVar)), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx);
       {
         SNode _nodeToCheck_1029348928467 = nodeVar;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1973444367045983391", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1973444367045983393", true), (SNode) _quotation_createNode_gft897_a1a0c0b0b0b(SLinkOperations.getTarget(link, LINKS.target$egp8)), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1973444367045983393", true), (SNode) _quotation_createNode_gft897_a1a0c0b0b0b(SLinkOperations.getTarget(link, LINKS.target$TWaS)), _info_12389875345);
       }
     }
   }
@@ -85,10 +85,10 @@ public class typeof_PatternVariableNode_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$UJfh = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
-    /*package*/ static final SReferenceLink link$ckAZ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
+    /*package*/ static final SContainmentLink initValue$sSpf = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
+    /*package*/ static final SReferenceLink link$XYSx = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink nodes$OEOw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
   }
 
   private static final class CONCEPTS {

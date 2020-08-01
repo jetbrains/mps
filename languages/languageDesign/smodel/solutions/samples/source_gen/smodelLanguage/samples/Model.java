@@ -27,7 +27,7 @@ public class Model {
   }
   public void new_node_2(SModel model) {
     SNode named = SModelOperations.createNewNode(model, null, CONCEPTS.ClassConcept$IY);
-    SPropertyOperations.assign(named, PROPS.name$tAp1, "a");
+    SPropertyOperations.assign(named, PROPS.name$lA7v, "a");
   }
   public void roots_access_1(SModel model) {
     List<SNode> roots1 = SModelOperations.roots(model, null);
@@ -35,7 +35,7 @@ public class Model {
     List<SNode> roots2 = SModelOperations.roots(model, CONCEPTS.ClassConcept$IY);
     Iterable<SNode> roots3 = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode c) {
-        return SPropertyOperations.hasValue(c, PROPS.name$tAp1, "Utils");
+        return SPropertyOperations.hasValue(c, PROPS.name$lA7v, "Utils");
       }
     });
   }
@@ -47,7 +47,7 @@ public class Model {
     List<SNode> nodes2 = SModelOperations.nodes(model, CONCEPTS.ClassConcept$IY);
     Iterable<SNode> nodes3 = ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode c) {
-        return SPropertyOperations.hasValue(c, PROPS.name$tAp1, "Utils");
+        return SPropertyOperations.hasValue(c, PROPS.name$lA7v, "Utils");
       }
     });
   }
@@ -59,6 +59,6 @@ public class Model {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -113,7 +113,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
           if (pattern.endsWith("=")) {
             name = name.substring(0, name.length() - 1);
           }
-          SPropertyOperations.assign(pd, PROPS.name$tAp1, name);
+          SPropertyOperations.assign(pd, PROPS.name$lA7v, name);
         }
         return pd;
       }
@@ -164,6 +164,6 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -86,7 +86,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.comment$AJ4X;
+      final SProperty property = PROPS.comment$KNpz;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("<no comment>");
@@ -130,7 +130,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.build$AJ4u;
+      final SProperty property = PROPS.build$KNay;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("<no build>");
@@ -157,8 +157,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty comment$AJ4X = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, 0x5cd3594638ad849L, "comment");
-    /*package*/ static final SProperty build$AJ4u = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, 0x5cd3594638ad848L, "build");
+    /*package*/ static final SProperty comment$KNpz = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, 0x5cd3594638ad849L, "comment");
+    /*package*/ static final SProperty build$KNay = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5cd3594638ad845L, 0x5cd3594638ad848L, "build");
   }
 
   private static final class CONCEPTS {

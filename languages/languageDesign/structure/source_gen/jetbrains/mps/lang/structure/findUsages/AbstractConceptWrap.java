@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   @Override
   public String getName() {
-    return SPropertyOperations.getString(myPeer, PROPS.name$tAp1);
+    return SPropertyOperations.getString(myPeer, PROPS.name$lA7v);
   }
 
   @Override
@@ -56,7 +56,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

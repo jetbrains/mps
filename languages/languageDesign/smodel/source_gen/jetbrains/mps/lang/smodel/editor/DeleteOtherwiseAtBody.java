@@ -28,19 +28,19 @@ public class DeleteOtherwiseAtBody {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.otherwiseBody$i6_e))), CONCEPTS.EnumSwitchCaseBody$Fk)) {
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.otherwiseBody$Lc1M))), CONCEPTS.EnumSwitchCaseBody$Fk)) {
           if (DeletionApproverUtil.approve(editorContext, node, "OtherwiseClause")) {
             return;
           }
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.otherwiseBody$i6_e));
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.otherwiseBody$Lc1M));
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_EDITABLE_CELL, -1);
           return;
         }
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.otherwiseBody$i6_e))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.otherwiseBody$Lc1M))) {
           return;
         }
-        SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.otherwiseBody$i6_e), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdc60L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody")));
-        SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(node, LINKS.otherwiseBody$i6_e), SelectionManager.FIRST_CELL);
+        SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.otherwiseBody$Lc1M), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdc60L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody")));
+        SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(node, LINKS.otherwiseBody$Lc1M), SelectionManager.FIRST_CELL);
       }
 
     };
@@ -88,7 +88,7 @@ public class DeleteOtherwiseAtBody {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink otherwiseBody$i6_e = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
+    /*package*/ static final SContainmentLink otherwiseBody$Lc1M = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
   }
 
   private static final class CONCEPTS {

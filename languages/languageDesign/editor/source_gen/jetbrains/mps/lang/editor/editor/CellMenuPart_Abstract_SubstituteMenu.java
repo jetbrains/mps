@@ -108,7 +108,7 @@ public class CellMenuPart_Abstract_SubstituteMenu extends SubstituteMenuBase {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode editedFeature = CellMenuUtil.getEditedFeature(_context.getParentNode());
-      return SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$bA) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$tHD7), 0xfc6f4e95b8L);
+      return SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$bA) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$p6Up), 0xfc6f4e95b8L);
     }
     @NotNull
     @Override
@@ -144,7 +144,7 @@ public class CellMenuPart_Abstract_SubstituteMenu extends SubstituteMenuBase {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode editedFeature = CellMenuUtil.getEditedFeature(_context.getParentNode());
-      return SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$bA) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$tHD7), 0xfc6f4e95b9L);
+      return SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$bA) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
     }
     @NotNull
     @Override
@@ -251,6 +251,6 @@ public class CellMenuPart_Abstract_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 }

@@ -49,12 +49,12 @@ public final class UpdateRuntimeUtil_MigrationScript extends BaseMigrationScript
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.closures.util.RuntimeUtil".equals(NameUtil.nodeFQName(SNodeOperations.getParent(node))) && "function".equals(SPropertyOperations.getString(node, PROPS.name$tAp1));
+        return "jetbrains.mps.baseLanguage.closures.util.RuntimeUtil".equals(NameUtil.nodeFQName(SNodeOperations.getParent(node))) && "function".equals(SPropertyOperations.getString(node, PROPS.name$lA7v));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode smd = node;
-        SNode ssw = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(smd, LINKS.body$WIlu), LINKS.statement$WHn8), CONCEPTS.StringSwitchStatement$x7)).first();
+        SNode ssw = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(smd, LINKS.body$qspy), LINKS.statement$pYcS), CONCEPTS.StringSwitchStatement$x7)).first();
 
         if ((ssw == null)) {
           if (LOG.isEnabledFor(Level.WARN)) {
@@ -64,14 +64,14 @@ public final class UpdateRuntimeUtil_MigrationScript extends BaseMigrationScript
         }
 
         // these will be replaced with new contents 
-        ListSequence.fromList(SLinkOperations.getChildren(ssw, LINKS.case$31$8)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(ssw, LINKS.case$tKvS)).clear();
 
         SNode fncls = SPointerOperations.resolveNode(new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402581510"), SNodeOperations.getModel(node).getRepository());
 
-        for (SNode ifc : SNodeOperations.ofConcept(SLinkOperations.getChildren(fncls, LINKS.member$oYX5), CONCEPTS.Interface$Kp)) {
+        for (SNode ifc : SNodeOperations.ofConcept(SLinkOperations.getChildren(fncls, LINKS.member$6v_r), CONCEPTS.Interface$Kp)) {
           SNode nnr = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.NamedNodeReference$uC);
-          SLinkOperations.setTarget(nnr, LINKS.target$I6bY, ifc);
-          ListSequence.fromList(SLinkOperations.getChildren(ssw, LINKS.case$31$8)).addElement(_quotation_createNode_tdy3l4_a0a2a01a0a(SPropertyOperations.getString(ifc, PROPS.name$tAp1), nnr));
+          SLinkOperations.setTarget(nnr, LINKS.target$kZN2, ifc);
+          ListSequence.fromList(SLinkOperations.getChildren(ssw, LINKS.case$tKvS)).addElement(_quotation_createNode_tdy3l4_a0a2a01a0a(SPropertyOperations.getString(ifc, PROPS.name$lA7v), nnr));
         }
       }
       @Override
@@ -123,14 +123,14 @@ public final class UpdateRuntimeUtil_MigrationScript extends BaseMigrationScript
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink case$31$8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
-    /*package*/ static final SReferenceLink target$I6bY = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SReferenceLink target$kZN2 = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

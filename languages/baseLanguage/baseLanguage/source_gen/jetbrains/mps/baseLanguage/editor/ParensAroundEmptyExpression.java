@@ -116,13 +116,13 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
           SNode parens = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$vE, null);
           String intent = pattern.substring(1);
           if (intent.equals("(")) {
-            SNodeFactoryOperations.setNewChild(parens, LINKS.expression$4_F0, CONCEPTS.ParenthesizedExpression$vE);
+            SNodeFactoryOperations.setNewChild(parens, LINKS.expression$efP0, CONCEPTS.ParenthesizedExpression$vE);
           } else if (!(intent.equals(")"))) {
-            SNode constant = SLinkOperations.setTarget(parens, LINKS.expression$4_F0, SNodeFactoryOperations.createNewNode(CONCEPTS.IntegerConstant$mo, null));
+            SNode constant = SLinkOperations.setTarget(parens, LINKS.expression$efP0, SNodeFactoryOperations.createNewNode(CONCEPTS.IntegerConstant$mo, null));
             int value;
             try {
               value = Integer.parseInt(intent);
-              SPropertyOperations.set(constant, PROPS.value$ZeO0, value);
+              SPropertyOperations.set(constant, PROPS.value$Cbc0, value);
             } catch (NumberFormatException e) {
             }
           }
@@ -214,7 +214,7 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode notExpr = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$oq, null);
-          SNode parens = SNodeFactoryOperations.setNewChild(notExpr, LINKS.expression$bUD_, CONCEPTS.ParenthesizedExpression$vE);
+          SNode parens = SNodeFactoryOperations.setNewChild(notExpr, LINKS.expression$Lq8V, CONCEPTS.ParenthesizedExpression$vE);
           return notExpr;
         }
 
@@ -239,11 +239,11 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
   }
 }

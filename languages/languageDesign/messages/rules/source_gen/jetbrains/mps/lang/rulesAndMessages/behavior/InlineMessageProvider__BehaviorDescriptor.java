@@ -40,7 +40,7 @@ public final class InlineMessageProvider__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.TypedDef$hM)) {
       SNode ruleWithMsg = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.RuleWithMessage$jq);
-      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(SLinkOperations.getTarget(ruleWithMsg, LINKS.rule$OmUk)), kind, child);
+      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(SLinkOperations.getTarget(ruleWithMsg, LINKS.rule$n6fG)), kind, child);
     }
     return null;
   }
@@ -97,6 +97,6 @@ public final class InlineMessageProvider__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rule$OmUk = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule");
+    /*package*/ static final SContainmentLink rule$n6fG = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x137076528060b0fcL, "rule");
   }
 }

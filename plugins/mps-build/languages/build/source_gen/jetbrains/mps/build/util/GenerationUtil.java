@@ -43,10 +43,10 @@ public class GenerationUtil {
     return set;
   }
   private static String getKey(String prefix, TemplateQueryContext genContext, SNode project) {
-    return prefix + '/' + SModelOperations.getModelName(genContext.getOriginalInputModel()) + '/' + SPropertyOperations.getString(project, PROPS.name$tAp1);
+    return prefix + '/' + SModelOperations.getModelName(genContext.getOriginalInputModel()) + '/' + SPropertyOperations.getString(project, PROPS.name$lA7v);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

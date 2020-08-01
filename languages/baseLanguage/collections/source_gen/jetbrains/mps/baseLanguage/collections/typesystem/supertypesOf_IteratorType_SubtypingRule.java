@@ -21,7 +21,7 @@ public class supertypesOf_IteratorType_SubtypingRule extends SubtypingRule_Runti
   public supertypesOf_IteratorType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode iteratorType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_3m2hv_a0a1(SLinkOperations.getTarget(iteratorType, LINKS.elementType$69it));
+    return _quotation_createNode_3m2hv_a0a1(SLinkOperations.getTarget(iteratorType, LINKS.elementType$YvW3));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.IteratorType$QR;
@@ -46,7 +46,7 @@ public class supertypesOf_IteratorType_SubtypingRule extends SubtypingRule_Runti
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$69it = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ed2b158L, 0x1201ed311a7L, "elementType");
+    /*package*/ static final SContainmentLink elementType$YvW3 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ed2b158L, 0x1201ed311a7L, "elementType");
   }
 
   private static final class CONCEPTS {

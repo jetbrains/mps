@@ -127,12 +127,12 @@ public class loggingMsg_nodeSubstitute_Contribution extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode logStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.MsgStatement$2f, null);
-          SPropertyOperations.setEnum(logStatement, PROPS.severity$TT76, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), SEnumOperations.getMemberName0(myParameterObject)));
-          SNodeFactoryOperations.setNewChild(logStatement, LINKS.message$75e4, CONCEPTS.StringLiteral$4G);
+          SPropertyOperations.setEnum(logStatement, PROPS.severity$2ErU, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), SEnumOperations.getMemberName0(myParameterObject)));
+          SNodeFactoryOperations.setNewChild(logStatement, LINKS.message$rxNW, CONCEPTS.StringLiteral$4G);
           SNode catchClause = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.CatchClause$hu, true, false);
-          if ((catchClause != null) && (SLinkOperations.getTarget(catchClause, LINKS.throwable$5XW_) != null)) {
-            SNode lvr = SLinkOperations.setNewChild(logStatement, LINKS.throwable$75ez, CONCEPTS.VariableReference$sQ);
-            SLinkOperations.setTarget(lvr, LINKS.variableDeclaration$2ky6, SLinkOperations.getTarget(catchClause, LINKS.throwable$5XW_));
+          if ((catchClause != null) && (SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV) != null)) {
+            SNode lvr = SLinkOperations.setNewChild(logStatement, LINKS.throwable$ry2X, CONCEPTS.VariableReference$sQ);
+            SLinkOperations.setTarget(lvr, LINKS.variableDeclaration$7WwU, SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV));
           }
           return logStatement;
         }
@@ -162,7 +162,7 @@ public class loggingMsg_nodeSubstitute_Contribution extends SubstituteMenuBase {
         }
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-          SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.message$75e4), SelectionManager.FIRST_EDITABLE_CELL);
+          SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.message$rxNW), SelectionManager.FIRST_EDITABLE_CELL);
         }
       }
     }
@@ -177,13 +177,13 @@ public class loggingMsg_nodeSubstitute_Contribution extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty severity$TT76 = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity");
+    /*package*/ static final SProperty severity$2ErU = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$75e4 = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
-    /*package*/ static final SContainmentLink throwable$5XW_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
-    /*package*/ static final SContainmentLink throwable$75ez = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink message$rxNW = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
+    /*package*/ static final SContainmentLink throwable$T0lV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
+    /*package*/ static final SContainmentLink throwable$ry2X = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

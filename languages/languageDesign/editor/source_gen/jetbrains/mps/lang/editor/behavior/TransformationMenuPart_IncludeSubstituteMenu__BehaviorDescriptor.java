@@ -40,11 +40,11 @@ public final class TransformationMenuPart_IncludeSubstituteMenu__BehaviorDescrip
   }
 
   /*package*/ static SNode getReference_id3rSzFHWOe4u(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$QRij);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$$LRd);
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     Scope superScope = ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.IIncludeSubstituteMenuPart$A$, kind, child);
-    final SNode targetConcept = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.link$QLFo), LINKS.target$egp8);
+    final SNode targetConcept = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.link$y40C), LINKS.target$TWaS);
     if (targetConcept == null) {
       return superScope;
     }
@@ -110,9 +110,9 @@ public final class TransformationMenuPart_IncludeSubstituteMenu__BehaviorDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$QRij = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, 0x5480a271c0f085d2L, "menuReference");
-    /*package*/ static final SReferenceLink link$QLFo = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, 0x5480a271c0f085b7L, "link");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink menuReference$$LRd = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, 0x5480a271c0f085d2L, "menuReference");
+    /*package*/ static final SReferenceLink link$y40C = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, 0x5480a271c0f085b7L, "link");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class CONCEPTS {

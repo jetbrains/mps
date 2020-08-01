@@ -21,7 +21,7 @@ public class CommentedStatement_TextGen extends TextGenDescriptorBase {
     tgs.indent();
     tgs.append("/*");
     tgs.increaseIndent();
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.statement$HstR));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.statement$MtD));
     tgs.newLine();
     tgs.decreaseIndent();
     tgs.indent();
@@ -32,7 +32,7 @@ public class CommentedStatement_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$HstR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11ef4675fccL, 0x11ef467946eL, "statement");
+    /*package*/ static final SContainmentLink statement$MtD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11ef4675fccL, 0x11ef467946eL, "statement");
   }
 
   private static final class CONCEPTS {

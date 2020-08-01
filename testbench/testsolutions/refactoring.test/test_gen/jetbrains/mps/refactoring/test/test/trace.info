@@ -304,7 +304,7 @@
       <node id="5605594918995974861" at="570,30,571,48" concept="2" />
       <node id="5144708617785273322" at="574,25,575,33" concept="2" />
       <node id="5605594918995974615" at="578,30,579,33" concept="2" />
-      <node id="6006982468244433255" at="584,0,585,0" concept="11" trace="propertyDeclaration$lL73" />
+      <node id="6006982468244433255" at="584,0,585,0" concept="11" trace="propertyDeclaration$yMqt" />
       <node id="5605594918996758547" at="106,0,109,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/language/SProperty;)Z" />
       <node id="5605594918996758565" at="111,0,114,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/language/SProperty;)Z" />
       <node id="5605594918995975039" at="153,0,156,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/language/SProperty;)Z" />
@@ -1027,8 +1027,8 @@
       <node id="7883921615533993357" at="147,48,148,63" concept="8" />
       <node id="1913255502616525329" at="150,12,151,188" concept="7" />
       <node id="1913255502616505162" at="151,188,152,190" concept="7" />
-      <node id="7883921615534317905" at="152,190,153,1132" concept="7" />
-      <node id="7883921615534449937" at="153,1132,154,89" concept="2" />
+      <node id="7883921615534317905" at="152,190,153,1133" concept="7" />
+      <node id="7883921615534449937" at="153,1133,154,89" concept="2" />
       <node id="7883921615532150835" at="156,70,157,102" concept="8" />
       <node id="5605594918994532332" at="165,29,166,24" concept="12" />
       <node id="6729911822237670404" at="169,66,170,87" concept="7" />
@@ -1044,16 +1044,16 @@
       <node id="9129624915195953115" at="202,66,203,18" concept="2" />
       <node id="5604798895521856259" at="205,25,206,170" concept="2" />
       <node id="5604798895521912216" at="206,170,207,170" concept="2" />
-      <node id="8449002106978639305" at="213,0,214,0" concept="11" trace="type$pLrO" />
-      <node id="8449002106978639305" at="214,0,215,0" concept="11" trace="classifier$pQ_R" />
-      <node id="8449002106978639305" at="215,0,216,0" concept="11" trace="initializer$KgD" />
-      <node id="8449002106978639305" at="216,0,217,0" concept="11" trace="creator$itDQ" />
-      <node id="8449002106978639305" at="217,0,218,0" concept="11" trace="classifier$bk50" />
-      <node id="8449002106978639305" at="218,0,219,0" concept="11" trace="statementList$glTw" />
-      <node id="8449002106978639305" at="219,0,220,0" concept="11" trace="statement$WHn8" />
-      <node id="8449002106978639305" at="220,0,221,0" concept="11" trace="expression$WIP0" />
-      <node id="8449002106978639305" at="221,0,222,0" concept="11" trace="operation$X4R8" />
-      <node id="8449002106978639305" at="222,0,223,0" concept="11" trace="baseMethodDeclaration$$A7i" />
+      <node id="8449002106978639305" at="213,0,214,0" concept="11" trace="type$uWuc" />
+      <node id="8449002106978639305" at="214,0,215,0" concept="11" trace="classifier$xslD" />
+      <node id="8449002106978639305" at="215,0,216,0" concept="11" trace="initializer$no3R" />
+      <node id="8449002106978639305" at="216,0,217,0" concept="11" trace="creator$Wnha" />
+      <node id="8449002106978639305" at="217,0,218,0" concept="11" trace="classifier$uIr0" />
+      <node id="8449002106978639305" at="218,0,219,0" concept="11" trace="statementList$UAQw" />
+      <node id="8449002106978639305" at="219,0,220,0" concept="11" trace="statement$pYcS" />
+      <node id="8449002106978639305" at="220,0,221,0" concept="11" trace="expression$qFF0" />
+      <node id="8449002106978639305" at="221,0,222,0" concept="11" trace="operation$_mGS" />
+      <node id="8449002106978639305" at="222,0,223,0" concept="11" trace="baseMethodDeclaration$ItxI" />
       <node id="8449002106978639305" at="226,0,227,0" concept="11" trace="ClassifierType$IZ" />
       <node id="8449002106978639305" at="227,0,228,0" concept="11" trace="GenericNewExpression$ev" />
       <node id="8449002106978639305" at="228,0,229,0" concept="11" trace="DefaultClassCreator$sQ" />

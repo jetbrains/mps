@@ -84,7 +84,7 @@ public class TypeVarScope extends Scope {
   }
 
   private void populateLocalVariables(@NotNull SNode statementList, SNode beforeStatement, List<SNode> result) {
-    for (SNode statement : SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)) {
+    for (SNode statement : SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)) {
       if (statement == beforeStatement) {
         break;
       }
@@ -108,6 +108,6 @@ public class TypeVarScope extends Scope {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

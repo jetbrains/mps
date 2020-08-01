@@ -30,7 +30,7 @@ public class check_BuildProject_unusedModules_NonTypesystemRule extends Abstract
   }
   public void applyRule(final SNode buildProject, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Set<SNode> modules = new HashSet<SNode>();
-    for (SNode jm : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg)).where(new IWhereFilter<SNode>() {
+    for (SNode jm : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$b06K)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildSource_JavaModule$h5);
       }
@@ -42,7 +42,7 @@ public class check_BuildProject_unusedModules_NonTypesystemRule extends Abstract
       modules.add(jm);
     }
 
-    SNode layout = SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz);
+    SNode layout = SLinkOperations.getTarget(buildProject, LINKS.layout$fqCX);
     if (layout != null) {
       for (SNode node : SNodeUtil.getDescendants(layout, null, false)) {
         for (SReference ref : jetbrains.mps.util.SNodeOperations.getReferences(node)) {
@@ -53,7 +53,7 @@ public class check_BuildProject_unusedModules_NonTypesystemRule extends Abstract
     }
     for (SNode unused : modules) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(unused, "unused java module", "r:2349e4dd-6518-4a4c-9022-c7887bed8b52(jetbrains.mps.build.typesystem)", "7670275304420345434", null, errorTarget);
       }
     }
@@ -69,8 +69,8 @@ public class check_BuildProject_unusedModules_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$tgxg = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
-    /*package*/ static final SContainmentLink layout$tpCz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
+    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink layout$fqCX = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
   }
 
   private static final class CONCEPTS {
@@ -79,6 +79,6 @@ public class check_BuildProject_unusedModules_NonTypesystemRule extends Abstract
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

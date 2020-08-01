@@ -24,7 +24,7 @@ public class DeleteCardinality {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.cardinalityVisible$x1gv, false);
+        SPropertyOperations.assign(node, PROPS.cardinalityVisible$ZAZ1, false);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
       }
 
@@ -75,6 +75,6 @@ public class DeleteCardinality {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinalityVisible$ZAZ1 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
   }
 }

@@ -21,14 +21,14 @@ public final class ThrownTypeVariableReferencesHelper {
       Set<SNode> visited = SetSequence.fromSet(new HashSet<SNode>());
       SNode looseType = Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(SNodeOperations.as(currentType, CONCEPTS.TypeVariableReference$vZ), visited);
       while (looseType != null && SNodeOperations.isInstanceOf(looseType, CONCEPTS.UpperBoundType$r6)) {
-        looseType = SLinkOperations.getTarget(SNodeOperations.cast(looseType, CONCEPTS.UpperBoundType$r6), LINKS.bound$7gX0);
+        looseType = SLinkOperations.getTarget(SNodeOperations.cast(looseType, CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0);
       }
       if (looseType == null || !(SNodeOperations.isInstanceOf(looseType, CONCEPTS.ClassifierType$IZ))) {
         return null;
       }
-      myClassifier = SLinkOperations.getTarget(SNodeOperations.cast(looseType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+      myClassifier = SLinkOperations.getTarget(SNodeOperations.cast(looseType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
     } else if (SNodeOperations.isInstanceOf(currentType, CONCEPTS.ClassifierType$IZ)) {
-      myClassifier = SLinkOperations.getTarget(SNodeOperations.cast(currentType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+      myClassifier = SLinkOperations.getTarget(SNodeOperations.cast(currentType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
     } else {
       myClassifier = null;
     }
@@ -42,7 +42,7 @@ public final class ThrownTypeVariableReferencesHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink bound$7gX0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink bound$xdz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
   }
 }

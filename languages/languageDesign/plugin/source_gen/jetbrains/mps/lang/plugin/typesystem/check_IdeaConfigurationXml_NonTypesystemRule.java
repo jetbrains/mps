@@ -20,9 +20,9 @@ public class check_IdeaConfigurationXml_NonTypesystemRule extends AbstractNonTyp
   public check_IdeaConfigurationXml_NonTypesystemRule() {
   }
   public void applyRule(final SNode ideaConfigurationXml, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isNotEmptyString(SPropertyOperations.getString(ideaConfigurationXml, PROPS.outputPath$HkN1)) && !(SPropertyOperations.getString(ideaConfigurationXml, PROPS.outputPath$HkN1).startsWith("${"))) {
+    if (isNotEmptyString(SPropertyOperations.getString(ideaConfigurationXml, PROPS.outputPath$X4Hv)) && !(SPropertyOperations.getString(ideaConfigurationXml, PROPS.outputPath$X4Hv).startsWith("${"))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.outputPath$HkN1);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.outputPath$X4Hv);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ideaConfigurationXml, "Incorrect output path speified. Only macro-relative output paths supported. e.g. \"${module}/..\"", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "7372377561348890182", null, errorTarget);
       }
     }
@@ -41,7 +41,7 @@ public class check_IdeaConfigurationXml_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty outputPath$HkN1 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, 0xdef716b2a58ad65L, "outputPath");
+    /*package*/ static final SProperty outputPath$X4Hv = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, 0xdef716b2a58ad65L, "outputPath");
   }
 
   private static final class CONCEPTS {

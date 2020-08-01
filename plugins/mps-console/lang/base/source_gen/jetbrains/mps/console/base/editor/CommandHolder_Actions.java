@@ -49,7 +49,7 @@ public class CommandHolder_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.hasRole(node, LINKS.commandHolder$4VSX) && (SLinkOperations.getTarget(node, LINKS.command$pL9$) == null || editorContext.getSelectionManager().getSelection().isExactlyCoveringCell(editorContext.getEditorComponent().findNodeCell(SLinkOperations.getTarget(node, LINKS.command$pL9$))));
+        return SNodeOperations.hasRole(node, LINKS.commandHolder$p0_z) && (SLinkOperations.getTarget(node, LINKS.command$uNCs) == null || editorContext.getSelectionManager().getSelection().isExactlyCoveringCell(editorContext.getEditorComponent().findNodeCell(SLinkOperations.getTarget(node, LINKS.command$uNCs))));
       }
 
     };
@@ -62,7 +62,7 @@ public class CommandHolder_Actions {
       public void execute_internal(final EditorContext editorContext, final SNode node) {
         SelectUpUtil.executeWhile(editorContext, new BooleanSupplier() {
           public boolean getAsBoolean() {
-            return !(Objects.equals(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0), SLinkOperations.getTarget(node, LINKS.command$pL9$)));
+            return !(Objects.equals(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0), SLinkOperations.getTarget(node, LINKS.command$uNCs)));
           }
         });
       }
@@ -71,7 +71,7 @@ public class CommandHolder_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.hasRole(node, LINKS.commandHolder$4VSX) && SelectUpUtil.canExecute(editorContext) && (SLinkOperations.getTarget(node, LINKS.command$pL9$) != null);
+        return SNodeOperations.hasRole(node, LINKS.commandHolder$p0_z) && SelectUpUtil.canExecute(editorContext) && (SLinkOperations.getTarget(node, LINKS.command$uNCs) != null);
       }
 
     };
@@ -127,7 +127,7 @@ public class CommandHolder_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commandHolder$4VSX = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder");
-    /*package*/ static final SContainmentLink command$pL9$ = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command");
+    /*package*/ static final SContainmentLink commandHolder$p0_z = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder");
+    /*package*/ static final SContainmentLink command$uNCs = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command");
   }
 }

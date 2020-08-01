@@ -24,7 +24,7 @@ public class NodePointer_Constraints extends BaseConstraintsDescriptor {
 
   public static class NodeId_Property extends BasePropertyConstraintsDescriptor {
     public NodeId_Property(ConstraintsDescriptor container) {
-      super(PROPS.nodeId$nNh1, container);
+      super(PROPS.nodeId$xPfv, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -53,7 +53,7 @@ public class NodePointer_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.nodeId$nNh1, new NodeId_Property(this));
+    properties.put(PROPS.nodeId$xPfv, new NodeId_Property(this));
     return properties;
   }
 
@@ -62,6 +62,6 @@ public class NodePointer_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeId$nNh1 = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf88L, "nodeId");
+    /*package*/ static final SProperty nodeId$xPfv = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, 0x45e1bb6ef159cf88L, "nodeId");
   }
 }

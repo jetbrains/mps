@@ -23,7 +23,7 @@ public class RGBColor_Constraints extends BaseConstraintsDescriptor {
 
   public static class Value_Property extends BasePropertyConstraintsDescriptor {
     public Value_Property(ConstraintsDescriptor container) {
-      super(PROPS.value$QcLX, container);
+      super(PROPS.value$gccz, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -39,13 +39,13 @@ public class RGBColor_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return SPropertyOperations.getString(node, PROPS.value$QcLX) == null || propertyValue.matches("[0-9a-fA-Z]{1,6}");
+      return SPropertyOperations.getString(node, PROPS.value$gccz) == null || propertyValue.matches("[0-9a-fA-Z]{1,6}");
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.value$QcLX, new Value_Property(this));
+    properties.put(PROPS.value$gccz, new Value_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class RGBColor_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$QcLX = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, 0x11d52e5171bL, "value");
+    /*package*/ static final SProperty value$gccz = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, 0x11d52e5171bL, "value");
   }
 }

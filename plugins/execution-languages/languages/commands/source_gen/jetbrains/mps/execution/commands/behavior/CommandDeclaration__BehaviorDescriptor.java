@@ -48,11 +48,11 @@ public final class CommandDeclaration__BehaviorDescriptor extends BaseBHDescript
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDebuggable_idJzCdmU6yOQ, getSuffix_idO$iR4JBsSb, createType_idhEwJimy, getDistinctFieldParameters_id5keEkmeCrcX, getDistinctByNameAndTypeFieldParameters_id3gpm$NHlR4n, getFieldParameters_id3gpm$NHlR5N, getCreateProcessMethodName_idJzCdmU6yOE, getGetDebuggerMethodName_idJzCdmU6yOK, getGetDebuggerConfidurationMethodName_id5pE1_aqZc7s);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.debuggerParameter$u2aT, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x75aadb0d4e61a576L, "jetbrains.mps.execution.commands.structure.DebuggerSettingsCommandParameterDeclaration")));
+    SLinkOperations.setTarget(__thisNode__, LINKS.debuggerParameter$z3hB, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x75aadb0d4e61a576L, "jetbrains.mps.execution.commands.structure.DebuggerSettingsCommandParameterDeclaration")));
   }
 
   /*package*/ static boolean isDebuggable_idJzCdmU6yOQ(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.debuggerConfiguration$sXQz) != null);
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.debuggerConfiguration$1XqX) != null);
   }
   @NonNls
   /*package*/ static String getSuffix_idO$iR4JBsSb(@NotNull SNode __thisNode__) {
@@ -105,7 +105,7 @@ public final class CommandDeclaration__BehaviorDescriptor extends BaseBHDescript
     }).toListSequence();
   }
   /*package*/ static Iterable<SNode> getFieldParameters_id3gpm$NHlR5N(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.executePart$$5TP)).translate(new ITranslator2<SNode, SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.executePart$uR0F)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return ListSequence.fromList(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(it)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -188,15 +188,15 @@ public final class CommandDeclaration__BehaviorDescriptor extends BaseBHDescript
   }
   private static SNode createCommandType_5aznw1_a0a2(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CommandType$8c);
-    n0.setReferenceTarget(LINKS.classifier$LHKW, p0);
+    n0.setReferenceTarget(LINKS.classifier$5aH4, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink debuggerParameter$u2aT = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, 0x75aadb0d4e6223baL, "debuggerParameter");
-    /*package*/ static final SContainmentLink debuggerConfiguration$sXQz = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, 0x5b66ff7a6627d632L, "debuggerConfiguration");
-    /*package*/ static final SContainmentLink executePart$$5TP = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, 0x550ea9458ea107beL, "executePart");
-    /*package*/ static final SReferenceLink classifier$LHKW = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL, 0x118bc796c90L, "classifier");
+    /*package*/ static final SContainmentLink debuggerParameter$z3hB = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, 0x75aadb0d4e6223baL, "debuggerParameter");
+    /*package*/ static final SContainmentLink debuggerConfiguration$1XqX = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, 0x5b66ff7a6627d632L, "debuggerConfiguration");
+    /*package*/ static final SContainmentLink executePart$uR0F = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, 0x550ea9458ea107beL, "executePart");
+    /*package*/ static final SReferenceLink classifier$5aH4 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL, 0x118bc796c90L, "classifier");
   }
 
   private static final class CONCEPTS {

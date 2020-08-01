@@ -15,7 +15,7 @@ public class ExecuteRefactoringHint implements ParametersInformation<SNode> {
   public ExecuteRefactoringHint() {
   }
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.refactoring$rHn5));
+    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.refactoring$qYbr));
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     RefExpressionParamUtil.xxx(node, parameterObject, styledText, true);
@@ -25,6 +25,6 @@ public class ExecuteRefactoringHint implements ParametersInformation<SNode> {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoring$rHn5 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1fe4fcef62d0186cL, 0x1fe4fcef62d01873L, "refactoring");
+    /*package*/ static final SReferenceLink refactoring$qYbr = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1fe4fcef62d0186cL, 0x1fe4fcef62d01873L, "refactoring");
   }
 }

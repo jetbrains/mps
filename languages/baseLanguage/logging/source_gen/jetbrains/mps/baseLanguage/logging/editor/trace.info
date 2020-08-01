@@ -113,7 +113,7 @@
       <node id="1168401902190" at="186,94,187,47" concept="1" />
       <node id="1168401902190" at="187,47,188,34" concept="1" />
       <node id="1168401902190" at="188,34,189,22" concept="6" />
-      <node id="1168401886773" at="193,0,194,0" concept="8" trace="textExpression$hJ4Z" />
+      <node id="1168401886773" at="193,0,194,0" concept="8" trace="textExpression$_Nqx" />
       <node id="1168401886773" at="197,0,198,0" concept="8" trace="Expression$TP" />
       <node id="1168401886773" at="32,0,34,0" concept="2" trace="myNode" />
       <node id="1168401886773" at="88,0,90,0" concept="2" trace="myNode" />
@@ -359,9 +359,9 @@
       <node id="2034914114981262423" at="256,34,257,22" concept="6" />
       <node id="2034914114981261783" at="261,0,262,0" concept="8" trace="LogLowLevelStatement$g1" />
       <node id="2034914114981261783" at="262,0,263,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="2034914114981261783" at="266,0,267,0" concept="8" trace="severity$b$$w" />
-      <node id="2034914114981261783" at="270,0,271,0" concept="8" trace="message$b$_u" />
-      <node id="2034914114981261783" at="271,0,272,0" concept="8" trace="throwable$b$As" />
+      <node id="2034914114981261783" at="266,0,267,0" concept="8" trace="severity$AHFw" />
+      <node id="2034914114981261783" at="270,0,271,0" concept="8" trace="message$AI9y" />
+      <node id="2034914114981261783" at="271,0,272,0" concept="8" trace="throwable$AIB$" />
       <node id="2034914114981261783" at="48,0,50,0" concept="2" trace="myNode" />
       <node id="2034914114981261783" at="125,0,127,0" concept="2" trace="myNode" />
       <node id="2034914114981261783" at="200,0,202,0" concept="2" trace="myNode" />
@@ -604,11 +604,11 @@
       <node id="2034914114981570653" at="174,0,175,0" concept="8" trace="StringLiteral$4G" />
       <node id="2034914114981570653" at="175,0,176,0" concept="8" trace="CatchClause$hu" />
       <node id="2034914114981570653" at="176,0,177,0" concept="8" trace="VariableReference$sQ" />
-      <node id="2034914114981570653" at="180,0,181,0" concept="8" trace="severity$b$$w" />
-      <node id="2034914114981570653" at="184,0,185,0" concept="8" trace="message$b$_u" />
-      <node id="2034914114981570653" at="185,0,186,0" concept="8" trace="throwable$5XW_" />
-      <node id="2034914114981570653" at="186,0,187,0" concept="8" trace="throwable$b$As" />
-      <node id="2034914114981570653" at="187,0,188,0" concept="8" trace="variableDeclaration$2ky6" />
+      <node id="2034914114981570653" at="180,0,181,0" concept="8" trace="severity$AHFw" />
+      <node id="2034914114981570653" at="184,0,185,0" concept="8" trace="message$AI9y" />
+      <node id="2034914114981570653" at="185,0,186,0" concept="8" trace="throwable$T0lV" />
+      <node id="2034914114981570653" at="186,0,187,0" concept="8" trace="throwable$AIB$" />
+      <node id="2034914114981570653" at="187,0,188,0" concept="8" trace="variableDeclaration$7WwU" />
       <node id="2034914114981570653" at="39,0,42,0" concept="0" trace="loggingLowLevel_nodeSubstitute_Contribution#()V" />
       <node id="2034914114981570655" at="87,0,90,0" concept="0" trace="SMP_Action_35gsnl_a0#(Lorg/jetbrains/mps/openapi/language/SEnumerationLiteral;)V" />
       <node id="2034914114981570655" at="122,0,125,0" concept="4" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
@@ -781,11 +781,11 @@
       <node id="5721587534047270770" at="174,0,175,0" concept="8" trace="StringLiteral$4G" />
       <node id="5721587534047270770" at="175,0,176,0" concept="8" trace="CatchClause$hu" />
       <node id="5721587534047270770" at="176,0,177,0" concept="8" trace="VariableReference$sQ" />
-      <node id="5721587534047270770" at="180,0,181,0" concept="8" trace="severity$TT76" />
-      <node id="5721587534047270770" at="184,0,185,0" concept="8" trace="message$75e4" />
-      <node id="5721587534047270770" at="185,0,186,0" concept="8" trace="throwable$5XW_" />
-      <node id="5721587534047270770" at="186,0,187,0" concept="8" trace="throwable$75ez" />
-      <node id="5721587534047270770" at="187,0,188,0" concept="8" trace="variableDeclaration$2ky6" />
+      <node id="5721587534047270770" at="180,0,181,0" concept="8" trace="severity$2ErU" />
+      <node id="5721587534047270770" at="184,0,185,0" concept="8" trace="message$rxNW" />
+      <node id="5721587534047270770" at="185,0,186,0" concept="8" trace="throwable$T0lV" />
+      <node id="5721587534047270770" at="186,0,187,0" concept="8" trace="throwable$ry2X" />
+      <node id="5721587534047270770" at="187,0,188,0" concept="8" trace="variableDeclaration$7WwU" />
       <node id="5721587534047270770" at="39,0,42,0" concept="0" trace="loggingMsg_nodeSubstitute_Contribution#()V" />
       <node id="5721587534047270772" at="87,0,90,0" concept="0" trace="SMP_Action_ax7x23_a0#(Lorg/jetbrains/mps/openapi/language/SEnumerationLiteral;)V" />
       <node id="5721587534047270772" at="122,0,125,0" concept="4" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
@@ -1334,10 +1334,10 @@
       <node id="6332851714983843225" at="329,34,330,22" concept="6" />
       <node id="6332851714983843199" at="334,0,335,0" concept="8" trace="MsgStatement$2f" />
       <node id="6332851714983843199" at="335,0,336,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="6332851714983843199" at="339,0,340,0" concept="8" trace="severity$TT76" />
-      <node id="6332851714983843199" at="343,0,344,0" concept="8" trace="message$75e4" />
-      <node id="6332851714983843199" at="344,0,345,0" concept="8" trace="project$7jw5" />
-      <node id="6332851714983843199" at="345,0,346,0" concept="8" trace="throwable$75ez" />
+      <node id="6332851714983843199" at="339,0,340,0" concept="8" trace="severity$2ErU" />
+      <node id="6332851714983843199" at="343,0,344,0" concept="8" trace="message$rxNW" />
+      <node id="6332851714983843199" at="344,0,345,0" concept="8" trace="project$ysyr" />
+      <node id="6332851714983843199" at="345,0,346,0" concept="8" trace="throwable$ry2X" />
       <node id="6332851714983843199" at="48,0,50,0" concept="2" trace="myNode" />
       <node id="6332851714983843199" at="126,0,128,0" concept="2" trace="myNode" />
       <node id="6332851714983843199" at="198,0,200,0" concept="2" trace="myNode" />

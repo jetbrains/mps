@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.languages$ISM8;
+      return LINKS.languages$HwhS;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.LanguageIdentity$bj;
@@ -121,7 +121,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(languagesListHandler_5ya0vk_a1a.this.getNode(), LINKS.languages$ISM8));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(languagesListHandler_5ya0vk_a1a.this.getNode(), LINKS.languages$HwhS));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -195,7 +195,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink languages$ISM8 = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages");
+    /*package*/ static final SContainmentLink languages$HwhS = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages");
   }
 
   private static final class CONCEPTS {

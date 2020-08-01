@@ -19,17 +19,17 @@ public class LogStatementConversions {
       {
         final SNode msg = sampleNode;
         if (SNodeOperations.isInstanceOf(msg, CONCEPTS.MsgStatement$2f)) {
-          SLinkOperations.setTarget(newNode, LINKS.message$b$_u, SLinkOperations.getTarget(msg, LINKS.message$75e4));
-          SPropertyOperations.assignEnum(newNode, PROPS.severity$b$$w, SPropertyOperations.getEnum(msg, PROPS.severity$TT76));
-          SLinkOperations.setTarget(newNode, LINKS.throwable$b$As, SLinkOperations.getTarget(msg, LINKS.throwable$75ez));
+          SLinkOperations.setTarget(newNode, LINKS.message$AI9y, SLinkOperations.getTarget(msg, LINKS.message$rxNW));
+          SPropertyOperations.assignEnum(newNode, PROPS.severity$AHFw, SPropertyOperations.getEnum(msg, PROPS.severity$2ErU));
+          SLinkOperations.setTarget(newNode, LINKS.throwable$AIB$, SLinkOperations.getTarget(msg, LINKS.throwable$ry2X));
         }
       }
       {
         final SNode msg = sampleNode;
         if (SNodeOperations.isInstanceOf(msg, CONCEPTS.LogLowLevelStatement$g1)) {
-          SLinkOperations.setTarget(newNode, LINKS.message$b$_u, SLinkOperations.getTarget(msg, LINKS.message$b$_u));
-          SPropertyOperations.assignEnum(newNode, PROPS.severity$b$$w, SPropertyOperations.getEnum(msg, PROPS.severity$b$$w));
-          SLinkOperations.setTarget(newNode, LINKS.throwable$b$As, SLinkOperations.getTarget(msg, LINKS.throwable$b$As));
+          SLinkOperations.setTarget(newNode, LINKS.message$AI9y, SLinkOperations.getTarget(msg, LINKS.message$AI9y));
+          SPropertyOperations.assignEnum(newNode, PROPS.severity$AHFw, SPropertyOperations.getEnum(msg, PROPS.severity$AHFw));
+          SLinkOperations.setTarget(newNode, LINKS.throwable$AIB$, SLinkOperations.getTarget(msg, LINKS.throwable$AIB$));
         }
       }
     }
@@ -39,17 +39,17 @@ public class LogStatementConversions {
       {
         final SNode msg = sampleNode;
         if (SNodeOperations.isInstanceOf(msg, CONCEPTS.MsgStatement$2f)) {
-          SLinkOperations.setTarget(newNode, LINKS.message$75e4, SLinkOperations.getTarget(msg, LINKS.message$75e4));
-          SPropertyOperations.assignEnum(newNode, PROPS.severity$TT76, SPropertyOperations.getEnum(msg, PROPS.severity$TT76));
-          SLinkOperations.setTarget(newNode, LINKS.throwable$75ez, SLinkOperations.getTarget(msg, LINKS.throwable$75ez));
+          SLinkOperations.setTarget(newNode, LINKS.message$rxNW, SLinkOperations.getTarget(msg, LINKS.message$rxNW));
+          SPropertyOperations.assignEnum(newNode, PROPS.severity$2ErU, SPropertyOperations.getEnum(msg, PROPS.severity$2ErU));
+          SLinkOperations.setTarget(newNode, LINKS.throwable$ry2X, SLinkOperations.getTarget(msg, LINKS.throwable$ry2X));
         }
       }
       {
         final SNode msg = sampleNode;
         if (SNodeOperations.isInstanceOf(msg, CONCEPTS.LogLowLevelStatement$g1)) {
-          SLinkOperations.setTarget(newNode, LINKS.message$75e4, SLinkOperations.getTarget(msg, LINKS.message$b$_u));
-          SPropertyOperations.assignEnum(newNode, PROPS.severity$TT76, SPropertyOperations.getEnum(msg, PROPS.severity$b$$w));
-          SLinkOperations.setTarget(newNode, LINKS.throwable$75ez, SLinkOperations.getTarget(msg, LINKS.throwable$b$As));
+          SLinkOperations.setTarget(newNode, LINKS.message$rxNW, SLinkOperations.getTarget(msg, LINKS.message$AI9y));
+          SPropertyOperations.assignEnum(newNode, PROPS.severity$2ErU, SPropertyOperations.getEnum(msg, PROPS.severity$AHFw));
+          SLinkOperations.setTarget(newNode, LINKS.throwable$ry2X, SLinkOperations.getTarget(msg, LINKS.throwable$AIB$));
         }
       }
     }
@@ -61,14 +61,14 @@ public class LogStatementConversions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$b$_u = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
-    /*package*/ static final SContainmentLink message$75e4 = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
-    /*package*/ static final SContainmentLink throwable$b$As = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
-    /*package*/ static final SContainmentLink throwable$75ez = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
+    /*package*/ static final SContainmentLink message$AI9y = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
+    /*package*/ static final SContainmentLink message$rxNW = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
+    /*package*/ static final SContainmentLink throwable$AIB$ = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
+    /*package*/ static final SContainmentLink throwable$ry2X = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty severity$b$$w = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity");
-    /*package*/ static final SProperty severity$TT76 = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity");
+    /*package*/ static final SProperty severity$AHFw = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity");
+    /*package*/ static final SProperty severity$2ErU = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity");
   }
 }

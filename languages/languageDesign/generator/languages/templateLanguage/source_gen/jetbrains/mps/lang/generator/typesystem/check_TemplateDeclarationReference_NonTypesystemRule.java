@@ -24,8 +24,8 @@ public class check_TemplateDeclarationReference_NonTypesystemRule extends Abstra
   public check_TemplateDeclarationReference_NonTypesystemRule() {
   }
   public void applyRule(final SNode tdr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(tdr, LINKS.template$yiTA) != null) && (SLinkOperations.getTarget(TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(tdr), LINKS.contentNode$UkrJ) != null)) {
-      SNode content = SLinkOperations.getTarget(TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(tdr), LINKS.contentNode$UkrJ);
+    if ((SLinkOperations.getTarget(tdr, LINKS.template$B9Tq) != null) && (SLinkOperations.getTarget(TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(tdr), LINKS.contentNode$fTrL) != null)) {
+      SNode content = SLinkOperations.getTarget(TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(tdr), LINKS.contentNode$fTrL);
       if (ListSequence.fromList(SNodeOperations.getNodeDescendants(content, CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{})).isEmpty()) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -45,8 +45,8 @@ public class check_TemplateDeclarationReference_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink contentNode$UkrJ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
-    /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink contentNode$fTrL = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
   }
 
   private static final class CONCEPTS {

@@ -54,7 +54,7 @@ public class SelectImageFileButton extends JButton {
           ModelAccess modelAccess = myEditorContext.getRepository().getModelAccess();
           modelAccess.runReadAction(new Runnable() {
             public void run() {
-              filename.value = SPropertyOperations.getString(myNode, PROPS.imageFile$K5RB);
+              filename.value = SPropertyOperations.getString(myNode, PROPS.imageFile$iPVT);
             }
           });
 
@@ -76,7 +76,7 @@ public class SelectImageFileButton extends JButton {
           final String pathToShow = (macroHelper == null ? selectedPath : macroHelper.shrinkPath(selectedPath));
           modelAccess.executeCommand(new EditorCommand(myEditorContext) {
             protected void doExecute() {
-              SPropertyOperations.set(SelectImageFileButton.this.myNode, PROPS.imageFile$K5RB, pathToShow);
+              SPropertyOperations.set(SelectImageFileButton.this.myNode, PROPS.imageFile$iPVT, pathToShow);
             }
           });
         }
@@ -85,6 +85,6 @@ public class SelectImageFileButton extends JButton {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty imageFile$K5RB = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1095e12de6fL, 0x1095e2f7e63L, "imageFile");
+    /*package*/ static final SProperty imageFile$iPVT = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1095e12de6fL, 0x1095e2f7e63L, "imageFile");
   }
 }

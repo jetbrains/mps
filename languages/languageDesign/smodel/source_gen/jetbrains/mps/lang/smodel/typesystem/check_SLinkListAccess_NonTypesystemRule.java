@@ -25,7 +25,7 @@ public class check_SLinkListAccess_NonTypesystemRule extends AbstractNonTypesyst
   public check_SLinkListAccess_NonTypesystemRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final SNode linkDecl = SLinkOperations.getTarget(op, LINKS.link$4J5w);
+    final SNode linkDecl = SLinkOperations.getTarget(op, LINKS.link$iNEw);
     if (linkDecl == null) {
       return;
     }
@@ -33,7 +33,7 @@ public class check_SLinkListAccess_NonTypesystemRule extends AbstractNonTypesyst
     List<SNode> declaredLinks = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(inputNodeConcept);
     if (!(ListSequence.fromList(declaredLinks).contains(linkDecl))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "access to link '" + SPropertyOperations.getString(linkDecl, PROPS.role$r_O$) + "' is not expected here", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1226070777621", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "access to link '" + SPropertyOperations.getString(linkDecl, PROPS.role$nkts) + "' is not expected here", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1226070777621", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -47,11 +47,11 @@ public class check_SLinkListAccess_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$4J5w = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
+    /*package*/ static final SReferenceLink link$iNEw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 
   private static final class CONCEPTS {

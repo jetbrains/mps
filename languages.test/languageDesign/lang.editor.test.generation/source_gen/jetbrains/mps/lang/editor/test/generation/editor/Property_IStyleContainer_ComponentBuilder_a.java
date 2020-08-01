@@ -74,7 +74,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.theProperty$Y4Uu;
+      final SProperty property = PROPS.theProperty$4oky;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no theProperty>");
@@ -165,7 +165,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.MAX_WIDTH, 10);
       style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_mlskyf_a97a0());
       style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_mlskyf_a08a0());
-      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+      style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
       style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
       style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
       style.set(StyleAttributes.POSITION, "indented");
@@ -350,7 +350,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.theProperty$Y4Uu;
+      final SProperty property = PROPS.theProperty$4oky;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no theProperty>");
@@ -379,11 +379,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty theProperty$Y4Uu = MetaAdapterFactory.getProperty(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0x34bd237e1c9c3f8bL, 0x34bd237e1c9d9533L, "theProperty");
+    /*package*/ static final SProperty theProperty$4oky = MetaAdapterFactory.getProperty(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0x34bd237e1c9c3f8bL, 0x34bd237e1c9d9533L, "theProperty");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink navigable$buwj = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
+    /*package*/ static final SReferenceLink navigable$zLDd = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
   }
 
   private static final class CONCEPTS {

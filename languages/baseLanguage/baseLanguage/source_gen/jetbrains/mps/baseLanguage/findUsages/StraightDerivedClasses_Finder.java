@@ -56,7 +56,7 @@ public class StraightDerivedClasses_Finder extends GeneratedFinder {
               if (monitor.isCanceled()) {
                 return;
               }
-              if (SNodeOperations.hasRole(nodeUsage, LINKS.superclass$_pqe)) {
+              if (SNodeOperations.hasRole(nodeUsage, LINKS.superclass$7jGM)) {
                 callback.onUsageFound(createSingleResult(SNodeOperations.getParent(nodeUsage)));
               } else if (SNodeOperations.isInstanceOf(nodeUsage, CONCEPTS.AnonymousClass$aF)) {
                 callback.onUsageFound(createSingleResult(nodeUsage));
@@ -87,6 +87,6 @@ public class StraightDerivedClasses_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
   }
 }

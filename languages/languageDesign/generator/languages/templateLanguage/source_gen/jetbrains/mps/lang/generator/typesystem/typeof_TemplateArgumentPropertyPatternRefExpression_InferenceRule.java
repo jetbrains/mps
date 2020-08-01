@@ -21,7 +21,7 @@ public class typeof_TemplateArgumentPropertyPatternRefExpression_InferenceRule e
     {
       SNode _nodeToCheck_1029348928467 = templateArgumentPropertyPatternRefExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4816349095291152103", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4816349095291152096", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(templateArgumentPropertyPatternRefExpression, LINKS.propertyPattern$rlsv), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4816349095291152108", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4816349095291152096", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(templateArgumentPropertyPatternRefExpression, LINKS.propertyPattern$foN1), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4816349095291152108", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_TemplateArgumentPropertyPatternRefExpression_InferenceRule e
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyPattern$rlsv = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
+    /*package*/ static final SReferenceLink propertyPattern$foN1 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
   }
 
   private static final class CONCEPTS {

@@ -28,7 +28,7 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
   private SNode myReference;
   private SNode myAssignment;
   public InlineVariableReferenceRefactoring(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf))) {
       throw new IllegalArgumentException();
     }
 
@@ -37,25 +37,25 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
   }
   @Override
   public SNode doRefactoring() {
-    final SNode variable = SLinkOperations.getTarget(this.myReference, LINKS.variableDeclaration$2ky6);
+    final SNode variable = SLinkOperations.getTarget(this.myReference, LINKS.variableDeclaration$7WwU);
     SNode nodeToSelect;
     if (myAssignment == null) {
-      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(this.myReference, LINKS.variableDeclaration$2ky6), LINKS.initializer$KgD));
+      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(this.myReference, LINKS.variableDeclaration$7WwU), LINKS.initializer$no3R));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
     } else
     if (SNodeOperations.isInstanceOf(myAssignment, CONCEPTS.VariableDeclaration$xe)) {
-      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.VariableDeclaration$xe), LINKS.initializer$KgD));
+      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.VariableDeclaration$xe), LINKS.initializer$no3R));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
     } else if (SNodeOperations.isInstanceOf(myAssignment, CONCEPTS.AssignmentExpression$rS)) {
-      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.rValue$LkmY), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6), variable);
+          return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU), variable);
         }
       }).isNotEmpty()) {
         // Assignments referring to the variable from their right side should not be inlined, since the resulting code will have different semantics than the original 
         return myReference;
       }
-      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2));
+      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.rValue$LkmY));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
       this.optimizeAssignment(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), variable);
     } else {
@@ -67,7 +67,7 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
     return nodeToSelect;
   }
   private void findAssignment(SNode node) {
-    SNode variable = SLinkOperations.getTarget(node, LINKS.variableDeclaration$2ky6);
+    SNode variable = SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU);
     myAssignment = null;
     SNode currentList = SNodeOperations.getNodeAncestor(node, CONCEPTS.StatementList$TN, false, false);
     SNode currentStatement;
@@ -98,9 +98,9 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {

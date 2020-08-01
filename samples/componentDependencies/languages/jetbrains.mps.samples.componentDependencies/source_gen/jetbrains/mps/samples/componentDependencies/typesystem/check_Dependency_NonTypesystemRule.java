@@ -29,21 +29,21 @@ public class check_Dependency_NonTypesystemRule extends AbstractNonTypesystemRul
   public check_Dependency_NonTypesystemRule() {
   }
   public void applyRule(final SNode dependency, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode usedComponent : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(dependency, LINKS.to$V$vW), LINKS.dep$oYBD), LINKS.to$V$vW))) {
+    for (SNode usedComponent : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(dependency, LINKS.to$QFu4), LINKS.dep$6lcR), LINKS.to$QFu4))) {
       final Set<SNode> visitedComponents = SetSequence.fromSet(new HashSet<SNode>());
       Queue<SNode> queue = QueueSequence.fromQueue(new LinkedList<SNode>());
       QueueSequence.fromQueue(queue).addLastElement(usedComponent);
       while (QueueSequence.fromQueue(queue).isNotEmpty()) {
         SNode nextComponent = QueueSequence.fromQueue(queue).removeFirstElement();
         SetSequence.fromSet(visitedComponents).addElement(nextComponent);
-        if (nextComponent == SLinkOperations.getTarget(dependency, LINKS.to$V$vW)) {
+        if (nextComponent == SLinkOperations.getTarget(dependency, LINKS.to$QFu4)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dependency, "Cyclic Dependnecy", "r:6c7cc4eb-60e9-407a-94da-5f4d6ac9650c(jetbrains.mps.samples.componentDependencies.typesystem)", "8153794773742437575", null, errorTarget);
           }
           return;
         }
-        QueueSequence.fromQueue(queue).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(nextComponent, LINKS.dep$oYBD), LINKS.to$V$vW)).where(new IWhereFilter<SNode>() {
+        QueueSequence.fromQueue(queue).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(nextComponent, LINKS.dep$6lcR), LINKS.to$QFu4)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SetSequence.fromSet(visitedComponents).contains(it));
           }
@@ -62,8 +62,8 @@ public class check_Dependency_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink to$V$vW = MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to");
-    /*package*/ static final SContainmentLink dep$oYBD = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
+    /*package*/ static final SReferenceLink to$QFu4 = MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to");
+    /*package*/ static final SContainmentLink dep$6lcR = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
   }
 
   private static final class CONCEPTS {

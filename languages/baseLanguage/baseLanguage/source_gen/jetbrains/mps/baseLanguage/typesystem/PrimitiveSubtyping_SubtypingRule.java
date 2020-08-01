@@ -22,8 +22,8 @@ public class PrimitiveSubtyping_SubtypingRule extends SubtypingRule_Runtime impl
   }
   public List<SNode> getSubOrSuperTypes(SNode primitiveTypeDescriptor, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode ref : SLinkOperations.getChildren(primitiveTypeDescriptor, LINKS.extends$ACCy)) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(ref, LINKS.descriptor$ZkDR));
+    for (SNode ref : SLinkOperations.getChildren(primitiveTypeDescriptor, LINKS.extends$HFCu)) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(ref, LINKS.descriptor$F0hD));
     }
     return result;
   }
@@ -38,8 +38,8 @@ public class PrimitiveSubtyping_SubtypingRule extends SubtypingRule_Runtime impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extends$ACCy = MetaAdapterFactory.getContainmentLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, 0x10de9cae1d0L, "extends");
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink extends$HFCu = MetaAdapterFactory.getContainmentLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, 0x10de9cae1d0L, "extends");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
   }
 
   private static final class CONCEPTS {

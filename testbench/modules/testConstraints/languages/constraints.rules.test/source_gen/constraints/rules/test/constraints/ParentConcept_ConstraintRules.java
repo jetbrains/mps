@@ -65,7 +65,7 @@ public final class ParentConcept_ConstraintRules extends BaseRulesConstraintsDes
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return SPropertyOperations.getBoolean(context.getParentNode(), PROPS.canHaveChildren$Q9rf);
+      return SPropertyOperations.getBoolean(context.getParentNode(), PROPS.canHaveChildren$e$ch);
     }
 
     @Override
@@ -83,6 +83,6 @@ public final class ParentConcept_ConstraintRules extends BaseRulesConstraintsDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty canHaveChildren$Q9rf = MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, 0x6493b7a43ae22fbaL, "canHaveChildren");
+    /*package*/ static final SProperty canHaveChildren$e$ch = MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, 0x6493b7a43ae22fbaL, "canHaveChildren");
   }
 }

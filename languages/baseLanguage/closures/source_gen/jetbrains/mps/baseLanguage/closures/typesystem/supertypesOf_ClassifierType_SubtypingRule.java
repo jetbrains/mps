@@ -36,8 +36,8 @@ public class supertypesOf_ClassifierType_SubtypingRule extends SubtypingRule_Run
   }
   public List<SNode> getSubOrSuperTypes(SNode ct, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> supertypes = ListSequence.fromList(new ArrayList<SNode>());
-    SNode classifier = SLinkOperations.getTarget(ct, LINKS.classifier$pQ_R);
-    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$Kp) || SPropertyOperations.getBoolean(SNodeOperations.as(classifier, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$gY5l)) {
+    SNode classifier = SLinkOperations.getTarget(ct, LINKS.classifier$xslD);
+    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$Kp) || SPropertyOperations.getBoolean(SNodeOperations.as(classifier, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$e4_b)) {
 
       // Here used to be cache of ['is functional interface', single method] tuple, which used to save tens of microseconds. 
       // If it's indeed a bottleneck, I'd rather introduce 'cache' statement to keep data like that in TypeCheckingContext of ISubtypingRule_Runtime.getSubOrSuperTypes() 
@@ -45,10 +45,10 @@ public class supertypesOf_ClassifierType_SubtypingRule extends SubtypingRule_Run
 
       // here, use of classifier.member.ofConceptM<> instead of methods() is intentional. First of all, we don't care about legacy roles (man, they have been deprecated centuries ago!), 
       //  second, I'd like to benefit from lazy sequences rather than heavy-weight list of members() to speed things up. 
-      Iterable<SNode> methods = SNodeOperations.ofConcept(SLinkOperations.getChildren(classifier, LINKS.member$oYX5), CONCEPTS.InstanceMethodDeclaration$An);
+      Iterable<SNode> methods = SNodeOperations.ofConcept(SLinkOperations.getChildren(classifier, LINKS.member$6v_r), CONCEPTS.InstanceMethodDeclaration$An);
       Iterator<SNode> cands = Sequence.fromIterable(methods).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode m) {
-          return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m) && !("equals".equals(SPropertyOperations.getString(m, PROPS.name$tAp1)));
+          return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m) && !("equals".equals(SPropertyOperations.getString(m, PROPS.name$lA7v)));
         }
       }).iterator();
       SNode mtd = (cands.hasNext() ? cands.next() : null);
@@ -64,15 +64,15 @@ public class supertypesOf_ClassifierType_SubtypingRule extends SubtypingRule_Run
       Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(ct, subs);
 
-      for (SNode p : SLinkOperations.getChildren(mtd, LINKS.parameter$WIkZ)) {
-        SNode pt = SLinkOperations.getTarget(p, LINKS.type$pLrO);
+      for (SNode p : SLinkOperations.getChildren(mtd, LINKS.parameter$qsax)) {
+        SNode pt = SLinkOperations.getTarget(p, LINKS.type$uWuc);
         if (SNodeOperations.isInstanceOf(pt, CONCEPTS.IGenericType$$h)) {
           pt = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(pt, CONCEPTS.IGenericType$$h), subs);
         }
         ListSequence.fromList(paramTypes).addElement(pt);
       }
 
-      SNode rt = SLinkOperations.getTarget(mtd, LINKS.returnType$WIkw);
+      SNode rt = SLinkOperations.getTarget(mtd, LINKS.returnType$qrVw);
       if (SNodeOperations.isInstanceOf(rt, CONCEPTS.IGenericType$$h)) {
         rt = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(rt, CONCEPTS.IGenericType$$h), subs);
       }
@@ -109,11 +109,11 @@ public class supertypesOf_ClassifierType_SubtypingRule extends SubtypingRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class CONCEPTS {
@@ -125,7 +125,7 @@ public class supertypesOf_ClassifierType_SubtypingRule extends SubtypingRule_Run
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

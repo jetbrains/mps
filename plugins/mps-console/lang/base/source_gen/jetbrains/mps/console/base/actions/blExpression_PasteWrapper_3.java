@@ -22,11 +22,11 @@ public final class blExpression_PasteWrapper_3 implements PasteWrapper {
   }
   @Override
   public SNode wrap(SNode sourceNode) {
-    return createBLExpression_sma98h_a0a0d(SLinkOperations.getTarget(sourceNode, LINKS.expression$WIP0));
+    return createBLExpression_sma98h_a0a0d(SLinkOperations.getTarget(sourceNode, LINKS.expression$qFF0));
   }
   private static SNode createBLExpression_sma98h_a0a0d(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
-    n0.forChild(LINKS.expression$HQe6).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.expression$dgOU).initNode(p0, CONCEPTS.Expression$TP, true);
     return n0.getResult();
   }
 
@@ -38,7 +38,7 @@ public final class blExpression_PasteWrapper_3 implements PasteWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink expression$HQe6 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$dgOU = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
   }
 }

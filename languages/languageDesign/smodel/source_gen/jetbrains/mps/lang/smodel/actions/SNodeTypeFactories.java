@@ -17,13 +17,13 @@ public class SNodeTypeFactories {
       {
         final SNode nodeType = sampleNode;
         if (SNodeOperations.isInstanceOf(nodeType, CONCEPTS.SNodeType$gn)) {
-          SLinkOperations.setTarget(newNode, LINKS.concept$fJMt, SLinkOperations.getTarget(nodeType, LINKS.concept$HWFQ));
+          SLinkOperations.setTarget(newNode, LINKS.concept$C9s3, SLinkOperations.getTarget(nodeType, LINKS.concept$gpfa));
         }
       }
       {
         final SNode conceptType = sampleNode;
         if (SNodeOperations.isInstanceOf(conceptType, CONCEPTS.SConceptType$nF)) {
-          SLinkOperations.setTarget(newNode, LINKS.concept$fJMt, SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$l1qw));
+          SLinkOperations.setTarget(newNode, LINKS.concept$C9s3, SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$bFPw));
         }
       }
     }
@@ -33,13 +33,13 @@ public class SNodeTypeFactories {
       {
         final SNode nodePointerType = sampleNode;
         if (SNodeOperations.isInstanceOf(nodePointerType, CONCEPTS.SNodePointerType$2t)) {
-          SLinkOperations.setTarget(newNode, LINKS.concept$HWFQ, SLinkOperations.getTarget(nodePointerType, LINKS.concept$fJMt));
+          SLinkOperations.setTarget(newNode, LINKS.concept$gpfa, SLinkOperations.getTarget(nodePointerType, LINKS.concept$C9s3));
         }
       }
       {
         final SNode conceptType = sampleNode;
         if (SNodeOperations.isInstanceOf(conceptType, CONCEPTS.SConceptType$nF)) {
-          SLinkOperations.setTarget(newNode, LINKS.concept$HWFQ, SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$l1qw));
+          SLinkOperations.setTarget(newNode, LINKS.concept$gpfa, SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$bFPw));
         }
       }
     }
@@ -49,13 +49,13 @@ public class SNodeTypeFactories {
       {
         final SNode nodeType = sampleNode;
         if (SNodeOperations.isInstanceOf(nodeType, CONCEPTS.SNodeType$gn)) {
-          SLinkOperations.setTarget(newNode, LINKS.conceptDeclaraton$l1qw, SLinkOperations.getTarget(nodeType, LINKS.concept$HWFQ));
+          SLinkOperations.setTarget(newNode, LINKS.conceptDeclaraton$bFPw, SLinkOperations.getTarget(nodeType, LINKS.concept$gpfa));
         }
       }
       {
         final SNode nodePointerType = sampleNode;
         if (SNodeOperations.isInstanceOf(nodePointerType, CONCEPTS.SNodePointerType$2t)) {
-          SLinkOperations.setTarget(newNode, LINKS.conceptDeclaraton$l1qw, SLinkOperations.getTarget(nodePointerType, LINKS.concept$fJMt));
+          SLinkOperations.setTarget(newNode, LINKS.conceptDeclaraton$bFPw, SLinkOperations.getTarget(nodePointerType, LINKS.concept$C9s3));
         }
       }
     }
@@ -68,8 +68,8 @@ public class SNodeTypeFactories {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$fJMt = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
-    /*package*/ static final SReferenceLink conceptDeclaraton$l1qw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink concept$C9s3 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink conceptDeclaraton$bFPw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton");
   }
 }

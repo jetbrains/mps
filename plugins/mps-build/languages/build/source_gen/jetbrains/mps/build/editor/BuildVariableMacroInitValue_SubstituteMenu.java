@@ -94,7 +94,7 @@ public class BuildVariableMacroInitValue_SubstituteMenu extends SubstituteMenuBa
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode init = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BuildVariableMacroInitWithString$NH);
-          SLinkOperations.setTarget(init, LINKS.value$S2VV, nodeToWrap);
+          SLinkOperations.setTarget(init, LINKS.value$9r1_, nodeToWrap);
           return init;
         }
 
@@ -153,6 +153,6 @@ public class BuildVariableMacroInitValue_SubstituteMenu extends SubstituteMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$S2VV = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd26287L, 0x263c91972cd2628dL, "value");
+    /*package*/ static final SContainmentLink value$9r1_ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd26287L, 0x263c91972cd2628dL, "value");
   }
 }

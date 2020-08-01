@@ -37,9 +37,9 @@
       <node id="5721587534047247532" at="81,14,82,58" concept="9" />
       <node id="5721587534047247532" at="88,48,89,22" concept="5" />
       <node id="5721587534047247532" at="94,40,95,19" concept="5" />
-      <node id="5721587534047247532" at="99,0,100,0" concept="6" trace="message$b$_u" />
-      <node id="5721587534047247532" at="100,0,101,0" concept="6" trace="throwable$b$As" />
-      <node id="5721587534047247532" at="104,0,105,0" concept="6" trace="severity$b$$w" />
+      <node id="5721587534047247532" at="99,0,100,0" concept="6" trace="message$AI9y" />
+      <node id="5721587534047247532" at="100,0,101,0" concept="6" trace="throwable$AIB$" />
+      <node id="5721587534047247532" at="104,0,105,0" concept="6" trace="severity$AHFw" />
       <node id="5721587534047247532" at="35,0,37,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5721587534047247532" at="48,0,50,0" concept="0" trace="LogLowLevelStatement__BehaviorDescriptor#()V" />
       <node id="5721587534047247532" at="38,0,41,0" concept="7" trace="getMessage_id5vyNLjQPuX5#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -132,9 +132,9 @@
       <node id="5721587534047262597" at="81,14,82,58" concept="9" />
       <node id="5721587534047262597" at="88,48,89,22" concept="5" />
       <node id="5721587534047262597" at="94,40,95,19" concept="5" />
-      <node id="5721587534047262597" at="99,0,100,0" concept="6" trace="message$75e4" />
-      <node id="5721587534047262597" at="100,0,101,0" concept="6" trace="throwable$75ez" />
-      <node id="5721587534047262597" at="104,0,105,0" concept="6" trace="severity$TT76" />
+      <node id="5721587534047262597" at="99,0,100,0" concept="6" trace="message$rxNW" />
+      <node id="5721587534047262597" at="100,0,101,0" concept="6" trace="throwable$ry2X" />
+      <node id="5721587534047262597" at="104,0,105,0" concept="6" trace="severity$2ErU" />
       <node id="5721587534047262597" at="35,0,37,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5721587534047262597" at="48,0,50,0" concept="0" trace="MsgStatement__BehaviorDescriptor#()V" />
       <node id="5721587534047262597" at="38,0,41,0" concept="7" trace="getMessage_id5vyNLjQPuX5#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />

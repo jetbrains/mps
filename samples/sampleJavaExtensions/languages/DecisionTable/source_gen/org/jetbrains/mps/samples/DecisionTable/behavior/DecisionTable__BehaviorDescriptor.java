@@ -38,25 +38,25 @@ public final class DecisionTable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(referencedLVDs_id3mtcPBWFCmw, referencedParams_id3mtcPBWFDo3);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.addNewChild(__thisNode__, LINKS.rowHeaders$x6$X, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.rowHeaders$x6$X, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.colHeaders$x6$u, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.colHeaders$x6$u, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.resultValues$x6_s, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.resultValues$x6_s, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.resultValues$x6_s, null);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.resultValues$x6_s, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.rowHeaders$2bTz, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.rowHeaders$2bTz, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.colHeaders$2bEy, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.colHeaders$2bEy, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.resultValues$2c8$, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.resultValues$2c8$, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.resultValues$2c8$, null);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.resultValues$2c8$, null);
   }
 
   /*package*/ static Set<SNode> referencedLVDs_id3mtcPBWFCmw(@NotNull SNode __thisNode__) {
     Set<SNode> res = SetSequence.fromSet(new HashSet<SNode>());
     SetSequence.fromSet(res).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf);
+        return SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
       }
     }));
     return res;
@@ -65,11 +65,11 @@ public final class DecisionTable__BehaviorDescriptor extends BaseBHDescriptor {
     Set<SNode> params = SetSequence.fromSet(new HashSet<SNode>());
     SetSequence.fromSet(params).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6), CONCEPTS.ParameterDeclaration$qU);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU);
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6), CONCEPTS.ParameterDeclaration$qU);
+        return SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU);
       }
     }));
     return params;
@@ -124,10 +124,10 @@ public final class DecisionTable__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rowHeaders$x6$X = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1585L, "rowHeaders");
-    /*package*/ static final SContainmentLink colHeaders$x6$u = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1584L, "colHeaders");
-    /*package*/ static final SContainmentLink resultValues$x6_s = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1586L, "resultValues");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink rowHeaders$2bTz = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1585L, "rowHeaders");
+    /*package*/ static final SContainmentLink colHeaders$2bEy = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1584L, "colHeaders");
+    /*package*/ static final SContainmentLink resultValues$2c8$ = MetaAdapterFactory.getContainmentLink(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, 0x1b942309931b1586L, "resultValues");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {

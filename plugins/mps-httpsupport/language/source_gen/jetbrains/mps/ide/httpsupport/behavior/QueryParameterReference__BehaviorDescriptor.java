@@ -31,7 +31,7 @@ public final class QueryParameterReference__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static SNode getVariable_idSORzhOpB6t(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.queryParameter$FdVw);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.queryParameter$VJOw);
   }
 
   /*package*/ QueryParameterReference__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class QueryParameterReference__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink queryParameter$FdVw = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c5884e95L, 0x205f4376c5884e96L, "queryParameter");
+    /*package*/ static final SReferenceLink queryParameter$VJOw = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c5884e95L, 0x205f4376c5884e96L, "queryParameter");
   }
 }

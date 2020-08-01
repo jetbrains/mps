@@ -24,16 +24,16 @@ public class typeof_IsRefactoringApplicable_InferenceRule extends AbstractInfere
   public typeof_IsRefactoringApplicable_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode target = SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.refactoring$9WHb), LINKS.target$oyxZ);
-    if (SPropertyOperations.getBoolean(target, PROPS.allowMultiple$Y2GU) == false) {
+    SNode target = SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.refactoring$OpSl), LINKS.target$SItx);
+    if (SPropertyOperations.getBoolean(target, PROPS.allowMultiple$3jK6) == false) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.target$dfG6);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.target$qAmU);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "8416108457267651081", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "8416108457267651083", true), (SNode) typeCheckingContext.typeOf(target, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "8416108457267651088", true), false, true, _info_12389875345);
       }
     } else {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.target$dfG6);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.target$qAmU);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "8416108457267651097", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "8416108457267651099", true), (SNode) _quotation_createNode_f3lmj2_a1a0c0a0a1a1(typeCheckingContext.typeOf(target, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "8416108457267651108", true)), false, true, _info_12389875345);
       }
@@ -72,13 +72,13 @@ public class typeof_IsRefactoringApplicable_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoring$9WHb = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5b9318cd86fd917dL, 0x5b9318cd86fd917eL, "refactoring");
-    /*package*/ static final SContainmentLink target$oyxZ = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
-    /*package*/ static final SContainmentLink target$dfG6 = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5b9318cd86fd917dL, 0x5b9318cd86fd94a6L, "target");
+    /*package*/ static final SReferenceLink refactoring$OpSl = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5b9318cd86fd917dL, 0x5b9318cd86fd917eL, "refactoring");
+    /*package*/ static final SContainmentLink target$SItx = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
+    /*package*/ static final SContainmentLink target$qAmU = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5b9318cd86fd917dL, 0x5b9318cd86fd94a6L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty allowMultiple$Y2GU = MetaAdapterFactory.getProperty(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a0569L, 0x5fb04b74a77a0657L, "allowMultiple");
+    /*package*/ static final SProperty allowMultiple$3jK6 = MetaAdapterFactory.getProperty(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a0569L, 0x5fb04b74a77a0657L, "allowMultiple");
   }
 
   private static final class CONCEPTS {

@@ -34,7 +34,7 @@ public final class BuildString__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String getText_id3NagsOfTioI(@NotNull SNode __thisNode__, MacroHelper helper) {
     StringBuilder sb = new StringBuilder();
-    for (SNode n : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parts$aVY3))) {
+    for (SNode n : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parts$j33t))) {
       sb.append(BuildStringPart__BehaviorDescriptor.getText_id3NagsOfTq4Y.invoke(n, helper));
     }
     return sb.toString();
@@ -87,6 +87,6 @@ public final class BuildString__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$aVY3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
+    /*package*/ static final SContainmentLink parts$j33t = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
   }
 }

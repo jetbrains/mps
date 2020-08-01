@@ -21,7 +21,7 @@ public class typeof_PatternBuilderVariableReference_InferenceRule extends Abstra
     {
       SNode _nodeToCheck_1029348928467 = patternBuilderVariableReference;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366637142993", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366637142393", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(patternBuilderVariableReference, LINKS.declaration$GelY), "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366637143009", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366637142393", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(patternBuilderVariableReference, LINKS.declaration$qWD2), "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366637143009", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_PatternBuilderVariableReference_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$GelY = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, 0x26c46d140aa61088L, "declaration");
+    /*package*/ static final SReferenceLink declaration$qWD2 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, 0x26c46d140aa61088L, "declaration");
   }
 
   private static final class CONCEPTS {

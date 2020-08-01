@@ -35,7 +35,7 @@ public final class OrRegexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    String s = Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.left$j7nn), vars) + "|" + Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.right$HLYL), vars);
+    String s = Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.left$g$k9), vars) + "|" + Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.right$bdpJ), vars);
     return (((boolean) OrRegexp__BehaviorDescriptor.inParentheses_id1b8uQvZyDXU.invoke(__thisNode__)) ? Regexp__BehaviorDescriptor.par_idhMuIPHY.invoke(__thisNode__, s) : s);
   }
   /*package*/ static boolean needParentheses_id1b8uQvZynii(@NotNull SNode __thisNode__) {
@@ -96,8 +96,8 @@ public final class OrRegexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$j7nn = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
-    /*package*/ static final SContainmentLink right$HLYL = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right");
+    /*package*/ static final SContainmentLink left$g$k9 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
+    /*package*/ static final SContainmentLink right$bdpJ = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right");
   }
 
   private static final class CONCEPTS {

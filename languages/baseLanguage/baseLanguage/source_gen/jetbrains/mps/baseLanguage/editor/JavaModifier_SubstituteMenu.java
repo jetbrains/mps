@@ -68,7 +68,7 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
       if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IHasModifiers$LF))) {
         return true;
       }
-      List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.IHasModifiers$LF), LINKS.modifiers$akE0);
+      List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.IHasModifiers$LF), LINKS.modifiers$m0);
       return ListSequence.fromList(modifiers).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(Objects.equals(SNodeOperations.getConcept(it), concept));
@@ -99,6 +99,6 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 }

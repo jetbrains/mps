@@ -43,10 +43,10 @@ public final class RunConfigurationProducer__BehaviorDescriptor extends BaseBHDe
     return "Producer";
   }
   /*package*/ static String getBaseName_id3MnZbusxcPI(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.configuration$zpA6) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.configuration$9psU) == null)) {
       return "Unknown";
     }
-    return check_5u07ui_a1a2(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.configuration$zpA6), LINKS.persistentConfiguration$28v0));
+    return check_5u07ui_a1a2(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.configuration$9psU), LINKS.persistentConfiguration$2710));
   }
 
   /*package*/ RunConfigurationProducer__BehaviorDescriptor() {
@@ -106,7 +106,7 @@ public final class RunConfigurationProducer__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink configuration$zpA6 = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SContainmentLink configuration$9psU = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 }

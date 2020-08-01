@@ -61,7 +61,7 @@ public final class SpecifyMessageForNodeReferent_Intention extends AbstractInten
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode problem = SNodeFactoryOperations.createNewNode(CONCEPTS.RefOutOfScopeProblem$Zz, null);
-      SLinkOperations.setTarget(problem, LINKS.ref$uT96, SLinkOperations.getTarget(node, LINKS.applicableLink$Hkrz));
+      SLinkOperations.setTarget(problem, LINKS.ref$XFpU, SLinkOperations.getTarget(node, LINKS.applicableLink$WTlX));
       new MessageIntentionHelper(problem, NodeReferentConstraint__BehaviorDescriptor.getApplicableConcept_idhEwIMWq.invoke(node)).addProblemCustomization(node, editorContext);
     }
     @Override
@@ -76,7 +76,7 @@ public final class SpecifyMessageForNodeReferent_Intention extends AbstractInten
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink ref$uT96 = MetaAdapterFactory.getReferenceLink(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, 0x161a25d49703b44eL, "ref");
-    /*package*/ static final SReferenceLink applicableLink$Hkrz = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
+    /*package*/ static final SReferenceLink ref$XFpU = MetaAdapterFactory.getReferenceLink(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, 0x161a25d49703b44eL, "ref");
+    /*package*/ static final SReferenceLink applicableLink$WTlX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
   }
 }

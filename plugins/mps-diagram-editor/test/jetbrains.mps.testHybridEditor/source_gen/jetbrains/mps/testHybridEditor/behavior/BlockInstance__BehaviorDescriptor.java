@@ -23,8 +23,8 @@ public final class BlockInstance__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.width$IRw4, 40);
-    SPropertyOperations.assign(__thisNode__, PROPS.height$ISEb, 50);
+    SPropertyOperations.assign(__thisNode__, PROPS.width$GSxW, 40);
+    SPropertyOperations.assign(__thisNode__, PROPS.height$Hsrl, 50);
   }
 
 
@@ -73,7 +73,7 @@ public final class BlockInstance__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty width$IRw4 = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x2c11e15d8177197eL, "width");
-    /*package*/ static final SProperty height$ISEb = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x2c11e15d817719aeL, "height");
+    /*package*/ static final SProperty width$GSxW = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x2c11e15d8177197eL, "width");
+    /*package*/ static final SProperty height$Hsrl = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x2c11e15d817719aeL, "height");
   }
 }

@@ -21,8 +21,8 @@ public class typeOf_thisExpr_InferenceRule extends AbstractInferenceRule_Runtime
   }
   public void applyRule(final SNode thisExpr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode classifier;
-    if ((SLinkOperations.getTarget(thisExpr, LINKS.classConcept$Hbij) != null)) {
-      classifier = SLinkOperations.getTarget(thisExpr, LINKS.classConcept$Hbij);
+    if ((SLinkOperations.getTarget(thisExpr, LINKS.classConcept$StRd) != null)) {
+      classifier = SLinkOperations.getTarget(thisExpr, LINKS.classConcept$StRd);
     } else {
       classifier = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$hJ), thisExpr);
     }
@@ -43,7 +43,7 @@ public class typeOf_thisExpr_InferenceRule extends AbstractInferenceRule_Runtime
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$Hbij = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 
   private static final class CONCEPTS {

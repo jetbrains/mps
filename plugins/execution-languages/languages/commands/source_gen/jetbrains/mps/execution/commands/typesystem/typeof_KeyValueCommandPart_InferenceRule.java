@@ -23,12 +23,12 @@ public class typeof_KeyValueCommandPart_InferenceRule extends AbstractInferenceR
   }
   public void applyRule(final SNode keyValueCommandPart, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(keyValueCommandPart, LINKS.key$9iJt);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(keyValueCommandPart, LINKS.key$w4Z3);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "889694274152216025", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "889694274152216017", true), (SNode) _quotation_createNode_jl7ika_a1a0c0a0b(), false, false, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(keyValueCommandPart, LINKS.value$9iU7);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(keyValueCommandPart, LINKS.value$wa9p);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "889694274152216043", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "889694274152216035", true), (SNode) createJoinType_jl7ika_a1a0c0b0b(), false, false, _info_12389875345);
     }
@@ -57,9 +57,9 @@ public class typeof_KeyValueCommandPart_InferenceRule extends AbstractInferenceR
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.argument$xIHX).init(CONCEPTS.StringType$2b);
+      SNodeBuilder n1 = n0.forChild(LINKS.argument$lCgz).init(CONCEPTS.StringType$2b);
       SNodeBuilder n2 = n1.forSibling().init(CONCEPTS.ClassifierType$IZ);
-      n2.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
+      n2.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
       SNodeBuilder n3 = n2.forSibling().init(CONCEPTS.ProcessBuilderCommandPartType$gI);
     }
     return n0.getResult();
@@ -70,10 +70,10 @@ public class typeof_KeyValueCommandPart_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink key$9iJt = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xc58d43a818a1f7fL, 0xc58d43a818a1f83L, "key");
-    /*package*/ static final SContainmentLink value$9iU7 = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xc58d43a818a1f7fL, 0xc58d43a818a1f84L, "value");
-    /*package*/ static final SContainmentLink argument$xIHX = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink key$w4Z3 = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xc58d43a818a1f7fL, 0xc58d43a818a1f83L, "key");
+    /*package*/ static final SContainmentLink value$wa9p = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xc58d43a818a1f7fL, 0xc58d43a818a1f84L, "value");
+    /*package*/ static final SContainmentLink argument$lCgz = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

@@ -56,7 +56,7 @@ public final class HelpCommand__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, ConsoleStream console) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.target$I3f_) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.target$j$yV) == null)) {
       Iterable<SAbstractConcept> constructions = ListSequence.fromList(SConceptOperations.getAllSubConcepts(CONCEPTS.HelpProvider$tj, context.getOutputWindow().getConsoleModel())).where(new IWhereFilter<SAbstractConcept>() {
         public boolean accept(SAbstractConcept it) {
           return (it instanceof SConcept) && !(it.isAbstract());
@@ -131,10 +131,10 @@ public final class HelpCommand__BehaviorDescriptor extends BaseBHDescriptor {
       }
       console.addText("Constructions available in console:\n\n");
       console.addText(output.toString());
-    } else if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.target$I3f_), LINKS.command$Vrc$), SNodeOperations.getNode("r:935ba0ee-7291-4caa-a807-d76e8fc69391(jetbrains.mps.lang.smodel.query.structure)", "473081947981012231"))) {
+    } else if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.target$j$yV), LINKS.command$Mb5s), SNodeOperations.getNode("r:935ba0ee-7291-4caa-a807-d76e8fc69391(jetbrains.mps.lang.smodel.query.structure)", "473081947981012231"))) {
       String helpPage;
       try {
-        SAbstractConcept chp = (SAbstractConcept) SNodeOperations.asSConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.target$I3f_), LINKS.command$Vrc$));
+        SAbstractConcept chp = (SAbstractConcept) SNodeOperations.asSConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.target$j$yV), LINKS.command$Mb5s));
         helpPage = HelpProvider__BehaviorDescriptor.getHelpPage_id64VftqEen2L.invoke(SNodeOperations.asSConcept(chp));
         String helpHead = HelpProvider__BehaviorDescriptor.getDisplayString_id5YxQmqOFZEf.invoke(SNodeOperations.asSConcept(chp)) + " : " + HelpProvider__BehaviorDescriptor.getKind_id64VftqEenf4.invoke(SNodeOperations.asSConcept(chp)) + "\n" + HelpProvider__BehaviorDescriptor.getShortHelp_idqgIopNa9Hb.invoke(SNodeOperations.asSConcept(chp));
         if ((helpPage != null && helpPage.length() > 0)) {
@@ -227,7 +227,7 @@ public final class HelpCommand__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$I3f_ = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x690b986730a1f80L, 0x60279080c2f4192bL, "target");
-    /*package*/ static final SReferenceLink command$Vrc$ = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, 0x60279080c2f3f8d6L, "command");
+    /*package*/ static final SContainmentLink target$j$yV = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x690b986730a1f80L, 0x60279080c2f4192bL, "target");
+    /*package*/ static final SReferenceLink command$Mb5s = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, 0x60279080c2f3f8d6L, "command");
   }
 }

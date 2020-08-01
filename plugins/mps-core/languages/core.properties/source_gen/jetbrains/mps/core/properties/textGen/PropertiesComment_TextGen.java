@@ -15,11 +15,11 @@ public class PropertiesComment_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("# ");
-    tgs.append(PropEscapeUtil.escapeComment(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$17Lw)));
+    tgs.append(PropEscapeUtil.escapeComment(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$yKYw)));
     tgs.newLine();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$17Lw = MetaAdapterFactory.getProperty(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ad9L, 0x36fb0dc9fd3a3adaL, "text");
+    /*package*/ static final SProperty text$yKYw = MetaAdapterFactory.getProperty(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ad9L, 0x36fb0dc9fd3a3adaL, "text");
   }
 }

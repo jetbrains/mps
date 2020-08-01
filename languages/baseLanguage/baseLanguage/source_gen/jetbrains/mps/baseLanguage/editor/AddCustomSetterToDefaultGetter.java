@@ -24,8 +24,8 @@ public class AddCustomSetterToDefaultGetter {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if ((SLinkOperations.getTarget(node, LINKS.setAccessor$VUMX) == null)) {
-          SLinkOperations.setTarget(node, LINKS.setAccessor$VUMX, SNodeFactoryOperations.createNewNode(CONCEPTS.SetAccessor$QT, null));
+        if ((SLinkOperations.getTarget(node, LINKS.setAccessor$1uFz) == null)) {
+          SLinkOperations.setTarget(node, LINKS.setAccessor$1uFz, SNodeFactoryOperations.createNewNode(CONCEPTS.SetAccessor$QT, null));
         }
       }
 
@@ -89,7 +89,7 @@ public class AddCustomSetterToDefaultGetter {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink setAccessor$VUMX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
+    /*package*/ static final SContainmentLink setAccessor$1uFz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
   }
 
   private static final class CONCEPTS {

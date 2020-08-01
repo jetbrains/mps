@@ -24,49 +24,49 @@ public class Default {
   public static class NodeFactory_8656797459614949039 implements NodeFactory {
     public void setup(final SNode newNode, final SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ForEachStatement$Dx)) {
-        SLinkOperations.setTarget(newNode, LINKS.body$OFes, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.body$OFes));
-        SLinkOperations.addNewChild(newNode, LINKS.forEach$_P5u, null);
-        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$_P5u)).first(), LINKS.input$_PhZ, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.inputSequence$vBnC));
-        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$_P5u)).first(), LINKS.variable$_Qfw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea18L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariable")));
-        SPropertyOperations.assign(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$_P5u)).first(), LINKS.variable$_Qfw), PROPS.name$tAp1, SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.variable$QE64), PROPS.name$tAp1));
-        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$OFes), CONCEPTS.ForEachVariableReference$q$, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+        SLinkOperations.setTarget(newNode, LINKS.body$wVZ$, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.body$wVZ$));
+        SLinkOperations.addNewChild(newNode, LINKS.forEach$kHDy, null);
+        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$kHDy)).first(), LINKS.input$kNHx, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.inputSequence$k4so));
+        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$kHDy)).first(), LINKS.variable$lhww, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea18L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariable")));
+        SPropertyOperations.assign(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$kHDy)).first(), LINKS.variable$lhww), PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.variable$uoVW), PROPS.name$lA7v));
+        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$wVZ$), CONCEPTS.ForEachVariableReference$q$, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.variable$ue0d) == SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.variable$QE64);
+            return SLinkOperations.getTarget(it, LINKS.variable$CM6j) == SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.variable$uoVW);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            SNodeOperations.replaceWithAnother(it, createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$_P5u)).first(), LINKS.variable$_Qfw)));
+            SNodeOperations.replaceWithAnother(it, createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$kHDy)).first(), LINKS.variable$lhww)));
           }
         });
       }
     }
     private static SNode createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SNode p0) {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MultiForEachVariableReference$PW);
-      n0.setReferenceTarget(LINKS.variable$ptyX, p0);
+      n0.setReferenceTarget(LINKS.variable$ljVz, p0);
       return n0.getResult();
     }
   }
   public static class NodeFactory_8656797459614853042 implements NodeFactory {
     public void setup(final SNode newNode, final SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.MultiForEachStatement$LZ)) {
-        SLinkOperations.setTarget(newNode, LINKS.body$OFes, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.body$OFes));
-        SLinkOperations.setTarget(newNode, LINKS.inputSequence$vBnC, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.forEach$_P5u)).first(), LINKS.input$_PhZ));
-        SLinkOperations.setTarget(newNode, LINKS.variable$QE64, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable")));
-        SPropertyOperations.assign(SLinkOperations.getTarget(newNode, LINKS.variable$QE64), PROPS.name$tAp1, SPropertyOperations.getString(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.forEach$_P5u)).first(), LINKS.variable$_Qfw), PROPS.name$tAp1));
-        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$OFes), CONCEPTS.MultiForEachVariableReference$PW, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+        SLinkOperations.setTarget(newNode, LINKS.body$wVZ$, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.body$wVZ$));
+        SLinkOperations.setTarget(newNode, LINKS.inputSequence$k4so, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.forEach$kHDy)).first(), LINKS.input$kNHx));
+        SLinkOperations.setTarget(newNode, LINKS.variable$uoVW, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable")));
+        SPropertyOperations.assign(SLinkOperations.getTarget(newNode, LINKS.variable$uoVW), PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.forEach$kHDy)).first(), LINKS.variable$lhww), PROPS.name$lA7v));
+        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$wVZ$), CONCEPTS.MultiForEachVariableReference$PW, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.variable$ptyX) == SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.forEach$_P5u)).first(), LINKS.variable$_Qfw);
+            return SLinkOperations.getTarget(it, LINKS.variable$ljVz) == SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.forEach$kHDy)).first(), LINKS.variable$lhww);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            SNodeOperations.replaceWithAnother(it, createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SLinkOperations.getTarget(newNode, LINKS.variable$QE64)));
+            SNodeOperations.replaceWithAnother(it, createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SLinkOperations.getTarget(newNode, LINKS.variable$uoVW)));
           }
         });
       }
     }
     private static SNode createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SNode p0) {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ForEachVariableReference$q$);
-      n0.setReferenceTarget(LINKS.variable$ue0d, p0);
+      n0.setReferenceTarget(LINKS.variable$CM6j, p0);
       return n0.getResult();
     }
   }
@@ -79,17 +79,17 @@ public class Default {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$OFes = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
-    /*package*/ static final SContainmentLink forEach$_P5u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, 0x7d7db8f4181fea16L, "forEach");
-    /*package*/ static final SContainmentLink input$_PhZ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea17L, "input");
-    /*package*/ static final SContainmentLink inputSequence$vBnC = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
-    /*package*/ static final SContainmentLink variable$_Qfw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea42L, "variable");
-    /*package*/ static final SContainmentLink variable$QE64 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
-    /*package*/ static final SReferenceLink variable$ue0d = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
-    /*package*/ static final SReferenceLink variable$ptyX = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x731a0dad81895f16L, 0x731a0dad818984f5L, "variable");
+    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink forEach$kHDy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, 0x7d7db8f4181fea16L, "forEach");
+    /*package*/ static final SContainmentLink input$kNHx = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea17L, "input");
+    /*package*/ static final SContainmentLink inputSequence$k4so = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
+    /*package*/ static final SContainmentLink variable$lhww = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea42L, "variable");
+    /*package*/ static final SContainmentLink variable$uoVW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
+    /*package*/ static final SReferenceLink variable$CM6j = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
+    /*package*/ static final SReferenceLink variable$ljVz = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x731a0dad81895f16L, 0x731a0dad818984f5L, "variable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

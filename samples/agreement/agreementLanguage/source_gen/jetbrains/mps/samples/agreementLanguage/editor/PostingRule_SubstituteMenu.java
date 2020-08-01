@@ -50,7 +50,7 @@ public class PostingRule_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_79mqlp_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PostingRule$9e, LINKS.account$_sqo);
+      super((SAbstractConcept) CONCEPTS.PostingRule$9e, LINKS.account$8KLC);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class PostingRule_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink account$_sqo = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc23b0daL, 0x102dc289db8L, "account");
+    /*package*/ static final SReferenceLink account$8KLC = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc23b0daL, 0x102dc289db8L, "account");
   }
 }

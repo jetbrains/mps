@@ -107,13 +107,13 @@ public class ClassifierUpdater {
   }
 
   private void initClass(SNode cls) {
-    SPropertyOperations.assign(cls, PROPS.abstractClass$gY5l, myParsedClass.isAbstract());
+    SPropertyOperations.assign(cls, PROPS.abstractClass$e4_b, myParsedClass.isAbstract());
     updateAnnotations(cls);
     if (myParsedClass.isDeprecated()) {
       BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(cls)), CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.ClassConcept$IY, "5H8W9_EDlcn"), cls);
     }
 
-    SPropertyOperations.assign(cls, PROPS.isFinal$dzaH, myParsedClass.isFinal());
+    SPropertyOperations.assign(cls, PROPS.isFinal$$2bN, myParsedClass.isFinal());
 
     updateTypeVariables(cls);
     updateExtendsAndImplements(cls);
@@ -140,9 +140,9 @@ public class ClassifierUpdater {
     updateJavadoc();
   }
   private void updateVisibility() {
-    if (SLinkOperations.getTarget(myClassifier, LINKS.visibility$2GiC) == null) {
+    if (SLinkOperations.getTarget(myClassifier, LINKS.visibility$jt1o) == null) {
       // for inner classes, visibility and other access fields is initialized at creation time 
-      SLinkOperations.setTarget(myClassifier, LINKS.visibility$2GiC, (myParsedClass.isPublic() ? createPublicVisibility_ol94f8_a0a1a0a41() : null));
+      SLinkOperations.setTarget(myClassifier, LINKS.visibility$jt1o, (myParsedClass.isPublic() ? createPublicVisibility_ol94f8_a0a1a0a41() : null));
     }
   }
 
@@ -156,23 +156,23 @@ public class ClassifierUpdater {
     }
     SNode c = AttributeOperations.createAndSetAttrbiute(myClassifier, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$$4), CONCEPTS.ClassifierDocComment$$4);
     for (String l : text.split("\n")) {
-      SPropertyOperations.set(SLinkOperations.addNewChild(SLinkOperations.addNewChild(c, LINKS.body$ULZO, null), LINKS.part$fv9R, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, l);
+      SPropertyOperations.set(SLinkOperations.addNewChild(SLinkOperations.addNewChild(c, LINKS.body$udUc, null), LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, l);
     }
   }
 
   private void updateTypeVariables(SNode result) {
     for (ASMTypeVariable tv : myParsedClass.getTypeParameters()) {
       SNode tvd = _quotation_createNode_ol94f8_a0a0a0s(tv.getName());
-      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.typeVariableDeclaration$ziZT)).addElement(tvd);
+      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.typeVariableDeclaration$6cWB)).addElement(tvd);
       if (tv instanceof ASMFormalTypeParameter) {
         ASMFormalTypeParameter tp = (ASMFormalTypeParameter) tv;
         if (tp.getClassBound() != null) {
-          SLinkOperations.setTarget(tvd, LINKS.bound$dqDF, getTypeByASMType(tp.getClassBound(), null, result));
+          SLinkOperations.setTarget(tvd, LINKS.bound$vUbP, getTypeByASMType(tp.getClassBound(), null, result));
         }
         for (ASMType act : tp.getInterfaceBounds()) {
           SNode typeByASMType = getTypeByASMType(act, null, result);
           if (SNodeOperations.isInstanceOf(typeByASMType, CONCEPTS.ClassifierType$IZ)) {
-            ListSequence.fromList(SLinkOperations.getChildren(tvd, LINKS.auxBounds$jS6R)).addElement(SNodeOperations.cast(typeByASMType, CONCEPTS.ClassifierType$IZ));
+            ListSequence.fromList(SLinkOperations.getChildren(tvd, LINKS.auxBounds$CbkD)).addElement(SNodeOperations.cast(typeByASMType, CONCEPTS.ClassifierType$IZ));
           } else {
             // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform 
             if (LOG.isEnabledFor(Level.WARN)) {
@@ -188,7 +188,7 @@ public class ClassifierUpdater {
     Map<ASMTypeVariable, SNode> typeVars = MapSequence.fromMap(new HashMap<ASMTypeVariable, SNode>());
     for (ASMTypeVariable tv : method.getTypeParameters()) {
       SNode tvd = _quotation_createNode_ol94f8_a0a0b0t(tv.getName());
-      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.typeVariableDeclaration$ziZT)).addElement(tvd);
+      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.typeVariableDeclaration$6cWB)).addElement(tvd);
       MapSequence.fromMap(typeVars).put(tv, tvd);
     }
     for (ASMTypeVariable tv : method.getTypeParameters()) {
@@ -196,12 +196,12 @@ public class ClassifierUpdater {
       if (tv instanceof ASMFormalTypeParameter) {
         ASMFormalTypeParameter tp = (ASMFormalTypeParameter) tv;
         if (tp.getClassBound() != null) {
-          SLinkOperations.setTarget(tvd, LINKS.bound$dqDF, getTypeByASMType(tp.getClassBound(), result, cls));
+          SLinkOperations.setTarget(tvd, LINKS.bound$vUbP, getTypeByASMType(tp.getClassBound(), result, cls));
         }
         for (ASMType act : tp.getInterfaceBounds()) {
           SNode typeByASMType = getTypeByASMType(act, result, cls);
           if (SNodeOperations.isInstanceOf(typeByASMType, CONCEPTS.ClassifierType$IZ)) {
-            ListSequence.fromList(SLinkOperations.getChildren(tvd, LINKS.auxBounds$jS6R)).addElement(SNodeOperations.cast(typeByASMType, CONCEPTS.ClassifierType$IZ));
+            ListSequence.fromList(SLinkOperations.getChildren(tvd, LINKS.auxBounds$CbkD)).addElement(SNodeOperations.cast(typeByASMType, CONCEPTS.ClassifierType$IZ));
           } else {
             // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform 
             if (LOG.isEnabledFor(Level.WARN)) {
@@ -213,9 +213,9 @@ public class ClassifierUpdater {
     }
   }
   private SNode findTypeVariableDeclaration(SNode genDecl, final String name) {
-    return ListSequence.fromList(SLinkOperations.getChildren(genDecl, LINKS.typeVariableDeclaration$ziZT)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(genDecl, LINKS.typeVariableDeclaration$6cWB)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), name);
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), name);
       }
     }).first();
   }
@@ -224,21 +224,21 @@ public class ClassifierUpdater {
   }
   private void updateAnnotations(SNode cls) {
     for (ASMAnnotation annotation : myParsedClass.getAnnotations()) {
-      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.annotation$oVP4)).addElement(createAnnotation(annotation));
+      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.annotation$4YGW)).addElement(createAnnotation(annotation));
     }
   }
   private void updateExtendsForInterface(SNode intfc) {
     for (ASMType type : myParsedClass.getGenericInterfaces()) {
-      ListSequence.fromList(SLinkOperations.getChildren(intfc, LINKS.extendedInterface$rbvY)).addElement(SNodeOperations.cast(getTypeByASMType(type, null, intfc), CONCEPTS.ClassifierType$IZ));
+      ListSequence.fromList(SLinkOperations.getChildren(intfc, LINKS.extendedInterface$a$v2)).addElement(SNodeOperations.cast(getTypeByASMType(type, null, intfc), CONCEPTS.ClassifierType$IZ));
     }
   }
   private void updateExtendsAndImplements(SNode cls) {
     ASMType refSuperclass = myParsedClass.getGenericSuperclass();
     if (refSuperclass != null) {
-      SLinkOperations.setTarget(cls, LINKS.superclass$_pqe, SNodeOperations.cast(getTypeByASMType(refSuperclass, null, cls), CONCEPTS.ClassifierType$IZ));
+      SLinkOperations.setTarget(cls, LINKS.superclass$7jGM, SNodeOperations.cast(getTypeByASMType(refSuperclass, null, cls), CONCEPTS.ClassifierType$IZ));
     }
     for (ASMType type : myParsedClass.getGenericInterfaces()) {
-      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.implementedInterface$mdc6)).addElement(SNodeOperations.cast(getTypeByASMType(type, null, cls), CONCEPTS.ClassifierType$IZ));
+      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.implementedInterface$KoQU)).addElement(SNodeOperations.cast(getTypeByASMType(type, null, cls), CONCEPTS.ClassifierType$IZ));
     }
   }
   private void updateInstanceFields(SNode cls) {
@@ -254,7 +254,7 @@ public class ClassifierUpdater {
       }
       SNode decl = _quotation_createNode_ol94f8_a0d0a0z(null, ASMNodeId.createId(myParsedClass, field), createVisibility(field), getTypeByASMType(field.getGenericType(), null, cls), field.getName());
       for (ASMAnnotation annotation : field.getAnnotations()) {
-        ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.annotation$oVP4)).addElement(createAnnotation(annotation));
+        ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.annotation$4YGW)).addElement(createAnnotation(annotation));
       }
       if (field.isDeprecated()) {
         BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(decl)), CONCEPTS.FieldDeclaration$Ps, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.FieldDeclaration$Ps, "5H8W9_ECA0g"), decl);
@@ -262,7 +262,7 @@ public class ClassifierUpdater {
 
       updateFieldJavadoc(decl, field);
 
-      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$oYX5)).addElement(decl);
+      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$6v_r)).addElement(decl);
     }
   }
   private void updateStaticFields(SNode cls) {
@@ -281,32 +281,32 @@ public class ClassifierUpdater {
         SNode ecd = _quotation_createNode_ol94f8_a0b0d0a0ab(null, ASMNodeId.createId(myParsedClass, field), field.getName());
         updateFieldJavadoc(ecd, field);
 
-        ListSequence.fromList(SLinkOperations.getChildren(enumClass, LINKS.enumConstant$urAQ)).addElement(ecd);
+        ListSequence.fromList(SLinkOperations.getChildren(enumClass, LINKS.enumConstant$JnOa)).addElement(ecd);
       } else {
         SNode decl = _quotation_createNode_ol94f8_a0a0a3a0a62(null, ASMNodeId.createId(myParsedClass, field), createVisibility(field), getTypeByASMType(field.getGenericType(), null, cls), field.getName());
         for (ASMAnnotation annotation : field.getAnnotations()) {
-          ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.annotation$oVP4)).addElement(createAnnotation(annotation));
+          ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.annotation$4YGW)).addElement(createAnnotation(annotation));
         }
         if (field.isDeprecated()) {
           BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(decl)), CONCEPTS.StaticFieldDeclaration$R5, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.StaticFieldDeclaration$R5, "5H8W9_ECCQE"), decl);
         }
 
         if (field.isFinal()) {
-          SPropertyOperations.assign(decl, PROPS.isFinal$hIht, true);
+          SPropertyOperations.assign(decl, PROPS.isFinal$_qt3, true);
           if (field.hasValue()) {
             Object value = field.getValue();
             if (value instanceof Integer) {
-              SLinkOperations.setTarget(decl, LINKS.initializer$KgD, _quotation_createNode_ol94f8_a0a0b0b0e0a3a0a62(Integer.parseInt(value.toString())));
+              SLinkOperations.setTarget(decl, LINKS.initializer$no3R, _quotation_createNode_ol94f8_a0a0b0b0e0a3a0a62(Integer.parseInt(value.toString())));
             } else if (value instanceof String) {
-              SLinkOperations.setTarget(decl, LINKS.initializer$KgD, _quotation_createNode_ol94f8_a0a0a1a1a4a0d0a0ab((String) value));
+              SLinkOperations.setTarget(decl, LINKS.initializer$no3R, _quotation_createNode_ol94f8_a0a0a1a1a4a0d0a0ab((String) value));
             }
           } else {
-            SLinkOperations.setTarget(decl, LINKS.initializer$KgD, _quotation_createNode_ol94f8_a0a0a1a4a0d0a0ab());
+            SLinkOperations.setTarget(decl, LINKS.initializer$no3R, _quotation_createNode_ol94f8_a0a0a1a4a0d0a0ab());
           }
         }
         updateFieldJavadoc(decl, field);
 
-        ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$oYX5)).addElement(decl);
+        ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$6v_r)).addElement(decl);
       }
     }
   }
@@ -321,19 +321,19 @@ public class ClassifierUpdater {
     }
     SNode c = AttributeOperations.createAndAddAttribute(classMember, new IAttributeDescriptor.AllAttributes(), CONCEPTS.FieldDocComment$I8);
     for (String l : text.split("\n")) {
-      SPropertyOperations.set(SLinkOperations.addNewChild(SLinkOperations.addNewChild(c, LINKS.body$ULZO, null), LINKS.part$fv9R, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, l);
+      SPropertyOperations.set(SLinkOperations.addNewChild(SLinkOperations.addNewChild(c, LINKS.body$udUc, null), LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, l);
     }
   }
 
   private void updateAnnotationMethods(final SNode annotation) {
     for (ASMMethod m : myParsedClass.getDeclaredMethods()) {
       SNode md = _quotation_createNode_ol94f8_a0a0a0eb(null, ASMNodeId.createAnnotationMethodId(myParsedClass.getFqName(), m.getName()), getTypeByASMType(m.getGenericReturnType(), null, annotation), m.getName());
-      SLinkOperations.setTarget(md, LINKS.visibility$2GiC, _quotation_createNode_ol94f8_a0b0a0eb());
+      SLinkOperations.setTarget(md, LINKS.visibility$jt1o, _quotation_createNode_ol94f8_a0b0a0eb());
       if (m.getAnnotationDefault() != null) {
-        SLinkOperations.setTarget(md, LINKS.defaultValue$9cod, getAnnotationValue(m.getAnnotationDefault()));
+        SLinkOperations.setTarget(md, LINKS.defaultValue$sZIj, getAnnotationValue(m.getAnnotationDefault()));
       }
 
-      ListSequence.fromList(SLinkOperations.getChildren(annotation, LINKS.method$oAl2)).addElement(md);
+      ListSequence.fromList(SLinkOperations.getChildren(annotation, LINKS.method$U$bY)).addElement(md);
     }
   }
   private void updateConstructors(final SNode cls) {
@@ -345,17 +345,17 @@ public class ClassifierUpdater {
         continue;
       }
 
-      SNode constructor = _quotation_createNode_ol94f8_a0d0a0fb(null, ASMNodeId.createId(myParsedClass, c), createVisibility(c), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList")), SPropertyOperations.getString(cls, PROPS.name$tAp1));
+      SNode constructor = _quotation_createNode_ol94f8_a0d0a0fb(null, ASMNodeId.createId(myParsedClass, c), createVisibility(c), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList")), SPropertyOperations.getString(cls, PROPS.name$lA7v));
 
       for (ASMAnnotation annotation : c.getAnnotations()) {
-        ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.annotation$oVP4)).addElement(createAnnotation(annotation));
+        ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.annotation$4YGW)).addElement(createAnnotation(annotation));
       }
 
       if (c.isDeprecated()) {
         BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(constructor)), CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.BaseMethodDeclaration$RR, "5H8W9_EDFVg"), constructor);
       }
       for (ASMTypeVariable tv : c.getTypeParameters()) {
-        ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.typeVariableDeclaration$ziZT)).addElement(_quotation_createNode_ol94f8_a0a0a8a0a13(tv.getName()));
+        ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.typeVariableDeclaration$6cWB)).addElement(_quotation_createNode_ol94f8_a0a0a8a0a13(tv.getName()));
       }
 
       {
@@ -369,21 +369,21 @@ public class ClassifierUpdater {
           pt_var = pt_it.next();
           pn_var = pn_it.next();
           pa_var = pa_it.next();
-          if (!(SPropertyOperations.getBoolean(cls, PROPS.isStatic$6ZHJ)) && c.getGenericParameterTypes().get(0) == pt_var) {
+          if (!(SPropertyOperations.getBoolean(cls, PROPS.isStatic$oR9L)) && c.getGenericParameterTypes().get(0) == pt_var) {
             continue;
           }
 
           SNode pd = _quotation_createNode_ol94f8_a0c0k0a0fb(getTypeByASMType(pt_var, constructor, cls), pn_var);
           addAnnotationsToParameter(pd, pa_var);
-          ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.parameter$WIkZ)).addElement(pd);
+          ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.parameter$qsax)).addElement(pd);
         }
       }
       for (ASMType exception : c.getExceptionTypes()) {
-        ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.throwsItem$gr7e)).addElement(getTypeByASMType(exception, constructor, cls));
+        ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.throwsItem$X8vM)).addElement(getTypeByASMType(exception, constructor, cls));
       }
       updateMethodJavadoc(constructor, c);
 
-      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$oYX5)).addElement(constructor);
+      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$6v_r)).addElement(constructor);
     }
   }
 
@@ -398,7 +398,7 @@ public class ClassifierUpdater {
     }
     SNode c = AttributeOperations.createAndSetAttrbiute(classMember, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx), CONCEPTS.MethodDocComment$Vx);
     for (String l : text.split("\n")) {
-      SPropertyOperations.set(SLinkOperations.addNewChild(SLinkOperations.addNewChild(c, LINKS.body$ULZO, null), LINKS.part$fv9R, CONCEPTS.TextCommentLinePart$RY), PROPS.text$5Ox0, l);
+      SPropertyOperations.set(SLinkOperations.addNewChild(SLinkOperations.addNewChild(c, LINKS.body$udUc, null), LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, l);
     }
   }
 
@@ -414,14 +414,14 @@ public class ClassifierUpdater {
       SNode md = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"));
       ((jetbrains.mps.smodel.SNode) md).setId(ASMNodeId.createId(myParsedClass, m));
       if (!(m.isAbstract()) && SNodeOperations.isInstanceOf(cls, CONCEPTS.Interface$Kp)) {
-        SLinkOperations.addNewChild(md, LINKS.modifiers$akE0, CONCEPTS.DefaultModifier$Z2);
+        SLinkOperations.addNewChild(md, LINKS.modifiers$m0, CONCEPTS.DefaultModifier$Z2);
       }
-      SPropertyOperations.assign(md, PROPS.isAbstract$cU_H, m.isAbstract());
-      SLinkOperations.setTarget(md, LINKS.visibility$2GiC, createVisibility(m));
+      SPropertyOperations.assign(md, PROPS.isAbstract$gogN, m.isAbstract());
+      SLinkOperations.setTarget(md, LINKS.visibility$jt1o, createVisibility(m));
       this.updateBaseMethod(m, md, cls);
       updateMethodJavadoc(md, m);
 
-      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$oYX5)).addElement(md);
+      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$6v_r)).addElement(md);
     }
   }
   private void updateStaticMethods(SNode cls) {
@@ -438,28 +438,28 @@ public class ClassifierUpdater {
 
       SNode md = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"));
       ((jetbrains.mps.smodel.SNode) md).setId(ASMNodeId.createId(myParsedClass, m));
-      SLinkOperations.setTarget(md, LINKS.visibility$2GiC, createVisibility(m));
+      SLinkOperations.setTarget(md, LINKS.visibility$jt1o, createVisibility(m));
       updateBaseMethod(m, md, cls);
       updateMethodJavadoc(md, m);
 
-      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$oYX5)).addElement(md);
+      ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$6v_r)).addElement(md);
     }
   }
   private void updateBaseMethod(ASMMethod m, SNode md, SNode cls) {
-    SPropertyOperations.assign(md, PROPS.name$tAp1, m.getName());
-    SLinkOperations.setTarget(md, LINKS.body$WIlu, _quotation_createNode_ol94f8_a0b0lb());
-    SPropertyOperations.assign(md, PROPS.isFinal$I$Qu, m.isFinal());
+    SPropertyOperations.assign(md, PROPS.name$lA7v, m.getName());
+    SLinkOperations.setTarget(md, LINKS.body$qspy, _quotation_createNode_ol94f8_a0b0lb());
+    SPropertyOperations.assign(md, PROPS.isFinal$zQoy, m.isFinal());
 
     for (ASMAnnotation annotation : m.getAnnotations()) {
-      ListSequence.fromList(SLinkOperations.getChildren(md, LINKS.annotation$oVP4)).addElement(createAnnotation(annotation));
+      ListSequence.fromList(SLinkOperations.getChildren(md, LINKS.annotation$4YGW)).addElement(createAnnotation(annotation));
     }
 
     if (m.isDeprecated()) {
       BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(md)), CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.BaseMethodDeclaration$RR, "5H8W9_EDFVg"), md);
     }
-    SPropertyOperations.assign(md, PROPS.isSynchronized$PMx, m.isSynchronized());
+    SPropertyOperations.assign(md, PROPS.isSynchronized$q3tZ, m.isSynchronized());
     updateTypeVariables(m, md, cls);
-    SLinkOperations.setTarget(md, LINKS.returnType$WIkw, getTypeByASMType(m.getGenericReturnType(), md, cls));
+    SLinkOperations.setTarget(md, LINKS.returnType$qrVw, getTypeByASMType(m.getGenericReturnType(), md, cls));
     {
       Iterator<ASMType> pt_it = ListSequence.fromList(m.getGenericParameterTypes()).iterator();
       Iterator<String> pn_it = ListSequence.fromList(m.getParameterNames()).iterator();
@@ -473,11 +473,11 @@ public class ClassifierUpdater {
         pa_var = pa_it.next();
         SNode pd = _quotation_createNode_ol94f8_a0a0k0lb(getTypeByASMType(pt_var, md, cls), pn_var);
         addAnnotationsToParameter(pd, pa_var);
-        ListSequence.fromList(SLinkOperations.getChildren(md, LINKS.parameter$WIkZ)).addElement(pd);
+        ListSequence.fromList(SLinkOperations.getChildren(md, LINKS.parameter$qsax)).addElement(pd);
       }
     }
     for (ASMType exception : m.getExceptionTypes()) {
-      ListSequence.fromList(SLinkOperations.getChildren(md, LINKS.throwsItem$gr7e)).addElement(getTypeByASMType(exception, md, cls));
+      ListSequence.fromList(SLinkOperations.getChildren(md, LINKS.throwsItem$X8vM)).addElement(getTypeByASMType(exception, md, cls));
     }
   }
   private boolean isGeneratedEnumMethod(ASMMethod m) {
@@ -515,7 +515,7 @@ public class ClassifierUpdater {
     return null;
   }
   private void addAnnotationsToParameter(SNode pd, List<ASMAnnotation> anns) {
-    ListSequence.fromList(SLinkOperations.getChildren(pd, LINKS.annotation$oVP4)).addSequence(ListSequence.fromList(anns).select(new ISelector<ASMAnnotation, SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(pd, LINKS.annotation$4YGW)).addSequence(ListSequence.fromList(anns).select(new ISelector<ASMAnnotation, SNode>() {
       public SNode select(ASMAnnotation it) {
         return createAnnotation(it);
       }
@@ -524,12 +524,12 @@ public class ClassifierUpdater {
   private SNode createAnnotation(ASMAnnotation annotation) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance"));
     ASMClassType c = (ASMClassType) annotation.getType();
-    addClassifierReference(result, LINKS.annotation$zNxu, c);
+    addClassifierReference(result, LINKS.annotation$lXdy, c);
     Map<String, Object> values = ((Map<String, Object>) annotation.getValues());
     for (String key : MapSequence.fromMap(values).keySet()) {
       SNode value = _quotation_createNode_ol94f8_a0a0e0qb(getAnnotationValue(MapSequence.fromMap(values).get(key)));
-      addAnnotationMethodReference(value, LINKS.key$y5Ln, c, key);
-      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.value$EXfF)).addElement(value);
+      addAnnotationMethodReference(value, LINKS.key$wMU9, c, key);
+      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.value$NE_P)).addElement(value);
     }
     return result;
   }
@@ -587,13 +587,13 @@ public class ClassifierUpdater {
       ASMEnumValue enumValue = (ASMEnumValue) value;
       ASMClassType c = (ASMClassType) enumValue.getType();
       SNode res = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-      addClassifierReference(res, LINKS.enumClass$9jPZ, c);
-      addEnumConstReference(res, LINKS.enumConstantDeclaration$fB6v, enumValue);
+      addClassifierReference(res, LINKS.enumClass$wB9x, c);
+      addEnumConstReference(res, LINKS.enumConstantDeclaration$zW91, enumValue);
       return res;
     }
     if (value instanceof ASMClassType) {
       SNode res = createClassifierClassExpression_ol94f8_a0a0o0rb();
-      addClassifierReference(res, LINKS.classifier$V09, (ASMClassType) value);
+      addClassifierReference(res, LINKS.classifier$s_4n, (ASMClassType) value);
       return res;
     }
     if (LOG.isEnabledFor(Level.ERROR)) {
@@ -649,7 +649,7 @@ public class ClassifierUpdater {
     if (type instanceof ASMClassType) {
       ASMClassType c = (ASMClassType) type;
       SNode classifierType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-      addClassifierReference(classifierType, LINKS.classifier$pQ_R, c);
+      addClassifierReference(classifierType, LINKS.classifier$xslD, c);
       return classifierType;
     }
     if (type instanceof ASMParameterizedType) {
@@ -690,7 +690,7 @@ public class ClassifierUpdater {
       }
       toAdd.add(type);
     }
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.parameter$dQne)).addSequence(ListSequence.fromList(toAdd));
+    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.parameter$HlfM)).addSequence(ListSequence.fromList(toAdd));
   }
   private void addClassifierReference(SNode sourceNode, SReferenceLink role, ASMClassType clsType) {
     if (sourceNode.getReference(role) != null) {
@@ -1108,7 +1108,7 @@ public class ClassifierUpdater {
   }
   private static SNode createClassifierClassExpression_ol94f8_a0a0o0rb() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierClassExpression$T1);
-    n0.setReferenceTarget(LINKS.classifier$V09, null);
+    n0.setReferenceTarget(LINKS.classifier$s_4n, null);
     return n0.getResult();
   }
   private static SNode createBooleanType_ol94f8_a0a0a44() {
@@ -1221,45 +1221,45 @@ public class ClassifierUpdater {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
-    /*package*/ static final SProperty isFinal$dzaH = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
-    /*package*/ static final SProperty text$5Ox0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty isStatic$6ZHJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic");
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
-    /*package*/ static final SProperty isSynchronized$PMx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isStatic$oR9L = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink body$ULZO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
-    /*package*/ static final SContainmentLink part$fv9R = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink bound$dqDF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
-    /*package*/ static final SContainmentLink auxBounds$jS6R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink enumConstant$urAQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
-    /*package*/ static final SContainmentLink defaultValue$9cod = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, 0x505a7bf53e13af48L, "defaultValue");
-    /*package*/ static final SContainmentLink method$oAl2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SReferenceLink key$y5Ln = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
-    /*package*/ static final SContainmentLink value$EXfF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
-    /*package*/ static final SReferenceLink enumClass$9jPZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
-    /*package*/ static final SReferenceLink enumConstantDeclaration$fB6v = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
-    /*package*/ static final SReferenceLink classifier$V09 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink body$udUc = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SContainmentLink auxBounds$CbkD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SContainmentLink defaultValue$sZIj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, 0x505a7bf53e13af48L, "defaultValue");
+    /*package*/ static final SContainmentLink method$U$bY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SReferenceLink key$wMU9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
+    /*package*/ static final SContainmentLink value$NE_P = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
+    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SReferenceLink classifier$s_4n = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 }

@@ -32,10 +32,10 @@ public final class FQNameClassifierSpecification__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static String getClassifierFqName_id4HFrnGErDob(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.classifierFQName$esZ1);
+    return SPropertyOperations.getString(__thisNode__, PROPS.classifierFQName$2xv);
   }
   /*package*/ static String getSModelReference_id4HFrnGEt_VQ(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.smodelReference$rQr7);
+    return SPropertyOperations.getString(__thisNode__, PROPS.smodelReference$vn8p);
   }
 
   /*package*/ FQNameClassifierSpecification__BehaviorDescriptor() {
@@ -87,7 +87,7 @@ public final class FQNameClassifierSpecification__BehaviorDescriptor extends Bas
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty classifierFQName$esZ1 = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, 0x4b6b6d7b2a6bdf42L, "classifierFQName");
-    /*package*/ static final SProperty smodelReference$rQr7 = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, 0x4b6b6d7b2a76ca23L, "smodelReference");
+    /*package*/ static final SProperty classifierFQName$2xv = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, 0x4b6b6d7b2a6bdf42L, "classifierFQName");
+    /*package*/ static final SProperty smodelReference$vn8p = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, 0x4b6b6d7b2a76ca23L, "smodelReference");
   }
 }

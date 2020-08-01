@@ -75,7 +75,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.resourceType$oBTu;
+      return LINKS.resourceType$VkPy;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.ResourceClassifierType$W7;
@@ -88,7 +88,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(resourceTypeListHandler_57opql_a0.this.getNode(), LINKS.resourceType$oBTu));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(resourceTypeListHandler_57opql_a0.this.getNode(), LINKS.resourceType$VkPy));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -143,7 +143,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resourceType$oBTu = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aab1d4L, 0x1a6da65e8aab1d7L, "resourceType");
+    /*package*/ static final SContainmentLink resourceType$VkPy = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aab1d4L, 0x1a6da65e8aab1d7L, "resourceType");
   }
 
   private static final class CONCEPTS {

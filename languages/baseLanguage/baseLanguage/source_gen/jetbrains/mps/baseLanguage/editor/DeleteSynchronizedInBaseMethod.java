@@ -22,7 +22,7 @@ public class DeleteSynchronizedInBaseMethod {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.isSynchronized$PMx, false);
+        SPropertyOperations.assign(node, PROPS.isSynchronized$q3tZ, false);
         CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, false);
       }
 
@@ -34,7 +34,7 @@ public class DeleteSynchronizedInBaseMethod {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.isSynchronized$PMx, false);
+        SPropertyOperations.assign(node, PROPS.isSynchronized$q3tZ, false);
         CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, true);
       }
 
@@ -87,6 +87,6 @@ public class DeleteSynchronizedInBaseMethod {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isSynchronized$PMx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
   }
 }

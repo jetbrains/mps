@@ -26,7 +26,7 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_0 implements PastePos
       Scope surroundingScope = Scope.getScope(Scope.parent(pastedNode), pastedNode, CONCEPTS.VariableDeclaration$xe);
       if (surroundingScope != null && surroundingScope.contains(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(pastedNode))) {
         SNode variableReference = SNodeFactoryOperations.replaceWithNewChild(pastedNode, CONCEPTS.VariableReference$sQ);
-        SLinkOperations.setTarget(variableReference, LINKS.variableDeclaration$2ky6, SNodeOperations.cast(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(pastedNode), CONCEPTS.VariableDeclaration$xe));
+        SLinkOperations.setTarget(variableReference, LINKS.variableDeclaration$7WwU, SNodeOperations.cast(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(pastedNode), CONCEPTS.VariableDeclaration$xe));
       }
     }
   }
@@ -38,6 +38,6 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_0 implements PastePos
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

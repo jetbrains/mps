@@ -116,7 +116,7 @@ public class TestSubstituteParent_WrapDefaultSubstituteMenu extends Transformati
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         boolean b = _context.getEditorContext() != null && _context.getNode() != null & _context.getModel() != null && createdNode != null && targetNode != null;
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.TestSubstituteParent$sk), LINKS.wrapDefaultSubstituteMenuFromTransform$PZs1)).addElement(createdNode);
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.TestSubstituteParent$sk), LINKS.wrapDefaultSubstituteMenuFromTransform$9I$v)).addElement(createdNode);
       }
 
       @Override
@@ -148,6 +148,6 @@ public class TestSubstituteParent_WrapDefaultSubstituteMenu extends Transformati
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink wrapDefaultSubstituteMenuFromTransform$PZs1 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x7315fee8e56ddaeeL, "wrapDefaultSubstituteMenuFromTransform");
+    /*package*/ static final SContainmentLink wrapDefaultSubstituteMenuFromTransform$9I$v = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x7315fee8e56ddaeeL, "wrapDefaultSubstituteMenuFromTransform");
   }
 }

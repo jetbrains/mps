@@ -91,7 +91,7 @@ public class BwfFileSet_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode cp = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfFileSet$Db);
-          ListSequence.fromList(SLinkOperations.getChildren(cp, LINKS.elements$UwEw)).addElement(nodeToWrap);
+          ListSequence.fromList(SLinkOperations.getChildren(cp, LINKS.elements$lO_w)).addElement(nodeToWrap);
           return cp;
         }
 
@@ -128,6 +128,6 @@ public class BwfFileSet_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$UwEw = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, 0x6e014d63c07ebd1cL, "elements");
+    /*package*/ static final SContainmentLink elements$lO_w = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, 0x6e014d63c07ebd1cL, "elements");
   }
 }

@@ -18,10 +18,10 @@ public class DeclarationFactories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.LinkDeclaration$bA)) {
         SNode sampleLink = SNodeOperations.cast(sampleNode, CONCEPTS.LinkDeclaration$bA);
-        SPropertyOperations.assignEnum(newNode, PROPS.metaClass$tHD7, SPropertyOperations.getEnum(sampleLink, PROPS.metaClass$tHD7));
-        SPropertyOperations.assignEnum(newNode, PROPS.sourceCardinality$$E8z, SPropertyOperations.getEnum(sampleLink, PROPS.sourceCardinality$$E8z));
-        SPropertyOperations.assign(newNode, PROPS.role$r_O$, SPropertyOperations.getString(sampleLink, PROPS.role$r_O$));
-        SLinkOperations.setTarget(newNode, LINKS.target$egp8, SLinkOperations.getTarget(sampleLink, LINKS.target$egp8));
+        SPropertyOperations.assignEnum(newNode, PROPS.metaClass$p6Up, SPropertyOperations.getEnum(sampleLink, PROPS.metaClass$p6Up));
+        SPropertyOperations.assignEnum(newNode, PROPS.sourceCardinality$Kq8X, SPropertyOperations.getEnum(sampleLink, PROPS.sourceCardinality$Kq8X));
+        SPropertyOperations.assign(newNode, PROPS.role$nkts, SPropertyOperations.getString(sampleLink, PROPS.role$nkts));
+        SLinkOperations.setTarget(newNode, LINKS.target$TWaS, SLinkOperations.getTarget(sampleLink, LINKS.target$TWaS));
       }
     }
   }
@@ -29,8 +29,8 @@ public class DeclarationFactories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.PropertyDeclaration$c5)) {
         SNode sampleProperty = SNodeOperations.cast(sampleNode, CONCEPTS.PropertyDeclaration$c5);
-        SLinkOperations.setTarget(newNode, LINKS.dataType$fLUl, SLinkOperations.getTarget(sampleProperty, LINKS.dataType$fLUl));
-        SPropertyOperations.assign(newNode, PROPS.name$tAp1, SPropertyOperations.getString(sampleProperty, PROPS.name$tAp1));
+        SLinkOperations.setTarget(newNode, LINKS.dataType$Dbgb, SLinkOperations.getTarget(sampleProperty, LINKS.dataType$Dbgb));
+        SPropertyOperations.assign(newNode, PROPS.name$lA7v, SPropertyOperations.getString(sampleProperty, PROPS.name$lA7v));
       }
     }
   }
@@ -41,14 +41,14 @@ public class DeclarationFactories {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty sourceCardinality$$E8z = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty sourceCardinality$Kq8X = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 }

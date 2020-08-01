@@ -33,7 +33,7 @@ public final class BuildSource_JavaLibraryExternalJarFolder__BehaviorDescriptor 
   }
 
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
-    SNode artifact = BuildSource_JavaExternalJarFolderRef__BehaviorDescriptor.getDependencyTarget_id4RsV8qJH_ED.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extFolder$mQLv), artifacts);
+    SNode artifact = BuildSource_JavaExternalJarFolderRef__BehaviorDescriptor.getDependencyTarget_id4RsV8qJH_ED.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extFolder$4xY1), artifacts);
     if (artifact != null) {
       builder.addWithContent(artifact);
     }
@@ -87,6 +87,6 @@ public final class BuildSource_JavaLibraryExternalJarFolder__BehaviorDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extFolder$mQLv = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb65af8L, 0x4ddcec86afb65afaL, "extFolder");
+    /*package*/ static final SContainmentLink extFolder$4xY1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb65af8L, 0x4ddcec86afb65afaL, "extFolder");
   }
 }

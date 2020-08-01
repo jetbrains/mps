@@ -90,7 +90,7 @@ public class TestCompletionCustomization_ChildWrapSubstituteMenu_SubstituteMenu 
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5eddcL, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherBaseChild"));
-          SLinkOperations.setTarget(node, LINKS.wrapped$Mpjx, nodeToWrap);
+          SLinkOperations.setTarget(node, LINKS.wrapped$qgsZ, nodeToWrap);
           return node;
         }
         @Override
@@ -127,6 +127,6 @@ public class TestCompletionCustomization_ChildWrapSubstituteMenu_SubstituteMenu 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink wrapped$Mpjx = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8a8L, 0x49b1109510b5c8dfL, "wrapped");
+    /*package*/ static final SContainmentLink wrapped$qgsZ = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8a8L, 0x49b1109510b5c8dfL, "wrapped");
   }
 }

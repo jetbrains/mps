@@ -11,20 +11,20 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SwitchStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$z0sO));
-    for (SNode switchCase : SLinkOperations.getChildren(_context.getNode(), LINKS.case$31$8)) {
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$XdXc));
+    for (SNode switchCase : SLinkOperations.getChildren(_context.getNode(), LINKS.case$tKvS)) {
       _context.getBuilder().emitIfJump(_context.getBuilder().before(switchCase), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207558714582");
     }
-    _context.getBuilder().emitIfJump(_context.getBuilder().before(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$DENE)), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207558718604");
-    for (SNode switchCase : SLinkOperations.getChildren(_context.getNode(), LINKS.case$31$8)) {
+    _context.getBuilder().emitIfJump(_context.getBuilder().before(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$bJ1m)), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207558718604");
+    for (SNode switchCase : SLinkOperations.getChildren(_context.getNode(), LINKS.case$tKvS)) {
       _context.getBuilder().build((SNode) switchCase);
     }
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$DENE));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$bJ1m));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$z0sO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SContainmentLink case$31$8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
-    /*package*/ static final SContainmentLink defaultBlock$DENE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
+    /*package*/ static final SContainmentLink expression$XdXc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
+    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SContainmentLink defaultBlock$bJ1m = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
   }
 }

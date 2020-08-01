@@ -111,8 +111,8 @@
       <node id="3402736933910154624" at="78,81,79,109" concept="2" />
       <node id="3402736933910154624" at="81,29,82,17" concept="8" />
       <node id="3402736933910154624" at="86,0,87,0" concept="11" trace="DSLDescriptor$dS" />
-      <node id="3402736933910154624" at="90,0,91,0" concept="11" trace="preferredConcept$ybbQ" />
-      <node id="3402736933910154624" at="94,0,95,0" concept="11" trace="rootable$vg$g" />
+      <node id="3402736933910154624" at="90,0,91,0" concept="11" trace="preferredConcept$zqJa" />
+      <node id="3402736933910154624" at="94,0,95,0" concept="11" trace="rootable$91zK" />
       <node id="3402736933910605209" at="48,75,51,5" concept="5" />
       <node id="3402736933910761992" at="54,0,57,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/language/SLanguage;)Lorg/jetbrains/mps/openapi/module/SModule;" />
       <node id="3402736933910762014" at="58,0,61,0" concept="6" trace="translate#(Ljetbrains/mps/smodel/Language;)Ljava/lang/Iterable;" />
@@ -227,10 +227,10 @@
       <node id="6305381134221737587" at="113,69,114,73" concept="7" />
       <node id="6305381134221737587" at="114,73,115,53" concept="2" />
       <node id="6305381134221737587" at="115,53,116,26" concept="8" />
-      <node id="3402736933910478500" at="120,0,121,0" concept="11" trace="preferredConcept$ybbQ" />
-      <node id="3402736933910478500" at="121,0,122,0" concept="11" trace="descriptor$Zoot" />
-      <node id="3402736933910478500" at="125,0,126,0" concept="11" trace="conceptAlias$YIL2" />
-      <node id="3402736933910478500" at="126,0,127,0" concept="11" trace="name$tAp1" />
+      <node id="3402736933910478500" at="120,0,121,0" concept="11" trace="preferredConcept$zqJa" />
+      <node id="3402736933910478500" at="121,0,122,0" concept="11" trace="descriptor$GNQ3" />
+      <node id="3402736933910478500" at="125,0,126,0" concept="11" trace="conceptAlias$oDJY" />
+      <node id="3402736933910478500" at="126,0,127,0" concept="11" trace="name$lA7v" />
       <node id="3402736933910478500" at="130,0,131,0" concept="11" trace="ClassConcept$IY" />
       <node id="3402736933910478500" at="131,0,132,0" concept="11" trace="DSLAnnotation$dI" />
       <node id="1291729193367978933" at="93,10,95,5" concept="0" />
@@ -389,7 +389,7 @@
       <node id="501275604384421731" at="111,146,112,71" concept="2" />
       <node id="501275604384423230" at="112,71,113,74" concept="2" />
       <node id="4636688088951482428" at="117,0,118,0" concept="11" trace="DSLDescriptor$dS" />
-      <node id="4636688088951482428" at="121,0,122,0" concept="11" trace="preferredConcept$ybbQ" />
+      <node id="4636688088951482428" at="121,0,122,0" concept="11" trace="preferredConcept$zqJa" />
       <node id="4636688088951482428" at="97,0,99,0" concept="1" trace="ClassLikeMenuAdjustment_AppPluginPart#()V" />
       <node id="501275604384397087" at="58,0,61,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/language/SLanguage;)Lorg/jetbrains/mps/openapi/module/SModule;" />
       <node id="501275604384397109" at="63,0,66,0" concept="6" trace="translate#(Ljetbrains/mps/smodel/Language;)Ljava/lang/Iterable;" />

@@ -71,13 +71,13 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
     // the difference between two methods is very visible in main node selection in java run configuation () 
     return TypecheckingFacade.getFromContext().computeIsolated(new Function<TypecheckingSession, Boolean>() {
       public Boolean apply(TypecheckingSession session) {
-        return "main".equals(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)).count() == 1 && TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)).first()), _quotation_createNode_qyxuoz_b0a0a0a0a3a2());
+        return "main".equals(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$qsax)).count() == 1 && TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$qsax)).first()), _quotation_createNode_qyxuoz_b0a0a0a0a3a2());
       }
     });
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
     List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.StaticMethodDeclaration$eX);
-    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC));
+    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o));
     return result;
   }
   /*package*/ static boolean isStatic_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
@@ -96,18 +96,18 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
   }
   @Deprecated
   /*package*/ static boolean isAbstract_idhWjv7RO(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$LADB);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$1I9T);
   }
   /*package*/ static boolean isAnAbstractMethod_id28P2dHxCoRl(@NotNull SNode __thisNode__) {
     return false;
   }
   /*package*/ static boolean hasBody_id10BRnhak8m8(@NotNull SNode __thisNode__) {
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$LADB));
+    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$1I9T));
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
     SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
     if (containingClassifier != null) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
     }
     return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, CONCEPTS.MethodDeclaration$93);
   }
@@ -195,12 +195,12 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isNative$LADB = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isNative$1I9T = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

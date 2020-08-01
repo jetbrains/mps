@@ -22,10 +22,10 @@ public class supertypesOf_ClosureLiteralType_SubtypingRule extends SubtypingRule
   public supertypesOf_ClosureLiteralType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode closureLiteralType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$X89D) == null)) {
+    if ((SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$AWER) == null)) {
       return FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(closureLiteralType);
     } else {
-      return ClosureLiteralUtil.fillParams(_quotation_createNode_dhclly_a0a0a0a1(SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$X89D)), closureLiteralType);
+      return ClosureLiteralUtil.fillParams(_quotation_createNode_dhclly_a0a0a0a1(SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$AWER)), closureLiteralType);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -46,7 +46,7 @@ public class supertypesOf_ClosureLiteralType_SubtypingRule extends SubtypingRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink runtimeIface$X89D = MetaAdapterFactory.getReferenceLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x16630bea72d45e9L, "runtimeIface");
+    /*package*/ static final SReferenceLink runtimeIface$AWER = MetaAdapterFactory.getReferenceLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x16630bea72d45e9L, "runtimeIface");
   }
 
   private static final class CONCEPTS {

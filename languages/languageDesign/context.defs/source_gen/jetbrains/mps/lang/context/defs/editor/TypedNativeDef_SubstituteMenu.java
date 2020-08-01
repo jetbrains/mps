@@ -184,13 +184,13 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createTypedNativeDef_m53iyy_a0a0a(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypedNativeDef$BM);
-    n0.setProperty(PROPS.name$tAp1, p0);
-    n0.forChild(LINKS.type$AvB0).initNull();
+    n0.setProperty(PROPS.name$lA7v, p0);
+    n0.forChild(LINKS.type$DjT0).initNull();
     return n0.getResult();
   }
   private static SNode createTypedNativeDef_m53iyy_a0a0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypedNativeDef$BM);
-    n0.forChild(LINKS.type$AvB0).initNode(p0, CONCEPTS.Type$IG, true);
+    n0.forChild(LINKS.type$DjT0).initNode(p0, CONCEPTS.Type$IG, true);
     return n0.getResult();
   }
 
@@ -200,10 +200,10 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$AvB0 = MetaAdapterFactory.getContainmentLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type");
+    /*package*/ static final SContainmentLink type$DjT0 = MetaAdapterFactory.getContainmentLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type");
   }
 }

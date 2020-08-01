@@ -23,7 +23,7 @@ public final class NodeWithPorts__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.lineWidth$p7H2, 3);
+    SPropertyOperations.assign(__thisNode__, PROPS.lineWidth$aINY, 3);
   }
 
 
@@ -72,6 +72,6 @@ public final class NodeWithPorts__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty lineWidth$p7H2 = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf41f71d1L, 0x4ce40ecaf41ff260L, "lineWidth");
+    /*package*/ static final SProperty lineWidth$aINY = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf41f71d1L, 0x4ce40ecaf41ff260L, "lineWidth");
   }
 }

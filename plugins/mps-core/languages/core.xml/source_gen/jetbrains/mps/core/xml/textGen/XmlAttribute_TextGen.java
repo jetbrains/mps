@@ -22,19 +22,19 @@ public class XmlAttribute_TextGen extends TextGenDescriptorBase {
       tgs.indent();
       tgs.append("\t");
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.attrName$j_5Y));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.attrName$uXT2));
     tgs.append("=\"");
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.value$RZKQ)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.value$7SEa)) {
       tgs.appendNode(item);
     }
     tgs.append("\"");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty attrName$j_5Y = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
+    /*package*/ static final SProperty attrName$uXT2 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$RZKQ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
+    /*package*/ static final SContainmentLink value$7SEa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
   }
 }

@@ -45,7 +45,7 @@ public class NodeDataFlowCheckerUtil {
     })) {
       assert AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO)) != null;
       SNode container = AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO));
-      for (SNode operation : SLinkOperations.getChildren(container, LINKS.nodeOperations$HdFm)) {
+      for (SNode operation : SLinkOperations.getChildren(container, LINKS.nodeOperations$TBZE)) {
         if (ListSequence.fromList(instructions).isNotEmpty()) {
           instruction = program.getInstructionsFor(child).get(0);
         } else {
@@ -62,14 +62,14 @@ public class NodeDataFlowCheckerUtil {
 
         if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableInitialized$3y)) {
           Set<Object> vars = (Set<Object>) initialized.get(instruction);
-          SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$3y), LINKS.var$rEWh);
-          Assert.assertTrue("variable <" + var + "> is not initialized", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$2ky6)));
+          SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$3y), LINKS.var$pNcf);
+          Assert.assertTrue("variable <" + var + "> is not initialized", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$7WwU)));
         }
 
         if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableAlive$cg)) {
           Set<Object> vars = (Set<Object>) live.get(instruction);
-          SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$3y), LINKS.var$rEWh);
-          Assert.assertTrue("variable <" + var + "> is not alive", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$2ky6)));
+          SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$3y), LINKS.var$pNcf);
+          Assert.assertTrue("variable <" + var + "> is not alive", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$7WwU)));
         }
       }
     }
@@ -85,8 +85,8 @@ public class NodeDataFlowCheckerUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeOperations$HdFm = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
-    /*package*/ static final SContainmentLink var$rEWh = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0843a235L, 0x11b0843f269L, "var");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink nodeOperations$TBZE = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
+    /*package*/ static final SContainmentLink var$pNcf = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0843a235L, 0x11b0843f269L, "var");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

@@ -34,8 +34,8 @@
       <node id="7943979732673275737" at="82,0,83,0" concept="7" trace="breakingNode_fz49k4_a0a0a0a0a1a0a0a0d" />
       <node id="7943979732673275737" at="85,0,86,0" concept="7" trace="EventReference$2D" />
       <node id="7943979732673275737" at="86,0,87,0" concept="7" trace="Transition$O7" />
-      <node id="7943979732673275737" at="90,0,91,0" concept="7" trace="event$Ccrw" />
-      <node id="7943979732673275737" at="91,0,92,0" concept="7" trace="events$ue0v" />
+      <node id="7943979732673275737" at="90,0,91,0" concept="7" trace="event$u1kw" />
+      <node id="7943979732673275737" at="91,0,92,0" concept="7" trace="events$CMf1" />
       <node id="7943979732673275737" at="33,0,36,0" concept="0" trace="EventReference_Constraints#()V" />
       <node id="7943979732673275737" at="43,0,46,9" concept="2" />
       <node id="7943979732673275737" at="78,0,81,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -152,8 +152,8 @@
       <node id="7943979732673497617" at="82,0,83,0" concept="7" trace="breakingNode_fj6pw8_a0a0a0a0a1a0a0a0d" />
       <node id="7943979732673497617" at="85,0,86,0" concept="7" trace="StateReference$1F" />
       <node id="7943979732673497617" at="86,0,87,0" concept="7" trace="Transition$O7" />
-      <node id="7943979732673497617" at="90,0,91,0" concept="7" trace="state$Ccqw" />
-      <node id="7943979732673497617" at="91,0,92,0" concept="7" trace="states$ue1t" />
+      <node id="7943979732673497617" at="90,0,91,0" concept="7" trace="state$u0Pw" />
+      <node id="7943979732673497617" at="91,0,92,0" concept="7" trace="states$CMH3" />
       <node id="7943979732673497617" at="33,0,36,0" concept="0" trace="StateReference_Constraints#()V" />
       <node id="7943979732673497617" at="43,0,46,9" concept="2" />
       <node id="7943979732673497617" at="78,0,81,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

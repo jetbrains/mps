@@ -40,14 +40,14 @@ public class Word_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.value$cK70))) {
+        if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.value$bjp0))) {
           NewElementStrategyFactory.createNewElementStrategy(SNodeOperations.cast(node, CONCEPTS.Word$AM), editorContext, false).execute();
         }
         Object dataFromClipboard = TextEditorHelper.getDataFromClipboard();
         if (dataFromClipboard instanceof String) {
           SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
           SNodeOperations.insertNextSiblingChild(node, w);
-          SPropertyOperations.assign(w, PROPS.value$cK70, trim_x1dxyg_a2a2a2a1a0a0a1(dataFromClipboard.toString()));
+          SPropertyOperations.assign(w, PROPS.value$bjp0, trim_x1dxyg_a2a2a2a1a0a0a1(dataFromClipboard.toString()));
           SNode lastWord = Word__BehaviorDescriptor.normalize_id3yV2h2COV$s.invoke(w);
           SelectionUtil.selectCell(editorContext, lastWord, SelectionManager.LAST_CELL);
         }
@@ -79,7 +79,7 @@ public class Word_ActionMap {
                 return;
               }
               if (ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$hX))).count() == 1) {
-                Iterable<SNode> copies = ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$hX))).getElement(0), LINKS.elements$eRew)).select(new ISelector<SNode, SNode>() {
+                Iterable<SNode> copies = ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(SNodeOperations.as(n, CONCEPTS.IHoldLines$hX))).getElement(0), LINKS.elements$cK1w)).select(new ISelector<SNode, SNode>() {
                   public SNode select(SNode it) {
                     return SNodeOperations.copyNode(it);
                   }
@@ -112,14 +112,14 @@ public class Word_ActionMap {
 
             } else {
               SNode wrapper = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement"));
-              SLinkOperations.setTarget(wrapper, LINKS.node$daCF, n);
+              SLinkOperations.setTarget(wrapper, LINKS.node$o9GP, n);
               SNodeOperations.insertNextSiblingChild(currentNode.value, wrapper);
               currentNode.value = wrapper;
             }
           }
           SelectionUtil.selectCell(editorContext, currentNode.value, SelectionManager.LAST_CELL);
         }
-        if (isEmptyString(SPropertyOperations.getString(node, PROPS.value$cK70))) {
+        if (isEmptyString(SPropertyOperations.getString(node, PROPS.value$bjp0))) {
           SNodeOperations.deleteNode(node);
         }
       }
@@ -252,11 +252,11 @@ public class Word_ActionMap {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$daCF = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink node$o9GP = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

@@ -70,7 +70,7 @@ public class UnresolvedNameReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_46ekb8_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr), CONCEPTS.InstanceMethodCallOperation$1G);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5), CONCEPTS.InstanceMethodCallOperation$1G);
     }
     @NotNull
     @Override
@@ -119,8 +119,8 @@ public class UnresolvedNameReference_SubstituteMenu extends SubstituteMenuBase {
             SNode nodeToWrap = super.createNode(pattern);
             SNode dotExpression = SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a);
             SNode smc = SNodeFactoryOperations.createNewNode(CONCEPTS.StaticMethodCall$eu, null);
-            SReferenceLink role = LINKS.baseMethodDeclaration$$A7i;
-            SReference sReference = SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G).getReference(role);
+            SReferenceLink role = LINKS.baseMethodDeclaration$ItxI;
+            SReference sReference = SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G).getReference(role);
             // XXX why model of source node is considered for target, not sReference.getTargetModelReference? 
             smc.setReference(role, new StaticReference(role, smc, SModelOperations.getPointer(SNodeOperations.getModel(smc)), null, ((jetbrains.mps.smodel.SReference) sReference).getResolveInfo()));
             SNodeOperations.replaceWithAnother(dotExpression, smc);
@@ -163,8 +163,8 @@ public class UnresolvedNameReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

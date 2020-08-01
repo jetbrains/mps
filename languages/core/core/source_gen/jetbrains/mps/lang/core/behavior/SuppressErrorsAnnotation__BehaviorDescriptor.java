@@ -34,11 +34,11 @@ public final class SuppressErrorsAnnotation__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, NodeReportItem reportItem) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.filter$UuSh))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.filter$kXgf))) {
       return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id3612de_vrfV.invoke0(__thisNode__, CONCEPTS.ISuppressErrors$2l, reportItem));
     }
     try {
-      return FlavouredItem.ReportItemPredicate.deserialize(SPropertyOperations.getString(__thisNode__, PROPS.filter$UuSh)).test(reportItem);
+      return FlavouredItem.ReportItemPredicate.deserialize(SPropertyOperations.getString(__thisNode__, PROPS.filter$kXgf)).test(reportItem);
     } catch (IllegalArgumentException e) {
       return false;
     }
@@ -98,6 +98,6 @@ public final class SuppressErrorsAnnotation__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty filter$UuSh = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
+    /*package*/ static final SProperty filter$kXgf = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
   }
 }

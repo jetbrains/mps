@@ -27,7 +27,7 @@ public class SEnumOperations {
   @Deprecated
   @ToRemove(version = 19.1)
   public static List<SNode> getEnumMembers(SNode enumm) {
-    return SLinkOperations.getChildren(enumm, LINKS.member$_cRv);
+    return SLinkOperations.getChildren(enumm, LINKS.member$1eS1);
   }
   @Deprecated
   @ToRemove(version = 19.1)
@@ -42,28 +42,28 @@ public class SEnumOperations {
   @Deprecated
   @ToRemove(version = 19.1)
   public static String getEnumMemberValue(SNode member) {
-    return SPropertyOperations.getString(member, PROPS.internalValue$bx$m);
+    return SPropertyOperations.getString(member, PROPS.internalValue$_gAE);
   }
   @Deprecated
   @ToRemove(version = 19.1)
   public static String getEnumMemberPresentation(SNode member) {
-    return SPropertyOperations.getString(member, PROPS.externalValue$bx$P);
+    return SPropertyOperations.getString(member, PROPS.externalValue$_gPF);
   }
   @Deprecated
   @ToRemove(version = 19.1)
   public static int getDefaultEnumMemberIndex(SNode enumm) {
-    if (SPropertyOperations.getBoolean(enumm, PROPS.hasNoDefaultMember$9RJG)) {
+    if (SPropertyOperations.getBoolean(enumm, PROPS.hasNoDefaultMember$M06k)) {
       return -1;
     }
-    if ((SLinkOperations.getTarget(enumm, LINKS.defaultMember$C9qo) == null)) {
+    if ((SLinkOperations.getTarget(enumm, LINKS.defaultMember$szLC) == null)) {
       return 0;
     }
-    return SNodeOperations.getIndexInParent(SLinkOperations.getTarget(enumm, LINKS.defaultMember$C9qo));
+    return SNodeOperations.getIndexInParent(SLinkOperations.getTarget(enumm, LINKS.defaultMember$szLC));
   }
   @Deprecated
   @ToRemove(version = 19.1)
   public static SNode enumMemberForName(SNode enumm, final String name) {
-    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$_cRv)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$1eS1)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ((String) BHReflection.invoke0(it, CONCEPTS.EnumerationMemberDeclaration_Old$vn, SMethodTrimmedId.create("getName", CONCEPTS.EnumerationMemberDeclaration_Old$vn, "i2ZRO7Q"))).equals(name);
       }
@@ -75,9 +75,9 @@ public class SEnumOperations {
     if (value == null) {
       return ((SNode) BHReflection.invoke0(enumm, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll, SMethodTrimmedId.create("getDefaultMember", CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll, "hEwIM$p")));
     }
-    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$_cRv)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$1eS1)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.internalValue$bx$m).equals(value);
+        return SPropertyOperations.getString(it, PROPS.internalValue$_gAE).equals(value);
       }
     });
   }
@@ -175,8 +175,8 @@ public class SEnumOperations {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$_cRv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
-    /*package*/ static final SReferenceLink defaultMember$C9qo = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
+    /*package*/ static final SContainmentLink member$1eS1 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
+    /*package*/ static final SReferenceLink defaultMember$szLC = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
   }
 
   private static final class CONCEPTS {
@@ -185,8 +185,8 @@ public class SEnumOperations {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty internalValue$bx$m = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
-    /*package*/ static final SProperty externalValue$bx$P = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
-    /*package*/ static final SProperty hasNoDefaultMember$9RJG = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
+    /*package*/ static final SProperty internalValue$_gAE = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
+    /*package*/ static final SProperty externalValue$_gPF = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
+    /*package*/ static final SProperty hasNoDefaultMember$M06k = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
   }
 }

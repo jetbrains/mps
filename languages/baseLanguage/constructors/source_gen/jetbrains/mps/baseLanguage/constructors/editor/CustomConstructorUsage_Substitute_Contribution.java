@@ -81,7 +81,7 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
       List<SNode> containers = SModelOperations.rootsIncludingImported(_context.getModel(), CONCEPTS.CustomConstructorContainer$zy);
       List<SNode> customConstructors = new ArrayList<SNode>();
       for (SNode container : ListSequence.fromList(containers)) {
-        ListSequence.fromList(customConstructors).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.constructors$PI9j)));
+        ListSequence.fromList(customConstructors).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.constructors$1mwd)));
       }
       return customConstructors;
     }
@@ -130,7 +130,7 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode usage = SNodeFactoryOperations.createNewNode(CONCEPTS.CustomConstructorUsage$21, null);
-          SLinkOperations.setTarget(usage, LINKS.customConstructor$3U3x, myParameterObject);
+          SLinkOperations.setTarget(usage, LINKS.customConstructor$T7GZ, myParameterObject);
           return usage;
         }
 
@@ -153,12 +153,12 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.leftParenthesis$gTqC) + "..." + SPropertyOperations.getString(myParameterObject, PROPS.rightParenthesis$gTr7);
+          return SPropertyOperations.getString(myParameterObject, PROPS.leftParenthesis$bNTo) + "..." + SPropertyOperations.getString(myParameterObject, PROPS.rightParenthesis$bO8p);
         }
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.shortDescription$w2Xj);
+          return SPropertyOperations.getString(myParameterObject, PROPS.shortDescription$xrGd);
         }
       }
     }
@@ -171,13 +171,13 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink constructors$PI9j = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c1L, 0x2a36c1b072f3e746L, "constructors");
-    /*package*/ static final SReferenceLink customConstructor$3U3x = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
+    /*package*/ static final SContainmentLink constructors$1mwd = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c1L, 0x2a36c1b072f3e746L, "constructors");
+    /*package*/ static final SReferenceLink customConstructor$T7GZ = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rightParenthesis$gTr7 = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e011L, "rightParenthesis");
-    /*package*/ static final SProperty leftParenthesis$gTqC = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e010L, "leftParenthesis");
-    /*package*/ static final SProperty shortDescription$w2Xj = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty rightParenthesis$bO8p = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e011L, "rightParenthesis");
+    /*package*/ static final SProperty leftParenthesis$bNTo = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e010L, "leftParenthesis");
+    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 }

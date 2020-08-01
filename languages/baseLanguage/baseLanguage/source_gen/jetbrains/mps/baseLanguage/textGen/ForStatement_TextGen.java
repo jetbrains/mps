@@ -24,35 +24,35 @@ public class ForStatement_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createPositionInfo();
     tgs.createScopeInfo();
-    if (SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.loopLabel$Vp8n) != null) {
+    if (SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.loopLabel$Lb39) != null) {
       tgs.newLine();
-      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.loopLabel$Vp8n), PROPS.name$tAp1));
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.loopLabel$Lb39), PROPS.name$lA7v));
       tgs.append(":");
-    } else if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$5$eZ) != null) {
+    } else if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$Gzgx) != null) {
       tgs.newLine();
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$5$eZ));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$Gzgx));
       tgs.append(":");
     }
     tgs.newLine();
     tgs.indent();
     tgs.append("for (");
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.variable$H$_G) != null)) {
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.variable$H$_G));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.variable$4Igk) != null)) {
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.variable$4Igk));
     }
-    for (SNode additionalVar : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.additionalVar$$Q$J)) {
+    for (SNode additionalVar : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.additionalVar$QrML)) {
       tgs.append(", ");
       tgs.appendNode(additionalVar);
     }
     tgs.append("; ");
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.condition$c398) != null)) {
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.condition$c398));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.condition$PxqS) != null)) {
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.condition$PxqS));
     }
     tgs.append(";");
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.iteration$EIff)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.iteration$Gpoh)).isNotEmpty()) {
       tgs.append(" ");
     }
     {
-      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.iteration$EIff);
+      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.iteration$Gpoh);
       final SNode lastItem = Sequence.fromIterable(collection).last();
       for (SNode item : collection) {
         tgs.appendNode(item);
@@ -63,7 +63,7 @@ public class ForStatement_TextGen extends TextGenDescriptorBase {
     }
     tgs.append(") {");
     ctx.getBuffer().area().increaseIndent();
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.body$OFes));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.body$wVZ$));
     ctx.getBuffer().area().decreaseIndent();
     tgs.newLine();
     tgs.indent();
@@ -75,17 +75,17 @@ public class ForStatement_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink loopLabel$Vp8n = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
-    /*package*/ static final SContainmentLink variable$H$_G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink additionalVar$$Q$J = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
-    /*package*/ static final SContainmentLink condition$c398 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");
-    /*package*/ static final SContainmentLink iteration$EIff = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a6981b2c5L, "iteration");
-    /*package*/ static final SContainmentLink body$OFes = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink loopLabel$Lb39 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
+    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink additionalVar$QrML = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
+    /*package*/ static final SContainmentLink condition$PxqS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");
+    /*package*/ static final SContainmentLink iteration$Gpoh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a6981b2c5L, "iteration");
+    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty label$5$eZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty label$Gzgx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
   }
 
   private static final class CONCEPTS {

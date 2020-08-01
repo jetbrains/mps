@@ -40,7 +40,7 @@ public class ExpressionPatternProvider_Constraints extends BaseConstraintsDescri
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.expression$2how)) {
+    if (Objects.equals(link, LINKS.expression$6qRw)) {
       return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.AbstractClassifierReference$vv) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.QualifiedReference$lF);
     }
     return true;
@@ -54,6 +54,6 @@ public class ExpressionPatternProvider_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$2how = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
+    /*package*/ static final SContainmentLink expression$6qRw = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
   }
 }

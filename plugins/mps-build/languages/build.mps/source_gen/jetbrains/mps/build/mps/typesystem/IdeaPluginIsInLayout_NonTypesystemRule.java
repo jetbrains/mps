@@ -24,7 +24,7 @@ public class IdeaPluginIsInLayout_NonTypesystemRule extends AbstractNonTypesyste
   }
   public void applyRule(final SNode ideaPlugin, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode buildProject = SNodeOperations.getNodeAncestor(ideaPlugin, CONCEPTS.BuildProject$BF, false, false);
-    for (SNode layoutNode : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), CONCEPTS.BuildLayout_Node$kC, false, new SAbstractConcept[]{}))) {
+    for (SNode layoutNode : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(buildProject, LINKS.layout$fqCX), CONCEPTS.BuildLayout_Node$kC, false, new SAbstractConcept[]{}))) {
       if ((boolean) BuildLayout_Node__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(layoutNode, ideaPlugin)) {
         return;
       }
@@ -51,6 +51,6 @@ public class IdeaPluginIsInLayout_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink layout$tpCz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
+    /*package*/ static final SContainmentLink layout$fqCX = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
   }
 }

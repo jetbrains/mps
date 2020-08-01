@@ -49,14 +49,14 @@ public final class IMethodLike__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode getLastStatement_id271$s5ipHtv(@NotNull SNode __thisNode__, SNode statementList) {
     List<SNode> statements = new ArrayList<SNode>();
-    ListSequence.fromList(statements).addSequence(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)));
+    ListSequence.fromList(statements).addSequence(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)));
     while (SNodeOperations.getConcept(ListSequence.fromList(statements).last()) == CONCEPTS.Statement$ok || SNodeOperations.getConcept(ListSequence.fromList(statements).last()) == CONCEPTS.RemarkStatement$SN || SNodeOperations.getConcept(ListSequence.fromList(statements).last()) == CONCEPTS.SingleLineComment$jI) {
       ListSequence.fromList(statements).removeLastElement();
     }
     SNode lastStatement = ListSequence.fromList(statements).last();
     if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.BlockStatement$1i)) {
-      SNode innerStatementList = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0);
-      if (ListSequence.fromList(SLinkOperations.getChildren(innerStatementList, LINKS.statement$WHn8)).isEmpty()) {
+      SNode innerStatementList = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0);
+      if (ListSequence.fromList(SLinkOperations.getChildren(innerStatementList, LINKS.statement$pYcS)).isEmpty()) {
         return lastStatement;
       } else {
         return IMethodLike__BehaviorDescriptor.getLastStatement_id271$s5ipHtv.invoke(__thisNode__, innerStatementList);
@@ -129,8 +129,8 @@ public final class IMethodLike__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
   }
 
   private static final class CONCEPTS {

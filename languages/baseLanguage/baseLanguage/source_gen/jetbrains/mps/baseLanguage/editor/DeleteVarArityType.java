@@ -23,8 +23,8 @@ public class DeleteVarArityType {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if ((SLinkOperations.getTarget(node, LINKS.componentType$knmw) != null)) {
-          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.componentType$knmw));
+        if ((SLinkOperations.getTarget(node, LINKS.componentType$RjTw) != null)) {
+          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.componentType$RjTw));
         } else {
           SNodeOperations.deleteNode(node);
         }
@@ -75,6 +75,6 @@ public class DeleteVarArityType {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$knmw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
+    /*package*/ static final SContainmentLink componentType$RjTw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
   }
 }

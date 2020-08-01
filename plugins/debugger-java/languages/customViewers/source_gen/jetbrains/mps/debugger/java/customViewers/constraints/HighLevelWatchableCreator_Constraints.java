@@ -34,7 +34,7 @@ public class HighLevelWatchableCreator_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.watchable$tXZ8, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.watchable$x1$S, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,7 +51,7 @@ public class HighLevelWatchableCreator_Constraints extends BaseConstraintsDescri
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             for (SNode container : SModelOperations.roots(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.CustomWatchablesContainer$_n)) {
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.watchable$gv$w)));
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.watchable$ZiFw)));
             }
             return ListScope.forResolvableElements(result);
           }
@@ -70,7 +70,7 @@ public class HighLevelWatchableCreator_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink watchable$tXZ8 = MetaAdapterFactory.getReferenceLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x9a1514044030ceL, 0x9a151404409225L, "watchable");
-    /*package*/ static final SContainmentLink watchable$gv$w = MetaAdapterFactory.getContainmentLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x47047b766556943dL, 0x47047b766556943eL, "watchable");
+    /*package*/ static final SReferenceLink watchable$x1$S = MetaAdapterFactory.getReferenceLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x9a1514044030ceL, 0x9a151404409225L, "watchable");
+    /*package*/ static final SContainmentLink watchable$ZiFw = MetaAdapterFactory.getContainmentLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x47047b766556943dL, 0x47047b766556943eL, "watchable");
   }
 }

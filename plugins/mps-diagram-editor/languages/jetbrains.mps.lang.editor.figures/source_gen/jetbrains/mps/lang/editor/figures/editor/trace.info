@@ -157,12 +157,12 @@
       <node id="2178507174411801870" at="277,60,278,40" concept="1" />
       <node id="2178507174411801870" at="278,40,279,34" concept="1" />
       <node id="2178507174411801870" at="279,34,280,22" concept="6" />
-      <node id="2178507174411801757" at="284,0,285,0" concept="9" trace="classifier$Lwne" />
-      <node id="2178507174411801757" at="285,0,286,0" concept="9" trace="fields$LAX7" />
+      <node id="2178507174411801757" at="284,0,285,0" concept="9" trace="classifier$YFfM" />
+      <node id="2178507174411801757" at="285,0,286,0" concept="9" trace="fields$1RAp" />
       <node id="2178507174411801757" at="289,0,290,0" concept="9" trace="LinkAttribute$7j" />
       <node id="2178507174411801757" at="290,0,291,0" concept="9" trace="PropertyAttribute$jT" />
       <node id="2178507174411801757" at="291,0,292,0" concept="9" trace="ExternalViewFigureParameter$As" />
-      <node id="2178507174411801757" at="295,0,296,0" concept="9" trace="name$tAp1" />
+      <node id="2178507174411801757" at="295,0,296,0" concept="9" trace="name$lA7v" />
       <node id="2178507174411801757" at="52,0,54,0" concept="2" trace="myNode" />
       <node id="2178507174411801860" at="132,0,134,0" concept="2" trace="myNode" />
       <node id="2178507174411801757" at="201,0,203,0" concept="2" trace="myNode" />
@@ -423,10 +423,10 @@
       <node id="2178507174411802125" at="165,54,166,40" concept="1" />
       <node id="2178507174411802125" at="166,40,167,34" concept="1" />
       <node id="2178507174411802125" at="167,34,168,22" concept="6" />
-      <node id="2178507174411802073" at="172,0,173,0" concept="9" trace="fieldDeclaration$LAJ2" />
+      <node id="2178507174411802073" at="172,0,173,0" concept="9" trace="fieldDeclaration$1KLY" />
       <node id="2178507174411802073" at="176,0,177,0" concept="9" trace="LinkAttribute$7j" />
       <node id="2178507174411802073" at="177,0,178,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="2178507174411802073" at="181,0,182,0" concept="9" trace="name$tAp1" />
+      <node id="2178507174411802073" at="181,0,182,0" concept="9" trace="name$lA7v" />
       <node id="2178507174411802073" at="44,0,46,0" concept="2" trace="myNode" />
       <node id="2178507174411802123" at="115,0,117,0" concept="2" trace="myNode" />
       <node id="2178507174411802073" at="58,0,61,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

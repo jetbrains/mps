@@ -26,7 +26,7 @@ public class BuildSource_JavaModuleOptions_Constraints extends BaseConstraintsDe
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.compileOptions$vXAZ, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.compileOptions$uPSx, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -59,6 +59,6 @@ public class BuildSource_JavaModuleOptions_Constraints extends BaseConstraintsDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink compileOptions$vXAZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1708d207f2178b52L, 0x1708d207f214252bL, "compileOptions");
+    /*package*/ static final SReferenceLink compileOptions$uPSx = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1708d207f2178b52L, 0x1708d207f214252bL, "compileOptions");
   }
 }

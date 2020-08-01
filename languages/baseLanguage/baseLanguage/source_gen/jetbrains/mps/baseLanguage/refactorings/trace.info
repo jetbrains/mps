@@ -24,7 +24,7 @@
       <node id="2869783065404758436" at="21,39,22,30" concept="8" />
       <node id="2869783065404832785" at="24,69,25,95" concept="2" />
       <node id="2869783065404832781" at="27,86,28,202" concept="8" />
-      <node id="2869783065404758436" at="32,0,33,0" concept="11" trace="isFinal$hIht" />
+      <node id="2869783065404758436" at="32,0,33,0" concept="11" trace="isFinal$_qt3" />
       <node id="2869783065404758436" at="16,0,18,0" concept="1" trace="MakeFieldFinal#()V" />
       <node id="2869783065404758436" at="18,0,21,0" concept="6" trace="getRefactoringTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget;" />
       <node id="2869783065404758436" at="21,0,24,0" concept="6" trace="getUserFriendlyName#()Ljava/lang/String;" />
@@ -89,19 +89,19 @@
       <node id="3051706240924250108" at="20,60,21,22" concept="2" />
       <node id="7350413709594234741" at="21,22,22,20" concept="2" />
       <node id="7271917062036789846" at="27,87,28,94" concept="7" />
-      <node id="3051706240924250127" at="28,94,29,109" concept="2" />
+      <node id="3051706240924250127" at="28,94,29,108" concept="2" />
       <node id="3051706240924250138" at="31,5,32,41" concept="2" />
-      <node id="3508103059753504018" at="35,58,36,78" concept="8" />
+      <node id="3508103059753504018" at="35,58,36,77" concept="8" />
       <node id="3051706240924250100" at="40,0,41,0" concept="11" trace="ConceptMethodDeclaration$VN" />
-      <node id="3051706240924250100" at="44,0,45,0" concept="11" trace="overriddenMethod$6dmw" />
+      <node id="3051706240924250100" at="44,0,45,0" concept="11" trace="overriddenMethod$tTw" />
       <node id="3508103059753504024" at="35,0,38,0" concept="6" trace="getNewOverriddenMethod#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3051706240924250105" at="20,0,24,0" concept="1" trace="SafeDeleteMethod#(Lorg/jetbrains/mps/openapi/module/SearchScope;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3051706240924250125" at="26,141,30,7" concept="5" />
       <node id="3051706240924250118" at="25,28,31,5" concept="4" />
       <node id="3051706240924250116" at="25,0,34,0" concept="6" trace="doRefactor#()V" />
-      <scope id="3508103059753504014" at="35,58,36,78" />
+      <scope id="3508103059753504014" at="35,58,36,77" />
       <scope id="3051706240924250107" at="20,60,22,20" />
-      <scope id="3051706240924250126" at="27,87,29,109">
+      <scope id="3051706240924250126" at="27,87,29,108">
         <var name="methodDecl" id="7271917062036789847" />
       </scope>
       <scope id="3508103059753504024" at="35,0,38,0">
@@ -307,8 +307,8 @@
       <node id="9118878263582123087" at="62,69,63,430" concept="7" />
       <node id="9118878263582143904" at="63,430,64,162" concept="7" />
       <node id="809910721115306881" at="64,162,65,177" concept="2" />
-      <node id="809910721115146606" at="65,177,66,203" concept="2" />
-      <node id="809910721115209076" at="66,203,67,239" concept="2" />
+      <node id="809910721115146606" at="65,177,66,205" concept="2" />
+      <node id="809910721115209076" at="66,205,67,239" concept="2" />
       <node id="1809470990891353496" at="67,239,68,283" concept="2" />
       <node id="809910721115486076" at="68,283,69,0" concept="10" />
       <node id="809910721115132252" at="69,0,70,117" concept="2" />
@@ -349,12 +349,12 @@
       <node id="9118878263582100185" at="130,0,131,0" concept="11" trace="Classifier$hJ" />
       <node id="9118878263582100185" at="131,0,132,0" concept="11" trace="FieldDocComment$I8" />
       <node id="9118878263582100185" at="132,0,133,0" concept="11" trace="FieldReferenceOperation$N8" />
-      <node id="9118878263582100185" at="136,0,137,0" concept="11" trace="visibility$2GiC" />
-      <node id="9118878263582100185" at="137,0,138,0" concept="11" trace="type$pLrO" />
-      <node id="9118878263582100185" at="138,0,139,0" concept="11" trace="initializer$KgD" />
-      <node id="9118878263582100185" at="139,0,140,0" concept="11" trace="annotation$oVP4" />
-      <node id="9118878263582100185" at="143,0,144,0" concept="11" trace="name$tAp1" />
-      <node id="9118878263582100185" at="144,0,145,0" concept="11" trace="isFinal$hIht" />
+      <node id="9118878263582100185" at="136,0,137,0" concept="11" trace="visibility$jt1o" />
+      <node id="9118878263582100185" at="137,0,138,0" concept="11" trace="type$uWuc" />
+      <node id="9118878263582100185" at="138,0,139,0" concept="11" trace="initializer$no3R" />
+      <node id="9118878263582100185" at="139,0,140,0" concept="11" trace="annotation$4YGW" />
+      <node id="9118878263582100185" at="143,0,144,0" concept="11" trace="name$lA7v" />
+      <node id="9118878263582100185" at="144,0,145,0" concept="11" trace="isFinal$_qt3" />
       <node id="9118878263582108379" at="45,14,47,9" concept="0" />
       <node id="9118878263582143849" at="76,12,78,7" concept="0" />
       <node id="9118878263582143922" at="82,12,84,7" concept="0" />
@@ -466,7 +466,7 @@
       <node id="9118878263582108237" at="33,0,34,0" concept="11" trace="VariableReference$sQ" />
       <node id="9118878263582108237" at="34,0,35,0" concept="11" trace="FieldDeclaration$Ps" />
       <node id="9118878263582108237" at="35,0,36,0" concept="11" trace="FieldReferenceOperation$N8" />
-      <node id="9118878263582108237" at="39,0,40,0" concept="11" trace="variableDeclaration$2ky6" />
+      <node id="9118878263582108237" at="39,0,40,0" concept="11" trace="variableDeclaration$7WwU" />
       <node id="9118878263582108237" at="14,0,16,0" concept="1" trace="MakeFieldStatic_Target#()V" />
       <node id="9118878263582108237" at="16,0,19,0" concept="6" trace="getTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget/TargetType;" />
       <node id="9118878263582108237" at="19,0,22,0" concept="6" trace="allowMultipleTargets#()Z" />

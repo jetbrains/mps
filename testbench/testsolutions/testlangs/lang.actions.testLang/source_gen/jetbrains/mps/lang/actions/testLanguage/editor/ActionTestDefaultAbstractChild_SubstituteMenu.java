@@ -61,17 +61,17 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
       super.initialize(_context);
       condition = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.removeDefaultsPart$Qlv3);
+          return Objects.equals(_context.getLink(), LINKS.removeDefaultsPart$kq2t);
         }
       }.compute();
       condition1 = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.removeByConditionPart$LVGa);
+          return Objects.equals(_context.getLink(), LINKS.removeByConditionPart$bUoQ);
         }
       }.compute();
       condition2 = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.removePart$6NFL);
+          return Objects.equals(_context.getLink(), LINKS.removePart$j2cJ);
         }
       }.compute();
     }
@@ -209,9 +209,9 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink removeDefaultsPart$Qlv3 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc257b7aaaL, "removeDefaultsPart");
-    /*package*/ static final SContainmentLink removeByConditionPart$LVGa = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc2552e60aL, "removeByConditionPart");
-    /*package*/ static final SContainmentLink removePart$6NFL = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc25762f5fL, "removePart");
+    /*package*/ static final SContainmentLink removeDefaultsPart$kq2t = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc257b7aaaL, "removeDefaultsPart");
+    /*package*/ static final SContainmentLink removeByConditionPart$bUoQ = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc2552e60aL, "removeByConditionPart");
+    /*package*/ static final SContainmentLink removePart$j2cJ = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc25762f5fL, "removePart");
   }
 
   private static final class CONCEPTS {

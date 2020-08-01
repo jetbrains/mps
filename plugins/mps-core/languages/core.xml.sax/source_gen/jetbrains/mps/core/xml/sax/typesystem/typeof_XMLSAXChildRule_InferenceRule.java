@@ -25,15 +25,15 @@ public class typeof_XMLSAXChildRule_InferenceRule extends AbstractInferenceRule_
   public typeof_XMLSAXChildRule_InferenceRule() {
   }
   public void applyRule(final SNode childRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(childRule, LINKS.rule$Ywc8) == null) {
+    if (SLinkOperations.getTarget(childRule, LINKS.rule$h_RS) == null) {
       return;
     }
 
-    List<SNode> actualArgument = SLinkOperations.getChildren(childRule, LINKS.actualArgument$DrSD);
-    List<SNode> params = SLinkOperations.getChildren(SLinkOperations.getTarget(childRule, LINKS.rule$Ywc8), LINKS.params$hR1D);
+    List<SNode> actualArgument = SLinkOperations.getChildren(childRule, LINKS.actualArgument$4wrR);
+    List<SNode> params = SLinkOperations.getChildren(SLinkOperations.getTarget(childRule, LINKS.rule$h_RS), LINKS.params$DDMR);
     if (ListSequence.fromList(actualArgument).count() != ListSequence.fromList(params).count()) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.actualArgument$DrSD);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.actualArgument$4wrR);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(childRule, "number of arguments doesn't match the declaration", "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "4720003541458949937", null, errorTarget);
       }
       return;
@@ -51,7 +51,7 @@ public class typeof_XMLSAXChildRule_InferenceRule extends AbstractInferenceRule_
           {
             SNode _nodeToCheck_1029348928467 = arg_var;
             EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "4720003541459243546", 0, null);
-            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "4720003541459240933", true), (SNode) SLinkOperations.getTarget(param_var, LINKS.type$pLrO), true, true, _info_12389875345);
+            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "4720003541459240933", true), (SNode) SLinkOperations.getTarget(param_var, LINKS.type$uWuc), true, true, _info_12389875345);
           }
         }
       }
@@ -68,10 +68,10 @@ public class typeof_XMLSAXChildRule_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink rule$Ywc8 = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0x1f6c736337b5e2dcL, "rule");
-    /*package*/ static final SContainmentLink actualArgument$DrSD = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink params$hR1D = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0xd9be961730be2e2L, "params");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink rule$h_RS = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0x1f6c736337b5e2dcL, "rule");
+    /*package*/ static final SContainmentLink actualArgument$4wrR = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink params$DDMR = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0xd9be961730be2e2L, "params");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {

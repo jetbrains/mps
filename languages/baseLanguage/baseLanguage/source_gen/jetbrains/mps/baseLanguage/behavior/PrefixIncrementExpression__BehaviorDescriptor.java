@@ -40,7 +40,7 @@ public final class PrefixIncrementExpression__BehaviorDescriptor extends BaseBHD
     return ((boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke0(__thisNode__, CONCEPTS.AbstractUnaryNumberOperation$pk, leaf, ((boolean) rightParen))) && rightParen;
   }
   /*package*/ static SNode getSyntacticallyRightSideExpression_id1wHCnsn590i(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.expression$7Rjy);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.expression$NMtu);
   }
 
   /*package*/ PrefixIncrementExpression__BehaviorDescriptor() {
@@ -98,6 +98,6 @@ public final class PrefixIncrementExpression__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 }

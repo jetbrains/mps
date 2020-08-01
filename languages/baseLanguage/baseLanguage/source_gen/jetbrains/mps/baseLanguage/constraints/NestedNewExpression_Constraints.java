@@ -58,7 +58,7 @@ public class NestedNewExpression_Constraints extends BaseConstraintsDescriptor {
     return (boolean) NestedNewExpression__BehaviorDescriptor.doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx.invoke(SNodeOperations.asSConcept(CONCEPTS.NestedNewExpression$79), parentNode);
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.creator$itDQ)) {
+    if (Objects.equals(link, LINKS.creator$Wnha)) {
       return Objects.equals(childConcept, CONCEPTS.DefaultClassCreator$sQ) || Objects.equals(childConcept, CONCEPTS.ClassCreator$yU) || (Objects.equals(childConcept, CONCEPTS.AnonymousClassCreator$N6));
     }
     return true;
@@ -74,6 +74,6 @@ public class NestedNewExpression_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink creator$itDQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
   }
 }

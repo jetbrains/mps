@@ -20,25 +20,25 @@ public class Attributes {
     SNode firstMacro = ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).first();
   }
   public void accessToPropertyAttribute_1(SNode node) {
-    SNode propertyMacro = AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$tAp1));
-    SAbstractConcept concept = SNodeOperations.getConcept(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$tAp1)));
-    SNode propertyMacro1 = AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$tAp1));
+    SNode propertyMacro = AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$lA7v));
+    SAbstractConcept concept = SNodeOperations.getConcept(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$lA7v)));
+    SNode propertyMacro1 = AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$lA7v));
   }
   public void accessToPropertyAttribute_2(SNode node) {
     SNode propMacro = null;
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$tAp1), propMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$tAp1), propMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$tAp1), propMacro);
+    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$lA7v), propMacro);
+    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$lA7v), propMacro);
+    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$wt, PROPS.name$lA7v), propMacro);
   }
   public void accessToReferenceAttribute_1(SNode node) {
-    SNode referenceMacro = AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$2ky6));
-    SNode referenceMacro1 = AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$2ky6));
+    SNode referenceMacro = AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$7WwU));
+    SNode referenceMacro1 = AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$7WwU));
   }
   public void accessToReferenceAttribute_2(SNode node) {
     SNode refMacro = null;
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$2ky6), refMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$2ky6), refMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$2ky6), refMacro);
+    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$7WwU), refMacro);
+    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$7WwU), refMacro);
+    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, LINKS.variableDeclaration$7WwU), refMacro);
   }
   public void other(SNode node) {
     SNodeOperations.isAttribute(node);
@@ -53,10 +53,10 @@ public class Attributes {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

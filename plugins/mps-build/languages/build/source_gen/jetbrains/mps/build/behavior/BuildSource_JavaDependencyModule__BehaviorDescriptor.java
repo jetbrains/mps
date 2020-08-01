@@ -35,7 +35,7 @@ public final class BuildSource_JavaDependencyModule__BehaviorDescriptor extends 
   }
 
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
-    JavaExportUtil.requireModule(artifacts, SLinkOperations.getTarget(__thisNode__, LINKS.module$yh6D), SNodeOperations.getParent(__thisNode__), builder);
+    JavaExportUtil.requireModule(artifacts, SLinkOperations.getTarget(__thisNode__, LINKS.module$AidR), SNodeOperations.getParent(__thisNode__), builder);
   }
 
   /*package*/ BuildSource_JavaDependencyModule__BehaviorDescriptor() {
@@ -86,6 +86,6 @@ public final class BuildSource_JavaDependencyModule__BehaviorDescriptor extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$yh6D = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, 0x263ae7d4319896aaL, "module");
+    /*package*/ static final SReferenceLink module$AidR = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, 0x263ae7d4319896aaL, "module");
   }
 }

@@ -16,7 +16,7 @@ public class RemoveDefaultEnumConstructor_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1962660292843686621"));
   }
   public void execute(SNode node) {
-    SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.EnumConstantDeclaration$ma), LINKS.baseMethodDeclaration$$A7i, null);
+    SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.EnumConstantDeclaration$ma), LINKS.baseMethodDeclaration$ItxI, null);
   }
 
   private static final class CONCEPTS {
@@ -24,6 +24,6 @@ public class RemoveDefaultEnumConstructor_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

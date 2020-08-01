@@ -35,11 +35,11 @@ public final class BuildSource_JavaExternalJarRef__BehaviorDescriptor extends Ba
   }
 
   /*package*/ static Tuples._2<SNode, Boolean> getDependencyTarget_id4RsV8qJGJqY(@NotNull SNode __thisNode__, VisibleArtifacts artifacts) {
-    if (SNodeOperations.getContainingRoot(__thisNode__) == SNodeOperations.getContainingRoot(SLinkOperations.getTarget(__thisNode__, LINKS.jar$jJDw))) {
+    if (SNodeOperations.getContainingRoot(__thisNode__) == SNodeOperations.getContainingRoot(SLinkOperations.getTarget(__thisNode__, LINKS.jar$$56w))) {
       return null;
     }
 
-    return JavaExportUtil.requireJar(artifacts, SLinkOperations.getTarget(__thisNode__, LINKS.jar$jJDw), __thisNode__);
+    return JavaExportUtil.requireJar(artifacts, SLinkOperations.getTarget(__thisNode__, LINKS.jar$$56w), __thisNode__);
   }
 
   /*package*/ BuildSource_JavaExternalJarRef__BehaviorDescriptor() {
@@ -89,6 +89,6 @@ public final class BuildSource_JavaExternalJarRef__BehaviorDescriptor extends Ba
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink jar$jJDw = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
+    /*package*/ static final SReferenceLink jar$$56w = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
   }
 }

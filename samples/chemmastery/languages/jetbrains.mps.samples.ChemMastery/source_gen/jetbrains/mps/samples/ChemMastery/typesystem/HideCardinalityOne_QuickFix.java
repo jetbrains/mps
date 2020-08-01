@@ -19,7 +19,7 @@ public class HideCardinalityOne_QuickFix extends QuickFix_Runtime {
     return "Hide unnecessary cardinality";
   }
   public void execute(SNode node) {
-    SPropertyOperations.assign(SNodeOperations.as(node, CONCEPTS.ElementRef$i$), PROPS.cardinalityVisible$x1gv, false);
+    SPropertyOperations.assign(SNodeOperations.as(node, CONCEPTS.ElementRef$i$), PROPS.cardinalityVisible$ZAZ1, false);
   }
 
   private static final class CONCEPTS {
@@ -27,6 +27,6 @@ public class HideCardinalityOne_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinalityVisible$ZAZ1 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
   }
 }

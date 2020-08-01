@@ -36,7 +36,7 @@ public final class AddSeeAlso_Intention extends AbstractIntentionDescriptor impl
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.seeAlso$hzj8)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.seeAlso$w6gS)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,7 +57,7 @@ public final class AddSeeAlso_Intention extends AbstractIntentionDescriptor impl
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.seeAlso$hzj8, null);
+      SNodeFactoryOperations.addNewChild(node, LINKS.seeAlso$w6gS, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -66,6 +66,6 @@ public final class AddSeeAlso_Intention extends AbstractIntentionDescriptor impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink seeAlso$hzj8 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0ea9L, 0x6d1df6c2700b0eb8L, "seeAlso");
+    /*package*/ static final SContainmentLink seeAlso$w6gS = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0ea9L, 0x6d1df6c2700b0eb8L, "seeAlso");
   }
 }

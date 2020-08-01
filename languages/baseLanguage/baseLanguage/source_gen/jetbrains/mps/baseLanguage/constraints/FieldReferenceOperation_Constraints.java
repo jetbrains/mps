@@ -34,7 +34,7 @@ public class FieldReferenceOperation_Constraints extends BaseConstraintsDescript
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.fieldDeclaration$mLBy, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.fieldDeclaration$229u, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,14 +50,14 @@ public class FieldReferenceOperation_Constraints extends BaseConstraintsDescript
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type 
-            final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+            final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
             SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
               public SNode get() {
                 return TypecheckingFacade.getFromContext().getTypeOf(instance);
               }
             });
             SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(instanceType, CONCEPTS.ClassifierType$IZ);
-            if ((SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R) == null)) {
+            if ((SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD) == null)) {
               return new EmptyScope();
             }
             return new NamedElementsScope(Members.visibleInstanceFields(classifierType, _context.getContextNode()));
@@ -78,8 +78,8 @@ public class FieldReferenceOperation_Constraints extends BaseConstraintsDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

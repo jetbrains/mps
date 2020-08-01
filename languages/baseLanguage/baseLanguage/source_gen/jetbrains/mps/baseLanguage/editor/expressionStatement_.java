@@ -90,7 +90,7 @@ public class expressionStatement_ extends SubstituteMenuBase {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode result = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(nodeToWrap), CONCEPTS.ExpressionStatement$nm, null);
-          SLinkOperations.setTarget(result, LINKS.expression$WIP0, nodeToWrap);
+          SLinkOperations.setTarget(result, LINKS.expression$qFF0, nodeToWrap);
           return result;
         }
         @Override
@@ -127,6 +127,6 @@ public class expressionStatement_ extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 }

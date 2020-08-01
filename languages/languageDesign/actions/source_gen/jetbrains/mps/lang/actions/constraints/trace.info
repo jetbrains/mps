@@ -32,8 +32,8 @@
       <node id="1213104859350" at="68,0,69,0" concept="8" trace="breakingNode_i503fz_a0a0a0a0a1a0a0a0c" />
       <node id="1213104859350" at="71,0,72,0" concept="8" trace="NodeFactory$bs" />
       <node id="1213104859350" at="72,0,73,0" concept="8" trace="AbstractConceptDeclaration$UN" />
-      <node id="1213104859350" at="76,0,77,0" concept="8" trace="applicableConcept$mqSo" />
-      <node id="1213104859350" at="80,0,81,0" concept="8" trace="name$tAp1" />
+      <node id="1213104859350" at="76,0,77,0" concept="8" trace="applicableConcept$R1jC" />
+      <node id="1213104859350" at="80,0,81,0" concept="8" trace="name$lA7v" />
       <node id="1213104859350" at="30,0,33,0" concept="0" trace="NodeFactory_Constraints#()V" />
       <node id="445563756713720189" at="56,0,59,0" concept="3" trace="getName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1213104859360" at="37,0,41,0" concept="3" trace="hasOwnScopeProvider#()Z" />

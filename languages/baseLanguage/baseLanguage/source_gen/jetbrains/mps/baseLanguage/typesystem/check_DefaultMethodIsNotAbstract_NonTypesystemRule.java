@@ -27,7 +27,7 @@ public class check_DefaultMethodIsNotAbstract_NonTypesystemRule extends Abstract
       return;
     }
     SNode method = SNodeOperations.cast(parent, CONCEPTS.InstanceMethodDeclaration$An);
-    if (SPropertyOperations.getBoolean(method, PROPS.isAbstract$cU_H)) {
+    if (SPropertyOperations.getBoolean(method, PROPS.isAbstract$gogN)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "The 'abstract' and 'default' modifiers are not allowed together", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1557757632988466920", null, errorTarget);
@@ -60,6 +60,6 @@ public class check_DefaultMethodIsNotAbstract_NonTypesystemRule extends Abstract
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

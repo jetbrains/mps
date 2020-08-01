@@ -55,69 +55,69 @@ public final class SwapTernaryBranches_Intention extends AbstractIntentionDescri
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       boolean unidentifiedConditionExpr = false;
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.BinaryOperation$vf)) {
-        SNode left = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$rxLZ);
-        SNode right = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$rxBl);
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.EqualsExpression$lT)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.BinaryOperation$vf)) {
+        SNode left = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$lndx);
+        SNode right = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$li3b);
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.EqualsExpression$lT)) {
           SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.NotEqualsExpression$Ib, null);
-          SLinkOperations.setTarget(not, LINKS.leftExpression$rxLZ, left);
-          SLinkOperations.setTarget(not, LINKS.rightExpression$rxBl, right);
-          SLinkOperations.setTarget(node, LINKS.condition$CEb4, not);
-        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.NPEEqualsExpression$dK)) {
+          SLinkOperations.setTarget(not, LINKS.leftExpression$lndx, left);
+          SLinkOperations.setTarget(not, LINKS.rightExpression$li3b, right);
+          SLinkOperations.setTarget(node, LINKS.condition$GrmW, not);
+        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.NPEEqualsExpression$dK)) {
           SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.NPENotEqualsExpression$dt, null);
-          SLinkOperations.setTarget(not, LINKS.leftExpression$rxLZ, left);
-          SLinkOperations.setTarget(not, LINKS.rightExpression$rxBl, right);
-          SLinkOperations.setTarget(node, LINKS.condition$CEb4, not);
-        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.NotEqualsExpression$Ib)) {
+          SLinkOperations.setTarget(not, LINKS.leftExpression$lndx, left);
+          SLinkOperations.setTarget(not, LINKS.rightExpression$li3b, right);
+          SLinkOperations.setTarget(node, LINKS.condition$GrmW, not);
+        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.NotEqualsExpression$Ib)) {
           SNode eq = SNodeFactoryOperations.createNewNode(CONCEPTS.EqualsExpression$lT, null);
-          SLinkOperations.setTarget(eq, LINKS.leftExpression$rxLZ, left);
-          SLinkOperations.setTarget(eq, LINKS.rightExpression$rxBl, right);
-          SLinkOperations.setTarget(node, LINKS.condition$CEb4, eq);
-        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.NPENotEqualsExpression$dt)) {
+          SLinkOperations.setTarget(eq, LINKS.leftExpression$lndx, left);
+          SLinkOperations.setTarget(eq, LINKS.rightExpression$li3b, right);
+          SLinkOperations.setTarget(node, LINKS.condition$GrmW, eq);
+        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.NPENotEqualsExpression$dt)) {
           SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.NPEEqualsExpression$dK, null);
-          SLinkOperations.setTarget(not, LINKS.leftExpression$rxLZ, left);
-          SLinkOperations.setTarget(not, LINKS.rightExpression$rxBl, right);
-          SLinkOperations.setTarget(node, LINKS.condition$CEb4, not);
-        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.GreaterThanExpression$wR)) {
+          SLinkOperations.setTarget(not, LINKS.leftExpression$lndx, left);
+          SLinkOperations.setTarget(not, LINKS.rightExpression$li3b, right);
+          SLinkOperations.setTarget(node, LINKS.condition$GrmW, not);
+        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.GreaterThanExpression$wR)) {
           SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanOrEqualsExpression$Rc, null);
-          SLinkOperations.setTarget(not, LINKS.leftExpression$rxLZ, left);
-          SLinkOperations.setTarget(not, LINKS.rightExpression$rxBl, right);
-          SLinkOperations.setTarget(node, LINKS.condition$CEb4, not);
-        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.GreaterThanOrEqualsExpression$n9)) {
+          SLinkOperations.setTarget(not, LINKS.leftExpression$lndx, left);
+          SLinkOperations.setTarget(not, LINKS.rightExpression$li3b, right);
+          SLinkOperations.setTarget(node, LINKS.condition$GrmW, not);
+        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.GreaterThanOrEqualsExpression$n9)) {
           SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanExpression$kw, null);
-          SLinkOperations.setTarget(not, LINKS.leftExpression$rxLZ, left);
-          SLinkOperations.setTarget(not, LINKS.rightExpression$rxBl, right);
-          SLinkOperations.setTarget(node, LINKS.condition$CEb4, not);
-        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.LessThanExpression$kw)) {
+          SLinkOperations.setTarget(not, LINKS.leftExpression$lndx, left);
+          SLinkOperations.setTarget(not, LINKS.rightExpression$li3b, right);
+          SLinkOperations.setTarget(node, LINKS.condition$GrmW, not);
+        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.LessThanExpression$kw)) {
           SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.GreaterThanOrEqualsExpression$n9, null);
-          SLinkOperations.setTarget(not, LINKS.leftExpression$rxLZ, left);
-          SLinkOperations.setTarget(not, LINKS.rightExpression$rxBl, right);
-          SLinkOperations.setTarget(node, LINKS.condition$CEb4, not);
-        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.LessThanOrEqualsExpression$Rc)) {
+          SLinkOperations.setTarget(not, LINKS.leftExpression$lndx, left);
+          SLinkOperations.setTarget(not, LINKS.rightExpression$li3b, right);
+          SLinkOperations.setTarget(node, LINKS.condition$GrmW, not);
+        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.LessThanOrEqualsExpression$Rc)) {
           SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanExpression$kw, null);
-          SLinkOperations.setTarget(not, LINKS.leftExpression$rxLZ, left);
-          SLinkOperations.setTarget(not, LINKS.rightExpression$rxBl, right);
-          SLinkOperations.setTarget(node, LINKS.condition$CEb4, not);
+          SLinkOperations.setTarget(not, LINKS.leftExpression$lndx, left);
+          SLinkOperations.setTarget(not, LINKS.rightExpression$li3b, right);
+          SLinkOperations.setTarget(node, LINKS.condition$GrmW, not);
         } else {
           unidentifiedConditionExpr = true;
         }
       } else {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.NotExpression$oq)) {
-          SLinkOperations.setTarget(node, LINKS.condition$CEb4, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.NotExpression$oq), LINKS.expression$bUD_));
-        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.BooleanConstant$Ui)) {
-          boolean currentValue = SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.BooleanConstant$Ui), PROPS.value$WIn0);
-          SPropertyOperations.assign(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.BooleanConstant$Ui), PROPS.value$WIn0, (currentValue ? false : true));
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.NotExpression$oq)) {
+          SLinkOperations.setTarget(node, LINKS.condition$GrmW, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.NotExpression$oq), LINKS.expression$Lq8V));
+        } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.BooleanConstant$Ui)) {
+          boolean currentValue = SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90);
+          SPropertyOperations.assign(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90, (currentValue ? false : true));
         } else {
           unidentifiedConditionExpr = true;
         }
       }
       if (unidentifiedConditionExpr) {
-        SNodeFactoryOperations.replaceWithNewChild(SLinkOperations.getTarget(node, LINKS.condition$CEb4), CONCEPTS.NotExpression$oq);
+        SNodeFactoryOperations.replaceWithNewChild(SLinkOperations.getTarget(node, LINKS.condition$GrmW), CONCEPTS.NotExpression$oq);
       }
 
-      SNode ifTrue = SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.ifTrue$eU9r));
-      SLinkOperations.setTarget(node, LINKS.ifTrue$eU9r, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.ifFalse$2BqC)));
-      SLinkOperations.setTarget(node, LINKS.ifFalse$2BqC, ifTrue);
+      SNode ifTrue = SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.ifTrue$ea$5));
+      SLinkOperations.setTarget(node, LINKS.ifTrue$ea$5, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.ifFalse$h5To)));
+      SLinkOperations.setTarget(node, LINKS.ifFalse$h5To, ifTrue);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -126,12 +126,12 @@ public final class SwapTernaryBranches_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$CEb4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink ifTrue$eU9r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
-    /*package*/ static final SContainmentLink ifFalse$2BqC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
+    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink ifTrue$ea$5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
+    /*package*/ static final SContainmentLink ifFalse$h5To = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
   }
 
   private static final class CONCEPTS {
@@ -149,6 +149,6 @@ public final class SwapTernaryBranches_Intention extends AbstractIntentionDescri
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

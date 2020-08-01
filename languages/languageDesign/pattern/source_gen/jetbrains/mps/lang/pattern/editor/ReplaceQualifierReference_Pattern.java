@@ -139,7 +139,7 @@ public class ReplaceQualifierReference_Pattern extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
         }
 
         @Override
@@ -172,8 +172,8 @@ public class ReplaceQualifierReference_Pattern extends TransformationMenuBase {
   }
   private static SNode createQualifiedPatternReference_7swimr_a0a0a0a0a(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.QualifiedPatternReference$kN);
-    n0.setReferenceTarget(LINKS.classifier$JOZS, p0);
-    n0.setReferenceTarget(LINKS.pattern$JPrv, p1);
+    n0.setReferenceTarget(LINKS.classifier$aEW8, p0);
+    n0.setReferenceTarget(LINKS.pattern$aSk1, p1);
     return n0.getResult();
   }
 
@@ -183,11 +183,11 @@ public class ReplaceQualifierReference_Pattern extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$JOZS = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398c5L, "classifier");
-    /*package*/ static final SReferenceLink pattern$JPrv = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398d4L, "pattern");
+    /*package*/ static final SReferenceLink classifier$aEW8 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398c5L, "classifier");
+    /*package*/ static final SReferenceLink pattern$aSk1 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398d4L, "pattern");
   }
 }

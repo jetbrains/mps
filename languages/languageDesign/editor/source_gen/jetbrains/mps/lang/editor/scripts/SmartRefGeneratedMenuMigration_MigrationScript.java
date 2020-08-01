@@ -97,13 +97,13 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
         }), CONCEPTS.SubstituteMenuPart_IncludeMenu$8K)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode includeMenu) {
 
-            Iterable<SNode> parts = SLinkOperations.getChildren(parent, LINKS.parts$MxT3);
+            Iterable<SNode> parts = SLinkOperations.getChildren(parent, LINKS.parts$uqCt);
             for (SNode part : Sequence.fromIterable(parts)) {
               {
                 final SNode aPart = part;
                 if (SNodeOperations.isInstanceOf(aPart, CONCEPTS.AbstractOutputConceptContainerSubstituteMenuPart$a0)) {
-                  if (SLinkOperations.getTarget(aPart, LINKS.outputConcept$Tr8y) == null && IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart) != IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(includeMenu, CONCEPTS.ISubstituteMenu$zI, false, false))) {
-                    SLinkOperations.setTarget(aPart, LINKS.outputConcept$Tr8y, IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart));
+                  if (SLinkOperations.getTarget(aPart, LINKS.outputConcept$O98u) == null && IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart) != IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(includeMenu, CONCEPTS.ISubstituteMenu$zI, false, false))) {
+                    SLinkOperations.setTarget(aPart, LINKS.outputConcept$O98u, IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart));
                   }
                 }
               }
@@ -137,7 +137,7 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$MxT3 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts");
-    /*package*/ static final SReferenceLink outputConcept$Tr8y = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee6ee2b8485887fL, 0x6ee6ee2b84858889L, "outputConcept");
+    /*package*/ static final SContainmentLink parts$uqCt = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts");
+    /*package*/ static final SReferenceLink outputConcept$O98u = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee6ee2b8485887fL, 0x6ee6ee2b84858889L, "outputConcept");
   }
 }

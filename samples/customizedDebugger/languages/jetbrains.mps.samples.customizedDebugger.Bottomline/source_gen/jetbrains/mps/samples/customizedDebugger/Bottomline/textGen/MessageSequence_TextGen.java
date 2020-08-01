@@ -31,7 +31,7 @@ public class MessageSequence_TextGen extends TextGenDescriptorBase {
     tgs.append(";");
     tgs.newLine();
     tgs.append("class ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v));
     tgs.append(" {");
     tgs.newLine();
     tgs.newLine();
@@ -40,7 +40,7 @@ public class MessageSequence_TextGen extends TextGenDescriptorBase {
     tgs.append("public static void main(String[] args) {");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
-    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.messages$Zhrx)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.messages$DskZ)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         tgs.appendNode(it);
       }
@@ -57,11 +57,11 @@ public class MessageSequence_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink messages$Zhrx = MetaAdapterFactory.getContainmentLink(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5b0L, 0x7df3f12f124a5e7L, "messages");
+    /*package*/ static final SContainmentLink messages$DskZ = MetaAdapterFactory.getContainmentLink(0x3f028972a2904cf2L, 0xa87e9b8f7e56076bL, 0x7df3f12f124a5b0L, 0x7df3f12f124a5e7L, "messages");
   }
 
   private static final class CONCEPTS {

@@ -50,7 +50,7 @@ public final class ColorQuery_Intention extends AbstractIntentionDescriptor impl
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((SLinkOperations.getTarget(node, LINKS.query$o5Tm) == null)) {
+      if ((SLinkOperations.getTarget(node, LINKS.query$EQLE) == null)) {
         return "Add Query";
       } else {
         return "Remove Query";
@@ -58,11 +58,11 @@ public final class ColorQuery_Intention extends AbstractIntentionDescriptor impl
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.setEnum(node, PROPS.color$cEqb, 0xfc609b3d56L, "none");
-      if ((SLinkOperations.getTarget(node, LINKS.query$o5Tm) == null)) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.query$o5Tm, CONCEPTS.QueryFunction_Color$az);
+      SPropertyOperations.setEnum(node, PROPS.color$8yFl, 0xfc609b3d56L, "none");
+      if ((SLinkOperations.getTarget(node, LINKS.query$EQLE) == null)) {
+        SNodeFactoryOperations.setNewChild(node, LINKS.query$EQLE, CONCEPTS.QueryFunction_Color$az);
       } else {
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$o5Tm));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$EQLE));
       }
     }
     @Override
@@ -72,11 +72,11 @@ public final class ColorQuery_Intention extends AbstractIntentionDescriptor impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$o5Tm = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query");
+    /*package*/ static final SContainmentLink query$EQLE = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty color$cEqb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color");
+    /*package*/ static final SProperty color$8yFl = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color");
   }
 
   private static final class CONCEPTS {

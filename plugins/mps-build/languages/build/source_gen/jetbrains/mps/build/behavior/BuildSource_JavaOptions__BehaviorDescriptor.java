@@ -23,7 +23,7 @@ public final class BuildSource_JavaOptions__BehaviorDescriptor extends BaseBHDes
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.generateDebugInfo$jZC9, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.generateDebugInfo$FOsn, true);
   }
 
 
@@ -72,6 +72,6 @@ public final class BuildSource_JavaOptions__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty generateDebugInfo$jZC9 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c5L, "generateDebugInfo");
+    /*package*/ static final SProperty generateDebugInfo$FOsn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c5L, "generateDebugInfo");
   }
 }

@@ -67,7 +67,7 @@ public class OverridingMethods_Finder extends GeneratedFinder {
           SNode nodeParam = (SNode) searchResult.getObject();
           new _FunctionTypes._void_P1_E0<SNode>() {
             public void invoke(SNode candidate) {
-              if (SNodeOperations.isInstanceOf(candidate, CONCEPTS.ConceptMethodDeclaration$VN) && SLinkOperations.getTarget(SNodeOperations.cast(candidate, CONCEPTS.ConceptMethodDeclaration$VN), LINKS.overriddenMethod$6dmw) == ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(node)) {
+              if (SNodeOperations.isInstanceOf(candidate, CONCEPTS.ConceptMethodDeclaration$VN) && SLinkOperations.getTarget(SNodeOperations.cast(candidate, CONCEPTS.ConceptMethodDeclaration$VN), LINKS.overriddenMethod$tTw) == ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(node)) {
 
                 callback.onUsageFound(createSingleResult(candidate));
                 FindUtils.searchForResults(new EmptyProgressMonitor(), new IFinder.FindCallback() {
@@ -106,6 +106,6 @@ public class OverridingMethods_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink overriddenMethod$6dmw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 }

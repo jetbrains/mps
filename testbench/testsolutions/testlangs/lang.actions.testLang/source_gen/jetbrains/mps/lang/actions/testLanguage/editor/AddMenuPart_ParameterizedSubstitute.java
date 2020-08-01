@@ -67,7 +67,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
   public class SMP_Group_qp9nsj_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return _context.getLink() == LINKS.addMenu_parameterizedSubstitute$qBP0;
+      return _context.getLink() == LINKS.addMenu_parameterizedSubstitute$TiF0;
     }
     @NotNull
     @Override
@@ -172,7 +172,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
 
             SNode result = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(myParameterObject));
             if (Objects.equals(myParameterObject, CONCEPTS.ActionTestChild1$O9)) {
-              SLinkOperations.addNewChild(SNodeOperations.cast(result, CONCEPTS.ActionTestChild1$O9), LINKS.child1$BF2l, CONCEPTS.ActionTestChild1Child$uv);
+              SLinkOperations.addNewChild(SNodeOperations.cast(result, CONCEPTS.ActionTestChild1$O9), LINKS.child1$dQ8b, CONCEPTS.ActionTestChild1Child$uv);
             }
             return result;
           }
@@ -264,7 +264,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
             }
             if (Objects.equals(myParameterObject, CONCEPTS.ActionTestChild1$O9)) {
               // returning node to select 
-              SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(createdNode, CONCEPTS.ActionTestChild1$O9), LINKS.child1$BF2l)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+              SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(createdNode, CONCEPTS.ActionTestChild1$O9), LINKS.child1$dQ8b)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
               return;
             }
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -289,8 +289,8 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink addMenu_parameterizedSubstitute$qBP0 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2d9c6017d86af8c9L, "addMenu_parameterizedSubstitute");
-    /*package*/ static final SContainmentLink child1$BF2l = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, 0x7f805f0c2dd46343L, "child1");
+    /*package*/ static final SContainmentLink addMenu_parameterizedSubstitute$TiF0 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2d9c6017d86af8c9L, "addMenu_parameterizedSubstitute");
+    /*package*/ static final SContainmentLink child1$dQ8b = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, 0x7f805f0c2dd46343L, "child1");
   }
 
   private static final class CONCEPTS {

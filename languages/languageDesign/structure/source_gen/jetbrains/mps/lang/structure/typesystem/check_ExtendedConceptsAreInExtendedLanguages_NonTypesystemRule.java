@@ -40,13 +40,13 @@ public class check_ExtendedConceptsAreInExtendedLanguages_NonTypesystemRule exte
     Set<Language> extendedLanguages = language.getAllExtendedLanguages();
     List<SNode> superConcepts = new ArrayList<SNode>();
     if (SNodeOperations.isInstanceOf(cd, CONCEPTS.ConceptDeclaration$qU)) {
-      ListSequence.fromList(superConcepts).addElement(SLinkOperations.getTarget(SNodeOperations.as(cd, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$LQV3));
+      ListSequence.fromList(superConcepts).addElement(SLinkOperations.getTarget(SNodeOperations.as(cd, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$9AAt));
       // for implemented interfaces, we do not require extends between languages. 
       // I'm not quite sure we shall demand extends between languages even for super-concepts, but it's just too much to lift this restriction now ;) 
       // Generally, however, it seems reasonable to demand extends in super-concepts case, as it means re-use of functionality, and absence of this 
       // constraint would encourage people to have bad design and extend concepts they shall not extend. OTOH, each language extending lang.core look odd. 
     } else if (SNodeOperations.isInstanceOf(cd, CONCEPTS.InterfaceConceptDeclaration$MT)) {
-      ListSequence.fromList(superConcepts).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(cd, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$3Y1p), LINKS.intfc$fO5)));
+      ListSequence.fromList(superConcepts).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(cd, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$V2F7), LINKS.intfc$7Eer)));
     }
     for (SNode superConcept : superConcepts) {
       Language conceptLanguage = SModelUtil.getDeclaringLanguage(superConcept);
@@ -55,8 +55,8 @@ public class check_ExtendedConceptsAreInExtendedLanguages_NonTypesystemRule exte
       }
       if (!(SetSequence.fromSet(extendedLanguages).contains(conceptLanguage))) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cd, "language " + conceptLanguage.getModuleName() + " of concept " + SPropertyOperations.getString(superConcept, PROPS.name$tAp1) + " is not extended by " + language.getModuleName(), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1235136520823", null, errorTarget);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cd, "language " + conceptLanguage.getModuleName() + " of concept " + SPropertyOperations.getString(superConcept, PROPS.name$lA7v) + " is not extended by " + language.getModuleName(), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1235136520823", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.structure.typesystem.AddExtendedLanguage_QuickFix", false);
             intentionProvider.putArgument("extLang", conceptLanguage);
@@ -85,12 +85,12 @@ public class check_ExtendedConceptsAreInExtendedLanguages_NonTypesystemRule exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

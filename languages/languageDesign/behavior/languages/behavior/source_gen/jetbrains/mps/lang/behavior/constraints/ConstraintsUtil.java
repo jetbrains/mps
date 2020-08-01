@@ -28,7 +28,7 @@ public class ConstraintsUtil {
     }
     return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.ConceptMethodDeclaration$VN, true)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.isStatic$KaRv) == isStatic;
+        return SPropertyOperations.getBoolean(it, PROPS.isStatic$lgS1) == isStatic;
       }
     });
   }
@@ -40,6 +40,6 @@ public class ConstraintsUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isStatic$KaRv = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
+    /*package*/ static final SProperty isStatic$lgS1 = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
   }
 }

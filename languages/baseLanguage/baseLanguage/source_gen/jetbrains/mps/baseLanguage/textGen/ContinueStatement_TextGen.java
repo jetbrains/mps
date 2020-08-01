@@ -21,15 +21,15 @@ public class ContinueStatement_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createPositionInfo();
     tgs.newLine();
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.loopLabelReference$m7OF) != null)) {
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.loopLabelReference$HMwP) != null)) {
       tgs.indent();
       tgs.append("continue ");
-      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.loopLabelReference$m7OF), LINKS.loopLabel$GZ00), PROPS.name$tAp1));
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.loopLabelReference$HMwP), LINKS.loopLabel$Mx00), PROPS.name$lA7v));
       tgs.append(";");
-    } else if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$Tq0W) != null) {
+    } else if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$NAt4) != null) {
       tgs.indent();
       tgs.append("continue ");
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$Tq0W));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$NAt4));
       tgs.append(";");
     } else {
       tgs.indent();
@@ -41,13 +41,13 @@ public class ContinueStatement_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink loopLabelReference$m7OF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x7dae85d6eb43bbbdL, "loopLabelReference");
-    /*package*/ static final SReferenceLink loopLabel$GZ00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
+    /*package*/ static final SContainmentLink loopLabelReference$HMwP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x7dae85d6eb43bbbdL, "loopLabelReference");
+    /*package*/ static final SReferenceLink loopLabel$Mx00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty label$Tq0W = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty label$NAt4 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
   }
 
   private static final class CONCEPTS {

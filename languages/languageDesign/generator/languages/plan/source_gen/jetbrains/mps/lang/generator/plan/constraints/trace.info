@@ -32,8 +32,8 @@
       <node id="3750601816081741647" at="69,0,70,0" concept="8" trace="InPlaceCheckpointRefSpec$Hr" />
       <node id="3750601816081741647" at="70,0,71,0" concept="8" trace="Checkpoint$g" />
       <node id="3750601816081741647" at="71,0,72,0" concept="8" trace="InPlaceCheckpointSpec$q7" />
-      <node id="3750601816081741647" at="75,0,76,0" concept="8" trace="checkpoint$LUHD" />
-      <node id="3750601816081741647" at="76,0,77,0" concept="8" trace="cpSpec$s3ye" />
+      <node id="3750601816081741647" at="75,0,76,0" concept="8" trace="checkpoint$bs6R" />
+      <node id="3750601816081741647" at="76,0,77,0" concept="8" trace="cpSpec$_H$M" />
       <node id="3750601816081741647" at="28,0,31,0" concept="0" trace="InPlaceCheckpointRefSpec_Constraints#()V" />
       <node id="3750601816081741684" at="35,0,39,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="3750601816081741684" at="43,0,47,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -88,7 +88,7 @@
       <node id="3750601816087335519" at="50,0,51,0" concept="8" trace="CheckpointSynchronization$Eg" />
       <node id="3750601816087335519" at="51,0,52,0" concept="8" trace="InPlaceCheckpointRefSpec$Hr" />
       <node id="3750601816087335519" at="52,0,53,0" concept="8" trace="DeclaredCheckpointSpec$HY" />
-      <node id="3750601816087335519" at="56,0,57,0" concept="8" trace="checkpoint$BupL" />
+      <node id="3750601816087335519" at="56,0,57,0" concept="8" trace="checkpoint$7IuJ" />
       <node id="3750601816087335519" at="21,0,24,0" concept="0" trace="CheckpointSynchronization_Constraints#()V" />
       <node id="3750601816087335519" at="31,0,34,9" concept="2" />
       <node id="3750601816087344044" at="41,114,44,5" concept="2" />

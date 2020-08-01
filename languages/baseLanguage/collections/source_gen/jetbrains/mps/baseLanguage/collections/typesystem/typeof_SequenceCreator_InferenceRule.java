@@ -21,16 +21,16 @@ public class typeof_SequenceCreator_InferenceRule extends AbstractInferenceRule_
   public typeof_SequenceCreator_InferenceRule() {
   }
   public void applyRule(final SNode creator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode elementType = SLinkOperations.getTarget(creator, LINKS.elementType$W1H3);
+    SNode elementType = SLinkOperations.getTarget(creator, LINKS.elementType$4OOt);
     {
       SNode _nodeToCheck_1029348928467 = creator;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1224414570410", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1224414558830", true), (SNode) _quotation_createNode_qzfpnd_a1a0c0b0b(elementType), _info_12389875345);
     }
-    if ((SLinkOperations.getTarget(creator, LINKS.initializer$DGPV) != null)) {
+    if ((SLinkOperations.getTarget(creator, LINKS.initializer$cI7_) != null)) {
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
-          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.initializer$DGPV);
+          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.initializer$cI7_);
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1224414640119", 0, null);
           typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1224414629838", true), (SNode) _quotation_createNode_qzfpnd_a1a0c0a0a0c0b(elementType), true, true, _info_12389875345);
         }
@@ -73,8 +73,8 @@ public class typeof_SequenceCreator_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$W1H3 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14c9ea5eL, "elementType");
-    /*package*/ static final SContainmentLink initializer$DGPV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer");
+    /*package*/ static final SContainmentLink elementType$4OOt = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14c9ea5eL, "elementType");
+    /*package*/ static final SContainmentLink initializer$cI7_ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer");
   }
 
   private static final class CONCEPTS {

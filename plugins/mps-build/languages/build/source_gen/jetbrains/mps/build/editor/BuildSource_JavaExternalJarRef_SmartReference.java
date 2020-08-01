@@ -55,7 +55,7 @@ public class BuildSource_JavaExternalJarRef_SmartReference extends SubstituteMen
 
     public SMP_ReferenceScope_fdjpgz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildSource_JavaExternalJarRef$ad, LINKS.jar$jJDw);
+      super((SAbstractConcept) CONCEPTS.BuildSource_JavaExternalJarRef$ad, LINKS.jar$$56w);
     }
     @NotNull
     @Override
@@ -96,7 +96,7 @@ public class BuildSource_JavaExternalJarRef_SmartReference extends SubstituteMen
           }
         }
         if (target == null) {
-          target = (SNodeOperations.isInstanceOf(referencedNode, CONCEPTS.BuildInputSingleFile$yn) ? BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(referencedNode, CONCEPTS.BuildInputSingleFile$yn), LINKS.path$6h5X)) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(referencedNode));
+          target = (SNodeOperations.isInstanceOf(referencedNode, CONCEPTS.BuildInputSingleFile$yn) ? BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(referencedNode, CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz)) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(referencedNode));
         }
         return target;
       }
@@ -119,7 +119,7 @@ public class BuildSource_JavaExternalJarRef_SmartReference extends SubstituteMen
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink jar$jJDw = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
-    /*package*/ static final SContainmentLink path$6h5X = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
+    /*package*/ static final SReferenceLink jar$$56w = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
+    /*package*/ static final SContainmentLink path$2hSz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
   }
 }

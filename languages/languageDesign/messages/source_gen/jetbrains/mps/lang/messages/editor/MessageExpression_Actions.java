@@ -33,7 +33,7 @@ public class MessageExpression_Actions {
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.LiteralMessageExpression$Ga)) {
           SNode newMessage = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"));
-          SPropertyOperations.assign(newMessage, PROPS.message$vnr0, "");
+          SPropertyOperations.assign(newMessage, PROPS.message$cm50, "");
           new LiteralMessageSplitHelper(editorContext, SNodeOperations.cast(node, CONCEPTS.LiteralMessageExpression$Ga)).insertMessageExpr(newMessage);
           editorContext.selectWRTFocusPolicy(newMessage);
         }
@@ -49,7 +49,7 @@ public class MessageExpression_Actions {
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.LiteralMessageExpression$Ga)) {
           SNode newMessage = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression"));
-          SPropertyOperations.assign(newMessage, PROPS.message$vnr0, "");
+          SPropertyOperations.assign(newMessage, PROPS.message$cm50, "");
           new LiteralMessageSplitHelper(editorContext, SNodeOperations.cast(node, CONCEPTS.LiteralMessageExpression$Ga)).insertMessageExpr(newMessage);
           editorContext.selectWRTFocusPolicy(newMessage);
         }
@@ -63,7 +63,7 @@ public class MessageExpression_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.hasRole(node, LINKS.part$x7tZ) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CombinedMessageExpression$e_), LINKS.part$x7tZ)).count() == 1) {
+        if (SNodeOperations.hasRole(node, LINKS.part$2Bxx) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CombinedMessageExpression$e_), LINKS.part$2Bxx)).count() == 1) {
           SNodeOperations.deleteNode(SNodeOperations.getParent(node));
         } else {
           if (SNodeOperations.isInstanceOf(node, CONCEPTS.MacroMessageExpression$LH)) {
@@ -75,15 +75,15 @@ public class MessageExpression_Actions {
             SNode lit = SNodeOperations.cast(node, CONCEPTS.LiteralMessageExpression$Ga);
             SNode nextSibling = SNodeOperations.getNextSibling(lit);
             SNode nextLit = SNodeOperations.as(nextSibling, CONCEPTS.LiteralMessageExpression$Ga);
-            if (isEmptyString(SPropertyOperations.getString(lit, PROPS.message$vnr0))) {
+            if (isEmptyString(SPropertyOperations.getString(lit, PROPS.message$cm50))) {
               SNodeOperations.deleteNode(lit);
               if (nextLit != null) {
                 SelectionUtil.selectLabelCellAnSetCaret(editorContext, nextLit, SelectionManager.FIRST_CELL, 0);
               }
             } else {
               if (nextLit != null) {
-                if (isNotEmptyString(SPropertyOperations.getString(nextLit, PROPS.message$vnr0))) {
-                  SPropertyOperations.plusAssignStringProp(lit, PROPS.message$vnr0, SPropertyOperations.getString(nextLit, PROPS.message$vnr0));
+                if (isNotEmptyString(SPropertyOperations.getString(nextLit, PROPS.message$cm50))) {
+                  SPropertyOperations.plusAssignStringProp(lit, PROPS.message$cm50, SPropertyOperations.getString(nextLit, PROPS.message$cm50));
                 }
                 SNodeOperations.deleteNode(nextLit);
               } else {
@@ -107,7 +107,7 @@ public class MessageExpression_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.hasRole(node, LINKS.part$x7tZ) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CombinedMessageExpression$e_), LINKS.part$x7tZ)).count() == 1) {
+        if (SNodeOperations.hasRole(node, LINKS.part$2Bxx) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CombinedMessageExpression$e_), LINKS.part$2Bxx)).count() == 1) {
           SNodeOperations.deleteNode(SNodeOperations.getParent(node));
         } else {
           if (SNodeOperations.isInstanceOf(node, CONCEPTS.MacroMessageExpression$LH)) {
@@ -119,15 +119,15 @@ public class MessageExpression_Actions {
             SNode lit = SNodeOperations.cast(node, CONCEPTS.LiteralMessageExpression$Ga);
             SNode prevSib = SNodeOperations.getPrevSibling(lit);
             SNode prevLit = SNodeOperations.as(prevSib, CONCEPTS.LiteralMessageExpression$Ga);
-            if (isEmptyString(SPropertyOperations.getString(lit, PROPS.message$vnr0))) {
+            if (isEmptyString(SPropertyOperations.getString(lit, PROPS.message$cm50))) {
               SNodeOperations.deleteNode(lit);
               if (prevLit != null) {
                 SelectionUtil.selectLabelCellAnSetCaret(editorContext, prevLit, SelectionManager.LAST_CELL, -1);
               }
             } else {
               if (prevLit != null) {
-                if (isNotEmptyString(SPropertyOperations.getString(prevLit, PROPS.message$vnr0))) {
-                  SPropertyOperations.assign(lit, PROPS.message$vnr0, SPropertyOperations.getString(prevLit, PROPS.message$vnr0) + SPropertyOperations.getString(lit, PROPS.message$vnr0));
+                if (isNotEmptyString(SPropertyOperations.getString(prevLit, PROPS.message$cm50))) {
+                  SPropertyOperations.assign(lit, PROPS.message$cm50, SPropertyOperations.getString(prevLit, PROPS.message$cm50) + SPropertyOperations.getString(lit, PROPS.message$cm50));
                 }
                 SNodeOperations.deleteNode(prevLit);
               } else {
@@ -206,7 +206,7 @@ public class MessageExpression_Actions {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$vnr0 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
+    /*package*/ static final SProperty message$cm50 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
   }
 
   private static final class CONCEPTS {
@@ -216,6 +216,6 @@ public class MessageExpression_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$x7tZ = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
+    /*package*/ static final SContainmentLink part$2Bxx = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
   }
 }

@@ -73,12 +73,12 @@
       <node id="1986963296984229191" at="159,51,160,124" concept="7" />
       <node id="1986963296984229191" at="166,0,167,0" concept="10" trace="OldComponentRef$GK" />
       <node id="1986963296984229191" at="167,0,168,0" concept="10" trace="MigrationDataAnnotation$gb" />
-      <node id="1986963296984229191" at="171,0,172,0" concept="10" trace="target$d0hC" />
-      <node id="1986963296984229191" at="172,0,173,0" concept="10" trace="target$Ql60" />
-      <node id="1986963296984229191" at="173,0,174,0" concept="10" trace="dataNode$wNKg" />
-      <node id="1986963296984229191" at="177,0,178,0" concept="10" trace="oldId$W$wZ" />
-      <node id="1986963296984229191" at="178,0,179,0" concept="10" trace="newId$W$xu" />
-      <node id="1986963296984229191" at="179,0,180,0" concept="10" trace="createdByScript$1_lw" />
+      <node id="1986963296984229191" at="171,0,172,0" concept="10" trace="target$j8yo" />
+      <node id="1986963296984229191" at="172,0,173,0" concept="10" trace="target$kdU0" />
+      <node id="1986963296984229191" at="173,0,174,0" concept="10" trace="dataNode$T4nK" />
+      <node id="1986963296984229191" at="177,0,178,0" concept="10" trace="oldId$lFYx" />
+      <node id="1986963296984229191" at="178,0,179,0" concept="10" trace="newId$lGdy" />
+      <node id="1986963296984229191" at="179,0,180,0" concept="10" trace="createdByScript$L5qw" />
       <node id="1986963296984229191" at="45,0,48,0" concept="5" trace="getCaption#()Ljava/lang/String;" />
       <node id="6807933448471958642" at="59,0,62,0" concept="5" trace="met#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="6807933448471977691" at="68,0,71,0" concept="5" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />

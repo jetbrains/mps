@@ -22,12 +22,12 @@ public class typeof_RedirectOutputExpression_InferenceRule extends AbstractInfer
   }
   public void applyRule(final SNode redirectOutputExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(redirectOutputExpression, LINKS.processHandler$nvtw);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(redirectOutputExpression, LINKS.processHandler$ofiw);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "946964771156863838", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "946964771156863844", true), (SNode) createProcessType_91b0fg_a1a0c0a0b(), false, false, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(redirectOutputExpression, LINKS.listener$nvtZ);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(redirectOutputExpression, LINKS.listener$ofxx);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "946964771156863848", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3eecec87-82a4-4ea1-952b-7d3a8d81c769(jetbrains.mps.execution.commands.typesystem)", "946964771156863854", true), (SNode) _quotation_createNode_91b0fg_a1a0c0b0b(), false, false, _info_12389875345);
     }
@@ -63,8 +63,8 @@ public class typeof_RedirectOutputExpression_InferenceRule extends AbstractInfer
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink processHandler$nvtw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c15L, "processHandler");
-    /*package*/ static final SContainmentLink listener$nvtZ = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c16L, "listener");
+    /*package*/ static final SContainmentLink processHandler$ofiw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c15L, "processHandler");
+    /*package*/ static final SContainmentLink listener$ofxx = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c16L, "listener");
   }
 
   private static final class CONCEPTS {

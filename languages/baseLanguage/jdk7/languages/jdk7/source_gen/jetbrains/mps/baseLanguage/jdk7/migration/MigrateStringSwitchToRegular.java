@@ -51,7 +51,7 @@ public class MigrateStringSwitchToRegular extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.StringSwitchStatement$x7, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(it, createSwitchStatement_z8or4o_a0a0a0a0a0a0g(SLinkOperations.getChildren(it, LINKS.case$31$8), SLinkOperations.getTarget(it, LINKS.defaultBlock$DENE), SLinkOperations.getTarget(it, LINKS.expression$z0sO), SLinkOperations.getChildren(it, LINKS.smodelAttribute$K8bJ), SLinkOperations.getTarget(it, LINKS.switchLabel$hXmp)));
+          SNodeOperations.replaceWithAnother(it, createSwitchStatement_z8or4o_a0a0a0a0a0a0g(SLinkOperations.getChildren(it, LINKS.case$tKvS), SLinkOperations.getTarget(it, LINKS.defaultBlock$bJ1m), SLinkOperations.getTarget(it, LINKS.expression$XdXc), SLinkOperations.getChildren(it, LINKS.smodelAttribute$jXFL), SLinkOperations.getTarget(it, LINKS.switchLabel$GHQ7)));
         }
       });
       Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).visitAll(new IVisitor<SModelInternal>() {
@@ -92,11 +92,11 @@ public class MigrateStringSwitchToRegular extends MigrationScriptBase {
 
   private static SNode createSwitchStatement_z8or4o_a0a0a0a0a0a0g(Iterable<? extends SNode> p0, SNode p1, SNode p2, Iterable<? extends SNode> p3, SNode p4) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SwitchStatement$S1);
-    n0.forChild(LINKS.case$31$8).initNodeList(p0, CONCEPTS.SwitchCase$EA);
-    n0.forChild(LINKS.defaultBlock$DENE).initNode(p1, CONCEPTS.StatementList$TN, true);
-    n0.forChild(LINKS.expression$z0sO).initNode(p2, CONCEPTS.Expression$TP, true);
-    n0.forChild(LINKS.smodelAttribute$K8bJ).initNodeList(p3, CONCEPTS.Attribute$RJ);
-    n0.forChild(LINKS.switchLabel$hXmp).initNode(p4, CONCEPTS.LoopLabel$R4, true);
+    n0.forChild(LINKS.case$tKvS).initNodeList(p0, CONCEPTS.SwitchCase$EA);
+    n0.forChild(LINKS.defaultBlock$bJ1m).initNode(p1, CONCEPTS.StatementList$TN, true);
+    n0.forChild(LINKS.expression$XdXc).initNode(p2, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.smodelAttribute$jXFL).initNodeList(p3, CONCEPTS.Attribute$RJ);
+    n0.forChild(LINKS.switchLabel$GHQ7).initNode(p4, CONCEPTS.LoopLabel$R4, true);
     return n0.getResult();
   }
 
@@ -111,10 +111,10 @@ public class MigrateStringSwitchToRegular extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink case$31$8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
-    /*package*/ static final SContainmentLink defaultBlock$DENE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
-    /*package*/ static final SContainmentLink expression$z0sO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink switchLabel$hXmp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
+    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SContainmentLink defaultBlock$bJ1m = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
+    /*package*/ static final SContainmentLink expression$XdXc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink switchLabel$GHQ7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
   }
 }

@@ -30,7 +30,7 @@ public class CellModel_TransactionalProperty_Constraints extends BaseConstraints
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$p2l_, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$88sV, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -64,6 +64,6 @@ public class CellModel_TransactionalProperty_Constraints extends BaseConstraints
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$p2l_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
+    /*package*/ static final SReferenceLink property$88sV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
   }
 }

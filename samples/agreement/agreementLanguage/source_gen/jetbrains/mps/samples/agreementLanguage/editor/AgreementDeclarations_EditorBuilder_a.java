@@ -92,7 +92,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -164,7 +164,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.accountType$3ur1;
+      return LINKS.accountType$FJ5v;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.AccountType$w8;
@@ -177,7 +177,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(accountTypeListHandler_5606pw_b2a.this.getNode(), LINKS.accountType$3ur1));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(accountTypeListHandler_5606pw_b2a.this.getNode(), LINKS.accountType$FJ5v));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_3();
@@ -299,7 +299,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.eventType$tpK0;
+      return LINKS.eventType$fug0;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.EventType$2k;
@@ -312,7 +312,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(eventTypeListHandler_5606pw_b4a.this.getNode(), LINKS.eventType$tpK0));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(eventTypeListHandler_5606pw_b4a.this.getNode(), LINKS.eventType$fug0));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_7();
@@ -364,7 +364,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -374,7 +374,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink accountType$3ur1 = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102fae6140bL, 0x102fae91a78L, "accountType");
-    /*package*/ static final SContainmentLink eventType$tpK0 = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102fae6140bL, 0x102fae76f47L, "eventType");
+    /*package*/ static final SContainmentLink accountType$FJ5v = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102fae6140bL, 0x102fae91a78L, "accountType");
+    /*package*/ static final SContainmentLink eventType$fug0 = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102fae6140bL, 0x102fae76f47L, "eventType");
   }
 }

@@ -61,9 +61,9 @@ public final class SurroundWithIfClause_Intention extends AbstractIntentionDescr
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode ifStatement = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(node), CONCEPTS.IfStatement$pi);
-      SLinkOperations.setTarget(ifStatement, LINKS.condition$WJ1b, node);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$WJ1E), LINKS.statement$WHn8)).clear();
-      editorContext.select(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$WJ1E));
+      SLinkOperations.setTarget(ifStatement, LINKS.condition$qL$l, node);
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$qLNm), LINKS.statement$pYcS)).clear();
+      editorContext.select(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$qLNm));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -78,8 +78,8 @@ public final class SurroundWithIfClause_Intention extends AbstractIntentionDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

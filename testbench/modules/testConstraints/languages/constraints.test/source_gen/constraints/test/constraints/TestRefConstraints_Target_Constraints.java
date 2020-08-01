@@ -38,7 +38,7 @@ public class TestRefConstraints_Target_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forNamedElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Ur, true, false), LINKS.targets$r$3X));
+            return ListScope.forNamedElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Ur, true, false), LINKS.targets$mtUz));
           }
         };
       }
@@ -52,6 +52,6 @@ public class TestRefConstraints_Target_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targets$r$3X = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
+    /*package*/ static final SContainmentLink targets$mtUz = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
   }
 }

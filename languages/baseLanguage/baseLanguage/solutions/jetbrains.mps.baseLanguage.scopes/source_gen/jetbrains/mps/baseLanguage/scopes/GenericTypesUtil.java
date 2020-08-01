@@ -37,12 +37,12 @@ public class GenericTypesUtil {
   public static SNode methodParamTypeWoutTypeVars(SNode type, Set<SNode> typeParams) {
     SNode typeCopy = SNodeOperations.copyNode(type);
     for (SNode typeVariableRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(typeCopy, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{}))) {
-      if (!(SetSequence.fromSet(typeParams).contains(SLinkOperations.getTarget(typeVariableRef, LINKS.typeVariableDeclaration$U0X4)))) {
+      if (!(SetSequence.fromSet(typeParams).contains(SLinkOperations.getTarget(typeVariableRef, LINKS.typeVariableDeclaration$6t$W)))) {
         // not from our type params, skipping 
         continue;
       }
       // let's see if it's inside ? extends E or ? super E, we want to avoid invalid types like ? extends ? 
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(typeVariableRef), CONCEPTS.UpperBoundType$r6) && SNodeOperations.hasRole(typeVariableRef, LINKS.bound$7gX0) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(typeVariableRef), CONCEPTS.LowerBoundType$Uz) && SNodeOperations.hasRole(typeVariableRef, LINKS.bound$uJC_)) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(typeVariableRef), CONCEPTS.UpperBoundType$r6) && SNodeOperations.hasRole(typeVariableRef, LINKS.bound$xdz0) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(typeVariableRef), CONCEPTS.LowerBoundType$Uz) && SNodeOperations.hasRole(typeVariableRef, LINKS.bound$T4DV)) {
         SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(typeVariableRef), CONCEPTS.WildCardType$29);
       } else {
         SNodeOperations.replaceWithNewChild(typeVariableRef, CONCEPTS.WildCardType$29);
@@ -54,7 +54,7 @@ public class GenericTypesUtil {
     List<SNode> visitedVars = ListSequence.fromList(new ArrayList<SNode>());
 
     SNode result = typeVariableRef;
-    SNode typeVar = SLinkOperations.getTarget(typeVariableRef, LINKS.typeVariableDeclaration$U0X4);
+    SNode typeVar = SLinkOperations.getTarget(typeVariableRef, LINKS.typeVariableDeclaration$6t$W);
     while ((typeVar != null)) {
       ListSequence.fromList(visitedVars).addElement(typeVar);
       SNode typeVarValue = typeByTypeVar.get(typeVar);
@@ -63,7 +63,7 @@ public class GenericTypesUtil {
       }
       result = typeVarValue;
       if (SNodeOperations.isInstanceOf(result, CONCEPTS.TypeVariableReference$vZ)) {
-        SNode newTypeVar = SLinkOperations.getTarget(SNodeOperations.cast(result, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$U0X4);
+        SNode newTypeVar = SLinkOperations.getTarget(SNodeOperations.cast(result, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$6t$W);
         if (ListSequence.fromList(visitedVars).contains(newTypeVar)) {
           break;
         }
@@ -117,8 +117,8 @@ public class GenericTypesUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink bound$7gX0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
-    /*package*/ static final SContainmentLink bound$uJC_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink bound$xdz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
+    /*package*/ static final SContainmentLink bound$T4DV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
   }
 }

@@ -33,7 +33,7 @@ public final class ExplicitCommandParameterDeclaration__BehaviorDescriptor exten
   }
 
   /*package*/ static boolean isRequired_id7c4O8d8q0tV(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isRequired$npaw);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isRequired$lc5w);
   }
   /*package*/ static boolean generateField_id7mEQKPeolUk(@NotNull SNode __thisNode__) {
     return !(((boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(__thisNode__)));
@@ -93,6 +93,6 @@ public final class ExplicitCommandParameterDeclaration__BehaviorDescriptor exten
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isRequired$npaw = MetaAdapterFactory.getProperty(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be2L, 0xbe3a0d5ba1a2be3L, "isRequired");
+    /*package*/ static final SProperty isRequired$lc5w = MetaAdapterFactory.getProperty(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be2L, 0xbe3a0d5ba1a2be3L, "isRequired");
   }
 }

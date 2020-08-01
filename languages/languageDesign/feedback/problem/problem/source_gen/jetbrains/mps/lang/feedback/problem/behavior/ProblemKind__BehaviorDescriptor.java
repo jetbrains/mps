@@ -36,7 +36,7 @@ public final class ProblemKind__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.ContextConceptParameter$gx)) {
-      return Scope.getScope(SLinkOperations.getTarget(__thisNode__, LINKS.context$sc53), child, kind);
+      return Scope.getScope(SLinkOperations.getTarget(__thisNode__, LINKS.context$DQst), child, kind);
     }
     return null;
   }
@@ -88,7 +88,7 @@ public final class ProblemKind__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink context$sc53 = MetaAdapterFactory.getContainmentLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, 0x56aefe6c1b000dL, "context");
+    /*package*/ static final SContainmentLink context$DQst = MetaAdapterFactory.getContainmentLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, 0x56aefe6c1b000dL, "context");
   }
 
   private static final class CONCEPTS {

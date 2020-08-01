@@ -35,7 +35,7 @@ public class RequirementEntryReference_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.targetEntry$CP46, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.targetEntry$LGYU, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -56,9 +56,9 @@ public class RequirementEntryReference_Constraints extends BaseConstraintsDescri
 
             Iterable<SNode> possibleTargets = ListSequence.fromList(allEntries).where(new IWhereFilter<SNode>() {
               public boolean accept(final SNode entry) {
-                return ListSequence.fromList(SLinkOperations.getChildren(currentTrace, LINKS.mentions$jeFL)).all(new IWhereFilter<SNode>() {
+                return ListSequence.fromList(SLinkOperations.getChildren(currentTrace, LINKS.mentions$k7cJ)).all(new IWhereFilter<SNode>() {
                   public boolean accept(SNode it) {
-                    return Objects.equals(it, _context.getReferenceNode()) || (SLinkOperations.getTarget(it, LINKS.targetEntry$CP46) == null) || !(Objects.equals(SLinkOperations.getTarget(it, LINKS.targetEntry$CP46), entry));
+                    return Objects.equals(it, _context.getReferenceNode()) || (SLinkOperations.getTarget(it, LINKS.targetEntry$LGYU) == null) || !(Objects.equals(SLinkOperations.getTarget(it, LINKS.targetEntry$LGYU), entry));
                   }
                 });
               }
@@ -82,7 +82,7 @@ public class RequirementEntryReference_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink targetEntry$CP46 = MetaAdapterFactory.getReferenceLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, 0x39ed36a1ccd61810L, "targetEntry");
-    /*package*/ static final SContainmentLink mentions$jeFL = MetaAdapterFactory.getContainmentLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, 0x39ed36a1ccd45001L, "mentions");
+    /*package*/ static final SReferenceLink targetEntry$LGYU = MetaAdapterFactory.getReferenceLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, 0x39ed36a1ccd61810L, "targetEntry");
+    /*package*/ static final SContainmentLink mentions$k7cJ = MetaAdapterFactory.getContainmentLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, 0x39ed36a1ccd45001L, "mentions");
   }
 }

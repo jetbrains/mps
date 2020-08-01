@@ -69,11 +69,11 @@ public class TestSubstituteParentPropertyAndReference_StringMenuPart extends Tra
 
     @Override
     protected SProperty getProperty(TransformationMenuContext context) {
-      return PROPS.stringPropertyWithPropertyMenuPart$wyAB;
+      return PROPS.stringPropertyWithPropertyMenuPart$KKGT;
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringPropertyWithPropertyMenuPart$wyAB = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x69b757bd7f90809L, "stringPropertyWithPropertyMenuPart");
+    /*package*/ static final SProperty stringPropertyWithPropertyMenuPart$KKGT = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x69b757bd7f90809L, "stringPropertyWithPropertyMenuPart");
   }
 }

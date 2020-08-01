@@ -22,8 +22,8 @@
       <node id="6109541130565562583" at="73,162,74,45" concept="1" />
       <node id="8977123699282978604" at="82,0,83,0" concept="8" trace="TestNode$kc" />
       <node id="8977123699282978604" at="83,0,84,0" concept="8" trace="MigrationDataAnnotation$gb" />
-      <node id="8977123699282978604" at="87,0,88,0" concept="8" trace="nodeToCheck$Pz43" />
-      <node id="8977123699282978604" at="91,0,92,0" concept="8" trace="createdByScript$1_lw" />
+      <node id="8977123699282978604" at="87,0,88,0" concept="8" trace="nodeToCheck$VYXt" />
+      <node id="8977123699282978604" at="91,0,92,0" concept="8" trace="createdByScript$L5qw" />
       <node id="8977123699282978604" at="35,0,37,0" concept="8" trace="ourParamCache" />
       <node id="8977123699282978604" at="38,0,40,0" concept="2" trace="myWithCommandRule" />
       <node id="8977123699282978604" at="41,0,44,0" concept="0" trace="SampleDeclMigration_Test#()V" />

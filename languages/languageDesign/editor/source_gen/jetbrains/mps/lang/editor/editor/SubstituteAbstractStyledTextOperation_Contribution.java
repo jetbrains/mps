@@ -84,7 +84,7 @@ public class SubstituteAbstractStyledTextOperation_Contribution extends Substitu
       if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$6a))) {
         return emptyList;
       }
-      SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+      SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
       if (operand == null) {
         return emptyList;
       }
@@ -189,6 +189,6 @@ public class SubstituteAbstractStyledTextOperation_Contribution extends Substitu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

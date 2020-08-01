@@ -33,7 +33,7 @@ public final class FailingRuleProblem__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    return Scope.getScope(RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.rule$Gl8r)), null, kind);
+    return Scope.getScope(RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.rule$uf55)), null, kind);
   }
 
   /*package*/ FailingRuleProblem__BehaviorDescriptor() {
@@ -83,6 +83,6 @@ public final class FailingRuleProblem__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink rule$Gl8r = MetaAdapterFactory.getReferenceLink(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L, 0x573ae5b8b8cd1498L, "rule");
+    /*package*/ static final SReferenceLink rule$uf55 = MetaAdapterFactory.getReferenceLink(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L, 0x573ae5b8b8cd1498L, "rule");
   }
 }

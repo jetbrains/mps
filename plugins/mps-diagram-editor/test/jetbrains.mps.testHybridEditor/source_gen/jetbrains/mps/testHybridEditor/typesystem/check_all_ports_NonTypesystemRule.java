@@ -25,17 +25,17 @@ public class check_all_ports_NonTypesystemRule extends AbstractNonTypesystemRule
   }
   public void applyRule(final SNode block, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     boolean result = true;
-    for (SNode port : ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.inputPorts$18yY))) {
+    for (SNode port : ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.inputPorts$z8W2))) {
       boolean portResult = false;
-      for (SNode connector : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(block), CONCEPTS.Diagram$k$), LINKS.connectors$124r))) {
-        portResult = portResult || Objects.equals(SLinkOperations.getTarget(connector, LINKS.inputPort$1943), port);
+      for (SNode connector : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(block), CONCEPTS.Diagram$k$), LINKS.connectors$w095))) {
+        portResult = portResult || Objects.equals(SLinkOperations.getTarget(connector, LINKS.inputPort$zoXt), port);
       }
       result = result && portResult;
     }
-    for (SNode port : ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.outputPorts$18zW))) {
+    for (SNode port : ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.outputPorts$z9q4))) {
       boolean portResult = false;
-      for (SNode connector : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(block), CONCEPTS.Diagram$k$), LINKS.connectors$124r))) {
-        portResult = portResult || Objects.equals(SLinkOperations.getTarget(connector, LINKS.outputPort$1927), port);
+      for (SNode connector : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(block), CONCEPTS.Diagram$k$), LINKS.connectors$w095))) {
+        portResult = portResult || Objects.equals(SLinkOperations.getTarget(connector, LINKS.outputPort$zo1p), port);
       }
       result = result && portResult;
     }
@@ -57,11 +57,11 @@ public class check_all_ports_NonTypesystemRule extends AbstractNonTypesystemRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink inputPort$1943 = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702fa1L, 0xa10615a65703018L, "inputPort");
-    /*package*/ static final SContainmentLink connectors$124r = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0xa10615a65702fdaL, "connectors");
-    /*package*/ static final SContainmentLink inputPorts$18yY = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702f98L, 0xa10615a65702ffeL, "inputPorts");
-    /*package*/ static final SReferenceLink outputPort$1927 = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702fa1L, 0xa10615a65703014L, "outputPort");
-    /*package*/ static final SContainmentLink outputPorts$18zW = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702f98L, 0xa10615a65703000L, "outputPorts");
+    /*package*/ static final SReferenceLink inputPort$zoXt = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702fa1L, 0xa10615a65703018L, "inputPort");
+    /*package*/ static final SContainmentLink connectors$w095 = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0xa10615a65702fdaL, "connectors");
+    /*package*/ static final SContainmentLink inputPorts$z8W2 = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702f98L, 0xa10615a65702ffeL, "inputPorts");
+    /*package*/ static final SReferenceLink outputPort$zo1p = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702fa1L, 0xa10615a65703014L, "outputPort");
+    /*package*/ static final SContainmentLink outputPorts$z9q4 = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702f98L, 0xa10615a65703000L, "outputPorts");
   }
 
   private static final class CONCEPTS {

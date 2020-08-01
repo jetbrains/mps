@@ -25,7 +25,7 @@ public class check_ExtractStaticMethodCall_NonTypesystemRule extends AbstractNon
   }
   public void applyRule(final SNode callStatic, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> available = ExtractStaticMethod_CallExpression__BehaviorDescriptor.getMethods_id55buE1DVoKQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ExtractStaticMethod_CallExpression$Wu), callStatic);
-    if (!(ListSequence.fromList(available).contains(SLinkOperations.getTarget(callStatic, LINKS.baseMethodDeclaration$$A7i)))) {
+    if (!(ListSequence.fromList(available).contains(SLinkOperations.getTarget(callStatic, LINKS.baseMethodDeclaration$ItxI)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(callStatic, "This method can't be called from the current context", "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "8881995820265138588", null, errorTarget);
@@ -47,6 +47,6 @@ public class check_ExtractStaticMethodCall_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

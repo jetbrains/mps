@@ -21,7 +21,7 @@ public class ForEachMatchStatement_InferenceRule extends AbstractInferenceRule_R
   }
   public void applyRule(final SNode fm, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(fm, LINKS.expr$6nk9);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(fm, LINKS.expr$5iKn);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590517(jetbrains.mps.baseLanguage.regexp.typesystem)", "1178179183624", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590517(jetbrains.mps.baseLanguage.regexp.typesystem)", "1178179183625", true), (SNode) _quotation_createNode_4mgdsl_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -43,7 +43,7 @@ public class ForEachMatchStatement_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$6nk9 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119caff72eL, 0x1119cb06facL, "expr");
+    /*package*/ static final SContainmentLink expr$5iKn = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119caff72eL, 0x1119cb06facL, "expr");
   }
 
   private static final class CONCEPTS {

@@ -32,12 +32,12 @@ public class ModuleFinder {
         // similar code is in BuildMps_Module.fetchDependencies() behavior (at least). 
         SNode layoutNode = helper.getArtifact(module);
         if (layoutNode == null) {
-          genContext.showErrorMessage(node, "mps module " + SPropertyOperations.getString(module, PROPS.name$tAp1) + " was not found in the layout of `" + SPropertyOperations.getString(project, PROPS.name$tAp1) + "'");
+          genContext.showErrorMessage(node, "mps module " + SPropertyOperations.getString(module, PROPS.name$lA7v) + " was not found in the layout of `" + SPropertyOperations.getString(project, PROPS.name$lA7v) + "'");
           return null;
         }
         String val = BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invoke(layoutNode, helper, module);
         if (val == null) {
-          genContext.showErrorMessage(node, "no location for module" + SPropertyOperations.getString(module, PROPS.name$tAp1));
+          genContext.showErrorMessage(node, "no location for module" + SPropertyOperations.getString(module, PROPS.name$lA7v));
           return null;
         }
         return val;
@@ -58,7 +58,7 @@ public class ModuleFinder {
   }
   private static SNode createGeneratorInternal_String_8pqt49_a0a0a0e0a(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$cg);
-    n0.setProperty(PROPS.path$LlSY, p0);
+    n0.setProperty(PROPS.path$TAA2, p0);
     return n0.getResult();
   }
 
@@ -68,7 +68,7 @@ public class ModuleFinder {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty path$LlSY = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, 0xd94b027412f0827L, "path");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty path$TAA2 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, 0xd94b027412f0827L, "path");
   }
 }

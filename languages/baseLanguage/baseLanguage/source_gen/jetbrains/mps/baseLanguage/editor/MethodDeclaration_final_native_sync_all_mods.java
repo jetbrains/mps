@@ -142,13 +142,13 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isFinal$I$Qu, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isFinal$zQoy, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "finalModifier", -1);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$I$Qu));
+          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$zQoy));
         }
 
 
@@ -207,13 +207,13 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isSynchronized$PMx, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isSynchronized$q3tZ, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "synchronizedModifier", -1);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isSynchronized$PMx));
+          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isSynchronized$q3tZ));
         }
 
 
@@ -272,13 +272,13 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isNative$LADB, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isNative$1I9T, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "nativeModifier", -1);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isNative$LADB));
+          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isNative$1I9T));
         }
 
 
@@ -358,7 +358,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.IHasModifiers$LF), LINKS.modifiers$akE0)).addElement(createdNode);
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.IHasModifiers$LF), LINKS.modifiers$m0)).addElement(createdNode);
           SelectionUtil.selectNode(_context.getEditorContext(), createdNode);
         }
 
@@ -447,7 +447,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          SLinkOperations.setTarget(SNodeOperations.cast(_context.getNode(), CONCEPTS.InstanceMethodDeclaration$An), LINKS.visibility$2GiC, createdNode);
+          SLinkOperations.setTarget(SNodeOperations.cast(_context.getNode(), CONCEPTS.InstanceMethodDeclaration$An), LINKS.visibility$jt1o, createdNode);
         }
 
         @Override
@@ -483,13 +483,13 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
-    /*package*/ static final SProperty isSynchronized$PMx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
-    /*package*/ static final SProperty isNative$LADB = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty isNative$1I9T = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

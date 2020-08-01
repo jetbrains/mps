@@ -136,7 +136,7 @@ public class dowcast_Contribution extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode downcast = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.DownCastToLowLevel$_k);
-          SLinkOperations.setTarget(downcast, LINKS.expression$vmO6, _context.getNode());
+          SLinkOperations.setTarget(downcast, LINKS.expression$c3eU, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), downcast, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -176,6 +176,6 @@ public class dowcast_Contribution extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$vmO6 = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, 0x6dd9f7bd221bb39eL, "expression");
+    /*package*/ static final SContainmentLink expression$c3eU = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, 0x6dd9f7bd221bb39eL, "expression");
   }
 }

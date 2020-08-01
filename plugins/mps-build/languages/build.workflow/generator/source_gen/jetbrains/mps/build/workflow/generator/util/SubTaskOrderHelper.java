@@ -36,16 +36,16 @@ public class SubTaskOrderHelper {
       subtasks[count++] = wrapper;
     }
     for (SubTask st : subtasks) {
-      for (SNode dep : SLinkOperations.getChildren(st.getTask(), LINKS.after$Gju$)) {
-        SubTask afterTask = map.get(SLinkOperations.getTarget(dep, LINKS.target$bdKw));
+      for (SNode dep : SLinkOperations.getChildren(st.getTask(), LINKS.after$trNs)) {
+        SubTask afterTask = map.get(SLinkOperations.getTarget(dep, LINKS.target$rEvw));
         if (afterTask == null) {
           genContext.showErrorMessage(dep, "dependency on non-existing subtask");
           continue;
         }
         st.targets.add(afterTask.getIndex());
       }
-      for (SNode dep : SLinkOperations.getChildren(st.getTask(), LINKS.before$hqay)) {
-        SubTask beforeTask = map.get(SLinkOperations.getTarget(dep, LINKS.target$bdKw));
+      for (SNode dep : SLinkOperations.getChildren(st.getTask(), LINKS.before$rF6u)) {
+        SubTask beforeTask = map.get(SLinkOperations.getTarget(dep, LINKS.target$rEvw));
         if (beforeTask == null) {
           genContext.showErrorMessage(dep, "dependency on non-existing subtask");
           continue;
@@ -68,7 +68,7 @@ public class SubTaskOrderHelper {
           if (i > 0) {
             sb.append(", ");
           }
-          sb.append(SPropertyOperations.getString(subtasks[cycle[i]].getTask(), PROPS.name$tAp1));
+          sb.append(SPropertyOperations.getString(subtasks[cycle[i]].getTask(), PROPS.name$lA7v));
         }
         if (cycle.length > 5) {
           sb.append(" ...");
@@ -112,12 +112,12 @@ public class SubTaskOrderHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink after$Gju$ = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after");
-    /*package*/ static final SReferenceLink target$bdKw = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, 0x2670d5989d5b49b9L, "target");
-    /*package*/ static final SContainmentLink before$hqay = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before");
+    /*package*/ static final SContainmentLink after$trNs = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after");
+    /*package*/ static final SReferenceLink target$rEvw = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, 0x2670d5989d5b49b9L, "target");
+    /*package*/ static final SContainmentLink before$rF6u = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -31,9 +31,9 @@
       <node id="7514052574629298315" at="51,61,52,85" concept="2" />
       <node id="1213104858853" at="52,85,53,22" concept="7" />
       <node id="1213104858853" at="57,0,58,0" concept="9" trace="PatternVariableDeclaration$Ma" />
-      <node id="1213104858853" at="61,0,62,0" concept="9" trace="name$tAp1" />
-      <node id="1213104858853" at="62,0,63,0" concept="9" trace="varName$DO_b" />
-      <node id="1213104858853" at="63,0,64,0" concept="9" trace="shortDescription$w2Xj" />
+      <node id="1213104858853" at="61,0,62,0" concept="9" trace="name$lA7v" />
+      <node id="1213104858853" at="62,0,63,0" concept="9" trace="varName$gu0l" />
+      <node id="1213104858853" at="63,0,64,0" concept="9" trace="shortDescription$xrGd" />
       <node id="1213104858853" at="18,0,21,0" concept="1" trace="PatternVariableDeclaration_Constraints#()V" />
       <node id="1213104858854" at="23,0,26,0" concept="1" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="7514052574629298315" at="36,0,39,0" concept="1" trace="ShortDescription_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
@@ -85,8 +85,8 @@
       <node id="1213104859326" at="37,119,38,61" concept="2" />
       <node id="1213104859325" at="38,61,39,22" concept="7" />
       <node id="1213104859325" at="43,0,44,0" concept="9" trace="LinkPatternVariableDeclaration$UB" />
-      <node id="1213104859325" at="47,0,48,0" concept="9" trace="name$tAp1" />
-      <node id="1213104859325" at="48,0,49,0" concept="9" trace="varName$Oh7T" />
+      <node id="1213104859325" at="47,0,48,0" concept="9" trace="name$lA7v" />
+      <node id="1213104859325" at="48,0,49,0" concept="9" trace="varName$kiOB" />
       <node id="1213104859325" at="18,0,21,0" concept="1" trace="LinkPatternVariableDeclaration_Constraints#()V" />
       <node id="1213104859326" at="23,0,26,0" concept="1" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213104859326" at="26,0,30,0" concept="5" trace="hasOwnGetter#()Z" />
@@ -124,8 +124,8 @@
       <node id="1213104859401" at="37,119,38,61" concept="2" />
       <node id="1213104859400" at="38,61,39,22" concept="7" />
       <node id="1213104859400" at="43,0,44,0" concept="9" trace="PropertyPatternVariableDeclaration$Xj" />
-      <node id="1213104859400" at="47,0,48,0" concept="9" trace="name$tAp1" />
-      <node id="1213104859400" at="48,0,49,0" concept="9" trace="varName$DOAw" />
+      <node id="1213104859400" at="47,0,48,0" concept="9" trace="name$lA7v" />
+      <node id="1213104859400" at="48,0,49,0" concept="9" trace="varName$guDw" />
       <node id="1213104859400" at="18,0,21,0" concept="1" trace="PropertyPatternVariableDeclaration_Constraints#()V" />
       <node id="1213104859401" at="23,0,26,0" concept="1" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213104859401" at="26,0,30,0" concept="5" trace="hasOwnGetter#()Z" />
@@ -175,8 +175,8 @@
       <node id="2248628811136079927" at="94,0,95,0" concept="9" trace="PatternVariableReference$5Z" />
       <node id="2248628811136079927" at="95,0,96,0" concept="9" trace="PatternExpression$Lc" />
       <node id="2248628811136079927" at="96,0,97,0" concept="9" trace="PatternVariableDeclaration$Ma" />
-      <node id="2248628811136079927" at="100,0,101,0" concept="9" trace="variable$w5gw" />
-      <node id="2248628811136079927" at="104,0,105,0" concept="9" trace="name$tAp1" />
+      <node id="2248628811136079927" at="100,0,101,0" concept="9" trace="variable$yyZw" />
+      <node id="2248628811136079927" at="104,0,105,0" concept="9" trace="name$lA7v" />
       <node id="2248628811136079927" at="36,0,39,0" concept="1" trace="PatternVariableReference_Constraints#()V" />
       <node id="2248628811136079927" at="46,0,49,9" concept="4" />
       <node id="6836281137582794731" at="73,252,76,15" concept="4" />
@@ -255,7 +255,7 @@
       <node id="2793477601722336572" at="55,0,56,0" concept="9" trace="breakingNode_p88vz1_a0a0a0a0a1a0a0a0c" />
       <node id="2793477601722336572" at="58,0,59,0" concept="9" trace="PatternBuilderVariableReference$Sm" />
       <node id="2793477601722336572" at="59,0,60,0" concept="9" trace="PatternBuilderVariable$In" />
-      <node id="2793477601722336572" at="63,0,64,0" concept="9" trace="declaration$GelY" />
+      <node id="2793477601722336572" at="63,0,64,0" concept="9" trace="declaration$qWD2" />
       <node id="2793477601722336572" at="24,0,27,0" concept="1" trace="PatternBuilderVariableReference_Constraints#()V" />
       <node id="2793477601722336573" at="31,0,35,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="2793477601722336573" at="39,0,43,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -303,7 +303,7 @@
       <node id="3741790230812484600" at="66,0,67,0" concept="9" trace="LocalPatternReference$Mm" />
       <node id="3741790230812484600" at="67,0,68,0" concept="9" trace="Classifier$hJ" />
       <node id="3741790230812484600" at="68,0,69,0" concept="9" trace="PatternBuilderClassifierMember$75" />
-      <node id="3741790230812484600" at="72,0,73,0" concept="9" trace="declaration$6hl0" />
+      <node id="3741790230812484600" at="72,0,73,0" concept="9" trace="declaration$2pb0" />
       <node id="3741790230812484600" at="29,0,32,0" concept="1" trace="LocalPatternReference_Constraints#()V" />
       <node id="8187773339868528819" at="51,0,54,0" concept="5" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="3741790230812484853" at="36,0,40,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -358,8 +358,8 @@
       <node id="4217760266503599759" at="52,0,53,0" concept="9" trace="ActionAsPattern$TP" />
       <node id="4217760266503599759" at="53,0,54,0" concept="9" trace="ActionStatement$wS" />
       <node id="4217760266503599759" at="54,0,55,0" concept="9" trace="InsertPosition$Ux" />
-      <node id="4217760266503599759" at="58,0,59,0" concept="9" trace="action$dtRs" />
-      <node id="4217760266503599759" at="59,0,60,0" concept="9" trace="position$2Q2_" />
+      <node id="4217760266503599759" at="58,0,59,0" concept="9" trace="action$xtQ$" />
+      <node id="4217760266503599759" at="59,0,60,0" concept="9" trace="position$obfV" />
       <node id="4217760266503599759" at="21,0,24,0" concept="1" trace="ActionAsPattern_Constraints#()V" />
       <node id="4217760266503599759" at="31,0,34,9" concept="4" />
       <node id="1227128029536562024" at="40,128,43,5" concept="4" />
@@ -507,8 +507,8 @@
       <node id="4847894289815658589" at="66,0,67,0" concept="9" trace="QualifiedPatternReference$kN" />
       <node id="4847894289815658589" at="67,0,68,0" concept="9" trace="Classifier$hJ" />
       <node id="4847894289815658589" at="68,0,69,0" concept="9" trace="PatternBuilderClassifierMember$75" />
-      <node id="4847894289815658589" at="72,0,73,0" concept="9" trace="pattern$JPrv" />
-      <node id="4847894289815658589" at="73,0,74,0" concept="9" trace="classifier$JOZS" />
+      <node id="4847894289815658589" at="72,0,73,0" concept="9" trace="pattern$aSk1" />
+      <node id="4847894289815658589" at="73,0,74,0" concept="9" trace="classifier$aEW8" />
       <node id="4847894289815658589" at="29,0,32,0" concept="1" trace="QualifiedPatternReference_Constraints#()V" />
       <node id="6836281137582644017" at="50,153,53,13" concept="4" />
       <node id="4847894289815661195" at="36,0,40,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -560,8 +560,8 @@
       <node id="5642650895629225737" at="65,0,66,0" concept="9" trace="breakingNode_8aolto_a0a0a0a0a1a0a0a0c" />
       <node id="5642650895629225737" at="68,0,69,0" concept="9" trace="OrPatternVariableReference$At" />
       <node id="5642650895629225737" at="69,0,70,0" concept="9" trace="OrPattern$zL" />
-      <node id="5642650895629225737" at="73,0,74,0" concept="9" trace="declaration$qXxw" />
-      <node id="5642650895629225737" at="74,0,75,0" concept="9" trace="variable$_xUF" />
+      <node id="5642650895629225737" at="73,0,74,0" concept="9" trace="declaration$3New" />
+      <node id="5642650895629225737" at="74,0,75,0" concept="9" trace="variable$brqP" />
       <node id="5642650895629225737" at="28,0,31,0" concept="1" trace="OrPatternVariableReference_Constraints#()V" />
       <node id="6836281137582794891" at="59,87,62,5" concept="4" />
       <node id="5642650895629225738" at="35,0,39,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -617,7 +617,7 @@
       <node id="7939357357339014222" at="51,0,52,0" concept="9" trace="ExpressionPatternProvider$PJ" />
       <node id="7939357357339014222" at="52,0,53,0" concept="9" trace="AbstractClassifierReference$vv" />
       <node id="7939357357339014222" at="53,0,54,0" concept="9" trace="QualifiedReference$lF" />
-      <node id="7939357357339014222" at="57,0,58,0" concept="9" trace="expression$2how" />
+      <node id="7939357357339014222" at="57,0,58,0" concept="9" trace="expression$6qRw" />
       <node id="7939357357339014222" at="23,0,26,0" concept="1" trace="ExpressionPatternProvider_Constraints#()V" />
       <node id="7939357357339014222" at="33,0,36,9" concept="4" />
       <node id="7939357357339014727" at="42,128,45,5" concept="4" />
@@ -667,9 +667,9 @@
       <node id="8144732810705663998" at="57,0,58,0" concept="9" trace="NodeBuilderInitLink$Xj" />
       <node id="8144732810705663998" at="58,0,59,0" concept="9" trace="Expression$TP" />
       <node id="8144732810705663998" at="59,0,60,0" concept="9" trace="NullLiteral$q4" />
-      <node id="8144732810705663998" at="63,0,64,0" concept="9" trace="link$ckAZ" />
-      <node id="8144732810705663998" at="64,0,65,0" concept="9" trace="initValue$UJfh" />
-      <node id="8144732810705663998" at="68,0,69,0" concept="9" trace="metaClass$tHD7" />
+      <node id="8144732810705663998" at="63,0,64,0" concept="9" trace="link$XYSx" />
+      <node id="8144732810705663998" at="64,0,65,0" concept="9" trace="initValue$sSpf" />
+      <node id="8144732810705663998" at="68,0,69,0" concept="9" trace="metaClass$p6Up" />
       <node id="8144732810705699226" at="48,10,50,5" concept="0" />
       <node id="8144732810705663998" at="26,0,29,0" concept="1" trace="PatternBuilder_Constraints#()V" />
       <node id="8144732810705663998" at="36,0,39,9" concept="4" />
@@ -720,7 +720,7 @@
       <node id="8950533135207612073" at="47,0,48,0" concept="9" trace="PatternVariableProperty$JI" />
       <node id="8950533135207612073" at="48,0,49,0" concept="9" trace="INodeBuilderContainer$cS" />
       <node id="8950533135207612073" at="49,0,50,0" concept="9" trace="PatternBuilder$Pa" />
-      <node id="8950533135207612073" at="53,0,54,0" concept="9" trace="initValue$nhHN" />
+      <node id="8950533135207612073" at="53,0,54,0" concept="9" trace="initValue$h_bH" />
       <node id="8950533135207612073" at="22,0,25,0" concept="1" trace="PatternVariableProperty_Constraints#()V" />
       <node id="8950533135207612073" at="32,0,35,9" concept="4" />
       <node id="8950533135207612073" at="41,0,44,0" concept="10" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

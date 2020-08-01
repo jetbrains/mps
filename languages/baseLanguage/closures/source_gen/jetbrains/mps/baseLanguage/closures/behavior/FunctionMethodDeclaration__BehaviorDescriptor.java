@@ -37,12 +37,12 @@ public final class FunctionMethodDeclaration__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode functionType_id2uAWGxT6YKz(@NotNull SNode __thisNode__) {
-    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)).select(new ISelector<SNode, SNode>() {
+    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$qsax)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode pd) {
-        return SNodeOperations.copyNode(SLinkOperations.getTarget(pd, LINKS.type$pLrO));
+        return SNodeOperations.copyNode(SLinkOperations.getTarget(pd, LINKS.type$uWuc));
       }
     }).toListSequence();
-    return _quotation_createNode_c7xn2w_a1a0(params, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$WIkw)));
+    return _quotation_createNode_c7xn2w_a1a0(params, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$qrVw)));
   }
   /*package*/ static boolean canBeInterfaceMember_id2zJQqQIUx2B(@NotNull SAbstractConcept __thisConcept__) {
     return false;
@@ -115,8 +115,8 @@ public final class FunctionMethodDeclaration__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 }

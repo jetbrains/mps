@@ -42,7 +42,7 @@ public class NodeCommenter {
       throw new IllegalStateException("Node commenter has invalid state. Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(myNode, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + myNode.getNodeId());
     }
     SNode comment = createNewComment();
-    getParent().insertChildBefore(LINKS.smodelAttribute$K8bJ, comment, myNode);
+    getParent().insertChildBefore(LINKS.smodelAttribute$jXFL, comment, myNode);
     moveNodeUnderComment(comment);
     if (shouldCreateNewNodeInSingleRole) {
       createNewNodeInSingleRole();
@@ -94,7 +94,7 @@ public class NodeCommenter {
     return newComment;
   }
   private void moveNodeUnderComment(SNode comment) {
-    SLinkOperations.setTarget(comment, LINKS.commentedNode$I8FA, myNode);
+    SLinkOperations.setTarget(comment, LINKS.commentedNode$md7q, myNode);
   }
 
   private static final class CONCEPTS {
@@ -103,7 +103,7 @@ public class NodeCommenter {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink commentedNode$I8FA = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink commentedNode$md7q = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
   }
 }

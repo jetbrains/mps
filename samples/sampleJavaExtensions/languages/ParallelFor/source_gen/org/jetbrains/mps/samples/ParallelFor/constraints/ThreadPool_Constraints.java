@@ -23,7 +23,7 @@ public class ThreadPool_Constraints extends BaseConstraintsDescriptor {
 
   public static class NumberOfThreads_Property extends BasePropertyConstraintsDescriptor {
     public NumberOfThreads_Property(ConstraintsDescriptor container) {
-      super(PROPS.numberOfThreads$18oz, container);
+      super(PROPS.numberOfThreads$z3SX, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class ThreadPool_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.numberOfThreads$18oz, new NumberOfThreads_Property(this));
+    properties.put(PROPS.numberOfThreads$z3SX, new NumberOfThreads_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class ThreadPool_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty numberOfThreads$18oz = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x8c9905a80efd03cL, 0x8c9905a80efd045L, "numberOfThreads");
+    /*package*/ static final SProperty numberOfThreads$z3SX = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x8c9905a80efd03cL, 0x8c9905a80efd045L, "numberOfThreads");
   }
 }

@@ -60,9 +60,9 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
     public void execute(final SNode node, final EditorContext editorContext) {
       boolean indent = (boolean) AbstractAppendPart__BehaviorDescriptor.withIndent_idi0uJgJ6.invoke(node);
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConstantStringAppendPart$AE)) {
-        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.ConstantStringAppendPart$AE), PROPS.withIndent$rzdW, !(indent));
+        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.ConstantStringAppendPart$AE), PROPS.withIndent$m3K4, !(indent));
       } else {
-        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.NodeAppendPart$oe), PROPS.withIndent$KkK_, !(indent));
+        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.NodeAppendPart$oe), PROPS.withIndent$q3xV, !(indent));
       }
     }
     @Override
@@ -77,7 +77,7 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty withIndent$rzdW = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201534c74dL, "withIndent");
-    /*package*/ static final SProperty withIndent$KkK_ = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, 0x12015341f3eL, "withIndent");
+    /*package*/ static final SProperty withIndent$m3K4 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201534c74dL, "withIndent");
+    /*package*/ static final SProperty withIndent$q3xV = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, 0x12015341f3eL, "withIndent");
   }
 }

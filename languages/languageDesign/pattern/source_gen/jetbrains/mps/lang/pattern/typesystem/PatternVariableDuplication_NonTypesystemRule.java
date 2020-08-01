@@ -26,17 +26,17 @@ public class PatternVariableDuplication_NonTypesystemRule extends AbstractNonTyp
   public PatternVariableDuplication_NonTypesystemRule() {
   }
   public void applyRule(final SNode variable, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(variable, PROPS.name$tAp1))) {
+    if (isEmptyString(SPropertyOperations.getString(variable, PROPS.name$lA7v))) {
       return;
     }
     if (ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SNodeOperations.getNodeAncestor(variable, CONCEPTS.PatternBuilder$Pa, false, false))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != variable && Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(variable, PROPS.name$tAp1));
+        return it != variable && Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(variable, PROPS.name$lA7v));
       }
     })) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variable, "Variable " + SPropertyOperations.getString(variable, PROPS.name$tAp1) + " is already declared", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "8187773339869717326", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variable, "Variable " + SPropertyOperations.getString(variable, PROPS.name$lA7v) + " is already declared", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "8187773339869717326", null, errorTarget);
       }
     }
   }
@@ -54,7 +54,7 @@ public class PatternVariableDuplication_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

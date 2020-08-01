@@ -102,7 +102,7 @@ public class VarType_LocalVariableDeclaration extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Type$IG) && SNodeOperations.hasRole(_context.getParentNode(), LINKS.type$pLrO) && (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getParentNode()))), CONCEPTS.LocalVariableDeclaration$Bf) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getParentNode()))), CONCEPTS.VarVariableDeclaration$Of))) {
+        if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Type$IG) && SNodeOperations.hasRole(_context.getParentNode(), LINKS.type$uWuc) && (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getParentNode()))), CONCEPTS.LocalVariableDeclaration$Bf) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getParentNode()))), CONCEPTS.VarVariableDeclaration$Of))) {
           return (strictly ? "var".equals(pattern) : "var".startsWith(pattern));
         }
         return false;
@@ -118,6 +118,6 @@ public class VarType_LocalVariableDeclaration extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

@@ -29,9 +29,9 @@ public class check_NodeBuilderList_NonTypesystemRule extends AbstractNonTypesyst
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(nodeBuilderList, CONCEPTS.INodeBuilderContainer$cS, false, false), CONCEPTS.PatternBuilder$Pa))) {
       return;
     }
-    if (SNodeOperations.hasRole(nodeBuilderList, LINKS.initValue$UJfh) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeBuilderList), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$ckAZ), PROPS.unordered$A9T6) && ListSequence.fromList(SLinkOperations.getChildren(nodeBuilderList, LINKS.nodes$$MVw)).count() > 1) {
+    if (SNodeOperations.hasRole(nodeBuilderList, LINKS.initValue$sSpf) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeBuilderList), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx), PROPS.unordered$uMDU) && ListSequence.fromList(SLinkOperations.getChildren(nodeBuilderList, LINKS.nodes$OEOw)).count() > 1) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.link$ckAZ);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.link$XYSx);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(SNodeOperations.cast(SNodeOperations.getParent(nodeBuilderList), CONCEPTS.NodeBuilderInitLink$Xj), "List matching strictly follows declaration order", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "410791833645448363", null, errorTarget);
       }
     }
@@ -54,12 +54,12 @@ public class check_NodeBuilderList_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
-    /*package*/ static final SContainmentLink initValue$UJfh = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
-    /*package*/ static final SReferenceLink link$ckAZ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
+    /*package*/ static final SContainmentLink nodes$OEOw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
+    /*package*/ static final SContainmentLink initValue$sSpf = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
+    /*package*/ static final SReferenceLink link$XYSx = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty unordered$A9T6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x213ed46fe94fc232L, "unordered");
+    /*package*/ static final SProperty unordered$uMDU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x213ed46fe94fc232L, "unordered");
   }
 }

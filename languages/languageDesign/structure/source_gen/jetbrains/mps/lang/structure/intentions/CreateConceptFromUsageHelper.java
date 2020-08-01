@@ -78,12 +78,12 @@ public class CreateConceptFromUsageHelper {
     // created is different from "method!=null", differs in case ex does not execute passed closure 
     boolean created = false;
     final Wrappers._T<SNode> createdConcept = new Wrappers._T<SNode>(null);
-    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$bA) && cell.isErrorState() && cell.getSRole().equals(LINKS.target$egp8)) {
+    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$bA) && cell.isErrorState() && cell.getSRole().equals(LINKS.target$TWaS)) {
       created = true;
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           SNode cncpt = createConcept(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.LinkDeclaration$bA), LINKS.target$egp8, cncpt);
+          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.LinkDeclaration$bA), LINKS.target$TWaS, cncpt);
           createdConcept.value = cncpt;
         }
       });
@@ -93,36 +93,36 @@ public class CreateConceptFromUsageHelper {
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           SNode intfc = createConceptInterface(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptReference$Yh), LINKS.intfc$fO5, intfc);
+          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptReference$Yh), LINKS.intfc$7Eer, intfc);
           createdConcept.value = intfc;
         }
       });
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$qU) && cell.isErrorState() && cell.getSRole().equals(LINKS.implements$oQDh)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$qU) && cell.isErrorState() && cell.getSRole().equals(LINKS.implements$2tZf)) {
       // ref concept not yet created, but no reference is set 
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode intfc = createConceptInterface(conceptName);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$oQDh)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(intfc));
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$2tZf)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(intfc));
           return createdConcept.value = intfc;
         }
       }));
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$qU) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$LQV3)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$qU) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$9AAt)) {
       created = true;
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           SNode cncpt = createConcept(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$LQV3, cncpt);
+          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$9AAt, cncpt);
           createdConcept.value = cncpt;
         }
       });
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$MT) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$3Y1p)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$MT) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$V2F7)) {
       // ref concept not yet created, but no reference is set 
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode intfc = createConceptInterface(conceptName);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$3Y1p)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(intfc));
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$V2F7)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(intfc));
           return createdConcept.value = intfc;
         }
       }));
@@ -169,22 +169,22 @@ public class CreateConceptFromUsageHelper {
   }
   private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
-    n0.setReferenceTarget(LINKS.intfc$fO5, p0);
+    n0.setReferenceTarget(LINKS.intfc$7Eer, p0);
     return n0.getResult();
   }
   private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
-    n0.setReferenceTarget(LINKS.intfc$fO5, p0);
+    n0.setReferenceTarget(LINKS.intfc$7Eer, p0);
     return n0.getResult();
   }
   private static SNode createConceptDeclaration_yye2ek_a0a0n(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConceptDeclaration$qU);
-    n0.setProperty(PROPS.name$tAp1, p0);
+    n0.setProperty(PROPS.name$lA7v, p0);
     return n0.getResult();
   }
   private static SNode createInterfaceConceptDeclaration_yye2ek_a0a0o(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptDeclaration$MT);
-    n0.setProperty(PROPS.name$tAp1, p0);
+    n0.setProperty(PROPS.name$lA7v, p0);
     return n0.getResult();
   }
 
@@ -196,14 +196,14 @@ public class CreateConceptFromUsageHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

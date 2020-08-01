@@ -85,23 +85,23 @@ public class ClosuresUtil {
     }
   }
   private static boolean processMethodDeclaration(SNode method, TemplateQueryContext genContext) {
-    if (SLinkOperations.getTarget(method, LINKS.body$WIlu) == null) {
+    if (SLinkOperations.getTarget(method, LINKS.body$qspy) == null) {
       return false;
     }
-    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$WIlu), CONCEPTS.Closure$5Q, false, new SAbstractConcept[]{})).isEmpty()) {
+    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$qspy), CONCEPTS.Closure$5Q, false, new SAbstractConcept[]{})).isEmpty()) {
       return false;
     }
-    Set<SNode> varDecl = SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.getChildren(method, LINKS.parameter$WIkZ));
-    return processNode(method, SLinkOperations.getTarget(method, LINKS.body$WIlu), varDecl, genContext);
+    Set<SNode> varDecl = SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.getChildren(method, LINKS.parameter$qsax));
+    return processNode(method, SLinkOperations.getTarget(method, LINKS.body$qspy), varDecl, genContext);
   }
   private static boolean processConceptFunction(SNode concFunc, TemplateQueryContext genContext) {
-    if (SLinkOperations.getTarget(concFunc, LINKS.body$pTP2) == null) {
+    if (SLinkOperations.getTarget(concFunc, LINKS.body$z0FY) == null) {
       return false;
     }
-    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(concFunc, LINKS.body$pTP2), CONCEPTS.Closure$5Q, false, new SAbstractConcept[]{})).isEmpty()) {
+    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(concFunc, LINKS.body$z0FY), CONCEPTS.Closure$5Q, false, new SAbstractConcept[]{})).isEmpty()) {
       return false;
     }
-    return processNode(concFunc, SLinkOperations.getTarget(concFunc, LINKS.body$pTP2), SetSequence.fromSet(new HashSet<SNode>()), genContext);
+    return processNode(concFunc, SLinkOperations.getTarget(concFunc, LINKS.body$z0FY), SetSequence.fromSet(new HashSet<SNode>()), genContext);
   }
   private static boolean processNode(SNode contextOwner, SNode node, Set<SNode> localVariables, TemplateQueryContext genContext) {
     boolean outerVarsFound = false;
@@ -120,10 +120,10 @@ public class ClosuresUtil {
     return outerVarsFound;
   }
   private static boolean processClosure(SNode contextOwner, SNode closure, Set<SNode> localVars, TemplateQueryContext genContext) {
-    if (SLinkOperations.getTarget(closure, LINKS.body$pTP2) == null) {
+    if (SLinkOperations.getTarget(closure, LINKS.body$z0FY) == null) {
       return false;
     }
-    return processClosureNode(contextOwner, SLinkOperations.getTarget(closure, LINKS.body$pTP2), localVars, genContext);
+    return processClosureNode(contextOwner, SLinkOperations.getTarget(closure, LINKS.body$z0FY), localVars, genContext);
   }
   private static boolean processClosureNode(SNode contextOwner, SNode node, Set<SNode> localVars, TemplateQueryContext genContext) {
     boolean outerVarsFound = false;
@@ -132,8 +132,8 @@ public class ClosuresUtil {
       if (SNodeOperations.isInstanceOf(child, CONCEPTS.Closure$5Q)) {
         continue;
       }
-      if ((SNodeOperations.isInstanceOf(child, CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(child, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf)) || (SNodeOperations.isInstanceOf(child, CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(child, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.ParameterDeclaration$qU))) {
-        SNode variable = SLinkOperations.getTarget(SNodeOperations.cast(child, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6);
+      if ((SNodeOperations.isInstanceOf(child, CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(child, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf)) || (SNodeOperations.isInstanceOf(child, CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(child, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU))) {
+        SNode variable = SLinkOperations.getTarget(SNodeOperations.cast(child, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
         if (SetSequence.fromSet(localVars).contains(variable)) {
           getClosureContextData(contextOwner, genContext).putVariable(variable);
           outerVarsFound = true;
@@ -183,9 +183,9 @@ public class ClosuresUtil {
         return;
       }
       int count = 1;
-      String name = SPropertyOperations.getString(var, PROPS.name$tAp1);
+      String name = SPropertyOperations.getString(var, PROPS.name$lA7v);
       while (MapSequence.fromMap(this.myName2Var).containsKey(name)) {
-        name = SPropertyOperations.getString(var, PROPS.name$tAp1) + (count++);
+        name = SPropertyOperations.getString(var, PROPS.name$lA7v) + (count++);
       }
       MapSequence.fromMap(this.myName2Var).put(name, var);
       MapSequence.fromMap(this.myVar2Name).put(var, name);
@@ -211,13 +211,13 @@ public class ClosuresUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

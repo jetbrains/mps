@@ -20,19 +20,19 @@ public class ClassifierType_ParameterDeclarationQuery implements ParametersInfor
   public ClassifierType_ParameterDeclarationQuery() {
   }
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.classifier$pQ_R), LINKS.typeVariableDeclaration$ziZT)).isNotEmpty()) {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, LINKS.classifier$pQ_R));
+    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.classifier$xslD), LINKS.typeVariableDeclaration$6cWB)).isNotEmpty()) {
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, LINKS.classifier$xslD));
     } else {
       return ListSequence.fromList(new ArrayList<SNode>());
     }
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(parameterObject, LINKS.typeVariableDeclaration$ziZT)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(parameterObject, LINKS.typeVariableDeclaration$6cWB)).isNotEmpty()) {
       SNode argument = editorContext.getSelectedNode();
-      while (argument != null && !((SNodeOperations.isInstanceOf(argument, CONCEPTS.Type$IG) && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$dQne)).contains(SNodeOperations.cast(argument, CONCEPTS.Type$IG))))) {
+      while (argument != null && !((SNodeOperations.isInstanceOf(argument, CONCEPTS.Type$IG) && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$HlfM)).contains(SNodeOperations.cast(argument, CONCEPTS.Type$IG))))) {
         argument = SNodeOperations.getParent(argument);
       }
-      for (SNode param : SLinkOperations.getChildren(parameterObject, LINKS.typeVariableDeclaration$ziZT)) {
+      for (SNode param : SLinkOperations.getChildren(parameterObject, LINKS.typeVariableDeclaration$6cWB)) {
         if (SNodeOperations.getIndexInParent(param) > 0) {
           styledText.append(", ");
         }
@@ -49,9 +49,9 @@ public class ClassifierType_ParameterDeclarationQuery implements ParametersInfor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class CONCEPTS {

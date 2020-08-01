@@ -92,13 +92,13 @@ __switch__:
   public static String keyMapActionClassName(SNode keyMapItem) {
     SNode keyMapDeclaration = SNodeOperations.cast(SNodeOperations.getParent(keyMapItem), CONCEPTS.CellKeyMapDeclaration$T9);
     int index = 0;
-    for (SNode curItem : ListSequence.fromList(SLinkOperations.getChildren(keyMapDeclaration, LINKS.item$6rNI))) {
+    for (SNode curItem : ListSequence.fromList(SLinkOperations.getChildren(keyMapDeclaration, LINKS.item$7u3i))) {
       if (curItem == keyMapItem) {
         break;
       }
       index++;
     }
-    return SPropertyOperations.getString(keyMapDeclaration, PROPS.name$tAp1) + "_Action" + index;
+    return SPropertyOperations.getString(keyMapDeclaration, PROPS.name$lA7v) + "_Action" + index;
   }
   public static boolean requiresAutoDeletableStyleAddition(SNode inlineEditorComponent) {
     SNode cellModel_refCell = SNodeOperations.as(SNodeOperations.getParent(inlineEditorComponent), CONCEPTS.CellModel_RefCell$VD);
@@ -106,33 +106,33 @@ __switch__:
       return false;
     }
     for (SNode parentCollection = EditorCellModel__BehaviorDescriptor.getParentCollectionCell_id7XYaZQUjT8u.invoke(cellModel_refCell); parentCollection != null; parentCollection = EditorCellModel__BehaviorDescriptor.getParentCollectionCell_id7XYaZQUjT8u.invoke(parentCollection)) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(parentCollection, LINKS.childCellModel$3prw)).count() > 1) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(parentCollection, LINKS.childCellModel$Dkkw)).count() > 1) {
         return false;
       }
     }
 
-    if (!((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(SLinkOperations.getTarget(cellModel_refCell, LINKS.relationDeclaration$wbRV)))) {
+    if (!((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(SLinkOperations.getTarget(cellModel_refCell, LINKS.relationDeclaration$_K5_)))) {
       return false;
     }
 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$3wIV), CONCEPTS.CellModel_ReferencePresentation$Wr)) {
-      SNode refPresentation = SNodeOperations.cast(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$3wIV), CONCEPTS.CellModel_ReferencePresentation$Wr);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$GQI_), CONCEPTS.CellModel_ReferencePresentation$Wr)) {
+      SNode refPresentation = SNodeOperations.cast(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$GQI_), CONCEPTS.CellModel_ReferencePresentation$Wr);
       return !(hasUserDefinedStyle(refPresentation, CONCEPTS.AutoDeletableStyleClassItem$mK));
     }
 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$3wIV), CONCEPTS.CellModel_Property$iE)) {
-      SNode refPresentation = SNodeOperations.cast(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$3wIV), CONCEPTS.CellModel_Property$iE);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$GQI_), CONCEPTS.CellModel_Property$iE)) {
+      SNode refPresentation = SNodeOperations.cast(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$GQI_), CONCEPTS.CellModel_Property$iE);
       return !(hasUserDefinedStyle(refPresentation, CONCEPTS.AutoDeletableStyleClassItem$mK));
     }
 
     return false;
   }
   private static boolean hasUserDefinedStyle(SNode cellModel, final SConcept styleClassConcept) {
-    return ListSequence.fromList(SLinkOperations.getChildren(cellModel, LINKS.styleItem$$mEY)).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(cellModel, LINKS.styleItem$AYO2)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(styleClassConcept));
       }
-    }) || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cellModel, LINKS.parentStyleClass$H$F1), LINKS.styleItem$$mEY)).any(new IWhereFilter<SNode>() {
+    }) || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cellModel, LINKS.parentStyleClass$4KPv), LINKS.styleItem$AYO2)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(styleClassConcept));
       }
@@ -156,15 +156,15 @@ __switch__:
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink item$6rNI = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x108b65d7766L, "item");
-    /*package*/ static final SContainmentLink childCellModel$3prw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
-    /*package*/ static final SReferenceLink relationDeclaration$wbRV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SContainmentLink cellModel$3wIV = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SContainmentLink styleItem$$mEY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
-    /*package*/ static final SReferenceLink parentStyleClass$H$F1 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x132a500f473d6174L, 0x132a500f473d9055L, "parentStyleClass");
+    /*package*/ static final SContainmentLink item$7u3i = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x108b65d7766L, "item");
+    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SReferenceLink parentStyleClass$4KPv = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x132a500f473d6174L, 0x132a500f473d9055L, "parentStyleClass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

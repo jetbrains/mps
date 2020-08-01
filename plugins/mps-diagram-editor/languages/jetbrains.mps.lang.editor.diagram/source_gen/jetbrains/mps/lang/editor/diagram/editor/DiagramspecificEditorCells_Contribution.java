@@ -92,7 +92,7 @@ public class DiagramspecificEditorCells_Contribution extends SubstituteMenuBase 
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode diagramNodeCell = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_DiagramNode"));
-          SLinkOperations.setTarget(diagramNodeCell, LINKS.figure$dCMb, nodeToWrap);
+          SLinkOperations.setTarget(diagramNodeCell, LINKS.figure$AKjl, nodeToWrap);
           return diagramNodeCell;
         }
         @Override
@@ -129,6 +129,6 @@ public class DiagramspecificEditorCells_Contribution extends SubstituteMenuBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink figure$dCMb = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
+    /*package*/ static final SContainmentLink figure$AKjl = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
   }
 }

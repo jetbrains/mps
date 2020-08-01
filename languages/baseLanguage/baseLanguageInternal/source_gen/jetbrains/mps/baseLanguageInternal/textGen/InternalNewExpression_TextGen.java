@@ -19,11 +19,11 @@ public class InternalNewExpression_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("new ");
-    BaseLangInternal.className(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fqClassName$ZGAb), ctx.getPrimaryInput(), ctx);
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameter$DvkB)).isNotEmpty()) {
+    BaseLangInternal.className(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fqClassName$QAvl), ctx.getPrimaryInput(), ctx);
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameter$6aYT)).isNotEmpty()) {
       tgs.append("<");
       {
-        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameter$DvkB);
+        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameter$6aYT);
         final SNode lastItem = Sequence.fromIterable(collection).last();
         for (SNode item : collection) {
           tgs.appendNode(item);
@@ -36,7 +36,7 @@ public class InternalNewExpression_TextGen extends TextGenDescriptorBase {
     }
     tgs.append("(");
     {
-      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.actualArgument$TZx);
+      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.actualArgument$s5KZ);
       final SNode lastItem = Sequence.fromIterable(collection).last();
       for (SNode item : collection) {
         tgs.appendNode(item);
@@ -49,11 +49,11 @@ public class InternalNewExpression_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fqClassName$ZGAb = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x11157a64c91L, "fqClassName");
+    /*package*/ static final SProperty fqClassName$QAvl = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x11157a64c91L, "fqClassName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$DvkB = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x120ed7968bcL, "parameter");
-    /*package*/ static final SContainmentLink actualArgument$TZx = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x46d6451be64f8b7L, "actualArgument");
+    /*package*/ static final SContainmentLink parameter$6aYT = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x120ed7968bcL, "parameter");
+    /*package*/ static final SContainmentLink actualArgument$s5KZ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x46d6451be64f8b7L, "actualArgument");
   }
 }

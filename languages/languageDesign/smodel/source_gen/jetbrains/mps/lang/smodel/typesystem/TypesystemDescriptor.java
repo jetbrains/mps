@@ -743,7 +743,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.SNodeType$gn))) {
             return false;
           }
-          SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(contextNode, CONCEPTS.SNodeType$gn), LINKS.concept$HWFQ);
+          SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(contextNode, CONCEPTS.SNodeType$gn), LINKS.concept$gpfa);
           return concept == variable;
         }
         public SNode convert(SNode contextNode, String role, SNode variable, boolean isAggregation) {
@@ -761,7 +761,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ConceptNodeType$7y))) {
             return false;
           }
-          SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(contextNode, CONCEPTS.ConceptNodeType$7y), LINKS.conceptDeclaraton$Qe25);
+          SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(contextNode, CONCEPTS.ConceptNodeType$7y), LINKS.conceptDeclaraton$gN0r);
           return concept == variable;
         }
         public SNode convert(SNode contextNode, String role, SNode variable, boolean isAggregation) {
@@ -778,7 +778,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
-    /*package*/ static final SReferenceLink conceptDeclaraton$Qe25 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink conceptDeclaraton$gN0r = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
   }
 }

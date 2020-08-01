@@ -29,7 +29,7 @@ public class NullSafeRule implements DataFlowConstructor {
       if (((Program) o).contains(object)) {
         boolean before = true;
         int position = ((Program) (o)).getStart(node);
-        Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.operand$Lcrr));
+        Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.operand$P1i5));
         instruction.setRuleReference("r:b7d9737f-8e9b-4112-92de-8cd1bf30ae09(testExtendingAnalyzer.dataFlow)/1417601170173058915");
         instruction.setSource(node);
         ((Program) (o)).insert(instruction, position, true, before);
@@ -42,6 +42,6 @@ public class NullSafeRule implements DataFlowConstructor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

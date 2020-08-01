@@ -28,7 +28,7 @@ public class AnalyzerRunnerCreator_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.analyzer$A9Bw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.analyzer$uE8w, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -60,6 +60,6 @@ public class AnalyzerRunnerCreator_Constraints extends BaseConstraintsDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink analyzer$A9Bw = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x151c4f99e489a17L, "analyzer");
+    /*package*/ static final SReferenceLink analyzer$uE8w = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x151c4f99e489a17L, "analyzer");
   }
 }

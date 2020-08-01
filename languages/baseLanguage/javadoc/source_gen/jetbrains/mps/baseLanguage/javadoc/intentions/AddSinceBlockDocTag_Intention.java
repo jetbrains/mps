@@ -37,7 +37,7 @@ public final class AddSinceBlockDocTag_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.since$UGOw)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.since$rHrw)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -58,7 +58,7 @@ public final class AddSinceBlockDocTag_Intention extends AbstractIntentionDescri
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode addedNode = SNodeFactoryOperations.addNewChild(node, LINKS.tags$LJD$, CONCEPTS.SinceBlockDocTag$YE);
+      SNode addedNode = SNodeFactoryOperations.addNewChild(node, LINKS.tags$658s, CONCEPTS.SinceBlockDocTag$YE);
       BlockDocTagHelper.setFocus(editorContext, addedNode);
 
     }
@@ -69,8 +69,8 @@ public final class AddSinceBlockDocTag_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink since$UGOw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink since$rHrw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
   }
 
   private static final class CONCEPTS {

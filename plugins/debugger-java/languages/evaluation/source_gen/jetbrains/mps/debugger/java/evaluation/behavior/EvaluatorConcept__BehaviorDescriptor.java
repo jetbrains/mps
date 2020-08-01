@@ -41,13 +41,13 @@ public final class EvaluatorConcept__BehaviorDescriptor extends BaseBHDescriptor
     return new ArrayList<SNode>();
   }
   /*package*/ static SNode getBody_idi2fhZ_m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.evaluatedStatements$MCTF);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.evaluatedStatements$xNVP);
   }
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
     return _quotation_createNode_29c8r0_a0a2();
   }
   /*package*/ static SNode getCode_idhASWOEj0jB(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.evaluatedStatements$MCTF);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.evaluatedStatements$xNVP);
   }
 
   /*package*/ EvaluatorConcept__BehaviorDescriptor() {
@@ -110,6 +110,6 @@ public final class EvaluatorConcept__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink evaluatedStatements$MCTF = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x10093bb8b0669700L, "evaluatedStatements");
+    /*package*/ static final SContainmentLink evaluatedStatements$xNVP = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x10093bb8b0669700L, "evaluatedStatements");
   }
 }

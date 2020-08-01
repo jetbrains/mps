@@ -44,7 +44,7 @@ public class TestSubstituteSubChildSmartReference_SmartReference extends Substit
 
     public SMP_ReferenceScope_4colu3_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TestSubstituteSubChildSmartReference_WithMenu$od, LINKS.childToReference$80ER);
+      super((SAbstractConcept) CONCEPTS.TestSubstituteSubChildSmartReference_WithMenu$od, LINKS.childToReference$SkKD);
     }
     @NotNull
     @Override
@@ -65,6 +65,6 @@ public class TestSubstituteSubChildSmartReference_SmartReference extends Substit
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink childToReference$80ER = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aeL, 0x7ce1116e3aa66222L, "childToReference");
+    /*package*/ static final SReferenceLink childToReference$SkKD = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aeL, 0x7ce1116e3aa66222L, "childToReference");
   }
 }

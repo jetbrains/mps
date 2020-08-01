@@ -87,8 +87,8 @@ public class StaticFieldInClassifier extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         if (_context.getCurrentTargetNode() == null && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Classifier$hJ)) {
           SNode field = SNodeFactoryOperations.createNewNode(CONCEPTS.StaticFieldDeclaration$R5, null);
-          SNodeFactoryOperations.setNewChild(field, LINKS.visibility$2GiC, CONCEPTS.PublicVisibility$qe);
-          SNodeFactoryOperations.setNewChild(field, LINKS.initializer$KgD, null);
+          SNodeFactoryOperations.setNewChild(field, LINKS.visibility$jt1o, CONCEPTS.PublicVisibility$qe);
+          SNodeFactoryOperations.setNewChild(field, LINKS.initializer$no3R, null);
           return field;
         } else {
           return SNodeFactoryOperations.replaceWithNewChild(_context.getCurrentTargetNode(), CONCEPTS.StaticFieldDeclaration$R5);
@@ -128,7 +128,7 @@ public class StaticFieldInClassifier extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

@@ -52,7 +52,7 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
     } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReferenceReductionRule$Lk)) {
       link = ReferenceMacro_GetReferent__BehaviorDescriptor.fromRefReductionRule_id2I_OWQO_d$v.invoke(__thisNode__, SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReferenceReductionRule$Lk));
     }
-    SNode targetConcept = SLinkOperations.getTarget(link, LINKS.target$egp8);
+    SNode targetConcept = SLinkOperations.getTarget(link, LINKS.target$TWaS);
     // reference may be resolved dynamically? 
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(targetConcept), CONCEPTS.IResolveInfo$c2)) {
       return _quotation_createNode_mxwyp3_a0a5a0(targetConcept, targetConcept);
@@ -67,7 +67,7 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
     return new LinkDeclarationLookup(SNodeOperations.getConcept(attributedNode)).getMostSpecificLinkDeclarationFor(link);
   }
   /*package*/ static SNode fromRefReductionRule_id2I_OWQO_d$v(@NotNull SNode __thisNode__, SNode reductionRule) {
-    return SLinkOperations.getTarget(reductionRule, LINKS.link$Qix9);
+    return SLinkOperations.getTarget(reductionRule, LINKS.link$iY3n);
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.TemplateQueryBase$Si);
@@ -171,7 +171,7 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SReferenceLink link$Qix9 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7786936d61b8dafdL, "link");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink link$iY3n = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7786936d61b8dafdL, "link");
   }
 }

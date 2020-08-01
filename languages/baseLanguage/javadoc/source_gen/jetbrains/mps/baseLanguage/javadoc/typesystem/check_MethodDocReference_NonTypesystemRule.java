@@ -25,11 +25,11 @@ public class check_MethodDocReference_NonTypesystemRule extends AbstractNonTypes
   public check_MethodDocReference_NonTypesystemRule() {
   }
   public void applyRule(final SNode methodDocReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode methodDeclaration = SLinkOperations.getTarget(methodDocReference, LINKS.methodDeclaration$Q6Bw);
+    SNode methodDeclaration = SLinkOperations.getTarget(methodDocReference, LINKS.methodDeclaration$dd8w);
     if (!(VisibilityUtil.isVisible(methodDocReference, SNodeOperations.as(methodDeclaration, CONCEPTS.IVisible$6G)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(methodDocReference, "Symbol " + SPropertyOperations.getString(methodDeclaration, PROPS.name$tAp1) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538823120", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(methodDocReference, "Symbol " + SPropertyOperations.getString(methodDeclaration, PROPS.name$lA7v) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538823120", null, errorTarget);
       }
     }
   }
@@ -44,11 +44,11 @@ public class check_MethodDocReference_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink methodDeclaration$Q6Bw = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, 0x1ec532ec2531d2d4L, "methodDeclaration");
+    /*package*/ static final SReferenceLink methodDeclaration$dd8w = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, 0x1ec532ec2531d2d4L, "methodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

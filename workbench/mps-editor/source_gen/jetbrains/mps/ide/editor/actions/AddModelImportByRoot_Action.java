@@ -119,7 +119,7 @@ public class AddModelImportByRoot_Action extends BaseAction {
         if (errorLabel.value != null) {
           initialText.value = errorLabel.value.getRenderedText();
         } else if (unresolvedReference.value != null) {
-          initialText.value = SPropertyOperations.getString(unresolvedReference.value, PROPS.resolveName$Bzw0);
+          initialText.value = SPropertyOperations.getString(unresolvedReference.value, PROPS.resolveName$acw0);
         }
       }
 
@@ -199,6 +199,6 @@ public class AddModelImportByRoot_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty resolveName$Bzw0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x28e9fc3ba3fa3940L, 0x28e9fc3ba3fa3941L, "resolveName");
+    /*package*/ static final SProperty resolveName$acw0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x28e9fc3ba3fa3940L, 0x28e9fc3ba3fa3941L, "resolveName");
   }
 }

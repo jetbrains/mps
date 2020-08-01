@@ -137,7 +137,7 @@ public class tuple_member_access_Contribution extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode mae = SNodeOperations.replaceWithAnother(_context.getNode(), SNodeFactoryOperations.createNewNode(CONCEPTS.IndexedTupleMemberAccessExpression$cm, null));
-          SLinkOperations.setTarget(mae, LINKS.tuple$Uqkp, _context.getNode());
+          SLinkOperations.setTarget(mae, LINKS.tuple$iJS7, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), mae, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -177,6 +177,6 @@ public class tuple_member_access_Contribution extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tuple$Uqkp = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple");
+    /*package*/ static final SContainmentLink tuple$iJS7 = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple");
   }
 }

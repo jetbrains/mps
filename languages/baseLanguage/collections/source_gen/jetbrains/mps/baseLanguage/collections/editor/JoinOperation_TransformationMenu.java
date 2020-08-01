@@ -90,7 +90,7 @@ public class JoinOperation_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_e6wsvp_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.delimiter$MX$A) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.delimiter$FOIq) == null);
     }
 
     @NotNull
@@ -146,7 +146,7 @@ public class JoinOperation_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.delimiter$MX$A, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.delimiter$FOIq, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -176,6 +176,6 @@ public class JoinOperation_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink delimiter$MX$A = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, 0x120debf4541L, "delimiter");
+    /*package*/ static final SContainmentLink delimiter$FOIq = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, 0x120debf4541L, "delimiter");
   }
 }

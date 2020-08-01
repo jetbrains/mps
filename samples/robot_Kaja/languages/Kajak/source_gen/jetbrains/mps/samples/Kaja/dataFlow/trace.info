@@ -23,7 +23,7 @@
   <root nodeRef="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469480982">
     <file name="Script_DataFlow.java">
       <node id="6630310702469496877" at="13,60,14,104" concept="0" />
-      <node id="6630310702469480982" at="18,0,19,0" concept="3" trace="body$1RNV" />
+      <node id="6630310702469480982" at="18,0,19,0" concept="3" trace="body$U29_" />
       <node id="6630310702469480982" at="13,0,16,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="6630310702469489907" at="13,60,14,104" />
       <scope id="6630310702469480982" at="13,0,16,0">
@@ -36,7 +36,7 @@
   <root nodeRef="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469568431">
     <file name="CommandList_DataFlow.java">
       <node id="6630310702469670431" at="17,35,18,48" concept="0" />
-      <node id="6630310702469568431" at="24,0,25,0" concept="3" trace="commands$o94w" />
+      <node id="6630310702469568431" at="24,0,25,0" concept="3" trace="commands$Gpbw" />
       <node id="6630310702469670060" at="17,0,20,0" concept="2" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6630310702469576486" at="15,60,20,7" concept="0" />
       <node id="6630310702469568431" at="15,0,22,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -62,9 +62,9 @@
       <node id="6630310702469695489" at="17,110,18,183" concept="0" />
       <node id="6630310702469700227" at="18,183,19,50" concept="0" />
       <node id="6630310702469695938" at="19,50,20,111" concept="0" />
-      <node id="6630310702469676828" at="24,0,25,0" concept="3" trace="condition$rbdE" />
-      <node id="6630310702469676828" at="25,0,26,0" concept="3" trace="trueBranch$rbfA" />
-      <node id="6630310702469676828" at="26,0,27,0" concept="3" trace="falseBranch$rbg5" />
+      <node id="6630310702469676828" at="24,0,25,0" concept="3" trace="condition$arBm" />
+      <node id="6630310702469676828" at="25,0,26,0" concept="3" trace="trueBranch$aszq" />
+      <node id="6630310702469676828" at="26,0,27,0" concept="3" trace="falseBranch$asMr" />
       <node id="6630310702469676828" at="13,0,22,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="6630310702469676830" at="13,60,20,111" />
       <scope id="6630310702469676828" at="13,0,22,0">
@@ -121,10 +121,10 @@
   <root nodeRef="r:5784598d-868b-437e-9c58-15fb07e7f373(jetbrains.mps.samples.Kaja.dataFlow)/6630310702469874825">
     <file name="Not_DataFlow.java">
       <node id="6630310702469874871" at="13,60,14,133" concept="0" />
-      <node id="6630310702469874878" at="14,133,15,107" concept="0" />
-      <node id="6630310702469874825" at="19,0,20,0" concept="3" trace="original$ixu" />
+      <node id="6630310702469874878" at="14,133,15,108" concept="0" />
+      <node id="6630310702469874825" at="19,0,20,0" concept="3" trace="original$8Ydy" />
       <node id="6630310702469874825" at="13,0,17,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-      <scope id="6630310702469874827" at="13,60,15,107" />
+      <scope id="6630310702469874827" at="13,60,15,108" />
       <scope id="6630310702469874825" at="13,0,17,0">
         <var name="_context" id="6630310702469874825" />
       </scope>
@@ -138,8 +138,8 @@
       <node id="6630310702469889342" at="14,109,15,185" concept="0" />
       <node id="6630310702469889549" at="15,185,16,104" concept="0" />
       <node id="5696508641316673816" at="16,104,17,184" concept="0" />
-      <node id="6630310702469882109" at="21,0,22,0" concept="3" trace="condition$WoNZ" />
-      <node id="6630310702469882109" at="22,0,23,0" concept="3" trace="body$WoOu" />
+      <node id="6630310702469882109" at="21,0,22,0" concept="3" trace="condition$g1bx" />
+      <node id="6630310702469882109" at="22,0,23,0" concept="3" trace="body$g1qy" />
       <node id="6630310702469882109" at="13,0,19,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="6630310702469882111" at="13,60,17,184" />
       <scope id="6630310702469882109" at="13,0,19,0">
@@ -156,8 +156,8 @@
       <node id="6630310702469935621" at="19,49,20,104" concept="0" />
       <node id="6630310702469940985" at="20,104,21,198" concept="0" />
       <node id="6630310702470212023" at="21,198,22,43" concept="0" />
-      <node id="6630310702469893529" at="26,0,27,0" concept="3" trace="count$yP4Z" />
-      <node id="6630310702469893529" at="30,0,31,0" concept="3" trace="body$yP5u" />
+      <node id="6630310702469893529" at="26,0,27,0" concept="3" trace="count$RHqx" />
+      <node id="6630310702469893529" at="30,0,31,0" concept="3" trace="body$RHDy" />
       <node id="6630310702469901686" at="15,60,18,5" concept="1" />
       <node id="6630310702469893529" at="15,0,24,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="6630310702469901688" at="16,84,17,192" />

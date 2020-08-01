@@ -195,7 +195,7 @@ public class Java_Command {
     if (model == null) {
       return null;
     }
-    if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$8r6V))) {
+    if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$58m_))) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("The hosting module's " + module + " classes are not managed by MPS");
       }
@@ -390,7 +390,7 @@ public class Java_Command {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty compileInMPS$8r6V = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
+    /*package*/ static final SProperty compileInMPS$58m_ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
   }
 
   private static final class CONCEPTS {

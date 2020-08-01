@@ -35,7 +35,7 @@
       <node id="3418954410726346653" at="41,208,42,26" concept="5" />
       <node id="3418954410726345310" at="46,0,47,0" concept="6" trace="PlatformAccessExpression$27" />
       <node id="3418954410726345310" at="47,0,48,0" concept="6" trace="ClassifierType$IZ" />
-      <node id="3418954410726345310" at="51,0,52,0" concept="6" trace="classifier$pQ_R" />
+      <node id="3418954410726345310" at="51,0,52,0" concept="6" trace="classifier$xslD" />
       <node id="3418954410726345310" at="20,0,22,0" concept="1" trace="typeof_PlatformAccessExpression_InferenceRule#()V" />
       <node id="3418954410726345310" at="29,0,32,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3418954410726345310" at="32,0,35,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -191,7 +191,7 @@
       <node id="681855071694758171" at="28,50,29,49" concept="5" />
       <node id="681855071694758171" at="31,68,32,102" concept="5" />
       <node id="681855071694758171" at="34,30,35,17" concept="5" />
-      <node id="681855071694758171" at="39,0,40,0" concept="6" trace="tool$ho2w" />
+      <node id="681855071694758171" at="39,0,40,0" concept="6" trace="tool$qDdw" />
       <node id="681855071694758171" at="43,0,44,0" concept="6" trace="GetToolInProjectOperation$ir" />
       <node id="681855071694758171" at="19,0,21,0" concept="1" trace="typeof_GetToolInProjectOperation_InferenceRule#()V" />
       <node id="681855071694758171" at="28,0,31,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -240,7 +240,7 @@
       <node id="681855071694758184" at="28,50,29,65" concept="5" />
       <node id="681855071694758184" at="31,68,32,102" concept="5" />
       <node id="681855071694758184" at="34,30,35,17" concept="5" />
-      <node id="681855071694758184" at="39,0,40,0" concept="6" trace="componentDeclaration$ho40" />
+      <node id="681855071694758184" at="39,0,40,0" concept="6" trace="componentDeclaration$qDW0" />
       <node id="681855071694758184" at="43,0,44,0" concept="6" trace="GetPreferencesComponentInProjectOperation$jS" />
       <node id="681855071694758184" at="19,0,21,0" concept="1" trace="typeof_GetPreferencesComponentInProjectOperation_InferenceRule#()V" />
       <node id="681855071694758184" at="28,0,31,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

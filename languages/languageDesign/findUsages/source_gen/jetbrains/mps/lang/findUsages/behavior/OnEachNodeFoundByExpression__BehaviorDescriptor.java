@@ -34,10 +34,10 @@ public final class OnEachNodeFoundByExpression__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.callback$SWfR), kind, child);
+    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.callback$_bFD), kind, child);
   }
   /*package*/ static Scope getScope_id52_Geb4QFgX(@NotNull SNode __thisNode__, SAbstractConcept kind, SContainmentLink link, int index) {
-    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.callback$SWfR), kind, link, ((int) index));
+    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.callback$_bFD), kind, link, ((int) index));
   }
 
   /*package*/ OnEachNodeFoundByExpression__BehaviorDescriptor() {
@@ -89,6 +89,6 @@ public final class OnEachNodeFoundByExpression__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink callback$SWfR = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x5f5488291166ada7L, 0x112b337a16d3e09aL, "callback");
+    /*package*/ static final SContainmentLink callback$_bFD = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x5f5488291166ada7L, 0x112b337a16d3e09aL, "callback");
   }
 }

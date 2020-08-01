@@ -13,12 +13,12 @@ public class SuperInterfaceMethodCall_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.classifier$xsNt), ctx);
+    BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.classifier$cWV3), ctx);
     tgs.append(".super.");
     BaseLanguageTextGen.methodCall(ctx.getPrimaryInput(), ctx);
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xsNt = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cWV3 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier");
   }
 }

@@ -43,7 +43,7 @@ public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static List<Tuples._3<String, String, String>> languagesToInclude_id2R6x4AnylYu(@NotNull SNode __thisNode__, Project project) {
     List<Tuples._3<String, String, String>> result = ListSequence.fromList(new ArrayList<Tuples._3<String, String, String>>());
-    for (SNode ref : SLinkOperations.getChildren(__thisNode__, LINKS.language$c5DN)) {
+    for (SNode ref : SLinkOperations.getChildren(__thisNode__, LINKS.language$QJfH)) {
       SModule sModule = ModuleReferenceExpression__BehaviorDescriptor.getModule_id3wj3sjzQUV1.invoke(ref);
 
       if (sModule != null && project.isProjectModule(sModule) && sModule instanceof AbstractModule) {
@@ -115,6 +115,6 @@ public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink language$c5DN = MetaAdapterFactory.getContainmentLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876882L, 0x7d031e6cb9be480L, "language");
+    /*package*/ static final SContainmentLink language$QJfH = MetaAdapterFactory.getContainmentLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876882L, 0x7d031e6cb9be480L, "language");
   }
 }

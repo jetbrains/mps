@@ -31,7 +31,7 @@ public final class BuildMpsLayout_ModuleSources__BehaviorDescriptor extends Base
   }
 
   /*package*/ static boolean reexportsFromJar_id5bqm540K$Gb(@NotNull SNode __thisNode__, Object o) {
-    return o == SLinkOperations.getTarget(__thisNode__, LINKS.module$POCw);
+    return o == SLinkOperations.getTarget(__thisNode__, LINKS.module$4vBw);
   }
 
   /*package*/ BuildMpsLayout_ModuleSources__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class BuildMpsLayout_ModuleSources__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$POCw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x177c2feaf3463711L, "module");
+    /*package*/ static final SReferenceLink module$4vBw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x177c2feaf3463711L, "module");
   }
 }

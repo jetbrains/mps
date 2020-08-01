@@ -22,7 +22,7 @@ public class typeof_PatternSwitchStatement_InferenceRule extends AbstractInferen
   public void applyRule(final SNode patternSwitchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(patternSwitchStatement, LINKS.expression$nt1k);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(patternSwitchStatement, LINKS.expression$n3CG);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1678856199540929199", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1678856199540926147", true), (SNode) _quotation_createNode_bpm753_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
@@ -45,7 +45,7 @@ public class typeof_PatternSwitchStatement_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$nt1k = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a995b51L, 0x527e98a73771f430L, "expression");
+    /*package*/ static final SContainmentLink expression$n3CG = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a995b51L, 0x527e98a73771f430L, "expression");
   }
 
   private static final class CONCEPTS {

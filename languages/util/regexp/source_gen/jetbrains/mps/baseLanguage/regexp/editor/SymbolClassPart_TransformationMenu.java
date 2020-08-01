@@ -131,7 +131,7 @@ public class SymbolClassPart_TransformationMenu extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         SNode node = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.IntersectionSymbolClassPart$Hh);
-        SLinkOperations.setTarget(node, LINKS.left$CqhM, _context.getNode());
+        SLinkOperations.setTarget(node, LINKS.left$$IBe, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -164,6 +164,6 @@ public class SymbolClassPart_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$CqhM = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e34d8eL, "left");
+    /*package*/ static final SContainmentLink left$$IBe = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e34d8eL, "left");
   }
 }

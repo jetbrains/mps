@@ -120,11 +120,11 @@ public class assignments extends TransformationMenuBase {
         SNode source = PrecedenceUtil.getTargetForLeftTransform(_context.getNode(), createdNode);
         // since BaseAssignmentExpressions are right-associative we should LT parent 
         // BaseAssignmentExpressions or it's lValue depenting on current position 
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(source), CONCEPTS.BaseAssignmentExpression$oO) && Objects.equals(SNodeOperations.getContainingLink(source), LINKS.lValue$J0D4)) {
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(source), CONCEPTS.BaseAssignmentExpression$oO) && Objects.equals(SNodeOperations.getContainingLink(source), LINKS.lValue$LjSW)) {
           source = SNodeOperations.cast(SNodeOperations.getParent(source), CONCEPTS.BaseAssignmentExpression$oO);
         }
         SNodeOperations.replaceWithAnother(source, createdNode);
-        SLinkOperations.setTarget(createdNode, LINKS.rValue$J0E2, source);
+        SLinkOperations.setTarget(createdNode, LINKS.rValue$LkmY, source);
         PrecedenceUtil.parenthesiseIfNecessary(createdNode);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -193,7 +193,7 @@ public class assignments extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
-        SLinkOperations.setTarget(createdNode, LINKS.lValue$J0D4, _context.getNode());
+        SLinkOperations.setTarget(createdNode, LINKS.lValue$LjSW, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -225,7 +225,7 @@ public class assignments extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 }

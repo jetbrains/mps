@@ -23,7 +23,7 @@ public class XmlElement_Constraints extends BaseConstraintsDescriptor {
 
   public static class TagName_Property extends BasePropertyConstraintsDescriptor {
     public TagName_Property(ConstraintsDescriptor container) {
-      super(PROPS.tagName$U00C, container);
+      super(PROPS.tagName$60jo, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class XmlElement_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.tagName$U00C, new TagName_Property(this));
+    properties.put(PROPS.tagName$60jo, new TagName_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class XmlElement_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tagName$U00C = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
   }
 }

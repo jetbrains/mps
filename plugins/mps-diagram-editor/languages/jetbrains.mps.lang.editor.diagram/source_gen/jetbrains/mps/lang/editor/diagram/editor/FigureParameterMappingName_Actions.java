@@ -24,8 +24,8 @@ public class FigureParameterMappingName_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SPropertyOperations.getString(node, PROPS.name$tAp1) != null) {
-          SPropertyOperations.assign(node, PROPS.name$tAp1, null);
+        if (SPropertyOperations.getString(node, PROPS.name$lA7v) != null) {
+          SPropertyOperations.assign(node, PROPS.name$lA7v, null);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
@@ -79,6 +79,6 @@ public class FigureParameterMappingName_Actions {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -8,7 +8,7 @@
       <node id="8082246476500752005" at="16,58,17,560" concept="0" />
       <node id="8082246476500660468" at="20,60,21,560" concept="0" />
       <node id="8082246476500401936" at="25,0,26,0" concept="1" trace="AttributedFigureReference$7_" />
-      <node id="8082246476500401936" at="29,0,30,0" concept="1" trace="figureAttribute$Fuko" />
+      <node id="8082246476500401936" at="29,0,30,0" concept="1" trace="figureAttribute$3FRC" />
       <node id="8082246476500752003" at="16,0,19,0" concept="2" trace="isMovable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8082246476500575376" at="20,0,23,0" concept="2" trace="isResizable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <scope id="8082246476500752004" at="16,58,17,560" />

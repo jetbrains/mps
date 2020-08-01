@@ -46,19 +46,19 @@ public final class BaseAssignmentExpression__BehaviorDescriptor extends BaseBHDe
     return true;
   }
   /*package*/ static boolean canPropagateUnmatchedParenUp_id1wHCnsn58ZA(@NotNull SNode __thisNode__, SNode leaf, boolean rightParen) {
-    return ((boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke0(__thisNode__, CONCEPTS.IBinaryLike$M8, leaf, ((boolean) rightParen))) && (!(rightParen) || ListSequence.fromList(SNodeOperations.getNodeAncestors(leaf, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.rValue$J0E2)));
+    return ((boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke0(__thisNode__, CONCEPTS.IBinaryLike$M8, leaf, ((boolean) rightParen))) && (!(rightParen) || ListSequence.fromList(SNodeOperations.getNodeAncestors(leaf, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.rValue$LkmY)));
   }
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.lValue$J0D4);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.lValue$LjSW);
   }
   /*package*/ static SNode getSyntacticallyRightSideExpression_id1wHCnsn590i(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.rValue$J0E2);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.rValue$LkmY);
   }
   /*package*/ static void setSyntacticallyLeftSideExpression_id1wHCnsn58ZK(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.lValue$J0D4, expr);
+    SLinkOperations.setTarget(__thisNode__, LINKS.lValue$LjSW, expr);
   }
   /*package*/ static void setSyntacticallyRightSideExpression_id1wHCnsn58ZY(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.rValue$J0E2, expr);
+    SLinkOperations.setTarget(__thisNode__, LINKS.rValue$LkmY, expr);
   }
 
   /*package*/ BaseAssignmentExpression__BehaviorDescriptor() {
@@ -126,7 +126,7 @@ public final class BaseAssignmentExpression__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
   }
 }

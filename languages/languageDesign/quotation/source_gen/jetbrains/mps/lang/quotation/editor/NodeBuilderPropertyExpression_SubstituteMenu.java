@@ -89,7 +89,7 @@ public class NodeBuilderPropertyExpression_SubstituteMenu extends SubstituteMenu
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression"));
-          SLinkOperations.setTarget(result, LINKS.expression$j9T0, nodeToWrap);
+          SLinkOperations.setTarget(result, LINKS.expression$hMB0, nodeToWrap);
           return result;
         }
         @Override
@@ -126,6 +126,6 @@ public class NodeBuilderPropertyExpression_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$j9T0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, 0x60f18f425c76d21bL, "expression");
+    /*package*/ static final SContainmentLink expression$hMB0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, 0x60f18f425c76d21bL, "expression");
   }
 }

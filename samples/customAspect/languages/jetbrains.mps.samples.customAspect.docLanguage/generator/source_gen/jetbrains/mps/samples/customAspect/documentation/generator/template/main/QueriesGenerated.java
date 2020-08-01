@@ -56,9 +56,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptDocumentation$l9)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.cncpt$rQ7y) == _context.getNode();
+        return SLinkOperations.getTarget(it, LINKS.cncpt$vdDu) == _context.getNode();
       }
-    }), PROPS.text$lg4n);
+    }), PROPS.text$iM79);
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     return _context.getNode();
@@ -72,7 +72,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), CONCEPTS.ConceptDocumentation$l9)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.cncpt$rQ7y);
+        return SLinkOperations.getTarget(it, LINKS.cncpt$vdDu);
       }
     }).distinct();
   }
@@ -259,10 +259,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cncpt$rQ7y = MetaAdapterFactory.getReferenceLink(0x22916f45e98f4433L, 0x9c1b1b382cf5bd8dL, 0x28360eb22c3ac732L, 0x28360eb22c3ad436L, "cncpt");
+    /*package*/ static final SReferenceLink cncpt$vdDu = MetaAdapterFactory.getReferenceLink(0x22916f45e98f4433L, 0x9c1b1b382cf5bd8dL, 0x28360eb22c3ac732L, 0x28360eb22c3ad436L, "cncpt");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$lg4n = MetaAdapterFactory.getProperty(0x22916f45e98f4433L, 0x9c1b1b382cf5bd8dL, 0x28360eb22c3ac732L, 0x28360eb22c3acdf0L, "text");
+    /*package*/ static final SProperty text$iM79 = MetaAdapterFactory.getProperty(0x22916f45e98f4433L, 0x9c1b1b382cf5bd8dL, 0x28360eb22c3ac732L, 0x28360eb22c3acdf0L, "text");
   }
 }

@@ -11,14 +11,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class WhenConcreteStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.argument$Usg_));
-    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.argumentRepresentator$kQNj), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/9210968252726937599");
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$h6Y5));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.argument$jG1V));
+    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.argumentRepresentator$6yQd), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/9210968252726937599");
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$io4r));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$Usg_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x114177d39c2L, "argument");
-    /*package*/ static final SContainmentLink argumentRepresentator$kQNj = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x118bd03e53bL, "argumentRepresentator");
-    /*package*/ static final SContainmentLink body$h6Y5 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x114177d17f1L, "body");
+    /*package*/ static final SContainmentLink argument$jG1V = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x114177d39c2L, "argument");
+    /*package*/ static final SContainmentLink argumentRepresentator$6yQd = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x118bd03e53bL, "argumentRepresentator");
+    /*package*/ static final SContainmentLink body$io4r = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x114177d17f1L, "body");
   }
 }

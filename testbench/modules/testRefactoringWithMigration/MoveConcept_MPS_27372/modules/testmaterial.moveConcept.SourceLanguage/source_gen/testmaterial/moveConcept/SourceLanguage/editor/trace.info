@@ -102,10 +102,10 @@
       <node id="4662087456932171683" at="192,94,193,47" concept="1" />
       <node id="4662087456932171683" at="193,47,194,34" concept="1" />
       <node id="4662087456932171683" at="194,34,195,22" concept="6" />
-      <node id="4662087456932171659" at="199,0,200,0" concept="7" trace="name$tAp1" />
+      <node id="4662087456932171659" at="199,0,200,0" concept="7" trace="name$lA7v" />
       <node id="4662087456932171659" at="203,0,204,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="4662087456932171659" at="204,0,205,0" concept="7" trace="MoveConcept_CompletionSuperconcept$b" />
-      <node id="4662087456932171659" at="208,0,209,0" concept="7" trace="child$jtI0" />
+      <node id="4662087456932171659" at="208,0,209,0" concept="7" trace="child$rpi0" />
       <node id="4662087456932171659" at="44,0,46,0" concept="2" trace="myNode" />
       <node id="4662087456932171659" at="125,0,127,0" concept="2" trace="myNode" />
       <node id="4662087456932171659" at="58,0,61,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

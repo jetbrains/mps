@@ -27,12 +27,12 @@ public class typeof_PutDataExpression_InferenceRule extends AbstractInferenceRul
   }
   public void applyRule(final SNode putDataExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(putDataExpression, LINKS.contextNode$6UkB);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(putDataExpression, LINKS.contextNode$mfYT);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471385981", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471385983", true), (SNode) _quotation_createNode_6hxs6k_a1a0c0a0b(), false, true, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(putDataExpression, LINKS.dataNode$6UjD);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(putDataExpression, LINKS.dataNode$mfwR);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471385956", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448471385961", true), (SNode) _quotation_createNode_6hxs6k_a1a0c0b0b(IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SNodeOperations.getNodeAncestor(putDataExpression, CONCEPTS.MigrationScript$u3, false, false))), false, true, _info_12389875345);
     }
@@ -76,8 +76,8 @@ public class typeof_PutDataExpression_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink contextNode$6UkB = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c28dce2dL, 0x5e7aa366c28dcff5L, "contextNode");
-    /*package*/ static final SContainmentLink dataNode$6UjD = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c28dce2dL, 0x5e7aa366c28dcff3L, "dataNode");
+    /*package*/ static final SContainmentLink contextNode$mfYT = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c28dce2dL, 0x5e7aa366c28dcff5L, "contextNode");
+    /*package*/ static final SContainmentLink dataNode$mfwR = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c28dce2dL, 0x5e7aa366c28dcff3L, "dataNode");
   }
 
   private static final class CONCEPTS {

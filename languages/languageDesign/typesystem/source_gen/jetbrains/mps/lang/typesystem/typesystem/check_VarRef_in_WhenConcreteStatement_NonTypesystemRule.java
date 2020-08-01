@@ -27,7 +27,7 @@ public class check_VarRef_in_WhenConcreteStatement_NonTypesystemRule extends Abs
   public void applyRule(final SNode variableReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode ancestor = SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.WhenConcreteStatement$JZ, false, false);
     if (ancestor != null) {
-      SNode argument = SLinkOperations.getTarget(ancestor, LINKS.argument$Usg_);
+      SNode argument = SLinkOperations.getTarget(ancestor, LINKS.argument$jG1V);
       SNode parent = variableReference;
       while (parent != null && parent != ancestor) {
         if (parent == argument) {
@@ -36,12 +36,12 @@ public class check_VarRef_in_WhenConcreteStatement_NonTypesystemRule extends Abs
           parent = SNodeOperations.getParent(parent);
         }
       }
-      SNode variableDeclaration = SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6);
+      SNode variableDeclaration = SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU);
       if (SNodeOperations.isInstanceOf(variableDeclaration, CONCEPTS.FieldDeclaration$Ps) || SNodeOperations.isInstanceOf(variableDeclaration, CONCEPTS.StaticFieldDeclaration$R5)) {
         return;
       }
       if (variableDeclaration != null && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(variableDeclaration, CONCEPTS.WhenConcreteStatement$JZ, false)).contains(ancestor))) {
-        if (!(SPropertyOperations.getBoolean(variableDeclaration, PROPS.isFinal$hIht))) {
+        if (!(SPropertyOperations.getBoolean(variableDeclaration, PROPS.isFinal$_qt3))) {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "variable is used inside WHEN CONCRETE block. should be declared final", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "9215127012916007489", null, errorTarget);
         }
@@ -66,11 +66,11 @@ public class check_VarRef_in_WhenConcreteStatement_NonTypesystemRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$Usg_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x114177d39c2L, "argument");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink argument$jG1V = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x114177d39c2L, "argument");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

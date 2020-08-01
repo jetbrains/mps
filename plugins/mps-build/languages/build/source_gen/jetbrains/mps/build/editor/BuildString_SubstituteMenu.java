@@ -91,7 +91,7 @@ public class BuildString_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode res = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, "jetbrains.mps.build.structure.BuildString"));
-          ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.parts$aVY3)).addElement(nodeToWrap);
+          ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.parts$j33t)).addElement(nodeToWrap);
           return res;
         }
 
@@ -128,6 +128,6 @@ public class BuildString_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$aVY3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
+    /*package*/ static final SContainmentLink parts$j33t = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
   }
 }

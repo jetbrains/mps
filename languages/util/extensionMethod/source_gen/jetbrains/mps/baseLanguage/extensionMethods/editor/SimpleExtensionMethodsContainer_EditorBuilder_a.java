@@ -91,7 +91,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -161,7 +161,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.staticFields$ULMW;
+      return LINKS.staticFields$u7F4;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.ExtensionStaticFieldDeclaration$sr;
@@ -174,7 +174,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(staticFieldsListHandler_kgfzrc_a4a.this.getNode(), LINKS.staticFields$ULMW));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(staticFieldsListHandler_kgfzrc_a4a.this.getNode(), LINKS.staticFields$u7F4));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -254,7 +254,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.methods$uEwv;
+      return LINKS.methods$Q_J1;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.ExtensionMethodDeclaration$9b;
@@ -267,7 +267,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(methodsListHandler_kgfzrc_c4a.this.getNode(), LINKS.methods$uEwv));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(methodsListHandler_kgfzrc_c4a.this.getNode(), LINKS.methods$Q_J1));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_4();
@@ -325,7 +325,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -335,7 +335,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink staticFields$ULMW = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x1b622d944bbb1c5fL, "staticFields");
-    /*package*/ static final SContainmentLink methods$uEwv = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x6f5433076549f51bL, "methods");
+    /*package*/ static final SContainmentLink staticFields$u7F4 = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x1b622d944bbb1c5fL, "staticFields");
+    /*package*/ static final SContainmentLink methods$Q_J1 = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x6f5433076549f51bL, "methods");
   }
 }

@@ -64,7 +64,7 @@ public class ClassLikes_ActionGroup extends GeneratedActionGroup {
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.preferredConcept$ybbQ) != null) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(it, LINKS.preferredConcept$ybbQ), PROPS.rootable$vg$g);
+        return (SLinkOperations.getTarget(it, LINKS.preferredConcept$zqJa) != null) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(it, LINKS.preferredConcept$zqJa), PROPS.rootable$91zK);
       }
     });
 
@@ -87,10 +87,10 @@ public class ClassLikes_ActionGroup extends GeneratedActionGroup {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink preferredConcept$ybbQ = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept");
+    /*package*/ static final SReferenceLink preferredConcept$zqJa = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rootable$vg$g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
   }
 }

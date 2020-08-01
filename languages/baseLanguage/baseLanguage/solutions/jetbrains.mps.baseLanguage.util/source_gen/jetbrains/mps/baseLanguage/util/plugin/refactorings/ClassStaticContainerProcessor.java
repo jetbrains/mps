@@ -26,16 +26,16 @@ public class ClassStaticContainerProcessor extends AbstractStaticContainerProces
   @Override
   public SNode createMethodCall(SNode method, List<SNode> arguments) {
     SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
-    SLinkOperations.setTarget(call, LINKS.classConcept$BsUa, SNodeOperations.cast(this.myStaticContainer, CONCEPTS.Classifier$hJ));
-    SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$$A7i, SNodeOperations.cast(method, CONCEPTS.StaticMethodDeclaration$eX));
-    ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(arguments));
+    SLinkOperations.setTarget(call, LINKS.classConcept$70aQ, SNodeOperations.cast(this.myStaticContainer, CONCEPTS.Classifier$hJ));
+    SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(method, CONCEPTS.StaticMethodDeclaration$eX));
+    ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(arguments));
     return call;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$BsUa = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class CONCEPTS {

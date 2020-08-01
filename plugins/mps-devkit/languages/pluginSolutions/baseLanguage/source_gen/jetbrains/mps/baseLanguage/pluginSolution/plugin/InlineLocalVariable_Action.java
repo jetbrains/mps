@@ -55,12 +55,12 @@ public class InlineLocalVariable_Action extends BaseAction {
     }
     boolean result = SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$Bf);
     if (!(result)) {
-      if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf)) {
+      if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf)) {
 
-        if (SNodeOperations.hasRole(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.lValue$J0D4)) {
+        if (SNodeOperations.hasRole(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.lValue$LjSW)) {
           return false;
         }
-        if (SNodeOperations.hasRole(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.expression$7Rjy) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.UnaryMinus$Uo))) {
+        if (SNodeOperations.hasRole(((SNode) MapSequence.fromMap(_params).get("node")), LINKS.expression$NMtu) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.UnaryMinus$Uo))) {
           return false;
         }
 
@@ -130,11 +130,11 @@ public class InlineLocalVariable_Action extends BaseAction {
           SNode localVariableDeclaration = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$Bf);
           InlineVariableAssignmentRefactoring inlineVARef = new InlineVariableAssignmentRefactoring(localVariableDeclaration);
 
-          if ((SLinkOperations.getTarget(localVariableDeclaration, LINKS.initializer$KgD) == null)) {
+          if ((SLinkOperations.getTarget(localVariableDeclaration, LINKS.initializer$no3R) == null)) {
             isAvailable.value = false;
           }
 
-          String variableName = SPropertyOperations.getString(localVariableDeclaration, PROPS.name$tAp1);
+          String variableName = SPropertyOperations.getString(localVariableDeclaration, PROPS.name$lA7v);
           int nodesCount = ListSequence.fromList(inlineVARef.getNodesToRefactor()).count();
           if (nodesCount == 0) {
             infoMessage.value = "No occurrences of variable " + variableName + " can be inlined";
@@ -187,13 +187,13 @@ public class InlineLocalVariable_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

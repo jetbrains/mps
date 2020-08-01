@@ -19,7 +19,7 @@ public class ToggleCheckboxAction_8qm7p9_d0 extends AbstractToggleCheckboxAction
   }
 
   protected void doExecute() {
-    SPropertyOperations.assign(myNode, PROPS.showButtons$T8V0, !(SPropertyOperations.getBoolean(myNode, PROPS.showButtons$T8V0)));
+    SPropertyOperations.assign(myNode, PROPS.showButtons$Fk_0, !(SPropertyOperations.getBoolean(myNode, PROPS.showButtons$Fk_0)));
   }
 
   protected CellSelector createCellSelector(EditorCell selectedCell) {
@@ -27,6 +27,6 @@ public class ToggleCheckboxAction_8qm7p9_d0 extends AbstractToggleCheckboxAction
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty showButtons$T8V0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x5b2638e8bdbef0c0L, "showButtons");
+    /*package*/ static final SProperty showButtons$Fk_0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x5b2638e8bdbef0c0L, "showButtons");
   }
 }

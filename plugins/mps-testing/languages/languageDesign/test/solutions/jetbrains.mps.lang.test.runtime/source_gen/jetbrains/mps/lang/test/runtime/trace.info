@@ -54,9 +54,9 @@
       <node id="1215078243118" at="82,0,83,0" concept="15" trace="VariableInitialized$3y" />
       <node id="1215078243118" at="83,0,84,0" concept="15" trace="VariableAlive$cg" />
       <node id="1215078243118" at="84,0,85,0" concept="15" trace="BaseConcept$Sz" />
-      <node id="1215078243118" at="88,0,89,0" concept="15" trace="nodeOperations$HdFm" />
-      <node id="1215078243118" at="89,0,90,0" concept="15" trace="var$rEWh" />
-      <node id="1215078243118" at="90,0,91,0" concept="15" trace="variableDeclaration$2ky6" />
+      <node id="1215078243118" at="88,0,89,0" concept="15" trace="nodeOperations$TBZE" />
+      <node id="1215078243118" at="89,0,90,0" concept="15" trace="var$pNcf" />
+      <node id="1215078243118" at="90,0,91,0" concept="15" trace="variableDeclaration$7WwU" />
       <node id="8042441407353530942" at="31,0,33,0" concept="3" trace="NodeDataFlowCheckerUtil#()V" />
       <node id="5219682431664851873" at="51,14,53,9" concept="1" />
       <node id="245688835342282923" at="42,0,45,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -682,12 +682,12 @@
       <node id="7556920020845005474" at="70,196,71,193" concept="6" />
       <node id="5097407566122005890" at="72,12,73,76" concept="6" />
       <node id="1226949310940" at="78,0,79,0" concept="15" trace="AnonymousCellAnnotation$28" />
-      <node id="1226949310940" at="82,0,83,0" concept="15" trace="cellId$qWW0" />
-      <node id="1226949310940" at="83,0,84,0" concept="15" trace="isInInspector$2bRd" />
-      <node id="1226949310940" at="84,0,85,0" concept="15" trace="selectionStart$nib_" />
-      <node id="1226949310940" at="85,0,86,0" concept="15" trace="selectionEnd$nicz" />
-      <node id="1226949310940" at="89,0,90,0" concept="15" trace="nodeRangeSelectionStart$8c0q" />
-      <node id="1226949310940" at="90,0,91,0" concept="15" trace="nodeRangeSelectionEnd$8c0T" />
+      <node id="1226949310940" at="82,0,83,0" concept="15" trace="cellId$3x40" />
+      <node id="1226949310940" at="83,0,84,0" concept="15" trace="isInInspector$3JJj" />
+      <node id="1226949310940" at="84,0,85,0" concept="15" trace="selectionStart$hNAV" />
+      <node id="1226949310940" at="85,0,86,0" concept="15" trace="selectionEnd$hO4X" />
+      <node id="1226949310940" at="89,0,90,0" concept="15" trace="nodeRangeSelectionStart$XOcA" />
+      <node id="1226949310940" at="90,0,91,0" concept="15" trace="nodeRangeSelectionEnd$XOrB" />
       <node id="5097407566121991608" at="72,10,74,5" concept="1" />
       <node id="1227009788555" at="36,0,39,0" concept="10" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1228589548291" at="45,0,48,0" concept="10" trace="setupSelection#(Ljetbrains/mps/nodeEditor/NodeEditorComponent;)Ljetbrains/mps/openapi/editor/EditorComponent;" />

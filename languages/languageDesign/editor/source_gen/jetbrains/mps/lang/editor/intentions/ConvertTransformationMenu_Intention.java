@@ -90,11 +90,11 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newNode = SNodeFactoryOperations.createNewNode(myParameter, null);
       if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.TransformationMenu$ZK)) {
-        SLinkOperations.setTarget(SNodeOperations.cast(newNode, CONCEPTS.TransformationMenu$ZK), LINKS.conceptDeclaration$acmt, IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(node));
+        SLinkOperations.setTarget(SNodeOperations.cast(newNode, CONCEPTS.TransformationMenu$ZK), LINKS.conceptDeclaration$VYS3, IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(node));
       }
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$K8bJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ)));
-      SPropertyOperations.assign(newNode, PROPS.virtualPackage$j19t, SPropertyOperations.getString(node, PROPS.virtualPackage$j19t));
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.sections$GEFl)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.sections$GEFl)));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)));
+      SPropertyOperations.assign(newNode, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(node, PROPS.virtualPackage$dz_3));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.sections$CEZb)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.sections$CEZb)));
       SNodeOperations.replaceWithAnother(node, newNode);
 
       if ((SNodeOperations.getParent(newNode) == null)) {
@@ -120,12 +120,12 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$acmt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink sections$GEFl = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, 0x16be955f384efffcL, "sections");
+    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink sections$CEZb = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, 0x16be955f384efffcL, "sections");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

@@ -23,14 +23,14 @@ public class EnumSwitchExpression_AddOtherwiseClause {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.otherwiseBody$i6_e, null);
+        SNodeFactoryOperations.setNewChild(node, LINKS.otherwiseBody$Lc1M, null);
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return (SLinkOperations.getTarget(node, LINKS.otherwiseBody$i6_e) == null);
+        return (SLinkOperations.getTarget(node, LINKS.otherwiseBody$Lc1M) == null);
       }
 
     };
@@ -78,6 +78,6 @@ public class EnumSwitchExpression_AddOtherwiseClause {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink otherwiseBody$i6_e = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
+    /*package*/ static final SContainmentLink otherwiseBody$Lc1M = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
   }
 }

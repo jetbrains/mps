@@ -39,7 +39,7 @@ public class MathUtil {
           }
         }
         if (matches_30uc9x_a0a2) {
-          return _quotation_createNode_30uc9x_a0a0a2a1a0a2(SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.rightExpression$rxBl), SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.leftExpression$rxLZ));
+          return _quotation_createNode_30uc9x_a0a0a2a1a0a2(SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.rightExpression$li3b), SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.leftExpression$lndx));
         } else {
           boolean matches_30uc9x_b0a2 = false;
           {
@@ -49,7 +49,7 @@ public class MathUtil {
             }
           }
           if (matches_30uc9x_b0a2) {
-            return _quotation_createNode_30uc9x_a0a0a2a0c0b0a0c(SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.rightExpression$rxBl), SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.leftExpression$rxLZ));
+            return _quotation_createNode_30uc9x_a0a0a2a0c0b0a0c(SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.rightExpression$li3b), SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.leftExpression$lndx));
           } else {
             boolean matches_30uc9x_c0a2 = false;
             {
@@ -59,7 +59,7 @@ public class MathUtil {
               }
             }
             if (matches_30uc9x_c0a2) {
-              return _quotation_createNode_30uc9x_a0a0a2a0c0a2a1a0a2(SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.rightExpression$rxBl), SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.leftExpression$rxLZ));
+              return _quotation_createNode_30uc9x_a0a0a2a0c0a2a1a0a2(SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.rightExpression$li3b), SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.leftExpression$lndx));
             } else {
               boolean matches_30uc9x_d0a2 = false;
               {
@@ -69,7 +69,7 @@ public class MathUtil {
                 }
               }
               if (matches_30uc9x_d0a2) {
-                return _quotation_createNode_30uc9x_a0a0a2a0c0a2a0c0b0a0c(SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.rightExpression$rxBl), SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.leftExpression$rxLZ));
+                return _quotation_createNode_30uc9x_a0a0a2a0c0a2a0c0b0a0c(SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.rightExpression$li3b), SLinkOperations.getTarget(matchedNode_30uc9x_a0c, LINKS.leftExpression$lndx));
               } else
               return null;
             }
@@ -90,7 +90,7 @@ public class MathUtil {
           }
         }
         if (matches_30uc9x_a0a3) {
-          return _quotation_createNode_30uc9x_a0a0a2a1a0a3(SLinkOperations.getTarget(bmc, LINKS.rightExpression$rxBl), SLinkOperations.getTarget(bmc, LINKS.leftExpression$rxLZ));
+          return _quotation_createNode_30uc9x_a0a0a2a1a0a3(SLinkOperations.getTarget(bmc, LINKS.rightExpression$li3b), SLinkOperations.getTarget(bmc, LINKS.leftExpression$lndx));
         } else {
           boolean matches_30uc9x_b0a3 = false;
           {
@@ -100,7 +100,7 @@ public class MathUtil {
             }
           }
           if (matches_30uc9x_b0a3) {
-            return _quotation_createNode_30uc9x_a0a0a2a0c0b0a0d(SLinkOperations.getTarget(bmc, LINKS.rightExpression$rxBl), SLinkOperations.getTarget(bmc, LINKS.leftExpression$rxLZ));
+            return _quotation_createNode_30uc9x_a0a0a2a0c0b0a0d(SLinkOperations.getTarget(bmc, LINKS.rightExpression$li3b), SLinkOperations.getTarget(bmc, LINKS.leftExpression$lndx));
           } else {
             boolean matches_30uc9x_c0a3 = false;
             {
@@ -110,7 +110,7 @@ public class MathUtil {
               }
             }
             if (matches_30uc9x_c0a3) {
-              return _quotation_createNode_30uc9x_a0a0a2a0c0a2a1a0a3(SLinkOperations.getTarget(bmc, LINKS.rightExpression$rxBl), SLinkOperations.getTarget(bmc, LINKS.leftExpression$rxLZ));
+              return _quotation_createNode_30uc9x_a0a0a2a0c0a2a1a0a3(SLinkOperations.getTarget(bmc, LINKS.rightExpression$li3b), SLinkOperations.getTarget(bmc, LINKS.leftExpression$lndx));
             } else {
               boolean matches_30uc9x_d0a3 = false;
               {
@@ -120,7 +120,7 @@ public class MathUtil {
                 }
               }
               if (matches_30uc9x_d0a3) {
-                return _quotation_createNode_30uc9x_a0a0a2a0c0a2a0c0b0a0d(SLinkOperations.getTarget(bmc, LINKS.rightExpression$rxBl), SLinkOperations.getTarget(bmc, LINKS.leftExpression$rxLZ));
+                return _quotation_createNode_30uc9x_a0a0a2a0c0a2a0c0b0a0d(SLinkOperations.getTarget(bmc, LINKS.rightExpression$li3b), SLinkOperations.getTarget(bmc, LINKS.leftExpression$lndx));
               } else
               return null;
             }
@@ -142,7 +142,7 @@ public class MathUtil {
           }
         }
         if (matches_30uc9x_a1a4) {
-          mc = SLinkOperations.getTarget(matchedNode_30uc9x_b0e, LINKS.context$tO_h);
+          mc = SLinkOperations.getTarget(matchedNode_30uc9x_b0e, LINKS.context$su3f);
         } else {
           boolean matches_30uc9x_b1a4 = false;
           {
@@ -152,7 +152,7 @@ public class MathUtil {
             }
           }
           if (matches_30uc9x_b1a4) {
-            mc = SLinkOperations.getTarget(matchedNode_30uc9x_b0e, LINKS.context$YbBb);
+            mc = SLinkOperations.getTarget(matchedNode_30uc9x_b0e, LINKS.context$7BYl);
           } else {
             boolean matches_30uc9x_c1a4 = false;
             {
@@ -162,14 +162,14 @@ public class MathUtil {
               }
             }
             if (matches_30uc9x_c1a4) {
-              mc = SLinkOperations.getTarget(matchedNode_30uc9x_b0e, LINKS.context$KLPz);
+              mc = SLinkOperations.getTarget(matchedNode_30uc9x_b0e, LINKS.context$C8VX);
             } else
             return _quotation_createNode_30uc9x_a0c0a2a0c0b0b0e();
           }
         }
       }
     }
-    switch (ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "jetbrains.mps.baseLanguage.math.structure.PrecisionSetting"))).indexOf(SPropertyOperations.getEnum(mc, PROPS.precisionSetting$YdW5))) {
+    switch (ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12056af4e37L, "jetbrains.mps.baseLanguage.math.structure.PrecisionSetting"))).indexOf(SPropertyOperations.getEnum(mc, PROPS.precisionSetting$8K6r))) {
       case 1:
         return _quotation_createNode_30uc9x_a0a0c0e();
       case 2:
@@ -180,8 +180,8 @@ public class MathUtil {
         return _quotation_createNode_30uc9x_a0a3c0e();
       default:
         SNode c = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant"));
-        SPropertyOperations.assign(c, PROPS.value$ZeO0, SPropertyOperations.getInteger(mc, PROPS.precision$YdVA));
-        return _quotation_createNode_30uc9x_a2a2a4(c, MathUtil.getRoundingMode(ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568e25cfL, "jetbrains.mps.baseLanguage.math.structure.RoundingMode"))).indexOf(SPropertyOperations.getEnum(mc, PROPS.roundingMode$YdV7))));
+        SPropertyOperations.assign(c, PROPS.value$Cbc0, SPropertyOperations.getInteger(mc, PROPS.precision$8JRq));
+        return _quotation_createNode_30uc9x_a2a2a4(c, MathUtil.getRoundingMode(ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568e25cfL, "jetbrains.mps.baseLanguage.math.structure.RoundingMode"))).indexOf(SPropertyOperations.getEnum(mc, PROPS.roundingMode$8JCp))));
     }
   }
   public static SNode getRoundingMode(int roundingMode) {
@@ -218,7 +218,7 @@ public class MathUtil {
           }
         }
         if (matches_30uc9x_a0a6) {
-          return Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(matchedNode_30uc9x_a0g, LINKS.elementType$Gy$X));
+          return Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(matchedNode_30uc9x_a0g, LINKS.elementType$$JTz));
         } else {
           boolean matches_30uc9x_b0a6 = false;
           {
@@ -228,7 +228,7 @@ public class MathUtil {
             }
           }
           if (matches_30uc9x_b0a6) {
-            return Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(matchedNode_30uc9x_a0g, LINKS.elementType$Gzh1));
+            return Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(matchedNode_30uc9x_a0g, LINKS.elementType$_5fv));
           } else
           return null;
         }
@@ -277,9 +277,9 @@ public class MathUtil {
     }
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.DecimalBinaryOperation$L) && (b1 || b2)) {
       return operation;
-    } else if ((SNodeOperations.isInstanceOf(node, CONCEPTS.MatrixInverseOperation$rD) && SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.MatrixInverseOperation$rD), LINKS.context$KLPz) != null) && (b1 || b2)) {
+    } else if ((SNodeOperations.isInstanceOf(node, CONCEPTS.MatrixInverseOperation$rD) && SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.MatrixInverseOperation$rD), LINKS.context$C8VX) != null) && (b1 || b2)) {
       return operation;
-    } else if ((SNodeOperations.isInstanceOf(node, CONCEPTS.LinearSolveOperation$s8) && SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.LinearSolveOperation$s8), LINKS.context$YbBb) != null) && (b1 || b2)) {
+    } else if ((SNodeOperations.isInstanceOf(node, CONCEPTS.LinearSolveOperation$s8) && SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.LinearSolveOperation$s8), LINKS.context$7BYl) != null) && (b1 || b2)) {
       return operation;
     } else {
       return operations[getIndex(node)];
@@ -706,19 +706,19 @@ public class MathUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink context$tO_h = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568d9c5bL, 0x1a6fbb5a434b3680L, "context");
-    /*package*/ static final SContainmentLink context$YbBb = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af505abdL, 0x1a6fbb5a434b4c0cL, "context");
-    /*package*/ static final SContainmentLink context$KLPz = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af505abcL, 0x1a6fbb5a434b3ed7L, "context");
-    /*package*/ static final SContainmentLink elementType$Gy$X = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62684653L, "elementType");
-    /*package*/ static final SContainmentLink elementType$Gzh1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466fL, "elementType");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink context$su3f = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120568d9c5bL, 0x1a6fbb5a434b3680L, "context");
+    /*package*/ static final SContainmentLink context$7BYl = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af505abdL, 0x1a6fbb5a434b4c0cL, "context");
+    /*package*/ static final SContainmentLink context$C8VX = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x13afebc2af505abcL, 0x1a6fbb5a434b3ed7L, "context");
+    /*package*/ static final SContainmentLink elementType$$JTz = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62684653L, "elementType");
+    /*package*/ static final SContainmentLink elementType$_5fv = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, 0x42d5783a6268466fL, "elementType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
-    /*package*/ static final SProperty precision$YdVA = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3534L, "precision");
-    /*package*/ static final SProperty roundingMode$YdV7 = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3533L, "roundingMode");
-    /*package*/ static final SProperty precisionSetting$YdW5 = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty precision$8JRq = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3534L, "precision");
+    /*package*/ static final SProperty roundingMode$8JCp = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3533L, "roundingMode");
+    /*package*/ static final SProperty precisionSetting$8K6r = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1a6fbb5a434b008bL, 0x1a6fbb5a434b3535L, "precisionSetting");
   }
 }

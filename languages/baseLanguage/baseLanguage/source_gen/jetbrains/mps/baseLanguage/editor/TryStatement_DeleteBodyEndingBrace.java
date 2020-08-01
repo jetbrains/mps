@@ -24,11 +24,11 @@ public class TryStatement_DeleteBodyEndingBrace {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$4PbB)).count() >= 1) {
-          if (DeletionApproverUtil.approve(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$4PbB)).first())) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$lKBT)).count() >= 1) {
+          if (DeletionApproverUtil.approve(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$lKBT)).first())) {
             return;
           }
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$4PbB)).removeElementAt(0);
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$lKBT)).removeElementAt(0);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
@@ -82,6 +82,6 @@ public class TryStatement_DeleteBodyEndingBrace {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$4PbB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
+    /*package*/ static final SContainmentLink catchClause$lKBT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
   }
 }

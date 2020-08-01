@@ -23,7 +23,7 @@ public class CompoundComponentWithCardinality_Constraints extends BaseConstraint
 
   public static class Cardinality_Property extends BasePropertyConstraintsDescriptor {
     public Cardinality_Property(ConstraintsDescriptor container) {
-      super(PROPS.cardinality$x1g0, container);
+      super(PROPS.cardinality$ZAK0, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class CompoundComponentWithCardinality_Constraints extends BaseConstraint
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.cardinality$x1g0, new Cardinality_Property(this));
+    properties.put(PROPS.cardinality$ZAK0, new Cardinality_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class CompoundComponentWithCardinality_Constraints extends BaseConstraint
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinality$x1g0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
+    /*package*/ static final SProperty cardinality$ZAK0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
   }
 }

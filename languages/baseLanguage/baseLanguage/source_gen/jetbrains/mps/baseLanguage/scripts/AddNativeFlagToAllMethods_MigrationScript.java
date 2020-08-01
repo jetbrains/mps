@@ -32,11 +32,11 @@ public final class AddNativeFlagToAllMethods_MigrationScript extends BaseMigrati
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return node.getProperty(PROPS.isNative$LADB) == null;
+        return node.getProperty(PROPS.isNative$1I9T) == null;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SPropertyOperations.assign(node, PROPS.isNative$LADB, false);
+        SPropertyOperations.assign(node, PROPS.isNative$1I9T, false);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -56,6 +56,6 @@ public final class AddNativeFlagToAllMethods_MigrationScript extends BaseMigrati
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isNative$LADB = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
+    /*package*/ static final SProperty isNative$1I9T = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
   }
 }

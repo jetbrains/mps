@@ -33,7 +33,7 @@ public final class Component__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String fullName_id4Vpsm2KEoLo(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1) + "->" + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+    return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v) + "->" + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
   }
 
   /*package*/ Component__BehaviorDescriptor() {
@@ -83,7 +83,7 @@ public final class Component__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

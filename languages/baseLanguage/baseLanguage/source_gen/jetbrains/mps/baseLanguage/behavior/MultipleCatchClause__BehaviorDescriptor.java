@@ -42,22 +42,22 @@ public final class MultipleCatchClause__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static List<SNode> getCaughtTypes_id2FJPm3OMxhX(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.throwable$pijh), LINKS.type$pLrO), CONCEPTS.AlternativeType$aM)) {
-      return SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.throwable$pijh), LINKS.type$pLrO), CONCEPTS.AlternativeType$aM), LINKS.alternative$Fu70);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.throwable$fRlf), LINKS.type$uWuc), CONCEPTS.AlternativeType$aM)) {
+      return SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.throwable$fRlf), LINKS.type$uWuc), CONCEPTS.AlternativeType$aM), LINKS.alternative$3_p0);
     } else {
       return ListSequence.fromList(new ArrayList<SNode>());
     }
   }
   /*package*/ static SNode getCatchBody_id4iVGRTTf1R5(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.catchBody$pijK);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.catchBody$fR$g);
   }
   /*package*/ static List<SNode> getScopeVariables_id4pl5GY7LKmA(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.throwable$pijh));
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.throwable$fRlf));
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
-      if (ScopeUtils.comeFrom(LINKS.catchBody$pijK, __thisNode__, child)) {
-        return Scopes.forVariables(kind, SLinkOperations.getTarget(__thisNode__, LINKS.throwable$pijh), ScopeUtils.lazyParentScope(__thisNode__, kind));
+      if (ScopeUtils.comeFrom(LINKS.catchBody$fR$g, __thisNode__, child)) {
+        return Scopes.forVariables(kind, SLinkOperations.getTarget(__thisNode__, LINKS.throwable$fRlf), ScopeUtils.lazyParentScope(__thisNode__, kind));
       } else {
         return ScopeUtils.lazyParentScope(__thisNode__, kind);
       }
@@ -118,10 +118,10 @@ public final class MultipleCatchClause__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$pijh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink alternative$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
-    /*package*/ static final SContainmentLink catchBody$pijK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
+    /*package*/ static final SContainmentLink throwable$fRlf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink alternative$3_p0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
+    /*package*/ static final SContainmentLink catchBody$fR$g = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
   }
 
   private static final class CONCEPTS {

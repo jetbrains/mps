@@ -52,7 +52,7 @@ public class TemplateParameterReference_Constraints extends BaseConstraintsDescr
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$2ky6, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$7WwU, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -71,7 +71,7 @@ public class TemplateParameterReference_Constraints extends BaseConstraintsDescr
             if ((template == null)) {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
             }
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(template, LINKS.templateParameter$2oGa));
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(template, LINKS.templateParameter$9XoQ));
           }
         };
       }
@@ -92,7 +92,7 @@ public class TemplateParameterReference_Constraints extends BaseConstraintsDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink templateParameter$2oGa = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910113L, 0xd244b712f910115L, "templateParameter");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink templateParameter$9XoQ = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910113L, 0xd244b712f910115L, "templateParameter");
   }
 }

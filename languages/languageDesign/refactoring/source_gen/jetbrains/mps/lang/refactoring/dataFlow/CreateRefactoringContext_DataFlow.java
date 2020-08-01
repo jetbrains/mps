@@ -12,16 +12,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CreateRefactoringContext_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.target$nBP1));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.project$9wWV));
-    for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$s_lD))) {
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.target$siFv));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.project$AXw_));
+    for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$Q5uR))) {
       _context.getBuilder().build((SNode) parameter);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$nBP1 = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bde745L, "target");
-    /*package*/ static final SContainmentLink project$9wWV = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x65dd44b0af81a086L, "project");
-    /*package*/ static final SContainmentLink parameters$s_lD = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bed2aaL, "parameters");
+    /*package*/ static final SContainmentLink target$siFv = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bde745L, "target");
+    /*package*/ static final SContainmentLink project$AXw_ = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x65dd44b0af81a086L, "project");
+    /*package*/ static final SContainmentLink parameters$Q5uR = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bed2aaL, "parameters");
   }
 }

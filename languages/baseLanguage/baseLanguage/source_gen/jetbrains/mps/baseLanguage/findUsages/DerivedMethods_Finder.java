@@ -64,8 +64,8 @@ public class DerivedMethods_Finder extends GeneratedFinder {
           }
         });
         if (SNodeOperations.isInstanceOf(derivedClassifier, CONCEPTS.EnumClass$uy)) {
-          for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(derivedClassifier, CONCEPTS.EnumClass$uy), LINKS.enumConstant$urAQ))) {
-            ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$3$mN)).where(new IWhereFilter<SNode>() {
+          for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(derivedClassifier, CONCEPTS.EnumClass$uy), LINKS.enumConstant$JnOa))) {
+            ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$IB2H)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(instanceMethod, it);
               }
@@ -78,8 +78,8 @@ public class DerivedMethods_Finder extends GeneratedFinder {
         }
       }
       if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$uy)) {
-        for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$uy), LINKS.enumConstant$urAQ))) {
-          ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$3$mN)).where(new IWhereFilter<SNode>() {
+        for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$uy), LINKS.enumConstant$JnOa))) {
+          ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$IB2H)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(instanceMethod, it);
             }
@@ -109,7 +109,7 @@ public class DerivedMethods_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink method$3$mN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
-    /*package*/ static final SContainmentLink enumConstant$urAQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SContainmentLink method$IB2H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
+    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
   }
 }

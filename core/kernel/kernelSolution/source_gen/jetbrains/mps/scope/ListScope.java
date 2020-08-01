@@ -88,7 +88,7 @@ public abstract class ListScope extends Scope {
     return new ListScope(elements) {
       @Override
       public String getName(SNode child) {
-        return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+        return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
       }
     };
   }
@@ -103,13 +103,13 @@ public abstract class ListScope extends Scope {
       public String getName(SNode child) {
         String resolveInfo = null;
         if (SNodeOperations.isInstanceOf(child, CONCEPTS.IResolveInfo$c2)) {
-          resolveInfo = SPropertyOperations.getString((SNodeOperations.as(child, CONCEPTS.IResolveInfo$c2)), PROPS.resolveInfo$eeN8);
+          resolveInfo = SPropertyOperations.getString((SNodeOperations.as(child, CONCEPTS.IResolveInfo$c2)), PROPS.resolveInfo$TaKS);
         }
         if ((resolveInfo != null && resolveInfo.length() > 0)) {
           return resolveInfo;
         }
         if (SNodeOperations.isInstanceOf(child, CONCEPTS.INamedConcept$nV)) {
-          resolveInfo = SPropertyOperations.getString((SNodeOperations.as(child, CONCEPTS.INamedConcept$nV)), PROPS.name$tAp1);
+          resolveInfo = SPropertyOperations.getString((SNodeOperations.as(child, CONCEPTS.INamedConcept$nV)), PROPS.name$lA7v);
         }
         if ((resolveInfo != null && resolveInfo.length() > 0)) {
           return resolveInfo;
@@ -126,7 +126,7 @@ public abstract class ListScope extends Scope {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty resolveInfo$eeN8 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty resolveInfo$TaKS = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
   }
 }

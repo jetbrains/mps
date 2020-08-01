@@ -190,12 +190,12 @@
       <node id="2925222852789993400" at="383,0,384,0" concept="9" trace="SubstituteMenu_Named$J" />
       <node id="2925222852789993400" at="384,0,385,0" concept="9" trace="GeneratedSubstituteMenuAttribute$Mz" />
       <node id="2925222852789993400" at="385,0,386,0" concept="9" trace="SubstituteMenu_Default$hk" />
-      <node id="2925222852789993400" at="389,0,390,0" concept="9" trace="menuDescriptor$6S7z" />
-      <node id="2925222852789993400" at="390,0,391,0" concept="9" trace="cellMenuPart$eVUY" />
-      <node id="2925222852789993400" at="391,0,392,0" concept="9" trace="matchingText$KPlJ" />
-      <node id="2925222852789993400" at="392,0,393,0" concept="9" trace="visibleMatchingText$_Wck" />
-      <node id="2925222852789993400" at="393,0,394,0" concept="9" trace="referentPresentation$z_4O" />
-      <node id="2925222852789993400" at="394,0,395,0" concept="9" trace="conceptDeclaration$acmt" />
+      <node id="2925222852789993400" at="389,0,390,0" concept="9" trace="menuDescriptor$lbDX" />
+      <node id="2925222852789993400" at="390,0,391,0" concept="9" trace="cellMenuPart$f1$2" />
+      <node id="2925222852789993400" at="391,0,392,0" concept="9" trace="matchingText$DPxL" />
+      <node id="2925222852789993400" at="392,0,393,0" concept="9" trace="visibleMatchingText$o9XG" />
+      <node id="2925222852789993400" at="393,0,394,0" concept="9" trace="referentPresentation$eXlc" />
+      <node id="2925222852789993400" at="394,0,395,0" concept="9" trace="conceptDeclaration$VYS3" />
       <node id="7273969254452768777" at="254,0,257,0" concept="10" trace="ref#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="3787933655125051785" at="258,0,261,0" concept="10" trace="modelref#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SModelReference;" />
       <node id="7273969254452883829" at="263,0,266,0" concept="4" trace="resolveCD#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />

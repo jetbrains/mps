@@ -245,7 +245,7 @@
       <node id="1892012100483284126" at="127,69,128,79" concept="6" />
       <node id="1892012100483284126" at="128,79,129,227" concept="7" />
       <node id="1892012100483284126" at="131,90,132,49" concept="7" />
-      <node id="1892012100483284121" at="137,0,138,0" concept="9" trace="childIncludeDifferentSubstituteMenus$uQy3" />
+      <node id="1892012100483284121" at="137,0,138,0" concept="9" trace="childIncludeDifferentSubstituteMenus$Wqvt" />
       <node id="1892012100483284121" at="141,0,142,0" concept="9" trace="ToIncludeSubstituteMenu$D2" />
       <node id="1892012100483284124" at="94,0,97,0" concept="5" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1892012100483284126" at="131,0,134,0" concept="5" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -637,7 +637,7 @@
       <node id="3961072808176389807" at="81,89,82,145" concept="7" />
       <node id="3961072808176389807" at="83,12,84,24" concept="7" />
       <node id="3961072808176389807" at="85,15,86,40" concept="1" />
-      <node id="1966322953445238752" at="91,0,92,0" concept="9" trace="name$tAp1" />
+      <node id="1966322953445238752" at="91,0,92,0" concept="9" trace="name$lA7v" />
       <node id="1966322953445238752" at="95,0,96,0" concept="9" trace="PropertyAttribute$jT" />
       <node id="1966322953445238752" at="31,0,33,0" concept="2" trace="myNode" />
       <node id="1966322953445238752" at="45,0,48,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -828,8 +828,8 @@
       <node id="379023083996642648" at="224,63,225,40" concept="1" />
       <node id="379023083996642648" at="225,40,226,34" concept="1" />
       <node id="379023083996642648" at="226,34,227,22" concept="7" />
-      <node id="379023083996575373" at="231,0,232,0" concept="9" trace="secondAssistant$HKJv" />
-      <node id="379023083996575373" at="232,0,233,0" concept="9" trace="initiallyCollapsed$aQL0" />
+      <node id="379023083996575373" at="231,0,232,0" concept="9" trace="secondAssistant$aB01" />
+      <node id="379023083996575373" at="232,0,233,0" concept="9" trace="initiallyCollapsed$gxJ0" />
       <node id="379023083996575373" at="236,0,237,0" concept="9" trace="PropertyAttribute$jT" />
       <node id="379023083996575373" at="36,0,38,0" concept="2" trace="myNode" />
       <node id="379023083996575373" at="50,0,53,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1102,7 +1102,7 @@
       <node id="3738029991953491941" at="120,157,121,46" concept="6" />
       <node id="3738029991953491941" at="121,46,122,290" concept="6" />
       <node id="3738029991953491941" at="123,114,124,56" concept="1" />
-      <node id="4202667662394486071" at="132,0,133,0" concept="9" trace="name$tAp1" />
+      <node id="4202667662394486071" at="132,0,133,0" concept="9" trace="name$lA7v" />
       <node id="7173407872094008208" at="59,156,62,5" concept="4" />
       <node id="3738029991953491941" at="90,0,93,0" concept="0" trace="Item#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)V" />
       <node id="3738029991953491941" at="93,0,96,0" concept="5" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
@@ -2193,17 +2193,17 @@
       <node id="4572725119287831822" at="1061,63,1062,40" concept="1" />
       <node id="4572725119287831822" at="1062,40,1063,34" concept="1" />
       <node id="4572725119287831822" at="1063,34,1064,22" concept="7" />
-      <node id="4572725119287831750" at="1068,0,1069,0" concept="9" trace="childSubconcept$619y" />
-      <node id="4572725119287831750" at="1069,0,1070,0" concept="9" trace="childIncludeSameMenuTwiceForSameNode$951a" />
-      <node id="4572725119287831750" at="1070,0,1071,0" concept="9" trace="childIncludeDefaultAndNullMenuForSameNode$CAe2" />
-      <node id="4572725119287831750" at="1071,0,1072,0" concept="9" trace="childIncludeSameMenuForDifferentLocations$9iW$" />
-      <node id="4572725119287831750" at="1072,0,1073,0" concept="9" trace="childIncludeDifferentMenusForSameNode$P0Ea" />
-      <node id="4572725119287831750" at="1073,0,1074,0" concept="9" trace="childIncludeDifferentMenusForDifferentNodes$$cFx" />
-      <node id="4572725119287831750" at="1074,0,1075,0" concept="9" trace="childIncludeSameMenuForDifferentNodes$S1xd" />
-      <node id="4572725119287831750" at="1075,0,1076,0" concept="9" trace="childWrapSameSubstituteMenuTwice$94Py" />
-      <node id="4572725119287831750" at="1076,0,1077,0" concept="9" trace="childWrapDifferentSubstituteMenus$soQG" />
-      <node id="4572725119287831750" at="1077,0,1078,0" concept="9" trace="childIncludeSameSubstituteMenuTwice$8rQZ" />
-      <node id="4572725119287831750" at="1078,0,1079,0" concept="9" trace="childIncludeDifferentSubstituteMenus$uQy3" />
+      <node id="4572725119287831750" at="1068,0,1069,0" concept="9" trace="childSubconcept$UzBu" />
+      <node id="4572725119287831750" at="1069,0,1070,0" concept="9" trace="childIncludeSameMenuTwiceForSameNode$przQ" />
+      <node id="4572725119287831750" at="1070,0,1071,0" concept="9" trace="childIncludeDefaultAndNullMenuForSameNode$EwMY" />
+      <node id="4572725119287831750" at="1071,0,1072,0" concept="9" trace="childIncludeSameMenuForDifferentLocations$wbls" />
+      <node id="4572725119287831750" at="1072,0,1073,0" concept="9" trace="childIncludeDifferentMenusForSameNode$FkqQ" />
+      <node id="4572725119287831750" at="1073,0,1074,0" concept="9" trace="childIncludeDifferentMenusForDifferentNodes$y94Z" />
+      <node id="4572725119287831750" at="1074,0,1075,0" concept="9" trace="childIncludeSameMenuForDifferentNodes$8J5j" />
+      <node id="4572725119287831750" at="1075,0,1076,0" concept="9" trace="childWrapSameSubstituteMenuTwice$plVu" />
+      <node id="4572725119287831750" at="1076,0,1077,0" concept="9" trace="childWrapDifferentSubstituteMenus$K2vk" />
+      <node id="4572725119287831750" at="1077,0,1078,0" concept="9" trace="childIncludeSameSubstituteMenuTwice$5vCx" />
+      <node id="4572725119287831750" at="1078,0,1079,0" concept="9" trace="childIncludeDifferentSubstituteMenus$Wqvt" />
       <node id="4572725119287831750" at="1082,0,1083,0" concept="9" trace="Duplication_Parent$r8" />
       <node id="4572725119287831750" at="31,0,33,0" concept="2" trace="myNode" />
       <node id="4572725119287831750" at="149,0,151,0" concept="2" trace="myNode" />
@@ -3215,7 +3215,7 @@
       <node id="4572725119287832335" at="126,69,127,79" concept="6" />
       <node id="4572725119287832335" at="127,79,128,128" concept="7" />
       <node id="4572725119287832335" at="130,90,131,49" concept="7" />
-      <node id="4572725119287832297" at="136,0,137,0" concept="9" trace="childIncludeSameSubstituteMenuTwice$8rQZ" />
+      <node id="4572725119287832297" at="136,0,137,0" concept="9" trace="childIncludeSameSubstituteMenuTwice$5vCx" />
       <node id="4572725119287832297" at="140,0,141,0" concept="9" trace="ToIncludeSubstituteMenu$D2" />
       <node id="4572725119287832324" at="93,0,96,0" concept="5" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4572725119287832335" at="130,0,133,0" concept="5" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -4220,7 +4220,7 @@
       <node id="4963668157153589998" at="103,245,104,34" concept="1" />
       <node id="4963668157153589998" at="104,34,105,71" concept="1" />
       <node id="4963668157153589998" at="105,71,106,22" concept="7" />
-      <node id="5578424278096849461" at="110,0,111,0" concept="9" trace="name$tAp1" />
+      <node id="5578424278096849461" at="110,0,111,0" concept="9" trace="name$lA7v" />
       <node id="5578424278096849461" at="114,0,115,0" concept="9" trace="PropertyAttribute$jT" />
       <node id="5578424278096849461" at="115,0,116,0" concept="9" trace="Child$IS" />
       <node id="5578424278096849461" at="34,0,36,0" concept="2" trace="myNode" />
@@ -4398,11 +4398,11 @@
       <node id="5578424278096876743" at="239,60,240,40" concept="1" />
       <node id="5578424278096876743" at="240,40,241,34" concept="1" />
       <node id="5578424278096876743" at="241,34,242,22" concept="7" />
-      <node id="5578424278096876723" at="246,0,247,0" concept="9" trace="name$tAp1" />
+      <node id="5578424278096876723" at="246,0,247,0" concept="9" trace="name$lA7v" />
       <node id="5578424278096876723" at="250,0,251,0" concept="9" trace="PropertyAttribute$jT" />
       <node id="5578424278096876723" at="251,0,252,0" concept="9" trace="Child$IS" />
       <node id="5578424278096876723" at="252,0,253,0" concept="9" trace="Parent$qu" />
-      <node id="5578424278096876723" at="256,0,257,0" concept="9" trace="children$Lrw1" />
+      <node id="5578424278096876723" at="256,0,257,0" concept="9" trace="children$Wkwv" />
       <node id="5578424278096876723" at="51,0,53,0" concept="2" trace="myNode" />
       <node id="5578424278096876723" at="150,0,152,0" concept="2" trace="myNode" />
       <node id="5578424278096876723" at="65,0,68,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -4757,7 +4757,7 @@
       <node id="1453235961835991485" at="636,5,637,17" concept="7" />
       <node id="1453235961835992416" at="640,36,641,45" concept="7" />
       <node id="1453235961835992416" at="642,5,643,17" concept="7" />
-      <node id="5578424278096906891" at="647,0,648,0" concept="9" trace="name$tAp1" />
+      <node id="5578424278096906891" at="647,0,648,0" concept="9" trace="name$lA7v" />
       <node id="5578424278096906891" at="651,0,652,0" concept="9" trace="Child$IS" />
       <node id="7173407872093664465" at="64,156,67,5" concept="4" />
       <node id="8740634663380048338" at="98,72,101,7" concept="4" />
@@ -5319,7 +5319,7 @@
       <node id="7050984401975123151" at="221,157,222,46" concept="6" />
       <node id="7050984401975123151" at="222,46,223,290" concept="6" />
       <node id="7050984401975123151" at="224,114,225,56" concept="1" />
-      <node id="7253742591936243054" at="233,0,234,0" concept="9" trace="name$tAp1" />
+      <node id="7253742591936243054" at="233,0,234,0" concept="9" trace="name$lA7v" />
       <node id="9139282140827950974" at="99,0,102,0" concept="0" trace="Item#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)V" />
       <node id="9139282140827950974" at="102,0,105,0" concept="5" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="9139282140827950974" at="131,290,134,9" concept="3" />

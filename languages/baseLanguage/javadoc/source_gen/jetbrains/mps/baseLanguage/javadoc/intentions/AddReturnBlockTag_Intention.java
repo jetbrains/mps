@@ -38,8 +38,8 @@ public final class AddReturnBlockTag_Intention extends AbstractIntentionDescript
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode returnType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, false, false), LINKS.returnType$WIkw);
-    return (SLinkOperations.getTarget(node, LINKS.return$3XgX) == null) && (returnType != null) && !(SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$aT));
+    SNode returnType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, false, false), LINKS.returnType$qrVw);
+    return (SLinkOperations.getTarget(node, LINKS.return$UFdz) == null) && (returnType != null) && !(SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$aT));
   }
   @Override
   public boolean isSurroundWith() {
@@ -61,7 +61,7 @@ public final class AddReturnBlockTag_Intention extends AbstractIntentionDescript
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode tag = SNodeFactoryOperations.createNewNode(CONCEPTS.ReturnBlockDocTag$Ys, null);
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$LJD$)).addElement(tag);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$658s)).addElement(tag);
       BlockDocTagHelper.setFocus(editorContext, tag);
 
     }
@@ -78,8 +78,8 @@ public final class AddReturnBlockTag_Intention extends AbstractIntentionDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink return$3XgX = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink return$UFdz = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
   }
 }

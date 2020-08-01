@@ -34,7 +34,7 @@ public class MatrixInitializerIndexReference_Constraints extends BaseConstraints
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.index$MECO, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.index$yDLc, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -63,8 +63,8 @@ public class MatrixInitializerIndexReference_Constraints extends BaseConstraints
                     }
                   }
                   if (matches_5upoaw_a0a2a1a0a0a1a0a0a0c) {
-                    ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.colIndex$FvUv));
-                    ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.rowIndex$FqOw));
+                    ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.colIndex$4tl1));
+                    ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.rowIndex$1Zrw));
                   } else {
                     boolean matches_5upoaw_b0a2a1a0a0a1a0a0a0c = false;
                     {
@@ -74,7 +74,7 @@ public class MatrixInitializerIndexReference_Constraints extends BaseConstraints
                       }
                     }
                     if (matches_5upoaw_b0a2a1a0a0a1a0a0a0c) {
-                      ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.rowIndex$13ov));
+                      ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.rowIndex$wCR1));
                     }
                   }
                 }
@@ -100,9 +100,9 @@ public class MatrixInitializerIndexReference_Constraints extends BaseConstraints
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink index$MECO = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, 0x5650ac0d4240f275L, "index");
-    /*package*/ static final SContainmentLink colIndex$FvUv = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25cL, "colIndex");
-    /*package*/ static final SContainmentLink rowIndex$FqOw = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25bL, "rowIndex");
-    /*package*/ static final SContainmentLink rowIndex$13ov = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb7L, "rowIndex");
+    /*package*/ static final SReferenceLink index$yDLc = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, 0x5650ac0d4240f275L, "index");
+    /*package*/ static final SContainmentLink colIndex$4tl1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25cL, "colIndex");
+    /*package*/ static final SContainmentLink rowIndex$1Zrw = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25bL, "rowIndex");
+    /*package*/ static final SContainmentLink rowIndex$wCR1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb7L, "rowIndex");
   }
 }

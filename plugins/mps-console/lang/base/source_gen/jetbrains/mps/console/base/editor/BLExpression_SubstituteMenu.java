@@ -118,7 +118,7 @@ public class BLExpression_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createBLExpression_c9dft7_a0a0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
-    n0.forChild(LINKS.expression$HQe6).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.expression$dgOU).initNode(p0, CONCEPTS.Expression$TP, true);
     return n0.getResult();
   }
 
@@ -128,6 +128,6 @@ public class BLExpression_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$HQe6 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
+    /*package*/ static final SContainmentLink expression$dgOU = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
   }
 }

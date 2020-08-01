@@ -22,7 +22,7 @@ public class check_TransformationLocationsAreNotDuplicated_NonTypesystemRule ext
   public check_TransformationLocationsAreNotDuplicated_NonTypesystemRule() {
   }
   public void applyRule(final SNode section, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(DuplicationUtil.getDuplications(SLinkOperations.getChildren(section, LINKS.locations$aTw0))).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(DuplicationUtil.getDuplications(SLinkOperations.getChildren(section, LINKS.locations$hQw0))).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -42,7 +42,7 @@ public class check_TransformationLocationsAreNotDuplicated_NonTypesystemRule ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink locations$aTw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
+    /*package*/ static final SContainmentLink locations$hQw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
   }
 
   private static final class CONCEPTS {

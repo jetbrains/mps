@@ -51,7 +51,7 @@ public class ChangeSigantureOfInterface_Test extends BaseTransformationTest {
       addNodeById("418758558327019466");
       addNodeById("418758558327028811");
       ChangeMethodSignatureParameters parameters = new ChangeMethodSignatureParameters(SNodeOperations.cast(getNodeById("418758558327019496"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
-      SPropertyOperations.assign(parameters.getDeclaration(), PROPS.name$tAp1, "myMethod");
+      SPropertyOperations.assign(parameters.getDeclaration(), PROPS.name$lA7v, "myMethod");
       ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(parameters, SNodeOperations.cast(getNodeById("418758558327028802"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))));
       ref.doRefactoring();
       {
@@ -65,6 +65,6 @@ public class ChangeSigantureOfInterface_Test extends BaseTransformationTest {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

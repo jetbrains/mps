@@ -41,7 +41,7 @@ public class ClearActionParameterIsOptional extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ActionParameter$ec, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.isOptional$Lw);
+          SPropertyOperations.remove(it, PROPS.isOptional$nYw);
         }
       });
     }
@@ -55,6 +55,6 @@ public class ClearActionParameterIsOptional extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isOptional$Lw = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, 0x11c71345faaL, "isOptional");
+    /*package*/ static final SProperty isOptional$nYw = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, 0x11c71345faaL, "isOptional");
   }
 }

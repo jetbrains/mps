@@ -45,11 +45,11 @@ public final class ToggleCompactMpsModule_Intention extends AbstractIntentionDes
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.compact$1aZR) ? "Unfold " + SPropertyOperations.getString(node, PROPS.name$tAp1) : "Fold " + SPropertyOperations.getString(node, PROPS.name$tAp1));
+      return (SPropertyOperations.getBoolean(node, PROPS.compact$$kVD) ? "Unfold " + SPropertyOperations.getString(node, PROPS.name$lA7v) : "Fold " + SPropertyOperations.getString(node, PROPS.name$lA7v));
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.compact$1aZR, !(SPropertyOperations.getBoolean(node, PROPS.compact$1aZR)));
+      SPropertyOperations.assign(node, PROPS.compact$$kVD, !(SPropertyOperations.getBoolean(node, PROPS.compact$$kVD)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -58,7 +58,7 @@ public final class ToggleCompactMpsModule_Intention extends AbstractIntentionDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty compact$1aZR = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x742675d05378e98dL, "compact");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty compact$$kVD = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x742675d05378e98dL, "compact");
   }
 }

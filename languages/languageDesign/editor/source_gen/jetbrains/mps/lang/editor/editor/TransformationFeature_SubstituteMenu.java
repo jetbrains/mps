@@ -66,7 +66,7 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
       super.initialize(_context);
       condition = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.features$645q);
+          return Objects.equals(_context.getLink(), LINKS.features$VYBA);
         }
       }.compute();
     }
@@ -110,12 +110,12 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
       public class SMP_Concepts_97h82d_a0a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(SubstituteMenuContext _context) {
           SNode section = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TransformationMenuSection$H0, true, false);
-          final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, LINKS.locations$aTw0)).translate(new ITranslator2<SNode, SConcept>() {
+          final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, LINKS.locations$hQw0)).translate(new ITranslator2<SNode, SConcept>() {
             public Iterable<SConcept> translate(SNode it) {
               return (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getAvailableFeatures_id1A4kJjlZ$rL.invoke(it);
             }
           });
-          Iterable<SConcept> concepts = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationFeature$2t, _context.getParentNode(), LINKS.features$645q, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
+          Iterable<SConcept> concepts = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationFeature$2t, _context.getParentNode(), LINKS.features$VYBA, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
             public SConcept select(SAbstractConcept it) {
               return SNodeOperations.castConcept(it, CONCEPTS.TransformationFeature$2t);
             }
@@ -205,8 +205,8 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink features$645q = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
-    /*package*/ static final SContainmentLink locations$aTw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
+    /*package*/ static final SContainmentLink features$VYBA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
+    /*package*/ static final SContainmentLink locations$hQw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
   }
 
   private static final class CONCEPTS {

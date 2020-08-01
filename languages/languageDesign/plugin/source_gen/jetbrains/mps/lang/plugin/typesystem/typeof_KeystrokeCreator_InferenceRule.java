@@ -21,7 +21,7 @@ public class typeof_KeystrokeCreator_InferenceRule extends AbstractInferenceRule
   }
   public void applyRule(final SNode stmt, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(stmt, LINKS.stroke$rPHw);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(stmt, LINKS.stroke$v12w);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "8131292300541907325", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "8131292300541907082", true), (SNode) _quotation_createNode_d8k55o_a1a0c0a0b(), _info_12389875345);
     }
@@ -43,7 +43,7 @@ public class typeof_KeystrokeCreator_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink stroke$rPHw = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x70d8274412a8919cL, 0x70d8274412ab495dL, "stroke");
+    /*package*/ static final SContainmentLink stroke$v12w = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x70d8274412a8919cL, 0x70d8274412ab495dL, "stroke");
   }
 
   private static final class CONCEPTS {

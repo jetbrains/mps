@@ -102,7 +102,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.elementsCreation$cyLP;
+      return LINKS.elementsCreation$4Q8F;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.DiagramElementsCreation$EZ;
@@ -115,7 +115,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(elementsCreationListHandler_7br2q0_d0.this.getNode(), LINKS.elementsCreation$cyLP));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(elementsCreationListHandler_7br2q0_d0.this.getNode(), LINKS.elementsCreation$4Q8F));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -185,7 +185,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.connectorCreation$MXfX;
+      return LINKS.connectorCreation$FEIz;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.DiagramConnectorCreation$US;
@@ -198,7 +198,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(connectorCreationListHandler_7br2q0_f0.this.getNode(), LINKS.connectorCreation$MXfX));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(connectorCreationListHandler_7br2q0_f0.this.getNode(), LINKS.connectorCreation$FEIz));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -240,8 +240,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementsCreation$cyLP = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x76f1cb20ba7a1c35L, "elementsCreation");
-    /*package*/ static final SContainmentLink connectorCreation$MXfX = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0xd0b2f9de3717551L, "connectorCreation");
+    /*package*/ static final SContainmentLink elementsCreation$4Q8F = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x76f1cb20ba7a1c35L, "elementsCreation");
+    /*package*/ static final SContainmentLink connectorCreation$FEIz = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0xd0b2f9de3717551L, "connectorCreation");
   }
 
   private static final class CONCEPTS {

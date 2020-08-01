@@ -53,7 +53,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        return ((SLinkOperations.getTarget(myNode, LINKS.baseMethodDeclaration$$A7i) != null) ? INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(myNode, LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.Classifier$hJ)) : "<unknown>");
+        return ((SLinkOperations.getTarget(myNode, LINKS.baseMethodDeclaration$ItxI) != null) ? INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(myNode, LINKS.baseMethodDeclaration$ItxI)), CONCEPTS.Classifier$hJ)) : "<unknown>");
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -66,7 +66,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {

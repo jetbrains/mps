@@ -15,7 +15,7 @@ public class CreateRefcontextHint implements ParametersInformation<SNode> {
   public CreateRefcontextHint() {
   }
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.refactoring$3ZlC));
+    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.refactoring$VFuo));
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     RefExpressionParamUtil.xxx(node, parameterObject, styledText, true);
@@ -25,6 +25,6 @@ public class CreateRefcontextHint implements ParametersInformation<SNode> {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoring$3ZlC = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bd34aaL, "refactoring");
+    /*package*/ static final SReferenceLink refactoring$VFuo = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x335c206b02bc2de5L, 0x335c206b02bd34aaL, "refactoring");
   }
 }

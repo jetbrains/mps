@@ -31,7 +31,7 @@ public final class ConstantStringAppendPart__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static boolean withIndent_idi0uJgJ6(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.withIndent$rzdW);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.withIndent$m3K4);
   }
 
   /*package*/ ConstantStringAppendPart__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ConstantStringAppendPart__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty withIndent$rzdW = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201534c74dL, "withIndent");
+    /*package*/ static final SProperty withIndent$m3K4 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201534c74dL, "withIndent");
   }
 }

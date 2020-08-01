@@ -39,7 +39,7 @@ public class AttributeStyleClassItem_Constraints extends BaseConstraintsDescript
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.attribute$g2fs, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.attribute$L5u$, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -92,6 +92,6 @@ public class AttributeStyleClassItem_Constraints extends BaseConstraintsDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attribute$g2fs = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0b8d3L, "attribute");
+    /*package*/ static final SReferenceLink attribute$L5u$ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0b8d3L, "attribute");
   }
 }

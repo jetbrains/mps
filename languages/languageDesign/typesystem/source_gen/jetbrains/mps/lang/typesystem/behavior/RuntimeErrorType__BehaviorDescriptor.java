@@ -31,7 +31,7 @@ public final class RuntimeErrorType__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return "error[" + SPropertyOperations.getString(__thisNode__, PROPS.errorText$kxP0) + "]";
+    return "error[" + SPropertyOperations.getString(__thisNode__, PROPS.errorText$WoF0) + "]";
   }
 
   /*package*/ RuntimeErrorType__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class RuntimeErrorType__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty errorText$kxP0 = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956f9L, 0x113f84956faL, "errorText");
+    /*package*/ static final SProperty errorText$WoF0 = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956f9L, 0x113f84956faL, "errorText");
   }
 }

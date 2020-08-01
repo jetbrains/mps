@@ -51,7 +51,7 @@ public class GeneratorParameterReference_SmartReference extends SubstituteMenuBa
 
     public SMP_ReferenceScope_zgxupi_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.GeneratorParameterReference$GX, LINKS.declaration$lMsa);
+      super((SAbstractConcept) CONCEPTS.GeneratorParameterReference$GX, LINKS.declaration$zrCQ);
     }
     @NotNull
     @Override
@@ -83,7 +83,7 @@ public class GeneratorParameterReference_SmartReference extends SubstituteMenuBa
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.name$tAp1) + " : " + SLinkOperations.getTarget(referencedNode, LINKS.type$dvU0);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v) + " : " + SLinkOperations.getTarget(referencedNode, LINKS.type$yt60);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -102,11 +102,11 @@ public class GeneratorParameterReference_SmartReference extends SubstituteMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$lMsa = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283cbf8aL, 0x90726ff283cbf8cL, "declaration");
-    /*package*/ static final SContainmentLink type$dvU0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283822d4L, 0x90726ff283822d5L, "type");
+    /*package*/ static final SReferenceLink declaration$zrCQ = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283cbf8aL, 0x90726ff283cbf8cL, "declaration");
+    /*package*/ static final SContainmentLink type$yt60 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283822d4L, 0x90726ff283822d5L, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

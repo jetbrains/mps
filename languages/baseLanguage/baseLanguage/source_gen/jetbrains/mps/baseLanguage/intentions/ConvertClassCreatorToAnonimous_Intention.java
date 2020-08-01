@@ -39,7 +39,7 @@ public final class ConvertClassCreatorToAnonimous_Intention extends AbstractInte
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i) != null;
+    return SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI) != null;
   }
   @Override
   public boolean isSurroundWith() {
@@ -61,12 +61,12 @@ public final class ConvertClassCreatorToAnonimous_Intention extends AbstractInte
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode anonimousClassCreator = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.AnonymousClassCreator$N6);
-      SLinkOperations.setTarget(SLinkOperations.getTarget(anonimousClassCreator, LINKS.cls$xt3G), LINKS.classifier$1y5e, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.ClassConcept$IY));
-      for (SNode typeParm : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$swNi))) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonimousClassCreator, LINKS.cls$xt3G), LINKS.typeParameter$uY4E)).addElement(typeParm);
+      SLinkOperations.setTarget(SLinkOperations.getTarget(anonimousClassCreator, LINKS.cls$d4Mk), LINKS.classifier$JwxM, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI)), CONCEPTS.ClassConcept$IY));
+      for (SNode typeParm : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$NSPI))) {
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonimousClassCreator, LINKS.cls$d4Mk), LINKS.typeParameter$4gm)).addElement(typeParm);
       }
-      for (SNode typeParm : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$swNi))) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonimousClassCreator, LINKS.cls$xt3G), LINKS.typeParameter$uY4E)).addElement(typeParm);
+      for (SNode typeParm : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$NSPI))) {
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonimousClassCreator, LINKS.cls$d4Mk), LINKS.typeParameter$4gm)).addElement(typeParm);
       }
     }
     @Override
@@ -76,11 +76,11 @@ public final class ConvertClassCreatorToAnonimous_Intention extends AbstractInte
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink cls$xt3G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink typeParameter$uY4E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink cls$d4Mk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink typeParameter$4gm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
   }
 
   private static final class CONCEPTS {

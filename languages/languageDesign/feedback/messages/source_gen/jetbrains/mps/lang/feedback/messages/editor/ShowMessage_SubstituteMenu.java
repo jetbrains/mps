@@ -91,7 +91,7 @@ public class ShowMessage_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode showMsg = SNodeFactoryOperations.createNewNode(CONCEPTS.ShowMessage$3M, null);
-          SLinkOperations.setTarget(showMsg, LINKS.problem$7FCD, nodeToWrap);
+          SLinkOperations.setTarget(showMsg, LINKS.problem$I8FR, nodeToWrap);
           return showMsg;
         }
 
@@ -106,7 +106,7 @@ public class ShowMessage_SubstituteMenu extends SubstituteMenuBase {
         }
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-          SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.message$mGgm), SelectionManager.FIRST_EDITABLE_CELL);
+          SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.message$ZrUE), SelectionManager.FIRST_EDITABLE_CELL);
         }
       };
     }
@@ -128,7 +128,7 @@ public class ShowMessage_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink problem$7FCD = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
-    /*package*/ static final SContainmentLink message$mGgm = MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message");
+    /*package*/ static final SContainmentLink problem$I8FR = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
+    /*package*/ static final SContainmentLink message$ZrUE = MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message");
   }
 }

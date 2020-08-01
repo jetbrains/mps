@@ -70,7 +70,7 @@ public class CheckAnnotationOnContainerNode extends MigrationScriptBase {
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractTestNodeAnnotation$5M, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.hasRole(it, LINKS.smodelAttribute$K8bJ) && !((boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdhXGe.invoke(SNodeOperations.asSConcept(CONCEPTS.ITestAnnotationsContainer$pG), SNodeOperations.getParent(it)));
+          return SNodeOperations.hasRole(it, LINKS.smodelAttribute$jXFL) && !((boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdhXGe.invoke(SNodeOperations.asSConcept(CONCEPTS.ITestAnnotationsContainer$pG), SNodeOperations.getParent(it)));
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -96,6 +96,6 @@ public class CheckAnnotationOnContainerNode extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

@@ -23,7 +23,7 @@ public class XmlCharRef_TextGen extends TextGenDescriptorBase {
       tgs.indent();
     }
     tgs.append("&#");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.charCode$ocV0));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.charCode$Ig_0));
     tgs.append(";");
   }
 
@@ -32,6 +32,6 @@ public class XmlCharRef_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty charCode$ocV0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, 0x2abf08504ffe9887L, "charCode");
+    /*package*/ static final SProperty charCode$Ig_0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, 0x2abf08504ffe9887L, "charCode");
   }
 }

@@ -24,17 +24,17 @@ public class check_DuplicatedRules_NonTypesystemRule extends AbstractNonTypesyst
   public check_DuplicatedRules_NonTypesystemRule() {
   }
   public void applyRule(final SNode abstractRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final String name = SPropertyOperations.getString(abstractRule, PROPS.name$tAp1);
+    final String name = SPropertyOperations.getString(abstractRule, PROPS.name$lA7v);
     if ((name == null || name.length() == 0)) {
       return;
     }
     if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(abstractRule), CONCEPTS.AbstractRule$6j)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != abstractRule && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$tAp1));
+        return it != abstractRule && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$lA7v));
       }
     })) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractRule, "Duplicated name of the typesystem rule", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "8433157989202147284", null, errorTarget);
       }
     }
@@ -50,7 +50,7 @@ public class check_DuplicatedRules_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

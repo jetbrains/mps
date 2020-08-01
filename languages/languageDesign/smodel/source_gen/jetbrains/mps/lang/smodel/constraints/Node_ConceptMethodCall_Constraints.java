@@ -38,7 +38,7 @@ public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescripto
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$$A7i, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -54,7 +54,7 @@ public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescripto
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
-            SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+            SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
             SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(leftExpression);
 
             // any concept is AbstractConceptDeclaration, not mere BaseConcept 
@@ -66,28 +66,28 @@ public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescripto
             //  when there's a concept type, there's no node to invoke instance method on. 
             SNode conceptType = TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SConceptType$nF);
             if ((conceptType != null)) {
-              SNode decl = SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$l1qw);
+              SNode decl = SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$bFPw);
               conceptNode = (decl != null ? decl : defaultConceptTypeValue);
             }
 
             if ((conceptNode == null)) {
               SNode conceptNodeType = TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.ConceptNodeType$7y);
               if ((conceptNodeType != null)) {
-                SNode decl = SLinkOperations.getTarget(conceptNodeType, LINKS.conceptDeclaraton$Qe25);
+                SNode decl = SLinkOperations.getTarget(conceptNodeType, LINKS.conceptDeclaraton$gN0r);
                 conceptNode = (decl != null ? decl : defaultConceptTypeValue);
               }
             }
             if ((conceptNode == null)) {
               SNode conceptTypeLit = TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SConceptTypeLiteral$4X);
               if ((conceptTypeLit != null)) {
-                SNode decl = SLinkOperations.getTarget(conceptTypeLit, LINKS.conceptDeclaraton$xAhw);
+                SNode decl = SLinkOperations.getTarget(conceptTypeLit, LINKS.conceptDeclaraton$hyuw);
                 conceptNode = (decl != null ? decl : defaultConceptTypeValue);
               }
             }
             if ((conceptNode == null)) {
               SNode nodeType = TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SNodeType$gn);
               if ((nodeType != null)) {
-                SNode decl = SLinkOperations.getTarget(nodeType, LINKS.concept$HWFQ);
+                SNode decl = SLinkOperations.getTarget(nodeType, LINKS.concept$gpfa);
                 conceptNode = (decl != null ? decl : defaultNodeTypeValue);
               }
               isStatic.value = false;
@@ -99,7 +99,7 @@ public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescripto
 
             Iterable<SNode> methods = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(conceptNode, enclosingNode)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SPropertyOperations.getBoolean(it, PROPS.isStatic$KaRv) == isStatic.value;
+                return SPropertyOperations.getBoolean(it, PROPS.isStatic$lgS1) == isStatic.value;
               }
             }).toListSequence();
 
@@ -108,7 +108,7 @@ public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescripto
               // conceptNode<> is subtype of node<AbstractConceptDeclaration>, why can't I invoke methods of the latter (used to workaround with node.conceptNode.asNode.methodCall, which is stupid) 
               methods = Sequence.fromIterable(methods).concat(Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(defaultConceptTypeValue, enclosingNode)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return SPropertyOperations.getBoolean(it, PROPS.isStatic$KaRv) == false;
+                  return SPropertyOperations.getBoolean(it, PROPS.isStatic$lgS1) == false;
                 }
               })).toListSequence();
             }
@@ -134,15 +134,15 @@ public class Node_ConceptMethodCall_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink conceptDeclaraton$l1qw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton");
-    /*package*/ static final SReferenceLink conceptDeclaraton$Qe25 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
-    /*package*/ static final SReferenceLink conceptDeclaraton$xAhw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, 0x4bf20760d53f89ebL, "conceptDeclaraton");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink conceptDeclaraton$bFPw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink conceptDeclaraton$gN0r = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink conceptDeclaraton$hyuw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, 0x4bf20760d53f89ebL, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isStatic$KaRv = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
+    /*package*/ static final SProperty isStatic$lgS1 = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
   }
 }

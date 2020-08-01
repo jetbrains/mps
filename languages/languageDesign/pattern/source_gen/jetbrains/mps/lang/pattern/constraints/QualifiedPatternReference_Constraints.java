@@ -32,7 +32,7 @@ public class QualifiedPatternReference_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.pattern$JPrv, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.pattern$aSk1, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,7 +47,7 @@ public class QualifiedPatternReference_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode classifier = SNodeOperations.as(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.classifier$JOZS), CONCEPTS.Classifier$hJ);
+            SNode classifier = SNodeOperations.as(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.classifier$aEW8), CONCEPTS.Classifier$hJ);
             if ((classifier == null)) {
               return new EmptyScope();
             }
@@ -69,7 +69,7 @@ public class QualifiedPatternReference_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink pattern$JPrv = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398d4L, "pattern");
-    /*package*/ static final SReferenceLink classifier$JOZS = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398c5L, "classifier");
+    /*package*/ static final SReferenceLink pattern$aSk1 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398d4L, "pattern");
+    /*package*/ static final SReferenceLink classifier$aEW8 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398c5L, "classifier");
   }
 }

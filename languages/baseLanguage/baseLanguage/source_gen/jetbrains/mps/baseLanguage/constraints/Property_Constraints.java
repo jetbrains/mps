@@ -21,7 +21,7 @@ public class Property_Constraints extends BaseConstraintsDescriptor {
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$tAp1, container);
+      super(PROPS.name$lA7v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -29,13 +29,13 @@ public class Property_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(node, PROPS.propertyName$wZnI);
+      return SPropertyOperations.getString(node, PROPS.propertyName$YGvi);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$tAp1, new Name_Property(this));
+    properties.put(PROPS.name$lA7v, new Name_Property(this));
     return properties;
   }
 
@@ -44,7 +44,7 @@ public class Property_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty propertyName$wZnI = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75204e4L, "propertyName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty propertyName$YGvi = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75204e4L, "propertyName");
   }
 }

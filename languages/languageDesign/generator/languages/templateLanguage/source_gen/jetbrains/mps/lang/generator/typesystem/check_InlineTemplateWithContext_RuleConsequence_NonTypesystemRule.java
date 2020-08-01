@@ -26,7 +26,7 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
     // see TemplateContainer#checkAdjacentFragments 
     SNode commonParent = null;
     SContainmentLink commonAggregationLink = null;
-    for (SNode tf : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(consequence, LINKS.contentNode$QBS9), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{})) {
+    for (SNode tf : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(consequence, LINKS.contentNode$tkcn), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{})) {
       SNode fragmentParent = SNodeOperations.getParent(tf);
       SContainmentLink containmentLink = fragmentParent.getContainmentLink();
       if (commonParent == null) {
@@ -60,7 +60,7 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink contentNode$QBS9 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
+    /*package*/ static final SContainmentLink contentNode$tkcn = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
   }
 
   private static final class CONCEPTS {

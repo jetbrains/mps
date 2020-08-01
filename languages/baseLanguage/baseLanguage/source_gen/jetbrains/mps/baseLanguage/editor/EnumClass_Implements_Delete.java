@@ -28,7 +28,7 @@ public class EnumClass_Implements_Delete {
         if (DeletionApproverUtil.approve(editorContext, node, "enumImplementsCollection")) {
           return;
         }
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.implementedInterface$mdc6)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.implementedInterface$KoQU)).clear();
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "OpenBraceEnumCell", 0);
       }
 
@@ -77,6 +77,6 @@ public class EnumClass_Implements_Delete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
   }
 }

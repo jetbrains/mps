@@ -52,7 +52,7 @@ public class DerivedInterfaces_Finder extends GeneratedFinder {
             SNode nodeParam = (SNode) searchResult.getObject();
             new _FunctionTypes._void_P1_E0<SNode>() {
               public void invoke(SNode nodeUsage) {
-                if (SNodeOperations.hasRole(nodeUsage, LINKS.extendedInterface$rbvY)) {
+                if (SNodeOperations.hasRole(nodeUsage, LINKS.extendedInterface$a$v2)) {
                   SNode foundIntfc = SNodeOperations.cast(SNodeOperations.getParent(nodeUsage), CONCEPTS.Interface$Kp);
                   callback.onUsageFound(createSingleResult(foundIntfc));
                   QueueSequence.fromQueue(queue).addLastElement(foundIntfc);
@@ -83,6 +83,6 @@ public class DerivedInterfaces_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
   }
 }

@@ -29,7 +29,7 @@ public class check_Component_NonTypesystemRule extends AbstractNonTypesystemRule
   public check_Component_NonTypesystemRule() {
   }
   public void applyRule(final SNode component, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode usedComponent : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(component, LINKS.dep$oYBD), LINKS.to$V$vW))) {
+    for (SNode usedComponent : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(component, LINKS.dep$6lcR), LINKS.to$QFu4))) {
       final Set<SNode> visitedComponents = SetSequence.fromSet(new HashSet<SNode>());
       Queue<SNode> queue = QueueSequence.fromQueue(new LinkedList<SNode>());
       QueueSequence.fromQueue(queue).addLastElement(usedComponent);
@@ -43,7 +43,7 @@ public class check_Component_NonTypesystemRule extends AbstractNonTypesystemRule
           }
           return;
         }
-        QueueSequence.fromQueue(queue).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(nextComponent, LINKS.dep$oYBD), LINKS.to$V$vW)).where(new IWhereFilter<SNode>() {
+        QueueSequence.fromQueue(queue).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(nextComponent, LINKS.dep$6lcR), LINKS.to$QFu4)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SetSequence.fromSet(visitedComponents).contains(it));
           }
@@ -62,8 +62,8 @@ public class check_Component_NonTypesystemRule extends AbstractNonTypesystemRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dep$oYBD = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
-    /*package*/ static final SReferenceLink to$V$vW = MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to");
+    /*package*/ static final SContainmentLink dep$6lcR = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
+    /*package*/ static final SReferenceLink to$QFu4 = MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to");
   }
 
   private static final class CONCEPTS {

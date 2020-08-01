@@ -24,7 +24,7 @@ public class BuildVariableMacroInitWithDate_Constraints extends BaseConstraintsD
 
   public static class Pattern_Property extends BasePropertyConstraintsDescriptor {
     public Pattern_Property(ConstraintsDescriptor container) {
-      super(PROPS.pattern$QeJw, container);
+      super(PROPS.pattern$h90w, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -51,7 +51,7 @@ public class BuildVariableMacroInitWithDate_Constraints extends BaseConstraintsD
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.pattern$QeJw, new Pattern_Property(this));
+    properties.put(PROPS.pattern$h90w, new Pattern_Property(this));
     return properties;
   }
 
@@ -60,6 +60,6 @@ public class BuildVariableMacroInitWithDate_Constraints extends BaseConstraintsD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty pattern$QeJw = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x365f30e12d2c3e4L, 0x365f30e12d2c3f0L, "pattern");
+    /*package*/ static final SProperty pattern$h90w = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x365f30e12d2c3e4L, 0x365f30e12d2c3f0L, "pattern");
   }
 }

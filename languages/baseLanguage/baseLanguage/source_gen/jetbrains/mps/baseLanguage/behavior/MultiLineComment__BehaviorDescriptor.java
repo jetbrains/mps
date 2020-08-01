@@ -35,10 +35,10 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getLines_id6GJhO0n1Xys);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$VaYR)).isEmpty()) {
-      SNode line = SNodeFactoryOperations.addNewChild(__thisNode__, LINKS.lines$VaYR, null);
-      ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$eRew)).clear();
-      SNode w = SNodeFactoryOperations.addNewChild(line, LINKS.elements$eRew, CONCEPTS.Word$AM);
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$EksD)).isEmpty()) {
+      SNode line = SNodeFactoryOperations.addNewChild(__thisNode__, LINKS.lines$EksD, null);
+      ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$cK1w)).clear();
+      SNode w = SNodeFactoryOperations.addNewChild(line, LINKS.elements$cK1w, CONCEPTS.Word$AM);
     }
   }
 
@@ -53,7 +53,7 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
     return null;
   }
   /*package*/ static List<SNode> getLines_id6GJhO0n1Xys(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.lines$VaYR);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.lines$EksD);
   }
 
   /*package*/ MultiLineComment__BehaviorDescriptor() {
@@ -105,8 +105,8 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$VaYR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink lines$EksD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {

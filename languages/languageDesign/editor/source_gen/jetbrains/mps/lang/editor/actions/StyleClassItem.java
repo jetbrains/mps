@@ -17,29 +17,29 @@ public class StyleClassItem {
   public static class NodeFactory_1222177342204 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ColorStyleClassItem$42)) {
-        SPropertyOperations.assignEnum(newNode, PROPS.color$cEqb, SPropertyOperations.getEnum(SNodeOperations.cast(sampleNode, CONCEPTS.ColorStyleClassItem$42), PROPS.color$cEqb));
-        SLinkOperations.setTarget(newNode, LINKS.query$o5Tm, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ColorStyleClassItem$42), LINKS.query$o5Tm));
+        SPropertyOperations.assignEnum(newNode, PROPS.color$8yFl, SPropertyOperations.getEnum(SNodeOperations.cast(sampleNode, CONCEPTS.ColorStyleClassItem$42), PROPS.color$8yFl));
+        SLinkOperations.setTarget(newNode, LINKS.query$EQLE, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ColorStyleClassItem$42), LINKS.query$EQLE));
       }
     }
   }
   public static class NodeFactory_1222178769288 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BooleanStyleSheetItem$jc)) {
-        SPropertyOperations.assign(newNode, PROPS.flag$7rl, SPropertyOperations.getBoolean(SNodeOperations.cast(sampleNode, CONCEPTS.BooleanStyleSheetItem$jc), PROPS.flag$7rl));
+        SPropertyOperations.assign(newNode, PROPS.flag$3Afb, SPropertyOperations.getBoolean(SNodeOperations.cast(sampleNode, CONCEPTS.BooleanStyleSheetItem$jc), PROPS.flag$3Afb));
       }
     }
   }
   public static class NodeFactory_1222178992987 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.FloatStyleClassItem$k9)) {
-        SPropertyOperations.assign(newNode, PROPS.value$F1Ij, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.FloatStyleClassItem$k9), PROPS.value$F1Ij));
+        SPropertyOperations.assign(newNode, PROPS.value$PPrd, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.FloatStyleClassItem$k9), PROPS.value$PPrd));
       }
     }
   }
   public static class NodeFactory_4088952938557965240 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AttributeStyleClassItem$u_)) {
-        SLinkOperations.setTarget(newNode, LINKS.query$XZtw, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AttributeStyleClassItem$u_), LINKS.query$XZtw));
+        SLinkOperations.setTarget(newNode, LINKS.query$1Jiw, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AttributeStyleClassItem$u_), LINKS.query$1Jiw));
       }
     }
   }
@@ -52,13 +52,13 @@ public class StyleClassItem {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty color$cEqb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color");
-    /*package*/ static final SProperty flag$7rl = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
-    /*package*/ static final SProperty value$F1Ij = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value");
+    /*package*/ static final SProperty color$8yFl = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2c0352L, "color");
+    /*package*/ static final SProperty flag$3Afb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
+    /*package*/ static final SProperty value$PPrd = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$o5Tm = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query");
-    /*package*/ static final SContainmentLink query$XZtw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0a403L, "query");
+    /*package*/ static final SContainmentLink query$EQLE = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2bb8c4L, 0x1143b2d5fabL, "query");
+    /*package*/ static final SContainmentLink query$1Jiw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0a403L, "query");
   }
 }

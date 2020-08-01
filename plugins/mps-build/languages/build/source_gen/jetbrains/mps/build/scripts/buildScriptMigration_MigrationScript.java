@@ -35,13 +35,13 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputSingleFile$yn);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode file = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildLayout_File$dL);
         SNodeOperations.replaceWithAnother(node, file);
-        SLinkOperations.setTarget(file, LINKS.path$llZF, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputSingleFile$yn), LINKS.path$6h5X));
+        SLinkOperations.setTarget(file, LINKS.path$lDPP, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -63,14 +63,14 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputFiles$Nk);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputFiles$Nk);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode files = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildLayout_Files$hP);
         SNodeOperations.replaceWithAnother(node, files);
-        SLinkOperations.setTarget(files, LINKS.path$ohPw, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputFiles$Nk), LINKS.dir$6hmv));
-        ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$ohPZ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputFiles$Nk), LINKS.selectors$6oar)));
+        SLinkOperations.setTarget(files, LINKS.path$KCUw, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputFiles$Nk), LINKS.dir$2pT1));
+        ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$KD9x)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputFiles$Nk), LINKS.selectors$5H35)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -92,14 +92,14 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputSingleFile$yn);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode file = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildLayout_File$dL);
         SNodeOperations.replaceWithAnother(node, file);
-        SLinkOperations.setTarget(file, LINKS.path$llZF, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputSingleFile$yn), LINKS.path$6h5X));
-        ListSequence.fromList(SLinkOperations.getChildren(file, LINKS.parameters$lmfE)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.handlers$97g5)));
+        SLinkOperations.setTarget(file, LINKS.path$lDPP, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz));
+        ListSequence.fromList(SLinkOperations.getChildren(file, LINKS.parameters$lL_m)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.handlers$qwMr)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -121,15 +121,15 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputFiles$Nk);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputFiles$Nk);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode files = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildLayout_Files$hP);
         SNodeOperations.replaceWithAnother(node, files);
-        SLinkOperations.setTarget(files, LINKS.path$ohPw, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputFiles$Nk), LINKS.dir$6hmv));
-        ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$ohPZ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$K4_c), CONCEPTS.BuildInputFiles$Nk), LINKS.selectors$6oar)));
-        ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$ohPZ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.handlers$97g5)));
+        SLinkOperations.setTarget(files, LINKS.path$KCUw, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputFiles$Nk), LINKS.dir$2pT1));
+        ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$KD9x)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.fileset$ie0O), CONCEPTS.BuildInputFiles$Nk), LINKS.selectors$5H35)));
+        ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$KD9x)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.handlers$qwMr)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -154,14 +154,14 @@ public final class buildScriptMigration_MigrationScript extends BaseMigrationScr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fileset$K4_c = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
-    /*package*/ static final SContainmentLink path$llZF = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
-    /*package*/ static final SContainmentLink path$6h5X = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
-    /*package*/ static final SContainmentLink path$ohPw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb00L, "path");
-    /*package*/ static final SContainmentLink dir$6hmv = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
-    /*package*/ static final SContainmentLink parameters$ohPZ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb01L, "parameters");
-    /*package*/ static final SContainmentLink selectors$6oar = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
-    /*package*/ static final SContainmentLink parameters$lmfE = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c126L, "parameters");
-    /*package*/ static final SContainmentLink handlers$97g5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9ab2L, 0x7f76698a394e2d1eL, "handlers");
+    /*package*/ static final SContainmentLink fileset$ie0O = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink path$lDPP = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
+    /*package*/ static final SContainmentLink path$2hSz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
+    /*package*/ static final SContainmentLink path$KCUw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb00L, "path");
+    /*package*/ static final SContainmentLink dir$2pT1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
+    /*package*/ static final SContainmentLink parameters$KD9x = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb01L, "parameters");
+    /*package*/ static final SContainmentLink selectors$5H35 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
+    /*package*/ static final SContainmentLink parameters$lL_m = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c126L, "parameters");
+    /*package*/ static final SContainmentLink handlers$qwMr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9ab2L, 0x7f76698a394e2d1eL, "handlers");
   }
 }

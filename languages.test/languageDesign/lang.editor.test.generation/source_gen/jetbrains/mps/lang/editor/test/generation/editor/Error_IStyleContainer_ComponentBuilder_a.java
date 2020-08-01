@@ -146,7 +146,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     style.set(StyleAttributes.MAX_WIDTH, 10);
     style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_47wt8x_a97a0());
     style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_47wt8x_a08a0());
-    style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+    style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
     style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
     style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
     style.set(StyleAttributes.POSITION, "indented");
@@ -328,6 +328,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink navigable$buwj = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
+    /*package*/ static final SReferenceLink navigable$zLDd = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
   }
 }

@@ -38,7 +38,7 @@ public final class Parameter__BehaviorDescriptor extends BaseBHDescriptor {
     return SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905");
   }
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_5ob2us_a0a1(SLinkOperations.getTarget(__thisNode__, LINKS.parameterType$kN40));
+    return _quotation_createNode_5ob2us_a0a1(SLinkOperations.getTarget(__thisNode__, LINKS.parameterType$4IW0));
   }
 
   /*package*/ Parameter__BehaviorDescriptor() {
@@ -101,6 +101,6 @@ public final class Parameter__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$kN40 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x6688b42d39674b7aL, 0x6688b42d39674f90L, "parameterType");
+    /*package*/ static final SContainmentLink parameterType$4IW0 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x6688b42d39674b7aL, 0x6688b42d39674f90L, "parameterType");
   }
 }

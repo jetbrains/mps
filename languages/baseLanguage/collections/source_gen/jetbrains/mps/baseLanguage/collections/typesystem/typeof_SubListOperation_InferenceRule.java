@@ -30,14 +30,14 @@ public class typeof_SubListOperation_InferenceRule extends AbstractInferenceRule
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.fromIndex$gydA);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.fromIndex$$_q);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5633809102336891180", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5633809102336891172", true), (SNode) _quotation_createNode_sszxva_a1a0c0a0c0b(), true, true, _info_12389875345);
       }
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.upToIndex$gye5);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.upToIndex$$Or);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5633809102336891189", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5633809102336891194", true), (SNode) _quotation_createNode_sszxva_a1a0c0a0d0b(), true, true, _info_12389875345);
       }
@@ -93,8 +93,8 @@ public class typeof_SubListOperation_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fromIndex$gydA = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4e2f4f8785270237L, 0x4e2f4f8785270248L, "fromIndex");
-    /*package*/ static final SContainmentLink upToIndex$gye5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4e2f4f8785270237L, 0x4e2f4f8785270249L, "upToIndex");
+    /*package*/ static final SContainmentLink fromIndex$$_q = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4e2f4f8785270237L, 0x4e2f4f8785270248L, "fromIndex");
+    /*package*/ static final SContainmentLink upToIndex$$Or = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4e2f4f8785270237L, 0x4e2f4f8785270249L, "upToIndex");
   }
 
   private static final class CONCEPTS {

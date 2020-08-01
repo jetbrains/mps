@@ -51,7 +51,7 @@ public class ProjectDependency {
 
     ListSequence.fromList(myDependency).addSequence(ListSequence.fromList(dependencies).select(new ISelector<SNode, Tuples._2<SNode, String>>() {
       public Tuples._2<SNode, String> select(SNode it) {
-        return MultiTuple.<SNode,String>from(SLinkOperations.getTarget(it, LINKS.script$mz1x), calculatePath(it, helper));
+        return MultiTuple.<SNode,String>from(SLinkOperations.getTarget(it, LINKS.script$UXIZ), calculatePath(it, helper));
       }
     }));
 
@@ -61,10 +61,10 @@ public class ProjectDependency {
     return myDependency;
   }
   private String calculatePath(SNode node, RelativePathHelper helper) {
-    SNode script = SLinkOperations.getTarget(node, LINKS.script$mz1x);
+    SNode script = SLinkOperations.getTarget(node, LINKS.script$UXIZ);
     String filePath = BuildProject__BehaviorDescriptor.getScriptsPath_id4ahc858UcHk.invoke(script, myContext);
     if (filePath == null) {
-      myGenContext.showErrorMessage(script, "no script path for required script " + SPropertyOperations.getString(script, PROPS.name$tAp1));
+      myGenContext.showErrorMessage(script, "no script path for required script " + SPropertyOperations.getString(script, PROPS.name$lA7v));
       return ".";
     }
     try {
@@ -84,17 +84,17 @@ public class ProjectDependency {
   private void dfs(SNode project, List<SNode> result, Set<SNode> visited) {
     SetSequence.fromSet(visited).addElement(project);
     for (SNode dependency : Sequence.fromIterable(getLocalDependencies(project))) {
-      if (SetSequence.fromSet(visited).contains(SLinkOperations.getTarget(dependency, LINKS.script$mz1x))) {
+      if (SetSequence.fromSet(visited).contains(SLinkOperations.getTarget(dependency, LINKS.script$UXIZ))) {
         continue;
       }
-      dfs(SLinkOperations.getTarget(dependency, LINKS.script$mz1x), result, visited);
+      dfs(SLinkOperations.getTarget(dependency, LINKS.script$UXIZ), result, visited);
       ListSequence.fromList(result).addElement(dependency);
     }
   }
   private Iterable<SNode> getLocalDependencies(SNode project) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$tpR5), CONCEPTS.BuildProjectDependency$Ug)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$fxFr), CONCEPTS.BuildProjectDependency$Ug)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.artifacts$Ez_T) == null) && isProjectLocal(it);
+        return (SLinkOperations.getTarget(it, LINKS.artifacts$BfmB) == null) && isProjectLocal(it);
       }
     });
   }
@@ -114,7 +114,7 @@ public class ProjectDependency {
    * depending on Generator runtime implementation, which is constantly changing.
    */
   private boolean isProjectLocal(SNode dep) {
-    SModel targetScriptModel = SNodeOperations.getModel(SLinkOperations.getTarget(dep, LINKS.script$mz1x));
+    SModel targetScriptModel = SNodeOperations.getModel(SLinkOperations.getTarget(dep, LINKS.script$UXIZ));
     if (targetScriptModel == null || SNodeOperations.getModel(myProject) == null) {
       // "local" doesn't make sense unless there's location (i.e. my BP's model) to check againts 
       return false;
@@ -133,13 +133,13 @@ public class ProjectDependency {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink script$mz1x = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
-    /*package*/ static final SContainmentLink dependencies$tpR5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
-    /*package*/ static final SContainmentLink artifacts$Ez_T = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x395055ca96617d32L, "artifacts");
+    /*package*/ static final SReferenceLink script$UXIZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+    /*package*/ static final SContainmentLink dependencies$fxFr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SContainmentLink artifacts$BfmB = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x395055ca96617d32L, "artifacts");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

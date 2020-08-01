@@ -384,26 +384,26 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return "java";
   }
   private static String getPath_Annotation(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(node, PROPS.packageName$3uUR).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$FYwD))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$FYwD).replace('.', '/');
     }
     return null;
   }
   private static String getPath_ClassConcept(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(node, PROPS.packageName$3uUR).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$FYwD))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$FYwD).replace('.', '/');
     }
     return null;
   }
   private static String getPath_Interface(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(node, PROPS.packageName$3uUR).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$FYwD))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$FYwD).replace('.', '/');
     }
     return null;
   }
   private static String getPath_EnumClass(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(node, PROPS.packageName$3uUR).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$FYwD))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$FYwD).replace('.', '/');
     }
     return null;
   }
@@ -467,6 +467,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty packageName$3uUR = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x26be0cf68be19d69L, "packageName");
+    /*package*/ static final SProperty packageName$FYwD = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x26be0cf68be19d69L, "packageName");
   }
 }

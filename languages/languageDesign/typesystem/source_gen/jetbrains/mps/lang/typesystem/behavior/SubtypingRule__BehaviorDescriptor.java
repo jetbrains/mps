@@ -35,16 +35,16 @@ public final class SubtypingRule__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean surelyKeepsConcept_id3DXEio5HS06(@NotNull SNode __thisNode__) {
-    SNode initialConcept = ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.applicableNode$lCke));
-    for (SNode returnStatement : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.body$tq5r), CONCEPTS.ReturnStatement$SF, false, new SAbstractConcept[]{})) {
-      SNode expression = SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK);
+    SNode initialConcept = ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.applicableNode$uxMM));
+    for (SNode returnStatement : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.body$fCC5), CONCEPTS.ReturnStatement$SF, false, new SAbstractConcept[]{})) {
+      SNode expression = SLinkOperations.getTarget(returnStatement, LINKS.expression$zDGg);
       SNode supertype = TypecheckingFacade.getFromContext().getTypeOf(expression);
       if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.SNodeType$gn)) {
-        if (SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.SNodeType$gn), LINKS.concept$HWFQ) != initialConcept) {
+        if (SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.SNodeType$gn), LINKS.concept$gpfa) != initialConcept) {
           return false;
         }
       } else if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.SNodeListType$OI)) {
-        if (SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.SNodeListType$OI), LINKS.elementConcept$AB72) != initialConcept) {
+        if (SLinkOperations.getTarget(SNodeOperations.cast(supertype, CONCEPTS.SNodeListType$OI), LINKS.elementConcept$GWpY) != initialConcept) {
           return false;
         }
       } else {
@@ -101,11 +101,11 @@ public final class SubtypingRule__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$lCke = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
-    /*package*/ static final SReferenceLink elementConcept$AB72 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept");
-    /*package*/ static final SContainmentLink body$tq5r = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
+    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink elementConcept$GWpY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept");
+    /*package*/ static final SContainmentLink body$fCC5 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
   }
 
   private static final class CONCEPTS {

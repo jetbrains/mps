@@ -24,9 +24,9 @@
       <node id="3892287256988699831" at="64,0,65,0" concept="5" trace="breakingNode_j4sdke_a0a0a0a0a1a0a0a0c" />
       <node id="3892287256988699831" at="67,0,68,0" concept="5" trace="NoteMetaInfo$C_" />
       <node id="3892287256988699831" at="68,0,69,0" concept="5" trace="ClassifierType$IZ" />
-      <node id="3892287256988699831" at="72,0,73,0" concept="5" trace="color$2quX" />
-      <node id="3892287256988699831" at="73,0,74,0" concept="5" trace="type$pLrO" />
-      <node id="3892287256988699831" at="74,0,75,0" concept="5" trace="classifier$pQ_R" />
+      <node id="3892287256988699831" at="72,0,73,0" concept="5" trace="color$aOZz" />
+      <node id="3892287256988699831" at="73,0,74,0" concept="5" trace="type$uWuc" />
+      <node id="3892287256988699831" at="74,0,75,0" concept="5" trace="classifier$xslD" />
       <node id="3892287256988699831" at="30,0,33,0" concept="0" trace="NoteMetaInfo_Constraints#()V" />
       <node id="6836281137582849182" at="52,0,55,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="3892287256988700983" at="37,0,41,0" concept="2" trace="hasOwnScopeProvider#()Z" />

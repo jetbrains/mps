@@ -34,7 +34,7 @@ public final class TrimConstantCell_Intention extends AbstractIntentionDescripto
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    String text = SPropertyOperations.getString(node, PROPS.text$ZxWw);
+    String text = SPropertyOperations.getString(node, PROPS.text$Lsjw);
     if (text == null || text.length() == 0) {
       return false;
     }
@@ -62,7 +62,7 @@ public final class TrimConstantCell_Intention extends AbstractIntentionDescripto
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.text$ZxWw, SPropertyOperations.getString(node, PROPS.text$ZxWw).trim());
+      SPropertyOperations.set(node, PROPS.text$Lsjw, SPropertyOperations.getString(node, PROPS.text$Lsjw).trim());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -71,6 +71,6 @@ public final class TrimConstantCell_Intention extends AbstractIntentionDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$ZxWw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
+    /*package*/ static final SProperty text$Lsjw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
   }
 }

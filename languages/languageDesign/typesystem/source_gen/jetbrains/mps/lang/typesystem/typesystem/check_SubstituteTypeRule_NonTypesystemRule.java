@@ -18,7 +18,7 @@ public class check_SubstituteTypeRule_NonTypesystemRule extends AbstractNonTypes
   public check_SubstituteTypeRule_NonTypesystemRule() {
   }
   public void applyRule(final SNode subsRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    DataFlowUtil.checkReturns(typeCheckingContext, SLinkOperations.getTarget(subsRule, LINKS.body$X1nH));
+    DataFlowUtil.checkReturns(typeCheckingContext, SLinkOperations.getTarget(subsRule, LINKS.body$zEuN));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SubstituteTypeRule$Ws;
@@ -31,7 +31,7 @@ public class check_SubstituteTypeRule_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$X1nH = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x58e32a0782bca52aL, 0x65a1a729b445aec0L, "body");
+    /*package*/ static final SContainmentLink body$zEuN = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x58e32a0782bca52aL, 0x65a1a729b445aec0L, "body");
   }
 
   private static final class CONCEPTS {

@@ -17,28 +17,28 @@ public class ConceptProperties {
     String alias = SConceptOperations.conceptAlias(SNodeOperations.getConcept(node));
     String text = "alias is " + SConceptOperations.conceptAlias(SNodeOperations.getConcept(node));
     int length = SConceptOperations.conceptAlias(SNodeOperations.getConcept(node)).length();
-    SPropertyOperations.set(node, PROPS.virtualPackage$j19t, "foo");
-    SPropertyOperations.assign(node, PROPS.virtualPackage$j19t, "bar");
+    SPropertyOperations.set(node, PROPS.virtualPackage$dz_3, "foo");
+    SPropertyOperations.assign(node, PROPS.virtualPackage$dz_3, "bar");
   }
   public void booleanConceptProperty(SNode node) {
     boolean isAbstract2 = SNodeOperations.getConcept(node).isAbstract();
     SNode cd = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
-    SPropertyOperations.set(cd, PROPS.abstract$moSU, true);
-    SPropertyOperations.assign(cd, PROPS.abstract$moSU, false);
+    SPropertyOperations.set(cd, PROPS.abstract$Q3$6, true);
+    SPropertyOperations.assign(cd, PROPS.abstract$Q3$6, false);
   }
   public void m1(SNode node) {
-    SConceptOperations.conceptAlias(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i)));
+    SConceptOperations.conceptAlias(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI)));
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

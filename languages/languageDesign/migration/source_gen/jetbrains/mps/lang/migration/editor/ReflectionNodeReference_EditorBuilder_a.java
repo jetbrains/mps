@@ -81,7 +81,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         if ((target != null)) {
           return NodeReferenceUtil.getNodePresentation(target);
         } else {
-          return SPropertyOperations.getString(myNode, PROPS.nodeName$KMmO);
+          return SPropertyOperations.getString(myNode, PROPS.nodeName$Cp3c);
         }
       }
     }, myNode);
@@ -116,6 +116,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeName$KMmO = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
+    /*package*/ static final SProperty nodeName$Cp3c = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
   }
 }

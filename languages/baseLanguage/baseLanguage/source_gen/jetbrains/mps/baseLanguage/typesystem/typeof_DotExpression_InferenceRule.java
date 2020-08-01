@@ -18,12 +18,12 @@ public class typeof_DotExpression_InferenceRule extends AbstractInferenceRule_Ru
   public typeof_DotExpression_InferenceRule() {
   }
   public void applyRule(final SNode dotExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    typeCheckingContext.addDependencyForCurrent(SLinkOperations.getTarget(dotExpression, LINKS.operand$Lcrr));
-    typeCheckingContext.addDependencyForCurrent(SLinkOperations.getTarget(dotExpression, LINKS.operation$X4R8));
+    typeCheckingContext.addDependencyForCurrent(SLinkOperations.getTarget(dotExpression, LINKS.operand$P1i5));
+    typeCheckingContext.addDependencyForCurrent(SLinkOperations.getTarget(dotExpression, LINKS.operation$_mGS));
     {
       SNode _nodeToCheck_1029348928467 = dotExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1197028438070", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1197028434327", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(dotExpression, LINKS.operation$X4R8), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1197028440830", false), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1197028434327", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(dotExpression, LINKS.operation$_mGS), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1197028440830", false), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -37,8 +37,8 @@ public class typeof_DotExpression_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 
   private static final class CONCEPTS {

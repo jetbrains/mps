@@ -47,36 +47,36 @@ public final class UpperBoundType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0) == null) {
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0) == null) {
       return "? extends ???";
     } else {
-      return "? extends " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0));
+      return "? extends " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0));
     }
   }
   /*package*/ static List<SNode> getSupertypes_id4w2h6RLlygH(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0));
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0));
   }
   /*package*/ static boolean isSupersetOf_idhKBOZqh(@NotNull SNode __thisNode__, SNode t) {
     if (SNodeOperations.isInstanceOf(t, CONCEPTS.UpperBoundType$r6)) {
-      return (boolean) Type__BehaviorDescriptor.isSupersetOf_idhKBOZqh.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0), SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.UpperBoundType$r6), LINKS.bound$7gX0));
+      return (boolean) Type__BehaviorDescriptor.isSupersetOf_idhKBOZqh.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0), SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0));
     }
-    return (boolean) Type__BehaviorDescriptor.isSupersetOf_idhKBOZqh.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0), t);
+    return (boolean) Type__BehaviorDescriptor.isSupersetOf_idhKBOZqh.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0), t);
   }
   /*package*/ static boolean isSupersetOf_id7PgshREdQKp(@NotNull SNode __thisNode__, SNode t, Map<SNode, SNode> substitutions) {
     if (SNodeOperations.isInstanceOf(t, CONCEPTS.UpperBoundType$r6)) {
-      return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0), SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.UpperBoundType$r6), LINKS.bound$7gX0), substitutions);
+      return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0), SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0), substitutions);
     } else if (SNodeOperations.isInstanceOf(t, CONCEPTS.LowerBoundType$Uz)) {
       return false;
     }
-    return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0), t, substitutions);
+    return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0), t, substitutions);
   }
   /*package*/ static boolean isReifiable_id2soW6EObTNQ(@NotNull SNode __thisNode__) {
     return false;
   }
   /*package*/ static SNode expandGenerics_id3$PgO9fYTB5(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions, List<SNode> expTrace) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0), CONCEPTS.IGenericType$$h)) {
-      SNode expBound = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0), CONCEPTS.IGenericType$$h), substitutions, expTrace);
-      if (expBound == SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0), CONCEPTS.IGenericType$$h)) {
+      SNode expBound = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0), CONCEPTS.IGenericType$$h), substitutions, expTrace);
+      if (expBound == SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0)) {
         return __thisNode__;
       }
       return _quotation_createNode_cv9ggd_a2a0a5(expBound);
@@ -84,8 +84,8 @@ public final class UpperBoundType__BehaviorDescriptor extends BaseBHDescriptor {
     return IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke0(__thisNode__, CONCEPTS.IGenericType$$h, substitutions, expTrace);
   }
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0), CONCEPTS.IGenericType$$h)) {
-      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$7gX0), CONCEPTS.IGenericType$$h), substitutions);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0), CONCEPTS.IGenericType$$h)) {
+      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$xdz0), CONCEPTS.IGenericType$$h), substitutions);
     }
   }
   /*package*/ static boolean isValueType_id4bFkYVCcmm2(@NotNull SAbstractConcept __thisConcept__) {
@@ -165,7 +165,7 @@ public final class UpperBoundType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$7gX0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
+    /*package*/ static final SContainmentLink bound$xdz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
   }
 
   private static final class CONCEPTS {

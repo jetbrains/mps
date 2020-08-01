@@ -22,7 +22,7 @@ public class check_TypeInVarDecl_NonTypesystemRule extends AbstractNonTypesystem
   public check_TypeInVarDecl_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToCheck), CONCEPTS.BaseVariableDeclaration$dO) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeToCheck), CONCEPTS.BaseVariableDeclaration$dO), LINKS.type$pLrO) == nodeToCheck) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToCheck), CONCEPTS.BaseVariableDeclaration$dO) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeToCheck), CONCEPTS.BaseVariableDeclaration$dO), LINKS.type$uWuc) == nodeToCheck) {
       if (!((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(nodeToCheck))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -47,6 +47,6 @@ public class check_TypeInVarDecl_NonTypesystemRule extends AbstractNonTypesystem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

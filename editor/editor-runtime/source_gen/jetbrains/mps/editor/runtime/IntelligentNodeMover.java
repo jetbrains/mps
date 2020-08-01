@@ -184,7 +184,7 @@ public class IntelligentNodeMover {
     SNode nextAnchor = place.myAnchor;
     for (SNode node : myNodesToMove) {
       getNodesCommonParent().removeChild(node);
-      SContainmentLink link = (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$XQ) ? LINKS.smodelAttribute$K8bJ : place.myLink);
+      SContainmentLink link = (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$XQ) ? LINKS.smodelAttribute$jXFL : place.myLink);
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$XQ)) {
         BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzM"), place.myLink);
       }
@@ -339,7 +339,7 @@ public class IntelligentNodeMover {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class CONCEPTS {

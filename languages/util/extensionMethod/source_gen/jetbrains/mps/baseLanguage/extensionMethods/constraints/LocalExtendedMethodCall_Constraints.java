@@ -60,7 +60,7 @@ public class LocalExtendedMethodCall_Constraints extends BaseConstraintsDescript
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$$A7i, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -89,12 +89,12 @@ public class LocalExtendedMethodCall_Constraints extends BaseConstraintsDescript
               Iterable<SNode> methods = Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier), (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))));
 
               for (SNode method : methods) {
-                if (!(SetSequence.fromSet(names).contains(SPropertyOperations.getString(method, PROPS.name$tAp1)))) {
+                if (!(SetSequence.fromSet(names).contains(SPropertyOperations.getString(method, PROPS.name$lA7v)))) {
                   ListSequence.fromList(result).addElement(method);
                 }
               }
               for (SNode method : methods) {
-                SetSequence.fromSet(names).addElement(SPropertyOperations.getString(method, PROPS.name$tAp1));
+                SetSequence.fromSet(names).addElement(SPropertyOperations.getString(method, PROPS.name$lA7v));
               }
 
               classifier = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$hJ, false, false);
@@ -122,10 +122,10 @@ public class LocalExtendedMethodCall_Constraints extends BaseConstraintsDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

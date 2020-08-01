@@ -30,20 +30,20 @@ public class typeof_DefaultClassCreator_InferenceRule extends AbstractInferenceR
   public typeof_DefaultClassCreator_InferenceRule() {
   }
   public void applyRule(final SNode defaultClassCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$PRff)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$PRff)).count() == ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$bk50), LINKS.typeVariableDeclaration$ziZT)).count()))) {
+    if (!((ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$5Koh)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$5Koh)).count() == ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$uIr0), LINKS.typeVariableDeclaration$6cWB)).count()))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(defaultClassCreator, "wrong number of type parameters", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7179268497749415882", null, errorTarget);
       }
     }
-    for (SNode parameter : SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$PRff)) {
-      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(parameter, SLinkOperations.getTarget(_quotation_createNode_9il0ce_a1a0a0a0b0b(), LINKS.descriptor$ZkDR))))) {
+    for (SNode parameter : SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$5Koh)) {
+      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(parameter, SLinkOperations.getTarget(_quotation_createNode_9il0ce_a1a0a0a0b0b(), LINKS.descriptor$F0hD))))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "primitive type not allowed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7179268497749415918", null, errorTarget);
       }
     }
     // --- 
-    SNode constructedType = _quotation_createNode_9il0ce_a0d0b(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$bk50), SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$PRff));
+    SNode constructedType = _quotation_createNode_9il0ce_a0d0b(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$uIr0), SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$5Koh));
     {
       SNode _nodeToCheck_1029348928467 = defaultClassCreator;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7179268497749415942", 0, null);
@@ -82,10 +82,10 @@ public class typeof_DefaultClassCreator_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeParameter$PRff = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink typeParameter$5Koh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
   }
 
   private static final class CONCEPTS {

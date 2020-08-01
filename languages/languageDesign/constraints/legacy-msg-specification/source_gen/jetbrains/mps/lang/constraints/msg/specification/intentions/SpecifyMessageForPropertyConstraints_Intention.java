@@ -61,7 +61,7 @@ public final class SpecifyMessageForPropertyConstraints_Intention extends Abstra
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode problem = SNodeFactoryOperations.createNewNode(CONCEPTS.FailingPropertyConstraintsProblem$oG, null);
-      SLinkOperations.setTarget(problem, LINKS.property$K$mE, SLinkOperations.getTarget(node, LINKS.applicableProperty$j$lM));
+      SLinkOperations.setTarget(problem, LINKS.property$xAYm, SLinkOperations.getTarget(node, LINKS.applicableProperty$uAze));
       new MessageIntentionHelper(problem, NodePropertyConstraint__BehaviorDescriptor.getApplicableConcept_idhEwIoOT.invoke(node)).addProblemCustomization(node, editorContext);
     }
     @Override
@@ -76,7 +76,7 @@ public final class SpecifyMessageForPropertyConstraints_Intention extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$K$mE = MetaAdapterFactory.getReferenceLink(0xcddf55b3117e46ecL, 0x837cff50eb7b89b0L, 0x56aefe6c18a706L, 0x56aefe6c18edb7L, "property");
-    /*package*/ static final SReferenceLink applicableProperty$j$lM = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
+    /*package*/ static final SReferenceLink property$xAYm = MetaAdapterFactory.getReferenceLink(0xcddf55b3117e46ecL, 0x837cff50eb7b89b0L, 0x56aefe6c18a706L, 0x56aefe6c18edb7L, "property");
+    /*package*/ static final SReferenceLink applicableProperty$uAze = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
   }
 }

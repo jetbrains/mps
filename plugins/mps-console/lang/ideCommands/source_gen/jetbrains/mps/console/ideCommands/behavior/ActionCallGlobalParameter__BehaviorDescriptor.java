@@ -31,7 +31,7 @@ public final class ActionCallGlobalParameter__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode getParameterDeclaration_id4PRmqZe_o$D(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.declaration$Qccb);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.declaration$fTTl);
   }
 
   /*package*/ ActionCallGlobalParameter__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ActionCallGlobalParameter__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$Qccb = MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a9L, 0x4d7759afce9587aaL, "declaration");
+    /*package*/ static final SReferenceLink declaration$fTTl = MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a9L, 0x4d7759afce9587aaL, "declaration");
   }
 }

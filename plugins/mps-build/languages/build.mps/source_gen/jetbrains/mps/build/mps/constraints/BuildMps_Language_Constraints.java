@@ -46,7 +46,7 @@ public class BuildMps_Language_Constraints extends BaseConstraintsDescriptor {
     SNode buildProject = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BuildProject$BF, true, false);
     if ((buildProject != null)) {
       // limit use of this concept in a project with MPS plugin 
-      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.plugins$97JG), CONCEPTS.BuildMPSPlugin$y$)).isNotEmpty();
+      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.plugins$qK6k), CONCEPTS.BuildMPSPlugin$y$)).isNotEmpty();
     }
     // XXX I'm not sure there's solid reason to preven reuse of this node, but failed to find reason for that, therefore, left as is. 
     return false;
@@ -60,6 +60,6 @@ public class BuildMps_Language_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink plugins$97JG = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
+    /*package*/ static final SContainmentLink plugins$qK6k = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
   }
 }

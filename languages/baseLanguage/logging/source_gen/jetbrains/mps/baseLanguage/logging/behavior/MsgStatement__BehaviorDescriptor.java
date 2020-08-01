@@ -36,13 +36,13 @@ public final class MsgStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getMessage_id5vyNLjQPuX5(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.message$75e4);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.message$rxNW);
   }
   /*package*/ static String getSeverity_id5vyNLjQPuVr(@NotNull SNode __thisNode__) {
-    return SEnumOperations.getMemberName0(SPropertyOperations.getEnum(__thisNode__, PROPS.severity$TT76));
+    return SEnumOperations.getMemberName0(SPropertyOperations.getEnum(__thisNode__, PROPS.severity$2ErU));
   }
   /*package*/ static SNode getThrowable_id5vyNLjQPuWe(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.throwable$75ez);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.throwable$ry2X);
   }
 
   /*package*/ MsgStatement__BehaviorDescriptor() {
@@ -96,11 +96,11 @@ public final class MsgStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$75e4 = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
-    /*package*/ static final SContainmentLink throwable$75ez = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
+    /*package*/ static final SContainmentLink message$rxNW = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
+    /*package*/ static final SContainmentLink throwable$ry2X = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty severity$TT76 = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity");
+    /*package*/ static final SProperty severity$2ErU = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity");
   }
 }

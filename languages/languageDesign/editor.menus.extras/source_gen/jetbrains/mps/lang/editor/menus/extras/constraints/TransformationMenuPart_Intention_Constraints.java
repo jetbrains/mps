@@ -33,7 +33,7 @@ public class TransformationMenuPart_Intention_Constraints extends BaseConstraint
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.intention$9HD0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.intention$H6R0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,7 +51,7 @@ public class TransformationMenuPart_Intention_Constraints extends BaseConstraint
             return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.BaseIntentionDeclaration$c4)) {
               @Override
               public boolean isExcluded(SNode node) {
-                SNode intentionConcept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.BaseIntentionDeclaration$c4), LINKS.forConcept$SvTG);
+                SNode intentionConcept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.BaseIntentionDeclaration$c4), LINKS.forConcept$nsWk);
                 if ((intentionConcept == null)) {
                   return true;
                 }
@@ -89,7 +89,7 @@ public class TransformationMenuPart_Intention_Constraints extends BaseConstraint
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink intention$9HD0 = MetaAdapterFactory.getReferenceLink(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x289dadfa24b57a51L, 0x289dadfa24b57a52L, "intention");
-    /*package*/ static final SReferenceLink forConcept$SvTG = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3e6812L, "forConcept");
+    /*package*/ static final SReferenceLink intention$H6R0 = MetaAdapterFactory.getReferenceLink(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x289dadfa24b57a51L, 0x289dadfa24b57a52L, "intention");
+    /*package*/ static final SReferenceLink forConcept$nsWk = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3e6812L, "forConcept");
   }
 }

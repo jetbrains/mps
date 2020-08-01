@@ -26,7 +26,7 @@ public class typeof_InvokeFunctionOperation_InferenceRule extends AbstractInfere
   }
   public void applyRule(final SNode invoke, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final List<SNode> ptypes = ListSequence.fromList(new ArrayList<SNode>());
-    for (SNode p : SLinkOperations.getChildren(invoke, LINKS.parameter$YY3N)) {
+    for (SNode p : SLinkOperations.getChildren(invoke, LINKS.parameter$w3PH)) {
       final SNode T_typevar_3143009324072631653 = typeCheckingContext.createNewRuntimeTypesVariable();
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
@@ -78,7 +78,7 @@ public class typeof_InvokeFunctionOperation_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$YY3N = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11d67349093L, 0x11d67375fccL, "parameter");
+    /*package*/ static final SContainmentLink parameter$w3PH = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11d67349093L, 0x11d67375fccL, "parameter");
   }
 
   private static final class CONCEPTS {

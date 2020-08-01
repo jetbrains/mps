@@ -26,8 +26,8 @@ public class BlockStatement_TextGen extends TextGenDescriptorBase {
       tgs.append("{");
     }
     tgs.increaseIndent();
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.statements$uqR0) != null)) {
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.statements$uqR0));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.statements$J0D0) != null)) {
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.statements$J0D0));
     }
     tgs.decreaseIndent();
     tgs.newLine();
@@ -44,6 +44,6 @@ public class BlockStatement_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
   }
 }

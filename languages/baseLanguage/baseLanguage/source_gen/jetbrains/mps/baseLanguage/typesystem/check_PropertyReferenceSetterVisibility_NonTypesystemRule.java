@@ -23,7 +23,7 @@ public class check_PropertyReferenceSetterVisibility_NonTypesystemRule extends A
   public check_PropertyReferenceSetterVisibility_NonTypesystemRule() {
   }
   public void applyRule(final SNode propertyReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(!((boolean) PropertyReference__BehaviorDescriptor.isBeingAssigned_id5WTl5xTCF5s.invoke(propertyReference)) || ((boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(SLinkOperations.getTarget(propertyReference, LINKS.property$64$K)) && (boolean) Property__BehaviorDescriptor.isSetterVisible_id5WTl5xSBxvj.invoke(SLinkOperations.getTarget(propertyReference, LINKS.property$64$K), SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(propertyReference, LINKS.property$64$K), CONCEPTS.Classifier$hJ, false, false), propertyReference)))) {
+    if (!(!((boolean) PropertyReference__BehaviorDescriptor.isBeingAssigned_id5WTl5xTCF5s.invoke(propertyReference)) || ((boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(SLinkOperations.getTarget(propertyReference, LINKS.property$WdNg)) && (boolean) Property__BehaviorDescriptor.isSetterVisible_id5WTl5xSBxvj.invoke(SLinkOperations.getTarget(propertyReference, LINKS.property$WdNg), SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(propertyReference, LINKS.property$WdNg), CONCEPTS.Classifier$hJ, false, false), propertyReference)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(propertyReference, "The property setter is out of search scope", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6861608246233000208", null, errorTarget);
     }
@@ -39,7 +39,7 @@ public class check_PropertyReferenceSetterVisibility_NonTypesystemRule extends A
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$64$K = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, 0x117b823ed57L, "property");
+    /*package*/ static final SReferenceLink property$WdNg = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, 0x117b823ed57L, "property");
   }
 
   private static final class CONCEPTS {

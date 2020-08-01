@@ -92,7 +92,7 @@ public final class GoToRulesHelper {
     if ((rule == null) || (concept == null)) {
       return false;
     }
-    SNode applicableConcept = getApplicableConcept(SLinkOperations.getTarget(rule, LINKS.applicableNode$lCke));
+    SNode applicableConcept = getApplicableConcept(SLinkOperations.getTarget(rule, LINKS.applicableNode$uxMM));
     if (applicableConcept == null) {
       return false;
     }
@@ -103,7 +103,7 @@ public final class GoToRulesHelper {
   }
   private static SNode getApplicableConcept(SNode applicableNode) {
     if (SNodeOperations.isInstanceOf(applicableNode, CONCEPTS.ConceptReference$Je)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(applicableNode, CONCEPTS.ConceptReference$Je), LINKS.concept$Q1Nr);
+      return SLinkOperations.getTarget(SNodeOperations.cast(applicableNode, CONCEPTS.ConceptReference$Je), LINKS.concept$aRU5);
     } else
     if (SNodeOperations.isInstanceOf(applicableNode, CONCEPTS.PatternCondition$hM)) {
       return ((SNode) BHReflection.invoke0(SNodeOperations.cast(applicableNode, CONCEPTS.PatternCondition$hM), CONCEPTS.ApplicableNodeCondition$sh, SMethodTrimmedId.create("getApplicableConcept", null, "hEwIszL")));
@@ -136,7 +136,7 @@ public final class GoToRulesHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$lCke = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
-    /*package*/ static final SReferenceLink concept$Q1Nr = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
+    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SReferenceLink concept$aRU5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
   }
 }

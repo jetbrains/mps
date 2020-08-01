@@ -24,8 +24,8 @@ public final class ChemEquation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.addNewChild(__thisNode__, LINKS.left$U$u8, CONCEPTS.EquationComponent$C$);
-    SLinkOperations.addNewChild(__thisNode__, LINKS.right$U$v6, CONCEPTS.EquationComponent$C$);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.left$nE_S, CONCEPTS.EquationComponent$C$);
+    SLinkOperations.addNewChild(__thisNode__, LINKS.right$nF3U, CONCEPTS.EquationComponent$C$);
   }
 
 
@@ -74,8 +74,8 @@ public final class ChemEquation__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$U$u8 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
-    /*package*/ static final SContainmentLink right$U$v6 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
+    /*package*/ static final SContainmentLink left$nE_S = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
+    /*package*/ static final SContainmentLink right$nF3U = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
   }
 
   private static final class CONCEPTS {

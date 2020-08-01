@@ -26,7 +26,7 @@ public class RoutineUniqueness_NonTypesystemRule extends AbstractNonTypesystemRu
   public RoutineUniqueness_NonTypesystemRule() {
   }
   public void applyRule(final SNode routineDefinition, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getString(routineDefinition, PROPS.name$tAp1) == null) {
+    if (SPropertyOperations.getString(routineDefinition, PROPS.name$lA7v) == null) {
       return;
     }
     Iterable<SNode> defs;
@@ -34,13 +34,13 @@ public class RoutineUniqueness_NonTypesystemRule extends AbstractNonTypesystemRu
     if (parentScript != null) {
       defs = ListSequence.fromList(SNodeOperations.getNodeDescendants(parentScript, CONCEPTS.RoutineDefinition$2l, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getString(routineDefinition, PROPS.name$tAp1).equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+          return SPropertyOperations.getString(routineDefinition, PROPS.name$lA7v).equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
         }
       });
     } else {
-      defs = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(routineDefinition, CONCEPTS.Library$IO, false, false), LINKS.definitions$krA0)).where(new IWhereFilter<SNode>() {
+      defs = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(routineDefinition, CONCEPTS.Library$IO, false, false), LINKS.definitions$Tnq0)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getString(routineDefinition, PROPS.name$tAp1).equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+          return SPropertyOperations.getString(routineDefinition, PROPS.name$lA7v).equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
         }
       });
     }
@@ -62,7 +62,7 @@ public class RoutineUniqueness_NonTypesystemRule extends AbstractNonTypesystemRu
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -72,6 +72,6 @@ public class RoutineUniqueness_NonTypesystemRule extends AbstractNonTypesystemRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink definitions$krA0 = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, 0x3cfcda239f19d317L, "definitions");
+    /*package*/ static final SContainmentLink definitions$Tnq0 = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, 0x3cfcda239f19d317L, "definitions");
   }
 }

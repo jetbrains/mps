@@ -52,7 +52,7 @@ public class IsOperation_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.instruction$lsg0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.instruction$oFK0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -68,7 +68,7 @@ public class IsOperation_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode analyzer = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Analyzer$Q4, false, false);
-            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(analyzer, LINKS.instruction$3MTk)).concat(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SLinkOperations.getChildren(analyzer, LINKS.usedContainers$rsJ_), LINKS.containter$lqfw), LINKS.instruction$EplU))));
+            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(analyzer, LINKS.instruction$PDKG)).concat(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SLinkOperations.getChildren(analyzer, LINKS.usedContainers$iV2V), LINKS.containter$nHww), LINKS.instruction$yhB6))));
           }
         };
       }
@@ -89,10 +89,10 @@ public class IsOperation_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink instruction$lsg0 = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x6ed2c546d46ea462L, 0x6ed2c546d46ea463L, "instruction");
-    /*package*/ static final SContainmentLink instruction$3MTk = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x2e25b6b7919ac138L, "instruction");
-    /*package*/ static final SContainmentLink usedContainers$rsJ_ = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x73e1fea9c173f804L, "usedContainers");
-    /*package*/ static final SReferenceLink containter$lqfw = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x73e1fea9c1738798L, 0x73e1fea9c1738799L, "containter");
-    /*package*/ static final SContainmentLink instruction$EplU = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x73e1fea9c172b8b1L, 0x73e1fea9c172d0e9L, "instruction");
+    /*package*/ static final SReferenceLink instruction$oFK0 = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x6ed2c546d46ea462L, 0x6ed2c546d46ea463L, "instruction");
+    /*package*/ static final SContainmentLink instruction$PDKG = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x2e25b6b7919ac138L, "instruction");
+    /*package*/ static final SContainmentLink usedContainers$iV2V = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x73e1fea9c173f804L, "usedContainers");
+    /*package*/ static final SReferenceLink containter$nHww = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x73e1fea9c1738798L, 0x73e1fea9c1738799L, "containter");
+    /*package*/ static final SContainmentLink instruction$yhB6 = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x73e1fea9c172b8b1L, 0x73e1fea9c172d0e9L, "instruction");
   }
 }

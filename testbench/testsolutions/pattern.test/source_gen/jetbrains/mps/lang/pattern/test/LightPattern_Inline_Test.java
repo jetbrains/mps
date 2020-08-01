@@ -38,7 +38,7 @@ public class LightPattern_Inline_Test extends TestCase {
     boolean matches;
     SNode nodeToMatch = _quotation_createNode_c1xprt_a0b0b0();
     if (new Pattern_c1xprt_a0a1a1a().match(nodeToMatch)) {
-      matches = SLinkOperations.getTarget(SLinkOperations.getTarget(Pattern_c1xprt_a0a1a1a.getRoot(nodeToMatch), LINKS.localVariableDeclaration$O0D0), LINKS.type$pLrO) == Pattern_c1xprt_a0a1a1a.getType(nodeToMatch);
+      matches = SLinkOperations.getTarget(SLinkOperations.getTarget(Pattern_c1xprt_a0a1a1a.getRoot(nodeToMatch), LINKS.localVariableDeclaration$cjR0), LINKS.type$uWuc) == Pattern_c1xprt_a0a1a1a.getType(nodeToMatch);
     } else {
       matches = false;
     }
@@ -80,34 +80,34 @@ public class LightPattern_Inline_Test extends TestCase {
     public Pattern_c1xprt_a0b2a0a() {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$BI);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.localVariableDeclaration$O0D0).init(CONCEPTS.LocalVariableDeclaration$Bf);
-        n1.forChild(LINKS.type$pLrO).init(CONCEPTS.IntegerType$Eo);
-        n1.setPropertyVariable(PROPS.name$tAp1);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.localVariableDeclaration$cjR0).init(CONCEPTS.LocalVariableDeclaration$Bf);
+        n1.forChild(LINKS.type$uWuc).init(CONCEPTS.IntegerType$Eo);
+        n1.setPropertyVariable(PROPS.name$lA7v);
       }
       setMatcher(n0.getMatcher());
     }
     @Nullable
     public static String getName(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$O0D0), CONCEPTS.LocalVariableDeclaration$Bf);
-      return container.getProperty(PROPS.name$tAp1);
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$cjR0), CONCEPTS.LocalVariableDeclaration$Bf);
+      return container.getProperty(PROPS.name$lA7v);
     }
   }
   private static class Pattern_c1xprt_a0a2a0a extends AbstractGeneratedPattern {
     public Pattern_c1xprt_a0a2a0a() {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$BI);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.localVariableDeclaration$O0D0).init(CONCEPTS.LocalVariableDeclaration$Bf);
-        n1.forChild(LINKS.type$pLrO).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
-        n1.setPropertyVariable(PROPS.name$tAp1);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.localVariableDeclaration$cjR0).init(CONCEPTS.LocalVariableDeclaration$Bf);
+        n1.forChild(LINKS.type$uWuc).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
+        n1.setPropertyVariable(PROPS.name$lA7v);
         {
-          NodeMatcherBuilder n2 = n1.forChild(LINKS.initializer$KgD).init(CONCEPTS.PlusExpression$Re);
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.initializer$no3R).init(CONCEPTS.PlusExpression$Re);
           {
-            NodeMatcherBuilder n3 = n2.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-            n3.setPropertyVariable(PROPS.value$ZeO0);
+            NodeMatcherBuilder n3 = n2.forChild(LINKS.leftExpression$lndx).init(CONCEPTS.IntegerConstant$mo);
+            n3.setPropertyVariable(PROPS.value$Cbc0);
           }
           {
-            NodeMatcherBuilder n4 = n2.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.VariableReference$sQ);
-            n4.setReferenceVariable(LINKS.variableDeclaration$2ky6);
+            NodeMatcherBuilder n4 = n2.forChild(LINKS.rightExpression$li3b).init(CONCEPTS.VariableReference$sQ);
+            n4.setReferenceVariable(LINKS.variableDeclaration$7WwU);
           }
         }
       }
@@ -115,32 +115,32 @@ public class LightPattern_Inline_Test extends TestCase {
     }
     @Nullable
     public static SNode getType(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$O0D0), CONCEPTS.LocalVariableDeclaration$Bf);
-      return AbstractGeneratedPattern.getNullableHead(container.getChildren(LINKS.type$pLrO));
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$cjR0), CONCEPTS.LocalVariableDeclaration$Bf);
+      return AbstractGeneratedPattern.getNullableHead(container.getChildren(LINKS.type$uWuc));
     }
     @Nullable
     public static String getName(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$O0D0), CONCEPTS.LocalVariableDeclaration$Bf);
-      return container.getProperty(PROPS.name$tAp1);
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$cjR0), CONCEPTS.LocalVariableDeclaration$Bf);
+      return container.getProperty(PROPS.name$lA7v);
     }
     @Nullable
     public static Integer getValue(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$O0D0), CONCEPTS.LocalVariableDeclaration$Bf), LINKS.initializer$KgD), CONCEPTS.PlusExpression$Re), LINKS.leftExpression$rxLZ), CONCEPTS.IntegerConstant$mo);
-      return SPropertyOperations.getInteger(container.getProperty(PROPS.value$ZeO0));
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$cjR0), CONCEPTS.LocalVariableDeclaration$Bf), LINKS.initializer$no3R), CONCEPTS.PlusExpression$Re), LINKS.leftExpression$lndx), CONCEPTS.IntegerConstant$mo);
+      return SPropertyOperations.getInteger(container.getProperty(PROPS.value$Cbc0));
     }
     @Nullable
     public static SNode getDecl(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$O0D0), CONCEPTS.LocalVariableDeclaration$Bf), LINKS.initializer$KgD), CONCEPTS.PlusExpression$Re), LINKS.rightExpression$rxBl), CONCEPTS.VariableReference$sQ);
-      return container.getReferenceTarget(LINKS.variableDeclaration$2ky6);
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$cjR0), CONCEPTS.LocalVariableDeclaration$Bf), LINKS.initializer$no3R), CONCEPTS.PlusExpression$Re), LINKS.rightExpression$li3b), CONCEPTS.VariableReference$sQ);
+      return container.getReferenceTarget(LINKS.variableDeclaration$7WwU);
     }
   }
   private static class Pattern_c1xprt_a0a1a1a extends AbstractGeneratedPattern {
     public Pattern_c1xprt_a0a1a1a() {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$BI);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.localVariableDeclaration$O0D0).init(CONCEPTS.LocalVariableDeclaration$Bf);
-        n1.forChild(LINKS.type$pLrO).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
-        n1.setProperty(PROPS.name$tAp1, "x");
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.localVariableDeclaration$cjR0).init(CONCEPTS.LocalVariableDeclaration$Bf);
+        n1.forChild(LINKS.type$uWuc).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
+        n1.setProperty(PROPS.name$lA7v, "x");
       }
       setMatcher(n0.getMatcher());
     }
@@ -150,8 +150,8 @@ public class LightPattern_Inline_Test extends TestCase {
     }
     @Nullable
     public static SNode getType(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$O0D0), CONCEPTS.LocalVariableDeclaration$Bf);
-      return AbstractGeneratedPattern.getNullableHead(container.getChildren(LINKS.type$pLrO));
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$cjR0), CONCEPTS.LocalVariableDeclaration$Bf);
+      return AbstractGeneratedPattern.getNullableHead(container.getChildren(LINKS.type$uWuc));
     }
   }
   @SuppressWarnings(value = "OptionalAssignedToNull")
@@ -159,12 +159,12 @@ public class LightPattern_Inline_Test extends TestCase {
     public Pattern_c1xprt_a0a1a2a(int p0) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.PlusExpression$Re);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-        n1.setPropertyVariable(PROPS.value$ZeO0);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$lndx).init(CONCEPTS.IntegerConstant$mo);
+        n1.setPropertyVariable(PROPS.value$Cbc0);
       }
       {
-        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
-        n2.setProperty(PROPS.value$ZeO0, "" + (p0));
+        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$li3b).init(CONCEPTS.IntegerConstant$mo);
+        n2.setProperty(PROPS.value$Cbc0, "" + (p0));
       }
       setMatcher(n0.getMatcher());
     }
@@ -174,8 +174,8 @@ public class LightPattern_Inline_Test extends TestCase {
     }
     @Nullable
     public static Optional<Integer> getValue(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.PlusExpression$Re), LINKS.leftExpression$rxLZ), CONCEPTS.IntegerConstant$mo);
-      return (container == null ? null : Optional.ofNullable(SPropertyOperations.getInteger(container.getProperty(PROPS.value$ZeO0))));
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.PlusExpression$Re), LINKS.leftExpression$lndx), CONCEPTS.IntegerConstant$mo);
+      return (container == null ? null : Optional.ofNullable(SPropertyOperations.getInteger(container.getProperty(PROPS.value$Cbc0))));
     }
   }
   @SuppressWarnings(value = "OptionalAssignedToNull")
@@ -183,12 +183,12 @@ public class LightPattern_Inline_Test extends TestCase {
     public Pattern_c1xprt_a0a1a3a(int p0) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.PlusExpression$Re);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-        n1.setPropertyVariable(PROPS.value$ZeO0);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$lndx).init(CONCEPTS.IntegerConstant$mo);
+        n1.setPropertyVariable(PROPS.value$Cbc0);
       }
       {
-        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
-        n2.setProperty(PROPS.value$ZeO0, "" + (p0));
+        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$li3b).init(CONCEPTS.IntegerConstant$mo);
+        n2.setProperty(PROPS.value$Cbc0, "" + (p0));
       }
       setMatcher(n0.getMatcher());
     }
@@ -198,8 +198,8 @@ public class LightPattern_Inline_Test extends TestCase {
     }
     @Nullable
     public static Optional<Integer> getValue(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.PlusExpression$Re), LINKS.leftExpression$rxLZ), CONCEPTS.IntegerConstant$mo);
-      return (container == null ? null : Optional.ofNullable(SPropertyOperations.getInteger(container.getProperty(PROPS.value$ZeO0))));
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.PlusExpression$Re), LINKS.leftExpression$lndx), CONCEPTS.IntegerConstant$mo);
+      return (container == null ? null : Optional.ofNullable(SPropertyOperations.getInteger(container.getProperty(PROPS.value$Cbc0))));
     }
   }
   @SuppressWarnings(value = "OptionalAssignedToNull")
@@ -207,12 +207,12 @@ public class LightPattern_Inline_Test extends TestCase {
     public Pattern_c1xprt_a0b1a4a(int p0) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.MulExpression$8_);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-        n1.setPropertyVariable(PROPS.value$ZeO0);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$lndx).init(CONCEPTS.IntegerConstant$mo);
+        n1.setPropertyVariable(PROPS.value$Cbc0);
       }
       {
-        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
-        n2.setProperty(PROPS.value$ZeO0, "" + (p0));
+        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$li3b).init(CONCEPTS.IntegerConstant$mo);
+        n2.setProperty(PROPS.value$Cbc0, "" + (p0));
       }
       setMatcher(n0.getMatcher());
     }
@@ -222,8 +222,8 @@ public class LightPattern_Inline_Test extends TestCase {
     }
     @Nullable
     public static Optional<Integer> getValue(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.MulExpression$8_), LINKS.leftExpression$rxLZ), CONCEPTS.IntegerConstant$mo);
-      return (container == null ? null : Optional.ofNullable(SPropertyOperations.getInteger(container.getProperty(PROPS.value$ZeO0))));
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.MulExpression$8_), LINKS.leftExpression$lndx), CONCEPTS.IntegerConstant$mo);
+      return (container == null ? null : Optional.ofNullable(SPropertyOperations.getInteger(container.getProperty(PROPS.value$Cbc0))));
     }
   }
   @SuppressWarnings(value = "OptionalAssignedToNull")
@@ -231,12 +231,12 @@ public class LightPattern_Inline_Test extends TestCase {
     public Pattern_c1xprt_a0a1a4a(int p0) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.PlusExpression$Re);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-        n1.setPropertyVariable(PROPS.value$ZeO0);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$lndx).init(CONCEPTS.IntegerConstant$mo);
+        n1.setPropertyVariable(PROPS.value$Cbc0);
       }
       {
-        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
-        n2.setProperty(PROPS.value$ZeO0, "" + (p0));
+        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$li3b).init(CONCEPTS.IntegerConstant$mo);
+        n2.setProperty(PROPS.value$Cbc0, "" + (p0));
       }
       setMatcher(n0.getMatcher());
     }
@@ -246,8 +246,8 @@ public class LightPattern_Inline_Test extends TestCase {
     }
     @Nullable
     public static Optional<Integer> getValue(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.PlusExpression$Re), LINKS.leftExpression$rxLZ), CONCEPTS.IntegerConstant$mo);
-      return (container == null ? null : Optional.ofNullable(SPropertyOperations.getInteger(container.getProperty(PROPS.value$ZeO0))));
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.PlusExpression$Re), LINKS.leftExpression$lndx), CONCEPTS.IntegerConstant$mo);
+      return (container == null ? null : Optional.ofNullable(SPropertyOperations.getInteger(container.getProperty(PROPS.value$Cbc0))));
     }
   }
   private static SNode _quotation_createNode_c1xprt_a0c0a0() {
@@ -352,16 +352,16 @@ public class LightPattern_Inline_Test extends TestCase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
   }
 }

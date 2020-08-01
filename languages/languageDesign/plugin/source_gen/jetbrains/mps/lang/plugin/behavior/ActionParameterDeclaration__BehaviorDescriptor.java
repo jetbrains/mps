@@ -41,15 +41,15 @@ public final class ActionParameterDeclaration__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static SNode getType_id112RIkggjzD(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc);
   }
   /*package*/ static SNode getFieldDeclaration_id112RIkgil0h(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), CONCEPTS.SNodeType$gn)) {
-      return SLinkOperations.getTarget(_quotation_createNode_ax10d1_a0a0a0b(), LINKS.variableDeclaration$2ky6);
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), CONCEPTS.SModelType$II)) {
-      return SLinkOperations.getTarget(_quotation_createNode_ax10d1_a0a0a0a1(), LINKS.variableDeclaration$2ky6);
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), CONCEPTS.SNodeListType$OI)) {
-      return SLinkOperations.getTarget(_quotation_createNode_ax10d1_a0a0b0a1(), LINKS.variableDeclaration$2ky6);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc), CONCEPTS.SNodeType$gn)) {
+      return SLinkOperations.getTarget(_quotation_createNode_ax10d1_a0a0a0b(), LINKS.variableDeclaration$7WwU);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc), CONCEPTS.SModelType$II)) {
+      return SLinkOperations.getTarget(_quotation_createNode_ax10d1_a0a0a0a1(), LINKS.variableDeclaration$7WwU);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc), CONCEPTS.SNodeListType$OI)) {
+      return SLinkOperations.getTarget(_quotation_createNode_ax10d1_a0a0b0a1(), LINKS.variableDeclaration$7WwU);
     }
     return null;
   }
@@ -132,8 +132,8 @@ public final class ActionParameterDeclaration__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {

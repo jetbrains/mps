@@ -34,10 +34,10 @@
       <node id="2739111710912264889" at="69,118,70,68" concept="7" />
       <node id="2739111710912264897" at="71,229,72,31" concept="2" />
       <node id="2739111710912264902" at="72,31,73,24" concept="2" />
-      <node id="2739111710912264883" at="81,0,82,0" concept="10" trace="customActionReference$2WJM" />
+      <node id="2739111710912264883" at="81,0,82,0" concept="10" trace="customActionReference$rr9e" />
       <node id="2739111710912264883" at="85,0,86,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="2739111710912264883" at="86,0,87,0" concept="10" trace="INamedConcept$nV" />
-      <node id="2739111710912264883" at="90,0,91,0" concept="10" trace="name$tAp1" />
+      <node id="2739111710912264883" at="90,0,91,0" concept="10" trace="name$lA7v" />
       <node id="2739111710912264883" at="26,104,29,5" concept="5" />
       <node id="2739111710912264883" at="30,111,33,5" concept="5" />
       <node id="2739111710912264885" at="39,0,42,0" concept="6" trace="doMatchesContext#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Z" />
@@ -135,7 +135,7 @@
       <node id="2739111710915093148" at="69,118,70,74" concept="7" />
       <node id="2739111710915093156" at="71,154,72,31" concept="2" />
       <node id="2739111710915093161" at="72,31,73,24" concept="2" />
-      <node id="2739111710915093142" at="81,0,82,0" concept="10" trace="customActionChildInMatchingLink$33n8" />
+      <node id="2739111710915093142" at="81,0,82,0" concept="10" trace="customActionChildInMatchingLink$uCcS" />
       <node id="2739111710915093142" at="85,0,86,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="2739111710915093142" at="86,0,87,0" concept="10" trace="TestCompletionCustomization_ChildInLinkWithPriority$fO" />
       <node id="2739111710915093142" at="26,104,29,5" concept="5" />
@@ -224,7 +224,7 @@
       <node id="3806643308053107871" at="26,5,27,117" concept="7" />
       <node id="3806643308053107871" at="28,38,29,51" concept="2" />
       <node id="3806643308053107873" at="36,89,37,188" concept="8" />
-      <node id="3806643308053107873" at="39,148,40,78" concept="8" />
+      <node id="3806643308053107873" at="39,148,40,79" concept="8" />
       <node id="3806643308053107873" at="45,78,46,83" concept="8" />
       <node id="3806643308053107873" at="48,93,49,87" concept="8" />
       <node id="3806643308053107873" at="51,85,52,85" concept="8" />
@@ -233,7 +233,7 @@
       <node id="3806643308053107873" at="63,98,64,88" concept="2" />
       <node id="3806643308053107879" at="67,79,68,31" concept="2" />
       <node id="3806643308053107884" at="68,31,69,24" concept="2" />
-      <node id="3806643308053107871" at="77,0,78,0" concept="10" trace="customActionEnumProperty$7pF" />
+      <node id="3806643308053107871" at="77,0,78,0" concept="10" trace="customActionEnumProperty$3_rP" />
       <node id="3806643308053107871" at="81,0,82,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="3806643308053107871" at="23,104,26,5" concept="5" />
       <node id="3806643308053107871" at="27,117,30,5" concept="5" />
@@ -253,7 +253,7 @@
       <scope id="3806643308053107871" at="24,98,25,13" />
       <scope id="3806643308053107871" at="28,38,29,51" />
       <scope id="3806643308053107873" at="36,89,37,188" />
-      <scope id="3806643308053107873" at="39,148,40,78" />
+      <scope id="3806643308053107873" at="39,148,40,79" />
       <scope id="3806643308053107873" at="45,78,46,83" />
       <scope id="3806643308053107873" at="48,93,49,87" />
       <scope id="3806643308053107873" at="51,85,52,85" />
@@ -329,10 +329,10 @@
       <node id="4151313971380833561" at="69,118,70,68" concept="7" />
       <node id="4151313971380833569" at="71,229,72,31" concept="2" />
       <node id="4151313971380833574" at="72,31,73,24" concept="2" />
-      <node id="4151313971380833555" at="81,0,82,0" concept="10" trace="referenceInlinePrimary$gPLO" />
+      <node id="4151313971380833555" at="81,0,82,0" concept="10" trace="referenceInlinePrimary$a38c" />
       <node id="4151313971380833555" at="85,0,86,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="4151313971380833555" at="86,0,87,0" concept="10" trace="INamedConcept$nV" />
-      <node id="4151313971380833555" at="90,0,91,0" concept="10" trace="name$tAp1" />
+      <node id="4151313971380833555" at="90,0,91,0" concept="10" trace="name$lA7v" />
       <node id="4151313971380833555" at="26,104,29,5" concept="5" />
       <node id="4151313971380833555" at="30,113,33,5" concept="5" />
       <node id="4151313971380833557" at="39,0,42,0" concept="6" trace="doMatchesContext#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Z" />
@@ -430,10 +430,10 @@
       <node id="4639084645851061299" at="69,118,70,68" concept="7" />
       <node id="4639084645851052680" at="71,229,72,31" concept="2" />
       <node id="4639084645851052685" at="72,31,73,24" concept="2" />
-      <node id="4639084645851052672" at="81,0,82,0" concept="10" trace="reference$yVX7" />
+      <node id="4639084645851052672" at="81,0,82,0" concept="10" trace="reference$V2Ap" />
       <node id="4639084645851052672" at="85,0,86,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="4639084645851052672" at="86,0,87,0" concept="10" trace="INamedConcept$nV" />
-      <node id="4639084645851052672" at="90,0,91,0" concept="10" trace="name$tAp1" />
+      <node id="4639084645851052672" at="90,0,91,0" concept="10" trace="name$lA7v" />
       <node id="4639084645851052672" at="26,104,29,5" concept="5" />
       <node id="4639084645851052672" at="30,87,33,5" concept="5" />
       <node id="4639084645851052674" at="39,0,42,0" concept="6" trace="doMatchesContext#(Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemCustomizationContext;)Z" />
@@ -576,7 +576,7 @@
       <node id="4639084645851200773" at="69,118,70,74" concept="7" />
       <node id="4639084645851198915" at="71,154,72,31" concept="2" />
       <node id="4639084645851198920" at="72,31,73,24" concept="2" />
-      <node id="4639084645851198901" at="81,0,82,0" concept="10" trace="childInMatchingLink$EMZA" />
+      <node id="4639084645851198901" at="81,0,82,0" concept="10" trace="childInMatchingLink$IGNq" />
       <node id="4639084645851198901" at="85,0,86,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="4639084645851198901" at="86,0,87,0" concept="10" trace="TestCompletionCustomization_ChildInLinkWithPriority$fO" />
       <node id="4639084645851198901" at="26,104,29,5" concept="5" />
@@ -717,7 +717,7 @@
       <node id="4639084645851280753" at="177,157,178,46" concept="7" />
       <node id="4639084645851280753" at="178,46,179,290" concept="7" />
       <node id="4639084645851280753" at="180,114,181,56" concept="2" />
-      <node id="4639084645851274547" at="189,0,190,0" concept="10" trace="stringProperty$V_nS" />
+      <node id="4639084645851274547" at="189,0,190,0" concept="10" trace="stringProperty$R6$8" />
       <node id="4639084645851274555" at="91,0,94,0" concept="1" trace="Item#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)V" />
       <node id="4639084645851274555" at="94,0,97,0" concept="6" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="4639084645851274555" at="119,290,122,9" concept="4" />
@@ -1006,7 +1006,7 @@
       <node id="4639084645853160970" at="150,49,151,27" concept="8" />
       <node id="4639084645853160980" at="155,62,156,29" concept="8" />
       <node id="4639084645853153327" at="162,0,163,0" concept="10" trace="TestCompletionCustomization_ContextMatcherChildToSubstitute$XT" />
-      <node id="4639084645853153327" at="166,0,167,0" concept="10" trace="name$tAp1" />
+      <node id="4639084645853153327" at="166,0,167,0" concept="10" trace="name$lA7v" />
       <node id="4639084645853153328" at="82,0,85,0" concept="6" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="4639084645853160970" at="137,0,140,0" concept="6" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="4639084645853153328" at="77,0,81,0" concept="1" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
@@ -1836,8 +1836,8 @@
       <node id="3806643308052651628" at="1204,40,1205,34" concept="2" />
       <node id="3806643308052651628" at="1205,34,1206,22" concept="8" />
       <node id="3806643308052246854" at="1208,41,1209,39" concept="2" />
-      <node id="3806643308052246854" at="1210,9,1211,68" concept="7" />
-      <node id="3806643308052246854" at="1211,68,1212,76" concept="2" />
+      <node id="3806643308052246854" at="1210,9,1211,69" concept="7" />
+      <node id="3806643308052246854" at="1211,69,1212,76" concept="2" />
       <node id="3806643308052246854" at="1212,76,1213,149" concept="7" />
       <node id="3806643308052246854" at="1213,149,1214,65" concept="2" />
       <node id="3806643308052246854" at="1214,65,1215,64" concept="2" />
@@ -2004,11 +2004,11 @@
       <node id="5310043668061067540" at="1523,63,1524,40" concept="2" />
       <node id="5310043668061067540" at="1524,40,1525,34" concept="2" />
       <node id="5310043668061067540" at="1525,34,1526,22" concept="8" />
-      <node id="5310043668061067522" at="1530,0,1531,0" concept="10" trace="booleanProperty$aV2x" />
-      <node id="5310043668061067522" at="1531,0,1532,0" concept="10" trace="enumProperty$bBQ1" />
-      <node id="5310043668061067522" at="1532,0,1533,0" concept="10" trace="stringProperty$V_nS" />
-      <node id="5310043668061067522" at="1533,0,1534,0" concept="10" trace="name$tAp1" />
-      <node id="5310043668061067522" at="1534,0,1535,0" concept="10" trace="customActionEnumProperty$7pF" />
+      <node id="5310043668061067522" at="1530,0,1531,0" concept="10" trace="booleanProperty$iAdZ" />
+      <node id="5310043668061067522" at="1531,0,1532,0" concept="10" trace="enumProperty$Cjav" />
+      <node id="5310043668061067522" at="1532,0,1533,0" concept="10" trace="stringProperty$R6$8" />
+      <node id="5310043668061067522" at="1533,0,1534,0" concept="10" trace="name$lA7v" />
+      <node id="5310043668061067522" at="1534,0,1535,0" concept="10" trace="customActionEnumProperty$3_rP" />
       <node id="5310043668061067522" at="1538,0,1539,0" concept="10" trace="PropertyAttribute$jT" />
       <node id="5310043668061067522" at="1539,0,1540,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="5310043668061067522" at="1540,0,1541,0" concept="10" trace="LinkAttribute$7j" />
@@ -2018,18 +2018,18 @@
       <node id="5310043668061067522" at="1544,0,1545,0" concept="10" trace="TestCompletionCustomization_ChildWrapSubstituteMenu$mj" />
       <node id="5310043668061067522" at="1545,0,1546,0" concept="10" trace="TestCompletionCustomization_ContextMatcherChildInMatchingLink$7q" />
       <node id="5310043668061067522" at="1546,0,1547,0" concept="10" trace="TestCompletionCustomization_ContextMatcherChildToSubstitute$XT" />
-      <node id="5310043668061067522" at="1550,0,1551,0" concept="10" trace="reference$yVX7" />
-      <node id="5310043668061067522" at="1551,0,1552,0" concept="10" trace="referenceInlinePrimary$gPLO" />
-      <node id="5310043668061067522" at="1552,0,1553,0" concept="10" trace="childNoMenu$QYJy" />
-      <node id="5310043668061067522" at="1553,0,1554,0" concept="10" trace="childSimpleSubstituteMenu$n8zv" />
-      <node id="5310043668061067522" at="1554,0,1555,0" concept="10" trace="childParameterizedSubstituteMenu$9Auz" />
-      <node id="5310043668061067522" at="1555,0,1556,0" concept="10" trace="childWrapSubstituteMenu$YM6o" />
-      <node id="5310043668061067522" at="1556,0,1557,0" concept="10" trace="childInMatchingLink$EMZA" />
-      <node id="5310043668061067522" at="1557,0,1558,0" concept="10" trace="childInMatchingLinkInlineMenu$1$3d" />
-      <node id="5310043668061067522" at="1558,0,1559,0" concept="10" trace="childToSubstitute$zusv" />
-      <node id="5310043668061067522" at="1559,0,1560,0" concept="10" trace="customActionReference$2WJM" />
-      <node id="5310043668061067522" at="1560,0,1561,0" concept="10" trace="customActionChildInMatchingLink$33n8" />
-      <node id="5310043668061067522" at="1561,0,1562,0" concept="10" trace="childWithPropertyAndLink$SVoL" />
+      <node id="5310043668061067522" at="1550,0,1551,0" concept="10" trace="reference$V2Ap" />
+      <node id="5310043668061067522" at="1551,0,1552,0" concept="10" trace="referenceInlinePrimary$a38c" />
+      <node id="5310043668061067522" at="1552,0,1553,0" concept="10" trace="childNoMenu$Cp1u" />
+      <node id="5310043668061067522" at="1553,0,1554,0" concept="10" trace="childSimpleSubstituteMenu$d9c1" />
+      <node id="5310043668061067522" at="1554,0,1555,0" concept="10" trace="childParameterizedSubstituteMenu$DCMX" />
+      <node id="5310043668061067522" at="1555,0,1556,0" concept="10" trace="childWrapSubstituteMenu$qh5C" />
+      <node id="5310043668061067522" at="1556,0,1557,0" concept="10" trace="childInMatchingLink$IGNq" />
+      <node id="5310043668061067522" at="1557,0,1558,0" concept="10" trace="childInMatchingLinkInlineMenu$Ktzj" />
+      <node id="5310043668061067522" at="1558,0,1559,0" concept="10" trace="childToSubstitute$bJN1" />
+      <node id="5310043668061067522" at="1559,0,1560,0" concept="10" trace="customActionReference$rr9e" />
+      <node id="5310043668061067522" at="1560,0,1561,0" concept="10" trace="customActionChildInMatchingLink$uCcS" />
+      <node id="5310043668061067522" at="1561,0,1562,0" concept="10" trace="childWithPropertyAndLink$$KZJ" />
       <node id="5310043668061067522" at="65,0,67,0" concept="3" trace="myNode" />
       <node id="4639084645851051320" at="352,0,354,0" concept="3" trace="myNode" />
       <node id="4151313971380832036" at="453,0,455,0" concept="3" trace="myNode" />
@@ -3455,7 +3455,7 @@
       <node id="5310043668063059086" at="119,86,120,67" concept="8" />
       <node id="5310043668063045851" at="125,0,126,0" concept="10" trace="TestCompletionCustomization_ChildWrapSubstituteMenu$mj" />
       <node id="5310043668063045851" at="126,0,127,0" concept="10" trace="TestCompletionCustomization_ConceptToWrap$ym" />
-      <node id="5310043668063045851" at="130,0,131,0" concept="10" trace="wrapped$Mpjx" />
+      <node id="5310043668063045851" at="130,0,131,0" concept="10" trace="wrapped$qgsZ" />
       <node id="5310043668063059086" at="105,312,108,11" concept="4" />
       <node id="5310043668063059086" at="119,0,122,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5310043668063059086" at="96,0,100,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
@@ -3587,7 +3587,7 @@
       <node id="5310043668063056845" at="105,35,106,26" concept="8" />
       <node id="5310043668063056845" at="107,17,108,42" concept="2" />
       <node id="5310043668063056845" at="111,40,112,28" concept="8" />
-      <node id="5310043668063056845" at="117,0,118,0" concept="10" trace="wrapped$Mpjx" />
+      <node id="5310043668063056845" at="117,0,118,0" concept="10" trace="wrapped$qgsZ" />
       <node id="5310043668063056845" at="24,0,26,0" concept="3" trace="myNode" />
       <node id="5310043668063056845" at="65,0,67,0" concept="3" trace="myNode" />
       <node id="5310043668063056845" at="38,0,41,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -3812,7 +3812,7 @@
       <node id="5310043668063149825" at="63,98,64,88" concept="2" />
       <node id="5310043668063149685" at="67,70,68,31" concept="2" />
       <node id="5310043668063149690" at="68,31,69,24" concept="2" />
-      <node id="5310043668063149680" at="77,0,78,0" concept="10" trace="booleanProperty$aV2x" />
+      <node id="5310043668063149680" at="77,0,78,0" concept="10" trace="booleanProperty$iAdZ" />
       <node id="5310043668063149680" at="81,0,82,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="5310043668063149680" at="23,104,26,5" concept="5" />
       <node id="5310043668063149680" at="27,99,30,5" concept="5" />
@@ -3907,7 +3907,7 @@
       <node id="5310043668063152731" at="63,98,64,88" concept="2" />
       <node id="5310043668063152737" at="67,79,68,31" concept="2" />
       <node id="5310043668063152742" at="68,31,69,24" concept="2" />
-      <node id="5310043668063152729" at="77,0,78,0" concept="10" trace="enumProperty$bBQ1" />
+      <node id="5310043668063152729" at="77,0,78,0" concept="10" trace="enumProperty$Cjav" />
       <node id="5310043668063152729" at="81,0,82,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="5310043668063152729" at="23,104,26,5" concept="5" />
       <node id="5310043668063152729" at="27,93,30,5" concept="5" />
@@ -4158,11 +4158,11 @@
       <node id="7595250613974056320" at="195,91,196,147" concept="8" />
       <node id="7595250613974056320" at="197,14,198,26" concept="8" />
       <node id="7595250613974056320" at="199,17,200,42" concept="2" />
-      <node id="7595250613974054489" at="206,0,207,0" concept="10" trace="property$35OL" />
-      <node id="7595250613974054489" at="207,0,208,0" concept="10" trace="name$tAp1" />
+      <node id="7595250613974054489" at="206,0,207,0" concept="10" trace="property$vOzJ" />
+      <node id="7595250613974054489" at="207,0,208,0" concept="10" trace="name$lA7v" />
       <node id="7595250613974054489" at="211,0,212,0" concept="10" trace="PropertyAttribute$jT" />
       <node id="7595250613974054489" at="212,0,213,0" concept="10" trace="LinkAttribute$7j" />
-      <node id="7595250613974054489" at="216,0,217,0" concept="10" trace="reference$5Iw2" />
+      <node id="7595250613974054489" at="216,0,217,0" concept="10" trace="reference$LxwY" />
       <node id="7595250613974054489" at="40,0,42,0" concept="3" trace="myNode" />
       <node id="7595250613974056242" at="158,0,160,0" concept="3" trace="myNode" />
       <node id="7595250613974054489" at="54,0,57,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -4313,7 +4313,7 @@
       <node id="7595250613974059446" at="57,112,58,93" concept="8" />
       <node id="7595250613974059446" at="63,98,64,88" concept="2" />
       <node id="7595250613974065505" at="66,118,67,19" concept="2" />
-      <node id="7595250613974058225" at="74,0,75,0" concept="10" trace="childWithPropertyAndLink$SVoL" />
+      <node id="7595250613974058225" at="74,0,75,0" concept="10" trace="childWithPropertyAndLink$$KZJ" />
       <node id="7595250613974058225" at="78,0,79,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="7595250613974058225" at="23,104,26,5" concept="5" />
       <node id="7595250613974058225" at="27,117,30,5" concept="5" />
@@ -4768,7 +4768,7 @@
       <node id="8199816903240224026" at="69,118,70,74" concept="7" />
       <node id="8199816903240224034" at="71,154,72,31" concept="2" />
       <node id="8199816903240224039" at="72,31,73,24" concept="2" />
-      <node id="8199816903240224020" at="81,0,82,0" concept="10" trace="childInMatchingLinkInlineMenu$1$3d" />
+      <node id="8199816903240224020" at="81,0,82,0" concept="10" trace="childInMatchingLinkInlineMenu$Ktzj" />
       <node id="8199816903240224020" at="85,0,86,0" concept="10" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
       <node id="8199816903240224020" at="86,0,87,0" concept="10" trace="TestCompletionCustomization_ChildInLinkWithPriority$fO" />
       <node id="8199816903240224020" at="26,104,29,5" concept="5" />

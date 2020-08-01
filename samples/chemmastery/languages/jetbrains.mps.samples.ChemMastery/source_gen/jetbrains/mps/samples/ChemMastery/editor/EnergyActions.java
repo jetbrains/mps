@@ -46,7 +46,7 @@ public class EnergyActions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return (SNodeOperations.getNextSibling(node) == null) && SNodeOperations.hasRole(node, LINKS.right$U$v6);
+        return (SNodeOperations.getNextSibling(node) == null) && SNodeOperations.hasRole(node, LINKS.right$nF3U);
       }
 
     };
@@ -102,6 +102,6 @@ public class EnergyActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink right$U$v6 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
+    /*package*/ static final SContainmentLink right$nF3U = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
   }
 }

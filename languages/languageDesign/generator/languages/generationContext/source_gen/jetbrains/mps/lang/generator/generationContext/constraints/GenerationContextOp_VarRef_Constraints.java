@@ -31,7 +31,7 @@ public class GenerationContextOp_VarRef_Constraints extends BaseConstraintsDescr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.varmacro$expa, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.varmacro$2bbQ, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -71,6 +71,6 @@ public class GenerationContextOp_VarRef_Constraints extends BaseConstraintsDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink varmacro$expa = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
+    /*package*/ static final SReferenceLink varmacro$2bbQ = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
   }
 }

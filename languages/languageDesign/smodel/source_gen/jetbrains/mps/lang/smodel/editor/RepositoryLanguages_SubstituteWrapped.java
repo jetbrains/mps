@@ -119,7 +119,7 @@ public class RepositoryLanguages_SubstituteWrapped extends SubstituteMenuBase {
   }
   private static SNode createLanguageIdentityBySourceModule_z8062m_a0a0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LanguageIdentityBySourceModule$RC);
-    n0.forChild(LINKS.moduleReference$tg2r).initNode(p0, CONCEPTS.ModuleIdentity$Sx, true);
+    n0.forChild(LINKS.moduleReference$aLb5).initNode(p0, CONCEPTS.ModuleIdentity$Sx, true);
     return n0.getResult();
   }
 
@@ -130,6 +130,6 @@ public class RepositoryLanguages_SubstituteWrapped extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleReference$tg2r = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, 0x2246d35517e858e9L, "moduleReference");
+    /*package*/ static final SContainmentLink moduleReference$aLb5 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, 0x2246d35517e858e9L, "moduleReference");
   }
 }

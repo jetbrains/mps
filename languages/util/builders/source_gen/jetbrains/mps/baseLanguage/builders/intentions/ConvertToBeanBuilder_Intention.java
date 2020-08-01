@@ -56,14 +56,14 @@ public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescr
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.BuilderCreator$E1, null);
       SNode builder = SNodeFactoryOperations.createNewNode(CONCEPTS.BeanBuilder$st, null);
-      SLinkOperations.setTarget(builder, LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i));
-      for (SNode arg : SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)) {
-        ListSequence.fromList(SLinkOperations.getChildren(builder, LINKS.actualArgument$$A7L)).addElement(arg);
+      SLinkOperations.setTarget(builder, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI));
+      for (SNode arg : SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)) {
+        ListSequence.fromList(SLinkOperations.getChildren(builder, LINKS.actualArgument$ItKJ)).addElement(arg);
       }
-      SLinkOperations.setTarget(creator, LINKS.builder$zDVT, builder);
+      SLinkOperations.setTarget(creator, LINKS.builder$hk0B, builder);
       SNodeOperations.replaceWithAnother(node, creator);
 
-      editorContext.select(SLinkOperations.getTarget(creator, LINKS.body$NMQu));
+      editorContext.select(SLinkOperations.getTarget(creator, LINKS.body$5Coy));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -77,9 +77,9 @@ public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink builder$zDVT = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
-    /*package*/ static final SContainmentLink body$NMQu = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e25129cL, "body");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink builder$hk0B = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
+    /*package*/ static final SContainmentLink body$5Coy = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e25129cL, "body");
   }
 }

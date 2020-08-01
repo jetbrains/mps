@@ -23,7 +23,7 @@ public class CommandHolder_Insert {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.command$pL9$, CONCEPTS.BLCommand$ib);
+        SNodeFactoryOperations.setNewChild(node, LINKS.command$uNCs, CONCEPTS.BLCommand$ib);
       }
 
     };
@@ -71,7 +71,7 @@ public class CommandHolder_Insert {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink command$pL9$ = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command");
+    /*package*/ static final SContainmentLink command$uNCs = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command");
   }
 
   private static final class CONCEPTS {

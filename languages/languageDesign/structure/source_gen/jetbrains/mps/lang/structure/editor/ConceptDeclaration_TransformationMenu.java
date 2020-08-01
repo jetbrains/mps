@@ -80,7 +80,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       // suppressing assistant for incomplete concept / BaseConcept 
-      return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1) != null && !(SNodeOperations.is(_context.getNode(), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
+      return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) != null && !(SNodeOperations.is(_context.getNode(), new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
     }
 
     @NotNull
@@ -172,7 +172,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
               return false;
             }
 
-            if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.propertyDeclaration$lL73)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$lL6$)).isEmpty()) {
+            if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.propertyDeclaration$yMqt)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$yMbs)).isEmpty()) {
               // concept has no own features -> looking for an editor defined for structurally-equal super-concept 
               if (ListSequence.fromList(new ConceptDeclarationAssistantUtil(_context.getNode()).getStructurallyEqualSuperConcepts()).any(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
@@ -187,7 +187,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
               }
             }
 
-            if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$moSU)) {
+            if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$Q3$6)) {
               // Suppressing assistant for abstract concepts if any sub-concept has an editor defined 
               if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
@@ -252,7 +252,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
           @Nullable
           @Override
           public String getLabelText(String pattern) {
-            return "Create Editor for " + SPropertyOperations.getString(ListSequence.fromList(new ConceptDeclarationAssistantUtil(_context.getNode()).getStructurallyEqualSuperConcepts()).last(), PROPS.name$tAp1);
+            return "Create Editor for " + SPropertyOperations.getString(ListSequence.fromList(new ConceptDeclarationAssistantUtil(_context.getNode()).getStructurallyEqualSuperConcepts()).last(), PROPS.name$lA7v);
           }
 
           @Override
@@ -264,7 +264,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
 
           @Override
           public boolean canExecute(@NotNull String pattern) {
-            if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.propertyDeclaration$lL73)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$lL6$)).isNotEmpty()) {
+            if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.propertyDeclaration$yMqt)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$yMbs)).isNotEmpty()) {
               return false;
             }
             if (ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(_context.getNode(), LanguageAspect.EDITOR)).any(new IWhereFilter<SNode>() {
@@ -338,7 +338,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.rootable$vg$g, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.rootable$91zK, true);
         }
 
         @Override
@@ -346,20 +346,20 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
           // Suggesting to make the concept rootable if: 
           // 1. Concept has no super-concepts 
           // 2. There is no other ceoncepts in this model with the containment link to this concept 
-          if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.rootable$vg$g) || SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$moSU)) {
+          if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.rootable$91zK) || SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$Q3$6)) {
             return false;
           }
           return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN)).translate(new ITranslator2<SNode, SNode>() {
             public Iterable<SNode> translate(SNode it) {
-              return SLinkOperations.getChildren(it, LINKS.linkDeclaration$lL6$);
+              return SLinkOperations.getChildren(it, LINKS.linkDeclaration$yMbs);
             }
           }).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.target$egp8) != null && SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b9L);
+              return SLinkOperations.getTarget(it, LINKS.target$TWaS) != null && SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
             }
           }).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(_context.getNode(), SLinkOperations.getTarget(it, LINKS.target$egp8));
+              return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(_context.getNode(), SLinkOperations.getTarget(it, LINKS.target$TWaS));
             }
           }).isEmpty();
         }
@@ -383,7 +383,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
           }
         });
         // skipping abstract nodes & smart references 
-        return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$moSU)) && (Sequence.fromIterable(links).count() != 1 || !(SEnumOperations.isMember(SPropertyOperations.getEnum(Sequence.fromIterable(links).first(), PROPS.metaClass$tHD7), 0xfc6f4e95b8L)));
+        return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$Q3$6)) && (Sequence.fromIterable(links).count() != 1 || !(SEnumOperations.isMember(SPropertyOperations.getEnum(Sequence.fromIterable(links).first(), PROPS.metaClass$p6Up), 0xfc6f4e95b8L)));
       }
 
       @NotNull
@@ -439,13 +439,13 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
 
           @Override
           public void execute(@NotNull String pattern) {
-            SPropertyOperations.assign(_context.getNode(), PROPS.conceptAlias$YIL2, "<" + SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1) + "_Alias>");
+            SPropertyOperations.assign(_context.getNode(), PROPS.conceptAlias$oDJY, "<" + SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) + "_Alias>");
             SelectionUtil.selectLabelCellWithSelection(_context.getEditorContext(), _context.getNode(), "*" + CellIdManager.createPropertyId("conceptAlias"), 0, -1);
           }
 
           @Override
           public boolean canExecute(@NotNull String pattern) {
-            if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.conceptAlias$YIL2))) {
+            if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.conceptAlias$oDJY))) {
               return false;
             }
 
@@ -456,11 +456,11 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
             //    this means: the node will be available in the list of competion menu items 
             return SetSequence.fromSet(superContepts).any(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return isNotEmptyString(SPropertyOperations.getString(it, PROPS.conceptAlias$YIL2));
+                return isNotEmptyString(SPropertyOperations.getString(it, PROPS.conceptAlias$oDJY));
               }
-            }) || Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN), LINKS.linkDeclaration$lL6$)).where(new IWhereFilter<SNode>() {
+            }) || Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN), LINKS.linkDeclaration$yMbs)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b9L) && SetSequence.fromSet(superContepts).contains(SLinkOperations.getTarget(it, LINKS.target$egp8));
+                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b9L) && SetSequence.fromSet(superContepts).contains(SLinkOperations.getTarget(it, LINKS.target$TWaS));
               }
             }).isNotEmpty();
           }
@@ -513,7 +513,7 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
 
           @Override
           public void execute(@NotNull String pattern) {
-            ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.implements$oQDh)).addElement(_quotation_createNode_dubn3u_a0a0a0b2a0());
+            ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.implements$2tZf)).addElement(_quotation_createNode_dubn3u_a0a0a0b2a0());
           }
 
           @Override
@@ -521,9 +521,9 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
             if (Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(_context.getNode(), ((boolean) true))).contains(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468"))) {
               return false;
             }
-            return SPropertyOperations.getBoolean(_context.getNode(), PROPS.rootable$vg$g) || Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN), LINKS.linkDeclaration$lL6$)).where(new IWhereFilter<SNode>() {
+            return SPropertyOperations.getBoolean(_context.getNode(), PROPS.rootable$91zK) || Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN), LINKS.linkDeclaration$yMbs)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b8L) && SLinkOperations.getTarget(it, LINKS.target$egp8) == _context.getNode();
+                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b8L) && SLinkOperations.getTarget(it, LINKS.target$TWaS) == _context.getNode();
               }
             }).isNotEmpty();
           }
@@ -552,11 +552,11 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty rootable$vg$g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty conceptAlias$YIL2 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty conceptAlias$oDJY = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
   }
 
   private static final class CONCEPTS {
@@ -565,9 +565,9 @@ public class ConceptDeclaration_TransformationMenu extends TransformationMenuBas
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
   }
 }

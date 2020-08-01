@@ -38,13 +38,13 @@ public class JavaModulesClosure {
     return this;
   }
   private void moduleClosure(SNode module, boolean reexportOnly) {
-    for (SNode dep : SLinkOperations.getChildren(module, LINKS.dependencies$RPxG)) {
+    for (SNode dep : SLinkOperations.getChildren(module, LINKS.dependencies$2Vkk)) {
       if (SNodeOperations.isInstanceOf(dep, CONCEPTS.BuildSource_JavaDependencyModule$pD)) {
         SNode moduleDep = SNodeOperations.cast(dep, CONCEPTS.BuildSource_JavaDependencyModule$pD);
-        if (reexportOnly && !(SPropertyOperations.getBoolean(moduleDep, PROPS.reexport$vibd))) {
+        if (reexportOnly && !(SPropertyOperations.getBoolean(moduleDep, PROPS.reexport$9Nrj))) {
           continue;
         }
-        SNode depModule = SLinkOperations.getTarget(moduleDep, LINKS.module$yh6D);
+        SNode depModule = SLinkOperations.getTarget(moduleDep, LINKS.module$AidR);
         if (depModule == null) {
           continue;
         }
@@ -57,35 +57,35 @@ public class JavaModulesClosure {
         }
       } else if (SNodeOperations.isInstanceOf(dep, CONCEPTS.BuildSource_JavaDependencyLibrary$nh)) {
         SNode libraryDep = SNodeOperations.cast(dep, CONCEPTS.BuildSource_JavaDependencyLibrary$nh);
-        if (reexportOnly && !(SPropertyOperations.getBoolean(libraryDep, PROPS.reexport$qwse))) {
+        if (reexportOnly && !(SPropertyOperations.getBoolean(libraryDep, PROPS.reexport$PHEM))) {
           continue;
         }
 
 
-        if (SLinkOperations.getTarget(libraryDep, LINKS.library$ro7w) != null) {
-          libraries.add(SLinkOperations.getTarget(libraryDep, LINKS.library$ro7w));
+        if (SLinkOperations.getTarget(libraryDep, LINKS.library$gFCw) != null) {
+          libraries.add(SLinkOperations.getTarget(libraryDep, LINKS.library$gFCw));
         }
       } else if (SNodeOperations.isInstanceOf(dep, CONCEPTS.BuildSource_JavaDependencyJar$ka)) {
         SNode jarDep = SNodeOperations.cast(dep, CONCEPTS.BuildSource_JavaDependencyJar$ka);
-        if (reexportOnly && !(SPropertyOperations.getBoolean(jarDep, PROPS.reexport$CI1D))) {
+        if (reexportOnly && !(SPropertyOperations.getBoolean(jarDep, PROPS.reexport$IiMR))) {
           continue;
         }
 
-        jars.add(SLinkOperations.getTarget(jarDep, LINKS.jar$9zr0));
+        jars.add(SLinkOperations.getTarget(jarDep, LINKS.jar$Ca50));
       } else if (SNodeOperations.isInstanceOf(dep, CONCEPTS.BuildSource_JavaDependencyExternalJar$32)) {
         SNode jarDep = SNodeOperations.cast(dep, CONCEPTS.BuildSource_JavaDependencyExternalJar$32);
-        if (reexportOnly && !(SPropertyOperations.getBoolean(jarDep, PROPS.reexport$P5U3))) {
+        if (reexportOnly && !(SPropertyOperations.getBoolean(jarDep, PROPS.reexport$HR7t))) {
           continue;
         }
 
-        externalJars.add(SLinkOperations.getTarget(SLinkOperations.getTarget(jarDep, LINKS.extJar$Ka7E), LINKS.jar$jJDw));
+        externalJars.add(SLinkOperations.getTarget(SLinkOperations.getTarget(jarDep, LINKS.extJar$kTHm), LINKS.jar$$56w));
       } else if (SNodeOperations.isInstanceOf(dep, CONCEPTS.BuildSource_JavaDependencyExternalJarInFolder$Ab)) {
         SNode jarInFolder = SNodeOperations.cast(dep, CONCEPTS.BuildSource_JavaDependencyExternalJarInFolder$Ab);
-        if (reexportOnly && !(SPropertyOperations.getBoolean(jarInFolder, PROPS.reexport$A1g5))) {
+        if (reexportOnly && !(SPropertyOperations.getBoolean(jarInFolder, PROPS.reexport$qAMr))) {
           continue;
         }
 
-        externalJarsInFolder.add(MultiTuple.<SNode,String>from(SLinkOperations.getTarget(SLinkOperations.getTarget(jarInFolder, LINKS.extFolder$A1g$), LINKS.folder$mC20), SPropertyOperations.getString(jarInFolder, PROPS.suffix$RDm7)));
+        externalJarsInFolder.add(MultiTuple.<SNode,String>from(SLinkOperations.getTarget(SLinkOperations.getTarget(jarInFolder, LINKS.extFolder$qB1s), LINKS.folder$XoY0), SPropertyOperations.getString(jarInFolder, PROPS.suffix$X1Hp)));
       }
     }
   }
@@ -99,18 +99,18 @@ public class JavaModulesClosure {
   public Collection<SNode> getJars() {
     return Sequence.fromIterable(((Iterable<SNode>) jars)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.customLocation$bMlA) == null);
+        return (SLinkOperations.getTarget(it, LINKS.customLocation$Hotq) == null);
       }
     }).toListSequence();
   }
   public Collection<SNode> getExternalJars() {
     return Sequence.fromIterable(((Iterable<SNode>) jars)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.customLocation$bMlA) != null);
+        return (SLinkOperations.getTarget(it, LINKS.customLocation$Hotq) != null);
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.customLocation$bMlA), LINKS.jar$jJDw);
+        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.customLocation$Hotq), LINKS.jar$$56w);
       }
     }).concat(SetSequence.fromSet(externalJars)).toListSequence();
   }
@@ -130,23 +130,23 @@ public class JavaModulesClosure {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reexport$vibd = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, 0x64bd442e1cfb0eaaL, "reexport");
-    /*package*/ static final SProperty reexport$qwse = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
-    /*package*/ static final SProperty reexport$CI1D = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x715eee405bff376dL, "reexport");
-    /*package*/ static final SProperty reexport$P5U3 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, 0x5f32ae3ef3778cd6L, "reexport");
-    /*package*/ static final SProperty reexport$A1g5 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, 0x4c1fa58d9932900L, "reexport");
-    /*package*/ static final SProperty suffix$RDm7 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, 0x4c1fa58d9933cacL, "suffix");
+    /*package*/ static final SProperty reexport$9Nrj = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, 0x64bd442e1cfb0eaaL, "reexport");
+    /*package*/ static final SProperty reexport$PHEM = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
+    /*package*/ static final SProperty reexport$IiMR = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x715eee405bff376dL, "reexport");
+    /*package*/ static final SProperty reexport$HR7t = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, 0x5f32ae3ef3778cd6L, "reexport");
+    /*package*/ static final SProperty reexport$qAMr = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, 0x4c1fa58d9932900L, "reexport");
+    /*package*/ static final SProperty suffix$X1Hp = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, 0x4c1fa58d9933cacL, "suffix");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$yh6D = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, 0x263ae7d4319896aaL, "module");
-    /*package*/ static final SReferenceLink library$ro7w = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x454b730dd9079dcfL, "library");
-    /*package*/ static final SContainmentLink jar$9zr0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x3395e884b6185c41L, "jar");
-    /*package*/ static final SContainmentLink extJar$Ka7E = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, 0x4ddcec86afb2f72aL, "extJar");
-    /*package*/ static final SReferenceLink jar$jJDw = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
-    /*package*/ static final SContainmentLink extFolder$A1g$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, 0x4c1fa58d9932901L, "extFolder");
-    /*package*/ static final SReferenceLink folder$mC20 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb65a3fL, 0x4ddcec86afb65a40L, "folder");
-    /*package*/ static final SContainmentLink dependencies$RPxG = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, 0x263ae7d4319896abL, "dependencies");
-    /*package*/ static final SContainmentLink customLocation$bMlA = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x78d465945dbd7c46L, "customLocation");
+    /*package*/ static final SReferenceLink module$AidR = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, 0x263ae7d4319896aaL, "module");
+    /*package*/ static final SReferenceLink library$gFCw = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x454b730dd9079dcfL, "library");
+    /*package*/ static final SContainmentLink jar$Ca50 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x3395e884b6185c41L, "jar");
+    /*package*/ static final SContainmentLink extJar$kTHm = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f32ae3ef3770dd4L, 0x4ddcec86afb2f72aL, "extJar");
+    /*package*/ static final SReferenceLink jar$$56w = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
+    /*package*/ static final SContainmentLink extFolder$qB1s = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c1fa58d992addeL, 0x4c1fa58d9932901L, "extFolder");
+    /*package*/ static final SReferenceLink folder$XoY0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb65a3fL, 0x4ddcec86afb65a40L, "folder");
+    /*package*/ static final SContainmentLink dependencies$2Vkk = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, 0x263ae7d4319896abL, "dependencies");
+    /*package*/ static final SContainmentLink customLocation$Hotq = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x78d465945dbd7c46L, "customLocation");
   }
 }

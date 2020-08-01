@@ -33,7 +33,7 @@ public final class MethodDocComment__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static boolean isTagSectionEmpty_id7lVCwDcz6WN(@NotNull SNode __thisNode__) {
-    return ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invokeSuper(__thisNode__, CONCEPTS.MethodDocComment$Vx)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.param$pEic)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.throwsTag$3WQN)).isEmpty() && (SLinkOperations.getTarget(__thisNode__, LINKS.return$3XgX) == null);
+    return ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invokeSuper(__thisNode__, CONCEPTS.MethodDocComment$Vx)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.param$ruNO)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.throwsTag$UuyH)).isEmpty() && (SLinkOperations.getTarget(__thisNode__, LINKS.return$UFdz) == null);
   }
 
   /*package*/ MethodDocComment__BehaviorDescriptor() {
@@ -83,9 +83,9 @@ public final class MethodDocComment__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink return$3XgX = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
-    /*package*/ static final SContainmentLink param$pEic = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
-    /*package*/ static final SContainmentLink throwsTag$3WQN = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
+    /*package*/ static final SContainmentLink return$UFdz = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
+    /*package*/ static final SContainmentLink param$ruNO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
+    /*package*/ static final SContainmentLink throwsTag$UuyH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
   }
 
   private static final class CONCEPTS {

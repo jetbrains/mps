@@ -32,10 +32,10 @@ public final class ClassifierClassExpression__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode getClassifier_id7S22xyoLQG7(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$V09);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$s_4n);
   }
   /*package*/ static void setClassifier_id7S22xyoLQH8(@NotNull SNode __thisNode__, SNode classifier) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.classifier$V09, classifier);
+    SLinkOperations.setTarget(__thisNode__, LINKS.classifier$s_4n, classifier);
   }
 
   /*package*/ ClassifierClassExpression__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class ClassifierClassExpression__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$V09 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
+    /*package*/ static final SReferenceLink classifier$s_4n = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
   }
 }

@@ -28,24 +28,24 @@ public class ClassRefactoringUtils {
       }
     }
     for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.FieldReferenceOperation$N8, false, new SAbstractConcept[]{}))) {
-      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.fieldDeclaration$mLBy));
+      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.fieldDeclaration$229u));
     }
     for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.StaticFieldReference$K8, false, new SAbstractConcept[]{}))) {
-      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.variableDeclaration$2ky6));
+      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.variableDeclaration$7WwU));
     }
     for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.StaticFieldDeclaration$R5);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5);
       }
     })) {
-      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.variableDeclaration$2ky6));
+      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.variableDeclaration$7WwU));
     }
     return nodesToCheck;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {

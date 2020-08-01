@@ -32,7 +32,7 @@ public class SubstituteMenuPart_ReferenceScope_Constraints extends BaseConstrain
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$w67J, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$yXJL, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -66,6 +66,6 @@ public class SubstituteMenuPart_ReferenceScope_Constraints extends BaseConstrain
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$w67J = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x74f6a88f89465369L, "reference");
+    /*package*/ static final SReferenceLink reference$yXJL = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x74f6a88f89465369L, "reference");
   }
 }

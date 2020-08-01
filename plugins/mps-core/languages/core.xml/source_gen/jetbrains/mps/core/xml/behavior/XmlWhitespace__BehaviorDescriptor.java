@@ -42,12 +42,12 @@ public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
     SNode left = SNodeOperations.getPrevSibling(__thisNode__);
     if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlPrologElement$KD)) {
       SNode leftContent = SNodeOperations.cast(left, CONCEPTS.XmlPrologElement$KD);
-      return SNodeOperations.isInstanceOf(leftContent, CONCEPTS.XmlWhitespace$Jc) || isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$xCh4)) && (SNodeOperations.getNextSibling(__thisNode__) == null);
+      return SNodeOperations.isInstanceOf(leftContent, CONCEPTS.XmlWhitespace$Jc) || isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$iwgW)) && (SNodeOperations.getNextSibling(__thisNode__) == null);
     }
     return false;
   }
   /*package*/ static boolean hasNewLineAfter_id1Qs9WekVZ9E(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$xCh4)) && (SNodeOperations.getNextSibling(__thisNode__) != null)) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$iwgW)) && (SNodeOperations.getNextSibling(__thisNode__) != null)) {
       return !(((boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(__thisNode__)));
     }
     return false;
@@ -130,6 +130,6 @@ public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$xCh4 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value");
+    /*package*/ static final SProperty value$iwgW = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value");
   }
 }

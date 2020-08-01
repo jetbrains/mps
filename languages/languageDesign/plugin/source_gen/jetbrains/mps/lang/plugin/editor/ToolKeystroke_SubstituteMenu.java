@@ -152,10 +152,10 @@ public class ToolKeystroke_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createToolKeystroke_846jr0_a1a0a0(SEnumerationLiteral p0, String p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ToolKeystroke$gA);
-    n0.setProperty(PROPS.keymap$bYfr, SPropertyOperations.serializeEnummember(p0));
+    n0.setProperty(PROPS.keymap$N9u5, SPropertyOperations.serializeEnummember(p0));
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.keystroke$5Qdi).init(CONCEPTS.KeyMapKeystroke$7H);
-      n1.setProperty(PROPS.modifiers$PoTw, p1);
+      SNodeBuilder n1 = n0.forChild(LINKS.keystroke$PgrI).init(CONCEPTS.KeyMapKeystroke$7H);
+      n1.setProperty(PROPS.modifiers$R3Qw, p1);
     }
     return n0.getResult();
   }
@@ -166,11 +166,11 @@ public class ToolKeystroke_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty keymap$bYfr = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap");
-    /*package*/ static final SProperty modifiers$PoTw = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d5L, "modifiers");
+    /*package*/ static final SProperty keymap$N9u5 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap");
+    /*package*/ static final SProperty modifiers$R3Qw = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d5L, "modifiers");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keystroke$5Qdi = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b76126L, "keystroke");
+    /*package*/ static final SContainmentLink keystroke$PgrI = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b76126L, "keystroke");
   }
 }

@@ -31,7 +31,7 @@ public final class ModelReferenceExpression__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static String getFQName_id7K4mn_BeEzv(@NotNull SNode __thisNode__) {
-    return (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.name$ArgX)) ? null : SPropertyOperations.getString(__thisNode__, PROPS.name$ArgX) + ((isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.stereotype$YBjg)) ? "" : "@" + SPropertyOperations.getString(__thisNode__, PROPS.stereotype$YBjg))));
+    return (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.name$Bddz)) ? null : SPropertyOperations.getString(__thisNode__, PROPS.name$Bddz) + ((isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.stereotype$l2kK)) ? "" : "@" + SPropertyOperations.getString(__thisNode__, PROPS.stereotype$l2kK))));
   }
 
   /*package*/ ModelReferenceExpression__BehaviorDescriptor() {
@@ -84,7 +84,7 @@ public final class ModelReferenceExpression__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$ArgX = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x7c3f2da20e92b66L, "name");
-    /*package*/ static final SProperty stereotype$YBjg = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x7c3f2da20e93b6fL, "stereotype");
+    /*package*/ static final SProperty name$Bddz = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x7c3f2da20e92b66L, "name");
+    /*package*/ static final SProperty stereotype$l2kK = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x7c3f2da20e93b6fL, "stereotype");
   }
 }

@@ -103,12 +103,12 @@ public class IParameterConverter_TransformationMenu extends TransformationMenuBa
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.QueryParameter$k9), PROPS.required$JbR8, true);
+        SPropertyOperations.assign(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.QueryParameter$k9), PROPS.required$QJGS, true);
       }
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.QueryParameter$k9) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.QueryParameter$k9), PROPS.required$JbR8));
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.QueryParameter$k9) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.QueryParameter$k9), PROPS.required$QJGS));
       }
 
 
@@ -135,6 +135,6 @@ public class IParameterConverter_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty required$JbR8 = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, 0x205f4376c585b43dL, "required");
+    /*package*/ static final SProperty required$QJGS = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, 0x205f4376c585b43dL, "required");
   }
 }

@@ -47,7 +47,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
-          return SLinkOperations.getTarget(usage, LINKS.declaration$Swc3);
+          return SLinkOperations.getTarget(usage, LINKS.declaration$n_Pt);
         }
         @Override
         protected void migrateRawValue(SNode usage, SNode datatype) {
@@ -72,6 +72,6 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$Swc3 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2cb3222730cfcbccL, 0x2cb3222730cfe469L, "declaration");
+    /*package*/ static final SReferenceLink declaration$n_Pt = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2cb3222730cfcbccL, 0x2cb3222730cfe469L, "declaration");
   }
 }

@@ -33,7 +33,7 @@ public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDesc
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.vardecl$Sjfw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.vardecl$hkww, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -53,7 +53,7 @@ public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDesc
             List<SNode> vars = new ArrayList<SNode>();
             while ((contextNode != null)) {
               if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.VarMacro2$J_)) {
-                ListSequence.fromList(vars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.VarMacro2$J_), LINKS.variables$4GjX)));
+                ListSequence.fromList(vars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.VarMacro2$J_), LINKS.variables$htEz)));
               }
               contextNode = Scope.parent(contextNode);
             }
@@ -74,7 +74,7 @@ public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink vardecl$Sjfw = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, 0xe8e73f957fd5247L, "vardecl");
-    /*package*/ static final SContainmentLink variables$4GjX = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables");
+    /*package*/ static final SReferenceLink vardecl$hkww = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, 0xe8e73f957fd5247L, "vardecl");
+    /*package*/ static final SContainmentLink variables$htEz = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables");
   }
 }

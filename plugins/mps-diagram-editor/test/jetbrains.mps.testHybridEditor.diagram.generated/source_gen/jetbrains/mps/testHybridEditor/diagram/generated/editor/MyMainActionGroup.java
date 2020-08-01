@@ -38,7 +38,7 @@ public class MyMainActionGroup implements PaletteActionGroup {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.MetaBlock$4z);
       }
     })) {
-      String key = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.MetaBlock$4z), PROPS.path$xm$K);
+      String key = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.MetaBlock$4z), PROPS.path$9VNg);
       if (!(MapSequence.fromMap(tagToGroupMap).containsKey(key))) {
         MapSequence.fromMap(tagToGroupMap).put(key, ListSequence.fromList(new ArrayList<SNode>()));
       }
@@ -65,6 +65,6 @@ public class MyMainActionGroup implements PaletteActionGroup {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty path$xm$K = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x206c20835c7e9707L, "path");
+    /*package*/ static final SProperty path$9VNg = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x206c20835c7e9707L, "path");
   }
 }

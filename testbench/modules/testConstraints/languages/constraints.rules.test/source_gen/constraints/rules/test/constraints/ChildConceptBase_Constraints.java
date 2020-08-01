@@ -38,7 +38,7 @@ public class ChildConceptBase_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SPropertyOperations.getInteger(node, PROPS.tolerance$FKON) != 55;
+    return SPropertyOperations.getInteger(node, PROPS.tolerance$cD$H) != 55;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8409512132773797059");
 
@@ -47,6 +47,6 @@ public class ChildConceptBase_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tolerance$FKON = MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x74b496bab051d961L, 0x74b496bab051e02eL, "tolerance");
+    /*package*/ static final SProperty tolerance$cD$H = MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x74b496bab051d961L, 0x74b496bab051e02eL, "tolerance");
   }
 }

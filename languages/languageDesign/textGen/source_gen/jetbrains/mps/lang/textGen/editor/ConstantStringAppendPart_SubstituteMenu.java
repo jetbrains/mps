@@ -109,7 +109,7 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ConstantStringAppendPart$AE, _context.getCurrentTargetNode());
-        SPropertyOperations.set(result, PROPS.value$kAH0, NameUtil.stripQuotes(pattern, "\"", "\""));
+        SPropertyOperations.set(result, PROPS.value$YJN0, NameUtil.stripQuotes(pattern, "\"", "\""));
         return result;
       }
 
@@ -162,6 +162,6 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kAH0 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201528caacL, "value");
+    /*package*/ static final SProperty value$YJN0 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201528caacL, "value");
   }
 }

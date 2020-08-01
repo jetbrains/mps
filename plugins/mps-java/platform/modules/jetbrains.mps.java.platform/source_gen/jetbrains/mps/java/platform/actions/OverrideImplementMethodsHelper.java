@@ -54,21 +54,21 @@ public class OverrideImplementMethodsHelper {
   }
 
   public List<SNode> insertMethods(List<SNode> baseMethods, boolean createAbstractMethods) {
-    int index = (myContextMember != null && SNodeOperations.getParent(myContextMember) == myClassifier ? ListSequence.fromList(SLinkOperations.getChildren(myClassifier, LINKS.member$oYX5)).indexOf(myContextMember) + 1 : -1);
+    int index = (myContextMember != null && SNodeOperations.getParent(myContextMember) == myClassifier ? ListSequence.fromList(SLinkOperations.getChildren(myClassifier, LINKS.member$6v_r)).indexOf(myContextMember) + 1 : -1);
     List<SNode> result = new ArrayList<SNode>();
     for (SNode baseMethod : baseMethods) {
       SNode method = ((SNode) BHReflection.invoke0(baseMethod, CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("getMethodToImplement", CONCEPTS.BaseMethodDeclaration$RR, "3RE744JWbF"), myClassifier));
-      SLinkOperations.setTarget(method, LINKS.body$WIlu, SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(myClassifier), CONCEPTS.StatementList$TN, null));
+      SLinkOperations.setTarget(method, LINKS.body$qspy, SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(myClassifier), CONCEPTS.StatementList$TN, null));
       if (SNodeOperations.isInstanceOf(method, CONCEPTS.InstanceMethodDeclaration$An)) {
-        SPropertyOperations.assign(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$An), PROPS.isAbstract$cU_H, createAbstractMethods);
+        SPropertyOperations.assign(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$An), PROPS.isAbstract$gogN, createAbstractMethods);
         if (SNodeOperations.isInstanceOf(myClassifier, CONCEPTS.Interface$Kp) && !(createAbstractMethods)) {
-          SLinkOperations.addNewChild(method, LINKS.modifiers$akE0, CONCEPTS.DefaultModifier$Z2);
+          SLinkOperations.addNewChild(method, LINKS.modifiers$m0, CONCEPTS.DefaultModifier$Z2);
         }
       }
       if (index != -1) {
-        ListSequence.fromList(SLinkOperations.getChildren(myClassifier, LINKS.member$oYX5)).insertElement(index++, SNodeOperations.cast(method, CONCEPTS.ClassifierMember$9F));
+        ListSequence.fromList(SLinkOperations.getChildren(myClassifier, LINKS.member$6v_r)).insertElement(index++, SNodeOperations.cast(method, CONCEPTS.ClassifierMember$9F));
       } else {
-        ListSequence.fromList(SLinkOperations.getChildren(myClassifier, LINKS.member$oYX5)).addElement(SNodeOperations.cast(method, CONCEPTS.ClassifierMember$9F));
+        ListSequence.fromList(SLinkOperations.getChildren(myClassifier, LINKS.member$6v_r)).addElement(SNodeOperations.cast(method, CONCEPTS.ClassifierMember$9F));
       }
       if (!(createAbstractMethods)) {
         update(method, baseMethod);
@@ -81,11 +81,11 @@ public class OverrideImplementMethodsHelper {
   /*package*/ void update(SNode method, SNode baseMethod) {
     if (SModelStereotype.isStubModel(SNodeOperations.getModel(baseMethod))) {
       // we only need to find good names for parameters, if they are cryptic e.g. java_sourcestubs deliver proper names 
-      final SNode startNode = (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).all(new IWhereFilter<SNode>() {
+      final SNode startNode = (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getString(it, PROPS.name$tAp1).matches("p[0-9]+");
+          return SPropertyOperations.getString(it, PROPS.name$lA7v).matches("p[0-9]+");
         }
-      }) ? method : SLinkOperations.getTarget(method, LINKS.body$WIlu));
+      }) ? method : SLinkOperations.getTarget(method, LINKS.body$qspy));
       setVariableNames(startNode, MapSequence.fromMap(new HashMap<String, Integer>()));
     }
     if (myRemoveAttributes) {
@@ -95,18 +95,18 @@ public class OverrideImplementMethodsHelper {
     }
     if (myInsertOverride && SNodeOperations.isInstanceOf(baseMethod, CONCEPTS.InstanceMethodDeclaration$An)) {
       boolean isNeedAddAnnotation = true;
-      for (SNode annotation : SLinkOperations.getChildren(method, LINKS.annotation$oVP4)) {
-        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$zNxu, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override"))) {
+      for (SNode annotation : SLinkOperations.getChildren(method, LINKS.annotation$4YGW)) {
+        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override"))) {
           isNeedAddAnnotation = false;
           break;
         }
       }
       if (isNeedAddAnnotation) {
-        ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$oVP4)).addElement(_quotation_createNode_tfz3o4_a0a0a2a2a11());
+        ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$4YGW)).addElement(_quotation_createNode_tfz3o4_a0a0a2a2a11());
       }
     }
 
-    Iterable<SNode> paramList = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).select(new ISelector<SNode, SNode>() {
+    Iterable<SNode> paramList = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return _quotation_createNode_tfz3o4_a0a0a0a4a11(it);
       }
@@ -115,7 +115,7 @@ public class OverrideImplementMethodsHelper {
       boolean isAbstractMethod = ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(baseMethod, CONCEPTS.InstanceMethodDeclaration$An), CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl")));
       SNode defaultExpr = null;
       if (isAbstractMethod) {
-        defaultExpr = ((SNode) BHReflection.invoke0(SLinkOperations.getTarget(baseMethod, LINKS.returnType$WIkw), CONCEPTS.Type$IG, SMethodTrimmedId.create("createDefaultTypeExpression", null, "2UvJdVpqUA4")));
+        defaultExpr = ((SNode) BHReflection.invoke0(SLinkOperations.getTarget(baseMethod, LINKS.returnType$qrVw), CONCEPTS.Type$IG, SMethodTrimmedId.create("createDefaultTypeExpression", null, "2UvJdVpqUA4")));
       } else {
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseMethod), CONCEPTS.Interface$Kp)) {
           SNode curClassifier = SNodeOperations.cast(SNodeOperations.getParent(method), CONCEPTS.Classifier$hJ);
@@ -134,18 +134,18 @@ public class OverrideImplementMethodsHelper {
           defaultExpr = _quotation_createNode_tfz3o4_a0a0b0a2a5a11(baseMethod, Sequence.fromIterable(paramList).toListSequence());
         }
       }
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$WIkw), CONCEPTS.VoidType$aT)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.VoidType$aT)) {
         if (!(isAbstractMethod)) {
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$WIlu), LINKS.statement$WHn8)).addElement(_quotation_createNode_tfz3o4_a0a0a0a3a5a11(defaultExpr));
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(_quotation_createNode_tfz3o4_a0a0a0a3a5a11(defaultExpr));
         }
       } else {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$WIlu), LINKS.statement$WHn8)).addElement(getReturnStatement(defaultExpr));
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(getReturnStatement(defaultExpr));
       }
     } else {
       if (SNodeOperations.isInstanceOf(baseMethod, CONCEPTS.ConstructorDeclaration$5U)) {
         SNode superConstructor = _quotation_createNode_tfz3o4_a0a0a0a5a11(Sequence.fromIterable(paramList).toListSequence());
-        SLinkOperations.setTarget(superConstructor, LINKS.baseMethodDeclaration$$A7i, SNodeOperations.cast(baseMethod, CONCEPTS.ConstructorDeclaration$5U));
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$WIlu), LINKS.statement$WHn8)).addElement(superConstructor);
+        SLinkOperations.setTarget(superConstructor, LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(baseMethod, CONCEPTS.ConstructorDeclaration$5U));
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(superConstructor);
       }
     }
   }
@@ -175,7 +175,7 @@ public class OverrideImplementMethodsHelper {
   private void setVariableNames(SNode node, Map<String, Integer> usedNames) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableDeclaration$xe)) {
       SNode variable = SNodeOperations.cast(node, CONCEPTS.VariableDeclaration$xe);
-      SNode nodeType = SLinkOperations.getTarget(variable, LINKS.type$pLrO);
+      SNode nodeType = SLinkOperations.getTarget(variable, LINKS.type$uWuc);
       if (nodeType != null) {
         String name = ListSequence.fromList(((List<String>) BHReflection.invoke0(nodeType, CONCEPTS.Type$IG, SMethodTrimmedId.create("getVariableSuffixes", null, "hEwIzNo")))).first();
         if (JavaNameUtil.isJavaReserved(name)) {
@@ -192,7 +192,7 @@ public class OverrideImplementMethodsHelper {
         String prefix = ((String) BHReflection.invoke0(variable, CONCEPTS.VariableDeclaration$xe, SMethodTrimmedId.create("getPrefix", null, "2Bet8mWh2lw"), myProject));
         String suffix = ((String) BHReflection.invoke0(variable, CONCEPTS.VariableDeclaration$xe, SMethodTrimmedId.create("getSuffix", null, "2Bet8mWh3pg"), myProject));
         String mainName = ((prefix == null || prefix.length() == 0) ? name : NameUtil.capitalize(name));
-        SPropertyOperations.set(variable, PROPS.name$tAp1, prefix + mainName + suffix);
+        SPropertyOperations.set(variable, PROPS.name$lA7v, prefix + mainName + suffix);
       }
     }
     for (SNode child : SNodeOperations.getChildren(node)) {
@@ -291,16 +291,16 @@ public class OverrideImplementMethodsHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {
@@ -319,7 +319,7 @@ public class OverrideImplementMethodsHelper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

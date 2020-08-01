@@ -40,7 +40,7 @@ public class TestConstraintsInheritance_Derived1_Constrained_Constraints extends
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return !(SPropertyOperations.getBoolean((SNodeOperations.cast(parentNode, CONCEPTS.TestConstraintsInheritance_Container$gj)), PROPS.triggerD1$I1en));
+    return !(SPropertyOperations.getBoolean((SNodeOperations.cast(parentNode, CONCEPTS.TestConstraintsInheritance_Container$gj)), PROPS.triggerD1$i_X9));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "5816870305080501534");
 
@@ -50,6 +50,6 @@ public class TestConstraintsInheritance_Derived1_Constrained_Constraints extends
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty triggerD1$I1en = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x50b9acb92ed730f4L, 0x50b9acb92ed7312aL, "triggerD1");
+    /*package*/ static final SProperty triggerD1$i_X9 = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x50b9acb92ed730f4L, 0x50b9acb92ed7312aL, "triggerD1");
   }
 }

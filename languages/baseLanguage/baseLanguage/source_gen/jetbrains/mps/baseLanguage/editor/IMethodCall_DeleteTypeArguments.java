@@ -29,7 +29,7 @@ public class IMethodCall_DeleteTypeArguments {
         if (DeletionApproverUtil.approve(editorContext, node, "typeArguments")) {
           return;
         }
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeArgument$GDtv)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeArgument$C5i1)).clear();
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.FIRST_CELL, -1);
       }
 
@@ -78,6 +78,6 @@ public class IMethodCall_DeleteTypeArguments {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeArgument$GDtv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
   }
 }

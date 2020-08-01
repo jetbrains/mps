@@ -23,8 +23,8 @@ public class SelectInEditorOperation_editorContextActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SLinkOperations.getTarget(node, LINKS.cellSelector$C4Ix) == null) {
-          SLinkOperations.setTarget(node, LINKS.cellSelector$C4Ix, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
+        if (SLinkOperations.getTarget(node, LINKS.cellSelector$qixZ) == null) {
+          SLinkOperations.setTarget(node, LINKS.cellSelector$qixZ, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
         }
       }
 
@@ -73,6 +73,6 @@ public class SelectInEditorOperation_editorContextActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellSelector$C4Ix = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0eb90bdeL, "cellSelector");
+    /*package*/ static final SContainmentLink cellSelector$qixZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0eb90bdeL, "cellSelector");
   }
 }

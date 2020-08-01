@@ -38,7 +38,7 @@ public final class ConceptNodeType2NodeType_Intention extends AbstractIntentionD
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.conceptDeclaraton$Qe25) == null);
+    return (SLinkOperations.getTarget(node, LINKS.conceptDeclaraton$gN0r) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -75,6 +75,6 @@ public final class ConceptNodeType2NodeType_Intention extends AbstractIntentionD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaraton$Qe25 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink conceptDeclaraton$gN0r = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
   }
 }

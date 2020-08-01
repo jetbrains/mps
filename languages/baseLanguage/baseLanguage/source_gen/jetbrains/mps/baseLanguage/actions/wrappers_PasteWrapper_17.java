@@ -24,8 +24,8 @@ public final class wrappers_PasteWrapper_17 implements PasteWrapper {
   public SNode wrap(SNode sourceNode) {
     SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.ExpressionStatement$nm, null);
     SNode newExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.GenericNewExpression$ev, null);
-    SLinkOperations.setTarget(newExpression, LINKS.creator$itDQ, sourceNode);
-    SLinkOperations.setTarget(result, LINKS.expression$WIP0, newExpression);
+    SLinkOperations.setTarget(newExpression, LINKS.creator$Wnha, sourceNode);
+    SLinkOperations.setTarget(result, LINKS.expression$qFF0, newExpression);
     return result;
   }
 
@@ -37,7 +37,7 @@ public final class wrappers_PasteWrapper_17 implements PasteWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink creator$itDQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 }

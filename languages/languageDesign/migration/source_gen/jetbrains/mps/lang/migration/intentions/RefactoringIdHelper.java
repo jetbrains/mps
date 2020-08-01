@@ -21,19 +21,19 @@ public class RefactoringIdHelper {
   public static boolean isApplicable(SNode spec) {
     if (SNodeOperations.isInstanceOf(spec, CONCEPTS.MoveConcept$Zi)) {
       SNode mc = SNodeOperations.cast(spec, CONCEPTS.MoveConcept$Zi);
-      return (SLinkOperations.getTarget(mc, LINKS.sourceId$NVp5) == null) || (SLinkOperations.getTarget(mc, LINKS.targetId$NVqy) == null);
+      return (SLinkOperations.getTarget(mc, LINKS.sourceId$9L9r) == null) || (SLinkOperations.getTarget(mc, LINKS.targetId$9LQu) == null);
     }
     if (SNodeOperations.isInstanceOf(spec, CONCEPTS.MoveContainmentLink$1e)) {
       SNode mcl = SNodeOperations.cast(spec, CONCEPTS.MoveContainmentLink$1e);
-      return (SLinkOperations.getTarget(mcl, LINKS.sourceId$YxeZ) == null) || (SLinkOperations.getTarget(mcl, LINKS.targetId$Yxfu) == null);
+      return (SLinkOperations.getTarget(mcl, LINKS.sourceId$i6gx) == null) || (SLinkOperations.getTarget(mcl, LINKS.targetId$i6vy) == null);
     }
     if (SNodeOperations.isInstanceOf(spec, CONCEPTS.MoveReferenceLink$ZL)) {
       SNode mrl = SNodeOperations.cast(spec, CONCEPTS.MoveReferenceLink$ZL);
-      return (SLinkOperations.getTarget(mrl, LINKS.sourceId$YxsZ) == null) || (SLinkOperations.getTarget(mrl, LINKS.targetId$Yxtu) == null);
+      return (SLinkOperations.getTarget(mrl, LINKS.sourceId$id2x) == null) || (SLinkOperations.getTarget(mrl, LINKS.targetId$idhy) == null);
     }
     if (SNodeOperations.isInstanceOf(spec, CONCEPTS.MoveProperty$J)) {
       SNode mp = SNodeOperations.cast(spec, CONCEPTS.MoveProperty$J);
-      return (SLinkOperations.getTarget(mp, LINKS.sourceId$YxgU) == null) || (SLinkOperations.getTarget(mp, LINKS.targetId$Yxhp) == null);
+      return (SLinkOperations.getTarget(mp, LINKS.sourceId$i7c6) == null) || (SLinkOperations.getTarget(mp, LINKS.targetId$i7r7) == null);
     }
     return false;
   }
@@ -43,57 +43,57 @@ public class RefactoringIdHelper {
     SNode movePart = SNodeOperations.getNodeAncestor(node, CONCEPTS.MoveNodeMigrationPart$gB, false, false);
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.MoveConcept$Zi)) {
       SNode mc = SNodeOperations.cast(node, CONCEPTS.MoveConcept$Zi);
-      SNode from = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.fromNode$JVN3), repo);
-      SNode to = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.toNode$JVO1), repo);
-      if ((SLinkOperations.getTarget(mc, LINKS.sourceId$NVp5) == null) && (from != null)) {
-        SLinkOperations.setTarget(mc, LINKS.sourceId$NVp5, SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptId$5a, null));
-        ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(SLinkOperations.getTarget(mc, LINKS.sourceId$NVp5), MetaAdapterByDeclaration.getConcept(from));
+      SNode from = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.fromNode$dXIt), repo);
+      SNode to = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.toNode$dYcv), repo);
+      if ((SLinkOperations.getTarget(mc, LINKS.sourceId$9L9r) == null) && (from != null)) {
+        SLinkOperations.setTarget(mc, LINKS.sourceId$9L9r, SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptId$5a, null));
+        ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(SLinkOperations.getTarget(mc, LINKS.sourceId$9L9r), MetaAdapterByDeclaration.getConcept(from));
       }
-      if ((SLinkOperations.getTarget(mc, LINKS.targetId$NVqy) == null) && (to != null)) {
-        SLinkOperations.setTarget(mc, LINKS.targetId$NVqy, SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptId$5a, null));
-        ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(SLinkOperations.getTarget(mc, LINKS.targetId$NVqy), MetaAdapterByDeclaration.getConcept(to));
+      if ((SLinkOperations.getTarget(mc, LINKS.targetId$9LQu) == null) && (to != null)) {
+        SLinkOperations.setTarget(mc, LINKS.targetId$9LQu, SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptId$5a, null));
+        ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(SLinkOperations.getTarget(mc, LINKS.targetId$9LQu), MetaAdapterByDeclaration.getConcept(to));
       }
       return;
     }
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.MoveContainmentLink$1e)) {
       SNode mcl = SNodeOperations.cast(node, CONCEPTS.MoveContainmentLink$1e);
-      SNode from = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.fromNode$JVN3), repo);
-      SNode to = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.toNode$JVO1), repo);
-      if ((SLinkOperations.getTarget(mcl, LINKS.sourceId$YxeZ) == null) && (from != null)) {
-        SLinkOperations.setTarget(mcl, LINKS.sourceId$YxeZ, SNodeFactoryOperations.createNewNode(CONCEPTS.ContainmentLinkId$FL, null));
-        ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(SLinkOperations.getTarget(mcl, LINKS.sourceId$YxeZ), MetaAdapterByDeclaration.getContainmentLink(from));
+      SNode from = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.fromNode$dXIt), repo);
+      SNode to = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.toNode$dYcv), repo);
+      if ((SLinkOperations.getTarget(mcl, LINKS.sourceId$i6gx) == null) && (from != null)) {
+        SLinkOperations.setTarget(mcl, LINKS.sourceId$i6gx, SNodeFactoryOperations.createNewNode(CONCEPTS.ContainmentLinkId$FL, null));
+        ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(SLinkOperations.getTarget(mcl, LINKS.sourceId$i6gx), MetaAdapterByDeclaration.getContainmentLink(from));
       }
-      if ((SLinkOperations.getTarget(mcl, LINKS.targetId$Yxfu) == null) && (to != null)) {
-        SLinkOperations.setTarget(mcl, LINKS.targetId$Yxfu, SNodeFactoryOperations.createNewNode(CONCEPTS.ContainmentLinkId$FL, null));
-        ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(SLinkOperations.getTarget(mcl, LINKS.targetId$Yxfu), MetaAdapterByDeclaration.getContainmentLink(to));
+      if ((SLinkOperations.getTarget(mcl, LINKS.targetId$i6vy) == null) && (to != null)) {
+        SLinkOperations.setTarget(mcl, LINKS.targetId$i6vy, SNodeFactoryOperations.createNewNode(CONCEPTS.ContainmentLinkId$FL, null));
+        ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(SLinkOperations.getTarget(mcl, LINKS.targetId$i6vy), MetaAdapterByDeclaration.getContainmentLink(to));
       }
       return;
     }
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.MoveReferenceLink$ZL)) {
       SNode mrl = SNodeOperations.cast(node, CONCEPTS.MoveReferenceLink$ZL);
-      SNode from = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.fromNode$JVN3), repo);
-      SNode to = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.toNode$JVO1), repo);
-      if ((SLinkOperations.getTarget(mrl, LINKS.sourceId$YxsZ) == null) && (from != null)) {
-        SLinkOperations.setTarget(mrl, LINKS.sourceId$YxsZ, SNodeFactoryOperations.createNewNode(CONCEPTS.ReferenceLinkId$Ic, null));
-        ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(SLinkOperations.getTarget(mrl, LINKS.sourceId$YxsZ), MetaAdapterByDeclaration.getReferenceLink(from));
+      SNode from = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.fromNode$dXIt), repo);
+      SNode to = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.toNode$dYcv), repo);
+      if ((SLinkOperations.getTarget(mrl, LINKS.sourceId$id2x) == null) && (from != null)) {
+        SLinkOperations.setTarget(mrl, LINKS.sourceId$id2x, SNodeFactoryOperations.createNewNode(CONCEPTS.ReferenceLinkId$Ic, null));
+        ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(SLinkOperations.getTarget(mrl, LINKS.sourceId$id2x), MetaAdapterByDeclaration.getReferenceLink(from));
       }
-      if ((SLinkOperations.getTarget(mrl, LINKS.targetId$Yxtu) == null) && (to != null)) {
-        SLinkOperations.setTarget(mrl, LINKS.targetId$Yxtu, SNodeFactoryOperations.createNewNode(CONCEPTS.ReferenceLinkId$Ic, null));
-        ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(SLinkOperations.getTarget(mrl, LINKS.targetId$Yxtu), MetaAdapterByDeclaration.getReferenceLink(to));
+      if ((SLinkOperations.getTarget(mrl, LINKS.targetId$idhy) == null) && (to != null)) {
+        SLinkOperations.setTarget(mrl, LINKS.targetId$idhy, SNodeFactoryOperations.createNewNode(CONCEPTS.ReferenceLinkId$Ic, null));
+        ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(SLinkOperations.getTarget(mrl, LINKS.targetId$idhy), MetaAdapterByDeclaration.getReferenceLink(to));
       }
       return;
     }
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.MoveProperty$J)) {
       SNode mp = SNodeOperations.cast(node, CONCEPTS.MoveProperty$J);
-      SNode from = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.fromNode$JVN3), repo);
-      SNode to = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.toNode$JVO1), repo);
-      if ((SLinkOperations.getTarget(mp, LINKS.sourceId$YxgU) == null) && (from != null)) {
-        SLinkOperations.setTarget(mp, LINKS.sourceId$YxgU, SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyId$Ig, null));
-        PropertyId__BehaviorDescriptor.setProperty_id5ZE7FBYZ2jW.invoke(SLinkOperations.getTarget(mp, LINKS.sourceId$YxgU), MetaAdapterByDeclaration.getProperty(from));
+      SNode from = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.fromNode$dXIt), repo);
+      SNode to = AbstractNodeReference__BehaviorDescriptor.tryToFindNode_id6szrkDoc2K7.invoke(SLinkOperations.getTarget(movePart, LINKS.toNode$dYcv), repo);
+      if ((SLinkOperations.getTarget(mp, LINKS.sourceId$i7c6) == null) && (from != null)) {
+        SLinkOperations.setTarget(mp, LINKS.sourceId$i7c6, SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyId$Ig, null));
+        PropertyId__BehaviorDescriptor.setProperty_id5ZE7FBYZ2jW.invoke(SLinkOperations.getTarget(mp, LINKS.sourceId$i7c6), MetaAdapterByDeclaration.getProperty(from));
       }
-      if ((SLinkOperations.getTarget(mp, LINKS.targetId$Yxhp) == null) && (to != null)) {
-        SLinkOperations.setTarget(mp, LINKS.targetId$Yxhp, SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyId$Ig, null));
-        PropertyId__BehaviorDescriptor.setProperty_id5ZE7FBYZ2jW.invoke(SLinkOperations.getTarget(mp, LINKS.targetId$Yxhp), MetaAdapterByDeclaration.getProperty(to));
+      if ((SLinkOperations.getTarget(mp, LINKS.targetId$i7r7) == null) && (to != null)) {
+        SLinkOperations.setTarget(mp, LINKS.targetId$i7r7, SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyId$Ig, null));
+        PropertyId__BehaviorDescriptor.setProperty_id5ZE7FBYZ2jW.invoke(SLinkOperations.getTarget(mp, LINKS.targetId$i7r7), MetaAdapterByDeclaration.getProperty(to));
       }
       return;
     }
@@ -113,15 +113,15 @@ public class RefactoringIdHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targetId$NVqy = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6edL, "targetId");
-    /*package*/ static final SContainmentLink sourceId$NVp5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6eaL, "sourceId");
-    /*package*/ static final SContainmentLink targetId$Yxfu = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741baL, 0x74cb131f592e8ab6L, "targetId");
-    /*package*/ static final SContainmentLink sourceId$YxeZ = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741baL, 0x74cb131f592e8ab5L, "sourceId");
-    /*package*/ static final SContainmentLink targetId$Yxtu = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b7L, 0x74cb131f592e8abeL, "targetId");
-    /*package*/ static final SContainmentLink sourceId$YxsZ = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b7L, 0x74cb131f592e8abdL, "sourceId");
-    /*package*/ static final SContainmentLink targetId$Yxhp = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b9L, 0x74cb131f592e8abaL, "targetId");
-    /*package*/ static final SContainmentLink sourceId$YxgU = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b9L, 0x74cb131f592e8ab9L, "sourceId");
-    /*package*/ static final SContainmentLink fromNode$JVN3 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode");
-    /*package*/ static final SContainmentLink toNode$JVO1 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode");
+    /*package*/ static final SContainmentLink targetId$9LQu = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6edL, "targetId");
+    /*package*/ static final SContainmentLink sourceId$9L9r = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6eaL, "sourceId");
+    /*package*/ static final SContainmentLink targetId$i6vy = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741baL, 0x74cb131f592e8ab6L, "targetId");
+    /*package*/ static final SContainmentLink sourceId$i6gx = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741baL, 0x74cb131f592e8ab5L, "sourceId");
+    /*package*/ static final SContainmentLink targetId$idhy = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b7L, 0x74cb131f592e8abeL, "targetId");
+    /*package*/ static final SContainmentLink sourceId$id2x = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b7L, 0x74cb131f592e8abdL, "sourceId");
+    /*package*/ static final SContainmentLink targetId$i7r7 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b9L, 0x74cb131f592e8abaL, "targetId");
+    /*package*/ static final SContainmentLink sourceId$i7c6 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b9L, 0x74cb131f592e8ab9L, "sourceId");
+    /*package*/ static final SContainmentLink fromNode$dXIt = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode");
+    /*package*/ static final SContainmentLink toNode$dYcv = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode");
   }
 }

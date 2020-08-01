@@ -206,8 +206,8 @@ public class LightPattern_List_Test extends TestCase {
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
-        n1.forChild(LINKS.statement$WHn8).init(CONCEPTS.ReturnStatement$SF);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$J0D0).init(CONCEPTS.StatementList$TN);
+        n1.forChild(LINKS.statement$pYcS).init(CONCEPTS.ReturnStatement$SF);
       }
       setMatcher(n0.getMatcher());
       return super.match(nodeToMatch);
@@ -218,9 +218,9 @@ public class LightPattern_List_Test extends TestCase {
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$J0D0).init(CONCEPTS.StatementList$TN);
         {
-          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$WHn8).init(CONCEPTS.ReturnStatement$SF);
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$pYcS).init(CONCEPTS.ReturnStatement$SF);
         }
       }
       setMatcher(n0.getMatcher());
@@ -232,9 +232,9 @@ public class LightPattern_List_Test extends TestCase {
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$J0D0).init(CONCEPTS.StatementList$TN);
         {
-          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$WHn8).init(CONCEPTS.ReturnStatement$SF);
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$pYcS).init(CONCEPTS.ReturnStatement$SF);
           NodeMatcherBuilder n3 = n2.forSibling().init(new NodeMatcherBuilder.NodeWildcardMatcher(false));
         }
       }
@@ -243,7 +243,7 @@ public class LightPattern_List_Test extends TestCase {
     }
     @Nullable
     public static SNode getOther(SNode rootNode) {
-      List<SNode> container = SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0), CONCEPTS.StatementList$TN), LINKS.statement$WHn8);
+      List<SNode> container = SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0), CONCEPTS.StatementList$TN), LINKS.statement$pYcS);
       return container.get(1);
     }
   }
@@ -252,9 +252,9 @@ public class LightPattern_List_Test extends TestCase {
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$J0D0).init(CONCEPTS.StatementList$TN);
         {
-          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$WHn8).init(new NodeMatcherBuilder.NodeWildcardMatcher(false));
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$pYcS).init(new NodeMatcherBuilder.NodeWildcardMatcher(false));
           NodeMatcherBuilder n3 = n2.forSibling().init(CONCEPTS.ReturnStatement$SF);
         }
       }
@@ -263,7 +263,7 @@ public class LightPattern_List_Test extends TestCase {
     }
     @Nullable
     public static SNode getOther(SNode rootNode) {
-      List<SNode> container = SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0), CONCEPTS.StatementList$TN), LINKS.statement$WHn8);
+      List<SNode> container = SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0), CONCEPTS.StatementList$TN), LINKS.statement$pYcS);
       return container.get(0);
     }
   }
@@ -272,16 +272,16 @@ public class LightPattern_List_Test extends TestCase {
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
-        n1.forChild(LINKS.statement$WHn8).init(new NodeMatcherBuilder.ListWildcardMatcher());
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$J0D0).init(CONCEPTS.StatementList$TN);
+        n1.forChild(LINKS.statement$pYcS).init(new NodeMatcherBuilder.ListWildcardMatcher());
       }
       setMatcher(n0.getMatcher());
       return super.match(nodeToMatch);
     }
     @Nullable
     public static Iterable<SNode> getStatements(SNode rootNode) {
-      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0), CONCEPTS.StatementList$TN);
-      return IterableUtil.covariant(container.getChildren(LINKS.statement$WHn8));
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0), CONCEPTS.StatementList$TN);
+      return IterableUtil.covariant(container.getChildren(LINKS.statement$pYcS));
     }
   }
   public static class Pattern6_Pattern extends AbstractGeneratedPattern {
@@ -289,9 +289,9 @@ public class LightPattern_List_Test extends TestCase {
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$J0D0).init(CONCEPTS.StatementList$TN);
         {
-          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$WHn8).init(new NodeMatcherBuilder.NodeWildcardMatcher(false));
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$pYcS).init(new NodeMatcherBuilder.NodeWildcardMatcher(false));
         }
       }
       setMatcher(n0.getMatcher());
@@ -299,7 +299,7 @@ public class LightPattern_List_Test extends TestCase {
     }
     @Nullable
     public static SNode getStatement(SNode rootNode) {
-      List<SNode> container = SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0), CONCEPTS.StatementList$TN), LINKS.statement$WHn8);
+      List<SNode> container = SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0), CONCEPTS.StatementList$TN), LINKS.statement$pYcS);
       return container.get(0);
     }
   }
@@ -308,10 +308,10 @@ public class LightPattern_List_Test extends TestCase {
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
-        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$J0D0).init(CONCEPTS.StatementList$TN);
         {
-          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$WHn8).init(CONCEPTS.ReturnStatement$SF);
-          n2.forChild(LINKS.expression$EsbK).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.statement$pYcS).init(CONCEPTS.ReturnStatement$SF);
+          n2.forChild(LINKS.expression$zDGg).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
         }
       }
       setMatcher(n0.getMatcher());
@@ -319,8 +319,8 @@ public class LightPattern_List_Test extends TestCase {
     }
     @Nullable
     public static SNode getExpression(SNode rootNode) {
-      SNode container = SNodeOperations.as(AbstractGeneratedPattern.getNullableElement(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0), CONCEPTS.StatementList$TN), LINKS.statement$WHn8), 0), CONCEPTS.ReturnStatement$SF);
-      return AbstractGeneratedPattern.getNullableHead(container.getChildren(LINKS.expression$EsbK));
+      SNode container = SNodeOperations.as(AbstractGeneratedPattern.getNullableElement(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0), CONCEPTS.StatementList$TN), LINKS.statement$pYcS), 0), CONCEPTS.ReturnStatement$SF);
+      return AbstractGeneratedPattern.getNullableHead(container.getChildren(LINKS.expression$zDGg));
     }
   }
   private static SNode _quotation_createNode_zi1spz_a0b0a0() {
@@ -719,8 +719,8 @@ public class LightPattern_List_Test extends TestCase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 }

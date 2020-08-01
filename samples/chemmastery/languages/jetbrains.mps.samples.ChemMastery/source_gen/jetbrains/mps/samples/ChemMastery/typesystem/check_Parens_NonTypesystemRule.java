@@ -21,7 +21,7 @@ public class check_Parens_NonTypesystemRule extends AbstractNonTypesystemRule_Ru
   public check_Parens_NonTypesystemRule() {
   }
   public void applyRule(final SNode parens, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(parens, LINKS.elements$Cbl0)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(parens, LINKS.elements$tvb0)).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parens, "Cannot be empty", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "3123291046850634895", null, errorTarget);
@@ -39,7 +39,7 @@ public class check_Parens_NonTypesystemRule extends AbstractNonTypesystemRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$Cbl0 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
+    /*package*/ static final SContainmentLink elements$tvb0 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
   }
 
   private static final class CONCEPTS {

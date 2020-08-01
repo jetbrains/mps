@@ -20,10 +20,10 @@ public class check_ConceptDeclaration_iconPath_NonTypesystemRule extends Abstrac
   public check_ConceptDeclaration_iconPath_NonTypesystemRule() {
   }
   public void applyRule(final SNode conceptDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    String iconPath = SPropertyOperations.getString(conceptDeclaration, PROPS.iconPath$YYV1);
+    String iconPath = SPropertyOperations.getString(conceptDeclaration, PROPS.iconPath$wu_v);
     if (iconPath != null && iconPath.startsWith("${")) {
       if (!(iconPath.indexOf('\\') == -1)) {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.iconPath$YYV1);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.iconPath$wu_v);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptDeclaration, "Using backslashes in macro", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "4376713410984021563", null, errorTarget);
       }
     }
@@ -39,7 +39,7 @@ public class check_ConceptDeclaration_iconPath_NonTypesystemRule extends Abstrac
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty iconPath$YYV1 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x10e328118ddL, "iconPath");
+    /*package*/ static final SProperty iconPath$wu_v = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x10e328118ddL, "iconPath");
   }
 
   private static final class CONCEPTS {

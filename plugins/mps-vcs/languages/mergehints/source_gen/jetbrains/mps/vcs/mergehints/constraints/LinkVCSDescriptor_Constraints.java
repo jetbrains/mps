@@ -32,7 +32,7 @@ public class LinkVCSDescriptor_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.lnk$DMeS, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.lnk$fld8, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,8 +47,8 @@ public class LinkVCSDescriptor_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode cNode = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ConceptVCSDescriptor$QW, true, false), LINKS.cncpt$4YHz);
-            return new SimpleScope(SLinkOperations.getChildren(cNode, LINKS.linkDeclaration$lL6$)) {
+            SNode cNode = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ConceptVCSDescriptor$QW, true, false), LINKS.cncpt$qo3X);
+            return new SimpleScope(SLinkOperations.getChildren(cNode, LINKS.linkDeclaration$yMbs)) {
               @Nullable
               public String getReferenceText(@NotNull SNode target) {
                 return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(target);
@@ -70,8 +70,8 @@ public class LinkVCSDescriptor_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink lnk$DMeS = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9ceL, 0x4f2cc0d970a4f877L, "lnk");
-    /*package*/ static final SReferenceLink cncpt$4YHz = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SReferenceLink lnk$fld8 = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9ceL, 0x4f2cc0d970a4f877L, "lnk");
+    /*package*/ static final SReferenceLink cncpt$qo3X = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
+    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
   }
 }

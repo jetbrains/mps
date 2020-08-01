@@ -50,7 +50,7 @@ public class DirectClassifierSpecification_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_clc4cv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DirectClassifierSpecification$RM, LINKS.classifier$udFV);
+      super((SAbstractConcept) CONCEPTS.DirectClassifierSpecification$RM, LINKS.classifier$CCh_);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class DirectClassifierSpecification_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$udFV = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier");
+    /*package*/ static final SReferenceLink classifier$CCh_ = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier");
   }
 }

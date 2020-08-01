@@ -30,9 +30,9 @@ public class DeleteThought {
       public void execute_internal(EditorContext editorContext, final SNode node) {
         SNode mindMap = SNodeOperations.getNodeAncestor(node, CONCEPTS.MindMap$X8, false, false);
 
-        ListSequence.fromList(SLinkOperations.getChildren(mindMap, LINKS.relationships$tHU$)).where(new IWhereFilter<SNode>() {
+        ListSequence.fromList(SLinkOperations.getChildren(mindMap, LINKS.relationships$pfns)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return Objects.equals(SLinkOperations.getTarget(it, LINKS.target$$xE0), node) || Objects.equals(SLinkOperations.getTarget(it, LINKS.source$jsja), node);
+            return Objects.equals(SLinkOperations.getTarget(it, LINKS.target$Gjm0), node) || Objects.equals(SLinkOperations.getTarget(it, LINKS.source$qHhQ), node);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
@@ -91,8 +91,8 @@ public class DeleteThought {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink relationships$tHU$ = MetaAdapterFactory.getContainmentLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14758fL, 0x1198689ff14c5dbL, "relationships");
-    /*package*/ static final SReferenceLink source$jsja = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x517b79625769ba9eL, "source");
-    /*package*/ static final SReferenceLink target$$xE0 = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x1198689ff14c5dfL, "target");
+    /*package*/ static final SContainmentLink relationships$pfns = MetaAdapterFactory.getContainmentLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14758fL, 0x1198689ff14c5dbL, "relationships");
+    /*package*/ static final SReferenceLink source$qHhQ = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x517b79625769ba9eL, "source");
+    /*package*/ static final SReferenceLink target$Gjm0 = MetaAdapterFactory.getReferenceLink(0x33f294fd370a4a40L, 0x999b43f382910018L, 0x1198689ff14bad3L, 0x1198689ff14c5dfL, "target");
   }
 }

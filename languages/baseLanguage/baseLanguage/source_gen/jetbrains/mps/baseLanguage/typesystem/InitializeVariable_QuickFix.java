@@ -20,7 +20,7 @@ public class InitializeVariable_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode field = SNodeOperations.as(node, CONCEPTS.VariableDeclaration$xe);
-    SLinkOperations.setTarget(field, LINKS.initializer$KgD, VariableInitializationUtil.createDefaultInitializer(field));
+    SLinkOperations.setTarget(field, LINKS.initializer$no3R, VariableInitializationUtil.createDefaultInitializer(field));
   }
 
   private static final class CONCEPTS {
@@ -28,6 +28,6 @@ public class InitializeVariable_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

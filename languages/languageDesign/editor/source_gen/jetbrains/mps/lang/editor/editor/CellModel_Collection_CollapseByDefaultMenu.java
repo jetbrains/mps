@@ -86,7 +86,7 @@ public class CellModel_Collection_CollapseByDefaultMenu extends TransformationMe
 
     @Override
     protected SProperty getProperty(TransformationMenuContext context) {
-      return PROPS.collapseByDefault$RsH2;
+      return PROPS.collapseByDefault$QTNY;
     }
   }
   private class TMP_Action_ikacvd_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
@@ -127,7 +127,7 @@ public class CellModel_Collection_CollapseByDefaultMenu extends TransformationMe
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.collapseByDefaultCondition$RsV5, null);
+        SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.collapseByDefaultCondition$R0Br, null);
       }
 
 
@@ -151,10 +151,10 @@ public class CellModel_Collection_CollapseByDefaultMenu extends TransformationMe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty collapseByDefault$RsH2 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x569b712fbc6ece21L, "collapseByDefault");
+    /*package*/ static final SProperty collapseByDefault$QTNY = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x569b712fbc6ece21L, "collapseByDefault");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink collapseByDefaultCondition$RsV5 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x569b712fbc6ece29L, "collapseByDefaultCondition");
+    /*package*/ static final SContainmentLink collapseByDefaultCondition$R0Br = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x569b712fbc6ece29L, "collapseByDefaultCondition");
   }
 }

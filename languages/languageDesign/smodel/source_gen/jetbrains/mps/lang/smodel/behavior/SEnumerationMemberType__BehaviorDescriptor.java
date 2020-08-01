@@ -37,16 +37,16 @@ public final class SEnumerationMemberType__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    SNode enumNode = SLinkOperations.getTarget(__thisNode__, LINKS.enum$WChI);
+    SNode enumNode = SLinkOperations.getTarget(__thisNode__, LINKS.enum$nw_i);
     if (enumNode == null) {
       return "enummember< >";
     }
-    return "enummember<" + SPropertyOperations.getString(enumNode, PROPS.name$tAp1) + ">";
+    return "enummember<" + SPropertyOperations.getString(enumNode, PROPS.name$lA7v) + ">";
   }
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> variableSuffixes = ListSequence.fromListAndArray(new ArrayList<String>(), "enummember");
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.enum$WChI) != null) {
-      String name = NameUtil.decapitalize(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.enum$WChI), PROPS.name$tAp1));
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.enum$nw_i) != null) {
+      String name = NameUtil.decapitalize(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.enum$nw_i), PROPS.name$lA7v));
       ListSequence.fromList(variableSuffixes).addSequence(ListSequence.fromList(NameUtil.splitByCamels(name)));
     }
     return variableSuffixes;
@@ -101,10 +101,10 @@ public final class SEnumerationMemberType__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enum$WChI = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, 0x120bff1303bL, "enum");
+    /*package*/ static final SReferenceLink enum$nw_i = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, 0x120bff1303bL, "enum");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -154,7 +154,7 @@ public class LinkDeclaration_SubstituteMenu extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode linkDeclaration = SNodeFactoryOperations.createNewNode(CONCEPTS.LinkDeclaration$bA, _context.getCurrentTargetNode());
-            SLinkOperations.setTarget(linkDeclaration, LINKS.target$egp8, myParameterObject);
+            SLinkOperations.setTarget(linkDeclaration, LINKS.target$TWaS, myParameterObject);
             return linkDeclaration;
           }
 
@@ -193,6 +193,6 @@ public class LinkDeclaration_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

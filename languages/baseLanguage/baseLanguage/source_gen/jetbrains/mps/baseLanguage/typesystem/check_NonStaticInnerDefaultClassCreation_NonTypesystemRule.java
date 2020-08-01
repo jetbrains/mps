@@ -22,7 +22,7 @@ public class check_NonStaticInnerDefaultClassCreation_NonTypesystemRule extends 
   public check_NonStaticInnerDefaultClassCreation_NonTypesystemRule() {
   }
   public void applyRule(final SNode defaultClassCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(defaultClassCreator), CONCEPTS.NestedNewExpression$79) || (boolean) Classifier__BehaviorDescriptor.canInstantiateIn_id610WLfjPjne.invoke(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$bk50), defaultClassCreator))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(defaultClassCreator), CONCEPTS.NestedNewExpression$79) || (boolean) Classifier__BehaviorDescriptor.canInstantiateIn_id610WLfjPjne.invoke(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$uIr0), defaultClassCreator))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(defaultClassCreator, "Can't instantiate here", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1628645464081317915", null, errorTarget);
     }
@@ -43,6 +43,6 @@ public class check_NonStaticInnerDefaultClassCreation_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
   }
 }

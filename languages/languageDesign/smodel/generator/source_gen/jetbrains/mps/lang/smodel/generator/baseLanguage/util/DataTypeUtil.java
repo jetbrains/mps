@@ -17,10 +17,10 @@ public class DataTypeUtil {
     if (defMember != null) {
       return defMember;
     }
-    return ListSequence.fromList(SLinkOperations.getChildren(enumDatatype, LINKS.member$_cRv)).first();
+    return ListSequence.fromList(SLinkOperations.getChildren(enumDatatype, LINKS.member$1eS1)).first();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$_cRv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
+    /*package*/ static final SContainmentLink member$1eS1 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
   }
 }

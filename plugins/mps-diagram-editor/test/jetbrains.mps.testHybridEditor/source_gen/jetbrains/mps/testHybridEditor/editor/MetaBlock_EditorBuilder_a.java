@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -169,7 +169,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.inMetaPorts$R6WG;
+      return LINKS.inMetaPorts$Gnpk;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.MetaPort$5d;
@@ -182,7 +182,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(inMetaPortsListHandler_liyxwi_c3a.this.getNode(), LINKS.inMetaPorts$R6WG));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(inMetaPortsListHandler_liyxwi_c3a.this.getNode(), LINKS.inMetaPorts$Gnpk));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -273,7 +273,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.outMetaPorts$GN3P;
+      return LINKS.outMetaPorts$GIQF;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.MetaPort$5d;
@@ -286,7 +286,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(outMetaPortsListHandler_liyxwi_g3a.this.getNode(), LINKS.outMetaPorts$GN3P));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(outMetaPortsListHandler_liyxwi_g3a.this.getNode(), LINKS.outMetaPorts$GIQF));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -337,7 +337,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -346,7 +346,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inMetaPorts$R6WG = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts");
-    /*package*/ static final SContainmentLink outMetaPorts$GN3P = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x2cd0b06754c8ec0cL, "outMetaPorts");
+    /*package*/ static final SContainmentLink inMetaPorts$Gnpk = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts");
+    /*package*/ static final SContainmentLink outMetaPorts$GIQF = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x2cd0b06754c8ec0cL, "outMetaPorts");
   }
 }

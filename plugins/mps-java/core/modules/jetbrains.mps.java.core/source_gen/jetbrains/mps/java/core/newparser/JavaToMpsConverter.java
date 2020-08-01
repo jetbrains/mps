@@ -318,7 +318,7 @@ public class JavaToMpsConverter {
       public ISequence<SReference> invoke(SNode node) {
         return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.DotExpression$6a, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
           public Iterable<SReference> translate(SNode it) {
-            return deepReferences(SLinkOperations.getTarget(it, LINKS.operand$Lcrr));
+            return deepReferences(SLinkOperations.getTarget(it, LINKS.operand$P1i5));
           }
         });
       }
@@ -328,17 +328,17 @@ public class JavaToMpsConverter {
       public ISequence<SReference> invoke(SNode node) {
         return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.DotExpression$6a, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
           public Iterable<SReference> translate(SNode it) {
-            if (Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(it, LINKS.operand$Lcrr))).any(new IWhereFilter<SReference>() {
+            if (Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(it, LINKS.operand$P1i5))).any(new IWhereFilter<SReference>() {
               public boolean accept(SReference it) {
                 return (SReference) it instanceof DynamicReference;
               }
             })) {
               return ListSequence.fromList(new ArrayList<SReference>());
             } else {
-              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$X4R8), CONCEPTS.FieldReferenceOperation$N8)) {
-                return Sequence.<SReference>singleton(SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.operation$X4R8), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$mLBy));
-              } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G)) {
-                return Sequence.<SReference>singleton(SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.baseMethodDeclaration$$A7i));
+              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8)) {
+                return Sequence.<SReference>singleton(SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$229u));
+              } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G)) {
+                return Sequence.<SReference>singleton(SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), LINKS.baseMethodDeclaration$ItxI));
               } else {
                 return ListSequence.fromList(new ArrayList<SReference>());
               }
@@ -354,12 +354,12 @@ public class JavaToMpsConverter {
 
         ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticMethodCall$eu, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SReference>() {
           public SReference select(SNode it) {
-            return SNodeOperations.getReference(it, LINKS.classConcept$BsUa);
+            return SNodeOperations.getReference(it, LINKS.classConcept$70aQ);
           }
         }));
         ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticFieldReference$K8, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SReference>() {
           public SReference select(SNode it) {
-            return SNodeOperations.getReference(it, LINKS.classifier$ZTjE);
+            return SNodeOperations.getReference(it, LINKS.classifier$WKxm);
           }
         }));
 
@@ -373,12 +373,12 @@ public class JavaToMpsConverter {
 
         ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticMethodCall$eu, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SReference>() {
           public SReference select(SNode it) {
-            return SNodeOperations.getReference(it, LINKS.baseMethodDeclaration$$A7i);
+            return SNodeOperations.getReference(it, LINKS.baseMethodDeclaration$ItxI);
           }
         }));
         ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StaticFieldReference$K8, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SReference>() {
           public SReference select(SNode it) {
-            return SNodeOperations.getReference(it, LINKS.variableDeclaration$2ky6);
+            return SNodeOperations.getReference(it, LINKS.variableDeclaration$7WwU);
           }
         }));
 
@@ -466,7 +466,7 @@ public class JavaToMpsConverter {
       public void run() {
         for (SNode node : Sequence.fromIterable(nodes)) {
           if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV)) {
-            progress.step("class: " + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1));
+            progress.step("class: " + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v));
           }
 
           Iterable<SReference> refs = extractor.invoke(node);
@@ -504,12 +504,12 @@ public class JavaToMpsConverter {
         for (SNode node : Sequence.fromIterable(nodes)) {
           for (SNode fieldRefOp : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.FieldReferenceOperation$N8, false, new SAbstractConcept[]{}))) {
 
-            SReference fieldRef = SNodeOperations.getReference(fieldRefOp, LINKS.fieldDeclaration$mLBy);
+            SReference fieldRef = SNodeOperations.getReference(fieldRefOp, LINKS.fieldDeclaration$229u);
             if (!((fieldRef instanceof DynamicReference && "length".equals((((DynamicReference) fieldRef).getResolveInfo()))))) {
               continue;
             }
 
-            SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(fieldRefOp), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+            SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(fieldRefOp), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
 
             Iterable<SReference> operandRefs = SNodeOperations.getReferences(operand);
             if (Sequence.fromIterable(operandRefs).any(new IWhereFilter<SReference>() {
@@ -530,12 +530,12 @@ public class JavaToMpsConverter {
 
           for (SNode imco : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.InstanceMethodCallOperation$1G, false, new SAbstractConcept[]{}))) {
 
-            SReference fieldRef = SNodeOperations.getReference(imco, LINKS.baseMethodDeclaration$$A7i);
+            SReference fieldRef = SNodeOperations.getReference(imco, LINKS.baseMethodDeclaration$ItxI);
             if (!((fieldRef instanceof DynamicReference && "clone".equals((((DynamicReference) fieldRef).getResolveInfo()))))) {
               continue;
             }
 
-            SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(imco), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+            SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(imco), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
 
             Iterable<SReference> operandRefs = SNodeOperations.getReferences(operand);
             if (Sequence.fromIterable(operandRefs).any(new IWhereFilter<SReference>() {
@@ -569,7 +569,7 @@ public class JavaToMpsConverter {
             if ((subst == null)) {
               continue;
             }
-            MapSequence.fromMap(enumConstRefs).put(SNodeOperations.cast(SLinkOperations.getTarget(swicthCase, LINKS.expression$zuuG), CONCEPTS.VariableReference$sQ), subst);
+            MapSequence.fromMap(enumConstRefs).put(SNodeOperations.cast(SLinkOperations.getTarget(swicthCase, LINKS.expression$bKRk), CONCEPTS.VariableReference$sQ), subst);
           }
 
           progress.advance(1);
@@ -652,7 +652,7 @@ public class JavaToMpsConverter {
           });
 
           SNode importAnnotation = AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN));
-          if (ListSequence.fromList(SLinkOperations.getChildren(importAnnotation, LINKS.entries$9FEq)).isEmpty()) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(importAnnotation, LINKS.entries$G9yA)).isEmpty()) {
             SNodeOperations.deleteNode(importAnnotation);
           }
         }
@@ -670,7 +670,7 @@ public class JavaToMpsConverter {
     if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(varRef)), CONCEPTS.VariableReference$sQ))) {
       return null;
     }
-    SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$2ky6);
+    SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$7WwU);
     if (!(ref instanceof DynamicReference)) {
       return null;
     }
@@ -723,7 +723,7 @@ public class JavaToMpsConverter {
     }
 
     for (SNode onDemandImport : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(javaImports, CONCEPTS.JavaImports$IN, SMethodTrimmedId.create("staticOnDemand", CONCEPTS.JavaImports$IN, "4ykJ8Y6iCVz"))))) {
-      SNode claz = ((SNode) BHReflection.invoke0(gateway, CONCEPTS.IYetUnresolved$Oi, SMethodTrimmedId.create("findClass", CONCEPTS.IYetUnresolved$Oi, "4ykJ8Y83bdr"), varRef, SPropertyOperations.getString(onDemandImport, PROPS.tokens$DqHu)));
+      SNode claz = ((SNode) BHReflection.invoke0(gateway, CONCEPTS.IYetUnresolved$Oi, SMethodTrimmedId.create("findClass", CONCEPTS.IYetUnresolved$Oi, "4ykJ8Y83bdr"), varRef, SPropertyOperations.getString(onDemandImport, PROPS.tokens$3W1y)));
       if ((claz == null)) {
         continue;
       }
@@ -740,9 +740,9 @@ public class JavaToMpsConverter {
 
   private SNode makeEnumConstRef(SNode enumClass, final String constName) {
     // Q: maybe not findFirst, but rather fail if there are more than one... 
-    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(enumClass, CONCEPTS.EnumClass$uy), LINKS.enumConstant$urAQ)).findFirst(new IWhereFilter<SNode>() {
+    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(enumClass, CONCEPTS.EnumClass$uy), LINKS.enumConstant$JnOa)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return constName.equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+        return constName.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
       }
     });
     if ((enumConst == null)) {
@@ -750,8 +750,8 @@ public class JavaToMpsConverter {
     }
 
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-    SLinkOperations.setTarget(result, LINKS.enumClass$9jPZ, SNodeOperations.cast(enumClass, CONCEPTS.EnumClass$uy));
-    SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$fB6v, enumConst);
+    SLinkOperations.setTarget(result, LINKS.enumClass$wB9x, SNodeOperations.cast(enumClass, CONCEPTS.EnumClass$uy));
+    SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$zW91, enumConst);
 
     return result;
   }
@@ -759,18 +759,18 @@ public class JavaToMpsConverter {
   private SNode transformUnqualifedEnumUnderSwitch(SNode switchCase) {
     // FIXME share or re-use code with the corresponding NonTypesystemRule 
 
-    SNode caseExp = SLinkOperations.getTarget(switchCase, LINKS.expression$zuuG);
+    SNode caseExp = SLinkOperations.getTarget(switchCase, LINKS.expression$bKRk);
     if (!(SNodeOperations.isInstanceOf(caseExp, CONCEPTS.VariableReference$sQ))) {
       return null;
     }
-    SReference ref = SNodeOperations.getReference(SNodeOperations.cast(caseExp, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6);
+    SReference ref = SNodeOperations.getReference(SNodeOperations.cast(caseExp, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
     if (!(ref instanceof DynamicReference)) {
       return null;
     }
 
     final String enumConstName = ((DynamicReference) ref).getResolveInfo();
 
-    SNode scrutenee = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(caseExp, CONCEPTS.SwitchStatement$S1, false, false), LINKS.expression$z0sO);
+    SNode scrutenee = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(caseExp, CONCEPTS.SwitchStatement$S1, false, false), LINKS.expression$XdXc);
     if ((scrutenee == null)) {
       return null;
     }
@@ -780,19 +780,19 @@ public class JavaToMpsConverter {
       return null;
     }
 
-    SNode claz = SLinkOperations.getTarget(SNodeOperations.cast(scruteneeType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+    SNode claz = SLinkOperations.getTarget(SNodeOperations.cast(scruteneeType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
     if (!(SNodeOperations.isInstanceOf(claz, CONCEPTS.EnumClass$uy))) {
       return null;
     }
 
-    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy), LINKS.enumConstant$urAQ)).findFirst(new IWhereFilter<SNode>() {
+    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy), LINKS.enumConstant$JnOa)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).equals(enumConstName);
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).equals(enumConstName);
       }
     });
     SNode enumConstRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-    SLinkOperations.setTarget(enumConstRef, LINKS.enumClass$9jPZ, SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy));
-    SLinkOperations.setTarget(enumConstRef, LINKS.enumConstantDeclaration$fB6v, enumConst);
+    SLinkOperations.setTarget(enumConstRef, LINKS.enumClass$wB9x, SNodeOperations.cast(claz, CONCEPTS.EnumClass$uy));
+    SLinkOperations.setTarget(enumConstRef, LINKS.enumConstantDeclaration$zW91, enumConst);
 
     return enumConstRef;
   }
@@ -801,7 +801,7 @@ public class JavaToMpsConverter {
   private SNode transformLocalCall(SNode localCall) {
     // FIXME share or re-use code with the corresponding NonTypesystemRule 
 
-    SReference ref = SNodeOperations.getReference(localCall, LINKS.baseMethodDeclaration$$A7i);
+    SReference ref = SNodeOperations.getReference(localCall, LINKS.baseMethodDeclaration$ItxI);
     if (!(ref instanceof StaticReference)) {
       return null;
     }
@@ -817,13 +817,13 @@ public class JavaToMpsConverter {
 
     // it's out of scope, let's make it StaticMethodCall 
     SNode smc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
-    SLinkOperations.setTarget(smc, LINKS.classConcept$BsUa, SNodeOperations.getNodeAncestor(target, CONCEPTS.Classifier$hJ, false, false));
-    SLinkOperations.setTarget(smc, LINKS.baseMethodDeclaration$$A7i, SNodeOperations.cast(target, CONCEPTS.StaticMethodDeclaration$eX));
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(localCall, LINKS.actualArgument$$A7L))) {
-      ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$$A7L)).addElement(SNodeOperations.copyNode(arg));
+    SLinkOperations.setTarget(smc, LINKS.classConcept$70aQ, SNodeOperations.getNodeAncestor(target, CONCEPTS.Classifier$hJ, false, false));
+    SLinkOperations.setTarget(smc, LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(target, CONCEPTS.StaticMethodDeclaration$eX));
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(localCall, LINKS.actualArgument$ItKJ))) {
+      ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.actualArgument$ItKJ)).addElement(SNodeOperations.copyNode(arg));
     }
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(localCall, LINKS.typeArgument$GDtv))) {
-      ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.typeArgument$GDtv)).addElement(SNodeOperations.copyNode(arg));
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(localCall, LINKS.typeArgument$C5i1))) {
+      ListSequence.fromList(SLinkOperations.getChildren(smc, LINKS.typeArgument$C5i1)).addElement(SNodeOperations.copyNode(arg));
     }
 
     return smc;
@@ -834,7 +834,7 @@ public class JavaToMpsConverter {
 
     // FIXME share or re-use code with the corresponding NonTypesystemRule 
 
-    SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$2ky6);
+    SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$7WwU);
     if (!(ref instanceof StaticReference)) {
       return null;
     }
@@ -854,8 +854,8 @@ public class JavaToMpsConverter {
 
     // different class, let's make this reference non-local, but qualified 
     SNode sfr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
-    SLinkOperations.setTarget(sfr, LINKS.classifier$ZTjE, thatClass);
-    SLinkOperations.setTarget(sfr, LINKS.variableDeclaration$2ky6, SNodeOperations.cast(target, CONCEPTS.StaticFieldDeclaration$R5));
+    SLinkOperations.setTarget(sfr, LINKS.classifier$WKxm, thatClass);
+    SLinkOperations.setTarget(sfr, LINKS.variableDeclaration$7WwU, SNodeOperations.cast(target, CONCEPTS.StaticFieldDeclaration$R5));
 
     return sfr;
   }
@@ -865,9 +865,9 @@ public class JavaToMpsConverter {
     // FIXME share or re-use code with the corresponding NonTypesystemRule 
 
     final Map<String, SNode> importsByName = MapSequence.fromMap(new HashMap<String, SNode>());
-    ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN)), LINKS.entries$9FEq)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN)), LINKS.entries$G9yA)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.onDemand$6eZw));
+        return !(SPropertyOperations.getBoolean(it, PROPS.onDemand$1gKw));
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -912,7 +912,7 @@ public class JavaToMpsConverter {
     // on the other hand, if everything is resolved, remove all imports altogether 
     if (dynRefsPresent == false) {
       // quick-fix 
-      return SLinkOperations.getChildren(AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN)), LINKS.entries$9FEq);
+      return SLinkOperations.getChildren(AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN)), LINKS.entries$G9yA);
     }
     // removing only those single-type imports that didn't get into retain set 
     // quick fix 
@@ -924,15 +924,15 @@ public class JavaToMpsConverter {
     final List<SReference> refs = ListSequence.fromList(new ArrayList<SReference>());
 
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY)) {
-      ListSequence.fromList(refs).addSequence(ListSequence.fromList(SNodeOperations.getReferences(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY), LINKS.superclass$_pqe))));
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY), LINKS.implementedInterface$mdc6)).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(refs).addSequence(ListSequence.fromList(SNodeOperations.getReferences(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY), LINKS.superclass$7jGM))));
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY), LINKS.implementedInterface$KoQU)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(it)));
         }
       });
 
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$Kp)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.Interface$Kp), LINKS.extendedInterface$rbvY)).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.Interface$Kp), LINKS.extendedInterface$a$v2)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(it)));
         }
@@ -951,18 +951,18 @@ public class JavaToMpsConverter {
 
   private Iterable<SReference> getFieldAndMethodTypeRefs(SNode node) {
     List<SReference> refs = ListSequence.fromList(new ArrayList<SReference>());
-    Iterable<SNode> members = (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$hJ) ? SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.Classifier$hJ), LINKS.member$oYX5) : Sequence.<SNode>singleton(SNodeOperations.cast(node, CONCEPTS.ClassifierMember$9F)));
+    Iterable<SNode> members = (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$hJ) ? SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.Classifier$hJ), LINKS.member$6v_r) : Sequence.<SNode>singleton(SNodeOperations.cast(node, CONCEPTS.ClassifierMember$9F)));
 
     for (SNode member : Sequence.fromIterable(members)) {
       if (SNodeOperations.isInstanceOf(member, CONCEPTS.VariableDeclaration$xe)) {
-        ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(SNodeOperations.cast(member, CONCEPTS.VariableDeclaration$xe), LINKS.type$pLrO))));
+        ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(SNodeOperations.cast(member, CONCEPTS.VariableDeclaration$xe), LINKS.type$uWuc))));
 
       } else if (SNodeOperations.isInstanceOf(member, CONCEPTS.MethodDeclaration$93)) {
-        ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(SNodeOperations.cast(member, CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$WIkw))));
-        for (SNode param : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(member, CONCEPTS.BaseMethodDeclaration$RR), LINKS.parameter$WIkZ))) {
-          ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(param, LINKS.type$pLrO))));
+        ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(SNodeOperations.cast(member, CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$qrVw))));
+        for (SNode param : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(member, CONCEPTS.BaseMethodDeclaration$RR), LINKS.parameter$qsax))) {
+          ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(param, LINKS.type$uWuc))));
         }
-        for (SNode thrws : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(member, CONCEPTS.BaseMethodDeclaration$RR), LINKS.throwsItem$gr7e))) {
+        for (SNode thrws : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(member, CONCEPTS.BaseMethodDeclaration$RR), LINKS.throwsItem$X8vM))) {
           ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(thrws)));
         }
 
@@ -980,7 +980,7 @@ public class JavaToMpsConverter {
     for (SNode block : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.StatementList$TN, false, new SAbstractConcept[]{}))) {
 
       for (SNode varDecl : ListSequence.fromList(SNodeOperations.getNodeDescendants(block, CONCEPTS.VariableDeclaration$xe, false, new SAbstractConcept[]{}))) {
-        ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(varDecl, LINKS.type$pLrO))));
+        ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(SLinkOperations.getTarget(varDecl, LINKS.type$uWuc))));
       }
     }
 
@@ -994,7 +994,7 @@ public class JavaToMpsConverter {
       }
     }).select(new ISelector<SNode, SReference>() {
       public SReference select(SNode it) {
-        return SNodeOperations.getReference(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6);
+        return SNodeOperations.getReference(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
       }
     });
   }
@@ -1002,7 +1002,7 @@ public class JavaToMpsConverter {
   private Iterable<SReference> getDotExpLeftParts(SNode node) {
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.DotExpression$6a, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
       public Iterable<SReference> translate(SNode it) {
-        return deepReferences(SLinkOperations.getTarget(it, LINKS.operand$Lcrr));
+        return deepReferences(SLinkOperations.getTarget(it, LINKS.operand$P1i5));
       }
     });
   }
@@ -1196,35 +1196,35 @@ public class JavaToMpsConverter {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classConcept$BsUa = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink expression$zuuG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
-    /*package*/ static final SContainmentLink entries$9FEq = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
-    /*package*/ static final SContainmentLink enumConstant$urAQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
-    /*package*/ static final SReferenceLink enumClass$9jPZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
-    /*package*/ static final SReferenceLink enumConstantDeclaration$fB6v = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
-    /*package*/ static final SContainmentLink expression$z0sO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeArgument$GDtv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink expression$bKRk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
+    /*package*/ static final SContainmentLink entries$G9yA = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
+    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SContainmentLink expression$XdXc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty tokens$DqHu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
-    /*package*/ static final SProperty onDemand$6eZw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty tokens$3W1y = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
+    /*package*/ static final SProperty onDemand$1gKw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
   }
 }

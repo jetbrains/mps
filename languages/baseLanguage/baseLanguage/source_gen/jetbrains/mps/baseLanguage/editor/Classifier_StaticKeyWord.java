@@ -29,12 +29,12 @@ public class Classifier_StaticKeyWord {
         if (DeletionApproverUtil.approve(editorContext, node, "staticKeyword")) {
           return;
         }
-        SPropertyOperations.set(node, PROPS.nonStatic$pNlE, true);
+        SPropertyOperations.set(node, PROPS.nonStatic$vRvm, true);
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY)) {
           SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY);
-          if (SPropertyOperations.getBoolean(classConcept, PROPS.abstractClass$gY5l)) {
+          if (SPropertyOperations.getBoolean(classConcept, PROPS.abstractClass$e4_b)) {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, classConcept, "abstractKeyword", 0);
-          } else if (SPropertyOperations.getBoolean(classConcept, PROPS.isFinal$dzaH)) {
+          } else if (SPropertyOperations.getBoolean(classConcept, PROPS.isFinal$$2bN)) {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, classConcept, "finalKeyword", 0);
           } else {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, classConcept, "classKeyword", 0);
@@ -89,9 +89,9 @@ public class Classifier_StaticKeyWord {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nonStatic$pNlE = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
-    /*package*/ static final SProperty isFinal$dzaH = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty nonStatic$vRvm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
   }
 
   private static final class CONCEPTS {

@@ -38,7 +38,7 @@ public class typeof_ContextExpression_InferenceRule extends AbstractInferenceRul
   private static SNode createClassifierType_wnwgn_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    n0.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.actions(MPS.IDEA/)"), facade.createNodeId("~ConfigurationContext")));
+    n0.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.actions(MPS.IDEA/)"), facade.createNodeId("~ConfigurationContext")));
     return n0.getResult();
   }
 
@@ -48,6 +48,6 @@ public class typeof_ContextExpression_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

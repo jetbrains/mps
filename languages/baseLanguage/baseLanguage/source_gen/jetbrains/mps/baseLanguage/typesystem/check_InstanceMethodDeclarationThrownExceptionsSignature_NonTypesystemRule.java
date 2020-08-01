@@ -34,7 +34,7 @@ public class check_InstanceMethodDeclarationThrownExceptionsSignature_NonTypesys
   public check_InstanceMethodDeclarationThrownExceptionsSignature_NonTypesystemRule() {
   }
   public void applyRule(final SNode instanceMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> myThrown = SLinkOperations.getChildren(instanceMethodDeclaration, LINKS.throwsItem$gr7e);
+    List<SNode> myThrown = SLinkOperations.getChildren(instanceMethodDeclaration, LINKS.throwsItem$X8vM);
     if (ListSequence.fromList(myThrown).isEmpty()) {
       return;
     }
@@ -47,7 +47,7 @@ public class check_InstanceMethodDeclarationThrownExceptionsSignature_NonTypesys
       return;
     }
 
-    final List<SNode> superThrown = SLinkOperations.getChildren(nearestOverriddenMethod, LINKS.throwsItem$gr7e);
+    final List<SNode> superThrown = SLinkOperations.getChildren(nearestOverriddenMethod, LINKS.throwsItem$X8vM);
     ListSequence.fromList(myThrown).visitAll(new IVisitor<SNode>() {
       public void visit(SNode my) {
         final SNode myClassifier = ThrownTypeVariableReferencesHelper.retrieveClassifier(my);
@@ -70,7 +70,7 @@ public class check_InstanceMethodDeclarationThrownExceptionsSignature_NonTypesys
             }));
           }
         }))) {
-          String thrownName = SPropertyOperations.getString(myClassifier, PROPS.name$tAp1);
+          String thrownName = SPropertyOperations.getString(myClassifier, PROPS.name$lA7v);
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(my, "Overriden method does not throw " + thrownName, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8302934035215147192", null, errorTarget);
@@ -90,11 +90,11 @@ public class check_InstanceMethodDeclarationThrownExceptionsSignature_NonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

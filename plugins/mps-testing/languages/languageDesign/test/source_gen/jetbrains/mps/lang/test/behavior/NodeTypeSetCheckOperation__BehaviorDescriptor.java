@@ -37,7 +37,7 @@ public final class NodeTypeSetCheckOperation__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node, @Nullable ComponentHost host) {
-    new CheckTypesAction.CheckComputedType(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__)).checkTypeIn(SLinkOperations.getChildren(__thisNode__, LINKS.type$JZFw));
+    new CheckTypesAction.CheckComputedType(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__)).checkTypeIn(SLinkOperations.getChildren(__thisNode__, LINKS.type$fQ4w));
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeTypeSetCheck";
@@ -98,6 +98,6 @@ public final class NodeTypeSetCheckOperation__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$JZFw = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x15404cb86444497L, 0x15404cb86444498L, "type");
+    /*package*/ static final SContainmentLink type$fQ4w = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x15404cb86444497L, 0x15404cb86444498L, "type");
   }
 }

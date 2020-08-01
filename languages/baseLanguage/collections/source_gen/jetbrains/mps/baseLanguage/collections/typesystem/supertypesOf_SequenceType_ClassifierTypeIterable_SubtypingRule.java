@@ -22,7 +22,7 @@ public class supertypesOf_SequenceType_ClassifierTypeIterable_SubtypingRule exte
   public supertypesOf_SequenceType_ClassifierTypeIterable_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode elemType = SLinkOperations.getTarget(type, LINKS.elementType$2gFy);
+    SNode elemType = SLinkOperations.getTarget(type, LINKS.elementType$655u);
     if (SNodeOperations.isInstanceOf(elemType, CONCEPTS.PrimitiveType$5)) {
       elemType = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(elemType);
     }
@@ -51,7 +51,7 @@ public class supertypesOf_SequenceType_ClassifierTypeIterable_SubtypingRule exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$2gFy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
   }
 
   private static final class CONCEPTS {

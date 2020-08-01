@@ -118,7 +118,7 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellActionMapItem$fu, _context.getCurrentTargetNode());
-          SPropertyOperations.assignEnum(newNode, PROPS.actionId$TiJc, myParameterObject);
+          SPropertyOperations.assignEnum(newNode, PROPS.actionId$K4QO, myParameterObject);
           return newNode;
         }
 
@@ -155,6 +155,6 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty actionId$TiJc = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
+    /*package*/ static final SProperty actionId$K4QO = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
   }
 }

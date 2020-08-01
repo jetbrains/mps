@@ -21,7 +21,7 @@ public class check_TryUniversalStatement_NonTypesystemRule extends AbstractNonTy
   public check_TryUniversalStatement_NonTypesystemRule() {
   }
   public void applyRule(final SNode tryStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(tryStatement, LINKS.resource$nWfw)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(tryStatement, LINKS.catchClause$4PbB)).isNotEmpty() || (SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$4P0X) != null))) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(tryStatement, LINKS.resource$Abww)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(tryStatement, LINKS.catchClause$lKBT)).isNotEmpty() || (SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$lFtz) != null))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tryStatement, "'try' statement should have either clauses or resources", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5181868005239788938", null, errorTarget);
     }
@@ -37,9 +37,9 @@ public class check_TryUniversalStatement_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink finallyClause$4P0X = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
-    /*package*/ static final SContainmentLink resource$nWfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
-    /*package*/ static final SContainmentLink catchClause$4PbB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
+    /*package*/ static final SContainmentLink finallyClause$lFtz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink resource$Abww = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
+    /*package*/ static final SContainmentLink catchClause$lKBT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
   }
 
   private static final class CONCEPTS {

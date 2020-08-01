@@ -25,19 +25,19 @@ public class check_CellModel_RefCell_NotEditable_InferenceRule extends AbstractI
   public check_CellModel_RefCell_NotEditable_InferenceRule() {
   }
   public void applyRule(final SNode refCell, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode innerCell = SLinkOperations.getTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$36e$), LINKS.cellModel$3wIV);
+    SNode innerCell = SLinkOperations.getTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$w13s), LINKS.cellModel$GQI_);
     if (!(SNodeOperations.isInstanceOf(innerCell, CONCEPTS.CellModel_Property$iE))) {
       return;
     }
 
     SNode propCell = SNodeOperations.cast(innerCell, CONCEPTS.CellModel_Property$iE);
-    if (SPropertyOperations.getBoolean(propCell, PROPS.readOnly$pDcw)) {
+    if (SPropertyOperations.getBoolean(propCell, PROPS.readOnly$qX3w)) {
       return;
     }
 
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(refCell, "It will be possible to change property " + SPropertyOperations.getString(SLinkOperations.getTarget(propCell, LINKS.relationDeclaration$wbRV), PROPS.name$tAp1) + " of the referenced node using this cell. In most cases it's not the desired behavior.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "9161584445026704378", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(refCell, "It will be possible to change property " + SPropertyOperations.getString(SLinkOperations.getTarget(propCell, LINKS.relationDeclaration$_K5_), PROPS.name$lA7v) + " of the referenced node using this cell. In most cases it's not the desired behavior.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "9161584445026704378", null, errorTarget);
       {
         BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.editor.typesystem.FixRefCellReadOnly_QuickFix", false);
         intentionProvider.putArgument("propCell", propCell);
@@ -56,9 +56,9 @@ public class check_CellModel_RefCell_NotEditable_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink editorComponent$36e$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
-    /*package*/ static final SContainmentLink cellModel$3wIV = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SReferenceLink relationDeclaration$wbRV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SContainmentLink editorComponent$w13s = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
+    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -67,7 +67,7 @@ public class check_CellModel_RefCell_NotEditable_InferenceRule extends AbstractI
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty readOnly$pDcw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty readOnly$qX3w = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -28,7 +28,7 @@ public class NamedNodeReference_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$I6bY, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$kZN2, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,7 +45,7 @@ public class NamedNodeReference_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode parent = ((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()));
             if (SNodeOperations.isInstanceOf(parent, CONCEPTS.NamedNodeReference$uC)) {
-              return NamedNodeReferencesScope.createDescendantsScope(SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.NamedNodeReference$uC), LINKS.target$I6bY));
+              return NamedNodeReferencesScope.createDescendantsScope(SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.NamedNodeReference$uC), LINKS.target$kZN2));
             } else {
               return NamedNodeReferencesScope.createRootsScope(SNodeOperations.getModel(_context.getContextNode()));
             }
@@ -64,6 +64,6 @@ public class NamedNodeReference_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$I6bY = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
+    /*package*/ static final SReferenceLink target$kZN2 = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
   }
 }

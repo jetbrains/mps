@@ -14,12 +14,12 @@ public class TextFile_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$YwCo)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$hNzC)) {
       tgs.appendNode(item);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$YwCo = MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d6687cL, 0x180805c7b1d668b1L, "lines");
+    /*package*/ static final SContainmentLink lines$hNzC = MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d6687cL, 0x180805c7b1d668b1L, "lines");
   }
 }

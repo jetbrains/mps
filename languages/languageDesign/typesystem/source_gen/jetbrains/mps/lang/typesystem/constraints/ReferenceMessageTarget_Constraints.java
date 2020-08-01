@@ -34,7 +34,7 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkDeclaration$s0AQ, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkDeclaration$$iOa, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -53,11 +53,11 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
             if (messageStatement == null) {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
             }
-            SNode nodetype = (SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$f1Ii) != null ? TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$f1Ii)) : TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport$r7g8)));
+            SNode nodetype = (SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$hPqI) != null ? TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$hPqI)) : TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport$8wNS)));
             {
               SNode coercedNode_h95xiq_d0b0a0a0b0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(nodetype, CONCEPTS.SNodeType$gn);
               if (coercedNode_h95xiq_d0b0a0a0b0a0a0a2 != null) {
-                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(coercedNode_h95xiq_d0b0a0a0b0a0a0a2, LINKS.concept$HWFQ)));
+                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(coercedNode_h95xiq_d0b0a0a0b0a0a0a2, LINKS.concept$gpfa)));
               } else {
                 return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
               }
@@ -79,9 +79,9 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink linkDeclaration$s0AQ = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a87c94L, 0x11db4a8e070L, "linkDeclaration");
-    /*package*/ static final SContainmentLink nodeToReport_old$f1Ii = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e6L, "nodeToReport_old");
-    /*package*/ static final SContainmentLink nodeToReport$r7g8 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5a5dL, "nodeToReport");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink linkDeclaration$$iOa = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a87c94L, 0x11db4a8e070L, "linkDeclaration");
+    /*package*/ static final SContainmentLink nodeToReport_old$hPqI = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e6L, "nodeToReport_old");
+    /*package*/ static final SContainmentLink nodeToReport$8wNS = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5a5dL, "nodeToReport");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 }

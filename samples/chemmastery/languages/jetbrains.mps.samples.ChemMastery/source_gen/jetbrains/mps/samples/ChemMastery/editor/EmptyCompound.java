@@ -113,7 +113,7 @@ public class EmptyCompound extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
-        if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.cardinalityVisible$iY8b)) {
+        if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.cardinalityVisible$c5Xl)) {
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL, -1);
         } else {
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_EDITABLE_CELL, -1);
@@ -148,6 +148,6 @@ public class EmptyCompound extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$iY8b = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinalityVisible$c5Xl = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
   }
 }

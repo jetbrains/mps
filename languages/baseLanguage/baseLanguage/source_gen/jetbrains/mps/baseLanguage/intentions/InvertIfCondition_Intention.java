@@ -54,22 +54,22 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$uXBQ)).isNotEmpty()) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$ZQja)).isNotEmpty()) {
         SNode newIfFalsefStatement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
-        SLinkOperations.setTarget(newIfFalsefStatement, LINKS.condition$WJ1b, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$uXBQ)).first(), LINKS.condition$3oC9));
-        SLinkOperations.setTarget(newIfFalsefStatement, LINKS.ifTrue$WJ1E, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$uXBQ)).first(), LINKS.statementList$TaC3));
-        SLinkOperations.setTarget(newIfFalsefStatement, LINKS.ifFalseStatement$Xnu2, SLinkOperations.getTarget(node, LINKS.ifFalseStatement$Xnu2));
-        ListSequence.fromList(SLinkOperations.getChildren(newIfFalsefStatement, LINKS.elsifClauses$uXBQ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$uXBQ)));
-        ListSequence.fromList(SLinkOperations.getChildren(newIfFalsefStatement, LINKS.elsifClauses$uXBQ)).removeElementAt(0);
-        SLinkOperations.setTarget(node, LINKS.ifFalseStatement$Xnu2, newIfFalsefStatement);
+        SLinkOperations.setTarget(newIfFalsefStatement, LINKS.condition$qL$l, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$ZQja)).first(), LINKS.condition$CVsn));
+        SLinkOperations.setTarget(newIfFalsefStatement, LINKS.ifTrue$qLNm, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$ZQja)).first(), LINKS.statementList$G9pt));
+        SLinkOperations.setTarget(newIfFalsefStatement, LINKS.ifFalseStatement$InyY, SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY));
+        ListSequence.fromList(SLinkOperations.getChildren(newIfFalsefStatement, LINKS.elsifClauses$ZQja)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$ZQja)));
+        ListSequence.fromList(SLinkOperations.getChildren(newIfFalsefStatement, LINKS.elsifClauses$ZQja)).removeElementAt(0);
+        SLinkOperations.setTarget(node, LINKS.ifFalseStatement$InyY, newIfFalsefStatement);
       }
 
 
       // Invert condition 
-      SNode condition = SLinkOperations.getTarget(node, LINKS.condition$WJ1b);
+      SNode condition = SLinkOperations.getTarget(node, LINKS.condition$qL$l);
       if ((condition != null)) {
         if (SNodeOperations.isInstanceOf(condition, CONCEPTS.NotExpression$oq)) {
-          SNodeOperations.replaceWithAnother(condition, SLinkOperations.getTarget(SNodeOperations.cast(condition, CONCEPTS.NotExpression$oq), LINKS.expression$bUD_));
+          SNodeOperations.replaceWithAnother(condition, SLinkOperations.getTarget(SNodeOperations.cast(condition, CONCEPTS.NotExpression$oq), LINKS.expression$Lq8V));
         } else {
           SNode newCondition = null;
           if (SNodeOperations.isInstanceOf(condition, CONCEPTS.EqualsExpression$lT)) {
@@ -91,40 +91,40 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
             newCondition = SNodeFactoryOperations.createNewNode(CONCEPTS.GreaterThanExpression$wR, null);
           }
           if (newCondition != null) {
-            SLinkOperations.setTarget(newCondition, LINKS.leftExpression$rxLZ, SLinkOperations.getTarget(SNodeOperations.cast(condition, CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$rxLZ));
-            SLinkOperations.setTarget(newCondition, LINKS.rightExpression$rxBl, SLinkOperations.getTarget(SNodeOperations.cast(condition, CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$rxBl));
-            SLinkOperations.setTarget(node, LINKS.condition$WJ1b, newCondition);
+            SLinkOperations.setTarget(newCondition, LINKS.leftExpression$lndx, SLinkOperations.getTarget(SNodeOperations.cast(condition, CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$lndx));
+            SLinkOperations.setTarget(newCondition, LINKS.rightExpression$li3b, SLinkOperations.getTarget(SNodeOperations.cast(condition, CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$li3b));
+            SLinkOperations.setTarget(node, LINKS.condition$qL$l, newCondition);
           } else {
             SNodeFactoryOperations.replaceWithNewChild(condition, CONCEPTS.NotExpression$oq);
           }
         }
       }
       // Flip ifTrue and ifFalse 
-      SNode ifTrue = SLinkOperations.getTarget(node, LINKS.ifTrue$WJ1E);
-      SNode ifFalse = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$Xnu2);
+      SNode ifTrue = SLinkOperations.getTarget(node, LINKS.ifTrue$qLNm);
+      SNode ifFalse = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY);
       SNode newIfTrue;
       SNode newIfFalse;
       // Set new ifFalse 
-      if (ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$WHn8)).isEmpty()) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$pYcS)).isEmpty()) {
         newIfFalse = null;
       } else
-      if (ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$WHn8)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$WHn8)).first(), CONCEPTS.IfStatement$pi)) {
-        newIfFalse = ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$WHn8)).first();
+      if (ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$pYcS)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$pYcS)).first(), CONCEPTS.IfStatement$pi)) {
+        newIfFalse = ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$pYcS)).first();
       } else {
         newIfFalse = SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$1i, null);
-        SLinkOperations.setTarget(SNodeOperations.cast(newIfFalse, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0, ifTrue);
+        SLinkOperations.setTarget(SNodeOperations.cast(newIfFalse, CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0, ifTrue);
       }
       // Set new ifTrue 
       if (SNodeOperations.isInstanceOf(ifFalse, CONCEPTS.BlockStatement$1i)) {
-        newIfTrue = SLinkOperations.getTarget(SNodeOperations.cast(ifFalse, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0);
+        newIfTrue = SLinkOperations.getTarget(SNodeOperations.cast(ifFalse, CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0);
       } else {
         newIfTrue = SNodeFactoryOperations.createNewNode(CONCEPTS.StatementList$TN, null);
         if (ifFalse != null) {
-          ListSequence.fromList(SLinkOperations.getChildren(newIfTrue, LINKS.statement$WHn8)).addElement(ifFalse);
+          ListSequence.fromList(SLinkOperations.getChildren(newIfTrue, LINKS.statement$pYcS)).addElement(ifFalse);
         }
       }
-      SLinkOperations.setTarget(node, LINKS.ifTrue$WJ1E, newIfTrue);
-      SLinkOperations.setTarget(node, LINKS.ifFalseStatement$Xnu2, newIfFalse);
+      SLinkOperations.setTarget(node, LINKS.ifTrue$qLNm, newIfTrue);
+      SLinkOperations.setTarget(node, LINKS.ifFalseStatement$InyY, newIfFalse);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -133,17 +133,17 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink elsifClauses$uXBQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
-    /*package*/ static final SContainmentLink condition$3oC9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statementList$TaC3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
-    /*package*/ static final SContainmentLink ifFalseStatement$Xnu2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink elsifClauses$ZQja = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
+    /*package*/ static final SContainmentLink condition$CVsn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statementList$G9pt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
+    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
   }
 
   private static final class CONCEPTS {

@@ -54,7 +54,7 @@ public class MatchVariableReferenceReplacement_SubstituteMenu extends Substitute
 
     public SMP_ReferenceScope_57bq3c_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.MatchVariableReferenceReplacement$$o, LINKS.match$FhOt);
+      super((SAbstractConcept) CONCEPTS.MatchVariableReferenceReplacement$$o, LINKS.match$XCq3);
     }
     @NotNull
     @Override
@@ -126,6 +126,6 @@ public class MatchVariableReferenceReplacement_SubstituteMenu extends Substitute
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink match$FhOt = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, 0x34ae970c192abbc5L, "match");
+    /*package*/ static final SReferenceLink match$XCq3 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, 0x34ae970c192abbc5L, "match");
   }
 }

@@ -153,8 +153,8 @@ public class InstanceMethodCallSubstitute extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode operationExpression = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.DotExpression$6a, null);
-            SLinkOperations.setTarget(SNodeFactoryOperations.setNewChild(operationExpression, LINKS.operation$X4R8, CONCEPTS.InstanceMethodCallOperation$1G), LINKS.baseMethodDeclaration$$A7i, SNodeOperations.cast(myParameterObject, CONCEPTS.InstanceMethodDeclaration$An));
-            SNode thisExpression = SNodeFactoryOperations.setNewChild(operationExpression, LINKS.operand$Lcrr, CONCEPTS.ThisExtensionExpression$UG);
+            SLinkOperations.setTarget(SNodeFactoryOperations.setNewChild(operationExpression, LINKS.operation$_mGS, CONCEPTS.InstanceMethodCallOperation$1G), LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(myParameterObject, CONCEPTS.InstanceMethodDeclaration$An));
+            SNode thisExpression = SNodeFactoryOperations.setNewChild(operationExpression, LINKS.operand$P1i5, CONCEPTS.ThisExtensionExpression$UG);
 
             return operationExpression;
           }
@@ -208,8 +208,8 @@ public class InstanceMethodCallSubstitute extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

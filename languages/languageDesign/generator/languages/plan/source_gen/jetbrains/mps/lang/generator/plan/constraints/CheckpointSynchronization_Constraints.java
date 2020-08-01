@@ -39,7 +39,7 @@ public class CheckpointSynchronization_Constraints extends BaseConstraintsDescri
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     // do not allow synchronize with a checkpoint that references another one, always use original CP declaration 
-    if (link.equals(LINKS.checkpoint$BupL)) {
+    if (link.equals(LINKS.checkpoint$7IuJ)) {
       return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.DeclaredCheckpointSpec$HY) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.InPlaceCheckpointRefSpec$Hr);
     }
     return true;
@@ -53,6 +53,6 @@ public class CheckpointSynchronization_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink checkpoint$BupL = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint");
+    /*package*/ static final SContainmentLink checkpoint$7IuJ = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint");
   }
 }

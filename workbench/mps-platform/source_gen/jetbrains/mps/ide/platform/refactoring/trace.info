@@ -729,16 +729,16 @@
       <node id="4792031542972815587" at="24,77,25,92" concept="7" />
       <node id="4792031542972815595" at="25,92,26,87" concept="7" />
       <node id="4792031542972815606" at="27,29,28,27" concept="2" />
-      <node id="4792031542972815620" at="30,118,31,90" concept="2" />
+      <node id="4792031542972815620" at="30,118,31,91" concept="2" />
       <node id="4792031542972815636" at="34,86,35,110" concept="7" />
-      <node id="4792031542972815651" at="36,124,37,90" concept="2" />
+      <node id="4792031542972815651" at="36,124,37,91" concept="2" />
       <node id="4792031542972815660" at="39,5,40,18" concept="8" />
       <node id="4792031542972815559" at="44,0,45,0" concept="11" trace="ConceptDeclaration$qU" />
       <node id="4792031542972815559" at="45,0,46,0" concept="11" trace="InterfaceConceptDeclaration$MT" />
-      <node id="4792031542972815559" at="49,0,50,0" concept="11" trace="extends$LQV3" />
-      <node id="4792031542972815559" at="50,0,51,0" concept="11" trace="implements$oQDh" />
-      <node id="4792031542972815559" at="51,0,52,0" concept="11" trace="intfc$fO5" />
-      <node id="4792031542972815559" at="52,0,53,0" concept="11" trace="extends$3Y1p" />
+      <node id="4792031542972815559" at="49,0,50,0" concept="11" trace="extends$9AAt" />
+      <node id="4792031542972815559" at="50,0,51,0" concept="11" trace="implements$2tZf" />
+      <node id="4792031542972815559" at="51,0,52,0" concept="11" trace="intfc$7Eer" />
+      <node id="4792031542972815559" at="52,0,53,0" concept="11" trace="extends$V2F7" />
       <node id="4792031542972815562" at="19,0,21,0" concept="1" trace="ConceptAncestorsProvider#()V" />
       <node id="4792031542972815601" at="26,87,29,7" concept="5" />
       <node id="4792031542972815613" at="29,7,32,7" concept="4" />
@@ -748,8 +748,8 @@
       <node id="4792031542972815566" at="21,0,42,0" concept="6" trace="getDescendants#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/Set;" />
       <scope id="4792031542972815565" at="19,37,19,37" />
       <scope id="4792031542972815605" at="27,29,28,27" />
-      <scope id="4792031542972815619" at="30,118,31,90" />
-      <scope id="4792031542972815650" at="36,124,37,90" />
+      <scope id="4792031542972815619" at="30,118,31,91" />
+      <scope id="4792031542972815650" at="36,124,37,91" />
       <scope id="4792031542972815562" at="19,0,21,0" />
       <scope id="4792031542972815613" at="29,7,32,7">
         <var name="interfaceConceptReference" id="4792031542972815617" />

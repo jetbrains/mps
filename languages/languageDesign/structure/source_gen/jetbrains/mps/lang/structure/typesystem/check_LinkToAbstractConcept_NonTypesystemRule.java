@@ -25,9 +25,9 @@ public class check_LinkToAbstractConcept_NonTypesystemRule extends AbstractNonTy
   public check_LinkToAbstractConcept_NonTypesystemRule() {
   }
   public void applyRule(final SNode linkToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getString(linkToCheck, PROPS.role$r_O$) != null) {
-      if (SEnumOperations.isMember(SPropertyOperations.getEnum(linkToCheck, PROPS.metaClass$tHD7), 0xfc6f4e95b9L)) {
-        SNode concept = SLinkOperations.getTarget(linkToCheck, LINKS.target$egp8);
+    if (SPropertyOperations.getString(linkToCheck, PROPS.role$nkts) != null) {
+      if (SEnumOperations.isMember(SPropertyOperations.getEnum(linkToCheck, PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
+        SNode concept = SLinkOperations.getTarget(linkToCheck, LINKS.target$TWaS);
         if (ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getNotImplementedConceptMethods_idhEwILIz.invoke(concept)).isNotEmpty()) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
@@ -48,12 +48,12 @@ public class check_LinkToAbstractConcept_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 
   private static final class CONCEPTS {

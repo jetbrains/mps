@@ -124,7 +124,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(isDefined(context))) {
         return null;
       }
-      return (String) SPropertyOperations.getString(SNodeOperations.cast(context.getChildNode(), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+      return (String) SPropertyOperations.getString(SNodeOperations.cast(context.getChildNode(), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
     }
 
     public static boolean isDefined(@NotNull ContainmentContext context) {
@@ -182,7 +182,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return Def_Root3071492597344669935.getValue(context) != null && (SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$tAp1).startsWith("Rules") || SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$tAp1).startsWith("Feedback"));
+      return Def_Root3071492597344669935.getValue(context) != null && (SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$lA7v).startsWith("Rules") || SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$lA7v).startsWith("Feedback"));
     }
 
     @Override
@@ -202,6 +202,6 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

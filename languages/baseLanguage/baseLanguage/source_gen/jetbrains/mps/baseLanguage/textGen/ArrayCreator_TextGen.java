@@ -14,14 +14,14 @@ public class ArrayCreator_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.componentType$aKPo));
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.dimensionExpression$uV5v)) {
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.componentType$dDQC));
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.dimensionExpression$YBE1)) {
       tgs.appendNode(item);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$aKPo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
-    /*package*/ static final SContainmentLink dimensionExpression$uV5v = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
+    /*package*/ static final SContainmentLink componentType$dDQC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
+    /*package*/ static final SContainmentLink dimensionExpression$YBE1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
   }
 }

@@ -166,7 +166,7 @@ public final class RefPresentationFunctionUtil {
     }
     private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0j4(boolean p0) {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      n0.setProperty(PROPS.value$WIn0, "" + (p0));
+      n0.setProperty(PROPS.value$qt90, "" + (p0));
       return n0.getResult();
     }
     private static SNode _quotation_createNode_5b8pgj_a0a0a0a0a0k4() {
@@ -411,12 +411,12 @@ public final class RefPresentationFunctionUtil {
     }
     private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0j6(boolean p0) {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      n0.setProperty(PROPS.value$WIn0, "" + (p0));
+      n0.setProperty(PROPS.value$qt90, "" + (p0));
       return n0.getResult();
     }
     private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0k6(boolean p0) {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      n0.setProperty(PROPS.value$WIn0, "" + (p0));
+      n0.setProperty(PROPS.value$qt90, "" + (p0));
       return n0.getResult();
     }
     private static SNode _quotation_createNode_5b8pgj_a0a0a0a0a0l6() {
@@ -547,17 +547,17 @@ public final class RefPresentationFunctionUtil {
       SModel constraintsAspect = SModuleOperations.getAspect(SNodeOperations.getModel(_conceptNode.value).getModule(), "constraints");
       SNode constraintsNode = ListSequence.fromList(SModelOperations.roots(constraintsAspect, CONCEPTS.ConceptConstraints$St)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$rRWx), _conceptNode.value);
+          return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$w6jZ), _conceptNode.value);
         }
       });
-      SNode refConstraintNode = ListSequence.fromList(SLinkOperations.getChildren(constraintsNode, LINKS.referent$4reg)).findFirst(new IWhereFilter<SNode>() {
+      SNode refConstraintNode = ListSequence.fromList(SLinkOperations.getChildren(constraintsNode, LINKS.referent$9bTK)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getTarget(it, LINKS.applicableLink$Hkrz), referenceNode);
+          return Objects.equals(SLinkOperations.getTarget(it, LINKS.applicableLink$WTlX), referenceNode);
         }
       });
 
       if (refConstraintNode != null) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(refConstraintNode, LINKS.presentation$9PzF), LINKS.body$pTP2);
+        return SLinkOperations.getTarget(SLinkOperations.getTarget(refConstraintNode, LINKS.presentation$KWhP), LINKS.body$z0FY);
       }
 
       _conceptNode.value = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(_conceptNode.value)).where(new IWhereFilter<SNode>() {
@@ -592,14 +592,14 @@ public final class RefPresentationFunctionUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$rRWx = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
-    /*package*/ static final SContainmentLink referent$4reg = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
-    /*package*/ static final SReferenceLink applicableLink$Hkrz = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
-    /*package*/ static final SContainmentLink presentation$9PzF = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x36367902116a44c4L, "presentation");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SReferenceLink concept$w6jZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
+    /*package*/ static final SContainmentLink referent$9bTK = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
+    /*package*/ static final SReferenceLink applicableLink$WTlX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
+    /*package*/ static final SContainmentLink presentation$KWhP = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x36367902116a44c4L, "presentation");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 }

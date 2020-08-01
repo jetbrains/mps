@@ -18,10 +18,10 @@ public class correct_RuleId_QuickFix extends QuickFix_Runtime {
     return "Correct Rule Id";
   }
   public void execute(SNode node) {
-    SPropertyOperations.assign(((SNode) correct_RuleId_QuickFix.this.getField("rule")[0]), PROPS.ruleId$nApu, ConceptIdHelper.getNodeIdString(node));
+    SPropertyOperations.assign(((SNode) correct_RuleId_QuickFix.this.getField("rule")[0]), PROPS.ruleId$rAly, ConceptIdHelper.getNodeIdString(node));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty ruleId$nApu = MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId");
+    /*package*/ static final SProperty ruleId$rAly = MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId");
   }
 }

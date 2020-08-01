@@ -39,8 +39,8 @@ public final class ForEachStatement__BehaviorDescriptor extends BaseBHDescriptor
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ForEachVariable$8t)) {
-      if (ScopeUtils.comeFrom(LINKS.body$OFes, __thisNode__, child)) {
-        return Scopes.forVariables(kind, SLinkOperations.getTarget(__thisNode__, LINKS.variable$QE64), ScopeUtils.lazyParentScope(__thisNode__, kind));
+      if (ScopeUtils.comeFrom(LINKS.body$wVZ$, __thisNode__, child)) {
+        return Scopes.forVariables(kind, SLinkOperations.getTarget(__thisNode__, LINKS.variable$uoVW), ScopeUtils.lazyParentScope(__thisNode__, kind));
       }
     }
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.ForEachStatement$Dx, kind, child));
@@ -93,8 +93,8 @@ public final class ForEachStatement__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$QE64 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
-    /*package*/ static final SContainmentLink body$OFes = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink variable$uoVW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
+    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
   }
 
   private static final class CONCEPTS {

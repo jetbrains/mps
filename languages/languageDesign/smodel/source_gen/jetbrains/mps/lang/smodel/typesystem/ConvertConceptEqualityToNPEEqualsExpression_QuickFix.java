@@ -23,7 +23,7 @@ public class ConvertConceptEqualityToNPEEqualsExpression_QuickFix extends QuickF
   public void execute(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.EqualsExpression$lT)) {
       SNode equalityNode = SNodeOperations.as(node, CONCEPTS.EqualsExpression$lT);
-      SNode npeEqualsNode = _quotation_createNode_yhp5ij_a0b0a0c(SLinkOperations.getTarget(equalityNode, LINKS.leftExpression$rxLZ), SLinkOperations.getTarget(equalityNode, LINKS.rightExpression$rxBl));
+      SNode npeEqualsNode = _quotation_createNode_yhp5ij_a0b0a0c(SLinkOperations.getTarget(equalityNode, LINKS.leftExpression$lndx), SLinkOperations.getTarget(equalityNode, LINKS.rightExpression$li3b));
       SNodeOperations.replaceWithAnother(node, npeEqualsNode);
     }
   }
@@ -49,7 +49,7 @@ public class ConvertConceptEqualityToNPEEqualsExpression_QuickFix extends QuickF
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 }

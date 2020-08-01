@@ -31,13 +31,13 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1) + "_outlook";
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) + "_outlook";
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.facet$M0dw), PROPS.name$tAp1);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.facet$e6yw), PROPS.name$lA7v);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.facet$in8R);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.facet$TdiD);
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
@@ -103,11 +103,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink facet$M0dw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
-    /*package*/ static final SContainmentLink facet$in8R = MetaAdapterFactory.getContainmentLink(0xdc54e1b286b349d2L, 0x9014a76af17af22aL, 0x4dd42fcf00ba54d2L, 0x4dd42fcf00ba59a1L, "facet");
+    /*package*/ static final SReferenceLink facet$e6yw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
+    /*package*/ static final SContainmentLink facet$TdiD = MetaAdapterFactory.getContainmentLink(0xdc54e1b286b349d2L, 0x9014a76af17af22aL, 0x4dd42fcf00ba54d2L, 0x4dd42fcf00ba59a1L, "facet");
   }
 }

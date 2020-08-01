@@ -20,7 +20,7 @@ public class SimplifyWholeBinaryLogicalExpressionWithBooleanConstant_QuickFix ex
   }
   public void execute(SNode node) {
     SNode constant = SNodeFactoryOperations.replaceWithNewChild(((SNode) SimplifyWholeBinaryLogicalExpressionWithBooleanConstant_QuickFix.this.getField("operation")[0]), CONCEPTS.BooleanConstant$Ui);
-    SPropertyOperations.assign(constant, PROPS.value$WIn0, ((Boolean) SimplifyWholeBinaryLogicalExpressionWithBooleanConstant_QuickFix.this.getField("value")[0]));
+    SPropertyOperations.assign(constant, PROPS.value$qt90, ((Boolean) SimplifyWholeBinaryLogicalExpressionWithBooleanConstant_QuickFix.this.getField("value")[0]));
   }
 
   private static final class CONCEPTS {
@@ -28,6 +28,6 @@ public class SimplifyWholeBinaryLogicalExpressionWithBooleanConstant_QuickFix ex
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

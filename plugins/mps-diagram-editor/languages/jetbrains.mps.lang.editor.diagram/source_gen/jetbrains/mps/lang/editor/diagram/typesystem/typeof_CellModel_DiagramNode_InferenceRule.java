@@ -23,14 +23,14 @@ public class typeof_CellModel_DiagramNode_InferenceRule extends AbstractInferenc
   public void applyRule(final SNode cellModel_DiagramNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cellModel_DiagramNode, LINKS.inputPort$bpFP);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cellModel_DiagramNode, LINKS.inputPort$xseF);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725267824", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725267848", true), (SNode) _quotation_createNode_wv7zpe_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cellModel_DiagramNode, LINKS.outputPort$bqDm);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cellModel_DiagramNode, LINKS.outputPort$xU1E);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547582643774", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547582643776", true), (SNode) _quotation_createNode_wv7zpe_a1a0c0a0b0b(), true, true, _info_12389875345);
       }
@@ -61,8 +61,8 @@ public class typeof_CellModel_DiagramNode_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inputPort$bpFP = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0x1ceea85e3fc07f4bL, "inputPort");
-    /*package*/ static final SContainmentLink outputPort$bqDm = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0x1ceea85e3fc07f76L, "outputPort");
+    /*package*/ static final SContainmentLink inputPort$xseF = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0x1ceea85e3fc07f4bL, "inputPort");
+    /*package*/ static final SContainmentLink outputPort$xU1E = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0x1ceea85e3fc07f76L, "outputPort");
   }
 
   private static final class CONCEPTS {

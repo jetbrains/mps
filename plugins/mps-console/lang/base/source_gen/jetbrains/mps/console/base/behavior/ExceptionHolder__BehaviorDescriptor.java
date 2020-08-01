@@ -35,7 +35,7 @@ public final class ExceptionHolder__BehaviorDescriptor extends BaseBHDescriptor 
 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, final MPSProject project) {
     // Need to use local variable to save trace for later call 
-    final String stackTrace = SPropertyOperations.getString(__thisNode__, PROPS.stackTrace$KI0v);
+    final String stackTrace = SPropertyOperations.getString(__thisNode__, PROPS.stackTrace$Aif1);
     return new Runnable() {
       public void run() {
         AnalyzeStacktraceUtil.addConsole(project.getProject(), null, "<Stacktrace>", stackTrace);
@@ -43,7 +43,7 @@ public final class ExceptionHolder__BehaviorDescriptor extends BaseBHDescriptor 
     };
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.stackTrace$KI0v) != null;
+    return SPropertyOperations.getString(__thisNode__, PROPS.stackTrace$Aif1) != null;
   }
 
   /*package*/ ExceptionHolder__BehaviorDescriptor() {
@@ -95,6 +95,6 @@ public final class ExceptionHolder__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stackTrace$KI0v = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, 0x5b02f032bc9cb8a9L, "stackTrace");
+    /*package*/ static final SProperty stackTrace$Aif1 = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, 0x5b02f032bc9cb8a9L, "stackTrace");
   }
 }

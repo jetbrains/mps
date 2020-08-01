@@ -37,7 +37,7 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode ifFalseStatement = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$Xnu2);
+    SNode ifFalseStatement = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY);
     return (ifFalseStatement != null) && SNodeOperations.isInstanceOf(ifFalseStatement, CONCEPTS.IfStatement$pi);
   }
   @Override
@@ -59,18 +59,18 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode ifFalseStatement = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$Xnu2);
+      SNode ifFalseStatement = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY);
       while (true) {
         SNode ifStatement = SNodeOperations.cast(ifFalseStatement, CONCEPTS.IfStatement$pi);
-        SNode elsifClause = SNodeFactoryOperations.addNewChild(node, LINKS.elsifClauses$uXBQ, null);
-        SLinkOperations.setTarget(elsifClause, LINKS.condition$3oC9, SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b));
-        SLinkOperations.setTarget(elsifClause, LINKS.statementList$TaC3, SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$WJ1E));
-        ifFalseStatement = SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$Xnu2);
+        SNode elsifClause = SNodeFactoryOperations.addNewChild(node, LINKS.elsifClauses$ZQja, null);
+        SLinkOperations.setTarget(elsifClause, LINKS.condition$CVsn, SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l));
+        SLinkOperations.setTarget(elsifClause, LINKS.statementList$G9pt, SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$qLNm));
+        ifFalseStatement = SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$InyY);
         if ((ifFalseStatement == null)) {
           break;
         }
         if (!(SNodeOperations.isInstanceOf(ifFalseStatement, CONCEPTS.IfStatement$pi))) {
-          SLinkOperations.setTarget(node, LINKS.ifFalseStatement$Xnu2, ifFalseStatement);
+          SLinkOperations.setTarget(node, LINKS.ifFalseStatement$InyY, ifFalseStatement);
           break;
         }
       }
@@ -82,12 +82,12 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ifFalseStatement$Xnu2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-    /*package*/ static final SContainmentLink elsifClauses$uXBQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
-    /*package*/ static final SContainmentLink condition$3oC9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink statementList$TaC3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink elsifClauses$ZQja = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
+    /*package*/ static final SContainmentLink condition$CVsn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink statementList$G9pt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
   }
 
   private static final class CONCEPTS {

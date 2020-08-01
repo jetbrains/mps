@@ -40,7 +40,7 @@ public class SingleLineCommentActions {
           return;
         }
 
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentPart$_gGy)).last() == selectedPart) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentPart$35$u)).last() == selectedPart) {
           if (SNodeOperations.isInstanceOf(selectedPart, CONCEPTS.TextCommentPart$lb)) {
             SingleLineCommentUtil.divideSingleLineCommentText((SNode) selectedPart, editorContext);
           } else {
@@ -102,6 +102,6 @@ public class SingleLineCommentActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentPart$_gGy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
+    /*package*/ static final SContainmentLink commentPart$35$u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
   }
 }

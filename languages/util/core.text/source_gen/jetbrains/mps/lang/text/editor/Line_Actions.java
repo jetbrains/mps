@@ -40,8 +40,8 @@ public class Line_Actions {
         boolean includeCurrentLineInSelection = selection.getSelectionEnd() != selection.getSelectionStart() || !(cell instanceof EditorCell_Property) || selection.getSelectionStart() != 0 || (SNodeOperations.getPrevSibling(currentWord) != null) || (previousLine == null);
 
         SNode lineToSelect = (includeCurrentLineInSelection ? currentLine : previousLine);
-        SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$eRew)).first();
-        SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$eRew)).last();
+        SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$cK1w)).first();
+        SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$cK1w)).last();
         WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(first, CONCEPTS.TextElement$Ue), SNodeOperations.as(last, CONCEPTS.TextElement$Ue), false);
         selectionManager.pushSelection(ws);
       }
@@ -90,8 +90,8 @@ public class Line_Actions {
         boolean includeCurrentLineInSelection = selection.getSelectionEnd() != selection.getSelectionStart() || !(cell instanceof EditorCell_Property) || !(((EditorCell_Property) cell).isLastCaretPosition()) || (SNodeOperations.getNextSibling(currentWord) != null) || (nextLine == null);
 
         SNode lineToSelect = (includeCurrentLineInSelection ? currentLine : nextLine);
-        SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$eRew)).first();
-        SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$eRew)).last();
+        SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$cK1w)).first();
+        SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$cK1w)).last();
 
         WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(first, CONCEPTS.TextElement$Ue), SNodeOperations.as(last, CONCEPTS.TextElement$Ue), true);
         selectionManager.pushSelection(ws);
@@ -196,6 +196,6 @@ public class Line_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

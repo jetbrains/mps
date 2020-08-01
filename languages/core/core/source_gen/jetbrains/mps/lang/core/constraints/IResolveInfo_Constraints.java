@@ -21,7 +21,7 @@ public class IResolveInfo_Constraints extends BaseConstraintsDescriptor {
 
   public static class ResolveInfo_Property extends BasePropertyConstraintsDescriptor {
     public ResolveInfo_Property(ConstraintsDescriptor container) {
-      super(PROPS.resolveInfo$eeN8, container);
+      super(PROPS.resolveInfo$TaKS, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -46,7 +46,7 @@ public class IResolveInfo_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.resolveInfo$eeN8, new ResolveInfo_Property(this));
+    properties.put(PROPS.resolveInfo$TaKS, new ResolveInfo_Property(this));
     return properties;
   }
 
@@ -55,6 +55,6 @@ public class IResolveInfo_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty resolveInfo$eeN8 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
+    /*package*/ static final SProperty resolveInfo$TaKS = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
   }
 }

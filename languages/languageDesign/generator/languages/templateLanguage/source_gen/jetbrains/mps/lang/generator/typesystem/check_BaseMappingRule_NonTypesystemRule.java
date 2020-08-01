@@ -25,16 +25,16 @@ public class check_BaseMappingRule_NonTypesystemRule extends AbstractNonTypesyst
   public check_BaseMappingRule_NonTypesystemRule() {
   }
   public void applyRule(final SNode bmr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(bmr, LINKS.applicableConcept$ljwo) == null)) {
+    if ((SLinkOperations.getTarget(bmr, LINKS.applicableConcept$ksFC) == null)) {
       return;
     }
-    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$ljwo), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161"))) {
+    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$ksFC), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161"))) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$ljwo);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$ksFC);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(bmr, "Transformation of an attribute may end up with hard to explain outcome", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "2826485732397637989", null, errorTarget);
       }
     }
-    if (!(SPropertyOperations.getBoolean(bmr, PROPS.applyToConceptInheritors$$0Bq)) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$ljwo), PROPS.abstract$moSU)) {
+    if (!(SPropertyOperations.getBoolean(bmr, PROPS.applyToConceptInheritors$sj5A)) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$ksFC), PROPS.abstract$Q3$6)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(bmr, "Rule for an abstract concept with disabled inheritors won't apply ever. Pick non-abstract concept or enable rule for concept inheritors as well", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "3381764287261048628", null, errorTarget);
@@ -52,12 +52,12 @@ public class check_BaseMappingRule_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$ljwo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty applyToConceptInheritors$$0Bq = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc6d8f674L, "applyToConceptInheritors");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty applyToConceptInheritors$sj5A = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc6d8f674L, "applyToConceptInheritors");
   }
 
   private static final class CONCEPTS {

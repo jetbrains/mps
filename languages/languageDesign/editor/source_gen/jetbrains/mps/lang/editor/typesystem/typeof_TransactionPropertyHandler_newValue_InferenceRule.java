@@ -21,11 +21,11 @@ public class typeof_TransactionPropertyHandler_newValue_InferenceRule extends Ab
   }
   public void applyRule(final SNode value, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode transactionalProperty = SNodeOperations.getNodeAncestor(value, CONCEPTS.CellModel_TransactionalProperty$oo, false, false);
-    SNode property = SLinkOperations.getTarget(transactionalProperty, LINKS.property$p2l_);
+    SNode property = SLinkOperations.getTarget(transactionalProperty, LINKS.property$88sV);
     {
       SNode _nodeToCheck_1029348928467 = value;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2735767332089497934", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2735767332089497946", true), (SNode) RulesUtil.datatypeBLType(SLinkOperations.getTarget(property, LINKS.dataType$fLUl)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2735767332089497946", true), (SNode) RulesUtil.datatypeBLType(SLinkOperations.getTarget(property, LINKS.dataType$Dbgb)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -44,7 +44,7 @@ public class typeof_TransactionPropertyHandler_newValue_InferenceRule extends Ab
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$p2l_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink property$88sV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 }

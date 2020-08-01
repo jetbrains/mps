@@ -19,7 +19,7 @@ public final class BL_CopyPasteHandlers_CopyPreProcessor_0 implements CopyPrePro
   }
   @Override
   public void preProcessNode(SNode copy, SNode original) {
-    SNode qualifiedReference = VariableDeclaration__BehaviorDescriptor.getQualifiedReference_id3Zg$dTLuqo9.invoke(SLinkOperations.getTarget(copy, LINKS.variableDeclaration$2ky6));
+    SNode qualifiedReference = VariableDeclaration__BehaviorDescriptor.getQualifiedReference_id3Zg$dTLuqo9.invoke(SLinkOperations.getTarget(copy, LINKS.variableDeclaration$7WwU));
     if ((qualifiedReference != null)) {
       SNodeOperations.replaceWithAnother(copy, qualifiedReference);
     }
@@ -30,6 +30,6 @@ public final class BL_CopyPasteHandlers_CopyPreProcessor_0 implements CopyPrePro
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

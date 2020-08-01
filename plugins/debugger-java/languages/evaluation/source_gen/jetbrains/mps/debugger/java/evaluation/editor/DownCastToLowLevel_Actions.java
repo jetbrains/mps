@@ -26,7 +26,7 @@ public class DownCastToLowLevel_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$vmO6));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$c3eU));
       }
 
     };
@@ -74,6 +74,6 @@ public class DownCastToLowLevel_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$vmO6 = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, 0x6dd9f7bd221bb39eL, "expression");
+    /*package*/ static final SContainmentLink expression$c3eU = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, 0x6dd9f7bd221bb39eL, "expression");
   }
 }

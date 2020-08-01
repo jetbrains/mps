@@ -13,12 +13,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class AbstractStyledTextOperation_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     _context.getBuilder().emitNop("r:ee466c3b-c879-435f-9e8d-bb261ada44ed(jetbrains.mps.lang.editor.dataFlow)/4531786690998643509");
-    for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$fjTE))) {
+    for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$qCVm))) {
       _context.getBuilder().build((SNode) argument);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$fjTE = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ee423fc2ad10eceL, 0x3ee423fc2ad10ed0L, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$qCVm = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ee423fc2ad10eceL, 0x3ee423fc2ad10ed0L, "actualArgument");
   }
 }

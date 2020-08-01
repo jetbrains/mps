@@ -31,7 +31,7 @@ public class BuildMps_IdeaPluginGroupCustomModule_Constraints extends BaseConstr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$7iJF, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$y55P, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,7 +50,7 @@ public class BuildMps_IdeaPluginGroupCustomModule_Constraints extends BaseConstr
             if ((group == null)) {
               return new EmptyScope();
             }
-            return SimpleRoleScope.forNamedElements(SLinkOperations.getTarget(group, LINKS.group$abww), LINKS.modules$4DA0);
+            return SimpleRoleScope.forNamedElements(SLinkOperations.getTarget(group, LINKS.group$V$Jw), LINKS.modules$g9q0);
           }
         };
       }
@@ -67,8 +67,8 @@ public class BuildMps_IdeaPluginGroupCustomModule_Constraints extends BaseConstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$7iJF = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37fdb3de482e2b27L, 0x37fdb3de482e2b28L, "target");
-    /*package*/ static final SReferenceLink group$abww = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
-    /*package*/ static final SContainmentLink modules$4DA0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
+    /*package*/ static final SReferenceLink target$y55P = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37fdb3de482e2b27L, 0x37fdb3de482e2b28L, "target");
+    /*package*/ static final SReferenceLink group$V$Jw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
+    /*package*/ static final SContainmentLink modules$g9q0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
   }
 }

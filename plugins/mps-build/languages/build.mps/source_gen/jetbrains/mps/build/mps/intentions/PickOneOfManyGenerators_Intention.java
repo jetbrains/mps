@@ -50,15 +50,15 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BuildMps_Language$re)) {
       return false;
     }
-    if ((SLinkOperations.getTarget(node, LINKS.sourceLanguage$vc9u) == null)) {
+    if ((SLinkOperations.getTarget(node, LINKS.sourceLanguage$6S_y) == null)) {
       return false;
     }
-    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(node, LINKS.sourceLanguage$vc9u)), CONCEPTS.BuildProject$BF);
+    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(node, LINKS.sourceLanguage$6S_y)), CONCEPTS.BuildProject$BF);
     if ((project == null)) {
       return false;
     }
     ModuleLoader ml = new ModuleLoader(project, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
-    LanguageDescriptor ld = as_rkdydg_a0a5a3(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$vc9u)).getModuleDescriptor(), LanguageDescriptor.class);
+    LanguageDescriptor ld = as_rkdydg_a0a5a3(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$6S_y)).getModuleDescriptor(), LanguageDescriptor.class);
     return ld != null && ld.getGenerators().size() > 1;
   }
   @Override
@@ -76,13 +76,13 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
     return list;
   }
   private List<GeneratorDescriptor> parameter(final SNode node, final EditorContext editorContext) {
-    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(node, LINKS.sourceLanguage$vc9u)), CONCEPTS.BuildProject$BF);
+    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(node, LINKS.sourceLanguage$6S_y)), CONCEPTS.BuildProject$BF);
     if ((project == null)) {
       return Collections.emptyList();
     }
 
     ModuleLoader ml = new ModuleLoader(project, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
-    LanguageDescriptor ld = as_rkdydg_a0a4a6(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$vc9u)).getModuleDescriptor(), LanguageDescriptor.class);
+    LanguageDescriptor ld = as_rkdydg_a0a4a6(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$6S_y)).getModuleDescriptor(), LanguageDescriptor.class);
     return (ld == null ? Collections.emptyList() : ld.getGenerators());
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
@@ -96,8 +96,8 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.name$tAp1, myParameter.getNamespace());
-      SPropertyOperations.assign(node, PROPS.uuid$XKnR, PersistenceFacade.getInstance().asString(myParameter.getId()));
+      SPropertyOperations.assign(node, PROPS.name$lA7v, myParameter.getNamespace());
+      SPropertyOperations.assign(node, PROPS.uuid$UrzD, PersistenceFacade.getInstance().asString(myParameter.getId()));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -120,11 +120,11 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink sourceLanguage$vc9u = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
+    /*package*/ static final SReferenceLink sourceLanguage$6S_y = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty uuid$XKnR = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty uuid$UrzD = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
   }
 }

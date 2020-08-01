@@ -24,10 +24,10 @@ public class OrCellSelector_Right_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.rightSelector$6IYD))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.rightSelector$gKlR))) {
           return;
         }
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.leftSelector$6INw));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.leftSelector$gEWw));
       }
 
     };
@@ -75,7 +75,7 @@ public class OrCellSelector_Right_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightSelector$6IYD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b042L, "rightSelector");
-    /*package*/ static final SContainmentLink leftSelector$6INw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b040L, "leftSelector");
+    /*package*/ static final SContainmentLink rightSelector$gKlR = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b042L, "rightSelector");
+    /*package*/ static final SContainmentLink leftSelector$gEWw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b040L, "leftSelector");
   }
 }

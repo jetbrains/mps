@@ -50,7 +50,7 @@ public class CardinalityTestConcept_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_oqokgo_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.CardinalityTestConcept$Xp, LINKS.obligatoryref$oVFQ);
+      super((SAbstractConcept) CONCEPTS.CardinalityTestConcept$Xp, LINKS.obligatoryref$4Ufa);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class CardinalityTestConcept_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink obligatoryref$oVFQ = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x61692e8b97e96c6cL, 0x61692e8b97e8bfb0L, "obligatoryref");
+    /*package*/ static final SReferenceLink obligatoryref$4Ufa = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x61692e8b97e96c6cL, 0x61692e8b97e8bfb0L, "obligatoryref");
   }
 }

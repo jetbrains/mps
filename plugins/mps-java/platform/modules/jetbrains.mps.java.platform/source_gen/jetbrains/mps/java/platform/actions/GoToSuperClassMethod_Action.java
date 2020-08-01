@@ -102,7 +102,7 @@ public class GoToSuperClassMethod_Action extends BaseAction {
       public String caption(final int usagesFound, final boolean finished) {
         return new ModelAccessHelper(mpsProject.getRepository()).runReadAction(new Computable<String>() {
           public String compute() {
-            return MPSCodeInsightBundle.message("goto.super.method.of.chooser.title", SPropertyOperations.getString(node, PROPS.name$tAp1));
+            return MPSCodeInsightBundle.message("goto.super.method.of.chooser.title", SPropertyOperations.getString(node, PROPS.name$lA7v));
           }
         });
       }
@@ -114,6 +114,6 @@ public class GoToSuperClassMethod_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

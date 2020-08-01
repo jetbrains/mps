@@ -30,7 +30,7 @@ public class ExceptionChooserDialog extends StubsClassChooserDialog {
     final SNode throwableClassifier = new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable").resolve(myProject.getRepository());
     SNode base = node;
     while (base != null && SNodeOperations.isInstanceOf(base, CONCEPTS.ClassConcept$IY) && !((Objects.equals(base, throwableClassifier)))) {
-      base = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(base, CONCEPTS.ClassConcept$IY), LINKS.superclass$_pqe), LINKS.classifier$pQ_R);
+      base = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(base, CONCEPTS.ClassConcept$IY), LINKS.superclass$7jGM), LINKS.classifier$xslD);
     }
     return (base != null) && SNodeOperations.isInstanceOf(base, CONCEPTS.ClassConcept$IY);
   }
@@ -46,7 +46,7 @@ public class ExceptionChooserDialog extends StubsClassChooserDialog {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

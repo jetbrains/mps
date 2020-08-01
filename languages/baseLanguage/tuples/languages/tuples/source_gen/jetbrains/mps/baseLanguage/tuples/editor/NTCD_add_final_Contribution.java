@@ -77,7 +77,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
   public class TMP_Group_d177af_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$lm) && !(SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$lm), PROPS.final$pCJq));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$lm) && !(SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$lm), PROPS.final$qIXA));
     }
 
     @NotNull
@@ -133,7 +133,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$lm), PROPS.final$pCJq, true);
+          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$lm), PROPS.final$qIXA, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -168,6 +168,6 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$pCJq = MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final");
+    /*package*/ static final SProperty final$qIXA = MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final");
   }
 }

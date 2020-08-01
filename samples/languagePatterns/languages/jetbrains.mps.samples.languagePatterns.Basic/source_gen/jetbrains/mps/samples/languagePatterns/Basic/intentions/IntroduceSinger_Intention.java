@@ -65,10 +65,10 @@ public final class IntroduceSinger_Intention extends AbstractIntentionDescriptor
       EditorCell_Error selectedCell = (EditorCell_Error) editorContext.getSelectedCell();
       String text = selectedCell.getText();
       SNode concert = SNodeOperations.getNodeAncestor(node, CONCEPTS.Concert$6k, false, false);
-      SNode singer = SNodeFactoryOperations.addNewChild(concert, LINKS.performers$JYpX, null);
-      SPropertyOperations.assign(singer, PROPS.name$tAp1, text);
+      SNode singer = SNodeFactoryOperations.addNewChild(concert, LINKS.performers$fe$z, null);
+      SPropertyOperations.assign(singer, PROPS.name$lA7v, text);
       SNode performance = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.Performance$Fi);
-      SLinkOperations.setTarget(performance, LINKS.singer$K5R0, singer);
+      SLinkOperations.setTarget(performance, LINKS.singer$iPD0, singer);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -85,11 +85,11 @@ public final class IntroduceSinger_Intention extends AbstractIntentionDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink performers$JYpX = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, 0x34c8853ae7895c8bL, "performers");
-    /*package*/ static final SReferenceLink singer$K5R0 = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, 0x34c8853ae7895ce2L, "singer");
+    /*package*/ static final SContainmentLink performers$fe$z = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, 0x34c8853ae7895c8bL, "performers");
+    /*package*/ static final SReferenceLink singer$iPD0 = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, 0x34c8853ae7895ce2L, "singer");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

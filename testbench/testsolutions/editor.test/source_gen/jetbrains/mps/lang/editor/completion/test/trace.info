@@ -40,7 +40,7 @@
       <node id="1384684774803304762" at="69,0,70,0" concept="6" />
       <node id="1384684774803304763" at="70,0,71,64" concept="1" />
       <node id="1384684774803304769" at="71,64,72,57" concept="1" />
-      <node id="1384684774803304678" at="79,0,80,0" concept="7" trace="parts$MxT3" />
+      <node id="1384684774803304678" at="79,0,80,0" concept="7" trace="parts$uqCt" />
       <node id="1384684774803304678" at="83,0,84,0" concept="7" trace="SubstituteMenuPart_Subconcepts$YA" />
       <node id="1384684774803304678" at="26,0,28,0" concept="7" trace="ourParamCache" />
       <node id="1384684774803304678" at="29,0,32,0" concept="0" trace="TestEditorMenuTraceSubstituteMenuSubconcepts_Test#()V" />
@@ -87,7 +87,7 @@
       <node id="7912617346312095126" at="56,84,57,349" concept="4" />
       <node id="7912617346312096685" at="57,349,58,0" concept="6" />
       <node id="1384684774803381610" at="58,0,59,219" concept="1" />
-      <node id="1384684774803381543" at="66,0,67,0" concept="7" trace="parts$MxT3" />
+      <node id="1384684774803381543" at="66,0,67,0" concept="7" trace="parts$uqCt" />
       <node id="1384684774803381543" at="70,0,71,0" concept="7" trace="SubstituteMenuPart_Action$Gn" />
       <node id="1384684774803381543" at="27,0,29,0" concept="7" trace="ourParamCache" />
       <node id="1384684774803381543" at="30,0,33,0" concept="0" trace="TestEditorMenuTraceSubstituteMenuSubstituteAction_Test#()V" />
@@ -140,7 +140,7 @@
       <node id="1384684774803433362" at="61,0,62,355" concept="1" />
       <node id="7912617346312104512" at="62,355,63,0" concept="6" />
       <node id="1384684774803433408" at="63,0,64,0" concept="6" />
-      <node id="1384684774803433317" at="71,0,72,0" concept="7" trace="parts$MxT3" />
+      <node id="1384684774803433317" at="71,0,72,0" concept="7" trace="parts$uqCt" />
       <node id="1384684774803433317" at="75,0,76,0" concept="7" trace="SubstituteMenuPart_Action$Gn" />
       <node id="1384684774803433317" at="76,0,77,0" concept="7" trace="SubstituteMenuPart_Wrapper$Dn" />
       <node id="1384684774803433317" at="27,0,29,0" concept="7" trace="ourParamCache" />
@@ -189,12 +189,12 @@
       <node id="6817680353252811685" at="60,44,61,0" concept="6" />
       <node id="1384684774803827340" at="61,0,62,84" concept="4" />
       <node id="4573127675650084502" at="64,45,65,105" concept="5" />
-      <node id="1384684774803827301" at="74,0,75,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774803827301" at="75,0,76,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774803827301" at="76,0,77,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774803827301" at="74,0,75,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774803827301" at="75,0,76,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774803827301" at="76,0,77,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774803827301" at="80,0,81,0" concept="7" trace="CellModel_Constant$SB" />
       <node id="1384684774803827301" at="81,0,82,0" concept="7" trace="CellMenuPart_Generic_Group$R5" />
-      <node id="1384684774803827301" at="85,0,86,0" concept="7" trace="text$ZxWw" />
+      <node id="1384684774803827301" at="85,0,86,0" concept="7" trace="text$Lsjw" />
       <node id="1384684774803827301" at="32,0,34,0" concept="7" trace="ourParamCache" />
       <node id="1384684774803827301" at="35,0,38,0" concept="0" trace="TestEditorMenuTraceCellMenuGenericGroup_Test#()V" />
       <node id="1384684774803827301" at="46,0,49,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -246,12 +246,12 @@
       <node id="1384684774804109171" at="59,44,60,0" concept="6" />
       <node id="1384684774804109172" at="60,0,61,84" concept="4" />
       <node id="4573127675650084764" at="63,45,64,105" concept="5" />
-      <node id="1384684774804109133" at="73,0,74,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774804109133" at="74,0,75,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774804109133" at="75,0,76,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774804109133" at="73,0,74,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774804109133" at="74,0,75,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774804109133" at="75,0,76,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774804109133" at="79,0,80,0" concept="7" trace="CellModel_Constant$SB" />
       <node id="1384684774804109133" at="80,0,81,0" concept="7" trace="CellMenuPart_Generic_Item$xG" />
-      <node id="1384684774804109133" at="84,0,85,0" concept="7" trace="text$ZxWw" />
+      <node id="1384684774804109133" at="84,0,85,0" concept="7" trace="text$Lsjw" />
       <node id="1384684774804109133" at="32,0,34,0" concept="7" trace="ourParamCache" />
       <node id="1384684774804109133" at="35,0,38,0" concept="0" trace="TestEditorMenuTraceCellMenuGenericItem_Test#()V" />
       <node id="1384684774804109133" at="46,0,49,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -303,12 +303,12 @@
       <node id="1384684774804151533" at="59,44,60,0" concept="6" />
       <node id="1384684774804151534" at="60,0,61,84" concept="4" />
       <node id="4573127675686557834" at="63,45,64,105" concept="5" />
-      <node id="1384684774804151495" at="73,0,74,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774804151495" at="74,0,75,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774804151495" at="75,0,76,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774804151495" at="73,0,74,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774804151495" at="74,0,75,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774804151495" at="75,0,76,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774804151495" at="79,0,80,0" concept="7" trace="CellModel_Constant$SB" />
       <node id="1384684774804151495" at="80,0,81,0" concept="7" trace="CellMenuPart_ReplaceNode_Group$ui" />
-      <node id="1384684774804151495" at="84,0,85,0" concept="7" trace="text$ZxWw" />
+      <node id="1384684774804151495" at="84,0,85,0" concept="7" trace="text$Lsjw" />
       <node id="1384684774804151495" at="32,0,34,0" concept="7" trace="ourParamCache" />
       <node id="1384684774804151495" at="35,0,38,0" concept="0" trace="TestEditorMenuTraceCellMenuReplaceNodeGroup_Test#()V" />
       <node id="1384684774804151495" at="46,0,49,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -370,12 +370,12 @@
       <node id="4573127675686557488" at="72,45,73,105" concept="5" />
       <node id="1384684774804543172" at="75,143,76,64" concept="1" />
       <node id="1384684774804543178" at="76,64,77,57" concept="1" />
-      <node id="1384684774804543091" at="84,0,85,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774804543091" at="85,0,86,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774804543091" at="86,0,87,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774804543091" at="84,0,85,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774804543091" at="85,0,86,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774804543091" at="86,0,87,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774804543091" at="90,0,91,0" concept="7" trace="CellModel_Constant$SB" />
       <node id="1384684774804543091" at="91,0,92,0" concept="7" trace="CellMenuPart_ReplaceNode_CustomNodeConcept$7e" />
-      <node id="1384684774804543091" at="95,0,96,0" concept="7" trace="text$ZxWw" />
+      <node id="1384684774804543091" at="95,0,96,0" concept="7" trace="text$Lsjw" />
       <node id="1384684774804543091" at="33,0,35,0" concept="7" trace="ourParamCache" />
       <node id="1384684774804543091" at="36,0,39,0" concept="0" trace="TestEditorMenuTraceCellMenuReplaceNode_Test#()V" />
       <node id="1384684774804543091" at="47,0,50,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -427,10 +427,10 @@
       <node id="1384684774804610342" at="58,44,59,0" concept="6" />
       <node id="1384684774804610343" at="59,0,60,84" concept="4" />
       <node id="4573127675650085033" at="62,45,63,215" concept="5" />
-      <node id="1384684774804610304" at="72,0,73,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774804610304" at="73,0,74,0" concept="7" trace="relationDeclaration$wbRV" />
-      <node id="1384684774804610304" at="74,0,75,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774804610304" at="75,0,76,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774804610304" at="72,0,73,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774804610304" at="73,0,74,0" concept="7" trace="relationDeclaration$_K5_" />
+      <node id="1384684774804610304" at="74,0,75,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774804610304" at="75,0,76,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774804610304" at="79,0,80,0" concept="7" trace="CellModel_Property$iE" />
       <node id="1384684774804610304" at="80,0,81,0" concept="7" trace="CellMenuPart_PropertyPostfixHints$A" />
       <node id="1384684774804610304" at="31,0,33,0" concept="7" trace="ourParamCache" />
@@ -483,10 +483,10 @@
       <node id="1384684774804915593" at="58,44,59,0" concept="6" />
       <node id="1384684774804915594" at="59,0,60,84" concept="4" />
       <node id="4573127675672901569" at="62,45,63,215" concept="5" />
-      <node id="1384684774804915555" at="72,0,73,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774804915555" at="73,0,74,0" concept="7" trace="relationDeclaration$wbRV" />
-      <node id="1384684774804915555" at="74,0,75,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774804915555" at="75,0,76,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774804915555" at="72,0,73,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774804915555" at="73,0,74,0" concept="7" trace="relationDeclaration$_K5_" />
+      <node id="1384684774804915555" at="74,0,75,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774804915555" at="75,0,76,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774804915555" at="79,0,80,0" concept="7" trace="CellModel_Property$iE" />
       <node id="1384684774804915555" at="80,0,81,0" concept="7" trace="CellMenuPart_PropertyValues$8$" />
       <node id="1384684774804915555" at="31,0,33,0" concept="7" trace="ourParamCache" />
@@ -543,11 +543,11 @@
       <node id="4573127675686557140" at="65,45,66,215" concept="5" />
       <node id="7912617346312006646" at="68,132,69,0" concept="6" />
       <node id="1384684774805064881" at="69,0,70,244" concept="1" />
-      <node id="1384684774805049143" at="77,0,78,0" concept="7" trace="parts$MxT3" />
-      <node id="1384684774805049143" at="78,0,79,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774805049143" at="79,0,80,0" concept="7" trace="relationDeclaration$wbRV" />
-      <node id="1384684774805049143" at="80,0,81,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774805049143" at="81,0,82,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774805049143" at="77,0,78,0" concept="7" trace="parts$uqCt" />
+      <node id="1384684774805049143" at="78,0,79,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774805049143" at="79,0,80,0" concept="7" trace="relationDeclaration$_K5_" />
+      <node id="1384684774805049143" at="80,0,81,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774805049143" at="81,0,82,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774805049143" at="85,0,86,0" concept="7" trace="SubstituteMenuPart_AddConcept$UH" />
       <node id="1384684774805049143" at="86,0,87,0" concept="7" trace="CellModel_RefNode$Ox" />
       <node id="1384684774805049143" at="87,0,88,0" concept="7" trace="CellMenuPart_ReplaceChildPrimary$a7" />
@@ -605,10 +605,10 @@
       <node id="1384684774805381167" at="60,84,61,0" concept="6" />
       <node id="1384684774805381184" at="61,0,62,0" concept="6" />
       <node id="4573127675686556596" at="64,45,65,215" concept="5" />
-      <node id="1384684774805381118" at="74,0,75,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774805381118" at="75,0,76,0" concept="7" trace="relationDeclaration$wbRV" />
-      <node id="1384684774805381118" at="76,0,77,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774805381118" at="77,0,78,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774805381118" at="74,0,75,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774805381118" at="75,0,76,0" concept="7" trace="relationDeclaration$_K5_" />
+      <node id="1384684774805381118" at="76,0,77,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774805381118" at="77,0,78,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774805381118" at="81,0,82,0" concept="7" trace="CellModel_RefNode$Ox" />
       <node id="1384684774805381118" at="82,0,83,0" concept="7" trace="CellMenuPart_ReplaceChild_Item$9Z" />
       <node id="1384684774805381118" at="31,0,33,0" concept="7" trace="ourParamCache" />
@@ -663,10 +663,10 @@
       <node id="1384684774805524121" at="60,84,61,0" concept="6" />
       <node id="1384684774805524122" at="61,0,62,0" concept="6" />
       <node id="4573127675686556170" at="64,45,65,215" concept="5" />
-      <node id="1384684774805524076" at="74,0,75,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774805524076" at="75,0,76,0" concept="7" trace="relationDeclaration$wbRV" />
-      <node id="1384684774805524076" at="76,0,77,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774805524076" at="77,0,78,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774805524076" at="74,0,75,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774805524076" at="75,0,76,0" concept="7" trace="relationDeclaration$_K5_" />
+      <node id="1384684774805524076" at="76,0,77,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774805524076" at="77,0,78,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774805524076" at="81,0,82,0" concept="7" trace="CellModel_RefNode$Ox" />
       <node id="1384684774805524076" at="82,0,83,0" concept="7" trace="CellMenuPart_ReplaceChild_Group$Wm" />
       <node id="1384684774805524076" at="31,0,33,0" concept="7" trace="ourParamCache" />
@@ -729,10 +729,10 @@
       <node id="4573127675686555744" at="70,45,71,215" concept="5" />
       <node id="1384684774805732239" at="73,145,74,64" concept="1" />
       <node id="1384684774805732245" at="74,64,75,57" concept="1" />
-      <node id="1384684774805732128" at="82,0,83,0" concept="7" trace="cellModel$3wIV" />
-      <node id="1384684774805732128" at="83,0,84,0" concept="7" trace="relationDeclaration$wbRV" />
-      <node id="1384684774805732128" at="84,0,85,0" concept="7" trace="menuDescriptor$6S7z" />
-      <node id="1384684774805732128" at="85,0,86,0" concept="7" trace="cellMenuPart$eVUY" />
+      <node id="1384684774805732128" at="82,0,83,0" concept="7" trace="cellModel$GQI_" />
+      <node id="1384684774805732128" at="83,0,84,0" concept="7" trace="relationDeclaration$_K5_" />
+      <node id="1384684774805732128" at="84,0,85,0" concept="7" trace="menuDescriptor$lbDX" />
+      <node id="1384684774805732128" at="85,0,86,0" concept="7" trace="cellMenuPart$f1$2" />
       <node id="1384684774805732128" at="89,0,90,0" concept="7" trace="CellModel_RefNode$Ox" />
       <node id="1384684774805732128" at="90,0,91,0" concept="7" trace="CellMenuPart_ReplaceChild_CustomChildConcept$CV" />
       <node id="1384684774805732128" at="31,0,33,0" concept="7" trace="ourParamCache" />
@@ -790,8 +790,8 @@
       <node id="7912617346312129899" at="61,434,62,0" concept="6" />
       <node id="1384684774806072277" at="62,0,63,219" concept="1" />
       <node id="1384684774806682044" at="65,9,66,82" concept="1" />
-      <node id="1384684774806072221" at="71,0,72,0" concept="7" trace="sections$GEFl" />
-      <node id="1384684774806072221" at="72,0,73,0" concept="7" trace="parts$aTwY" />
+      <node id="1384684774806072221" at="71,0,72,0" concept="7" trace="sections$CEZb" />
+      <node id="1384684774806072221" at="72,0,73,0" concept="7" trace="parts$hQY2" />
       <node id="1384684774806072221" at="76,0,77,0" concept="7" trace="TransformationMenuPart_Action$36" />
       <node id="1384684774806072221" at="29,0,31,0" concept="7" trace="ourParamCache" />
       <node id="1384684774806072221" at="32,0,35,0" concept="0" trace="TestEditorMenuTraceTransformationMenuAction_Test#()V" />
@@ -840,8 +840,8 @@
       <node id="1384684774807297274" at="57,300,58,0" concept="6" />
       <node id="7912617346312041243" at="58,0,59,185" concept="4" />
       <node id="1384684774806087713" at="59,185,60,282" concept="1" />
-      <node id="1384684774806085319" at="67,0,68,0" concept="7" trace="parts$MxT3" />
-      <node id="1384684774806085319" at="68,0,69,0" concept="7" trace="parts$5DPQ" />
+      <node id="1384684774806085319" at="67,0,68,0" concept="7" trace="parts$uqCt" />
+      <node id="1384684774806085319" at="68,0,69,0" concept="7" trace="parts$Jh5a" />
       <node id="1384684774806085319" at="72,0,73,0" concept="7" trace="SubstituteMenuPart_Group$_r" />
       <node id="1384684774806085319" at="73,0,74,0" concept="7" trace="SubstituteMenuPart_Action$Gn" />
       <node id="1384684774806085319" at="27,0,29,0" concept="7" trace="ourParamCache" />
@@ -896,9 +896,9 @@
       <node id="7912617346312134783" at="64,225,65,0" concept="6" />
       <node id="1384684774806998482" at="65,0,66,254" concept="1" />
       <node id="1384684774806998525" at="68,9,69,82" concept="1" />
-      <node id="1384684774806998435" at="74,0,75,0" concept="7" trace="sections$GEFl" />
-      <node id="1384684774806998435" at="75,0,76,0" concept="7" trace="parts$aTwY" />
-      <node id="1384684774806998435" at="76,0,77,0" concept="7" trace="parts$44ww" />
+      <node id="1384684774806998435" at="74,0,75,0" concept="7" trace="sections$CEZb" />
+      <node id="1384684774806998435" at="75,0,76,0" concept="7" trace="parts$hQY2" />
+      <node id="1384684774806998435" at="76,0,77,0" concept="7" trace="parts$YbJw" />
       <node id="1384684774806998435" at="80,0,81,0" concept="7" trace="TransformationMenuPart_Group$nv" />
       <node id="1384684774806998435" at="81,0,82,0" concept="7" trace="TransformationMenuPart_Action$36" />
       <node id="1384684774806998435" at="30,0,32,0" concept="7" trace="ourParamCache" />
@@ -952,8 +952,8 @@
       <node id="7912617346312115225" at="62,439,63,0" concept="6" />
       <node id="1384684774807302509" at="63,0,64,364" concept="1" />
       <node id="1384684774807298873" at="66,9,67,82" concept="1" />
-      <node id="1384684774807298758" at="72,0,73,0" concept="7" trace="sections$GEFl" />
-      <node id="1384684774807298758" at="73,0,74,0" concept="7" trace="parts$aTwY" />
+      <node id="1384684774807298758" at="72,0,73,0" concept="7" trace="sections$CEZb" />
+      <node id="1384684774807298758" at="73,0,74,0" concept="7" trace="parts$hQY2" />
       <node id="1384684774807298758" at="77,0,78,0" concept="7" trace="TransformationMenuPart_Action$36" />
       <node id="1384684774807298758" at="78,0,79,0" concept="7" trace="TransformationMenuPart_IncludeMenu$sD" />
       <node id="1384684774807298758" at="29,0,31,0" concept="7" trace="ourParamCache" />
@@ -1006,9 +1006,9 @@
       <node id="7912617346312265888" at="61,455,62,0" concept="6" />
       <node id="1384684774807554721" at="62,0,63,371" concept="1" />
       <node id="1384684774807554774" at="65,9,66,82" concept="1" />
-      <node id="1384684774807554659" at="71,0,72,0" concept="7" trace="parts$MxT3" />
-      <node id="1384684774807554659" at="72,0,73,0" concept="7" trace="sections$GEFl" />
-      <node id="1384684774807554659" at="73,0,74,0" concept="7" trace="parts$aTwY" />
+      <node id="1384684774807554659" at="71,0,72,0" concept="7" trace="parts$uqCt" />
+      <node id="1384684774807554659" at="72,0,73,0" concept="7" trace="sections$CEZb" />
+      <node id="1384684774807554659" at="73,0,74,0" concept="7" trace="parts$hQY2" />
       <node id="1384684774807554659" at="77,0,78,0" concept="7" trace="SubstituteMenuPart_Action$Gn" />
       <node id="1384684774807554659" at="78,0,79,0" concept="7" trace="TransformationMenuPart_IncludeSubstituteMenu$j5" />
       <node id="1384684774807554659" at="29,0,31,0" concept="7" trace="ourParamCache" />
@@ -1060,9 +1060,9 @@
       <node id="1384684774807930741" at="60,0,61,406" concept="4" />
       <node id="1384684774807928247" at="61,406,62,340" concept="1" />
       <node id="1384684774807928290" at="64,9,65,82" concept="1" />
-      <node id="1384684774807928200" at="70,0,71,0" concept="7" trace="sections$GEFl" />
-      <node id="1384684774807928200" at="71,0,72,0" concept="7" trace="parts$aTwY" />
-      <node id="1384684774807928200" at="72,0,73,0" concept="7" trace="part$1bCw" />
+      <node id="1384684774807928200" at="70,0,71,0" concept="7" trace="sections$CEZb" />
+      <node id="1384684774807928200" at="71,0,72,0" concept="7" trace="parts$hQY2" />
+      <node id="1384684774807928200" at="72,0,73,0" concept="7" trace="part$$CBw" />
       <node id="1384684774807928200" at="76,0,77,0" concept="7" trace="TransformationMenuPart_Parameterized$hf" />
       <node id="1384684774807928200" at="29,0,31,0" concept="7" trace="ourParamCache" />
       <node id="1384684774807928200" at="32,0,35,0" concept="0" trace="TestEditorMenuTraceTransformationMenuParameterized_Test#()V" />
@@ -1113,9 +1113,9 @@
       <node id="7912617346312278784" at="62,394,63,231" concept="4" />
       <node id="1384684774808212203" at="63,231,64,260" concept="1" />
       <node id="1384684774808212250" at="66,9,67,82" concept="1" />
-      <node id="1384684774808212141" at="72,0,73,0" concept="7" trace="sections$GEFl" />
-      <node id="1384684774808212141" at="73,0,74,0" concept="7" trace="parts$aTwY" />
-      <node id="1384684774808212141" at="74,0,75,0" concept="7" trace="items$blz4" />
+      <node id="1384684774808212141" at="72,0,73,0" concept="7" trace="sections$CEZb" />
+      <node id="1384684774808212141" at="73,0,74,0" concept="7" trace="parts$hQY2" />
+      <node id="1384684774808212141" at="74,0,75,0" concept="7" trace="items$vrYW" />
       <node id="1384684774808212141" at="78,0,79,0" concept="7" trace="TransformationMenuPart_SubMenu$rO" />
       <node id="1384684774808212141" at="79,0,80,0" concept="7" trace="TransformationMenuPart_Action$36" />
       <node id="1384684774808212141" at="30,0,32,0" concept="7" trace="ourParamCache" />
@@ -1169,8 +1169,8 @@
       <node id="7912617346312294342" at="62,427,63,0" concept="6" />
       <node id="1384684774808344163" at="63,0,64,358" concept="1" />
       <node id="1384684774808340313" at="66,9,67,82" concept="1" />
-      <node id="1384684774808340199" at="72,0,73,0" concept="7" trace="sections$GEFl" />
-      <node id="1384684774808340199" at="73,0,74,0" concept="7" trace="parts$aTwY" />
+      <node id="1384684774808340199" at="72,0,73,0" concept="7" trace="sections$CEZb" />
+      <node id="1384684774808340199" at="73,0,74,0" concept="7" trace="parts$hQY2" />
       <node id="1384684774808340199" at="77,0,78,0" concept="7" trace="TransformationMenuPart_Action$36" />
       <node id="1384684774808340199" at="78,0,79,0" concept="7" trace="TransformationMenuPart_Super$Zr" />
       <node id="1384684774808340199" at="29,0,31,0" concept="7" trace="ourParamCache" />
@@ -1224,9 +1224,9 @@
       <node id="7912617346312301428" at="62,453,63,0" concept="6" />
       <node id="1384684774808513447" at="63,0,64,370" concept="1" />
       <node id="1384684774808509365" at="66,9,67,82" concept="1" />
-      <node id="1384684774808509249" at="72,0,73,0" concept="7" trace="parts$MxT3" />
-      <node id="1384684774808509249" at="73,0,74,0" concept="7" trace="sections$GEFl" />
-      <node id="1384684774808509249" at="74,0,75,0" concept="7" trace="parts$aTwY" />
+      <node id="1384684774808509249" at="72,0,73,0" concept="7" trace="parts$uqCt" />
+      <node id="1384684774808509249" at="73,0,74,0" concept="7" trace="sections$CEZb" />
+      <node id="1384684774808509249" at="74,0,75,0" concept="7" trace="parts$hQY2" />
       <node id="1384684774808509249" at="78,0,79,0" concept="7" trace="SubstituteMenuPart_Action$Gn" />
       <node id="1384684774808509249" at="79,0,80,0" concept="7" trace="TransformationMenuPart_WrapSubstituteMenu$f1" />
       <node id="1384684774808509249" at="29,0,31,0" concept="7" trace="ourParamCache" />
@@ -1914,7 +1914,7 @@
       <node id="913276302144504711" at="55,0,56,84" concept="4" />
       <node id="7912617346312033681" at="56,84,57,350" concept="4" />
       <node id="913276302144496819" at="57,350,58,224" concept="1" />
-      <node id="6292171174659934747" at="65,0,66,0" concept="7" trace="parts$MxT3" />
+      <node id="6292171174659934747" at="65,0,66,0" concept="7" trace="parts$uqCt" />
       <node id="6292171174659934747" at="69,0,70,0" concept="7" trace="SubstituteMenuPart_Concepts$3a" />
       <node id="6292171174659934747" at="27,0,29,0" concept="7" trace="ourParamCache" />
       <node id="6292171174659934747" at="30,0,33,0" concept="0" trace="TestEditorMenuTraceSubstituteMenuConceptList_Test#()V" />
@@ -2184,7 +2184,7 @@
       <node id="7912617346312060993" at="58,349,59,349" concept="4" />
       <node id="7912617346312059216" at="59,349,60,0" concept="6" />
       <node id="913276302144662198" at="60,0,61,359" concept="1" />
-      <node id="913276302144390343" at="68,0,69,0" concept="7" trace="parts$MxT3" />
+      <node id="913276302144390343" at="68,0,69,0" concept="7" trace="parts$uqCt" />
       <node id="913276302144390343" at="72,0,73,0" concept="7" trace="SubstituteMenuPart_Action$Gn" />
       <node id="913276302144390343" at="73,0,74,0" concept="7" trace="SubstituteMenuPart_IncludeMenu$8K" />
       <node id="913276302144390343" at="27,0,29,0" concept="7" trace="ourParamCache" />
@@ -2269,8 +2269,8 @@
       <node id="913276302144813591" at="55,0,56,84" concept="4" />
       <node id="7912617346312068142" at="56,84,57,320" concept="4" />
       <node id="913276302144813608" at="57,320,58,339" concept="1" />
-      <node id="913276302144813552" at="65,0,66,0" concept="7" trace="parts$MxT3" />
-      <node id="913276302144813552" at="66,0,67,0" concept="7" trace="part$TSKS" />
+      <node id="913276302144813552" at="65,0,66,0" concept="7" trace="parts$uqCt" />
+      <node id="913276302144813552" at="66,0,67,0" concept="7" trace="part$2vF8" />
       <node id="913276302144813552" at="70,0,71,0" concept="7" trace="SubstituteMenuPart_Parameterized$Ua" />
       <node id="913276302144813552" at="27,0,29,0" concept="7" trace="ourParamCache" />
       <node id="913276302144813552" at="30,0,33,0" concept="0" trace="TestEditorMenuTraceSubstituteMenuParameterized_Test#()V" />
@@ -2318,7 +2318,7 @@
       <node id="7912617346312080955" at="56,84,57,359" concept="4" />
       <node id="7912617346312085577" at="57,359,58,0" concept="6" />
       <node id="913276302145023159" at="58,0,59,227" concept="1" />
-      <node id="913276302145023103" at="66,0,67,0" concept="7" trace="parts$MxT3" />
+      <node id="913276302145023103" at="66,0,67,0" concept="7" trace="parts$uqCt" />
       <node id="913276302145023103" at="70,0,71,0" concept="7" trace="SubstituteMenuPart_ReferenceScope$po" />
       <node id="913276302145023103" at="27,0,29,0" concept="7" trace="ourParamCache" />
       <node id="913276302145023103" at="30,0,33,0" concept="0" trace="TestEditorMenuTraceSubstituteMenuReferenceActions_Test#()V" />
@@ -2366,7 +2366,7 @@
       <node id="913276302145092145" at="56,84,57,0" concept="6" />
       <node id="7912617346312089353" at="57,0,58,356" concept="4" />
       <node id="913276302145092163" at="58,356,59,222" concept="1" />
-      <node id="913276302145092086" at="66,0,67,0" concept="7" trace="parts$MxT3" />
+      <node id="913276302145092086" at="66,0,67,0" concept="7" trace="parts$uqCt" />
       <node id="913276302145092086" at="70,0,71,0" concept="7" trace="SubstituteMenuPart_AddConcept$UH" />
       <node id="913276302145092086" at="27,0,29,0" concept="7" trace="ourParamCache" />
       <node id="913276302145092086" at="30,0,33,0" concept="0" trace="TestEditorMenuTraceSubstituteMenuSimpleConceptAction_Test#()V" />

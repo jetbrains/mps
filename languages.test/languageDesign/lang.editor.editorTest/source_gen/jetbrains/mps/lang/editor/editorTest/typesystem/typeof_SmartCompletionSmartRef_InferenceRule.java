@@ -21,7 +21,7 @@ public class typeof_SmartCompletionSmartRef_InferenceRule extends AbstractInfere
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "6999890265143309316", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "6999890265143308974", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(node, LINKS.reference$dlju), "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "6999890265143310366", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "6999890265143308974", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(node, LINKS.reference$tkry), "r:3b4c6266-b03b-4213-a8e8-189fda2aa77c(jetbrains.mps.lang.editor.editorTest.typesystem)", "6999890265143310366", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_SmartCompletionSmartRef_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$dlju = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876cf2L, 0x61249b1bf0876cf5L, "reference");
+    /*package*/ static final SReferenceLink reference$tkry = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876cf2L, 0x61249b1bf0876cf5L, "reference");
   }
 
   private static final class CONCEPTS {

@@ -21,12 +21,12 @@ public class MemberDeclarationRefactoringUtil {
   public static void rewireMethodReferences(final SNode originalMethod, final SNode replacingMethod) {
     Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(replacingMethod), CONCEPTS.IMethodCall$ln, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$$A7i), originalMethod);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$ItxI), originalMethod);
       }
     });
     Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        SLinkOperations.setTarget(it, LINKS.baseMethodDeclaration$$A7i, replacingMethod);
+        SLinkOperations.setTarget(it, LINKS.baseMethodDeclaration$ItxI, replacingMethod);
       }
     });
   }
@@ -34,12 +34,12 @@ public class MemberDeclarationRefactoringUtil {
   public static void rewireFieldReferences(final SNode originalField, final SNode replacingField) {
     Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(replacingField), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6), originalField);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU), originalField);
       }
     });
     Sequence.fromIterable(refs).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        SLinkOperations.setTarget(it, LINKS.variableDeclaration$2ky6, replacingField);
+        SLinkOperations.setTarget(it, LINKS.variableDeclaration$7WwU, replacingField);
       }
     });
   }
@@ -50,7 +50,7 @@ public class MemberDeclarationRefactoringUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

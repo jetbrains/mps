@@ -34,7 +34,7 @@ public class ComponentUsage_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.usedComponent$4v6T, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.usedComponent$b4lB, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -57,7 +57,7 @@ public class ComponentUsage_Constraints extends BaseConstraintsDescriptor {
                   }
                 }).all(new IWhereFilter<SNode>() {
                   public boolean accept(SNode u) {
-                    return !(Objects.equals(SLinkOperations.getTarget(u, LINKS.usedComponent$4v6T), b));
+                    return !(Objects.equals(SLinkOperations.getTarget(u, LINKS.usedComponent$b4lB), b));
                   }
                 });
               }
@@ -83,6 +83,6 @@ public class ComponentUsage_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink usedComponent$4v6T = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fb71L, 0x4ed97160b0a7fba5L, "usedComponent");
+    /*package*/ static final SReferenceLink usedComponent$b4lB = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fb71L, 0x4ed97160b0a7fba5L, "usedComponent");
   }
 }

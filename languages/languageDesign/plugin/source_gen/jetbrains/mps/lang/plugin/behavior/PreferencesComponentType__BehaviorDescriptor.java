@@ -33,7 +33,7 @@ public final class PreferencesComponentType__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static List<SNode> getMembers_idhEwINC$(@NotNull SNode __thisNode__, SNode contextNode) {
-    return (List<SNode>) IClassifier__BehaviorDescriptor.getMembers_idhEwJink.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.componentDeclaration$KpMu), contextNode);
+    return (List<SNode>) IClassifier__BehaviorDescriptor.getMembers_idhEwJink.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.componentDeclaration$svsy), contextNode);
   }
   /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
     return null;
@@ -88,6 +88,6 @@ public final class PreferencesComponentType__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink componentDeclaration$KpMu = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c497fc64L, 0x119c4987dc8L, "componentDeclaration");
+    /*package*/ static final SReferenceLink componentDeclaration$svsy = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c497fc64L, 0x119c4987dc8L, "componentDeclaration");
   }
 }

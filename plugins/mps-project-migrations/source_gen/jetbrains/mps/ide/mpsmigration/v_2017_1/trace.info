@@ -239,10 +239,10 @@
       <node id="7831187068298103528" at="150,0,151,0" concept="13" trace="NodeMacro$Je" />
       <node id="7831187068298103528" at="151,0,152,0" concept="13" trace="TemplateCallMacro$Iu" />
       <node id="7831187068298103528" at="152,0,153,0" concept="13" trace="MappingConfiguration$rB" />
-      <node id="7831187068298103528" at="156,0,157,0" concept="13" trace="labelDeclaration$SD8p" />
-      <node id="7831187068298103528" at="157,0,158,0" concept="13" trace="template$yiTA" />
-      <node id="7831187068298103528" at="158,0,159,0" concept="13" trace="mappingLabel$9pST" />
-      <node id="7831187068298103528" at="162,0,163,0" concept="13" trace="name$tAp1" />
+      <node id="7831187068298103528" at="156,0,157,0" concept="13" trace="labelDeclaration$rV47" />
+      <node id="7831187068298103528" at="157,0,158,0" concept="13" trace="template$B9Tq" />
+      <node id="7831187068298103528" at="158,0,159,0" concept="13" trace="mappingLabel$zyzB" />
+      <node id="7831187068298103528" at="162,0,163,0" concept="13" trace="name$lA7v" />
       <node id="129608261008895994" at="41,0,44,0" concept="2" trace="EditorGeneratorRefactoring#()V" />
       <node id="5369771541921952907" at="56,0,59,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/module/SDependency;)Z" />
       <node id="2180956403484877067" at="65,0,68,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

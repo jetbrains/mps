@@ -52,7 +52,7 @@ public final class IMember__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode createOperation_idhEwIBCC(@NotNull SNode __thisNode__) {
     SNode result = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(IMember__BehaviorDescriptor.getOperationSConcept_id6ALWH9g2jU8.invoke(__thisNode__)));
-    SLinkOperations.setTarget(result, LINKS.member$hrpI, __thisNode__);
+    SLinkOperations.setTarget(result, LINKS.member$shti, __thisNode__);
     return result;
   }
   /*package*/ static SNode getContainer_idhEwIBCW(@NotNull SNode __thisNode__) {
@@ -122,7 +122,7 @@ public final class IMember__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$hrpI = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
   }
 
   private static final class CONCEPTS {

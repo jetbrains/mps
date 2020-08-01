@@ -38,10 +38,10 @@ public class ActionTestSidetransformTestContainer_Constraints extends BaseConstr
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (childConcept == CONCEPTS.ActionTestSidetransformChild1$Zx && link == LINKS.abstractChildConstrained$IYIi) {
+    if (childConcept == CONCEPTS.ActionTestSidetransformChild1$Zx && link == LINKS.abstractChildConstrained$KoqI) {
       return false;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw) && link == LINKS.anotherAbstractChildConstrained$eQJW) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw) && link == LINKS.anotherAbstractChildConstrained$cxe4) {
       return false;
     }
 
@@ -56,7 +56,7 @@ public class ActionTestSidetransformTestContainer_Constraints extends BaseConstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink abstractChildConstrained$IYIi = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, 0x44969b12b8d87e51L, "abstractChildConstrained");
-    /*package*/ static final SContainmentLink anotherAbstractChildConstrained$eQJW = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, 0x2c35cefefca5514fL, "anotherAbstractChildConstrained");
+    /*package*/ static final SContainmentLink abstractChildConstrained$KoqI = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, 0x44969b12b8d87e51L, "abstractChildConstrained");
+    /*package*/ static final SContainmentLink anotherAbstractChildConstrained$cxe4 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, 0x2c35cefefca5514fL, "anotherAbstractChildConstrained");
   }
 }

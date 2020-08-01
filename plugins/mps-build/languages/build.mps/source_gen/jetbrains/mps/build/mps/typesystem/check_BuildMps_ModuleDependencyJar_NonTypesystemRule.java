@@ -21,7 +21,7 @@ public class check_BuildMps_ModuleDependencyJar_NonTypesystemRule extends Abstra
   public check_BuildMps_ModuleDependencyJar_NonTypesystemRule() {
   }
   public void applyRule(final SNode jarEntry, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    String relativePath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarEntry, LINKS.path$PN10));
+    String relativePath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarEntry, LINKS.path$3Hv0));
     if ((relativePath == null || relativePath.length() == 0) || (!(relativePath.endsWith("}")) && !(relativePath.endsWith(".jar")))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -40,7 +40,7 @@ public class check_BuildMps_ModuleDependencyJar_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink path$PN10 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
+    /*package*/ static final SContainmentLink path$3Hv0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
   }
 
   private static final class CONCEPTS {

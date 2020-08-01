@@ -21,7 +21,7 @@ public class typeof_UnarySimpleMathExpression_InferenceRule extends AbstractInfe
     {
       SNode _nodeToCheck_1029348928467 = unary;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208525522", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208525525", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(unary, LINKS.original$lu10), "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208525573", true), false, true, _info_12389875345);
+      typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208525525", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(unary, LINKS.original$pyv0), "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208525573", true), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_UnarySimpleMathExpression_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink original$lu10 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81d547bL, 0x1cc69153b81d547cL, "original");
+    /*package*/ static final SContainmentLink original$pyv0 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81d547bL, 0x1cc69153b81d547cL, "original");
   }
 
   private static final class CONCEPTS {

@@ -42,17 +42,17 @@ public final class Stateful__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.State$J2) && ScopeUtils.comeFrom(LINKS.states$Au54, __thisNode__, child)) {
-      ListScope myStates = new ListScope(SLinkOperations.getChildren(__thisNode__, LINKS.states$Au54)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.State$J2) && ScopeUtils.comeFrom(LINKS.states$C$sW, __thisNode__, child)) {
+      ListScope myStates = new ListScope(SLinkOperations.getChildren(__thisNode__, LINKS.states$C$sW)) {
         public String getName(SNode child) {
-          return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.State$J2), PROPS.name$tAp1);
+          return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.State$J2), PROPS.name$lA7v);
         }
       };
       return new HidingByNameScope(CONCEPTS.State$J2, CONCEPTS.State$J2, myStates, ScopeUtils.lazyParentScope(__thisNode__, kind));
-    } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.Event$H_) && ScopeUtils.comeFrom(LINKS.states$Au54, __thisNode__, child)) {
-      ListScope myEvents = new ListScope(SLinkOperations.getChildren(__thisNode__, LINKS.availableTriggers$AtTV)) {
+    } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.Event$H_) && ScopeUtils.comeFrom(LINKS.states$C$sW, __thisNode__, child)) {
+      ListScope myEvents = new ListScope(SLinkOperations.getChildren(__thisNode__, LINKS.availableTriggers$Cv3_)) {
         public String getName(SNode child) {
-          return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.Event$H_), PROPS.name$tAp1);
+          return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.Event$H_), PROPS.name$lA7v);
         }
       };
       return new HidingByNameScope(CONCEPTS.Event$H_, CONCEPTS.Event$H_, myEvents, ScopeUtils.lazyParentScope(__thisNode__, kind));
@@ -114,11 +114,11 @@ public final class Stateful__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink states$Au54 = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b3L, "states");
-    /*package*/ static final SContainmentLink availableTriggers$AtTV = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b1L, "availableTriggers");
+    /*package*/ static final SContainmentLink states$C$sW = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b3L, "states");
+    /*package*/ static final SContainmentLink availableTriggers$Cv3_ = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b1L, "availableTriggers");
   }
 }

@@ -20,25 +20,25 @@ public class includeIntoLayout_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "2834134232276458561"));
   }
   public String getDescription(SNode node) {
-    return "Add " + SPropertyOperations.getString(((SNode) includeIntoLayout_QuickFix.this.getField("module")[0]), PROPS.name$tAp1) + " to the layout";
+    return "Add " + SPropertyOperations.getString(((SNode) includeIntoLayout_QuickFix.this.getField("module")[0]), PROPS.name$lA7v) + " to the layout";
   }
   public void execute(SNode node) {
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) includeIntoLayout_QuickFix.this.getField("project")[0]), LINKS.layout$tpCz), LINKS.children$aiMf)).addElement(createBuildMpsLayout_ModuleJars_f5l1y2_a0a0a2(((SNode) includeIntoLayout_QuickFix.this.getField("module")[0])));
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) includeIntoLayout_QuickFix.this.getField("project")[0]), LINKS.layout$fqCX), LINKS.children$Z6lh)).addElement(createBuildMpsLayout_ModuleJars_f5l1y2_a0a0a2(((SNode) includeIntoLayout_QuickFix.this.getField("module")[0])));
   }
   private static SNode createBuildMpsLayout_ModuleJars_f5l1y2_a0a0a2(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildMpsLayout_ModuleJars$mB);
-    n0.setReferenceTarget(LINKS.module$5MWZ, p0);
+    n0.setReferenceTarget(LINKS.module$NFyx, p0);
     return n0.getResult();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink layout$tpCz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
-    /*package*/ static final SContainmentLink children$aiMf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
-    /*package*/ static final SReferenceLink module$5MWZ = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
+    /*package*/ static final SContainmentLink layout$fqCX = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
+    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SReferenceLink module$NFyx = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
   }
 
   private static final class CONCEPTS {

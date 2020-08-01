@@ -90,7 +90,7 @@ public class EmptyLine_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode ifCmd = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$GU, null);
-          SLinkOperations.setTarget(ifCmd, LINKS.condition$rbdE, nodeToWrap);
+          SLinkOperations.setTarget(ifCmd, LINKS.condition$arBm, nodeToWrap);
           return ifCmd;
         }
 
@@ -127,6 +127,6 @@ public class EmptyLine_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$rbdE = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, 0x2de971c785ec9fc0L, "condition");
+    /*package*/ static final SContainmentLink condition$arBm = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, 0x2de971c785ec9fc0L, "condition");
   }
 }

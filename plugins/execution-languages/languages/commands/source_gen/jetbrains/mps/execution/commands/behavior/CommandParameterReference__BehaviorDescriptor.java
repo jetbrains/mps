@@ -31,7 +31,7 @@ public final class CommandParameterReference__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode getVariable_idSORzhOpB6t(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.parameter$noXv);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.parameter$l5M1);
   }
 
   /*package*/ CommandParameterReference__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class CommandParameterReference__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$noXv = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bdcL, 0xbe3a0d5ba1a2bdeL, "parameter");
+    /*package*/ static final SReferenceLink parameter$l5M1 = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bdcL, 0xbe3a0d5ba1a2bdeL, "parameter");
   }
 }

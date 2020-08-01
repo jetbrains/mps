@@ -43,8 +43,8 @@ public final class BwfTaskLibrary__BehaviorDescriptor extends BaseBHDescriptor {
     queue.add(__thisNode__);
     do {
       SNode lib = queue.removeFirst();
-      for (SNode dep : SLinkOperations.getChildren(lib, LINKS.imports$ZpQS)) {
-        SNode targetLib = SLinkOperations.getTarget(dep, LINKS.target$LSxw);
+      for (SNode dep : SLinkOperations.getChildren(lib, LINKS.imports$Hx_8)) {
+        SNode targetLib = SLinkOperations.getTarget(dep, LINKS.target$aoew);
         if (!(SetSequence.fromSet(rv).contains(targetLib))) {
           SetSequence.fromSet(rv).addElement(targetLib);
           queue.addLast(targetLib);
@@ -101,7 +101,7 @@ public final class BwfTaskLibrary__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$LSxw = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target");
-    /*package*/ static final SContainmentLink imports$ZpQS = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L, 0x6565da114725c6b6L, "imports");
+    /*package*/ static final SReferenceLink target$aoew = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target");
+    /*package*/ static final SContainmentLink imports$Hx_8 = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L, 0x6565da114725c6b6L, "imports");
   }
 }

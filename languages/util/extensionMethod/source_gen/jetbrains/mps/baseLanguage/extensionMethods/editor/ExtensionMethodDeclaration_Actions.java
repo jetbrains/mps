@@ -24,8 +24,8 @@ public class ExtensionMethodDeclaration_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$gr7e)).isEmpty()) {
-          SNodeFactoryOperations.addNewChild(node, LINKS.throwsItem$gr7e, null);
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$X8vM)).isEmpty()) {
+          SNodeFactoryOperations.addNewChild(node, LINKS.throwsItem$X8vM, null);
         }
       }
 
@@ -74,6 +74,6 @@ public class ExtensionMethodDeclaration_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
   }
 }

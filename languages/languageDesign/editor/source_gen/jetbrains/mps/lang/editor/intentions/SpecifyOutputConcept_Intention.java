@@ -40,7 +40,7 @@ public final class SpecifyOutputConcept_Intention extends AbstractIntentionDescr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.outputConceptReference$$wf5) == null);
+    return (SLinkOperations.getTarget(node, LINKS.outputConceptReference$FBjr) == null);
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
     return SNodeOperations.getNodeAncestor(childNode, CONCEPTS.StatementList$TN, false, false) == null;
@@ -64,7 +64,7 @@ public final class SpecifyOutputConcept_Intention extends AbstractIntentionDescr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setTarget(node, LINKS.outputConceptReference$$wf5, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc1f1L, "jetbrains.mps.lang.editor.structure.OptionalConceptReference")));
+      SLinkOperations.setTarget(node, LINKS.outputConceptReference$FBjr, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc1f1L, "jetbrains.mps.lang.editor.structure.OptionalConceptReference")));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -73,7 +73,7 @@ public final class SpecifyOutputConcept_Intention extends AbstractIntentionDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink outputConceptReference$$wf5 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc214L, 0xbb2f315607dd080L, "outputConceptReference");
+    /*package*/ static final SContainmentLink outputConceptReference$FBjr = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc214L, 0xbb2f315607dd080L, "outputConceptReference");
   }
 
   private static final class CONCEPTS {

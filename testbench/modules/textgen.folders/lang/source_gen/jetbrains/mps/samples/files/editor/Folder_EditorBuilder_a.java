@@ -83,7 +83,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -136,7 +136,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$UVe7;
+      return LINKS.children$yFPp;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Entity$n$;
@@ -149,7 +149,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_ngx833_b0.this.getNode(), LINKS.children$UVe7));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_ngx833_b0.this.getNode(), LINKS.children$yFPp));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -191,7 +191,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -200,6 +200,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink children$UVe7 = MetaAdapterFactory.getContainmentLink(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x3b29e241360a2055L, 0x3b29e241360a204fL, "children");
+    /*package*/ static final SContainmentLink children$yFPp = MetaAdapterFactory.getContainmentLink(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x3b29e241360a2055L, 0x3b29e241360a204fL, "children");
   }
 }

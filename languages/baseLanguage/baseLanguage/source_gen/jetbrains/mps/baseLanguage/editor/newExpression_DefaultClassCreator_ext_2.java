@@ -74,7 +74,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
   public class TMP_Group_fd8jk1_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$PRff)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$5Koh)).isEmpty();
     }
 
     @NotNull
@@ -130,7 +130,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.typeParameter$PRff, null);
+          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.typeParameter$5Koh, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -165,7 +165,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeParameter$PRff = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
+    /*package*/ static final SContainmentLink typeParameter$5Koh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
   }
 
   private static final class CONCEPTS {

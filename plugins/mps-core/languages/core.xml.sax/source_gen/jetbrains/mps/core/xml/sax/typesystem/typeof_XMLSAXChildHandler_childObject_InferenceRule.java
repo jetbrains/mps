@@ -27,7 +27,7 @@ public class typeof_XMLSAXChildHandler_childObject_InferenceRule extends Abstrac
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140497", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140525", true), (SNode) (((rule != null) && (SLinkOperations.getTarget(rule, LINKS.rule$Ywc8) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.rule$Ywc8), LINKS.type$Y_Mw) != null) ? SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.rule$Ywc8), LINKS.type$Y_Mw) : _quotation_createNode_4xzpao_a0b0a2a1a1())), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140525", true), (SNode) (((rule != null) && (SLinkOperations.getTarget(rule, LINKS.rule$h_RS) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.rule$h_RS), LINKS.type$kjtw) != null) ? SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.rule$h_RS), LINKS.type$kjtw) : _quotation_createNode_4xzpao_a0b0a2a1a1())), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -53,7 +53,7 @@ public class typeof_XMLSAXChildHandler_childObject_InferenceRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink rule$Ywc8 = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0x1f6c736337b5e2dcL, "rule");
-    /*package*/ static final SContainmentLink type$Y_Mw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
+    /*package*/ static final SReferenceLink rule$h_RS = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0x1f6c736337b5e2dcL, "rule");
+    /*package*/ static final SContainmentLink type$kjtw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
   }
 }

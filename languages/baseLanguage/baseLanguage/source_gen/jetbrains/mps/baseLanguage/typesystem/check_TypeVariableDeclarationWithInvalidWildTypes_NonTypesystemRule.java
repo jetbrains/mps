@@ -21,10 +21,10 @@ public class check_TypeVariableDeclarationWithInvalidWildTypes_NonTypesystemRule
   public check_TypeVariableDeclarationWithInvalidWildTypes_NonTypesystemRule() {
   }
   public void applyRule(final SNode typeVariableDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$dqDF) != null) && !((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$dqDF)))) {
+    if ((SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$vUbP) != null) && !((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$vUbP)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$dqDF), "Invalid use of bound type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(typeVariableDeclaration, LINKS.bound$vUbP), "Invalid use of bound type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928266839857", null, errorTarget);
       }
     }
   }
@@ -39,7 +39,7 @@ public class check_TypeVariableDeclarationWithInvalidWildTypes_NonTypesystemRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$dqDF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
   }
 
   private static final class CONCEPTS {

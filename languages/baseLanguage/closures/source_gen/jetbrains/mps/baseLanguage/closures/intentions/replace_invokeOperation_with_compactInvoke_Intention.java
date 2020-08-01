@@ -61,7 +61,7 @@ public final class replace_invokeOperation_with_compactInvoke_Intention extends 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a);
-      SNodeOperations.replaceWithAnother(parent, _quotation_createNode_7ste6_a0a1a0(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(parent, LINKS.operation$X4R8), CONCEPTS.InvokeFunctionOperation$kP), LINKS.parameter$YY3N), SLinkOperations.getTarget(parent, LINKS.operand$Lcrr)));
+      SNodeOperations.replaceWithAnother(parent, _quotation_createNode_7ste6_a0a1a0(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(parent, LINKS.operation$_mGS), CONCEPTS.InvokeFunctionOperation$kP), LINKS.parameter$w3PH), SLinkOperations.getTarget(parent, LINKS.operand$P1i5)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -93,8 +93,8 @@ public final class replace_invokeOperation_with_compactInvoke_Intention extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink parameter$YY3N = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11d67349093L, 0x11d67375fccL, "parameter");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink parameter$w3PH = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11d67349093L, 0x11d67375fccL, "parameter");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

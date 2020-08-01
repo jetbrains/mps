@@ -32,10 +32,10 @@ public final class RulesConstraintsRoot__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.concept$aYvX);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.concept$khuz);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.concept$aYvX, baseConcept);
+    SLinkOperations.setTarget(__thisNode__, LINKS.concept$khuz, baseConcept);
   }
 
   /*package*/ RulesConstraintsRoot__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class RulesConstraintsRoot__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$aYvX = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept");
+    /*package*/ static final SReferenceLink concept$khuz = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept");
   }
 }

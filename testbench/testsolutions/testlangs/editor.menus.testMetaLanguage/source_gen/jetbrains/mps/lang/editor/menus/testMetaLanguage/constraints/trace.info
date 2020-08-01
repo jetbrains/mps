@@ -22,7 +22,7 @@
       <node id="5297342121660704408" at="36,119,37,61" concept="1" />
       <node id="5297342121660704383" at="37,61,38,22" concept="4" />
       <node id="5297342121660704383" at="42,0,43,0" concept="5" trace="TransformationMenu_Test$pv" />
-      <node id="5297342121660704383" at="46,0,47,0" concept="5" trace="name$tAp1" />
+      <node id="5297342121660704383" at="46,0,47,0" concept="5" trace="name$lA7v" />
       <node id="5297342121660704383" at="17,0,20,0" concept="0" trace="TransformationMenu_Test_Constraints#()V" />
       <node id="5297342121660704408" at="22,0,25,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="5297342121660704408" at="25,0,29,0" concept="2" trace="hasOwnGetter#()Z" />

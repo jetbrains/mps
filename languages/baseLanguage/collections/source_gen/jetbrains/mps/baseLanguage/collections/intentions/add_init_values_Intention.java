@@ -37,7 +37,7 @@ public final class add_init_values_Intention extends AbstractIntentionDescriptor
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (boolean) AbstractContainerCreator__BehaviorDescriptor.canHaveParameter_id1XyaNs207wP.invoke(node) && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.initValue$K4zR)).isEmpty() && (SLinkOperations.getTarget(node, LINKS.copyFrom$oKp$) == null);
+    return (boolean) AbstractContainerCreator__BehaviorDescriptor.canHaveParameter_id1XyaNs207wP.invoke(node) && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.initValue$idnD)).isEmpty() && (SLinkOperations.getTarget(node, LINKS.copyFrom$Zsos) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -58,7 +58,7 @@ public final class add_init_values_Intention extends AbstractIntentionDescriptor
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.initValue$K4zR, null);
+      SNodeFactoryOperations.addNewChild(node, LINKS.initValue$idnD, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,7 +67,7 @@ public final class add_init_values_Intention extends AbstractIntentionDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$K4zR = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue");
-    /*package*/ static final SContainmentLink copyFrom$oKp$ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
+    /*package*/ static final SContainmentLink initValue$idnD = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue");
+    /*package*/ static final SContainmentLink copyFrom$Zsos = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202e9082e6L, "copyFrom");
   }
 }

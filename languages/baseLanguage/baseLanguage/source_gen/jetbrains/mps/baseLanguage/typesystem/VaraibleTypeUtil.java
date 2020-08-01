@@ -21,7 +21,7 @@ public class VaraibleTypeUtil {
   public static TypeDescriptor fromType(SNode valueType) {
     SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(valueType, CONCEPTS.ClassifierType$IZ);
     if ((classifierType != null)) {
-      return new ClassifierTypeDescriptor(SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R));
+      return new ClassifierTypeDescriptor(SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD));
     }
     if (TypecheckingFacade.getFromContext().isStrongSubtype(valueType, _quotation_createNode_c9xwxw_b0a2a1())) {
       return PrimitiveTypeDescriptor.BOOL;
@@ -54,8 +54,8 @@ public class VaraibleTypeUtil {
   public static SNode toLocalVariableClassType(SNode valueType) {
     TypeDescriptor td = fromType(valueType);
     SNode res = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-    SLinkOperations.setPointer(res, LINKS.classifier$pQ_R, td.handle(LOCAL_VARIABLE_CLASS));
-    ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.parameter$dQne)).addElement(td.handle(VARIABLE_TYPE_PARAMETER));
+    SLinkOperations.setPointer(res, LINKS.classifier$xslD, td.handle(LOCAL_VARIABLE_CLASS));
+    ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.parameter$HlfM)).addElement(td.handle(VARIABLE_TYPE_PARAMETER));
     return res;
   }
 
@@ -358,7 +358,7 @@ public class VaraibleTypeUtil {
   }
   private static SNode createClassifierType_c9xwxw_a0a1a0a12(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    n0.setReferenceTarget(LINKS.classifier$pQ_R, p0);
+    n0.setReferenceTarget(LINKS.classifier$xslD, p0);
     return n0.getResult();
   }
 
@@ -367,7 +367,7 @@ public class VaraibleTypeUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 }

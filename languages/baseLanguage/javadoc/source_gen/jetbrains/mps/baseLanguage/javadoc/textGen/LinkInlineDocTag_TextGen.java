@@ -16,17 +16,17 @@ public class LinkInlineDocTag_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("link ");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.reference$j6MW));
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.line$1qiq)).isNotEmpty()) {
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.reference$giF4));
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.line$FIUA)).isNotEmpty()) {
       tgs.append(" ");
-      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.line$1qiq)) {
+      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.line$FIUA)) {
         tgs.appendNode(item);
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink reference$j6MW = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x235789022a5d3a34L, "reference");
-    /*package*/ static final SContainmentLink line$1qiq = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x2b1cb7939653411eL, "line");
+    /*package*/ static final SContainmentLink reference$giF4 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x235789022a5d3a34L, "reference");
+    /*package*/ static final SContainmentLink line$FIUA = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x2b1cb7939653411eL, "line");
   }
 }

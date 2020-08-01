@@ -30,8 +30,8 @@
       <node id="979583239732347490" at="63,0,64,0" concept="7" trace="StringToTypedValueMigrationInfo$dM" />
       <node id="979583239732347490" at="64,0,65,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="979583239732347490" at="65,0,66,0" concept="7" trace="EnumPropertyMigrationInfo$Yg" />
-      <node id="979583239732347490" at="69,0,70,0" concept="7" trace="stringValueMigrated$gFe8" />
-      <node id="979583239732347490" at="70,0,71,0" concept="7" trace="enumUsageMigrated$lY$m" />
+      <node id="979583239732347490" at="69,0,70,0" concept="7" trace="stringValueMigrated$4VPS" />
+      <node id="979583239732347490" at="70,0,71,0" concept="7" trace="enumUsageMigrated$DjAE" />
       <node id="979583239732374870" at="44,86,47,9" concept="2" />
       <node id="979583239732302834" at="24,0,28,0" concept="3" trace="getName#()Ljava/lang/String;" />
       <node id="979583239732302834" at="28,0,32,0" concept="3" trace="getAdditionalInfo#()Ljava/lang/String;" />

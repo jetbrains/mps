@@ -57,7 +57,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.amount$mBsY;
+      final SProperty property = PROPS.amount$X722;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no amount>");
@@ -82,7 +82,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.currency$6DWb;
+      final SProperty property = PROPS.currency$ek9l;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no currency>");
@@ -106,8 +106,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty amount$mBsY = MetaAdapterFactory.getProperty(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, 0x1144aec21fdL, "amount");
-    /*package*/ static final SProperty currency$6DWb = MetaAdapterFactory.getProperty(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, 0x1144aebdf40L, "currency");
+    /*package*/ static final SProperty amount$X722 = MetaAdapterFactory.getProperty(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, 0x1144aec21fdL, "amount");
+    /*package*/ static final SProperty currency$ek9l = MetaAdapterFactory.getProperty(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, 0x1144aebdf40L, "currency");
   }
 
   private static final class CONCEPTS {

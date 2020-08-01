@@ -25,7 +25,7 @@
       <node id="1241364804758" at="54,0,55,0" concept="5" trace="breakingNode_43tbk9_a0a0a0a0a1a0a0a0c" />
       <node id="1241364804758" at="57,0,58,0" concept="5" trace="InputFieldReference$j6" />
       <node id="1241364804758" at="58,0,59,0" concept="5" trace="InputField$6i" />
-      <node id="1241364804758" at="62,0,63,0" concept="5" trace="field$bI$D" />
+      <node id="1241364804758" at="62,0,63,0" concept="5" trace="field$FzJR" />
       <node id="1241364804758" at="23,0,26,0" concept="0" trace="InputFieldReference_Constraints#()V" />
       <node id="1241364811072" at="30,0,34,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="1241364811072" at="38,0,42,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

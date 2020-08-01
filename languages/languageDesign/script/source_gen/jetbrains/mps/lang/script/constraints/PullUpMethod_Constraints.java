@@ -53,7 +53,7 @@ public class PullUpMethod_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.newMethodDeclaration$swRl, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.newMethodDeclaration$NUNb, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -69,7 +69,7 @@ public class PullUpMethod_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode ancestor = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ExtractInterfaceMigration$at, true, false);
-            return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(ancestor, LINKS.newClassifier$dFxZ))).where(new IWhereFilter<SNode>() {
+            return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(ancestor, LINKS.newClassifier$C5tx))).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$An);
               }
@@ -101,7 +101,7 @@ public class PullUpMethod_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink newMethodDeclaration$swRl = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x3ae1f3a73b9e55daL, "newMethodDeclaration");
-    /*package*/ static final SReferenceLink newClassifier$dFxZ = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, 0x5c5c94143857349bL, "newClassifier");
+    /*package*/ static final SReferenceLink newMethodDeclaration$NUNb = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, 0x3ae1f3a73b9e55daL, "newMethodDeclaration");
+    /*package*/ static final SReferenceLink newClassifier$C5tx = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, 0x5c5c94143857349bL, "newClassifier");
   }
 }

@@ -118,11 +118,11 @@
       <node id="3540747636396547801" at="126,0,127,0" concept="8" trace="VariableReference$sQ" />
       <node id="3540747636396547801" at="127,0,128,0" concept="8" trace="LocalVariableDeclaration$Bf" />
       <node id="3540747636396547801" at="128,0,129,0" concept="8" trace="DotExpression$6a" />
-      <node id="3540747636396547801" at="132,0,133,0" concept="8" trace="operand$Lcrr" />
-      <node id="3540747636396547801" at="133,0,134,0" concept="8" trace="classifier$pQ_R" />
-      <node id="3540747636396547801" at="134,0,135,0" concept="8" trace="operation$X4R8" />
-      <node id="3540747636396547801" at="135,0,136,0" concept="8" trace="variableDeclaration$2ky6" />
-      <node id="3540747636396547801" at="139,0,140,0" concept="8" trace="isFinal$dzaH" />
+      <node id="3540747636396547801" at="132,0,133,0" concept="8" trace="operand$P1i5" />
+      <node id="3540747636396547801" at="133,0,134,0" concept="8" trace="classifier$xslD" />
+      <node id="3540747636396547801" at="134,0,135,0" concept="8" trace="operation$_mGS" />
+      <node id="3540747636396547801" at="135,0,136,0" concept="8" trace="variableDeclaration$7WwU" />
+      <node id="3540747636396547801" at="139,0,140,0" concept="8" trace="isFinal$$2bN" />
       <node id="3540747636396547801" at="29,0,31,0" concept="1" trace="DotExpressionForInstanceMethodCallOperation_threadSafe_NonTypesystemRule#()V" />
       <node id="3540747636396547815" at="34,33,37,7" concept="3" />
       <node id="3540747636396645522" at="41,183,44,11" concept="3" />
@@ -580,10 +580,10 @@
       <node id="5384012304952354752" at="121,0,122,0" concept="8" trace="InstanceMethodDeclaration$An" />
       <node id="5384012304952354752" at="122,0,123,0" concept="8" trace="StaticMethodDeclaration$eX" />
       <node id="5384012304952354752" at="123,0,124,0" concept="8" trace="BaseMethodCall$S9" />
-      <node id="5384012304952354752" at="127,0,128,0" concept="8" trace="classConcept$BsUa" />
-      <node id="5384012304952354752" at="128,0,129,0" concept="8" trace="classifier$pQ_R" />
-      <node id="5384012304952354752" at="129,0,130,0" concept="8" trace="baseMethodDeclaration$$A7i" />
-      <node id="5384012304952354752" at="133,0,134,0" concept="8" trace="isFinal$dzaH" />
+      <node id="5384012304952354752" at="127,0,128,0" concept="8" trace="classConcept$70aQ" />
+      <node id="5384012304952354752" at="128,0,129,0" concept="8" trace="classifier$xslD" />
+      <node id="5384012304952354752" at="129,0,130,0" concept="8" trace="baseMethodDeclaration$ItxI" />
+      <node id="5384012304952354752" at="133,0,134,0" concept="8" trace="isFinal$$2bN" />
       <node id="5384012304952354752" at="27,0,29,0" concept="1" trace="CallsToNonThreadSafeMethod_NonTypesystemRule#()V" />
       <node id="5384012304952500184" at="32,87,35,9" concept="3" />
       <node id="7942833282341875916" at="36,152,39,9" concept="3" />
@@ -711,9 +711,9 @@
       <node id="7793246093816012185" at="53,30,54,17" concept="6" />
       <node id="7793246093816012185" at="58,0,59,0" concept="8" trace="ParallelFor$GE" />
       <node id="7793246093816012185" at="59,0,60,0" concept="8" trace="VariableReference$sQ" />
-      <node id="7793246093816012185" at="63,0,64,0" concept="8" trace="threadPool$1iZ4" />
-      <node id="7793246093816012185" at="64,0,65,0" concept="8" trace="variableDeclaration$2ky6" />
-      <node id="7793246093816012185" at="68,0,69,0" concept="8" trace="isFinal$hIht" />
+      <node id="7793246093816012185" at="63,0,64,0" concept="8" trace="threadPool$CcyW" />
+      <node id="7793246093816012185" at="64,0,65,0" concept="8" trace="variableDeclaration$7WwU" />
+      <node id="7793246093816012185" at="68,0,69,0" concept="8" trace="isFinal$_qt3" />
       <node id="7793246093816012185" at="25,0,27,0" concept="1" trace="NoAssignmentsToNonFinalVariablesOutsideTheScope_NonTypesystemRule#()V" />
       <node id="7793246093816012185" at="47,0,50,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7793246093816012185" at="50,0,53,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -775,8 +775,8 @@
       <node id="7793246093816040825" at="20,44,21,36" concept="6" />
       <node id="7793246093816040828" at="23,35,24,175" concept="2" />
       <node id="7793246093816040820" at="28,0,29,0" concept="8" trace="VariableReference$sQ" />
-      <node id="7793246093816040820" at="32,0,33,0" concept="8" trace="variableDeclaration$2ky6" />
-      <node id="7793246093816040820" at="36,0,37,0" concept="8" trace="isFinal$hIht" />
+      <node id="7793246093816040820" at="32,0,33,0" concept="8" trace="variableDeclaration$7WwU" />
+      <node id="7793246093816040820" at="36,0,37,0" concept="8" trace="isFinal$_qt3" />
       <node id="7793246093816040820" at="17,0,20,0" concept="1" trace="MakeDeclarationFinal_QuickFix#()V" />
       <node id="7793246093816040820" at="20,0,23,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="7793246093816040820" at="23,0,26,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -842,9 +842,9 @@
       <node id="3261041752321174553" at="78,31,79,203" concept="2" />
       <node id="3261041752321174553" at="80,5,81,165" concept="2" />
       <node id="3261041752321174553" at="81,165,82,24" concept="6" />
-      <node id="8923957828369554117" at="86,0,87,0" concept="8" trace="threadPool$1iZ4" />
-      <node id="8923957828369554117" at="87,0,88,0" concept="8" trace="loopVariable$2tJe" />
-      <node id="8923957828369554117" at="88,0,89,0" concept="8" trace="inputSequence$qLOB" />
+      <node id="8923957828369554117" at="86,0,87,0" concept="8" trace="threadPool$CcyW" />
+      <node id="8923957828369554117" at="87,0,88,0" concept="8" trace="loopVariable$cpRM" />
+      <node id="8923957828369554117" at="88,0,89,0" concept="8" trace="inputSequence$Y8uT" />
       <node id="8923957828369554117" at="92,0,93,0" concept="8" trace="ParallelFor$GE" />
       <node id="8923957828369554117" at="22,0,24,0" concept="1" trace="typeof_ParallelFor_InferenceRule#()V" />
       <node id="8923957828369554117" at="46,0,49,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

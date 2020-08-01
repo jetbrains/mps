@@ -62,9 +62,9 @@ public final class DependentTypeDescriptor__BehaviorDescriptor extends BaseBHDes
   }
   /*package*/ static String getGeneratedMethodName_id2dmnr4$zcCR(@NotNull SNode __thisNode__) {
     if ((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterDescriptor$fO, false, false) != null)) {
-      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$hh, false, false), PROPS.name$tAp1) + "_" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterDescriptor$fO, false, false), PROPS.name$tAp1) + "_type";
+      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$hh, false, false), PROPS.name$lA7v) + "_" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterDescriptor$fO, false, false), PROPS.name$lA7v) + "_type";
     } else {
-      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$hh, false, false), PROPS.name$tAp1) + "_ret";
+      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$hh, false, false), PROPS.name$lA7v) + "_ret";
     }
   }
 
@@ -119,8 +119,8 @@ public final class DependentTypeDescriptor__BehaviorDescriptor extends BaseBHDes
   }
   private static SNode createDependentTypeInstance_anu5lw_a0a0(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DependentTypeInstance$to);
-    n0.setReferenceTarget(LINKS.decl$HVk0, p0);
-    n0.setReferenceTarget(LINKS.point$7xs1, p1);
+    n0.setReferenceTarget(LINKS.decl$fIG0, p0);
+    n0.setReferenceTarget(LINKS.point$Dc$v, p1);
     return n0.getResult();
   }
 
@@ -132,11 +132,11 @@ public final class DependentTypeDescriptor__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$HVk0 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x340eb2bd2e03d16cL, "decl");
-    /*package*/ static final SReferenceLink point$7xs1 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x7e420dcd0899aa0eL, "point");
+    /*package*/ static final SReferenceLink decl$fIG0 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x340eb2bd2e03d16cL, "decl");
+    /*package*/ static final SReferenceLink point$Dc$v = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x7e420dcd0899aa0eL, "point");
   }
 }

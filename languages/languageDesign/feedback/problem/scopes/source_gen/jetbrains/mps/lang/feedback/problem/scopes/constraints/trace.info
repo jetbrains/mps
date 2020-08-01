@@ -28,9 +28,9 @@
       <node id="1592627013225801575" at="75,0,76,0" concept="5" trace="breakingNode_cqx8be_a0a0a0a0a1a0a0a0c" />
       <node id="1592627013225801575" at="78,0,79,0" concept="5" trace="RefOutOfScopeProblem$Zz" />
       <node id="1592627013225801575" at="79,0,80,0" concept="5" trace="AbstractConceptDeclaration$UN" />
-      <node id="1592627013225801575" at="83,0,84,0" concept="5" trace="ref$uT96" />
-      <node id="1592627013225801575" at="84,0,85,0" concept="5" trace="linkDeclaration$lL6$" />
-      <node id="1592627013225801575" at="88,0,89,0" concept="5" trace="metaClass$tHD7" />
+      <node id="1592627013225801575" at="83,0,84,0" concept="5" trace="ref$XFpU" />
+      <node id="1592627013225801575" at="84,0,85,0" concept="5" trace="linkDeclaration$yMbs" />
+      <node id="1592627013225801575" at="88,0,89,0" concept="5" trace="metaClass$p6Up" />
       <node id="1592627013225801575" at="34,0,37,0" concept="0" trace="RefOutOfScopeProblem_Constraints#()V" />
       <node id="2559059706674900578" at="57,0,60,0" concept="2" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="2559059706674942018" at="61,0,64,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

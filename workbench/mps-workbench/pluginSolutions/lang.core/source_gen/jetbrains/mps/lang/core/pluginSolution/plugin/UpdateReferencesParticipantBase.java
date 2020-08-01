@@ -79,10 +79,10 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
       return NodeReferenceUtil.makeReflection(finalState.baseData().reference(), finalState.baseData().name());
     }
     public NodeData<Void> deserializeFinalState(SNode serialized) {
-      return new NodeData<Void>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(serialized), SPropertyOperations.getString(serialized, PROPS.nodeName$KMmO)), ((Void) null));
+      return new NodeData<Void>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(serialized), SPropertyOperations.getString(serialized, PROPS.nodeName$Cp3c)), ((Void) null));
     }
     public NodeData<Void> deserializeInitialState(SNode serialized) {
-      return new NodeData<Void>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(serialized), SPropertyOperations.getString(serialized, PROPS.nodeName$KMmO)), ((Void) null));
+      return new NodeData<Void>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(serialized), SPropertyOperations.getString(serialized, PROPS.nodeName$Cp3c)), ((Void) null));
     }
     private boolean isOverridingParticipant(UpdateReferencesParticipant it) {
       return this.getClass().isAssignableFrom(it.getClass()) && !(Objects.equals(this.getClass(), it.getClass()));
@@ -273,6 +273,6 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeName$KMmO = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
+    /*package*/ static final SProperty nodeName$Cp3c = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
   }
 }

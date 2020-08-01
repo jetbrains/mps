@@ -23,8 +23,8 @@ public final class Component__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.x$FXkA, 100);
-    SPropertyOperations.assign(__thisNode__, PROPS.y$FXl$, 100);
+    SPropertyOperations.assign(__thisNode__, PROPS.x$iGYq, 100);
+    SPropertyOperations.assign(__thisNode__, PROPS.y$iHss, 100);
   }
 
 
@@ -73,7 +73,7 @@ public final class Component__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty x$FXkA = MetaAdapterFactory.getProperty(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381bdb4dL, "x");
-    /*package*/ static final SProperty y$FXl$ = MetaAdapterFactory.getProperty(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381bdb4fL, "y");
+    /*package*/ static final SProperty x$iGYq = MetaAdapterFactory.getProperty(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381bdb4dL, "x");
+    /*package*/ static final SProperty y$iHss = MetaAdapterFactory.getProperty(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381bdb4fL, "y");
   }
 }

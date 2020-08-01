@@ -73,7 +73,7 @@ public final class CreateReferenceOnClass_Intention extends AbstractIntentionDes
           break;
         }
       }
-      SLinkOperations.setTarget(node, LINKS.classConcept$Hbij, outerConcept);
+      SLinkOperations.setTarget(node, LINKS.classConcept$StRd, outerConcept);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -87,6 +87,6 @@ public final class CreateReferenceOnClass_Intention extends AbstractIntentionDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$Hbij = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 }

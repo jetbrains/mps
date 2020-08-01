@@ -13,10 +13,10 @@ public class File_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$UVtZ));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$yNxx));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$UVtZ = MetaAdapterFactory.getProperty(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x3b29e241360a2058L, 0x3b29e241360a205aL, "text");
+    /*package*/ static final SProperty text$yNxx = MetaAdapterFactory.getProperty(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x3b29e241360a2058L, 0x3b29e241360a205aL, "text");
   }
 }

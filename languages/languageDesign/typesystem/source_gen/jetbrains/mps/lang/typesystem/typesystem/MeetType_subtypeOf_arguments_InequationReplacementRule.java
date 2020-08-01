@@ -19,7 +19,7 @@ public class MeetType_subtypeOf_arguments_InequationReplacementRule extends Abst
   public MeetType_subtypeOf_arguments_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    for (SNode arg : SLinkOperations.getChildren(subtype, LINKS.argument$kHNt)) {
+    for (SNode arg : SLinkOperations.getChildren(subtype, LINKS.argument$2bV3)) {
       if (MatchingUtil.matchNodes(arg, supertype)) {
         return true;
       }
@@ -50,7 +50,7 @@ public class MeetType_subtypeOf_arguments_InequationReplacementRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$kHNt = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 
   private static final class CONCEPTS {

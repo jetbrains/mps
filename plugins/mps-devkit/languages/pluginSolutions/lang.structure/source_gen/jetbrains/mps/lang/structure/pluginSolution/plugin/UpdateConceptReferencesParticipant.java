@@ -38,7 +38,7 @@ public class UpdateConceptReferencesParticipant extends UpdateReferencesParticip
 
   @Override
   protected boolean shouldUpdateReference(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, SNode containingNode, SReferenceLink role, SNode movingNode, RefactoringSession refactoringSession) {
-    return Objects.equals(role, LINKS.extends$LQV3) || Objects.equals(role, LINKS.intfc$fO5);
+    return Objects.equals(role, LINKS.extends$9AAt) || Objects.equals(role, LINKS.intfc$7Eer);
   }
 
   @Override
@@ -103,8 +103,8 @@ public class UpdateConceptReferencesParticipant extends UpdateReferencesParticip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
   }
 
   private static final class CONCEPTS {

@@ -21,7 +21,7 @@ public class PatternVariableDeclaration_Constraints extends BaseConstraintsDescr
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$tAp1, container);
+      super(PROPS.name$lA7v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -29,12 +29,12 @@ public class PatternVariableDeclaration_Constraints extends BaseConstraintsDescr
     }
     @Override
     public Object getValue(SNode node) {
-      return "#" + SPropertyOperations.getString(node, PROPS.varName$DO_b);
+      return "#" + SPropertyOperations.getString(node, PROPS.varName$gu0l);
     }
   }
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$w2Xj, container);
+      super(PROPS.shortDescription$xrGd, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -48,8 +48,8 @@ public class PatternVariableDeclaration_Constraints extends BaseConstraintsDescr
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$tAp1, new Name_Property(this));
-    properties.put(PROPS.shortDescription$w2Xj, new ShortDescription_Property(this));
+    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.shortDescription$xrGd, new ShortDescription_Property(this));
     return properties;
   }
 
@@ -58,8 +58,8 @@ public class PatternVariableDeclaration_Constraints extends BaseConstraintsDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty varName$DO_b = MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, 0x108a9cb4794L, "varName");
-    /*package*/ static final SProperty shortDescription$w2Xj = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty varName$gu0l = MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, 0x108a9cb4794L, "varName");
+    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 }

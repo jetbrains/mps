@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.fontFamily$yHn_;
+      final SProperty property = PROPS.fontFamily$NYqV;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no fontFamily>");
@@ -123,7 +123,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.fontSize$dgUi;
+      final SProperty property = PROPS.fontSize$rceI;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no fontSize>");
@@ -150,8 +150,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fontFamily$yHn_ = MetaAdapterFactory.getProperty(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7697714d0d49e230L, 0x7697714d0d4a3399L, "fontFamily");
-    /*package*/ static final SProperty fontSize$dgUi = MetaAdapterFactory.getProperty(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7697714d0d49e230L, 0x7697714d0d4e935bL, "fontSize");
+    /*package*/ static final SProperty fontFamily$NYqV = MetaAdapterFactory.getProperty(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7697714d0d49e230L, 0x7697714d0d4a3399L, "fontFamily");
+    /*package*/ static final SProperty fontSize$rceI = MetaAdapterFactory.getProperty(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7697714d0d49e230L, 0x7697714d0d4e935bL, "fontSize");
   }
 
   private static final class CONCEPTS {

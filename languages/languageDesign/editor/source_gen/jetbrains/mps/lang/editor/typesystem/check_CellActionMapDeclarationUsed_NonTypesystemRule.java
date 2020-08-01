@@ -27,15 +27,15 @@ public class check_CellActionMapDeclarationUsed_NonTypesystemRule extends Abstra
   public void applyRule(final SNode cellActionMapDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellActionMapDeclaration), CONCEPTS.EditorCellModel$5c)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.actionMap$hbq5), cellActionMapDeclaration);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.actionMap$kxCr), cellActionMapDeclaration);
       }
     }) == null) && (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellActionMapDeclaration), CONCEPTS.CellModel_RefNodeList$IL)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.elementActionMap$R1fw), cellActionMapDeclaration);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.elementActionMap$DAww), cellActionMapDeclaration);
       }
     }) == null) && (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(cellActionMapDeclaration), CONCEPTS.CellActionMapImport$hk)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.cellActionMap$jBrw), cellActionMapDeclaration);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.cellActionMap$w6kw), cellActionMapDeclaration);
       }
     }) == null)) {
       {
@@ -62,8 +62,8 @@ public class check_CellActionMapDeclarationUsed_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink actionMap$hbq5 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x1096ade08ceL, "actionMap");
-    /*package*/ static final SReferenceLink elementActionMap$R1fw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, 0x11126d75849L, "elementActionMap");
-    /*package*/ static final SReferenceLink cellActionMap$jBrw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
+    /*package*/ static final SReferenceLink actionMap$kxCr = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x1096ade08ceL, "actionMap");
+    /*package*/ static final SReferenceLink elementActionMap$DAww = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, 0x11126d75849L, "elementActionMap");
+    /*package*/ static final SReferenceLink cellActionMap$w6kw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
   }
 }

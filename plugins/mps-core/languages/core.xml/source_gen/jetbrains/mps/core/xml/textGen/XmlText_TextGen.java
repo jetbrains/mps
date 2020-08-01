@@ -28,7 +28,7 @@ public class XmlText_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       tgs.indent();
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$Wjv0));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$ds10));
   }
 
   private static final class CONCEPTS {
@@ -36,6 +36,6 @@ public class XmlText_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Wjv0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
+    /*package*/ static final SProperty value$ds10 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
   }
 }

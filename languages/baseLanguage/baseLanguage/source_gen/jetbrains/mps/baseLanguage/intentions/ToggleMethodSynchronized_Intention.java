@@ -60,12 +60,12 @@ public final class ToggleMethodSynchronized_Intention extends AbstractIntentionD
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String methodName = SPropertyOperations.getString(node, PROPS.name$tAp1);
-      return (SPropertyOperations.getBoolean(node, PROPS.isSynchronized$PMx) ? "Make '" + methodName + "' Not Synchronized" : "Make '" + methodName + "' Synchronized");
+      String methodName = SPropertyOperations.getString(node, PROPS.name$lA7v);
+      return (SPropertyOperations.getBoolean(node, PROPS.isSynchronized$q3tZ) ? "Make '" + methodName + "' Not Synchronized" : "Make '" + methodName + "' Synchronized");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.isSynchronized$PMx, !(SPropertyOperations.getBoolean(node, PROPS.isSynchronized$PMx)));
+      SPropertyOperations.assign(node, PROPS.isSynchronized$q3tZ, !(SPropertyOperations.getBoolean(node, PROPS.isSynchronized$q3tZ)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -78,7 +78,7 @@ public final class ToggleMethodSynchronized_Intention extends AbstractIntentionD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isSynchronized$PMx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
   }
 }

@@ -58,10 +58,10 @@ public final class ReplaceWithModuleRef_Intention extends AbstractIntentionDescr
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       PersistenceFacade pf = PersistenceFacade.getInstance();
-      SModuleId mid = pf.createModuleId(SPropertyOperations.getString(node, PROPS.moduleId$IIeZ));
-      SModuleReference moduleRef = pf.createModuleReference(mid, SPropertyOperations.getString(node, PROPS.name$IIew));
+      SModuleId mid = pf.createModuleId(SPropertyOperations.getString(node, PROPS.moduleId$Cpgx));
+      SModuleReference moduleRef = pf.createModuleReference(mid, SPropertyOperations.getString(node, PROPS.name$Cp1w));
       SNode expr = SNodeOperations.replaceWithNewChild(node, CONCEPTS.ModuleRefExpression$Hw);
-      SNode mp = SLinkOperations.setNewChild(expr, LINKS.moduleId$6hr9, CONCEPTS.ModulePointer$_2);
+      SNode mp = SLinkOperations.setNewChild(expr, LINKS.moduleId$2s9n, CONCEPTS.ModulePointer$_2);
       ModuleIdentity__BehaviorDescriptor.setModuleReference_idnJmxU5cSTj.invoke(mp, moduleRef);
     }
     @Override
@@ -71,8 +71,8 @@ public final class ReplaceWithModuleRef_Intention extends AbstractIntentionDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$IIeZ = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId");
-    /*package*/ static final SProperty name$IIew = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name");
+    /*package*/ static final SProperty moduleId$Cpgx = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId");
+    /*package*/ static final SProperty name$Cp1w = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name");
   }
 
   private static final class CONCEPTS {
@@ -81,6 +81,6 @@ public final class ReplaceWithModuleRef_Intention extends AbstractIntentionDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleId$6hr9 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId");
+    /*package*/ static final SContainmentLink moduleId$2s9n = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId");
   }
 }

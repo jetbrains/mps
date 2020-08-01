@@ -23,11 +23,11 @@ public class typeof_ConceptFunctionParameter_childNode_InferenceRule extends Abs
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode refNodeList = SNodeOperations.getNodeAncestor(node, CONCEPTS.CellModel_RefNodeList$IL, false, false);
-    if (SLinkOperations.getTarget(refNodeList, LINKS.relationDeclaration$wbRV) != null) {
+    if (SLinkOperations.getTarget(refNodeList, LINKS.relationDeclaration$_K5_) != null) {
       {
         SNode _nodeToCheck_1029348928467 = node;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1223982086270", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1223982086275", true), (SNode) _quotation_createNode_ll5bfq_a1a0c0a0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(refNodeList, LINKS.relationDeclaration$wbRV), LINKS.target$egp8)), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1223982086275", true), (SNode) _quotation_createNode_ll5bfq_a1a0c0a0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(refNodeList, LINKS.relationDeclaration$_K5_), LINKS.target$TWaS)), _info_12389875345);
       }
     }
   }
@@ -54,7 +54,7 @@ public class typeof_ConceptFunctionParameter_childNode_InferenceRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$wbRV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

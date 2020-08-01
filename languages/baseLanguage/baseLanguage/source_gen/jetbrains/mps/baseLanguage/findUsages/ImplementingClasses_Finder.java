@@ -52,7 +52,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                     public void invoke(SNode interfaceNode) {
                       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(interfaceNode), CONCEPTS.ClassConcept$IY)) {
                         // class implements interface case 
-                        if (SNodeOperations.hasRole(interfaceNode, LINKS.implementedInterface$mdc6)) {
+                        if (SNodeOperations.hasRole(interfaceNode, LINKS.implementedInterface$KoQU)) {
                           callback.onUsageFound(createSingleResult(SNodeOperations.getParent(interfaceNode)));
                           FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
                             public void onUsageFound(@NotNull SearchResult<?> searchResult) {
@@ -103,6 +103,6 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
   }
 }

@@ -38,15 +38,15 @@ public final class PasteWrappers__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getBaseConceptCollection_id4$$3zrO3UBG(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode nodeFactory : SLinkOperations.getChildren(__thisNode__, LINKS.wrapper$g0zj)) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(nodeFactory, LINKS.sourceConcept$vnzY));
+    for (SNode nodeFactory : SLinkOperations.getChildren(__thisNode__, LINKS.wrapper$Kh6d)) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(nodeFactory, LINKS.sourceConcept$cqr2));
     }
     return result;
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
     SNode pasteWrapper = SNodeFactoryOperations.createNewNode(CONCEPTS.PasteWrapper$7H, null);
-    SLinkOperations.setTarget(pasteWrapper, LINKS.sourceConcept$vnzY, baseConcept);
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.wrapper$g0zj)).addElement(pasteWrapper);
+    SLinkOperations.setTarget(pasteWrapper, LINKS.sourceConcept$cqr2, baseConcept);
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.wrapper$Kh6d)).addElement(pasteWrapper);
   }
 
   /*package*/ PasteWrappers__BehaviorDescriptor() {
@@ -99,8 +99,8 @@ public final class PasteWrappers__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink sourceConcept$vnzY = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, 0x11c5159fc58L, "sourceConcept");
-    /*package*/ static final SContainmentLink wrapper$g0zj = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51553d4eL, 0x11c515647fcL, "wrapper");
+    /*package*/ static final SReferenceLink sourceConcept$cqr2 = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, 0x11c5159fc58L, "sourceConcept");
+    /*package*/ static final SContainmentLink wrapper$Kh6d = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51553d4eL, 0x11c515647fcL, "wrapper");
   }
 
   private static final class CONCEPTS {

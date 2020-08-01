@@ -17,7 +17,7 @@ public class interface_node_pointer_types_are_comparable_ComparisonRule extends 
   public interface_node_pointer_types_are_comparable_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, LINKS.concept$fJMt), CONCEPTS.InterfaceConceptDeclaration$MT) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, LINKS.concept$fJMt), CONCEPTS.InterfaceConceptDeclaration$MT)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, LINKS.concept$C9s3), CONCEPTS.InterfaceConceptDeclaration$MT) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, LINKS.concept$C9s3), CONCEPTS.InterfaceConceptDeclaration$MT)) {
       return true;
     }
     return false;
@@ -40,7 +40,7 @@ public class interface_node_pointer_types_are_comparable_ComparisonRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$fJMt = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
+    /*package*/ static final SReferenceLink concept$C9s3 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
   }
 
   private static final class CONCEPTS {

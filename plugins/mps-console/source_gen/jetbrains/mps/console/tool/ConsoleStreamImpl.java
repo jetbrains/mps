@@ -58,7 +58,7 @@ public class ConsoleStreamImpl implements ConsoleStream {
 
   public void addNodeRef(SNode target) {
     SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bbb600cL, "jetbrains.mps.console.base.structure.NodeReferencePresentation"));
-    SLinkOperations.setTarget(node, LINKS.target$9y$J, target);
+    SLinkOperations.setTarget(node, LINKS.target$BJML, target);
     addNode(node);
   }
 
@@ -66,14 +66,14 @@ public class ConsoleStreamImpl implements ConsoleStream {
     StringWriter writer = new StringWriter();
     t.printStackTrace(new PrintWriter(writer));
     SNode exceptionHolder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, "jetbrains.mps.console.base.structure.ExceptionHolder"));
-    SPropertyOperations.set(exceptionHolder, PROPS.stackTrace$KI0v, writer.toString());
-    SPropertyOperations.set(exceptionHolder, PROPS.text$fNjX, t.getClass().getName());
+    SPropertyOperations.set(exceptionHolder, PROPS.stackTrace$Aif1, writer.toString());
+    SPropertyOperations.set(exceptionHolder, PROPS.text$DQEz, t.getClass().getName());
     addNode(exceptionHolder);
   }
 
   public void addClosure(Runnable closure, String text) {
     SNode nodeWithClosure = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xf6d4d958ec2f2c6L, "jetbrains.mps.console.base.structure.NodeWithClosure"));
-    SPropertyOperations.assign(nodeWithClosure, PROPS.text$fNjX, text);
+    SPropertyOperations.assign(nodeWithClosure, PROPS.text$DQEz, text);
     ClosureHoldingNodeUtil.getInstance().register(nodeWithClosure, closure);
     addNode(nodeWithClosure);
   }
@@ -102,14 +102,14 @@ public class ConsoleStreamImpl implements ConsoleStream {
       public void doExecute() {
         for (SNode r : ListSequence.fromList(myResponse)) {
           myTab.addNodeImports(r);
-          ListSequence.fromList(SLinkOperations.getChildren(myTab.getLastReponse(), LINKS.item$zh_g)).addElement(r);
+          ListSequence.fromList(SLinkOperations.getChildren(myTab.getLastReponse(), LINKS.item$5x2K)).addElement(r);
         }
       }
     });
   }
   private static SNode createTextResponseItem_kp3e3v_a0a0b0b0f(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TextResponseItem$3v);
-    n0.setProperty(PROPS.text$PmeJ, p0);
+    n0.setProperty(PROPS.text$PL8L, p0);
     return n0.getResult();
   }
   private static SNode createNewLineResponseItem_kp3e3v_a0a0c0b0f() {
@@ -118,20 +118,20 @@ public class ConsoleStreamImpl implements ConsoleStream {
   }
   private static SNode createNodeResponseItem_kp3e3v_a0a0j(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$jy);
-    n0.forChild(LINKS.node$MHJ0).initNode(p0, CONCEPTS.BaseConcept$Sz, true);
+    n0.forChild(LINKS.node$$9L0).initNode(p0, CONCEPTS.BaseConcept$Sz, true);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$9y$J = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target");
-    /*package*/ static final SContainmentLink item$zh_g = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item");
-    /*package*/ static final SContainmentLink node$MHJ0 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c14L, 0x4e3b035171b35c15L, "node");
+    /*package*/ static final SReferenceLink target$BJML = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target");
+    /*package*/ static final SContainmentLink item$5x2K = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item");
+    /*package*/ static final SContainmentLink node$$9L0 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c14L, 0x4e3b035171b35c15L, "node");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stackTrace$KI0v = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, 0x5b02f032bc9cb8a9L, "stackTrace");
-    /*package*/ static final SProperty text$fNjX = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L, 0x360b134fc047ce2aL, "text");
-    /*package*/ static final SProperty text$PmeJ = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c38L, 0x4e3b035171b35d11L, "text");
+    /*package*/ static final SProperty stackTrace$Aif1 = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, 0x5b02f032bc9cb8a9L, "stackTrace");
+    /*package*/ static final SProperty text$DQEz = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L, 0x360b134fc047ce2aL, "text");
+    /*package*/ static final SProperty text$PL8L = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c38L, 0x4e3b035171b35d11L, "text");
   }
 
   private static final class CONCEPTS {

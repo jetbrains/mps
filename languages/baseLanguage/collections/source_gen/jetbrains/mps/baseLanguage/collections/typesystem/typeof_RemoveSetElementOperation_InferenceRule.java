@@ -30,7 +30,7 @@ public class typeof_RemoveSetElementOperation_InferenceRule extends AbstractInfe
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.argument$798v);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.argument$tr71);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1226591558460", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1226591558464", true), (SNode) typeCheckingContext.getRepresentative(elementType_typevar_1226591558447), true, true, _info_12389875345);
       }
@@ -63,7 +63,7 @@ public class typeof_RemoveSetElementOperation_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$798v = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L, 0x11d968cfea4L, "argument");
+    /*package*/ static final SContainmentLink argument$tr71 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L, 0x11d968cfea4L, "argument");
   }
 
   private static final class CONCEPTS {

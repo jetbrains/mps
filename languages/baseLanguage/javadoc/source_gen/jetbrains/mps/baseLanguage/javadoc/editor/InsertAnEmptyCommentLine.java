@@ -52,8 +52,8 @@ public class InsertAnEmptyCommentLine extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode line = SNodeFactoryOperations.createNewNode(CONCEPTS.CommentLine$vy, null);
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.BaseDocComment$pH), LINKS.body$ULZO)).addElement(line);
-      SNodeFactoryOperations.addNewChild(line, LINKS.part$fv9R, CONCEPTS.TextCommentLinePart$RY);
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.BaseDocComment$pH), LINKS.body$udUc)).addElement(line);
+      SNodeFactoryOperations.addNewChild(line, LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY);
     }
     public String getKeyStroke() {
       return " non-space char";
@@ -67,7 +67,7 @@ public class InsertAnEmptyCommentLine extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$ULZO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
-    /*package*/ static final SContainmentLink part$fv9R = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink body$udUc = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 }

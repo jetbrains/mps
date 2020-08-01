@@ -84,19 +84,19 @@ public class BaseLanguageEnvironmentHelper {
         }
       }).first();
     }
-    SNode generatedAnnotation = ListSequence.fromList(SLinkOperations.getChildren(stubClassifier, LINKS.annotation$oVP4)).where(new IWhereFilter<SNode>() {
+    SNode generatedAnnotation = ListSequence.fromList(SLinkOperations.getChildren(stubClassifier, LINKS.annotation$4YGW)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(check_sif9ng_a0a0a0a0a1a6(SLinkOperations.getTarget(it, LINKS.annotation$zNxu)), new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass").getNodeId());
+        return Objects.equals(check_sif9ng_a0a0a0a0a1a6(SLinkOperations.getTarget(it, LINKS.annotation$lXdy)), new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass").getNodeId());
       }
     }).first();
     if (generatedAnnotation == null) {
       return null;
     }
-    String nodeParameter = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(generatedAnnotation, LINKS.value$EXfF)).where(new IWhereFilter<SNode>() {
+    String nodeParameter = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(generatedAnnotation, LINKS.value$NE_P)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(check_sif9ng_a0a0a0a0a0a0d0g(SLinkOperations.getTarget(it, LINKS.key$y5Ln)), new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass.node()").getNodeId());
+        return Objects.equals(check_sif9ng_a0a0a0a0a0a0d0g(SLinkOperations.getTarget(it, LINKS.key$wMU9)), new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass.node()").getNodeId());
       }
-    }).first(), LINKS.value$Bis), CONCEPTS.StringLiteral$4G), PROPS.value$kiE0);
+    }).first(), LINKS.value$j1V$), CONCEPTS.StringLiteral$4G), PROPS.value$P2m0);
     if (nodeParameter == null) {
       return null;
     }
@@ -200,14 +200,14 @@ public class BaseLanguageEnvironmentHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink value$EXfF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
-    /*package*/ static final SReferenceLink key$y5Ln = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
-    /*package*/ static final SContainmentLink value$Bis = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71c0fc4L, "value");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink value$NE_P = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
+    /*package*/ static final SReferenceLink key$wMU9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
+    /*package*/ static final SContainmentLink value$j1V$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71c0fc4L, "value");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

@@ -31,7 +31,7 @@ public final class SubstituteMenuReference_Named__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static SNode getNamedMenu_id1quYWAD2$7e(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.menu$6o5e);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.menu$5ExM);
   }
 
   /*package*/ SubstituteMenuReference_Named__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class SubstituteMenuReference_Named__BehaviorDescriptor extends Bas
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink menu$6o5e = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu");
+    /*package*/ static final SReferenceLink menu$5ExM = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu");
   }
 }

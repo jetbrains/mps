@@ -60,7 +60,7 @@
       <node id="2235828751986251003" at="132,69,133,69" concept="8" />
       <node id="2235828751986251021" at="134,87,135,100" concept="3" />
       <node id="2235828751986250607" at="146,0,147,0" concept="12" trace="IMethodCall$ln" />
-      <node id="2235828751986250607" at="150,0,151,0" concept="12" trace="baseMethodDeclaration$$A7i" />
+      <node id="2235828751986250607" at="150,0,151,0" concept="12" trace="baseMethodDeclaration$ItxI" />
       <node id="1026705162298904467" at="40,0,43,0" concept="2" trace="MethodCallsFixer#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
       <node id="3584380880171935627" at="45,61,48,5" concept="6" />
       <node id="3584380880172517358" at="78,63,81,7" concept="6" />
@@ -211,12 +211,12 @@
       <node id="4383931396795895656" at="125,56,126,18" concept="9" />
       <node id="4383931396795972127" at="129,48,130,46" concept="9" />
       <node id="3584380880172037262" at="133,30,134,34" concept="3" />
-      <node id="3584380880169675348" at="138,0,139,0" concept="12" trace="baseMethodDeclaration$$A7i" />
-      <node id="3584380880169675348" at="139,0,140,0" concept="12" trace="classifier$1y5e" />
+      <node id="3584380880169675348" at="138,0,139,0" concept="12" trace="baseMethodDeclaration$ItxI" />
+      <node id="3584380880169675348" at="139,0,140,0" concept="12" trace="classifier$JwxM" />
       <node id="3584380880169675348" at="143,0,144,0" concept="12" trace="IMethodCall$ln" />
       <node id="3584380880169675348" at="144,0,145,0" concept="12" trace="ParameterDeclaration$qU" />
       <node id="3584380880169675348" at="145,0,146,0" concept="12" trace="AnonymousClass$aF" />
-      <node id="3584380880169675348" at="149,0,150,0" concept="12" trace="name$tAp1" />
+      <node id="3584380880169675348" at="149,0,150,0" concept="12" trace="name$lA7v" />
       <node id="3584380880169592115" at="108,12,110,7" concept="0" />
       <node id="3584380880169592093" at="111,10,113,5" concept="0" />
       <node id="1026705162299005644" at="36,0,39,0" concept="2" trace="MethodCallsUpdateSession#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
@@ -371,7 +371,7 @@
       <node id="3584380880171068480" at="92,62,93,78" concept="8" />
       <node id="3584380880171068486" at="93,78,94,207" concept="9" />
       <node id="3584380880170095872" at="98,0,99,0" concept="12" trace="IMethodCall$ln" />
-      <node id="3584380880170095872" at="102,0,103,0" concept="12" trace="baseMethodDeclaration$$A7i" />
+      <node id="3584380880170095872" at="102,0,103,0" concept="12" trace="baseMethodDeclaration$ItxI" />
       <node id="1026705162298965907" at="36,0,39,0" concept="2" trace="MethodCallsCache#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
       <node id="3584380880171134043" at="40,0,43,0" concept="7" trace="wasChecked#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="3584380880171190694" at="43,0,46,0" concept="7" trace="wasChecked#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Z" />
@@ -468,10 +468,10 @@
       <node id="3584380880169964789" at="55,141,56,51" concept="3" />
       <node id="3584380880169973186" at="56,51,57,56" concept="3" />
       <node id="3584380880173105658" at="61,61,62,101" concept="13" />
-      <node id="3584380880170728349" at="66,0,67,0" concept="12" trace="baseMethodDeclaration$$A7i" />
+      <node id="3584380880170728349" at="66,0,67,0" concept="12" trace="baseMethodDeclaration$ItxI" />
       <node id="3584380880170728349" at="70,0,71,0" concept="12" trace="IMethodCall$ln" />
       <node id="3584380880170728349" at="71,0,72,0" concept="12" trace="BaseMethodDeclaration$RR" />
-      <node id="3584380880170728349" at="75,0,76,0" concept="12" trace="name$tAp1" />
+      <node id="3584380880170728349" at="75,0,76,0" concept="12" trace="name$lA7v" />
       <node id="3584380880170728353" at="28,0,31,0" concept="2" trace="UpdateSessionEventVisitor#(Ljetbrains/mps/java/platform/highlighters/methodcallsfixer/MethodCallsUpdateSession;)V" />
       <node id="3584380880169591682" at="36,10,40,5" concept="0" />
       <node id="3584380880169591718" at="45,49,49,5" concept="6" />

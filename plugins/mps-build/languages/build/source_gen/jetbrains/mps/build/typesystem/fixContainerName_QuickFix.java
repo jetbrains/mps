@@ -24,18 +24,18 @@ public class fixContainerName_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode containerName = SNodeOperations.cast(node, CONCEPTS.BuildString$CM);
-    SNode last = ListSequence.fromList(SLinkOperations.getChildren(containerName, LINKS.parts$aVY3)).last();
+    SNode last = ListSequence.fromList(SLinkOperations.getChildren(containerName, LINKS.parts$j33t)).last();
     if (SNodeOperations.isInstanceOf(last, CONCEPTS.BuildTextStringPart$xk)) {
       SNode text = SNodeOperations.cast(last, CONCEPTS.BuildTextStringPart$xk);
-      int dot = SPropertyOperations.getString(text, PROPS.text$2p89).indexOf('.');
-      SPropertyOperations.assign(text, PROPS.text$2p89, ((dot >= 0 ? SPropertyOperations.getString(text, PROPS.text$2p89).substring(0, dot) : SPropertyOperations.getString(text, PROPS.text$2p89))) + ((String) fixContainerName_QuickFix.this.getField("newExtension")[0]));
+      int dot = SPropertyOperations.getString(text, PROPS.text$aaWn).indexOf('.');
+      SPropertyOperations.assign(text, PROPS.text$aaWn, ((dot >= 0 ? SPropertyOperations.getString(text, PROPS.text$aaWn).substring(0, dot) : SPropertyOperations.getString(text, PROPS.text$aaWn))) + ((String) fixContainerName_QuickFix.this.getField("newExtension")[0]));
     } else {
-      ListSequence.fromList(SLinkOperations.getChildren(containerName, LINKS.parts$aVY3)).addElement(createBuildTextStringPart_uzundk_a0a0a0c0c(((String) fixContainerName_QuickFix.this.getField("newExtension")[0])));
+      ListSequence.fromList(SLinkOperations.getChildren(containerName, LINKS.parts$j33t)).addElement(createBuildTextStringPart_uzundk_a0a0a0c0c(((String) fixContainerName_QuickFix.this.getField("newExtension")[0])));
     }
   }
   private static SNode createBuildTextStringPart_uzundk_a0a0a0c0c(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildTextStringPart$xk);
-    n0.setProperty(PROPS.text$2p89, p0);
+    n0.setProperty(PROPS.text$aaWn, p0);
     return n0.getResult();
   }
 
@@ -45,10 +45,10 @@ public class fixContainerName_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$aVY3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
+    /*package*/ static final SContainmentLink parts$j33t = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$2p89 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 }

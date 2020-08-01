@@ -31,7 +31,7 @@ public final class BuildMps_TipsPackage__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static String getTmpPath_id59gOS57Njec(@NotNull SNode __thisNode__, String folder, SNode node) {
-    return BuildMps_Tips__BehaviorDescriptor.getOutPath_id1tkeUOkqjtp.invoke(SLinkOperations.getTarget(node, LINKS.tips$aWHS)) + folder + "/**";
+    return BuildMps_Tips__BehaviorDescriptor.getOutPath_id1tkeUOkqjtp.invoke(SLinkOperations.getTarget(node, LINKS.tips$jqe8)) + folder + "/**";
   }
 
   /*package*/ BuildMps_TipsPackage__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class BuildMps_TipsPackage__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink tips$aWHS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, 0x65a11ce3e4101393L, "tips");
+    /*package*/ static final SReferenceLink tips$jqe8 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, 0x65a11ce3e4101393L, "tips");
   }
 }

@@ -27,11 +27,11 @@ public class DeleteCondition {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode condition;
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$pi)) {
-          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfStatement$pi), LINKS.condition$WJ1b);
+          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfStatement$pi), LINKS.condition$qL$l);
         } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.WhileStatement$9K)) {
-          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.WhileStatement$9K), LINKS.condition$TZ80);
+          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.WhileStatement$9K), LINKS.condition$5$S0);
         } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.DoWhileStatement$GB)) {
-          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DoWhileStatement$GB), LINKS.condition$h1yE);
+          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DoWhileStatement$GB), LINKS.condition$fJMm);
         } else {
           return;
         }
@@ -94,8 +94,8 @@ public class DeleteCondition {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink condition$TZ80 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, 0xfaa4bf0f30L, "condition");
-    /*package*/ static final SContainmentLink condition$h1yE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, 0x11232679422L, "condition");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink condition$5$S0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, 0xfaa4bf0f30L, "condition");
+    /*package*/ static final SContainmentLink condition$fJMm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, 0x11232679422L, "condition");
   }
 }

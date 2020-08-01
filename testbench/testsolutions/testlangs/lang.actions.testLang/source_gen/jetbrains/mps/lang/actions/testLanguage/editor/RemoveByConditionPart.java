@@ -51,7 +51,7 @@ public class RemoveByConditionPart extends SubstituteMenuBase {
   public class SMP_Group_tbd9d5_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return Objects.equals(_context.getLink(), LINKS.removeByConditionPart$LVGa);
+      return Objects.equals(_context.getLink(), LINKS.removeByConditionPart$bUoQ);
     }
     @NotNull
     @Override
@@ -100,7 +100,7 @@ public class RemoveByConditionPart extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink removeByConditionPart$LVGa = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc2552e60aL, "removeByConditionPart");
+    /*package*/ static final SContainmentLink removeByConditionPart$bUoQ = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc2552e60aL, "removeByConditionPart");
   }
 
   private static final class CONCEPTS {

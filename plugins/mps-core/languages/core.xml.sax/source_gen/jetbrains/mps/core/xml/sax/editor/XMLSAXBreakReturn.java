@@ -49,11 +49,11 @@ public class XMLSAXBreakReturn extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return (SLinkOperations.getTarget(node, LINKS.result$YvLZ) == null);
+      return (SLinkOperations.getTarget(node, LINKS.result$hpdx) == null);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      if ((SLinkOperations.getTarget(node, LINKS.result$YvLZ) == null)) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.result$YvLZ, null);
+      if ((SLinkOperations.getTarget(node, LINKS.result$hpdx) == null)) {
+        SNodeFactoryOperations.setNewChild(node, LINKS.result$hpdx, null);
       }
     }
     public String getKeyStroke() {
@@ -66,6 +66,6 @@ public class XMLSAXBreakReturn extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink result$YvLZ = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, 0x1f6c736337b5e2d1L, "result");
+    /*package*/ static final SContainmentLink result$hpdx = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, 0x1f6c736337b5e2d1L, "result");
   }
 }

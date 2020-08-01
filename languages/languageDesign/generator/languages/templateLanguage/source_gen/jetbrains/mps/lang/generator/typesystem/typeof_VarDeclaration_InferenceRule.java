@@ -18,17 +18,17 @@ public class typeof_VarDeclaration_InferenceRule extends AbstractInferenceRule_R
   public typeof_VarDeclaration_InferenceRule() {
   }
   public void applyRule(final SNode varDecl, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(varDecl, LINKS.type$4Giu) == null)) {
+    if ((SLinkOperations.getTarget(varDecl, LINKS.type$hsWy) == null)) {
       {
         SNode _nodeToCheck_1029348928467 = varDecl;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277990980907", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277990979856", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(varDecl, LINKS.value$4Gt8), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277990984099", true), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277990979856", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(varDecl, LINKS.value$hy6S), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277990984099", true), _info_12389875345);
       }
     } else {
       {
         SNode _nodeToCheck_1029348928467 = varDecl;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277990996141", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277990996148", true), (SNode) SLinkOperations.getTarget(varDecl, LINKS.type$4Giu), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1048903277990996148", true), (SNode) SLinkOperations.getTarget(varDecl, LINKS.type$hsWy), _info_12389875345);
       }
     }
   }
@@ -43,8 +43,8 @@ public class typeof_VarDeclaration_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$4Gt8 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b8aL, "value");
-    /*package*/ static final SContainmentLink type$4Giu = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b89L, "type");
+    /*package*/ static final SContainmentLink value$hy6S = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b8aL, "value");
+    /*package*/ static final SContainmentLink type$hsWy = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, 0xe8e73f957fc2b89L, "type");
   }
 
   private static final class CONCEPTS {

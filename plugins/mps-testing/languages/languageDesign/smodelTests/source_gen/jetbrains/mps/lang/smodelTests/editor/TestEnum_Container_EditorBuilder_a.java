@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.enumWithDefault$6eqb;
+      final SProperty property = PROPS.enumWithDefault$YFl;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no enumWithDefault>");
@@ -151,7 +151,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.enumWODefault$6er9;
+      final SProperty property = PROPS.enumWODefault$Z9n;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no enumWODefault>");
@@ -187,8 +187,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty enumWithDefault$6eqb = MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault");
-    /*package*/ static final SProperty enumWODefault$6er9 = MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault");
+    /*package*/ static final SProperty enumWithDefault$YFl = MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e2L, "enumWithDefault");
+    /*package*/ static final SProperty enumWODefault$Z9n = MetaAdapterFactory.getProperty(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, 0x61fc446ba477f2e4L, "enumWODefault");
   }
 
   private static final class CONCEPTS {

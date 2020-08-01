@@ -22,7 +22,7 @@ public class ChangeMethodSignatureParameters {
   public ChangeMethodSignatureParameters(SNode declaration) {
     this.myMethod = SNodeOperations.copyNode(declaration);
     this.myOldMethod = SNodeOperations.copyNode(declaration);
-    for (SNode param : ListSequence.fromList(SLinkOperations.getChildren(this.myMethod, LINKS.parameter$WIkZ))) {
+    for (SNode param : ListSequence.fromList(SLinkOperations.getChildren(this.myMethod, LINKS.parameter$qsax))) {
       ListSequence.fromList(this.myParametersIds).addElement(param.getNodeId().toString());
     }
   }
@@ -33,16 +33,16 @@ public class ChangeMethodSignatureParameters {
     return this.myParametersIds;
   }
   public boolean isVisibilityChanged() {
-    return SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myMethod, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC)) != SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myOldMethod, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC));
+    return SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myMethod, CONCEPTS.IVisible$6G), LINKS.visibility$jt1o)) != SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myOldMethod, CONCEPTS.IVisible$6G), LINKS.visibility$jt1o));
   }
   public boolean isReturnValueChanged() {
-    return !((MatchingUtil.matchNodes(SLinkOperations.getTarget(this.myMethod, LINKS.returnType$WIkw), SLinkOperations.getTarget(this.myOldMethod, LINKS.returnType$WIkw))));
+    return !((MatchingUtil.matchNodes(SLinkOperations.getTarget(this.myMethod, LINKS.returnType$qrVw), SLinkOperations.getTarget(this.myOldMethod, LINKS.returnType$qrVw))));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class CONCEPTS {

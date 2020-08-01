@@ -34,8 +34,8 @@ public class _ClassConcept_Implements_Delete_Last {
           if (clazz == null) {
             return;
           }
-          ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$mdc6)).clear();
-          ListSequence.fromList(AttributeOperations.getAttributeList(clazz, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.implementedInterface$mdc6))).visitAll(new IVisitor<SNode>() {
+          ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$KoQU)).clear();
+          ListSequence.fromList(AttributeOperations.getAttributeList(clazz, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.implementedInterface$KoQU))).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
               SNodeOperations.deleteNode(it);
             }
@@ -101,6 +101,6 @@ public class _ClassConcept_Implements_Delete_Last {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
   }
 }

@@ -7,8 +7,8 @@
   <root nodeRef="r:50b262dd-a4ec-4590-840b-ad3be9b20f9c(org.jetbrains.mps.samples.Money.generator.main.util)/2864272256649704726">
     <file name="MoneyUtil.java">
       <node id="2864272256649705445" at="15,54,16,385" concept="1" />
-      <node id="2864272256649704726" at="20,0,21,0" concept="2" trace="leftExpression$rxLZ" />
-      <node id="2864272256649704726" at="21,0,22,0" concept="2" trace="rightExpression$rxBl" />
+      <node id="2864272256649704726" at="20,0,21,0" concept="2" trace="leftExpression$lndx" />
+      <node id="2864272256649704726" at="21,0,22,0" concept="2" trace="rightExpression$li3b" />
       <node id="2864272256649704726" at="25,0,26,0" concept="2" trace="MoneyType$DO" />
       <node id="2864272256649704728" at="13,0,15,0" concept="0" trace="MoneyUtil#()V" />
       <node id="2864272256649704791" at="15,0,18,0" concept="3" trace="isMoneyOperation#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

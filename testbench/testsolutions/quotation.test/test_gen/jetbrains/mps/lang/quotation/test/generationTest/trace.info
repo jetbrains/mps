@@ -188,11 +188,11 @@
       <node id="2472582545954256453" at="355,0,356,0" concept="11" trace="StatementList$TN" />
       <node id="2472582545954256453" at="356,0,357,0" concept="11" trace="Statement$ok" />
       <node id="2472582545954256453" at="357,0,358,0" concept="11" trace="ClassifierType$IZ" />
-      <node id="2472582545954256453" at="361,0,362,0" concept="11" trace="value$WIn0" />
-      <node id="2472582545954256453" at="362,0,363,0" concept="11" trace="value$kiE0" />
-      <node id="2472582545954256453" at="366,0,367,0" concept="11" trace="expression$EsbK" />
-      <node id="2472582545954256453" at="367,0,368,0" concept="11" trace="statement$WHn8" />
-      <node id="2472582545954256453" at="368,0,369,0" concept="11" trace="classifier$pQ_R" />
+      <node id="2472582545954256453" at="361,0,362,0" concept="11" trace="value$qt90" />
+      <node id="2472582545954256453" at="362,0,363,0" concept="11" trace="value$P2m0" />
+      <node id="2472582545954256453" at="366,0,367,0" concept="11" trace="expression$zDGg" />
+      <node id="2472582545954256453" at="367,0,368,0" concept="11" trace="statement$pYcS" />
+      <node id="2472582545954256453" at="368,0,369,0" concept="11" trace="classifier$xslD" />
       <node id="2472582545954256453" at="33,0,35,0" concept="11" trace="ourParamCache" />
       <node id="2472582545954256453" at="35,0,37,0" concept="3" trace="myWithCommandRule" />
       <node id="2472582545954256453" at="38,0,41,0" concept="1" trace="LightQuotationFinal_Test#()V" />
@@ -568,24 +568,24 @@
       <node id="3455411064016647795" at="51,52,52,19" concept="13" />
       <node id="3455411064017130542" at="55,66,56,230" concept="7" />
       <node id="3455411064017134081" at="56,230,57,73" concept="2" />
-      <node id="4019250687103045034" at="60,41,61,136" concept="8" />
-      <node id="4019250687103061110" at="65,41,66,136" concept="8" />
+      <node id="4019250687103045034" at="60,41,61,137" concept="8" />
+      <node id="4019250687103061110" at="65,41,66,137" concept="8" />
       <node id="4019250687102690424" at="68,46,69,32" concept="2" />
       <node id="3455411064016746925" at="69,32,70,32" concept="2" />
       <node id="3455411064016740261" at="70,32,71,135" concept="7" />
       <node id="3455411064016739482" at="72,9,73,101" concept="7" />
       <node id="3455411064016739482" at="73,101,74,92" concept="7" />
       <node id="3455411064016739482" at="74,92,75,371" concept="2" />
-      <node id="3455411064016647795" at="84,0,85,0" concept="11" trace="testMethods$jorf" />
-      <node id="3455411064016647795" at="85,0,86,0" concept="11" trace="body$WIlu" />
-      <node id="3455411064016647795" at="86,0,87,0" concept="11" trace="statement$WHn8" />
-      <node id="3455411064016647795" at="87,0,88,0" concept="11" trace="localVariableDeclaration$O0D0" />
-      <node id="3455411064016647795" at="88,0,89,0" concept="11" trace="initializer$KgD" />
+      <node id="3455411064016647795" at="84,0,85,0" concept="11" trace="testMethods$oPch" />
+      <node id="3455411064016647795" at="85,0,86,0" concept="11" trace="body$qspy" />
+      <node id="3455411064016647795" at="86,0,87,0" concept="11" trace="statement$pYcS" />
+      <node id="3455411064016647795" at="87,0,88,0" concept="11" trace="localVariableDeclaration$cjR0" />
+      <node id="3455411064016647795" at="88,0,89,0" concept="11" trace="initializer$no3R" />
       <node id="3455411064016647795" at="92,0,93,0" concept="11" trace="LocalVariableDeclarationStatement$BI" />
       <node id="3455411064016647795" at="93,0,94,0" concept="11" trace="Quotation$UL" />
       <node id="3455411064016647795" at="94,0,95,0" concept="11" trace="NodeBuilder$Gb" />
       <node id="3455411064016647795" at="95,0,96,0" concept="11" trace="INamedConcept$nV" />
-      <node id="3455411064016647795" at="99,0,100,0" concept="11" trace="name$tAp1" />
+      <node id="3455411064016647795" at="99,0,100,0" concept="11" trace="name$lA7v" />
       <node id="3455411064016647795" at="35,0,37,0" concept="11" trace="ourParamCache" />
       <node id="3455411064016647795" at="37,0,39,0" concept="3" trace="myWithCommandRule" />
       <node id="3455411064016647795" at="40,0,43,0" concept="1" trace="QuotationConverterTest_Test#()V" />
@@ -601,8 +601,8 @@
       <scope id="3455411064016647795" at="40,40,41,25" />
       <scope id="3455411064016665020" at="45,64,46,55" />
       <scope id="3455411064016647795" at="51,52,52,19" />
-      <scope id="4019250687103041900" at="60,41,61,136" />
-      <scope id="4019250687103061109" at="65,41,66,136" />
+      <scope id="4019250687103041900" at="60,41,61,137" />
+      <scope id="4019250687103061109" at="65,41,66,137" />
       <scope id="3455411064016647795" at="40,0,43,0" />
       <scope id="3455411064016647795" at="51,0,54,0">
         <var name="owner" id="3455411064016647795" />
@@ -924,20 +924,20 @@
       <node id="3455411064017080199" at="501,0,502,0" concept="11" trace="IntegerType$Eo" />
       <node id="3455411064017080199" at="502,0,503,0" concept="11" trace="BooleanConstant$Ui" />
       <node id="3455411064017080199" at="503,0,504,0" concept="11" trace="StringLiteral$4G" />
-      <node id="3455411064017080199" at="507,0,508,0" concept="11" trace="leftExpression$rxLZ" />
-      <node id="3455411064017080199" at="508,0,509,0" concept="11" trace="rightExpression$rxBl" />
-      <node id="3455411064017080199" at="509,0,510,0" concept="11" trace="classifier$pQ_R" />
-      <node id="3455411064017080199" at="510,0,511,0" concept="11" trace="statement$WHn8" />
-      <node id="3455411064017080199" at="511,0,512,0" concept="11" trace="statements$uqR0" />
-      <node id="3455411064017080199" at="512,0,513,0" concept="11" trace="expression$WIP0" />
-      <node id="3455411064017080199" at="513,0,514,0" concept="11" trace="expression$EsbK" />
-      <node id="3455411064017080199" at="514,0,515,0" concept="11" trace="creator$itDQ" />
-      <node id="3455411064017080199" at="515,0,516,0" concept="11" trace="keyType$j6a1" />
-      <node id="3455411064017080199" at="516,0,517,0" concept="11" trace="valueType$WE1r" />
-      <node id="3455411064017080199" at="520,0,521,0" concept="11" trace="value$ZeO0" />
-      <node id="3455411064017080199" at="521,0,522,0" concept="11" trace="order$rPoW" />
-      <node id="3455411064017080199" at="522,0,523,0" concept="11" trace="value$WIn0" />
-      <node id="3455411064017080199" at="523,0,524,0" concept="11" trace="value$kiE0" />
+      <node id="3455411064017080199" at="507,0,508,0" concept="11" trace="leftExpression$lndx" />
+      <node id="3455411064017080199" at="508,0,509,0" concept="11" trace="rightExpression$li3b" />
+      <node id="3455411064017080199" at="509,0,510,0" concept="11" trace="classifier$xslD" />
+      <node id="3455411064017080199" at="510,0,511,0" concept="11" trace="statement$pYcS" />
+      <node id="3455411064017080199" at="511,0,512,0" concept="11" trace="statements$J0D0" />
+      <node id="3455411064017080199" at="512,0,513,0" concept="11" trace="expression$qFF0" />
+      <node id="3455411064017080199" at="513,0,514,0" concept="11" trace="expression$zDGg" />
+      <node id="3455411064017080199" at="514,0,515,0" concept="11" trace="creator$Wnha" />
+      <node id="3455411064017080199" at="515,0,516,0" concept="11" trace="keyType$fYQv" />
+      <node id="3455411064017080199" at="516,0,517,0" concept="11" trace="valueType$omG5" />
+      <node id="3455411064017080199" at="520,0,521,0" concept="11" trace="value$Cbc0" />
+      <node id="3455411064017080199" at="521,0,522,0" concept="11" trace="order$uR54" />
+      <node id="3455411064017080199" at="522,0,523,0" concept="11" trace="value$qt90" />
+      <node id="3455411064017080199" at="523,0,524,0" concept="11" trace="value$P2m0" />
       <node id="3455411064017080199" at="38,0,40,0" concept="11" trace="ourParamCache" />
       <node id="3455411064017080199" at="40,0,42,0" concept="3" trace="myWithCommandRule" />
       <node id="3455411064017080199" at="43,0,46,0" concept="1" trace="QuotationConverterPreservesSemantics_Test#()V" />
@@ -1419,7 +1419,7 @@
       <node id="4744873430726739180" at="121,166,122,26" concept="8" />
       <node id="7191184120224986557" at="127,0,128,0" concept="11" trace="ReturnStatement$SF" />
       <node id="7191184120224986557" at="128,0,129,0" concept="11" trace="NullLiteral$q4" />
-      <node id="7191184120224986557" at="132,0,133,0" concept="11" trace="expression$EsbK" />
+      <node id="7191184120224986557" at="132,0,133,0" concept="11" trace="expression$zDGg" />
       <node id="7191184120224986557" at="33,0,35,0" concept="11" trace="ourParamCache" />
       <node id="7191184120224986557" at="35,0,37,0" concept="3" trace="myWithCommandRule" />
       <node id="7191184120224986557" at="38,0,41,0" concept="1" trace="QuotationModelNodeId_Test#()V" />

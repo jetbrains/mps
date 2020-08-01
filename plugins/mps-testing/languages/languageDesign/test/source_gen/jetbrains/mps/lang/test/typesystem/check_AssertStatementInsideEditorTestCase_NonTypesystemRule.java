@@ -28,7 +28,7 @@ public class check_AssertStatementInsideEditorTestCase_NonTypesystemRule extends
       current = parent;
       parent = SNodeOperations.getParent(parent);
     }
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.EditorTestCase$qk) && Objects.equals(current.getContainmentLink(), LINKS.code$K9xg)) {
+    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.EditorTestCase$qk) && Objects.equals(current.getContainmentLink(), LINKS.code$kB6K)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "This is a usual Java assert statement. For testing with JUnit use assert constructions from jetbrains.mps.baseLanguage.unitTest", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "8396091035812119723", null, errorTarget);
@@ -52,6 +52,6 @@ public class check_AssertStatementInsideEditorTestCase_NonTypesystemRule extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink code$K9xg = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314cad13L, "code");
+    /*package*/ static final SContainmentLink code$kB6K = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314cad13L, "code");
   }
 }

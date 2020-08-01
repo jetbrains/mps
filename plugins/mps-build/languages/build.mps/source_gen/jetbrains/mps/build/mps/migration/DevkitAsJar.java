@@ -45,18 +45,18 @@ public class DevkitAsJar extends MigrationScriptBase {
         }
       };
       for (SNode dk : CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_DevKit$QO, false)) {
-        if (SLinkOperations.getTarget(dk, LINKS.path$g7Oh) == null) {
+        if (SLinkOperations.getTarget(dk, LINKS.path$NMkf) == null) {
           continue;
         }
-        final String devkitPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(dk, LINKS.path$g7Oh));
+        final String devkitPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(dk, LINKS.path$NMkf));
         SNode buildProject = SNodeOperations.getNodeAncestor(dk, CONCEPTS.BuildProject$BF, false, false);
-        for (SNode blFile : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(buildProject, LINKS.layout$tpCz), CONCEPTS.BuildLayout_File$dL, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+        for (SNode blFile : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(buildProject, LINKS.layout$fqCX), CONCEPTS.BuildLayout_File$dL, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (SLinkOperations.getTarget(it, LINKS.path$llZF) != null) && devkitPath.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$llZF)));
+            return (SLinkOperations.getTarget(it, LINKS.path$lDPP) != null) && devkitPath.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$lDPP)));
           }
         })) {
           SNode moduleJars = SModelOperations.createNewNode(SNodeOperations.getModel(buildProject), null, CONCEPTS.BuildMpsLayout_ModuleJars$mB);
-          SLinkOperations.setTarget(moduleJars, LINKS.module$5MWZ, dk);
+          SLinkOperations.setTarget(moduleJars, LINKS.module$NFyx, dk);
           SNodeOperations.replaceWithAnother(blFile, moduleJars);
         }
       }
@@ -67,10 +67,10 @@ public class DevkitAsJar extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink path$g7Oh = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path");
-    /*package*/ static final SReferenceLink module$5MWZ = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
-    /*package*/ static final SContainmentLink layout$tpCz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
-    /*package*/ static final SContainmentLink path$llZF = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
+    /*package*/ static final SContainmentLink path$NMkf = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path");
+    /*package*/ static final SReferenceLink module$NFyx = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, 0x11918e0f209b83e9L, "module");
+    /*package*/ static final SContainmentLink layout$fqCX = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
+    /*package*/ static final SContainmentLink path$lDPP = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
   }
 
   private static final class CONCEPTS {

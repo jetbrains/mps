@@ -37,7 +37,7 @@ public final class add_parameter_to_InternalClassifierType_Intention extends Abs
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$dQne)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$HlfM)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -58,7 +58,7 @@ public final class add_parameter_to_InternalClassifierType_Intention extends Abs
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.parameter$dQne, CONCEPTS.Type$IG);
+      SNodeFactoryOperations.addNewChild(node, LINKS.parameter$HlfM, CONCEPTS.Type$IG);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,7 +67,7 @@ public final class add_parameter_to_InternalClassifierType_Intention extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class CONCEPTS {

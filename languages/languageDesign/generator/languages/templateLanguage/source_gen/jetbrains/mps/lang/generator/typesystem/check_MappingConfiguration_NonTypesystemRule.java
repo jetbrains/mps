@@ -25,15 +25,15 @@ public class check_MappingConfiguration_NonTypesystemRule extends AbstractNonTyp
   public check_MappingConfiguration_NonTypesystemRule() {
   }
   public void applyRule(final SNode mc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode scriptReference : ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.preMappingScript$DukP))) {
-      if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(scriptReference, LINKS.mappingScript$YoG1), PROPS.scriptKind$P4GV), 0x1165f07f3c2L))) {
+    for (SNode scriptReference : ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.preMappingScript$5G5F))) {
+      if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(scriptReference, LINKS.mappingScript$dXkv), PROPS.scriptKind$HhK_), 0x1165f07f3c2L))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(scriptReference, "pre-processing script kind is expected", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1195601255636", null, errorTarget);
       }
     }
     // -- 
-    for (SNode scriptReference : ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.postMappingScript$AdUs))) {
-      if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(scriptReference, LINKS.mappingScript$YoG1), PROPS.scriptKind$P4GV), 0x1165f09be34L))) {
+    for (SNode scriptReference : ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.postMappingScript$wJj$))) {
+      if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(scriptReference, LINKS.mappingScript$dXkv), PROPS.scriptKind$HhK_), 0x1165f09be34L))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(scriptReference, "post-processing script kind is expected", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1195601346473", null, errorTarget);
       }
@@ -50,13 +50,13 @@ public class check_MappingConfiguration_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink mappingScript$YoG1 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript");
-    /*package*/ static final SContainmentLink preMappingScript$DukP = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597a610dL, "preMappingScript");
-    /*package*/ static final SContainmentLink postMappingScript$AdUs = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597e20a5L, "postMappingScript");
+    /*package*/ static final SReferenceLink mappingScript$dXkv = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript");
+    /*package*/ static final SContainmentLink preMappingScript$5G5F = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597a610dL, "preMappingScript");
+    /*package*/ static final SContainmentLink postMappingScript$wJj$ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597e20a5L, "postMappingScript");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty scriptKind$P4GV = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, 0x1165f0cf1aaL, "scriptKind");
+    /*package*/ static final SProperty scriptKind$HhK_ = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, 0x1165f0cf1aaL, "scriptKind");
   }
 
   private static final class CONCEPTS {

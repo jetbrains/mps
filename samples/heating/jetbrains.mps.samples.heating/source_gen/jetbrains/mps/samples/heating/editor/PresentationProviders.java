@@ -14,11 +14,11 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.displayName$P8hc);
+      return SPropertyOperations.getString(targetNode, PROPS.displayName$J0kO);
     }
   };
 
   private static final class PROPS {
-    /*package*/ static final SProperty displayName$P8hc = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x1dfff86fbfd92c74L, "displayName");
+    /*package*/ static final SProperty displayName$J0kO = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x1dfff86fbfd92c74L, "displayName");
   }
 }

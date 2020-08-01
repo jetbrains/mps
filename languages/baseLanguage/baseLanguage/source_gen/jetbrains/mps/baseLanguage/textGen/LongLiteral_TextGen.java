@@ -13,10 +13,10 @@ public class LongLiteral_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$ODo0));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$w2C0));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ODo0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value");
+    /*package*/ static final SProperty value$w2C0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value");
   }
 }

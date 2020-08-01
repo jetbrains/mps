@@ -54,17 +54,17 @@ public class EnumConstants extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.enumConstant$urAQ)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.enumConstant$JnOa)).isEmpty();
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode constant = SNodeFactoryOperations.createNewNode(CONCEPTS.EnumConstantDeclaration$ma, null);
       SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(node)).first();
       if ((constructor == null)) {
-        SLinkOperations.setPointer(constant, LINKS.baseMethodDeclaration$$A7i, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"));
+        SLinkOperations.setPointer(constant, LINKS.baseMethodDeclaration$ItxI, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"));
       } else {
-        SLinkOperations.setTarget(constant, LINKS.baseMethodDeclaration$$A7i, constructor);
+        SLinkOperations.setTarget(constant, LINKS.baseMethodDeclaration$ItxI, constructor);
       }
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.enumConstant$urAQ)).addElement(constant);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.enumConstant$JnOa)).addElement(constant);
     }
     public String getKeyStroke() {
       return "any non-space char";
@@ -77,7 +77,7 @@ public class EnumConstants extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink enumConstant$urAQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

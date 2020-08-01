@@ -27,25 +27,25 @@ public class ChangeMethodSignatureRefactoring {
     this.myDeclaration = declaration;
   }
   public void doRefactoring() {
-    SPropertyOperations.assign(this.myDeclaration, PROPS.name$tAp1, SPropertyOperations.getString(this.myParameters.getDeclaration(), PROPS.name$tAp1));
+    SPropertyOperations.assign(this.myDeclaration, PROPS.name$lA7v, SPropertyOperations.getString(this.myParameters.getDeclaration(), PROPS.name$lA7v));
     if (this.myParameters.isReturnValueChanged()) {
-      SLinkOperations.setTarget(this.myDeclaration, LINKS.returnType$WIkw, SNodeOperations.copyNode(SLinkOperations.getTarget(this.myParameters.getDeclaration(), LINKS.returnType$WIkw)));
+      SLinkOperations.setTarget(this.myDeclaration, LINKS.returnType$qrVw, SNodeOperations.copyNode(SLinkOperations.getTarget(this.myParameters.getDeclaration(), LINKS.returnType$qrVw)));
     }
     if (SNodeOperations.isInstanceOf(this.myDeclaration, CONCEPTS.IVisible$6G)) {
       if (this.myParameters.isVisibilityChanged()) {
-        SLinkOperations.setTarget(SNodeOperations.cast(this.myDeclaration, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(this.myParameters.getDeclaration(), CONCEPTS.IVisible$6G), LINKS.visibility$2GiC)));
+        SLinkOperations.setTarget(SNodeOperations.cast(this.myDeclaration, CONCEPTS.IVisible$6G), LINKS.visibility$jt1o, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(this.myParameters.getDeclaration(), CONCEPTS.IVisible$6G), LINKS.visibility$jt1o)));
       }
     }
     this.changeParameters();
-    ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.throwsItem$gr7e)).clear();
-    for (SNode throwItem : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.throwsItem$gr7e))) {
-      ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.throwsItem$gr7e)).addElement(SNodeOperations.copyNode(throwItem));
+    ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.throwsItem$X8vM)).clear();
+    for (SNode throwItem : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.throwsItem$X8vM))) {
+      ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.throwsItem$X8vM)).addElement(SNodeOperations.copyNode(throwItem));
     }
     for (SNode node : ListSequence.fromList(this.myUssages)) {
       MethodCallAdapter call = new MethodCallAdapter(node);
       List<SNode> oldArgs = ListSequence.fromListWithValues(new ArrayList<SNode>(), call.getMethodArguments());
       call.removeArguments();
-      for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.parameter$WIkZ))) {
+      for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.parameter$qsax))) {
         int index = ListSequence.fromList(this.myParameters.getIdList()).indexOf(parameter.getNodeId().toString());
         if (index == -1) {
           call.addArgument(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral")));
@@ -59,17 +59,17 @@ public class ChangeMethodSignatureRefactoring {
     return myDeclaration;
   }
   private void changeParameters() {
-    List<SNode> oldParams = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$WIkZ));
-    ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$WIkZ)).clear();
-    for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.parameter$WIkZ))) {
+    List<SNode> oldParams = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$qsax));
+    ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$qsax)).clear();
+    for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.parameter$qsax))) {
       int index = ListSequence.fromList(this.myParameters.getIdList()).indexOf(parameter.getNodeId().toString());
       if (index == -1) {
-        ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$WIkZ)).addElement(SNodeOperations.copyNode(parameter));
+        ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$qsax)).addElement(SNodeOperations.copyNode(parameter));
       } else {
-        ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$WIkZ)).addElement(ListSequence.fromList(oldParams).getElement(index));
-        SNode newParam = ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$WIkZ)).last();
-        SPropertyOperations.assign(newParam, PROPS.name$tAp1, SPropertyOperations.getString(parameter, PROPS.name$tAp1).substring(0));
-        SLinkOperations.setTarget(newParam, LINKS.type$pLrO, SNodeOperations.copyNode(SLinkOperations.getTarget(parameter, LINKS.type$pLrO)));
+        ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$qsax)).addElement(ListSequence.fromList(oldParams).getElement(index));
+        SNode newParam = ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$qsax)).last();
+        SPropertyOperations.assign(newParam, PROPS.name$lA7v, SPropertyOperations.getString(parameter, PROPS.name$lA7v).substring(0));
+        SLinkOperations.setTarget(newParam, LINKS.type$uWuc, SNodeOperations.copyNode(SLinkOperations.getTarget(parameter, LINKS.type$uWuc)));
       }
     }
   }
@@ -81,15 +81,15 @@ public class ChangeMethodSignatureRefactoring {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {

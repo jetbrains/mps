@@ -17,14 +17,14 @@ public class OutputNode_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$FHzw) != null) {
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$FHzw));
+    if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$b4cw) != null) {
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$b4cw));
     } else {
       tgs.append("!no text!");
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.outputChild$1z$j)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.outputChild$Ke_d)).isNotEmpty()) {
       tgs.append(" children:{");
-      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.outputChild$1z$j)) {
+      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.outputChild$Ke_d)) {
         tgs.appendNode(item);
       }
       tgs.append("}");
@@ -32,10 +32,10 @@ public class OutputNode_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$FHzw = MetaAdapterFactory.getProperty(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, 0x11645b5a797L, "text");
+    /*package*/ static final SProperty text$b4cw = MetaAdapterFactory.getProperty(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, 0x11645b5a797L, "text");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink outputChild$1z$j = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, 0x117f047d47fL, "outputChild");
+    /*package*/ static final SContainmentLink outputChild$Ke_d = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x1164564a526L, 0x117f047d47fL, "outputChild");
   }
 }

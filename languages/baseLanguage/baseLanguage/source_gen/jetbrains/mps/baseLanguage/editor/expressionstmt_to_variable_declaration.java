@@ -143,12 +143,12 @@ public class expressionstmt_to_variable_declaration extends TransformationMenuBa
           SNode statement = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$BI, null);
           SNodeOperations.replaceWithAnother(targetNode, statement);
           SNode localVariableDeclaration = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$Bf, null);
-          SLinkOperations.setTarget(statement, LINKS.localVariableDeclaration$O0D0, localVariableDeclaration);
-          SLinkOperations.setTarget(localVariableDeclaration, LINKS.type$pLrO, createdNode);
+          SLinkOperations.setTarget(statement, LINKS.localVariableDeclaration$cjR0, localVariableDeclaration);
+          SLinkOperations.setTarget(localVariableDeclaration, LINKS.type$uWuc, createdNode);
           if (!(SNodeOperations.getConcept(_context.getNode()).isAbstract())) {
-            SLinkOperations.setTarget(localVariableDeclaration, LINKS.initializer$KgD, _context.getNode());
+            SLinkOperations.setTarget(localVariableDeclaration, LINKS.initializer$no3R, _context.getNode());
           }
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(statement, LINKS.localVariableDeclaration$O0D0), "*" + CellIdManager.createPropertyId("name"), -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(statement, LINKS.localVariableDeclaration$cjR0), "*" + CellIdManager.createPropertyId("name"), -1);
         }
 
         @Override
@@ -221,12 +221,12 @@ public class expressionstmt_to_variable_declaration extends TransformationMenuBa
           SNode statement = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$BI, null);
           SNodeOperations.replaceWithAnother(targetNode, statement);
           SNode localVariableDeclaration = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$Bf, null);
-          SLinkOperations.setTarget(statement, LINKS.localVariableDeclaration$O0D0, localVariableDeclaration);
-          SLinkOperations.setTarget(localVariableDeclaration, LINKS.type$pLrO, createdNode);
+          SLinkOperations.setTarget(statement, LINKS.localVariableDeclaration$cjR0, localVariableDeclaration);
+          SLinkOperations.setTarget(localVariableDeclaration, LINKS.type$uWuc, createdNode);
           if (!(SNodeOperations.getConcept(_context.getNode()).isAbstract())) {
-            SLinkOperations.setTarget(localVariableDeclaration, LINKS.initializer$KgD, _context.getNode());
+            SLinkOperations.setTarget(localVariableDeclaration, LINKS.initializer$no3R, _context.getNode());
           }
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(statement, LINKS.localVariableDeclaration$O0D0), "*" + CellIdManager.createPropertyId("name"), -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(statement, LINKS.localVariableDeclaration$cjR0), "*" + CellIdManager.createPropertyId("name"), -1);
         }
 
         @Override
@@ -262,8 +262,8 @@ public class expressionstmt_to_variable_declaration extends TransformationMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

@@ -21,7 +21,7 @@ public class supertypesOf_EnumeratorType_SubtypingRule extends SubtypingRule_Run
   public supertypesOf_EnumeratorType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode enumeratorType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_w8ob7y_a0a1(SLinkOperations.getTarget(enumeratorType, LINKS.elementType$qtCw));
+    return _quotation_createNode_w8ob7y_a0a1(SLinkOperations.getTarget(enumeratorType, LINKS.elementType$OmBw));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.EnumeratorType$Hf;
@@ -46,7 +46,7 @@ public class supertypesOf_EnumeratorType_SubtypingRule extends SubtypingRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$qtCw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12020864111L, 0x12020864112L, "elementType");
+    /*package*/ static final SContainmentLink elementType$OmBw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12020864111L, 0x12020864112L, "elementType");
   }
 
   private static final class CONCEPTS {

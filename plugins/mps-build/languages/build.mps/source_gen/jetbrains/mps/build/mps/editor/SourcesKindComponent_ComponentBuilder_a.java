@@ -84,10 +84,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_qubgco_a1a() {
-    return (SPropertyOperations.getEnum(myNode, PROPS.sourcesKind$ZoTF) != null);
+    return (SPropertyOperations.getEnum(myNode, PROPS.sourcesKind$H3VP) != null);
   }
   private boolean nodeCondition_qubgco_a2a() {
-    return (SPropertyOperations.getEnum(myNode, PROPS.sourcesKind$ZoTF) == null);
+    return (SPropertyOperations.getEnum(myNode, PROPS.sourcesKind$H3VP) == null);
   }
   public static class BuildMps_Solution_generic_cellMenu_qubgco_a0a extends AbstractCellMenuPart_Generic_Group {
     public BuildMps_Solution_generic_cellMenu_qubgco_a0a() {
@@ -100,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.setEnum(node, PROPS.sourcesKind$ZoTF, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), SEnumOperations.getMemberName0(parameterObject)));
+      SPropertyOperations.setEnum(node, PROPS.sourcesKind$H3VP, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), SEnumOperations.getMemberName0(parameterObject)));
     }
     public boolean isReferentPresentation() {
       return false;
@@ -129,7 +129,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.sourcesKind$ZoTF;
+      final SProperty property = PROPS.sourcesKind$H3VP;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no sourcesKind>");
@@ -177,7 +177,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.setEnum(node, PROPS.sourcesKind$ZoTF, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), SEnumOperations.getMemberPresentation(parameterObject)));
+      SPropertyOperations.setEnum(node, PROPS.sourcesKind$H3VP, SEnumOperations.getMemberForPresentation(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), SEnumOperations.getMemberPresentation(parameterObject)));
     }
     public boolean isReferentPresentation() {
       return false;
@@ -206,7 +206,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty sourcesKind$ZoTF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind");
+    /*package*/ static final SProperty sourcesKind$H3VP = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, 0x3be316509dccb82L, "sourcesKind");
   }
 
   private static final class CONCEPTS {

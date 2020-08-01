@@ -54,7 +54,7 @@ public class TestRefConstraints_SubReference_HandlerSuperScoping_SubstituteMenu 
 
     public SMP_ReferenceScope_lqwasx_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TestRefConstraints_SubReference_HandlerSuperScoping$ES, LINKS.target$rEaS);
+      super((SAbstractConcept) CONCEPTS.TestRefConstraints_SubReference_HandlerSuperScoping$ES, LINKS.target$prh8);
     }
     @NotNull
     @Override
@@ -126,6 +126,6 @@ public class TestRefConstraints_SubReference_HandlerSuperScoping_SubstituteMenu 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$rEaS = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target");
+    /*package*/ static final SReferenceLink target$prh8 = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c73L, 0x244a306605641d21L, "target");
   }
 }

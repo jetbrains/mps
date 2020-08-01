@@ -29,9 +29,9 @@ public class SwitchDefault {
         if (DeletionApproverUtil.approve(editorContext, node, "defaultCollection")) {
           return;
         }
-        SLinkOperations.setTarget(node, LINKS.defaultBlock$DENE, null);
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.case$31$8)).isNotEmpty()) {
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.case$31$8)).last(), SelectionManager.LAST_CELL, -1);
+        SLinkOperations.setTarget(node, LINKS.defaultBlock$bJ1m, null);
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.case$tKvS)).isNotEmpty()) {
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.case$tKvS)).last(), SelectionManager.LAST_CELL, -1);
         } else {
           SelectionUtil.selectCell(editorContext, node, SelectionManager.FIRST_CELL);
         }
@@ -82,7 +82,7 @@ public class SwitchDefault {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultBlock$DENE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
-    /*package*/ static final SContainmentLink case$31$8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SContainmentLink defaultBlock$bJ1m = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
+    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
   }
 }

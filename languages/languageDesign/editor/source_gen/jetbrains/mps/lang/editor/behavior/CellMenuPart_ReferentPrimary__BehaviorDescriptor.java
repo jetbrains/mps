@@ -34,20 +34,20 @@ public final class CellMenuPart_ReferentPrimary__BehaviorDescriptor extends Base
   }
 
   /*package*/ static SNode getMatchingTextFunction_id6K3nYZvn7p1(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.matchingText$KPlJ) != null)) {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.matchingText$KPlJ);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.matchingText$DPxL) != null)) {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.matchingText$DPxL);
     }
-    SNode cellModel = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CellModel_RefCell$VD, false, false), LINKS.editorComponent$36e$), LINKS.cellModel$3wIV);
+    SNode cellModel = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CellModel_RefCell$VD, false, false), LINKS.editorComponent$w13s), LINKS.cellModel$GQI_);
     if (SNodeOperations.isInstanceOf(cellModel, CONCEPTS.CellModel_ReferencePresentation$Wr)) {
-      return SLinkOperations.getTarget((SNodeOperations.cast(cellModel, CONCEPTS.CellModel_ReferencePresentation$Wr)), LINKS.referentPresentation$z_4O);
+      return SLinkOperations.getTarget((SNodeOperations.cast(cellModel, CONCEPTS.CellModel_ReferencePresentation$Wr)), LINKS.referentPresentation$eXlc);
     }
     return null;
   }
   /*package*/ static SNode getVisibleMatchingTextFunction_id5KYS0pi3wd5(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.visibleMatchingText$_Wck) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.visibleMatchingText$o9XG) == null)) {
       return CellMenuPart_ReferentPrimary__BehaviorDescriptor.getMatchingTextFunction_id6K3nYZvn7p1.invoke(__thisNode__);
     }
-    return SLinkOperations.getTarget(__thisNode__, LINKS.visibleMatchingText$_Wck);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.visibleMatchingText$o9XG);
   }
 
   /*package*/ CellMenuPart_ReferentPrimary__BehaviorDescriptor() {
@@ -99,11 +99,11 @@ public final class CellMenuPart_ReferentPrimary__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink matchingText$KPlJ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText");
-    /*package*/ static final SContainmentLink editorComponent$36e$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
-    /*package*/ static final SContainmentLink cellModel$3wIV = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SContainmentLink referentPresentation$z_4O = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, 0x6c035fefdf050085L, "referentPresentation");
-    /*package*/ static final SContainmentLink visibleMatchingText$_Wck = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText");
+    /*package*/ static final SContainmentLink matchingText$DPxL = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText");
+    /*package*/ static final SContainmentLink editorComponent$w13s = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
+    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SContainmentLink referentPresentation$eXlc = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, 0x6c035fefdf050085L, "referentPresentation");
+    /*package*/ static final SContainmentLink visibleMatchingText$o9XG = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText");
   }
 
   private static final class CONCEPTS {

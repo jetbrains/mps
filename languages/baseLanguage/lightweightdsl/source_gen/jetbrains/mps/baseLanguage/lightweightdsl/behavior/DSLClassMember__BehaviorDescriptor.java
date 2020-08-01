@@ -48,23 +48,23 @@ public final class DSLClassMember__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean isMultiple_id1QReUKIGS9B(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifier$Y2M5), CONCEPTS.MultipleModifier$2o)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifier$3mgr), CONCEPTS.MultipleModifier$2o)).isNotEmpty();
   }
   /*package*/ static boolean isRequired_id2WSWNq1VhVM(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifier$Y2M5), CONCEPTS.RequiredModifier$zI)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifier$3mgr), CONCEPTS.RequiredModifier$zI)).isNotEmpty();
   }
   /*package*/ static SNode getPlaceholder_id7T23sO8tlHe(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifier$Y2M5), CONCEPTS.PlaceholderModifier$Tl)).first();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifier$3mgr), CONCEPTS.PlaceholderModifier$Tl)).first();
   }
   /*package*/ static SNode getDefault_id7DN9hucqR$0(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifier$Y2M5), CONCEPTS.DefaultModifier$O5)).first();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifier$3mgr), CONCEPTS.DefaultModifier$O5)).first();
   }
   /*package*/ static SNode createForClass_id5BD$AU437jJ(@NotNull SNode __thisNode__, SNode cls, SModel futureModel) {
     if (Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(__thisNode__, cls)).isNotEmpty()) {
       return null;
     }
     if ((DSLClassMember__BehaviorDescriptor.getDefault_id7DN9hucqR$0.invoke(__thisNode__) != null)) {
-      return SNodeOperations.copyNode(SLinkOperations.getTarget(DSLClassMember__BehaviorDescriptor.getDefault_id7DN9hucqR$0.invoke(__thisNode__), LINKS.value$HrKt));
+      return SNodeOperations.copyNode(SLinkOperations.getTarget(DSLClassMember__BehaviorDescriptor.getDefault_id7DN9hucqR$0.invoke(__thisNode__), LINKS.value$su3));
     }
     if (((boolean) DSLClassMember__BehaviorDescriptor.isRequired_id2WSWNq1VhVM.invoke(__thisNode__))) {
       return DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(__thisNode__, futureModel);
@@ -75,15 +75,15 @@ public final class DSLClassMember__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static Iterable<SNode> findPlaceholders_id5ZzANK5B6wZ(@NotNull final SNode __thisNode__, SNode cls) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$oYX5), CONCEPTS.MemberPlaceholder$Wb)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$6v_r), CONCEPTS.MemberPlaceholder$Wb)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.decl$l7bu) == __thisNode__;
+        return SLinkOperations.getTarget(it, LINKS.decl$euzy) == __thisNode__;
       }
     });
   }
   /*package*/ static String getMatchingText_id2nUiI4k7qhh(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.INamedConcept$nV)) {
-      return SPropertyOperations.getString(SNodeOperations.cast(__thisNode__, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+      return SPropertyOperations.getString(SNodeOperations.cast(__thisNode__, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
     }
     return SNodeOperations.getConcept(__thisNode__).getName();
   }
@@ -147,10 +147,10 @@ public final class DSLClassMember__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifier$Y2M5 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fe4c7L, 0x2f38f33681e6c568L, "modifier");
-    /*package*/ static final SContainmentLink value$HrKt = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7a7325178c68eba9L, 0x7a7325178c68f138L, "value");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SReferenceLink decl$l7bu = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
+    /*package*/ static final SContainmentLink modifier$3mgr = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fe4c7L, 0x2f38f33681e6c568L, "modifier");
+    /*package*/ static final SContainmentLink value$su3 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7a7325178c68eba9L, 0x7a7325178c68f138L, "value");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SReferenceLink decl$euzy = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
   }
 
   private static final class CONCEPTS {
@@ -163,6 +163,6 @@ public final class DSLClassMember__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

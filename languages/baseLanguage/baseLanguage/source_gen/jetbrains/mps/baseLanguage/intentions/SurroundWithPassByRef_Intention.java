@@ -61,7 +61,7 @@ public final class SurroundWithPassByRef_Intention extends AbstractIntentionDesc
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode createdNode = SNodeFactoryOperations.createNewNode(CONCEPTS.PassByRefExpression$7Y, node);
       SNodeOperations.replaceWithAnother(node, createdNode);
-      SLinkOperations.setTarget(createdNode, LINKS.expr$NNix, node);
+      SLinkOperations.setTarget(createdNode, LINKS.expr$5PXZ, node);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -74,6 +74,6 @@ public final class SurroundWithPassByRef_Intention extends AbstractIntentionDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$NNix = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, 0x5fc1cc47cb462337L, "expr");
+    /*package*/ static final SContainmentLink expr$5PXZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, 0x5fc1cc47cb462337L, "expr");
   }
 }

@@ -116,8 +116,8 @@
       <node id="8974276187400348194" at="205,60,206,40" concept="1" />
       <node id="8974276187400348194" at="206,40,207,34" concept="1" />
       <node id="8974276187400348194" at="207,34,208,22" concept="6" />
-      <node id="8974276187400348186" at="212,0,213,0" concept="7" trace="repo$bGKu" />
-      <node id="8974276187400348186" at="213,0,214,0" concept="7" trace="commandClosureLiteral$x_4w" />
+      <node id="8974276187400348186" at="212,0,213,0" concept="7" trace="repo$EFuy" />
+      <node id="8974276187400348186" at="213,0,214,0" concept="7" trace="commandClosureLiteral$gXbw" />
       <node id="8974276187400348186" at="29,0,31,0" concept="2" trace="myNode" />
       <node id="8974276187400348186" at="81,0,83,0" concept="2" trace="myNode" />
       <node id="8974276187400348186" at="146,0,148,0" concept="2" trace="myNode" />
@@ -301,7 +301,7 @@
       <node id="8974276187400348197" at="94,35,95,26" concept="6" />
       <node id="8974276187400348197" at="96,17,97,42" concept="1" />
       <node id="8974276187400348197" at="100,40,101,25" concept="6" />
-      <node id="8974276187400348197" at="106,0,107,0" concept="7" trace="body$DJEC" />
+      <node id="8974276187400348197" at="106,0,107,0" concept="7" trace="body$e5Do" />
       <node id="8974276187400348197" at="23,0,25,0" concept="2" trace="myNode" />
       <node id="8974276187400348197" at="54,0,56,0" concept="2" trace="myNode" />
       <node id="8974276187400348197" at="37,0,40,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

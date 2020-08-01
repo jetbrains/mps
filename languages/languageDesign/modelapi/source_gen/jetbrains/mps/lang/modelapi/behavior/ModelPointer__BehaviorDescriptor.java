@@ -47,18 +47,18 @@ public final class ModelPointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode create_id_GDk1qZ2LQ(@NotNull SAbstractConcept __thisConcept__, SModel where, SModelReference target) {
     SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModelPointer$rg);
-    SLinkOperations.setTarget(rv, LINKS.name$JZuS, ModelName__BehaviorDescriptor.create_id_GDk1qZ6bz.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelName$Ux), where, target.getModelName()));
-    SPropertyOperations.assign(rv, PROPS.modelId$bfR, PersistenceFacade.getInstance().asString(target.getModelId()));
+    SLinkOperations.setTarget(rv, LINKS.name$fJX8, ModelName__BehaviorDescriptor.create_id_GDk1qZ6bz.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelName$Ux), where, target.getModelName()));
+    SPropertyOperations.assign(rv, PROPS.modelId$5sFD, PersistenceFacade.getInstance().asString(target.getModelId()));
     if (target.getModuleReference() != null) {
-      SLinkOperations.setTarget(rv, LINKS.moduleRef$IMlT, ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(CONCEPTS.ModulePointer$rJ), where, target.getModuleReference()));
+      SLinkOperations.setTarget(rv, LINKS.moduleRef$EoAB, ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(CONCEPTS.ModulePointer$rJ), where, target.getModuleReference()));
     }
     return rv;
   }
   /*package*/ static SModelReference toModelReference_id1Bs_61$mvvu(@NotNull SNode __thisNode__) {
     final PersistenceFacade pf = PersistenceFacade.getInstance();
-    SModelId mid = pf.createModelId(SPropertyOperations.getString(__thisNode__, PROPS.modelId$bfR));
-    SModuleReference moduleRef = ((SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$IMlT) == null) ? null : ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$IMlT)));
-    return pf.createModelReference(moduleRef, mid, SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.name$JZuS), PROPS.value$givw));
+    SModelId mid = pf.createModelId(SPropertyOperations.getString(__thisNode__, PROPS.modelId$5sFD));
+    SModuleReference moduleRef = ((SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$EoAB) == null) ? null : ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$EoAB)));
+    return pf.createModelReference(moduleRef, mid, SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.name$fJX8), PROPS.value$SXgw));
   }
 
   /*package*/ ModelPointer__BehaviorDescriptor() {
@@ -118,12 +118,12 @@ public final class ModelPointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink name$JZuS = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x96ca5405afc2bccL, "name");
-    /*package*/ static final SContainmentLink moduleRef$IMlT = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645ce35cL, "moduleRef");
+    /*package*/ static final SContainmentLink name$fJX8 = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x96ca5405afc2bccL, "name");
+    /*package*/ static final SContainmentLink moduleRef$EoAB = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645ce35cL, "moduleRef");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty modelId$bfR = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645c7f56L, "modelId");
-    /*package*/ static final SProperty value$givw = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, 0x96ca5405afbf491L, "value");
+    /*package*/ static final SProperty modelId$5sFD = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645c7f56L, "modelId");
+    /*package*/ static final SProperty value$SXgw = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, 0x96ca5405afbf491L, "value");
   }
 }

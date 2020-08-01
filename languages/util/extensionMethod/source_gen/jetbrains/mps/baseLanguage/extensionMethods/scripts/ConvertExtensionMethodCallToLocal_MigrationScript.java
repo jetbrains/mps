@@ -44,7 +44,7 @@ public final class ConvertExtensionMethodCallToLocal_MigrationScript extends Bas
         if (!(SNodeOperations.isInstanceOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(node), CONCEPTS.ThisExtensionExpression$UG))) {
           return false;
         }
-        SNode declaration = SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i);
+        SNode declaration = SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI);
         SNode classifier = ExtensionMethodDeclaration__BehaviorDescriptor.getClassifier_id6EBM_lhz9HU.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.ExtensionMethodDeclaration$9b, false, false));
         if (classifier == null) {
           return false;
@@ -55,7 +55,7 @@ public final class ConvertExtensionMethodCallToLocal_MigrationScript extends Bas
         }
         while (classifier != declarationClassifier) {
           for (SNode method : Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier), node)) {
-            if (SPropertyOperations.getString(method, PROPS.name$tAp1).equals(SPropertyOperations.getString(declaration, PROPS.name$tAp1))) {
+            if (SPropertyOperations.getString(method, PROPS.name$lA7v).equals(SPropertyOperations.getString(declaration, PROPS.name$lA7v))) {
               return false;
             }
           }
@@ -66,8 +66,8 @@ public final class ConvertExtensionMethodCallToLocal_MigrationScript extends Bas
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode methodCall = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(node), CONCEPTS.LocalExtendedMethodCall$nt);
-        SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i));
-        ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)));
+        SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI));
+        ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -91,11 +91,11 @@ public final class ConvertExtensionMethodCallToLocal_MigrationScript extends Bas
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

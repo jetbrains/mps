@@ -56,12 +56,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
   private static boolean check_fqq7dl_a1a0a_0(SContainmentLink checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.equals(LINKS.smodelAttribute$K8bJ);
+      return checkedDotOperand.equals(LINKS.smodelAttribute$jXFL);
     }
     return false;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

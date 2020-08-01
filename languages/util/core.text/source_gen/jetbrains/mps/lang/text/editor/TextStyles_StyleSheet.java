@@ -42,18 +42,18 @@ public class TextStyles_StyleSheet {
     }
 
     private Color _StyleParameter_QueryFunction_vsrnlz_a0a() {
-      if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(getNode(), CONCEPTS.Word$AM), PROPS.url$WUb8))) {
+      if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(getNode(), CONCEPTS.Word$AM), PROPS.url$wboS))) {
         return MPSColors.BLUE;
       }
       return MPSColors.BLACK;
     }
     private int _StyleParameter_QueryFunction_vsrnlz_a1a() {
       SNode word = SNodeOperations.as(getNode(), CONCEPTS.Word$AM);
-      if (SPropertyOperations.getBoolean(word, PROPS.bold$WTX$) && (SPropertyOperations.getBoolean(word, PROPS.italic$WTZ1))) {
+      if (SPropertyOperations.getBoolean(word, PROPS.bold$w4Os) && (SPropertyOperations.getBoolean(word, PROPS.italic$w5xv))) {
         return MPSFonts.BOLD_ITALIC;
-      } else if (SPropertyOperations.getBoolean(word, PROPS.bold$WTX$)) {
+      } else if (SPropertyOperations.getBoolean(word, PROPS.bold$w4Os)) {
         return MPSFonts.BOLD;
-      } else if (SPropertyOperations.getBoolean(word, PROPS.italic$WTZ1)) {
+      } else if (SPropertyOperations.getBoolean(word, PROPS.italic$w5xv)) {
         return MPSFonts.ITALIC;
       }
       return MPSFonts.PLAIN;
@@ -68,8 +68,8 @@ public class TextStyles_StyleSheet {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
-    /*package*/ static final SProperty italic$WTZ1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
-    /*package*/ static final SProperty bold$WTX$ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
+    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty italic$w5xv = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
+    /*package*/ static final SProperty bold$w4Os = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
   }
 }

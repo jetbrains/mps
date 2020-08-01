@@ -21,7 +21,7 @@ public class fix_PropertyAttribute_name_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode propertyAttribute = SNodeOperations.as(node, CONCEPTS.PropertyAttribute$jT);
-    SPropertyOperations.assign(propertyAttribute, PROPS.name_DebugInfo$cMRu, PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(propertyAttribute).getName());
+    SPropertyOperations.assign(propertyAttribute, PROPS.name_DebugInfo$cCRy, PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(propertyAttribute).getName());
   }
 
   private static final class CONCEPTS {
@@ -29,6 +29,6 @@ public class fix_PropertyAttribute_name_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name_DebugInfo$cMRu = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x18649a5c82123515L, "name_DebugInfo");
+    /*package*/ static final SProperty name_DebugInfo$cCRy = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x18649a5c82123515L, "name_DebugInfo");
   }
 }

@@ -42,7 +42,7 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
     List<SNode> caughtTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(catchClause);
     for (final SNode caughtType : ListSequence.fromList(caughtTypes)) {
       if (SNodeOperations.isInstanceOf(caughtType, CONCEPTS.ClassifierType$IZ)) {
-        SNode caughtClassifier = SLinkOperations.getTarget(SNodeOperations.cast(caughtType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+        SNode caughtClassifier = SLinkOperations.getTarget(SNodeOperations.cast(caughtType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
         if (TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0b0a0b0b()) || TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0b0a0b0b_0()) || SNodeOperations.is(caughtClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Exception")) || SNodeOperations.is(caughtClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {
           // ignore 
         } else {
@@ -58,7 +58,7 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
                 }
               }
               if (matches_13ophr_a1a0b0a0b0) {
-                thrown = StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$9KDK), ((boolean) false));
+                thrown = StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$I$eg), ((boolean) false));
               } else {
                 boolean matches_13ophr_b1a0b0a0b0 = false;
                 {
@@ -68,12 +68,12 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
                   }
                 }
                 if (matches_13ophr_b1a0b0a0b0) {
-                  SetSequence.fromSet(thrown).addSequence(SetSequence.fromSet(StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$4P0u), ((boolean) false))));
-                  SetSequence.fromSet(thrown).addSequence(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(matchedNode_13ophr_b0a1a0a1a, LINKS.resource$nWfw)).translate(new ITranslator2<SNode, SNode>() {
+                  SetSequence.fromSet(thrown).addSequence(SetSequence.fromSet(StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$lFey), ((boolean) false))));
+                  SetSequence.fromSet(thrown).addSequence(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(matchedNode_13ophr_b0a1a0a1a, LINKS.resource$Abww)).translate(new ITranslator2<SNode, SNode>() {
                     public Iterable<SNode> translate(SNode it) {
                       return new ResourceVariableHelper(it).getCloseThrown();
                     }
-                  }), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R)));
+                  }), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD)));
                 } else {
                   boolean matches_13ophr_c1a0b0a0b0 = false;
                   {
@@ -83,7 +83,7 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
                     }
                   }
                   if (matches_13ophr_c1a0b0a0b0) {
-                    thrown = StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$TQ1f), ((boolean) false));
+                    thrown = StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$1aAh), ((boolean) false));
                   }
                 }
               }
@@ -151,10 +151,10 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink body$9KDK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
-    /*package*/ static final SContainmentLink body$4P0u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
-    /*package*/ static final SContainmentLink resource$nWfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
-    /*package*/ static final SContainmentLink body$TQ1f = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink body$I$eg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
+    /*package*/ static final SContainmentLink body$lFey = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
+    /*package*/ static final SContainmentLink resource$Abww = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
+    /*package*/ static final SContainmentLink body$1aAh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
   }
 }

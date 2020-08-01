@@ -45,7 +45,7 @@ public final class TurnToParallelForEachStatement_Intention extends AbstractInte
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.is(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.variable$QE64)), new SNodePointer("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068431790189"));
+    return SNodeOperations.is(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.variable$uoVW)), new SNodePointer("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068431790189"));
   }
   @Override
   public boolean isSurroundWith() {
@@ -68,22 +68,22 @@ public final class TurnToParallelForEachStatement_Intention extends AbstractInte
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode parallelFor = SNodeFactoryOperations.createNewNode(CONCEPTS.ParallelFor$GE, null);
       final SNode variable = SNodeFactoryOperations.createNewNode(CONCEPTS.ParallelLoopVariable$H9, null);
-      SPropertyOperations.assign(variable, PROPS.name$tAp1, SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.variable$QE64), PROPS.name$tAp1));
-      SLinkOperations.setTarget(variable, LINKS.type$pLrO, SNodeOperations.copyNode(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.variable$QE64)), CONCEPTS.Type$IG)));
-      SLinkOperations.setTarget(parallelFor, LINKS.loopVariable$2tJe, variable);
-      SLinkOperations.setTarget(parallelFor, LINKS.inputSequence$qLOB, SLinkOperations.getTarget(node, LINKS.inputSequence$vBnC));
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$OFes), CONCEPTS.ForEachVariableReference$q$, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      SPropertyOperations.assign(variable, PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.variable$uoVW), PROPS.name$lA7v));
+      SLinkOperations.setTarget(variable, LINKS.type$uWuc, SNodeOperations.copyNode(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.variable$uoVW)), CONCEPTS.Type$IG)));
+      SLinkOperations.setTarget(parallelFor, LINKS.loopVariable$cpRM, variable);
+      SLinkOperations.setTarget(parallelFor, LINKS.inputSequence$Y8uT, SLinkOperations.getTarget(node, LINKS.inputSequence$k4so));
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$wVZ$), CONCEPTS.ForEachVariableReference$q$, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variable$ue0d) == SLinkOperations.getTarget(node, LINKS.variable$QE64);
+          return SLinkOperations.getTarget(it, LINKS.variable$CM6j) == SLinkOperations.getTarget(node, LINKS.variable$uoVW);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNode newReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$sQ, null);
-          SLinkOperations.setTarget(newReference, LINKS.variableDeclaration$2ky6, variable);
+          SLinkOperations.setTarget(newReference, LINKS.variableDeclaration$7WwU, variable);
           SNodeOperations.replaceWithAnother(it, newReference);
         }
       });
-      SLinkOperations.setTarget(parallelFor, LINKS.body$OFes, SLinkOperations.getTarget(node, LINKS.body$OFes));
+      SLinkOperations.setTarget(parallelFor, LINKS.body$wVZ$, SLinkOperations.getTarget(node, LINKS.body$wVZ$));
       SNodeOperations.replaceWithAnother(node, parallelFor);
       editorContext.selectWRTFocusPolicy(variable);
     }
@@ -94,14 +94,14 @@ public final class TurnToParallelForEachStatement_Intention extends AbstractInte
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$QE64 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink loopVariable$2tJe = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e8810c2L, "loopVariable");
-    /*package*/ static final SContainmentLink inputSequence$qLOB = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence");
-    /*package*/ static final SContainmentLink inputSequence$vBnC = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
-    /*package*/ static final SContainmentLink body$OFes = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
-    /*package*/ static final SReferenceLink variable$ue0d = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink variable$uoVW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink loopVariable$cpRM = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e8810c2L, "loopVariable");
+    /*package*/ static final SContainmentLink inputSequence$Y8uT = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence");
+    /*package*/ static final SContainmentLink inputSequence$k4so = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
+    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SReferenceLink variable$CM6j = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -113,6 +113,6 @@ public final class TurnToParallelForEachStatement_Intention extends AbstractInte
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

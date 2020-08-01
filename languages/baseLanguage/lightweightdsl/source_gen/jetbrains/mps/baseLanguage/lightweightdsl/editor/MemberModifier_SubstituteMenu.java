@@ -57,7 +57,7 @@ public class MemberModifier_SubstituteMenu extends SubstituteMenuBase {
       }).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.DSLClassMember$68, true, false), LINKS.modifier$Y2M5), SNodeOperations.asSConcept(concept))).isEmpty();
+      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.DSLClassMember$68, true, false), LINKS.modifier$3mgr), SNodeOperations.asSConcept(concept))).isEmpty();
     }
     @NotNull
     @Override
@@ -83,6 +83,6 @@ public class MemberModifier_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifier$Y2M5 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fe4c7L, 0x2f38f33681e6c568L, "modifier");
+    /*package*/ static final SContainmentLink modifier$3mgr = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fe4c7L, 0x2f38f33681e6c568L, "modifier");
   }
 }

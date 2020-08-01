@@ -23,7 +23,7 @@ public class XmlCDATA_Constraints extends BaseConstraintsDescriptor {
 
   public static class Content_Property extends BasePropertyConstraintsDescriptor {
     public Content_Property(ConstraintsDescriptor container) {
-      super(PROPS.content$ENhU, container);
+      super(PROPS.content$IPF6, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class XmlCDATA_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.content$ENhU, new Content_Property(this));
+    properties.put(PROPS.content$IPF6, new Content_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class XmlCDATA_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty content$ENhU = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549487aL, 0x16838b3fce9b2633L, "content");
+    /*package*/ static final SProperty content$IPF6 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549487aL, 0x16838b3fce9b2633L, "content");
   }
 }

@@ -23,7 +23,7 @@ public class Port_Constraints extends BaseConstraintsDescriptor {
 
   public static class PortNumber_Property extends BasePropertyConstraintsDescriptor {
     public PortNumber_Property(ConstraintsDescriptor container) {
-      super(PROPS.portNumber$TX5w, container);
+      super(PROPS.portNumber$4_Ew, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class Port_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.portNumber$TX5w, new PortNumber_Property(this));
+    properties.put(PROPS.portNumber$4_Ew, new PortNumber_Property(this));
     return properties;
   }
 
@@ -54,6 +54,6 @@ public class Port_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty portNumber$TX5w = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L, 0x6f2759b7139c32c3L, "portNumber");
+    /*package*/ static final SProperty portNumber$4_Ew = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L, 0x6f2759b7139c32c3L, "portNumber");
   }
 }

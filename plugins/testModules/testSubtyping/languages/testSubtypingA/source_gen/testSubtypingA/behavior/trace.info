@@ -31,7 +31,7 @@
       <node id="2078093584693144862" at="69,14,70,58" concept="9" />
       <node id="2078093584693144862" at="76,48,77,22" concept="5" />
       <node id="2078093584693144862" at="82,40,83,19" concept="5" />
-      <node id="2078093584693144862" at="87,0,88,0" concept="6" trace="wrapped$moMx" />
+      <node id="2078093584693144862" at="87,0,88,0" concept="6" trace="wrapped$Q0tZ" />
       <node id="2078093584693144862" at="33,0,35,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2078093584693144862" at="40,0,42,0" concept="0" trace="WrapperType__BehaviorDescriptor#()V" />
       <node id="2078093584693144862" at="36,0,39,0" concept="7" trace="getPresentation_idhEwIMiw#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

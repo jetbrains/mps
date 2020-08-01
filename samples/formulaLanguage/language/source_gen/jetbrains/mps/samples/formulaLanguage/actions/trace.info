@@ -14,8 +14,8 @@
       <node id="1162840491874" at="17,76,18,175" concept="0" />
       <node id="1162840526375" at="18,175,19,177" concept="0" />
       <node id="1162840269882" at="25,0,26,0" concept="3" trace="Operation$Lv" />
-      <node id="1162840269882" at="29,0,30,0" concept="3" trace="leftOperand$18cm" />
-      <node id="1162840269882" at="30,0,31,0" concept="3" trace="rightOperand$mAgL" />
+      <node id="1162840269882" at="29,0,30,0" concept="3" trace="leftOperand$yXYE" />
+      <node id="1162840269882" at="30,0,31,0" concept="3" trace="rightOperand$Wy7J" />
       <node id="1162840458040" at="16,91,20,7" concept="1" />
       <node id="1162840292118" at="16,0,22,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="1162840458042" at="17,76,19,177" />

@@ -75,16 +75,16 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
     return ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(__thisNode__);
   }
   /*package*/ static SNode getBody_idi2fhZ_m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.body$pTP2);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.body$z0FY);
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(new ArrayList<SConcept>());
   }
   /*package*/ static boolean isReturnOnly_id3fUxpI1uWGM(@NotNull SNode __thisNode__) {
-    if (!((boolean) StatementList__BehaviorDescriptor.isOneLiner_idi0z3USV.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$pTP2)))) {
+    if (!((boolean) StatementList__BehaviorDescriptor.isOneLiner_idi0z3USV.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$z0FY)))) {
       return false;
     }
-    SNode stmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.body$pTP2), LINKS.statement$WHn8)).first();
+    SNode stmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.body$z0FY), LINKS.statement$pYcS)).first();
     return SNodeOperations.isInstanceOf(stmt, CONCEPTS.ExpressionStatement$nm) || SNodeOperations.isInstanceOf(stmt, CONCEPTS.ReturnStatement$SF);
   }
   /*package*/ static String getName_idhGVcmek(@NotNull SNode __thisNode__) {
@@ -241,7 +241,7 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

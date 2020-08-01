@@ -55,7 +55,7 @@ public final class UnsuppressError_Intention extends AbstractIntentionDescriptor
   private List<SNode> parameter(final SNode node, final EditorContext editorContext) {
     return ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return isNotEmptyString(SPropertyOperations.getString(it, PROPS.message$PX4b));
+        return isNotEmptyString(SPropertyOperations.getString(it, PROPS.message$8_1l));
       }
     }).toListSequence();
   }
@@ -66,7 +66,7 @@ public final class UnsuppressError_Intention extends AbstractIntentionDescriptor
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Don't suppress error '" + SPropertyOperations.getString(myParameter, PROPS.message$PX4b) + "' for " + ICanSuppressErrors__BehaviorDescriptor.nodeDescription_id4oS1ku9jIXr.invoke(node);
+      return "Don't suppress error '" + SPropertyOperations.getString(myParameter, PROPS.message$8_1l) + "' for " + ICanSuppressErrors__BehaviorDescriptor.nodeDescription_id4oS1ku9jIXr.invoke(node);
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
@@ -90,6 +90,6 @@ public final class UnsuppressError_Intention extends AbstractIntentionDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$PX4b = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
+    /*package*/ static final SProperty message$8_1l = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
   }
 }

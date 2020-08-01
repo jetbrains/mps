@@ -31,7 +31,7 @@ public final class ComparisonRule__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getSecondNodeCondition_id3SW4jvYrbIS(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.anotherNode$7HZ2);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.anotherNode$JhxY);
   }
 
   /*package*/ ComparisonRule__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ComparisonRule__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink anotherNode$7HZ2 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114caade477L, 0x114cb3d0f37L, "anotherNode");
+    /*package*/ static final SContainmentLink anotherNode$JhxY = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114caade477L, 0x114cb3d0f37L, "anotherNode");
   }
 }

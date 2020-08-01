@@ -121,7 +121,7 @@ public class transform_ElementAttributes_XmlElement_ext_1 extends Transformation
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attributes$U009)).insertElement(0, createdNode), SelectionManager.LAST_EDITABLE_CELL, -1);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attributes$604n)).insertElement(0, createdNode), SelectionManager.LAST_EDITABLE_CELL, -1);
       }
 
       @Override
@@ -149,7 +149,7 @@ public class transform_ElementAttributes_XmlElement_ext_1 extends Transformation
   public class TMP_Group_gxyyd8_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.shortEmptyNotation$5AI0)) && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attributes$U009)).isEmpty();
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.shortEmptyNotation$HKi0)) && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attributes$604n)).isEmpty();
     }
 
     @NotNull
@@ -205,8 +205,8 @@ public class transform_ElementAttributes_XmlElement_ext_1 extends Transformation
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.shortEmptyNotation$5AI0, true);
-          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.content$$sMt)).clear();
+          SPropertyOperations.assign(_context.getNode(), PROPS.shortEmptyNotation$HKi0, true);
+          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.content$DWs3)).clear();
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -240,11 +240,11 @@ public class transform_ElementAttributes_XmlElement_ext_1 extends Transformation
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink attributes$U009 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
-    /*package*/ static final SContainmentLink content$$sMt = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
+    /*package*/ static final SContainmentLink attributes$604n = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
+    /*package*/ static final SContainmentLink content$DWs3 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortEmptyNotation$5AI0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
+    /*package*/ static final SProperty shortEmptyNotation$HKi0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
   }
 }

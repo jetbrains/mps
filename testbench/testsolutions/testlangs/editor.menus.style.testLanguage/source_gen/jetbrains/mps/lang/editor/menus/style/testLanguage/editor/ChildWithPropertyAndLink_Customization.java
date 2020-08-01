@@ -37,7 +37,7 @@ public class ChildWithPropertyAndLink_Customization implements EditorMenuItemCus
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
         protected boolean doMatchesContext_(SNode contextNode, SContainmentLink containmentLink, SReferenceLink referenceLink, SProperty property) {
-          return Objects.equals(containmentLink, LINKS.childWithPropertyAndLink$SVoL);
+          return Objects.equals(containmentLink, LINKS.childWithPropertyAndLink$$KZJ);
         }
       }.matchesContext(context);
     }
@@ -71,7 +71,7 @@ public class ChildWithPropertyAndLink_Customization implements EditorMenuItemCus
 
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childWithPropertyAndLink$SVoL = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x6967c03129fdcc83L, "childWithPropertyAndLink");
+    /*package*/ static final SContainmentLink childWithPropertyAndLink$$KZJ = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x6967c03129fdcc83L, "childWithPropertyAndLink");
   }
 
   private static final class CONCEPTS {

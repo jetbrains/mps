@@ -21,7 +21,7 @@ public class check_BaseMethodDeclaration_NonTypesystemRule extends AbstractNonTy
   public check_BaseMethodDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode baseMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(baseMethodDeclaration) && SPropertyOperations.getBoolean(baseMethodDeclaration, PROPS.isSynchronized$PMx)) {
+    if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(baseMethodDeclaration) && SPropertyOperations.getBoolean(baseMethodDeclaration, PROPS.isSynchronized$q3tZ)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseMethodDeclaration, "Abstract method can't be synchronized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4276006055364077562", null, errorTarget);
@@ -39,7 +39,7 @@ public class check_BaseMethodDeclaration_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isSynchronized$PMx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
   }
 
   private static final class CONCEPTS {

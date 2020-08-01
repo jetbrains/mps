@@ -51,10 +51,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return tns;
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
-    return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.moduleRef$cQ0V)).toString();
+    return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.moduleRef$eas_)).toString();
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + "_" + NameUtil.toValidIdentifier(SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1));
+    return _context.getTemplateValue() + "_" + NameUtil.toValidIdentifier(SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v));
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return (Iterable<SNode>) ModuleSuite__BehaviorDescriptor.getNotMutedTests_id7tF7F0nXrAX.invoke(_context.getNode());
@@ -135,10 +135,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleRef$cQ0V = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef");
+    /*package*/ static final SContainmentLink moduleRef$eas_ = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

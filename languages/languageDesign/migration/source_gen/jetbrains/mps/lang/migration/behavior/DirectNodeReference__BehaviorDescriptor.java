@@ -38,16 +38,16 @@ public final class DirectNodeReference__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean isSameTarget_id6szrkDoc2JJ(@NotNull SNode __thisNode__, SReference reference) {
-    return reference.getTargetNode() == SLinkOperations.getTarget(__thisNode__, LINKS.target$A3Ex);
+    return reference.getTargetNode() == SLinkOperations.getTarget(__thisNode__, LINKS.target$rL_Z);
   }
   /*package*/ static SNodeReference getNodeReference_id4uVwhQyQbdz(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getPointer(__thisNode__, LINKS.target$A3Ex);
+    return SLinkOperations.getPointer(__thisNode__, LINKS.target$rL_Z);
   }
   /*package*/ static SNode tryToFindNode_id6szrkDoc2K7(@NotNull SNode __thisNode__, SRepository repository) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.target$A3Ex);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.target$rL_Z);
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return NodeReferenceUtil.getNodePresentation(SLinkOperations.getTarget(__thisNode__, LINKS.target$A3Ex));
+    return NodeReferenceUtil.getNodePresentation(SLinkOperations.getTarget(__thisNode__, LINKS.target$rL_Z));
   }
 
   /*package*/ DirectNodeReference__BehaviorDescriptor() {
@@ -103,6 +103,6 @@ public final class DirectNodeReference__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$A3Ex = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, 0x67236d4a58303a10L, "target");
+    /*package*/ static final SReferenceLink target$rL_Z = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, 0x67236d4a58303a10L, "target");
   }
 }

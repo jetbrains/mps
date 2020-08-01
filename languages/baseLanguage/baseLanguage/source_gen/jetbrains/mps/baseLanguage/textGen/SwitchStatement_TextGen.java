@@ -22,42 +22,42 @@ public class SwitchStatement_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createPositionInfo();
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.switchLabel$hXmp) != null)) {
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.switchLabel$GHQ7) != null)) {
       tgs.newLine();
-      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.switchLabel$hXmp), PROPS.name$tAp1));
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.switchLabel$GHQ7), PROPS.name$lA7v));
       tgs.append(":");
-    } else if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$Ro9j) != null) {
+    } else if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$OGwd) != null) {
       tgs.newLine();
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$Ro9j));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.label$OGwd));
       tgs.append(":");
     }
     tgs.newLine();
     tgs.indent();
     tgs.append("switch (");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$z0sO));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$XdXc));
     tgs.append(") {");
     ctx.getBuffer().area().increaseIndent();
-    for (SNode sc : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.case$31$8)) {
+    for (SNode sc : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.case$tKvS)) {
       tgs.newLine();
       tgs.indent();
       tgs.append("case ");
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(sc, LINKS.expression$zuuG), CONCEPTS.EnumConstantReference$RO)) {
-        SNode enumConstant = (SNode) SLinkOperations.getTarget(sc, LINKS.expression$zuuG);
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(enumConstant, LINKS.enumConstantDeclaration$fB6v), PROPS.name$tAp1));
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(sc, LINKS.expression$bKRk), CONCEPTS.EnumConstantReference$RO)) {
+        SNode enumConstant = (SNode) SLinkOperations.getTarget(sc, LINKS.expression$bKRk);
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(enumConstant, LINKS.enumConstantDeclaration$zW91), PROPS.name$lA7v));
       } else {
-        tgs.appendNode(SLinkOperations.getTarget(sc, LINKS.expression$zuuG));
+        tgs.appendNode(SLinkOperations.getTarget(sc, LINKS.expression$bKRk));
       }
       tgs.append(":");
       ctx.getBuffer().area().increaseIndent();
-      tgs.appendNode(SLinkOperations.getTarget(sc, LINKS.body$2Ve6));
+      tgs.appendNode(SLinkOperations.getTarget(sc, LINKS.body$qFOU));
       ctx.getBuffer().area().decreaseIndent();
     }
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.defaultBlock$DENE) != null)) {
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.defaultBlock$bJ1m) != null)) {
       tgs.newLine();
       tgs.indent();
       tgs.append("default:");
       ctx.getBuffer().area().increaseIndent();
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.defaultBlock$DENE));
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.defaultBlock$bJ1m));
       ctx.getBuffer().area().decreaseIndent();
     }
     ctx.getBuffer().area().decreaseIndent();
@@ -70,18 +70,18 @@ public class SwitchStatement_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink switchLabel$hXmp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
-    /*package*/ static final SContainmentLink expression$z0sO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SContainmentLink expression$zuuG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
-    /*package*/ static final SReferenceLink enumConstantDeclaration$fB6v = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
-    /*package*/ static final SContainmentLink body$2Ve6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
-    /*package*/ static final SContainmentLink case$31$8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
-    /*package*/ static final SContainmentLink defaultBlock$DENE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
+    /*package*/ static final SContainmentLink switchLabel$GHQ7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
+    /*package*/ static final SContainmentLink expression$XdXc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
+    /*package*/ static final SContainmentLink expression$bKRk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SContainmentLink body$qFOU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
+    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SContainmentLink defaultBlock$bJ1m = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty label$Ro9j = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x117b7e94b9bL, "label");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty label$OGwd = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x117b7e94b9bL, "label");
   }
 
   private static final class CONCEPTS {

@@ -44,14 +44,14 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
     while (true) {
       if (SNodeOperations.isInstanceOf(current, CONCEPTS.TryFinallyStatement$Vw)) {
         SNode tryStatement = SNodeOperations.cast(current, CONCEPTS.TryFinallyStatement$Vw);
-        if ((SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$LPze) != null) && SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$LPze) != SNodeOperations.getParent(__thisNode__)) {
-          ListSequence.fromList(result).addElement(SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$LPze));
+        if ((SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$8W3M) != null) && SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$8W3M) != SNodeOperations.getParent(__thisNode__)) {
+          ListSequence.fromList(result).addElement(SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$8W3M));
         }
       }
       if (SNodeOperations.isInstanceOf(current, CONCEPTS.TryUniversalStatement$80)) {
         SNode tryStatement = SNodeOperations.cast(current, CONCEPTS.TryUniversalStatement$80);
-        if ((SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$4P0X) != null) && SLinkOperations.getTarget(SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$4P0X), LINKS.finallyBody$oGY4) != SNodeOperations.getParent(__thisNode__)) {
-          ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$4P0X), LINKS.finallyBody$oGY4));
+        if ((SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$lFtz) != null) && SLinkOperations.getTarget(SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$lFtz), LINKS.finallyBody$XM3W) != SNodeOperations.getParent(__thisNode__)) {
+          ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$lFtz), LINKS.finallyBody$XM3W));
         }
       }
       current = SNodeOperations.getParent(current);
@@ -63,10 +63,10 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
     SNode type = null;
-    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.expression$EsbK)) {
+    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.expression$zDGg)) {
       SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IMethodLike$kl, false, false);
       if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.BaseMethodDeclaration$RR)) {
-        type = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(ancestor, CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$WIkw));
+        type = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(ancestor, CONCEPTS.BaseMethodDeclaration$RR), LINKS.returnType$qrVw));
       } else {
         SNode expectedReturnType = IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(ancestor);
         if (SNodeOperations.isInstanceOf(expectedReturnType, CONCEPTS.Type$IG)) {
@@ -84,7 +84,7 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
     return null;
   }
   /*package*/ static boolean isGuardClauseStatement_idi0z$q7V(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.expression$EsbK), CONCEPTS.DotExpression$6a)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.expression$zDGg), CONCEPTS.DotExpression$6a)) {
       return false;
     }
     return true;
@@ -155,10 +155,10 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink finallyBody$LPze = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody");
-    /*package*/ static final SContainmentLink finallyClause$4P0X = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
-    /*package*/ static final SContainmentLink finallyBody$oGY4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, 0x72ddc71312b89bbaL, "finallyBody");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink finallyBody$8W3M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody");
+    /*package*/ static final SContainmentLink finallyClause$lFtz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink finallyBody$XM3W = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, 0x72ddc71312b89bbaL, "finallyBody");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 }

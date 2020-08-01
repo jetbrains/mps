@@ -50,7 +50,7 @@ public class BuildMps_ModuleRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_tsnwlz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleRef$Zl, LINKS.module$j35w);
+      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleRef$Zl, LINKS.module$evEw);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class BuildMps_ModuleRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$j35w = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, 0x6e2dd2f4c4c3e91bL, "module");
+    /*package*/ static final SReferenceLink module$evEw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, 0x6e2dd2f4c4c3e91bL, "module");
   }
 }

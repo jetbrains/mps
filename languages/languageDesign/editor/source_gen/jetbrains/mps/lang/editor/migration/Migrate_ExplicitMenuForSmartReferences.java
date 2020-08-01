@@ -72,15 +72,15 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
 
           SNode alreadyGeneratedMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Named$J)).findFirst(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Mz)) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$acmt) == conceptNode;
+              return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Mz)) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$VYS3) == conceptNode;
             }
           });
           if ((alreadyGeneratedMenu != null)) {
             menu = alreadyGeneratedMenu;
           } else {
-            SNode characteristicLink = SLinkOperations.getTarget(smartRefAttribute, LINKS.charactersticReference$hNpW);
-            String prefix = SPropertyOperations.getString(SLinkOperations.getTarget(smartRefAttribute, LINKS.refPresentationTemplate$RgQc), PROPS.prefix$CMHd);
-            String suffix = SPropertyOperations.getString(SLinkOperations.getTarget(smartRefAttribute, LINKS.refPresentationTemplate$RgQc), PROPS.suffix$CMSP);
+            SNode characteristicLink = SLinkOperations.getTarget(smartRefAttribute, LINKS.charactersticReference$BT$4);
+            String prefix = SPropertyOperations.getString(SLinkOperations.getTarget(smartRefAttribute, LINKS.refPresentationTemplate$LafO), PROPS.prefix$KzTj);
+            String suffix = SPropertyOperations.getString(SLinkOperations.getTarget(smartRefAttribute, LINKS.refPresentationTemplate$LafO), PROPS.suffix$KDxF);
 
             SNode presentationBody = RefPresentationFunctionUtil.getPresentationFromConstraints(conceptNode, characteristicLink);
             if (presentationBody != null) {
@@ -109,12 +109,12 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
           if ((menu != null)) {
             SModelOperations.addRootNode(editorModel, menu);
 
-            ListSequence.fromList(SLinkOperations.getChildren(data, LINKS.entities$fdG0)).addElement(createSmartRefMigrationDataEntity_b3phj_a0a2a6a1a3a3a6(conceptNode, menu));
+            ListSequence.fromList(SLinkOperations.getChildren(data, LINKS.entities$nCk0)).addElement(createSmartRefMigrationDataEntity_b3phj_a0a2a6a1a3a3a6(conceptNode, menu));
           }
         }
       }
     }
-    return (ListSequence.fromList(SLinkOperations.getChildren(data, LINKS.entities$fdG0)).isEmpty() ? null : data);
+    return (ListSequence.fromList(SLinkOperations.getChildren(data, LINKS.entities$nCk0)).isEmpty() ? null : data);
   }
   public Iterable<MigrationScriptReference> executeAfter() {
     return ListSequence.fromListAndArray(new ArrayList<MigrationScriptReference>(), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 4));
@@ -129,7 +129,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
   private boolean hasSCAUsages(final SNode conceptNode) {
     return CollectionSequence.fromCollection(SCAs).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$UyDc), conceptNode);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$mLWO), conceptNode);
       }
     }).isNotEmpty();
   }
@@ -143,7 +143,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
   private boolean hasDefaultMenu(SModel editorModel, final SNode conceptNode) {
     return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$hk)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptDeclaration$acmt), conceptNode);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.conceptDeclaration$VYS3), conceptNode);
       }
     }).isNotEmpty();
   }
@@ -152,21 +152,21 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
   private static final RefPresentationFunctionUtil.ParameterReplacer_Smart REPLACER_VISIBLE = new RefPresentationFunctionUtil.ParameterReplacer_Smart(true);
 
   public static SNode smartRefMenu(SNode conceptNode, SNode menuPart) {
-    SNode menu = _quotation_createNode_b3phj_a0a0u(menuPart, SPropertyOperations.getString(conceptNode, PROPS.name$tAp1) + "_SmartReference", conceptNode);
-    SPropertyOperations.assign(menu, PROPS.virtualPackage$j19t, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$j19t));
+    SNode menu = _quotation_createNode_b3phj_a0a0u(menuPart, SPropertyOperations.getString(conceptNode, PROPS.name$lA7v) + "_SmartReference", conceptNode);
+    SPropertyOperations.assign(menu, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$dz_3));
     return menu;
   }
 
   private SNode defaultMenu(SNode conceptNode, SNode includedMenu) {
     SNode menu = _quotation_createNode_b3phj_a0a0w(includedMenu, conceptNode);
-    SPropertyOperations.assign(menu, PROPS.virtualPackage$j19t, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$j19t));
+    SPropertyOperations.assign(menu, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$dz_3));
     return menu;
   }
 
   private static SNode createSmartRefMigrationDataEntity_b3phj_a0a2a6a1a3a3a6(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SmartRefMigrationDataEntity$RK);
-    n0.setReferenceTarget(LINKS.conceptNode$fdeu, p0);
-    n0.setReferenceTarget(LINKS.generatedMenu$fdfV, p1);
+    n0.setReferenceTarget(LINKS.conceptNode$nq0y, p0);
+    n0.setReferenceTarget(LINKS.generatedMenu$nqH_, p1);
     return n0.getResult();
   }
   private static SNode _quotation_createNode_b3phj_a0a0u(Object parameter_1, Object parameter_2, Object parameter_3) {
@@ -214,19 +214,19 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$acmt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
-    /*package*/ static final SReferenceLink charactersticReference$hNpW = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference");
-    /*package*/ static final SContainmentLink refPresentationTemplate$RgQc = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d66ac37L, "refPresentationTemplate");
-    /*package*/ static final SContainmentLink entities$fdG0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debaL, 0x29e124551692ded1L, "entities");
-    /*package*/ static final SReferenceLink concept$UyDc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, 0x9aeec2e0d781773L, "concept");
-    /*package*/ static final SReferenceLink conceptNode$fdeu = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692debeL, "conceptNode");
-    /*package*/ static final SReferenceLink generatedMenu$fdfV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692dec1L, "generatedMenu");
+    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink charactersticReference$BT$4 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference");
+    /*package*/ static final SContainmentLink refPresentationTemplate$LafO = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d66ac37L, "refPresentationTemplate");
+    /*package*/ static final SContainmentLink entities$nCk0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debaL, 0x29e124551692ded1L, "entities");
+    /*package*/ static final SReferenceLink concept$mLWO = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, 0x9aeec2e0d781773L, "concept");
+    /*package*/ static final SReferenceLink conceptNode$nq0y = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692debeL, "conceptNode");
+    /*package*/ static final SReferenceLink generatedMenu$nqH_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debbL, 0x29e124551692dec1L, "generatedMenu");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty prefix$CMHd = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d66855eL, 0x3bc83bac475c4b59L, "prefix");
-    /*package*/ static final SProperty suffix$CMSP = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d66855eL, 0x3bc83bac475c4b5cL, "suffix");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty prefix$KzTj = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d66855eL, 0x3bc83bac475c4b59L, "prefix");
+    /*package*/ static final SProperty suffix$KDxF = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d66855eL, 0x3bc83bac475c4b5cL, "suffix");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

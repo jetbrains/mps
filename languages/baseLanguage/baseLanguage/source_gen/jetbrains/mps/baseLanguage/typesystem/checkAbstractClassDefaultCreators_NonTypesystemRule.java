@@ -23,8 +23,8 @@ public class checkAbstractClassDefaultCreators_NonTypesystemRule extends Abstrac
   public checkAbstractClassDefaultCreators_NonTypesystemRule() {
   }
   public void applyRule(final SNode defaultClassCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode classifier = SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$bk50);
-    if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$gY5l)))) {
+    SNode classifier = SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$uIr0);
+    if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$e4_b)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(defaultClassCreator, "can't instantiate an abstract class", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2560657505941258685", null, errorTarget);
     }
@@ -40,7 +40,7 @@ public class checkAbstractClassDefaultCreators_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
   }
 
   private static final class CONCEPTS {
@@ -49,6 +49,6 @@ public class checkAbstractClassDefaultCreators_NonTypesystemRule extends Abstrac
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

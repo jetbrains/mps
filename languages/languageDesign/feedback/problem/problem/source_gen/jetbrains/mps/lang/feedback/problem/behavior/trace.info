@@ -44,8 +44,8 @@
       <node id="2949762704422480845" at="113,48,114,22" concept="5" />
       <node id="2949762704422480845" at="119,40,120,19" concept="5" />
       <node id="2949762704422480845" at="124,0,125,0" concept="6" trace="ProblemKind$14" />
-      <node id="2949762704422480845" at="128,0,129,0" concept="6" trace="kind$Wl20" />
-      <node id="2949762704422480845" at="129,0,130,0" concept="6" trace="context$sc53" />
+      <node id="2949762704422480845" at="128,0,129,0" concept="6" trace="kind$ebY0" />
+      <node id="2949762704422480845" at="129,0,130,0" concept="6" trace="context$DQst" />
       <node id="2949762704422480845" at="49,0,51,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2949762704422480845" at="77,0,79,0" concept="0" trace="ProblemPointsToKindRoot__BehaviorDescriptor#()V" />
       <node id="2559059706674621765" at="55,91,58,7" concept="2" />
@@ -139,7 +139,7 @@
       <node id="693143365153478193" at="73,14,74,58" concept="9" />
       <node id="693143365153478193" at="80,48,81,22" concept="5" />
       <node id="693143365153478193" at="86,40,87,19" concept="5" />
-      <node id="693143365153478193" at="91,0,92,0" concept="6" trace="context$sc53" />
+      <node id="693143365153478193" at="91,0,92,0" concept="6" trace="context$DQst" />
       <node id="693143365153478193" at="95,0,96,0" concept="6" trace="ContextConceptParameter$gx" />
       <node id="693143365153478193" at="34,0,36,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="693143365153478193" at="44,0,46,0" concept="0" trace="ProblemKind__BehaviorDescriptor#()V" />

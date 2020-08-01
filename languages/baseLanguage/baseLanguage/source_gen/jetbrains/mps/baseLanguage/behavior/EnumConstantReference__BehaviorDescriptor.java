@@ -37,13 +37,13 @@ public final class EnumConstantReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    return ((SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$9jPZ) != null) ? new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$9jPZ))) : new EmptyScope());
+    return ((SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$wB9x) != null) ? new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$wB9x))) : new EmptyScope());
   }
   /*package*/ static SNode getClassifier_id7S22xyoLQG7(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$9jPZ);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$wB9x);
   }
   /*package*/ static void setClassifier_id7S22xyoLQH8(@NotNull SNode __thisNode__, SNode classifier) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.enumClass$9jPZ, (SNode) classifier);
+    SLinkOperations.setTarget(__thisNode__, LINKS.enumClass$wB9x, (SNode) classifier);
   }
 
   /*package*/ EnumConstantReference__BehaviorDescriptor() {
@@ -98,6 +98,6 @@ public final class EnumConstantReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumClass$9jPZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
   }
 }

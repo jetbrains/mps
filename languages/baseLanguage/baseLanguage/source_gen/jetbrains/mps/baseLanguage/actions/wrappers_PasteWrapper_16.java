@@ -23,7 +23,7 @@ public final class wrappers_PasteWrapper_16 implements PasteWrapper {
   @Override
   public SNode wrap(SNode sourceNode) {
     SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.GenericNewExpression$ev, null);
-    SLinkOperations.setTarget(result, LINKS.creator$itDQ, sourceNode);
+    SLinkOperations.setTarget(result, LINKS.creator$Wnha, sourceNode);
     return result;
   }
 
@@ -34,6 +34,6 @@ public final class wrappers_PasteWrapper_16 implements PasteWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink creator$itDQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
   }
 }

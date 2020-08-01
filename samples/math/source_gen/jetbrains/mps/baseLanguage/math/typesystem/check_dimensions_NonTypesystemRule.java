@@ -35,10 +35,10 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
           }
         }
         if (matches_n3qbw2_a0a) {
-          if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ)), CONCEPTS.MatrixType$qA) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl)), CONCEPTS.MatrixType$qA)) {
-            int lc = SPropertyOperations.getInteger(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ)), CONCEPTS.MatrixType$qA), PROPS.columns$rd3m);
-            int rr = SPropertyOperations.getInteger(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl)), CONCEPTS.MatrixType$qA), PROPS.rows$rd2R);
-            if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ)), CONCEPTS.MatrixType$qA) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl)), CONCEPTS.MatrixType$qA)) {
+          if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx)), CONCEPTS.MatrixType$qA) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)), CONCEPTS.MatrixType$qA)) {
+            int lc = SPropertyOperations.getInteger(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx)), CONCEPTS.MatrixType$qA), PROPS.columns$bkBE);
+            int rr = SPropertyOperations.getInteger(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)), CONCEPTS.MatrixType$qA), PROPS.rows$bkoD);
+            if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx)), CONCEPTS.MatrixType$qA) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)), CONCEPTS.MatrixType$qA)) {
               if (lc != 0 && rr != 0 && rr != lc) {
                 {
                   final MessageTarget errorTarget = new NodeMessageTarget();
@@ -102,12 +102,12 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty columns$rd3m = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
-    /*package*/ static final SProperty rows$rd2R = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
+    /*package*/ static final SProperty columns$bkBE = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
+    /*package*/ static final SProperty rows$bkoD = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
   }
 }

@@ -29,7 +29,7 @@
       <node id="4454641827113760511" at="27,50,28,40" concept="6" />
       <node id="4454641827113760511" at="30,68,31,102" concept="6" />
       <node id="4454641827113760511" at="33,30,34,17" concept="6" />
-      <node id="4454641827113760511" at="38,0,39,0" concept="7" trace="type$pLrO" />
+      <node id="4454641827113760511" at="38,0,39,0" concept="7" trace="type$uWuc" />
       <node id="4454641827113760511" at="42,0,43,0" concept="7" trace="LowLevelVariable$gx" />
       <node id="4454641827113760511" at="18,0,20,0" concept="1" trace="typeof_LowLevelVariable_InferenceRule#()V" />
       <node id="4454641827113760511" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -68,7 +68,7 @@
       <node id="4544608336420700080" at="22,50,23,36" concept="6" />
       <node id="4544608336420700080" at="25,68,26,102" concept="6" />
       <node id="4544608336420700080" at="28,27,29,17" concept="6" />
-      <node id="4544608336420700080" at="33,0,34,0" concept="7" trace="highType$UDHZ" />
+      <node id="4544608336420700080" at="33,0,34,0" concept="7" trace="highType$qdhx" />
       <node id="4544608336420700080" at="37,0,38,0" concept="7" trace="DebuggedType$q5" />
       <node id="4544608336420700080" at="17,0,19,0" concept="1" trace="DebuggedtypeIsHighLevelType_SubtypingRule#()V" />
       <node id="4544608336420700080" at="19,0,22,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -120,7 +120,7 @@
       <node id="4544608336420717491" at="27,50,28,32" concept="6" />
       <node id="4544608336420717491" at="30,68,31,102" concept="6" />
       <node id="4544608336420717491" at="33,30,34,17" concept="6" />
-      <node id="4544608336420717491" at="38,0,39,0" concept="7" trace="debuggedType$qJ$3" />
+      <node id="4544608336420717491" at="38,0,39,0" concept="7" trace="debuggedType$X2tt" />
       <node id="4544608336420717491" at="42,0,43,0" concept="7" trace="UnitNode$td" />
       <node id="4544608336420717491" at="18,0,20,0" concept="1" trace="typeof_UnitNode_InferenceRule#()V" />
       <node id="4544608336420717491" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -171,7 +171,7 @@
       <node id="6036237525966316003" at="34,30,35,17" concept="6" />
       <node id="6036237525966316003" at="39,0,40,0" concept="7" trace="EvaluatorConcept$g2" />
       <node id="6036237525966316003" at="40,0,41,0" concept="7" trace="EvaluatorsThisExpression$DC" />
-      <node id="6036237525966316003" at="44,0,45,0" concept="7" trace="thisNode$Gl5y" />
+      <node id="6036237525966316003" at="44,0,45,0" concept="7" trace="thisNode$udFu" />
       <node id="6036237525966316003" at="19,0,21,0" concept="1" trace="typeof_EvaluatorsThisExpression_InferenceRule#()V" />
       <node id="6036237525966316003" at="28,0,31,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6036237525966316003" at="31,0,34,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -222,8 +222,8 @@
       <node id="7915630211773498575" at="41,50,42,42" concept="6" />
       <node id="7915630211773498575" at="44,68,45,102" concept="6" />
       <node id="7915630211773498575" at="47,30,48,17" concept="6" />
-      <node id="7915630211773498575" at="52,0,53,0" concept="7" trace="expression$vmO6" />
-      <node id="7915630211773498575" at="53,0,54,0" concept="7" trace="lowType$UDHw" />
+      <node id="7915630211773498575" at="52,0,53,0" concept="7" trace="expression$c3eU" />
+      <node id="7915630211773498575" at="53,0,54,0" concept="7" trace="lowType$qd2w" />
       <node id="7915630211773498575" at="57,0,58,0" concept="7" trace="DebuggedType$q5" />
       <node id="7915630211773498575" at="58,0,59,0" concept="7" trace="DownCastToLowLevel$_k" />
       <node id="7915630211773498575" at="19,0,21,0" concept="1" trace="typeof_DownCastToLowLevel_InferenceRule#()V" />
@@ -288,7 +288,7 @@
       <node id="8054553590745290955" at="27,50,28,49" concept="6" />
       <node id="8054553590745290955" at="30,68,31,102" concept="6" />
       <node id="8054553590745290955" at="33,30,34,17" concept="6" />
-      <node id="8054553590745290955" at="38,0,39,0" concept="7" trace="baseVariableDeclaration$$Ls0" />
+      <node id="8054553590745290955" at="38,0,39,0" concept="7" trace="baseVariableDeclaration$NW$0" />
       <node id="8054553590745290955" at="42,0,43,0" concept="7" trace="LowLevelVariableReference$zj" />
       <node id="8054553590745290955" at="18,0,20,0" concept="1" trace="typeof_LowLevelVariableReference_InferenceRule#()V" />
       <node id="8054553590745290955" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

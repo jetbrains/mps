@@ -27,16 +27,16 @@ public class ElementSummary {
 
   public ElementSummary(Iterable<SNode> compounds) {
     for (SNode c : compounds) {
-      final int compoundCardinality = (SPropertyOperations.getBoolean(c, PROPS.cardinalityVisible$iY8b) ? SPropertyOperations.getInteger(c, PROPS.cardinality$$dy0) : 1);
-      Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(c, LINKS.elements$Eg3r), CONCEPTS.CompoundComponentWithCardinality$dw)).visitAll(new IVisitor<SNode>() {
+      final int compoundCardinality = (SPropertyOperations.getBoolean(c, PROPS.cardinalityVisible$c5Xl) ? SPropertyOperations.getInteger(c, PROPS.cardinality$yzu0) : 1);
+      Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(c, LINKS.elements$tLE5), CONCEPTS.CompoundComponentWithCardinality$dw)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode el) {
           if (SNodeOperations.isInstanceOf(el, CONCEPTS.ElementRef$i$)) {
             SNode elementRef = SNodeOperations.as(el, CONCEPTS.ElementRef$i$);
             addElementToMap(elementRef, compoundCardinality);
           } else if (SNodeOperations.isInstanceOf(el, CONCEPTS.Parens$Ym)) {
             SNode parens = SNodeOperations.as(el, CONCEPTS.Parens$Ym);
-            final int parensCardinality = (SPropertyOperations.getBoolean(parens, PROPS.cardinalityVisible$x1gv) ? SPropertyOperations.getInteger(parens, PROPS.cardinality$x1g0) : 1);
-            Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(parens, LINKS.elements$Cbl0), CONCEPTS.ElementRef$i$)).visitAll(new IVisitor<SNode>() {
+            final int parensCardinality = (SPropertyOperations.getBoolean(parens, PROPS.cardinalityVisible$ZAZ1) ? SPropertyOperations.getInteger(parens, PROPS.cardinality$ZAK0) : 1);
+            Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(parens, LINKS.elements$tvb0), CONCEPTS.ElementRef$i$)).visitAll(new IVisitor<SNode>() {
               public void visit(SNode elementRef) {
                 addElementToMap(elementRef, parensCardinality * compoundCardinality);
               }
@@ -48,7 +48,7 @@ public class ElementSummary {
   }
 
   private void addElementToMap(SNode elementRef, int compoundCardinality) {
-    addElement(SPropertyOperations.getString(SLinkOperations.getTarget(elementRef, LINKS.element$$dI0), PROPS.id$sqos), compoundCardinality * ((SPropertyOperations.getBoolean(elementRef, PROPS.cardinalityVisible$x1gv) ? SPropertyOperations.getInteger(elementRef, PROPS.cardinality$x1g0) : 1)));
+    addElement(SPropertyOperations.getString(SLinkOperations.getTarget(elementRef, LINKS.element$yDi0), PROPS.id$KLP$), compoundCardinality * ((SPropertyOperations.getBoolean(elementRef, PROPS.cardinalityVisible$ZAZ1) ? SPropertyOperations.getInteger(elementRef, PROPS.cardinality$ZAK0) : 1)));
   }
 
   private void addElement(String element, int count) {
@@ -92,17 +92,17 @@ public class ElementSummary {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinality$$dy0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
-    /*package*/ static final SProperty cardinalityVisible$iY8b = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$x1g0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
-    /*package*/ static final SProperty cardinalityVisible$x1gv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
-    /*package*/ static final SProperty id$sqos = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x5b2638e8bdcd7deaL, "id");
+    /*package*/ static final SProperty cardinality$yzu0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$c5Xl = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$ZAK0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$ZAZ1 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty id$KLP$ = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x5b2638e8bdcd7deaL, "id");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$Eg3r = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba6e3a3L, "elements");
-    /*package*/ static final SContainmentLink elements$Cbl0 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
-    /*package*/ static final SReferenceLink element$$dI0 = MetaAdapterFactory.getReferenceLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297cL, "element");
+    /*package*/ static final SContainmentLink elements$tLE5 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba6e3a3L, "elements");
+    /*package*/ static final SContainmentLink elements$tvb0 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
+    /*package*/ static final SReferenceLink element$yDi0 = MetaAdapterFactory.getReferenceLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba6297cL, "element");
   }
 
   private static final class CONCEPTS {

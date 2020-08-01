@@ -26,9 +26,9 @@ public class SingleLineComment_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.indent();
     tgs.append("// ");
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$_gGy)).isEmpty() || (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$_gGy)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw)))) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$35$u)).isEmpty() || (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$35$u)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$35$u)).first(), CONCEPTS.TextCommentPart$lb) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$35$u)).first(), CONCEPTS.TextCommentPart$lb), PROPS.text$va_w)))) {
 
-      for (SNode line : (((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$32mp) != null) ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$32mp)) : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.text$BOhB)))) {
+      for (SNode line : (((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$u8Q7) != null) ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$u8Q7)) : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.text$ikxT)))) {
         Comments.commentLine(line, ctx);
         if ((SNodeOperations.getNextSibling(line) != null)) {
           tgs.newLine();
@@ -38,7 +38,7 @@ public class SingleLineComment_TextGen extends TextGenDescriptorBase {
       }
 
     } else {
-      for (SNode commentPart : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$_gGy)) {
+      for (SNode commentPart : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$35$u)) {
         tgs.appendNode(commentPart);
         tgs.append(" ");
       }
@@ -52,9 +52,9 @@ public class SingleLineComment_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$32mp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
-    /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
-    /*package*/ static final SContainmentLink commentPart$_gGy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
+    /*package*/ static final SContainmentLink line$u8Q7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink text$ikxT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    /*package*/ static final SContainmentLink commentPart$35$u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
   }
 
   private static final class CONCEPTS {
@@ -63,6 +63,6 @@ public class SingleLineComment_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$AaEw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 }

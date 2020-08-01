@@ -28,7 +28,7 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
   }
   public void applyRule(final SNode prop, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // property overriding is banned 
-    if (SPropertyOperations.getString(prop, PROPS.name$tAp1) == null) {
+    if (SPropertyOperations.getString(prop, PROPS.name$lA7v) == null) {
       return;
     }
     SNode concept = SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$UN, false, false);
@@ -43,27 +43,27 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
     }).toListSequence();
     SNode propInConcept = ListSequence.fromList(otherProps).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(prop, PROPS.name$tAp1));
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(prop, PROPS.name$lA7v));
       }
     });
     if (propInConcept != null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "property '" + SPropertyOperations.getString(prop, PROPS.name$tAp1) + "' is already declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(propInConcept, CONCEPTS.AbstractConceptDeclaration$UN, false, false), PROPS.name$tAp1), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212182341577", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "property '" + SPropertyOperations.getString(prop, PROPS.name$lA7v) + "' is already declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(propInConcept, CONCEPTS.AbstractConceptDeclaration$UN, false, false), PROPS.name$lA7v), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212182341577", null, errorTarget);
       }
       return;
     }
     // check constant names generated in adapters 
-    final String name = NameUtil.toConstantName(SPropertyOperations.getString(prop, PROPS.name$tAp1));
+    final String name = NameUtil.toConstantName(SPropertyOperations.getString(prop, PROPS.name$lA7v));
     SNode node = ListSequence.fromList(otherProps).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(name, NameUtil.toConstantName(SPropertyOperations.getString(it, PROPS.name$tAp1)));
+        return Objects.equals(name, NameUtil.toConstantName(SPropertyOperations.getString(it, PROPS.name$lA7v)));
       }
     });
     if ((node != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "similar property '" + SPropertyOperations.getString(node, PROPS.name$tAp1) + "' is declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$UN, false, false), PROPS.name$tAp1), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "576141512674073565", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "similar property '" + SPropertyOperations.getString(node, PROPS.name$lA7v) + "' is declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$UN, false, false), PROPS.name$lA7v), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "576141512674073565", null, errorTarget);
       }
     }
   }
@@ -78,7 +78,7 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

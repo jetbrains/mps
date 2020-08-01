@@ -154,14 +154,14 @@ public class print extends TransformationMenuBase {
           SNode createdNode = getSubstituteItem().createNode(pattern);
           SNode expressionToReplace;
           if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$ok, true, false) != null)) {
-            expressionToReplace = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$ok, true, false), CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0);
+            expressionToReplace = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$ok, true, false), CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0);
           } else if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$iZ, true, false) != null)) {
-            expressionToReplace = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$iZ, true, false), LINKS.expression$HQe6);
+            expressionToReplace = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$iZ, true, false), LINKS.expression$dgOU);
           } else {
             throw new IllegalStateException();
           }
           SNodeOperations.replaceWithAnother(expressionToReplace, createdNode);
-          SLinkOperations.setTarget(createdNode, LINKS.object$gmkA, expressionToReplace);
+          SLinkOperations.setTarget(createdNode, LINKS.object$UNYq, expressionToReplace);
         }
 
         @Override
@@ -196,8 +196,8 @@ public class print extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink expression$HQe6 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
-    /*package*/ static final SContainmentLink object$gmkA = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$dgOU = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
+    /*package*/ static final SContainmentLink object$UNYq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
   }
 }

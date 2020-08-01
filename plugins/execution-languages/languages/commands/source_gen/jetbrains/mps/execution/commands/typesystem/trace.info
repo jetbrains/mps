@@ -50,8 +50,8 @@
       <node id="2459753140357929039" at="67,0,68,0" concept="8" trace="DotExpression$6a" />
       <node id="2459753140357929039" at="68,0,69,0" concept="8" trace="StartAndWaitOperation$Vg" />
       <node id="2459753140357929039" at="69,0,70,0" concept="8" trace="ProcessType$tB" />
-      <node id="2459753140357929039" at="73,0,74,0" concept="8" trace="operand$Lcrr" />
-      <node id="2459753140357929039" at="74,0,75,0" concept="8" trace="timeout$yd3q" />
+      <node id="2459753140357929039" at="73,0,74,0" concept="8" trace="operand$P1i5" />
+      <node id="2459753140357929039" at="74,0,75,0" concept="8" trace="timeout$$kDA" />
       <node id="2459753140357929039" at="21,0,23,0" concept="1" trace="typeof_StartAndWaitOperation_InferenceRule#()V" />
       <node id="2459753140357929039" at="40,0,43,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2459753140357929039" at="43,0,46,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -344,11 +344,11 @@
       <node id="7947003018421129634" at="46,50,47,48" concept="7" />
       <node id="7947003018421129634" at="49,68,50,102" concept="7" />
       <node id="7947003018421129634" at="52,30,53,17" concept="7" />
-      <node id="7947003018421129634" at="57,0,58,0" concept="8" trace="argument$npCw" />
-      <node id="7947003018421129634" at="58,0,59,0" concept="8" trace="parameterDeclaration$npbw" />
-      <node id="7947003018421129634" at="59,0,60,0" concept="8" trace="commandPart$vwzX" />
-      <node id="7947003018421129634" at="60,0,61,0" concept="8" trace="parameterDeclaration$Zllw" />
-      <node id="7947003018421129634" at="64,0,65,0" concept="8" trace="name$tAp1" />
+      <node id="7947003018421129634" at="57,0,58,0" concept="8" trace="argument$lqBw" />
+      <node id="7947003018421129634" at="58,0,59,0" concept="8" trace="parameterDeclaration$lc$w" />
+      <node id="7947003018421129634" at="59,0,60,0" concept="8" trace="commandPart$gLqz" />
+      <node id="7947003018421129634" at="60,0,61,0" concept="8" trace="parameterDeclaration$Flqw" />
+      <node id="7947003018421129634" at="64,0,65,0" concept="8" trace="name$lA7v" />
       <node id="7947003018421129634" at="68,0,69,0" concept="8" trace="CommandBuilderExpression$Pf" />
       <node id="7947003018421129634" at="27,0,29,0" concept="1" trace="requiredArgsForCommandBuilderExpression_NonTypesystemRule#()V" />
       <node id="7947003018421244222" at="34,0,37,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -429,8 +429,8 @@
       <node id="8234001627573984186" at="53,63,54,30" concept="6" />
       <node id="8234001627573984186" at="54,30,55,230" concept="2" />
       <node id="8234001627573984186" at="55,230,56,24" concept="7" />
-      <node id="8234001627573984137" at="60,0,61,0" concept="8" trace="list$5wSZ" />
-      <node id="8234001627573984137" at="61,0,62,0" concept="8" trace="separator$5wTu" />
+      <node id="8234001627573984137" at="60,0,61,0" concept="8" trace="list$EVAx" />
+      <node id="8234001627573984137" at="61,0,62,0" concept="8" trace="separator$EVPy" />
       <node id="8234001627573984137" at="65,0,66,0" concept="8" trace="ListCommandPart$QJ" />
       <node id="8234001627573984137" at="20,0,22,0" concept="1" trace="typeof_ListCommandPart_InferenceRule#()V" />
       <node id="8234001627573984137" at="34,0,37,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -570,8 +570,8 @@
       <node id="8234001627574081579" at="58,234,59,431" concept="2" />
       <node id="8234001627574081579" at="59,431,60,165" concept="2" />
       <node id="8234001627574081579" at="60,165,61,24" concept="7" />
-      <node id="8234001627574081536" at="65,0,66,0" concept="8" trace="key$qou0" />
-      <node id="8234001627574081536" at="66,0,67,0" concept="8" trace="value$qouv" />
+      <node id="8234001627574081536" at="65,0,66,0" concept="8" trace="key$LQy0" />
+      <node id="8234001627574081536" at="66,0,67,0" concept="8" trace="value$LQL1" />
       <node id="8234001627574081536" at="70,0,71,0" concept="8" trace="PropertyCommandPart$H4" />
       <node id="8234001627574081536" at="21,0,23,0" concept="1" trace="typeof_PropertyCommandPart_InferenceRule#()V" />
       <node id="8234001627574081536" at="35,0,38,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -702,10 +702,10 @@
       <node id="48168216977930508" at="70,73,71,181" concept="2" />
       <node id="48168216977930508" at="71,181,72,88" concept="6" />
       <node id="48168216977930508" at="73,5,74,26" concept="7" />
-      <node id="889694274152052323" at="78,0,79,0" concept="8" trace="workingDirectory$irPt" />
-      <node id="889694274152052323" at="79,0,80,0" concept="8" trace="commandPart$irOY" />
-      <node id="889694274152052323" at="80,0,81,0" concept="8" trace="argument$xIHX" />
-      <node id="889694274152052323" at="81,0,82,0" concept="8" trace="classifier$pQ_R" />
+      <node id="889694274152052323" at="78,0,79,0" concept="8" trace="workingDirectory$VuT3" />
+      <node id="889694274152052323" at="79,0,80,0" concept="8" trace="commandPart$VuE2" />
+      <node id="889694274152052323" at="80,0,81,0" concept="8" trace="argument$lCgz" />
+      <node id="889694274152052323" at="81,0,82,0" concept="8" trace="classifier$xslD" />
       <node id="889694274152052323" at="85,0,86,0" concept="8" trace="NewProcessBuilderExpression$13" />
       <node id="889694274152052323" at="86,0,87,0" concept="8" trace="ProcessType$tB" />
       <node id="889694274152052323" at="87,0,88,0" concept="8" trace="JoinType$9o" />
@@ -816,10 +816,10 @@
       <node id="48168216977929789" at="64,5,65,26" concept="7" />
       <node id="48168216977920110" at="67,79,68,89" concept="6" />
       <node id="48168216977920110" at="68,89,69,26" concept="7" />
-      <node id="889694274152216013" at="73,0,74,0" concept="8" trace="key$9iJt" />
-      <node id="889694274152216013" at="74,0,75,0" concept="8" trace="value$9iU7" />
-      <node id="889694274152216013" at="75,0,76,0" concept="8" trace="argument$xIHX" />
-      <node id="889694274152216013" at="76,0,77,0" concept="8" trace="classifier$pQ_R" />
+      <node id="889694274152216013" at="73,0,74,0" concept="8" trace="key$w4Z3" />
+      <node id="889694274152216013" at="74,0,75,0" concept="8" trace="value$wa9p" />
+      <node id="889694274152216013" at="75,0,76,0" concept="8" trace="argument$lCgz" />
+      <node id="889694274152216013" at="76,0,77,0" concept="8" trace="classifier$xslD" />
       <node id="889694274152216013" at="80,0,81,0" concept="8" trace="KeyValueCommandPart$8$" />
       <node id="889694274152216013" at="81,0,82,0" concept="8" trace="JoinType$9o" />
       <node id="889694274152216013" at="82,0,83,0" concept="8" trace="StringType$2b" />
@@ -908,8 +908,8 @@
       <node id="48168216977919326" at="38,76,39,78" concept="6" />
       <node id="48168216977919326" at="39,78,40,61" concept="2" />
       <node id="48168216977919326" at="40,61,41,26" concept="7" />
-      <node id="946964771156863700" at="45,0,46,0" concept="8" trace="commandPart$vwzX" />
-      <node id="946964771156863700" at="46,0,47,0" concept="8" trace="commandDeclaration$shaw" />
+      <node id="946964771156863700" at="45,0,46,0" concept="8" trace="commandPart$gLqz" />
+      <node id="946964771156863700" at="46,0,47,0" concept="8" trace="commandDeclaration$Gk5w" />
       <node id="946964771156863700" at="50,0,51,0" concept="8" trace="CommandBuilderExpression$Pf" />
       <node id="946964771156863700" at="51,0,52,0" concept="8" trace="CommandProcessType$Cb" />
       <node id="946964771156863700" at="20,0,22,0" concept="1" trace="typeof_CommandBuilderExpression_InferenceRule#()V" />
@@ -966,9 +966,9 @@
       <node id="946964771156863710" at="28,50,29,50" concept="7" />
       <node id="946964771156863710" at="31,68,32,102" concept="7" />
       <node id="946964771156863710" at="34,30,35,17" concept="7" />
-      <node id="946964771156863710" at="39,0,40,0" concept="8" trace="value$npbZ" />
-      <node id="946964771156863710" at="40,0,41,0" concept="8" trace="parameterDeclaration$npbw" />
-      <node id="946964771156863710" at="41,0,42,0" concept="8" trace="type$pLrO" />
+      <node id="946964771156863710" at="39,0,40,0" concept="8" trace="value$lcNx" />
+      <node id="946964771156863710" at="40,0,41,0" concept="8" trace="parameterDeclaration$lc$w" />
+      <node id="946964771156863710" at="41,0,42,0" concept="8" trace="type$uWuc" />
       <node id="946964771156863710" at="45,0,46,0" concept="8" trace="CommandParameterAssignment$p9" />
       <node id="946964771156863710" at="19,0,21,0" concept="1" trace="typeof_CommandParameterAssignment_InferenceRule#()V" />
       <node id="946964771156863710" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1017,8 +1017,8 @@
       <node id="946964771156863726" at="28,50,29,49" concept="7" />
       <node id="946964771156863726" at="31,68,32,102" concept="7" />
       <node id="946964771156863726" at="34,30,35,17" concept="7" />
-      <node id="946964771156863726" at="39,0,40,0" concept="8" trace="parameter$noXv" />
-      <node id="946964771156863726" at="40,0,41,0" concept="8" trace="type$pLrO" />
+      <node id="946964771156863726" at="39,0,40,0" concept="8" trace="parameter$l5M1" />
+      <node id="946964771156863726" at="40,0,41,0" concept="8" trace="type$uWuc" />
       <node id="946964771156863726" at="44,0,45,0" concept="8" trace="CommandParameterReference$b6" />
       <node id="946964771156863726" at="19,0,21,0" concept="1" trace="typeof_CommandParameterReference_InferenceRule#()V" />
       <node id="946964771156863726" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1070,8 +1070,8 @@
       <node id="48168216977919651" at="37,69,38,71" concept="6" />
       <node id="48168216977919651" at="38,71,39,53" concept="2" />
       <node id="48168216977919651" at="39,53,40,26" concept="7" />
-      <node id="946964771156863739" at="44,0,45,0" concept="8" trace="command$noVZ" />
-      <node id="946964771156863739" at="45,0,46,0" concept="8" trace="classifier$LHKW" />
+      <node id="946964771156863739" at="44,0,45,0" concept="8" trace="command$l53x" />
+      <node id="946964771156863739" at="45,0,46,0" concept="8" trace="classifier$5aH4" />
       <node id="946964771156863739" at="49,0,50,0" concept="8" trace="CommandReferenceExpression$9D" />
       <node id="946964771156863739" at="50,0,51,0" concept="8" trace="CommandType$8c" />
       <node id="946964771156863739" at="19,0,21,0" concept="1" trace="typeof_CommandReferenceExpression_InferenceRule#()V" />
@@ -1194,8 +1194,8 @@
       <node id="946964771156863851" at="57,470,58,24" concept="7" />
       <node id="6462589300834232237" at="60,58,61,68" concept="6" />
       <node id="6462589300834232237" at="61,68,62,26" concept="7" />
-      <node id="946964771156863836" at="66,0,67,0" concept="8" trace="processHandler$nvtw" />
-      <node id="946964771156863836" at="67,0,68,0" concept="8" trace="listener$nvtZ" />
+      <node id="946964771156863836" at="66,0,67,0" concept="8" trace="processHandler$ofiw" />
+      <node id="946964771156863836" at="67,0,68,0" concept="8" trace="listener$ofxx" />
       <node id="946964771156863836" at="71,0,72,0" concept="8" trace="RedirectOutputExpression$u_" />
       <node id="946964771156863836" at="72,0,73,0" concept="8" trace="ProcessType$tB" />
       <node id="946964771156863836" at="73,0,74,0" concept="8" trace="VoidType$aT" />

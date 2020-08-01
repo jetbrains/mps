@@ -28,14 +28,14 @@
       <node id="1198265022560" at="59,0,60,0" concept="4" trace="CopySrcNodeMacro$ud" />
       <node id="1198265022560" at="60,0,61,0" concept="4" trace="LoopMacro$md" />
       <node id="1198265022560" at="61,0,62,0" concept="4" trace="TemplateSwitch$BT" />
-      <node id="1198265022560" at="65,0,66,0" concept="4" trace="mappingLabel$yUiS" />
-      <node id="1198265022560" at="66,0,67,0" concept="4" trace="sourceNodeQuery$mDr3" />
-      <node id="1198265022560" at="67,0,68,0" concept="4" trace="sourceNodeQuery$v2vo" />
-      <node id="1198265022560" at="68,0,69,0" concept="4" trace="sourceNodeQuery$ytbn" />
-      <node id="1198265022560" at="69,0,70,0" concept="4" trace="sourceNodeQuery$u9yb" />
-      <node id="1198265022560" at="70,0,71,0" concept="4" trace="sourceNodesQuery$A9QJ" />
-      <node id="1198265022560" at="71,0,72,0" concept="4" trace="sourceNodesQuery$5jjY" />
-      <node id="1198265022560" at="75,0,76,0" concept="4" trace="applyToConceptInheritors$$0Bq" />
+      <node id="1198265022560" at="65,0,66,0" concept="4" trace="mappingLabel$Uf98" />
+      <node id="1198265022560" at="66,0,67,0" concept="4" trace="sourceNodeQuery$Y46t" />
+      <node id="1198265022560" at="67,0,68,0" concept="4" trace="sourceNodeQuery$2dcC" />
+      <node id="1198265022560" at="68,0,69,0" concept="4" trace="sourceNodeQuery$G8w9" />
+      <node id="1198265022560" at="69,0,70,0" concept="4" trace="sourceNodeQuery$ABzl" />
+      <node id="1198265022560" at="70,0,71,0" concept="4" trace="sourceNodesQuery$uLwL" />
+      <node id="1198265022560" at="71,0,72,0" concept="4" trace="sourceNodesQuery$$mF2" />
+      <node id="1198265022560" at="75,0,76,0" concept="4" trace="applyToConceptInheritors$sj5A" />
       <node id="7834938100936651353" at="39,91,42,7" concept="1" />
       <node id="224926278906350088" at="46,91,49,7" concept="1" />
       <node id="7834938100936651350" at="39,0,44,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />

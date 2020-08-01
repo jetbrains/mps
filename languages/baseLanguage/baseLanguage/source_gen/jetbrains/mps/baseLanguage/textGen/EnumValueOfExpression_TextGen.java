@@ -15,15 +15,15 @@ public class EnumValueOfExpression_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.enumClass$FRAq), ctx);
+    BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.enumClass$fVAA), ctx);
     tgs.append(".");
     tgs.append("valueOf(");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.value$sO$o));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.value$XtBC));
     tgs.append(")");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumClass$FRAq = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e45e8L, "enumClass");
-    /*package*/ static final SContainmentLink value$sO$o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e065dL, "value");
+    /*package*/ static final SReferenceLink enumClass$fVAA = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e45e8L, "enumClass");
+    /*package*/ static final SContainmentLink value$XtBC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e065dL, "value");
   }
 }

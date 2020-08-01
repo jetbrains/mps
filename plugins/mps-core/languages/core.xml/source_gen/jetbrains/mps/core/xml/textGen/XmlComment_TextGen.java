@@ -23,7 +23,7 @@ public class XmlComment_TextGen extends TextGenDescriptorBase {
       tgs.indent();
     }
     tgs.append("<!--");
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$Yj0Q)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$bdqa)) {
       tgs.appendNode(item);
     }
     tgs.append("-->");
@@ -34,6 +34,6 @@ public class XmlComment_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$Yj0Q = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
+    /*package*/ static final SContainmentLink lines$bdqa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
   }
 }

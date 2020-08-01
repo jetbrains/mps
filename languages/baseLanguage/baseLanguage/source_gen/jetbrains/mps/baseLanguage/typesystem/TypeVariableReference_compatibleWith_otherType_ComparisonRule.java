@@ -18,7 +18,7 @@ public class TypeVariableReference_compatibleWith_otherType_ComparisonRule exten
   public TypeVariableReference_compatibleWith_otherType_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    SNode bound = SLinkOperations.getTarget(SLinkOperations.getTarget(node1, LINKS.typeVariableDeclaration$U0X4), LINKS.bound$dqDF);
+    SNode bound = SLinkOperations.getTarget(SLinkOperations.getTarget(node1, LINKS.typeVariableDeclaration$6t$W), LINKS.bound$vUbP);
     if ((bound == null)) {
       return true;
     }
@@ -34,7 +34,7 @@ public class TypeVariableReference_compatibleWith_otherType_ComparisonRule exten
         }
         if (matches_p68yon_a2a) {
           {
-            SNode otherbound = SLinkOperations.getTarget(SLinkOperations.getTarget(matchedNode_p68yon_c0, LINKS.typeVariableDeclaration$U0X4), LINKS.bound$dqDF);
+            SNode otherbound = SLinkOperations.getTarget(SLinkOperations.getTarget(matchedNode_p68yon_c0, LINKS.typeVariableDeclaration$6t$W), LINKS.bound$vUbP);
             if ((otherbound == null)) {
               return true;
             }
@@ -63,8 +63,8 @@ public class TypeVariableReference_compatibleWith_otherType_ComparisonRule exten
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink bound$dqDF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
   }
 
   private static final class CONCEPTS {

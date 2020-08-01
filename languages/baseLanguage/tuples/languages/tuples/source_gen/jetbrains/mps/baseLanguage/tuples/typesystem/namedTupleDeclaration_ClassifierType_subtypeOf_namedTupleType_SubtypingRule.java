@@ -19,8 +19,8 @@ public class namedTupleDeclaration_ClassifierType_subtypeOf_namedTupleType_Subty
   public namedTupleDeclaration_ClassifierType_subtypeOf_namedTupleType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode classifierType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R), CONCEPTS.NamedTupleDeclaration$51)) {
-      return createNamedTupleType_hwsftp_a0a0a1(SNodeOperations.cast(SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R), CONCEPTS.NamedTupleDeclaration$51));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD), CONCEPTS.NamedTupleDeclaration$51)) {
+      return createNamedTupleType_hwsftp_a0a0a1(SNodeOperations.cast(SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD), CONCEPTS.NamedTupleDeclaration$51));
     }
     return null;
   }
@@ -35,12 +35,12 @@ public class namedTupleDeclaration_ClassifierType_subtypeOf_namedTupleType_Subty
   }
   private static SNode createNamedTupleType_hwsftp_a0a0a1(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NamedTupleType$$b);
-    n0.setReferenceTarget(LINKS.classifier$pQ_R, p0);
+    n0.setReferenceTarget(LINKS.classifier$xslD, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

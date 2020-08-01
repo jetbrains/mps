@@ -28,7 +28,7 @@ public class TestPropertyVariableReference_Constraints extends BaseConstraintsDe
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$$36A, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$twcq, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -61,6 +61,6 @@ public class TestPropertyVariableReference_Constraints extends BaseConstraintsDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$$36A = MetaAdapterFactory.getReferenceLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8cfebb8L, 0x15b423b3f8cfebbeL, "declaration");
+    /*package*/ static final SReferenceLink declaration$twcq = MetaAdapterFactory.getReferenceLink(0x5206c8887c5d4275L, 0xbc0a7c4da12f46e8L, 0x15b423b3f8cfebb8L, 0x15b423b3f8cfebbeL, "declaration");
   }
 }

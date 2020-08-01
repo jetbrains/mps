@@ -60,11 +60,11 @@ public class MakeFieldStatic extends BaseRefactoring {
     return true;
   }
   public void refactor(final RefactoringContext refactoringContext) {
-    SNode newDeclaration = _quotation_createNode_so6etp_a0a0a(SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.visibility$2GiC)), SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.type$pLrO)), SPropertyOperations.getString(((SNode) refactoringContext.getParameter("declaration")), PROPS.name$tAp1));
+    SNode newDeclaration = _quotation_createNode_so6etp_a0a0a(SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.visibility$jt1o)), SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.type$uWuc)), SPropertyOperations.getString(((SNode) refactoringContext.getParameter("declaration")), PROPS.name$lA7v));
     SNode declarationClassifier = SNodeOperations.getNodeAncestor(((SNode) refactoringContext.getParameter("declaration")), CONCEPTS.Classifier$hJ, false, false);
-    SPropertyOperations.assign(newDeclaration, PROPS.isFinal$hIht, SPropertyOperations.getBoolean(((SNode) refactoringContext.getParameter("declaration")), PROPS.isFinal$hIht));
-    SLinkOperations.setTarget(newDeclaration, LINKS.initializer$KgD, SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.initializer$KgD)));
-    ListSequence.fromList(SLinkOperations.getChildren(newDeclaration, LINKS.annotation$oVP4)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(((SNode) refactoringContext.getParameter("declaration")), LINKS.annotation$oVP4)));
+    SPropertyOperations.assign(newDeclaration, PROPS.isFinal$_qt3, SPropertyOperations.getBoolean(((SNode) refactoringContext.getParameter("declaration")), PROPS.isFinal$_qt3));
+    SLinkOperations.setTarget(newDeclaration, LINKS.initializer$no3R, SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.initializer$no3R)));
+    ListSequence.fromList(SLinkOperations.getChildren(newDeclaration, LINKS.annotation$4YGW)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(((SNode) refactoringContext.getParameter("declaration")), LINKS.annotation$4YGW)));
     AttributeOperations.setAttribute(newDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8), AttributeOperations.getAttribute(((SNode) refactoringContext.getParameter("declaration")), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)));
 
     SNodeOperations.insertNextSiblingChild(((SNode) refactoringContext.getParameter("declaration")), newDeclaration);
@@ -133,14 +133,14 @@ public class MakeFieldStatic extends BaseRefactoring {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

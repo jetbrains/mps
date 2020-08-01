@@ -30,13 +30,13 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1) + "_Test";
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) + "_Test";
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.methods$RDUZ);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.methods$Xj$x);
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
@@ -102,10 +102,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink methods$RDUZ = MetaAdapterFactory.getContainmentLink(0x41a74638991d41c3L, 0xb85c39ba842bab0dL, 0x5d85e89a43eecf60L, 0x5d85e89a43efbbccL, "methods");
+    /*package*/ static final SContainmentLink methods$Xj$x = MetaAdapterFactory.getContainmentLink(0x41a74638991d41c3L, 0xb85c39ba842bab0dL, 0x5d85e89a43eecf60L, 0x5d85e89a43efbbccL, "methods");
   }
 }

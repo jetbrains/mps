@@ -41,9 +41,9 @@ public class ReapplyPatternMigration extends BaseProjectMigration implements Cle
       };
       for (SNode pattern : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PatternExpression$Lc, false))) {
         Iterable<? extends SNode> deprecatedChildren = pattern.getChildren(MetaAdapterFactory.getContainmentLink(-3143127453834064983L, -5836335846783251545L, 1136720037777L, 1136720037778L, "patternNode"));
-        if (Sequence.fromIterable(deprecatedChildren).count() == 1 && SLinkOperations.getTarget(pattern, LINKS.pattern$fJGl) == null) {
-          SLinkOperations.setNewChild(pattern, LINKS.pattern$fJGl, CONCEPTS.Quotation$UL);
-          SLinkOperations.setTarget(SLinkOperations.getTarget(pattern, LINKS.pattern$fJGl), LINKS.quotedNode$kInw, Sequence.fromIterable(deprecatedChildren).first());
+        if (Sequence.fromIterable(deprecatedChildren).count() == 1 && SLinkOperations.getTarget(pattern, LINKS.pattern$C6ub) == null) {
+          SLinkOperations.setNewChild(pattern, LINKS.pattern$C6ub, CONCEPTS.Quotation$UL);
+          SLinkOperations.setTarget(SLinkOperations.getTarget(pattern, LINKS.pattern$C6ub), LINKS.quotedNode$2tow, Sequence.fromIterable(deprecatedChildren).first());
         }
       }
       return true;
@@ -55,8 +55,8 @@ public class ReapplyPatternMigration extends BaseProjectMigration implements Cle
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink pattern$fJGl = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, 0x7d8b4408504314cdL, "pattern");
-    /*package*/ static final SContainmentLink quotedNode$kInw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
+    /*package*/ static final SContainmentLink pattern$C6ub = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, 0x7d8b4408504314cdL, "pattern");
+    /*package*/ static final SContainmentLink quotedNode$2tow = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
   }
 
   private static final class CONCEPTS {

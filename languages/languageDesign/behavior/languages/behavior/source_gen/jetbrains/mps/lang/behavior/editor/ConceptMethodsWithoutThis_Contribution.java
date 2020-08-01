@@ -102,7 +102,7 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
         SNode behavior = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ConceptBehavior$8P, true, false);
-        return AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(SLinkOperations.getTarget(behavior, LINKS.concept$v6ns), _context.getParentNode());
+        return AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(SLinkOperations.getTarget(behavior, LINKS.concept$45m$), _context.getParentNode());
       }
       private class SMP_Action_lcxjkp_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;
@@ -149,10 +149,10 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
-            SNodeFactoryOperations.setNewChild(expr, LINKS.operand$Lcrr, CONCEPTS.ThisNodeExpression$BO);
+            SNodeFactoryOperations.setNewChild(expr, LINKS.operand$P1i5, CONCEPTS.ThisNodeExpression$BO);
             SNode call = SNodeFactoryOperations.createNewNode(CONCEPTS.Node_ConceptMethodCall$l3, null);
-            SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$$A7i, myParameterObject);
-            SLinkOperations.setTarget(expr, LINKS.operation$X4R8, call);
+            SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$ItxI, myParameterObject);
+            SLinkOperations.setTarget(expr, LINKS.operation$_mGS, call);
             return expr;
           }
 
@@ -204,9 +204,9 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

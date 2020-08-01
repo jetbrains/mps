@@ -32,10 +32,10 @@ public final class GenerationContextOp_NodePatternRef__BehaviorDescriptor extend
   }
 
   /*package*/ static SNode getTarget_id1xCtdgeTQHC(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.patternVarDecl$hBXe);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.patternVarDecl$ymDM);
   }
   /*package*/ static void setTarget_id1xCtdgeUoP5(@NotNull SNode __thisNode__, SNode target) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.patternVarDecl$hBXe, null);
+    SLinkOperations.setTarget(__thisNode__, LINKS.patternVarDecl$ymDM, null);
   }
 
   /*package*/ GenerationContextOp_NodePatternRef__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class GenerationContextOp_NodePatternRef__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink patternVarDecl$hBXe = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x3fb2d847d55fc21eL, 0x3fb2d847d55fdcd5L, "patternVarDecl");
+    /*package*/ static final SReferenceLink patternVarDecl$ymDM = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x3fb2d847d55fc21eL, 0x3fb2d847d55fdcd5L, "patternVarDecl");
   }
 }

@@ -175,7 +175,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       SNode comment = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BaseDocComment$pH);
       IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.getNodeAncestor(comment, CONCEPTS.IBLDeprecatable$Hv, false, false));
       SNodeOperations.deleteNode(node);
-      editorContext.selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$LJD$)).where(new IWhereFilter<SNode>() {
+      editorContext.selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$ma);
         }
@@ -200,6 +200,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$LJD$ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
   }
 }

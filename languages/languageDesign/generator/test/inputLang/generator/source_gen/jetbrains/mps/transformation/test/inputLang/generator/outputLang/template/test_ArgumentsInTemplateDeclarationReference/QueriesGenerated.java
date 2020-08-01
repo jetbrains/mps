@@ -27,16 +27,16 @@ public class QueriesGenerated {
     return true;
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.key$y9g1) == 1;
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.key$yuKv) == 1;
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.key$y9g1) == 2;
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.key$yuKv) == 2;
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
     return false;
   }
   public static boolean rule_Condition_0_4(final BaseMappingRuleContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.key$y9g1) == 3;
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.key$yuKv) == 3;
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     return "text from argument:" + ((String) _context.getVariable("p1"));
@@ -57,23 +57,23 @@ public class QueriesGenerated {
     return "from within default case of in-line switch";
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.inputChild$lNls);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.inputChild$zRo$);
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.InputRoot$eR)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.useInTest$QJWm), 0x6809b95ff9d9a17eL);
+        return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.useInTest$xeeE), 0x6809b95ff9d9a17eL);
       }
     }).isNotEmpty();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty key$y9g1 = MetaAdapterFactory.getProperty(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x118e6cad46aL, 0x44696d5abe089ec8L, "key");
-    /*package*/ static final SProperty useInTest$QJWm = MetaAdapterFactory.getProperty(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, 0x117eb48fdf5L, "useInTest");
+    /*package*/ static final SProperty key$yuKv = MetaAdapterFactory.getProperty(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x118e6cad46aL, 0x44696d5abe089ec8L, "key");
+    /*package*/ static final SProperty useInTest$xeeE = MetaAdapterFactory.getProperty(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, 0x117eb48fdf5L, "useInTest");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inputChild$lNls = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, 0x11645abf534L, "inputChild");
+    /*package*/ static final SContainmentLink inputChild$zRo$ = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, 0x11645abf534L, "inputChild");
   }
 
   private static final class CONCEPTS {

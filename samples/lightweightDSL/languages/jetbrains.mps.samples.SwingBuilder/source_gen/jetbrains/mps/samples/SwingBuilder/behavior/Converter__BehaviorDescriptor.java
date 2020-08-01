@@ -40,10 +40,10 @@ public final class Converter__BehaviorDescriptor extends BaseBHDescriptor {
     return SNodeOperations.getNode("r:5e58216d-cd0e-4073-b07e-f427da07ae93(jetbrains.mps.samples.LightweightDSL.plugin.definitions)", "5575318041730181722");
   }
   /*package*/ static SNode getSourceType_id4PvwzwVa630(@NotNull SNode __thisNode__) {
-    return SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.as(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:5e58216d-cd0e-4073-b07e-f427da07ae93(jetbrains.mps.samples.LightweightDSL.plugin.definitions)", "5575318041730181725"), __thisNode__)).first(), CONCEPTS.SourceDataType$UQ), LINKS.type$I_50));
+    return SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.as(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:5e58216d-cd0e-4073-b07e-f427da07ae93(jetbrains.mps.samples.LightweightDSL.plugin.definitions)", "5575318041730181725"), __thisNode__)).first(), CONCEPTS.SourceDataType$UQ), LINKS.type$zXr0));
   }
   /*package*/ static SNode getTargetType_id4PvwzwVa6sI(@NotNull SNode __thisNode__) {
-    return SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.as(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:5e58216d-cd0e-4073-b07e-f427da07ae93(jetbrains.mps.samples.LightweightDSL.plugin.definitions)", "5575318041730181735"), __thisNode__)).first(), CONCEPTS.TargetDataType$W), LINKS.type$PKy0));
+    return SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.as(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:5e58216d-cd0e-4073-b07e-f427da07ae93(jetbrains.mps.samples.LightweightDSL.plugin.definitions)", "5575318041730181735"), __thisNode__)).first(), CONCEPTS.TargetDataType$W), LINKS.type$2wu0));
   }
 
   /*package*/ Converter__BehaviorDescriptor() {
@@ -102,7 +102,7 @@ public final class Converter__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$I_50 = MetaAdapterFactory.getContainmentLink(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0x4d5f82383b276c5aL, 0x4d5f82383b276c5bL, "type");
-    /*package*/ static final SContainmentLink type$PKy0 = MetaAdapterFactory.getContainmentLink(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0x4d5f82383b277405L, 0x4d5f82383b277406L, "type");
+    /*package*/ static final SContainmentLink type$zXr0 = MetaAdapterFactory.getContainmentLink(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0x4d5f82383b276c5aL, 0x4d5f82383b276c5bL, "type");
+    /*package*/ static final SContainmentLink type$2wu0 = MetaAdapterFactory.getContainmentLink(0xb4dbff0c8c314a79L, 0xa45a98e5fd0530e7L, 0x4d5f82383b277405L, 0x4d5f82383b277406L, "type");
   }
 }

@@ -51,7 +51,7 @@ public class CommandParameterAssignment_Constraints extends BaseConstraintsDescr
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameterDeclaration$npbw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameterDeclaration$lc$w, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -66,7 +66,7 @@ public class CommandParameterAssignment_Constraints extends BaseConstraintsDescr
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.CommandBuilderExpression$Pf), LINKS.commandPart$vwzX)));
+            return ListScope.forResolvableElements(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.CommandBuilderExpression$Pf), LINKS.commandPart$gLqz)));
           }
         };
       }
@@ -87,7 +87,7 @@ public class CommandParameterAssignment_Constraints extends BaseConstraintsDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameterDeclaration$npbw = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, 0xbe3a0d5ba1a2be5L, "parameterDeclaration");
-    /*package*/ static final SReferenceLink commandPart$vwzX = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
+    /*package*/ static final SReferenceLink parameterDeclaration$lc$w = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, 0xbe3a0d5ba1a2be5L, "parameterDeclaration");
+    /*package*/ static final SReferenceLink commandPart$gLqz = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
   }
 }

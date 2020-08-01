@@ -142,7 +142,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.PrivateStaticFieldReference$6t, null);
-          SLinkOperations.setTarget(result, LINKS.classifier$ZTjE, myParameterObject);
+          SLinkOperations.setTarget(result, LINKS.classifier$WKxm, myParameterObject);
           return result;
         }
 
@@ -165,7 +165,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1) + ".";
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + ".";
         }
         @Nullable
         @Override
@@ -184,10 +184,10 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

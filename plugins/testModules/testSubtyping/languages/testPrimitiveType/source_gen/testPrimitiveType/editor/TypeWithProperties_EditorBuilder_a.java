@@ -110,12 +110,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_8yz4v0_a3a() {
-    return myNode.getProperty(PROPS.str$bBiM) != null;
+    return myNode.getProperty(PROPS.str$C26e) != null;
   }
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.str$bBiM;
+      final SProperty property = PROPS.str$C26e;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no str>");
@@ -166,7 +166,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.str$bBiM, "");
+      SPropertyOperations.assign(node, PROPS.str$C26e, "");
     }
     public String getMatchingText() {
       return "default";
@@ -196,12 +196,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_8yz4v0_a6a() {
-    return myNode.getProperty(PROPS.num$bBvR) != null;
+    return myNode.getProperty(PROPS.num$C8rD) != null;
   }
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.num$bBvR;
+      final SProperty property = PROPS.num$C8rD;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no num>");
@@ -252,7 +252,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.num$bBvR, 0);
+      SPropertyOperations.assign(node, PROPS.num$C8rD, 0);
     }
     public String getMatchingText() {
       return "default";
@@ -282,12 +282,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_8yz4v0_a9a() {
-    return myNode.getProperty(PROPS.bool$bBxk) != null;
+    return myNode.getProperty(PROPS.bool$C98G) != null;
   }
   private EditorCell createProperty_2() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.bool$bBxk;
+      final SProperty property = PROPS.bool$C98G;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no bool>");
@@ -338,7 +338,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.bool$bBxk, false);
+      SPropertyOperations.assign(node, PROPS.bool$C98G, false);
     }
     public String getMatchingText() {
       return "default";
@@ -352,9 +352,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty str$bBiM = MetaAdapterFactory.getProperty(0x8a53c70515e44f87L, 0x8796457845605512L, 0x9cc88b154a54d6cL, 0x9cc88b154a556a2L, "str");
-    /*package*/ static final SProperty num$bBvR = MetaAdapterFactory.getProperty(0x8a53c70515e44f87L, 0x8796457845605512L, 0x9cc88b154a54d6cL, 0x9cc88b154a556a8L, "num");
-    /*package*/ static final SProperty bool$bBxk = MetaAdapterFactory.getProperty(0x8a53c70515e44f87L, 0x8796457845605512L, 0x9cc88b154a54d6cL, 0x9cc88b154a556abL, "bool");
+    /*package*/ static final SProperty str$C26e = MetaAdapterFactory.getProperty(0x8a53c70515e44f87L, 0x8796457845605512L, 0x9cc88b154a54d6cL, 0x9cc88b154a556a2L, "str");
+    /*package*/ static final SProperty num$C8rD = MetaAdapterFactory.getProperty(0x8a53c70515e44f87L, 0x8796457845605512L, 0x9cc88b154a54d6cL, 0x9cc88b154a556a8L, "num");
+    /*package*/ static final SProperty bool$C98G = MetaAdapterFactory.getProperty(0x8a53c70515e44f87L, 0x8796457845605512L, 0x9cc88b154a54d6cL, 0x9cc88b154a556abL, "bool");
   }
 
   private static final class CONCEPTS {

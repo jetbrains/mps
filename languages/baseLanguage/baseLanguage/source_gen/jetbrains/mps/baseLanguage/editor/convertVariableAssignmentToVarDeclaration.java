@@ -80,14 +80,14 @@ public class convertVariableAssignmentToVarDeclaration extends TransformationMen
   public class TMP_Group_lavomd_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf))) {
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf))) {
         return false;
       }
       if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AssignmentExpression$rS))) {
         return false;
       }
       SNode assignment = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AssignmentExpression$rS);
-      return (boolean) AssignmentExpression__BehaviorDescriptor.canConvertToLocalVariableDeclaration_idhLFstkU.invoke(assignment) && SLinkOperations.getTarget(assignment, LINKS.lValue$J0D4) == _context.getNode();
+      return (boolean) AssignmentExpression__BehaviorDescriptor.canConvertToLocalVariableDeclaration_idhLFstkU.invoke(assignment) && SLinkOperations.getTarget(assignment, LINKS.lValue$LjSW) == _context.getNode();
     }
 
     @NotNull
@@ -118,7 +118,7 @@ public class convertVariableAssignmentToVarDeclaration extends TransformationMen
         }.compute();
         type = new Computable<SNode>() {
           public SNode compute() {
-            return (SNode) TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(assignment, LINKS.rValue$J0E2));
+            return (SNode) TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(assignment, LINKS.rValue$LkmY));
           }
         }.compute();
       }
@@ -207,9 +207,9 @@ public class convertVariableAssignmentToVarDeclaration extends TransformationMen
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {

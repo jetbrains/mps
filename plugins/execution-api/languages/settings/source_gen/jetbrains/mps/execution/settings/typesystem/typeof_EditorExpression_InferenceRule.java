@@ -21,7 +21,7 @@ public class typeof_EditorExpression_InferenceRule extends AbstractInferenceRule
   public void applyRule(final SNode editorExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode T_typevar_6981317760235477880 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(editorExpression, LINKS.persistentPropertyDeclaration$2oKw);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(editorExpression, LINKS.persistentPropertyDeclaration$9Zvw);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477881", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477883", true), (SNode) createPersistentConfigurationType_a3jan8_a1a0c0b0b(typeCheckingContext.getRepresentative(T_typevar_6981317760235477880)), false, false, _info_12389875345);
     }
@@ -42,19 +42,19 @@ public class typeof_EditorExpression_InferenceRule extends AbstractInferenceRule
   }
   private static SNode createPersistentConfigurationType_a3jan8_a1a0c0b0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
-    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$2710, p0);
     return n0.getResult();
   }
   private static SNode createSettingsEditorType_a3jan8_a1a0c0c0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SettingsEditorType$Bn);
-    n0.setReferenceTarget(LINKS.configuration$2u$w, p0);
+    n0.setReferenceTarget(LINKS.configuration$cNFw, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink persistentPropertyDeclaration$2oKw = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91011cL, 0xd244b712f91011dL, "persistentPropertyDeclaration");
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
-    /*package*/ static final SReferenceLink configuration$2u$w = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013aL, 0xd244b712f91013bL, "configuration");
+    /*package*/ static final SReferenceLink persistentPropertyDeclaration$9Zvw = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91011cL, 0xd244b712f91011dL, "persistentPropertyDeclaration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink configuration$cNFw = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013aL, 0xd244b712f91013bL, "configuration");
   }
 
   private static final class CONCEPTS {

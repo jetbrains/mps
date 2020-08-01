@@ -54,23 +54,23 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
         }
       };
       for (SNode propertyInit : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$wV, false))) {
-        SNode newProperty = migration.migratePropertyReference(propertyInit, LINKS.property$NCMw);
+        SNode newProperty = migration.migratePropertyReference(propertyInit, LINKS.property$Ktw);
         if (newProperty != null) {
-          SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
-          migration.upgradeExpressionType(enumm, SLinkOperations.getTarget(propertyInit, LINKS.expression$NDf$));
+          SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$Dbgb), CONCEPTS.EnumerationDeclaration$rG);
+          migration.upgradeExpressionType(enumm, SLinkOperations.getTarget(propertyInit, LINKS.expression$Yys));
         }
       }
       for (SNode propertyAntiquotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyAntiquotation$v, false))) {
-        if (!(SPropertyOperations.getBoolean(propertyAntiquotation, PROPS.stringValueMigrated$gFe8))) {
-          SNode dataType = SLinkOperations.getTarget(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propertyAntiquotation), LINKS.dataType$fLUl);
-          SNode expr = SLinkOperations.getTarget(propertyAntiquotation, LINKS.expression$kIm0);
+        if (!(SPropertyOperations.getBoolean(propertyAntiquotation, PROPS.stringValueMigrated$4VPS))) {
+          SNode dataType = SLinkOperations.getTarget(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propertyAntiquotation), LINKS.dataType$Dbgb);
+          SNode expr = SLinkOperations.getTarget(propertyAntiquotation, LINKS.expression$2sE0);
 
-          SPropertyOperations.assign(propertyAntiquotation, PROPS.stringValueMigrated$gFe8, RawPropertyValueMigration.upgradeExpressionType(dataType, expr));
+          SPropertyOperations.assign(propertyAntiquotation, PROPS.stringValueMigrated$4VPS, RawPropertyValueMigration.upgradeExpressionType(dataType, expr));
         }
 
         SNode newProperty = migration.migrateEnumPropertyAttribute(propertyAntiquotation);
-        SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
-        migration.upgradeExpressionType(enumm, SLinkOperations.getTarget(propertyAntiquotation, LINKS.expression$kIm0));
+        SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$Dbgb), CONCEPTS.EnumerationDeclaration$rG);
+        migration.upgradeExpressionType(enumm, SLinkOperations.getTarget(propertyAntiquotation, LINKS.expression$2sE0));
       }
     }
     migration.optimize();
@@ -88,16 +88,16 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
       List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
       ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$wV, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.property$NCMw)), CONCEPTS.EnumPropertyMigrationInfo$Yg);
+          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.property$Ktw)), CONCEPTS.EnumPropertyMigrationInfo$Yg);
         }
       }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
         public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.property$NCMw));
+          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.property$Ktw));
         }
       }));
       ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyAntiquotation$v, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SPropertyOperations.getBoolean(it, PROPS.stringValueMigrated$gFe8));
+          return !(SPropertyOperations.getBoolean(it, PROPS.stringValueMigrated$4VPS));
         }
       }).select(new ISelector<SNode, NotMigratedNode>() {
         public NotMigratedNode select(SNode it) {
@@ -128,10 +128,10 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
 
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$NCMw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SContainmentLink expression$NDf$ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
-    /*package*/ static final SContainmentLink expression$kIm0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression");
+    /*package*/ static final SReferenceLink property$Ktw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink expression$Yys = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
+    /*package*/ static final SContainmentLink expression$2sE0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression");
   }
 
   private static final class CONCEPTS {
@@ -142,6 +142,6 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringValueMigrated$gFe8 = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
+    /*package*/ static final SProperty stringValueMigrated$4VPS = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
   }
 }

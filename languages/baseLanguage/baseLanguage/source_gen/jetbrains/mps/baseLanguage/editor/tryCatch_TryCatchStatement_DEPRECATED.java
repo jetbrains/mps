@@ -111,8 +111,8 @@ public class tryCatch_TryCatchStatement_DEPRECATED extends TransformationMenuBas
       @Override
       public void execute(@NotNull String pattern) {
         SNode catchClause = SNodeFactoryOperations.createNewNode(CONCEPTS.CatchClause$hu, null);
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$jGNt)).insertElement(0, catchClause);
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$jGNt)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$yGV3)).insertElement(0, catchClause);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$yGV3)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
@@ -140,6 +140,6 @@ public class tryCatch_TryCatchStatement_DEPRECATED extends TransformationMenuBas
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$jGNt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
+    /*package*/ static final SContainmentLink catchClause$yGV3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
   }
 }

@@ -52,13 +52,13 @@ public final class ExecuteCommandPart__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static List<SNode> getParameters_id5keEkmeCqHW(@NotNull SNode __thisNode__) {
     if ((boolean) CommandDeclaration__BehaviorDescriptor.isDebuggable_idJzCdmU6yOQ.invoke(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(__thisNode__))) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$Zllw)).select(new ISelector<SNode, SNode>() {
+      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$Flqw)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
           return SNodeOperations.cast(it, CONCEPTS.CommandParameterDeclaration$14);
         }
-      }).union(Sequence.fromIterable(Sequence.<SNode>singleton(SLinkOperations.getTarget(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(__thisNode__), LINKS.debuggerParameter$u2aT)))).toListSequence();
+      }).union(Sequence.fromIterable(Sequence.<SNode>singleton(SLinkOperations.getTarget(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(__thisNode__), LINKS.debuggerParameter$z3hB)))).toListSequence();
     }
-    return SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$Zllw);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.parameterDeclaration$Flqw);
   }
   /*package*/ static List<SNode> getRequiredParameters_id5keEkmeCqJD(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(ExecuteCommandPart__BehaviorDescriptor.getParameters_id5keEkmeCqHW.invoke(__thisNode__)).where(new IWhereFilter<SNode>() {
@@ -74,7 +74,7 @@ public final class ExecuteCommandPart__BehaviorDescriptor extends BaseBHDescript
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_qal9w4_a0a0a3());
   }
   /*package*/ static SNode getBody_idi2fhZ_m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.execute$ZllZ), LINKS.statements$uqR0);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.execute$FlDx), LINKS.statements$J0D0);
   }
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
     return createJoinType_qal9w4_a0a5();
@@ -151,20 +151,20 @@ public final class ExecuteCommandPart__BehaviorDescriptor extends BaseBHDescript
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.argument$xIHX).init(CONCEPTS.ProcessType$tB);
+      SNodeBuilder n1 = n0.forChild(LINKS.argument$lCgz).init(CONCEPTS.ProcessType$tB);
       SNodeBuilder n2 = n1.forSibling().init(CONCEPTS.ClassifierType$IZ);
-      n2.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.process(MPS.IDEA/)"), facade.createNodeId("~ProcessHandler")));
+      n2.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.process(MPS.IDEA/)"), facade.createNodeId("~ProcessHandler")));
     }
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterDeclaration$Zllw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, 0x550ea9458ea107adL, "parameterDeclaration");
-    /*package*/ static final SContainmentLink debuggerParameter$u2aT = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, 0x75aadb0d4e6223baL, "debuggerParameter");
-    /*package*/ static final SContainmentLink execute$ZllZ = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, 0x550ea9458ea107aeL, "execute");
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink argument$xIHX = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameterDeclaration$Flqw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, 0x550ea9458ea107adL, "parameterDeclaration");
+    /*package*/ static final SContainmentLink debuggerParameter$z3hB = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, 0x75aadb0d4e6223baL, "debuggerParameter");
+    /*package*/ static final SContainmentLink execute$FlDx = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, 0x550ea9458ea107aeL, "execute");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink argument$lCgz = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

@@ -27,27 +27,27 @@ public class ConvertFieldToLocalVariable_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode variableDeclaration = SNodeOperations.cast(node, CONCEPTS.VariableDeclaration$xe);
-    SNode varStmd = SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) ConvertFieldToLocalVariable_QuickFix.this.getField("method")[0]), LINKS.body$WIlu), LINKS.statement$WHn8)).first(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement")));
-    final SNode var = SLinkOperations.setTarget(varStmd, LINKS.localVariableDeclaration$O0D0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration")));
-    SLinkOperations.setTarget(var, LINKS.type$pLrO, SLinkOperations.getTarget(variableDeclaration, LINKS.type$pLrO));
-    SPropertyOperations.assign(var, PROPS.name$tAp1, SPropertyOperations.getString(variableDeclaration, PROPS.name$tAp1));
-    SLinkOperations.setTarget(var, LINKS.initializer$KgD, SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$KgD));
-    if ((SLinkOperations.getTarget(var, LINKS.initializer$KgD) == null) && SPropertyOperations.getBoolean(variableDeclaration, PROPS.isFinal$hIht)) {
-      if (Sequence.fromIterable(((Iterable<SNode>) ConvertFieldToLocalVariable_QuickFix.this.getField("alls")[0])).count() == 1 && SNodeOperations.hasRole(Sequence.fromIterable(((Iterable<SNode>) ConvertFieldToLocalVariable_QuickFix.this.getField("alls")[0])).first(), LINKS.lValue$J0D4)) {
-        SPropertyOperations.assign(var, PROPS.isFinal$hIht, true);
+    SNode varStmd = SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) ConvertFieldToLocalVariable_QuickFix.this.getField("method")[0]), LINKS.body$qspy), LINKS.statement$pYcS)).first(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement")));
+    final SNode var = SLinkOperations.setTarget(varStmd, LINKS.localVariableDeclaration$cjR0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration")));
+    SLinkOperations.setTarget(var, LINKS.type$uWuc, SLinkOperations.getTarget(variableDeclaration, LINKS.type$uWuc));
+    SPropertyOperations.assign(var, PROPS.name$lA7v, SPropertyOperations.getString(variableDeclaration, PROPS.name$lA7v));
+    SLinkOperations.setTarget(var, LINKS.initializer$no3R, SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$no3R));
+    if ((SLinkOperations.getTarget(var, LINKS.initializer$no3R) == null) && SPropertyOperations.getBoolean(variableDeclaration, PROPS.isFinal$_qt3)) {
+      if (Sequence.fromIterable(((Iterable<SNode>) ConvertFieldToLocalVariable_QuickFix.this.getField("alls")[0])).count() == 1 && SNodeOperations.hasRole(Sequence.fromIterable(((Iterable<SNode>) ConvertFieldToLocalVariable_QuickFix.this.getField("alls")[0])).first(), LINKS.lValue$LjSW)) {
+        SPropertyOperations.assign(var, PROPS.isFinal$_qt3, true);
         SNode assignment = SNodeOperations.cast(SNodeOperations.getParent(Sequence.fromIterable(((Iterable<SNode>) ConvertFieldToLocalVariable_QuickFix.this.getField("alls")[0])).first()), CONCEPTS.BaseAssignmentExpression$oO);
-        SLinkOperations.setTarget(var, LINKS.initializer$KgD, SLinkOperations.getTarget(assignment, LINKS.rValue$J0E2));
+        SLinkOperations.setTarget(var, LINKS.initializer$no3R, SLinkOperations.getTarget(assignment, LINKS.rValue$LkmY));
         SNodeOperations.deleteNode(SNodeOperations.getNodeAncestor(assignment, CONCEPTS.Statement$ok, false, false));
         SNodeOperations.deleteNode(variableDeclaration);
         return;
       }
     } else {
-      SPropertyOperations.assign(var, PROPS.isFinal$hIht, SPropertyOperations.getBoolean(variableDeclaration, PROPS.isFinal$hIht));
+      SPropertyOperations.assign(var, PROPS.isFinal$_qt3, SPropertyOperations.getBoolean(variableDeclaration, PROPS.isFinal$_qt3));
     }
     Sequence.fromIterable(((Iterable<SNode>) ConvertFieldToLocalVariable_QuickFix.this.getField("alls")[0])).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         SNode ref = SNodeOperations.replaceWithNewChild(it, CONCEPTS.VariableReference$sQ);
-        SLinkOperations.setTarget(ref, LINKS.variableDeclaration$2ky6, var);
+        SLinkOperations.setTarget(ref, LINKS.variableDeclaration$7WwU, var);
       }
     });
     SNodeOperations.deleteNode(node);
@@ -61,18 +61,18 @@ public class ConvertFieldToLocalVariable_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

@@ -24,10 +24,10 @@ public class rt_SubTask_AfterOrBefore {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.before$hqay)).isEmpty()) {
-          SLinkOperations.addNewChild(node, LINKS.before$hqay, CONCEPTS.BwfSubTaskDependency$kZ);
-        } else if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.after$Gju$)).isEmpty()) {
-          SLinkOperations.addNewChild(node, LINKS.after$Gju$, CONCEPTS.BwfSubTaskDependency$kZ);
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.before$rF6u)).isEmpty()) {
+          SLinkOperations.addNewChild(node, LINKS.before$rF6u, CONCEPTS.BwfSubTaskDependency$kZ);
+        } else if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.after$trNs)).isEmpty()) {
+          SLinkOperations.addNewChild(node, LINKS.after$trNs, CONCEPTS.BwfSubTaskDependency$kZ);
         }
       }
 
@@ -76,8 +76,8 @@ public class rt_SubTask_AfterOrBefore {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink before$hqay = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before");
-    /*package*/ static final SContainmentLink after$Gju$ = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after");
+    /*package*/ static final SContainmentLink before$rF6u = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before");
+    /*package*/ static final SContainmentLink after$trNs = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after");
   }
 
   private static final class CONCEPTS {

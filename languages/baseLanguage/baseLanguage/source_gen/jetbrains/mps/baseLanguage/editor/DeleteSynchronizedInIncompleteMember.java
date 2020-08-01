@@ -26,7 +26,7 @@ public class DeleteSynchronizedInIncompleteMember {
         if (DeletionApproverUtil.approve(editorContext, node, "synchronizedKeyword")) {
           return;
         }
-        SPropertyOperations.set(node, PROPS.synchronized$4dBM, false);
+        SPropertyOperations.set(node, PROPS.synchronized$2Ahe, false);
         editorContext.selectWRTFocusPolicy(node);
       }
 
@@ -75,6 +75,6 @@ public class DeleteSynchronizedInIncompleteMember {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty synchronized$4dBM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdb595L, "synchronized");
+    /*package*/ static final SProperty synchronized$2Ahe = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdb595L, "synchronized");
   }
 }

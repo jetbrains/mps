@@ -15,18 +15,18 @@ public class SemanticDowncast {
     String id_briefly = ifStatement.getNodeId().toString();
   }
   public void invoke_getID_method_2(SNode ifStatement) {
-    String id_verbose = ((SNode) ((SNode) SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b))).getNodeId().toString();
-    String id_better = SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b).getNodeId().toString();
+    String id_verbose = ((SNode) ((SNode) SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l))).getNodeId().toString();
+    String id_better = SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l).getNodeId().toString();
   }
   public void countChildren(SNode methodCall) {
-    int count_verbose_not_efficient = ListSequence.fromList(((List<SNode>) SLinkOperations.getChildren(methodCall, LINKS.actualArgument$$A7L))).count();
-    int count_not_efficient = ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$$A7L)).count();
-    int count_not_efficient2 = SLinkOperations.getChildren(methodCall, LINKS.actualArgument$$A7L).size();
-    int count_best = ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$$A7L)).count();
+    int count_verbose_not_efficient = ListSequence.fromList(((List<SNode>) SLinkOperations.getChildren(methodCall, LINKS.actualArgument$ItKJ))).count();
+    int count_not_efficient = ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$ItKJ)).count();
+    int count_not_efficient2 = SLinkOperations.getChildren(methodCall, LINKS.actualArgument$ItKJ).size();
+    int count_best = ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$ItKJ)).count();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

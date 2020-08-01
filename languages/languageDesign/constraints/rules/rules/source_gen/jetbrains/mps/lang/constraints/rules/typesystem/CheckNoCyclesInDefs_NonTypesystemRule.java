@@ -51,11 +51,11 @@ public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystem
         Iterable<SNode> implicitDeps = SNodeOperations.getNodeDescendants(def, CONCEPTS.TypedDefReference$7f, false, new SAbstractConcept[]{});
         Sequence.fromIterable(implicitDeps).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.declaration$LqCB), CONCEPTS.DefForRule$Hm);
+            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.declaration$VTET), CONCEPTS.DefForRule$Hm);
           }
         }).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.declaration$LqCB);
+            return SLinkOperations.getTarget(it, LINKS.declaration$VTET);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
@@ -97,6 +97,6 @@ public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystem
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$LqCB = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
+    /*package*/ static final SReferenceLink declaration$VTET = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
   }
 }

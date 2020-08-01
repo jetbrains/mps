@@ -21,8 +21,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class TransformStatement {
   public static class NodeFactory_1901572971594206036 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$WRt7)).addElement(_quotation_createNode_md2x8h_a0a0a0a(TransformStatement__BehaviorDescriptor.getPatternConcept_id4SSaNAQl5wN.invoke(SNodeOperations.as(enclosingNode, CONCEPTS.TransformStatement$ZW))));
-      SPropertyOperations.assign(newNode, PROPS.forceMultiLine$sHyN, true);
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$uR6p)).addElement(_quotation_createNode_md2x8h_a0a0a0a(TransformStatement__BehaviorDescriptor.getPatternConcept_id4SSaNAQl5wN.invoke(SNodeOperations.as(enclosingNode, CONCEPTS.TransformStatement$ZW))));
+      SPropertyOperations.assign(newNode, PROPS.forceMultiLine$U3QH, true);
     }
     private static SNode _quotation_createNode_md2x8h_a0a0a0a(Object parameter_1) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -38,7 +38,7 @@ public class TransformStatement {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WRt7 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink parameter$uR6p = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
   }
 
   private static final class CONCEPTS {
@@ -46,6 +46,6 @@ public class TransformStatement {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty forceMultiLine$sHyN = MetaAdapterFactory.getProperty(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0xc5cbfc0eeac457bL, "forceMultiLine");
+    /*package*/ static final SProperty forceMultiLine$U3QH = MetaAdapterFactory.getProperty(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0xc5cbfc0eeac457bL, "forceMultiLine");
   }
 }

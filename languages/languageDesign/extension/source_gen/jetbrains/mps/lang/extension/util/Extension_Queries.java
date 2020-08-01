@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Extension_Queries {
   public static SNode get_ret(SNode point) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(point, CONCEPTS.Extension$74, false, false), LINKS.extensionPoint$ODiV), LINKS.objectType$NJyf);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(point, CONCEPTS.Extension$74, false, false), LINKS.extensionPoint$w0a_), LINKS.objectType$41_h);
   }
 
   private static final class CONCEPTS {
@@ -20,7 +20,7 @@ public class Extension_Queries {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extensionPoint$ODiV = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x1c30c5b543be3b2L, 0x1c30c5b543be565L, "extensionPoint");
-    /*package*/ static final SContainmentLink objectType$NJyf = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
+    /*package*/ static final SReferenceLink extensionPoint$w0a_ = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x1c30c5b543be3b2L, 0x1c30c5b543be565L, "extensionPoint");
+    /*package*/ static final SContainmentLink objectType$41_h = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
   }
 }

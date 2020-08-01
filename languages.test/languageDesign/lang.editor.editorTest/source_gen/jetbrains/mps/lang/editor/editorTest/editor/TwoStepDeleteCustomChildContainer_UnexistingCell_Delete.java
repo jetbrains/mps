@@ -27,7 +27,7 @@ public class TwoStepDeleteCustomChildContainer_UnexistingCell_Delete {
         if (DeletionApproverUtil.approve(editorContext, node, "unexistingCell")) {
           return;
         }
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.child$T15a));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.child$BxvQ));
       }
 
     };
@@ -75,6 +75,6 @@ public class TwoStepDeleteCustomChildContainer_UnexistingCell_Delete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink child$T15a = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33a298L, "child");
+    /*package*/ static final SContainmentLink child$BxvQ = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33a298L, "child");
   }
 }

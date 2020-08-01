@@ -140,7 +140,7 @@ public class MultipleCatchClause_TransformationMenu extends TransformationMenuBa
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode parent = SNodeOperations.getParent(_context.getNode());
-      return SNodeOperations.isInstanceOf(parent, CONCEPTS.TryUniversalStatement$80) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parent, CONCEPTS.TryUniversalStatement$80), LINKS.catchClause$4PbB)).last() == _context.getNode();
+      return SNodeOperations.isInstanceOf(parent, CONCEPTS.TryUniversalStatement$80) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parent, CONCEPTS.TryUniversalStatement$80), LINKS.catchClause$lKBT)).last() == _context.getNode();
     }
 
     @NotNull
@@ -197,8 +197,8 @@ public class MultipleCatchClause_TransformationMenu extends TransformationMenuBa
         @Override
         public void execute(@NotNull String pattern) {
           SNode tryStatement = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.TryUniversalStatement$80);
-          SNodeFactoryOperations.setNewChild(tryStatement, LINKS.finallyClause$4P0X, null);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$4P0X), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNodeFactoryOperations.setNewChild(tryStatement, LINKS.finallyClause$lFtz, null);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$lFtz), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -233,7 +233,7 @@ public class MultipleCatchClause_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$4PbB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
-    /*package*/ static final SContainmentLink finallyClause$4P0X = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink catchClause$lKBT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
+    /*package*/ static final SContainmentLink finallyClause$lFtz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
   }
 }

@@ -67,7 +67,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   private EditorCell createTransactionalProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      SProperty property = PROPS.theProperty$70A$;
+      SProperty property = PROPS.theProperty$piFs;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       PropertyCellProvider provider = new PropertyCellProvider(myNode, property, getEditorContext());
       EditorCell_Property editorCell = null;
@@ -167,7 +167,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
         style.set(StyleAttributes.MAX_WIDTH, 10);
         style.set(StyleAttributes.MAX_WIDTH, _StyleParameter_QueryFunction_2eo8r0_a97a0());
         style.set(StyleAttributes.NAVIGATABLE_NODE, _StyleParameter_QueryFunction_2eo8r0_a08a0());
-        style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$buwj);
+        style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.navigable$zLDd);
         style.set(StyleAttributes.PARAMETERS_INFORMATION, new TestTargetParametersInformation());
         style.set(StyleAttributes.POSITION_CHILDREN, "next-line");
         style.set(StyleAttributes.POSITION, "indented");
@@ -353,7 +353,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   private EditorCell createTransactionalProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      SProperty property = PROPS.theProperty$70A$;
+      SProperty property = PROPS.theProperty$piFs;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       PropertyCellProvider provider = new PropertyCellProvider(myNode, property, getEditorContext());
       EditorCell_Property editorCell = null;
@@ -389,10 +389,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty theProperty$70A$ = MetaAdapterFactory.getProperty(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531aadcccL, 0xbde89531aae3a9L, "theProperty");
+    /*package*/ static final SProperty theProperty$piFs = MetaAdapterFactory.getProperty(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531aadcccL, 0xbde89531aae3a9L, "theProperty");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink navigable$buwj = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
+    /*package*/ static final SReferenceLink navigable$zLDd = MetaAdapterFactory.getReferenceLink(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, 0xbde895319b644cL, "navigable");
   }
 }

@@ -17,7 +17,7 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return (String) BeanPropertyBuilder__BehaviorDescriptor.getPropertyName_id2kIZjjSEvS7.invoke(SNodeOperations.asSConcept(CONCEPTS.BeanPropertyBuilder$T), SPropertyOperations.getString(targetNode, PROPS.name$tAp1));
+      return (String) BeanPropertyBuilder__BehaviorDescriptor.getPropertyName_id2kIZjjSEvS7.invoke(SNodeOperations.asSConcept(CONCEPTS.BeanPropertyBuilder$T), SPropertyOperations.getString(targetNode, PROPS.name$lA7v));
     }
   };
 
@@ -26,6 +26,6 @@ public class PresentationProviders {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

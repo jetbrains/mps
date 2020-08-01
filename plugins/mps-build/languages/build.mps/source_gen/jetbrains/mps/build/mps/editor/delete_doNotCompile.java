@@ -26,7 +26,7 @@ public class delete_doNotCompile {
         if (DeletionApproverUtil.approve(editorContext, node, "doNotCompile")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.doNotCompile$13Sd, false);
+        SPropertyOperations.assign(node, PROPS.doNotCompile$wSej, false);
       }
 
     };
@@ -74,6 +74,6 @@ public class delete_doNotCompile {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty doNotCompile$13Sd = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
+    /*package*/ static final SProperty doNotCompile$wSej = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
   }
 }

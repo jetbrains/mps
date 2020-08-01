@@ -92,11 +92,11 @@ public class RunMigrationScripts_Action extends BaseAction {
         ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), RunMigrationScripts_Action.this.global);
         allScripts.value = ListSequence.fromList(menuBuilder.getAllScripts()).sort(new ISelector<SNode, String>() {
           public String select(SNode it) {
-            return (SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$wKbU)) == null ? "" : SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$wKbU)));
+            return (SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$RlL6)) == null ? "" : SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$RlL6)));
           }
         }, true).alsoSort(new ISelector<SNode, String>() {
           public String select(SNode it) {
-            return (SPropertyOperations.getString(it, PROPS.toBuild$wKcS) == null ? "" : SPropertyOperations.getString(it, PROPS.toBuild$wKcS));
+            return (SPropertyOperations.getString(it, PROPS.toBuild$Rmf8) == null ? "" : SPropertyOperations.getString(it, PROPS.toBuild$Rmf8));
           }
         }, true).select(new ISelector<SNode, SNodeReference>() {
           public SNodeReference select(SNode it) {
@@ -139,8 +139,8 @@ public class RunMigrationScripts_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty type$wKbU = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type");
-    /*package*/ static final SProperty toBuild$wKcS = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081155L, "toBuild");
+    /*package*/ static final SProperty type$RlL6 = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type");
+    /*package*/ static final SProperty toBuild$Rmf8 = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081155L, "toBuild");
   }
 
   private static final class CONCEPTS {

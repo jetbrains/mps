@@ -152,7 +152,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode section = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.BuildLayout_JarManifest_Section$zw, null);
-            SNodeFactoryOperations.setNewChild(section, LINKS.name$e370, null);
+            SNodeFactoryOperations.setNewChild(section, LINKS.name$Nwp0, null);
             return section;
           }
 
@@ -242,9 +242,9 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
             } else {
               name = pattern;
             }
-            SLinkOperations.setTarget(newInitializedNode, LINKS.name$OJj0, createBuildStringNotEmpty_aabwkk_a0a4a0a1a(name));
+            SLinkOperations.setTarget(newInitializedNode, LINKS.name$yUd0, createBuildStringNotEmpty_aabwkk_a0a4a0a1a(name));
             if ((value != null && value.length() > 0)) {
-              SLinkOperations.setTarget(newInitializedNode, LINKS.value$OJtE, createBuildStringNotEmpty_aabwkk_a0a0a5a0a1a(value));
+              SLinkOperations.setTarget(newInitializedNode, LINKS.value$yZnm, createBuildStringNotEmpty_aabwkk_a0a0a5a0a1a(value));
             }
             return newInitializedNode;
           }
@@ -322,16 +322,16 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
   private static SNode createBuildStringNotEmpty_aabwkk_a0a4a0a1a(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$FZ);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.parts$aVY3).init(CONCEPTS.BuildTextStringPart$xk);
-      n1.setProperty(PROPS.text$2p89, p0);
+      SNodeBuilder n1 = n0.forChild(LINKS.parts$j33t).init(CONCEPTS.BuildTextStringPart$xk);
+      n1.setProperty(PROPS.text$aaWn, p0);
     }
     return n0.getResult();
   }
   private static SNode createBuildStringNotEmpty_aabwkk_a0a0a5a0a1a(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$FZ);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.parts$aVY3).init(CONCEPTS.BuildTextStringPart$xk);
-      n1.setProperty(PROPS.text$2p89, p0);
+      SNodeBuilder n1 = n0.forChild(LINKS.parts$j33t).init(CONCEPTS.BuildTextStringPart$xk);
+      n1.setProperty(PROPS.text$aaWn, p0);
     }
     return n0.getResult();
   }
@@ -346,13 +346,13 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink name$e370 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf47d7bL, 0x5ee439f214c0c758L, "name");
-    /*package*/ static final SContainmentLink name$OJj0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f31L, "name");
-    /*package*/ static final SContainmentLink value$OJtE = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f32L, "value");
-    /*package*/ static final SContainmentLink parts$aVY3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
+    /*package*/ static final SContainmentLink name$Nwp0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf47d7bL, 0x5ee439f214c0c758L, "name");
+    /*package*/ static final SContainmentLink name$yUd0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f31L, "name");
+    /*package*/ static final SContainmentLink value$yZnm = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f32L, "value");
+    /*package*/ static final SContainmentLink parts$j33t = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$2p89 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 }

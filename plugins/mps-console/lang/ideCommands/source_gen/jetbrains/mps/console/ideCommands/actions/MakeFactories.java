@@ -15,13 +15,13 @@ public class MakeFactories {
   public static class NodeFactory_5308946314782063424 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbsractMake$Fd)) {
-        SLinkOperations.setTarget(newNode, LINKS.argument$fm9z, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbsractMake$Fd), LINKS.argument$fm9z));
+        SLinkOperations.setTarget(newNode, LINKS.argument$rIBX, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbsractMake$Fd), LINKS.argument$rIBX));
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$fm9z = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x276b371e77c0a29aL, 0x276b371e77c0a2f0L, "argument");
+    /*package*/ static final SContainmentLink argument$rIBX = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x276b371e77c0a29aL, 0x276b371e77c0a2f0L, "argument");
   }
 
   private static final class CONCEPTS {

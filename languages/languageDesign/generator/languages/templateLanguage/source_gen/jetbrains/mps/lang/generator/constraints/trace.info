@@ -29,7 +29,7 @@
       <node id="1048903277991450450" at="54,0,55,0" concept="8" trace="breakingNode_5nbkev_a0a0a0a0a1a0a0a0c" />
       <node id="1048903277991450450" at="57,0,58,0" concept="8" trace="TemplateArgumentVarRefExpression2$mg" />
       <node id="1048903277991450450" at="58,0,59,0" concept="8" trace="VarDeclaration$SX" />
-      <node id="1048903277991450450" at="62,0,63,0" concept="8" trace="vardecl$pgS0" />
+      <node id="1048903277991450450" at="62,0,63,0" concept="8" trace="vardecl$fb80" />
       <node id="1048903277991450450" at="23,0,26,0" concept="0" trace="TemplateArgumentVarRefExpression2_Constraints#()V" />
       <node id="1048903277991450451" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="1048903277991450451" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -75,7 +75,7 @@
       <node id="1213104837507" at="50,42,51,22" concept="5" />
       <node id="1213104837507" at="53,0,54,0" concept="8" trace="breakingNode_6wzx82_a0a0a0a0a1a0a0a0c" />
       <node id="1213104837507" at="56,0,57,0" concept="8" trace="Root_MappingRule$81" />
-      <node id="1213104837507" at="60,0,61,0" concept="8" trace="template$FjUa" />
+      <node id="1213104837507" at="60,0,61,0" concept="8" trace="template$YDaQ" />
       <node id="1213104837507" at="23,0,26,0" concept="0" trace="Root_MappingRule_Constraints#()V" />
       <node id="1213104837919" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104837919" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -119,7 +119,7 @@
       <node id="1213104840277" at="50,42,51,22" concept="5" />
       <node id="1213104840277" at="53,0,54,0" concept="8" trace="breakingNode_j7rnig_a0a0a0a0a1a0a0a0c" />
       <node id="1213104840277" at="56,0,57,0" concept="8" trace="CreateRootRule$Pj" />
-      <node id="1213104840277" at="60,0,61,0" concept="8" trace="templateNode$RXGY" />
+      <node id="1213104840277" at="60,0,61,0" concept="8" trace="templateNode$6SM2" />
       <node id="1213104840277" at="23,0,26,0" concept="0" trace="CreateRootRule_Constraints#()V" />
       <node id="1213104840278" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104840278" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -207,7 +207,7 @@
       <node id="4426797670061486210" at="54,0,55,0" concept="8" trace="breakingNode_k799s7_a0a0a0a0a1a0a0a0c" />
       <node id="4426797670061486210" at="57,0,58,0" concept="8" trace="TemplateArgumentVariableRefExpression$mg" />
       <node id="4426797670061486210" at="58,0,59,0" concept="8" trace="VarMacro$nM" />
-      <node id="4426797670061486210" at="62,0,63,0" concept="8" trace="varmacro$CKSt" />
+      <node id="4426797670061486210" at="62,0,63,0" concept="8" trace="varmacro$JFm3" />
       <node id="4426797670061486210" at="23,0,26,0" concept="0" trace="TemplateArgumentVariableRefExpression_Constraints#()V" />
       <node id="4426797670061489728" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="4426797670061489728" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -266,8 +266,8 @@
       <node id="4665309944889434722" at="94,0,95,0" concept="8" trace="PatternReduction_MappingRule$g5" />
       <node id="4665309944889434722" at="95,0,96,0" concept="8" trace="PatternVariableDeclaration$Ma" />
       <node id="4665309944889434722" at="96,0,97,0" concept="8" trace="ITemplateCall$uv" />
-      <node id="4665309944889434722" at="100,0,101,0" concept="8" trace="patternVarDecl$d45m" />
-      <node id="4665309944889434722" at="101,0,102,0" concept="8" trace="pattern$WUul" />
+      <node id="4665309944889434722" at="100,0,101,0" concept="8" trace="patternVarDecl$kY_E" />
+      <node id="4665309944889434722" at="101,0,102,0" concept="8" trace="pattern$wkGb" />
       <node id="4665309944889434722" at="36,0,39,0" concept="0" trace="TemplateArgumentPatternVarRefExpression_Constraints#()V" />
       <node id="4665309944889434722" at="46,0,49,9" concept="2" />
       <node id="6836281137582788223" at="73,140,76,13" concept="2" />
@@ -344,8 +344,8 @@
       <node id="4816349095291149808" at="69,0,70,0" concept="8" trace="TemplateArgumentPropertyPatternRefExpression$PN" />
       <node id="4816349095291149808" at="70,0,71,0" concept="8" trace="PatternReduction_MappingRule$g5" />
       <node id="4816349095291149808" at="71,0,72,0" concept="8" trace="PropertyPatternVariableDeclaration$Xj" />
-      <node id="4816349095291149808" at="75,0,76,0" concept="8" trace="propertyPattern$rlsv" />
-      <node id="4816349095291149808" at="76,0,77,0" concept="8" trace="pattern$WUul" />
+      <node id="4816349095291149808" at="75,0,76,0" concept="8" trace="propertyPattern$foN1" />
+      <node id="4816349095291149808" at="76,0,77,0" concept="8" trace="pattern$wkGb" />
       <node id="4816349095291149808" at="31,0,34,0" concept="0" trace="TemplateArgumentPropertyPatternRefExpression_Constraints#()V" />
       <node id="6836281137582788099" at="53,140,56,13" concept="2" />
       <node id="4816349095291149811" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -399,8 +399,8 @@
       <node id="4816349095291149869" at="69,0,70,0" concept="8" trace="TemplateArgumentLinkPatternRefExpression$VM" />
       <node id="4816349095291149869" at="70,0,71,0" concept="8" trace="PatternReduction_MappingRule$g5" />
       <node id="4816349095291149869" at="71,0,72,0" concept="8" trace="LinkPatternVariableDeclaration$UB" />
-      <node id="4816349095291149869" at="75,0,76,0" concept="8" trace="patternVar$rlBv" />
-      <node id="4816349095291149869" at="76,0,77,0" concept="8" trace="pattern$WUul" />
+      <node id="4816349095291149869" at="75,0,76,0" concept="8" trace="patternVar$fu81" />
+      <node id="4816349095291149869" at="76,0,77,0" concept="8" trace="pattern$wkGb" />
       <node id="4816349095291149869" at="31,0,34,0" concept="0" trace="TemplateArgumentLinkPatternRefExpression_Constraints#()V" />
       <node id="6836281137582788635" at="53,140,56,13" concept="2" />
       <node id="4816349095291149870" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -451,8 +451,8 @@
       <node id="5005282049925940094" at="62,0,63,0" concept="8" trace="breakingNode_teh60w_a0a0a0a0a1a0a0a0c" />
       <node id="5005282049925940094" at="65,0,66,0" concept="8" trace="TemplateArgumentParameterExpression$SR" />
       <node id="5005282049925940094" at="66,0,67,0" concept="8" trace="IParameterizedTemplate$qA" />
-      <node id="5005282049925940094" at="70,0,71,0" concept="8" trace="parameter$5XOw" />
-      <node id="5005282049925940094" at="71,0,72,0" concept="8" trace="parameter$AB01" />
+      <node id="5005282049925940094" at="70,0,71,0" concept="8" trace="parameter$SWrw" />
+      <node id="5005282049925940094" at="71,0,72,0" concept="8" trace="parameter$GT0v" />
       <node id="5005282049925940094" at="29,0,32,0" concept="0" trace="TemplateArgumentParameterExpression_Constraints#()V" />
       <node id="6836281137582788793" at="49,80,52,13" concept="2" />
       <node id="5005282049925940095" at="36,0,40,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -517,7 +517,7 @@
       <node id="5858775738865267759" at="51,42,52,22" concept="5" />
       <node id="5858775738865267759" at="54,0,55,0" concept="8" trace="breakingNode_phmuaq_a0a0a0a0a1a0a0a0c" />
       <node id="5858775738865267759" at="57,0,58,0" concept="8" trace="TemplateSwitch$BT" />
-      <node id="5858775738865267759" at="61,0,62,0" concept="8" trace="modifiedSwitch$$U27" />
+      <node id="5858775738865267759" at="61,0,62,0" concept="8" trace="modifiedSwitch$S71p" />
       <node id="5858775738865267759" at="24,0,27,0" concept="0" trace="TemplateSwitch_Constraints#()V" />
       <node id="5858775738865268930" at="31,0,35,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="5858775738865268930" at="39,0,43,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -558,7 +558,7 @@
       <node id="7941504602773013620" at="22,131,23,42" concept="1" />
       <node id="7941504602772991213" at="23,42,24,22" concept="5" />
       <node id="7941504602772991213" at="28,0,29,0" concept="8" trace="GeneratorParameterReference$GX" />
-      <node id="7941504602772991213" at="32,0,33,0" concept="8" trace="declaration$lMsa" />
+      <node id="7941504602772991213" at="32,0,33,0" concept="8" trace="declaration$zrCQ" />
       <node id="7941504602772991213" at="15,0,18,0" concept="0" trace="GeneratorParameterReference_Constraints#()V" />
       <node id="7941504602772991213" at="19,0,26,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="7941504602772991213" at="15,52,16,51" />
@@ -595,9 +595,9 @@
       <node id="8612733435392950225" at="104,0,105,0" concept="8" trace="ReferenceReductionRule$Lk" />
       <node id="8612733435392950225" at="105,0,106,0" concept="8" trace="LinkDeclaration$bA" />
       <node id="8612733435392950225" at="106,0,107,0" concept="8" trace="AbstractConceptDeclaration$UN" />
-      <node id="8612733435392950225" at="110,0,111,0" concept="8" trace="link$Qix9" />
-      <node id="8612733435392950225" at="111,0,112,0" concept="8" trace="applicableConcept$mvvS" />
-      <node id="8612733435392950225" at="115,0,116,0" concept="8" trace="metaClass$tHD7" />
+      <node id="8612733435392950225" at="110,0,111,0" concept="8" trace="link$iY3n" />
+      <node id="8612733435392950225" at="111,0,112,0" concept="8" trace="applicableConcept$Tgs8" />
+      <node id="8612733435392950225" at="115,0,116,0" concept="8" trace="metaClass$p6Up" />
       <node id="8612733435392950225" at="33,0,36,0" concept="0" trace="ReferenceReductionRule_Constraints#()V" />
       <node id="518316622382818419" at="79,80,82,13" concept="2" />
       <node id="8612733435392950226" at="40,0,44,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -680,7 +680,7 @@
       <node id="982871510068000160" at="54,0,55,0" concept="8" trace="breakingNode_px6kru_a0a0a0a0a1a0a0a0c" />
       <node id="982871510068000160" at="57,0,58,0" concept="8" trace="TemplateSwitchMacro$o0" />
       <node id="982871510068000160" at="58,0,59,0" concept="8" trace="TemplateSwitch$BT" />
-      <node id="982871510068000160" at="62,0,63,0" concept="8" trace="template$yiTA" />
+      <node id="982871510068000160" at="62,0,63,0" concept="8" trace="template$B9Tq" />
       <node id="982871510068000160" at="24,0,27,0" concept="0" trace="TemplateSwitchMacro_Constraints#()V" />
       <node id="982871510077722149" at="31,0,35,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="982871510077722149" at="39,0,43,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -725,7 +725,7 @@
       <node id="982871510068191901" at="54,0,55,0" concept="8" trace="breakingNode_thw7lh_a0a0a0a0a1a0a0a0c" />
       <node id="982871510068191901" at="57,0,58,0" concept="8" trace="TemplateCallMacro$Iu" />
       <node id="982871510068191901" at="58,0,59,0" concept="8" trace="TemplateDeclaration$q0" />
-      <node id="982871510068191901" at="62,0,63,0" concept="8" trace="template$yiTA" />
+      <node id="982871510068191901" at="62,0,63,0" concept="8" trace="template$B9Tq" />
       <node id="982871510068191901" at="24,0,27,0" concept="0" trace="TemplateCallMacro_Constraints#()V" />
       <node id="982871510077721475" at="31,0,35,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="982871510077721475" at="39,0,43,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -770,7 +770,7 @@
       <node id="982871510068195081" at="54,0,55,0" concept="8" trace="breakingNode_ujnbk1_a0a0a0a0a1a0a0a0c" />
       <node id="982871510068195081" at="57,0,58,0" concept="8" trace="TemplateDeclarationReference$bd" />
       <node id="982871510068195081" at="58,0,59,0" concept="8" trace="TemplateDeclaration$q0" />
-      <node id="982871510068195081" at="62,0,63,0" concept="8" trace="template$yiTA" />
+      <node id="982871510068195081" at="62,0,63,0" concept="8" trace="template$B9Tq" />
       <node id="982871510068195081" at="24,0,27,0" concept="0" trace="TemplateDeclarationReference_Constraints#()V" />
       <node id="982871510077720745" at="31,0,35,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="982871510077720745" at="39,0,43,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

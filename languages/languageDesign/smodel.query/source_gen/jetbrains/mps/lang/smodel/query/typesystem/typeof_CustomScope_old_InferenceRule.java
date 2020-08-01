@@ -23,7 +23,7 @@ public class typeof_CustomScope_old_InferenceRule extends AbstractInferenceRule_
   public void applyRule(final SNode customScope, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(customScope, LINKS.scope_old$RvyT);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(customScope, LINKS.scope_old$ShTB);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "3492877759611777799", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "3492877759611770308", true), (SNode) _quotation_createNode_u3kasp_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
@@ -47,7 +47,7 @@ public class typeof_CustomScope_old_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink scope_old$RvyT = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L, 0x307931d0f985950eL, "scope_old");
+    /*package*/ static final SContainmentLink scope_old$ShTB = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L, 0x307931d0f985950eL, "scope_old");
   }
 
   private static final class CONCEPTS {

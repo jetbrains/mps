@@ -53,8 +53,8 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
       for (SNode propertyMacro : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyMacro$wt, false))) {
         SNode newProperty = migration.migrateEnumPropertyAttribute(propertyMacro);
         if (newProperty != null) {
-          SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
-          migration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyMacro, LINKS.propertyValueFunction$AFdB));
+          SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$Dbgb), CONCEPTS.EnumerationDeclaration$rG);
+          migration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyMacro, LINKS.propertyValueFunction$IV_T));
         }
       }
       migration.optimize();
@@ -66,7 +66,7 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
-          return SLinkOperations.getTarget(usage, LINKS.propertyPattern$rlsv);
+          return SLinkOperations.getTarget(usage, LINKS.propertyPattern$foN1);
         }
         @Override
         protected void migrateRawValue(SNode usage, SNode datatype) {
@@ -109,9 +109,9 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
 
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SContainmentLink propertyValueFunction$AFdB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, 0x10fe3b4023fL, "propertyValueFunction");
-    /*package*/ static final SReferenceLink propertyPattern$rlsv = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink propertyValueFunction$IV_T = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, 0x10fe3b4023fL, "propertyValueFunction");
+    /*package*/ static final SReferenceLink propertyPattern$foN1 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
   }
 
   private static final class CONCEPTS {

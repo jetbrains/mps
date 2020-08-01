@@ -54,7 +54,7 @@ public class GroupAccessOperation_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_5henvu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.GroupAccessOperation$HL, LINKS.group$J_2a);
+      super((SAbstractConcept) CONCEPTS.GroupAccessOperation$HL, LINKS.group$2W2Q);
     }
     @NotNull
     @Override
@@ -126,6 +126,6 @@ public class GroupAccessOperation_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink group$J_2a = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d17d74L, 0x2c7cd89ac8d17d76L, "group");
+    /*package*/ static final SReferenceLink group$2W2Q = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d17d74L, 0x2c7cd89ac8d17d76L, "group");
   }
 }

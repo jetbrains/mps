@@ -98,7 +98,7 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_bjuler_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.specializedLink$3uH0) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.specializedLink$FRN0) == null);
     }
 
     @NotNull
@@ -127,7 +127,7 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-        final boolean aggregation = SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), PROPS.metaClass$tHD7), 0xfc6f4e95b9L);
+        final boolean aggregation = SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
         List<SNode> result = new ArrayList<SNode>();
         SNode enclosingConcept = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.AbstractConceptDeclaration$UN, true, false);
         List<SNode> directSupers = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(enclosingConcept);
@@ -136,9 +136,9 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
           ListSequence.fromList(result).addSequence(ListSequence.fromList(links).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               if (aggregation) {
-                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b9L);
+                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
               }
-              return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b8L);
+              return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b8L);
             }
           }));
         }
@@ -193,12 +193,12 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
           @Nullable
           @Override
           public String getLabelText(String pattern) {
-            return "specializes " + SPropertyOperations.getString(myParameterObject, PROPS.role$r_O$);
+            return "specializes " + SPropertyOperations.getString(myParameterObject, PROPS.role$nkts);
           }
 
           @Override
           public void execute(@NotNull String pattern) {
-            SLinkOperations.setTarget(_context.getNode(), LINKS.specializedLink$3uH0, myParameterObject);
+            SLinkOperations.setTarget(_context.getNode(), LINKS.specializedLink$FRN0, myParameterObject);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 
@@ -226,7 +226,7 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_bjuler_b1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.unordered$A9T6));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.unordered$uMDU));
     }
 
     @NotNull
@@ -282,7 +282,7 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.unordered$A9T6, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.unordered$uMDU, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -313,12 +313,12 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink specializedLink$3uH0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
+    /*package*/ static final SReferenceLink specializedLink$FRN0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty unordered$A9T6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x213ed46fe94fc232L, "unordered");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty unordered$uMDU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x213ed46fe94fc232L, "unordered");
   }
 }

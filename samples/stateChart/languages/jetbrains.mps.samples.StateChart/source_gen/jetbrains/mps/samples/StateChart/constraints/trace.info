@@ -28,7 +28,7 @@
       <node id="1480846759627689859" at="54,119,55,71" concept="1" />
       <node id="1480846759627689858" at="55,71,56,22" concept="5" />
       <node id="1480846759627689858" at="60,0,61,0" concept="6" trace="State$J2" />
-      <node id="1480846759627689858" at="64,0,65,0" concept="6" trace="isInitial$lrt8" />
+      <node id="1480846759627689858" at="64,0,65,0" concept="6" trace="isInitial$oj6S" />
       <node id="1480846759627689858" at="23,0,26,0" concept="0" trace="State_Constraints#()V" />
       <node id="1480846759627689859" at="28,0,31,0" concept="0" trace="IsInitial_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1480846759627689859" at="38,100,41,7" concept="2" />
@@ -88,7 +88,7 @@
       <node id="3314463010038801848" at="54,0,55,0" concept="6" trace="breakingNode_l5zdox_a0a0a0a0a1a0a0a0c" />
       <node id="3314463010038801848" at="57,0,58,0" concept="6" trace="Raise$7a" />
       <node id="3314463010038801848" at="58,0,59,0" concept="6" trace="Event$H_" />
-      <node id="3314463010038801848" at="62,0,63,0" concept="6" trace="event$zTV0" />
+      <node id="3314463010038801848" at="62,0,63,0" concept="6" trace="event$p3_0" />
       <node id="3314463010038801848" at="23,0,26,0" concept="0" trace="Raise_Constraints#()V" />
       <node id="3314463010038801849" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="3314463010038801849" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -160,10 +160,10 @@
       <node id="6813679070098860489" at="98,0,99,0" concept="6" trace="Stateful$8" />
       <node id="6813679070098860489" at="99,0,100,0" concept="6" trace="Event$H_" />
       <node id="6813679070098860489" at="100,0,101,0" concept="6" trace="State$J2" />
-      <node id="6813679070098860489" at="104,0,105,0" concept="6" trace="trigger$m8b0" />
-      <node id="6813679070098860489" at="105,0,106,0" concept="6" trace="availableTriggers$AtTV" />
-      <node id="6813679070098860489" at="106,0,107,0" concept="6" trace="target$m8bY" />
-      <node id="6813679070098860489" at="110,0,111,0" concept="6" trace="name$tAp1" />
+      <node id="6813679070098860489" at="104,0,105,0" concept="6" trace="trigger$HXl0" />
+      <node id="6813679070098860489" at="105,0,106,0" concept="6" trace="availableTriggers$Cv3_" />
+      <node id="6813679070098860489" at="106,0,107,0" concept="6" trace="target$HXN2" />
+      <node id="6813679070098860489" at="110,0,111,0" concept="6" trace="name$lA7v" />
       <node id="6813679070098860489" at="32,0,35,0" concept="0" trace="Transition_Constraints#()V" />
       <node id="6813679070099059992" at="54,0,57,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="6813679070098891436" at="59,0,62,0" concept="3" trace="getName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

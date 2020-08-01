@@ -31,12 +31,12 @@ public class PrecedenceUtil {
         break;
       }
       SContainmentLink targetContainingLink = SNodeOperations.getContainingLink(targetNode);
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$vf) && Objects.equals(targetContainingLink, LINKS.leftExpression$rxLZ)) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$vf) && Objects.equals(targetContainingLink, LINKS.leftExpression$lndx)) {
         // if parent expression is BinaryOperation and target is left child of it 
         // then we should rather transform current target 
         break;
       }
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a) && Objects.equals(targetContainingLink, LINKS.operand$Lcrr)) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a) && Objects.equals(targetContainingLink, LINKS.operand$P1i5)) {
         // if parent expression is DotExpression and target is operand ("left" part of the expression) 
         // then we should rather transform current target 
         break;
@@ -56,7 +56,7 @@ public class PrecedenceUtil {
         // same with ParenthesizedExpression 
         break;
       }
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$vf) && Objects.equals(SNodeOperations.getContainingLink(targetNode), LINKS.rightExpression$rxBl)) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$vf) && Objects.equals(SNodeOperations.getContainingLink(targetNode), LINKS.rightExpression$li3b)) {
         // if parent expression is BinaryOperation having higher priority and target is right child of it 
         // then we should rather transform current target and add additional parenthesis around resulting expression 
         break;
@@ -71,16 +71,16 @@ public class PrecedenceUtil {
   public static SNode parenthesiseIfNecessary(@NotNull SNode contextNode) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(contextNode), CONCEPTS.BinaryOperation$vf)) {
       SNode parentBinaryOperation = SNodeOperations.cast(SNodeOperations.getParent(contextNode), CONCEPTS.BinaryOperation$vf);
-      if (Objects.equals(SNodeOperations.getContainingLink(contextNode), LINKS.rightExpression$rxBl) && isHigherPriority(parentBinaryOperation, contextNode)) {
+      if (Objects.equals(SNodeOperations.getContainingLink(contextNode), LINKS.rightExpression$li3b) && isHigherPriority(parentBinaryOperation, contextNode)) {
         SNode result = SNodeFactoryOperations.replaceWithNewChild(contextNode, CONCEPTS.ParenthesizedExpression$vE);
-        SLinkOperations.setTarget(result, LINKS.expression$4_F0, contextNode);
+        SLinkOperations.setTarget(result, LINKS.expression$efP0, contextNode);
         return result;
       }
     } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(contextNode), CONCEPTS.CastExpression$7m)) {
       SNode parentCastExpression = SNodeOperations.cast(SNodeOperations.getParent(contextNode), CONCEPTS.CastExpression$7m);
       if (PrecedenceUtil.needsParensInsideCastExpression(parentCastExpression)) {
         SNode result = SNodeFactoryOperations.replaceWithNewChild(contextNode, CONCEPTS.ParenthesizedExpression$vE);
-        SLinkOperations.setTarget(result, LINKS.expression$4_F0, contextNode);
+        SLinkOperations.setTarget(result, LINKS.expression$efP0, contextNode);
         return result;
       }
     }
@@ -88,24 +88,24 @@ public class PrecedenceUtil {
   }
 
   public static boolean needsParensInsideCastExpression(SNode castExpression) {
-    SNode targetExpr = SLinkOperations.getTarget(castExpression, LINKS.expression$8QPv);
+    SNode targetExpr = SLinkOperations.getTarget(castExpression, LINKS.expression$izU1);
     return !(((targetExpr == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(targetExpr))) || SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.GenericNewExpression$ev) || (!(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.TernaryOperatorExpression$HC)) && !(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.BinaryOperation$vf))) || PrecedenceUtil.isHigherPriority(targetExpr, castExpression)));
 
   }
 
   public static boolean needsParensAroundNotExpression(SNode notExpression) {
-    return !(((SLinkOperations.getTarget(notExpression, LINKS.expression$bUD_) == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(notExpression, LINKS.expression$bUD_)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$bUD_), CONCEPTS.TernaryOperatorExpression$HC)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$bUD_), CONCEPTS.BinaryOperation$vf))) || PrecedenceUtil.isHigherPriority(SLinkOperations.getTarget(notExpression, LINKS.expression$bUD_), notExpression)));
+    return !(((SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V) == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V), CONCEPTS.TernaryOperatorExpression$HC)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V), CONCEPTS.BinaryOperation$vf))) || PrecedenceUtil.isHigherPriority(SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V), notExpression)));
 
   }
 
   public static SNode findDesiredInstanceOfExpressionRoot(SNode instanceOfExpression) {
 
-    if ((SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$zxNn) == null) || (SNodeOperations.getParent(instanceOfExpression) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.BinaryOperation$vf)) || !(SNodeOperations.hasRole(instanceOfExpression, LINKS.rightExpression$rxBl)) || !(PrecedenceUtil.isHigherPriority(SNodeOperations.cast(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.Expression$TP), instanceOfExpression))) {
+    if ((SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$dnS9) == null) || (SNodeOperations.getParent(instanceOfExpression) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.BinaryOperation$vf)) || !(SNodeOperations.hasRole(instanceOfExpression, LINKS.rightExpression$li3b)) || !(PrecedenceUtil.isHigherPriority(SNodeOperations.cast(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.Expression$TP), instanceOfExpression))) {
       return null;
     }
     SNode currentParent = SNodeOperations.cast(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.Expression$TP);
 
-    while ((SNodeOperations.getParent(currentParent) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentParent), CONCEPTS.BinaryOperation$vf) && SNodeOperations.hasRole(currentParent, LINKS.rightExpression$rxBl) && PrecedenceUtil.isHigherPriority(SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.Expression$TP), instanceOfExpression)) {
+    while ((SNodeOperations.getParent(currentParent) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentParent), CONCEPTS.BinaryOperation$vf) && SNodeOperations.hasRole(currentParent, LINKS.rightExpression$li3b) && PrecedenceUtil.isHigherPriority(SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.Expression$TP), instanceOfExpression)) {
       currentParent = SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.Expression$TP);
     }
     return currentParent;
@@ -190,23 +190,23 @@ public class PrecedenceUtil {
     SNode nodeToProcess = PrecedenceUtil.getTargetForLeftTransform(sourceNode, result);
     // since BinaryOperations are left-associative we should perform complex LT then 
     // BinaryOperations is "rightExpression" child of another BinaryOperations with same priority 
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$vf) && Objects.equals(SNodeOperations.getContainingLink(nodeToProcess), LINKS.rightExpression$rxBl)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$vf) && Objects.equals(SNodeOperations.getContainingLink(nodeToProcess), LINKS.rightExpression$li3b)) {
       SNode parentBinaryOperation = SNodeOperations.cast(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$vf);
       if (PrecedenceUtil.isSamePriority(parentBinaryOperation, result)) {
         SNodeOperations.replaceWithAnother(parentBinaryOperation, result);
-        SLinkOperations.setTarget(result, LINKS.rightExpression$rxBl, nodeToProcess);
-        SLinkOperations.setTarget(result, LINKS.leftExpression$rxLZ, parentBinaryOperation);
+        SLinkOperations.setTarget(result, LINKS.rightExpression$li3b, nodeToProcess);
+        SLinkOperations.setTarget(result, LINKS.leftExpression$lndx, parentBinaryOperation);
         return result;
       }
     }
     SNodeOperations.replaceWithAnother(nodeToProcess, result);
-    SLinkOperations.setTarget(result, LINKS.rightExpression$rxBl, nodeToProcess);
+    SLinkOperations.setTarget(result, LINKS.rightExpression$li3b, nodeToProcess);
     PrecedenceUtil.parenthesiseIfNecessary(result);
     return result;
   }
   public static SNode processRightTransform(SNode sourceNode, SNode result) {
     SNodeOperations.replaceWithAnother(sourceNode, result);
-    SLinkOperations.setTarget(result, LINKS.leftExpression$rxLZ, sourceNode);
+    SLinkOperations.setTarget(result, LINKS.leftExpression$lndx, sourceNode);
     ParenthesisUtil.checkOperationWRTPriority(result);
     return result;
   }
@@ -270,12 +270,12 @@ public class PrecedenceUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink leftExpression$zxNn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
   }
 }

@@ -41,12 +41,12 @@ public final class NodeBuilderInitLink__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ConceptDeclaration$qU)) {
-      return Scopes.forSubconcepts(__thisNode__, SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.link$ckAZ), LINKS.target$egp8));
+      return Scopes.forSubconcepts(__thisNode__, SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.link$XYSx), LINKS.target$TWaS));
     }
     return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child);
   }
   /*package*/ static SNode getInitValue_id1o$2SUuvJqx(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.initValue$UJfh);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.initValue$sSpf);
   }
 
   /*package*/ NodeBuilderInitLink__BehaviorDescriptor() {
@@ -98,9 +98,9 @@ public final class NodeBuilderInitLink__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$ckAZ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SContainmentLink initValue$UJfh = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
+    /*package*/ static final SReferenceLink link$XYSx = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink initValue$sSpf = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
   }
 
   private static final class CONCEPTS {

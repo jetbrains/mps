@@ -51,13 +51,13 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static SNode createReference_idhEwJfME(@NotNull SNode __thisNode__) {
     SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-    SLinkOperations.setTarget(ref, LINKS.variableDeclaration$2ky6, __thisNode__);
+    SLinkOperations.setTarget(ref, LINKS.variableDeclaration$7WwU, __thisNode__);
     return ref;
   }
   /*package*/ static boolean isCanBeUnused_idhNVeX73(@NotNull SNode __thisNode__) {
     SNode method = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BaseMethodDeclaration$RR);
 
-    if (SPropertyOperations.getBoolean(method, PROPS.isFinal$I$Qu) && !((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasAnnotation_id3WDGf12DPy8.invoke(method, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override"))) || SNodeOperations.isInstanceOf(method, CONCEPTS.IVisible$6G) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SPropertyOperations.getBoolean(method, PROPS.isFinal$zQoy) && !((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasAnnotation_id3WDGf12DPy8.invoke(method, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Override"))) || SNodeOperations.isInstanceOf(method, CONCEPTS.IVisible$6G) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$6G), LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       return true;
     }
     return false;
@@ -77,16 +77,16 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
     return (settings.getParameterPrefix() == null ? "" : settings.getParameterPrefix());
   }
   /*package*/ static boolean hasAnnotation_id4LgT5De_n2I(@NotNull SNode __thisNode__, SNode annotation) {
-    for (SNode annotationInstance : SLinkOperations.getChildren(__thisNode__, LINKS.annotation$oVP4)) {
-      if (SLinkOperations.getTarget(annotationInstance, LINKS.annotation$zNxu) == annotation) {
+    for (SNode annotationInstance : SLinkOperations.getChildren(__thisNode__, LINKS.annotation$4YGW)) {
+      if (SLinkOperations.getTarget(annotationInstance, LINKS.annotation$lXdy) == annotation) {
         return true;
       }
     }
     return false;
   }
   /*package*/ static boolean hasAnnotation_id3WDGf12Eb7o(@NotNull SNode __thisNode__, SNodeReference annotation) {
-    for (SNode annotationInstance : SLinkOperations.getChildren(__thisNode__, LINKS.annotation$oVP4)) {
-      if (Objects.equals(SLinkOperations.getPointer(annotationInstance, LINKS.annotation$zNxu), annotation)) {
+    for (SNode annotationInstance : SLinkOperations.getChildren(__thisNode__, LINKS.annotation$4YGW)) {
+      if (Objects.equals(SLinkOperations.getPointer(annotationInstance, LINKS.annotation$lXdy), annotation)) {
         return true;
       }
     }
@@ -155,10 +155,10 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 
   private static final class CONCEPTS {
@@ -168,6 +168,6 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 }

@@ -267,7 +267,7 @@
       <scope id="2379134940425784781" at="47,0,56,0">
         <var name="_context" id="2379134940425784781" />
       </scope>
-      <unit id="3813896760028522124" at="48,331,52,5" name="jetbrains.mps.baseLanguage.doubleDispatch.generator.template.main.QueriesGenerated$1" />
+      <unit id="3813896760028522124" at="48,329,52,5" name="jetbrains.mps.baseLanguage.doubleDispatch.generator.template.main.QueriesGenerated$1" />
     </file>
   </root>
   <root nodeRef="r:9b747d6a-23f3-4201-9cdb-823e3b205a27(jetbrains.mps.baseLanguage.doubleDispatch.generator.template.main@generator)/4496691318496554848">
@@ -291,7 +291,7 @@
       <scope id="2403002034749657032" at="83,0,92,0">
         <var name="_context" id="2403002034749657032" />
       </scope>
-      <unit id="2379134940425235192" at="85,102,89,5" name="jetbrains.mps.baseLanguage.doubleDispatch.generator.template.main.QueriesGenerated$2" />
+      <unit id="2379134940425235192" at="85,100,89,5" name="jetbrains.mps.baseLanguage.doubleDispatch.generator.template.main.QueriesGenerated$2" />
     </file>
   </root>
 </debug-info>

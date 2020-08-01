@@ -40,7 +40,7 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
   public typeof_ClassCreator_InferenceRule() {
   }
   public void applyRule(final SNode creator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode cdecl = SLinkOperations.getTarget(creator, LINKS.baseMethodDeclaration$$A7i);
+    SNode cdecl = SLinkOperations.getTarget(creator, LINKS.baseMethodDeclaration$ItxI);
     if (cdecl == null) {
       return;
     }
@@ -49,13 +49,13 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
       return;
     }
 
-    if (!((ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$swNi)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$swNi)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).count()))) {
+    if (!((ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$NSPI)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$NSPI)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).count()))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(creator, "wrong number of type parameters", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1216200944338", null, errorTarget);
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$swNi)).any(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$NSPI)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.WildCardType$29);
       }
@@ -65,10 +65,10 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(creator, "can't instantiate wildcard type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2432481583491258359", null, errorTarget);
       }
     }
-    boolean creatingRawClass = ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$swNi)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).isNotEmpty();
+    boolean creatingRawClass = ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$NSPI)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).isNotEmpty();
 
-    for (SNode parameter : SLinkOperations.getChildren(creator, LINKS.typeParameter$swNi)) {
-      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(parameter, SLinkOperations.getTarget(_quotation_createNode_4w0o2k_a1a0a0a0j0b(), LINKS.descriptor$ZkDR))))) {
+    for (SNode parameter : SLinkOperations.getChildren(creator, LINKS.typeParameter$NSPI)) {
+      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(parameter, SLinkOperations.getTarget(_quotation_createNode_4w0o2k_a1a0a0a0j0b(), LINKS.descriptor$F0hD))))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "primitive type not allowed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1212781606006", null, errorTarget);
       }
@@ -76,12 +76,12 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
 
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
     if (creatingRawClass) {
-      for (SNode tvd : SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)) {
+      for (SNode tvd : SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)) {
         MapSequence.fromMap(subs).put(tvd, _quotation_createNode_4w0o2k_a0a0a0m0b());
       }
     }
 
-    for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(cdecl, LINKS.typeVariableDeclaration$ziZT))) {
+    for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(cdecl, LINKS.typeVariableDeclaration$6cWB))) {
       if (!(MapSequence.fromMap(subs).containsKey(tvd))) {
         final SNode T_typevar_4690171080787098805 = typeCheckingContext.createNewRuntimeTypesVariable();
         MapSequence.fromMap(subs).put(tvd, typeCheckingContext.getRepresentative(T_typevar_4690171080787098805));
@@ -93,7 +93,7 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
       newType = _quotation_createNode_4w0o2k_a0a0r0b(classifier);
     } else {
       // TODO: this is to avoid collecting generics from explicitly substituted types 
-      List<SNode> typeParam = ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$swNi)).select(new ISelector<SNode, SNode>() {
+      List<SNode> typeParam = ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$NSPI)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode tp) {
           final SNode TP_typevar_4340163696368051056 = typeCheckingContext.createNewRuntimeTypesVariable();
           SNode tmp = typeCheckingContext.getRepresentative(TP_typevar_4340163696368051056);
@@ -109,7 +109,7 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(newType, subs);
     }
 
-    List<SNode> argl = SLinkOperations.getChildren(creator, LINKS.actualArgument$$A7L);
+    List<SNode> argl = SLinkOperations.getChildren(creator, LINKS.actualArgument$ItKJ);
     List<SNode> typel = ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(cdecl, ((int) ListSequence.fromList(argl).count()));
     if (!(creatingRawClass)) {
       for (SNode type : ListSequence.fromList(typel)) {
@@ -214,11 +214,11 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class CONCEPTS {

@@ -18,7 +18,7 @@ public class check_ComparisonRule_ExpectedReturns_NonTypesystemRule extends Abst
   public check_ComparisonRule_ExpectedReturns_NonTypesystemRule() {
   }
   public void applyRule(final SNode comparisonRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    DataFlowUtil.checkReturns(typeCheckingContext, SLinkOperations.getTarget(comparisonRule, LINKS.body$tq5r));
+    DataFlowUtil.checkReturns(typeCheckingContext, SLinkOperations.getTarget(comparisonRule, LINKS.body$fCC5));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.ComparisonRule$b9;
@@ -31,7 +31,7 @@ public class check_ComparisonRule_ExpectedReturns_NonTypesystemRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$tq5r = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
+    /*package*/ static final SContainmentLink body$fCC5 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
   }
 
   private static final class CONCEPTS {

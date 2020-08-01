@@ -69,12 +69,12 @@ public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro exten
     }
     private static SNode createLiteralMessageExpression_4ojwcw_a0a0a0c0a0() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-      n0.setProperty(PROPS.message$vnr0, "");
+      n0.setProperty(PROPS.message$cm50, "");
       return n0.getResult();
     }
     private static SNode createLiteralMessageExpression_4ojwcw_a0a0a0a2a0a() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-      n0.setProperty(PROPS.message$vnr0, "");
+      n0.setProperty(PROPS.message$cm50, "");
       return n0.getResult();
     }
     private static <T> T as_4ojwcw_a0a0a4b(Object o, Class<T> type) {
@@ -131,6 +131,6 @@ public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro exten
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$vnr0 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
+    /*package*/ static final SProperty message$cm50 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
   }
 }

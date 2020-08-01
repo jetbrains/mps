@@ -25,9 +25,9 @@ public class ResourceVariableHelper {
     final SNode AUTO_CLOSEABLE_CLASS = SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~AutoCloseable"), myVariable.getModel().getRepository());
     final SNode AUTO_CLOSEABLE_CLOSE = SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~AutoCloseable.close()"), myVariable.getModel().getRepository());
     {
-      SNode coercedNode_zbiirw_c0c = TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(myVariable, LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ);
+      SNode coercedNode_zbiirw_c0c = TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(myVariable, LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ);
       if (coercedNode_zbiirw_c0c != null) {
-        SNode classifier = SLinkOperations.getTarget(coercedNode_zbiirw_c0c, LINKS.classifier$pQ_R);
+        SNode classifier = SLinkOperations.getTarget(coercedNode_zbiirw_c0c, LINKS.classifier$xslD);
         if (!(ListSequence.fromList(Classifier__BehaviorDescriptor.getAllSuperClassifiers_id59G_UM6ah0X.invoke(classifier)).contains(AUTO_CLOSEABLE_CLASS))) {
           return null;
         }
@@ -36,7 +36,7 @@ public class ResourceVariableHelper {
             return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(it, AUTO_CLOSEABLE_CLOSE);
           }
         });
-        return SLinkOperations.collectMany(closeMethod, LINKS.throwsItem$gr7e);
+        return SLinkOperations.collectMany(closeMethod, LINKS.throwsItem$X8vM);
       } else {
         return null;
       }
@@ -44,9 +44,9 @@ public class ResourceVariableHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink throwsItem$gr7e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
   }
 
   private static final class CONCEPTS {

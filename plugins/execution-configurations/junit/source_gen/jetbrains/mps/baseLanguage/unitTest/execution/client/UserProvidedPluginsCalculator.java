@@ -51,15 +51,15 @@ public class UserProvidedPluginsCalculator {
           }
         }).ofType(SNode.class).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.plugin$hRNK);
+            return SLinkOperations.getTarget(it, LINKS.plugin$E24g);
           }
         }).toListSequence();
         Iterable<SNode> withDeps = new RequiredPlugins(list).returnDepsWithInitial();
         return Sequence.fromIterable(withDeps).select(new ISelector<SNode, PluginData>() {
           public PluginData select(SNode it) {
-            String pluginDirName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$29AG), null);
+            String pluginDirName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$2DJk), null);
             String absolutePath2Plugin = new File(pluginsPath, pluginDirName).getAbsolutePath();
-            return new PluginData(absolutePath2Plugin, SPropertyOperations.getString(it, PROPS.id$rLiV));
+            return new PluginData(absolutePath2Plugin, SPropertyOperations.getString(it, PROPS.id$sSa_));
           }
         }).toListSequence();
       }
@@ -67,11 +67,11 @@ public class UserProvidedPluginsCalculator {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink plugin$hRNK = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
-    /*package*/ static final SContainmentLink containerName$29AG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4def2c96L, "containerName");
+    /*package*/ static final SReferenceLink plugin$E24g = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
+    /*package*/ static final SContainmentLink containerName$2DJk = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4def2c96L, "containerName");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty id$rLiV = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
+    /*package*/ static final SProperty id$sSa_ = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
   }
 }

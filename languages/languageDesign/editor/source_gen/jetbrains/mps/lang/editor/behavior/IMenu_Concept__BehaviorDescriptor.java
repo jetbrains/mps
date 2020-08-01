@@ -48,28 +48,28 @@ public final class IMenu_Concept__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$UN)) {
-      return new NamedElementsScope(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$acmt), ((boolean) true)));
+      return new NamedElementsScope(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$VYS3), ((boolean) true)));
     }
 
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child));
   }
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$acmt);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$VYS3);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$acmt, baseConcept);
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$VYS3, baseConcept);
   }
   /*package*/ static SNode getApplicableConcept_id1quYWAD18xk(@NotNull SNode __thisNode__) {
     return ((SNode) IConceptAspect__BehaviorDescriptor.getBaseConcept_id2hxg_BDjKM8.invoke(__thisNode__));
   }
   /*package*/ static boolean isDefault_id5N_GIFFh1P5(@NotNull SNode __thisNode__) {
-    return Objects.equals(SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.type$gsXC)), CONCEPTS.MenuTypeDefault$Sb) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)), CONCEPTS.IMenu_Default$EZ);
+    return Objects.equals(SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.type$Y1Qo)), CONCEPTS.MenuTypeDefault$Sb) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)), CONCEPTS.IMenu_Default$EZ);
   }
   /*package*/ static void toggleDefault_id5N_GIFFi58L(@NotNull SNode __thisNode__) {
     if (((boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(__thisNode__))) {
-      SLinkOperations.setTarget(__thisNode__, LINKS.type$gsXC, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL, "jetbrains.mps.lang.editor.structure.MenuTypeNamed")));
+      SLinkOperations.setTarget(__thisNode__, LINKS.type$Y1Qo, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL, "jetbrains.mps.lang.editor.structure.MenuTypeNamed")));
     } else {
-      SLinkOperations.setTarget(__thisNode__, LINKS.type$gsXC, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L, "jetbrains.mps.lang.editor.structure.MenuTypeDefault")));
+      SLinkOperations.setTarget(__thisNode__, LINKS.type$Y1Qo, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L, "jetbrains.mps.lang.editor.structure.MenuTypeDefault")));
     }
   }
 
@@ -132,8 +132,8 @@ public final class IMenu_Concept__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$acmt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink type$gsXC = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
+    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink type$Y1Qo = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
   }
 
   private static final class CONCEPTS {

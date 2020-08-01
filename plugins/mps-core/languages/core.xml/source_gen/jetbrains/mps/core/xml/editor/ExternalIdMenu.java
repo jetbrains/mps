@@ -28,7 +28,7 @@ public class ExternalIdMenu extends AbstractCellMenuComponent {
     }
 
     public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      if (SPropertyOperations.getBoolean(node, PROPS.isPublic$k9I6)) {
+      if (SPropertyOperations.getBoolean(node, PROPS.isPublic$KHkU)) {
         return ListSequence.fromListAndArray(new ArrayList<String>(), "SYSTEM");
       }
       return ListSequence.fromListAndArray(new ArrayList<String>(), "PUBLIC");
@@ -37,7 +37,7 @@ public class ExternalIdMenu extends AbstractCellMenuComponent {
       this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.isPublic$k9I6, !(SPropertyOperations.getBoolean(node, PROPS.isPublic$k9I6)));
+      SPropertyOperations.set(node, PROPS.isPublic$KHkU, !(SPropertyOperations.getBoolean(node, PROPS.isPublic$KHkU)));
       editorContext.selectWRTFocusPolicy(node);
     }
     public boolean isReferentPresentation() {
@@ -51,6 +51,6 @@ public class ExternalIdMenu extends AbstractCellMenuComponent {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isPublic$k9I6 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60345L, "isPublic");
+    /*package*/ static final SProperty isPublic$KHkU = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60345L, "isPublic");
   }
 }

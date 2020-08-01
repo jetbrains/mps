@@ -35,12 +35,12 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
   }
   public IconResource getInstanceIcon(SNode node) {
     if ((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(node, SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {
-      if (SPropertyOperations.getBoolean(node, PROPS.abstractClass$gY5l)) {
+      if (SPropertyOperations.getBoolean(node, PROPS.abstractClass$e4_b)) {
         return IconContainer.RESOURCE_a0a0a0a0;
       }
       return IconContainer.RESOURCE_a1a0a0;
     }
-    if (SPropertyOperations.getBoolean(node, PROPS.abstractClass$gY5l)) {
+    if (SPropertyOperations.getBoolean(node, PROPS.abstractClass$e4_b)) {
       return IconContainer.RESOURCE_a0a1a0;
     }
     return null;
@@ -66,7 +66,7 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
   }
   public static class IsStatic_Property extends BasePropertyConstraintsDescriptor {
     public IsStatic_Property(ConstraintsDescriptor container) {
-      super(PROPS.isStatic$6ZHJ, container);
+      super(PROPS.isStatic$oR9L, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -74,7 +74,7 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      return !(SPropertyOperations.getBoolean(node, PROPS.nonStatic$pNlE));
+      return !(SPropertyOperations.getBoolean(node, PROPS.nonStatic$vRvm));
     }
     @Override
     public boolean hasOwnSetter() {
@@ -85,13 +85,13 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
       staticSetPropertyValue(node, SPropertyOperations.castBoolean(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, boolean propertyValue) {
-      SPropertyOperations.assign(node, PROPS.nonStatic$pNlE, !(propertyValue));
+      SPropertyOperations.assign(node, PROPS.nonStatic$vRvm, !(propertyValue));
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.isStatic$6ZHJ, new IsStatic_Property(this));
+    properties.put(PROPS.isStatic$oR9L, new IsStatic_Property(this));
     return properties;
   }
   private static final SNodePointer breakingNode_3muhb7_a0a0a0a0a0a0a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643423");
@@ -101,8 +101,8 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
-    /*package*/ static final SProperty isStatic$6ZHJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic");
-    /*package*/ static final SProperty nonStatic$pNlE = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty isStatic$oR9L = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic");
+    /*package*/ static final SProperty nonStatic$vRvm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
   }
 }

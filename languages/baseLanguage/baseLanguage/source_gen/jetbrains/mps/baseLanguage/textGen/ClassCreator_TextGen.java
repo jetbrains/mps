@@ -20,25 +20,25 @@ public class ClassCreator_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.NestedNewExpression$79)) {
       BaseLanguageTextGen.methodTypeArguments(ctx.getPrimaryInput(), ctx);
-      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1));
-      BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$swNi), ctx);
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v));
+      BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$NSPI), ctx);
       BaseLanguageTextGen.arguments(ctx.getPrimaryInput(), ctx);
 
     } else {
       BaseLanguageTextGen.methodTypeArguments(ctx.getPrimaryInput(), ctx);
-      BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.baseMethodDeclaration$$A7i), ctx);
-      BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$swNi), ctx);
+      BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.baseMethodDeclaration$ItxI), ctx);
+      BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$NSPI), ctx);
       BaseLanguageTextGen.arguments(ctx.getPrimaryInput(), ctx);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

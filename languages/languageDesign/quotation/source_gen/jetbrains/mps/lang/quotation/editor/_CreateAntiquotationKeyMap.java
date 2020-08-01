@@ -186,7 +186,7 @@ public class _CreateAntiquotationKeyMap extends KeyMapImpl {
       } else {
         SNode referenceAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$WH, ref), CONCEPTS.ReferenceAntiquotation$WH);
         if (selectedCell.isSingleNodeCell()) {
-          SPropertyOperations.set(referenceAntiquotation, PROPS.label$KuXz, SNodeOperations.getConcept(contextNode).getName());
+          SPropertyOperations.set(referenceAntiquotation, PROPS.label$uZNX, SNodeOperations.getConcept(contextNode).getName());
         }
       }
     }
@@ -246,7 +246,7 @@ public class _CreateAntiquotationKeyMap extends KeyMapImpl {
       } else {
         SNode propertyAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$v, p), CONCEPTS.PropertyAntiquotation$v);
         if (selectedCell.isSingleNodeCell()) {
-          SPropertyOperations.set(propertyAntiquotation, PROPS.label$KuXz, SNodeOperations.getConcept(contextNode).getName());
+          SPropertyOperations.set(propertyAntiquotation, PROPS.label$uZNX, SNodeOperations.getConcept(contextNode).getName());
         }
       }
     }
@@ -283,6 +283,6 @@ public class _CreateAntiquotationKeyMap extends KeyMapImpl {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$KuXz = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x5a0ec74a8bd5aeb2L, "label");
+    /*package*/ static final SProperty label$uZNX = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x5a0ec74a8bd5aeb2L, "label");
   }
 }

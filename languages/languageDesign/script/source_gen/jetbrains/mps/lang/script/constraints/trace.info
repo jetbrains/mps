@@ -33,9 +33,9 @@
       <node id="338341484719580003" at="81,0,82,0" concept="7" trace="ExtractInterfaceMigration$at" />
       <node id="338341484719580003" at="82,0,83,0" concept="7" trace="DirectClassifierSpecification$RM" />
       <node id="338341484719580003" at="83,0,84,0" concept="7" trace="InstanceMethodDeclaration$An" />
-      <node id="338341484719580003" at="87,0,88,0" concept="7" trace="methodDeclaration$4Hf0" />
-      <node id="338341484719580003" at="88,0,89,0" concept="7" trace="oldClassifier$h5yg" />
-      <node id="338341484719580003" at="89,0,90,0" concept="7" trace="classifier$udFV" />
+      <node id="338341484719580003" at="87,0,88,0" concept="7" trace="methodDeclaration$hUh0" />
+      <node id="338341484719580003" at="88,0,89,0" concept="7" trace="oldClassifier$hF_K" />
+      <node id="338341484719580003" at="89,0,90,0" concept="7" trace="classifier$CCh_" />
       <node id="338341484719580003" at="32,0,35,0" concept="0" trace="DirectMethodSpecification_Constraints#()V" />
       <node id="6836281137582797365" at="57,0,60,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="338341484719581302" at="39,0,43,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -119,8 +119,8 @@
       <node id="849077997121906173" at="98,0,99,0" concept="7" trace="PullUpMethod$6P" />
       <node id="849077997121906173" at="99,0,100,0" concept="7" trace="ExtractInterfaceMigration$at" />
       <node id="849077997121906173" at="100,0,101,0" concept="7" trace="InstanceMethodDeclaration$An" />
-      <node id="849077997121906173" at="104,0,105,0" concept="7" trace="newMethodDeclaration$swRl" />
-      <node id="849077997121906173" at="105,0,106,0" concept="7" trace="newClassifier$dFxZ" />
+      <node id="849077997121906173" at="104,0,105,0" concept="7" trace="newMethodDeclaration$NUNb" />
+      <node id="849077997121906173" at="105,0,106,0" concept="7" trace="newClassifier$C5tx" />
       <node id="849077997121906173" at="35,0,38,0" concept="0" trace="PullUpMethod_Constraints#()V" />
       <node id="849077997121906173" at="45,0,48,9" concept="2" />
       <node id="6836281137582797414" at="73,0,76,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

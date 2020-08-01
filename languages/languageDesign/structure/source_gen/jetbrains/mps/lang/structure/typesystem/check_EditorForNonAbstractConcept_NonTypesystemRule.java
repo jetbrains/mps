@@ -31,7 +31,7 @@ public class check_EditorForNonAbstractConcept_NonTypesystemRule extends Abstrac
   public check_EditorForNonAbstractConcept_NonTypesystemRule() {
   }
   public void applyRule(final SNode conceptDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$moSU)) {
+    if (SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$Q3$6)) {
       return;
     }
     if (!(SModuleOperations.isAspect(SNodeOperations.getModel(conceptDeclaration), "structure"))) {
@@ -52,8 +52,8 @@ public class check_EditorForNonAbstractConcept_NonTypesystemRule extends Abstrac
       QueueSequence.fromQueue(toCheck).addSequence(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(acd)));
     }
     {
-      final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(conceptDeclaration, "Editor for concept " + SPropertyOperations.getString(conceptDeclaration, PROPS.name$tAp1) + " is not defined. Default editor will be used.", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2823239769520680200", null, errorTarget);
+      final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(conceptDeclaration, "Editor for concept " + SPropertyOperations.getString(conceptDeclaration, PROPS.name$lA7v) + " is not defined. Default editor will be used.", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2823239769520680200", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -67,8 +67,8 @@ public class check_EditorForNonAbstractConcept_NonTypesystemRule extends Abstrac
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

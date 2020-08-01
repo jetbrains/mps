@@ -31,8 +31,8 @@ public class Delete_BlockStatement {
           return;
         }
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN)) {
-          UnwrapStatementsUtil.unwrapStatementListInContainer(node, SLinkOperations.getTarget(node, LINKS.statements$uqR0));
-        } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IfStatement$pi) && SNodeOperations.hasRole(node, LINKS.ifFalseStatement$Xnu2)) {
+          UnwrapStatementsUtil.unwrapStatementListInContainer(node, SLinkOperations.getTarget(node, LINKS.statements$J0D0));
+        } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IfStatement$pi) && SNodeOperations.hasRole(node, LINKS.ifFalseStatement$InyY)) {
           SNode nodeToSelect = UnwrapStatementsUtil.unwrapElse(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IfStatement$pi));
           SelectionUtil.selectCell(editorContext, nodeToSelect, SelectionManager.FIRST_CELL);
         }
@@ -83,8 +83,8 @@ public class Delete_BlockStatement {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statements$uqR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink ifFalseStatement$Xnu2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
   }
 
   private static final class CONCEPTS {

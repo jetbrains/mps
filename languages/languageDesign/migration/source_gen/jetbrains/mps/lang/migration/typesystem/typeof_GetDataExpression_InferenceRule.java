@@ -25,14 +25,14 @@ public class typeof_GetDataExpression_InferenceRule extends AbstractInferenceRul
   }
   public void applyRule(final SNode getDataExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(getDataExpression, LINKS.module$TYFX);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(getDataExpression, LINKS.module$5niz);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448474158942", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448474154370", true), (SNode) _quotation_createNode_eeql74_a1a0c0a0b(), false, true, _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = getDataExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448473702098", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448473702100", true), (SNode) _quotation_createNode_eeql74_a1a0c0b0b(IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(getDataExpression, LINKS.requiredDataDeclararion$E940), LINKS.script$tCI0))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448473702100", true), (SNode) _quotation_createNode_eeql74_a1a0c0b0b(IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(getDataExpression, LINKS.requiredDataDeclararion$qoW0), LINKS.script$mIi0))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -63,9 +63,9 @@ public class typeof_GetDataExpression_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink module$TYFX = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ba2c81L, 0x5e7aa366c2cd4e87L, "module");
-    /*package*/ static final SReferenceLink requiredDataDeclararion$E940 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ba2c81L, 0x5e7aa366c2ba3126L, "requiredDataDeclararion");
-    /*package*/ static final SReferenceLink script$tCI0 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2b3ece9L, 0x5e7aa366c2b3eceaL, "script");
+    /*package*/ static final SContainmentLink module$5niz = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ba2c81L, 0x5e7aa366c2cd4e87L, "module");
+    /*package*/ static final SReferenceLink requiredDataDeclararion$qoW0 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ba2c81L, 0x5e7aa366c2ba3126L, "requiredDataDeclararion");
+    /*package*/ static final SReferenceLink script$mIi0 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2b3ece9L, 0x5e7aa366c2b3eceaL, "script");
   }
 
   private static final class CONCEPTS {

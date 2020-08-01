@@ -22,7 +22,7 @@ public class typeof_LocalParametersExpression_InferenceRule extends AbstractInfe
   public typeof_LocalParametersExpression_InferenceRule() {
   }
   public void applyRule(final SNode lve, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode vars = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(lve, CONCEPTS.TargetDeclaration$7n, false, false), LINKS.parameters$W12k);
+    SNode vars = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(lve, CONCEPTS.TargetDeclaration$7n, false, false), LINKS.parameters$4w7G);
     if (vars != null) {
       {
         SNode _nodeToCheck_1029348928467 = lve;
@@ -54,6 +54,6 @@ public class typeof_LocalParametersExpression_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameters$W12k = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
+    /*package*/ static final SContainmentLink parameters$4w7G = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
   }
 }

@@ -31,12 +31,12 @@ public class VisibleArtifacts {
 
   public void collect(boolean localProjectOnly) {
     if (!(localProjectOnly)) {
-      for (SNode layoutDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$tpR5), CONCEPTS.BuildExternalLayoutDependency$Qe)) {
-        SNode target = SLinkOperations.getTarget(layoutDependency, LINKS.layout$nLpY);
+      for (SNode layoutDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$fxFr), CONCEPTS.BuildExternalLayoutDependency$Qe)) {
+        SNode target = SLinkOperations.getTarget(layoutDependency, LINKS.layout$wV_2);
         collectInExternalLayout(layoutDependency, target);
       }
-      for (SNode projectDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$tpR5), CONCEPTS.BuildProjectDependency$Ug)) {
-        SNode target = SLinkOperations.getTarget(projectDependency, LINKS.script$mz1x);
+      for (SNode projectDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$fxFr), CONCEPTS.BuildProjectDependency$Ug)) {
+        SNode target = SLinkOperations.getTarget(projectDependency, LINKS.script$UXIZ);
         collectInProject(projectDependency, target);
       }
     }
@@ -44,18 +44,18 @@ public class VisibleArtifacts {
   }
 
   public void collectOnlyExternal() {
-    for (SNode layoutDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$tpR5), CONCEPTS.BuildExternalLayoutDependency$Qe)) {
-      SNode target = SLinkOperations.getTarget(layoutDependency, LINKS.layout$nLpY);
+    for (SNode layoutDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$fxFr), CONCEPTS.BuildExternalLayoutDependency$Qe)) {
+      SNode target = SLinkOperations.getTarget(layoutDependency, LINKS.layout$wV_2);
       collectInExternalLayout(layoutDependency, target);
     }
-    for (SNode projectDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$tpR5), CONCEPTS.BuildProjectDependency$Ug)) {
-      SNode target = SLinkOperations.getTarget(projectDependency, LINKS.script$mz1x);
+    for (SNode projectDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$fxFr), CONCEPTS.BuildProjectDependency$Ug)) {
+      SNode target = SLinkOperations.getTarget(projectDependency, LINKS.script$UXIZ);
       collectInProject(projectDependency, target);
     }
   }
 
   private void collectProjectArtifacts() {
-    collectInProject(SLinkOperations.getTarget(project, LINKS.layout$tpCz), project);
+    collectInProject(SLinkOperations.getTarget(project, LINKS.layout$fqCX), project);
   }
 
   private void collectInProject(SNode parent, SNode target) {
@@ -63,11 +63,11 @@ public class VisibleArtifacts {
       return;
     }
 
-    ListSequence.fromList(visibleLayouts).addElement(SLinkOperations.getTarget(target, LINKS.layout$tpCz));
-    if (SLinkOperations.getTarget(target, LINKS.layout$tpCz) != parent) {
-      parentMap.put(SLinkOperations.getTarget(target, LINKS.layout$tpCz), parent);
+    ListSequence.fromList(visibleLayouts).addElement(SLinkOperations.getTarget(target, LINKS.layout$fqCX));
+    if (SLinkOperations.getTarget(target, LINKS.layout$fqCX) != parent) {
+      parentMap.put(SLinkOperations.getTarget(target, LINKS.layout$fqCX), parent);
     }
-    for (SNode node : SLinkOperations.getChildren(SLinkOperations.getTarget(target, LINKS.layout$tpCz), LINKS.children$aiMf)) {
+    for (SNode node : SLinkOperations.getChildren(SLinkOperations.getTarget(target, LINKS.layout$fqCX), LINKS.children$Z6lh)) {
       collectInLayout(parent, node);
     }
   }
@@ -75,7 +75,7 @@ public class VisibleArtifacts {
   private void collectInExternalLayout(SNode parent, SNode target) {
     ListSequence.fromList(visibleLayouts).addElement(target);
     parentMap.put(target, parent);
-    for (SNode node : SLinkOperations.getChildren(target, LINKS.children$aiMf)) {
+    for (SNode node : SLinkOperations.getChildren(target, LINKS.children$Z6lh)) {
       collectInLayout(parent, node);
     }
   }
@@ -92,15 +92,15 @@ public class VisibleArtifacts {
     parentMap.put(node, parent);
 
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_AbstractContainer$19)) {
-      for (SNode child : SLinkOperations.getChildren(SNodeOperations.as(node, CONCEPTS.BuildLayout_AbstractContainer$19), LINKS.children$aiMf)) {
+      for (SNode child : SLinkOperations.getChildren(SNodeOperations.as(node, CONCEPTS.BuildLayout_AbstractContainer$19), LINKS.children$Z6lh)) {
         collectInLayout(node, child);
       }
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_ImportContent$Y5)) {
-      for (SNode child : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.BuildLayout_ImportContent$Y5), LINKS.target$pRHZ), LINKS.children$aiMf))) {
+      for (SNode child : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.BuildLayout_ImportContent$Y5), LINKS.target$xZhx), LINKS.children$Z6lh))) {
         collectInLayout(parent, child);
       }
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_Import$Yh)) {
-      collectInLayout(parent, SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.BuildLayout_Import$Yh), LINKS.target$fkBZ));
+      collectInLayout(parent, SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.BuildLayout_Import$Yh), LINKS.target$qZnx));
     }
   }
   public SNode getProject() {
@@ -165,13 +165,13 @@ public class VisibleArtifacts {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink layout$nLpY = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x63a87b9320d3d0a4L, 0x63a87b9320d3d0a7L, "layout");
-    /*package*/ static final SContainmentLink dependencies$tpR5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
-    /*package*/ static final SReferenceLink script$mz1x = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
-    /*package*/ static final SContainmentLink layout$tpCz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
-    /*package*/ static final SContainmentLink children$aiMf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
-    /*package*/ static final SReferenceLink target$pRHZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
-    /*package*/ static final SReferenceLink target$fkBZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee1350f2L, 0xbabdfbeee1350f4L, "target");
+    /*package*/ static final SReferenceLink layout$wV_2 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x63a87b9320d3d0a4L, 0x63a87b9320d3d0a7L, "layout");
+    /*package*/ static final SContainmentLink dependencies$fxFr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SReferenceLink script$UXIZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+    /*package*/ static final SContainmentLink layout$fqCX = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
+    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SReferenceLink target$xZhx = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
+    /*package*/ static final SReferenceLink target$qZnx = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee1350f2L, 0xbabdfbeee1350f4L, "target");
   }
 
   private static final class CONCEPTS {

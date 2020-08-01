@@ -24,9 +24,9 @@ public class check_RequestURIBuilderExpression_NonTypesystemRule extends Abstrac
   public check_RequestURIBuilderExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode requestURIBuilderExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$Zk4n) != null) {
+    if (SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$EI79) != null) {
       final Iterable<SNode> initializedParameters = RequestURLBuilderExpression__BehaviorDescriptor.getInitializedParameters_id40BYgt09_iZ.invoke(requestURIBuilderExpression);
-      boolean allRequiredParams = Sequence.fromIterable(RequestHandler__BehaviorDescriptor.getRequieredParameters_id40BYgsZXRLw.invoke(SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$Zk4n))).all(new IWhereFilter<SNode>() {
+      boolean allRequiredParams = Sequence.fromIterable(RequestHandler__BehaviorDescriptor.getRequieredParameters_id40BYgsZXRLw.invoke(SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$EI79))).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Sequence.fromIterable(initializedParameters).contains(it);
         }
@@ -49,7 +49,7 @@ public class check_RequestURIBuilderExpression_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink requestHandler$Zk4n = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, 0x4027f9073ff5cebeL, "requestHandler");
+    /*package*/ static final SReferenceLink requestHandler$EI79 = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, 0x4027f9073ff5cebeL, "requestHandler");
   }
 
   private static final class CONCEPTS {

@@ -22,14 +22,14 @@ public class StatementList_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        new CellAction_CommentOrUncommentChild(node, LINKS.statement$WHn8).execute(editorContext);
+        new CellAction_CommentOrUncommentChild(node, LINKS.statement$pYcS).execute(editorContext);
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return new CellAction_CommentOrUncommentChild(node, LINKS.statement$WHn8).canExecute(editorContext);
+        return new CellAction_CommentOrUncommentChild(node, LINKS.statement$pYcS).canExecute(editorContext);
       }
 
     };
@@ -125,6 +125,6 @@ public class StatementList_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

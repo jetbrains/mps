@@ -49,7 +49,7 @@ public final class IExtensibleTransformationMenuPart__BehaviorDescriptor extends
         return (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getRequiredFeatures_id7L5lpRJHK_w.invoke(it);
       }
     }));
-    Iterable<SConcept> present = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.features$645q)).select(new ISelector<SNode, SConcept>() {
+    Iterable<SConcept> present = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.features$VYBA)).select(new ISelector<SNode, SConcept>() {
       public SConcept select(SNode it) {
         return SNodeOperations.getConcept(it);
       }
@@ -58,7 +58,7 @@ public final class IExtensibleTransformationMenuPart__BehaviorDescriptor extends
     return required;
   }
   /*package*/ static List<SNode> getLocations_id6V0bp$oM1WF(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.TransformationMenuSection$H0, false, false), LINKS.locations$aTw0);
+    return SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.TransformationMenuSection$H0, false, false), LINKS.locations$hQw0);
   }
   /*package*/ static List<SConcept> getAdditionalFeatureParameters_id6kJcyCQ_bk0(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(new ArrayList<SConcept>());
@@ -115,8 +115,8 @@ public final class IExtensibleTransformationMenuPart__BehaviorDescriptor extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink features$645q = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
-    /*package*/ static final SContainmentLink locations$aTw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
+    /*package*/ static final SContainmentLink features$VYBA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
+    /*package*/ static final SContainmentLink locations$hQw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
   }
 
   private static final class CONCEPTS {

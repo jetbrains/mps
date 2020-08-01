@@ -26,7 +26,7 @@ public class DelTestChildWithUsualReference_Constraints extends BaseConstraintsD
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$7sfW, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$AFI4, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -59,6 +59,6 @@ public class DelTestChildWithUsualReference_Constraints extends BaseConstraintsD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$7sfW = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dacL, 0x7a6a3ef59ad69e14L, "reference");
+    /*package*/ static final SReferenceLink reference$AFI4 = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dacL, 0x7a6a3ef59ad69e14L, "reference");
   }
 }

@@ -72,12 +72,12 @@ public class CreateQFixFromUsageHelper {
 
     boolean created = false;
     final Wrappers._T<SNode> createdQFix = new Wrappers._T<SNode>(null);
-    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ReportErrorStatement$db) && cell.isErrorState() && cell.getSRole().equals(LINKS.helginsIntention_old$f1IL)) {
+    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ReportErrorStatement$db) && cell.isErrorState() && cell.getSRole().equals(LINKS.helginsIntention_old$hPDJ)) {
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           createdQFix.value = createQFix(qFixName);
-          return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ReportErrorStatement$db), LINKS.helginsIntention_old$f1IL)).addElement(createTypesystemIntention_5x9eia_a0a1a0a0b0p0l(createdQFix.value));
+          return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ReportErrorStatement$db), LINKS.helginsIntention_old$hPDJ)).addElement(createTypesystemIntention_5x9eia_a0a1a0a0b0p0l(createdQFix.value));
         }
       }));
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.TypesystemIntention$aE)) {
@@ -85,7 +85,7 @@ public class CreateQFixFromUsageHelper {
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           createdQFix.value = createQFix(qFixName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.TypesystemIntention$aE), LINKS.quickFix$FQGK, createdQFix.value);
+          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.TypesystemIntention$aE), LINKS.quickFix$fvFg, createdQFix.value);
         }
       });
     }
@@ -125,15 +125,15 @@ public class CreateQFixFromUsageHelper {
   }
   private static SNode createTypesystemIntention_5x9eia_a0a1a0a0b0p0l(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypesystemIntention$aE);
-    n0.setReferenceTarget(LINKS.quickFix$FQGK, p0);
+    n0.setReferenceTarget(LINKS.quickFix$fvFg, p0);
     return n0.getResult();
   }
   private static SNode createTypesystemQuickFix_5x9eia_a0a0n(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypesystemQuickFix$ii);
-    n0.setProperty(PROPS.name$tAp1, p0);
+    n0.setProperty(PROPS.name$lA7v, p0);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.executeBlock$kCq9).init(CONCEPTS.QuickFixExecuteBlock$MP);
-      n1.forChild(LINKS.body$pTP2).init(CONCEPTS.StatementList$TN);
+      SNodeBuilder n1 = n0.forChild(LINKS.executeBlock$Z$En).init(CONCEPTS.QuickFixExecuteBlock$MP);
+      n1.forChild(LINKS.body$z0FY).init(CONCEPTS.StatementList$TN);
     }
     return n0.getResult();
   }
@@ -147,13 +147,13 @@ public class CreateQFixFromUsageHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink helginsIntention_old$f1IL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention_old");
-    /*package*/ static final SReferenceLink quickFix$FQGK = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
-    /*package*/ static final SContainmentLink executeBlock$kCq9 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361a1836L, "executeBlock");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink helginsIntention_old$hPDJ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention_old");
+    /*package*/ static final SReferenceLink quickFix$fvFg = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
+    /*package*/ static final SContainmentLink executeBlock$Z$En = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361a1836L, "executeBlock");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

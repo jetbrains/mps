@@ -46,25 +46,25 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$qk, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.nodeToEdit$kDF8) != null);
+          return (SLinkOperations.getTarget(it, LINKS.nodeToEdit$bSS) != null);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode node) {
-          if ((SLinkOperations.getTarget(node, LINKS.testNodeBefore$BOcn) == null)) {
-            SLinkOperations.setTarget(node, LINKS.testNodeBefore$BOcn, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode")));
-            SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.testNodeBefore$BOcn), LINKS.nodeToCheck$Pz43, SLinkOperations.getTarget(node, LINKS.nodeToEdit$kDF8));
+          if ((SLinkOperations.getTarget(node, LINKS.testNodeBefore$ihZ9) == null)) {
+            SLinkOperations.setTarget(node, LINKS.testNodeBefore$ihZ9, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode")));
+            SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.testNodeBefore$ihZ9), LINKS.nodeToCheck$VYXt, SLinkOperations.getTarget(node, LINKS.nodeToEdit$bSS));
           }
         }
       });
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$qk, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.result$lNJC) != null);
+          return (SLinkOperations.getTarget(it, LINKS.result$$44o) != null);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode node) {
-          if ((SLinkOperations.getTarget(node, LINKS.testNodeResult$BP60) == null)) {
-            SLinkOperations.setTarget(node, LINKS.testNodeResult$BP60, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode")));
-            SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.testNodeResult$BP60), LINKS.nodeToCheck$Pz43, SLinkOperations.getTarget(node, LINKS.result$lNJC));
+          if ((SLinkOperations.getTarget(node, LINKS.testNodeResult$iHU0) == null)) {
+            SLinkOperations.setTarget(node, LINKS.testNodeResult$iHU0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode")));
+            SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.testNodeResult$iHU0), LINKS.nodeToCheck$VYXt, SLinkOperations.getTarget(node, LINKS.result$$44o));
           }
         }
       });
@@ -82,7 +82,7 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$qk, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.nodeToEdit$kDF8) != null);
+          return (SLinkOperations.getTarget(it, LINKS.nodeToEdit$bSS) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -96,7 +96,7 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
         }
       }).concat(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EditorTestCase$qk, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.result$lNJC) != null);
+          return (SLinkOperations.getTarget(it, LINKS.result$$44o) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -120,10 +120,10 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeToEdit$kDF8 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314b78e4L, "nodeToEdit");
-    /*package*/ static final SContainmentLink testNodeBefore$BOcn = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore");
-    /*package*/ static final SContainmentLink nodeToCheck$Pz43 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
-    /*package*/ static final SContainmentLink result$lNJC = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314bf3d3L, "result");
-    /*package*/ static final SContainmentLink testNodeResult$BP60 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643585L, "testNodeResult");
+    /*package*/ static final SContainmentLink nodeToEdit$bSS = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314b78e4L, "nodeToEdit");
+    /*package*/ static final SContainmentLink testNodeBefore$ihZ9 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore");
+    /*package*/ static final SContainmentLink nodeToCheck$VYXt = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
+    /*package*/ static final SContainmentLink result$$44o = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314bf3d3L, "result");
+    /*package*/ static final SContainmentLink testNodeResult$iHU0 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643585L, "testNodeResult");
   }
 }

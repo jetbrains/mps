@@ -73,8 +73,8 @@ public class QualifierReference_DeleteToDot {
   }
   private static SNode createStaticFieldReference_cqb7si_a0a0a0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StaticFieldReference$K8);
-    n0.setReferenceTarget(LINKS.classifier$ZTjE, p0);
-    n0.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
+    n0.setReferenceTarget(LINKS.classifier$WKxm, p0);
+    n0.setReferenceTarget(LINKS.variableDeclaration$7WwU, null);
     return n0.getResult();
   }
 
@@ -83,7 +83,7 @@ public class QualifierReference_DeleteToDot {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

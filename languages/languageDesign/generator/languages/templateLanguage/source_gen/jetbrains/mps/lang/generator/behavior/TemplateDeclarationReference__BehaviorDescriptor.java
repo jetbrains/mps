@@ -36,7 +36,7 @@ public final class TemplateDeclarationReference__BehaviorDescriptor extends Base
   }
 
   /*package*/ static SAbstractConcept getTemplateType_id6SoPMa83EEL(@NotNull SNode __thisNode__) {
-    SNode contentNode = SLinkOperations.getTarget(TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(__thisNode__), LINKS.contentNode$UkrJ);
+    SNode contentNode = SLinkOperations.getTarget(TemplateDeclarationReference__BehaviorDescriptor.getTemplate_idQzR6ThtRo7.invoke(__thisNode__), LINKS.contentNode$fTrL);
     if ((contentNode != null)) {
       List<SNode> fragments = SNodeOperations.getNodeDescendants(contentNode, CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{});
       if ((ListSequence.fromList(fragments).first() != null) && (SNodeOperations.getParent(ListSequence.fromList(fragments).first()) != null)) {
@@ -46,7 +46,7 @@ public final class TemplateDeclarationReference__BehaviorDescriptor extends Base
     return null;
   }
   /*package*/ static SNode getTemplate_idQzR6ThtRo7(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.template$yiTA), CONCEPTS.TemplateDeclaration$q0);
+    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.template$B9Tq), CONCEPTS.TemplateDeclaration$q0);
   }
 
   /*package*/ TemplateDeclarationReference__BehaviorDescriptor() {
@@ -98,8 +98,8 @@ public final class TemplateDeclarationReference__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink contentNode$UkrJ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
-    /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink contentNode$fTrL = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
   }
 
   private static final class CONCEPTS {

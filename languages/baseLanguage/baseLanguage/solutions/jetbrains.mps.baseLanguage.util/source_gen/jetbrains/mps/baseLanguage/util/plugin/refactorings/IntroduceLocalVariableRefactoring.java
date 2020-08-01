@@ -31,9 +31,9 @@ public class IntroduceLocalVariableRefactoring extends IntroduceVariableRefactor
     this.findDuplicates();
     SNode var = _quotation_createNode_nngwe4_a0b0b(this.getName(), this.getExpressionType(), this.getExpression());
     if (myIsFinal) {
-      SPropertyOperations.assign(SLinkOperations.getTarget(var, LINKS.localVariableDeclaration$O0D0), PROPS.isFinal$hIht, true);
+      SPropertyOperations.assign(SLinkOperations.getTarget(var, LINKS.localVariableDeclaration$cjR0), PROPS.isFinal$_qt3, true);
     }
-    SNode varDeclaration = SLinkOperations.getTarget(var, LINKS.localVariableDeclaration$O0D0);
+    SNode varDeclaration = SLinkOperations.getTarget(var, LINKS.localVariableDeclaration$cjR0);
     SNode parentStatement = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.Statement$ok, false, false);
     while (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentStatement), CONCEPTS.StatementList$TN))) {
       parentStatement = SNodeOperations.getNodeAncestor(parentStatement, CONCEPTS.Statement$ok, false, false);
@@ -88,7 +88,7 @@ public class IntroduceLocalVariableRefactoring extends IntroduceVariableRefactor
     }
     if ((commonList != null)) {
       SNode firstAncestor = null;
-      for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(commonList, LINKS.statement$WHn8))) {
+      for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(commonList, LINKS.statement$pYcS))) {
         List<SNode> nodeAncestors = SNodeOperations.getNodeAncestors(node, null, false);
         if (ListSequence.fromList(declAncestors).contains(statement) || ListSequence.fromList(nodeAncestors).contains(statement)) {
           firstAncestor = statement;
@@ -103,7 +103,7 @@ public class IntroduceLocalVariableRefactoring extends IntroduceVariableRefactor
   public static boolean isApplicable(SNode expr) {
     return SNodeOperations.isInstanceOf(expr, CONCEPTS.Expression$TP) && ListSequence.fromList(SNodeOperations.getNodeAncestors(expr, CONCEPTS.Statement$ok, false)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.hasRole(it, LINKS.statement$WHn8);
+        return SNodeOperations.hasRole(it, LINKS.statement$pYcS);
       }
     }).isNotEmpty();
   }
@@ -129,12 +129,12 @@ public class IntroduceLocalVariableRefactoring extends IntroduceVariableRefactor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class CONCEPTS {

@@ -21,8 +21,8 @@ public class check_BuildMpsLayout_TestModules_haltonfailure_option_NonTypesystem
   public check_BuildMpsLayout_TestModules_haltonfailure_option_NonTypesystemRule() {
   }
   public void applyRule(final SNode options, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(options, LINKS.haltonfailure$JTP8) != null)) {
-      String approxPresentation = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(options, LINKS.haltonfailure$JTP8), null);
+    if ((SLinkOperations.getTarget(options, LINKS.haltonfailure$d0IS) != null)) {
+      String approxPresentation = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(options, LINKS.haltonfailure$d0IS), null);
       if (approxPresentation.contains("${")) {
         return;
       } else if (approxPresentation.equals("true")) {
@@ -32,7 +32,7 @@ public class check_BuildMpsLayout_TestModules_haltonfailure_option_NonTypesystem
       } else {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(options, LINKS.haltonfailure$JTP8), "Inappropriate value for 'haltonfailure' property", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "6593674873639642791", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(options, LINKS.haltonfailure$d0IS), "Inappropriate value for 'haltonfailure' property", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "6593674873639642791", null, errorTarget);
         }
       }
     }
@@ -48,7 +48,7 @@ public class check_BuildMpsLayout_TestModules_haltonfailure_option_NonTypesystem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink haltonfailure$JTP8 = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure");
+    /*package*/ static final SContainmentLink haltonfailure$d0IS = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure");
   }
 
   private static final class CONCEPTS {

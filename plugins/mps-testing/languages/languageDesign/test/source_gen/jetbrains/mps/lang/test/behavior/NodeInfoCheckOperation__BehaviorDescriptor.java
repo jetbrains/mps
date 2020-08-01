@@ -51,14 +51,14 @@ public final class NodeInfoCheckOperation__BehaviorDescriptor extends BaseBHDesc
   }
   /*package*/ static void attachReference_id2wBFdLy8qmn(@NotNull SNode __thisNode__, SNode reference) {
     assert ((boolean) IReferenceAttachable__BehaviorDescriptor.canAttachReference_id2wBFdLy7HtS.invoke(__thisNode__, reference));
-    SLinkOperations.setTarget(__thisNode__, LINKS.statementRef$wnfS, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbfe9cf9L, "jetbrains.mps.lang.test.structure.InfoStatementReference")));
-    SLinkOperations.setTarget(SLinkOperations.getTarget(__thisNode__, LINKS.statementRef$wnfS), LINKS.declaration$tW8o, SNodeOperations.cast(reference, CONCEPTS.InfoStatement$Gf));
+    SLinkOperations.setTarget(__thisNode__, LINKS.statementRef$FgG8, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbfe9cf9L, "jetbrains.mps.lang.test.structure.InfoStatementReference")));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(__thisNode__, LINKS.statementRef$FgG8), LINKS.declaration$w83C, SNodeOperations.cast(reference, CONCEPTS.InfoStatement$Gf));
   }
   /*package*/ static SNode getReference_id7eBNsYUkslm(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.statementRef$wnfS);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.statementRef$FgG8);
   }
   /*package*/ static SNode getReferencedRuleNode_id2wBFdLy8qmt(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.statementRef$wnfS), LINKS.declaration$tW8o);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.statementRef$FgG8), LINKS.declaration$w83C);
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     String name;
@@ -74,7 +74,7 @@ public final class NodeInfoCheckOperation__BehaviorDescriptor extends BaseBHDesc
     return action;
   }
   /*package*/ static String getExpectedMsgText_id3q9wAW4tvJ6(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$gXqz), PROPS.text$lGWw);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$dJQX), PROPS.text$wLjw);
   }
 
   /*package*/ NodeInfoCheckOperation__BehaviorDescriptor() {
@@ -141,12 +141,12 @@ public final class NodeInfoCheckOperation__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementRef$wnfS = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbfe6272L, 0x1de1fbd5fbfe97adL, "statementRef");
-    /*package*/ static final SReferenceLink declaration$tW8o = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
-    /*package*/ static final SContainmentLink expectedMessage$gXqz = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
+    /*package*/ static final SContainmentLink statementRef$FgG8 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbfe6272L, 0x1de1fbd5fbfe97adL, "statementRef");
+    /*package*/ static final SReferenceLink declaration$w83C = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
+    /*package*/ static final SContainmentLink expectedMessage$dJQX = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$lGWw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
+    /*package*/ static final SProperty text$wLjw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
   }
 }

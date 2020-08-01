@@ -34,9 +34,9 @@ public class check_TemplateCallMacro_NonTypesystemRule extends AbstractNonTypesy
       }
     } else {
       SNode inputNodeConcept = NodeMacro__BehaviorDescriptor.getInputNodeTypeInsideOfMacro_idhEwIosJ.invoke(macro);
-      if ((SLinkOperations.getTarget(template, LINKS.applicableConcept$r_1F) != null) && (inputNodeConcept != null)) {
-        if (!(MetaAdapterByDeclaration.getConcept(inputNodeConcept).isSubConceptOf(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(template, LINKS.applicableConcept$r_1F))))) {
-          String msg = String.format("Input node (%s) is not an instance of template's expected concept (%s)", SPropertyOperations.getString(inputNodeConcept, PROPS.name$tAp1), SPropertyOperations.getString(SLinkOperations.getTarget(template, LINKS.applicableConcept$r_1F), PROPS.name$tAp1));
+      if ((SLinkOperations.getTarget(template, LINKS.applicableConcept$mVNP) != null) && (inputNodeConcept != null)) {
+        if (!(MetaAdapterByDeclaration.getConcept(inputNodeConcept).isSubConceptOf(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(template, LINKS.applicableConcept$mVNP))))) {
+          String msg = String.format("Input node (%s) is not an instance of template's expected concept (%s)", SPropertyOperations.getString(inputNodeConcept, PROPS.name$lA7v), SPropertyOperations.getString(SLinkOperations.getTarget(template, LINKS.applicableConcept$mVNP), PROPS.name$lA7v));
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(macro, msg, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7260186302264445561", null, errorTarget);
@@ -56,11 +56,11 @@ public class check_TemplateCallMacro_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$r_1F = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$mVNP = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
   }
 
   private static final class CONCEPTS {

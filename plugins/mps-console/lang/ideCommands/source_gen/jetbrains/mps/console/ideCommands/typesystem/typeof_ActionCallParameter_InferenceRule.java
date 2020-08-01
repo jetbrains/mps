@@ -29,7 +29,7 @@ public class typeof_ActionCallParameter_InferenceRule extends AbstractInferenceR
   public typeof_ActionCallParameter_InferenceRule() {
   }
   public void applyRule(final SNode actionCallParameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode type = SLinkOperations.getTarget(ActionCallParameter__BehaviorDescriptor.getParameterDeclaration_id4PRmqZe_o$D.invoke(actionCallParameter), LINKS.type$pLrO);
+    SNode type = SLinkOperations.getTarget(ActionCallParameter__BehaviorDescriptor.getParameterDeclaration_id4PRmqZe_o$D.invoke(actionCallParameter), LINKS.type$uWuc);
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
         SNode _nodeToCheck_1029348928467 = actionCallParameter;
@@ -37,10 +37,10 @@ public class typeof_ActionCallParameter_InferenceRule extends AbstractInferenceR
         typeCheckingContext.createLessThanInequality((SNode) type, (SNode) _quotation_createNode_vuymlq_a1a0c0a0b0b(), true, true, _info_12389875345);
       }
     }
-    if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~DataKey")) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne)).count() == 1) {
-      SNode typeParameter = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne)).first();
+    if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~DataKey")) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)).count() == 1) {
+      SNode typeParameter = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)).first();
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(actionCallParameter, LINKS.value$Qcdw);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(actionCallParameter, LINKS.value$fUyw);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5582028874769074129", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5582028874769074131", true), (SNode) typeParameter, false, true, _info_12389875345);
       }
@@ -69,10 +69,10 @@ public class typeof_ActionCallParameter_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SContainmentLink value$Qcdw = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587abL, 0x4d7759afce9587acL, "value");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink value$fUyw = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587abL, 0x4d7759afce9587acL, "value");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

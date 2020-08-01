@@ -25,13 +25,13 @@ public class RuleAfterDotExpression implements DataFlowConstructor {
     return CONCEPTS.DotExpression$6a;
   }
   public void performActions(Program o, SNode node) {
-    if (!((boolean) IOperation__BehaviorDescriptor.operandCanBeNull_idhWYZ0eEN6z.invoke(SLinkOperations.getTarget(node, LINKS.operation$X4R8))) && !((boolean) DotExpression__BehaviorDescriptor.allowsNullOperand_id3Yy2P0QQESt.invoke(node))) {
+    if (!((boolean) IOperation__BehaviorDescriptor.operandCanBeNull_idhWYZ0eEN6z.invoke(SLinkOperations.getTarget(node, LINKS.operation$_mGS))) && !((boolean) DotExpression__BehaviorDescriptor.allowsNullOperand_id3Yy2P0QQESt.invoke(node))) {
       {
-        Object object = SLinkOperations.getTarget(node, LINKS.operand$Lcrr);
+        Object object = SLinkOperations.getTarget(node, LINKS.operand$P1i5);
         if (((Program) o).contains(object)) {
           boolean before = false;
           int position = ((Program) (o)).getEnd(object);
-          Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.operand$Lcrr));
+          Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.operand$P1i5));
           instruction.setRuleReference("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/6868777471677432385");
           instruction.setSource(node);
           ((Program) (o)).insert(instruction, position, true, before);
@@ -58,7 +58,7 @@ public class RuleAfterDotExpression implements DataFlowConstructor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

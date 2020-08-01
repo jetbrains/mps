@@ -48,9 +48,9 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
     }
 
     final Map<String, SNode> importsByName = MapSequence.fromMap(new HashMap<String, SNode>());
-    ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(clas, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN)), LINKS.entries$9FEq)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(clas, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN)), LINKS.entries$G9yA)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SPropertyOperations.getBoolean(it, PROPS.onDemand$6eZw));
+        return !(SPropertyOperations.getBoolean(it, PROPS.onDemand$1gKw));
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -108,7 +108,7 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
     // removing only those single-type imports that didn't get into retain set 
     // quick fix 
     Iterable<SNode> unneeded = Sequence.fromIterable(MapSequence.fromMap(importsByName).values()).subtract(SetSequence.fromSet(retain));
-    if (Sequence.fromIterable(unneeded).count() < ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(clas, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN)), LINKS.entries$9FEq)).count()) {
+    if (Sequence.fromIterable(unneeded).count() < ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(clas, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN)), LINKS.entries$G9yA)).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Unneeded java imports present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2235632002330933240", null, errorTarget);
@@ -147,10 +147,10 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink entries$9FEq = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
+    /*package*/ static final SContainmentLink entries$G9yA = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty onDemand$6eZw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
+    /*package*/ static final SProperty onDemand$1gKw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
   }
 }

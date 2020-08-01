@@ -111,7 +111,7 @@ public class arrayBrackets extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ArrayType$Yv, null);
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
-        SLinkOperations.setTarget(result, LINKS.componentType$10w, _context.getNode());
+        SLinkOperations.setTarget(result, LINKS.componentType$vfw, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -149,6 +149,6 @@ public class arrayBrackets extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 }

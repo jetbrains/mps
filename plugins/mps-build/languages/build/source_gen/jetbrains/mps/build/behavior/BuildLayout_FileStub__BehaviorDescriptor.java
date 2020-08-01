@@ -42,7 +42,7 @@ public final class BuildLayout_FileStub__BehaviorDescriptor extends BaseBHDescri
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     SNode parent = helper.parent(__thisNode__);
     String parentLocation = helper.getContentLocation(parent);
-    helper.putLocation(__thisNode__, parentLocation + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fileName$WK5A), helper.getMacroHelper()));
+    helper.putLocation(__thisNode__, parentLocation + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fileName$riHq), helper.getMacroHelper()));
   }
   /*package*/ static boolean isFile_id1bWeed$oPZ2(@NotNull SNode __thisNode__) {
     return true;
@@ -51,11 +51,11 @@ public final class BuildLayout_FileStub__BehaviorDescriptor extends BaseBHDescri
     if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Container$WW)) {
       sb.append("/");
     }
-    sb.append(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fileName$WK5A), null));
+    sb.append(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fileName$riHq), null));
 
   }
   /*package*/ static String getApproximateName_id4RsV8qJDnFm(@NotNull SNode __thisNode__) {
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fileName$WK5A), null);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fileName$riHq), null);
   }
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
     //  turn off, see BuildSourceArchiveRelativePath#unpack 
@@ -71,7 +71,7 @@ public final class BuildLayout_FileStub__BehaviorDescriptor extends BaseBHDescri
         // XXX alternatively, _AbstractContainer + BL_Node.isFolder()? Jars are NamedContainers, too. 
         while (namedParent != null) {
           layoutRelativeName.insert(0, '/');
-          layoutRelativeName.insert(0, BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(namedParent, LINKS.containerName$Mzv5), null));
+          layoutRelativeName.insert(0, BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(namedParent, LINKS.containerName$vc3r), null));
           namedParent = SNodeOperations.as(SNodeOperations.getParent(namedParent), CONCEPTS.BuildLayout_NamedContainer$nH);
         }
         return Objects.equals(BuildRelativePath__BehaviorDescriptor.getPathTail_id15RAxQX0M4T.invoke(SNodeOperations.cast(node, CONCEPTS.BuildRelativePath$dD)), layoutRelativeName.toString());
@@ -138,8 +138,8 @@ public final class BuildLayout_FileStub__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fileName$WK5A = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x63a87b9320d31b36L, 0x63a87b9320d31b94L, "fileName");
-    /*package*/ static final SContainmentLink containerName$Mzv5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
+    /*package*/ static final SContainmentLink fileName$riHq = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x63a87b9320d31b36L, 0x63a87b9320d31b94L, "fileName");
+    /*package*/ static final SContainmentLink containerName$vc3r = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
   }
 
   private static final class CONCEPTS {

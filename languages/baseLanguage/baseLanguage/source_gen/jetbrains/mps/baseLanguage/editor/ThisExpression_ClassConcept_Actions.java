@@ -26,7 +26,7 @@ public class ThisExpression_ClassConcept_Actions {
         if (DeletionApproverUtil.approve(editorContext, node, "class")) {
           return;
         }
-        SLinkOperations.setTarget(node, LINKS.classConcept$Hbij, null);
+        SLinkOperations.setTarget(node, LINKS.classConcept$StRd, null);
       }
 
     };
@@ -74,6 +74,6 @@ public class ThisExpression_ClassConcept_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$Hbij = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 }

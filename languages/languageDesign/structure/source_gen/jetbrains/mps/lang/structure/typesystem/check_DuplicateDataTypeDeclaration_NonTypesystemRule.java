@@ -26,7 +26,7 @@ public class check_DuplicateDataTypeDeclaration_NonTypesystemRule extends Abstra
   public check_DuplicateDataTypeDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode dataTypeDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final String name = SPropertyOperations.getString(dataTypeDeclaration, PROPS.name$tAp1);
+    final String name = SPropertyOperations.getString(dataTypeDeclaration, PROPS.name$lA7v);
     if ((name == null || name.length() == 0)) {
       return;
     }
@@ -36,7 +36,7 @@ public class check_DuplicateDataTypeDeclaration_NonTypesystemRule extends Abstra
 
     if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dataTypeDeclaration), CONCEPTS.INamedConcept$nV)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(Objects.equals(it, dataTypeDeclaration)) && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$tAp1));
+        return !(Objects.equals(it, dataTypeDeclaration)) && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$lA7v));
       }
     })) {
       {
@@ -56,7 +56,7 @@ public class check_DuplicateDataTypeDeclaration_NonTypesystemRule extends Abstra
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

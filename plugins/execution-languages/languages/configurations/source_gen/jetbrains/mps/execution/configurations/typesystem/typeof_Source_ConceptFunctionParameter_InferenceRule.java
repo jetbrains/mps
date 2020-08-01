@@ -36,7 +36,7 @@ public class typeof_Source_ConceptFunctionParameter_InferenceRule extends Abstra
   }
   private static SNode check_b03dtm_a0a1a0c0a0b(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.source$6PyJ);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.source$jVOL);
     }
     return null;
   }
@@ -47,6 +47,6 @@ public class typeof_Source_ConceptFunctionParameter_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink source$6PyJ = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x6552f0adf298f24fL, "source");
+    /*package*/ static final SContainmentLink source$jVOL = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, 0x6552f0adf298f24fL, "source");
   }
 }

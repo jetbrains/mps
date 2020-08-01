@@ -35,21 +35,21 @@ public final class NodeBuilderInitProperty__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static SNode getInitValueInternal_idMyKVmwIJUM(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN), CONCEPTS.NodeBuilderInitPropertyValue$tJ)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN), CONCEPTS.NodeBuilderPropertyExpression$_e), LINKS.expression$j9T0);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$h_bH), CONCEPTS.NodeBuilderInitPropertyValue$tJ)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$h_bH), CONCEPTS.NodeBuilderPropertyExpression$_e), LINKS.expression$hMB0);
     } else {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN);
+      return SLinkOperations.getTarget(__thisNode__, LINKS.initValue$h_bH);
     }
   }
   /*package*/ static SNode getInitValue_id1o$2SUuvKUZ(@NotNull SNode __thisNode__) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN) != null) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN), CONCEPTS.NodeBuilderInitPropertyValue$tJ)) {
-        return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN), CONCEPTS.NodeBuilderInitPropertyValue$tJ);
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.initValue$h_bH) != null) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$h_bH), CONCEPTS.NodeBuilderInitPropertyValue$tJ)) {
+        return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$h_bH), CONCEPTS.NodeBuilderInitPropertyValue$tJ);
       } else {
-        return createNodeBuilderPropertyExpression_d9e4bt_a0a0a0a0b(SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN)));
+        return createNodeBuilderPropertyExpression_d9e4bt_a0a0a0a0b(SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$h_bH)));
       }
     } else {
-      return createNodeBuilderPropertyExpression_d9e4bt_a0a0a0b(SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.expression$NDf$)));
+      return createNodeBuilderPropertyExpression_d9e4bt_a0a0a0b(SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.expression$Yys)));
     }
   }
 
@@ -102,19 +102,19 @@ public final class NodeBuilderInitProperty__BehaviorDescriptor extends BaseBHDes
   }
   private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0a0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
-    n0.forChild(LINKS.expression$j9T0).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.expression$hMB0).initNode(p0, CONCEPTS.Expression$TP, true);
     return n0.getResult();
   }
   private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
-    n0.forChild(LINKS.expression$j9T0).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.expression$hMB0).initNode(p0, CONCEPTS.Expression$TP, true);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$nhHN = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
-    /*package*/ static final SContainmentLink expression$j9T0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, 0x60f18f425c76d21bL, "expression");
-    /*package*/ static final SContainmentLink expression$NDf$ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
+    /*package*/ static final SContainmentLink initValue$h_bH = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
+    /*package*/ static final SContainmentLink expression$hMB0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, 0x60f18f425c76d21bL, "expression");
+    /*package*/ static final SContainmentLink expression$Yys = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
   }
 
   private static final class CONCEPTS {

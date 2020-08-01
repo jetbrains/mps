@@ -45,7 +45,7 @@ public final class ExternalViewFigureParameter__BehaviorDescriptor extends BaseB
 
   /*package*/ static SNode getParameterMethod_id4H19mAx5nwL(@NotNull SNode __thisNode__) {
     final String methodName = ExternalViewFigureParameter__BehaviorDescriptor.getGetterName_id3g73hQq7brf.invoke(__thisNode__);
-    return ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExternalViewFigure$2Y), LINKS.classifier$Lwne))).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExternalViewFigure$2Y), LINKS.classifier$YFfM))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$An);
       }
@@ -55,7 +55,7 @@ public final class ExternalViewFigureParameter__BehaviorDescriptor extends BaseB
       }
     }).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), methodName);
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), methodName);
       }
     });
   }
@@ -64,10 +64,10 @@ public final class ExternalViewFigureParameter__BehaviorDescriptor extends BaseB
   }
   /*package*/ static String getSuffix_id3g73hQq82yQ(@NotNull SNode __thisNode__) {
     String prefix = "my";
-    return (SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1).startsWith(prefix) ? SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1).substring(prefix.length()) : SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    return (SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v).startsWith(prefix) ? SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v).substring(prefix.length()) : SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
   }
   /*package*/ static SNode getParameterType_idiZqVFYvBew(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$LAJ2), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ);
+    return SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$1KLY), LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ);
   }
 
   /*package*/ ExternalViewFigureParameter__BehaviorDescriptor() {
@@ -129,12 +129,12 @@ public final class ExternalViewFigureParameter__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$Lwne = MetaAdapterFactory.getReferenceLink(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f7493c2L, 0x1e3b9cbb9f7493f7L, "classifier");
-    /*package*/ static final SReferenceLink fieldDeclaration$LAJ2 = MetaAdapterFactory.getReferenceLink(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f749406L, 0x1e3b9cbb9f749431L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink classifier$YFfM = MetaAdapterFactory.getReferenceLink(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f7493c2L, 0x1e3b9cbb9f7493f7L, "classifier");
+    /*package*/ static final SReferenceLink fieldDeclaration$1KLY = MetaAdapterFactory.getReferenceLink(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f749406L, 0x1e3b9cbb9f749431L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -24,8 +24,8 @@ public class MethodParameterModel {
   public MethodParameterModel(SNode param, int i) {
     this.myDeclaration = param;
     this.myOrder = i;
-    this.setTypeName(SLinkOperations.getTarget(param, LINKS.type$pLrO).getPresentation());
-    this.setName(SPropertyOperations.getString(param, PROPS.name$tAp1));
+    this.setTypeName(SLinkOperations.getTarget(param, LINKS.type$uWuc).getPresentation());
+    this.setName(SPropertyOperations.getString(param, PROPS.name$lA7v));
   }
   public String getName() {
     return this.myName;
@@ -47,10 +47,10 @@ public class MethodParameterModel {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

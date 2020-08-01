@@ -47,45 +47,45 @@ public final class CellModel_RefNodeList__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$UN) && child != null && child == SLinkOperations.getTarget(__thisNode__, LINKS.emptyCellModel$63iz)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$UN) && child != null && child == SLinkOperations.getTarget(__thisNode__, LINKS.emptyCellModel$V_YX)) {
       // Empty cells belong to the parent node, not child, so return null here to avoid calling the superclass 
       // implementation which would return the scope from the point of view of the child. 
       // Instead, returning null will cause the search for scope provider to continue upwards in cell hierarchy. 
       return null;
     }
 
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$UN) && SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$wbRV) != null) {
-      return new NamedElementsScope(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$wbRV), CONCEPTS.LinkDeclaration$bA), LINKS.target$egp8), ((boolean) true)));
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$UN) && SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$_K5_) != null) {
+      return new NamedElementsScope(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$_K5_), CONCEPTS.LinkDeclaration$bA), LINKS.target$TWaS), ((boolean) true)));
     }
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.CellModel_ListWithRole$Pv, kind, child));
   }
   /*package*/ static String getDefaultCellId_id3VYF6qfIQs_(@NotNull SNode __thisNode__) {
-    return CellIdManager.createRefNodeListId(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$wbRV), PROPS.role$r_O$));
+    return CellIdManager.createRefNodeListId(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$_K5_), PROPS.role$nkts));
   }
   /*package*/ static String getOpeningText_idhKxU$w9(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$63td), CONCEPTS.CellLayout_Vertical$vP)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Vertical$vP)) {
       return "(/";
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$63td), CONCEPTS.CellLayout_Indent$tI)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Indent$tI)) {
       return "(-";
     }
     return "(>";
   }
   /*package*/ static String getClosingText_idhKxUEwj(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$63td), CONCEPTS.CellLayout_Vertical$vP)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Vertical$vP)) {
       return "/)";
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$63td), CONCEPTS.CellLayout_Indent$tI)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Indent$tI)) {
       return "-)";
     }
     return "<)";
   }
   @Deprecated
   /*package*/ static String getRoleForCell_idhGPLstu(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$wbRV), PROPS.role$r_O$);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$_K5_), PROPS.role$nkts);
   }
   /*package*/ static SNode getFeatureForCell_id4YnqLFjkxyn(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$wbRV);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$_K5_);
   }
 
   /*package*/ CellModel_RefNodeList__BehaviorDescriptor() {
@@ -145,10 +145,10 @@ public final class CellModel_RefNodeList__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink emptyCellModel$63iz = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e7L, "emptyCellModel");
-    /*package*/ static final SReferenceLink relationDeclaration$wbRV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SContainmentLink cellLayout$63td = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
+    /*package*/ static final SContainmentLink emptyCellModel$V_YX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e7L, "emptyCellModel");
+    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink cellLayout$VF9j = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
   }
 
   private static final class CONCEPTS {
@@ -160,6 +160,6 @@ public final class CellModel_RefNodeList__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 }

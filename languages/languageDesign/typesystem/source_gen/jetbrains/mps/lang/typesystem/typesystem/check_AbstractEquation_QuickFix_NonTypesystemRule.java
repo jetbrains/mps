@@ -24,10 +24,10 @@ public class check_AbstractEquation_QuickFix_NonTypesystemRule extends AbstractN
   public check_AbstractEquation_QuickFix_NonTypesystemRule() {
   }
   public void applyRule(final SNode abstractEquationStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> intentions = SLinkOperations.getChildren(abstractEquationStatement, LINKS.helginsIntention$ksfL);
+    List<SNode> intentions = SLinkOperations.getChildren(abstractEquationStatement, LINKS.helginsIntention$TFCJ);
     if (ListSequence.fromList(intentions).count() > 1) {
       for (SNode intention : intentions) {
-        if (SPropertyOperations.getBoolean(intention, PROPS.applyImmediately$fto8)) {
+        if (SPropertyOperations.getBoolean(intention, PROPS.applyImmediately$veFS)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(intention, "can't apply immediately if there are multiple quick fixes", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "4258793651770372636", null, errorTarget);
@@ -47,11 +47,11 @@ public class check_AbstractEquation_QuickFix_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink helginsIntention$ksfL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
+    /*package*/ static final SContainmentLink helginsIntention$TFCJ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty applyImmediately$fto8 = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b26df4083L, "applyImmediately");
+    /*package*/ static final SProperty applyImmediately$veFS = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b26df4083L, "applyImmediately");
   }
 
   private static final class CONCEPTS {

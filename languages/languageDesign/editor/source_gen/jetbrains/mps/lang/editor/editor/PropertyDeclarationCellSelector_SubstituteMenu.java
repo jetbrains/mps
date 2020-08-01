@@ -50,7 +50,7 @@ public class PropertyDeclarationCellSelector_SubstituteMenu extends SubstituteMe
 
     public SMP_ReferenceScope_6blxrd_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PropertyDeclarationCellSelector$M4, LINKS.propertyDeclaration$iiOk);
+      super((SAbstractConcept) CONCEPTS.PropertyDeclarationCellSelector$M4, LINKS.propertyDeclaration$R7lG);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class PropertyDeclarationCellSelector_SubstituteMenu extends SubstituteMe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyDeclaration$iiOk = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, 0x3e970bbc311db51fL, "propertyDeclaration");
+    /*package*/ static final SReferenceLink propertyDeclaration$R7lG = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, 0x3e970bbc311db51fL, "propertyDeclaration");
   }
 }

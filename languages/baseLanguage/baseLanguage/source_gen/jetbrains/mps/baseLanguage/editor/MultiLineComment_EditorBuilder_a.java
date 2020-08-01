@@ -99,7 +99,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.lines$VaYR;
+      return LINKS.lines$EksD;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Line$w3;
@@ -110,7 +110,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     public SNode nodeFactory() {
       SNode l = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-      SLinkOperations.addNewChild(l, LINKS.elements$eRew, CONCEPTS.Word$AM);
+      SLinkOperations.addNewChild(l, LINKS.elements$cK1w, CONCEPTS.Word$AM);
       return l;
     }
     public EditorCell createNodeCell(SNode elementNode) {
@@ -120,7 +120,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(linesListHandler_petcxp_b0.this.getNode(), LINKS.lines$VaYR));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(linesListHandler_petcxp_b0.this.getNode(), LINKS.lines$EksD));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -171,8 +171,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$VaYR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink lines$EksD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {

@@ -56,7 +56,7 @@ public class SuperInterfaceMethodCall_old_Constraints extends BaseConstraintsDes
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier_old$xsNt, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier_old$cWV3, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -77,7 +77,7 @@ public class SuperInterfaceMethodCall_old_Constraints extends BaseConstraintsDes
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$$A7i, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -92,7 +92,7 @@ public class SuperInterfaceMethodCall_old_Constraints extends BaseConstraintsDes
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode superClassifier = SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.classifier_old$xsNt);
+            SNode superClassifier = SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.classifier_old$cWV3);
             if (superClassifier == null) {
               return new EmptyScope();
             }
@@ -125,7 +125,7 @@ public class SuperInterfaceMethodCall_old_Constraints extends BaseConstraintsDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier_old$xsNt = MetaAdapterFactory.getReferenceLink(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier_old");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classifier_old$cWV3 = MetaAdapterFactory.getReferenceLink(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier_old");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

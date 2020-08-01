@@ -138,7 +138,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
 
     // remove downcasts 
     for (SNode downcast : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.DownCastToLowLevel$_k, false, new SAbstractConcept[]{}))) {
-      SNodeOperations.replaceWithAnother(downcast, SLinkOperations.getTarget(downcast, LINKS.expression$vmO6));
+      SNodeOperations.replaceWithAnother(downcast, SLinkOperations.getTarget(downcast, LINKS.expression$c3eU));
     }
 
     // we need normalized dot expression for wrapping method calls 
@@ -153,8 +153,8 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     // here we must calculate type for all binary operations and remeber it 
     // so when we replace binary ops we knew to which type we should cast 
     for (SNode binaryOperation : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.BinaryOperation$vf, false, new SAbstractConcept[]{}))) {
-      SNode ltype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ));
-      SNode rtype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl));
+      SNode ltype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx));
+      SNode rtype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b));
       binaryOperation.putUserObject(TransformatorImpl.LTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(ltype)));
       binaryOperation.putUserObject(TransformatorImpl.RTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(rtype)));
     }
@@ -171,15 +171,15 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AssignmentExpression$rS));
       }
     })) {
-      baseAssignment.putUserObject(TransformatorImpl.LTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$J0D4)))));
-      baseAssignment.putUserObject(TransformatorImpl.RTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(baseAssignment, LINKS.rValue$J0E2)))));
+      baseAssignment.putUserObject(TransformatorImpl.LTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(baseAssignment, LINKS.lValue$LjSW)))));
+      baseAssignment.putUserObject(TransformatorImpl.RTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(baseAssignment, LINKS.rValue$LkmY)))));
     }
 
     // and for all ternary operators 
     for (SNode ternaryOperator : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.TernaryOperatorExpression$HC, false, new SAbstractConcept[]{}))) {
-      ternaryOperator.putUserObject(TransformatorImpl.LTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, LINKS.ifTrue$eU9r)))));
-      ternaryOperator.putUserObject(TransformatorImpl.RTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, LINKS.ifFalse$2BqC)))));
-      ternaryOperator.putUserObject(TransformatorImpl.CTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$CEb4)))));
+      ternaryOperator.putUserObject(TransformatorImpl.LTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, LINKS.ifTrue$ea$5)))));
+      ternaryOperator.putUserObject(TransformatorImpl.RTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, LINKS.ifFalse$h5To)))));
+      ternaryOperator.putUserObject(TransformatorImpl.CTYPE, TransformationUtil.getBoxedTypeIfNeeded(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$GrmW)))));
     }
   }
   private void wrapReturn() {
@@ -187,51 +187,51 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     SNode evaluateMethod = SNodeOperations.getNodeAncestor(myWhatToEvaluate, CONCEPTS.IMethodLike$kl, true, false);
     // find return statements 
     for (SNode returnStatement : ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluateMethod, CONCEPTS.ReturnStatement$SF, false, new SAbstractConcept[]{}))) {
-      SNode expression = SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK);
+      SNode expression = SLinkOperations.getTarget(returnStatement, LINKS.expression$zDGg);
       TransformationUtil.replaceReturnedExpressionIfNeeded(expression);
     }
 
     // last statement might become return statement during generation 
     SNode statement = ((SNode) BHReflection.invoke0(evaluateMethod, CONCEPTS.IMethodLike$kl, SMethodTrimmedId.create("getLastStatement", null, "i2fhS7A")));
     if (TransformationUtil.canMakeReturnStatement(statement)) {
-      TransformationUtil.replaceReturnedExpressionIfNeeded(SLinkOperations.getTarget(SNodeOperations.cast(statement, CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0));
+      TransformationUtil.replaceReturnedExpressionIfNeeded(SLinkOperations.getTarget(SNodeOperations.cast(statement, CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0));
     }
 
   }
   private void replaceConstructors() {
     for (SNode newExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.GenericNewExpression$ev, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it) && TransformationUtil.isUnprocessed(SLinkOperations.getTarget(it, LINKS.creator$itDQ));
+        return TransformationUtil.isUnprocessed(it) && TransformationUtil.isUnprocessed(SLinkOperations.getTarget(it, LINKS.creator$Wnha));
       }
     })) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newExpression, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.ThrowStatement$yK))) {
-        SNode constructor = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$$A7i);
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newExpression, LINKS.creator$Wnha), CONCEPTS.ClassCreator$yU) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.ThrowStatement$yK))) {
+        SNode constructor = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$Wnha), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$ItxI);
         SNode fqNameNode = TransformationUtil.createClassFqNameNode(myModel, SNodeOperations.getNodeAncestor(constructor, CONCEPTS.ClassConcept$IY, false, false));
         SNode jnSignature = TransformationUtil.createStringLiteral(TransformationUtil.getJniSignature(constructor));
-        List<SNode> actualArguments = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.actualArgument$$A7L);
+        List<SNode> actualArguments = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$Wnha), CONCEPTS.ClassCreator$yU), LINKS.actualArgument$ItKJ);
 
         TransformationUtil.replaceConstructor(newExpression, fqNameNode, jnSignature, actualArguments);
-      } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newExpression, LINKS.creator$itDQ), CONCEPTS.ArrayCreator$IL)) {
-        SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$itDQ), CONCEPTS.ArrayCreator$IL), LINKS.componentType$aKPo);
+      } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newExpression, LINKS.creator$Wnha), CONCEPTS.ArrayCreator$IL)) {
+        SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$Wnha), CONCEPTS.ArrayCreator$IL), LINKS.componentType$dDQC);
         SNode fqNameNode;
         if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ClassifierType$IZ)) {
-          fqNameNode = TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R));
+          fqNameNode = TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD));
         } else {
           fqNameNode = TransformationUtil.createStringLiteral(SConceptOperations.conceptAlias(SNodeOperations.getConcept(componentType)));
         }
         // todo multi-arraycal 
-        SNode size = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$itDQ), CONCEPTS.ArrayCreator$IL), LINKS.dimensionExpression$uV5v)).first(), LINKS.expression$WGFJ);
+        SNode size = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$Wnha), CONCEPTS.ArrayCreator$IL), LINKS.dimensionExpression$YBE1)).first(), LINKS.expression$pDbL);
 
         TransformationUtil.replaceArrayConstructor(newExpression, fqNameNode, size);
-      } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newExpression, LINKS.creator$itDQ), CONCEPTS.ArrayCreatorWithInitializer$aE)) {
-        SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$itDQ), CONCEPTS.ArrayCreatorWithInitializer$aE), LINKS.componentType$5JdX);
+      } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newExpression, LINKS.creator$Wnha), CONCEPTS.ArrayCreatorWithInitializer$aE)) {
+        SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$Wnha), CONCEPTS.ArrayCreatorWithInitializer$aE), LINKS.componentType$LRKz);
         SNode fqNameNode;
         if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ClassifierType$IZ)) {
-          fqNameNode = TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R));
+          fqNameNode = TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD));
         } else {
           fqNameNode = TransformationUtil.createStringLiteral(SConceptOperations.conceptAlias(SNodeOperations.getConcept(componentType)));
         }
-        List<SNode> initValues = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$itDQ), CONCEPTS.ArrayCreatorWithInitializer$aE), LINKS.initValue$C3sh);
+        List<SNode> initValues = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(newExpression, LINKS.creator$Wnha), CONCEPTS.ArrayCreatorWithInitializer$aE), LINKS.initValue$pEGf);
 
         TransformationUtil.replaceArrayWithInitializerConstructor(newExpression, fqNameNode, initValues);
       }
@@ -243,11 +243,11 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.ThrowStatement$yK))) {
-        TransformationUtil.replaceConstructor(newExpression, TransformationUtil.createStringLiteral(SPropertyOperations.getString(newExpression, PROPS.fqClassName$ZGAb)), TransformationUtil.createStringLiteral(TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(newExpression, LINKS.actualArgument$TZx)).select(new ISelector<SNode, SNode>() {
+        TransformationUtil.replaceConstructor(newExpression, TransformationUtil.createStringLiteral(SPropertyOperations.getString(newExpression, PROPS.fqClassName$QAvl)), TransformationUtil.createStringLiteral(TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(newExpression, LINKS.actualArgument$s5KZ)).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
             return SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$IG);
           }
-        }), _quotation_createNode_s72qk1_b0c0a0a0c0o())), SLinkOperations.getChildren(newExpression, LINKS.actualArgument$TZx));
+        }), _quotation_createNode_s72qk1_b0c0a0a0c0o())), SLinkOperations.getChildren(newExpression, LINKS.actualArgument$s5KZ));
       }
     }
   }
@@ -280,10 +280,10 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      SNode returnType = SLinkOperations.getTarget(SLinkOperations.getTarget(superMethodCall, LINKS.baseMethodDeclaration$$A7i), LINKS.returnType$WIkw);
-      String methodName = SPropertyOperations.getString(SLinkOperations.getTarget(superMethodCall, LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1);
-      String jniSignature = TransformationUtil.getJniSignature(SLinkOperations.getTarget(superMethodCall, LINKS.baseMethodDeclaration$$A7i));
-      TransformationUtil.replaceSuper(superMethodCall, methodName, jniSignature, returnType, SLinkOperations.getChildren(superMethodCall, LINKS.actualArgument$$A7L));
+      SNode returnType = SLinkOperations.getTarget(SLinkOperations.getTarget(superMethodCall, LINKS.baseMethodDeclaration$ItxI), LINKS.returnType$qrVw);
+      String methodName = SPropertyOperations.getString(SLinkOperations.getTarget(superMethodCall, LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v);
+      String jniSignature = TransformationUtil.getJniSignature(SLinkOperations.getTarget(superMethodCall, LINKS.baseMethodDeclaration$ItxI));
+      TransformationUtil.replaceSuper(superMethodCall, methodName, jniSignature, returnType, SLinkOperations.getChildren(superMethodCall, LINKS.actualArgument$ItKJ));
     }
   }
   private void replaceLowLevelVariableReferences() {
@@ -294,10 +294,10 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     })) {
       if ((TransformationUtil.isLowLevelVariableReference(variableRef))) {
         String variableName;
-        if (SNodeOperations.isInstanceOf(variableRef, CONCEPTS.LowLevelVariableReference$zj) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(variableRef, CONCEPTS.LowLevelVariableReference$zj), LINKS.baseVariableDeclaration$$Ls0), LINKS.type$pLrO), PROPS.isHigh$UEby)) {
-          variableName = SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(variableRef, CONCEPTS.LowLevelVariableReference$zj), LINKS.baseVariableDeclaration$$Ls0), PROPS.lowLevelName$A23$);
+        if (SNodeOperations.isInstanceOf(variableRef, CONCEPTS.LowLevelVariableReference$zj) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(variableRef, CONCEPTS.LowLevelVariableReference$zj), LINKS.baseVariableDeclaration$NW$0), LINKS.type$uWuc), PROPS.isHigh$qr_u)) {
+          variableName = SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(variableRef, CONCEPTS.LowLevelVariableReference$zj), LINKS.baseVariableDeclaration$NW$0), PROPS.lowLevelName$qZIs);
         } else {
-          variableName = SPropertyOperations.getString(SLinkOperations.getTarget(variableRef, LINKS.baseVariableDeclaration$$Ls0), PROPS.name$tAp1);
+          variableName = SPropertyOperations.getString(SLinkOperations.getTarget(variableRef, LINKS.baseVariableDeclaration$NW$0), PROPS.name$lA7v);
         }
         SNode variableType = TypecheckingFacade.getFromContext().getTypeOf(variableRef);
 
@@ -310,7 +310,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      TransformationUtil.replaceLowLevelVariableReference(SPropertyOperations.getString(variableRef, PROPS.name$tMiD), SLinkOperations.getTarget(variableRef, LINKS.type$Ttix), variableRef);
+      TransformationUtil.replaceLowLevelVariableReference(SPropertyOperations.getString(variableRef, PROPS.name$rn1R), SLinkOperations.getTarget(variableRef, LINKS.type$PbXZ), variableRef);
     }
   }
   private void replaceAssignmentsWithBinaryOperations() {
@@ -328,7 +328,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      SNode classFqNameNode = TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(classifierClassExpression, LINKS.classifier$V09));
+      SNode classFqNameNode = TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(classifierClassExpression, LINKS.classifier$s_4n));
       TransformationUtil.replaceClassExpression(classifierClassExpression, classFqNameNode);
     }
     for (SNode classExpression : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalClassExpression$7q, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
@@ -336,14 +336,14 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      TransformationUtil.replaceClassExpression(classExpression, TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(classExpression, LINKS.type$nPkF), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R)));
+      TransformationUtil.replaceClassExpression(classExpression, TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(classExpression, LINKS.type$yP0P), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD)));
     }
   }
   private void replaceLocalMemberReferences() {
     // convert local static method calls to qualified static method calls 
     for (SNode localStaticMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.LocalMethodCall$77, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.StaticMethodDeclaration$eX);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.StaticMethodDeclaration$eX);
       }
     }).toListSequence().where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -352,19 +352,19 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     })) {
       SNode staticMethodCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
       // some concepts, such as :eq: extract static methods 
-      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(myWhatToEvaluate), CONCEPTS.StaticMethodDeclaration$eX, false, new SAbstractConcept[]{})).contains(SNodeOperations.cast(SLinkOperations.getTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.StaticMethodDeclaration$eX))) {
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(myWhatToEvaluate), CONCEPTS.StaticMethodDeclaration$eX, false, new SAbstractConcept[]{})).contains(SNodeOperations.cast(SLinkOperations.getTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.StaticMethodDeclaration$eX))) {
         continue;
       }
-      SLinkOperations.setTarget(staticMethodCall, LINKS.classConcept$BsUa, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.Classifier$hJ));
-      SLinkOperations.setTarget(staticMethodCall, LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$$A7i));
-      ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, LINKS.actualArgument$$A7L)));
+      SLinkOperations.setTarget(staticMethodCall, LINKS.classConcept$70aQ, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$ItxI)), CONCEPTS.Classifier$hJ));
+      SLinkOperations.setTarget(staticMethodCall, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$ItxI));
+      ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, LINKS.actualArgument$ItKJ)));
       AttributeOperations.createAndSetAttrbiute(staticMethodCall, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$wE), CONCEPTS.UnprocessedAnnotation$wE);
       SNodeOperations.replaceWithAnother(localStaticMethodCall, staticMethodCall);
     }
     // convert local instance method calls to qualified instance method calls 
     for (SNode localInstanceMethodCall : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.LocalMethodCall$77, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.InstanceMethodDeclaration$An);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.InstanceMethodDeclaration$An);
       }
     }).toListSequence().where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -372,15 +372,15 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       SNode instanceMethodCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
-      SLinkOperations.setTarget(instanceMethodCall, LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(localInstanceMethodCall, LINKS.baseMethodDeclaration$$A7i));
-      ListSequence.fromList(SLinkOperations.getChildren(instanceMethodCall, LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(localInstanceMethodCall, LINKS.actualArgument$$A7L)));
+      SLinkOperations.setTarget(instanceMethodCall, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(localInstanceMethodCall, LINKS.baseMethodDeclaration$ItxI));
+      ListSequence.fromList(SLinkOperations.getChildren(instanceMethodCall, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(localInstanceMethodCall, LINKS.actualArgument$ItKJ)));
       AttributeOperations.createAndSetAttrbiute(instanceMethodCall, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$wE), CONCEPTS.UnprocessedAnnotation$wE);
       SNodeOperations.replaceWithAnother(localInstanceMethodCall, _quotation_createNode_s72qk1_a0a4a3a02(instanceMethodCall, TransformationUtil.createThisNodeReplacement()));
     }
     // convert local static field references to static field references 
     for (SNode localStaticFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.StaticFieldDeclaration$R5);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -388,15 +388,15 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       SNode staticFieldReference = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
-      SLinkOperations.setTarget(staticFieldReference, LINKS.variableDeclaration$2ky6, SLinkOperations.getTarget(localStaticFieldReference, LINKS.variableDeclaration$2ky6));
-      SLinkOperations.setTarget(staticFieldReference, LINKS.classifier$ZTjE, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(localStaticFieldReference, LINKS.variableDeclaration$2ky6)), CONCEPTS.ClassConcept$IY));
+      SLinkOperations.setTarget(staticFieldReference, LINKS.variableDeclaration$7WwU, SLinkOperations.getTarget(localStaticFieldReference, LINKS.variableDeclaration$7WwU));
+      SLinkOperations.setTarget(staticFieldReference, LINKS.classifier$WKxm, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(localStaticFieldReference, LINKS.variableDeclaration$7WwU)), CONCEPTS.ClassConcept$IY));
       AttributeOperations.createAndSetAttrbiute(staticFieldReference, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$wE), CONCEPTS.UnprocessedAnnotation$wE);
       SNodeOperations.replaceWithAnother(localStaticFieldReference, staticFieldReference);
     }
     // convert local instance field references to fied reference operations 
     for (SNode localInstanceFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps);
       }
     }).toListSequence().where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -404,7 +404,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       SNode fieldReferenceOperation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation"));
-      SLinkOperations.setTarget(fieldReferenceOperation, LINKS.fieldDeclaration$mLBy, SLinkOperations.getTarget(localInstanceFieldReference, LINKS.variableDeclaration$2ky6));
+      SLinkOperations.setTarget(fieldReferenceOperation, LINKS.fieldDeclaration$229u, SLinkOperations.getTarget(localInstanceFieldReference, LINKS.variableDeclaration$7WwU));
       AttributeOperations.createAndSetAttrbiute(fieldReferenceOperation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$wE), CONCEPTS.UnprocessedAnnotation$wE);
       SNodeOperations.replaceWithAnother(localInstanceFieldReference, _quotation_createNode_s72qk1_a0a3a7a02(fieldReferenceOperation, TransformationUtil.createThisNodeReplacement()));
     }
@@ -413,10 +413,10 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     boolean finished = true;
     for (SNode variableDeclaration : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.LocalVariableDeclaration$Bf, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return TransformationUtil.isUnprocessed(it) && (SLinkOperations.getTarget(it, LINKS.initializer$KgD) != null);
+        return TransformationUtil.isUnprocessed(it) && (SLinkOperations.getTarget(it, LINKS.initializer$no3R) != null);
       }
     })) {
-      finished &= TransformationUtil.replaceAssignment(variableDeclaration, SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$KgD));
+      finished &= TransformationUtil.replaceAssignment(variableDeclaration, SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$no3R));
     }
     return finished;
   }
@@ -427,7 +427,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$9EB2)), _quotation_createNode_s72qk1_b0a0a0b0w()) && !(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$H$_G), LINKS.type$pLrO), _quotation_createNode_s72qk1_b0a0a0a1a22()))) {
+      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$FCTY)), _quotation_createNode_s72qk1_b0a0a0b0w()) && !(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$4Igk), LINKS.type$uWuc), _quotation_createNode_s72qk1_b0a0a0a1a22()))) {
         TransformationUtil.replaceForEachStatement(foreachStatement);
         finished = false;
       }
@@ -441,7 +441,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      finished &= TransformationUtil.replaceAssignment(TransformationUtil.getVariableDeclaration(SLinkOperations.getTarget(assignment, LINKS.lValue$J0D4)), SLinkOperations.getTarget(assignment, LINKS.rValue$J0E2));
+      finished &= TransformationUtil.replaceAssignment(TransformationUtil.getVariableDeclaration(SLinkOperations.getTarget(assignment, LINKS.lValue$LjSW)), SLinkOperations.getTarget(assignment, LINKS.rValue$LkmY));
     }
     return finished;
   }
@@ -456,8 +456,8 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SNode notExpression_var;
       while (notExpression_it.hasNext()) {
         notExpression_var = notExpression_it.next();
-        if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(notExpression_var, LINKS.expression$bUD_))) {
-          SLinkOperations.setTarget(notExpression_var, LINKS.expression$bUD_, _quotation_createNode_s72qk1_a0a0a0a1a42(SLinkOperations.getTarget(notExpression_var, LINKS.expression$bUD_)));
+        if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(notExpression_var, LINKS.expression$Lq8V))) {
+          SLinkOperations.setTarget(notExpression_var, LINKS.expression$Lq8V, _quotation_createNode_s72qk1_a0a0a0a1a42(SLinkOperations.getTarget(notExpression_var, LINKS.expression$Lq8V)));
           finished = false;
         }
       }
@@ -471,32 +471,32 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ));
-      SNode rightType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl));
+      SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx));
+      SNode rightType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b));
       if (SNodeOperations.isInstanceOf(binaryOperation, CONCEPTS.EqualsExpression$lT) && TypecheckingFacade.getFromContext().isSubtype(leftType, _quotation_createNode_s72qk1_b0a0a2a1a52()) && TypecheckingFacade.getFromContext().isSubtype(rightType, _quotation_createNode_s72qk1_b0a0c0b0z())) {
-        SNodeOperations.replaceWithAnother(binaryOperation, _quotation_createNode_s72qk1_a0a0a2a1a52(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ), SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl)));
+        SNodeOperations.replaceWithAnother(binaryOperation, _quotation_createNode_s72qk1_a0a0a2a1a52(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx), SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)));
         finished = false;
       } else if (SNodeOperations.isInstanceOf(binaryOperation, CONCEPTS.NotEqualsExpression$Ib) && TypecheckingFacade.getFromContext().isSubtype(leftType, _quotation_createNode_s72qk1_b0a0a0c0b0z()) && TypecheckingFacade.getFromContext().isSubtype(rightType, _quotation_createNode_s72qk1_b0a0a2a1a52_0())) {
-        SNodeOperations.replaceWithAnother(binaryOperation, _quotation_createNode_s72qk1_a0a0a0c0b0z(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ), SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl)));
+        SNodeOperations.replaceWithAnother(binaryOperation, _quotation_createNode_s72qk1_a0a0a0c0b0z(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx), SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)));
         finished = false;
       } else {
-        if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ))) {
-          if (TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(RTYPE)), _quotation_createNode_s72qk1_b0a0a0a0a0a2a1a52()) && !(TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(RTYPE)), _quotation_createNode_s72qk1_b0a0a0a0a0a0c0b0z())) && !(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ)), _quotation_createNode_s72qk1_b0a0a0a0a0a2a1a52_0())) && !(TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(LTYPE)), _quotation_createNode_s72qk1_b0a0a0a0a0c0b0z()))) {
-            SLinkOperations.setTarget(binaryOperation, LINKS.leftExpression$rxLZ, _quotation_createNode_s72qk1_a0a0a0a0a0c0b0z(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ)));
+        if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx))) {
+          if (TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(RTYPE)), _quotation_createNode_s72qk1_b0a0a0a0a0a2a1a52()) && !(TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(RTYPE)), _quotation_createNode_s72qk1_b0a0a0a0a0a0c0b0z())) && !(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx)), _quotation_createNode_s72qk1_b0a0a0a0a0a2a1a52_0())) && !(TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(LTYPE)), _quotation_createNode_s72qk1_b0a0a0a0a0c0b0z()))) {
+            SLinkOperations.setTarget(binaryOperation, LINKS.leftExpression$lndx, _quotation_createNode_s72qk1_a0a0a0a0a0c0b0z(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx)));
             finished = false;
           } else {
-            SLinkOperations.setTarget(binaryOperation, LINKS.leftExpression$rxLZ, _quotation_createNode_s72qk1_a0a0a0a0a0a2a1a52(((SNode) binaryOperation.getUserObject(LTYPE)), SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$rxLZ)));
+            SLinkOperations.setTarget(binaryOperation, LINKS.leftExpression$lndx, _quotation_createNode_s72qk1_a0a0a0a0a0a2a1a52(((SNode) binaryOperation.getUserObject(LTYPE)), SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx)));
             SNodeOperations.deleteNode(AttributeOperations.getAttribute(binaryOperation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$wE)));
             finished = false;
           }
         }
-        if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl))) {
-          if (TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(LTYPE)), _quotation_createNode_s72qk1_b0a0a0a0b0a2a1a52()) && !(TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(LTYPE)), _quotation_createNode_s72qk1_b0a0a0a0a1a0c0b0z())) && !(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl)), _quotation_createNode_s72qk1_b0a0a0a0b0a2a1a52_0())) && !(TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(RTYPE)), _quotation_createNode_s72qk1_b0a0a0a1a0c0b0z()))) {
-            SLinkOperations.setTarget(binaryOperation, LINKS.rightExpression$rxBl, _quotation_createNode_s72qk1_a0a0a0a1a0c0b0z(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl)));
+        if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b))) {
+          if (TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(LTYPE)), _quotation_createNode_s72qk1_b0a0a0a0b0a2a1a52()) && !(TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(LTYPE)), _quotation_createNode_s72qk1_b0a0a0a0a1a0c0b0z())) && !(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)), _quotation_createNode_s72qk1_b0a0a0a0b0a2a1a52_0())) && !(TypecheckingFacade.getFromContext().isSubtype(((SNode) binaryOperation.getUserObject(RTYPE)), _quotation_createNode_s72qk1_b0a0a0a1a0c0b0z()))) {
+            SLinkOperations.setTarget(binaryOperation, LINKS.rightExpression$li3b, _quotation_createNode_s72qk1_a0a0a0a1a0c0b0z(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)));
             finished = false;
 
           } else {
-            SLinkOperations.setTarget(binaryOperation, LINKS.rightExpression$rxBl, _quotation_createNode_s72qk1_a0a0a0a0b0a2a1a52(((SNode) binaryOperation.getUserObject(RTYPE)), SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$rxBl)));
+            SLinkOperations.setTarget(binaryOperation, LINKS.rightExpression$li3b, _quotation_createNode_s72qk1_a0a0a0a0b0a2a1a52(((SNode) binaryOperation.getUserObject(RTYPE)), SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)));
             SNodeOperations.deleteNode(AttributeOperations.getAttribute(binaryOperation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$wE)));
             finished = false;
           }
@@ -512,15 +512,15 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      SNode ctype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$CEb4));
-      if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$CEb4)) && TypecheckingFacade.getFromContext().isSubtype(ctype, _quotation_createNode_s72qk1_b0a0b0b0ab())) {
-        SLinkOperations.setTarget(ternaryOperator, LINKS.condition$CEb4, _quotation_createNode_s72qk1_a0a0a1a1a62(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$CEb4)));
+      SNode ctype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$GrmW));
+      if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$GrmW)) && TypecheckingFacade.getFromContext().isSubtype(ctype, _quotation_createNode_s72qk1_b0a0b0b0ab())) {
+        SLinkOperations.setTarget(ternaryOperator, LINKS.condition$GrmW, _quotation_createNode_s72qk1_a0a0a1a1a62(SLinkOperations.getTarget(ternaryOperator, LINKS.condition$GrmW)));
       }
-      if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(ternaryOperator, LINKS.ifTrue$eU9r)) && TypecheckingFacade.getFromContext().isSubtype(((SNode) ternaryOperator.getUserObject(LTYPE)), _quotation_createNode_s72qk1_b0a0c0b0ab())) {
-        SLinkOperations.setTarget(ternaryOperator, LINKS.ifTrue$eU9r, _quotation_createNode_s72qk1_a0a0a2a1a62(SLinkOperations.getTarget(ternaryOperator, LINKS.ifTrue$eU9r)));
+      if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(ternaryOperator, LINKS.ifTrue$ea$5)) && TypecheckingFacade.getFromContext().isSubtype(((SNode) ternaryOperator.getUserObject(LTYPE)), _quotation_createNode_s72qk1_b0a0c0b0ab())) {
+        SLinkOperations.setTarget(ternaryOperator, LINKS.ifTrue$ea$5, _quotation_createNode_s72qk1_a0a0a2a1a62(SLinkOperations.getTarget(ternaryOperator, LINKS.ifTrue$ea$5)));
       }
-      if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(ternaryOperator, LINKS.ifFalse$2BqC)) && TypecheckingFacade.getFromContext().isSubtype(((SNode) ternaryOperator.getUserObject(RTYPE)), _quotation_createNode_s72qk1_b0a0d0b0ab())) {
-        SLinkOperations.setTarget(ternaryOperator, LINKS.ifFalse$2BqC, _quotation_createNode_s72qk1_a0a0a3a1a62(SLinkOperations.getTarget(ternaryOperator, LINKS.ifFalse$2BqC)));
+      if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(ternaryOperator, LINKS.ifFalse$h5To)) && TypecheckingFacade.getFromContext().isSubtype(((SNode) ternaryOperator.getUserObject(RTYPE)), _quotation_createNode_s72qk1_b0a0d0b0ab())) {
+        SLinkOperations.setTarget(ternaryOperator, LINKS.ifFalse$h5To, _quotation_createNode_s72qk1_a0a0a3a1a62(SLinkOperations.getTarget(ternaryOperator, LINKS.ifFalse$h5To)));
       }
     }
     return finished;
@@ -528,7 +528,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   private boolean replaceInternalStaticFieldReferences() {
     boolean finished = true;
     for (SNode staticFieldReference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, CONCEPTS.InternalStaticFieldReference$_F, false, new SAbstractConcept[]{}))) {
-      TransformationUtil.replaceStaticFieldReference(staticFieldReference, SPropertyOperations.getString(staticFieldReference, PROPS.fieldName$piPr), null, TransformationUtil.createStringLiteral(SPropertyOperations.getString(staticFieldReference, PROPS.fqClassName$67OS)));
+      TransformationUtil.replaceStaticFieldReference(staticFieldReference, SPropertyOperations.getString(staticFieldReference, PROPS.fieldName$g7S5), null, TransformationUtil.createStringLiteral(SPropertyOperations.getString(staticFieldReference, PROPS.fqClassName$XMB8)));
       finished = false;
     }
     return finished;
@@ -541,7 +541,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       // TODO we really process all(?) static field references now, so might wanna move this code out of while cycle 
-      TransformationUtil.replaceStaticFieldReference(staticFieldReference, SPropertyOperations.getString(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$2ky6), PROPS.name$tAp1), SLinkOperations.getTarget(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$2ky6), LINKS.type$pLrO), TransformationUtil.createClassFqNameNode(myModel, SNodeOperations.cast(SLinkOperations.getTarget(staticFieldReference, LINKS.classifier$ZTjE), CONCEPTS.ClassConcept$IY)));
+      TransformationUtil.replaceStaticFieldReference(staticFieldReference, SPropertyOperations.getString(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$7WwU), PROPS.name$lA7v), SLinkOperations.getTarget(SLinkOperations.getTarget(staticFieldReference, LINKS.variableDeclaration$7WwU), LINKS.type$uWuc), TransformationUtil.createClassFqNameNode(myModel, SNodeOperations.cast(SLinkOperations.getTarget(staticFieldReference, LINKS.classifier$WKxm), CONCEPTS.ClassConcept$IY)));
       finished = false;
     }
     return finished;
@@ -553,7 +553,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      TransformationUtil.replaceFieldReference(fieldReference, SLinkOperations.getTarget(fieldReference, LINKS.instance$qki$), SPropertyOperations.getString(fieldReference, PROPS.fieldName$sFGL), SLinkOperations.getTarget(fieldReference, LINKS.fieldType$Pz5$));
+      TransformationUtil.replaceFieldReference(fieldReference, SLinkOperations.getTarget(fieldReference, LINKS.instance$JOZs), SPropertyOperations.getString(fieldReference, PROPS.fieldName$TaFJ), SLinkOperations.getTarget(fieldReference, LINKS.fieldType$VZGs));
       finished = false;
     }
     return finished;
@@ -565,8 +565,8 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.DotExpression$6a, false, false), LINKS.operand$Lcrr)), _quotation_createNode_s72qk1_b0a0a1a03())) {
-        TransformationUtil.replaceFieldReference(SNodeOperations.getParent(fieldReferenceOperation), SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(fieldReferenceOperation), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr), SPropertyOperations.getString(SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$mLBy), PROPS.name$tAp1), SLinkOperations.getTarget(SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$mLBy), LINKS.type$pLrO));
+      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.DotExpression$6a, false, false), LINKS.operand$P1i5)), _quotation_createNode_s72qk1_b0a0a1a03())) {
+        TransformationUtil.replaceFieldReference(SNodeOperations.getParent(fieldReferenceOperation), SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(fieldReferenceOperation), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5), SPropertyOperations.getString(SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$229u), PROPS.name$lA7v), SLinkOperations.getTarget(SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$229u), LINKS.type$uWuc));
         finished = false;
       }
     }
@@ -579,11 +579,11 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      TransformationUtil.replaceStaticMethodCall(staticMethodCall, TransformationUtil.createStringLiteral(SPropertyOperations.getString(staticMethodCall, PROPS.fqClassName$Fjup)), SPropertyOperations.getString(staticMethodCall, PROPS.methodName$TZv2), TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$9Cy3)).select(new ISelector<SNode, SNode>() {
+      TransformationUtil.replaceStaticMethodCall(staticMethodCall, TransformationUtil.createStringLiteral(SPropertyOperations.getString(staticMethodCall, PROPS.fqClassName$YrI7)), SPropertyOperations.getString(staticMethodCall, PROPS.methodName$5K1Y), TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$ECvt)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
           return SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$IG);
         }
-      }), SLinkOperations.getTarget(staticMethodCall, LINKS.returnType$_l1g)), SLinkOperations.getTarget(staticMethodCall, LINKS.returnType$_l1g), SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$9Cy3));
+      }), SLinkOperations.getTarget(staticMethodCall, LINKS.returnType$5bAK)), SLinkOperations.getTarget(staticMethodCall, LINKS.returnType$5bAK), SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$ECvt));
       finished = false;
     }
     return finished;
@@ -596,7 +596,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       // TODO what if we are inside of an inner class? 
-      TransformationUtil.replaceStaticMethodCall(staticMethodCall, TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(staticMethodCall, LINKS.classConcept$BsUa)), SPropertyOperations.getString(SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1), TransformationUtil.getJniSignature(SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$$A7i)), SLinkOperations.getTarget(SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$$A7i), LINKS.returnType$WIkw), SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$$A7L));
+      TransformationUtil.replaceStaticMethodCall(staticMethodCall, TransformationUtil.createClassFqNameNode(myModel, SLinkOperations.getTarget(staticMethodCall, LINKS.classConcept$70aQ)), SPropertyOperations.getString(SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v), TransformationUtil.getJniSignature(SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$ItxI)), SLinkOperations.getTarget(SLinkOperations.getTarget(staticMethodCall, LINKS.baseMethodDeclaration$ItxI), LINKS.returnType$qrVw), SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$ItKJ));
       finished = false;
     }
     return finished;
@@ -608,11 +608,11 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      TransformationUtil.replaceMethodCall(methodCall, SLinkOperations.getTarget(methodCall, LINKS.instance$eKq), methodCall, SPropertyOperations.getString(methodCall, PROPS.methodName$gCLw), TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$FkBm)).select(new ISelector<SNode, SNode>() {
+      TransformationUtil.replaceMethodCall(methodCall, SLinkOperations.getTarget(methodCall, LINKS.instance$79sA), methodCall, SPropertyOperations.getString(methodCall, PROPS.methodName$3JYw), TransformationUtil.getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$YZ3E)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
           return SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(it), CONCEPTS.Type$IG);
         }
-      }), SLinkOperations.getTarget(methodCall, LINKS.returnType$IUIl)), SLinkOperations.getTarget(methodCall, LINKS.returnType$IUIl), SLinkOperations.getChildren(methodCall, LINKS.actualArgument$FkBm));
+      }), SLinkOperations.getTarget(methodCall, LINKS.returnType$Issb)), SLinkOperations.getTarget(methodCall, LINKS.returnType$Issb), SLinkOperations.getChildren(methodCall, LINKS.actualArgument$YZ3E));
       finished = false;
     }
     return finished;
@@ -625,11 +625,11 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       }
     })) {
       // TODO should we check for parameter types, like we did for static method calls? 
-      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(methodCall, CONCEPTS.DotExpression$6a, false, false), LINKS.operand$Lcrr)), _quotation_createNode_s72qk1_b0a1a1a43())) {
+      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(methodCall, CONCEPTS.DotExpression$6a, false, false), LINKS.operand$P1i5)), _quotation_createNode_s72qk1_b0a1a1a43())) {
 
-        SNode originalMethodDeclaration = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$$A7i);
+        SNode originalMethodDeclaration = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI);
 
-        TransformationUtil.replaceMethodCall(SNodeOperations.cast(SNodeOperations.getParent(methodCall), CONCEPTS.Expression$TP), SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(methodCall), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr), methodCall, SPropertyOperations.getString(originalMethodDeclaration, PROPS.name$tAp1), TransformationUtil.getJniSignature(originalMethodDeclaration), SLinkOperations.getTarget(originalMethodDeclaration, LINKS.returnType$WIkw), SLinkOperations.getChildren(methodCall, LINKS.actualArgument$$A7L));
+        TransformationUtil.replaceMethodCall(SNodeOperations.cast(SNodeOperations.getParent(methodCall), CONCEPTS.Expression$TP), SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(methodCall), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5), methodCall, SPropertyOperations.getString(originalMethodDeclaration, PROPS.name$lA7v), TransformationUtil.getJniSignature(originalMethodDeclaration), SLinkOperations.getTarget(originalMethodDeclaration, LINKS.returnType$qrVw), SLinkOperations.getChildren(methodCall, LINKS.actualArgument$ItKJ));
         finished = false;
       }
     }
@@ -641,8 +641,8 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(instanceofExpression, LINKS.leftExpression$zxNn))) {
-        SNodeOperations.replaceWithAnother(instanceofExpression, _quotation_createNode_s72qk1_a0a0a0a0a53(TransformationUtil.createStringLiteral(TransformationUtil.getJniSignatureFromType(SLinkOperations.getTarget(instanceofExpression, LINKS.classType$zxNQ))), SLinkOperations.getTarget(instanceofExpression, LINKS.leftExpression$zxNn)));
+      if (TransformationUtil.isNotNullProxy(SLinkOperations.getTarget(instanceofExpression, LINKS.leftExpression$dnS9))) {
+        SNodeOperations.replaceWithAnother(instanceofExpression, _quotation_createNode_s72qk1_a0a0a0a0a53(TransformationUtil.createStringLiteral(TransformationUtil.getJniSignatureFromType(SLinkOperations.getTarget(instanceofExpression, LINKS.classType$do7a))), SLinkOperations.getTarget(instanceofExpression, LINKS.leftExpression$dnS9)));
       }
     }
   }
@@ -653,12 +653,12 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(arrayAccess, LINKS.array$L7S$)), _quotation_createNode_s72qk1_b0a0a1a63())) {
+      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(arrayAccess, LINKS.array$MOps)), _quotation_createNode_s72qk1_b0a0a1a63())) {
         SNode returnType = _quotation_createNode_s72qk1_a0a0a0b0kb();
         if (arrayAccess.getUserObject(TransformatorImpl.LTYPE) != null) {
           returnType = TransformationUtil.getValueProxyTypeFromType(((SNode) arrayAccess.getUserObject(LTYPE)));
         }
-        SNodeOperations.replaceWithAnother(arrayAccess, _quotation_createNode_s72qk1_a0a2a0a1a63(returnType, SLinkOperations.getTarget(arrayAccess, LINKS.index$JFzt), returnType, SLinkOperations.getTarget(arrayAccess, LINKS.array$L7S$)));
+        SNodeOperations.replaceWithAnother(arrayAccess, _quotation_createNode_s72qk1_a0a2a0a1a63(returnType, SLinkOperations.getTarget(arrayAccess, LINKS.index$66b3), returnType, SLinkOperations.getTarget(arrayAccess, LINKS.array$MOps)));
         finished = false;
       }
     }
@@ -667,8 +667,8 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(arrayLength), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr)), _quotation_createNode_s72qk1_b0a0a2a63())) {
-        SNodeOperations.replaceWithAnother(SNodeOperations.getParent(arrayLength), _quotation_createNode_s72qk1_a0a0a0a2a63(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(arrayLength), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr)));
+      if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(arrayLength), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), _quotation_createNode_s72qk1_b0a0a2a63())) {
+        SNodeOperations.replaceWithAnother(SNodeOperations.getParent(arrayLength), _quotation_createNode_s72qk1_a0a0a0a2a63(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(arrayLength), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)));
         finished = false;
       }
     }
@@ -681,9 +681,9 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         return TransformationUtil.isUnprocessed(it);
       }
     })) {
-      SNode expression = SLinkOperations.getTarget(cast, LINKS.expression$8QPv);
+      SNode expression = SLinkOperations.getTarget(cast, LINKS.expression$izU1);
       SNode expressionType = TypecheckingFacade.getFromContext().getTypeOf(expression);
-      SNode castType = SLinkOperations.getTarget(cast, LINKS.type$8QP0);
+      SNode castType = SLinkOperations.getTarget(cast, LINKS.type$izF0);
       if (TypecheckingFacade.getFromContext().isSubtype(expressionType, _quotation_createNode_s72qk1_b0a0d0b0lb_0()) && TypecheckingFacade.getFromContext().isSubtype(castType, _quotation_createNode_s72qk1_b0a0d0b0lb())) {
         SNodeOperations.replaceWithAnother(cast, expression);
         TransformationUtil.replaceExpressionWithBox(expression);
@@ -694,7 +694,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
         finished = false;
       } else if (TypecheckingFacade.getFromContext().isSubtype(expressionType, _quotation_createNode_s72qk1_b0a0b3a1a73()) && !(TypecheckingFacade.getFromContext().isSubtype(castType, _quotation_createNode_s72qk1_b0a0a1d0b0lb()))) {
         SNode classifierType = TransformationUtil.getValueProxyTypeFromType(castType);
-        SLinkOperations.setTarget(cast, LINKS.type$8QP0, classifierType);
+        SLinkOperations.setTarget(cast, LINKS.type$izF0, classifierType);
         finished = false;
       }
     }
@@ -719,24 +719,24 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       public void visit(SNode node) {
         if (firstTime.value) {
           // we are at the first node in the order 
-          SLinkOperations.setTarget(normalizedDotExpression.value, LINKS.operand$Lcrr, SNodeOperations.cast(node, CONCEPTS.Expression$TP));
+          SLinkOperations.setTarget(normalizedDotExpression.value, LINKS.operand$P1i5, SNodeOperations.cast(node, CONCEPTS.Expression$TP));
           firstTime.value = false;
         } else {
           SNode newDotExpression = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
-          SLinkOperations.setTarget(newDotExpression, LINKS.operand$Lcrr, normalizedDotExpression.value);
-          SLinkOperations.setTarget(normalizedDotExpression.value, LINKS.operation$X4R8, SNodeOperations.cast(node, CONCEPTS.IOperation$No));
+          SLinkOperations.setTarget(newDotExpression, LINKS.operand$P1i5, normalizedDotExpression.value);
+          SLinkOperations.setTarget(normalizedDotExpression.value, LINKS.operation$_mGS, SNodeOperations.cast(node, CONCEPTS.IOperation$No));
           normalizedDotExpression.value = newDotExpression;
         }
       }
     });
-    SNodeOperations.replaceWithAnother(dotExpression, SLinkOperations.getTarget(normalizedDotExpression.value, LINKS.operand$Lcrr));
+    SNodeOperations.replaceWithAnother(dotExpression, SLinkOperations.getTarget(normalizedDotExpression.value, LINKS.operand$P1i5));
   }
   private static List<SNode> getOrder(SNode node, List<SNode> order) {
     if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.DotExpression$6a))) {
       ListSequence.fromList(order).addElement(node);
     } else {
-      getOrder(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr), order);
-      getOrder(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), order);
+      getOrder(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5), order);
+      getOrder(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), order);
     }
     return order;
   }
@@ -1414,68 +1414,68 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$vmO6 = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, 0x6dd9f7bd221bb39eL, "expression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink ifTrue$eU9r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
-    /*package*/ static final SContainmentLink ifFalse$2BqC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
-    /*package*/ static final SContainmentLink condition$CEb4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink creator$itDQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink componentType$aKPo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink dimensionExpression$uV5v = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
-    /*package*/ static final SContainmentLink expression$WGFJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4b2dfdaL, 0x113e4b846d4L, "expression");
-    /*package*/ static final SContainmentLink componentType$5JdX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
-    /*package*/ static final SContainmentLink initValue$C3sh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01d19acL, "initValue");
-    /*package*/ static final SContainmentLink actualArgument$TZx = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x46d6451be64f8b7L, "actualArgument");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink baseVariableDeclaration$$Ls0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink type$Ttix = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5c4f4cL, "type");
-    /*package*/ static final SReferenceLink classifier$V09 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
-    /*package*/ static final SContainmentLink type$nPkF = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1117461827dL, 0x11174623062L, "type");
-    /*package*/ static final SReferenceLink classConcept$BsUa = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink variable$H$_G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink iterable$9EB2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink instance$qki$ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd6bbc3L, "instance");
-    /*package*/ static final SContainmentLink fieldType$Pz5$ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd662a5L, "fieldType");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink actualArgument$9Cy3 = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1115749abe3L, 0x46d6451be652f35L, "actualArgument");
-    /*package*/ static final SContainmentLink returnType$_l1g = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1115749abe3L, 0x111c2c992c2L, "returnType");
-    /*package*/ static final SContainmentLink instance$eKq = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ac91a89L, "instance");
-    /*package*/ static final SContainmentLink actualArgument$FkBm = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ad1a966L, "actualArgument");
-    /*package*/ static final SContainmentLink returnType$IUIl = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116a8c540bL, "returnType");
-    /*package*/ static final SContainmentLink classType$zxNQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
-    /*package*/ static final SContainmentLink leftExpression$zxNn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
-    /*package*/ static final SContainmentLink index$JFzt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, 0x11126b6ac89L, "index");
-    /*package*/ static final SContainmentLink array$L7S$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, 0x11126b6de5aL, "array");
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink type$8QP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink expression$c3eU = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x6dd9f7bd221bb1d5L, 0x6dd9f7bd221bb39eL, "expression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink ifTrue$ea$5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
+    /*package*/ static final SContainmentLink ifFalse$h5To = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
+    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink componentType$dDQC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink dimensionExpression$YBE1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
+    /*package*/ static final SContainmentLink expression$pDbL = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4b2dfdaL, 0x113e4b846d4L, "expression");
+    /*package*/ static final SContainmentLink componentType$LRKz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
+    /*package*/ static final SContainmentLink initValue$pEGf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01d19acL, "initValue");
+    /*package*/ static final SContainmentLink actualArgument$s5KZ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x46d6451be64f8b7L, "actualArgument");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink baseVariableDeclaration$NW$0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$PbXZ = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5c4f4cL, "type");
+    /*package*/ static final SReferenceLink classifier$s_4n = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
+    /*package*/ static final SContainmentLink type$yP0P = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1117461827dL, 0x11174623062L, "type");
+    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink iterable$FCTY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink instance$JOZs = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd6bbc3L, "instance");
+    /*package*/ static final SContainmentLink fieldType$VZGs = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd662a5L, "fieldType");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink actualArgument$ECvt = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1115749abe3L, 0x46d6451be652f35L, "actualArgument");
+    /*package*/ static final SContainmentLink returnType$5bAK = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1115749abe3L, 0x111c2c992c2L, "returnType");
+    /*package*/ static final SContainmentLink instance$79sA = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ac91a89L, "instance");
+    /*package*/ static final SContainmentLink actualArgument$YZ3E = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116ad1a966L, "actualArgument");
+    /*package*/ static final SContainmentLink returnType$Issb = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116a8c540bL, "returnType");
+    /*package*/ static final SContainmentLink classType$do7a = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
+    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink index$66b3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, 0x11126b6ac89L, "index");
+    /*package*/ static final SContainmentLink array$MOps = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, 0x11126b6de5aL, "array");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink type$izF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fqClassName$ZGAb = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x11157a64c91L, "fqClassName");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty lowLevelName$A23$ = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x4db8c07036eb94eeL, "lowLevelName");
-    /*package*/ static final SProperty isHigh$UEby = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25eedL, "isHigh");
-    /*package*/ static final SProperty name$tMiD = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name");
-    /*package*/ static final SProperty fieldName$piPr = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157912ec1L, 0x11157952fb6L, "fieldName");
-    /*package*/ static final SProperty fqClassName$67OS = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157912ec1L, 0x1115794e9f1L, "fqClassName");
-    /*package*/ static final SProperty fieldName$sFGL = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd65055L, "fieldName");
-    /*package*/ static final SProperty fqClassName$Fjup = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1115749abe3L, 0x1115767a8eeL, "fqClassName");
-    /*package*/ static final SProperty methodName$TZv2 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1115749abe3L, 0x111576710b3L, "methodName");
-    /*package*/ static final SProperty methodName$gCLw = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116964d747L, "methodName");
+    /*package*/ static final SProperty fqClassName$QAvl = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x11157a64c91L, "fqClassName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty lowLevelName$qZIs = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x4db8c07036eb94eeL, "lowLevelName");
+    /*package*/ static final SProperty isHigh$qr_u = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25eedL, "isHigh");
+    /*package*/ static final SProperty name$rn1R = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name");
+    /*package*/ static final SProperty fieldName$g7S5 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157912ec1L, 0x11157952fb6L, "fieldName");
+    /*package*/ static final SProperty fqClassName$XMB8 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157912ec1L, 0x1115794e9f1L, "fqClassName");
+    /*package*/ static final SProperty fieldName$TaFJ = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd65055L, "fieldName");
+    /*package*/ static final SProperty fqClassName$YrI7 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1115749abe3L, 0x1115767a8eeL, "fqClassName");
+    /*package*/ static final SProperty methodName$5K1Y = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1115749abe3L, 0x111576710b3L, "methodName");
+    /*package*/ static final SProperty methodName$3JYw = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, 0x1116964d747L, "methodName");
   }
 }

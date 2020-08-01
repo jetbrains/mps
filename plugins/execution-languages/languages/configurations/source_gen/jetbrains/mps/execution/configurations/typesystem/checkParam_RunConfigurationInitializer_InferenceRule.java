@@ -23,7 +23,7 @@ public class checkParam_RunConfigurationInitializer_InferenceRule extends Abstra
   }
   public void applyRule(final SNode initializer, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(initializer, LINKS.projectParameter$6vQN);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(initializer, LINKS.projectParameter$9ryH);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "6981317760235477843", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "6981317760235477852", true), (SNode) createClassifierType_qjat6x_a1a0c0a0b(), false, false, _info_12389875345);
     }
@@ -40,13 +40,13 @@ public class checkParam_RunConfigurationInitializer_InferenceRule extends Abstra
   private static SNode createClassifierType_qjat6x_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    n0.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)"), facade.createNodeId("~Project")));
+    n0.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)"), facade.createNodeId("~Project")));
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink projectParameter$6vQN = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x1e454b508a60997cL, 0x1e454b508a72ed99L, "projectParameter");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink projectParameter$9ryH = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x1e454b508a60997cL, 0x1e454b508a72ed99L, "projectParameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

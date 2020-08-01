@@ -25,7 +25,7 @@ public class check_BuildMps_GeneratorOptions_NonTypesystemRule extends AbstractN
   public void applyRule(final SNode genOpts, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(genOpts), CONCEPTS.BuildProject$BF)) {
       SNode bp = SNodeOperations.cast(SNodeOperations.getParent(genOpts), CONCEPTS.BuildProject$BF);
-      if (ListSequence.fromList(SLinkOperations.getChildren(bp, LINKS.parts$tgxg)).where(new IWhereFilter<SNode>() {
+      if (ListSequence.fromList(SLinkOperations.getChildren(bp, LINKS.parts$b06K)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_GeneratorOptions$9K) && it != genOpts;
         }
@@ -53,6 +53,6 @@ public class check_BuildMps_GeneratorOptions_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$tgxg = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
   }
 }

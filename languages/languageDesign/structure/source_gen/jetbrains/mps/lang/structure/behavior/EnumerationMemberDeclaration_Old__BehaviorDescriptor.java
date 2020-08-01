@@ -43,8 +43,8 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.externalValue$bx$P) != null) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.externalValue$bx$P);
+    if (SPropertyOperations.getString(__thisNode__, PROPS.externalValue$_gPF) != null) {
+      return SPropertyOperations.getString(__thisNode__, PROPS.externalValue$_gPF);
     }
     return "<no external value>";
   }
@@ -53,19 +53,19 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   }
   /*package*/ static String getName_idi2ZRO7Q(@NotNull SNode __thisNode__) {
     SNode enumType = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll);
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(enumType, PROPS.memberIdentifierPolicy$DUls), 0x116d5fd31b6L)) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.internalValue$bx$m);
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(enumType, PROPS.memberIdentifierPolicy$jgo$), 0x116d5fd31b6L)) {
+      return SPropertyOperations.getString(__thisNode__, PROPS.internalValue$_gAE);
     }
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(enumType, PROPS.memberIdentifierPolicy$DUls), 0x116d5fab106L)) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.externalValue$bx$P);
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(enumType, PROPS.memberIdentifierPolicy$jgo$), 0x116d5fab106L)) {
+      return SPropertyOperations.getString(__thisNode__, PROPS.externalValue$_gPF);
     }
-    return SPropertyOperations.getString(__thisNode__, PROPS.javaIdentifier$Z5f7);
+    return SPropertyOperations.getString(__thisNode__, PROPS.javaIdentifier$zykp);
   }
   /*package*/ static SNode findReplacement_id54m$yuDZW0l(@NotNull final SNode __thisNode__) {
     // old-enum-member | old-enum | enum-migration-info | new-enum 
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__))), CONCEPTS.EnumerationDeclaration$rG), LINKS.members$qYq2)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__))), CONCEPTS.EnumerationDeclaration$rG), LINKS.members$4eAY)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.oldMember$bvEy) == __thisNode__;
+        return SLinkOperations.getTarget(it, LINKS.oldMember$$lAu) == __thisNode__;
       }
     });
   }
@@ -123,10 +123,10 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty externalValue$bx$P = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
-    /*package*/ static final SProperty internalValue$bx$m = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
-    /*package*/ static final SProperty memberIdentifierPolicy$DUls = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy");
-    /*package*/ static final SProperty javaIdentifier$Z5f7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0x1158fb58479L, "javaIdentifier");
+    /*package*/ static final SProperty externalValue$_gPF = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
+    /*package*/ static final SProperty internalValue$_gAE = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
+    /*package*/ static final SProperty memberIdentifierPolicy$jgo$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy");
+    /*package*/ static final SProperty javaIdentifier$zykp = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0x1158fb58479L, "javaIdentifier");
   }
 
   private static final class CONCEPTS {
@@ -135,7 +135,7 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink members$qYq2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
-    /*package*/ static final SReferenceLink oldMember$bvEy = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0xc7a22b1ac1ed15fL, "oldMember");
+    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SReferenceLink oldMember$$lAu = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0xc7a22b1ac1ed15fL, "oldMember");
   }
 }

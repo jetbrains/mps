@@ -43,7 +43,7 @@ public class RemoveInvisibleConstructorsInBTestCases extends MigrationScriptBase
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BTestCase$o9, false)).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode it) {
-          return SLinkOperations.getChildren(it, LINKS.constructor$8I7u);
+          return SLinkOperations.getChildren(it, LINKS.constructor$elBy);
         }
       }).toListSequence().visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
@@ -61,6 +61,6 @@ public class RemoveInvisibleConstructorsInBTestCases extends MigrationScriptBase
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink constructor$8I7u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xf8c108ca69L, "constructor");
+    /*package*/ static final SContainmentLink constructor$elBy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xf8c108ca69L, "constructor");
   }
 }

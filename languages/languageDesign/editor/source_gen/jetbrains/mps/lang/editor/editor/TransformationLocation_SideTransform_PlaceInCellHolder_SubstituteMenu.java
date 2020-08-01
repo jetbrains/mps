@@ -118,7 +118,7 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder"));
-          SPropertyOperations.setEnum(node, PROPS.placeInCell$_m50, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdafL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCell"), SEnumOperations.getMemberName0(myParameterObject)));
+          SPropertyOperations.setEnum(node, PROPS.placeInCell$5Gr0, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdafL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCell"), SEnumOperations.getMemberName0(myParameterObject)));
           return node;
         }
 
@@ -155,6 +155,6 @@ public class TransformationLocation_SideTransform_PlaceInCellHolder_SubstituteMe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty placeInCell$_m50 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, 0x30335f3d1845bdcdL, "placeInCell");
+    /*package*/ static final SProperty placeInCell$5Gr0 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, 0x30335f3d1845bdcdL, "placeInCell");
   }
 }

@@ -50,7 +50,7 @@ public class DropAttributeRule_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_pc9jmv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DropAttributeRule$EX, LINKS.applicableConcept$Vjiu);
+      super((SAbstractConcept) CONCEPTS.DropAttributeRule$EX, LINKS.applicableConcept$IlWy);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class DropAttributeRule_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$Vjiu = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, 0x67b585b44f4d943eL, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$IlWy = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, 0x67b585b44f4d943eL, "applicableConcept");
   }
 }

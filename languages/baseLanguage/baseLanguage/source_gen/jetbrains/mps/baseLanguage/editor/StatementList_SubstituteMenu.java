@@ -109,7 +109,7 @@ public class StatementList_SubstituteMenu extends SubstituteMenuBase {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode statementList = SNodeFactoryOperations.createNewNode(CONCEPTS.StatementList$TN, null);
-          ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)).addElement(nodeToWrap);
+          ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).addElement(nodeToWrap);
           return statementList;
         }
         @Override
@@ -167,6 +167,6 @@ public class StatementList_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

@@ -21,7 +21,7 @@ public final class wrappers_PasteWrapper_2 implements PasteWrapper {
   }
   @Override
   public SNode wrap(SNode sourceNode) {
-    return SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$O0D0);
+    return SLinkOperations.getTarget(sourceNode, LINKS.localVariableDeclaration$cjR0);
   }
 
   private static final class CONCEPTS {
@@ -30,6 +30,6 @@ public final class wrappers_PasteWrapper_2 implements PasteWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
   }
 }

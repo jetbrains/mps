@@ -151,7 +151,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.RunConfigurationType$qY, null);
-            SLinkOperations.setTarget(node, LINKS.persistentConfiguration$28v0, myParameterObject);
+            SLinkOperations.setTarget(node, LINKS.persistentConfiguration$2710, myParameterObject);
             return node;
           }
 
@@ -182,7 +182,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getDescriptionText(@NotNull String pattern) {
-            return "runConfiguration<" + SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1) + ">";
+            return "runConfiguration<" + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + ">";
           }
         }
       }
@@ -197,10 +197,10 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

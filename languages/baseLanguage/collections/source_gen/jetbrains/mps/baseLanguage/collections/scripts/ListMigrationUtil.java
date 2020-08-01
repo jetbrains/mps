@@ -25,7 +25,7 @@ public class ListMigrationUtil {
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a))) {
       return false;
     }
-    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
+    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
     if (!((SNodeOperations.isInstanceOf(type, CONCEPTS.ListType$z$) || SNodeOperations.isInstanceOf(type, CONCEPTS.SNodeListType$OI)))) {
       return false;
     }
@@ -35,7 +35,7 @@ public class ListMigrationUtil {
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a))) {
       return false;
     }
-    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
+    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
     if (!(SNodeOperations.isInstanceOf(type, CONCEPTS.SetType$1N))) {
       return false;
     }
@@ -45,7 +45,7 @@ public class ListMigrationUtil {
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a))) {
       return false;
     }
-    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
+    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
     if (!(SNodeOperations.isInstanceOf(type, CONCEPTS.IteratorType$QR))) {
       return false;
     }
@@ -55,7 +55,7 @@ public class ListMigrationUtil {
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a))) {
       return false;
     }
-    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
+    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
     if (!((SNodeOperations.isInstanceOf(type, CONCEPTS.ListType$z$) || SNodeOperations.isInstanceOf(type, CONCEPTS.SNodeListType$OI) || SNodeOperations.isInstanceOf(type, CONCEPTS.SetType$1N)))) {
       return false;
     }
@@ -65,25 +65,25 @@ public class ListMigrationUtil {
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a))) {
       return false;
     }
-    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
+    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
     if (!(SNodeOperations.isInstanceOf(type, CONCEPTS.MapType$2H))) {
       return false;
     }
     return ListMigrationUtil.isApplicableMethod(node, name, params);
   }
   private static boolean isApplicableMethod(SNode node, String name, List<ParameterType> params) {
-    SNode declaration = SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$$A7i);
-    if (!(Objects.equals(SPropertyOperations.getString(declaration, PROPS.name$tAp1), name))) {
+    SNode declaration = SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI);
+    if (!(Objects.equals(SPropertyOperations.getString(declaration, PROPS.name$lA7v), name))) {
       return false;
     }
     if (!((Objects.equals(SModelOperations.getModelName(SNodeOperations.getModel(declaration)), "java.util")))) {
       return false;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)).count() != ListSequence.fromList(params).count()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)).count() != ListSequence.fromList(params).count()) {
       return false;
     }
     {
-      Iterator<SNode> argument_it = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$$A7L)).iterator();
+      Iterator<SNode> argument_it = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)).iterator();
       Iterator<ParameterType> param_it = ListSequence.fromList(params).iterator();
       SNode argument_var;
       ParameterType param_var;
@@ -105,10 +105,10 @@ public class ListMigrationUtil {
     return true;
   }
   public static boolean isApplicableForType(SNode node, int params, List<SNode> classifiers) {
-    if (!(ListSequence.fromList(classifiers).contains(SLinkOperations.getTarget(node, LINKS.classifier$pQ_R)))) {
+    if (!(ListSequence.fromList(classifiers).contains(SLinkOperations.getTarget(node, LINKS.classifier$xslD)))) {
       return false;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$dQne)).count() != params) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$HlfM)).count() != params) {
       return false;
     }
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.VariableDeclaration$xe)) {
@@ -141,14 +141,14 @@ public class ListMigrationUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

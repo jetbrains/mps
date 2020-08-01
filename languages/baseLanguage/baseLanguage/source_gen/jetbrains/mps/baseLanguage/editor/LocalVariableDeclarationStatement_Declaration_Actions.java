@@ -31,7 +31,7 @@ public class LocalVariableDeclarationStatement_Declaration_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        if (editorContext.getSelectedNode() != SLinkOperations.getTarget(node, LINKS.localVariableDeclaration$O0D0)) {
+        if (editorContext.getSelectedNode() != SLinkOperations.getTarget(node, LINKS.localVariableDeclaration$cjR0)) {
           return false;
         }
         return new CellAction_CommentOrUncommentNode(node).canExecute(editorContext);
@@ -82,6 +82,6 @@ public class LocalVariableDeclarationStatement_Declaration_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
   }
 }

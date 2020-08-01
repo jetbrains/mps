@@ -162,7 +162,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
       if (moduleFqName.equals("MPS.Classpath")) {
         SNode refTargetRoot = reference.getTargetNode().getContainingRoot();
         if (SNodeOperations.isInstanceOf(refTargetRoot, CONCEPTS.Classifier$hJ)) {
-          String cName = SPropertyOperations.getString(SNodeOperations.cast(refTargetRoot, CONCEPTS.Classifier$hJ), PROPS.name$tAp1);
+          String cName = SPropertyOperations.getString(SNodeOperations.cast(refTargetRoot, CONCEPTS.Classifier$hJ), PROPS.name$lA7v);
           String modelName = model.getModelName();
           if (findInModule(coreModule, modelName, cName)) {
             return CORE;
@@ -195,7 +195,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
       if (d.getModelName().equals(modelName)) {
         for (SNode _n : d.getRootNodes()) {
           SNode n = (SNode) _n;
-          if (SNodeOperations.isInstanceOf(n, CONCEPTS.Classifier$hJ) && SPropertyOperations.getString(SNodeOperations.cast(n, CONCEPTS.Classifier$hJ), PROPS.name$tAp1).equals(rootName)) {
+          if (SNodeOperations.isInstanceOf(n, CONCEPTS.Classifier$hJ) && SPropertyOperations.getString(SNodeOperations.cast(n, CONCEPTS.Classifier$hJ), PROPS.name$lA7v).equals(rootName)) {
             return true;
           }
         }
@@ -222,6 +222,6 @@ public class AspectDependenciesChecker extends SpecificChecker {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

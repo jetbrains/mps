@@ -33,7 +33,7 @@ public class EnumMemberValueRefExpression_Constraints extends BaseConstraintsDes
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.member$cDM, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.member$68fe, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,11 +49,11 @@ public class EnumMemberValueRefExpression_Constraints extends BaseConstraintsDes
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode enumMemberValueRef = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.EnumMemberValueRefExpression$Pc, true, false);
-            return new SimpleScope(SLinkOperations.getChildren(SLinkOperations.getTarget(enumMemberValueRef, LINKS.enum$WTtj), LINKS.member$_cRv)) {
+            return new SimpleScope(SLinkOperations.getChildren(SLinkOperations.getTarget(enumMemberValueRef, LINKS.enum$vPcd), LINKS.member$1eS1)) {
               @Nullable
               @Override
               public String getReferenceText(@NotNull SNode target) {
-                return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.EnumerationMemberDeclaration_Old$vn), PROPS.externalValue$bx$P);
+                return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.EnumerationMemberDeclaration_Old$vn), PROPS.externalValue$_gPF);
               }
             };
           }
@@ -72,12 +72,12 @@ public class EnumMemberValueRefExpression_Constraints extends BaseConstraintsDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$cDM = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x60c7f83bafd83b5bL, 0x60c7f83bafda1168L, "member");
-    /*package*/ static final SReferenceLink enum$WTtj = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x60c7f83bafd83b5bL, 0x60c7f83bafda0e39L, "enum");
-    /*package*/ static final SContainmentLink member$_cRv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
+    /*package*/ static final SReferenceLink member$68fe = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x60c7f83bafd83b5bL, 0x60c7f83bafda1168L, "member");
+    /*package*/ static final SReferenceLink enum$vPcd = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x60c7f83bafd83b5bL, 0x60c7f83bafda0e39L, "enum");
+    /*package*/ static final SContainmentLink member$1eS1 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty externalValue$bx$P = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
+    /*package*/ static final SProperty externalValue$_gPF = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
   }
 }

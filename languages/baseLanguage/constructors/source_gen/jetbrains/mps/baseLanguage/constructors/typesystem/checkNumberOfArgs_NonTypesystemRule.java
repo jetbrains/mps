@@ -23,9 +23,9 @@ public class checkNumberOfArgs_NonTypesystemRule extends AbstractNonTypesystemRu
   public checkNumberOfArgs_NonTypesystemRule() {
   }
   public void applyRule(final SNode customConstructorUsage, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode args = SLinkOperations.getTarget(SLinkOperations.getTarget(customConstructorUsage, LINKS.customConstructor$3U3x), LINKS.arguments$tz7x);
+    SNode args = SLinkOperations.getTarget(SLinkOperations.getTarget(customConstructorUsage, LINKS.customConstructor$T7GZ), LINKS.arguments$k0CZ);
     if (SNodeOperations.isInstanceOf(args, CONCEPTS.CustomArgumentClause$2w)) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, CONCEPTS.CustomArgumentClause$2w), LINKS.parameter$YMSz)).count() != ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, LINKS.element$3UjZ)).count()) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, CONCEPTS.CustomArgumentClause$2w), LINKS.parameter$qDoX)).count() != ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, LINKS.element$TfFx)).count()) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(customConstructorUsage, "Wrong number of arguments", "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "960932673514559399", null, errorTarget);
@@ -44,10 +44,10 @@ public class checkNumberOfArgs_NonTypesystemRule extends AbstractNonTypesystemRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink customConstructor$3U3x = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
-    /*package*/ static final SContainmentLink arguments$tz7x = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
-    /*package*/ static final SContainmentLink element$3UjZ = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element");
-    /*package*/ static final SContainmentLink parameter$YMSz = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
+    /*package*/ static final SReferenceLink customConstructor$T7GZ = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
+    /*package*/ static final SContainmentLink arguments$k0CZ = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
+    /*package*/ static final SContainmentLink element$TfFx = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element");
+    /*package*/ static final SContainmentLink parameter$qDoX = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
   }
 
   private static final class CONCEPTS {

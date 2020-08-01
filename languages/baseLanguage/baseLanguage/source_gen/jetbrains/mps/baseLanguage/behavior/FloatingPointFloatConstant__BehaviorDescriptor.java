@@ -34,7 +34,7 @@ public final class FloatingPointFloatConstant__BehaviorDescriptor extends BaseBH
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
     try {
-      return Float.parseFloat(SPropertyOperations.getString(__thisNode__, PROPS.value$CzwZ));
+      return Float.parseFloat(SPropertyOperations.getString(__thisNode__, PROPS.value$DcYx));
     } catch (NumberFormatException e) {
       return null;
     }
@@ -92,6 +92,6 @@ public final class FloatingPointFloatConstant__BehaviorDescriptor extends BaseBH
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$CzwZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
+    /*package*/ static final SProperty value$DcYx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
   }
 }

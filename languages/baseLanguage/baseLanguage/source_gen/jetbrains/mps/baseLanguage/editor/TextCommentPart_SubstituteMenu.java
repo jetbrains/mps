@@ -108,7 +108,7 @@ public class TextCommentPart_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.TextCommentPart$lb, null);
-        SPropertyOperations.set(result, PROPS.text$AaEw, pattern);
+        SPropertyOperations.set(result, PROPS.text$va_w, pattern);
         return result;
       }
 
@@ -161,6 +161,6 @@ public class TextCommentPart_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$AaEw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 }

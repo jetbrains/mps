@@ -23,7 +23,7 @@ public final class StringToTypedValueMigrationInfo__BehaviorDescriptor extends B
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.stringValueMigrated$gFe8, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.stringValueMigrated$4VPS, true);
   }
 
 
@@ -72,6 +72,6 @@ public final class StringToTypedValueMigrationInfo__BehaviorDescriptor extends B
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringValueMigrated$gFe8 = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
+    /*package*/ static final SProperty stringValueMigrated$4VPS = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
   }
 }

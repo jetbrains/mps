@@ -43,7 +43,7 @@ public class ScopeUtil {
         if (!(SNodeOperations.isInstanceOf(child, CONCEPTS.INamedConcept$nV))) {
           return child.getPresentation();
         }
-        return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+        return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
       }
     };
   }
@@ -240,8 +240,8 @@ public class ScopeUtil {
         return SNodeOperations.cast(node, CONCEPTS.BuildSource_SingleFolder$ux);
       } else {
         SNode copyNode = SNodeOperations.as(node, CONCEPTS.BuildLayout_AbstractCopy$lT);
-        if ((copyNode != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(copyNode, LINKS.fileset$K4_c), CONCEPTS.BuildSource_SingleFolder$ux)) {
-          return SNodeOperations.cast(SLinkOperations.getTarget(copyNode, LINKS.fileset$K4_c), CONCEPTS.BuildSource_SingleFolder$ux);
+        if ((copyNode != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(copyNode, LINKS.fileset$ie0O), CONCEPTS.BuildSource_SingleFolder$ux)) {
+          return SNodeOperations.cast(SLinkOperations.getTarget(copyNode, LINKS.fileset$ie0O), CONCEPTS.BuildSource_SingleFolder$ux);
         }
       }
       return null;
@@ -266,8 +266,8 @@ public class ScopeUtil {
         return SNodeOperations.cast(node, CONCEPTS.BuildSource_SingleFile$P_);
       } else {
         SNode copyNode = SNodeOperations.as(node, CONCEPTS.BuildLayout_AbstractCopy$lT);
-        if ((copyNode != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(copyNode, LINKS.fileset$K4_c), CONCEPTS.BuildSource_SingleFile$P_)) {
-          return SNodeOperations.cast(SLinkOperations.getTarget(copyNode, LINKS.fileset$K4_c), CONCEPTS.BuildSource_SingleFile$P_);
+        if ((copyNode != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(copyNode, LINKS.fileset$ie0O), CONCEPTS.BuildSource_SingleFile$P_)) {
+          return SNodeOperations.cast(SLinkOperations.getTarget(copyNode, LINKS.fileset$ie0O), CONCEPTS.BuildSource_SingleFile$P_);
         }
       }
       return null;
@@ -286,10 +286,10 @@ public class ScopeUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fileset$K4_c = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink fileset$ie0O = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
   }
 }

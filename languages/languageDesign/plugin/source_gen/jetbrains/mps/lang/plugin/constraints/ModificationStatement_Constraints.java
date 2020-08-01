@@ -36,7 +36,7 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.point$eJhK, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.point$8TAg, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,9 +51,9 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode contents = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(_context.getReferenceNode(), CONCEPTS.ModificationStatement$vQ), LINKS.modifiedGroup$KYqN), LINKS.contents$qi3t);
+            SNode contents = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(_context.getReferenceNode(), CONCEPTS.ModificationStatement$vQ), LINKS.modifiedGroup$IeYH), LINKS.contents$IJF3);
             if (SNodeOperations.isInstanceOf(contents, CONCEPTS.ElementListContents$QC)) {
-              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contents, CONCEPTS.ElementListContents$QC), LINKS.reference$mcPJ)).where(new IWhereFilter<SNode>() {
+              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contents, CONCEPTS.ElementListContents$QC), LINKS.reference$Ke1L)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return SNodeOperations.isInstanceOf(it, CONCEPTS.GroupAnchor$MS);
                 }
@@ -64,7 +64,7 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedGroup$KYqN, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedGroup$IeYH, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -108,9 +108,9 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink point$eJhK = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, 0x1188f2392baL, "point");
-    /*package*/ static final SReferenceLink modifiedGroup$KYqN = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, 0x1181dea4861L, "modifiedGroup");
-    /*package*/ static final SContainmentLink contents$qi3t = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents");
-    /*package*/ static final SContainmentLink reference$mcPJ = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, 0x1190f75fe95L, "reference");
+    /*package*/ static final SReferenceLink point$8TAg = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, 0x1188f2392baL, "point");
+    /*package*/ static final SReferenceLink modifiedGroup$IeYH = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, 0x1181dea4861L, "modifiedGroup");
+    /*package*/ static final SContainmentLink contents$IJF3 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents");
+    /*package*/ static final SContainmentLink reference$Ke1L = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, 0x1190f75fe95L, "reference");
   }
 }

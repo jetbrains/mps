@@ -40,10 +40,10 @@ public final class BwfTask__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.BwfSubTask$xl)) {
-      Scope result = SimpleRoleScope.forNamedElements(__thisNode__, LINKS.subTasks$EM5X);
+      Scope result = SimpleRoleScope.forNamedElements(__thisNode__, LINKS.subTasks$IgSz);
       for (SNode n : SNodeOperations.getAllSiblings(__thisNode__, false)) {
-        if (SNodeOperations.isInstanceOf(n, CONCEPTS.BwfTaskPart$Xf) && SLinkOperations.getTarget(SNodeOperations.cast(n, CONCEPTS.BwfTaskPart$Xf), LINKS.task$KlCw) == __thisNode__) {
-          result = CompositeScope.createComposite(result, SimpleRoleScope.forNamedElements(n, LINKS.subTasks$KlCZ));
+        if (SNodeOperations.isInstanceOf(n, CONCEPTS.BwfTaskPart$Xf) && SLinkOperations.getTarget(SNodeOperations.cast(n, CONCEPTS.BwfTaskPart$Xf), LINKS.task$quBw) == __thisNode__) {
+          result = CompositeScope.createComposite(result, SimpleRoleScope.forNamedElements(n, LINKS.subTasks$quQx));
         }
       }
       return result;
@@ -103,9 +103,9 @@ public final class BwfTask__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink subTasks$EM5X = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L, 0x2670d5989d5a6277L, "subTasks");
-    /*package*/ static final SContainmentLink subTasks$KlCZ = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd32c1baL, "subTasks");
-    /*package*/ static final SReferenceLink task$KlCw = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd32c1b9L, "task");
+    /*package*/ static final SContainmentLink subTasks$IgSz = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L, 0x2670d5989d5a6277L, "subTasks");
+    /*package*/ static final SContainmentLink subTasks$quQx = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd32c1baL, "subTasks");
+    /*package*/ static final SReferenceLink task$quBw = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd32c1b9L, "task");
   }
 
   private static final class CONCEPTS {

@@ -50,7 +50,7 @@ public class BuildMps_ModuleDependencyOnDevKit_SubstituteMenu extends Substitute
 
     public SMP_ReferenceScope_shsbg2_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleDependencyOnDevKit$C4, LINKS.devkit$Ib8b);
+      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleDependencyOnDevKit$C4, LINKS.devkit$noXl);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class BuildMps_ModuleDependencyOnDevKit_SubstituteMenu extends Substitute
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink devkit$Ib8b = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit");
+    /*package*/ static final SReferenceLink devkit$noXl = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit");
   }
 }

@@ -31,14 +31,14 @@ public class typeof_ComparatorSortOperation_InferenceRule extends AbstractInfere
     final SNode resType_typevar_1209728259189 = typeCheckingContext.createNewRuntimeTypesVariable();
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cso, LINKS.closure$aJtr);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cso, LINKS.closure$cZg5);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1209728259190", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1209728259192", true), (SNode) _quotation_createNode_8czehp_a1a0c0a0d0b(typeCheckingContext.getRepresentative(paramType_typevar_1209728259188), typeCheckingContext.getRepresentative(paramType_typevar_1209728259188)), true, true, _info_12389875345);
       }
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cso, LINKS.ascending$lUQ3);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cso, LINKS.ascending$Bwbt);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1209728259222", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1209728259224", true), (SNode) _quotation_createNode_8czehp_a1a0c0a0e0b(), true, true, _info_12389875345);
       }
@@ -107,8 +107,8 @@ public class typeof_ComparatorSortOperation_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink closure$aJtr = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
-    /*package*/ static final SContainmentLink ascending$lUQ3 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x119a966b94dL, 0x119a96853fdL, "ascending");
+    /*package*/ static final SContainmentLink closure$cZg5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
+    /*package*/ static final SContainmentLink ascending$Bwbt = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x119a966b94dL, 0x119a96853fdL, "ascending");
   }
 
   private static final class CONCEPTS {

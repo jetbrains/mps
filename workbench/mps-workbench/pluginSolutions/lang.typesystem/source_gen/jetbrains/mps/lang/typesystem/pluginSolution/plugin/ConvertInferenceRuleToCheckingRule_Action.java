@@ -38,7 +38,7 @@ public class ConvertInferenceRuleToCheckingRule_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return (SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.overridesFun$fE4F) == null) && ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(event.getData(MPSCommonDataKeys.NODE), new SAbstractConcept[]{CONCEPTS.AbstractEquationStatement$sp, CONCEPTS.TypeVarDeclaration$kX, CONCEPTS.TypeVarReference$Zu, CONCEPTS.TypeOfExpression$_5, CONCEPTS.WhenConcreteStatement$JZ}, false, new SAbstractConcept[]{})).isEmpty();
+    return (SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.overridesFun$_ogP) == null) && ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(event.getData(MPSCommonDataKeys.NODE), new SAbstractConcept[]{CONCEPTS.AbstractEquationStatement$sp, CONCEPTS.TypeVarDeclaration$kX, CONCEPTS.TypeVarReference$Zu, CONCEPTS.TypeOfExpression$_5, CONCEPTS.WhenConcreteStatement$JZ}, false, new SAbstractConcept[]{})).isEmpty();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -69,13 +69,13 @@ public class ConvertInferenceRuleToCheckingRule_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     SNode nonTypesystemRule = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.NonTypesystemRule$cw, null);
-    SPropertyOperations.set(nonTypesystemRule, PROPS.overrides$fn$d, SPropertyOperations.getBoolean(event.getData(MPSCommonDataKeys.NODE), PROPS.overrides$fn$d));
-    SPropertyOperations.set(nonTypesystemRule, PROPS.name$tAp1, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$tAp1));
-    SLinkOperations.setTarget(nonTypesystemRule, LINKS.body$uYGk, SNodeOperations.copyNode(SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.body$uYGk)));
-    SLinkOperations.setTarget(nonTypesystemRule, LINKS.applicableNode$lCke, SNodeOperations.copyNode(SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.applicableNode$lCke)));
-    for (SNode applicableNodeReference : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(nonTypesystemRule, LINKS.body$uYGk), CONCEPTS.ApplicableNodeReference$VP, false, new SAbstractConcept[]{})) {
-      if (SLinkOperations.getTarget(applicableNodeReference, LINKS.applicableNode$z$o5) == SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.applicableNode$lCke)) {
-        SLinkOperations.setTarget(applicableNodeReference, LINKS.applicableNode$z$o5, SLinkOperations.getTarget(nonTypesystemRule, LINKS.applicableNode$lCke));
+    SPropertyOperations.set(nonTypesystemRule, PROPS.overrides$sqyj, SPropertyOperations.getBoolean(event.getData(MPSCommonDataKeys.NODE), PROPS.overrides$sqyj));
+    SPropertyOperations.set(nonTypesystemRule, PROPS.name$lA7v, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$lA7v));
+    SLinkOperations.setTarget(nonTypesystemRule, LINKS.body$ntG, SNodeOperations.copyNode(SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.body$ntG)));
+    SLinkOperations.setTarget(nonTypesystemRule, LINKS.applicableNode$uxMM, SNodeOperations.copyNode(SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.applicableNode$uxMM)));
+    for (SNode applicableNodeReference : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(nonTypesystemRule, LINKS.body$ntG), CONCEPTS.ApplicableNodeReference$VP, false, new SAbstractConcept[]{})) {
+      if (SLinkOperations.getTarget(applicableNodeReference, LINKS.applicableNode$eBEr) == SLinkOperations.getTarget(event.getData(MPSCommonDataKeys.NODE), LINKS.applicableNode$uxMM)) {
+        SLinkOperations.setTarget(applicableNodeReference, LINKS.applicableNode$eBEr, SLinkOperations.getTarget(nonTypesystemRule, LINKS.applicableNode$uxMM));
       }
     }
     SNodeOperations.deleteNode(event.getData(MPSCommonDataKeys.NODE));
@@ -94,14 +94,14 @@ public class ConvertInferenceRuleToCheckingRule_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink overridesFun$fE4F = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun");
-    /*package*/ static final SContainmentLink body$uYGk = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1164848bdf4L, "body");
-    /*package*/ static final SContainmentLink applicableNode$lCke = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
-    /*package*/ static final SReferenceLink applicableNode$z$o5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, 0x1117e9f2a5aL, "applicableNode");
+    /*package*/ static final SContainmentLink overridesFun$_ogP = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun");
+    /*package*/ static final SContainmentLink body$ntG = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1164848bdf4L, "body");
+    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SReferenceLink applicableNode$eBEr = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, 0x1117e9f2a5aL, "applicableNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty overrides$fn$d = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty overrides$sqyj = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

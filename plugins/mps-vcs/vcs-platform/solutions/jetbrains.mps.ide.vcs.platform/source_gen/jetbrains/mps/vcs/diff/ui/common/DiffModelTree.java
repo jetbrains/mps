@@ -271,7 +271,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
           }
 
           if (myVirtualPackage == null) {
-            myVirtualPackage = (SPropertyOperations.getString(root, PROPS.virtualPackage$j19t) == null ? "" : SPropertyOperations.getString(root, PROPS.virtualPackage$j19t));
+            myVirtualPackage = (SPropertyOperations.getString(root, PROPS.virtualPackage$dz_3) == null ? "" : SPropertyOperations.getString(root, PROPS.virtualPackage$dz_3));
           }
           if (icon == null) {
             icon = GlobalIconManager.getInstance().getIconFor(root);
@@ -377,6 +377,6 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

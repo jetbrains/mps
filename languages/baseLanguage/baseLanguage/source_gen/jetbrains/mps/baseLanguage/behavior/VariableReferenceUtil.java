@@ -19,9 +19,9 @@ public class VariableReferenceUtil {
     if (ref == null) {
       return null;
     }
-    SNode declaration = SLinkOperations.getTarget(ref, LINKS.variableDeclaration$2ky6);
-    if (declaration != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.initializer$KgD), CONCEPTS.VariableReference$sQ)) {
-      return getVariableDeclarationAtEndOfChain(SNodeOperations.cast(SLinkOperations.getTarget(declaration, LINKS.initializer$KgD), CONCEPTS.VariableReference$sQ));
+    SNode declaration = SLinkOperations.getTarget(ref, LINKS.variableDeclaration$7WwU);
+    if (declaration != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.initializer$no3R), CONCEPTS.VariableReference$sQ)) {
+      return getVariableDeclarationAtEndOfChain(SNodeOperations.cast(SLinkOperations.getTarget(declaration, LINKS.initializer$no3R), CONCEPTS.VariableReference$sQ));
     } else {
       return declaration;
     }
@@ -32,7 +32,7 @@ public class VariableReferenceUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

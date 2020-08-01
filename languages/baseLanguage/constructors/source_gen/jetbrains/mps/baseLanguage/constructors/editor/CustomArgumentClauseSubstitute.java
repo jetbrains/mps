@@ -67,7 +67,7 @@ public class CustomArgumentClauseSubstitute extends SubstituteMenuBase {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.CustomConstructor$$1)) {
-        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.CustomConstructor$$1), LINKS.arguments$tz7x), CONCEPTS.CustomArgumentClause$2w));
+        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.CustomConstructor$$1), LINKS.arguments$k0CZ), CONCEPTS.CustomArgumentClause$2w));
       }
       return false;
     }
@@ -117,8 +117,8 @@ public class CustomArgumentClauseSubstitute extends SubstituteMenuBase {
           public SNode createNode(@NotNull String pattern) {
             SNode nodeToWrap = super.createNode(pattern);
             SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.CustomArgumentClause$2w, null);
-            SNode parameter = SNodeFactoryOperations.addNewChild(result, LINKS.parameter$YMSz, null);
-            SLinkOperations.setTarget(parameter, LINKS.type$C2Zd, nodeToWrap);
+            SNode parameter = SNodeFactoryOperations.addNewChild(result, LINKS.parameter$qDoX, null);
+            SLinkOperations.setTarget(parameter, LINKS.type$psBj, nodeToWrap);
             return result;
           }
 
@@ -157,8 +157,8 @@ public class CustomArgumentClauseSubstitute extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink arguments$tz7x = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
-    /*package*/ static final SContainmentLink parameter$YMSz = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
-    /*package*/ static final SContainmentLink type$C2Zd = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b7431819L, 0x4aa85872b7433028L, "type");
+    /*package*/ static final SContainmentLink arguments$k0CZ = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
+    /*package*/ static final SContainmentLink parameter$qDoX = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
+    /*package*/ static final SContainmentLink type$psBj = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b7431819L, 0x4aa85872b7433028L, "type");
   }
 }

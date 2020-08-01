@@ -24,8 +24,8 @@ public class ScopeTest_DeleteExpectedNodes {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodes$B16t)).clear();
-        SLinkOperations.setTarget(node, LINKS.checkingReference$ZKEm, null);
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodes$Ty83)).clear();
+        SLinkOperations.setTarget(node, LINKS.checkingReference$S$wE, null);
       }
 
     };
@@ -73,7 +73,7 @@ public class ScopeTest_DeleteExpectedNodes {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodes$B16t = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x32ba5b0ec25fea03L, "nodes");
-    /*package*/ static final SReferenceLink checkingReference$ZKEm = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference");
+    /*package*/ static final SContainmentLink nodes$Ty83 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x32ba5b0ec25fea03L, "nodes");
+    /*package*/ static final SReferenceLink checkingReference$S$wE = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference");
   }
 }

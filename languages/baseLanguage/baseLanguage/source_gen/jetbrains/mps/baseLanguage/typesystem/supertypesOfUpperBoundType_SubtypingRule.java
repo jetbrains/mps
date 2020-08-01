@@ -17,7 +17,7 @@ public class supertypesOfUpperBoundType_SubtypingRule extends SubtypingRule_Runt
   public supertypesOfUpperBoundType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode upperBoundType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return SLinkOperations.getTarget(upperBoundType, LINKS.bound$7gX0);
+    return SLinkOperations.getTarget(upperBoundType, LINKS.bound$xdz0);
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.UpperBoundType$r6;
@@ -30,7 +30,7 @@ public class supertypesOfUpperBoundType_SubtypingRule extends SubtypingRule_Runt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$7gX0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
+    /*package*/ static final SContainmentLink bound$xdz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
   }
 
   private static final class CONCEPTS {

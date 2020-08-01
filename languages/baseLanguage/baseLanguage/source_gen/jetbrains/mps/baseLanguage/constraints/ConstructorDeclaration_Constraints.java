@@ -64,7 +64,7 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$tAp1, container);
+      super(PROPS.name$lA7v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -72,12 +72,12 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+      return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
     }
   }
   public static class NestedName_Property extends BasePropertyConstraintsDescriptor {
     public NestedName_Property(ConstraintsDescriptor container) {
-      super(PROPS.nestedName$L3JJ, container);
+      super(PROPS.nestedName$KO7L, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -85,12 +85,12 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.Classifier$hJ, false, false), PROPS.nestedName$XUlU);
+      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.Classifier$hJ, false, false), PROPS.nestedName$ZgB6);
     }
   }
   public static class ResolveInfo_Property extends BasePropertyConstraintsDescriptor {
     public ResolveInfo_Property(ConstraintsDescriptor container) {
-      super(PROPS.resolveInfo$eeN8, container);
+      super(PROPS.resolveInfo$TaKS, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -98,25 +98,25 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.IResolveInfo$c2), PROPS.resolveInfo$eeN8);
+      return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.IResolveInfo$c2), PROPS.resolveInfo$TaKS);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$tAp1, new Name_Property(this));
-    properties.put(PROPS.nestedName$L3JJ, new NestedName_Property(this));
-    properties.put(PROPS.resolveInfo$eeN8, new ResolveInfo_Property(this));
+    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.nestedName$KO7L, new NestedName_Property(this));
+    properties.put(PROPS.resolveInfo$TaKS, new ResolveInfo_Property(this));
     return properties;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.INamedConcept$nV) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IResolveInfo$c2);
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.EnumClass$uy) && Objects.equals(link, LINKS.visibility$2GiC) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.PrivateVisibility$Se))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.EnumClass$uy) && Objects.equals(link, LINKS.visibility$jt1o) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.PrivateVisibility$Se))) {
       return false;
     }
-    if (Objects.equals(link, LINKS.returnType$WIkw) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.VoidType$aT))) {
+    if (Objects.equals(link, LINKS.returnType$qrVw) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.VoidType$aT))) {
       return false;
     }
     return true;
@@ -135,14 +135,14 @@ public class ConstructorDeclaration_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty nestedName$L3JJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, 0x11a135d952bL, "nestedName");
-    /*package*/ static final SProperty nestedName$XUlU = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x11a134c900dL, "nestedName");
-    /*package*/ static final SProperty resolveInfo$eeN8 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty nestedName$KO7L = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, 0x11a135d952bL, "nestedName");
+    /*package*/ static final SProperty nestedName$ZgB6 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x11a134c900dL, "nestedName");
+    /*package*/ static final SProperty resolveInfo$TaKS = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 }

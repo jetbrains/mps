@@ -32,17 +32,17 @@ public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
     SNode g1 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Generator$ru);
     SNode l2 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Language$re);
     SNode g2 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Generator$ru);
-    SLinkOperations.setTarget(SLinkOperations.setNewChild(SLinkOperations.addNewChild(l2, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$6b80, CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$$$), LINKS.language$t$Iv, l1);
-    SLinkOperations.setTarget(l1, LINKS.generator$zMtG, g1);
-    SLinkOperations.setTarget(l2, LINKS.generator$zMtG, g2);
-    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$tgxg)).addElement(l1);
-    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$tgxg)).addElement(l2);
+    SLinkOperations.setTarget(SLinkOperations.setNewChild(SLinkOperations.addNewChild(l2, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$ZoS0, CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$$$), LINKS.language$kMx1, l1);
+    SLinkOperations.setTarget(l1, LINKS.generator$lsok, g1);
+    SLinkOperations.setTarget(l2, LINKS.generator$lsok, g2);
+    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$b06K)).addElement(l1);
+    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$b06K)).addElement(l2);
     // second build script, with a model that uses L2 
     SNode project2 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildProject$BF);
     SNode s2 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Solution$qJ);
-    ListSequence.fromList(SLinkOperations.getChildren(project2, LINKS.parts$tgxg)).addElement(s2);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(project2, LINKS.dependencies$tpR5, CONCEPTS.BuildProjectDependency$Ug), LINKS.script$mz1x, project1);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(s2, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l), LINKS.language$TL_w, l2);
+    ListSequence.fromList(SLinkOperations.getChildren(project2, LINKS.parts$b06K)).addElement(s2);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(project2, LINKS.dependencies$fxFr, CONCEPTS.BuildProjectDependency$Ug), LINKS.script$UXIZ, project1);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(s2, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l), LINKS.language$Z1aw, l2);
 
     Set<SNode> clAsSet = SetSequence.fromSet(new HashSet<SNode>());
     MPSModulesPartitioner p = new MPSModulesPartitioner(project2);
@@ -58,18 +58,18 @@ public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
     SNode s = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Solution$qJ);
     SNode rt = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Solution$qJ);
     SNode l = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Language$re);
-    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$tgxg)).addElement(s);
-    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$tgxg)).addElement(rt);
-    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$tgxg)).addElement(l);
-    SNode d = SLinkOperations.setNewChild(SLinkOperations.addNewChild(rt, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$6b80, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g);
-    SLinkOperations.setTarget(d, LINKS.module$gbmo, s);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l, LINKS.runtime$RrxF, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$pPpw, rt);
+    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$b06K)).addElement(s);
+    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$b06K)).addElement(rt);
+    ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$b06K)).addElement(l);
+    SNode d = SLinkOperations.setNewChild(SLinkOperations.addNewChild(rt, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$ZoS0, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g);
+    SLinkOperations.setTarget(d, LINKS.module$PvPC, s);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l, LINKS.runtime$QljP, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$wRmw, rt);
 
     SNode project2 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildProject$BF);
     SNode s2 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Solution$qJ);
-    ListSequence.fromList(SLinkOperations.getChildren(project2, LINKS.parts$tgxg)).addElement(s2);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(project2, LINKS.dependencies$tpR5, CONCEPTS.BuildProjectDependency$Ug), LINKS.script$mz1x, project1);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(s2, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l), LINKS.language$TL_w, l);
+    ListSequence.fromList(SLinkOperations.getChildren(project2, LINKS.parts$b06K)).addElement(s2);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(project2, LINKS.dependencies$fxFr, CONCEPTS.BuildProjectDependency$Ug), LINKS.script$UXIZ, project1);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(s2, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l), LINKS.language$Z1aw, l);
 
     Set<SNode> clAsSet = SetSequence.fromSet(new HashSet<SNode>());
     MPSModulesPartitioner p = new MPSModulesPartitioner(project2);
@@ -99,16 +99,16 @@ public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dependencies$Pit_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
-    /*package*/ static final SContainmentLink dependency$6b80 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
-    /*package*/ static final SReferenceLink language$t$Iv = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
-    /*package*/ static final SContainmentLink generator$zMtG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
-    /*package*/ static final SContainmentLink parts$tgxg = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
-    /*package*/ static final SContainmentLink dependencies$tpR5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
-    /*package*/ static final SReferenceLink script$mz1x = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
-    /*package*/ static final SReferenceLink language$TL_w = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language");
-    /*package*/ static final SReferenceLink module$gbmo = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
-    /*package*/ static final SContainmentLink runtime$RrxF = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime");
-    /*package*/ static final SReferenceLink solution$pPpw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution");
+    /*package*/ static final SContainmentLink dependencies$NWkV = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
+    /*package*/ static final SContainmentLink dependency$ZoS0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
+    /*package*/ static final SReferenceLink language$kMx1 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
+    /*package*/ static final SContainmentLink generator$lsok = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
+    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink dependencies$fxFr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SReferenceLink script$UXIZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+    /*package*/ static final SReferenceLink language$Z1aw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language");
+    /*package*/ static final SReferenceLink module$PvPC = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
+    /*package*/ static final SContainmentLink runtime$QljP = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime");
+    /*package*/ static final SReferenceLink solution$wRmw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution");
   }
 }

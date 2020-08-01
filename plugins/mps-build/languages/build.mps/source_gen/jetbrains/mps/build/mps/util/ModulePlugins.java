@@ -49,7 +49,7 @@ public class ModulePlugins {
     for (final SNode module : Sequence.fromIterable(modules)) {
       List<SNode> projectPlugins = SNodeOperations.getNodeDescendants(SNodeOperations.cast(SNodeOperations.getContainingRoot(module), CONCEPTS.BuildProject$BF), CONCEPTS.BuildMps_IdeaPlugin$X0, false, new SAbstractConcept[]{});
       for (SNode plugin : ListSequence.fromList(projectPlugins)) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.content$uhXf)).any(new IWhereFilter<SNode>() {
+        if (ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.content$EGEh)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module);
           }
@@ -82,15 +82,15 @@ public class ModulePlugins {
       public Tuples._2<String, String> select(SNode it) {
         SNode layoutNode = helper.getArtifact(it);
         if ((layoutNode == null)) {
-          myContext.showWarningMessage(myInitialProject, "The plugin '" + SPropertyOperations.getString(it, PROPS.name$tAp1) + "' was not found in the layout of `" + SPropertyOperations.getString(myInitialProject, PROPS.name$tAp1) + "'");
+          myContext.showWarningMessage(myInitialProject, "The plugin '" + SPropertyOperations.getString(it, PROPS.name$lA7v) + "' was not found in the layout of `" + SPropertyOperations.getString(myInitialProject, PROPS.name$lA7v) + "'");
           return null;
         }
         String val = BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invoke(layoutNode, helper, it);
         if (val == null) {
-          myContext.showWarningMessage(myInitialProject, "Found no location for plugin '" + SPropertyOperations.getString(it, PROPS.name$tAp1) + "'");
+          myContext.showWarningMessage(myInitialProject, "Found no location for plugin '" + SPropertyOperations.getString(it, PROPS.name$lA7v) + "'");
           return null;
         }
-        return MultiTuple.<String,String>from(val, SPropertyOperations.getString(it, PROPS.id$rLiV));
+        return MultiTuple.<String,String>from(val, SPropertyOperations.getString(it, PROPS.id$sSa_));
       }
     }).where(new NotNullWhereFilter<Tuples._2<String, String>>()).sort(new ISelector<Tuples._2<String, String>, String>() {
       public String select(Tuples._2<String, String> it) {
@@ -105,11 +105,11 @@ public class ModulePlugins {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink content$uhXf = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
+    /*package*/ static final SContainmentLink content$EGEh = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty id$rLiV = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty id$sSa_ = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
   }
 }

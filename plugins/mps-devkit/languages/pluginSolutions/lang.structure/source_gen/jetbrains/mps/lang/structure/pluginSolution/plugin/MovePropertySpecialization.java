@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MovePropertySpecialization extends MoveConceptMemberSpecialization<SProperty> {
   public Tuples._2<SProperty, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
-    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.PropertyDeclaration$c5) && SNodeOperations.hasRole(movingNode, LINKS.propertyDeclaration$lL73) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
+    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.PropertyDeclaration$c5) && SNodeOperations.hasRole(movingNode, LINKS.propertyDeclaration$yMqt) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
       return null;
     }
     SProperty deployedProperty = MetaAdapterByDeclaration.getProperty(movingNode);
@@ -56,9 +56,9 @@ public class MovePropertySpecialization extends MoveConceptMemberSpecialization<
     SNode from = SNodeOperations.cast(SPointerOperations.resolveNode(initialState, repository), CONCEPTS.PropertyDeclaration$c5);
     SNode to = SNodeOperations.cast(SPointerOperations.resolveNode(finalState, repository), CONCEPTS.PropertyDeclaration$c5);
     SNode targetConcept = SNodeOperations.cast(SNodeOperations.getParent(to), CONCEPTS.AbstractConceptDeclaration$UN);
-    SPropertyOperations.plusAssignStringProp(from, PROPS.name$tAp1, "_old");
+    SPropertyOperations.plusAssignStringProp(from, PROPS.name$lA7v, "_old");
     AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8), createDeprecatedNodeAnnotation_fubpxk_a0e0d("The property was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(targetConcept) + "\""));
-    SPropertyOperations.assign(to, PROPS.propertyId$cckp, ConceptIdHelper.generatePropertyId(targetConcept, to) + "");
+    SPropertyOperations.assign(to, PROPS.propertyId$TXS7, ConceptIdHelper.generatePropertyId(targetConcept, to) + "");
 
     SNode oldId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId"));
     PropertyId__BehaviorDescriptor.setProperty_id5e7X3XCIM6B.invoke(oldId, from);
@@ -83,20 +83,20 @@ public class MovePropertySpecialization extends MoveConceptMemberSpecialization<
   }
   private static SNode createDeprecatedNodeAnnotation_fubpxk_a0e0d(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
-    n0.setProperty(PROPS.comment$MxQb, p0);
+    n0.setProperty(PROPS.comment$upfl, p0);
     return n0.getResult();
   }
   private static SNode createMoveProperty_fubpxk_c0a11a3(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MoveProperty$J);
-    n0.forChild(LINKS.sourceId$YxgU).initNode(p0, CONCEPTS.PropertyId$Ig, true);
-    n0.forChild(LINKS.targetId$Yxhp).initNode(p1, CONCEPTS.PropertyId$Ig, true);
+    n0.forChild(LINKS.sourceId$i7c6).initNode(p0, CONCEPTS.PropertyId$Ig, true);
+    n0.forChild(LINKS.targetId$i7r7).initNode(p1, CONCEPTS.PropertyId$Ig, true);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink sourceId$YxgU = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b9L, 0x74cb131f592e8ab9L, "sourceId");
-    /*package*/ static final SContainmentLink targetId$Yxhp = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b9L, 0x74cb131f592e8abaL, "targetId");
+    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink sourceId$i7c6 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b9L, 0x74cb131f592e8ab9L, "sourceId");
+    /*package*/ static final SContainmentLink targetId$i7r7 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b9L, 0x74cb131f592e8abaL, "targetId");
   }
 
   private static final class CONCEPTS {
@@ -108,8 +108,8 @@ public class MovePropertySpecialization extends MoveConceptMemberSpecialization<
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty propertyId$cckp = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
-    /*package*/ static final SProperty comment$MxQb = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec760e8L, "comment");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty propertyId$TXS7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
+    /*package*/ static final SProperty comment$upfl = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec760e8L, "comment");
   }
 }

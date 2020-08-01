@@ -25,14 +25,14 @@ public class LatticeUtil {
     {
       final SNode joinType = node;
       if (SNodeOperations.isInstanceOf(joinType, CONCEPTS.JoinType$9o)) {
-        for (SNode child : SLinkOperations.getChildren(joinType, LINKS.argument$xIHX)) {
+        for (SNode child : SLinkOperations.getChildren(joinType, LINKS.argument$lCgz)) {
           processMeetsAndJoins(child);
           {
             final SNode childJoinType = child;
             if (SNodeOperations.isInstanceOf(childJoinType, CONCEPTS.JoinType$9o)) {
-              for (SNode grandChild : SLinkOperations.getChildren(childJoinType, LINKS.argument$xIHX)) {
+              for (SNode grandChild : SLinkOperations.getChildren(childJoinType, LINKS.argument$lCgz)) {
                 SNodeOperations.deleteNode(grandChild);
-                ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$xIHX)).addElement(grandChild);
+                ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$lCgz)).addElement(grandChild);
               }
               SNodeOperations.deleteNode(child);
             }
@@ -43,14 +43,14 @@ public class LatticeUtil {
     {
       final SNode meetType = node;
       if (SNodeOperations.isInstanceOf(meetType, CONCEPTS.MeetType$HQ)) {
-        for (SNode child : SLinkOperations.getChildren(meetType, LINKS.argument$kHNt)) {
+        for (SNode child : SLinkOperations.getChildren(meetType, LINKS.argument$2bV3)) {
           processMeetsAndJoins(child);
           {
             final SNode childMeetType = child;
             if (SNodeOperations.isInstanceOf(childMeetType, CONCEPTS.MeetType$HQ)) {
-              for (SNode grandChild : SLinkOperations.getChildren(childMeetType, LINKS.argument$kHNt)) {
+              for (SNode grandChild : SLinkOperations.getChildren(childMeetType, LINKS.argument$2bV3)) {
                 SNodeOperations.deleteNode(grandChild);
-                ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$kHNt)).addElement(grandChild);
+                ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$2bV3)).addElement(grandChild);
               }
               SNodeOperations.deleteNode(child);
             }
@@ -63,27 +63,27 @@ public class LatticeUtil {
     SNode joinType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"));
     if (SNodeOperations.isInstanceOf(node1, CONCEPTS.JoinType$9o)) {
       SNode joinWrapper1 = SNodeOperations.cast(node1, CONCEPTS.JoinType$9o);
-      for (SNode bc : SLinkOperations.getChildren(joinWrapper1, LINKS.argument$xIHX)) {
-        ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$xIHX)).addElement(HUtil.copyIfNecessary(bc));
+      for (SNode bc : SLinkOperations.getChildren(joinWrapper1, LINKS.argument$lCgz)) {
+        ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$lCgz)).addElement(HUtil.copyIfNecessary(bc));
       }
       if (SNodeOperations.isInstanceOf(node2, CONCEPTS.JoinType$9o)) {
         SNode joinWrapper2 = SNodeOperations.cast(node2, CONCEPTS.JoinType$9o);
-        for (SNode bc : SLinkOperations.getChildren(joinWrapper2, LINKS.argument$xIHX)) {
-          ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$xIHX)).addElement(HUtil.copyIfNecessary(bc));
+        for (SNode bc : SLinkOperations.getChildren(joinWrapper2, LINKS.argument$lCgz)) {
+          ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$lCgz)).addElement(HUtil.copyIfNecessary(bc));
         }
       } else {
-        ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$xIHX)).addElement(HUtil.copyIfNecessary(node2));
+        ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$lCgz)).addElement(HUtil.copyIfNecessary(node2));
       }
     } else
     if (SNodeOperations.isInstanceOf(node2, CONCEPTS.JoinType$9o)) {
       SNode joinWrapper2 = SNodeOperations.cast(node2, CONCEPTS.JoinType$9o);
-      ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$xIHX)).addElement(HUtil.copyIfNecessary(node1));
-      for (SNode bc : SLinkOperations.getChildren(joinWrapper2, LINKS.argument$xIHX)) {
-        ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$xIHX)).addElement(HUtil.copyIfNecessary(bc));
+      ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$lCgz)).addElement(HUtil.copyIfNecessary(node1));
+      for (SNode bc : SLinkOperations.getChildren(joinWrapper2, LINKS.argument$lCgz)) {
+        ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$lCgz)).addElement(HUtil.copyIfNecessary(bc));
       }
     } else {
-      ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$xIHX)).addElement(HUtil.copyIfNecessary(node1));
-      ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$xIHX)).addElement(HUtil.copyIfNecessary(node2));
+      ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$lCgz)).addElement(HUtil.copyIfNecessary(node1));
+      ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$lCgz)).addElement(HUtil.copyIfNecessary(node2));
     }
     return joinType;
   }
@@ -91,27 +91,27 @@ public class LatticeUtil {
     SNode meetType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType"));
     if (SNodeOperations.isInstanceOf(node1, CONCEPTS.MeetType$HQ)) {
       SNode meetWrapper1 = SNodeOperations.cast(node1, CONCEPTS.MeetType$HQ);
-      for (SNode bc : SLinkOperations.getChildren(meetWrapper1, LINKS.argument$kHNt)) {
-        ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$kHNt)).addElement(HUtil.copyIfNecessary(bc));
+      for (SNode bc : SLinkOperations.getChildren(meetWrapper1, LINKS.argument$2bV3)) {
+        ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$2bV3)).addElement(HUtil.copyIfNecessary(bc));
       }
       if (SNodeOperations.isInstanceOf(node2, CONCEPTS.MeetType$HQ)) {
         SNode meetWrapper2 = SNodeOperations.cast(node2, CONCEPTS.MeetType$HQ);
-        for (SNode bc : SLinkOperations.getChildren(meetWrapper2, LINKS.argument$kHNt)) {
-          ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$kHNt)).addElement(HUtil.copyIfNecessary(bc));
+        for (SNode bc : SLinkOperations.getChildren(meetWrapper2, LINKS.argument$2bV3)) {
+          ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$2bV3)).addElement(HUtil.copyIfNecessary(bc));
         }
       } else {
-        ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$kHNt)).addElement(HUtil.copyIfNecessary(node2));
+        ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$2bV3)).addElement(HUtil.copyIfNecessary(node2));
       }
     } else
     if (SNodeOperations.isInstanceOf(node2, CONCEPTS.MeetType$HQ)) {
       SNode meetWrapper2 = SNodeOperations.cast(node2, CONCEPTS.MeetType$HQ);
-      ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$kHNt)).addElement(HUtil.copyIfNecessary(node1));
-      for (SNode bc : SLinkOperations.getChildren(meetWrapper2, LINKS.argument$kHNt)) {
-        ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$kHNt)).addElement(HUtil.copyIfNecessary(bc));
+      ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$2bV3)).addElement(HUtil.copyIfNecessary(node1));
+      for (SNode bc : SLinkOperations.getChildren(meetWrapper2, LINKS.argument$2bV3)) {
+        ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$2bV3)).addElement(HUtil.copyIfNecessary(bc));
       }
     } else {
-      ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$kHNt)).addElement(HUtil.copyIfNecessary(node1));
-      ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$kHNt)).addElement(HUtil.copyIfNecessary(node2));
+      ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$2bV3)).addElement(HUtil.copyIfNecessary(node1));
+      ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$2bV3)).addElement(HUtil.copyIfNecessary(node2));
     }
     return meetType;
   }
@@ -157,10 +157,10 @@ public class LatticeUtil {
     return SNodeOperations.isInstanceOf(node, CONCEPTS.MeetType$HQ) || SNodeOperations.isInstanceOf(node, CONCEPTS.JoinType$9o) || SNodeOperations.isInstanceOf(node, CONCEPTS.UpperBoundType$r6) || SNodeOperations.isInstanceOf(node, CONCEPTS.LowerBoundType$Uz);
   }
   public static List<SNode> getMeetArguments(SNode meet) {
-    return SLinkOperations.getChildren(SNodeOperations.as(meet, CONCEPTS.MeetType$HQ), LINKS.argument$kHNt);
+    return SLinkOperations.getChildren(SNodeOperations.as(meet, CONCEPTS.MeetType$HQ), LINKS.argument$2bV3);
   }
   public static List<SNode> getJoinArguments(SNode join) {
-    return SLinkOperations.getChildren(SNodeOperations.as(join, CONCEPTS.JoinType$9o), LINKS.argument$xIHX);
+    return SLinkOperations.getChildren(SNodeOperations.as(join, CONCEPTS.JoinType$9o), LINKS.argument$lCgz);
   }
 
   private static final class CONCEPTS {
@@ -171,7 +171,7 @@ public class LatticeUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$xIHX = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
-    /*package*/ static final SContainmentLink argument$kHNt = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink argument$lCgz = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 }

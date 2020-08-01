@@ -66,7 +66,7 @@ public final class ModelStatisticsTarget__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static SModel resolveModel_id4xqDcS7DWbP(@NotNull SNode __thisNode__, SRepository repo) {
     SModel m = null;
-    SModelReference ref = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$WcuB));
+    SModelReference ref = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$a2OT));
     if (ref != null) {
       m = ref.resolve(repo);
     }
@@ -124,6 +124,6 @@ public final class ModelStatisticsTarget__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$WcuB = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a5cad96L, 0x485aa4ce07a6ea0fL, "target");
+    /*package*/ static final SContainmentLink target$a2OT = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a5cad96L, 0x485aa4ce07a6ea0fL, "target");
   }
 }

@@ -36,11 +36,11 @@ public final class UsingStatement__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     if (!(ignoreMayBeThrowables)) {
-      for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.resource$zRvv))) {
+      for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.resource$nSg1))) {
         Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$ok), throwables, e);
       }
     }
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$zRvY), throwables, ((boolean) ignoreMayBeThrowables));
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$nSv2), throwables, ((boolean) ignoreMayBeThrowables));
   }
 
   /*package*/ UsingStatement__BehaviorDescriptor() {
@@ -95,7 +95,7 @@ public final class UsingStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resource$zRvv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d0053f19bL, 0x11d0053f19dL, "resource");
-    /*package*/ static final SContainmentLink body$zRvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d0053f19bL, 0x11d0053f19eL, "body");
+    /*package*/ static final SContainmentLink resource$nSg1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d0053f19bL, 0x11d0053f19dL, "resource");
+    /*package*/ static final SContainmentLink body$nSv2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d0053f19bL, 0x11d0053f19eL, "body");
   }
 }

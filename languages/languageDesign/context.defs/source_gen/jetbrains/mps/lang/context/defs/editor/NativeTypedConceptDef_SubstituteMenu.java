@@ -49,7 +49,7 @@ public class NativeTypedConceptDef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_axz9qc_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.NativeTypedConceptDef$4n, LINKS.conceptParameter$A04w);
+      super((SAbstractConcept) CONCEPTS.NativeTypedConceptDef$4n, LINKS.conceptParameter$q2bw);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class NativeTypedConceptDef_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return "concept<" + SPropertyOperations.getString(referencedNode, PROPS.name$tAp1) + ">";
+        return "concept<" + SPropertyOperations.getString(referencedNode, PROPS.name$lA7v) + ">";
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -100,10 +100,10 @@ public class NativeTypedConceptDef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptParameter$A04w = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x26084ede749bc5f2L, 0x26084ede749bc5f3L, "conceptParameter");
+    /*package*/ static final SReferenceLink conceptParameter$q2bw = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x26084ede749bc5f2L, 0x26084ede749bc5f3L, "conceptParameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

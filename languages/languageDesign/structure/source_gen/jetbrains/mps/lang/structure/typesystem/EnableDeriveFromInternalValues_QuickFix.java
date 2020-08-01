@@ -20,7 +20,7 @@ public class EnableDeriveFromInternalValues_QuickFix extends QuickFix_Runtime {
     return "Enable Derive from Internal Values";
   }
   public void execute(SNode node) {
-    SPropertyOperations.setEnum(SNodeOperations.cast(node, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), PROPS.memberIdentifierPolicy$DUls, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fd31b6L, "derive_from_internal_value"));
+    SPropertyOperations.setEnum(SNodeOperations.cast(node, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll), PROPS.memberIdentifierPolicy$jgo$, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fd31b6L, "derive_from_internal_value"));
   }
 
   private static final class CONCEPTS {
@@ -28,6 +28,6 @@ public class EnableDeriveFromInternalValues_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty memberIdentifierPolicy$DUls = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy");
+    /*package*/ static final SProperty memberIdentifierPolicy$jgo$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x116d5fed0c2L, "memberIdentifierPolicy");
   }
 }

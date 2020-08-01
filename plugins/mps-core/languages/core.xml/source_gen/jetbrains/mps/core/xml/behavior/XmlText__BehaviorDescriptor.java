@@ -43,7 +43,7 @@ public final class XmlText__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static boolean hasNewLineAfter_id1Qs9WekVZ9E(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$Wjv0)) && (SNodeOperations.getNextSibling(__thisNode__) != null)) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$ds10)) && (SNodeOperations.getNextSibling(__thisNode__) != null)) {
       return !(((boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(__thisNode__)));
     }
     return false;
@@ -52,7 +52,7 @@ public final class XmlText__BehaviorDescriptor extends BaseBHDescriptor {
     SNode left = SNodeOperations.getPrevSibling(__thisNode__);
     if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlContent$nZ)) {
       SNode leftContent = SNodeOperations.cast(left, CONCEPTS.XmlContent$nZ);
-      return (boolean) XmlContent__BehaviorDescriptor.textLike_id1653mnvAgu_.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(leftContent))) || isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$Wjv0)) && (SNodeOperations.getNextSibling(__thisNode__) == null);
+      return (boolean) XmlContent__BehaviorDescriptor.textLike_id1653mnvAgu_.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(leftContent))) || isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$ds10)) && (SNodeOperations.getNextSibling(__thisNode__) == null);
     }
     return false;
   }
@@ -118,7 +118,7 @@ public final class XmlText__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Wjv0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
+    /*package*/ static final SProperty value$ds10 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
   }
 
   private static final class CONCEPTS {

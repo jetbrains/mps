@@ -48,33 +48,33 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_7_0(final BaseMappingRuleContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1).equals("button");
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v).equals("button");
   }
   public static boolean rule_Condition_7_1(final BaseMappingRuleContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1).equals("label");
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v).equals("label");
   }
   public static boolean rule_Condition_7_2(final BaseMappingRuleContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1).equals("panel");
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v).equals("panel");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.value$_YOv).equals("true");
+    return SPropertyOperations.getString(_context.getNode(), PROPS.value$prr1).equals("true");
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$_Zl0)).findFirst(new IWhereFilter<SNode>() {
+    return SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$pFb0)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).equals("text");
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).equals("text");
       }
-    }), PROPS.value$_YOv);
+    }), PROPS.value$prr1);
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
     return _context.createUniqueName(_context.getTemplateValue(), null);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$_Zl0)).findFirst(new IWhereFilter<SNode>() {
+    return SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$pFb0)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).equals("text");
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).equals("text");
       }
-    }), PROPS.value$_YOv);
+    }), PROPS.value$prr1);
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
     return _context.createUniqueName(_context.getTemplateValue(), null);
@@ -83,39 +83,39 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createUniqueName(_context.getTemplateValue(), null);
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.value$_YOv);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.value$prr1);
   }
   public static Object referenceMacro_GetReferent_6_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "factory_method");
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
-    return (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$_Zl0)).findFirst(new IWhereFilter<SNode>() {
+    return (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$pFb0)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).equals("text");
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).equals("text");
       }
     }) != null);
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
-    return (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$_Zl0)).findFirst(new IWhereFilter<SNode>() {
+    return (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$pFb0)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).equals("text");
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).equals("text");
       }
     }) != null);
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.rootElement$_ZjZ);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.rootElement$pEFx);
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$_Zl0)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$pFb0)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).equals("enabled");
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).equals("enabled");
       }
     });
   }
   public static SNode sourceNodeQuery_1_1(final SourceSubstituteMacroNodeContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$_Zl0)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.attribute$pFb0)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$tAp1).equals("background");
+        return SPropertyOperations.getString(it, PROPS.name$lA7v).equals("background");
       }
     });
   }
@@ -126,7 +126,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Element$mm);
   }
   public static Iterable<SNode> sourceNodesQuery_4_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.content$_Zlv);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.content$pFq1);
   }
   public static void mappingScript_CodeBlock_8(final MappingScriptContext _context) {
     // find all text nodes 
@@ -134,11 +134,11 @@ public class QueriesGenerated extends QueryProviderBase {
     for (SNode text : ListSequence.fromList(texts)) {
       // replace with a 'label' element 
       SNode label = SNodeOperations.replaceWithNewChild(text, CONCEPTS.Element$mm);
-      SPropertyOperations.assign(label, PROPS.name$tAp1, "label");
+      SPropertyOperations.assign(label, PROPS.name$lA7v, "label");
       // Add a text attribute to the 'label' element 
-      SNode attribute = SLinkOperations.addNewChild(label, LINKS.attribute$_Zl0, null);
-      SPropertyOperations.assign(attribute, PROPS.name$tAp1, "text");
-      SPropertyOperations.assign(attribute, PROPS.value$_YOv, SPropertyOperations.getString(text, PROPS.text$_Zzw));
+      SNode attribute = SLinkOperations.addNewChild(label, LINKS.attribute$pFb0, null);
+      SPropertyOperations.assign(attribute, PROPS.name$lA7v, "text");
+      SPropertyOperations.assign(attribute, PROPS.value$prr1, SPropertyOperations.getString(text, PROPS.text$pMcw));
     }
   }
   public static void mappingScript_CodeBlock_9(final MappingScriptContext _context) {
@@ -394,15 +394,15 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$_YOv = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value");
-    /*package*/ static final SProperty text$_Zzw = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, 0x11d45f8a8c2L, "text");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$prr1 = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value");
+    /*package*/ static final SProperty text$pMcw = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, 0x11d45f8a8c2L, "text");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink attribute$_Zl0 = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8baL, "attribute");
-    /*package*/ static final SContainmentLink rootElement$_ZjZ = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, 0x11d45f8a8b8L, "rootElement");
-    /*package*/ static final SContainmentLink content$_Zlv = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8bbL, "content");
+    /*package*/ static final SContainmentLink attribute$pFb0 = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8baL, "attribute");
+    /*package*/ static final SContainmentLink rootElement$pEFx = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, 0x11d45f8a8b8L, "rootElement");
+    /*package*/ static final SContainmentLink content$pFq1 = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8bbL, "content");
   }
 
   private static final class CONCEPTS {

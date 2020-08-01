@@ -50,7 +50,7 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static boolean isVirtual_id6WSEafdhbZX(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isVirtual$6dmZ) || SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw) != null;
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isVirtual$u8x) || SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw) != null;
   }
   /*package*/ static SNode getBehaviour_idhP3pnNF(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.ConceptBehavior$8P);
@@ -59,59 +59,59 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
     return true;
   }
   /*package*/ static SNode getContainingConcept_idi3POAMX(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(ConceptMethodDeclaration__BehaviorDescriptor.getBehaviour_idhP3pnNF.invoke(__thisNode__), LINKS.concept$v6ns);
+    return SLinkOperations.getTarget(ConceptMethodDeclaration__BehaviorDescriptor.getBehaviour_idhP3pnNF.invoke(__thisNode__), LINKS.concept$45m$);
   }
   /*package*/ static SNode getOverridenMethod_idhP3pnNO(@NotNull SNode __thisNode__) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw) != null) {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw) == __thisNode__) {
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw) != null) {
+      if (SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw) == __thisNode__) {
         return __thisNode__;
       } else {
-        return ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw));
+        return ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw));
       }
     }
-    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isVirtual$6dmZ)) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isVirtual$u8x)) {
       return __thisNode__;
     }
     return null;
   }
   @Deprecated
   /*package*/ static boolean isCorrectlyOverriden_idhQYykEj(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw) == null)) {
       return true;
     }
-    if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$WIkw), SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw), LINKS.returnType$WIkw)))) {
+    if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, LINKS.returnType$qrVw), SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw), LINKS.returnType$qrVw)))) {
       return false;
     }
-    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isStatic$KaRv) != SPropertyOperations.getBoolean(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw), PROPS.isStatic$KaRv)) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isStatic$lgS1) != SPropertyOperations.getBoolean(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw), PROPS.isStatic$lgS1)) {
       return false;
     }
-    int parameterCount = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)).count();
-    if (parameterCount != ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw), LINKS.parameter$WIkZ)).count()) {
+    int parameterCount = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$qsax)).count();
+    if (parameterCount != ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw), LINKS.parameter$qsax)).count()) {
       return false;
     }
     for (int i = 0; i < parameterCount; i++) {
-      if (!(MatchingUtil.matchNodes(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)).getElement(i), LINKS.type$pLrO), SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw), LINKS.parameter$WIkZ)).getElement(i), LINKS.type$pLrO)))) {
+      if (!(MatchingUtil.matchNodes(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$qsax)).getElement(i), LINKS.type$uWuc), SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw), LINKS.parameter$qsax)).getElement(i), LINKS.type$uWuc)))) {
         return false;
       }
     }
     return true;
   }
   /*package*/ static SNode getOverridenMethodConcept_idhP3pnOc(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(__thisNode__), CONCEPTS.ConceptBehavior$8P, false, false), LINKS.concept$v6ns);
+    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(__thisNode__), CONCEPTS.ConceptBehavior$8P, false, false), LINKS.concept$45m$);
   }
   @Deprecated
   /*package*/ static boolean isAbstract_idhWjv7RO(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$6dnX);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$uAz);
   }
   /*package*/ static boolean hasBody_id10BRnhak8m8(@NotNull SNode __thisNode__) {
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$6dnX));
+    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$uAz));
   }
   /*package*/ static boolean isAnAbstractMethod_id28P2dHxCoRl(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$6dnX);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$uAz);
   }
   /*package*/ static SNode getNearestOverriddenMethod_id4DuBHEkPTzU(@NotNull SNode __thisNode__) {
     // fixme 
-    return SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$6dmw);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$tTw);
   }
   /*package*/ static boolean supportsCheckedExceptions_id7orZYjMoFMH(@NotNull SNode __thisNode__) {
     return false;
@@ -186,17 +186,17 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink overriddenMethod$6dmw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isVirtual$6dmZ = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
-    /*package*/ static final SProperty isStatic$KaRv = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
-    /*package*/ static final SProperty isAbstract$6dnX = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480582L, "isAbstract");
+    /*package*/ static final SProperty isVirtual$u8x = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
+    /*package*/ static final SProperty isStatic$lgS1 = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
+    /*package*/ static final SProperty isAbstract$uAz = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480582L, "isAbstract");
   }
 
   private static final class CONCEPTS {

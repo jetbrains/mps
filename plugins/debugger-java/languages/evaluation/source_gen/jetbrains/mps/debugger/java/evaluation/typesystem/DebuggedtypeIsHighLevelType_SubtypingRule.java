@@ -17,7 +17,7 @@ public class DebuggedtypeIsHighLevelType_SubtypingRule extends SubtypingRule_Run
   public DebuggedtypeIsHighLevelType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode debuggedType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return SLinkOperations.getTarget(debuggedType, LINKS.highType$UDHZ);
+    return SLinkOperations.getTarget(debuggedType, LINKS.highType$qdhx);
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.DebuggedType$q5;
@@ -30,7 +30,7 @@ public class DebuggedtypeIsHighLevelType_SubtypingRule extends SubtypingRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink highType$UDHZ = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25edaL, "highType");
+    /*package*/ static final SContainmentLink highType$qdhx = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25edaL, "highType");
   }
 
   private static final class CONCEPTS {

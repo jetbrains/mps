@@ -41,9 +41,9 @@ public final class SetIdsInMoveMigrations_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$x6zr), CONCEPTS.MoveNodeMigrationPart$gB)).translate(new ITranslator2<SNode, SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$2ba5), CONCEPTS.MoveNodeMigrationPart$gB)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.specialization$GqXw);
+        return SLinkOperations.getChildren(it, LINKS.specialization$x3Mw);
       }
     }).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -71,9 +71,9 @@ public final class SetIdsInMoveMigrations_Intention extends AbstractIntentionDes
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final SRepository repo = editorContext.getRepository();
-      Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$x6zr), CONCEPTS.MoveNodeMigrationPart$gB)).translate(new ITranslator2<SNode, SNode>() {
+      Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$2ba5), CONCEPTS.MoveNodeMigrationPart$gB)).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode it) {
-          return SLinkOperations.getChildren(it, LINKS.specialization$GqXw);
+          return SLinkOperations.getChildren(it, LINKS.specialization$x3Mw);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
@@ -88,8 +88,8 @@ public final class SetIdsInMoveMigrations_Intention extends AbstractIntentionDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$x6zr = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
-    /*package*/ static final SContainmentLink specialization$GqXw = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x2b3f57492c165c59L, "specialization");
+    /*package*/ static final SContainmentLink part$2ba5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
+    /*package*/ static final SContainmentLink specialization$x3Mw = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x2b3f57492c165c59L, "specialization");
   }
 
   private static final class CONCEPTS {

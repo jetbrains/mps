@@ -36,8 +36,8 @@
       <node id="6341931782024037015" at="73,57,74,104" concept="6" />
       <node id="1867733327984720139" at="76,0,77,0" concept="8" trace="canBeRootBreakingPoint" />
       <node id="1867733327984720139" at="79,0,80,0" concept="8" trace="RulesConstraintsRoot$xz" />
-      <node id="1867733327984720139" at="83,0,84,0" concept="8" trace="name$tAp1" />
-      <node id="1867733327984720139" at="87,0,88,0" concept="8" trace="concept$aYvX" />
+      <node id="1867733327984720139" at="83,0,84,0" concept="8" trace="name$lA7v" />
+      <node id="1867733327984720139" at="87,0,88,0" concept="8" trace="concept$khuz" />
       <node id="1867733327984720161" at="61,12,63,7" concept="0" />
       <node id="1867733327984720139" at="29,0,32,0" concept="1" trace="RulesConstraintsRoot_Constraints#()V" />
       <node id="1867733327984720139" at="39,0,42,9" concept="3" />
@@ -108,8 +108,8 @@
       <node id="1867733327985055635" at="76,0,77,0" concept="8" trace="RulesBlock$2N" />
       <node id="1867733327985055635" at="77,0,78,0" concept="8" trace="RuleKind$RI" />
       <node id="1867733327985055635" at="78,0,79,0" concept="8" trace="RulesConstraintsRoot$xz" />
-      <node id="1867733327985055635" at="82,0,83,0" concept="8" trace="kind$ipQZ" />
-      <node id="1867733327985055635" at="83,0,84,0" concept="8" trace="block$aYuw" />
+      <node id="1867733327985055635" at="82,0,83,0" concept="8" trace="kind$UxCx" />
+      <node id="1867733327985055635" at="83,0,84,0" concept="8" trace="block$kgLw" />
       <node id="1867733327985055635" at="31,0,34,0" concept="1" trace="RulesBlock_Constraints#()V" />
       <node id="1867733327985055672" at="55,0,58,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1867733327985055636" at="38,0,42,0" concept="4" trace="hasOwnScopeProvider#()Z" />

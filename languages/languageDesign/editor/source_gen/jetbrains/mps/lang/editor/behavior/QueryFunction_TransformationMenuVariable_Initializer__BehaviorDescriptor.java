@@ -34,7 +34,7 @@ public final class QueryFunction_TransformationMenuVariable_Initializer__Behavio
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     SNode varDecl = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.TransformationMenuVariableDeclaration$Ff);
-    return SLinkOperations.getTarget(varDecl, LINKS.type$pLrO);
+    return SLinkOperations.getTarget(varDecl, LINKS.type$uWuc);
   }
 
   /*package*/ QueryFunction_TransformationMenuVariable_Initializer__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class QueryFunction_TransformationMenuVariable_Initializer__Behavio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

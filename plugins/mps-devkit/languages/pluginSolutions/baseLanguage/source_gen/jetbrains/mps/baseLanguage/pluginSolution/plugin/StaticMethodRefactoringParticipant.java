@@ -49,15 +49,15 @@ public class StaticMethodRefactoringParticipant extends StaticMemberRefactoringP
       if (tryToResolveNewTarget != null && SNodeOperations.getNodeAncestor(containingNode, CONCEPTS.Classifier$hJ, false, false) == SNodeOperations.getNodeAncestor(tryToResolveNewTarget, CONCEPTS.Classifier$hJ, false, false)) {
         replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
         SNodeOperations.replaceWithAnother(containingNode, replacement);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.baseMethodDeclaration$$A7i, newTarget, resolveInfo);
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.baseMethodDeclaration$ItxI, newTarget, resolveInfo);
       } else {
         replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
         SNodeOperations.replaceWithAnother(containingNode, replacement);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.baseMethodDeclaration$$A7i, newTarget, resolveInfo);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.classConcept$BsUa, new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(newTarget.other(), ((UpdateReferencesParticipantBase.NamedNodeReference) null)), newTarget.other().name());
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.baseMethodDeclaration$ItxI, newTarget, resolveInfo);
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.classConcept$70aQ, new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(newTarget.other(), ((UpdateReferencesParticipantBase.NamedNodeReference) null)), newTarget.other().name());
       }
-      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(containingNode, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$$A7L)));
-      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.typeArgument$GDtv)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(containingNode, CONCEPTS.IMethodCall$ln), LINKS.typeArgument$GDtv)));
+      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(containingNode, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$ItKJ)));
+      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.typeArgument$C5i1)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(containingNode, CONCEPTS.IMethodCall$ln), LINKS.typeArgument$C5i1)));
     }
   }
 
@@ -68,9 +68,9 @@ public class StaticMethodRefactoringParticipant extends StaticMemberRefactoringP
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classConcept$BsUa = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeArgument$GDtv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
   }
 }

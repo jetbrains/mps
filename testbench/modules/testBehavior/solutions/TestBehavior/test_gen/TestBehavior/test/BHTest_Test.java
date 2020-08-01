@@ -243,7 +243,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C0$A6, null);
-        Assert.assertEquals(TestResults.I1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$5ih$));
+        Assert.assertEquals(TestResults.I1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$zQws));
       }
     });
   }
@@ -251,7 +251,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C1$Sa, null);
-        Assert.assertEquals(TestResults.C1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$5ih$));
+        Assert.assertEquals(TestResults.C1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$zQws));
       }
     });
   }
@@ -260,7 +260,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C2$Dc, null);
-        Assert.assertEquals(TestResults.I2_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$5ih$));
+        Assert.assertEquals(TestResults.I2_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$zQws));
       }
     });
   }
@@ -269,8 +269,8 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeC5 = SNodeFactoryOperations.createNewNode(CONCEPTS.C5$r0, null);
-        Assert.assertSame(true, SPropertyOperations.getBoolean(nodeC5, PROPS.b$fC5X));
-        Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeC5, PROPS.a$5ih$));
+        Assert.assertSame(true, SPropertyOperations.getBoolean(nodeC5, PROPS.b$$qSz));
+        Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeC5, PROPS.a$zQws));
       }
     });
   }
@@ -278,7 +278,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C4$ca, null);
-        Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$5ih$));
+        Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$zQws));
       }
     });
   }
@@ -286,7 +286,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C6$i8, null);
-        Assert.assertEquals("C6", SPropertyOperations.getString(nodeI1, PROPS.a$5ih$));
+        Assert.assertEquals("C6", SPropertyOperations.getString(nodeI1, PROPS.a$zQws));
       }
     });
   }
@@ -294,9 +294,9 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C7$Nh, null);
-        Assert.assertEquals("c6", SPropertyOperations.getString(nodeI1, PROPS.a$5ih$));
+        Assert.assertEquals("c6", SPropertyOperations.getString(nodeI1, PROPS.a$zQws));
         SNode nodeI3 = SNodeFactoryOperations.createNewNode(CONCEPTS.C7$Nh, null);
-        Assert.assertEquals("set", SPropertyOperations.getString(nodeI3, PROPS.c$Ez5p));
+        Assert.assertEquals("set", SPropertyOperations.getString(nodeI3, PROPS.c$AZB7));
       }
     });
   }
@@ -472,8 +472,8 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
   public void test_nullability2() throws Exception {
     SNode m = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x65e1cc96389f81beL, "BHL7.structure.M"));
-    Assert.assertEquals(null, L__BehaviorDescriptor.bar_id6nxN9oSBS5Q.invoke(SLinkOperations.getTarget(m, LINKS.myL$Y8Kz)));
-    Assert.assertEquals(0, (int) L__BehaviorDescriptor.foo_id6nxN9oSBS58.invoke(SLinkOperations.getTarget(m, LINKS.myL$Y8Kz)));
+    Assert.assertEquals(null, L__BehaviorDescriptor.bar_id6nxN9oSBS5Q.invoke(SLinkOperations.getTarget(m, LINKS.myL$6fwX)));
+    Assert.assertEquals(0, (int) L__BehaviorDescriptor.foo_id6nxN9oSBS58.invoke(SLinkOperations.getTarget(m, LINKS.myL$6fwX)));
   }
   public void test_seqConcept() throws Exception {
     // fix 
@@ -835,12 +835,12 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty a$5ih$ = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL, 0x355d469f0ba114e9L, "a");
-    /*package*/ static final SProperty b$fC5X = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x3f852a67e9131504L, 0x3f852a67e913151eL, "b");
-    /*package*/ static final SProperty c$Ez5p = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x25076477397e4c6fL, 0x6c4ee9d44295ea26L, "c");
+    /*package*/ static final SProperty a$zQws = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL, 0x355d469f0ba114e9L, "a");
+    /*package*/ static final SProperty b$$qSz = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x3f852a67e9131504L, 0x3f852a67e913151eL, "b");
+    /*package*/ static final SProperty c$AZB7 = MetaAdapterFactory.getProperty(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x25076477397e4c6fL, 0x6c4ee9d44295ea26L, "c");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink myL$Y8Kz = MetaAdapterFactory.getContainmentLink(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x65e1cc96389f81beL, 0x65e1cc96389f81c7L, "myL");
+    /*package*/ static final SContainmentLink myL$6fwX = MetaAdapterFactory.getContainmentLink(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x65e1cc96389f81beL, 0x65e1cc96389f81c7L, "myL");
   }
 }

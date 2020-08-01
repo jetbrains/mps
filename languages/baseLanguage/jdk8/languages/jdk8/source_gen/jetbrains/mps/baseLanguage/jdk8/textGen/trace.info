@@ -34,7 +34,7 @@
       <node id="7204211436280793956" at="16,55,17,125" concept="0" />
       <node id="1237463992935" at="17,125,18,26" concept="0" />
       <node id="6434864236541638989" at="18,26,19,63" concept="0" />
-      <node id="6434864236541625324" at="23,0,24,0" concept="4" trace="classifier_old$xsNt" />
+      <node id="6434864236541625324" at="23,0,24,0" concept="4" trace="classifier_old$cWV3" />
       <node id="6434864236541625324" at="14,0,21,0" concept="1" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="6434864236541625324" at="15,54,19,63">
         <var name="tgs" id="6434864236541625324" />

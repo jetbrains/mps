@@ -72,9 +72,9 @@ public class snodeOperation extends SubstituteMenuBase {
             // Guess, could be null return value here, but doesn't seem to hurt to keep non-null value.  
             return result;
           }
-          SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+          SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
           SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(leftExpression);
-          SNode operation = SLinkOperations.getTarget(SNodeOperations.as(leftExpression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8);
+          SNode operation = SLinkOperations.getTarget(SNodeOperations.as(leftExpression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS);
           SNode linkAccess = SNodeOperations.as(operation, CONCEPTS.ILinkAccess$3K);
           result.myLinkAccess = linkAccess;
           if ((linkAccess != null) && (boolean) ILinkAccess__BehaviorDescriptor.isSingularCardinality_id3vpu_siOTrf.invoke(linkAccess)) {
@@ -133,13 +133,13 @@ public class snodeOperation extends SubstituteMenuBase {
         }).collect(Collectors.toList());
       }
       private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-        SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+        SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
         SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(leftExpression);
         if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.AsSConcept$oV)) {
           {
             SNode coercedNode_o4406x_a0c0a0a = TypecheckingFacade.getFromContext().coerceType(leftType, CONCEPTS.SNodeType$gn);
             if (coercedNode_o4406x_a0c0a0a != null) {
-              return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(coercedNode_o4406x_a0c0a0a, LINKS.concept$HWFQ), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1169125787135"));
+              return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(coercedNode_o4406x_a0c0a0a, LINKS.concept$gpfa), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1169125787135"));
             } else {
             }
           }
@@ -165,12 +165,12 @@ public class snodeOperation extends SubstituteMenuBase {
         SConcept parameterOp = (SConcept) concept;
         SNode leftOperation = null;
         if (SNodeOperations.isInstanceOf(leftExpression, CONCEPTS.DotExpression$6a)) {
-          leftOperation = SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8);
+          leftOperation = SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS);
         }
         // --- 
         if (leftOperation != null) {
           if (SNodeOperations.isInstanceOf(leftOperation, CONCEPTS.SPropertyAccess$bD)) {
-            SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(leftOperation, CONCEPTS.SPropertyAccess$bD), LINKS.property$He2), LINKS.dataType$fLUl);
+            SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(leftOperation, CONCEPTS.SPropertyAccess$bD), LINKS.property$lTMY), LINKS.dataType$Dbgb);
             if ((boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(parameterOp), dataType)) {
               return true;
             }
@@ -247,10 +247,10 @@ public class snodeOperation extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
-    /*package*/ static final SReferenceLink property$He2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 }

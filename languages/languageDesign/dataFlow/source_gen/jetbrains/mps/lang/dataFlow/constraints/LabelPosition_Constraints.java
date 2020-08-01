@@ -32,7 +32,7 @@ public class LabelPosition_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.label$4to1, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.label$aeCv, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -68,6 +68,6 @@ public class LabelPosition_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink label$4to1 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a8b1526L, 0x1190a8b2ed8L, "label");
+    /*package*/ static final SReferenceLink label$aeCv = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a8b1526L, 0x1190a8b2ed8L, "label");
   }
 }

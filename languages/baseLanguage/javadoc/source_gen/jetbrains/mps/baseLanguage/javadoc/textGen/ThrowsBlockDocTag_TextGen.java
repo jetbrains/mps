@@ -18,16 +18,16 @@ public class ThrowsBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@throws ");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.exceptionType$TlLh));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.exceptionType$LyRf));
     tgs.append(" ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$xn7Z));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$acRx));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink exceptionType$TlLh = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, 0x5ed0d79d7dbd76f9L, "exceptionType");
+    /*package*/ static final SContainmentLink exceptionType$LyRf = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, 0x5ed0d79d7dbd76f9L, "exceptionType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$xn7Z = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, 0x514c0f68704ec272L, "text");
+    /*package*/ static final SProperty text$acRx = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, 0x514c0f68704ec272L, "text");
   }
 }

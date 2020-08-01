@@ -24,7 +24,7 @@ public class VarType_Delete {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.setNewChild(SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.cast(node, CONCEPTS.VarVariableDeclaration$Of), CONCEPTS.LocalVariableDeclaration$Bf), LINKS.type$pLrO, CONCEPTS.Type$IG);
+        SNodeFactoryOperations.setNewChild(SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.cast(node, CONCEPTS.VarVariableDeclaration$Of), CONCEPTS.LocalVariableDeclaration$Bf), LINKS.type$uWuc, CONCEPTS.Type$IG);
       }
 
     };
@@ -78,6 +78,6 @@ public class VarType_Delete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

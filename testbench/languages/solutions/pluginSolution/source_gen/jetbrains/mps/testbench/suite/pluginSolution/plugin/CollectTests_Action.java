@@ -167,17 +167,17 @@ public class CollectTests_Action extends BaseAction {
                   public void run() {
                     SNode suite = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ModuleSuite$D_)).findFirst(new IWhereFilter<SNode>() {
                       public boolean accept(SNode it) {
-                        return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$cQ0V)).equals(module.value.getModuleReference());
+                        return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$eas_)).equals(module.value.getModuleReference());
                       }
                     });
                     if (suite != null) {
                       for (final SNode tref : tests) {
-                        if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$fEbz)).any(new IWhereFilter<SNode>() {
+                        if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$_r_X)).any(new IWhereFilter<SNode>() {
                           public boolean accept(SNode it) {
                             return (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref);
                           }
                         }))) {
-                          ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$fEbz)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$Qb));
+                          ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$_r_X)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$Qb));
                           ((SModelInternal) model).addModelImport(smodel.getReference());
                           ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
                         }
@@ -216,7 +216,7 @@ public class CollectTests_Action extends BaseAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleRef$cQ0V = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef");
-    /*package*/ static final SContainmentLink testRef$fEbz = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef");
+    /*package*/ static final SContainmentLink moduleRef$eas_ = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef");
+    /*package*/ static final SContainmentLink testRef$_r_X = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef");
   }
 }

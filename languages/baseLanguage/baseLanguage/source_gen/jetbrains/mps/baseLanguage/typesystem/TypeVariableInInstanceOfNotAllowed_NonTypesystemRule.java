@@ -21,9 +21,9 @@ public class TypeVariableInInstanceOfNotAllowed_NonTypesystemRule extends Abstra
   public TypeVariableInInstanceOfNotAllowed_NonTypesystemRule() {
   }
   public void applyRule(final SNode instanceOfExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$zxNQ), CONCEPTS.TypeVariableReference$vZ)))) {
+    if (!(!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$do7a), CONCEPTS.TypeVariableReference$vZ)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$zxNQ), "Class or array expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6861608246223836916", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$do7a), "Class or array expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6861608246223836916", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -37,7 +37,7 @@ public class TypeVariableInInstanceOfNotAllowed_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classType$zxNQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
+    /*package*/ static final SContainmentLink classType$do7a = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
   }
 
   private static final class CONCEPTS {

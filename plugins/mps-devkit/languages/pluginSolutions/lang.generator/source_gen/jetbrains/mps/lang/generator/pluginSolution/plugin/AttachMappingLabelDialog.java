@@ -108,17 +108,17 @@ public class AttachMappingLabelDialog extends DialogWrapper {
         SNode mappingLabel = MappingLabelUtil.findOrCreateMappingLabelForName(AttachMappingLabelDialog.this.myTemplateNode, AttachMappingLabelDialog.this.myResultLabelName);
         SNode existingMacro = ListSequence.fromList(AttributeOperations.getAttributeList(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).last();
         if (existingMacro != null) {
-          SLinkOperations.setTarget(existingMacro, LINKS.mappingLabel$yUiS, mappingLabel);
+          SLinkOperations.setTarget(existingMacro, LINKS.mappingLabel$Uf98, mappingLabel);
           return;
         }
         SNode templateFragment = AttributeOperations.getAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$yI));
         if (templateFragment != null) {
-          SLinkOperations.setTarget(templateFragment, LINKS.labelDeclaration$SD8p, mappingLabel);
+          SLinkOperations.setTarget(templateFragment, LINKS.labelDeclaration$rV47, mappingLabel);
           return;
         }
         // create new Label macro 
         SNode newMacro = SNodeFactoryOperations.addNewAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je), CONCEPTS.LabelMacro$5R);
-        SLinkOperations.setTarget(newMacro, LINKS.mappingLabel$yUiS, mappingLabel);
+        SLinkOperations.setTarget(newMacro, LINKS.mappingLabel$Uf98, mappingLabel);
       }
     });
   }
@@ -130,7 +130,7 @@ public class AttachMappingLabelDialog extends DialogWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink mappingLabel$yUiS = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
-    /*package*/ static final SReferenceLink labelDeclaration$SD8p = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration");
+    /*package*/ static final SReferenceLink mappingLabel$Uf98 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
+    /*package*/ static final SReferenceLink labelDeclaration$rV47 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration");
   }
 }

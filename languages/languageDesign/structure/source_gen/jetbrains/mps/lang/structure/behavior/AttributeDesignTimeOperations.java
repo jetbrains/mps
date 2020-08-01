@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class AttributeDesignTimeOperations {
   public static Iterable<SNode> getApplicableAttributes(SNode accessNode, final SNode attributeType) {
     // todo: should be node<ACD> 
-    final SNode nodeConcept = SLinkOperations.getTarget(AttributeAccess__BehaviorDescriptor.getAttributeContainerType_id62qhzb6UOqI.invoke(accessNode), LINKS.concept$HWFQ);
+    final SNode nodeConcept = SLinkOperations.getTarget(AttributeAccess__BehaviorDescriptor.getAttributeContainerType_id62qhzb6UOqI.invoke(accessNode), LINKS.concept$gpfa);
     if ((nodeConcept == null)) {
       return null;
     }
@@ -44,7 +44,7 @@ public class AttributeDesignTimeOperations {
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         // todo: why not getAttributeRole? 
-        return isNotEmptyString(SPropertyOperations.getString(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), PROPS.role$VZ$z)) && Sequence.fromIterable(getApplicableConcepts(it)).any(new IWhereFilter<SNode>() {
+        return isNotEmptyString(SPropertyOperations.getString(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), PROPS.role$3MGX)) && Sequence.fromIterable(getApplicableConcepts(it)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(nodeConcept, it);
           }
@@ -61,9 +61,9 @@ public class AttributeDesignTimeOperations {
     }
     return SPropertyOperations.getBoolean(SLinkOperations.getTarget(AttributeOperations.getAttribute(SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), LINKS.multiple$VrGB) != null);
+        return (SLinkOperations.getTarget(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), LINKS.multiple$MqAT) != null);
       }
-    }), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), LINKS.multiple$VrGB), PROPS.value$Wv6W);
+    }), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), LINKS.multiple$MqAT), PROPS.value$j4n4);
   }
   @Nullable
   public static String getAttributeRole(SNode attributeDeclaration) {
@@ -72,9 +72,9 @@ public class AttributeDesignTimeOperations {
     }
     return SPropertyOperations.getString(AttributeOperations.getAttribute(SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return isNotEmptyString(SPropertyOperations.getString(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), PROPS.role$VZ$z));
+        return isNotEmptyString(SPropertyOperations.getString(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), PROPS.role$3MGX));
       }
-    }), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), PROPS.role$VZ$z);
+    }), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), PROPS.role$3MGX);
   }
 
   @Nullable
@@ -87,7 +87,7 @@ public class AttributeDesignTimeOperations {
     } catch (Exception ex) {
       // ignore 
     }
-    return SPropertyOperations.getString(attributeDeclaration, PROPS.name$tAp1);
+    return SPropertyOperations.getString(attributeDeclaration, PROPS.name$lA7v);
   }
 
   public static Iterable<SNode> getApplicableConcepts(SNode attributeDeclaration) {
@@ -96,7 +96,7 @@ public class AttributeDesignTimeOperations {
     }
     return SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.collect(SLinkOperations.getChildren(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), LINKS.attributed$x3gI), LINKS.concept$Bg0h);
+        return SLinkOperations.collect(SLinkOperations.getChildren(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), LINKS.attributed$_6i), LINKS.concept$K8f);
       }
     }).distinct().where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -109,7 +109,7 @@ public class AttributeDesignTimeOperations {
     Set<SNode> concepts = SetSequence.fromSet(new LinkedHashSet<SNode>());
     while ((conceptDeclaration != null) && !(SetSequence.fromSet(concepts).contains(conceptDeclaration))) {
       SetSequence.fromSet(concepts).addElement(conceptDeclaration);
-      conceptDeclaration = SLinkOperations.getTarget(conceptDeclaration, LINKS.extends$LQV3);
+      conceptDeclaration = SLinkOperations.getTarget(conceptDeclaration, LINKS.extends$9AAt);
     }
     return concepts;
   }
@@ -118,11 +118,11 @@ public class AttributeDesignTimeOperations {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
-    /*package*/ static final SContainmentLink multiple$VrGB = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, 0x694f83d1440affeaL, "multiple");
-    /*package*/ static final SContainmentLink attributed$x3gI = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, 0x694f83d143972c0eL, "attributed");
-    /*package*/ static final SReferenceLink concept$Bg0h = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5405fd03496acb49L, 0x5405fd03496acc99L, "concept");
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SContainmentLink multiple$MqAT = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, 0x694f83d1440affeaL, "multiple");
+    /*package*/ static final SContainmentLink attributed$_6i = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, 0x694f83d143972c0eL, "attributed");
+    /*package*/ static final SReferenceLink concept$K8f = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5405fd03496acb49L, 0x5405fd03496acc99L, "concept");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 
   private static final class CONCEPTS {
@@ -131,8 +131,8 @@ public class AttributeDesignTimeOperations {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$VZ$z = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, 0x694f83d1440b01c7L, "role");
-    /*package*/ static final SProperty value$Wv6W = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5405fd034959f7dcL, 0x5405fd03495a2dceL, "value");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$3MGX = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, 0x694f83d1440b01c7L, "role");
+    /*package*/ static final SProperty value$j4n4 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5405fd034959f7dcL, 0x5405fd03495a2dceL, "value");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

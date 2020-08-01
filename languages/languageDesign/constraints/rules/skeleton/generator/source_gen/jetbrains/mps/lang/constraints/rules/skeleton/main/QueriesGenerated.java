@@ -57,16 +57,16 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.RulesConstraintsRoot$xz)).isNotEmpty();
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "constraints2RootClass");
   }
   public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$aYvX);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$khuz);
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$aYvX);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$khuz);
   }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
     SModel model = ((SModel) _context.getVariable("var:model"));
@@ -95,10 +95,10 @@ public class QueriesGenerated extends QueryProviderBase {
     // then we use weaves/reductions to use this references in order to restore the ref to the <GeneratedAspectDescriptor>. 
     //  
     final SRepository repository = _context.getOriginalInputModel().getRepository();
-    SNode constraintsRef = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$g16), LINKS.model$8rak)).findFirst(new IWhereFilter<SNode>() {
+    SNode constraintsRef = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$7KxU), LINKS.model$59ZG)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repository);
-        return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$MaYH)) && SModuleOperations.isAspect(resolved, "constraints");
+        return isEmptyString(SPropertyOperations.getString(it, PROPS.stereotype$jknN)) && SModuleOperations.isAspect(resolved, "constraints");
       }
     });
     if (constraintsRef == null) {
@@ -366,13 +366,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty stereotype$MaYH = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5c5cb5cdd09abfb1L, "stereotype");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty stereotype$jknN = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5c5cb5cdd09abfb1L, "stereotype");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$aYvX = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept");
-    /*package*/ static final SContainmentLink language$g16 = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, 0x179194ecf7e0953bL, "language");
-    /*package*/ static final SContainmentLink model$8rak = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2bL, "model");
+    /*package*/ static final SReferenceLink concept$khuz = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept");
+    /*package*/ static final SContainmentLink language$7KxU = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, 0x179194ecf7e0953bL, "language");
+    /*package*/ static final SContainmentLink model$59ZG = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2bL, "model");
   }
 }

@@ -20,19 +20,19 @@ public class FixMethodSignature_QuickFix extends QuickFix_Runtime {
     return "Fix Method Signature";
   }
   public void execute(SNode node) {
-    SLinkOperations.setTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.returnType$WIkw, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.overriddenMethod$6dmw), LINKS.returnType$WIkw)));
-    int paramCount = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.overriddenMethod$6dmw), LINKS.parameter$WIkZ)).count();
-    int currentParamCount = ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.parameter$WIkZ)).count();
+    SLinkOperations.setTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.returnType$qrVw, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.overriddenMethod$tTw), LINKS.returnType$qrVw)));
+    int paramCount = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.overriddenMethod$tTw), LINKS.parameter$qsax)).count();
+    int currentParamCount = ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.parameter$qsax)).count();
     for (int i = 0; i < Math.max(paramCount, currentParamCount); i++) {
       if (i < paramCount && i < currentParamCount) {
-        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.parameter$WIkZ)).getElement(i), LINKS.type$pLrO, SNodeOperations.copyNode(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.overriddenMethod$6dmw), LINKS.parameter$WIkZ)).getElement(i), LINKS.type$pLrO)));
+        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.parameter$qsax)).getElement(i), LINKS.type$uWuc, SNodeOperations.copyNode(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.overriddenMethod$tTw), LINKS.parameter$qsax)).getElement(i), LINKS.type$uWuc)));
       }
       if (i >= currentParamCount) {
-        ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.parameter$WIkZ)).addElement(SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.overriddenMethod$6dmw), LINKS.parameter$WIkZ)).getElement(i)));
+        ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.parameter$qsax)).addElement(SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.overriddenMethod$tTw), LINKS.parameter$qsax)).getElement(i)));
       }
       if (i >= paramCount) {
         for (int j = 0; j < currentParamCount - paramCount; j++) {
-          SNodeOperations.deleteNode(ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.parameter$WIkZ)).getElement(i));
+          SNodeOperations.deleteNode(ListSequence.fromList(SLinkOperations.getChildren(((SNode) FixMethodSignature_QuickFix.this.getField("conceptMethod")[0]), LINKS.parameter$qsax)).getElement(i));
         }
         break;
       }
@@ -40,9 +40,9 @@ public class FixMethodSignature_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink overriddenMethod$6dmw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

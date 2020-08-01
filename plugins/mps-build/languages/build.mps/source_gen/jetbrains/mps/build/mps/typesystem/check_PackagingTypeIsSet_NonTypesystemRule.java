@@ -21,7 +21,7 @@ public class check_PackagingTypeIsSet_NonTypesystemRule extends AbstractNonTypes
   public check_PackagingTypeIsSet_NonTypesystemRule() {
   }
   public void applyRule(final SNode pluginLayout, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(pluginLayout, LINKS.packagingType$hucw) == null)) {
+    if ((SLinkOperations.getTarget(pluginLayout, LINKS.packagingType$tC3w) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(pluginLayout, "Packaging type is not set, please change it to auto", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "685435297876952739", null, errorTarget);
@@ -43,7 +43,7 @@ public class check_PackagingTypeIsSet_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink packagingType$hucw = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x318cec002865ade0L, "packagingType");
+    /*package*/ static final SContainmentLink packagingType$tC3w = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x318cec002865ade0L, "packagingType");
   }
 
   private static final class CONCEPTS {

@@ -48,7 +48,7 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
       newDeclaration = _quotation_createNode_282g55_a0a0a6a5(myVisibilityLevel.getNode(), expressionType, name);
     }
     if (myIsFinal) {
-      SPropertyOperations.assign(newDeclaration, PROPS.isFinal$hIht, true);
+      SPropertyOperations.assign(newDeclaration, PROPS.isFinal$_qt3, true);
     }
     SNode classConcept = SNodeOperations.as(myContainer, CONCEPTS.ClassConcept$IY);
     MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, newDeclaration);
@@ -66,10 +66,10 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
         initializer = Sequence.fromIterable(staticInitializers).first();
       } else {
         initializer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer"));
-        SLinkOperations.setTarget(initializer, LINKS.statementList$glTw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.member$oYX5)).addElement(initializer);
+        SLinkOperations.setTarget(initializer, LINKS.statementList$UAQw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+        ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.member$6v_r)).addElement(initializer);
       }
-      List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(initializer, LINKS.statementList$glTw), LINKS.statement$WHn8);
+      List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(initializer, LINKS.statementList$UAQw), LINKS.statement$pYcS);
       if (ListSequence.fromList(statement).isNotEmpty()) {
         SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statement).first(), SNodeOperations.copyNode(assignmentStatement));
       } else {
@@ -164,7 +164,7 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class CONCEPTS {
@@ -173,8 +173,8 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$glTw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statementList$UAQw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

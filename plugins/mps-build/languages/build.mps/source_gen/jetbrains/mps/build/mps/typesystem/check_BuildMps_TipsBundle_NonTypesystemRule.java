@@ -23,8 +23,8 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
   public check_BuildMps_TipsBundle_NonTypesystemRule() {
   }
   public void applyRule(final SNode buildMps_TipsBundle, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isNotEmptyString(SPropertyOperations.getString(buildMps_TipsBundle, PROPS.name$tAp1))) {
-      if (!(SPropertyOperations.getString(buildMps_TipsBundle, PROPS.name$tAp1).endsWith(".jar"))) {
+    if (isNotEmptyString(SPropertyOperations.getString(buildMps_TipsBundle, PROPS.name$lA7v))) {
+      if (!(SPropertyOperations.getString(buildMps_TipsBundle, PROPS.name$lA7v).endsWith(".jar"))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(buildMps_TipsBundle, "should end with .jar", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "5730480978702381242", null, errorTarget);
@@ -57,7 +57,7 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

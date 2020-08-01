@@ -11,7 +11,7 @@
   <root nodeRef="r:e0c5b5da-9545-4753-a462-f79d5ed8b466(jetbrains.mps.baseLanguage.extensionMethods.actions)/720975379598240371">
     <file name="EM_node_factories.java">
       <node id="3097384118512214627" at="15,91,16,103" concept="0" />
-      <node id="720975379598240371" at="21,0,22,0" concept="2" trace="visibility$2GiC" />
+      <node id="720975379598240371" at="21,0,22,0" concept="2" trace="visibility$jt1o" />
       <node id="720975379598240371" at="25,0,26,0" concept="2" trace="PublicVisibility$qe" />
       <node id="720975379598240372" at="15,0,18,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="720975379598240372" at="15,91,16,103" />

@@ -40,7 +40,7 @@ public final class AddScopeExpectedNodes_Intention extends AbstractIntentionDesc
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SLinkOperations.getTarget(node, LINKS.checkingReference$ZKEm) != null;
+    return SLinkOperations.getTarget(node, LINKS.checkingReference$S$wE) != null;
   }
   @Override
   public boolean isSurroundWith() {
@@ -64,8 +64,8 @@ public final class AddScopeExpectedNodes_Intention extends AbstractIntentionDesc
       Scope scope = ModelConstraints.getScope(ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(node));
       for (SNode avaliable : scope.getAvailableElements(null)) {
         SNode expectedNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, "jetbrains.mps.lang.test.structure.ScopesExpectedNode"));
-        SLinkOperations.setTarget(expectedNode, LINKS.ref$mFxT, avaliable);
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodes$B16t)).addElement(expectedNode);
+        SLinkOperations.setTarget(expectedNode, LINKS.ref$Z5qB, avaliable);
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodes$Ty83)).addElement(expectedNode);
       }
     }
     @Override
@@ -75,8 +75,8 @@ public final class AddScopeExpectedNodes_Intention extends AbstractIntentionDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink checkingReference$ZKEm = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference");
-    /*package*/ static final SReferenceLink ref$mFxT = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, 0x383e5e55de89bc1fL, "ref");
-    /*package*/ static final SContainmentLink nodes$B16t = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x32ba5b0ec25fea03L, "nodes");
+    /*package*/ static final SReferenceLink checkingReference$S$wE = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference");
+    /*package*/ static final SReferenceLink ref$Z5qB = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, 0x383e5e55de89bc1fL, "ref");
+    /*package*/ static final SContainmentLink nodes$Ty83 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x32ba5b0ec25fea03L, "nodes");
   }
 }

@@ -22,7 +22,7 @@ public class matrix_element_must_be_number_NonTypesystemRule extends AbstractNon
   public matrix_element_must_be_number_NonTypesystemRule() {
   }
   public void applyRule(final SNode mT, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(mT, LINKS.elementType$Gy$X), SNodeOperations.copyNode(MathTypeUtil.qBigComplex)))) {
+    if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(mT, LINKS.elementType$$JTz), SNodeOperations.copyNode(MathTypeUtil.qBigComplex)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(mT, "Matrix parameter type must be subtype of bigcomplex", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "3498370411873296912", null, errorTarget);
@@ -40,7 +40,7 @@ public class matrix_element_must_be_number_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$Gy$X = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62684653L, "elementType");
+    /*package*/ static final SContainmentLink elementType$$JTz = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62684653L, "elementType");
   }
 
   private static final class CONCEPTS {

@@ -90,7 +90,7 @@ public class BuildSource_JavaDependencyJar_SubstituteMenu extends SubstituteMenu
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode n = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BuildSource_JavaDependencyJar$ka);
-          SLinkOperations.setTarget(n, LINKS.jar$9zr0, nodeToWrap);
+          SLinkOperations.setTarget(n, LINKS.jar$Ca50, nodeToWrap);
           return n;
         }
 
@@ -127,6 +127,6 @@ public class BuildSource_JavaDependencyJar_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink jar$9zr0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x3395e884b6185c41L, "jar");
+    /*package*/ static final SContainmentLink jar$Ca50 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x3395e884b6185c41L, "jar");
   }
 }

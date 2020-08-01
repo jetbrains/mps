@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createTable_0() {
     TableModelFactory creator = new TableModelFactory() {
       public TableModel createTableModel() {
-        return new XYCTableModel(myNode, LINKS.xs$_id3, LINKS.ys$_idy, LINKS.contents$_ie1, getEditorContext());
+        return new XYCTableModel(myNode, LINKS.xs$3Okt, LINKS.ys$3Ozu, LINKS.contents$3OMv, getEditorContext());
       }
     };
     jetbrains.mps.openapi.editor.cells.EditorCell_Collection editorCell = EditorCell_Table.createTable(getEditorContext(), myNode, creator.createTableModel(), "Table_io08np_c0");
@@ -117,7 +117,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -125,8 +125,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink xs$_id3 = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x3cc6bd99e23e4590L, 0x3cc6bd99e23f0931L, "xs");
-    /*package*/ static final SContainmentLink ys$_idy = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x3cc6bd99e23e4590L, 0x3cc6bd99e23f0932L, "ys");
-    /*package*/ static final SContainmentLink contents$_ie1 = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x3cc6bd99e23e4590L, 0x3cc6bd99e23f0933L, "contents");
+    /*package*/ static final SContainmentLink xs$3Okt = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x3cc6bd99e23e4590L, 0x3cc6bd99e23f0931L, "xs");
+    /*package*/ static final SContainmentLink ys$3Ozu = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x3cc6bd99e23e4590L, 0x3cc6bd99e23f0932L, "ys");
+    /*package*/ static final SContainmentLink contents$3OMv = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x3cc6bd99e23e4590L, 0x3cc6bd99e23f0933L, "contents");
   }
 }

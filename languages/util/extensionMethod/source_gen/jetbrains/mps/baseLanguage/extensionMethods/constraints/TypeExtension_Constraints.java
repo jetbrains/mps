@@ -57,7 +57,7 @@ public class TypeExtension_Constraints extends BaseConstraintsDescriptor {
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Expression$TP);
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.PublicVisibility$qe)) && link == LINKS.visibility$2GiC) {
+    if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.PublicVisibility$qe)) && link == LINKS.visibility$jt1o) {
       return false;
     }
     return true;
@@ -72,6 +72,6 @@ public class TypeExtension_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

@@ -28,7 +28,7 @@ public class XmlWhitespace_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       tgs.indent();
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$xCh4));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$iwgW));
   }
 
   private static final class CONCEPTS {
@@ -36,6 +36,6 @@ public class XmlWhitespace_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$xCh4 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value");
+    /*package*/ static final SProperty value$iwgW = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value");
   }
 }

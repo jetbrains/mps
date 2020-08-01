@@ -64,7 +64,7 @@ public final class TestConcept0_ConstraintRules extends BaseRulesConstraintsDesc
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return SPropertyOperations.getString(context.getChildNode(), PROPS.name$tAp1).startsWith(SPropertyOperations.getString(Def_Parent2884486869351404345.getValue(context), PROPS.name$tAp1));
+      return SPropertyOperations.getString(context.getChildNode(), PROPS.name$lA7v).startsWith(SPropertyOperations.getString(Def_Parent2884486869351404345.getValue(context), PROPS.name$lA7v));
     }
 
     @Override
@@ -72,7 +72,7 @@ public final class TestConcept0_ConstraintRules extends BaseRulesConstraintsDesc
       if (!(Def_Parent2884486869351404345.isDefined(context))) {
         return false;
       }
-      return isNotEmptyString(SPropertyOperations.getString(context.getChildNode(), PROPS.name$tAp1)) && isNotEmptyString(SPropertyOperations.getString(Def_Parent2884486869351404345.getValue(context), PROPS.name$tAp1));
+      return isNotEmptyString(SPropertyOperations.getString(context.getChildNode(), PROPS.name$lA7v)) && isNotEmptyString(SPropertyOperations.getString(Def_Parent2884486869351404345.getValue(context), PROPS.name$lA7v));
     }
     private static boolean isNotEmptyString(String str) {
       return str != null && str.length() > 0;
@@ -88,6 +88,6 @@ public final class TestConcept0_ConstraintRules extends BaseRulesConstraintsDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -76,7 +76,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -107,9 +107,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
   }
   private boolean nodeCondition_j36akn_a0() {
-    boolean condition = SNodeOperations.getConcept(SLinkOperations.getTarget(myNode, LINKS.type$pLrO)) != CONCEPTS.Type$IG;
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, LINKS.type$pLrO), CONCEPTS.Type$IG)) {
-      return condition && !((boolean) Type__BehaviorDescriptor.hasMissingParameters_id32KZwowVoMu.invoke(SLinkOperations.getTarget(myNode, LINKS.type$pLrO)));
+    boolean condition = SNodeOperations.getConcept(SLinkOperations.getTarget(myNode, LINKS.type$uWuc)) != CONCEPTS.Type$IG;
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, LINKS.type$uWuc), CONCEPTS.Type$IG)) {
+      return condition && !((boolean) Type__BehaviorDescriptor.hasMissingParameters_id32KZwowVoMu.invoke(SLinkOperations.getTarget(myNode, LINKS.type$uWuc)));
     } else {
       return condition;
     }
@@ -137,7 +137,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
     public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
       List<String> result = ListSequence.fromList(new ArrayList<String>());
-      SNode nodeType = SLinkOperations.getTarget(node, LINKS.type$pLrO);
+      SNode nodeType = SLinkOperations.getTarget(node, LINKS.type$uWuc);
       if (nodeType != null) {
         List<String> names = Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(nodeType);
         Project project = operationContext.getProject();
@@ -153,7 +153,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -163,6 +163,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

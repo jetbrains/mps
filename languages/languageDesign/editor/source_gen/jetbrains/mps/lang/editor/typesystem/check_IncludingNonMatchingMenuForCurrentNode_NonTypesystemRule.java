@@ -25,13 +25,13 @@ public class check_IncludingNonMatchingMenuForCurrentNode_NonTypesystemRule exte
   public check_IncludingNonMatchingMenuForCurrentNode_NonTypesystemRule() {
   }
   public void applyRule(final SNode part, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(part, LINKS.nodeFunction$t52r) != null)) {
+    if ((SLinkOperations.getTarget(part, LINKS.nodeFunction$5sb5) != null)) {
       return;
     }
-    if ((SLinkOperations.getTarget(part, LINKS.menuReference$5IwX) == null)) {
+    if ((SLinkOperations.getTarget(part, LINKS.menuReference$LxXz) == null)) {
       return;
     }
-    SNode includedMenuConcept = IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(SLinkOperations.getTarget(part, LINKS.menuReference$5IwX));
+    SNode includedMenuConcept = IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(SLinkOperations.getTarget(part, LINKS.menuReference$LxXz));
     if ((includedMenuConcept == null)) {
       return;
     }
@@ -52,7 +52,7 @@ public class check_IncludingNonMatchingMenuForCurrentNode_NonTypesystemRule exte
 
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(part, LINKS.menuReference$5IwX), String.format("Menu for %s or its superconcept expected", destinationMenuConcept), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6903010549536798466", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(part, LINKS.menuReference$LxXz), String.format("Menu for %s or its superconcept expected", destinationMenuConcept), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6903010549536798466", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -66,8 +66,8 @@ public class check_IncludingNonMatchingMenuForCurrentNode_NonTypesystemRule exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeFunction$t52r = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0xae2d2fe1c9d6bfeL, "nodeFunction");
-    /*package*/ static final SContainmentLink menuReference$5IwX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x5d3b34577b3f7ee5L, "menuReference");
+    /*package*/ static final SContainmentLink nodeFunction$5sb5 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0xae2d2fe1c9d6bfeL, "nodeFunction");
+    /*package*/ static final SContainmentLink menuReference$LxXz = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x5d3b34577b3f7ee5L, "menuReference");
   }
 
   private static final class CONCEPTS {

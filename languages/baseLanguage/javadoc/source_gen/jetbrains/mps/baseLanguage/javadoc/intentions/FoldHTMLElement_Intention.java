@@ -50,16 +50,16 @@ public final class FoldHTMLElement_Intention extends AbstractIntentionDescriptor
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String name = (isEmptyString(SPropertyOperations.getString(node, PROPS.name$rPM0)) ? "..." : SPropertyOperations.getString(node, PROPS.name$rPM0));
-      return (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$rPMv)).isEmpty() ? String.format(Locale.getDefault(), "Convert to <%s></%s>", name, name) : String.format(Locale.getDefault(), "Convert to <%s />", name));
+      String name = (isEmptyString(SPropertyOperations.getString(node, PROPS.name$v3e0)) ? "..." : SPropertyOperations.getString(node, PROPS.name$v3e0));
+      return (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$v3t1)).isEmpty() ? String.format(Locale.getDefault(), "Convert to <%s></%s>", name, name) : String.format(Locale.getDefault(), "Convert to <%s />", name));
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$rPMv)).isEmpty()) {
-        SNodeFactoryOperations.addNewChild(node, LINKS.line$rPMv, null);
-        editorContext.selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$rPMv)).first());
+      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$v3t1)).isEmpty()) {
+        SNodeFactoryOperations.addNewChild(node, LINKS.line$v3t1, null);
+        editorContext.selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$v3t1)).first());
       } else {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$rPMv)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$v3t1)).clear();
       }
     }
     @Override
@@ -72,10 +72,10 @@ public final class FoldHTMLElement_Intention extends AbstractIntentionDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$rPM0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39aL, "name");
+    /*package*/ static final SProperty name$v3e0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39aL, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$rPMv = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line");
+    /*package*/ static final SContainmentLink line$v3t1 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line");
   }
 }

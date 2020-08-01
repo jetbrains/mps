@@ -12,11 +12,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class ParametersDeclaration_add_empty_var {
   public static class NodeFactory_127305800529615844 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNodeFactoryOperations.addNewChild(newNode, LINKS.component$eWwg, null);
+      SNodeFactoryOperations.addNewChild(newNode, LINKS.component$fjBK, null);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink component$eWwg = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
+    /*package*/ static final SContainmentLink component$fjBK = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
   }
 }

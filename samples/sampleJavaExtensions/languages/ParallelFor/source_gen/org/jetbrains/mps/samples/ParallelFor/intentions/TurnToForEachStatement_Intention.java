@@ -61,25 +61,25 @@ public final class TurnToForEachStatement_Intention extends AbstractIntentionDes
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode forStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ForEachStatement$Dx, null);
       final SNode variable = SNodeFactoryOperations.createNewNode(CONCEPTS.ForEachVariable$8t, null);
-      SPropertyOperations.assign(variable, PROPS.name$tAp1, SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.loopVariable$2tJe), PROPS.name$tAp1));
-      SLinkOperations.setTarget(forStatement, LINKS.variable$QE64, variable);
-      SLinkOperations.setTarget(forStatement, LINKS.inputSequence$vBnC, SLinkOperations.getTarget(node, LINKS.inputSequence$qLOB));
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$OFes), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      SPropertyOperations.assign(variable, PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.loopVariable$cpRM), PROPS.name$lA7v));
+      SLinkOperations.setTarget(forStatement, LINKS.variable$uoVW, variable);
+      SLinkOperations.setTarget(forStatement, LINKS.inputSequence$k4so, SLinkOperations.getTarget(node, LINKS.inputSequence$Y8uT));
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.body$wVZ$), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf);
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
         }
       }).toListSequence().where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6) == SLinkOperations.getTarget(node, LINKS.loopVariable$2tJe);
+          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU) == SLinkOperations.getTarget(node, LINKS.loopVariable$cpRM);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNode newReference = SNodeFactoryOperations.createNewNode(CONCEPTS.ForEachVariableReference$q$, null);
-          SLinkOperations.setTarget(newReference, LINKS.variable$ue0d, variable);
+          SLinkOperations.setTarget(newReference, LINKS.variable$CM6j, variable);
           SNodeOperations.replaceWithAnother(it, newReference);
         }
       });
-      SLinkOperations.setTarget(forStatement, LINKS.body$OFes, SLinkOperations.getTarget(node, LINKS.body$OFes));
+      SLinkOperations.setTarget(forStatement, LINKS.body$wVZ$, SLinkOperations.getTarget(node, LINKS.body$wVZ$));
       SNodeOperations.replaceWithAnother(node, forStatement);
       editorContext.selectWRTFocusPolicy(variable);
     }
@@ -98,16 +98,16 @@ public final class TurnToForEachStatement_Intention extends AbstractIntentionDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink loopVariable$2tJe = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e8810c2L, "loopVariable");
-    /*package*/ static final SContainmentLink variable$QE64 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
-    /*package*/ static final SContainmentLink inputSequence$vBnC = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
-    /*package*/ static final SContainmentLink inputSequence$qLOB = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence");
-    /*package*/ static final SContainmentLink body$OFes = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink variable$ue0d = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
+    /*package*/ static final SContainmentLink loopVariable$cpRM = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e8810c2L, "loopVariable");
+    /*package*/ static final SContainmentLink variable$uoVW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
+    /*package*/ static final SContainmentLink inputSequence$k4so = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
+    /*package*/ static final SContainmentLink inputSequence$Y8uT = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence");
+    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variable$CM6j = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
   }
 }

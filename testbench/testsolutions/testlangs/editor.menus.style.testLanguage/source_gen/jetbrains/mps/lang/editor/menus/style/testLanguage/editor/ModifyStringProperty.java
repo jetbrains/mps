@@ -102,7 +102,7 @@ public class ModifyStringProperty extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(_context.getNode(), PROPS.stringProperty$V_nS, "with priority");
+        SPropertyOperations.assign(_context.getNode(), PROPS.stringProperty$R6$8, "with priority");
       }
 
 
@@ -162,7 +162,7 @@ public class ModifyStringProperty extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(_context.getNode(), PROPS.stringProperty$V_nS, "no priority");
+        SPropertyOperations.assign(_context.getNode(), PROPS.stringProperty$R6$8, "no priority");
       }
 
 
@@ -186,6 +186,6 @@ public class ModifyStringProperty extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringProperty$V_nS = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x406156e80eef1d16L, "stringProperty");
+    /*package*/ static final SProperty stringProperty$R6$8 = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x406156e80eef1d16L, "stringProperty");
   }
 }

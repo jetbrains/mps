@@ -53,33 +53,33 @@ public final class JUnit4TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getTargetTest_id7BTZ519MNAR(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.klass$fEdo);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.klass$_suC);
   }
   /*package*/ static boolean isSame_id1ouvi_ymQH(@NotNull SNode __thisNode__, SNode testRef) {
-    return SLinkOperations.getTarget(SNodeOperations.as(testRef, CONCEPTS.JUnit4TestCaseRef$Pd), LINKS.klass$fEdo) == SLinkOperations.getTarget(__thisNode__, LINKS.klass$fEdo);
+    return SLinkOperations.getTarget(SNodeOperations.as(testRef, CONCEPTS.JUnit4TestCaseRef$Pd), LINKS.klass$_suC) == SLinkOperations.getTarget(__thisNode__, LINKS.klass$_suC);
   }
   /*package*/ static String fqClassName_id2$98zG5liRT(@NotNull SNode __thisNode__) {
-    return (String) UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$fEdo));
+    return (String) UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$_suC));
   }
   /*package*/ static Iterable<String> testNames_id3z1mdFUF$j3(@NotNull SNode __thisNode__) {
-    final SNode testAnn = SLinkOperations.getTarget(_quotation_createNode_856esj_a0a0a3(), LINKS.annotation$zNxu);
-    final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_856esj_a0a1a3(), LINKS.annotation$zNxu);
+    final SNode testAnn = SLinkOperations.getTarget(_quotation_createNode_856esj_a0a0a3(), LINKS.annotation$lXdy);
+    final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_856esj_a0a1a3(), LINKS.annotation$lXdy);
 
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$fEdo))).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$_suC))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode m) {
-        return ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$oVP4)).any(new IWhereFilter<SNode>() {
+        return ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode mann) {
-            return SLinkOperations.getTarget(mann, LINKS.annotation$zNxu) == testAnn;
+            return SLinkOperations.getTarget(mann, LINKS.annotation$lXdy) == testAnn;
           }
-        }) && !(ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$oVP4)).any(new IWhereFilter<SNode>() {
+        }) && !(ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode mann) {
-            return SLinkOperations.getTarget(mann, LINKS.annotation$zNxu) == ignoreAnn;
+            return SLinkOperations.getTarget(mann, LINKS.annotation$lXdy) == ignoreAnn;
           }
         }));
       }
     }).select(new ISelector<SNode, String>() {
       public String select(SNode m) {
-        return SPropertyOperations.getString(m, PROPS.name$tAp1);
+        return SPropertyOperations.getString(m, PROPS.name$lA7v);
       }
     });
   }
@@ -90,11 +90,11 @@ public final class JUnit4TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
           public boolean accept(SNode it) {
             return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it)).translate(new ITranslator2<SNode, SNode>() {
               public Iterable<SNode> translate(SNode m) {
-                return SLinkOperations.getChildren(m, LINKS.annotation$oVP4);
+                return SLinkOperations.getChildren(m, LINKS.annotation$4YGW);
               }
             }).any(new IWhereFilter<SNode>() {
               public boolean accept(SNode ann) {
-                return SLinkOperations.hasPointer(ann, LINKS.annotation$zNxu, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
+                return SLinkOperations.hasPointer(ann, LINKS.annotation$lXdy, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
               }
             });
           }
@@ -172,9 +172,9 @@ public final class JUnit4TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink klass$fEdo = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink klass$_suC = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 
   private static final class CONCEPTS {
@@ -183,6 +183,6 @@ public final class JUnit4TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

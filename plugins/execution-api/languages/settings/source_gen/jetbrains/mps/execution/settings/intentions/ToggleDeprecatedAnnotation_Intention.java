@@ -50,7 +50,7 @@ public final class ToggleDeprecatedAnnotation_Intention extends AbstractIntentio
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$X7)) == null)) {
-        return "Deprecate configuration " + SPropertyOperations.getString(node, PROPS.name$tAp1);
+        return "Deprecate configuration " + SPropertyOperations.getString(node, PROPS.name$lA7v);
       }
       return "Remove deprecated annotation";
     }
@@ -69,7 +69,7 @@ public final class ToggleDeprecatedAnnotation_Intention extends AbstractIntentio
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

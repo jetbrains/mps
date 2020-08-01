@@ -32,7 +32,7 @@ public class ConceptVCSDescriptor_Constraints extends BaseConstraintsDescriptor 
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.cncpt$4YHz, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.cncpt$qo3X, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -79,6 +79,6 @@ public class ConceptVCSDescriptor_Constraints extends BaseConstraintsDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cncpt$4YHz = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
+    /*package*/ static final SReferenceLink cncpt$qo3X = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
   }
 }

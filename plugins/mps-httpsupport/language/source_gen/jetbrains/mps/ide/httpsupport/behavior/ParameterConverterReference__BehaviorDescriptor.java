@@ -33,7 +33,7 @@ public final class ParameterConverterReference__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static SNode getParameterType_id4rKp80ZJrgq(@NotNull SNode __thisNode__) {
-    return SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$ZWR0), LINKS.parameterType$vj6Q));
+    return SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$YuD0), LINKS.parameterType$agka));
   }
 
   /*package*/ ParameterConverterReference__BehaviorDescriptor() {
@@ -83,7 +83,7 @@ public final class ParameterConverterReference__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$ZWR0 = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb465L, 0x46f064803fbdb466L, "declaration");
-    /*package*/ static final SContainmentLink parameterType$vj6Q = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, 0x3d1bb14fe83869abL, "parameterType");
+    /*package*/ static final SReferenceLink declaration$YuD0 = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb465L, 0x46f064803fbdb466L, "declaration");
+    /*package*/ static final SContainmentLink parameterType$agka = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, 0x3d1bb14fe83869abL, "parameterType");
   }
 }

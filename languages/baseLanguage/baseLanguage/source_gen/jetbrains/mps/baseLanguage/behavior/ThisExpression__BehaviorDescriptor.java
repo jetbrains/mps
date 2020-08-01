@@ -38,7 +38,7 @@ public final class ThisExpression__BehaviorDescriptor extends BaseBHDescriptor {
     return (List<SNode>) Classifier__BehaviorDescriptor.getNonStaticContextClassifiers_id5S7J9l$QYtM.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$hJ), __thisNode__);
   }
   /*package*/ static SNode getContextClassifierMember_id5DIwcw5fPui(@NotNull SNode __thisNode__) {
-    SNode classConcept = SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$Hbij);
+    SNode classConcept = SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$StRd);
     if ((classConcept != null)) {
       for (SNode classifierMember : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ClassifierMember$9F, false)) {
         if (SNodeOperations.getParent(classifierMember) == classConcept) {
@@ -106,6 +106,6 @@ public final class ThisExpression__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$Hbij = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 }

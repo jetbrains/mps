@@ -143,17 +143,17 @@ public class ChangesRollbackTest extends ChangesTestBase {
 
   private void makeAllChanges() {
     SNode root = SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705");
-    SPropertyOperations.assign(root, PROPS.name$tAp1, "newName");
-    SLinkOperations.setTarget(root, LINKS.superclass$_pqe, _quotation_createNode_p3cuek_a0c0n());
+    SPropertyOperations.assign(root, PROPS.name$lA7v, "newName");
+    SLinkOperations.setTarget(root, LINKS.superclass$7jGM, _quotation_createNode_p3cuek_a0c0n());
     addNodeAttribute();
     addChildAttribute();
-    ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.member$oYX5)).addElement(createInstanceMethodDeclaration_p3cuek_a0a5a31());
+    ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.member$6v_r)).addElement(createInstanceMethodDeclaration_p3cuek_a0a5a31());
   }
   private void addNodeAttribute() {
     AttributeOperations.createAndSetAttrbiute(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$Kc), CONCEPTS.ReviewMigration$Kc);
   }
   private void addChildAttribute() {
-    ChangesTestUtil.addCommentedMethod(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), LINKS.member$oYX5)).first());
+    ChangesTestUtil.addCommentedMethod(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), LINKS.member$6v_r)).first());
   }
 
   private void deleteChildAttribute() {
@@ -174,21 +174,21 @@ public class ChangesRollbackTest extends ChangesTestBase {
   }
   private static SNode createInstanceMethodDeclaration_p3cuek_a0a5a31() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
-    n0.setProperty(PROPS.name$tAp1, "m1");
-    n0.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
-    n0.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
+    n0.setProperty(PROPS.name$lA7v, "m1");
+    n0.forChild(LINKS.body$qspy).init(CONCEPTS.StatementList$TN);
+    n0.forChild(LINKS.returnType$qrVw).init(CONCEPTS.VoidType$aT);
     return n0.getResult();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class CONCEPTS {

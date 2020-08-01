@@ -539,8 +539,8 @@
   </root>
   <root nodeRef="r:d91dc8be-68f3-42d9-b558-87a2756c080a(jetbrains.mps.execution.configurations.generator.template.main@generator)/4013739085301446283">
     <file name="QueriesGenerated.java">
-      <node id="4013739085301446325" at="322,94,323,241" concept="5" />
-      <node id="4013739085301455092" at="325,94,326,241" concept="5" />
+      <node id="4013739085301446325" at="322,94,323,243" concept="5" />
+      <node id="4013739085301455092" at="325,94,326,243" concept="5" />
       <node id="4013739085301446322" at="1215,83,1216,70" concept="0" />
       <node id="4013739085301455089" at="1216,70,1217,70" concept="0" />
       <node id="4013739085301446322" at="1280,16,1281,71" concept="5" />
@@ -559,8 +559,8 @@
       <node id="4013739085301455090" at="325,0,328,0" concept="7" trace="referenceMacro_GetReferent_12_1#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="4013739085301446328" at="1299,0,1306,0" concept="7" trace="_quotation_createNode_x583g4_a0a0a77#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="4013739085301455095" at="1306,0,1313,0" concept="7" trace="_quotation_createNode_x583g4_a0a0a87#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="4013739085301446324" at="322,94,323,241" />
-      <scope id="4013739085301455091" at="325,94,326,241" />
+      <scope id="4013739085301446324" at="322,94,323,243" />
+      <scope id="4013739085301455091" at="325,94,326,243" />
       <scope id="4013739085301446322" at="1280,16,1281,71" />
       <scope id="4013739085301455089" at="1282,16,1283,71" />
       <scope id="4013739085301446323" at="322,0,325,0">
@@ -827,7 +827,7 @@
       <node id="4929913054057210701" at="254,89,255,120" concept="5" />
       <node id="2137130439060046372" at="337,94,338,110" concept="5" />
       <node id="6550182048787667088" at="442,93,443,74" concept="5" />
-      <node id="6550182048787667122" at="445,93,446,80" concept="5" />
+      <node id="6550182048787667122" at="445,93,446,81" concept="5" />
       <node id="2137130439060046344" at="448,93,449,74" concept="5" />
       <node id="2137130439060046382" at="451,93,452,74" concept="5" />
       <node id="6550182048787659831" at="533,105,534,81" concept="5" />
@@ -901,7 +901,7 @@
       <scope id="4929913054057210700" at="254,89,255,120" />
       <scope id="2137130439060046371" at="337,94,338,110" />
       <scope id="6550182048787667086" at="442,93,443,74" />
-      <scope id="6550182048787667121" at="445,93,446,80" />
+      <scope id="6550182048787667121" at="445,93,446,81" />
       <scope id="2137130439060046343" at="448,93,449,74" />
       <scope id="2137130439060046381" at="451,93,452,74" />
       <scope id="6550182048787659830" at="533,105,534,81" />
@@ -1013,16 +1013,16 @@
   </root>
   <root nodeRef="r:d91dc8be-68f3-42d9-b558-87a2756c080a(jetbrains.mps.execution.configurations.generator.template.main@generator)/5703615523638516526">
     <file name="QueriesGenerated.java">
-      <node id="5703615523638516680" at="331,94,332,76" concept="5" />
-      <node id="5703615523638516694" at="334,94,335,76" concept="5" />
+      <node id="5703615523638516680" at="331,94,332,77" concept="5" />
+      <node id="5703615523638516694" at="334,94,335,77" concept="5" />
       <node id="5703615523638516677" at="1218,96,1219,70" concept="0" />
       <node id="5703615523638516691" at="1219,70,1220,70" concept="0" />
       <node id="5703615523638516677" at="1286,16,1287,71" concept="5" />
       <node id="5703615523638516691" at="1288,16,1289,71" concept="5" />
       <node id="5703615523638516678" at="331,0,334,0" concept="7" trace="referenceMacro_GetReferent_14_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="5703615523638516692" at="334,0,337,0" concept="7" trace="referenceMacro_GetReferent_14_1#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
-      <scope id="5703615523638516679" at="331,94,332,76" />
-      <scope id="5703615523638516693" at="334,94,335,76" />
+      <scope id="5703615523638516679" at="331,94,332,77" />
+      <scope id="5703615523638516693" at="334,94,335,77" />
       <scope id="5703615523638516677" at="1286,16,1287,71" />
       <scope id="5703615523638516691" at="1288,16,1289,71" />
       <scope id="5703615523638516678" at="331,0,334,0">

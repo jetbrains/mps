@@ -36,7 +36,7 @@ public final class ChangeAsCast_Intention extends AbstractIntentionDescriptor im
     return true;
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return SNodeOperations.hasRole(childNode, LINKS.conceptArgument$N8Tv);
+    return SNodeOperations.hasRole(childNode, LINKS.conceptArgument$LjQ1);
   }
   @Override
   public boolean isSurroundWith() {
@@ -53,7 +53,7 @@ public final class ChangeAsCast_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if (SPropertyOperations.getBoolean(node, PROPS.asCast$W3Qz)) {
+      if (SPropertyOperations.getBoolean(node, PROPS.asCast$5RqX)) {
         return "Convert to Regular Cast";
       } else {
         return "Convert to 'as' Cast";
@@ -61,7 +61,7 @@ public final class ChangeAsCast_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.asCast$W3Qz, !(SPropertyOperations.getBoolean(node, PROPS.asCast$W3Qz)));
+      SPropertyOperations.assign(node, PROPS.asCast$5RqX, !(SPropertyOperations.getBoolean(node, PROPS.asCast$5RqX)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -70,10 +70,10 @@ public final class ChangeAsCast_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink conceptArgument$N8Tv = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument");
+    /*package*/ static final SContainmentLink conceptArgument$LjQ1 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty asCast$W3Qz = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, 0x12067573bc7L, "asCast");
+    /*package*/ static final SProperty asCast$5RqX = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, 0x12067573bc7L, "asCast");
   }
 }

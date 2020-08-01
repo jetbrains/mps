@@ -14,13 +14,13 @@ public class ValueInlineDocTag_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("value");
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.variableReference$lbmD) != null)) {
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.variableReference$gvXR) != null)) {
       tgs.append(" ");
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.variableReference$lbmD));
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.variableReference$gvXR));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variableReference$lbmD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e83bL, 0x2398cefbc25f6d46L, "variableReference");
+    /*package*/ static final SContainmentLink variableReference$gvXR = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e83bL, 0x2398cefbc25f6d46L, "variableReference");
   }
 }

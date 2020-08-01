@@ -21,14 +21,14 @@ public class typeOf_EnumConstantReference_InferenceRule extends AbstractInferenc
   public typeOf_EnumConstantReference_InferenceRule() {
   }
   public void applyRule(final SNode enumConstantRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SLinkOperations.getTarget(enumConstantRef, LINKS.enumConstantDeclaration$fB6v) != null))) {
+    if (!((SLinkOperations.getTarget(enumConstantRef, LINKS.enumConstantDeclaration$zW91) != null))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(enumConstantRef, "no constant declaration", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176905227742", null, errorTarget);
     }
     {
       SNode _nodeToCheck_1029348928467 = enumConstantRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223981484822", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223981484827", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(enumConstantRef, LINKS.enumConstantDeclaration$fB6v), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176905306388", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223981484827", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(enumConstantRef, LINKS.enumConstantDeclaration$zW91), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176905306388", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -42,7 +42,7 @@ public class typeOf_EnumConstantReference_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumConstantDeclaration$fB6v = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
   }
 
   private static final class CONCEPTS {

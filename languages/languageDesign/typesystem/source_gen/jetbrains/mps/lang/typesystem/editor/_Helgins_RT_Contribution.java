@@ -122,8 +122,8 @@ public class _Helgins_RT_Contribution extends TransformationMenuBase {
         }
         SNodeOperations.replaceWithAnother(statement, createdNode);
         SNode left = SNodeFactoryOperations.createNewNode(CONCEPTS.NormalTypeClause$pk, null);
-        SLinkOperations.setTarget(left, LINKS.normalType$$uJr, _context.getNode());
-        SLinkOperations.setTarget(createdNode, LINKS.leftExpression$7i2i, left);
+        SLinkOperations.setTarget(left, LINKS.normalType$ESY5, _context.getNode());
+        SLinkOperations.setTarget(createdNode, LINKS.leftExpression$xJ6I, left);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -157,7 +157,7 @@ public class _Helgins_RT_Contribution extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink normalType$$uJr = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1141682561cL, 0x1141682cac0L, "normalType");
-    /*package*/ static final SContainmentLink leftExpression$7i2i = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
+    /*package*/ static final SContainmentLink normalType$ESY5 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1141682561cL, 0x1141682cac0L, "normalType");
+    /*package*/ static final SContainmentLink leftExpression$xJ6I = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
   }
 }

@@ -23,9 +23,9 @@ public class XmlProcessingInstruction_TextGen extends TextGenDescriptorBase {
       tgs.indent();
     }
     tgs.append("<?");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.target$ZWw0));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.target$Yjw0));
     tgs.append(" ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.rawData$ZWwv));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.rawData$YjJ1));
     tgs.append("?>");
   }
 
@@ -34,7 +34,7 @@ public class XmlProcessingInstruction_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty target$ZWw0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494876L, "target");
-    /*package*/ static final SProperty rawData$ZWwv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494877L, "rawData");
+    /*package*/ static final SProperty target$Yjw0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494876L, "target");
+    /*package*/ static final SProperty rawData$YjJ1 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494877L, "rawData");
   }
 }

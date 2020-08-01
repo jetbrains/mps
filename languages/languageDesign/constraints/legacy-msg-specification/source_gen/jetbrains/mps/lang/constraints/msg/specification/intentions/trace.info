@@ -37,8 +37,8 @@
       <node id="3932852761410472005" at="68,48,69,65" concept="7" />
       <node id="3932852761410472005" at="74,0,75,0" concept="8" trace="Language$jx" />
       <node id="3932852761410472005" at="75,0,76,0" concept="8" trace="FailingPropertyConstraintsProblem$oG" />
-      <node id="3932852761410472005" at="79,0,80,0" concept="8" trace="property$K$mE" />
-      <node id="3932852761410472005" at="80,0,81,0" concept="8" trace="applicableProperty$j$lM" />
+      <node id="3932852761410472005" at="79,0,80,0" concept="8" trace="property$xAYm" />
+      <node id="3932852761410472005" at="80,0,81,0" concept="8" trace="applicableProperty$uAze" />
       <node id="3932852761410472005" at="55,0,57,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="3932852761410472005" at="27,0,30,0" concept="1" trace="SpecifyMessageForPropertyConstraints_Intention#()V" />
       <node id="3932852761410472005" at="35,84,38,5" concept="4" />
@@ -133,10 +133,10 @@
       <node id="3932852761410498072" at="88,0,89,0" concept="8" trace="FeedbackPerConceptRoot$oJ" />
       <node id="3932852761410498072" at="89,0,90,0" concept="8" trace="ShowMessage$3M" />
       <node id="3932852761410498072" at="90,0,91,0" concept="8" trace="CombinedMessageExpression$e_" />
-      <node id="3932852761410498072" at="94,0,95,0" concept="8" trace="concept$KXj8" />
-      <node id="3932852761410498072" at="95,0,96,0" concept="8" trace="feedbacks$nSHS" />
-      <node id="3932852761410498072" at="96,0,97,0" concept="8" trace="problem$7FCD" />
-      <node id="3932852761410498072" at="97,0,98,0" concept="8" trace="message$mGgm" />
+      <node id="3932852761410498072" at="94,0,95,0" concept="8" trace="concept$HGgS" />
+      <node id="3932852761410498072" at="95,0,96,0" concept="8" trace="feedbacks$$ue8" />
+      <node id="3932852761410498072" at="96,0,97,0" concept="8" trace="problem$I8FR" />
+      <node id="3932852761410498072" at="97,0,98,0" concept="8" trace="message$ZrUE" />
       <node id="3932852761410472040" at="45,56,48,5" concept="4" />
       <node id="3932852761410472108" at="62,0,65,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="3932852761410498158" at="36,0,40,0" concept="1" trace="MessageIntentionHelper#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -205,8 +205,8 @@
       <node id="629795297586788572" at="68,48,69,58" concept="7" />
       <node id="629795297586788572" at="74,0,75,0" concept="8" trace="Language$jx" />
       <node id="629795297586788572" at="75,0,76,0" concept="8" trace="RefOutOfScopeProblem$Zz" />
-      <node id="629795297586788572" at="79,0,80,0" concept="8" trace="ref$uT96" />
-      <node id="629795297586788572" at="80,0,81,0" concept="8" trace="applicableLink$Hkrz" />
+      <node id="629795297586788572" at="79,0,80,0" concept="8" trace="ref$XFpU" />
+      <node id="629795297586788572" at="80,0,81,0" concept="8" trace="applicableLink$WTlX" />
       <node id="629795297586788572" at="55,0,57,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="629795297586788572" at="27,0,30,0" concept="1" trace="SpecifyMessageForNodeReferent_Intention#()V" />
       <node id="629795297586788572" at="35,84,38,5" concept="4" />

@@ -87,7 +87,7 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
   public class TMP_Group_t8aodl_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.bootstrap$eHdX));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.bootstrap$7TKz));
     }
 
     @NotNull
@@ -143,7 +143,7 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.bootstrap$eHdX, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.bootstrap$7TKz, true);
         }
 
 
@@ -172,6 +172,6 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty bootstrap$eHdX = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, 0x2399a1550482726bL, "bootstrap");
+    /*package*/ static final SProperty bootstrap$7TKz = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, 0x2399a1550482726bL, "bootstrap");
   }
 }

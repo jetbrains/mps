@@ -25,7 +25,7 @@ public class typeof_OptionExpression_InferenceRule extends AbstractInferenceRule
     {
       SNode _nodeToCheck_1029348928467 = oe;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "505095865854557938", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "505095865854557935", true), (SNode) _quotation_createNode_2d0o4o_a1a0c0a0b(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(oe, LINKS.option$wRmw)), CONCEPTS.ExpectedOption$Ga)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "505095865854557935", true), (SNode) _quotation_createNode_2d0o4o_a1a0c0a0b(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(oe, LINKS.option$UNTw)), CONCEPTS.ExpectedOption$Ga)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -46,7 +46,7 @@ public class typeof_OptionExpression_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink option$wRmw = MetaAdapterFactory.getReferenceLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7b2L, 0x70276038dc4d7b3L, "option");
+    /*package*/ static final SReferenceLink option$UNTw = MetaAdapterFactory.getReferenceLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7b2L, 0x70276038dc4d7b3L, "option");
   }
 
   private static final class CONCEPTS {

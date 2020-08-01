@@ -42,7 +42,7 @@ public final class AddCastStatement_Intention extends AbstractIntentionDescripto
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$WJ1b), CONCEPTS.InstanceOfExpression$JG) && (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$WJ1b), CONCEPTS.InstanceOfExpression$JG), LINKS.classType$zxNQ) != null);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.condition$qL$l), CONCEPTS.InstanceOfExpression$JG) && (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$qL$l), CONCEPTS.InstanceOfExpression$JG), LINKS.classType$do7a) != null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -64,15 +64,15 @@ public final class AddCastStatement_Intention extends AbstractIntentionDescripto
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode castVariable = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$BI, null);
-      SNode instanceOfExpression = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$WJ1b), CONCEPTS.InstanceOfExpression$JG);
-      SNode declaration = SLinkOperations.getTarget(castVariable, LINKS.localVariableDeclaration$O0D0);
-      SLinkOperations.setTarget(declaration, LINKS.type$pLrO, SNodeOperations.copyNode(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$zxNQ)));
-      List<String> variableSuffixes = Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$zxNQ));
-      SPropertyOperations.set(declaration, PROPS.name$tAp1, ListSequence.fromList(variableSuffixes).first());
-      SNode castExpression = SNodeFactoryOperations.setNewChild(declaration, LINKS.initializer$KgD, CONCEPTS.CastExpression$7m);
-      SLinkOperations.setTarget(castExpression, LINKS.type$8QP0, SNodeOperations.copyNode(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$zxNQ)));
-      SLinkOperations.setTarget(castExpression, LINKS.expression$8QPv, SNodeOperations.copyNode(SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$zxNn)));
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.ifTrue$WJ1E), LINKS.statement$WHn8)).insertElement(0, castVariable);
+      SNode instanceOfExpression = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.condition$qL$l), CONCEPTS.InstanceOfExpression$JG);
+      SNode declaration = SLinkOperations.getTarget(castVariable, LINKS.localVariableDeclaration$cjR0);
+      SLinkOperations.setTarget(declaration, LINKS.type$uWuc, SNodeOperations.copyNode(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$do7a)));
+      List<String> variableSuffixes = Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$do7a));
+      SPropertyOperations.set(declaration, PROPS.name$lA7v, ListSequence.fromList(variableSuffixes).first());
+      SNode castExpression = SNodeFactoryOperations.setNewChild(declaration, LINKS.initializer$no3R, CONCEPTS.CastExpression$7m);
+      SLinkOperations.setTarget(castExpression, LINKS.type$izF0, SNodeOperations.copyNode(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$do7a)));
+      SLinkOperations.setTarget(castExpression, LINKS.expression$izU1, SNodeOperations.copyNode(SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$dnS9)));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.ifTrue$qLNm), LINKS.statement$pYcS)).insertElement(0, castVariable);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -81,16 +81,16 @@ public final class AddCastStatement_Intention extends AbstractIntentionDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink classType$zxNQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink type$8QP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink leftExpression$zxNn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink classType$do7a = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink type$izF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {
@@ -100,6 +100,6 @@ public final class AddCastStatement_Intention extends AbstractIntentionDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -43,7 +43,7 @@ public class PatternBuilder_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.Expression$TP) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.NodeBuilderExpression$Ub) && SNodeOperations.hasRole(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$Ub), LINKS.initValue$UJfh) && SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$Ub)), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b9L)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.Expression$TP) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.NodeBuilderExpression$Ub) && SNodeOperations.hasRole(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$Ub), LINKS.initValue$sSpf) && SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$Ub)), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx), PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
       return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.NullLiteral$q4);
     } else {
       return true;
@@ -60,11 +60,11 @@ public class PatternBuilder_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$ckAZ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
-    /*package*/ static final SContainmentLink initValue$UJfh = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
+    /*package*/ static final SReferenceLink link$XYSx = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
+    /*package*/ static final SContainmentLink initValue$sSpf = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 }

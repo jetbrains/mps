@@ -26,7 +26,7 @@ public class InlineRegexpExpression_removeM {
       public void execute_internal(EditorContext editorContext, SNode node) {
         EditorCell current = editorContext.getSelectedCell();
         EditorCell toSelect = CellTraversalUtil.getPrevLeaf(current, CellConditions.SELECTABLE);
-        SPropertyOperations.assign(node, PROPS.multiLine$J0yl, false);
+        SPropertyOperations.assign(node, PROPS.multiLine$LgCb, false);
         editorContext.getEditorComponent().changeSelection(toSelect);
       }
 
@@ -75,6 +75,6 @@ public class InlineRegexpExpression_removeM {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty multiLine$J0yl = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, 0x1119ceddfe3L, "multiLine");
+    /*package*/ static final SProperty multiLine$LgCb = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, 0x1119ceddfe3L, "multiLine");
   }
 }

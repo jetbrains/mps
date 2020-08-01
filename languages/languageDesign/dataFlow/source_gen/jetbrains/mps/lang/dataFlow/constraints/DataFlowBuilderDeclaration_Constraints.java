@@ -49,7 +49,7 @@ public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescr
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$tAp1, container);
+      super(PROPS.name$lA7v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -57,8 +57,8 @@ public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescr
     }
     @Override
     public Object getValue(SNode node) {
-      String name = SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$$jUt), PROPS.name$tAp1);
-      for (SNode mode : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modes$JeKh))) {
+      String name = SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$_Dk3), PROPS.name$lA7v);
+      for (SNode mode : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modes$S9of))) {
         name += "_" + SNodeOperations.getConcept(mode).getName();
       }
       return name + "_DataFlow";
@@ -67,7 +67,7 @@ public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescr
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$tAp1, new Name_Property(this));
+    properties.put(PROPS.name$lA7v, new Name_Property(this));
     return properties;
   }
   private static boolean staticCanBeARoot(SModel model) {
@@ -80,11 +80,11 @@ public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$$jUt = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink modes$JeKh = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x6e8db6877fd04efbL, "modes");
+    /*package*/ static final SReferenceLink conceptDeclaration$_Dk3 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink modes$S9of = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x6e8db6877fd04efbL, "modes");
   }
 }

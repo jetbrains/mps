@@ -26,14 +26,14 @@ public class SafeDeleteMethod {
     for (SNode method : ListSequence.fromList(MethodRefactoringUtils.findOverridingMethods(myScope, myMethod, new EmptyProgressMonitor()))) {
       if (SNodeOperations.isInstanceOf(method, CONCEPTS.ConceptMethodDeclaration$VN)) {
         SNode methodDecl = SNodeOperations.cast(method, CONCEPTS.ConceptMethodDeclaration$VN);
-        SLinkOperations.setTarget(methodDecl, LINKS.overriddenMethod$6dmw, getNewOverriddenMethod(myMethod));
+        SLinkOperations.setTarget(methodDecl, LINKS.overriddenMethod$tTw, getNewOverriddenMethod(myMethod));
       }
     }
     SNodeOperations.deleteNode(myMethod);
   }
 
   private SNode getNewOverriddenMethod(SNode methodDecl) {
-    return SLinkOperations.getTarget(methodDecl, LINKS.overriddenMethod$6dmw);
+    return SLinkOperations.getTarget(methodDecl, LINKS.overriddenMethod$tTw);
   }
 
   private static final class CONCEPTS {
@@ -41,6 +41,6 @@ public class SafeDeleteMethod {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink overriddenMethod$6dmw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 }

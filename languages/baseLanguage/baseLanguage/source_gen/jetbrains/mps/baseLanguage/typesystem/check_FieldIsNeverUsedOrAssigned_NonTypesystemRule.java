@@ -25,37 +25,37 @@ public class check_FieldIsNeverUsedOrAssigned_NonTypesystemRule extends Abstract
   public check_FieldIsNeverUsedOrAssigned_NonTypesystemRule() {
   }
   public void applyRule(final SNode field, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(field, LINKS.visibility$2GiC) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if ((SLinkOperations.getTarget(field, LINKS.visibility$jt1o) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       if (SNodeOperations.isInstanceOf(field, CONCEPTS.IMember$zE)) {
         final SNode member = SNodeOperations.cast(field, CONCEPTS.IMember$zE);
-        List<SNode> memberOperations = ((SLinkOperations.getTarget(field, LINKS.visibility$2GiC) != null) ? SNodeOperations.getNodeDescendants(SNodeOperations.getParent(field), CONCEPTS.IMemberOperation$jb, false, new SAbstractConcept[]{}) : SModelOperations.nodes(SNodeOperations.getModel(field), CONCEPTS.IMemberOperation$jb));
+        List<SNode> memberOperations = ((SLinkOperations.getTarget(field, LINKS.visibility$jt1o) != null) ? SNodeOperations.getNodeDescendants(SNodeOperations.getParent(field), CONCEPTS.IMemberOperation$jb, false, new SAbstractConcept[]{}) : SModelOperations.nodes(SNodeOperations.getModel(field), CONCEPTS.IMemberOperation$jb));
         Iterable<SNode> references = ListSequence.fromList(memberOperations).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.member$hrpI) == member;
+            return SLinkOperations.getTarget(it, LINKS.member$shti) == member;
           }
         });
         VariableReferenceUtil.checkField(typeCheckingContext, field, references);
       } else {
         SNode root = SNodeOperations.getContainingRoot(field);
-        List<SNode> localFieldRefs = ((SLinkOperations.getTarget(field, LINKS.visibility$2GiC) != null) ? ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+        List<SNode> localFieldRefs = ((SLinkOperations.getTarget(field, LINKS.visibility$jt1o) != null) ? ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps);
+            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps);
           }
         }).toListSequence() : ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(root), CONCEPTS.VariableReference$sQ)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps);
+            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps);
           }
         }).toListSequence());
 
-        List<SNode> fieldRefOperations = ((SLinkOperations.getTarget(field, LINKS.visibility$2GiC) != null) ? SNodeOperations.getNodeDescendants(root, CONCEPTS.FieldReferenceOperation$N8, false, new SAbstractConcept[]{}) : SModelOperations.nodes(SNodeOperations.getModel(root), CONCEPTS.FieldReferenceOperation$N8));
+        List<SNode> fieldRefOperations = ((SLinkOperations.getTarget(field, LINKS.visibility$jt1o) != null) ? SNodeOperations.getNodeDescendants(root, CONCEPTS.FieldReferenceOperation$N8, false, new SAbstractConcept[]{}) : SModelOperations.nodes(SNodeOperations.getModel(root), CONCEPTS.FieldReferenceOperation$N8));
         Iterable<SNode> localFieldReferences = ListSequence.fromList(localFieldRefs).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6) == field;
+            return SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU) == field;
           }
         });
         Iterable<SNode> fieldReferenceOperations = ListSequence.fromList(fieldRefOperations).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.fieldDeclaration$mLBy) == field;
+            return SLinkOperations.getTarget(it, LINKS.fieldDeclaration$229u) == field;
           }
         });
         Iterable<SNode> refs = Sequence.fromIterable(localFieldReferences).union(Sequence.fromIterable(fieldReferenceOperations)).where(new IWhereFilter<SNode>() {
@@ -78,10 +78,10 @@ public class check_FieldIsNeverUsedOrAssigned_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SReferenceLink member$hrpI = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 
   private static final class CONCEPTS {

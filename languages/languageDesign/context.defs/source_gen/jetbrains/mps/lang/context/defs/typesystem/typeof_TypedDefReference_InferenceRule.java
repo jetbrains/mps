@@ -22,7 +22,7 @@ public class typeof_TypedDefReference_InferenceRule extends AbstractInferenceRul
     {
       SNode _nodeToCheck_1029348928467 = defRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:81761937-d5e4-4286-86d9-adeda96624b1(jetbrains.mps.lang.context.defs.typesystem)", "4622342125580425637", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:81761937-d5e4-4286-86d9-adeda96624b1(jetbrains.mps.lang.context.defs.typesystem)", "4622342125580425642", true), (SNode) TypedDef__BehaviorDescriptor.getErasedType_id4JP_D2W1aPH.invoke(SLinkOperations.getTarget(defRef, LINKS.declaration$LqCB)), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:81761937-d5e4-4286-86d9-adeda96624b1(jetbrains.mps.lang.context.defs.typesystem)", "4622342125580425642", true), (SNode) TypedDef__BehaviorDescriptor.getErasedType_id4JP_D2W1aPH.invoke(SLinkOperations.getTarget(defRef, LINKS.declaration$VTET)), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,7 +36,7 @@ public class typeof_TypedDefReference_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$LqCB = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
+    /*package*/ static final SReferenceLink declaration$VTET = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
   }
 
   private static final class CONCEPTS {

@@ -18,32 +18,32 @@ public class CollectionTypeCreationUtil {
   public static void extractSequenceElementType(SNode newNode, SNode sampleNode) {
     SNode maybeElementType = extractElementType(sampleNode);
     if ((maybeElementType != null)) {
-      SLinkOperations.setTarget(newNode, LINKS.elementType$2gFy, SNodeOperations.deleteNode(maybeElementType));
+      SLinkOperations.setTarget(newNode, LINKS.elementType$655u, SNodeOperations.deleteNode(maybeElementType));
     }
   }
   public static void extractAbstractContainerElementType(SNode newNode, SNode sampleNode) {
     SNode maybeElementType = extractElementType(sampleNode);
     if ((maybeElementType != null)) {
-      SLinkOperations.setTarget(newNode, LINKS.elementType$B4nw, SNodeOperations.deleteNode(maybeElementType));
+      SLinkOperations.setTarget(newNode, LINKS.elementType$V7ow, SNodeOperations.deleteNode(maybeElementType));
     }
   }
   public static void extractListElementType(SNode newNode, SNode sampleNode) {
     SNode maybeElementType = extractElementType(sampleNode);
     if ((maybeElementType != null)) {
-      SLinkOperations.setTarget(newNode, LINKS.elementType$xJJW, SNodeOperations.deleteNode(maybeElementType));
+      SLinkOperations.setTarget(newNode, LINKS.elementType$m8e4, SNodeOperations.deleteNode(maybeElementType));
     }
   }
   public static void extractSetElementType(SNode newNode, SNode sampleNode) {
     SNode maybeElementType = extractElementType(sampleNode);
     if ((maybeElementType != null)) {
-      SLinkOperations.setTarget(newNode, LINKS.elementType$ZAgX, SNodeOperations.deleteNode(maybeElementType));
+      SLinkOperations.setTarget(newNode, LINKS.elementType$Nydz, SNodeOperations.deleteNode(maybeElementType));
     }
   }
   private static SNode extractElementType(SNode sampleNode) {
-    SNode classifier = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(sampleNode, CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0), CONCEPTS.AbstractClassifierReference$vv), LINKS.classifier$sgLW);
+    SNode classifier = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(sampleNode, CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0), CONCEPTS.AbstractClassifierReference$vv), LINKS.classifier$G8c4);
     if ((classifier != null)) {
       SNode t = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-      SLinkOperations.setTarget(t, LINKS.classifier$pQ_R, classifier);
+      SLinkOperations.setTarget(t, LINKS.classifier$xslD, classifier);
       return t;
     } else {
       SNode sampleType = ListSequence.fromList(SNodeOperations.getNodeDescendants(sampleNode, CONCEPTS.Type$IG, true, new SAbstractConcept[]{})).first();
@@ -82,13 +82,13 @@ public class CollectionTypeCreationUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$2gFy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
-    /*package*/ static final SContainmentLink elementType$B4nw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
-    /*package*/ static final SContainmentLink elementType$xJJW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
-    /*package*/ static final SContainmentLink elementType$ZAgX = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SReferenceLink classifier$sgLW = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink elementType$V7ow = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
+    /*package*/ static final SContainmentLink elementType$m8e4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
+    /*package*/ static final SContainmentLink elementType$Nydz = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SReferenceLink classifier$G8c4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

@@ -46,14 +46,14 @@ public final class AddRemoveMessage_Intention extends AbstractIntentionDescripto
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.message$Lko2), LINKS.message$$wk_) == null) ? "Add message" : "Remove message");
+      return ((SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.message$SRCY), LINKS.message$FDXV) == null) ? "Add message" : "Remove message");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.message$Lko2), LINKS.message$$wk_) == null)) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.message$Lko2, null);
+      if ((SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.message$SRCY), LINKS.message$FDXV) == null)) {
+        SNodeFactoryOperations.setNewChild(node, LINKS.message$SRCY, null);
       } else {
-        SLinkOperations.setTarget(node, LINKS.message$Lko2, null);
+        SLinkOperations.setTarget(node, LINKS.message$SRCY, null);
       }
     }
     @Override
@@ -63,7 +63,7 @@ public final class AddRemoveMessage_Intention extends AbstractIntentionDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$Lko2 = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5250918L, 0x110e52557daL, "message");
-    /*package*/ static final SContainmentLink message$$wk_ = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5064e8fL, 0x110e50678bdL, "message");
+    /*package*/ static final SContainmentLink message$SRCY = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5250918L, 0x110e52557daL, "message");
+    /*package*/ static final SContainmentLink message$FDXV = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5064e8fL, 0x110e50678bdL, "message");
   }
 }

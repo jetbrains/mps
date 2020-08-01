@@ -28,10 +28,10 @@ public class check_StaticFinalFieldWasAssigned_NonTypesystemRule extends Abstrac
   public check_StaticFinalFieldWasAssigned_NonTypesystemRule() {
   }
   public void applyRule(final SNode field, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$hIht))) {
+    if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$_qt3))) {
       return;
     }
-    if (SLinkOperations.getTarget(field, LINKS.initializer$KgD) != null) {
+    if (SLinkOperations.getTarget(field, LINKS.initializer$no3R) != null) {
       return;
     }
     SNode classifier = SNodeOperations.getNodeAncestor(field, CONCEPTS.ClassConcept$IY, false, false);
@@ -44,7 +44,7 @@ public class check_StaticFinalFieldWasAssigned_NonTypesystemRule extends Abstrac
       while (initializer_it.hasNext()) {
         initializer_var = initializer_it.next();
         for (SNode reference : SNodeOperations.getNodeDescendantsWhereConceptInList(initializer_var, new SAbstractConcept[]{CONCEPTS.StaticFieldReference$K8, CONCEPTS.VariableReference$sQ}, false, new SAbstractConcept[]{})) {
-          if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$2ky6) == field && CheckingUtil.isAssigned(reference)) {
+          if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$7WwU) == field && CheckingUtil.isAssigned(reference)) {
             return;
           }
         }
@@ -52,7 +52,7 @@ public class check_StaticFinalFieldWasAssigned_NonTypesystemRule extends Abstrac
     }
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(field, "Variable '" + SPropertyOperations.getString(field, PROPS.name$tAp1) + "' might not have been initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047680817", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(field, "Variable '" + SPropertyOperations.getString(field, PROPS.name$lA7v) + "' might not have been initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047680817", null, errorTarget);
       {
         BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.InitializeVariable_QuickFix", false);
         _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -70,13 +70,13 @@ public class check_StaticFinalFieldWasAssigned_NonTypesystemRule extends Abstrac
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {

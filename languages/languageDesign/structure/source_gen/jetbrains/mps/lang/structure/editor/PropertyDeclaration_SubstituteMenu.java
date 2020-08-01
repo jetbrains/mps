@@ -50,7 +50,7 @@ public class PropertyDeclaration_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_mohvzt_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PropertyDeclaration$c5, LINKS.dataType$fLUl);
+      super((SAbstractConcept) CONCEPTS.PropertyDeclaration$c5, LINKS.dataType$Dbgb);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class PropertyDeclaration_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 }

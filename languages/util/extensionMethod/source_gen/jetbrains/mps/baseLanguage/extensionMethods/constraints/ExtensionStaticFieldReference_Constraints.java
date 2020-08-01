@@ -30,7 +30,7 @@ public class ExtensionStaticFieldReference_Constraints extends BaseConstraintsDe
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$2ky6, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$7WwU, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -46,7 +46,7 @@ public class ExtensionStaticFieldReference_Constraints extends BaseConstraintsDe
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode container = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BaseExtensionMethodContainer$b0, false, false);
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(container, LINKS.staticFields$ULMW));
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(container, LINKS.staticFields$u7F4));
           }
         };
       }
@@ -63,7 +63,7 @@ public class ExtensionStaticFieldReference_Constraints extends BaseConstraintsDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink staticFields$ULMW = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x1b622d944bbb1c5fL, "staticFields");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink staticFields$u7F4 = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x1b622d944bbb1c5fL, "staticFields");
   }
 }

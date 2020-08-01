@@ -97,17 +97,17 @@ public class Migrate_ModelNodesOperation_concept extends MigrationScriptBase {
             }
           }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
             public void invoke(SNode oldNode, SNode newNode) {
-              List<SNode> attributes = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$K8bJ), CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
+              List<SNode> attributes = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$jXFL), CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode attr) {
-                  return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(attr), LINKS.concept$r7zb);
+                  return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(attr), LINKS.concept$8E2l);
                 }
               }).toListSequence();
               ListSequence.fromList(attributes).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode it) {
-                  LinkAttribute__BehaviorDescriptor.setLink_id6Gg5KlvuxxF.invoke(it, LINKS.conceptDeclaration$GmCT);
+                  LinkAttribute__BehaviorDescriptor.setLink_id6Gg5KlvuxxF.invoke(it, LINKS.conceptDeclaration$uXNB);
                 }
               });
-              ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(newNode, LINKS.conceptArgument$63TI), CONCEPTS.RefConcept_Reference$GN), LINKS.smodelAttribute$K8bJ)).addSequence(ListSequence.fromList(attributes));
+              ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(newNode, LINKS.conceptArgument$VSXi), CONCEPTS.RefConcept_Reference$GN), LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(attributes));
             }
           });
         }
@@ -130,11 +130,11 @@ public class Migrate_ModelNodesOperation_concept extends MigrationScriptBase {
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.concept$r7zb) != null);
+          return (SLinkOperations.getTarget(it, LINKS.concept$8E2l) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedReferenceLink(it, LINKS.concept$r7zb);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedReferenceLink(it, LINKS.concept$8E2l);
         }
       });
     }
@@ -169,9 +169,9 @@ public class Migrate_ModelNodesOperation_concept extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SReferenceLink concept$r7zb = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110b8590897L, 0x110b8590898L, "concept");
-    /*package*/ static final SReferenceLink conceptDeclaration$GmCT = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink conceptArgument$63TI = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110b8590897L, 0x1869004155f6ce22L, "conceptArgument");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SReferenceLink concept$8E2l = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110b8590897L, 0x110b8590898L, "concept");
+    /*package*/ static final SReferenceLink conceptDeclaration$uXNB = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink conceptArgument$VSXi = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110b8590897L, 0x1869004155f6ce22L, "conceptArgument");
   }
 }

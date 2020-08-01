@@ -46,19 +46,19 @@ public final class SequenceType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return "sequence<" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$2gFy)) + ">";
+    return "sequence<" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$655u)) + ">";
   }
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> variableSuffixes = ListSequence.fromListAndArray(new ArrayList<String>(), "seq");
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.elementType$2gFy) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$2gFy), CONCEPTS.Type$IG)) {
-      if ((boolean) Type__BehaviorDescriptor.hasPluralVariableSuffixes_id1gn9ujF3bz3.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$2gFy))) {
-        for (String suffix : Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$2gFy))) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.elementType$655u) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$655u), CONCEPTS.Type$IG)) {
+      if ((boolean) Type__BehaviorDescriptor.hasPluralVariableSuffixes_id1gn9ujF3bz3.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$655u))) {
+        for (String suffix : Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$655u))) {
           if (!(ListSequence.fromList(variableSuffixes).contains(suffix))) {
             ListSequence.fromList(variableSuffixes).addElement(suffix);
           }
         }
       } else {
-        for (String suffix : Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$2gFy))) {
+        for (String suffix : Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$655u))) {
           ListSequence.fromList(variableSuffixes).addElement(NameUtil.pluralize(suffix));
         }
       }
@@ -71,10 +71,10 @@ public final class SequenceType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getAbstractCreators_idhQFCQT0(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
     SNode seqCreator = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, "jetbrains.mps.baseLanguage.collections.structure.SequenceCreator"));
-    SLinkOperations.setTarget(seqCreator, LINKS.elementType$W1H3, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$2gFy)));
+    SLinkOperations.setTarget(seqCreator, LINKS.elementType$4OOt, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$655u)));
     ListSequence.fromList(result).addElement(seqCreator);
     SNode singCreator = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11fade5d82aL, "jetbrains.mps.baseLanguage.collections.structure.SingletonSequenceCreator"));
-    SLinkOperations.setTarget(singCreator, LINKS.elementType$XoOs, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$2gFy)));
+    SLinkOperations.setTarget(singCreator, LINKS.elementType$J1p$, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$655u)));
     ListSequence.fromList(result).addElement(singCreator);
     return result;
   }
@@ -144,9 +144,9 @@ public final class SequenceType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$2gFy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
-    /*package*/ static final SContainmentLink elementType$W1H3 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14c9ea5eL, "elementType");
-    /*package*/ static final SContainmentLink elementType$XoOs = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11fade5d82aL, 0x11fade6759fL, "elementType");
+    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink elementType$4OOt = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14c9ea5eL, "elementType");
+    /*package*/ static final SContainmentLink elementType$J1p$ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11fade5d82aL, 0x11fade6759fL, "elementType");
   }
 
   private static final class CONCEPTS {

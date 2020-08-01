@@ -30,7 +30,7 @@ public class DeleteOrTransformDeprecationDoc {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.set(node, PROPS.isDeprecated$K_Sf, false);
+        SPropertyOperations.set(node, PROPS.isDeprecated$ymfh, false);
       }
 
     };
@@ -58,8 +58,8 @@ public class DeleteOrTransformDeprecationDoc {
         }
 
         if (comment != null) {
-          SNode line = SNodeFactoryOperations.addNewChild(comment, LINKS.body$ULZO, null);
-          SNodeFactoryOperations.addNewChild(line, LINKS.part$fv9R, CONCEPTS.TextCommentLinePart$RY);
+          SNode line = SNodeFactoryOperations.addNewChild(comment, LINKS.body$udUc, null);
+          SNodeFactoryOperations.addNewChild(line, LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY);
           SelectionUtil.selectCell(editorContext, line, SelectionManager.FIRST_EDITABLE_CELL);
         }
       }
@@ -113,7 +113,7 @@ public class DeleteOrTransformDeprecationDoc {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isDeprecated$K_Sf = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
+    /*package*/ static final SProperty isDeprecated$ymfh = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
   }
 
   private static final class CONCEPTS {
@@ -128,7 +128,7 @@ public class DeleteOrTransformDeprecationDoc {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$ULZO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
-    /*package*/ static final SContainmentLink part$fv9R = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink body$udUc = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 }

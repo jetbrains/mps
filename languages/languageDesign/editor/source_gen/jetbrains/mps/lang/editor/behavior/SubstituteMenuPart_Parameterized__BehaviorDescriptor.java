@@ -34,11 +34,11 @@ public final class SubstituteMenuPart_Parameterized__BehaviorDescriptor extends 
   }
 
   /*package*/ static SContainmentLink getLinkNodeOfParameterizedPart_id1quYWAD03b2(@NotNull SNode __thisNode__) {
-    return LINKS.part$TSKS;
+    return LINKS.part$2vF8;
   }
   /*package*/ static SNode getOutputConcept_id3mnwiBI8ZE2(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.part$TSKS), CONCEPTS.IMenuPartWithOutputConcept$Tt)) {
-      return IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.part$TSKS), CONCEPTS.IMenuPartWithOutputConcept$Tt));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.part$2vF8), CONCEPTS.IMenuPartWithOutputConcept$Tt)) {
+      return IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.part$2vF8), CONCEPTS.IMenuPartWithOutputConcept$Tt));
     }
     return null;
   }
@@ -92,7 +92,7 @@ public final class SubstituteMenuPart_Parameterized__BehaviorDescriptor extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$TSKS = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, 0x742ef6b4d0cca0c7L, "part");
+    /*package*/ static final SContainmentLink part$2vF8 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, 0x742ef6b4d0cca0c7L, "part");
   }
 
   private static final class CONCEPTS {

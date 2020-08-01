@@ -34,7 +34,7 @@ public class DefaultConceptNameFilter implements Function<SNodeReference, String
       public String compute() {
         SNode node = SPointerOperations.resolveNode(ptr, myRepo);
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN)) {
-          return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$UN), PROPS.name$tAp1);
+          return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$UN), PROPS.name$lA7v);
         } else if (node != null) {
           return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
         }
@@ -50,6 +50,6 @@ public class DefaultConceptNameFilter implements Function<SNodeReference, String
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

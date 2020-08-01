@@ -23,9 +23,9 @@ public class RulesUtil {
     if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.InequationReplacementRule$4d, false, false) != null)) {
       return true;
     }
-    List<SNode> annotations = SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, false, false), LINKS.annotation$oVP4);
+    List<SNode> annotations = SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, false, false), LINKS.annotation$4YGW);
     for (SNode annotation : annotations) {
-      if (SLinkOperations.hasPointer(annotation, LINKS.annotation$zNxu, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1196177069451"))) {
+      if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1196177069451"))) {
         return true;
       }
     }
@@ -50,9 +50,9 @@ public class RulesUtil {
     if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractCheckingRule$l$, true, false) != null)) {
       return true;
     }
-    List<SNode> annotations = SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, true, false), LINKS.annotation$oVP4);
+    List<SNode> annotations = SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, true, false), LINKS.annotation$4YGW);
     for (SNode annotation : annotations) {
-      if (SLinkOperations.hasPointer(annotation, LINKS.annotation$zNxu, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1196177069451")) || SLinkOperations.hasPointer(annotation, LINKS.annotation$zNxu, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1223644778913"))) {
+      if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1196177069451")) || SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1223644778913"))) {
         return true;
       }
     }
@@ -71,7 +71,7 @@ public class RulesUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$zNxu = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 }

@@ -65,10 +65,10 @@ public final class Java_Producer {
       if ((ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(source) == null)) {
         return null;
       }
-      if (!(SPropertyOperations.getBoolean(SModelOperations.getModuleStub(SNodeOperations.getModel(source)), PROPS.compileInMPS$8r6V))) {
+      if (!(SPropertyOperations.getBoolean(SModelOperations.getModuleStub(SNodeOperations.getModel(source)), PROPS.compileInMPS$58m_))) {
         return null;
       }
-      Java_Configuration configuration = ((Java_Configuration) getConfigurationFactory().createConfiguration("" + "Class " + SPropertyOperations.getString(source, PROPS.name$tAp1), getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
+      Java_Configuration configuration = ((Java_Configuration) getConfigurationFactory().createConfiguration("" + "Class " + SPropertyOperations.getString(source, PROPS.name$lA7v), getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getNode().setNode(source);
       return configuration;
     }
@@ -111,10 +111,10 @@ public final class Java_Producer {
       if ((classifier == null)) {
         return null;
       }
-      if (!(SPropertyOperations.getBoolean(SModelOperations.getModuleStub(SNodeOperations.getModel(classifier)), PROPS.compileInMPS$8r6V))) {
+      if (!(SPropertyOperations.getBoolean(SModelOperations.getModuleStub(SNodeOperations.getModel(classifier)), PROPS.compileInMPS$58m_))) {
         return null;
       }
-      Java_Configuration configuration = ((Java_Configuration) getConfigurationFactory().createConfiguration("" + "Class " + SPropertyOperations.getString(classifier, PROPS.name$tAp1), getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
+      Java_Configuration configuration = ((Java_Configuration) getConfigurationFactory().createConfiguration("" + "Class " + SPropertyOperations.getString(classifier, PROPS.name$lA7v), getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getNode().setNode(classifier);
       return configuration;
     }
@@ -149,10 +149,10 @@ public final class Java_Producer {
       if (!((boolean) IMainClass__BehaviorDescriptor.isNodeRunnable_id431DWIovi3C.invoke(source))) {
         return null;
       }
-      if (!(SPropertyOperations.getBoolean(SModelOperations.getModuleStub(SNodeOperations.getModel(source)), PROPS.compileInMPS$8r6V))) {
+      if (!(SPropertyOperations.getBoolean(SModelOperations.getModuleStub(SNodeOperations.getModel(source)), PROPS.compileInMPS$58m_))) {
         return null;
       }
-      String name = (SNodeOperations.isInstanceOf(source, CONCEPTS.INamedConcept$nV) ? SPropertyOperations.getString(SNodeOperations.cast(source, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1) : IMainClass__BehaviorDescriptor.getUnitName_id431DWIovi3n.invoke(source));
+      String name = (SNodeOperations.isInstanceOf(source, CONCEPTS.INamedConcept$nV) ? SPropertyOperations.getString(SNodeOperations.cast(source, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v) : IMainClass__BehaviorDescriptor.getUnitName_id431DWIovi3n.invoke(source));
       Java_Configuration configuration = ((Java_Configuration) getConfigurationFactory().createConfiguration("" + "Node " + name, getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getNode().setNode(source);
       return configuration;
@@ -183,7 +183,7 @@ public final class Java_Producer {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty compileInMPS$8r6V = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty compileInMPS$58m_ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

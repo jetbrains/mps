@@ -25,7 +25,7 @@ public class InsertMemberAfterTitle {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.feedbacks$nSHS)).insertElement(0, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x573ae5b8b8cc650eL, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackRootMember"))));
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.feedbacks$$ue8)).insertElement(0, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x573ae5b8b8cc650eL, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackRootMember"))));
       }
 
     };
@@ -73,6 +73,6 @@ public class InsertMemberAfterTitle {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink feedbacks$nSHS = MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks");
+    /*package*/ static final SContainmentLink feedbacks$$ue8 = MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks");
   }
 }

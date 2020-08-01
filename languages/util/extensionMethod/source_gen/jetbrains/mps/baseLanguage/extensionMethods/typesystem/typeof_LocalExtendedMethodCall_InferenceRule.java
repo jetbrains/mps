@@ -35,7 +35,7 @@ public class typeof_LocalExtendedMethodCall_InferenceRule extends AbstractInfere
   public typeof_LocalExtendedMethodCall_InferenceRule() {
   }
   public void applyRule(final SNode lexmcall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode imdecl = SLinkOperations.getTarget(lexmcall, LINKS.baseMethodDeclaration$$A7i);
+    SNode imdecl = SLinkOperations.getTarget(lexmcall, LINKS.baseMethodDeclaration$ItxI);
     if (imdecl == null) {
       return;
     }
@@ -68,18 +68,18 @@ public class typeof_LocalExtendedMethodCall_InferenceRule extends AbstractInfere
     }
 
     final List<SNode> argTypes = new ArrayList<SNode>();
-    for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(lexmcall, LINKS.actualArgument$$A7L))) {
+    for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(lexmcall, LINKS.actualArgument$ItKJ))) {
       ListSequence.fromList(argTypes).addElement(typeCheckingContext.typeOf(a, "r:d9557470-9267-4b7b-ab45-4dc4cc5d697c(jetbrains.mps.baseLanguage.extensionMethods.typesystem)", "9033423951287571998", true));
     }
 
-    List<SNode> typel = ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(imdecl, ((int) ListSequence.fromList(SLinkOperations.getChildren(lexmcall, LINKS.actualArgument$$A7L)).count()));
+    List<SNode> typel = ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(imdecl, ((int) ListSequence.fromList(SLinkOperations.getChildren(lexmcall, LINKS.actualArgument$ItKJ)).count()));
     for (SNode type : ListSequence.fromList(typel)) {
       if (SNodeOperations.isInstanceOf(type, CONCEPTS.IGenericType$$h)) {
         IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(type, CONCEPTS.IGenericType$$h), subs);
       }
     }
 
-    SNode retType = SLinkOperations.getTarget(imdecl, LINKS.returnType$WIkw);
+    SNode retType = SLinkOperations.getTarget(imdecl, LINKS.returnType$qrVw);
     if (SNodeOperations.isInstanceOf(retType, CONCEPTS.IGenericType$$h)) {
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$$h), subs);
       retType = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$$h), subs);
@@ -135,9 +135,9 @@ public class typeof_LocalExtendedMethodCall_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class CONCEPTS {

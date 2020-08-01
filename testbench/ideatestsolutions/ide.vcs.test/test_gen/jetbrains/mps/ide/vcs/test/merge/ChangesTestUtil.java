@@ -22,19 +22,19 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class ChangesTestUtil {
   public static SNode createCommentedMethod() {
     SNode commentedMethod = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute"));
-    BHReflection.invoke0(commentedMethod, CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzM"), LINKS.member$oYX5);
-    SLinkOperations.setTarget(commentedMethod, LINKS.commentedNode$I8FA, _quotation_createNode_l1u5rv_a0c0a());
+    BHReflection.invoke0(commentedMethod, CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzM"), LINKS.member$6v_r);
+    SLinkOperations.setTarget(commentedMethod, LINKS.commentedNode$md7q, _quotation_createNode_l1u5rv_a0c0a());
     return commentedMethod;
   }
 
   public static void addCommentedMethod(SNode clazz, SNode anchor) {
     // attributes have to reside in smodelAttribute role, although their position relative to 
     // other children is important to find out precise location of commented out node 
-    clazz.insertChildAfter(LINKS.smodelAttribute$K8bJ, createCommentedMethod(), anchor);
+    clazz.insertChildAfter(LINKS.smodelAttribute$jXFL, createCommentedMethod(), anchor);
   }
 
   public static void uncommentFirstCommentedMethod(SNode clazz) {
-    CommentUtil.uncomment(ListSequence.fromList(AttributeOperations.getAttributeList(clazz, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$oYX5))).first());
+    CommentUtil.uncomment(ListSequence.fromList(AttributeOperations.getAttributeList(clazz, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$6v_r))).first());
   }
   private static SNode _quotation_createNode_l1u5rv_a0c0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -63,8 +63,8 @@ public class ChangesTestUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink commentedNode$I8FA = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink commentedNode$md7q = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

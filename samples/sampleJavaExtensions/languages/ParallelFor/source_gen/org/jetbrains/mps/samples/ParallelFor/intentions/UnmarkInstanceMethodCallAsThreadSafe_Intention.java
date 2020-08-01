@@ -41,7 +41,7 @@ public final class UnmarkInstanceMethodCallAsThreadSafe_Intention extends Abstra
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G) && AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$T7)) != null;
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G) && AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$T7)) != null;
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
     return SNodeOperations.getParent(childNode) == node;
@@ -74,7 +74,7 @@ public final class UnmarkInstanceMethodCallAsThreadSafe_Intention extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 
   private static final class CONCEPTS {

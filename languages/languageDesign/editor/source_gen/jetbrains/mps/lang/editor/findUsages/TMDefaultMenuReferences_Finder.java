@@ -55,7 +55,7 @@ public class TMDefaultMenuReferences_Finder extends GeneratedFinder {
         List<SNode> allReferences = (List<SNode>) FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)", "6718020819487620876"), scope, monitor.subTask(1));
 
         for (SNode ref : ListSequence.fromList(allReferences)) {
-          if (SLinkOperations.getTarget(ref, LINKS.concept$x5r) == SLinkOperations.getTarget(node, LINKS.conceptDeclaration$acmt)) {
+          if (SLinkOperations.getTarget(ref, LINKS.concept$g1C5) == SLinkOperations.getTarget(node, LINKS.conceptDeclaration$VYS3)) {
             callback.onUsageFound(createSingleResult(ref));
           }
         }
@@ -84,7 +84,7 @@ public class TMDefaultMenuReferences_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$acmt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
-    /*package*/ static final SReferenceLink concept$x5r = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
+    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink concept$g1C5 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
   }
 }

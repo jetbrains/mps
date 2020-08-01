@@ -18,7 +18,7 @@ public class PropertiesFile_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createUnitInfo();
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$Yabu)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$6Vzy)) {
       tgs.appendNode(item);
     }
     if (tgs.needPositions()) {
@@ -27,7 +27,7 @@ public class PropertiesFile_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$Yabu = MetaAdapterFactory.getContainmentLink(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a2754L, 0x36fb0dc9fd3a3ac3L, "lines");
+    /*package*/ static final SContainmentLink lines$6Vzy = MetaAdapterFactory.getContainmentLink(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a2754L, 0x36fb0dc9fd3a3ac3L, "lines");
   }
 
   private static final class CONCEPTS {

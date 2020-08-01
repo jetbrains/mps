@@ -119,10 +119,10 @@ public class SheetEntry_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode doc = SNodeOperations.replaceWithNewChild(_context.getCurrentTargetNode(), CONCEPTS.DocumentationEntry$Ox);
-        SLinkOperations.setTarget(doc, LINKS.text$$Pvw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text")));
-        SNode l = SLinkOperations.addNewChild(SLinkOperations.getTarget(doc, LINKS.text$$Pvw), LINKS.lines$$cru, null);
-        SNode w = SLinkOperations.addNewChild(l, LINKS.elements$eRew, CONCEPTS.Word$AM);
-        SPropertyOperations.assign(w, PROPS.value$cK70, pattern);
+        SLinkOperations.setTarget(doc, LINKS.text$PUgw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text")));
+        SNode l = SLinkOperations.addNewChild(SLinkOperations.getTarget(doc, LINKS.text$PUgw), LINKS.lines$y1jy, null);
+        SNode w = SLinkOperations.addNewChild(l, LINKS.elements$cK1w, CONCEPTS.Word$AM);
+        SPropertyOperations.assign(w, PROPS.value$bjp0, pattern);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), doc, SelectionManager.FIRST_EDITABLE_CELL, -1);
         return doc;
       }
@@ -157,12 +157,12 @@ public class SheetEntry_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$$Pvw = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, 0x6ef7184fab9f24e3L, "text");
-    /*package*/ static final SContainmentLink lines$$cru = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink text$PUgw = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, 0x6ef7184fab9f24e3L, "text");
+    /*package*/ static final SContainmentLink lines$y1jy = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

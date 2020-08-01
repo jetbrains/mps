@@ -25,7 +25,7 @@ public class MultiLineComment_TextGen extends TextGenDescriptorBase {
     tgs.append("/*");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
-    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$VaYR)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$EksD)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode line) {
         tgs.indent();
         Comments.commentLine(line, ctx);
@@ -43,7 +43,7 @@ public class MultiLineComment_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$VaYR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
+    /*package*/ static final SContainmentLink lines$EksD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
   }
 
   private static final class CONCEPTS {

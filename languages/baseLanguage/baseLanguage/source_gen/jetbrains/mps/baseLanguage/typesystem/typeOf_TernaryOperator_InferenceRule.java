@@ -21,16 +21,16 @@ public class typeOf_TernaryOperator_InferenceRule extends AbstractInferenceRule_
   }
   public void applyRule(final SNode toe, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(toe, LINKS.condition$CEb4);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(toe, LINKS.condition$GrmW);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1175522890409", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1175522892380", true), (SNode) _quotation_createNode_n8o2jn_a1a0c0a0b(), false, true, _info_12389875345);
     }
     {
-      final SNode iftrue = typeCheckingContext.typeOf(SLinkOperations.getTarget(toe, LINKS.ifTrue$eU9r), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3096905448806653315", true);
+      final SNode iftrue = typeCheckingContext.typeOf(SLinkOperations.getTarget(toe, LINKS.ifTrue$ea$5), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3096905448806653315", true);
       typeCheckingContext.whenConcrete(iftrue, new Runnable() {
         public void run() {
           {
-            final SNode iffalse = typeCheckingContext.typeOf(SLinkOperations.getTarget(toe, LINKS.ifFalse$2BqC), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3096905448806666273", true);
+            final SNode iffalse = typeCheckingContext.typeOf(SLinkOperations.getTarget(toe, LINKS.ifFalse$h5To), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3096905448806666273", true);
             typeCheckingContext.whenConcrete(iffalse, new Runnable() {
               public void run() {
                 {
@@ -67,9 +67,9 @@ public class typeOf_TernaryOperator_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$CEb4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
-    /*package*/ static final SContainmentLink ifTrue$eU9r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
-    /*package*/ static final SContainmentLink ifFalse$2BqC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
+    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink ifTrue$ea$5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
+    /*package*/ static final SContainmentLink ifFalse$h5To = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
   }
 
   private static final class CONCEPTS {

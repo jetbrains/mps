@@ -32,7 +32,7 @@ public class WrappersUtils {
     List<SNode> resVdecls = ListSequence.fromList(new ArrayList<SNode>());
     SNode wrpPrgNode = SNodeOperations.getNodeAncestorWhereConceptInList(closure, new SAbstractConcept[]{CONCEPTS.StatementList$TN, CONCEPTS.BaseMethodDeclaration$RR}, false, false);
     if ((wrpPrgNode != null)) {
-      Map<SNode, Integer> clsMap = collectVariableUsages(SLinkOperations.getTarget(closure, LINKS.body$DJEC));
+      Map<SNode, Integer> clsMap = collectVariableUsages(SLinkOperations.getTarget(closure, LINKS.body$e5Do));
       for (IMapping<SNode, Integer> m : SetSequence.fromSet(MapSequence.fromMap(clsMap).mappingsSet())) {
         ListSequence.fromList(resVdecls).addElement(SNodeOperations.cast(m.key(), CONCEPTS.VariableDeclaration$xe));
       }
@@ -76,10 +76,10 @@ public class WrappersUtils {
         continue;
       }
       SNode varRef = SNodeOperations.cast(desc, CONCEPTS.VariableReference$sQ);
-      if ((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6), CONCEPTS.ParameterDeclaration$qU)) && closure == SNodeOperations.getNodeAncestor(desc, CONCEPTS.ClosureLiteral$zJ, false, false)) {
-        SNode vd = SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6);
+      if ((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU)) && closure == SNodeOperations.getNodeAncestor(desc, CONCEPTS.ClosureLiteral$zJ, false, false)) {
+        SNode vd = SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU);
         if (closure != SNodeOperations.getNodeAncestor(vd, CONCEPTS.ClosureLiteral$zJ, false, false)) {
-          if (!(ListSequence.fromList(vdecls).contains(vd)) && !(SPropertyOperations.getBoolean(vd, PROPS.isFinal$hIht))) {
+          if (!(ListSequence.fromList(vdecls).contains(vd)) && !(SPropertyOperations.getBoolean(vd, PROPS.isFinal$_qt3))) {
             ListSequence.fromList(vdecls).addElement(vd);
           }
         }
@@ -96,16 +96,16 @@ with_decls:
           continue;
         }
         SNode varRef = SNodeOperations.cast(desc, CONCEPTS.VariableReference$sQ);
-        if ((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6), CONCEPTS.ParameterDeclaration$qU)) && SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6) == vd) {
-          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.BaseAssignmentExpression$oO) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.BaseAssignmentExpression$oO), LINKS.lValue$J0D4) == desc) {
+        if ((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU)) && SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU) == vd) {
+          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.BaseAssignmentExpression$oO) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.BaseAssignmentExpression$oO), LINKS.lValue$LjSW) == desc) {
             continue with_decls;
-          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PostfixIncrementExpression$3_) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PostfixIncrementExpression$3_), LINKS.expression$7Rjy) == desc) {
+          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PostfixIncrementExpression$3_) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PostfixIncrementExpression$3_), LINKS.expression$NMtu) == desc) {
             continue with_decls;
-          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PrefixIncrementExpression$4W) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PrefixIncrementExpression$4W), LINKS.expression$7Rjy) == desc) {
+          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PrefixIncrementExpression$4W) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PrefixIncrementExpression$4W), LINKS.expression$NMtu) == desc) {
             continue with_decls;
-          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PostfixDecrementExpression$gc) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PostfixDecrementExpression$gc), LINKS.expression$7Rjy) == desc) {
+          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PostfixDecrementExpression$gc) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PostfixDecrementExpression$gc), LINKS.expression$NMtu) == desc) {
             continue with_decls;
-          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PrefixDecrementExpression$d_) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PrefixDecrementExpression$d_), LINKS.expression$7Rjy) == desc) {
+          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PrefixDecrementExpression$d_) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PrefixDecrementExpression$d_), LINKS.expression$NMtu) == desc) {
             continue with_decls;
           }
         }
@@ -132,13 +132,13 @@ with_decls:
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$DJEC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

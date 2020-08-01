@@ -43,7 +43,7 @@ public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extend
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
     List<SNode> result = new ArrayList<SNode>();
     for (SNode bmd : ExtractStaticMethod_CallExpression__BehaviorDescriptor.getMethods_id55buE1DVoKQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ExtractStaticMethod_CallExpression$Wu), __thisNode__)) {
-      String name = SPropertyOperations.getString(SNodeOperations.cast(bmd, CONCEPTS.StaticMethodDeclaration$eX), PROPS.name$tAp1);
+      String name = SPropertyOperations.getString(SNodeOperations.cast(bmd, CONCEPTS.StaticMethodDeclaration$eX), PROPS.name$lA7v);
       if (name != null && name.equals(methodName)) {
         ListSequence.fromList(result).addElement(SNodeOperations.cast(bmd, CONCEPTS.StaticMethodDeclaration$eX));
       }
@@ -52,7 +52,7 @@ public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extend
   }
   /*package*/ static SNode getContainingExtractExpr_id7H3c2f3rrjt(@NotNull SNode __thisNode__) {
     for (SNode es : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ExtractStaticMethodExpression$kq, false)) {
-      if (SLinkOperations.getTarget(es, LINKS.method$eZjv) == SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i)) {
+      if (SLinkOperations.getTarget(es, LINKS.method$gEs1) == SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI)) {
         return es;
       }
     }
@@ -64,7 +64,7 @@ public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extend
   /*package*/ static List<SNode> getMethods_id55buE1DVoKQ(@NotNull SAbstractConcept __thisConcept__, SNode context) {
     List<SNode> smd = new ArrayList<SNode>();
     for (SNode es : SNodeOperations.getNodeAncestors(context, CONCEPTS.ExtractStaticMethodExpression$kq, true)) {
-      ListSequence.fromList(smd).addElement(SLinkOperations.getTarget(es, LINKS.method$eZjv));
+      ListSequence.fromList(smd).addElement(SLinkOperations.getTarget(es, LINKS.method$gEs1));
     }
     return smd;
   }
@@ -128,11 +128,11 @@ public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extend
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink method$eZjv = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, 0x31c3f88088ea0ac6L, "method");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink method$gEs1 = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, 0x31c3f88088ea0ac6L, "method");
   }
 }

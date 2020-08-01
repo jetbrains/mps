@@ -152,7 +152,7 @@ public class AbstractNodeRefExpression_TransformationMenu extends Transformation
         @Override
         public void execute(@NotNull String pattern) {
           SNode newNode = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ChildNodeRefExpression$im);
-          SLinkOperations.setTarget(newNode, LINKS.parent$a4t9, _context.getNode());
+          SLinkOperations.setTarget(newNode, LINKS.parent$Sa7n, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), newNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -192,6 +192,6 @@ public class AbstractNodeRefExpression_TransformationMenu extends Transformation
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parent$a4t9 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x84baf20c71f8a79L, 0x84baf20c71f924eL, "parent");
+    /*package*/ static final SContainmentLink parent$Sa7n = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x84baf20c71f8a79L, 0x84baf20c71f924eL, "parent");
   }
 }

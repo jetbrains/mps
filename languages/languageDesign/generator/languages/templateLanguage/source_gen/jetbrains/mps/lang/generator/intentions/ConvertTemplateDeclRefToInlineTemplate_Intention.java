@@ -46,7 +46,7 @@ public final class ConvertTemplateDeclRefToInlineTemplate_Intention extends Abst
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    List<SNode> TFs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.template$yiTA), CONCEPTS.TemplateDeclaration$q0), LINKS.contentNode$UkrJ), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{});
+    List<SNode> TFs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.template$B9Tq), CONCEPTS.TemplateDeclaration$q0), LINKS.contentNode$fTrL), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{});
     return ListSequence.fromList(TFs).count() == 1;
   }
   @Override
@@ -68,15 +68,15 @@ public final class ConvertTemplateDeclRefToInlineTemplate_Intention extends Abst
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode oldTemplate = SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.template$yiTA), CONCEPTS.TemplateDeclaration$q0);
-      List<SNode> TFs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(oldTemplate, LINKS.contentNode$UkrJ), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{});
+      SNode oldTemplate = SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.template$B9Tq), CONCEPTS.TemplateDeclaration$q0);
+      List<SNode> TFs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(oldTemplate, LINKS.contentNode$fTrL), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{});
       SNode fragmentToSet = SNodeOperations.copyNode(SNodeOperations.getParent(ListSequence.fromList(TFs).first()));
       SNode TFtoDelete = AttributeOperations.getAttribute(fragmentToSet, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$yI));
       SNodeOperations.deleteNode(TFtoDelete);
       SNode inlineTemplate = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.InlineTemplate_RuleConsequence$Mt);
-      SLinkOperations.setTarget(inlineTemplate, LINKS.templateNode$7wRg, fragmentToSet);
+      SLinkOperations.setTarget(inlineTemplate, LINKS.templateNode$CUKK, fragmentToSet);
       // ------ 
-      if (!(Sequence.fromIterable(SLinkOperations.collect(SModelOperations.nodes(SNodeOperations.getModel(node), CONCEPTS.ITemplateCall$uv), LINKS.template$yiTA)).contains(oldTemplate))) {
+      if (!(Sequence.fromIterable(SLinkOperations.collect(SModelOperations.nodes(SNodeOperations.getModel(node), CONCEPTS.ITemplateCall$uv), LINKS.template$B9Tq)).contains(oldTemplate))) {
         // nobody in the same model uses this template, drop it (if you care about external references, why would you use intention then?) 
         SNodeOperations.deleteNode(oldTemplate);
       }
@@ -88,9 +88,9 @@ public final class ConvertTemplateDeclRefToInlineTemplate_Intention extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
-    /*package*/ static final SContainmentLink contentNode$UkrJ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
-    /*package*/ static final SContainmentLink templateNode$7wRg = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
+    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink contentNode$fTrL = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+    /*package*/ static final SContainmentLink templateNode$CUKK = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
   }
 
   private static final class CONCEPTS {

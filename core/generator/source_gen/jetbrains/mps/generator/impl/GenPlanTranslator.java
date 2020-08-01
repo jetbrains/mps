@@ -37,7 +37,7 @@ public final class GenPlanTranslator {
 
   public GenPlanTranslator(@NotNull SNode planDeclaration) {
     myPlanDeclaration = planDeclaration;
-    myPlanIdentity = new PlanIdentity(SPropertyOperations.getString(myPlanDeclaration, PROPS.name$tAp1));
+    myPlanIdentity = new PlanIdentity(SPropertyOperations.getString(myPlanDeclaration, PROPS.name$lA7v));
   }
 
   public PlanIdentity getPlanIdentity() {
@@ -53,45 +53,45 @@ public final class GenPlanTranslator {
     ArrayList<SLanguage> langueges = new ArrayList<SLanguage>();
     ArrayList<SModuleReference> generators = new ArrayList<SModuleReference>();
 
-    for (SNode stepNode : SLinkOperations.getChildren(myPlanDeclaration, LINKS.steps$TW4w)) {
+    for (SNode stepNode : SLinkOperations.getChildren(myPlanDeclaration, LINKS.steps$46bw)) {
       if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.Checkpoint$g)) {
-        planBuilder.recordCheckpoint(cpIdentity(SLinkOperations.getTarget(SNodeOperations.as(stepNode, CONCEPTS.Checkpoint$g), LINKS.cpSpec$s3ye)));
+        planBuilder.recordCheckpoint(cpIdentity(SLinkOperations.getTarget(SNodeOperations.as(stepNode, CONCEPTS.Checkpoint$g), LINKS.cpSpec$_H$M)));
       } else if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.Transform$aU)) {
-        for (SNode lid : SLinkOperations.getChildren(SNodeOperations.as(stepNode, CONCEPTS.Transform$aU), LINKS.languages$ISM8)) {
+        for (SNode lid : SLinkOperations.getChildren(SNodeOperations.as(stepNode, CONCEPTS.Transform$aU), LINKS.languages$HwhS)) {
           langueges.add(((SLanguage) BHReflection.invoke0(lid, CONCEPTS.LanguageIdentity$bj, SMethodTrimmedId.create("getLanguage", null, "34EJa6aIcyj"))));
         }
         planBuilder.transformLanguage(langueges.toArray(new SLanguage[langueges.size()]));
         langueges.clear();
       } else if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.ApplyGenerators$Qb)) {
         SNode applyGeneratorsStep = SNodeOperations.as(stepNode, CONCEPTS.ApplyGenerators$Qb);
-        final boolean withExtended = SPropertyOperations.getBoolean(applyGeneratorsStep, PROPS.withExtended$LBeL);
-        for (SNode generator : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(applyGeneratorsStep, LINKS.generator$DSQD), CONCEPTS.GeneratorModulePointer$2D))) {
-          SModuleReference mr = ((SModuleReference) BHReflection.invoke0(SLinkOperations.getTarget(generator, LINKS.module$gjS8), CONCEPTS.ModuleIdentity$Sx, SMethodTrimmedId.create("getModuleReference", null, "nJmxU5cSSU")));
+        final boolean withExtended = SPropertyOperations.getBoolean(applyGeneratorsStep, PROPS.withExtended$209J);
+        for (SNode generator : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(applyGeneratorsStep, LINKS.generator$iytR), CONCEPTS.GeneratorModulePointer$2D))) {
+          SModuleReference mr = ((SModuleReference) BHReflection.invoke0(SLinkOperations.getTarget(generator, LINKS.module$TCbS), CONCEPTS.ModuleIdentity$Sx, SMethodTrimmedId.create("getModuleReference", null, "nJmxU5cSSU")));
           if (mr == null) {
             continue;
           }
           generators.add(mr);
         }
         if (withExtended) {
-          final boolean withPriorityRules = SPropertyOperations.getBoolean(applyGeneratorsStep, PROPS.withPriorityRules$CR7i);
+          final boolean withPriorityRules = SPropertyOperations.getBoolean(applyGeneratorsStep, PROPS.withPriorityRules$MGxI);
           planBuilder.applyGenerators(generators, GenerationPlanBuilder.BuilderOption.WithExtendedGenerators, (withPriorityRules ? GenerationPlanBuilder.BuilderOption.WithPriorityRules : GenerationPlanBuilder.BuilderOption.None));
         } else {
           planBuilder.applyGenerators(generators);
         }
         generators.clear();
       } else if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.CheckpointSynchronization$Eg)) {
-        planBuilder.synchronizeWithCheckpoint(cpIdentity(SLinkOperations.getTarget(SNodeOperations.as(stepNode, CONCEPTS.CheckpointSynchronization$Eg), LINKS.checkpoint$BupL)));
+        planBuilder.synchronizeWithCheckpoint(cpIdentity(SLinkOperations.getTarget(SNodeOperations.as(stepNode, CONCEPTS.CheckpointSynchronization$Eg), LINKS.checkpoint$7IuJ)));
       } else if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.CheckpointDeclaration$56)) {
         SNode cpDecl = SNodeOperations.as(stepNode, CONCEPTS.CheckpointDeclaration$56);
-        planBuilder.declareCheckpoint(new CheckpointIdentity(myPlanIdentity, SPropertyOperations.getString(cpDecl, PROPS.name$tAp1)));
+        planBuilder.declareCheckpoint(new CheckpointIdentity(myPlanIdentity, SPropertyOperations.getString(cpDecl, PROPS.name$lA7v)));
       } else if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.IncludePlan$sP)) {
-        SNode includedPlan = SLinkOperations.getTarget(SNodeOperations.as(stepNode, CONCEPTS.IncludePlan$sP), LINKS.plan$eWwD);
+        SNode includedPlan = SLinkOperations.getTarget(SNodeOperations.as(stepNode, CONCEPTS.IncludePlan$sP), LINKS.plan$fjNR);
         new GenPlanTranslator(includedPlan).feed(planBuilder);
       } else if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.Fork$9x)) {
-        SNode branchPlan = SLinkOperations.getTarget(SNodeOperations.as(stepNode, CONCEPTS.Fork$9x), LINKS.plan$7UZw);
+        SNode branchPlan = SLinkOperations.getTarget(SNodeOperations.as(stepNode, CONCEPTS.Fork$9x), LINKS.plan$P$Kw);
         GenerationPlanBuilder branchBuilder = planBuilder.fork();
         new GenPlanTranslator(branchPlan).feed(branchBuilder);
-        branchBuilder.wrapUp(new PlanIdentity(SPropertyOperations.getString(branchPlan, PROPS.name$tAp1)));
+        branchBuilder.wrapUp(new PlanIdentity(SPropertyOperations.getString(branchPlan, PROPS.name$lA7v)));
       }
     }
     return this;
@@ -99,27 +99,27 @@ public final class GenPlanTranslator {
 
   private CheckpointIdentity cpIdentity(SNode cpSpec) {
     if (SNodeOperations.isInstanceOf(cpSpec, CONCEPTS.InPlaceCheckpointSpec$q7)) {
-      return new CheckpointIdentity(myPlanIdentity, SPropertyOperations.getString(SNodeOperations.as(cpSpec, CONCEPTS.InPlaceCheckpointSpec$q7), PROPS.name$tAp1));
+      return new CheckpointIdentity(myPlanIdentity, SPropertyOperations.getString(SNodeOperations.as(cpSpec, CONCEPTS.InPlaceCheckpointSpec$q7), PROPS.name$lA7v));
     }
     if (SNodeOperations.isInstanceOf(cpSpec, CONCEPTS.DeclaredCheckpointSpec$HY)) {
-      SNode cpDecl = SLinkOperations.getTarget(SNodeOperations.as(cpSpec, CONCEPTS.DeclaredCheckpointSpec$HY), LINKS.cpDecl$LTxY);
-      return new CheckpointIdentity(new PlanIdentity(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(cpDecl), CONCEPTS.Plan$Xm), PROPS.name$tAp1)), SPropertyOperations.getString(cpDecl, PROPS.name$tAp1));
+      SNode cpDecl = SLinkOperations.getTarget(SNodeOperations.as(cpSpec, CONCEPTS.DeclaredCheckpointSpec$HY), LINKS.cpDecl$aRt2);
+      return new CheckpointIdentity(new PlanIdentity(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(cpDecl), CONCEPTS.Plan$Xm), PROPS.name$lA7v)), SPropertyOperations.getString(cpDecl, PROPS.name$lA7v));
     }
     if (SNodeOperations.isInstanceOf(cpSpec, CONCEPTS.InPlaceCheckpointRefSpec$Hr)) {
-      SNode cpStep = SLinkOperations.getTarget(SNodeOperations.as(cpSpec, CONCEPTS.InPlaceCheckpointRefSpec$Hr), LINKS.checkpoint$LUHD);
-      SNode inPlaceCPSpec = SNodeOperations.as(SLinkOperations.getTarget(cpStep, LINKS.cpSpec$s3ye), CONCEPTS.InPlaceCheckpointSpec$q7);
+      SNode cpStep = SLinkOperations.getTarget(SNodeOperations.as(cpSpec, CONCEPTS.InPlaceCheckpointRefSpec$Hr), LINKS.checkpoint$bs6R);
+      SNode inPlaceCPSpec = SNodeOperations.as(SLinkOperations.getTarget(cpStep, LINKS.cpSpec$_H$M), CONCEPTS.InPlaceCheckpointSpec$q7);
       if (inPlaceCPSpec == null) {
         throw new IllegalStateException();
       }
-      return new CheckpointIdentity(new PlanIdentity(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(cpStep), CONCEPTS.Plan$Xm), PROPS.name$tAp1)), SPropertyOperations.getString(inPlaceCPSpec, PROPS.name$tAp1));
+      return new CheckpointIdentity(new PlanIdentity(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(cpStep), CONCEPTS.Plan$Xm), PROPS.name$lA7v)), SPropertyOperations.getString(inPlaceCPSpec, PROPS.name$lA7v));
     }
     throw new IllegalStateException("Unsupported checkpoint specification " + SNodeOperations.getConcept(cpSpec));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty withExtended$LBeL = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xc11e5088a799353L, "withExtended");
-    /*package*/ static final SProperty withPriorityRules$CR7i = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xf738996443c35afL, "withPriorityRules");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty withExtended$209J = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xc11e5088a799353L, "withExtended");
+    /*package*/ static final SProperty withPriorityRules$MGxI = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xf738996443c35afL, "withPriorityRules");
   }
 
   private static final class CONCEPTS {
@@ -140,15 +140,15 @@ public final class GenPlanTranslator {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cpSpec$s3ye = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
-    /*package*/ static final SContainmentLink languages$ISM8 = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages");
-    /*package*/ static final SContainmentLink module$gjS8 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x73246de9adecb80dL, 0x73246de9adecb874L, "module");
-    /*package*/ static final SContainmentLink generator$DSQD = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0x73246de9adf5a45cL, "generator");
-    /*package*/ static final SContainmentLink checkpoint$BupL = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint");
-    /*package*/ static final SReferenceLink plan$eWwD = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x336c2500000e1b2fL, 0x336c2500000e1b32L, "plan");
-    /*package*/ static final SReferenceLink plan$7UZw = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x2bf683196b12a3cbL, 0x2bf683196b12a3ccL, "plan");
-    /*package*/ static final SContainmentLink steps$TW4w = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, 0x19443180a2071807L, "steps");
-    /*package*/ static final SReferenceLink cpDecl$LTxY = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, 0x340cd07aed7cb300L, "cpDecl");
-    /*package*/ static final SReferenceLink checkpoint$LUHD = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
+    /*package*/ static final SContainmentLink cpSpec$_H$M = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
+    /*package*/ static final SContainmentLink languages$HwhS = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages");
+    /*package*/ static final SContainmentLink module$TCbS = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x73246de9adecb80dL, 0x73246de9adecb874L, "module");
+    /*package*/ static final SContainmentLink generator$iytR = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0x73246de9adf5a45cL, "generator");
+    /*package*/ static final SContainmentLink checkpoint$7IuJ = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint");
+    /*package*/ static final SReferenceLink plan$fjNR = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x336c2500000e1b2fL, 0x336c2500000e1b32L, "plan");
+    /*package*/ static final SReferenceLink plan$P$Kw = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x2bf683196b12a3cbL, 0x2bf683196b12a3ccL, "plan");
+    /*package*/ static final SContainmentLink steps$46bw = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, 0x19443180a2071807L, "steps");
+    /*package*/ static final SReferenceLink cpDecl$aRt2 = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, 0x340cd07aed7cb300L, "cpDecl");
+    /*package*/ static final SReferenceLink checkpoint$bs6R = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
   }
 }

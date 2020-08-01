@@ -26,10 +26,10 @@ public class ReturnStatementExpressionRefActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.expression$EsbK))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.expression$zDGg))) {
           return;
         }
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.expression$EsbK));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.expression$zDGg));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, 0);
       }
 
@@ -78,6 +78,6 @@ public class ReturnStatementExpressionRefActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 }

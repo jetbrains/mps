@@ -23,8 +23,8 @@ public final class TwoStepDeleteCustomChildContainer__BehaviorDescriptor extends
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.showCellWithCustomId$SVDo, true);
-    SPropertyOperations.assign(__thisNode__, PROPS.showCellWithStringId$YE7x, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.showCellWithCustomId$$T2C, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.showCellWithStringId$mpCZ, true);
   }
 
 
@@ -73,7 +73,7 @@ public final class TwoStepDeleteCustomChildContainer__BehaviorDescriptor extends
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty showCellWithCustomId$SVDo = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33a27fL, "showCellWithCustomId");
-    /*package*/ static final SProperty showCellWithStringId$YE7x = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33da9eL, "showCellWithStringId");
+    /*package*/ static final SProperty showCellWithCustomId$$T2C = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33a27fL, "showCellWithCustomId");
+    /*package*/ static final SProperty showCellWithStringId$mpCZ = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, 0x1139cad76e33da9eL, "showCellWithStringId");
   }
 }

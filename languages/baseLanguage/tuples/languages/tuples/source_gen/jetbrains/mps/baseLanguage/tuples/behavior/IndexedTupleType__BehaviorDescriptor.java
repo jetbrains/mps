@@ -45,7 +45,7 @@ public final class IndexedTupleType__BehaviorDescriptor extends BaseBHDescriptor
     StringBuilder sb = new StringBuilder();
     sb.append(IndexedTupleType__BehaviorDescriptor.getLeftBracket_id1653mnvAgpU.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))));
     String sep = "";
-    for (SNode mt : SLinkOperations.getChildren(__thisNode__, LINKS.componentType$62ij)) {
+    for (SNode mt : SLinkOperations.getChildren(__thisNode__, LINKS.componentType$V6Rd)) {
       sb.append(sep).append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(mt));
       sep = ", ";
     }
@@ -54,7 +54,7 @@ public final class IndexedTupleType__BehaviorDescriptor extends BaseBHDescriptor
   }
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> suffixes = ListSequence.fromList(new ArrayList<String>());
-    switch (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.componentType$62ij)).count()) {
+    switch (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.componentType$V6Rd)).count()) {
       case 0:
         ListSequence.fromList(suffixes).addElement("unit");
         break;
@@ -71,12 +71,12 @@ public final class IndexedTupleType__BehaviorDescriptor extends BaseBHDescriptor
         ListSequence.fromList(suffixes).addElement("quadruple");
         break;
       default:
-        ListSequence.fromList(suffixes).addElement("_" + Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.componentType$62ij)).count()) + "tuple");
+        ListSequence.fromList(suffixes).addElement("_" + Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.componentType$V6Rd)).count()) + "tuple");
     }
     return suffixes;
   }
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions) {
-    for (SNode ct : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.componentType$62ij))) {
+    for (SNode ct : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.componentType$V6Rd))) {
       if (SNodeOperations.isInstanceOf(ct, CONCEPTS.IGenericType$$h)) {
         IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(ct, CONCEPTS.IGenericType$$h), substitutions);
       }
@@ -145,7 +145,7 @@ public final class IndexedTupleType__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$62ij = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
+    /*package*/ static final SContainmentLink componentType$V6Rd = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
   }
 
   private static final class CONCEPTS {

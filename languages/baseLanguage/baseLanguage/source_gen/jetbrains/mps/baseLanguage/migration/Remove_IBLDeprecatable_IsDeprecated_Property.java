@@ -40,7 +40,7 @@ public class Remove_IBLDeprecatable_IsDeprecated_Property extends MigrationScrip
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$Hv, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          it.setProperty(PROPS.isDeprecated$K_Sf, null);
+          it.setProperty(PROPS.isDeprecated$ymfh, null);
         }
       });
     }
@@ -54,6 +54,6 @@ public class Remove_IBLDeprecatable_IsDeprecated_Property extends MigrationScrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isDeprecated$K_Sf = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
+    /*package*/ static final SProperty isDeprecated$ymfh = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
   }
 }

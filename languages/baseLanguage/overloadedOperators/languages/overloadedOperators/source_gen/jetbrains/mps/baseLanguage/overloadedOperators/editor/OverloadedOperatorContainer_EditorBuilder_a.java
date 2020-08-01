@@ -88,7 +88,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -222,7 +222,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.customOperators$hoGy;
+      return LINKS.customOperators$qX$u;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.CustomOperatorDeclaration$kN;
@@ -235,7 +235,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(customOperatorsListHandler_2ntrw4_b1b3a.this.getNode(), LINKS.customOperators$hoGy));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(customOperatorsListHandler_2ntrw4_b1b3a.this.getNode(), LINKS.customOperators$qX$u));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_4();
@@ -307,7 +307,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.operators$MR5w;
+      return LINKS.operators$CFEw;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.OverloadedBinaryOperator$Ai;
@@ -320,7 +320,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(operatorsListHandler_2ntrw4_c1b3a.this.getNode(), LINKS.operators$MR5w));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(operatorsListHandler_2ntrw4_c1b3a.this.getNode(), LINKS.operators$CFEw));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_5();
@@ -379,7 +379,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -389,7 +389,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customOperators$hoGy = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x2764eda929cc329cL, "customOperators");
-    /*package*/ static final SContainmentLink operators$MR5w = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x6b6f5c413011208L, "operators");
+    /*package*/ static final SContainmentLink customOperators$qX$u = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x2764eda929cc329cL, "customOperators");
+    /*package*/ static final SContainmentLink operators$CFEw = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x6b6f5c413011208L, "operators");
   }
 }

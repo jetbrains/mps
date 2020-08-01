@@ -26,9 +26,9 @@ public class supertypesOf_ISequence_class_SubtypingRule extends SubtypingRule_Ru
   }
   public List<SNode> getSubOrSuperTypes(SNode ct, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> res = ListSequence.fromList(new ArrayList<SNode>());
-    if (SLinkOperations.hasPointer(ct, LINKS.classifier$pQ_R, new SNodePointer("r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)", "6543581031674024311"))) {
+    if (SLinkOperations.hasPointer(ct, LINKS.classifier$xslD, new SNodePointer("r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)", "6543581031674024311"))) {
       res = ListSequence.fromList(new ArrayList<SNode>());
-      List<SNode> ptypes = SLinkOperations.getChildren(ct, LINKS.parameter$dQne);
+      List<SNode> ptypes = SLinkOperations.getChildren(ct, LINKS.parameter$HlfM);
       if (ListSequence.fromList(ptypes).isNotEmpty()) {
         SNode elType = ListSequence.fromList(ptypes).getElement(0);
         ListSequence.fromList(res).addElement(_quotation_createNode_gd2fo6_a0a1a2a1a1(elType));
@@ -58,8 +58,8 @@ public class supertypesOf_ISequence_class_SubtypingRule extends SubtypingRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

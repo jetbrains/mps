@@ -63,7 +63,7 @@ public class ErrorReportHelper {
       public Iterable<SNode> translate(SNode ancestor) {
         if (SNodeOperations.getParent(ancestor) == null) {
           return Sequence.fromIterable(Collections.<SNode>emptyList());
-        } else if (SNodeOperations.hasRole(ancestor, LINKS.smodelAttribute$K8bJ)) {
+        } else if (SNodeOperations.hasRole(ancestor, LINKS.smodelAttribute$jXFL)) {
           return Sequence.<SNode>singleton(SNodeOperations.getParent(ancestor));
         } else {
           return ListSequence.fromList(getNodeAttributes(SNodeOperations.getParent(ancestor))).concat(Sequence.fromIterable(Sequence.<SNode>singleton(SNodeOperations.getParent(ancestor))));
@@ -95,7 +95,7 @@ public class ErrorReportHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class CONCEPTS {

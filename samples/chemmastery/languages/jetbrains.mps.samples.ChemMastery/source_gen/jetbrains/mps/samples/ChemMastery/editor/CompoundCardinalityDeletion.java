@@ -24,7 +24,7 @@ public class CompoundCardinalityDeletion {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.cardinalityVisible$iY8b, false);
+        SPropertyOperations.assign(node, PROPS.cardinalityVisible$c5Xl, false);
         SelectionUtil.selectCell(editorContext, node, SelectionManager.FIRST_EDITABLE_CELL);
       }
 
@@ -73,6 +73,6 @@ public class CompoundCardinalityDeletion {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$iY8b = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinalityVisible$c5Xl = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
   }
 }

@@ -130,7 +130,7 @@ public class addAbstract extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.InstanceMethodDeclaration$An), PROPS.isAbstract$cU_H, true);
+          SPropertyOperations.assign(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.InstanceMethodDeclaration$An), PROPS.isAbstract$gogN, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.getParent(_context.getNode()), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -168,6 +168,6 @@ public class addAbstract extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

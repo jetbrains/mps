@@ -25,8 +25,8 @@ public class check_IfStatementBooleanConstantInCondition_NonTypesystemRule exten
   public check_IfStatementBooleanConstantInCondition_NonTypesystemRule() {
   }
   public void applyRule(final SNode ifStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b), CONCEPTS.BooleanConstant$Ui) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b), CONCEPTS.BooleanConstant$Ui), PROPS.value$WIn0))) {
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$WJ1E), LINKS.statement$WHn8)).visitAll(new IVisitor<SNode>() {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l), CONCEPTS.BooleanConstant$Ui) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l), CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90))) {
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$qLNm), LINKS.statement$pYcS)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
@@ -47,9 +47,9 @@ public class check_IfStatementBooleanConstantInCondition_NonTypesystemRule exten
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
   }
 
   private static final class CONCEPTS {
@@ -58,6 +58,6 @@ public class check_IfStatementBooleanConstantInCondition_NonTypesystemRule exten
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

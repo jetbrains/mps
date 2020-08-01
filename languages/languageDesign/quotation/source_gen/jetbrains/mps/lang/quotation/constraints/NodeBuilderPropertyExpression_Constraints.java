@@ -54,7 +54,7 @@ public class NodeBuilderPropertyExpression_Constraints extends BaseConstraintsDe
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return Objects.equals(link, LINKS.initValue$nhHN);
+    return Objects.equals(link, LINKS.initValue$h_bH);
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     return !(SNodeOperations.isInstanceOf(childNode, CONCEPTS.NodeBuilderInitPropertyValue$tJ));
@@ -68,6 +68,6 @@ public class NodeBuilderPropertyExpression_Constraints extends BaseConstraintsDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$nhHN = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
+    /*package*/ static final SContainmentLink initValue$h_bH = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
   }
 }

@@ -373,30 +373,30 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
 
     project2 = SModelOperations.createNewNode(auxModel, null, CONCEPTS.BuildProject$BF);
     sln = SModelOperations.createNewNode(auxModel, null, CONCEPTS.BuildMps_Solution$qJ);
-    ListSequence.fromList(SLinkOperations.getChildren(project2, LINKS.parts$tgxg)).addElement(sln);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(project2, LINKS.dependencies$tpR5, CONCEPTS.BuildProjectDependency$Ug), LINKS.script$mz1x, project1);
+    ListSequence.fromList(SLinkOperations.getChildren(project2, LINKS.parts$b06K)).addElement(sln);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(project2, LINKS.dependencies$fxFr, CONCEPTS.BuildProjectDependency$Ug), LINKS.script$UXIZ, project1);
 
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(sln, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l), LINKS.language$TL_w, l1);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(sln, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyOnDevKit$C4), LINKS.devkit$Ib8b, dvk);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(sln, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l), LINKS.language$Z1aw, l1);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(sln, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyOnDevKit$C4), LINKS.devkit$noXl, dvk);
 
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l1, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l), LINKS.language$TL_w, l2);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l1, LINKS.runtime$RrxF, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$pPpw, rt1);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l1, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyUseLanguage$2l), LINKS.language$Z1aw, l2);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l1, LINKS.runtime$QljP, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$wRmw, rt1);
 
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l2, LINKS.runtime$RrxF, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$pPpw, rt2);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l2, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$$$), LINKS.language$t$Iv, l21);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l2, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g), LINKS.module$gbmo, l4);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l2, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g), LINKS.module$gbmo, sln4);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l2, LINKS.runtime$QljP, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$wRmw, rt2);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l2, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$$$), LINKS.language$kMx1, l21);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l2, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g), LINKS.module$PvPC, l4);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l2, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g), LINKS.module$PvPC, sln4);
 
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l4, LINKS.runtime$RrxF, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$pPpw, rt4);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l4, LINKS.runtime$QljP, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$wRmw, rt4);
 
-    SNode reexportDep = SLinkOperations.addNewChild(sln4, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g);
-    SLinkOperations.setTarget(reexportDep, LINKS.module$gbmo, sln5);
-    SPropertyOperations.assign(reexportDep, PROPS.reexport$gb$r, true);
+    SNode reexportDep = SLinkOperations.addNewChild(sln4, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g);
+    SLinkOperations.setTarget(reexportDep, LINKS.module$PvPC, sln5);
+    SPropertyOperations.assign(reexportDep, PROPS.reexport$PAD5, true);
 
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l21, LINKS.runtime$RrxF, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$pPpw, rt21);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l21, LINKS.dependencies$Pit_, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g), LINKS.module$gbmo, sln21);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(dvk, LINKS.exports$90Bp, CONCEPTS.BuildMps_DevKitExportLanguage$ez), LINKS.language$wScz, l3);
-    SLinkOperations.setTarget(SLinkOperations.addNewChild(l3, LINKS.runtime$RrxF, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$pPpw, rt3);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l21, LINKS.runtime$QljP, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$wRmw, rt21);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l21, LINKS.dependencies$NWkV, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g), LINKS.module$PvPC, sln21);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(dvk, LINKS.exports$nj57, CONCEPTS.BuildMps_DevKitExportLanguage$ez), LINKS.language$Ve4X, l3);
+    SLinkOperations.setTarget(SLinkOperations.addNewChild(l3, LINKS.runtime$QljP, CONCEPTS.BuildMps_ModuleSolutionRuntime$IH), LINKS.solution$wRmw, rt3);
   }
   public void tearDown() {
   }
@@ -414,21 +414,21 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$tgxg = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
-    /*package*/ static final SContainmentLink dependencies$tpR5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
-    /*package*/ static final SReferenceLink script$mz1x = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
-    /*package*/ static final SContainmentLink dependencies$Pit_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
-    /*package*/ static final SReferenceLink language$TL_w = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language");
-    /*package*/ static final SReferenceLink devkit$Ib8b = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit");
-    /*package*/ static final SContainmentLink runtime$RrxF = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime");
-    /*package*/ static final SReferenceLink solution$pPpw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution");
-    /*package*/ static final SReferenceLink language$t$Iv = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
-    /*package*/ static final SReferenceLink module$gbmo = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
-    /*package*/ static final SContainmentLink exports$90Bp = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d29d82L, "exports");
-    /*package*/ static final SReferenceLink language$wScz = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, 0x4780308f5d29d73L, "language");
+    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink dependencies$fxFr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SReferenceLink script$UXIZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+    /*package*/ static final SContainmentLink dependencies$NWkV = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
+    /*package*/ static final SReferenceLink language$Z1aw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language");
+    /*package*/ static final SReferenceLink devkit$noXl = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit");
+    /*package*/ static final SContainmentLink runtime$QljP = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x2c4467914643be24L, "runtime");
+    /*package*/ static final SReferenceLink solution$wRmw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L, 0x2c4467914644b6e4L, "solution");
+    /*package*/ static final SReferenceLink language$kMx1 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
+    /*package*/ static final SReferenceLink module$PvPC = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
+    /*package*/ static final SContainmentLink exports$nj57 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d29d82L, "exports");
+    /*package*/ static final SReferenceLink language$Ve4X = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, 0x4780308f5d29d73L, "language");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reexport$gb$r = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
+    /*package*/ static final SProperty reexport$PAD5 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
   }
 }

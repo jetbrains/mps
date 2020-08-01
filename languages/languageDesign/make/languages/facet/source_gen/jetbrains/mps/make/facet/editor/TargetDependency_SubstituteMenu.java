@@ -182,8 +182,8 @@ __switch__:
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode dep = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.TargetDependency$Wl, null);
-          SPropertyOperations.assignEnum(dep, PROPS.qualifier$a8rT, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, "jetbrains.mps.make.facet.structure.TargetDependencyQualifier"), SEnumOperations.getMemberName0(myParameterObject._0())));
-          SLinkOperations.setTarget(dep, LINKS.dependsOn$wkAu, myParameterObject._1());
+          SPropertyOperations.assignEnum(dep, PROPS.qualifier$U5wB, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, "jetbrains.mps.make.facet.structure.TargetDependencyQualifier"), SEnumOperations.getMemberName0(myParameterObject._0())));
+          SLinkOperations.setTarget(dep, LINKS.dependsOn$DYCy, myParameterObject._1());
           return dep;
         }
 
@@ -208,7 +208,7 @@ __switch__:
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SEnumOperations.getMemberPresentation(myParameterObject._0()) + " " + SPropertyOperations.getString(myParameterObject._1(), PROPS.name$tAp1);
+          return SEnumOperations.getMemberPresentation(myParameterObject._0()) + " " + SPropertyOperations.getString(myParameterObject._1(), PROPS.name$lA7v);
         }
       }
     }
@@ -222,11 +222,11 @@ __switch__:
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty qualifier$a8rT = MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, 0x73e720709e3139e9L, "qualifier");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty qualifier$U5wB = MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, 0x73e720709e3139e9L, "qualifier");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dependsOn$wkAu = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, 0x5912a2ab1cd24c63L, "dependsOn");
+    /*package*/ static final SReferenceLink dependsOn$DYCy = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, 0x5912a2ab1cd24c63L, "dependsOn");
   }
 }

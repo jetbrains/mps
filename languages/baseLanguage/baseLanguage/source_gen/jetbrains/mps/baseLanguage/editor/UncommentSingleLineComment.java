@@ -49,8 +49,8 @@ public class UncommentSingleLineComment {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$jI)) {
-          SNode firstMoved = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$32mp), LINKS.elements$eRew)).first();
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$jI), LINKS.line$32mp), LINKS.elements$eRew)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$32mp), LINKS.elements$eRew)));
+          SNode firstMoved = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$u8Q7), LINKS.elements$cK1w)).first();
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$jI), LINKS.line$u8Q7), LINKS.elements$cK1w)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$u8Q7), LINKS.elements$cK1w)));
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, firstMoved, SelectionManager.FIRST_CELL, 0);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
@@ -109,8 +109,8 @@ public class UncommentSingleLineComment {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$32mp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink line$u8Q7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {

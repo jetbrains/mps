@@ -83,13 +83,13 @@ public final class AddNodeMacroParam_copySrcMacro_Intention extends AbstractInte
       SNode referentValue = SNodeFactoryOperations.createNewNode(CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$An, null);
       SNode dotExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
       SNode linkAccess = SNodeFactoryOperations.createNewNode(CONCEPTS.SLinkAccess$NO, null);
-      SLinkOperations.setTarget(linkAccess, LINKS.link$22g7, myParameter);
-      SLinkOperations.setTarget(dotExpression, LINKS.operation$X4R8, linkAccess);
-      SLinkOperations.setTarget(dotExpression, LINKS.operand$Lcrr, SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateFunctionParameter_sourceNode$A8, null));
+      SLinkOperations.setTarget(linkAccess, LINKS.link$Z5Np, myParameter);
+      SLinkOperations.setTarget(dotExpression, LINKS.operation$_mGS, linkAccess);
+      SLinkOperations.setTarget(dotExpression, LINKS.operand$P1i5, SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateFunctionParameter_sourceNode$A8, null));
       SNode expressionStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ExpressionStatement$nm, null);
-      SLinkOperations.setTarget(expressionStatement, LINKS.expression$WIP0, dotExpression);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(referentValue, LINKS.body$pTP2), LINKS.statement$WHn8)).addElement(expressionStatement);
-      SLinkOperations.setTarget(copySrcMacro, LINKS.sourceNodeQuery$u9yb, referentValue);
+      SLinkOperations.setTarget(expressionStatement, LINKS.expression$qFF0, dotExpression);
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(referentValue, LINKS.body$z0FY), LINKS.statement$pYcS)).addElement(expressionStatement);
+      SLinkOperations.setTarget(copySrcMacro, LINKS.sourceNodeQuery$ABzl, referentValue);
       // set caret 
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, copySrcMacro, SelectionManager.FIRST_CELL, 1);
     }
@@ -112,12 +112,12 @@ public final class AddNodeMacroParam_copySrcMacro_Intention extends AbstractInte
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$22g7 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, 0x108f974549cL, "link");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink sourceNodeQuery$u9yb = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10389b50fefL, 0x10ff3aea96eL, "sourceNodeQuery");
+    /*package*/ static final SReferenceLink link$Z5Np = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, 0x108f974549cL, "link");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink sourceNodeQuery$ABzl = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10389b50fefL, 0x10ff3aea96eL, "sourceNodeQuery");
   }
 }

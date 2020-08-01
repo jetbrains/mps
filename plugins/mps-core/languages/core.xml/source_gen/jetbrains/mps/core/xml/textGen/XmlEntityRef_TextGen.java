@@ -23,7 +23,7 @@ public class XmlEntityRef_TextGen extends TextGenDescriptorBase {
       tgs.indent();
     }
     tgs.append("&");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.entityName$nUu1));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.entityName$_kyv));
     tgs.append(";");
   }
 
@@ -32,6 +32,6 @@ public class XmlEntityRef_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty entityName$nUu1 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, 0x16838b3fce9c6f8fL, "entityName");
+    /*package*/ static final SProperty entityName$_kyv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, 0x16838b3fce9c6f8fL, "entityName");
   }
 }

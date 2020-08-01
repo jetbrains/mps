@@ -28,15 +28,15 @@ public class check_BaseMethodDeclarationParameterUniqueNames_NonTypesystemRule e
   }
   public void applyRule(final SNode baseMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final Set<String> names = SetSequence.fromSet(new HashSet<String>());
-    ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.parameter$WIkZ)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.parameter$qsax)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        if (SetSequence.fromSet(names).contains(SPropertyOperations.getString(it, PROPS.name$tAp1))) {
+        if (SetSequence.fromSet(names).contains(SPropertyOperations.getString(it, PROPS.name$lA7v))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "Parameter names must be unique", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4830624418866443087", null, errorTarget);
           }
         } else {
-          SetSequence.fromSet(names).addElement(SPropertyOperations.getString(it, PROPS.name$tAp1));
+          SetSequence.fromSet(names).addElement(SPropertyOperations.getString(it, PROPS.name$lA7v));
         }
       }
     });
@@ -52,11 +52,11 @@ public class check_BaseMethodDeclarationParameterUniqueNames_NonTypesystemRule e
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

@@ -34,10 +34,10 @@ public final class DirectClassifierSpecification__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static String getClassifierFqName_id4HFrnGErDob(@NotNull SNode __thisNode__) {
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$udFV));
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$CCh_));
   }
   /*package*/ static String getSModelReference_id4HFrnGEt_VQ(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$udFV)).getReference().toString();
+    return SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$CCh_)).getReference().toString();
   }
 
   /*package*/ DirectClassifierSpecification__BehaviorDescriptor() {
@@ -89,6 +89,6 @@ public final class DirectClassifierSpecification__BehaviorDescriptor extends Bas
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$udFV = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier");
+    /*package*/ static final SReferenceLink classifier$CCh_ = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier");
   }
 }

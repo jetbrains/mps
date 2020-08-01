@@ -22,7 +22,7 @@ public class _InstanceMethodDeclaration_RemoveAbstract {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.set(node, PROPS.isAbstract$cU_H, false);
+        SPropertyOperations.set(node, PROPS.isAbstract$gogN, false);
         CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, false);
       }
 
@@ -34,7 +34,7 @@ public class _InstanceMethodDeclaration_RemoveAbstract {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.set(node, PROPS.isAbstract$cU_H, false);
+        SPropertyOperations.set(node, PROPS.isAbstract$gogN, false);
         CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, true);
       }
 
@@ -87,6 +87,6 @@ public class _InstanceMethodDeclaration_RemoveAbstract {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

@@ -27,14 +27,14 @@ public class DeployScriptCreator {
   public static SNode createDeployScript(final Project project, List<SNodeReference> plugins, File baseDir) {
     @NotNull com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(project);
     SNode deployProject = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
-    SPropertyOperations.set(deployProject, PROPS.name$tAp1, "deploy");
-    SPropertyOperations.set(deployProject, PROPS.fileName$L1hm, "deploy.xml");
+    SPropertyOperations.set(deployProject, PROPS.name$lA7v, "deploy");
+    SPropertyOperations.set(deployProject, PROPS.fileName$JBpE, "deploy.xml");
     // FIXME figure out what's expected format of internalBaseDirectory (absolute/relative, separators) 
     //       and if/how shall we use baseDir value for it (DeployScript passes some temp location, is it what we need?) 
     // deployProject.internalBaseDirectory.set(baseDir)? 
 
-    SLinkOperations.getChildren(deployProject, LINKS.plugins$97JG).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin")));
-    SLinkOperations.getChildren(deployProject, LINKS.plugins$97JG).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin")));
+    SLinkOperations.getChildren(deployProject, LINKS.plugins$qK6k).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin")));
+    SLinkOperations.getChildren(deployProject, LINKS.plugins$qK6k).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin")));
 
     Iterable<SNode> pluginNodes = ListSequence.fromList(plugins).select(new ISelector<SNodeReference, SNode>() {
       public SNode select(SNodeReference it) {
@@ -48,12 +48,12 @@ public class DeployScriptCreator {
     }).ofType(SNode.class).distinct();
 
     for (SNode projectNode : Sequence.fromIterable(projects)) {
-      ListSequence.fromList(SLinkOperations.getChildren(deployProject, LINKS.dependencies$tpR5)).addElement(_quotation_createNode_ppcj9p_a0a0a41a0(projectNode));
+      ListSequence.fromList(SLinkOperations.getChildren(deployProject, LINKS.dependencies$fxFr)).addElement(_quotation_createNode_ppcj9p_a0a0a41a0(projectNode));
     }
 
-    SLinkOperations.setNewChild(deployProject, LINKS.layout$tpCz, null);
+    SLinkOperations.setNewChild(deployProject, LINKS.layout$fqCX, null);
     for (SNode plugin : Sequence.fromIterable(pluginNodes)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(deployProject, LINKS.layout$tpCz), LINKS.children$aiMf)).addElement(_quotation_createNode_ppcj9p_a0a0a71a0(plugin));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(deployProject, LINKS.layout$fqCX), LINKS.children$Z6lh)).addElement(_quotation_createNode_ppcj9p_a0a0a71a0(plugin));
     }
 
     return deployProject;
@@ -74,14 +74,14 @@ public class DeployScriptCreator {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty fileName$L1hm = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4438b4de59410ebcL, "fileName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty fileName$JBpE = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4438b4de59410ebcL, "fileName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink plugins$97JG = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
-    /*package*/ static final SContainmentLink dependencies$tpR5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
-    /*package*/ static final SContainmentLink layout$tpCz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
-    /*package*/ static final SContainmentLink children$aiMf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SContainmentLink plugins$qK6k = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
+    /*package*/ static final SContainmentLink dependencies$fxFr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SContainmentLink layout$fqCX = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
+    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
   }
 }

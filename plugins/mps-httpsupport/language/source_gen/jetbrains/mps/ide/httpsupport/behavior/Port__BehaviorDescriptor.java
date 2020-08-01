@@ -31,7 +31,7 @@ public final class Port__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static int getPort_id6WBmrsjA4L4(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getInteger(__thisNode__, PROPS.portNumber$TX5w);
+    return SPropertyOperations.getInteger(__thisNode__, PROPS.portNumber$4_Ew);
   }
 
   /*package*/ Port__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class Port__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty portNumber$TX5w = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L, 0x6f2759b7139c32c3L, "portNumber");
+    /*package*/ static final SProperty portNumber$4_Ew = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L, 0x6f2759b7139c32c3L, "portNumber");
   }
 }

@@ -23,10 +23,10 @@ public class check_EditorComponentDeclaration_NonTypesystemRule extends Abstract
   }
   public void applyRule(final SNode reference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode editorComponent = SNodeOperations.as(SNodeOperations.getParent(reference), CONCEPTS.EditorComponentDeclaration$Lb);
-    if (editorComponent == null || SLinkOperations.getTarget(reference, LINKS.editorComponent$okXt) == null) {
+    if (editorComponent == null || SLinkOperations.getTarget(reference, LINKS.editorComponent$M9L3) == null) {
       return;
     }
-    if (SLinkOperations.getTarget(SLinkOperations.getTarget(reference, LINKS.editorComponent$okXt), LINKS.overridenEditorComponent$GNSC) != null) {
+    if (SLinkOperations.getTarget(SLinkOperations.getTarget(reference, LINKS.editorComponent$M9L3), LINKS.overridenEditorComponent$H8ro) != null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(reference, "Overriden EditorComponent is overriding another editor component. It's possible to override only main editor component directly.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "608335627140284576", null, errorTarget);
@@ -49,7 +49,7 @@ public class check_EditorComponentDeclaration_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink editorComponent$okXt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, 0x619d95571435e249L, "editorComponent");
-    /*package*/ static final SContainmentLink overridenEditorComponent$GNSC = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
+    /*package*/ static final SReferenceLink editorComponent$M9L3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, 0x619d95571435e249L, "editorComponent");
+    /*package*/ static final SContainmentLink overridenEditorComponent$H8ro = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
   }
 }

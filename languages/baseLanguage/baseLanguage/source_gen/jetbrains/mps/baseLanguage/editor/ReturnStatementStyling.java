@@ -56,7 +56,7 @@ public class ReturnStatementStyling implements EditorMenuItemCustomizer {
       customize_(getParentNode(context), getChild(context), getLink(context), style, getCompletionItemInformation(context));
     }
     private void customize_(SNode parentNode, SNode currentChild, SContainmentLink containmentLink, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.StatementList$TN) && (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.StatementList$TN), LINKS.statement$WHn8)).isEmpty() || Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.StatementList$TN), LINKS.statement$WHn8)).last(), currentChild))) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.StatementList$TN) && (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.StatementList$TN), LINKS.statement$pYcS)).isEmpty() || Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.StatementList$TN), LINKS.statement$pYcS)).last(), currentChild))) {
         style.setPriority(2.0);
       }
       style.setBold();
@@ -72,6 +72,6 @@ public class ReturnStatementStyling implements EditorMenuItemCustomizer {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

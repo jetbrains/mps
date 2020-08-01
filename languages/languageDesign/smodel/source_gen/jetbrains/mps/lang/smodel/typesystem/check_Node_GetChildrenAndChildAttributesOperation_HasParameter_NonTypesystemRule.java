@@ -21,7 +21,7 @@ public class check_Node_GetChildrenAndChildAttributesOperation_HasParameter_NonT
   public check_Node_GetChildrenAndChildAttributesOperation_HasParameter_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$3FGp)).count() != 1) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$Maw7)).count() != 1) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "link parameter must be specified", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "4862225818734420908", null, errorTarget);
@@ -39,7 +39,7 @@ public class check_Node_GetChildrenAndChildAttributesOperation_HasParameter_NonT
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$3FGp = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter");
+    /*package*/ static final SContainmentLink parameter$Maw7 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter");
   }
 
   private static final class CONCEPTS {

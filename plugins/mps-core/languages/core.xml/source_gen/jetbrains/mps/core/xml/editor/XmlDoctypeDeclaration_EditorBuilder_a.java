@@ -146,7 +146,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.doctypeName$ETfD;
+      final SProperty property = PROPS.doctypeName$LI$R;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no doctypeName>");
@@ -172,7 +172,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new externalIdSingleRoleHandler_kqvvq_c1a(myNode, LINKS.externalId$sRaL, getEditorContext());
+    SingleRoleCellProvider provider = new externalIdSingleRoleHandler_kqvvq_c1a(myNode, LINKS.externalId$YIdJ, getEditorContext());
     return provider.createCell();
   }
   private static class externalIdSingleRoleHandler_kqvvq_c1a extends SingleRoleCellProvider {
@@ -192,8 +192,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.externalId$sRaL, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.externalId$sRaL, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.externalId$YIdJ, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.externalId$YIdJ, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -202,16 +202,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.externalId$sRaL, CONCEPTS.XmlExternalId$et), new SubstituteInfoPartExt[]{new XmlDoctypeDeclaration_externalId_cellMenu_kqvvq_a0c1a(), new XmlDoctypeDeclaration_externalId_cellMenu_kqvvq_b0c1a(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.externalId$YIdJ, CONCEPTS.XmlExternalId$et), new SubstituteInfoPartExt[]{new XmlDoctypeDeclaration_externalId_cellMenu_kqvvq_a0c1a(), new XmlDoctypeDeclaration_externalId_cellMenu_kqvvq_b0c1a(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.externalId$sRaL);
+        editorCell.setSRole(LINKS.externalId$YIdJ);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.externalId$sRaL));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.externalId$YIdJ));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_externalId");
@@ -257,8 +257,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return customCreateChildNode_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, model, operationContext, editorContext);
       }
       private SNode customCreateChildNode_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        SNode newId = SLinkOperations.setNewChild(node, LINKS.externalId$sRaL, null);
-        SPropertyOperations.set(newId, PROPS.isPublic$k9I6, true);
+        SNode newId = SLinkOperations.setNewChild(node, LINKS.externalId$YIdJ, null);
+        SPropertyOperations.set(newId, PROPS.isPublic$KHkU, true);
         return newId;
       }
     }
@@ -294,8 +294,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
         return customCreateChildNode_impl(node, currentChild, defaultChildConcept.getDeclarationNode(), defaultChildConcept, model, operationContext, editorContext);
       }
       private SNode customCreateChildNode_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        SNode newId = SLinkOperations.setNewChild(node, LINKS.externalId$sRaL, null);
-        SPropertyOperations.set(newId, PROPS.isPublic$k9I6, false);
+        SNode newId = SLinkOperations.setNewChild(node, LINKS.externalId$YIdJ, null);
+        SPropertyOperations.set(newId, PROPS.isPublic$KHkU, false);
         return newId;
       }
     }
@@ -339,8 +339,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty doctypeName$ETfD = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f4069eL, "doctypeName");
-    /*package*/ static final SProperty isPublic$k9I6 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60345L, "isPublic");
+    /*package*/ static final SProperty doctypeName$LI$R = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f4069eL, "doctypeName");
+    /*package*/ static final SProperty isPublic$KHkU = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60345L, "isPublic");
   }
 
   private static final class CONCEPTS {
@@ -349,6 +349,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink externalId$sRaL = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f60340L, "externalId");
+    /*package*/ static final SContainmentLink externalId$YIdJ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f60340L, "externalId");
   }
 }

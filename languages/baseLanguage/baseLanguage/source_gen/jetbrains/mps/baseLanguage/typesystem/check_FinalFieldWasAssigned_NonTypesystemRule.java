@@ -32,7 +32,7 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
   }
   public void applyRule(final SNode field, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode classifier = SNodeOperations.getNodeAncestor(field, CONCEPTS.ClassConcept$IY, false, false);
-    if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$hIht)) || SLinkOperations.getTarget(field, LINKS.initializer$KgD) != null || classifier == null) {
+    if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$_qt3)) || SLinkOperations.getTarget(field, LINKS.initializer$no3R) != null || classifier == null) {
       return;
     }
 
@@ -51,10 +51,10 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
         }
         for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(member, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps);
+            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps);
           }
         }).toListSequence()) {
-          if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$2ky6) == field && CheckingUtil.isAssigned(reference)) {
+          if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$7WwU) == field && CheckingUtil.isAssigned(reference)) {
             ListSequence.fromList(doNotInitialize).removeElement(member);
             if (SNodeOperations.isInstanceOf(member, CONCEPTS.InstanceInitializer$BJ)) {
               initializedInInitializer = true;
@@ -63,7 +63,7 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
           }
         }
         for (SNode reference : SNodeOperations.getNodeDescendants(member, CONCEPTS.FieldReferenceOperation$N8, false, new SAbstractConcept[]{})) {
-          if (SLinkOperations.getTarget(reference, LINKS.fieldDeclaration$mLBy) == field && CheckingUtil.isAssigned(reference)) {
+          if (SLinkOperations.getTarget(reference, LINKS.fieldDeclaration$229u) == field && CheckingUtil.isAssigned(reference)) {
             ListSequence.fromList(doNotInitialize).removeElement(member);
             if (SNodeOperations.isInstanceOf(member, CONCEPTS.InstanceInitializer$BJ)) {
               initializedInInitializer = true;
@@ -76,7 +76,7 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
     if (ListSequence.fromList(mayInitialize).isEmpty() || (ListSequence.fromList(doNotInitialize).isNotEmpty() && !(initializedInInitializer))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(field, "Variable '" + SPropertyOperations.getString(field, PROPS.name$tAp1) + "' might not have been initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047887576", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(field, "Variable '" + SPropertyOperations.getString(field, PROPS.name$lA7v) + "' might not have been initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047887576", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.InitializeVariable_QuickFix", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -105,13 +105,13 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 }

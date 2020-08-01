@@ -29,7 +29,7 @@ public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstrain
 
   public static class ContextVarName_Property extends BasePropertyConstraintsDescriptor {
     public ContextVarName_Property(ConstraintsDescriptor container) {
-      super(PROPS.contextVarName$SNbV, container);
+      super(PROPS.contextVarName$wML_, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -50,7 +50,7 @@ public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstrain
         if (SNodeOperations.isInstanceOf(n, CONCEPTS.ContextVariableProvider$W7)) {
           if (ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, CONCEPTS.ContextVariableProvider$W7))).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$tAp1).equals(propertyValue);
+              return SPropertyOperations.getString(it, PROPS.name$lA7v).equals(propertyValue);
             }
           })) {
             return true;
@@ -64,7 +64,7 @@ public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstrain
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.contextVarName$SNbV, new ContextVarName_Property(this));
+    properties.put(PROPS.contextVarName$wML_, new ContextVarName_Property(this));
     return properties;
   }
 
@@ -74,7 +74,7 @@ public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstrain
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty contextVarName$SNbV = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty contextVarName$wML_ = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

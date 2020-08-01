@@ -35,13 +35,13 @@ public final class UpdateCastExpressionParens_MigrationScript extends BaseMigrat
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.expression$8QPv), CONCEPTS.ParenthesizedExpression$vE)) && PrecedenceUtil.needsParensInsideCastExpression(node);
+        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.expression$izU1), CONCEPTS.ParenthesizedExpression$vE)) && PrecedenceUtil.needsParensInsideCastExpression(node);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode expression = SLinkOperations.getTarget(node, LINKS.expression$8QPv);
+        SNode expression = SLinkOperations.getTarget(node, LINKS.expression$izU1);
         SNode result = SNodeFactoryOperations.replaceWithNewChild(expression, CONCEPTS.ParenthesizedExpression$vE);
-        SLinkOperations.setTarget(result, LINKS.expression$4_F0, expression);
+        SLinkOperations.setTarget(result, LINKS.expression$efP0, expression);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -62,7 +62,7 @@ public final class UpdateCastExpressionParens_MigrationScript extends BaseMigrat
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$8QPv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

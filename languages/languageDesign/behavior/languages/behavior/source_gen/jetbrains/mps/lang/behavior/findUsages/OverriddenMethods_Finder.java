@@ -98,7 +98,7 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
                   return SNodeOperations.isInstanceOf(it, CONCEPTS.ConceptBehavior$8P);
                 }
               }).first(), CONCEPTS.ConceptBehavior$8P);
-              List<SNode> candidateMethodsInAncestor = ListSequence.fromList(SLinkOperations.getChildren(ancestorBehavior, LINKS.method$vbvQ)).where(new IWhereFilter<SNode>() {
+              List<SNode> candidateMethodsInAncestor = ListSequence.fromList(SLinkOperations.getChildren(ancestorBehavior, LINKS.method$6$ra)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(it) == topMostOverriddenMethod;
                 }
@@ -130,6 +130,6 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink method$vbvQ = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
+    /*package*/ static final SContainmentLink method$6$ra = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
   }
 }

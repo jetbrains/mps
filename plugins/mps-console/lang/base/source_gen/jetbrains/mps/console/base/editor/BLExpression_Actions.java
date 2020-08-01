@@ -27,7 +27,7 @@ public class BLExpression_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode expression = SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.expression$HQe6));
+        SNode expression = SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.expression$dgOU));
         SNodeOperations.replaceWithAnother(node, createBLCommand_ca49ow_a0a1a0a(expression));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.cast(SNodeOperations.getParent(expression), CONCEPTS.ExpressionStatement$nm), SelectionManager.LAST_CELL, -1);
       }
@@ -36,7 +36,7 @@ public class BLExpression_Actions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.hasRole(node, LINKS.command$pL9$) && SNodeOperations.hasRole(SNodeOperations.getParent(node), LINKS.commandHolder$4VSX);
+        return SNodeOperations.hasRole(node, LINKS.command$uNCs) && SNodeOperations.hasRole(SNodeOperations.getParent(node), LINKS.commandHolder$p0_z);
       }
 
     };
@@ -100,22 +100,22 @@ public class BLExpression_Actions {
   private static SNode createBLCommand_ca49ow_a0a1a0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BLCommand$ib);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.body$78zK).init(CONCEPTS.StatementList$TN);
+      SNodeBuilder n1 = n0.forChild(LINKS.body$t9kg).init(CONCEPTS.StatementList$TN);
       {
-        SNodeBuilder n2 = n1.forChild(LINKS.statement$WHn8).init(CONCEPTS.ExpressionStatement$nm);
-        n2.forChild(LINKS.expression$WIP0).initNode(p0, CONCEPTS.Expression$TP, true);
+        SNodeBuilder n2 = n1.forChild(LINKS.statement$pYcS).init(CONCEPTS.ExpressionStatement$nm);
+        n2.forChild(LINKS.expression$qFF0).initNode(p0, CONCEPTS.Expression$TP, true);
       }
     }
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$HQe6 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
-    /*package*/ static final SContainmentLink commandHolder$4VSX = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder");
-    /*package*/ static final SContainmentLink command$pL9$ = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command");
-    /*package*/ static final SContainmentLink body$78zK = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4bd43869e610f3e9L, 0x188f8efcef6cea65L, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$dgOU = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
+    /*package*/ static final SContainmentLink commandHolder$p0_z = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder");
+    /*package*/ static final SContainmentLink command$uNCs = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command");
+    /*package*/ static final SContainmentLink body$t9kg = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4bd43869e610f3e9L, 0x188f8efcef6cea65L, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 
   private static final class CONCEPTS {

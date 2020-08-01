@@ -181,7 +181,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Uq, false, false), LINKS.body$pTP2), CONCEPTS.BeginWorkStatement$C0, false, new SAbstractConcept[]{});
+        return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Uq, false, false), LINKS.body$z0FY), CONCEPTS.BeginWorkStatement$C0, false, new SAbstractConcept[]{});
       }
       private class SMP_Action_kz2qu0_a3a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;
@@ -257,7 +257,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            return SConceptOperations.conceptAlias(CONCEPTS.AdvanceWorkStatement$CY) + " <amount> of " + SPropertyOperations.getString(myParameterObject, PROPS.workName$ILmr);
+            return SConceptOperations.conceptAlias(CONCEPTS.AdvanceWorkStatement$CY) + " <amount> of " + SPropertyOperations.getString(myParameterObject, PROPS.workName$DTR5);
           }
         }
       }
@@ -283,7 +283,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Uq, false, false), LINKS.body$pTP2), CONCEPTS.BeginWorkStatement$C0, false, new SAbstractConcept[]{});
+        return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Uq, false, false), LINKS.body$z0FY), CONCEPTS.BeginWorkStatement$C0, false, new SAbstractConcept[]{});
       }
       private class SMP_Action_kz2qu0_a4a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;
@@ -359,7 +359,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            return SConceptOperations.conceptAlias(CONCEPTS.FinishWorkStatement$Er) + " " + SPropertyOperations.getString(myParameterObject, PROPS.workName$ILmr);
+            return SConceptOperations.conceptAlias(CONCEPTS.FinishWorkStatement$Er) + " " + SPropertyOperations.getString(myParameterObject, PROPS.workName$DTR5);
           }
         }
       }
@@ -404,10 +404,10 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty workName$ILmr = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x97a1ce11865e911L, "workName");
+    /*package*/ static final SProperty workName$DTR5 = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x97a1ce11865e911L, "workName");
   }
 }

@@ -42,7 +42,7 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$tAp1, container);
+      super(PROPS.name$lA7v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -50,14 +50,14 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      SAbstractConcept cncpt = SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.type$gsXC));
+      SAbstractConcept cncpt = SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.type$Y1Qo));
       switch (conceptIndex.index(cncpt)) {
         case 0:
-          return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$acmt), PROPS.name$tAp1) + "_" + SNodeOperations.getConcept(node).getName();
+          return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$VYS3), PROPS.name$lA7v) + "_" + SNodeOperations.getConcept(node).getName();
         case 1:
-          return SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.type$gsXC), CONCEPTS.MenuTypeNamed$SE), PROPS.name$tAp1);
+          return SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.type$Y1Qo), CONCEPTS.MenuTypeNamed$SE), PROPS.name$lA7v);
         default:
-          return SPropertyOperations.getString(node, PROPS.name$tAp1);
+          return SPropertyOperations.getString(node, PROPS.name$lA7v);
       }
     }
     private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L), MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL)).seal();
@@ -65,12 +65,12 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$tAp1, new Name_Property(this));
+    properties.put(PROPS.name$lA7v, new Name_Property(this));
     return properties;
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptDeclaration$acmt, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptDeclaration$VYS3, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -107,11 +107,11 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$gsXC = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
-    /*package*/ static final SReferenceLink conceptDeclaration$acmt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink type$Y1Qo = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
+    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
   }
 }

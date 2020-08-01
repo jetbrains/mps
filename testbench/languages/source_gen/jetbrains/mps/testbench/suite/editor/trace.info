@@ -99,8 +99,8 @@
       <node id="1280144168199457874" at="191,34,192,69" concept="1" />
       <node id="1280144168199457874" at="192,69,193,146" concept="1" />
       <node id="1280144168199457874" at="197,34,198,91" concept="1" />
-      <node id="1280144168199457874" at="205,0,206,0" concept="8" trace="moduleRef$cQ0V" />
-      <node id="1280144168199457874" at="206,0,207,0" concept="8" trace="testRef$fEbz" />
+      <node id="1280144168199457874" at="205,0,206,0" concept="8" trace="moduleRef$eas_" />
+      <node id="1280144168199457874" at="206,0,207,0" concept="8" trace="testRef$_r_X" />
       <node id="1280144168199457874" at="210,0,211,0" concept="8" trace="ITestRef$Qb" />
       <node id="1280144168199457874" at="33,0,35,0" concept="2" trace="myNode" />
       <node id="1280144168199457874" at="75,0,77,0" concept="2" trace="myNode" />
@@ -316,9 +316,9 @@
       <node id="1280144168199457912" at="165,91,166,147" concept="6" />
       <node id="1280144168199457912" at="167,14,168,26" concept="6" />
       <node id="1280144168199457912" at="169,17,170,42" concept="1" />
-      <node id="1280144168199457902" at="176,0,177,0" concept="8" trace="muted$Piv7" />
-      <node id="1280144168199457902" at="177,0,178,0" concept="8" trace="name$tAp1" />
-      <node id="1280144168199457902" at="181,0,182,0" concept="8" trace="klass$Q7$q" />
+      <node id="1280144168199457902" at="176,0,177,0" concept="8" trace="muted$NX4p" />
+      <node id="1280144168199457902" at="177,0,178,0" concept="8" trace="name$lA7v" />
+      <node id="1280144168199457902" at="181,0,182,0" concept="8" trace="klass$dECA" />
       <node id="1280144168199457902" at="185,0,186,0" concept="8" trace="LinkAttribute$7j" />
       <node id="1280144168199457902" at="186,0,187,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="1280144168199457902" at="45,0,47,0" concept="2" trace="myNode" />
@@ -507,9 +507,9 @@
       <node id="1280144168199457923" at="165,91,166,147" concept="6" />
       <node id="1280144168199457923" at="167,14,168,26" concept="6" />
       <node id="1280144168199457923" at="169,17,170,42" concept="1" />
-      <node id="1280144168199457913" at="176,0,177,0" concept="8" trace="muted$Piv7" />
-      <node id="1280144168199457913" at="177,0,178,0" concept="8" trace="name$tAp1" />
-      <node id="1280144168199457913" at="181,0,182,0" concept="8" trace="klass$fEdo" />
+      <node id="1280144168199457913" at="176,0,177,0" concept="8" trace="muted$NX4p" />
+      <node id="1280144168199457913" at="177,0,178,0" concept="8" trace="name$lA7v" />
+      <node id="1280144168199457913" at="181,0,182,0" concept="8" trace="klass$_suC" />
       <node id="1280144168199457913" at="185,0,186,0" concept="8" trace="LinkAttribute$7j" />
       <node id="1280144168199457913" at="186,0,187,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="1280144168199457913" at="45,0,47,0" concept="2" trace="myNode" />
@@ -698,9 +698,9 @@
       <node id="1280144168199457934" at="165,91,166,147" concept="6" />
       <node id="1280144168199457934" at="167,14,168,26" concept="6" />
       <node id="1280144168199457934" at="169,17,170,42" concept="1" />
-      <node id="1280144168199457924" at="176,0,177,0" concept="8" trace="muted$Piv7" />
-      <node id="1280144168199457924" at="177,0,178,0" concept="8" trace="name$tAp1" />
-      <node id="1280144168199457924" at="181,0,182,0" concept="8" trace="testCase$fEcz" />
+      <node id="1280144168199457924" at="176,0,177,0" concept="8" trace="muted$NX4p" />
+      <node id="1280144168199457924" at="177,0,178,0" concept="8" trace="name$lA7v" />
+      <node id="1280144168199457924" at="181,0,182,0" concept="8" trace="testCase$_s4X" />
       <node id="1280144168199457924" at="185,0,186,0" concept="8" trace="LinkAttribute$7j" />
       <node id="1280144168199457924" at="186,0,187,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="1280144168199457924" at="45,0,47,0" concept="2" trace="myNode" />
@@ -975,7 +975,7 @@
       <node id="1741258697587113879" at="159,64,160,111" concept="6" />
       <node id="1741258697587113832" at="168,0,169,0" concept="8" trace="JUnit3TestCaseRef$PG" />
       <node id="1741258697587113832" at="169,0,170,0" concept="8" trace="ModuleSuite$D_" />
-      <node id="1741258697587113832" at="173,0,174,0" concept="8" trace="klass$Q7$q" />
+      <node id="1741258697587113832" at="173,0,174,0" concept="8" trace="klass$dECA" />
       <node id="1741258697587113834" at="84,0,87,0" concept="0" trace="SMP_Action_gl3mcm_a0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1741258697587113834" at="119,0,122,0" concept="4" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="1741258697587113834" at="143,67,146,11" concept="3" />
@@ -1134,7 +1134,7 @@
       <node id="1741258697587113993" at="168,0,169,0" concept="8" trace="JUnit4TestCaseRef$Pd" />
       <node id="1741258697587113993" at="169,0,170,0" concept="8" trace="JUnit3TestCaseRef$PG" />
       <node id="1741258697587113993" at="170,0,171,0" concept="8" trace="ModuleSuite$D_" />
-      <node id="1741258697587113993" at="174,0,175,0" concept="8" trace="klass$fEdo" />
+      <node id="1741258697587113993" at="174,0,175,0" concept="8" trace="klass$_suC" />
       <node id="1741258697587113995" at="84,0,87,0" concept="0" trace="SMP_Action_ojczeu_a0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1741258697587113995" at="119,0,122,0" concept="4" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="1741258697587113995" at="143,67,146,11" concept="3" />
@@ -1289,8 +1289,8 @@
       <node id="1741258697587114156" at="149,62,150,22" concept="6" />
       <node id="1741258697587114212" at="154,64,155,51" concept="6" />
       <node id="1741258697587114154" at="163,0,164,0" concept="8" trace="SolutionRef$S_" />
-      <node id="1741258697587114154" at="167,0,168,0" concept="8" trace="moduleFQName$uMtw" />
-      <node id="1741258697587114154" at="168,0,169,0" concept="8" trace="moduleID$uMCa" />
+      <node id="1741258697587114154" at="167,0,168,0" concept="8" trace="moduleFQName$Usiw" />
+      <node id="1741258697587114154" at="168,0,169,0" concept="8" trace="moduleID$UxsQ" />
       <node id="1741258697587114173" at="79,0,82,0" concept="4" trace="select#(Ljetbrains/mps/project/Solution;)Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
       <node id="1741258697587114156" at="86,0,89,0" concept="0" trace="SMP_Action_omknhr_a0#(Lorg/jetbrains/mps/openapi/module/SModuleReference;)V" />
       <node id="1741258697587114156" at="121,0,124,0" concept="4" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
@@ -1455,8 +1455,8 @@
       <node id="1741258697587114301" at="178,0,179,0" concept="8" trace="TestCaseRef$Ez" />
       <node id="1741258697587114301" at="179,0,180,0" concept="8" trace="ModuleSuite$D_" />
       <node id="1741258697587114301" at="180,0,181,0" concept="8" trace="ITestCase$uo" />
-      <node id="1741258697587114301" at="184,0,185,0" concept="8" trace="testCase$fEcz" />
-      <node id="1741258697587114301" at="188,0,189,0" concept="8" trace="name$tAp1" />
+      <node id="1741258697587114301" at="184,0,185,0" concept="8" trace="testCase$_s4X" />
+      <node id="1741258697587114301" at="188,0,189,0" concept="8" trace="name$lA7v" />
       <node id="1741258697587114323" at="87,0,90,0" concept="4" trace="translate#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
       <node id="1741258697587114303" at="94,0,97,0" concept="0" trace="SMP_Action_dnvvk3_a0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1741258697587114303" at="129,0,132,0" concept="4" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
@@ -1661,7 +1661,7 @@
       <node id="8605005254686522488" at="94,89,95,145" concept="6" />
       <node id="8605005254686522488" at="96,12,97,24" concept="6" />
       <node id="8605005254686522488" at="98,15,99,40" concept="1" />
-      <node id="8605005254686522474" at="104,0,105,0" concept="8" trace="muted$Piv7" />
+      <node id="8605005254686522474" at="104,0,105,0" concept="8" trace="muted$NX4p" />
       <node id="8605005254686522474" at="108,0,109,0" concept="8" trace="PropertyAttribute$jT" />
       <node id="8605005254686522474" at="35,0,37,0" concept="2" trace="myNode" />
       <node id="8605005254686522474" at="49,0,52,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

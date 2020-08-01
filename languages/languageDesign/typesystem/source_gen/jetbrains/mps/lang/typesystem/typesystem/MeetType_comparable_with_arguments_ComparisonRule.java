@@ -17,7 +17,7 @@ public class MeetType_comparable_with_arguments_ComparisonRule extends Compariso
   public MeetType_comparable_with_arguments_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    for (SNode arg : SLinkOperations.getChildren(node2, LINKS.argument$kHNt)) {
+    for (SNode arg : SLinkOperations.getChildren(node2, LINKS.argument$2bV3)) {
       if (MatchingUtil.matchNodes(arg, node1)) {
         return true;
       }
@@ -42,7 +42,7 @@ public class MeetType_comparable_with_arguments_ComparisonRule extends Compariso
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$kHNt = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 
   private static final class CONCEPTS {

@@ -1920,9 +1920,9 @@
   </root>
   <root nodeRef="r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)/3308300503039654079">
     <file name="QueriesGenerated.java">
-      <node id="3308300503039654098" at="82,92,83,77" concept="9" />
+      <node id="3308300503039654098" at="82,92,83,78" concept="9" />
       <node id="3308300503039654096" at="82,0,85,0" concept="13" trace="sourceNodeQuery_6_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="3308300503039654097" at="82,92,83,77" />
+      <scope id="3308300503039654097" at="82,92,83,78" />
       <scope id="3308300503039654096" at="82,0,85,0">
         <var name="_context" id="3308300503039654096" />
       </scope>

@@ -26,14 +26,14 @@ public class DispatchUtil {
   public DispatchUtil() {
   }
   public static SNode getParamClass(SNode method) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).first(), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+    return SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).first(), LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
   }
   public static boolean isReadyMethod(SNode method) {
-    return SPropertyOperations.getString(method, PROPS.name$tAp1) != null && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).all(new IWhereFilter<SNode>() {
+    return SPropertyOperations.getString(method, PROPS.name$lA7v) != null && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.type$pLrO) != null && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.type$pLrO))), CONCEPTS.Type$IG));
+        return SLinkOperations.getTarget(it, LINKS.type$uWuc) != null && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(it, LINKS.type$uWuc))), CONCEPTS.Type$IG));
       }
-    }) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$akE0)).any(new IWhereFilter<SNode>() {
+    }) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.modifiers$m0)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.DispatchModifier$W7);
       }
@@ -42,7 +42,7 @@ public class DispatchUtil {
   public static Iterable<SNode> ancestors(final SNode arg, boolean concreteFirst) {
     // true for baseLanguage, 
     // for smodel it would be node<BaseConcept> 
-    final SNode rootOfHierarchy = SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_pzuztq_a0a0c0d(), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+    final SNode rootOfHierarchy = SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_pzuztq_a0a0c0d(), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
 
     Iterable<SNode> classes = Sequence.fromClosure(new ISequenceClosure<SNode>() {
       public Iterable<SNode> iterable() {
@@ -93,7 +93,7 @@ __switch__:
                       break;
                     case 9:
 
-                      _3_cl = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(_3_cl, LINKS.superclass$_pqe), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+                      _3_cl = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(_3_cl, LINKS.superclass$7jGM), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
                       this.__CP__ = 11;
                       break;
                     case 8:
@@ -129,7 +129,7 @@ __switch__:
     if (1 < 0) {
       SNode c = clas;
       while (c != base && (c != null)) {
-        c = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(c, LINKS.superclass$_pqe), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+        c = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(c, LINKS.superclass$7jGM), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
       }
       // either c==base or c is null 
       return (c != null);
@@ -147,11 +147,11 @@ __switch__:
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
   }
 
   private static final class CONCEPTS {
@@ -162,6 +162,6 @@ __switch__:
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -27,7 +27,7 @@
       <node id="1563914226484898755" at="58,0,59,0" concept="7" trace="TestPropertyVariableReference$Oc" />
       <node id="1563914226484898755" at="59,0,60,0" concept="7" trace="PatternTest$8m" />
       <node id="1563914226484898755" at="60,0,61,0" concept="7" trace="PropertyPatternVariableDeclaration$Xj" />
-      <node id="1563914226484898755" at="64,0,65,0" concept="7" trace="declaration$$36A" />
+      <node id="1563914226484898755" at="64,0,65,0" concept="7" trace="declaration$twcq" />
       <node id="1563914226484898755" at="25,0,28,0" concept="0" trace="TestPropertyVariableReference_Constraints#()V" />
       <node id="1563914226484898756" at="32,0,36,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="1563914226484898756" at="40,0,44,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -78,8 +78,8 @@
       <node id="8707387027762047794" at="75,0,76,0" concept="7" trace="TestVariableReference$mS" />
       <node id="8707387027762047794" at="76,0,77,0" concept="7" trace="PatternTest$8m" />
       <node id="8707387027762047794" at="77,0,78,0" concept="7" trace="PatternVariableDeclaration$Ma" />
-      <node id="8707387027762047794" at="81,0,82,0" concept="7" trace="declaration$a6$0" />
-      <node id="8707387027762047794" at="85,0,86,0" concept="7" trace="name$tAp1" />
+      <node id="8707387027762047794" at="81,0,82,0" concept="7" trace="declaration$Tbs0" />
+      <node id="8707387027762047794" at="85,0,86,0" concept="7" trace="name$lA7v" />
       <node id="8707387027762047794" at="33,0,36,0" concept="0" trace="TestVariableReference_Constraints#()V" />
       <node id="8707387027762047795" at="40,0,44,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="8707387027762047795" at="48,0,52,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

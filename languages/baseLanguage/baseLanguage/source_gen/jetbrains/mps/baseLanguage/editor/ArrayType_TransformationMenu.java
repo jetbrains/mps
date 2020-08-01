@@ -128,7 +128,7 @@ public class ArrayType_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode arrayClassExpression = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, "jetbrains.mps.baseLanguage.structure.ArrayClassExpression"));
-        SLinkOperations.setTarget(arrayClassExpression, LINKS.arrayType$DkI0, SNodeOperations.copyNode(_context.getNode()));
+        SLinkOperations.setTarget(arrayClassExpression, LINKS.arrayType$12i0, SNodeOperations.copyNode(_context.getNode()));
         SNodeOperations.replaceWithAnother(_context.getNode(), arrayClassExpression);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), arrayClassExpression, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -164,6 +164,6 @@ public class ArrayType_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink arrayType$DkI0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
+    /*package*/ static final SContainmentLink arrayType$12i0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
   }
 }

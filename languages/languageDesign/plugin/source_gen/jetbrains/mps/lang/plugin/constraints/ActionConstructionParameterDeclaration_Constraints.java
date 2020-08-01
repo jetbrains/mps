@@ -45,7 +45,7 @@ public class ActionConstructionParameterDeclaration_Constraints extends BaseCons
             if (action == null) {
               return null;
             }
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(action, LINKS.constructionParameter$ikfq));
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(action, LINKS.constructionParameter$RNtA));
           }
         };
       }
@@ -78,6 +78,6 @@ public class ActionConstructionParameterDeclaration_Constraints extends BaseCons
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink constructionParameter$ikfq = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
+    /*package*/ static final SContainmentLink constructionParameter$RNtA = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
   }
 }

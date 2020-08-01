@@ -40,13 +40,13 @@ public class BuildJavaVersionMigration_JDKDefault extends MigrationScriptBase {
       }
     });
     for (SNode project : Sequence.fromIterable(projects)) {
-      Iterable<SNode> javaOptionsSeq = SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$tgxg), CONCEPTS.BuildSource_JavaOptions$u6);
+      Iterable<SNode> javaOptionsSeq = SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$b06K), CONCEPTS.BuildSource_JavaOptions$u6);
       for (SNode javaOptions : Sequence.fromIterable(javaOptionsSeq).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return "1.6".equals(SPropertyOperations.getString(it, PROPS.javaLevel$ZTwj));
+          return "1.6".equals(SPropertyOperations.getString(it, PROPS.javaLevel$WQDd));
         }
       })) {
-        SPropertyOperations.assign(javaOptions, PROPS.javaLevel$ZTwj, "");
+        SPropertyOperations.assign(javaOptions, PROPS.javaLevel$WQDd, "");
       }
     }
   }
@@ -60,10 +60,10 @@ public class BuildJavaVersionMigration_JDKDefault extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$tgxg = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty javaLevel$ZTwj = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0x6120f2e858dfcfdcL, "javaLevel");
+    /*package*/ static final SProperty javaLevel$WQDd = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0x6120f2e858dfcfdcL, "javaLevel");
   }
 }

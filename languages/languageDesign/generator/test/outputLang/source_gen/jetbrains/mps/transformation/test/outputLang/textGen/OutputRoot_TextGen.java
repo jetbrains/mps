@@ -16,15 +16,15 @@ public class OutputRoot_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append((SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1) == null ? "<no name>" : SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1)));
+    tgs.append((SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v) == null ? "<no name>" : SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v)));
     tgs.append(" : ");
-    tgs.append((SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$MRrr) == null ? "<no text>" : SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$MRrr)));
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.specialChild$BrY6) != null)) {
+    tgs.append((SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$CQi5) == null ? "<no text>" : SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$CQi5)));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.specialChild$6z4U) != null)) {
       tgs.newLine();
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.specialChild$BrY6));
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.specialChild$6z4U));
       tgs.newLine();
     }
-    for (SNode output : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.outputChild$fHEa)) {
+    for (SNode output : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.outputChild$B7qQ)) {
       tgs.newLine();
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
@@ -34,12 +34,12 @@ public class OutputRoot_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty text$MRrr = MetaAdapterFactory.getProperty(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, 0x116455e8bf1L, "text");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty text$CQi5 = MetaAdapterFactory.getProperty(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, 0x116455e8bf1L, "text");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink specialChild$BrY6 = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, 0x11bc24e708cL, "specialChild");
-    /*package*/ static final SContainmentLink outputChild$fHEa = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, 0x11645a94e4aL, "outputChild");
+    /*package*/ static final SContainmentLink specialChild$6z4U = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, 0x11bc24e708cL, "specialChild");
+    /*package*/ static final SContainmentLink outputChild$B7qQ = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, 0x11645a94e4aL, "outputChild");
   }
 }

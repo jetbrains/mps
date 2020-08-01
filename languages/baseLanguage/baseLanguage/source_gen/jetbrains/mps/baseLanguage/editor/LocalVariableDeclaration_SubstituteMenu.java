@@ -109,7 +109,7 @@ public class LocalVariableDeclaration_SubstituteMenu extends SubstituteMenuBase 
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.LocalVariableDeclaration$Bf, null);
 
-        SPropertyOperations.set(result, PROPS.isFinal$hIht, true);
+        SPropertyOperations.set(result, PROPS.isFinal$_qt3, true);
         return result;
       }
 
@@ -156,6 +156,6 @@ public class LocalVariableDeclaration_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

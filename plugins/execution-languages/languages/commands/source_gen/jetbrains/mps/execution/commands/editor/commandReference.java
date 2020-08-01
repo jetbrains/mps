@@ -120,7 +120,7 @@ public class commandReference extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode reference = SNodeFactoryOperations.createNewNode(CONCEPTS.CommandReferenceExpression$9D, null);
-          SLinkOperations.setTarget(reference, LINKS.command$noVZ, myParameterObject);
+          SLinkOperations.setTarget(reference, LINKS.command$l53x, myParameterObject);
           return reference;
         }
 
@@ -143,12 +143,12 @@ public class commandReference extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
         }
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          return "reference to a " + SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1) + " command";
+          return "reference to a " + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + " command";
         }
       }
     }
@@ -161,10 +161,10 @@ public class commandReference extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink command$noVZ = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, 0xbe3a0d5ba1a2bdbL, "command");
+    /*package*/ static final SReferenceLink command$l53x = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, 0xbe3a0d5ba1a2bdbL, "command");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

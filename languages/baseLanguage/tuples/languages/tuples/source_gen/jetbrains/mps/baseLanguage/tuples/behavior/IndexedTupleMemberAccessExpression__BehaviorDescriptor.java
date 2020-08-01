@@ -33,7 +33,7 @@ public final class IndexedTupleMemberAccessExpression__BehaviorDescriptor extend
   }
 
   /*package*/ static boolean isLValue_idhEwJgmE(@NotNull SNode __thisNode__) {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.tuple$Uqkp), CONCEPTS.IndexedTupleLiteral$PE));
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.tuple$iJS7), CONCEPTS.IndexedTupleLiteral$PE));
   }
 
   /*package*/ IndexedTupleMemberAccessExpression__BehaviorDescriptor() {
@@ -83,7 +83,7 @@ public final class IndexedTupleMemberAccessExpression__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tuple$Uqkp = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple");
+    /*package*/ static final SContainmentLink tuple$iJS7 = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple");
   }
 
   private static final class CONCEPTS {

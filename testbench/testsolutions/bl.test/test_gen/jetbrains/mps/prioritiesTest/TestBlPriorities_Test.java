@@ -61,7 +61,7 @@ public class TestBlPriorities_Test extends BaseTransformationTest {
 
     public void check(SNode expr, Object expectedValue) {
       this.expressionPriorityRebalance(expr);
-      Assert.assertEquals(expectedValue, this.eval(SLinkOperations.getTarget(expr, LINKS.expression$4_F0)));
+      Assert.assertEquals(expectedValue, this.eval(SLinkOperations.getTarget(expr, LINKS.expression$efP0)));
     }
     public void expressionPriorityRebalance(SNode e) {
       for (SNode child : SNodeOperations.getChildren(e)) {
@@ -78,17 +78,17 @@ public class TestBlPriorities_Test extends BaseTransformationTest {
         return this.evalBinaryOperation(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$vf));
       }
       if (SNodeOperations.isInstanceOf(e, CONCEPTS.IntegerConstant$mo)) {
-        return SPropertyOperations.getInteger(SNodeOperations.cast(e, CONCEPTS.IntegerConstant$mo), PROPS.value$ZeO0);
+        return SPropertyOperations.getInteger(SNodeOperations.cast(e, CONCEPTS.IntegerConstant$mo), PROPS.value$Cbc0);
       }
       if (SNodeOperations.isInstanceOf(e, CONCEPTS.BooleanConstant$Ui)) {
-        return SPropertyOperations.getBoolean(SNodeOperations.cast(e, CONCEPTS.BooleanConstant$Ui), PROPS.value$WIn0);
+        return SPropertyOperations.getBoolean(SNodeOperations.cast(e, CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90);
       }
 
       throw new UnsupportedOperationException(e.getPresentation());
     }
     public Object evalBinaryOperation(SNode e) {
-      Object left = this.eval(SLinkOperations.getTarget(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$rxLZ));
-      Object right = this.eval(SLinkOperations.getTarget(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$rxBl));
+      Object left = this.eval(SLinkOperations.getTarget(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$lndx));
+      Object right = this.eval(SLinkOperations.getTarget(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$li3b));
 
       if (SNodeOperations.isInstanceOf(e, CONCEPTS.ShiftLeftExpression$pQ)) {
         return ((Integer) left) << ((Integer) right);
@@ -188,9 +188,9 @@ public class TestBlPriorities_Test extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class CONCEPTS {
@@ -208,7 +208,7 @@ public class TestBlPriorities_Test extends BaseTransformationTest {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ZeO0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
-    /*package*/ static final SProperty value$WIn0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

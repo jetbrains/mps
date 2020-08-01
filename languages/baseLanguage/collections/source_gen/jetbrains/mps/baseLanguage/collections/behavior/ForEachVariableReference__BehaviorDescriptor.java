@@ -31,7 +31,7 @@ public final class ForEachVariableReference__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static SNode getVariable_idSORzhOpB6t(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.variable$ue0d);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.variable$CM6j);
   }
 
   /*package*/ ForEachVariableReference__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ForEachVariableReference__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variable$ue0d = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
+    /*package*/ static final SReferenceLink variable$CM6j = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
   }
 }

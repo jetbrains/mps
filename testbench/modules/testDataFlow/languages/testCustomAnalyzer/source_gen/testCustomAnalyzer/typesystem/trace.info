@@ -38,7 +38,7 @@
       <node id="2955426575106086733" at="53,50,54,28" concept="8" />
       <node id="2955426575106086733" at="56,68,57,102" concept="8" />
       <node id="2955426575106086733" at="59,30,60,17" concept="8" />
-      <node id="2955426575106086733" at="64,0,65,0" concept="9" trace="maxChildCount$V46W" />
+      <node id="2955426575106086733" at="64,0,65,0" concept="9" trace="maxChildCount$AZn4" />
       <node id="2955426575106086733" at="68,0,69,0" concept="9" trace="Root$vA" />
       <node id="2955426575106086733" at="30,0,32,0" concept="2" trace="check_ParentCounter_NonTypesystemRule#()V" />
       <node id="2955426575106116506" at="36,10,38,5" concept="0" />
@@ -109,8 +109,8 @@
       <node id="6628579460233842869" at="43,50,44,28" concept="8" />
       <node id="6628579460233842869" at="46,68,47,102" concept="8" />
       <node id="6628579460233842869" at="49,30,50,17" concept="8" />
-      <node id="6628579460233842869" at="54,0,55,0" concept="9" trace="initialCounter$V4jy" />
-      <node id="6628579460233842869" at="55,0,56,0" concept="9" trace="maxChildCount$V46W" />
+      <node id="6628579460233842869" at="54,0,55,0" concept="9" trace="initialCounter$B5tu" />
+      <node id="6628579460233842869" at="55,0,56,0" concept="9" trace="maxChildCount$AZn4" />
       <node id="6628579460233842869" at="59,0,60,0" concept="9" trace="Root$vA" />
       <node id="6628579460233842869" at="26,0,28,0" concept="2" trace="check_Counter_NonTypesystemRule#()V" />
       <node id="6628579460233842869" at="43,0,46,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

@@ -231,10 +231,10 @@
       <node id="1719162360410063011" at="164,54,165,40" concept="1" />
       <node id="1719162360410063011" at="165,40,166,92" concept="1" />
       <node id="1719162360410063011" at="166,92,167,22" concept="6" />
-      <node id="1719162360410047536" at="171,0,172,0" concept="9" trace="classifier_old$xsNt" />
+      <node id="1719162360410047536" at="171,0,172,0" concept="9" trace="classifier_old$cWV3" />
       <node id="1719162360410047536" at="175,0,176,0" concept="9" trace="LinkAttribute$7j" />
       <node id="1719162360410047536" at="176,0,177,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="1719162360410047536" at="180,0,181,0" concept="9" trace="name$tAp1" />
+      <node id="1719162360410047536" at="180,0,181,0" concept="9" trace="name$lA7v" />
       <node id="1719162360410047536" at="40,0,42,0" concept="2" trace="myNode" />
       <node id="1719162360410062971" at="105,0,107,0" concept="2" trace="myNode" />
       <node id="1719162360410047536" at="54,0,57,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -382,8 +382,8 @@
       <node id="6348240317717505787" at="97,60,98,66" concept="1" />
       <node id="2649128189913759277" at="100,63,101,69" concept="1" />
       <node id="2649128189911787239" at="106,0,107,0" concept="9" trace="BaseMethodDeclaration$RR" />
-      <node id="2649128189911787239" at="110,0,111,0" concept="9" trace="body$WIlu" />
-      <node id="2649128189911787239" at="111,0,112,0" concept="9" trace="statement$WHn8" />
+      <node id="2649128189911787239" at="110,0,111,0" concept="9" trace="body$qspy" />
+      <node id="2649128189911787239" at="111,0,112,0" concept="9" trace="statement$pYcS" />
       <node id="6348240317717505787" at="25,0,28,0" concept="4" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="2649128189911790197" at="31,29,34,11" concept="3" />
       <node id="2649128189913759277" at="43,0,46,0" concept="4" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />

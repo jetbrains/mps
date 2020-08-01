@@ -42,7 +42,7 @@ public final class CreateConceptIcon_Intention extends AbstractIntentionDescript
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SPropertyOperations.getBoolean(node, PROPS.rootable$vg$g) && (SLinkOperations.getTarget(node, LINKS.icon$2CxW) == null);
+    return SPropertyOperations.getBoolean(node, PROPS.rootable$91zK) && (SLinkOperations.getTarget(node, LINKS.icon$hCs4) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -64,7 +64,7 @@ public final class CreateConceptIcon_Intention extends AbstractIntentionDescript
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Tuples._2<String, String> color = ConceptIconHelper.createColors();
-      SLinkOperations.setTarget(node, LINKS.icon$2CxW, _quotation_createNode_46hmw2_a0b0a(color._0(), color._1(), (isEmptyString(SPropertyOperations.getString(node, PROPS.name$tAp1)) ? "" : SPropertyOperations.getString(node, PROPS.name$tAp1).charAt(0) + ""), IconHelper.createId(SNodeOperations.getModel(node))));
+      SLinkOperations.setTarget(node, LINKS.icon$hCs4, _quotation_createNode_46hmw2_a0b0a(color._0(), color._1(), (isEmptyString(SPropertyOperations.getString(node, PROPS.name$lA7v)) ? "" : SPropertyOperations.getString(node, PROPS.name$lA7v).charAt(0) + ""), IconHelper.createId(SNodeOperations.getModel(node))));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -102,11 +102,11 @@ public final class CreateConceptIcon_Intention extends AbstractIntentionDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink icon$2CxW = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x57cf4eb14c4f9ef5L, "icon");
+    /*package*/ static final SContainmentLink icon$hCs4 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x57cf4eb14c4f9ef5L, "icon");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rootable$vg$g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

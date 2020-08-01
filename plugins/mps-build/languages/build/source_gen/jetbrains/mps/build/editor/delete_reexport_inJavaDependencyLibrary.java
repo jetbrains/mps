@@ -26,7 +26,7 @@ public class delete_reexport_inJavaDependencyLibrary {
         if (DeletionApproverUtil.approve(editorContext, node, "reexportKeyword")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.reexport$qwse, false);
+        SPropertyOperations.assign(node, PROPS.reexport$PHEM, false);
       }
 
     };
@@ -74,6 +74,6 @@ public class delete_reexport_inJavaDependencyLibrary {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reexport$qwse = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
+    /*package*/ static final SProperty reexport$PHEM = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
   }
 }

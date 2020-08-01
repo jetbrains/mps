@@ -26,9 +26,9 @@ public class CheckBinaryOperationPriority_NonTypesystemRule extends AbstractNonT
     if (SNodeOperations.getParent(binaryOperation) != null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(binaryOperation), CONCEPTS.BinaryOperation$vf)) {
       SNode parent = SNodeOperations.cast(SNodeOperations.getParent(binaryOperation), CONCEPTS.BinaryOperation$vf);
       boolean isRigth = false;
-      if (SLinkOperations.getTarget(parent, LINKS.rightExpression$rxBl) == binaryOperation) {
+      if (SLinkOperations.getTarget(parent, LINKS.rightExpression$li3b) == binaryOperation) {
         isRigth = true;
-      } else if (SLinkOperations.getTarget(parent, LINKS.leftExpression$rxLZ) == binaryOperation) {
+      } else if (SLinkOperations.getTarget(parent, LINKS.leftExpression$lndx) == binaryOperation) {
         isRigth = false;
       }
       if (ParenthesisUtil.isBadPriority(binaryOperation, parent, isRigth)) {
@@ -60,7 +60,7 @@ public class CheckBinaryOperationPriority_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 }

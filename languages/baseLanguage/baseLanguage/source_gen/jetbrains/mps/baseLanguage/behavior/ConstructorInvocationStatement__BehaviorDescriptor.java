@@ -45,17 +45,17 @@ public final class ConstructorInvocationStatement__BehaviorDescriptor extends Ba
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
     SNode concept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
     List<SNode> typeVarRefs = new ArrayList<SNode>();
-    for (SNode tvd : SLinkOperations.getChildren(concept, LINKS.typeVariableDeclaration$ziZT)) {
+    for (SNode tvd : SLinkOperations.getChildren(concept, LINKS.typeVariableDeclaration$6cWB)) {
       ListSequence.fromList(typeVarRefs).addElement(_quotation_createNode_teq92u_a0a0a2a0(tvd));
     }
     return _quotation_createNode_teq92u_a3a0(typeVarRefs, concept);
   }
   /*package*/ static Map<SNode, SNode> getTypesByTypeVars_idJfLh5LDMrj(@NotNull SNode __thisNode__) {
     SNode instanceType = IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
-    if ((SLinkOperations.getTarget(instanceType, LINKS.classifier$pQ_R) == null)) {
+    if ((SLinkOperations.getTarget(instanceType, LINKS.classifier$xslD) == null)) {
       return Collections.emptyMap();
     }
-    return MethodResolveUtil.getTypesByTypeVars(SLinkOperations.getTarget(instanceType, LINKS.classifier$pQ_R), SLinkOperations.getChildren(instanceType, LINKS.parameter$dQne));
+    return MethodResolveUtil.getTypesByTypeVars(SLinkOperations.getTarget(instanceType, LINKS.classifier$xslD), SLinkOperations.getChildren(instanceType, LINKS.parameter$HlfM));
   }
 
   /*package*/ ConstructorInvocationStatement__BehaviorDescriptor() {
@@ -132,8 +132,8 @@ public final class ConstructorInvocationStatement__BehaviorDescriptor extends Ba
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 }

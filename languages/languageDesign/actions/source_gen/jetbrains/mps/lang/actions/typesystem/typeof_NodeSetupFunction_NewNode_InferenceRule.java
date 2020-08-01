@@ -23,7 +23,7 @@ public class typeof_NodeSetupFunction_NewNode_InferenceRule extends AbstractInfe
   }
   public void applyRule(final SNode nodeSetupFunction_NewNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode hostFactory = SNodeOperations.getNodeAncestor(nodeSetupFunction_NewNode, CONCEPTS.NodeFactory$bs, false, false);
-    SNode applicableConcept = SLinkOperations.getTarget(hostFactory, LINKS.applicableConcept$mqSo);
+    SNode applicableConcept = SLinkOperations.getTarget(hostFactory, LINKS.applicableConcept$R1jC);
     {
       SNode _nodeToCheck_1029348928467 = nodeSetupFunction_NewNode;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902a6(jetbrains.mps.lang.actions.typesystem)", "1223982503179", 0, null);
@@ -53,6 +53,6 @@ public class typeof_NodeSetupFunction_NewNode_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$mqSo = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$R1jC = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
   }
 }

@@ -25,17 +25,17 @@ public class PatternMemberDuplication_NonTypesystemRule extends AbstractNonTypes
   public PatternMemberDuplication_NonTypesystemRule() {
   }
   public void applyRule(final SNode patternMember, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(patternMember, PROPS.name$tAp1))) {
+    if (isEmptyString(SPropertyOperations.getString(patternMember, PROPS.name$lA7v))) {
       return;
     }
     if (Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(SNodeOperations.getNodeAncestor(patternMember, CONCEPTS.Classifier$hJ, false, false)), CONCEPTS.PatternBuilderClassifierMember$75)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != patternMember && Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(patternMember, PROPS.name$tAp1));
+        return it != patternMember && Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(patternMember, PROPS.name$lA7v));
       }
     })) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(patternMember, "Pattern " + SPropertyOperations.getString(patternMember, PROPS.name$tAp1) + " is already declared", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "576141512673851244", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(patternMember, "Pattern " + SPropertyOperations.getString(patternMember, PROPS.name$lA7v) + " is already declared", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "576141512673851244", null, errorTarget);
       }
     }
   }
@@ -53,7 +53,7 @@ public class PatternMemberDuplication_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

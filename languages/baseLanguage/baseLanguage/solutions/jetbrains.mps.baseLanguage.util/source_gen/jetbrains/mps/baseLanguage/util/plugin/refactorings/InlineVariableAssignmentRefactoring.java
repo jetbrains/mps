@@ -53,8 +53,8 @@ public class InlineVariableAssignmentRefactoring extends InlineVariableRefactori
     SNode newSelection = null;
     for (SNode sourceNode : this.getNodesToRefactor()) {
       for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(sourceNode, CONCEPTS.VariableReference$sQ, true, new SAbstractConcept[]{}))) {
-        if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$2ky6) == myVariable) {
-          SNode expr = SNodeOperations.copyNode(SLinkOperations.getTarget(myVariable, LINKS.initializer$KgD));
+        if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$7WwU) == myVariable) {
+          SNode expr = SNodeOperations.copyNode(SLinkOperations.getTarget(myVariable, LINKS.initializer$no3R));
           SNodeOperations.replaceWithAnother(reference, expr);
           InlinePrecedenceUtil.parenthesiseIfNecessary(expr);
         }
@@ -67,7 +67,7 @@ public class InlineVariableAssignmentRefactoring extends InlineVariableRefactori
     List<SNode> result = new ArrayList<SNode>();
     for (ReadInstruction read : SetSequence.fromSet(this.myReadInstructions)) {
       SNode node = (SNode) read.getSource();
-      if (!((SNodeOperations.hasRole(node, LINKS.expression$7Rjy) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.UnaryMinus$Uo)))) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractUnaryNumberOperation$pk)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.OperationAssignmentExpression$Ue))) {
+      if (!((SNodeOperations.hasRole(node, LINKS.expression$NMtu) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.UnaryMinus$Uo)))) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractUnaryNumberOperation$pk)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.OperationAssignmentExpression$Ue))) {
         ListSequence.fromList(result).addElement((node));
       }
     }
@@ -85,9 +85,9 @@ public class InlineVariableAssignmentRefactoring extends InlineVariableRefactori
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 
   private static final class CONCEPTS {

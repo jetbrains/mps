@@ -108,7 +108,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.part$spXq;
+      return LINKS.part$K$JA;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.SymbolClassPart$qA;
@@ -121,7 +121,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(partListHandler_4p4aum_b0.this.getNode(), LINKS.part$spXq));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(partListHandler_4p4aum_b0.this.getNode(), LINKS.part$K$JA));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -178,6 +178,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$spXq = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2916aL, 0x11179171739L, "part");
+    /*package*/ static final SContainmentLink part$K$JA = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2916aL, 0x11179171739L, "part");
   }
 }

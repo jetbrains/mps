@@ -68,7 +68,7 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
     List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.ConstructorDeclaration$5U);
-    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC));
+    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o));
     return result;
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
@@ -83,13 +83,13 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     }
     result.append("(");
     boolean first = true;
-    for (SNode parm : SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)) {
+    for (SNode parm : SLinkOperations.getChildren(__thisNode__, LINKS.parameter$qsax)) {
       if (!(first)) {
         result.append(",");
       }
       first = false;
-      if (SLinkOperations.getTarget(parm, LINKS.type$pLrO) != null) {
-        result.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(parm, LINKS.type$pLrO)));
+      if (SLinkOperations.getTarget(parm, LINKS.type$uWuc) != null) {
+        result.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(parm, LINKS.type$uWuc)));
       } else {
         result.append("???");
       }
@@ -100,31 +100,31 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static String jniSignature_id7F81Cd2CcPY(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder();
     sb.append("(");
-    for (SNode p : SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)) {
-      sb.append(Type__BehaviorDescriptor.jniSignature_id7F81Cd2C7e3.invoke(SLinkOperations.getTarget(p, LINKS.type$pLrO)));
+    for (SNode p : SLinkOperations.getChildren(__thisNode__, LINKS.parameter$qsax)) {
+      sb.append(Type__BehaviorDescriptor.jniSignature_id7F81Cd2C7e3.invoke(SLinkOperations.getTarget(p, LINKS.type$uWuc)));
     }
     sb.append(")");
     sb.append("V");
     return sb.toString();
   }
   /*package*/ static boolean containsImplicitSuperConstructorCall_id6d19RW5IPof(@NotNull SNode __thisNode__) {
-    SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$WIlu));
+    SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$qspy));
     return !(SNodeOperations.isInstanceOf(firstStatement, CONCEPTS.ConstructorInvocationStatement$6c));
   }
   /*package*/ static SNode getThisConstructorInvocation_id5e6QuLS30e$(@NotNull SNode __thisNode__) {
-    SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$WIlu));
+    SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$qspy));
     if (SNodeOperations.isInstanceOf(firstStatement, CONCEPTS.ConstructorInvocationStatement$6c)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(firstStatement, CONCEPTS.ConstructorInvocationStatement$6c), LINKS.baseMethodDeclaration$$A7i);
+      return SLinkOperations.getTarget(SNodeOperations.cast(firstStatement, CONCEPTS.ConstructorInvocationStatement$6c), LINKS.baseMethodDeclaration$ItxI);
     }
     return null;
   }
   /*package*/ static SNode getSuperDefaultConstructor_id6d19RW5J1tP(@NotNull SNode __thisNode__) {
     SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
-    SNode classifierType = SLinkOperations.getTarget(classConcept, LINKS.superclass$_pqe);
+    SNode classifierType = SLinkOperations.getTarget(classConcept, LINKS.superclass$7jGM);
     if (classifierType == null) {
       return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))).first();
     }
-    SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R);
+    SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD);
     if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY))) {
       return null;
     }
@@ -132,14 +132,14 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     if (!(SNodeOperations.is(superclass, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum")))) {
       Iterable<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superclass)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se));
+          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se));
         }
       });
       if (Sequence.fromIterable(constructors).isEmpty()) {
         return null;
       }
       for (SNode constructor : constructors) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.parameter$WIkZ)).isEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.parameter$qsax)).isEmpty()) {
           return constructor;
         }
       }
@@ -150,11 +150,11 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   }
   /*package*/ static boolean hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS(@NotNull SNode __thisNode__) {
     SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
-    SNode classifierType = SLinkOperations.getTarget(classConcept, LINKS.superclass$_pqe);
+    SNode classifierType = SLinkOperations.getTarget(classConcept, LINKS.superclass$7jGM);
     if (classifierType == null) {
       return true;
     }
-    SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R);
+    SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD);
     if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY))) {
       return false;
     }
@@ -246,12 +246,12 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

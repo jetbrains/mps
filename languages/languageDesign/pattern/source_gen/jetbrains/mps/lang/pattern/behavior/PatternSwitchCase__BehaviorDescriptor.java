@@ -42,14 +42,14 @@ public final class PatternSwitchCase__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PatternBuilderVariable$In)) {
-      return new NamedElementsScope(AbstractPatternProvider__BehaviorDescriptor.getVariables_id2r4rhgaEVoa.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$LFiH)));
+      return new NamedElementsScope(AbstractPatternProvider__BehaviorDescriptor.getVariables_id2r4rhgaEVoa.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$3Y3N)));
     }
     return null;
   }
   /*package*/ static boolean hasVariableReferences_id5sDn0OneX$C(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.body$6jgq), CONCEPTS.PatternBuilderVariableReference$Sm, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(__thisNode__, LINKS.body$3kWA), CONCEPTS.PatternBuilderVariableReference$Sm, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode vr) {
-        return ListSequence.fromList(AbstractPatternProvider__BehaviorDescriptor.getVariables_id2r4rhgaEVoa.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$LFiH))).contains(SLinkOperations.getTarget(vr, LINKS.declaration$GelY));
+        return ListSequence.fromList(AbstractPatternProvider__BehaviorDescriptor.getVariables_id2r4rhgaEVoa.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$3Y3N))).contains(SLinkOperations.getTarget(vr, LINKS.declaration$qWD2));
       }
     }).isNotEmpty();
   }
@@ -108,8 +108,8 @@ public final class PatternSwitchCase__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink pattern$LFiH = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a9a3416L, 0x174c7ed18b16ecf4L, "pattern");
-    /*package*/ static final SContainmentLink body$6jgq = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a9a3416L, 0x10ef02d8048L, "body");
-    /*package*/ static final SReferenceLink declaration$GelY = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, 0x26c46d140aa61088L, "declaration");
+    /*package*/ static final SContainmentLink pattern$3Y3N = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a9a3416L, 0x174c7ed18b16ecf4L, "pattern");
+    /*package*/ static final SContainmentLink body$3kWA = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a9a3416L, 0x10ef02d8048L, "body");
+    /*package*/ static final SReferenceLink declaration$qWD2 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, 0x26c46d140aa61088L, "declaration");
   }
 }

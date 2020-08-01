@@ -34,7 +34,7 @@ public final class AddCustomLocationDependency_Intention extends AbstractIntenti
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.customLocation$KZIG) == null);
+    return (SLinkOperations.getTarget(node, LINKS.customLocation$IRBk) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -55,7 +55,7 @@ public final class AddCustomLocationDependency_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setNewChild(node, LINKS.customLocation$KZIG, null);
+      SLinkOperations.setNewChild(node, LINKS.customLocation$IRBk, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -64,6 +64,6 @@ public final class AddCustomLocationDependency_Intention extends AbstractIntenti
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customLocation$KZIG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation");
+    /*package*/ static final SContainmentLink customLocation$IRBk = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation");
   }
 }

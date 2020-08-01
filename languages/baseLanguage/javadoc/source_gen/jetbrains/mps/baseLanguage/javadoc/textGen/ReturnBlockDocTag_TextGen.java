@@ -16,10 +16,10 @@ public class ReturnBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@return ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$$TM0));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$RZe0));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$$TM0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, 0x514c0f687050918fL, "text");
+    /*package*/ static final SProperty text$RZe0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, 0x514c0f687050918fL, "text");
   }
 }

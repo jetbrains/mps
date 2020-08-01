@@ -21,7 +21,7 @@ public class IMapping_interface_supertypeOf_mappingType_SubtypingRule extends Su
   public IMapping_interface_supertypeOf_mappingType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode mappingType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_chrt0k_a0a1(SLinkOperations.getTarget(mappingType, LINKS.keyType$4LXL), SLinkOperations.getTarget(mappingType, LINKS.valueType$mAu8));
+    return _quotation_createNode_chrt0k_a0a1(SLinkOperations.getTarget(mappingType, LINKS.keyType$kcUJ), SLinkOperations.getTarget(mappingType, LINKS.valueType$WC_S));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.MappingType$8Z;
@@ -51,8 +51,8 @@ public class IMapping_interface_supertypeOf_mappingType_SubtypingRule extends Su
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keyType$4LXL = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e3925L, "keyType");
-    /*package*/ static final SContainmentLink valueType$mAu8 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e4f44L, "valueType");
+    /*package*/ static final SContainmentLink keyType$kcUJ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e3925L, "keyType");
+    /*package*/ static final SContainmentLink valueType$WC_S = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e4f44L, "valueType");
   }
 
   private static final class CONCEPTS {

@@ -77,7 +77,7 @@ public class MakeTypeArray extends KeyMapImpl {
       }
       boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), CONCEPTS.Classifier$hJ)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), text);
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), text);
         }
       });
       return hasClassifier;
@@ -87,8 +87,8 @@ public class MakeTypeArray extends KeyMapImpl {
 
       SNode varStms = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.LocalVariableDeclarationStatement$BI);
       SNode var = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$Bf, null);
-      SLinkOperations.setTarget(varStms, LINKS.localVariableDeclaration$O0D0, var);
-      SLinkOperations.setTarget(var, LINKS.type$pLrO, SNodeFactoryOperations.createNewNode(CONCEPTS.ArrayType$Yv, null));
+      SLinkOperations.setTarget(varStms, LINKS.localVariableDeclaration$cjR0, var);
+      SLinkOperations.setTarget(var, LINKS.type$uWuc, SNodeFactoryOperations.createNewNode(CONCEPTS.ArrayType$Yv, null));
 
       SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$IG, SNodeOperations.getModel(varStms))).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
@@ -96,17 +96,17 @@ public class MakeTypeArray extends KeyMapImpl {
         }
       }).first();
       if (t != null) {
-        SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(var, LINKS.type$pLrO), CONCEPTS.ArrayType$Yv), LINKS.componentType$10w, SNodeFactoryOperations.createNewNode(t, null));
+        SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(var, LINKS.type$uWuc), CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw, SNodeFactoryOperations.createNewNode(t, null));
       } else {
         SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), CONCEPTS.Classifier$hJ)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), text);
+            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), text);
           }
         }).first();
         if (clazz != null) {
           SNode cT = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierType$IZ, null);
-          SLinkOperations.setTarget(cT, LINKS.classifier$pQ_R, clazz);
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(var, LINKS.type$pLrO), CONCEPTS.ArrayType$Yv), LINKS.componentType$10w, cT);
+          SLinkOperations.setTarget(cT, LINKS.classifier$xslD, clazz);
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(var, LINKS.type$uWuc), CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw, cT);
         }
       }
 
@@ -157,7 +157,7 @@ public class MakeTypeArray extends KeyMapImpl {
       }
       boolean hasClassifier = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(node), CONCEPTS.Classifier$hJ)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), text);
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), text);
         }
       });
       return hasClassifier;
@@ -167,7 +167,7 @@ public class MakeTypeArray extends KeyMapImpl {
 
       SNode varStms = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.LocalVariableDeclarationStatement$BI);
       SNode var = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$Bf, null);
-      SLinkOperations.setTarget(varStms, LINKS.localVariableDeclaration$O0D0, var);
+      SLinkOperations.setTarget(varStms, LINKS.localVariableDeclaration$cjR0, var);
 
       SConcept t = ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$IG, SNodeOperations.getModel(varStms))).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
@@ -175,19 +175,19 @@ public class MakeTypeArray extends KeyMapImpl {
         }
       }).first();
       if (t != null) {
-        SLinkOperations.setTarget(var, LINKS.type$pLrO, SNodeFactoryOperations.createNewNode(t, null));
+        SLinkOperations.setTarget(var, LINKS.type$uWuc, SNodeFactoryOperations.createNewNode(t, null));
       } else {
         SNode clazz = ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(varStms), CONCEPTS.Classifier$hJ)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), text);
+            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), text);
           }
         }).first();
         if (clazz != null) {
           SNode cT = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierType$IZ, null);
-          SLinkOperations.setTarget(cT, LINKS.classifier$pQ_R, clazz);
-          SLinkOperations.setTarget(var, LINKS.type$pLrO, cT);
-          SNodeFactoryOperations.addNewChild(cT, LINKS.parameter$dQne, null);
-          SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(var, LINKS.type$pLrO), SelectionManager.LAST_EDITABLE_CELL);
+          SLinkOperations.setTarget(cT, LINKS.classifier$xslD, clazz);
+          SLinkOperations.setTarget(var, LINKS.type$uWuc, cT);
+          SNodeFactoryOperations.addNewChild(cT, LINKS.parameter$HlfM, null);
+          SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(var, LINKS.type$uWuc), SelectionManager.LAST_EDITABLE_CELL);
           return;
         }
       }
@@ -209,14 +209,14 @@ public class MakeTypeArray extends KeyMapImpl {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 }

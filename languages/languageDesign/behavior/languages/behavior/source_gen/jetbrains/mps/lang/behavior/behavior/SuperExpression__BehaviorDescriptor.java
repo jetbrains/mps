@@ -41,13 +41,13 @@ public final class SuperExpression__BehaviorDescriptor extends BaseBHDescriptor 
       result = SuperExpression__BehaviorDescriptor.getSpecifiedSuperConcept_id2k7p7sTvKkb.invoke(__thisNode__);
     } else {
       SNode behaviour = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ConceptBehavior$8P, true, false);
-      SNode concept = SLinkOperations.getTarget(behaviour, LINKS.concept$v6ns);
+      SNode concept = SLinkOperations.getTarget(behaviour, LINKS.concept$45m$);
       if (SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$qU)) {
         SNode cd = ((SNode) concept);
-        result = SLinkOperations.getTarget(cd, LINKS.extends$LQV3);
+        result = SLinkOperations.getTarget(cd, LINKS.extends$9AAt);
       } else {
         SNode icd = ((SNode) concept);
-        result = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(icd, LINKS.extends$3Y1p)).first(), LINKS.intfc$fO5);
+        result = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(icd, LINKS.extends$V2F7)).first(), LINKS.intfc$7Eer);
       }
     }
     return result;
@@ -105,9 +105,9 @@ public final class SuperExpression__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
   }
 }

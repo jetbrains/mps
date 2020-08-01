@@ -28,7 +28,7 @@ public class check_UnusedPackageProtectedMethod_NonTypesystemRule extends Abstra
   public check_UnusedPackageProtectedMethod_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifierMember, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(classifierMember, LINKS.visibility$2GiC) == null)) {
+    if ((SLinkOperations.getTarget(classifierMember, LINKS.visibility$jt1o) == null)) {
       {
         final SNode matchedNode_toq0jf_a0a0 = classifierMember;
         {
@@ -42,11 +42,11 @@ public class check_UnusedPackageProtectedMethod_NonTypesystemRule extends Abstra
           if (matches_toq0jf_a0a0a) {
             if (!(ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(matchedNode_toq0jf_a0a0), CONCEPTS.IMethodCall$ln)).any(new IWhereFilter<SNode>() {
               public boolean accept(SNode call) {
-                return SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$$A7i) == matchedNode_toq0jf_a0a0 && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(call, null, false)).contains(matchedNode_toq0jf_a0a0));
+                return SLinkOperations.getTarget(call, LINKS.baseMethodDeclaration$ItxI) == matchedNode_toq0jf_a0a0 && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(call, null, false)).contains(matchedNode_toq0jf_a0a0));
               }
             }))) {
               {
-                final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
+                final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
                 IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(matchedNode_toq0jf_a0a0, "Package protected method " + matchedNode_toq0jf_a0a0 + " is never used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7938578788781949884", null, errorTarget);
                 {
                   BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedMethod_QuickFix", false);
@@ -70,8 +70,8 @@ public class check_UnusedPackageProtectedMethod_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -81,6 +81,6 @@ public class check_UnusedPackageProtectedMethod_NonTypesystemRule extends Abstra
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

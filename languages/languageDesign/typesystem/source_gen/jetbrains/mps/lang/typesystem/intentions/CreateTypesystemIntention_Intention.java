@@ -41,7 +41,7 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$u2WC)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$zrno)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -67,7 +67,7 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
       SNode quickFixCall = createTypesystemIntention_wv8vj7_a0c0a(quickFixNode);
 
       SModelOperations.addRootNode(SNodeOperations.getModel(node), quickFixNode);
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$u2WC)).addElement(quickFixCall);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$zrno)).addElement(quickFixCall);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -76,24 +76,24 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
   }
   private static SNode createTypesystemQuickFix_wv8vj7_a0a0a() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypesystemQuickFix$ii);
-    n0.setProperty(PROPS.name$tAp1, "fix_");
+    n0.setProperty(PROPS.name$lA7v, "fix_");
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.executeBlock$kCq9).init(CONCEPTS.QuickFixExecuteBlock$MP);
-      n1.forChild(LINKS.body$pTP2).init(CONCEPTS.StatementList$TN);
+      SNodeBuilder n1 = n0.forChild(LINKS.executeBlock$Z$En).init(CONCEPTS.QuickFixExecuteBlock$MP);
+      n1.forChild(LINKS.body$z0FY).init(CONCEPTS.StatementList$TN);
     }
     return n0.getResult();
   }
   private static SNode createTypesystemIntention_wv8vj7_a0c0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypesystemIntention$aE);
-    n0.setReferenceTarget(LINKS.quickFix$FQGK, p0);
+    n0.setReferenceTarget(LINKS.quickFix$fvFg, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink helginsIntention$u2WC = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
-    /*package*/ static final SContainmentLink executeBlock$kCq9 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361a1836L, "executeBlock");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SReferenceLink quickFix$FQGK = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
+    /*package*/ static final SContainmentLink helginsIntention$zrno = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
+    /*package*/ static final SContainmentLink executeBlock$Z$En = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361a1836L, "executeBlock");
+    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SReferenceLink quickFix$fvFg = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
   }
 
   private static final class CONCEPTS {
@@ -104,6 +104,6 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

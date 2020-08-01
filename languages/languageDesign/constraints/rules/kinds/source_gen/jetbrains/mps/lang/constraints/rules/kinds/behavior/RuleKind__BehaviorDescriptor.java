@@ -38,10 +38,10 @@ public final class RuleKind__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.TypedDef$hM)) {
-      return new NamedElementsScope(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.context$Oi3m), LINKS.defs$oW_n));
+      return new NamedElementsScope(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.context$kJBE), LINKS.defs$5m69));
     }
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.ContextConceptParameter$gx)) {
-      return Scope.getScope(SLinkOperations.getTarget(__thisNode__, LINKS.context$Oi3m), child, kind);
+      return Scope.getScope(SLinkOperations.getTarget(__thisNode__, LINKS.context$kJBE), child, kind);
     }
     return null;
   }
@@ -98,7 +98,7 @@ public final class RuleKind__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink context$Oi3m = MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x28efa98d18cc670aL, "context");
-    /*package*/ static final SContainmentLink defs$oW_n = MetaAdapterFactory.getContainmentLink(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, 0x653030359355429eL, "defs");
+    /*package*/ static final SContainmentLink context$kJBE = MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x28efa98d18cc670aL, "context");
+    /*package*/ static final SContainmentLink defs$5m69 = MetaAdapterFactory.getContainmentLink(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, 0x653030359355429eL, "defs");
   }
 }

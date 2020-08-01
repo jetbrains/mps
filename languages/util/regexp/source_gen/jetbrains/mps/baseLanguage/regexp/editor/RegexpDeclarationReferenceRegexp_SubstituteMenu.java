@@ -50,7 +50,7 @@ public class RegexpDeclarationReferenceRegexp_SubstituteMenu extends SubstituteM
 
     public SMP_ReferenceScope_xnowcq_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.RegexpDeclarationReferenceRegexp$8P, LINKS.regexp$3gyO);
+      super((SAbstractConcept) CONCEPTS.RegexpDeclarationReferenceRegexp$8P, LINKS.regexp$_0Rc);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class RegexpDeclarationReferenceRegexp_SubstituteMenu extends SubstituteM
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink regexp$3gyO = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
+    /*package*/ static final SReferenceLink regexp$_0Rc = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
   }
 }

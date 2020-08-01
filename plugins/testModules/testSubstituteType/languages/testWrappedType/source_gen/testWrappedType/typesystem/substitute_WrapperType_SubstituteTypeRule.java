@@ -21,7 +21,7 @@ public class substitute_WrapperType_SubstituteTypeRule extends AbstractSubstitut
   public TypeSubstitution substitution(final SNode wrapperType, SNode originalType, final TypeCheckingContext typeCheckingContext, final IsApplicableStatus status) {
     return new TypeSubstitution(originalType, new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
-        return SLinkOperations.getTarget(wrapperType, LINKS.wrapped$V3u0);
+        return SLinkOperations.getTarget(wrapperType, LINKS.wrapped$AFy0);
       }
     }.invoke(), "r:5e8bba55-70f5-4849-b486-7e33cf1b5bd1(testWrappedType.typesystem)", "7323318266641941989");
   }
@@ -33,7 +33,7 @@ public class substitute_WrapperType_SubstituteTypeRule extends AbstractSubstitut
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink wrapped$V3u0 = MetaAdapterFactory.getContainmentLink(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, 0x116157dc0d8c52bdL, "wrapped");
+    /*package*/ static final SContainmentLink wrapped$AFy0 = MetaAdapterFactory.getContainmentLink(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, 0x116157dc0d8c52bdL, "wrapped");
   }
 
   private static final class CONCEPTS {

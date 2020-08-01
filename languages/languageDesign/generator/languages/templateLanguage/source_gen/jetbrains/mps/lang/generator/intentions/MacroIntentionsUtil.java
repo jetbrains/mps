@@ -101,7 +101,7 @@ public final class MacroIntentionsUtil {
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(intentionParam).replaceAll("_{1}", "__");
   }
   public static void copyVirtualPackage(SNode to, SNode from) {
-    SPropertyOperations.set(to, PROPS.virtualPackage$j19t, SPropertyOperations.getString(SNodeOperations.getContainingRoot(from), PROPS.virtualPackage$j19t));
+    SPropertyOperations.set(to, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(SNodeOperations.getContainingRoot(from), PROPS.virtualPackage$dz_3));
   }
   public static boolean isInGeneratorModel(SNode node) {
     SModel model = SNodeOperations.getModel(node);
@@ -131,6 +131,6 @@ public final class MacroIntentionsUtil {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

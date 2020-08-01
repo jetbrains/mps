@@ -23,7 +23,7 @@ public class typeof_PropertyReference_InferenceRule extends AbstractInferenceRul
   public typeof_PropertyReference_InferenceRule() {
   }
   public void applyRule(final SNode propertyReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode property = SLinkOperations.getTarget(propertyReference, LINKS.property$64$K);
+    SNode property = SLinkOperations.getTarget(propertyReference, LINKS.property$WdNg);
     if ((property != null)) {
       {
         SNode _nodeToCheck_1029348928467 = propertyReference;
@@ -57,7 +57,7 @@ public class typeof_PropertyReference_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$64$K = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, 0x117b823ed57L, "property");
+    /*package*/ static final SReferenceLink property$WdNg = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, 0x117b823ed57L, "property");
   }
 
   private static final class CONCEPTS {

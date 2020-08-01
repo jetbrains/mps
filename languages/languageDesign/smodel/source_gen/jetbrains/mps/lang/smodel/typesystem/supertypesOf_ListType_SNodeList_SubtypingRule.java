@@ -26,8 +26,8 @@ public class supertypesOf_ListType_SNodeList_SubtypingRule extends SubtypingRule
   }
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(type, LINKS.elementType$xJJW), CONCEPTS.SNodeType$gn)) {
-      ListSequence.fromList(result).addElement(_quotation_createNode_rq4kb9_a0a0a1a1(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(type, LINKS.elementType$xJJW), CONCEPTS.SNodeType$gn), LINKS.concept$HWFQ)));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(type, LINKS.elementType$m8e4), CONCEPTS.SNodeType$gn)) {
+      ListSequence.fromList(result).addElement(_quotation_createNode_rq4kb9_a0a0a1a1(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(type, LINKS.elementType$m8e4), CONCEPTS.SNodeType$gn), LINKS.concept$gpfa)));
     }
     return result;
   }
@@ -49,8 +49,8 @@ public class supertypesOf_ListType_SNodeList_SubtypingRule extends SubtypingRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$xJJW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
-    /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SContainmentLink elementType$m8e4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
+    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 
   private static final class CONCEPTS {

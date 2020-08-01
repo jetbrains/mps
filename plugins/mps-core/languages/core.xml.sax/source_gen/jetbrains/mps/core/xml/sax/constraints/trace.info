@@ -36,7 +36,7 @@
       <node id="2264311582634140674" at="84,0,85,0" concept="7" trace="XMLSAXAttributeReference$J3" />
       <node id="2264311582634140674" at="85,0,86,0" concept="7" trace="XMLSAXAttributeRule$K1" />
       <node id="2264311582634140674" at="86,0,87,0" concept="7" trace="XMLSAXParser$Sn" />
-      <node id="2264311582634140674" at="90,0,91,0" concept="7" trace="attribute$YvIw" />
+      <node id="2264311582634140674" at="90,0,91,0" concept="7" trace="attribute$hnxw" />
       <node id="2264311582634140674" at="31,0,34,0" concept="0" trace="XMLSAXAttributeReference_Constraints#()V" />
       <node id="2264311582634140674" at="41,0,44,9" concept="2" />
       <node id="2264311582634140674" at="77,0,80,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -108,9 +108,9 @@
       <node id="2264311582634140739" at="62,0,63,0" concept="7" trace="breakingNode_ar46fh_a0a0a0a0a1a0a0a0c" />
       <node id="2264311582634140739" at="65,0,66,0" concept="7" trace="XMLSAXFieldReference$ey" />
       <node id="2264311582634140739" at="66,0,67,0" concept="7" trace="XMLSAXParser$Sn" />
-      <node id="2264311582634140739" at="70,0,71,0" concept="7" trace="declaration$Ywf0" />
-      <node id="2264311582634140739" at="71,0,72,0" concept="7" trace="fields$YAg8" />
-      <node id="2264311582634140739" at="72,0,73,0" concept="7" trace="parameters$YA4w" />
+      <node id="2264311582634140739" at="70,0,71,0" concept="7" trace="declaration$hBh0" />
+      <node id="2264311582634140739" at="71,0,72,0" concept="7" trace="fields$kxNS" />
+      <node id="2264311582634140739" at="72,0,73,0" concept="7" trace="parameters$ksbw" />
       <node id="2264311582634140739" at="28,0,31,0" concept="0" trace="XMLSAXFieldReference_Constraints#()V" />
       <node id="6836281137582840708" at="49,120,52,13" concept="2" />
       <node id="2264311582634140740" at="35,0,39,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -243,7 +243,7 @@
       <node id="2264311582634140791" at="55,0,56,0" concept="7" trace="breakingNode_1y346m_a0a0a0a0a1a0a0a0c" />
       <node id="2264311582634140791" at="58,0,59,0" concept="7" trace="XMLSAXChildRule$v" />
       <node id="2264311582634140791" at="59,0,60,0" concept="7" trace="XMLSAXNodeRule$AV" />
-      <node id="2264311582634140791" at="63,0,64,0" concept="7" trace="rule$Ywc8" />
+      <node id="2264311582634140791" at="63,0,64,0" concept="7" trace="rule$h_RS" />
       <node id="2264311582634140791" at="25,0,28,0" concept="0" trace="XMLSAXChildRule_Constraints#()V" />
       <node id="2264311582634140792" at="32,0,36,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="2264311582634140792" at="40,0,44,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -297,7 +297,7 @@
       <node id="4720003541456853028" at="84,0,85,0" concept="7" trace="XMLSAXNodeRuleParamRef$ma" />
       <node id="4720003541456853028" at="85,0,86,0" concept="7" trace="XMLSAXNodeRuleParam$Ww" />
       <node id="4720003541456853028" at="86,0,87,0" concept="7" trace="XMLSAXParser$Sn" />
-      <node id="4720003541456853028" at="90,0,91,0" concept="7" trace="param$YnW5" />
+      <node id="4720003541456853028" at="90,0,91,0" concept="7" trace="param$dA6r" />
       <node id="4720003541456853028" at="31,0,34,0" concept="0" trace="XMLSAXNodeRuleParamRef_Constraints#()V" />
       <node id="4720003541456853028" at="41,0,44,9" concept="2" />
       <node id="4720003541456853028" at="77,0,80,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

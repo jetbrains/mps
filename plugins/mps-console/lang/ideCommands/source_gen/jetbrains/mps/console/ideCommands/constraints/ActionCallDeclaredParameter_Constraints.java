@@ -53,7 +53,7 @@ public class ActionCallDeclaredParameter_Constraints extends BaseConstraintsDesc
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$Qc10, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$fOv0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -70,7 +70,7 @@ public class ActionCallDeclaredParameter_Constraints extends BaseConstraintsDesc
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
             if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.CallActionExpression$Q3)) {
-              return new NamedElementsScope(ListSequence.fromList(SNodeOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CallActionExpression$Q3), LINKS.action$Qcew))).where(new IWhereFilter<SNode>() {
+              return new NamedElementsScope(ListSequence.fromList(SNodeOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.CallActionExpression$Q3), LINKS.action$fV1w))).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return SNodeOperations.isInstanceOf(it, CONCEPTS.ActionDataParameterDeclaration$Wd);
                 }
@@ -102,7 +102,7 @@ public class ActionCallDeclaredParameter_Constraints extends BaseConstraintsDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$Qc10 = MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, 0x4d7759afce9587a8L, "declaration");
-    /*package*/ static final SReferenceLink action$Qcew = MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587adL, 0x4d7759afce9587aeL, "action");
+    /*package*/ static final SReferenceLink declaration$fOv0 = MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587a7L, 0x4d7759afce9587a8L, "declaration");
+    /*package*/ static final SReferenceLink action$fV1w = MetaAdapterFactory.getReferenceLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587adL, 0x4d7759afce9587aeL, "action");
   }
 }

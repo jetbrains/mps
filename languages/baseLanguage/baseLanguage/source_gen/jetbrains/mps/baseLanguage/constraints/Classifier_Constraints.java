@@ -56,7 +56,7 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
   }
   public static class NestedName_Property extends BasePropertyConstraintsDescriptor {
     public NestedName_Property(ConstraintsDescriptor container) {
-      super(PROPS.nestedName$XUlU, container);
+      super(PROPS.nestedName$ZgB6, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -69,7 +69,7 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
   }
   public static class ResolveInfo_Property extends BasePropertyConstraintsDescriptor {
     public ResolveInfo_Property(ConstraintsDescriptor container) {
-      super(PROPS.resolveInfo$eeN8, container);
+      super(PROPS.resolveInfo$TaKS, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -77,12 +77,12 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(node, PROPS.nestedName$XUlU);
+      return SPropertyOperations.getString(node, PROPS.nestedName$ZgB6);
     }
   }
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$w2Xj, container);
+      super(PROPS.shortDescription$xrGd, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -96,9 +96,9 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.nestedName$XUlU, new NestedName_Property(this));
-    properties.put(PROPS.resolveInfo$eeN8, new ResolveInfo_Property(this));
-    properties.put(PROPS.shortDescription$w2Xj, new ShortDescription_Property(this));
+    properties.put(PROPS.nestedName$ZgB6, new NestedName_Property(this));
+    properties.put(PROPS.resolveInfo$TaKS, new ResolveInfo_Property(this));
+    properties.put(PROPS.shortDescription$xrGd, new ShortDescription_Property(this));
     return properties;
   }
   private static final SNodePointer breakingNode_z47b7w_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643406");
@@ -108,8 +108,8 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nestedName$XUlU = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x11a134c900dL, "nestedName");
-    /*package*/ static final SProperty resolveInfo$eeN8 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
-    /*package*/ static final SProperty shortDescription$w2Xj = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty nestedName$ZgB6 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x11a134c900dL, "nestedName");
+    /*package*/ static final SProperty resolveInfo$TaKS = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
+    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 }

@@ -24,8 +24,8 @@ public class AddPosition {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SLinkOperations.getTarget(node, LINKS.position$tEnT) == null) {
-          SLinkOperations.setTarget(node, LINKS.position$tEnT, SNodeFactoryOperations.createNewNode(CONCEPTS.InsertPosition$SX, null));
+        if (SLinkOperations.getTarget(node, LINKS.position$nx$B) == null) {
+          SLinkOperations.setTarget(node, LINKS.position$nx$B, SNodeFactoryOperations.createNewNode(CONCEPTS.InsertPosition$SX, null));
         }
       }
 
@@ -74,7 +74,7 @@ public class AddPosition {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink position$tEnT = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position");
+    /*package*/ static final SContainmentLink position$nx$B = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position");
   }
 
   private static final class CONCEPTS {

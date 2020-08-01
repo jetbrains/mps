@@ -94,7 +94,7 @@ public class TypeClause_SubstituteMenu extends SubstituteMenuBase {
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           SNode normalTypeClause = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.NormalTypeClause$pk, null);
-          SLinkOperations.setTarget(normalTypeClause, LINKS.normalType$$uJr, nodeToWrap);
+          SLinkOperations.setTarget(normalTypeClause, LINKS.normalType$ESY5, nodeToWrap);
           return normalTypeClause;
         }
 
@@ -153,6 +153,6 @@ public class TypeClause_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink normalType$$uJr = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1141682561cL, 0x1141682cac0L, "normalType");
+    /*package*/ static final SContainmentLink normalType$ESY5 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1141682561cL, 0x1141682cac0L, "normalType");
   }
 }

@@ -139,7 +139,7 @@ public class NodeGroupChange extends ModelChange {
     }
   }
   private SNode insertNodeBeforeAnchor(SNode parent, SNode newNode, SNode anchor) {
-    SContainmentLink link = (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$XQ) ? LINKS.smodelAttribute$K8bJ : myRole);
+    SContainmentLink link = (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$XQ) ? LINKS.smodelAttribute$jXFL : myRole);
     parent.insertChildBefore(link, newNode, anchor);
     return newNode;
   }
@@ -239,7 +239,7 @@ public class NodeGroupChange extends ModelChange {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class CONCEPTS {

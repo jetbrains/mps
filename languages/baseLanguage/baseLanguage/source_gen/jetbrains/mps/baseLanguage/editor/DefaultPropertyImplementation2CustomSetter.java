@@ -26,7 +26,7 @@ public class DefaultPropertyImplementation2CustomSetter {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode replaceWithNewInitialized = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CustomSetterPropertyImplementation$E1);
-        SNodeFactoryOperations.setNewChild(replaceWithNewInitialized, LINKS.setAccessor$VUMX, null);
+        SNodeFactoryOperations.setNewChild(replaceWithNewInitialized, LINKS.setAccessor$1uFz, null);
       }
 
     };
@@ -37,7 +37,7 @@ public class DefaultPropertyImplementation2CustomSetter {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.defaultSetAccessor$Uisp))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.defaultSetAccessor$eVK7))) {
           return;
         }
         SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CustomSetterPropertyImplementation$E1);
@@ -96,7 +96,7 @@ public class DefaultPropertyImplementation2CustomSetter {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink setAccessor$VUMX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
-    /*package*/ static final SContainmentLink defaultSetAccessor$Uisp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e16fe6eaL, "defaultSetAccessor");
+    /*package*/ static final SContainmentLink setAccessor$1uFz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
+    /*package*/ static final SContainmentLink defaultSetAccessor$eVK7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e16fe6eaL, "defaultSetAccessor");
   }
 }

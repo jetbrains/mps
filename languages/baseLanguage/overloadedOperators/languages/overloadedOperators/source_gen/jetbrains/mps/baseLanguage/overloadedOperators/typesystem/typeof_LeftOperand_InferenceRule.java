@@ -22,7 +22,7 @@ public class typeof_LeftOperand_InferenceRule extends AbstractInferenceRule_Runt
     {
       SNode _nodeToCheck_1029348928467 = leftOperand;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:c493b9a9-0f39-4efb-93f7-8ac7c0a1036c(jetbrains.mps.baseLanguage.overloadedOperators.typesystem)", "6677452554239169677", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c493b9a9-0f39-4efb-93f7-8ac7c0a1036c(jetbrains.mps.baseLanguage.overloadedOperators.typesystem)", "6677452554239169674", true), (SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(leftOperand, CONCEPTS.OverloadedBinaryOperator$Ai, false, false), LINKS.leftType$wfni), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c493b9a9-0f39-4efb-93f7-8ac7c0a1036c(jetbrains.mps.baseLanguage.overloadedOperators.typesystem)", "6677452554239169674", true), (SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(leftOperand, CONCEPTS.OverloadedBinaryOperator$Ai, false, false), LINKS.leftType$BshI), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -41,6 +41,6 @@ public class typeof_LeftOperand_InferenceRule extends AbstractInferenceRule_Runt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftType$wfni = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x5cab13b82bf359b1L, "leftType");
+    /*package*/ static final SContainmentLink leftType$BshI = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x5cab13b82bf359b1L, "leftType");
   }
 }

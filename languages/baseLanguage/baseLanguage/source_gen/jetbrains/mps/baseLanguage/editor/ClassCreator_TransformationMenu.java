@@ -131,19 +131,19 @@ public class ClassCreator_TransformationMenu extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.AnonymousClassCreator$N6, null);
         final SNode cls = SNodeFactoryOperations.createNewNode(CONCEPTS.AnonymousClass$aF, null);
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$$A7L)).visitAll(new IVisitor<SNode>() {
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ItKJ)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.actualArgument$$A7L)).addElement(it);
+            ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.actualArgument$ItKJ)).addElement(it);
           }
         });
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$swNi)).visitAll(new IVisitor<SNode>() {
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$NSPI)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.typeParameter$uY4E)).addElement(it);
+            ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.typeParameter$4gm)).addElement(it);
           }
         });
-        SLinkOperations.setTarget(cls, LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$$A7i));
-        SLinkOperations.setTarget(cls, LINKS.classifier$1y5e, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.ClassConcept$IY));
-        SLinkOperations.setTarget(creator, LINKS.cls$xt3G, cls);
+        SLinkOperations.setTarget(cls, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$ItxI));
+        SLinkOperations.setTarget(cls, LINKS.classifier$JwxM, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$ItxI)), CONCEPTS.ClassConcept$IY));
+        SLinkOperations.setTarget(creator, LINKS.cls$d4Mk, cls);
         SNodeOperations.replaceWithAnother(_context.getNode(), creator);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), creator, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -185,11 +185,11 @@ public class ClassCreator_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
-    /*package*/ static final SContainmentLink typeParameter$uY4E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink cls$xt3G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SContainmentLink typeParameter$4gm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink cls$d4Mk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
   }
 }

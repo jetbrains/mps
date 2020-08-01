@@ -40,7 +40,7 @@ public final class Quotation__BehaviorDescriptor extends BaseBHDescriptor {
     return -1;
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
-    if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.quotedNode$kInw)))) {
+    if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.quotedNode$2tow)))) {
       return false;
     }
     if (SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNodeAncestorsWhereConceptInList(child, new SAbstractConcept[]{CONCEPTS.AbstractAntiquotation$Tk, CONCEPTS.Quotation$UL}, true)).first(), CONCEPTS.AbstractAntiquotation$Tk)) {
@@ -98,7 +98,7 @@ public final class Quotation__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink quotedNode$kInw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
+    /*package*/ static final SContainmentLink quotedNode$2tow = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
   }
 
   private static final class CONCEPTS {

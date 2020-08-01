@@ -53,11 +53,11 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     SNode parent = helper.parent(__thisNode__);
     String parentLocation = helper.getContentLocation(parent);
-    String folderLocation = parentLocation + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.containerName$Mzv5), helper.getMacroHelper());
+    String folderLocation = parentLocation + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.containerName$vc3r), helper.getMacroHelper());
     helper.putLocation(__thisNode__, folderLocation);
     helper.putContentLocation(__thisNode__, folderLocation);
     for (SNode ic : Sequence.fromIterable(BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(__thisNode__))) {
-      SNode node = SLinkOperations.getTarget(ic, LINKS.target$pRHZ);
+      SNode node = SLinkOperations.getTarget(ic, LINKS.target$xZhx);
       // note: if node is imported directly - do not override its original location 
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_Node$kC) && helper.getLocation(SNodeOperations.as(node, CONCEPTS.BuildLayout_Node$kC)) == null) {
         helper.putLocation(SNodeOperations.as(node, CONCEPTS.BuildLayout_Node$kC), folderLocation);
@@ -79,7 +79,7 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_Node$kC)) {
         return Sequence.fromIterable(BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(__thisNode__)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.target$pRHZ) == node;
+            return SLinkOperations.getTarget(it, LINKS.target$xZhx) == node;
           }
         });
       }
@@ -90,17 +90,17 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
         return false;
       }
 
-      for (SNode c : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.children$aiMf))) {
+      for (SNode c : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.children$Z6lh))) {
         if (SNodeOperations.isInstanceOf(c, CONCEPTS.BuildLayout_Files$hP)) {
           SNode files = SNodeOperations.as(c, CONCEPTS.BuildLayout_Files$hP);
-          if (ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$ohPZ)).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(files, LINKS.path$ohPw)))) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(files, LINKS.parameters$KD9x)).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(files, LINKS.path$KCUw)))) {
             return true;
           }
         } else if (SNodeOperations.isInstanceOf(c, CONCEPTS.BuildLayout_AbstractCopy$lT)) {
           SNode copy = SNodeOperations.as(c, CONCEPTS.BuildLayout_Copy$7_);
-          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(copy, LINKS.fileset$K4_c), CONCEPTS.BuildInputFiles$Nk)) {
-            SNode inputSet = SNodeOperations.cast(SLinkOperations.getTarget(copy, LINKS.fileset$K4_c), CONCEPTS.BuildInputFiles$Nk);
-            if (ListSequence.fromList(SLinkOperations.getChildren(inputSet, LINKS.selectors$6oar)).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(inputSet, LINKS.dir$6hmv)))) {
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(copy, LINKS.fileset$ie0O), CONCEPTS.BuildInputFiles$Nk)) {
+            SNode inputSet = SNodeOperations.cast(SLinkOperations.getTarget(copy, LINKS.fileset$ie0O), CONCEPTS.BuildInputFiles$Nk);
+            if (ListSequence.fromList(SLinkOperations.getChildren(inputSet, LINKS.selectors$5H35)).isEmpty() && Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(inputSet, LINKS.dir$2pT1)))) {
               return true;
             }
           }
@@ -110,8 +110,8 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
     return ((boolean) BuildLayout_Node__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildLayout_Folder$4a, object));
   }
   /*package*/ static Iterable<SNode> getImportContentChildren_id675BBdHStY4(@NotNull SNode __thisNode__) {
-    List<SNode> list = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aiMf), CONCEPTS.BuildLayout_ImportContent$Y5)).toListSequence();
-    return ListSequence.fromList(list).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(list, LINKS.target$pRHZ), CONCEPTS.BuildLayout_Folder$4a)).translate(new ITranslator2<SNode, SNode>() {
+    List<SNode> list = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$Z6lh), CONCEPTS.BuildLayout_ImportContent$Y5)).toListSequence();
+    return ListSequence.fromList(list).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(list, LINKS.target$xZhx), CONCEPTS.BuildLayout_Folder$4a)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (Iterable<SNode>) BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(it);
       }
@@ -176,14 +176,14 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink containerName$Mzv5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
-    /*package*/ static final SReferenceLink target$pRHZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
-    /*package*/ static final SContainmentLink parameters$ohPZ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb01L, "parameters");
-    /*package*/ static final SContainmentLink path$ohPw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb00L, "path");
-    /*package*/ static final SContainmentLink fileset$K4_c = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
-    /*package*/ static final SContainmentLink dir$6hmv = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
-    /*package*/ static final SContainmentLink selectors$6oar = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
-    /*package*/ static final SContainmentLink children$aiMf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SContainmentLink containerName$vc3r = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
+    /*package*/ static final SReferenceLink target$xZhx = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
+    /*package*/ static final SContainmentLink parameters$KD9x = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb01L, "parameters");
+    /*package*/ static final SContainmentLink path$KCUw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb00L, "path");
+    /*package*/ static final SContainmentLink fileset$ie0O = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink dir$2pT1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
+    /*package*/ static final SContainmentLink selectors$5H35 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
+    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
   }
 
   private static final class CONCEPTS {

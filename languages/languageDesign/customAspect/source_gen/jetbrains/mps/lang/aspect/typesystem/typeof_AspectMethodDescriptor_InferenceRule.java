@@ -25,7 +25,7 @@ public class typeof_AspectMethodDescriptor_InferenceRule extends AbstractInferen
     {
       SNode _nodeToCheck_1029348928467 = amd;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:2f45a819-e3a6-4cfa-b807-e9f10176b62b(jetbrains.mps.lang.aspect.typesystem)", "5386558680326206553", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:2f45a819-e3a6-4cfa-b807-e9f10176b62b(jetbrains.mps.lang.aspect.typesystem)", "5386558680326206402", true), (SNode) _quotation_createNode_q679gm_a1a0c0a0b(SLinkOperations.getTarget(amd, LINKS.cncpt$V8vz)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:2f45a819-e3a6-4cfa-b807-e9f10176b62b(jetbrains.mps.lang.aspect.typesystem)", "5386558680326206402", true), (SNode) _quotation_createNode_q679gm_a1a0c0a0b(SLinkOperations.getTarget(amd, LINKS.cncpt$D7hX)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -53,7 +53,7 @@ public class typeof_AspectMethodDescriptor_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cncpt$V8vz = MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x4ac0e6949ea3f2b0L, 0x4ac0e6949ea3f2b9L, "cncpt");
+    /*package*/ static final SReferenceLink cncpt$D7hX = MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x4ac0e6949ea3f2b0L, 0x4ac0e6949ea3f2b9L, "cncpt");
   }
 
   private static final class CONCEPTS {

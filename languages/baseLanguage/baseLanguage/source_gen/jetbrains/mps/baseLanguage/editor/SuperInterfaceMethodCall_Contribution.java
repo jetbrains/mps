@@ -136,7 +136,7 @@ public class SuperInterfaceMethodCall_Contribution extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SuperInterfaceMethodCall$VW, null);
-          SLinkOperations.setTarget(result, LINKS.classifier$xsNt, myParameterObject);
+          SLinkOperations.setTarget(result, LINKS.classifier$cWV3, myParameterObject);
           return result;
         }
 
@@ -159,7 +159,7 @@ public class SuperInterfaceMethodCall_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1) + "." + "super";
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + "." + "super";
         }
         @Nullable
         @Override
@@ -178,10 +178,10 @@ public class SuperInterfaceMethodCall_Contribution extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xsNt = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cWV3 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x17dbb10eeb72e5d9L, 0x17dbb10eeb7528deL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

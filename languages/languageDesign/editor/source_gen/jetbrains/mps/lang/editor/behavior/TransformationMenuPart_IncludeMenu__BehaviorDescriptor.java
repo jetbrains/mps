@@ -43,7 +43,7 @@ public final class TransformationMenuPart_IncludeMenu__BehaviorDescriptor extend
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (child == SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$5IwX)) {
+    if (child == SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$LxXz)) {
       SAbstractConcept cncpt = kind;
       switch (conceptIndex.index(cncpt)) {
         case 0:
@@ -65,7 +65,7 @@ public final class TransformationMenuPart_IncludeMenu__BehaviorDescriptor extend
     return ScopeUtils.lazyParentScope(__thisNode__, kind);
   }
   /*package*/ static SNode getTargetConcept_id5ZcqSl_NIg2(@NotNull SNode __thisNode__) {
-    return check_pjfxcn_a0a1(SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$5IwX));
+    return check_pjfxcn_a0a1(SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$LxXz));
   }
 
   /*package*/ TransformationMenuPart_IncludeMenu__BehaviorDescriptor() {
@@ -129,6 +129,6 @@ public final class TransformationMenuPart_IncludeMenu__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$5IwX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x5d3b34577b3f7ee5L, "menuReference");
+    /*package*/ static final SContainmentLink menuReference$LxXz = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x5d3b34577b3f7ee5L, "menuReference");
   }
 }

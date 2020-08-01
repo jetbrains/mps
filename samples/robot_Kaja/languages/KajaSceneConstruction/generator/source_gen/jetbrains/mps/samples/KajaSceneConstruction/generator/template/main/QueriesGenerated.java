@@ -11,68 +11,68 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @Generated
 public class QueriesGenerated {
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_2_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_2_3(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
   public static Object propertyMacro_GetValue_3_3(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_3_4(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_3_5(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
   public static Object propertyMacro_GetValue_4_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_4_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
   public static Object propertyMacro_GetValue_4_3(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_4_4(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$fzzv);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.col$yec1);
   }
   public static Object propertyMacro_GetValue_4_5(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$fzz0);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.row$ydX0);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty row$fzz0 = MetaAdapterFactory.getProperty(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe40L, "row");
-    /*package*/ static final SProperty col$fzzv = MetaAdapterFactory.getProperty(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe41L, "col");
+    /*package*/ static final SProperty row$ydX0 = MetaAdapterFactory.getProperty(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe40L, "row");
+    /*package*/ static final SProperty col$yec1 = MetaAdapterFactory.getProperty(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe41L, "col");
   }
 }

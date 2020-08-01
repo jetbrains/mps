@@ -22,17 +22,17 @@ public class check_DuplicateEnumConstants_NonTypesystemRule extends AbstractNonT
   public check_DuplicateEnumConstants_NonTypesystemRule() {
   }
   public void applyRule(final SNode enumClass, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode constant : SLinkOperations.getChildren(enumClass, LINKS.enumConstant$urAQ)) {
+    for (SNode constant : SLinkOperations.getChildren(enumClass, LINKS.enumConstant$JnOa)) {
       int namesakes = 0;
-      for (SNode other : SLinkOperations.getChildren(enumClass, LINKS.enumConstant$urAQ)) {
-        if (SPropertyOperations.getString(constant, PROPS.name$tAp1) != null && SPropertyOperations.getString(constant, PROPS.name$tAp1).equals(SPropertyOperations.getString(other, PROPS.name$tAp1))) {
+      for (SNode other : SLinkOperations.getChildren(enumClass, LINKS.enumConstant$JnOa)) {
+        if (SPropertyOperations.getString(constant, PROPS.name$lA7v) != null && SPropertyOperations.getString(constant, PROPS.name$lA7v).equals(SPropertyOperations.getString(other, PROPS.name$lA7v))) {
           namesakes++;
         }
       }
       if (namesakes > 1) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constant, "Duplicate enum constant \"" + SPropertyOperations.getString(constant, PROPS.name$tAp1) + "\"", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2089334432680128330", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constant, "Duplicate enum constant \"" + SPropertyOperations.getString(constant, PROPS.name$lA7v) + "\"", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2089334432680128330", null, errorTarget);
         }
       }
     }
@@ -48,11 +48,11 @@ public class check_DuplicateEnumConstants_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink enumConstant$urAQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

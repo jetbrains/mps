@@ -23,21 +23,21 @@ public class Entry_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("" + (SNodeOperations.getIndexInParent(ctx.getPrimaryInput()) + 1));
     tgs.append(". ");
-    if (isNotEmptyString(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.id$rkxX))) {
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.id$rkxX));
+    if (isNotEmptyString(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.id$eWsz))) {
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.id$eWsz));
       tgs.append(": ");
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$tAp1));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v));
     tgs.newLine();
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.description$rpCU), LINKS.lines$$cru)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.description$hqO6), LINKS.lines$y1jy)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode line) {
-        ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$eRew)).visitAll(new IVisitor<SNode>() {
+        ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$cK1w)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode element) {
             if (SNodeOperations.isInstanceOf(element, CONCEPTS.Word$AM)) {
-              tgs.append(SPropertyOperations.getString(SNodeOperations.cast(element, CONCEPTS.Word$AM), PROPS.value$cK70));
+              tgs.append(SPropertyOperations.getString(SNodeOperations.cast(element, CONCEPTS.Word$AM), PROPS.value$bjp0));
               tgs.append(" ");
             } else if (SNodeOperations.isInstanceOf(element, CONCEPTS.NodeWrapperElement$9z)) {
-              tgs.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(element, CONCEPTS.NodeWrapperElement$9z), LINKS.node$daCF)));
+              tgs.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(element, CONCEPTS.NodeWrapperElement$9z), LINKS.node$o9GP)));
               tgs.append(" ");
             }
           }
@@ -53,16 +53,16 @@ public class Entry_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty id$rkxX = MetaAdapterFactory.getProperty(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, 0x39ed36a1ccc9c4efL, "id");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty id$eWsz = MetaAdapterFactory.getProperty(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, 0x39ed36a1ccc9c4efL, "id");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink description$rpCU = MetaAdapterFactory.getContainmentLink(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, 0x39ed36a1ccc9c4f2L, "description");
-    /*package*/ static final SContainmentLink lines$$cru = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink node$daCF = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
+    /*package*/ static final SContainmentLink description$hqO6 = MetaAdapterFactory.getContainmentLink(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, 0x39ed36a1ccc9c4f2L, "description");
+    /*package*/ static final SContainmentLink lines$y1jy = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink node$o9GP = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
   }
 
   private static final class CONCEPTS {

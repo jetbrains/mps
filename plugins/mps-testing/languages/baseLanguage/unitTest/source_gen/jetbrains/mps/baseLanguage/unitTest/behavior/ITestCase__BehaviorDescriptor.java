@@ -45,14 +45,14 @@ public final class ITestCase__BehaviorDescriptor extends BaseBHDescriptor {
     return model.getName().getLongName() + "." + ITestCase__BehaviorDescriptor.getSimpleClassName_idhSQIE8p.invoke(__thisNode__);
   }
   /*package*/ static String getSimpleClassName_idhSQIE8p(@NotNull SNode __thisNode__) {
-    return NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) + "_Test");
+    return NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "_Test");
   }
   /*package*/ static List<SNode> getTestMethods_id1RfJDyhAUar(@NotNull SNode __thisNode__) {
     return new ArrayList<SNode>();
   }
   /*package*/ static boolean canRunInProcess_id5_jSk8paieB(@NotNull SNode __thisNode__) {
     // method is a property 
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.canNotRunInProcess$QfFh));
+    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.canNotRunInProcess$h_Xf));
   }
 
   /*package*/ ITestCase__BehaviorDescriptor() {
@@ -108,7 +108,7 @@ public final class ITestCase__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty canNotRunInProcess$QfFh = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, 0x59337dc8dffe0d9dL, "canNotRunInProcess");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty canNotRunInProcess$h_Xf = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, 0x59337dc8dffe0d9dL, "canNotRunInProcess");
   }
 }

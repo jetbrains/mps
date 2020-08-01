@@ -69,7 +69,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new filesetSingleRoleHandler_6lrdv3_b0(myNode, LINKS.fileset$K4_c, getEditorContext());
+    SingleRoleCellProvider provider = new filesetSingleRoleHandler_6lrdv3_b0(myNode, LINKS.fileset$ie0O, getEditorContext());
     return provider.createCell();
   }
   private static class filesetSingleRoleHandler_6lrdv3_b0 extends SingleRoleCellProvider {
@@ -89,8 +89,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.fileset$K4_c, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.fileset$K4_c, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.fileset$ie0O, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.fileset$ie0O, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -102,7 +102,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.fileset$K4_c);
+        editorCell.setSRole(LINKS.fileset$ie0O);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
@@ -111,7 +111,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.fileset$K4_c));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.fileset$ie0O));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_fileset");
@@ -151,7 +151,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.handlers$97g5;
+      return LINKS.handlers$qwMr;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.BuildLayout_CopyHandler$pA;
@@ -164,7 +164,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(handlersListHandler_6lrdv3_c0.this.getNode(), LINKS.handlers$97g5));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(handlersListHandler_6lrdv3_c0.this.getNode(), LINKS.handlers$qwMr));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_1();
@@ -215,8 +215,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fileset$K4_c = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
-    /*package*/ static final SContainmentLink handlers$97g5 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9ab2L, 0x7f76698a394e2d1eL, "handlers");
+    /*package*/ static final SContainmentLink fileset$ie0O = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink handlers$qwMr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9ab2L, 0x7f76698a394e2d1eL, "handlers");
   }
 
   private static final class CONCEPTS {

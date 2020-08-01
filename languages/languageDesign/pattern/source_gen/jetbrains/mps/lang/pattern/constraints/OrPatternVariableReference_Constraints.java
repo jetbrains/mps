@@ -31,7 +31,7 @@ public class OrPatternVariableReference_Constraints extends BaseConstraintsDescr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$qXxw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$3New, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -58,7 +58,7 @@ public class OrPatternVariableReference_Constraints extends BaseConstraintsDescr
   }
   private static List<SNode> check_8aolto_a0b0b0a0a0b0a0a0a2(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getChildren(checkedDotOperand, LINKS.variable$_xUF);
+      return SLinkOperations.getChildren(checkedDotOperand, LINKS.variable$brqP);
     }
     return null;
   }
@@ -70,7 +70,7 @@ public class OrPatternVariableReference_Constraints extends BaseConstraintsDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$qXxw = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3b2f5e7b070d317cL, 0x3b2f5e7b070d317dL, "declaration");
-    /*package*/ static final SContainmentLink variable$_xUF = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, 0x3b2f5e7b070d317eL, "variable");
+    /*package*/ static final SReferenceLink declaration$3New = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3b2f5e7b070d317cL, 0x3b2f5e7b070d317dL, "declaration");
+    /*package*/ static final SContainmentLink variable$brqP = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x27f758f8bc6aaa84L, 0x3b2f5e7b070d317eL, "variable");
   }
 }

@@ -138,9 +138,9 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode classifierType = _quotation_createNode_j08dcv_a0a0a0a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$sgLW));
+          SNode classifierType = _quotation_createNode_j08dcv_a0a0a0a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$G8c4));
           SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a1a0a0a(classifierType));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -209,8 +209,8 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode statement = SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a0a0a1a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$sgLW)));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(statement, LINKS.localVariableDeclaration$O0D0), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNode statement = SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a0a0a1a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$G8c4)));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(statement, LINKS.localVariableDeclaration$cjR0), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -314,7 +314,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode arrayType = SNodeOperations.replaceWithAnother(_context.getNode(), _quotation_createNode_j08dcv_a0a0a0a1b0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$sgLW)));
+          SNode arrayType = SNodeOperations.replaceWithAnother(_context.getNode(), _quotation_createNode_j08dcv_a0a0a0a1b0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$G8c4)));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), arrayType, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -406,8 +406,8 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$sgLW = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SContainmentLink localVariableDeclaration$O0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SReferenceLink classifier$G8c4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
   }
 }

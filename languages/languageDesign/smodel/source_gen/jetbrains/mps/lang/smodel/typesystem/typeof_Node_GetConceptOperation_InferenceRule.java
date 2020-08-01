@@ -22,7 +22,7 @@ public class typeof_Node_GetConceptOperation_InferenceRule extends AbstractInfer
   public typeof_Node_GetConceptOperation_InferenceRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(op), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+    SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(op), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
     final SNode C_typevar_1225294414283 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
       SNode _nodeToCheck_1029348928467 = operand;
@@ -65,6 +65,6 @@ public class typeof_Node_GetConceptOperation_InferenceRule extends AbstractInfer
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

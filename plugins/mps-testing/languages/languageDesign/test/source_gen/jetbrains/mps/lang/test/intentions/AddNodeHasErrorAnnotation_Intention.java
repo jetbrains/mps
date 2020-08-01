@@ -68,7 +68,7 @@ public final class AddNodeHasErrorAnnotation_Intention extends AbstractIntention
       SNode newAnnotation = SNodeFactoryOperations.createNewNode(CONCEPTS.NodeOperationsContainer$UO, null);
       AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO), newAnnotation);
       SNode errorCheck = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b01e7283dL, "jetbrains.mps.lang.test.structure.NodeErrorCheckOperation"));
-      ListSequence.fromList(SLinkOperations.getChildren(newAnnotation, LINKS.nodeOperations$HdFm)).addElement(errorCheck);
+      ListSequence.fromList(SLinkOperations.getChildren(newAnnotation, LINKS.nodeOperations$TBZE)).addElement(errorCheck);
       SelectionUtil.selectCell(editorContext, errorCheck, SelectionManager.LAST_EDITABLE_CELL);
     }
     @Override
@@ -83,6 +83,6 @@ public final class AddNodeHasErrorAnnotation_Intention extends AbstractIntention
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeOperations$HdFm = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
+    /*package*/ static final SContainmentLink nodeOperations$TBZE = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
   }
 }

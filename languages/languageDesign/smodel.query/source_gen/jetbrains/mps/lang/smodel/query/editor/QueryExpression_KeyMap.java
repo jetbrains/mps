@@ -51,10 +51,10 @@ public class QueryExpression_KeyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return (SLinkOperations.getTarget(node, LINKS.parameter$ew30) == null) && Sequence.fromIterable(QueryExpression__BehaviorDescriptor.getSupportedParameters_id3J6h25QXCDW.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)))).isNotEmpty();
+      return (SLinkOperations.getTarget(node, LINKS.parameter$1xt0) == null) && Sequence.fromIterable(QueryExpression__BehaviorDescriptor.getSupportedParameters_id3J6h25QXCDW.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)))).isNotEmpty();
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.setNewChild(node, LINKS.parameter$ew30, null);
+      SNodeFactoryOperations.setNewChild(node, LINKS.parameter$1xt0, null);
     }
     public String getKeyStroke() {
       return " <";
@@ -66,6 +66,6 @@ public class QueryExpression_KeyMap extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$ew30 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
+    /*package*/ static final SContainmentLink parameter$1xt0 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
   }
 }

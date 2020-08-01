@@ -83,21 +83,21 @@ public class ForeignParameters extends SubstituteMenuBase {
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
       final SNode td = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TargetDeclaration$7n, false, false);
       SNode fd = SNodeOperations.cast(SNodeOperations.getParent(td), CONCEPTS.FacetDeclaration$al);
-      return ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.targetDeclaration$DCGr)).where(new IWhereFilter<SNode>() {
+      return ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.targetDeclaration$aHx5)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode sibl) {
           return sibl != td;
         }
-      }).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.required$LsSI)).translate(new ITranslator2<SNode, SNode>() {
+      }).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.required$WZui)).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode rfd) {
-          return SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$M0dw), LINKS.targetDeclaration$DCGr);
+          return SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$e6yw), LINKS.targetDeclaration$aHx5);
         }
       })).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode rtd) {
-          return SLinkOperations.getTarget(rtd, LINKS.parameters$W12k);
+          return SLinkOperations.getTarget(rtd, LINKS.parameters$4w7G);
         }
       }).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode p) {
-          return SLinkOperations.getChildren(p, LINKS.component$eWwg);
+          return SLinkOperations.getChildren(p, LINKS.component$fjBK);
         }
       }).toListSequence();
     }
@@ -177,7 +177,7 @@ public class ForeignParameters extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(myParameterObject, CONCEPTS.TargetDeclaration$7n, false, false), PROPS.name$tAp1) + "." + SPropertyOperations.getString(myParameterObject, PROPS.name$tAp1);
+          return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(myParameterObject, CONCEPTS.TargetDeclaration$7n, false, false), PROPS.name$lA7v) + "." + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
         }
       }
     }
@@ -221,14 +221,14 @@ public class ForeignParameters extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targetDeclaration$DCGr = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5912a2ab1cd4153eL, "targetDeclaration");
-    /*package*/ static final SContainmentLink required$LsSI = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5979ed6d2b21b300L, "required");
-    /*package*/ static final SReferenceLink facet$M0dw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
-    /*package*/ static final SContainmentLink parameters$W12k = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
-    /*package*/ static final SContainmentLink component$eWwg = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
+    /*package*/ static final SContainmentLink targetDeclaration$aHx5 = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5912a2ab1cd4153eL, "targetDeclaration");
+    /*package*/ static final SContainmentLink required$WZui = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5979ed6d2b21b300L, "required");
+    /*package*/ static final SReferenceLink facet$e6yw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
+    /*package*/ static final SContainmentLink parameters$4w7G = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
+    /*package*/ static final SContainmentLink component$fjBK = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -116,7 +116,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
       @Nullable
       @Override
       protected Iterable<? extends String> getParameters(SubstituteMenuContext _context) {
-        return ListSequence.fromListAndArray(new ArrayList<String>(), SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getParentNode()), CONCEPTS.AbstractRunConfigurationExecutor$YM), PROPS.configurationName$vU1z));
+        return ListSequence.fromListAndArray(new ArrayList<String>(), SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getParentNode()), CONCEPTS.AbstractRunConfigurationExecutor$YM), PROPS.configurationName$t6JX));
       }
       private class SMP_Action_nhkpww_a0a extends SingleItemSubstituteMenuPart {
         private final String myParameterObject;
@@ -221,6 +221,6 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty configurationName$vU1z = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x1acdeec3ca0ad49cL, "configurationName");
+    /*package*/ static final SProperty configurationName$t6JX = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x1acdeec3ca0ad49cL, "configurationName");
   }
 }

@@ -66,12 +66,12 @@ public class MigrationsCheckUtil {
   public static boolean hasIncludeCycles(SNode migrationScript) {
     return hasCycles(new _FunctionTypes._return_P1_E0<Iterable<SNode>, SNode>() {
       public Iterable<SNode> invoke(SNode pureMigrationScript) {
-        return SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(pureMigrationScript, LINKS.part$x6zr), CONCEPTS.IncludeMigrationPart$zz), LINKS.target$s$xW), CONCEPTS.PureMigrationScript$YW);
+        return SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(pureMigrationScript, LINKS.part$2ba5), CONCEPTS.IncludeMigrationPart$zz), LINKS.target$PGs4), CONCEPTS.PureMigrationScript$YW);
       }
     }, migrationScript);
   }
   private static Iterable<SNode> allScriptDependencies(final SNode script) {
-    Iterable<SNode> result = Sequence.fromIterable(SLinkOperations.collect(IMigrationUnit__BehaviorDescriptor.getRequiredData_id7s$_UJMVosT.invoke(script), LINKS.script$_S8y)).concat(Sequence.fromIterable(SLinkOperations.collect(IMigrationUnit__BehaviorDescriptor.getExecuteAfter_id2bWK$jI6RRp.invoke(script), LINKS.script$Hg7w)));
+    Iterable<SNode> result = Sequence.fromIterable(SLinkOperations.collect(IMigrationUnit__BehaviorDescriptor.getRequiredData_id7s$_UJMVosT.invoke(script), LINKS.script$mc8u)).concat(Sequence.fromIterable(SLinkOperations.collect(IMigrationUnit__BehaviorDescriptor.getExecuteAfter_id2bWK$jI6RRp.invoke(script), LINKS.script$UNCw)));
     result = Sequence.fromIterable(result).concat(ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(script), CONCEPTS.IMigrationUnit$eE)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(it) < (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(script);
@@ -180,10 +180,10 @@ public class MigrationsCheckUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$x6zr = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
-    /*package*/ static final SReferenceLink target$s$xW = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, 0x267418e6b5c2b960L, "target");
-    /*package*/ static final SReferenceLink script$_S8y = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x44b28148e401c891L, 0x4f6b4ac0cd6d4af5L, "script");
-    /*package*/ static final SReferenceLink script$Hg7w = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x398343344f099b7aL, 0x398343344f099b7bL, "script");
+    /*package*/ static final SContainmentLink part$2ba5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
+    /*package*/ static final SReferenceLink target$PGs4 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, 0x267418e6b5c2b960L, "target");
+    /*package*/ static final SReferenceLink script$mc8u = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x44b28148e401c891L, 0x4f6b4ac0cd6d4af5L, "script");
+    /*package*/ static final SReferenceLink script$UNCw = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x398343344f099b7aL, 0x398343344f099b7bL, "script");
   }
 
   private static final class CONCEPTS {

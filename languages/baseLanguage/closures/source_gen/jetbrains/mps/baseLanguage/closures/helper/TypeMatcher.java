@@ -33,7 +33,7 @@ public class TypeMatcher {
   public void matchType(SNode absType, SNode realType) {
     SNode matched = null;
     if (SNodeOperations.isInstanceOf(realType, CONCEPTS.MeetType$HQ)) {
-      matched = whichTypeMatching(SLinkOperations.getChildren(SNodeOperations.cast(realType, CONCEPTS.MeetType$HQ), LINKS.argument$kHNt), absType);
+      matched = whichTypeMatching(SLinkOperations.getChildren(SNodeOperations.cast(realType, CONCEPTS.MeetType$HQ), LINKS.argument$2bV3), absType);
     } else if (isTypeMatching(absType, realType)) {
       matched = realType;
     }
@@ -42,8 +42,8 @@ public class TypeMatcher {
         mapTypeVar(SNodeOperations.cast(absType, CONCEPTS.TypeVariableReference$vZ), matched);
       } else {
         int idx = 0;
-        List<SNode> mptypes = SLinkOperations.getChildren(SNodeOperations.as(absType, CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne);
-        List<SNode> rptypes = SLinkOperations.getChildren(SNodeOperations.as(matched, CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne);
+        List<SNode> mptypes = SLinkOperations.getChildren(SNodeOperations.as(absType, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM);
+        List<SNode> rptypes = SLinkOperations.getChildren(SNodeOperations.as(matched, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM);
         for (int i = 0; i < ListSequence.fromList(mptypes).count() && i < ListSequence.fromList(rptypes).count(); i++) {
           matchType(ListSequence.fromList(mptypes).getElement(i), ListSequence.fromList(rptypes).getElement(i));
         }
@@ -54,7 +54,7 @@ public class TypeMatcher {
     Set<String> visited = SetSequence.fromSet(new HashSet<String>());
     List<SNode> queue = new ArrayList<SNode>();
     if (SNodeOperations.isInstanceOf(realType, CONCEPTS.MeetType$HQ)) {
-      for (SNode arg : SLinkOperations.getChildren(SNodeOperations.cast(realType, CONCEPTS.MeetType$HQ), LINKS.argument$kHNt)) {
+      for (SNode arg : SLinkOperations.getChildren(SNodeOperations.cast(realType, CONCEPTS.MeetType$HQ), LINKS.argument$2bV3)) {
         ListSequence.fromList(queue).addElement(arg);
       }
     } else {
@@ -81,7 +81,7 @@ public class TypeMatcher {
     }
   }
   private void mapTypeVar(SNode typeVar, SNode tvr) {
-    MapSequence.fromMap(getOrCreateMap()).put(SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$U0X4), FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(SNodeOperations.copyNode(tvr))));
+    MapSequence.fromMap(getOrCreateMap()).put(SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$6t$W), FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(SNodeOperations.copyNode(tvr))));
   }
   private Map<SNode, SNode> getOrCreateMap() {
     if (typeMap == null) {
@@ -111,7 +111,7 @@ public class TypeMatcher {
       if (!(SNodeOperations.isInstanceOf(left, CONCEPTS.ClassifierType$IZ))) {
         return true;
       }
-      return SLinkOperations.getTarget(SNodeOperations.cast(left, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R) == SLinkOperations.getTarget(SNodeOperations.cast(right, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(left, CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne)).count() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(right, CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne)).count();
+      return SLinkOperations.getTarget(SNodeOperations.cast(left, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD) == SLinkOperations.getTarget(SNodeOperations.cast(right, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(left, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)).count() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(right, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)).count();
     }
     return false;
   }
@@ -126,9 +126,9 @@ public class TypeMatcher {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$kHNt = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

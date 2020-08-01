@@ -44,7 +44,7 @@ public final class CellMenuPart_ReplaceChild_Item_Create__BehaviorDescriptor ext
     }
     SNode hostMenuPart = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CellMenuPart_Abstract$vE, false, false);
     SNode editedLink = CellMenuPart_Abstract__BehaviorDescriptor.getEditedLink_idhJEvotS.invoke(hostMenuPart);
-    SNode conceptOfChild = SLinkOperations.getTarget(editedLink, LINKS.target$egp8);
+    SNode conceptOfChild = SLinkOperations.getTarget(editedLink, LINKS.target$TWaS);
     return _quotation_createNode_jf8h0a_a4a0(conceptOfChild);
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
@@ -125,6 +125,6 @@ public final class CellMenuPart_ReplaceChild_Item_Create__BehaviorDescriptor ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

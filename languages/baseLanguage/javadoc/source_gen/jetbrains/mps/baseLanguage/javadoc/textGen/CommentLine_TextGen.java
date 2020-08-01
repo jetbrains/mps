@@ -20,12 +20,12 @@ public class CommentLine_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       DocCommentTextGen.javadocIndent(ctx);
     }
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.part$fv9R)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.part$w5LD)) {
       tgs.appendNode(item);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$fv9R = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 }

@@ -158,17 +158,17 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
           SNode orSelector = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, "jetbrains.mps.lang.editor.structure.OrCellSelector"));
           SNode parent = SNodeOperations.getParent(_context.getNode());
           if (SNodeOperations.isInstanceOf(parent, CONCEPTS.OrCellSelector$lT)) {
-            if (Objects.equals(_context.getNode().getContainmentLink(), LINKS.rightSelector$6IYD)) {
-              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.rightSelector$6IYD, orSelector);
+            if (Objects.equals(_context.getNode().getContainmentLink(), LINKS.rightSelector$gKlR)) {
+              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.rightSelector$gKlR, orSelector);
             } else {
-              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.leftSelector$6INw, orSelector);
+              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.leftSelector$gEWw, orSelector);
             }
           } else {
             SNodeOperations.replaceWithAnother(_context.getNode(), orSelector);
           }
-          SLinkOperations.setTarget(orSelector, LINKS.rightSelector$6IYD, _context.getNode());
-          SLinkOperations.setTarget(orSelector, LINKS.leftSelector$6INw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(orSelector, LINKS.leftSelector$6INw), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(orSelector, LINKS.rightSelector$gKlR, _context.getNode());
+          SLinkOperations.setTarget(orSelector, LINKS.leftSelector$gEWw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(orSelector, LINKS.leftSelector$gEWw), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -262,17 +262,17 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
           SNode orSelector = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, "jetbrains.mps.lang.editor.structure.OrCellSelector"));
           SNode parent = SNodeOperations.getParent(_context.getNode());
           if (SNodeOperations.isInstanceOf(parent, CONCEPTS.OrCellSelector$lT)) {
-            if (Objects.equals(_context.getNode().getContainmentLink(), LINKS.rightSelector$6IYD)) {
-              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.rightSelector$6IYD, orSelector);
+            if (Objects.equals(_context.getNode().getContainmentLink(), LINKS.rightSelector$gKlR)) {
+              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.rightSelector$gKlR, orSelector);
             } else {
-              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.leftSelector$6INw, orSelector);
+              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.leftSelector$gEWw, orSelector);
             }
           } else {
             SNodeOperations.replaceWithAnother(_context.getNode(), orSelector);
           }
-          SLinkOperations.setTarget(orSelector, LINKS.leftSelector$6INw, _context.getNode());
-          SLinkOperations.setTarget(orSelector, LINKS.rightSelector$6IYD, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(orSelector, LINKS.rightSelector$6IYD), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(orSelector, LINKS.leftSelector$gEWw, _context.getNode());
+          SLinkOperations.setTarget(orSelector, LINKS.rightSelector$gKlR, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(orSelector, LINKS.rightSelector$gKlR), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -364,8 +364,8 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
         @Override
         public void execute(@NotNull String pattern) {
           SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$fZ);
-          SLinkOperations.setTarget(selectInEditorOperation, LINKS.selectionStart$otSS, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, LINKS.selectionStart$otSS), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(selectInEditorOperation, LINKS.selectionStart$Quz8, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, LINKS.selectionStart$Quz8), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -435,8 +435,8 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
         @Override
         public void execute(@NotNull String pattern) {
           SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$fZ);
-          SLinkOperations.setTarget(selectInEditorOperation, LINKS.selectionStart$otSS, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, LINKS.selectionStart$otSS), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(selectInEditorOperation, LINKS.selectionStart$Quz8, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, LINKS.selectionStart$Quz8), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -477,8 +477,8 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightSelector$6IYD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b042L, "rightSelector");
-    /*package*/ static final SContainmentLink leftSelector$6INw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b040L, "leftSelector");
-    /*package*/ static final SContainmentLink selectionStart$otSS = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x320558d6ffc96d72L, "selectionStart");
+    /*package*/ static final SContainmentLink rightSelector$gKlR = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b042L, "rightSelector");
+    /*package*/ static final SContainmentLink leftSelector$gEWw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b040L, "leftSelector");
+    /*package*/ static final SContainmentLink selectionStart$Quz8 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x320558d6ffc96d72L, "selectionStart");
   }
 }

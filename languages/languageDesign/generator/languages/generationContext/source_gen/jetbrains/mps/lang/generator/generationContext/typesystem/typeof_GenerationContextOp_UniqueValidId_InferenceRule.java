@@ -23,7 +23,7 @@ public class typeof_GenerationContextOp_UniqueValidId_InferenceRule extends Abst
   public void applyRule(final SNode uvi, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(uvi, LINKS.node$RMRO);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(uvi, LINKS.node$1D2c);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "3228980938641126417", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "3228980938641126419", true), (SNode) _quotation_createNode_msc04j_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
@@ -47,7 +47,7 @@ public class typeof_GenerationContextOp_UniqueValidId_InferenceRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$RMRO = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x2ccfa50e4a3632e5L, 0x23358d5095e3172fL, "node");
+    /*package*/ static final SContainmentLink node$1D2c = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x2ccfa50e4a3632e5L, 0x23358d5095e3172fL, "node");
   }
 
   private static final class CONCEPTS {

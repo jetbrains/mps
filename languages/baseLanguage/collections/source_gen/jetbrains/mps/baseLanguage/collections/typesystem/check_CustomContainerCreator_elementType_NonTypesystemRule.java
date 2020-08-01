@@ -22,8 +22,8 @@ public class check_CustomContainerCreator_elementType_NonTypesystemRule extends 
   public check_CustomContainerCreator_elementType_NonTypesystemRule() {
   }
   public void applyRule(final SNode ccc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SLinkOperations.getTarget(ccc, LINKS.elementType$K4zo);
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ccc, LINKS.containerDeclaration$P4kF), LINKS.typeVariableDeclaration$ziZT)).count() <= 1 && ((ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ccc, LINKS.containerDeclaration$P4kF), LINKS.typeVariableDeclaration$ziZT)).count() == 1) == (SLinkOperations.getTarget(ccc, LINKS.elementType$K4zo) != null)))) {
+    SLinkOperations.getTarget(ccc, LINKS.elementType$id8C);
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ccc, LINKS.containerDeclaration$H60P), LINKS.typeVariableDeclaration$6cWB)).count() <= 1 && ((ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ccc, LINKS.containerDeclaration$H60P), LINKS.typeVariableDeclaration$6cWB)).count() == 1) == (SLinkOperations.getTarget(ccc, LINKS.elementType$id8C) != null)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ccc, "Invalid type parameter", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5192033827214196979", null, errorTarget);
     }
@@ -39,9 +39,9 @@ public class check_CustomContainerCreator_elementType_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$K4zo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
-    /*package*/ static final SReferenceLink containerDeclaration$P4kF = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, 0x127be81db92655b4L, "containerDeclaration");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink elementType$id8C = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
+    /*package*/ static final SReferenceLink containerDeclaration$H60P = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, 0x127be81db92655b4L, "containerDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {

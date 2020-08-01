@@ -55,22 +55,22 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.ClassConcept$IY, false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.ClassConcept$IY, false, false);
     SNode classifierType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-    SLinkOperations.setTarget(classifierType, LINKS.classifier$pQ_R, classConcept);
-    for (SNode typeParameter : SLinkOperations.getChildren(__thisNode__, LINKS.typeParameter$swNi)) {
-      ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).addElement(SNodeOperations.copyNode(typeParameter));
+    SLinkOperations.setTarget(classifierType, LINKS.classifier$xslD, classConcept);
+    for (SNode typeParameter : SLinkOperations.getChildren(__thisNode__, LINKS.typeParameter$NSPI)) {
+      ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).addElement(SNodeOperations.copyNode(typeParameter));
     }
     return classifierType;
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.ClassConcept$IY, false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.ClassConcept$IY, false, false);
     if ((classConcept != null)) {
       return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classConcept);
     }
 
     // special logic for java stubs 
-    SReference cRef = SNodeOperations.getReference(__thisNode__, LINKS.baseMethodDeclaration$$A7i);
+    SReference cRef = SNodeOperations.getReference(__thisNode__, LINKS.baseMethodDeclaration$ItxI);
     if (cRef == null) {
       return Sequence.fromIterable(Collections.<SNode>emptyList());
     }
@@ -102,7 +102,7 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static Iterable<SNode> retrieveInstantiationPoints_id5qAZxlfY81X(@NotNull SAbstractConcept __thisConcept__, SNode type, SNode contextNode) {
     return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$gY5l)) && !(DefaultConstructorUtils.hasDefaultConstructor(it));
+        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$e4_b)) && !(DefaultConstructorUtils.hasDefaultConstructor(it));
       }
     }).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
@@ -164,10 +164,10 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SContainmentLink typeParameter$swNi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
   }
 
   private static final class CONCEPTS {
@@ -176,6 +176,6 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

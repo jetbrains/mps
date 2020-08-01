@@ -40,7 +40,7 @@ public class InlineStyleDeclaration_Constraints extends BaseConstraintsDescripto
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (LINKS.styleItem$$mEY.equals(link)) {
+    if (LINKS.styleItem$AYO2.equals(link)) {
       SConcept styleClassItemConcept = (SConcept) childConcept;
       return (boolean) StyleClassItem__BehaviorDescriptor.isApplicableToCellConcept_id2u3gVK1lsco.invoke(SNodeOperations.asSConcept(styleClassItemConcept), CONCEPTS.CellModel_Constant$SB) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableForLayout_iditlittOTie.invoke(SNodeOperations.asSConcept(styleClassItemConcept), null) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableInLayout_iditlittOTkB.invoke(SNodeOperations.asSConcept(styleClassItemConcept), SNodeOperations.getConcept(LayoutContainer__BehaviorDescriptor.getLayout_iditlittTD4U.invoke(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.LayoutContainer$PT))));
     }
@@ -55,6 +55,6 @@ public class InlineStyleDeclaration_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink styleItem$$mEY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
   }
 }

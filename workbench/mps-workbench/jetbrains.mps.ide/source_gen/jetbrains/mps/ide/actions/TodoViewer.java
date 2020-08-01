@@ -117,7 +117,7 @@ public class TodoViewer extends JPanel {
     public String getPresentation(SNode node) {
       SNode n = node;
       if (SNodeOperations.isInstanceOf(n, CONCEPTS.TextCommentPart$lb)) {
-        return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw);
+        return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$lb), PROPS.text$va_w);
       }
       return ((String) BHReflection.invoke0(SNodeOperations.as(node, CONCEPTS.IComment$kc), CONCEPTS.IComment$kc, SMethodTrimmedId.create("getTextualRepresentation", null, "fB3l80ylIb")));
     }
@@ -151,6 +151,6 @@ public class TodoViewer extends JPanel {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$AaEw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 }

@@ -34,7 +34,7 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
   private static final String INDENT = "     ";
 
   private static boolean isOverridden(SNode method) {
-    return (SLinkOperations.getTarget(method, LINKS.body$WIlu) != null);
+    return (SLinkOperations.getTarget(method, LINKS.body$qspy) != null);
   }
 
   private final boolean myOverridden;
@@ -83,7 +83,7 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {

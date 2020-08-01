@@ -16,14 +16,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class NewNode {
   public void newNode1(SModel model) {
     SNode newClass = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
-    SLinkOperations.addNewChild(newClass, LINKS.member$oYX5, CONCEPTS.ConstructorDeclaration$5U);
-    SLinkOperations.addNewChild(SLinkOperations.addNewChild(newClass, LINKS.member$oYX5, CONCEPTS.ConstructorDeclaration$5U), LINKS.parameter$WIkZ, null);
+    SLinkOperations.addNewChild(newClass, LINKS.member$6v_r, CONCEPTS.ConstructorDeclaration$5U);
+    SLinkOperations.addNewChild(SLinkOperations.addNewChild(newClass, LINKS.member$6v_r, CONCEPTS.ConstructorDeclaration$5U), LINKS.parameter$qsax, null);
   }
   public void newNode2(SNode node) {
     SNode newIfStatement = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.IfStatement$pi);
-    SNode newCondition = SLinkOperations.setNewChild(newIfStatement, LINKS.condition$WJ1b, null);
+    SNode newCondition = SLinkOperations.setNewChild(newIfStatement, LINKS.condition$qL$l, null);
     SNode newCondition2 = SNodeOperations.replaceWithNewChild(newCondition, CONCEPTS.AndExpression$zq);
-    SNode newStatement = SLinkOperations.addNewChild(SLinkOperations.getTarget(newIfStatement, LINKS.ifTrue$WJ1E), LINKS.statement$WHn8, CONCEPTS.ReturnStatement$SF);
+    SNode newStatement = SLinkOperations.addNewChild(SLinkOperations.getTarget(newIfStatement, LINKS.ifTrue$qLNm), LINKS.statement$pYcS, CONCEPTS.ReturnStatement$SF);
   }
   public void newNode3(SNode sample) {
     SNode ifStatement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
@@ -33,11 +33,11 @@ public class NewNode {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink ifTrue$WJ1E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {

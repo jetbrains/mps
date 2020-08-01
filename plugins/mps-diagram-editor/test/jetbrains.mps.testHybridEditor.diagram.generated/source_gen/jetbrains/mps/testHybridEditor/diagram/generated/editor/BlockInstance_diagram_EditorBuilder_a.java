@@ -85,56 +85,56 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       super(editorContext, node);
       myPropertyCell_79747v_a0a = new PropertyMapperCell<String>(editorContext, node) {
         protected String getModelPropertyValueImpl() {
-          return SPropertyOperations.getString(node, PROPS.name$tAp1);
+          return SPropertyOperations.getString(node, PROPS.name$lA7v);
         }
         protected void setModelPropertyValueImpl(String value) {
-          SPropertyOperations.assign(node, PROPS.name$tAp1, value);
+          SPropertyOperations.assign(node, PROPS.name$lA7v, value);
         }
       };
       addEditorCell(myPropertyCell_79747v_a0a);
       myPropertyCell_79747v_a0a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_79747v_a0a, new Pair<SNodeReference, String>(new SNodePointer(node), "name"));
       myProperty_79747v_a1a = new ReadableModelProperty<String>(editorContext) {
         protected String getModelPropertyValue() {
-          return SPropertyOperations.getString(SLinkOperations.getTarget(getSNode(), LINKS.metaBlock$CPc7), PROPS.name$tAp1);
+          return SPropertyOperations.getString(SLinkOperations.getTarget(getSNode(), LINKS.metaBlock$LKRp), PROPS.name$lA7v);
         }
       }.init();
       addModelProperty(myProperty_79747v_a1a);
       myPropertyCell_79747v_a2a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.x$COu6);
+          return SPropertyOperations.getInteger(node, PROPS.x$Lq$U);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.x$COu6, value);
+          SPropertyOperations.assign(node, PROPS.x$Lq$U, value);
         }
       };
       addEditorCell(myPropertyCell_79747v_a2a);
       myPropertyCell_79747v_a2a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_79747v_a2a, new Pair<SNodeReference, String>(new SNodePointer(node), "x"));
       myPropertyCell_79747v_a3a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.y$COu_);
+          return SPropertyOperations.getInteger(node, PROPS.y$LqNV);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.y$COu_, value);
+          SPropertyOperations.assign(node, PROPS.y$LqNV, value);
         }
       };
       addEditorCell(myPropertyCell_79747v_a3a);
       myPropertyCell_79747v_a3a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_79747v_a3a, new Pair<SNodeReference, String>(new SNodePointer(node), "y"));
       myPropertyCell_79747v_a4a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.width$IRw4);
+          return SPropertyOperations.getInteger(node, PROPS.width$GSxW);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.width$IRw4, value);
+          SPropertyOperations.assign(node, PROPS.width$GSxW, value);
         }
       };
       addEditorCell(myPropertyCell_79747v_a4a);
       myPropertyCell_79747v_a4a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_79747v_a4a, new Pair<SNodeReference, String>(new SNodePointer(node), "width"));
       myPropertyCell_79747v_a5a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.height$ISEb);
+          return SPropertyOperations.getInteger(node, PROPS.height$Hsrl);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.height$ISEb, value);
+          SPropertyOperations.assign(node, PROPS.height$Hsrl, value);
         }
       };
       addEditorCell(myPropertyCell_79747v_a5a);
@@ -148,8 +148,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       myPropertyCell_79747v_a3a.synchronize();
       myPropertyCell_79747v_a4a.synchronize();
       myPropertyCell_79747v_a5a.synchronize();
-      syncPortObjects(SLinkOperations.getChildren(SLinkOperations.getTarget(getSNode(), LINKS.metaBlock$CPc7), LINKS.inMetaPorts$R6WG), myInputPorts.listIterator(), new HashSet<SNode>(myInputPorts));
-      syncPortObjects(SLinkOperations.getChildren(SLinkOperations.getTarget(getSNode(), LINKS.metaBlock$CPc7), LINKS.outMetaPorts$GN3P), myOutputPorts.listIterator(), new HashSet<SNode>(myOutputPorts));
+      syncPortObjects(SLinkOperations.getChildren(SLinkOperations.getTarget(getSNode(), LINKS.metaBlock$LKRp), LINKS.inMetaPorts$Gnpk), myInputPorts.listIterator(), new HashSet<SNode>(myInputPorts));
+      syncPortObjects(SLinkOperations.getChildren(SLinkOperations.getTarget(getSNode(), LINKS.metaBlock$LKRp), LINKS.outMetaPorts$GIQF), myOutputPorts.listIterator(), new HashSet<SNode>(myOutputPorts));
     }
     public Mapper<SNode, DiagramNodeView> createMapper() {
       return new Mapper<SNode, DiagramNodeView>(getSNode(), createDiagramNodeView()) {
@@ -371,16 +371,16 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty x$COu6 = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec440489L, "x");
-    /*package*/ static final SProperty y$COu_ = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec44048aL, "y");
-    /*package*/ static final SProperty width$IRw4 = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x2c11e15d8177197eL, "width");
-    /*package*/ static final SProperty height$ISEb = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x2c11e15d817719aeL, "height");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty x$Lq$U = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec440489L, "x");
+    /*package*/ static final SProperty y$LqNV = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec44048aL, "y");
+    /*package*/ static final SProperty width$GSxW = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x2c11e15d8177197eL, "width");
+    /*package*/ static final SProperty height$Hsrl = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x2c11e15d817719aeL, "height");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink metaBlock$CPc7 = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec4404a9L, "metaBlock");
-    /*package*/ static final SContainmentLink inMetaPorts$R6WG = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts");
-    /*package*/ static final SContainmentLink outMetaPorts$GN3P = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x2cd0b06754c8ec0cL, "outMetaPorts");
+    /*package*/ static final SReferenceLink metaBlock$LKRp = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec4404a9L, "metaBlock");
+    /*package*/ static final SContainmentLink inMetaPorts$Gnpk = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts");
+    /*package*/ static final SContainmentLink outMetaPorts$GIQF = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x2cd0b06754c8ec0cL, "outMetaPorts");
   }
 }

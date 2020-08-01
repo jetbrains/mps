@@ -18,7 +18,7 @@ public class typeof_LocalPropertyReference_InferenceRule extends AbstractInferen
   public typeof_LocalPropertyReference_InferenceRule() {
   }
   public void applyRule(final SNode propertyReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode property = SLinkOperations.getTarget(propertyReference, LINKS.property$KTS0);
+    SNode property = SLinkOperations.getTarget(propertyReference, LINKS.property$G280);
     if ((property != null)) {
       {
         SNode _nodeToCheck_1029348928467 = propertyReference;
@@ -38,7 +38,7 @@ public class typeof_LocalPropertyReference_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$KTS0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property");
+    /*package*/ static final SReferenceLink property$G280 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property");
   }
 
   private static final class CONCEPTS {

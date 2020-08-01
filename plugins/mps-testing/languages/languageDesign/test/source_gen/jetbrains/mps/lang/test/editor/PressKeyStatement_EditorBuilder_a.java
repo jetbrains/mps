@@ -86,7 +86,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.keyStrokes$u_N8;
+      return LINKS.keyStrokes$OjKS;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.KeyMapKeystroke$7H;
@@ -99,7 +99,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(keyStrokesListHandler_pkvqak_b0.this.getNode(), LINKS.keyStrokes$u_N8));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(keyStrokesListHandler_pkvqak_b0.this.getNode(), LINKS.keyStrokes$OjKS));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -163,7 +163,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keyStrokes$u_N8 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e223413eeL, 0x11e22346d26L, "keyStrokes");
+    /*package*/ static final SContainmentLink keyStrokes$OjKS = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e223413eeL, 0x11e22346d26L, "keyStrokes");
   }
 
   private static final class CONCEPTS {

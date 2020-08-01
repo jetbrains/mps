@@ -36,13 +36,13 @@ public final class StringLiteralRegexp__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    return StringLiteralRegexp__BehaviorDescriptor.toRegexp_id7eq8FHGGy0G.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.text$zn$r));
+    return StringLiteralRegexp__BehaviorDescriptor.toRegexp_id7eq8FHGGy0G.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.text$8qD5));
   }
   /*package*/ static boolean isValid_id48bMILtL4il(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.text$zn$r))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.text$8qD5))) {
       return false;
     }
-    return StringLiteralRegexp__BehaviorDescriptor.toRegexp_id7eq8FHGGy0G.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.text$zn$r)) != null;
+    return StringLiteralRegexp__BehaviorDescriptor.toRegexp_id7eq8FHGGy0G.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.text$8qD5)) != null;
   }
   /*package*/ static String toRegexp_id7eq8FHGGy0G(@NotNull SNode __thisNode__, String s) {
     StringBuilder sb = new StringBuilder();
@@ -158,7 +158,7 @@ public final class StringLiteralRegexp__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$zn$r = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
+    /*package*/ static final SProperty text$8qD5 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
   }
 
   private static final class CONCEPTS {

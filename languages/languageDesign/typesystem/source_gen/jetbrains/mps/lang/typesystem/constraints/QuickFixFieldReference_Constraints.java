@@ -33,7 +33,7 @@ public class QuickFixFieldReference_Constraints extends BaseConstraintsDescripto
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.quickFixField$QTC0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.quickFixField$_Uo0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,7 +51,7 @@ public class QuickFixFieldReference_Constraints extends BaseConstraintsDescripto
             List<SNode> nodes = new ArrayList<SNode>();
             SNode quickFix = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TypesystemQuickFix$ii, false, false);
             if ((quickFix != null)) {
-              ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(quickFix, LINKS.quickFixField$SOUb)));
+              ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(quickFix, LINKS.quickFixField$xCbl)));
             }
             return ListScope.forResolvableElements(nodes);
           }
@@ -70,7 +70,7 @@ public class QuickFixFieldReference_Constraints extends BaseConstraintsDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink quickFixField$QTC0 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x70489eee8479b55dL, 0x70489eee8479b55eL, "quickFixField");
-    /*package*/ static final SContainmentLink quickFixField$SOUb = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x70489eee847aabdfL, "quickFixField");
+    /*package*/ static final SReferenceLink quickFixField$_Uo0 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x70489eee8479b55dL, 0x70489eee8479b55eL, "quickFixField");
+    /*package*/ static final SContainmentLink quickFixField$xCbl = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x70489eee847aabdfL, "quickFixField");
   }
 }

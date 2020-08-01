@@ -26,7 +26,7 @@ public class supertypesOf_ConceptNodeType_ConceptNodeType_SubtypingRule extends 
   }
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
-    SNode concept = SLinkOperations.getTarget(type, LINKS.conceptDeclaraton$Qe25);
+    SNode concept = SLinkOperations.getTarget(type, LINKS.conceptDeclaraton$gN0r);
     if (SNodeOperations.isInstanceOf(concept, CONCEPTS.AbstractConceptDeclaration$UN)) {
       List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(concept);
       for (SNode superConcept : ListSequence.fromList(superConcepts)) {
@@ -60,7 +60,7 @@ public class supertypesOf_ConceptNodeType_ConceptNodeType_SubtypingRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaraton$Qe25 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink conceptDeclaraton$gN0r = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
   }
 
   private static final class CONCEPTS {

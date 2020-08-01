@@ -20,7 +20,7 @@ public class sorted_set_subtypeOf_set_SubtypingRule extends SubtypingRule_Runtim
   public sorted_set_subtypeOf_set_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode sortedSetType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_3ege2c_a0a1(SLinkOperations.getTarget(sortedSetType, LINKS.elementType$ZAgX));
+    return _quotation_createNode_3ege2c_a0a1(SLinkOperations.getTarget(sortedSetType, LINKS.elementType$Nydz));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SortedSetType$Tt;
@@ -44,7 +44,7 @@ public class sorted_set_subtypeOf_set_SubtypingRule extends SubtypingRule_Runtim
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$ZAgX = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType");
+    /*package*/ static final SContainmentLink elementType$Nydz = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, 0x11d91cc51e3L, "elementType");
   }
 
   private static final class CONCEPTS {

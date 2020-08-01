@@ -54,7 +54,7 @@ public class AddForStatementVar extends KeyMapImpl {
       SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.LocalVariableDeclaration$Bf, false, false);
       if ((variableDeclaration != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(variableDeclaration), CONCEPTS.ForStatement$Y9)) {
         SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), CONCEPTS.ForStatement$Y9);
-        if (SLinkOperations.getTarget(forStatement, LINKS.variable$H$_G) == variableDeclaration) {
+        if (SLinkOperations.getTarget(forStatement, LINKS.variable$4Igk) == variableDeclaration) {
           return true;
         }
       }
@@ -63,7 +63,7 @@ public class AddForStatementVar extends KeyMapImpl {
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.LocalVariableDeclaration$Bf, false, false);
       SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), CONCEPTS.ForStatement$Y9);
-      ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.additionalVar$$Q$J)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.AdditionalForLoopVariable$KW, null));
+      ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.additionalVar$QrML)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.AdditionalForLoopVariable$KW, null));
     }
     public String getKeyStroke() {
       return " ,";
@@ -78,7 +78,7 @@ public class AddForStatementVar extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$H$_G = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink additionalVar$$Q$J = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
+    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink additionalVar$QrML = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
   }
 }

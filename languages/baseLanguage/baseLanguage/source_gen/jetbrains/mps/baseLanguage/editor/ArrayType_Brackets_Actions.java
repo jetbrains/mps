@@ -26,7 +26,7 @@ public class ArrayType_Brackets_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.componentType$10w));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.componentType$vfw));
       }
 
     };
@@ -74,6 +74,6 @@ public class ArrayType_Brackets_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 }

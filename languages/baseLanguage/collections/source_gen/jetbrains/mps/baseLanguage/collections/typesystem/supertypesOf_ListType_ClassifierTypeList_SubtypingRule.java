@@ -22,7 +22,7 @@ public class supertypesOf_ListType_ClassifierTypeList_SubtypingRule extends Subt
   public supertypesOf_ListType_ClassifierTypeList_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode listType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode et = SLinkOperations.getTarget(listType, LINKS.elementType$xJJW);
+    SNode et = SLinkOperations.getTarget(listType, LINKS.elementType$m8e4);
     if (SNodeOperations.isInstanceOf(et, CONCEPTS.PrimitiveType$5)) {
       et = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(et);
     }
@@ -51,7 +51,7 @@ public class supertypesOf_ListType_ClassifierTypeList_SubtypingRule extends Subt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$xJJW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
+    /*package*/ static final SContainmentLink elementType$m8e4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
   }
 
   private static final class CONCEPTS {

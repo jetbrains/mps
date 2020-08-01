@@ -31,11 +31,11 @@ public final class ExpectedOption__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(classifierName_id3ZSHU3pg$b_);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.defaultOption$57Ad, -1);
+    SPropertyOperations.assign(__thisNode__, PROPS.defaultOption$uFwj, -1);
   }
 
   /*package*/ static String classifierName_id3ZSHU3pg$b_(@NotNull SNode __thisNode__) {
-    return NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) + "_" + SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__));
+    return NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) + "_" + SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__));
   }
 
   /*package*/ ExpectedOption__BehaviorDescriptor() {
@@ -85,7 +85,7 @@ public final class ExpectedOption__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty defaultOption$57Ad = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty defaultOption$uFwj = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7bbL, 0x3318e2a89ff0296cL, "defaultOption");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

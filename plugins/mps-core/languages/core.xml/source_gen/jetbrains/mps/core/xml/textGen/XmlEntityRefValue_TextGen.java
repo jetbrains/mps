@@ -14,11 +14,11 @@ public class XmlEntityRefValue_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("&");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.entityName$EMB8));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.entityName$IwWS));
     tgs.append(";");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty entityName$EMB8 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
+    /*package*/ static final SProperty entityName$IwWS = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
   }
 }

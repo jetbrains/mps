@@ -70,7 +70,7 @@ public class add_reexport extends TransformationMenuBase {
   public class TMP_Group_chh8le_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.reexport$gb$r));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.reexport$PAD5));
     }
 
     @NotNull
@@ -126,7 +126,7 @@ public class add_reexport extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.reexport$gb$r, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.reexport$PAD5, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -152,6 +152,6 @@ public class add_reexport extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reexport$gb$r = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
+    /*package*/ static final SProperty reexport$PAD5 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
   }
 }

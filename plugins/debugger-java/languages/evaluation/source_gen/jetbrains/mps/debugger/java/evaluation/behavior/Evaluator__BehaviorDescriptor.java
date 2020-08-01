@@ -39,7 +39,7 @@ public final class Evaluator__BehaviorDescriptor extends BaseBHDescriptor {
     // yea! 
   }
   /*package*/ static SNode getCode_idhASWOEj0jB(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.code$ojh9);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.code$Lljn);
   }
 
   /*package*/ Evaluator__BehaviorDescriptor() {
@@ -95,6 +95,6 @@ public final class Evaluator__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink code$ojh9 = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0xbbe5b47d7cc5fa1L, 0xbbe5b47d7cc6080L, "code");
+    /*package*/ static final SContainmentLink code$Lljn = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0xbbe5b47d7cc5fa1L, 0xbbe5b47d7cc6080L, "code");
   }
 }

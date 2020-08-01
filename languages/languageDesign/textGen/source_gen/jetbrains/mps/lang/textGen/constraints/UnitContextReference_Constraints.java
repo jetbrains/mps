@@ -50,7 +50,7 @@ public class UnitContextReference_Constraints extends BaseConstraintsDescriptor 
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.context$PeF0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.context$M6P0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -65,7 +65,7 @@ public class UnitContextReference_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forNamedElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.LanguageTextGenDeclaration$8b, false, false), LINKS.contextObjects$CtmH));
+            return ListScope.forNamedElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.LanguageTextGenDeclaration$8b, false, false), LINKS.contextObjects$AdZN));
           }
         };
       }
@@ -86,7 +86,7 @@ public class UnitContextReference_Constraints extends BaseConstraintsDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink context$PeF0 = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ab5a81L, 0x377692d961ab5a82L, "context");
-    /*package*/ static final SContainmentLink contextObjects$CtmH = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x377692d961abfe2aL, "contextObjects");
+    /*package*/ static final SReferenceLink context$M6P0 = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ab5a81L, 0x377692d961ab5a82L, "context");
+    /*package*/ static final SContainmentLink contextObjects$AdZN = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x377692d961abfe2aL, "contextObjects");
   }
 }

@@ -29,7 +29,7 @@ public class Node_IsRoleOperation_Constraints extends BaseConstraintsDescriptor 
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkInParent$FuAc, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkInParent$3OvO, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -44,7 +44,7 @@ public class Node_IsRoleOperation_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode conceptOfParent = SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.conceptOfParent$lo_I);
+            SNode conceptOfParent = SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.conceptOfParent$mUhi);
             return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(conceptOfParent));
           }
         };
@@ -61,7 +61,7 @@ public class Node_IsRoleOperation_Constraints extends BaseConstraintsDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink linkInParent$FuAc = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, 0x10a675c34a9L, "linkInParent");
-    /*package*/ static final SReferenceLink conceptOfParent$lo_I = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, 0x10a675bae60L, "conceptOfParent");
+    /*package*/ static final SReferenceLink linkInParent$3OvO = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, 0x10a675c34a9L, "linkInParent");
+    /*package*/ static final SReferenceLink conceptOfParent$mUhi = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, 0x10a675bae60L, "conceptOfParent");
   }
 }

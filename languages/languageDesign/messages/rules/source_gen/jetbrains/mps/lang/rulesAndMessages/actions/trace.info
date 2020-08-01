@@ -12,7 +12,7 @@
   <root nodeRef="r:fe5b6dc3-eea1-4086-b8f8-2cdc7ac36f3e(jetbrains.mps.lang.rulesAndMessages.actions)/6990313848119162802">
     <file name="ForRuleWithMessage.java">
       <node id="6990313848119177187" at="18,139,19,191" concept="0" />
-      <node id="6990313848119162802" at="26,0,27,0" concept="3" trace="messageProvider$Rd0S" />
+      <node id="6990313848119162802" at="26,0,27,0" concept="3" trace="messageProvider$Jjr8" />
       <node id="6990313848119162802" at="30,0,31,0" concept="3" trace="RuleWithMessage$jq" />
       <node id="6990313848119167009" at="17,82,20,9" concept="1" />
       <node id="6990313848119164697" at="16,91,21,7" concept="1" />

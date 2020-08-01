@@ -33,7 +33,7 @@ public final class HexIntegerLiteral__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
     try {
-      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.value$9TU), 16);
+      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.value$4N36), 16);
     } catch (NumberFormatException num) {
       return 0;
     }
@@ -86,6 +86,6 @@ public final class HexIntegerLiteral__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$9TU = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, 0x11297628b3cL, "value");
+    /*package*/ static final SProperty value$4N36 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, 0x11297628b3cL, "value");
   }
 }

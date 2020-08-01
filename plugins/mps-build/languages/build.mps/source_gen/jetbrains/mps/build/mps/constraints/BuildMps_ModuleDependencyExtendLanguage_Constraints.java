@@ -49,7 +49,7 @@ public class BuildMps_ModuleDependencyExtendLanguage_Constraints extends BaseCon
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.language$t$Iv, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.language$kMx1, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -87,6 +87,6 @@ public class BuildMps_ModuleDependencyExtendLanguage_Constraints extends BaseCon
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink language$t$Iv = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
+    /*package*/ static final SReferenceLink language$kMx1 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
   }
 }

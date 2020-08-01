@@ -28,7 +28,7 @@ public class QueryExpression_ParameterActions {
         if (DeletionApproverUtil.approve(editorContext, node, "parameter")) {
           return;
         }
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.parameter$ew30));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.parameter$1xt0));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "ALIAS_EDITOR_COMPONENT", -1);
       }
 
@@ -77,6 +77,6 @@ public class QueryExpression_ParameterActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$ew30 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
+    /*package*/ static final SContainmentLink parameter$1xt0 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
   }
 }

@@ -35,9 +35,9 @@ public final class InvokeFunctionOperation__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static List<SNode> getParameters_idnfIF2FKNkP(@NotNull SNode __thisNode__) {
-    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr));
+    SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5));
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.FunctionType$ig)) {
-      return SLinkOperations.getChildren(SNodeOperations.cast(type, CONCEPTS.FunctionType$ig), LINKS.parameterType$odu6);
+      return SLinkOperations.getChildren(SNodeOperations.cast(type, CONCEPTS.FunctionType$ig), LINKS.parameterType$Ix$U);
     }
     return new ArrayList<SNode>();
   }
@@ -94,7 +94,7 @@ public final class InvokeFunctionOperation__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink parameterType$odu6 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink parameterType$Ix$U = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
   }
 }

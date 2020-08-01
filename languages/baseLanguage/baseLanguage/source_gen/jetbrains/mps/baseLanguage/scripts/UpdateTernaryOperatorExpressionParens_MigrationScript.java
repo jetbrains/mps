@@ -35,13 +35,13 @@ public final class UpdateTernaryOperatorExpressionParens_MigrationScript extends
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BinaryOperation$vf) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.TernaryOperatorExpression$HC) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TernaryOperatorExpression$HC), LINKS.condition$CEb4), node));
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BinaryOperation$vf) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.TernaryOperatorExpression$HC) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TernaryOperatorExpression$HC), LINKS.condition$GrmW), node));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
 
         SNode result = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.ParenthesizedExpression$vE);
-        SLinkOperations.setTarget(result, LINKS.expression$4_F0, node);
+        SLinkOperations.setTarget(result, LINKS.expression$efP0, node);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -63,7 +63,7 @@ public final class UpdateTernaryOperatorExpressionParens_MigrationScript extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$CEb4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

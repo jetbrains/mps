@@ -104,8 +104,8 @@ public class StaticMethodDeclarationPsvmTemplate extends SubstituteMenuBase {
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-        SelectionUtil.selectNode(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.body$WIlu));
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.body$WIlu), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SelectionUtil.selectNode(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.body$qspy));
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.body$qspy), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
     }
   }
@@ -141,6 +141,6 @@ public class StaticMethodDeclarationPsvmTemplate extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 }

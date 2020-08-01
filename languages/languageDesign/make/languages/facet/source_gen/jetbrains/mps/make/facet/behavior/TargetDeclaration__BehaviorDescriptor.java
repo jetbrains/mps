@@ -41,10 +41,10 @@ public final class TargetDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static String getTargetFqName_idLXloLaM9s9(@NotNull SNode __thisNode__) {
     String ffqn = FacetDeclaration__BehaviorDescriptor.getFacetFqName_id1ExXGqkc_QX.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.FacetDeclaration$al));
-    return (ffqn != null ? ffqn + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) : SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    return (ffqn != null ? ffqn + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) : SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
   }
   /*package*/ static String classifierName_id3ZSHU3pg$b_(@NotNull SNode __thisNode__) {
-    return IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(TargetDeclaration__BehaviorDescriptor.facetDeclaration_id6O0kUTrtki6.invoke(__thisNode__)) + ".Target_" + NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    return IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(TargetDeclaration__BehaviorDescriptor.facetDeclaration_id6O0kUTrtki6.invoke(__thisNode__)) + ".Target_" + NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
   }
 
   /*package*/ TargetDeclaration__BehaviorDescriptor() {
@@ -102,6 +102,6 @@ public final class TargetDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

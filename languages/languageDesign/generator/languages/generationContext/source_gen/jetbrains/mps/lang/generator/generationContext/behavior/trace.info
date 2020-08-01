@@ -35,7 +35,7 @@
       <node id="1217892542812" at="81,48,82,22" concept="5" />
       <node id="1217892542812" at="87,40,88,19" concept="5" />
       <node id="1217892542812" at="92,0,93,0" concept="7" trace="AssignmentExpression$rS" />
-      <node id="1217892542812" at="96,0,97,0" concept="7" trace="lValue$J0D4" />
+      <node id="1217892542812" at="96,0,97,0" concept="7" trace="lValue$LjSW" />
       <node id="1217892542812" at="32,0,34,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1217892542812" at="45,0,47,0" concept="0" trace="GenerationContextOp_UserObjectAccessBase__BehaviorDescriptor#()V" />
       <node id="1217892577752" at="37,90,40,7" concept="2" />
@@ -401,7 +401,7 @@
       <node id="1758784108620115398" at="73,14,74,58" concept="10" />
       <node id="1758784108620115398" at="80,48,81,22" concept="5" />
       <node id="1758784108620115398" at="86,40,87,19" concept="5" />
-      <node id="1758784108620115398" at="91,0,92,0" concept="7" trace="linkPatternVar$HJsX" />
+      <node id="1758784108620115398" at="91,0,92,0" concept="7" trace="linkPatternVar$9Z1z" />
       <node id="1758784108620115398" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1758784108620115398" at="41,0,43,0" concept="0" trace="GenerationContextOp_LinkPatternRef__BehaviorDescriptor#()V" />
       <node id="1758784108620115398" at="34,0,37,0" concept="8" trace="getTarget_id1xCtdgeTQHC#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -486,7 +486,7 @@
       <node id="1758784108620115413" at="73,14,74,58" concept="10" />
       <node id="1758784108620115413" at="80,48,81,22" concept="5" />
       <node id="1758784108620115413" at="86,40,87,19" concept="5" />
-      <node id="1758784108620115413" at="91,0,92,0" concept="7" trace="patternVarDecl$hBXe" />
+      <node id="1758784108620115413" at="91,0,92,0" concept="7" trace="patternVarDecl$ymDM" />
       <node id="1758784108620115413" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1758784108620115413" at="41,0,43,0" concept="0" trace="GenerationContextOp_NodePatternRef__BehaviorDescriptor#()V" />
       <node id="1758784108620115413" at="34,0,37,0" concept="8" trace="getTarget_id1xCtdgeTQHC#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -571,7 +571,7 @@
       <node id="1758784108620115429" at="73,14,74,58" concept="10" />
       <node id="1758784108620115429" at="80,48,81,22" concept="5" />
       <node id="1758784108620115429" at="86,40,87,19" concept="5" />
-      <node id="1758784108620115429" at="91,0,92,0" concept="7" trace="propertyPatternVar$HJtt" />
+      <node id="1758784108620115429" at="91,0,92,0" concept="7" trace="propertyPatternVar$9Zh3" />
       <node id="1758784108620115429" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1758784108620115429" at="41,0,43,0" concept="0" trace="GenerationContextOp_PropertyPatternRef__BehaviorDescriptor#()V" />
       <node id="1758784108620115429" at="34,0,37,0" concept="8" trace="getTarget_id1xCtdgeTQHC#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -746,7 +746,7 @@
       <node id="5797301543953587954" at="67,14,68,58" concept="10" />
       <node id="5797301543953587954" at="74,48,75,22" concept="5" />
       <node id="5797301543953587954" at="80,40,81,19" concept="5" />
-      <node id="5797301543953587954" at="85,0,86,0" concept="7" trace="contextVarName$SNbV" />
+      <node id="5797301543953587954" at="85,0,86,0" concept="7" trace="contextVarName$wML_" />
       <node id="5797301543953587954" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5797301543953587954" at="38,0,40,0" concept="0" trace="GenerationContextOp_ContextVarRef__BehaviorDescriptor#()V" />
       <node id="5797301543953587954" at="34,0,37,0" concept="8" trace="getPresentation_idhEwIMiw#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

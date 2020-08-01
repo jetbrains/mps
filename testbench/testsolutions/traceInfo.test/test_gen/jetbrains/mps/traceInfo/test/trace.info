@@ -67,9 +67,9 @@
       <node id="3715237098669772783" at="202,0,203,0" concept="10" trace="ThrowStatement$yK" />
       <node id="3715237098669772783" at="203,0,204,0" concept="10" trace="ForEachVariable$8t" />
       <node id="3715237098669772783" at="204,0,205,0" concept="10" trace="ClassConcept$IY" />
-      <node id="3715237098669772783" at="208,0,209,0" concept="10" trace="name$tAp1" />
-      <node id="3715237098669772783" at="212,0,213,0" concept="10" trace="body$WIlu" />
-      <node id="3715237098669772783" at="213,0,214,0" concept="10" trace="statement$WHn8" />
+      <node id="3715237098669772783" at="208,0,209,0" concept="10" trace="name$lA7v" />
+      <node id="3715237098669772783" at="212,0,213,0" concept="10" trace="body$qspy" />
+      <node id="3715237098669772783" at="213,0,214,0" concept="10" trace="statement$pYcS" />
       <node id="3715237098669772785" at="44,0,46,0" concept="1" trace="TraceInfoTest#()V" />
       <node id="7279139148254575005" at="73,0,76,0" concept="7" trace="test#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="3715237098669909852" at="86,0,89,0" concept="7" trace="invoke#()V" />

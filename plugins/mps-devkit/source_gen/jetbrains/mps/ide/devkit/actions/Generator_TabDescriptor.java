@@ -86,7 +86,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     List<SConcept> result = ConceptEditorHelper.getAvailableConceptAspects(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator"), node);
     ListSequence.fromList(result).addElement(CONCEPTS.InlineTemplate_RuleConsequence$Mt);
     ListSequence.fromList(result).addElement(CONCEPTS.InlineTemplateWithContext_RuleConsequence$tA);
-    boolean rootable = SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU) && SPropertyOperations.getBoolean((SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU)), PROPS.rootable$vg$g);
+    boolean rootable = SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU) && SPropertyOperations.getBoolean((SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU)), PROPS.rootable$91zK);
     boolean isInterface = SNodeOperations.isInstanceOf(node, CONCEPTS.InterfaceConceptDeclaration$MT);
     if (rootable || isInterface) {
       boolean isNeedRootTemplate = true;
@@ -181,7 +181,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
           assert model != null : "model should have been already created";
 
           SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration"));
-          SPropertyOperations.assign(node, PROPS.name$tAp1, "main");
+          SPropertyOperations.assign(node, PROPS.name$lA7v, "main");
           jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(model, node);
           ListSequence.fromList(mappings).addElement(node);
         }
@@ -205,16 +205,16 @@ public class Generator_TabDescriptor extends RelationDescriptor {
           BHReflection.invoke0(mapping.value, CONCEPTS.MappingConfiguration$rB, SMethodTrimmedId.create("addMember", CONCEPTS.MappingConfiguration$rB, "2JKPiG_HmQX"), result.value);
         } else if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.InlineTemplate_RuleConsequence$Mt) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.InlineTemplateWithContext_RuleConsequence$tA)) {
           SNode rc = SNodeFactoryOperations.createNewNode(concept, null);
-          SNode mappingRule = SLinkOperations.addNewChild(mapping.value, LINKS.reductionMappingRule$H54E, CONCEPTS.Reduction_MappingRule$uh);
-          SLinkOperations.setTarget(mappingRule, LINKS.applicableConcept$ljwo, node);
-          SLinkOperations.setTarget(mappingRule, LINKS.ruleConsequence$y7a4, rc);
+          SNode mappingRule = SLinkOperations.addNewChild(mapping.value, LINKS.reductionMappingRule$Ptgm, CONCEPTS.Reduction_MappingRule$uh);
+          SLinkOperations.setTarget(mappingRule, LINKS.applicableConcept$ksFC, node);
+          SLinkOperations.setTarget(mappingRule, LINKS.ruleConsequence$xtRW, rc);
           result.value = rc;
         } else {
           result.value = SNodeFactoryOperations.createNewNode(concept, null);
           SNode rootTemplateNode = jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.createNewNode(model, null, CONCEPTS.RootTemplateAnnotation$u8);
-          SLinkOperations.setTarget(rootTemplateNode, LINKS.applicableConcept$jo4f, node);
+          SLinkOperations.setTarget(rootTemplateNode, LINKS.applicableConcept$oE3h, node);
           AttributeOperations.setAttribute(result.value, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8), rootTemplateNode);
-          SPropertyOperations.set(SNodeOperations.as(result.value, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1, SPropertyOperations.getString(node, PROPS.name$tAp1));
+          SPropertyOperations.set(SNodeOperations.as(result.value, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v, SPropertyOperations.getString(node, PROPS.name$lA7v));
           jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(model, result.value);
           BHReflection.invoke0(mapping.value, CONCEPTS.MappingConfiguration$rB, SMethodTrimmedId.create("addMember", CONCEPTS.MappingConfiguration$rB, "2JKPiG_HmQX"), result.value);
         }
@@ -237,14 +237,14 @@ public class Generator_TabDescriptor extends RelationDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rootable$vg$g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink reductionMappingRule$H54E = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fca310cd5L, "reductionMappingRule");
-    /*package*/ static final SReferenceLink applicableConcept$ljwo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
-    /*package*/ static final SContainmentLink ruleConsequence$y7a4 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, 0x11055ee07edL, "ruleConsequence");
-    /*package*/ static final SReferenceLink applicableConcept$jo4f = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
+    /*package*/ static final SContainmentLink reductionMappingRule$Ptgm = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fca310cd5L, "reductionMappingRule");
+    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SContainmentLink ruleConsequence$xtRW = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, 0x11055ee07edL, "ruleConsequence");
+    /*package*/ static final SReferenceLink applicableConcept$oE3h = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
   }
 }

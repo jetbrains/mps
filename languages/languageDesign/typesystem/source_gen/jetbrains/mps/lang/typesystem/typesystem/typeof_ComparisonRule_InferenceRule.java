@@ -21,7 +21,7 @@ public class typeof_ComparisonRule_InferenceRule extends AbstractInferenceRule_R
   }
   public void applyRule(final SNode comparisonRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(comparisonRule, LINKS.body$tq5r);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(comparisonRule, LINKS.body$fCC5);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1188915272415", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1188915257236", true), (SNode) _quotation_createNode_b6njk4_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -43,7 +43,7 @@ public class typeof_ComparisonRule_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$tq5r = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
+    /*package*/ static final SContainmentLink body$fCC5 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
   }
 
   private static final class CONCEPTS {

@@ -127,7 +127,7 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   }
   private static SNode createNumberToolShortcut_33swfs_a0a0b(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NumberToolShortcut$zP);
-    n0.setProperty(PROPS.number$5Dx6, p0);
+    n0.setProperty(PROPS.number$J71U, p0);
     return n0.getResult();
   }
   private static final Pattern REGEXP_33swfs_a0a0a11c5 = Pattern.compile("\\d", 0);
@@ -137,6 +137,6 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty number$5Dx6 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
+    /*package*/ static final SProperty number$J71U = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
   }
 }

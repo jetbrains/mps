@@ -27,7 +27,7 @@ public class MapElement_DELETE {
         if (DeletionApproverUtil.approve(editorContext, node, "keyCollection")) {
           return;
         }
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.map$KWLJ));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.map$Hs5L));
       }
 
     };
@@ -75,6 +75,6 @@ public class MapElement_DELETE {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink map$KWLJ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea576ac7L, "map");
+    /*package*/ static final SContainmentLink map$Hs5L = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, 0x116ea576ac7L, "map");
   }
 }

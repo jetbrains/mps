@@ -27,7 +27,7 @@ public class typeof_GridBagConstraints_InferenceRule extends AbstractInferenceRu
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "2722628536112115607", true), (SNode) _quotation_createNode_b7f1sc_a1a0c0a0b(), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(gridBagConstraints, LINKS.order$FeSl);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(gridBagConstraints, LINKS.order$Wdib);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "2158326176673575456", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "2158326176673575458", true), (SNode) _quotation_createNode_b7f1sc_a1a0c0b0b(), false, false, _info_12389875345);
     }
@@ -63,7 +63,7 @@ public class typeof_GridBagConstraints_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink order$FeSl = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x25c8b83a7e4bb488L, 0x25c8b83a7e4e6246L, "order");
+    /*package*/ static final SContainmentLink order$Wdib = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x25c8b83a7e4bb488L, 0x25c8b83a7e4e6246L, "order");
   }
 
   private static final class CONCEPTS {

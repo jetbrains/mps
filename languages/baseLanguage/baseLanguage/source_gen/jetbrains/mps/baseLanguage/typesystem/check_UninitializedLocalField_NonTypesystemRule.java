@@ -33,28 +33,28 @@ public class check_UninitializedLocalField_NonTypesystemRule extends AbstractNon
   public check_UninitializedLocalField_NonTypesystemRule() {
   }
   public void applyRule(final SNode variableReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps)) {
-      SNode field = SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6), CONCEPTS.FieldDeclaration$Ps);
-      SNode body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.ConstructorDeclaration$5U, false, false), LINKS.body$WIlu);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps)) {
+      SNode field = SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps);
+      SNode body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.ConstructorDeclaration$5U, false, false), LINKS.body$qspy);
       if ((body == null)) {
-        body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.InstanceInitializer$BJ, false, false), LINKS.statementList$nSOm);
+        body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.InstanceInitializer$BJ, false, false), LINKS.statementList$$xmE);
         if ((body == null)) {
           return;
         }
       }
 
-      if ((SLinkOperations.getTarget(field, LINKS.initializer$KgD) == null) && Objects.equals(SNodeOperations.getNodeAncestor(body, CONCEPTS.Classifier$hJ, false, false), SNodeOperations.getParent(field))) {
+      if ((SLinkOperations.getTarget(field, LINKS.initializer$no3R) == null) && Objects.equals(SNodeOperations.getNodeAncestor(body, CONCEPTS.Classifier$hJ, false, false), SNodeOperations.getParent(field))) {
         VariableReferenceUtil.checkPrecedingWriteInstructions(typeCheckingContext, variableReference, body, field);
       }
 
 
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6), CONCEPTS.StaticFieldDeclaration$R5)) {
-      final SNode field = SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$2ky6), CONCEPTS.StaticFieldDeclaration$R5);
-      SNode body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.StaticInitializer$dH, false, false), LINKS.statementList$glTw);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5)) {
+      final SNode field = SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5);
+      SNode body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(variableReference, CONCEPTS.StaticInitializer$dH, false, false), LINKS.statementList$UAQw);
       if ((body == null)) {
         return;
       }
-      if ((SLinkOperations.getTarget(field, LINKS.initializer$KgD) == null) && Objects.equals(SNodeOperations.getNodeAncestor(body, CONCEPTS.Classifier$hJ, false, false), SNodeOperations.getParent(field))) {
+      if ((SLinkOperations.getTarget(field, LINKS.initializer$no3R) == null) && Objects.equals(SNodeOperations.getNodeAncestor(body, CONCEPTS.Classifier$hJ, false, false), SNodeOperations.getParent(field))) {
         Program program = new MPSProgramBuilder().buildProgram(body);
         Set<SNode> uninitializedReads = DataFlow.getUninitializedReads(program);
         if (uninitializedReads.contains(variableReference)) {
@@ -72,18 +72,18 @@ public class check_UninitializedLocalField_NonTypesystemRule extends AbstractNon
           });
           if (!(Sequence.fromIterable(initializers).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode initializer) {
-              return VariableReferenceUtil.containsWrite(SLinkOperations.getTarget(initializer, LINKS.statementList$glTw), field);
+              return VariableReferenceUtil.containsWrite(SLinkOperations.getTarget(initializer, LINKS.statementList$UAQw), field);
             }
           }))) {
-            if (SPropertyOperations.getBoolean(field, PROPS.isFinal$hIht)) {
+            if (SPropertyOperations.getBoolean(field, PROPS.isFinal$_qt3)) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Field " + SPropertyOperations.getString(field, PROPS.name$tAp1) + " used before initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8129007564265961213", null, errorTarget);
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(variableReference, "Field " + SPropertyOperations.getString(field, PROPS.name$lA7v) + " used before initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8129007564265961213", null, errorTarget);
               }
             } else {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(variableReference, "Field " + SPropertyOperations.getString(field, PROPS.name$tAp1) + " used before initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8129007564265961227", null, errorTarget);
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(variableReference, "Field " + SPropertyOperations.getString(field, PROPS.name$lA7v) + " used before initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8129007564265961227", null, errorTarget);
               }
             }
           }
@@ -103,11 +103,11 @@ public class check_UninitializedLocalField_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statementList$nSOm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, 0x118f0b95a3bL, "statementList");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink statementList$glTw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statementList$$xmE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, 0x118f0b95a3bL, "statementList");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink statementList$UAQw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
   }
 
   private static final class CONCEPTS {
@@ -121,7 +121,7 @@ public class check_UninitializedLocalField_NonTypesystemRule extends AbstractNon
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

@@ -43,9 +43,9 @@ public final class AbstractEquationStatement__BehaviorDescriptor extends BaseBHD
   }
   /*package*/ static String getName_id1oFBbRehoLP(@NotNull SNode __thisNode__) {
     if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$sq)) != null)) {
-      return SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$sq)), PROPS.name$tAp1);
+      return SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$sq)), PROPS.name$lA7v);
     } else {
-      String nameGenerated = MessageStatementUtil.generateNameFromExpression(SLinkOperations.getTarget(__thisNode__, LINKS.errorString$uOJc));
+      String nameGenerated = MessageStatementUtil.generateNameFromExpression(SLinkOperations.getTarget(__thisNode__, LINKS.errorString$VyQO));
       if (nameGenerated != null && nameGenerated.length() > MessageStatementUtil.MIN_LENGTH) {
         return nameGenerated;
       }
@@ -108,10 +108,10 @@ public final class AbstractEquationStatement__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink errorString$uOJc = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x112d82366d0L, "errorString");
+    /*package*/ static final SContainmentLink errorString$VyQO = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x112d82366d0L, "errorString");
   }
 }

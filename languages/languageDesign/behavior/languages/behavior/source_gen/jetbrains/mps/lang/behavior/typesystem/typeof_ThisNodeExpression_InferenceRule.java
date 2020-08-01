@@ -26,17 +26,17 @@ public class typeof_ThisNodeExpression_InferenceRule extends AbstractInferenceRu
   public void applyRule(final SNode thisNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode behaviour = SNodeOperations.getNodeAncestor(thisNode, CONCEPTS.ConceptBehavior$8P, true, false);
     SNode method = SNodeOperations.getNodeAncestor(thisNode, CONCEPTS.ConceptMethodDeclaration$VN, false, false);
-    if (SPropertyOperations.getBoolean(method, PROPS.isStatic$KaRv)) {
+    if (SPropertyOperations.getBoolean(method, PROPS.isStatic$lgS1)) {
       {
         SNode _nodeToCheck_1029348928467 = thisNode;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "113798979053291868", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "113798979053291870", true), (SNode) _quotation_createNode_b2r2xa_a1a0c0a0c0b(SLinkOperations.getTarget(behaviour, LINKS.concept$v6ns)), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "113798979053291870", true), (SNode) _quotation_createNode_b2r2xa_a1a0c0a0c0b(SLinkOperations.getTarget(behaviour, LINKS.concept$45m$)), _info_12389875345);
       }
     } else {
       {
         SNode _nodeToCheck_1029348928467 = thisNode;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "1225196556169", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "1225196556171", true), (SNode) _quotation_createNode_b2r2xa_a1a0c0a0a2a1(SLinkOperations.getTarget(behaviour, LINKS.concept$v6ns)), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "1225196556171", true), (SNode) _quotation_createNode_b2r2xa_a1a0c0a0a2a1(SLinkOperations.getTarget(behaviour, LINKS.concept$45m$)), _info_12389875345);
       }
     }
   }
@@ -71,10 +71,10 @@ public class typeof_ThisNodeExpression_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isStatic$KaRv = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
+    /*package*/ static final SProperty isStatic$lgS1 = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 }

@@ -40,14 +40,14 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
 
   @Nullable
   /*package*/ static String getBasePath_id4jjtc7WZMYz(@NotNull SNode __thisNode__, Context context) {
-    String lp = BuildSourcePath__BehaviorDescriptor.getLocalPath_id4Kip2_918Y$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$2hza), context);
+    String lp = BuildSourcePath__BehaviorDescriptor.getLocalPath_id4Kip2_918Y$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$6w1Q), context);
     if (lp == null) {
       return null;
     }
     return lp + "!";
   }
   /*package*/ static String getRelativePath_id4Kip2_918YF(@NotNull SNode __thisNode__) {
-    return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$2hza)) + "!/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$gwj7));
+    return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$6w1Q)) + "!/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$ZDgp));
   }
   /*package*/ static String getAntPath_id7ro1ZztyOh5(@NotNull SNode __thisNode__, Context context) {
     // no idea if context could be null, but doesn't hurt to check 
@@ -55,7 +55,7 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
     if ((unpackPath == null || unpackPath.length() == 0)) {
       return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(__thisNode__);
     }
-    return unpackPath + "/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$gwj7));
+    return unpackPath + "/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$ZDgp));
   }
   /*package*/ static String getUnpackPath_id7ro1Zzt$ck7(@NotNull SNode __thisNode__, Context context) {
     // this method is intended for use solely during generation, when nodes could be modified freely. 
@@ -68,7 +68,7 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
     }
     // copied from #calculateUnpackPath(), although doesn't match e.g. BL_Zip pattern for temp names, perhaps worth a change 
     SNode nlayout = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildNamedLayout$t9, true, false);
-    String tempPath = context.getTempPath(__thisNode__, BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$2hza)).replace('.', '_'), ((nlayout != null) ? SPropertyOperations.getString(nlayout, PROPS.name$tAp1) : "default"));
+    String tempPath = context.getTempPath(__thisNode__, BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$6w1Q)).replace('.', '_'), ((nlayout != null) ? SPropertyOperations.getString(nlayout, PROPS.name$lA7v) : "default"));
     __thisNode__.putUserObject(CACHED_VALUE_KEY, tempPath);
     return tempPath;
   }
@@ -126,8 +126,8 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink archivePath$2hza = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath");
-    /*package*/ static final SContainmentLink compositePart$gwj7 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SContainmentLink archivePath$6w1Q = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath");
+    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
   }
 
   private static final class CONCEPTS {
@@ -135,6 +135,6 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

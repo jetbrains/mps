@@ -26,7 +26,7 @@ public class raw_ClassifierType_subtypeOf_generic_ClassifierType_InequationRepla
   public raw_ClassifierType_subtypeOf_generic_ClassifierType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return (boolean) Classifier__BehaviorDescriptor.isSame_id4dzXPK1BpyE.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R), SLinkOperations.getTarget(supertype, LINKS.classifier$pQ_R)) && ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$dQne)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$dQne)).isNotEmpty();
+    return (boolean) Classifier__BehaviorDescriptor.isSame_id4dzXPK1BpyE.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$xslD), SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)) && ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$HlfM)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$HlfM)).isNotEmpty();
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     // normally this is an unchecked cast warning 
@@ -68,8 +68,8 @@ public class raw_ClassifierType_subtypeOf_generic_ClassifierType_InequationRepla
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

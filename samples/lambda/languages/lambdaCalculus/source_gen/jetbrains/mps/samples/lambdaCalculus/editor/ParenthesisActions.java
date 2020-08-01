@@ -23,7 +23,7 @@ public class ParenthesisActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode expr = SLinkOperations.getTarget(node, LINKS.expression$1ODw);
+        SNode expr = SLinkOperations.getTarget(node, LINKS.expression$Sw6w);
         SNodeOperations.replaceWithAnother(node, expr);
       }
 
@@ -72,6 +72,6 @@ public class ParenthesisActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$1ODw = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, 0x3735fdad52687b5aL, "expression");
+    /*package*/ static final SContainmentLink expression$Sw6w = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, 0x3735fdad52687b5aL, "expression");
   }
 }

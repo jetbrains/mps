@@ -58,7 +58,7 @@ public final class CreateReferenceOnClassifier_Intention extends AbstractIntenti
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode outerConcept = SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.IClassifier$Cb, false, false), CONCEPTS.IClassifier$Cb, false, false);
-      SLinkOperations.setTarget(node, LINKS.classifier$Xpfr, outerConcept);
+      SLinkOperations.setTarget(node, LINKS.classifier$Jeu5, outerConcept);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -71,6 +71,6 @@ public final class CreateReferenceOnClassifier_Intention extends AbstractIntenti
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$Xpfr = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
+    /*package*/ static final SReferenceLink classifier$Jeu5 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
   }
 }

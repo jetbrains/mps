@@ -75,7 +75,7 @@ public class finalOnTypesInVariables extends TransformationMenuBase {
   public class TMP_Group_q2o0d3_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$xe) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$xe), PROPS.isFinal$hIht));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$xe) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$xe), PROPS.isFinal$_qt3));
     }
 
     @NotNull
@@ -132,7 +132,7 @@ public class finalOnTypesInVariables extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode variable = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.VariableDeclaration$xe);
-          SPropertyOperations.set(variable, PROPS.isFinal$hIht, true);
+          SPropertyOperations.set(variable, PROPS.isFinal$_qt3, true);
           if (SNodeOperations.isInstanceOf(variable, CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(variable, CONCEPTS.ParameterDeclaration$qU) || SNodeOperations.isInstanceOf(variable, CONCEPTS.FieldDeclaration$Ps) || SNodeOperations.isInstanceOf(variable, CONCEPTS.StaticFieldDeclaration$R5)) {
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), variable, "finalModifier", -1);
             return;
@@ -175,6 +175,6 @@ public class finalOnTypesInVariables extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

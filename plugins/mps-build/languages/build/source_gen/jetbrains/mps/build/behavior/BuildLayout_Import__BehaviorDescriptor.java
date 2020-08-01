@@ -36,11 +36,11 @@ public final class BuildLayout_Import__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
-    if (SNodeOperations.getContainingRoot(__thisNode__) == SNodeOperations.getContainingRoot(SLinkOperations.getTarget(__thisNode__, LINKS.target$fkBZ))) {
+    if (SNodeOperations.getContainingRoot(__thisNode__) == SNodeOperations.getContainingRoot(SLinkOperations.getTarget(__thisNode__, LINKS.target$qZnx))) {
       return;
     }
 
-    SNode artifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(__thisNode__, LINKS.target$fkBZ)), CONCEPTS.BuildLayout_Node$kC);
+    SNode artifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(__thisNode__, LINKS.target$qZnx)), CONCEPTS.BuildLayout_Node$kC);
     if (artifact != null) {
       builder.needsFetch(SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.BuildLayout$Ca, CONCEPTS.BuildNamedLayout$t9}, false, false));
       builder.add(artifact);
@@ -100,7 +100,7 @@ public final class BuildLayout_Import__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$fkBZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee1350f2L, 0xbabdfbeee1350f4L, "target");
+    /*package*/ static final SReferenceLink target$qZnx = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee1350f2L, 0xbabdfbeee1350f4L, "target");
   }
 
   private static final class CONCEPTS {

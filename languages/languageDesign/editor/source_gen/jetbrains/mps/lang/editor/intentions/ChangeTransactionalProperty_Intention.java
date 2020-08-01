@@ -60,9 +60,9 @@ public final class ChangeTransactionalProperty_Intention extends AbstractIntenti
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode transactional = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Property$iE, null);
-      SLinkOperations.setTarget(transactional, LINKS.relationDeclaration$wbRV, SLinkOperations.getTarget(node, LINKS.property$p2l_));
-      SLinkOperations.setTarget(node, LINKS.property$p2l_, null);
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.handlerBlock$XyaY));
+      SLinkOperations.setTarget(transactional, LINKS.relationDeclaration$_K5_, SLinkOperations.getTarget(node, LINKS.property$88sV));
+      SLinkOperations.setTarget(node, LINKS.property$88sV, null);
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.handlerBlock$Nzk2));
       for (SNode child : ListSequence.fromList(jetbrains.mps.util.SNodeOperations.getChildren(node))) {
         String role = child.getRoleInParent();
         node.removeChild(child);
@@ -87,8 +87,8 @@ public final class ChangeTransactionalProperty_Intention extends AbstractIntenti
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$wbRV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SReferenceLink property$p2l_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
-    /*package*/ static final SContainmentLink handlerBlock$XyaY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f85498L, "handlerBlock");
+    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink property$88sV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
+    /*package*/ static final SContainmentLink handlerBlock$Nzk2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f85498L, "handlerBlock");
   }
 }

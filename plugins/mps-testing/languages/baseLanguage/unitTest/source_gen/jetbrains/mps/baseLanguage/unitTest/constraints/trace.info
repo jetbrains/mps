@@ -22,8 +22,8 @@
       <node id="1213104846869" at="37,119,38,61" concept="1" />
       <node id="1213104846868" at="38,61,39,22" concept="4" />
       <node id="1213104846868" at="43,0,44,0" concept="5" trace="BTestCase$o9" />
-      <node id="1213104846868" at="47,0,48,0" concept="5" trace="name$tAp1" />
-      <node id="1213104846868" at="48,0,49,0" concept="5" trace="testCaseName$9DFZ" />
+      <node id="1213104846868" at="47,0,48,0" concept="5" trace="name$lA7v" />
+      <node id="1213104846868" at="48,0,49,0" concept="5" trace="testCaseName$Fcjx" />
       <node id="1213104846868" at="18,0,21,0" concept="0" trace="BTestCase_Constraints#()V" />
       <node id="1213104846869" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213104846869" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
@@ -61,8 +61,8 @@
       <node id="1213104847597" at="37,119,38,61" concept="1" />
       <node id="1213104847596" at="38,61,39,22" concept="4" />
       <node id="1213104847596" at="43,0,44,0" concept="5" trace="TestMethod$uW" />
-      <node id="1213104847596" at="47,0,48,0" concept="5" trace="name$tAp1" />
-      <node id="1213104847596" at="48,0,49,0" concept="5" trace="methodName$Vxyv" />
+      <node id="1213104847596" at="47,0,48,0" concept="5" trace="name$lA7v" />
+      <node id="1213104847596" at="48,0,49,0" concept="5" trace="methodName$PfH1" />
       <node id="1213104847596" at="18,0,21,0" concept="0" trace="TestMethod_Constraints#()V" />
       <node id="1213104847597" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213104847597" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />

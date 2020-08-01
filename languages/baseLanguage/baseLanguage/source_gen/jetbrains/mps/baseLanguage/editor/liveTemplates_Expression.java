@@ -119,7 +119,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-        SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.cast(SLinkOperations.getTarget(createdNode, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G), SelectionManager.LAST_EDITABLE_CELL);
+        SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.cast(SLinkOperations.getTarget(createdNode, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), SelectionManager.LAST_EDITABLE_CELL);
       }
     }
   }
@@ -187,7 +187,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-        SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.cast(SLinkOperations.getTarget(createdNode, LINKS.operation$X4R8), CONCEPTS.InstanceMethodCallOperation$1G), SelectionManager.LAST_EDITABLE_CELL);
+        SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.cast(SLinkOperations.getTarget(createdNode, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), SelectionManager.LAST_EDITABLE_CELL);
       }
     }
   }
@@ -228,6 +228,6 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

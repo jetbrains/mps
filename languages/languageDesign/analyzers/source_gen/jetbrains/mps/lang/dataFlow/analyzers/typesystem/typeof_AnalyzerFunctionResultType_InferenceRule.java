@@ -22,7 +22,7 @@ public class typeof_AnalyzerFunctionResultType_InferenceRule extends AbstractInf
     {
       SNode _nodeToCheck_1029348928467 = resultType;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "430844094082159326", 0, null);
-      typeCheckingContext.createEquation((SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(resultType, CONCEPTS.Analyzer$Q4, false, false), LINKS.latticeElementType$HN$b), (SNode) resultType, _info_12389875345);
+      typeCheckingContext.createEquation((SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(resultType, CONCEPTS.Analyzer$Q4, false, false), LINKS.latticeElementType$bYxl), (SNode) resultType, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -41,6 +41,6 @@ public class typeof_AnalyzerFunctionResultType_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink latticeElementType$HN$b = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
+    /*package*/ static final SContainmentLink latticeElementType$bYxl = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
   }
 }

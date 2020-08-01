@@ -48,7 +48,7 @@ public class ConvertAnonymousClass implements MoveNodesAction {
     final Wrappers._T<String> classifierName = new Wrappers._T<String>();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        classifierName.value = SPropertyOperations.getString(SLinkOperations.getTarget(target, LINKS.classifier$1y5e), PROPS.name$tAp1);
+        classifierName.value = SPropertyOperations.getString(SLinkOperations.getTarget(target, LINKS.classifier$JwxM), PROPS.name$lA7v);
       }
     });
 
@@ -70,10 +70,10 @@ public class ConvertAnonymousClass implements MoveNodesAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$1y5e = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

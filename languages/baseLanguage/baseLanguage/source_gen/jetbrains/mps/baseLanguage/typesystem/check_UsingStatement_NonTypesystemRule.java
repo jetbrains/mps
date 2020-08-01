@@ -33,13 +33,13 @@ public class check_UsingStatement_NonTypesystemRule extends AbstractNonTypesyste
   }
   public void applyRule(final SNode usingStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
 outer:
-    for (SNode resource : SLinkOperations.getChildren(usingStatement, LINKS.resource$zRvv)) {
+    for (SNode resource : SLinkOperations.getChildren(usingStatement, LINKS.resource$nSg1)) {
       SNode type = TypecheckingFacade.getFromContext().getTypeOf(resource);
       if (TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_o2kqy_b0a1a0a1())) {
         continue;
       }
       SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(type, CONCEPTS.ClassifierType$IZ);
-      if (classifierType == null || SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R) == null) {
+      if (classifierType == null || SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD) == null) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(resource, "resource should be Closeable or should have method dispose()", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3073231036166011751", null, errorTarget);
@@ -49,11 +49,11 @@ outer:
       }
       Iterable<SNode> methodsByName = Sequence.fromIterable(Members.visibleInstanceMethods(classifierType, usingStatement)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), "dispose");
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), "dispose");
         }
       });
       for (SNode bmd : methodsByName) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(bmd, LINKS.parameter$WIkZ)).isEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(bmd, LINKS.parameter$qsax)).isEmpty()) {
           continue outer;
         }
       }
@@ -86,12 +86,12 @@ outer:
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink resource$zRvv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d0053f19bL, 0x11d0053f19dL, "resource");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink resource$nSg1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d0053f19bL, 0x11d0053f19dL, "resource");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

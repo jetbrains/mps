@@ -66,11 +66,11 @@ public class MigrateEnumProperties extends MigrationScriptBase {
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyDeclaration$c5, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.EnumPropertyMigrationInfo$Yg)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dataType$fLUl), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll);
+          return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.EnumPropertyMigrationInfo$Yg)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dataType$Dbgb), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll);
         }
       }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
         public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.dataType$fLUl));
+          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.dataType$Dbgb));
         }
       });
     }
@@ -86,15 +86,15 @@ public class MigrateEnumProperties extends MigrationScriptBase {
       return;
     }
 
-    SNode enumMigrationInfo = SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$fLUl)), CONCEPTS.EnumMigrationInfo$2L);
+    SNode enumMigrationInfo = SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$Dbgb)), CONCEPTS.EnumMigrationInfo$2L);
 
     if ((enumMigrationInfo != null)) {
       SNode newPropertyDeclaration = SModelOperations.createNewNode(SNodeOperations.getModel(propertyDeclaration), null, CONCEPTS.PropertyDeclaration$c5);
-      SPropertyOperations.assign(newPropertyDeclaration, PROPS.name$tAp1, SPropertyOperations.getString(propertyDeclaration, PROPS.name$tAp1));
-      SPropertyOperations.assign(newPropertyDeclaration, PROPS.propertyId$cckp, SPropertyOperations.getString(propertyDeclaration, PROPS.propertyId$cckp));
-      SLinkOperations.setTarget(newPropertyDeclaration, LINKS.dataType$fLUl, SNodeOperations.cast(SNodeOperations.getParent(enumMigrationInfo), CONCEPTS.EnumerationDeclaration$rG));
+      SPropertyOperations.assign(newPropertyDeclaration, PROPS.name$lA7v, SPropertyOperations.getString(propertyDeclaration, PROPS.name$lA7v));
+      SPropertyOperations.assign(newPropertyDeclaration, PROPS.propertyId$TXS7, SPropertyOperations.getString(propertyDeclaration, PROPS.propertyId$TXS7));
+      SLinkOperations.setTarget(newPropertyDeclaration, LINKS.dataType$Dbgb, SNodeOperations.cast(SNodeOperations.getParent(enumMigrationInfo), CONCEPTS.EnumerationDeclaration$rG));
       SNodeOperations.replaceWithAnother(propertyDeclaration, newPropertyDeclaration);
-      SLinkOperations.setTarget(AttributeOperations.createAndSetAttrbiute(newPropertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$Yg), CONCEPTS.EnumPropertyMigrationInfo$Yg), LINKS.oldProperty$ft71, propertyDeclaration);
+      SLinkOperations.setTarget(AttributeOperations.createAndSetAttrbiute(newPropertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$Yg), CONCEPTS.EnumPropertyMigrationInfo$Yg), LINKS.oldProperty$v6pv, propertyDeclaration);
     }
   }
 
@@ -107,12 +107,12 @@ public class MigrateEnumProperties extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SContainmentLink oldProperty$ft71 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink oldProperty$v6pv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty propertyId$cckp = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty propertyId$TXS7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
   }
 }

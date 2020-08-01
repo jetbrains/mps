@@ -34,12 +34,12 @@ public final class AbstractOutputConceptContainerTransformationMenuPart__Behavio
   }
 
   /*package*/ static SNode getOutputConcept_id3mnwiBI8ZE2(@NotNull SNode __thisNode__) {
-    SNode outputConceptReference = SLinkOperations.getTarget(__thisNode__, LINKS.outputConceptReference$$wf5);
+    SNode outputConceptReference = SLinkOperations.getTarget(__thisNode__, LINKS.outputConceptReference$FBjr);
     if ((outputConceptReference == null)) {
       return null;
     }
-    if ((SLinkOperations.getTarget(outputConceptReference, LINKS.concept$p8e0) != null)) {
-      return SLinkOperations.getTarget(outputConceptReference, LINKS.concept$p8e0);
+    if ((SLinkOperations.getTarget(outputConceptReference, LINKS.concept$aYM0) != null)) {
+      return SLinkOperations.getTarget(outputConceptReference, LINKS.concept$aYM0);
     }
     return IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ITransformationMenu$lF, false, false));
   }
@@ -91,8 +91,8 @@ public final class AbstractOutputConceptContainerTransformationMenuPart__Behavio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink outputConceptReference$$wf5 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc214L, 0xbb2f315607dd080L, "outputConceptReference");
-    /*package*/ static final SReferenceLink concept$p8e0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc1f1L, 0xbb2f315607dc1f2L, "concept");
+    /*package*/ static final SContainmentLink outputConceptReference$FBjr = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc214L, 0xbb2f315607dd080L, "outputConceptReference");
+    /*package*/ static final SReferenceLink concept$aYM0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc1f1L, 0xbb2f315607dc1f2L, "concept");
   }
 
   private static final class CONCEPTS {

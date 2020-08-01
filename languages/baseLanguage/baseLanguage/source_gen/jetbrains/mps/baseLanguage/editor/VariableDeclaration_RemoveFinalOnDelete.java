@@ -30,8 +30,8 @@ public class VariableDeclaration_RemoveFinalOnDelete {
         if (DeletionApproverUtil.approve(editorContext, node, "finalModifier")) {
           return;
         }
-        SPropertyOperations.set(node, PROPS.isFinal$hIht, false);
-        SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.type$pLrO), SelectionManager.FIRST_EDITABLE_CELL, 0);
+        SPropertyOperations.set(node, PROPS.isFinal$_qt3, false);
+        SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.type$uWuc), SelectionManager.FIRST_EDITABLE_CELL, 0);
       }
 
     };
@@ -79,10 +79,10 @@ public class VariableDeclaration_RemoveFinalOnDelete {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

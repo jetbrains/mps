@@ -36,8 +36,8 @@
       <node id="1842653058274902924" at="43,0,44,0" concept="7" trace="WatchableListType$LM" />
       <node id="1842653058274902924" at="44,0,45,0" concept="7" trace="ClassifierType$IZ" />
       <node id="1842653058274902924" at="45,0,46,0" concept="7" trace="WatchableType$1t" />
-      <node id="1842653058274902924" at="49,0,50,0" concept="7" trace="classifier$pQ_R" />
-      <node id="1842653058274902924" at="50,0,51,0" concept="7" trace="parameter$dQne" />
+      <node id="1842653058274902924" at="49,0,50,0" concept="7" trace="classifier$xslD" />
+      <node id="1842653058274902924" at="50,0,51,0" concept="7" trace="parameter$HlfM" />
       <node id="1842653058274902924" at="20,0,22,0" concept="1" trace="WatchableListIsAListOrWatchables_SubtypingRule#()V" />
       <node id="1842653058274902924" at="22,0,25,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1842653058274902924" at="25,0,28,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -255,7 +255,7 @@
       <node id="43370322128304578" at="40,5,41,16" concept="6" />
       <node id="43370322128303938" at="45,0,46,0" concept="7" trace="HighLevelCustomViewer$cJ" />
       <node id="43370322128303938" at="46,0,47,0" concept="7" trace="HighLevelValue_ConceptFunctionParameter$pD" />
-      <node id="43370322128303938" at="50,0,51,0" concept="7" trace="valueType$Xd$1" />
+      <node id="43370322128303938" at="50,0,51,0" concept="7" trace="valueType$D$sv" />
       <node id="43370322128303938" at="19,0,21,0" concept="1" trace="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule#()V" />
       <node id="43370322128303938" at="28,0,31,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="43370322128303938" at="31,0,34,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

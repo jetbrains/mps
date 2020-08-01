@@ -43,10 +43,10 @@
       <node id="2323553266854757446" at="58,50,59,41" concept="11" />
       <node id="2323553266854757446" at="61,68,62,102" concept="11" />
       <node id="2323553266854757446" at="64,30,65,17" concept="11" />
-      <node id="2323553266854757446" at="69,0,70,0" concept="14" trace="modifiers$akE0" />
-      <node id="2323553266854757446" at="70,0,71,0" concept="14" trace="parameter$WIkZ" />
-      <node id="2323553266854757446" at="71,0,72,0" concept="14" trace="type$pLrO" />
-      <node id="2323553266854757446" at="72,0,73,0" concept="14" trace="classifier$pQ_R" />
+      <node id="2323553266854757446" at="69,0,70,0" concept="14" trace="modifiers$m0" />
+      <node id="2323553266854757446" at="70,0,71,0" concept="14" trace="parameter$qsax" />
+      <node id="2323553266854757446" at="71,0,72,0" concept="14" trace="type$uWuc" />
+      <node id="2323553266854757446" at="72,0,73,0" concept="14" trace="classifier$xslD" />
       <node id="2323553266854757446" at="76,0,77,0" concept="14" trace="DispatchModifier$W7" />
       <node id="2323553266854757446" at="77,0,78,0" concept="14" trace="ClassifierType$IZ" />
       <node id="2323553266854757446" at="78,0,79,0" concept="14" trace="ClassConcept$IY" />
@@ -97,7 +97,7 @@
         <var name="status" id="2323553266854757446" />
         <var name="typeCheckingContext" id="2323553266854757446" />
       </scope>
-      <unit id="2323553266854805157" at="27,99,31,5" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DisptachParamIsClass_NonTypesystemRule$1" />
+      <unit id="2323553266854805157" at="27,97,31,5" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DisptachParamIsClass_NonTypesystemRule$1" />
       <unit id="2323553266854757446" at="68,0,74,0" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DisptachParamIsClass_NonTypesystemRule$LINKS" />
       <unit id="2323553266854757446" at="75,0,81,0" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DisptachParamIsClass_NonTypesystemRule$CONCEPTS" />
       <unit id="2323553266854757446" at="23,0,82,0" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DisptachParamIsClass_NonTypesystemRule" />
@@ -374,12 +374,12 @@
       <node id="8480956156621604265" at="98,5,99,28" concept="10" />
       <node id="8480956156621614743" at="100,74,101,80" concept="11" />
       <node id="8480956156621637062" at="103,5,104,92" concept="11" />
-      <node id="6855443792548949232" at="108,0,109,0" concept="14" trace="name$tAp1" />
+      <node id="6855443792548949232" at="108,0,109,0" concept="14" trace="name$lA7v" />
       <node id="6855443792548949232" at="112,0,113,0" concept="14" trace="StaticMethodDeclaration$eX" />
       <node id="6855443792548949232" at="113,0,114,0" concept="14" trace="ClassifierType$IZ" />
-      <node id="6855443792548949232" at="117,0,118,0" concept="14" trace="parameter$WIkZ" />
-      <node id="6855443792548949232" at="118,0,119,0" concept="14" trace="type$pLrO" />
-      <node id="6855443792548949232" at="119,0,120,0" concept="14" trace="classifier$pQ_R" />
+      <node id="6855443792548949232" at="117,0,118,0" concept="14" trace="parameter$qsax" />
+      <node id="6855443792548949232" at="118,0,119,0" concept="14" trace="type$uWuc" />
+      <node id="6855443792548949232" at="119,0,120,0" concept="14" trace="classifier$xslD" />
       <node id="6855443792548949289" at="32,0,35,0" concept="9" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6855443792548949237" at="38,35,41,5" concept="8" />
       <node id="3166734731696195894" at="44,0,47,5" concept="8" />
@@ -495,8 +495,8 @@
       <node id="6855443792548949370" at="70,0,71,28" concept="5" />
       <node id="6855443792548949382" at="73,46,74,48" concept="11" />
       <node id="6855443792548949309" at="78,0,79,0" concept="14" trace="ClassConcept$IY" />
-      <node id="6855443792548949309" at="82,0,83,0" concept="14" trace="superclass$_pqe" />
-      <node id="6855443792548949309" at="83,0,84,0" concept="14" trace="classifier$pQ_R" />
+      <node id="6855443792548949309" at="82,0,83,0" concept="14" trace="superclass$7jGM" />
+      <node id="6855443792548949309" at="83,0,84,0" concept="14" trace="classifier$xslD" />
       <node id="6855443792548949387" at="23,0,26,0" concept="3" trace="DispatchMethodCollector#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3166734731675080686" at="35,0,38,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="3166734731675199611" at="43,0,46,5" concept="7" />
@@ -629,16 +629,16 @@
       <node id="6855443792548949606" at="143,30,144,234" concept="5" />
       <node id="6855443792548949606" at="144,234,145,435" concept="5" />
       <node id="6855443792548949606" at="145,435,146,24" concept="11" />
-      <node id="6855443792548949391" at="150,0,151,0" concept="14" trace="parameter$WIkZ" />
-      <node id="6855443792548949391" at="151,0,152,0" concept="14" trace="type$pLrO" />
-      <node id="6855443792548949391" at="152,0,153,0" concept="14" trace="classifier$pQ_R" />
-      <node id="6855443792548949391" at="153,0,154,0" concept="14" trace="modifiers$akE0" />
-      <node id="6855443792548949391" at="154,0,155,0" concept="14" trace="superclass$_pqe" />
+      <node id="6855443792548949391" at="150,0,151,0" concept="14" trace="parameter$qsax" />
+      <node id="6855443792548949391" at="151,0,152,0" concept="14" trace="type$uWuc" />
+      <node id="6855443792548949391" at="152,0,153,0" concept="14" trace="classifier$xslD" />
+      <node id="6855443792548949391" at="153,0,154,0" concept="14" trace="modifiers$m0" />
+      <node id="6855443792548949391" at="154,0,155,0" concept="14" trace="superclass$7jGM" />
       <node id="6855443792548949391" at="158,0,159,0" concept="14" trace="ClassifierType$IZ" />
       <node id="6855443792548949391" at="159,0,160,0" concept="14" trace="ClassConcept$IY" />
       <node id="6855443792548949391" at="160,0,161,0" concept="14" trace="DispatchModifier$W7" />
       <node id="6855443792548949391" at="161,0,162,0" concept="14" trace="Type$IG" />
-      <node id="6855443792548949391" at="165,0,166,0" concept="14" trace="name$tAp1" />
+      <node id="6855443792548949391" at="165,0,166,0" concept="14" trace="name$lA7v" />
       <node id="6855443792548950004" at="26,0,28,0" concept="3" trace="DispatchUtil#()V" />
       <node id="6855443792548949577" at="28,0,31,0" concept="15" trace="getParamClass#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3166734731696040562" at="33,0,36,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -728,7 +728,7 @@
       </scope>
       <unit id="6855443792548949391" at="164,0,167,0" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DispatchUtil$PROPS" />
       <unit id="3166734731696040562" at="32,166,36,5" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DispatchUtil$2" />
-      <unit id="3813896760028535886" at="36,99,40,5" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DispatchUtil$1" />
+      <unit id="3813896760028535886" at="36,97,40,5" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DispatchUtil$1" />
       <unit id="6855443792548949391" at="157,0,163,0" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DispatchUtil$CONCEPTS" />
       <unit id="6855443792548949391" at="149,0,156,0" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DispatchUtil$LINKS" />
       <unit id="35825318244939944" at="51,23,113,13" name="jetbrains.mps.baseLanguage.doubleDispatch.typesystem.DispatchUtil$3$1$1" />
@@ -756,7 +756,7 @@
       <node id="6855443792548952024" at="60,50,61,36" concept="11" />
       <node id="6855443792548952024" at="63,68,64,102" concept="11" />
       <node id="6855443792548952024" at="66,30,67,17" concept="11" />
-      <node id="6855443792548952024" at="71,0,72,0" concept="14" trace="parameter$WIkZ" />
+      <node id="6855443792548952024" at="71,0,72,0" concept="14" trace="parameter$qsax" />
       <node id="6855443792548952024" at="75,0,76,0" concept="14" trace="ClassConcept$IY" />
       <node id="6855443792548952024" at="24,0,26,0" concept="3" trace="DispatchArgsHierarchy_NonTypesystemRule#()V" />
       <node id="6855443792549032754" at="28,0,31,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

@@ -22,7 +22,7 @@ public class check_ConceptSwitch_NonTypesystemRule extends AbstractNonTypesystem
   public check_ConceptSwitch_NonTypesystemRule() {
   }
   public void applyRule(final SNode switchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$g$tD);
+    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$1EmR);
     if (arg == null) {
       return;
     }
@@ -46,7 +46,7 @@ public class check_ConceptSwitch_NonTypesystemRule extends AbstractNonTypesystem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$g$tD = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, 0x527e98a73771f430L, "expression");
+    /*package*/ static final SContainmentLink expression$1EmR = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, 0x527e98a73771f430L, "expression");
   }
 
   private static final class CONCEPTS {

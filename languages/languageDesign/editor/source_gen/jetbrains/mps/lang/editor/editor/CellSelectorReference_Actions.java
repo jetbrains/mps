@@ -27,14 +27,14 @@ public class CellSelectorReference_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(CONCEPTS.AbstractCellSelector$$5), SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.cellSelector$C4Ix))))) {
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(CONCEPTS.AbstractCellSelector$$5), SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.cellSelector$qixZ))))) {
           if (DeletionApproverUtil.approve(editorContext, node, "cellSelector")) {
             return;
           }
-          SLinkOperations.setTarget(node, LINKS.cellSelector$C4Ix, null);
+          SLinkOperations.setTarget(node, LINKS.cellSelector$qixZ, null);
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "closingBracket", 0);
         } else {
-          SLinkOperations.setTarget(node, LINKS.cellSelector$C4Ix, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
+          SLinkOperations.setTarget(node, LINKS.cellSelector$qixZ, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
         }
       }
 
@@ -46,8 +46,8 @@ public class CellSelectorReference_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SLinkOperations.getTarget(node, LINKS.selectionStart$otSS) == null) {
-          SLinkOperations.setTarget(node, LINKS.selectionStart$otSS, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+        if (SLinkOperations.getTarget(node, LINKS.selectionStart$Quz8) == null) {
+          SLinkOperations.setTarget(node, LINKS.selectionStart$Quz8, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
         }
       }
 
@@ -100,8 +100,8 @@ public class CellSelectorReference_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellSelector$C4Ix = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0eb90bdeL, "cellSelector");
-    /*package*/ static final SContainmentLink selectionStart$otSS = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x320558d6ffc96d72L, "selectionStart");
+    /*package*/ static final SContainmentLink cellSelector$qixZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x1b0a9b8c0eb90bdeL, "cellSelector");
+    /*package*/ static final SContainmentLink selectionStart$Quz8 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x320558d6ffc96d72L, "selectionStart");
   }
 
   private static final class CONCEPTS {

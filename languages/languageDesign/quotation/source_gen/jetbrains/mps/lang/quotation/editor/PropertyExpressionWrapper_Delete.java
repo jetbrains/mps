@@ -29,7 +29,7 @@ public class PropertyExpressionWrapper_Delete {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.hasRole(node, LINKS.initValue$nhHN);
+        return SNodeOperations.hasRole(node, LINKS.initValue$h_bH);
       }
 
     };
@@ -77,6 +77,6 @@ public class PropertyExpressionWrapper_Delete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$nhHN = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
+    /*package*/ static final SContainmentLink initValue$h_bH = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
   }
 }

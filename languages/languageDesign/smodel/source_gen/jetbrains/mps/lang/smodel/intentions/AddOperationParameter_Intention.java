@@ -40,7 +40,7 @@ public final class AddOperationParameter_Intention extends AbstractIntentionDesc
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$3FGp)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$Maw7)).isEmpty()) {
       return ListSequence.fromList(SNodeOperation__BehaviorDescriptor.getParameterConcepts_id6ALWH9fQysn.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)))).isNotEmpty();
     }
     return false;
@@ -66,9 +66,9 @@ public final class AddOperationParameter_Intention extends AbstractIntentionDesc
     public void execute(final SNode node, final EditorContext editorContext) {
       List<SConcept> applicableParms = SNodeOperation__BehaviorDescriptor.getParameterConcepts_id6ALWH9fQysn.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)));
       if (ListSequence.fromList(applicableParms).count() == 1) {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$3FGp)).addElement(SNodeFactoryOperations.createNewNode(ListSequence.fromList(applicableParms).first(), null));
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$Maw7)).addElement(SNodeFactoryOperations.createNewNode(ListSequence.fromList(applicableParms).first(), null));
       } else {
-        SNodeFactoryOperations.addNewChild(node, LINKS.parameter$3FGp, null);
+        SNodeFactoryOperations.addNewChild(node, LINKS.parameter$Maw7, null);
       }
     }
     @Override
@@ -78,6 +78,6 @@ public final class AddOperationParameter_Intention extends AbstractIntentionDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$3FGp = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter");
+    /*package*/ static final SContainmentLink parameter$Maw7 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter");
   }
 }

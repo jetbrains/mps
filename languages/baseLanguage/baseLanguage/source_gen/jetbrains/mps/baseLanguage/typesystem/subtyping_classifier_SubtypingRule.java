@@ -26,19 +26,19 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
   public subtyping_classifier_SubtypingRule() {
   }
   public List<SNode> getSubOrSuperTypes(SNode clt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode classifier = SLinkOperations.getTarget(clt, LINKS.classifier$pQ_R);
+    SNode classifier = SLinkOperations.getTarget(clt, LINKS.classifier$xslD);
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     List<SNode> supertypes = ListSequence.fromList(new ArrayList<SNode>());
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY)) {
       SNode classConcept = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY);
-      if (!((SLinkOperations.getTarget(classConcept, LINKS.superclass$_pqe) == null))) {
-        ListSequence.fromList(supertypes).addElement(SLinkOperations.getTarget(classConcept, LINKS.superclass$_pqe));
+      if (!((SLinkOperations.getTarget(classConcept, LINKS.superclass$7jGM) == null))) {
+        ListSequence.fromList(supertypes).addElement(SLinkOperations.getTarget(classConcept, LINKS.superclass$7jGM));
       }
-      ListSequence.fromList(supertypes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$mdc6)));
+      ListSequence.fromList(supertypes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$KoQU)));
     }
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$Kp)) {
       SNode interfaceConcept = SNodeOperations.cast(classifier, CONCEPTS.Interface$Kp);
-      ListSequence.fromList(supertypes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(interfaceConcept, LINKS.extendedInterface$rbvY)));
+      ListSequence.fromList(supertypes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(interfaceConcept, LINKS.extendedInterface$a$v2)));
     }
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Annotation$Os)) {
       ListSequence.fromList(supertypes).addElement(_quotation_createNode_pgdy8e_a0a0a5a1());
@@ -49,21 +49,21 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
     List<SNode> mirrors = new BaseLanguageEnvironmentHelper().findCompatibleClassifiers(classifier);
     for (SNode mirror : ListSequence.fromList(mirrors)) {
       SNode mirrorType = SNodeOperations.copyNode(clt);
-      SLinkOperations.setTarget(mirrorType, LINKS.classifier$pQ_R, mirror);
+      SLinkOperations.setTarget(mirrorType, LINKS.classifier$xslD, mirror);
       ListSequence.fromList(supertypes).addElement(mirrorType);
     }
     for (SNode supertype : supertypes) {
       SNode supertypeCopy = SNodeOperations.cast(SNodeOperations.copyNode(supertype), CONCEPTS.ClassifierType$IZ);
-      for (SNode typeParam : SLinkOperations.getChildren(supertypeCopy, LINKS.parameter$dQne)) {
+      for (SNode typeParam : SLinkOperations.getChildren(supertypeCopy, LINKS.parameter$HlfM)) {
         List<SNode> descendants = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeParam, CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})).toListSequence();
         for (SNode typeVar : descendants) {
-          int i = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$ziZT)).indexOf(SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$U0X4));
+          int i = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB)).indexOf(SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$6t$W));
           if (i < 0) {
             continue;
           }
-          if (i < ListSequence.fromList(SLinkOperations.getChildren(clt, LINKS.parameter$dQne)).count()) {
+          if (i < ListSequence.fromList(SLinkOperations.getChildren(clt, LINKS.parameter$HlfM)).count()) {
             // substitute the typevar ref with the existing type from the original CT 
-            SNodeOperations.replaceWithAnother(typeVar, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(clt, LINKS.parameter$dQne)).getElement(i)));
+            SNodeOperations.replaceWithAnother(typeVar, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(clt, LINKS.parameter$HlfM)).getElement(i)));
           } else {
             // this is a (partially) raw class 
             typeParam.delete();
@@ -74,9 +74,9 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
     }
     ListSequence.fromList(supertypes).addElement(clt);
     for (SNode supertype : supertypes) {
-      if (ListSequence.fromList(SLinkOperations.getChildren((SNodeOperations.cast(supertype, CONCEPTS.ClassifierType$IZ)), LINKS.parameter$dQne)).isNotEmpty()) {
+      if (ListSequence.fromList(SLinkOperations.getChildren((SNodeOperations.cast(supertype, CONCEPTS.ClassifierType$IZ)), LINKS.parameter$HlfM)).isNotEmpty()) {
         SNode erasure = SNodeOperations.cast(SNodeOperations.copyNode(supertype), CONCEPTS.ClassifierType$IZ);
-        for (SNode parameter : SLinkOperations.getChildren(erasure, LINKS.parameter$dQne)) {
+        for (SNode parameter : SLinkOperations.getChildren(erasure, LINKS.parameter$HlfM)) {
           SNodeOperations.deleteNode(parameter);
         }
         ListSequence.fromList(result).addElement(erasure);
@@ -109,13 +109,13 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink superclass$_pqe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$mdc6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink extendedInterface$rbvY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$ziZT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class CONCEPTS {

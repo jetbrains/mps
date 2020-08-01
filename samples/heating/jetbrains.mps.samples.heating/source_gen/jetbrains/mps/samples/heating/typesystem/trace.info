@@ -36,8 +36,8 @@
       <node id="2161719505004106887" at="45,50,46,33" concept="6" />
       <node id="2161719505004106887" at="48,68,49,102" concept="6" />
       <node id="2161719505004106887" at="51,30,52,17" concept="6" />
-      <node id="2161719505004106887" at="56,0,57,0" concept="7" trace="customizes$a6Ia" />
-      <node id="2161719505004106887" at="57,0,58,0" concept="7" trace="target$bW60" />
+      <node id="2161719505004106887" at="56,0,57,0" concept="7" trace="customizes$TgmQ" />
+      <node id="2161719505004106887" at="57,0,58,0" concept="7" trace="target$M6U0" />
       <node id="2161719505004106887" at="61,0,62,0" concept="7" trace="DailyPlan$jq" />
       <node id="2161719505004106887" at="25,0,27,0" concept="1" trace="checkCircularCustomization_NonTypesystemRule#()V" />
       <node id="2161719505004085600" at="38,7,41,7" concept="3" />
@@ -87,7 +87,7 @@
       <node id="2978080762094012385" at="23,25,24,157" concept="2" />
       <node id="2978080762094027047" at="25,12,26,100" concept="2" />
       <node id="2978080762093972440" at="31,0,32,0" concept="7" trace="Slot$bv" />
-      <node id="2978080762093972440" at="35,0,36,0" concept="7" trace="start$fZpo" />
+      <node id="2978080762093972440" at="35,0,36,0" concept="7" trace="start$JHiC" />
       <node id="2978080762094026487" at="25,10,27,5" concept="0" />
       <node id="2978080762093972440" at="15,0,18,0" concept="1" trace="AssignCorrectValue_QuickFix#()V" />
       <node id="2978080762093972440" at="18,0,21,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -165,10 +165,10 @@
       <node id="5063359128233238129" at="72,50,73,28" concept="6" />
       <node id="5063359128233238129" at="75,68,76,102" concept="6" />
       <node id="5063359128233238129" at="78,30,79,17" concept="6" />
-      <node id="5063359128233238129" at="83,0,84,0" concept="7" trace="start$fZpo" />
-      <node id="5063359128233238129" at="84,0,85,0" concept="7" trace="temperature$MPBu" />
+      <node id="5063359128233238129" at="83,0,84,0" concept="7" trace="start$JHiC" />
+      <node id="5063359128233238129" at="84,0,85,0" concept="7" trace="temperature$BY7y" />
       <node id="5063359128233238129" at="88,0,89,0" concept="7" trace="Slot$bv" />
-      <node id="5063359128233238129" at="92,0,93,0" concept="7" trace="event$CDE2" />
+      <node id="5063359128233238129" at="92,0,93,0" concept="7" trace="event$GbmY" />
       <node id="5063359128233238129" at="25,0,27,0" concept="1" trace="check_Slot_NonTypesystemRule#()V" />
       <node id="5063359128233238129" at="72,0,75,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5063359128233238129" at="75,0,78,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -254,8 +254,8 @@
       <node id="5224141982809166927" at="36,32,37,64" concept="2" />
       <node id="5224141982809132419" at="42,0,43,0" concept="7" trace="Slot$bv" />
       <node id="5224141982809132419" at="43,0,44,0" concept="7" trace="DailyPlan$jq" />
-      <node id="5224141982809132419" at="47,0,48,0" concept="7" trace="start$fZpo" />
-      <node id="5224141982809132419" at="51,0,52,0" concept="7" trace="items$MJQp" />
+      <node id="5224141982809132419" at="47,0,48,0" concept="7" trace="start$JHiC" />
+      <node id="5224141982809132419" at="51,0,52,0" concept="7" trace="items$_bm7" />
       <node id="5224141982809132419" at="19,0,22,0" concept="1" trace="MoveItemToTheRightPositionWithinDailyPlan_QuickFix#()V" />
       <node id="5224141982809132419" at="22,0,25,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="5224141982809245936" at="26,68,29,5" concept="3" />

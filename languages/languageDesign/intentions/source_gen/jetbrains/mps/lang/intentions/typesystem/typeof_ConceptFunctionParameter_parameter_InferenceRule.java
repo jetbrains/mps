@@ -23,7 +23,7 @@ public class typeof_ConceptFunctionParameter_parameter_InferenceRule extends Abs
     {
       SNode _nodeToCheck_1029348928467 = parameter;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590351(jetbrains.mps.lang.intentions.typesystem)", "1240322726298", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590351(jetbrains.mps.lang.intentions.typesystem)", "1240322714855", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(intention, LINKS.queryFunction$NYf9), LINKS.paramType$tho0), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590351(jetbrains.mps.lang.intentions.typesystem)", "1240322714855", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(intention, LINKS.queryFunction$b9ln), LINKS.paramType$bqC0), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -42,7 +42,7 @@ public class typeof_ConceptFunctionParameter_parameter_InferenceRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink queryFunction$NYf9 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120cd519c2dL, 0x120cd55c89bL, "queryFunction");
-    /*package*/ static final SContainmentLink paramType$tho0 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c89cc719L, 0x120cd3676eeL, "paramType");
+    /*package*/ static final SContainmentLink queryFunction$b9ln = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120cd519c2dL, 0x120cd55c89bL, "queryFunction");
+    /*package*/ static final SContainmentLink paramType$bqC0 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c89cc719L, 0x120cd3676eeL, "paramType");
   }
 }

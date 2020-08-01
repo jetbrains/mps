@@ -92,7 +92,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.code$zupi;
+      final SProperty property = PROPS.code$bIfI;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no code>");
@@ -117,7 +117,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.targetClass$cHAP;
+      final SProperty property = PROPS.targetClass$a5NF;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no target class>");
@@ -180,7 +180,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.field$$Rwe;
+      return LINKS.field$QSAM;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Field$9k;
@@ -193,7 +193,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(fieldListHandler_mcrsin_b1a.this.getNode(), LINKS.field$$Rwe));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(fieldListHandler_mcrsin_b1a.this.getNode(), LINKS.field$QSAM));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -245,8 +245,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty code$zupi = MetaAdapterFactory.getProperty(0x89e26c5bfc34a60L, 0x9953f68169a4608aL, 0x103f6aabc30L, 0x103f6abdf46L, "code");
-    /*package*/ static final SProperty targetClass$cHAP = MetaAdapterFactory.getProperty(0x89e26c5bfc34a60L, 0x9953f68169a4608aL, 0x103f6aabc30L, 0x103f6ac00e8L, "targetClass");
+    /*package*/ static final SProperty code$bIfI = MetaAdapterFactory.getProperty(0x89e26c5bfc34a60L, 0x9953f68169a4608aL, 0x103f6aabc30L, 0x103f6abdf46L, "code");
+    /*package*/ static final SProperty targetClass$a5NF = MetaAdapterFactory.getProperty(0x89e26c5bfc34a60L, 0x9953f68169a4608aL, 0x103f6aabc30L, 0x103f6ac00e8L, "targetClass");
   }
 
   private static final class CONCEPTS {
@@ -255,6 +255,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink field$$Rwe = MetaAdapterFactory.getContainmentLink(0x89e26c5bfc34a60L, 0x9953f68169a4608aL, 0x103f6aabc30L, 0x103f6b56dcdL, "field");
+    /*package*/ static final SContainmentLink field$QSAM = MetaAdapterFactory.getContainmentLink(0x89e26c5bfc34a60L, 0x9953f68169a4608aL, 0x103f6aabc30L, 0x103f6b56dcdL, "field");
   }
 }

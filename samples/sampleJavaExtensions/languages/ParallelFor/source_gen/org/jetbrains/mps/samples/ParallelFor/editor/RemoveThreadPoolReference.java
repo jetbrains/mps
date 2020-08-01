@@ -26,7 +26,7 @@ public class RemoveThreadPoolReference {
         if (DeletionApproverUtil.approve(editorContext, node, "usingThreadPool")) {
           return;
         }
-        SLinkOperations.setTarget(node, LINKS.threadPool$1iZ4, null);
+        SLinkOperations.setTarget(node, LINKS.threadPool$CcyW, null);
       }
 
     };
@@ -74,6 +74,6 @@ public class RemoveThreadPoolReference {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink threadPool$1iZ4 = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
+    /*package*/ static final SContainmentLink threadPool$CcyW = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
   }
 }

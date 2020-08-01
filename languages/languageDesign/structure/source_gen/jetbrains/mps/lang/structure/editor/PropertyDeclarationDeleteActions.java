@@ -33,7 +33,7 @@ public class PropertyDeclarationDeleteActions {
           return;
         }
         SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$UN);
-        if (!(CustomActionsHandler.deleteElementFromCollectionAndSetSelection(node, SLinkOperations.getChildren(containingAbstractConcept, LINKS.propertyDeclaration$lL73), editorContext))) {
+        if (!(CustomActionsHandler.deleteElementFromCollectionAndSetSelection(node, SLinkOperations.getChildren(containingAbstractConcept, LINKS.propertyDeclaration$yMqt), editorContext))) {
           if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU)) {
             SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU);
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, cd, "emptyPropertiesPlaceHolder", 0);
@@ -59,7 +59,7 @@ public class PropertyDeclarationDeleteActions {
           return;
         }
         SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$UN);
-        if (!(CustomActionsHandler.backspaceElementFromCollectionAndSetSelection(node, SLinkOperations.getChildren(containingAbstractConcept, LINKS.propertyDeclaration$lL73), editorContext))) {
+        if (!(CustomActionsHandler.backspaceElementFromCollectionAndSetSelection(node, SLinkOperations.getChildren(containingAbstractConcept, LINKS.propertyDeclaration$yMqt), editorContext))) {
           if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU)) {
             SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU);
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, cd, "emptyPropertiesPlaceHolder", 0);
@@ -125,6 +125,6 @@ public class PropertyDeclarationDeleteActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
   }
 }

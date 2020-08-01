@@ -61,12 +61,12 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String methodName = SPropertyOperations.getString(node, PROPS.name$tAp1);
-      return (SPropertyOperations.getBoolean(node, PROPS.isStatic$KaRv) ? "Make '" + methodName + "' Not Static" : "Make '" + methodName + "' Static");
+      String methodName = SPropertyOperations.getString(node, PROPS.name$lA7v);
+      return (SPropertyOperations.getBoolean(node, PROPS.isStatic$lgS1) ? "Make '" + methodName + "' Not Static" : "Make '" + methodName + "' Static");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      final boolean oldStatic = SPropertyOperations.getBoolean(node, PROPS.isStatic$KaRv);
+      final boolean oldStatic = SPropertyOperations.getBoolean(node, PROPS.isStatic$lgS1);
       List<SNode> thisNodes = (oldStatic ? SNodeOperations.getNodeDescendants(node, CONCEPTS.ThisConceptExpression$T_, false, new SAbstractConcept[]{}) : SNodeOperations.getNodeDescendants(node, CONCEPTS.ThisNodeExpression$BO, false, new SAbstractConcept[]{}));
       ListSequence.fromList(thisNodes).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
@@ -79,9 +79,9 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
           SNodeOperations.replaceWithAnother(it, (oldStatic ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression"))));
         }
       });
-      SPropertyOperations.set(node, PROPS.isStatic$KaRv, !(oldStatic));
+      SPropertyOperations.set(node, PROPS.isStatic$lgS1, !(oldStatic));
       if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(node))) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$WIlu), LINKS.statement$WHn8)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$qspy), LINKS.statement$pYcS)).clear();
       }
     }
     @Override
@@ -91,8 +91,8 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isStatic$KaRv = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isStatic$lgS1 = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
   }
 
   private static final class CONCEPTS {
@@ -102,7 +102,7 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

@@ -26,20 +26,20 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 @GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/6316328094634559825", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
-  private final SProperty myRemarkStatement_value = PROPS.value$ATQL;
-  private final SProperty myTextCommentPart_text = PROPS.text$AaEw;
+  private final SProperty myRemarkStatement_value = PROPS.value$Q1xJ;
+  private final SProperty myTextCommentPart_text = PROPS.text$va_w;
   @NotNull
   public UpdateResult update(EditorComponent editorComponent, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     SNode node = editorComponent.getEditedNode();
     for (SNode remark : SNodeOperations.getNodeDescendants(node, CONCEPTS.RemarkStatement$SN, false, new SAbstractConcept[]{})) {
       if (((boolean) (Boolean) BHReflection.invoke0(remark, CONCEPTS.RemarkStatement$SN, SMethodTrimmedId.create("isTodo", CONCEPTS.RemarkStatement$SN, "hEwITPs")))) {
-        SetSequence.fromSet(messages).addElement(new ToDoMessage(remark, SPropertyOperations.getString(remark, PROPS.value$ATQL), this));
+        SetSequence.fromSet(messages).addElement(new ToDoMessage(remark, SPropertyOperations.getString(remark, PROPS.value$Q1xJ), this));
       }
     }
     for (SNode textCommentPart : SNodeOperations.getNodeDescendants(node, CONCEPTS.TextCommentPart$lb, false, new SAbstractConcept[]{})) {
       if (((boolean) (Boolean) BHReflection.invoke0(textCommentPart, CONCEPTS.CommentPart$kd, SMethodTrimmedId.create("isToDo", null, "6hHyb3YSGHZ")))) {
-        SetSequence.fromSet(messages).addElement(new ToDoMessage(textCommentPart, SPropertyOperations.getString(textCommentPart, PROPS.text$AaEw), this));
+        SetSequence.fromSet(messages).addElement(new ToDoMessage(textCommentPart, SPropertyOperations.getString(textCommentPart, PROPS.text$va_w), this));
       }
     }
     for (SNode textComment : SNodeOperations.getNodeDescendants(node, CONCEPTS.IComment$kc, false, new SAbstractConcept[]{})) {
@@ -63,8 +63,8 @@ public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ATQL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
-    /*package*/ static final SProperty text$AaEw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty value$Q1xJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
+    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 
   private static final class CONCEPTS {

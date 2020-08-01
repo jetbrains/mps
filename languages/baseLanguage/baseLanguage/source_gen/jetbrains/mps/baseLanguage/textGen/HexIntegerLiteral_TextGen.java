@@ -13,10 +13,10 @@ public class HexIntegerLiteral_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append("0x" + SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$9TU));
+    tgs.append("0x" + SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$4N36));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$9TU = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, 0x11297628b3cL, "value");
+    /*package*/ static final SProperty value$4N36 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, 0x11297628b3cL, "value");
   }
 }

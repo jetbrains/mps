@@ -69,7 +69,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return editorCell;
   }
   private boolean nodeCondition_ekbrl8_a2a() {
-    return SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getContainingRoot(myNode), CONCEPTS.ChemSheet$zx), PROPS.showButtons$T8V0);
+    return SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getContainingRoot(myNode), CONCEPTS.ChemSheet$zx), PROPS.showButtons$Fk_0);
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
@@ -95,7 +95,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        Iterable<SNode> entries = SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(myNode), CONCEPTS.ChemSheet$zx), LINKS.entries$$D86), CONCEPTS.EquationEntry$Nz);
+        Iterable<SNode> entries = SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(myNode), CONCEPTS.ChemSheet$zx), LINKS.entries$JUUU), CONCEPTS.EquationEntry$Nz);
         return String.valueOf(Sequence.fromIterable(entries).indexOf(myNode) + 1) + ")";
       }
     }, myNode);
@@ -226,10 +226,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty showButtons$T8V0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x5b2638e8bdbef0c0L, "showButtons");
+    /*package*/ static final SProperty showButtons$Fk_0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x5b2638e8bdbef0c0L, "showButtons");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink entries$$D86 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x6ef7184fab9f24ddL, "entries");
+    /*package*/ static final SContainmentLink entries$JUUU = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x6ef7184fab9f24ddL, "entries");
   }
 }

@@ -37,7 +37,7 @@ public final class SetAccessor__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static SNode getBody_idi2fhZ_m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.statementList$SZt9);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.statementList$AJ7n);
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
     return new ArrayList<SNode>();
@@ -94,6 +94,6 @@ public final class SetAccessor__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$SZt9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, 0x11800260be3L, "statementList");
+    /*package*/ static final SContainmentLink statementList$AJ7n = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, 0x11800260be3L, "statementList");
   }
 }

@@ -31,7 +31,7 @@
       <node id="8398535532016756708" at="66,14,67,58" concept="9" />
       <node id="8398535532016756708" at="73,48,74,22" concept="5" />
       <node id="8398535532016756708" at="79,40,80,19" concept="5" />
-      <node id="8398535532016756708" at="84,0,85,0" concept="6" trace="valid$$Z1J" />
+      <node id="8398535532016756708" at="84,0,85,0" concept="6" trace="valid$UxPL" />
       <node id="8398535532016756708" at="30,0,32,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8398535532016756708" at="37,0,39,0" concept="0" trace="SomeConcept__BehaviorDescriptor#()V" />
       <node id="8398535532016756708" at="33,0,36,0" concept="7" trace="isNodeRunnable_id431DWIovi3C#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

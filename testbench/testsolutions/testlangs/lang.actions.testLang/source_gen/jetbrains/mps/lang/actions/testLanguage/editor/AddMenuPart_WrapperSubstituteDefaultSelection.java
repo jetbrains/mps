@@ -66,7 +66,7 @@ public class AddMenuPart_WrapperSubstituteDefaultSelection extends SubstituteMen
   public class SMP_Group_pn01ee_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return Objects.equals(_context.getLink(), LINKS.addMenu_wrapperSubstituteDefaultSelection$sGSk);
+      return Objects.equals(_context.getLink(), LINKS.addMenu_wrapperSubstituteDefaultSelection$TJhG);
     }
     @NotNull
     @Override
@@ -124,7 +124,7 @@ public class AddMenuPart_WrapperSubstituteDefaultSelection extends SubstituteMen
             tmpVar = tmpVar && nodeToWrap != null;
 
             SNode wrapperNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChildWrapper"));
-            SLinkOperations.setTarget(wrapperNode, LINKS.childToWrap$zyl5, nodeToWrap);
+            SLinkOperations.setTarget(wrapperNode, LINKS.childToWrap$dCdr, nodeToWrap);
             return wrapperNode;
           }
 
@@ -157,8 +157,8 @@ public class AddMenuPart_WrapperSubstituteDefaultSelection extends SubstituteMen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink addMenu_wrapperSubstituteDefaultSelection$sGSk = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x27d631a3698368a7L, "addMenu_wrapperSubstituteDefaultSelection");
-    /*package*/ static final SContainmentLink childToWrap$zyl5 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, 0x47ad1fca2ec9ad5fL, "childToWrap");
+    /*package*/ static final SContainmentLink addMenu_wrapperSubstituteDefaultSelection$TJhG = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x27d631a3698368a7L, "addMenu_wrapperSubstituteDefaultSelection");
+    /*package*/ static final SContainmentLink childToWrap$dCdr = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, 0x47ad1fca2ec9ad5fL, "childToWrap");
   }
 
   private static final class CONCEPTS {

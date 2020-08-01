@@ -27,11 +27,11 @@ public class RightParenDelete {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, final SNode node) {
-        SNode last = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$Cbl0)).last();
+        SNode last = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$tvb0)).last();
         if ((last == null)) {
           last = SNodeOperations.getNextSibling(node);
         }
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$Cbl0)).visitAll(new IVisitor<SNode>() {
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$tvb0)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             SNodeOperations.insertPrevSiblingChild(node, it);
           }
@@ -87,6 +87,6 @@ public class RightParenDelete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$Cbl0 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
+    /*package*/ static final SContainmentLink elements$tvb0 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
   }
 }

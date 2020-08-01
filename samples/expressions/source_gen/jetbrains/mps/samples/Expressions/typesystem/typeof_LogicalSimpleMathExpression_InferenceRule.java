@@ -21,12 +21,12 @@ public class typeof_LogicalSimpleMathExpression_InferenceRule extends AbstractIn
   }
   public void applyRule(final SNode logicalExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(logicalExpression, LINKS.left$Nd26);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(logicalExpression, LINKS.left$Nk0U);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208033384", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467207966014", true), (SNode) createSimpleMathBooleanType_ngq3xd_a1a0c0a0b(), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(logicalExpression, LINKS.right$Nd34);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(logicalExpression, LINKS.right$NkuW);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208094202", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467208094209", true), (SNode) SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f68L, "jetbrains.mps.samples.Expressions.structure.SimpleMathBooleanType")), _info_12389875345);
     }
@@ -51,8 +51,8 @@ public class typeof_LogicalSimpleMathExpression_InferenceRule extends AbstractIn
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$Nd26 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5476L, "left");
-    /*package*/ static final SContainmentLink right$Nd34 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5478L, "right");
+    /*package*/ static final SContainmentLink left$Nk0U = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5476L, "left");
+    /*package*/ static final SContainmentLink right$NkuW = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL, 0x1cc69153b81d5478L, "right");
   }
 
   private static final class CONCEPTS {

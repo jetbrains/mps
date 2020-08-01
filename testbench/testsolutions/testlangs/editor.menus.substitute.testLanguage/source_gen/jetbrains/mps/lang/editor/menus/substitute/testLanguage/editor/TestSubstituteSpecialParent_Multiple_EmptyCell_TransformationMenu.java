@@ -77,7 +77,7 @@ public class TestSubstituteSpecialParent_Multiple_EmptyCell_TransformationMenu e
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.multipleChildToSpecializeInCustomEmptyCellWithCustomMenu$DTyo;
+      return LINKS.multipleChildToSpecializeInCustomEmptyCellWithCustomMenu$iRDC;
     }
     @Override
     protected SAbstractConcept getTargetConcept(TransformationMenuContext context) {
@@ -86,7 +86,7 @@ public class TestSubstituteSpecialParent_Multiple_EmptyCell_TransformationMenu e
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink multipleChildToSpecializeInCustomEmptyCellWithCustomMenu$DTyo = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x360a10c84d96af00L, "multipleChildToSpecializeInCustomEmptyCellWithCustomMenu");
+    /*package*/ static final SContainmentLink multipleChildToSpecializeInCustomEmptyCellWithCustomMenu$iRDC = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x360a10c84d96af00L, "multipleChildToSpecializeInCustomEmptyCellWithCustomMenu");
   }
 
   private static final class CONCEPTS {

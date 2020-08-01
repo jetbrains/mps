@@ -22,7 +22,7 @@ public class typeof_NodePointerArg_Identity_InferenceRule extends AbstractInfere
   public typeof_NodePointerArg_Identity_InferenceRule() {
   }
   public void applyRule(final SNode nodePointerArg, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(SLinkOperations.getTarget(nodePointerArg, LINKS.ref$ryyU), SNodeOperations.getModel(nodePointerArg).getRepository());
+    SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(SLinkOperations.getTarget(nodePointerArg, LINKS.ref$lIU6), SNodeOperations.getModel(nodePointerArg).getRepository());
     {
       SNode _nodeToCheck_1029348928467 = nodePointerArg;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3320646261221719938", 0, null);
@@ -40,13 +40,13 @@ public class typeof_NodePointerArg_Identity_InferenceRule extends AbstractInfere
   }
   private static SNode createSNodePointerType_xw4dmd_a1a0c0b0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
-    n0.setReferenceTarget(LINKS.concept$fJMt, p0);
+    n0.setReferenceTarget(LINKS.concept$C9s3, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ref$ryyU = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
-    /*package*/ static final SReferenceLink concept$fJMt = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
+    /*package*/ static final SContainmentLink ref$lIU6 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
+    /*package*/ static final SReferenceLink concept$C9s3 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
   }
 
   private static final class CONCEPTS {

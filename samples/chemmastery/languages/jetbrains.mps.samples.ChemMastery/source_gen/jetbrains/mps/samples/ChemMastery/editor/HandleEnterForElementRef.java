@@ -23,7 +23,7 @@ public class HandleEnterForElementRef {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.hasRole(SNodeOperations.getParent(node), LINKS.left$U$u8)) {
+        if (SNodeOperations.hasRole(SNodeOperations.getParent(node), LINKS.left$nE_S)) {
           SNodeOperations.insertNextSiblingChild(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef")));
         } else {
           EquationEditorUtil.insertNewEquationLine(node);
@@ -82,6 +82,6 @@ public class HandleEnterForElementRef {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$U$u8 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
+    /*package*/ static final SContainmentLink left$nE_S = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
   }
 }

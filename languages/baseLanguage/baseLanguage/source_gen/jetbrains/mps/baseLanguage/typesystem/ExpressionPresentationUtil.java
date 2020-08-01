@@ -26,33 +26,33 @@ public class ExpressionPresentationUtil {
     }
 
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.ParenthesizedExpression$vE)) {
-      return "(" + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$4_F0)) + ")";
+      return "(" + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$efP0)) + ")";
     }
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.UnaryMinus$Uo)) {
-      return "-" + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.UnaryMinus$Uo), LINKS.expression$7Rjy));
+      return "-" + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.UnaryMinus$Uo), LINKS.expression$NMtu));
     }
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.NotExpression$oq)) {
-      return "!(" + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.NotExpression$oq), LINKS.expression$bUD_)) + ")";
+      return "!(" + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.NotExpression$oq), LINKS.expression$Lq8V)) + ")";
     }
 
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.INamedConcept$nV)) {
-      return SPropertyOperations.getString(SNodeOperations.cast(expression, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+      return SPropertyOperations.getString(SNodeOperations.cast(expression, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
     }
 
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.DotExpression$6a)) {
-      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr)) + "." + getOperationPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8));
+      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)) + "." + getOperationPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS));
     }
 
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.BinaryOperation$vf)) {
-      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$rxLZ)) + SConceptOperations.conceptAlias(SNodeOperations.getConcept(SNodeOperations.cast(expression, CONCEPTS.BinaryOperation$vf))) + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$rxBl));
+      return getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$lndx)) + SConceptOperations.conceptAlias(SNodeOperations.getConcept(SNodeOperations.cast(expression, CONCEPTS.BinaryOperation$vf))) + getExpressionPresentation(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$li3b));
     }
 
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.StringLiteral$4G)) {
-      return "\"" + SPropertyOperations.getString(SNodeOperations.cast(expression, CONCEPTS.StringLiteral$4G), PROPS.value$kiE0) + "\"";
+      return "\"" + SPropertyOperations.getString(SNodeOperations.cast(expression, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0) + "\"";
     }
 
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.GenericNewExpression$ev)) {
-      return "new " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.GenericNewExpression$ev), LINKS.creator$itDQ));
+      return "new " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.GenericNewExpression$ev), LINKS.creator$Wnha));
     }
 
     if ((boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(expression)))) {
@@ -69,7 +69,7 @@ public class ExpressionPresentationUtil {
       return SConceptOperations.conceptAlias(SNodeOperations.getConcept(operation));
     }
     if (SNodeOperations.isInstanceOf(operation, CONCEPTS.IMethodCall$ln)) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$ln), LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1) + "(" + ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$$A7L)).foldLeft("", new ILeftCombinator<SNode, String>() {
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$ln), LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v) + "(" + ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(operation, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$ItKJ)).foldLeft("", new ILeftCombinator<SNode, String>() {
         public String combine(String s, SNode it) {
           return (((s == null || s.length() == 0) ? "" : s + ",")) + getExpressionPresentation(it);
         }
@@ -95,20 +95,20 @@ public class ExpressionPresentationUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink expression$7Rjy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink creator$itDQ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$kiE0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

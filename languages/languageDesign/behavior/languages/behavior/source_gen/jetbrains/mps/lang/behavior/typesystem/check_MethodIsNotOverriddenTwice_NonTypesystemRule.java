@@ -26,17 +26,17 @@ public class check_MethodIsNotOverriddenTwice_NonTypesystemRule extends Abstract
   public check_MethodIsNotOverriddenTwice_NonTypesystemRule() {
   }
   public void applyRule(final SNode conceptBehavior, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> overridingMethods = ListSequence.fromList(SLinkOperations.getChildren(conceptBehavior, LINKS.method$vbvQ)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> overridingMethods = ListSequence.fromList(SLinkOperations.getChildren(conceptBehavior, LINKS.method$6$ra)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.overriddenMethod$6dmw) != null;
+        return SLinkOperations.getTarget(it, LINKS.overriddenMethod$tTw) != null;
       }
     });
     for (SNode method : Sequence.fromIterable(overridingMethods)) {
       for (SNode anotherMethod : Sequence.fromIterable(overridingMethods)) {
-        if (anotherMethod != method && SLinkOperations.getTarget(anotherMethod, LINKS.overriddenMethod$6dmw) == SLinkOperations.getTarget(method, LINKS.overriddenMethod$6dmw)) {
+        if (anotherMethod != method && SLinkOperations.getTarget(anotherMethod, LINKS.overriddenMethod$tTw) == SLinkOperations.getTarget(method, LINKS.overriddenMethod$tTw)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "The ancestor method is already overridden by the '" + SPropertyOperations.getString(anotherMethod, PROPS.name$tAp1) + "'", "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "1279830762537579635", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "The ancestor method is already overridden by the '" + SPropertyOperations.getString(anotherMethod, PROPS.name$lA7v) + "'", "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "1279830762537579635", null, errorTarget);
           }
         }
       }
@@ -53,12 +53,12 @@ public class check_MethodIsNotOverriddenTwice_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink method$vbvQ = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
-    /*package*/ static final SReferenceLink overriddenMethod$6dmw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SContainmentLink method$6$ra = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
+    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

@@ -27,7 +27,7 @@ public class RemoveNot {
         if (DeletionApproverUtil.approve(editorContext, node, "notKeyword")) {
           return;
         }
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.original$ixu));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.original$8Ydy));
       }
 
     };
@@ -75,6 +75,6 @@ public class RemoveNot {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink original$ixu = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, 0x2de971c785ecb8b3L, "original");
+    /*package*/ static final SContainmentLink original$8Ydy = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecb8b0L, 0x2de971c785ecb8b3L, "original");
   }
 }

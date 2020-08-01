@@ -22,7 +22,7 @@ public class typeof_ConceptIdRefExpression_InferenceRule extends AbstractInferen
     {
       SNode _nodeToCheck_1029348928467 = conceptIdRefExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5472444609684628366", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5472444609684628375", true), (SNode) createSConceptTypeLiteral_8j47c6_a1a0c0a0b(SLinkOperations.getTarget(conceptIdRefExpression, LINKS.conceptDeclaration$EQY0)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5472444609684628375", true), (SNode) createSConceptTypeLiteral_8j47c6_a1a0c0a0b(SLinkOperations.getTarget(conceptIdRefExpression, LINKS.conceptDeclaration$KC20)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -36,13 +36,13 @@ public class typeof_ConceptIdRefExpression_InferenceRule extends AbstractInferen
   }
   private static SNode createSConceptTypeLiteral_8j47c6_a1a0c0a0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SConceptTypeLiteral$4X);
-    n0.setReferenceTarget(LINKS.conceptDeclaraton$xAhw, p0);
+    n0.setReferenceTarget(LINKS.conceptDeclaraton$hyuw, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$EQY0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce180eb54L, 0x24b2bf7ce180eb55L, "conceptDeclaration");
-    /*package*/ static final SReferenceLink conceptDeclaraton$xAhw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, 0x4bf20760d53f89ebL, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink conceptDeclaration$KC20 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce180eb54L, 0x24b2bf7ce180eb55L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaraton$hyuw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4bf20760d53f89eaL, 0x4bf20760d53f89ebL, "conceptDeclaraton");
   }
 
   private static final class CONCEPTS {

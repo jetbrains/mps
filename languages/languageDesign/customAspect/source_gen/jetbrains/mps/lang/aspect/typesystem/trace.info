@@ -42,7 +42,7 @@
       <node id="5386558680326206577" at="49,228,50,456" concept="2" />
       <node id="5386558680326206577" at="50,456,51,167" concept="2" />
       <node id="5386558680326206577" at="51,167,52,24" concept="6" />
-      <node id="5386558680326206395" at="56,0,57,0" concept="7" trace="cncpt$V8vz" />
+      <node id="5386558680326206395" at="56,0,57,0" concept="7" trace="cncpt$D7hX" />
       <node id="5386558680326206395" at="60,0,61,0" concept="7" trace="AspectMethodDescriptor$X" />
       <node id="5386558680326206395" at="22,0,24,0" concept="1" trace="typeof_AspectMethodDescriptor_InferenceRule#()V" />
       <node id="5386558680326206395" at="31,0,34,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -101,10 +101,10 @@
       <node id="6422667311313318807" at="34,50,35,50" concept="6" />
       <node id="6422667311313318807" at="37,68,38,102" concept="6" />
       <node id="6422667311313318807" at="40,30,41,17" concept="6" />
-      <node id="6422667311313318807" at="45,0,46,0" concept="7" trace="implTemplate$HWtm" />
+      <node id="6422667311313318807" at="45,0,46,0" concept="7" trace="implTemplate$gidE" />
       <node id="6422667311313318807" at="49,0,50,0" concept="7" trace="PropertyMacro$wt" />
       <node id="6422667311313318807" at="50,0,51,0" concept="7" trace="GenerationDescriptor_Class$73" />
-      <node id="6422667311313318807" at="54,0,55,0" concept="7" trace="name$tAp1" />
+      <node id="6422667311313318807" at="54,0,55,0" concept="7" trace="name$lA7v" />
       <node id="6422667311313318807" at="23,0,25,0" concept="1" trace="check_GenerationDescriptor_Class_NonTypesystemRule#()V" />
       <node id="6422667311313324014" at="25,114,28,5" concept="3" />
       <node id="6422667311313318807" at="34,0,37,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

@@ -40,9 +40,9 @@
       <node id="5565015566574595172" at="101,89,102,18" concept="7" />
       <node id="5565015566574471979" at="104,5,105,16" concept="7" />
       <node id="7813081600365639852" at="109,0,110,0" concept="10" trace="AbstractConceptDeclaration$UN" />
-      <node id="7813081600365639852" at="113,0,114,0" concept="10" trace="specializedLink$3uH0" />
-      <node id="7813081600365639852" at="114,0,115,0" concept="10" trace="target$egp8" />
-      <node id="7813081600365639852" at="118,0,119,0" concept="10" trace="name$tAp1" />
+      <node id="7813081600365639852" at="113,0,114,0" concept="10" trace="specializedLink$FRN0" />
+      <node id="7813081600365639852" at="114,0,115,0" concept="10" trace="target$TWaS" />
+      <node id="7813081600365639852" at="118,0,119,0" concept="10" trace="name$lA7v" />
       <node id="7813081600365639947" at="33,0,36,0" concept="0" trace="LinkDeclarationLookup#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5565015566574519807" at="47,40,50,5" concept="4" />
       <node id="7813081600365828138" at="54,0,57,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

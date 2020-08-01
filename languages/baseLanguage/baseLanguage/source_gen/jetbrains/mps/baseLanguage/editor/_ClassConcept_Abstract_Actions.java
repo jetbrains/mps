@@ -27,8 +27,8 @@ public class _ClassConcept_Abstract_Actions {
         if (DeletionApproverUtil.approve(editorContext, node, "abstractKeyword")) {
           return;
         }
-        SPropertyOperations.set(node, PROPS.abstractClass$gY5l, false);
-        if (SPropertyOperations.getBoolean(node, PROPS.isFinal$dzaH)) {
+        SPropertyOperations.set(node, PROPS.abstractClass$e4_b, false);
+        if (SPropertyOperations.getBoolean(node, PROPS.isFinal$$2bN)) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "finalKeyword", 0);
         } else {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "classKeyword", 0);
@@ -80,7 +80,7 @@ public class _ClassConcept_Abstract_Actions {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
-    /*package*/ static final SProperty isFinal$dzaH = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
   }
 }

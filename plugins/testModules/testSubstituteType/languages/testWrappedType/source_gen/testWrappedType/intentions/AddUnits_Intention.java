@@ -58,7 +58,7 @@ public final class AddUnits_Intention extends AbstractIntentionDescriptor implem
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode twi = SNodeOperations.replaceWithNewChild(node, CONCEPTS.TypeWithUnits$S3);
-      SLinkOperations.setTarget(twi, LINKS.wrapped$V3u0, node);
+      SLinkOperations.setTarget(twi, LINKS.wrapped$AFy0, node);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -71,6 +71,6 @@ public final class AddUnits_Intention extends AbstractIntentionDescriptor implem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink wrapped$V3u0 = MetaAdapterFactory.getContainmentLink(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, 0x116157dc0d8c52bdL, "wrapped");
+    /*package*/ static final SContainmentLink wrapped$AFy0 = MetaAdapterFactory.getContainmentLink(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, 0x116157dc0d8c52bdL, "wrapped");
   }
 }

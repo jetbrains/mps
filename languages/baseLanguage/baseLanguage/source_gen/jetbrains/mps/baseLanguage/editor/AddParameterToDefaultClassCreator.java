@@ -31,16 +31,16 @@ public class AddParameterToDefaultClassCreator {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode cc = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.ClassCreator$yU);
-        SLinkOperations.setTarget(cc, LINKS.baseMethodDeclaration$$A7i, Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.classifier$bk50), CONCEPTS.ClassConcept$IY))).first());
-        SNodeFactoryOperations.addNewChild(cc, LINKS.actualArgument$$A7L, null);
-        SelectionUtil.selectNode(editorContext, ListSequence.fromList(SLinkOperations.getChildren(cc, LINKS.actualArgument$$A7L)).first());
+        SLinkOperations.setTarget(cc, LINKS.baseMethodDeclaration$ItxI, Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.classifier$uIr0), CONCEPTS.ClassConcept$IY))).first());
+        SNodeFactoryOperations.addNewChild(cc, LINKS.actualArgument$ItKJ, null);
+        SelectionUtil.selectNode(editorContext, ListSequence.fromList(SLinkOperations.getChildren(cc, LINKS.actualArgument$ItKJ)).first());
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.classifier$bk50), CONCEPTS.ClassConcept$IY))).isNotEmpty();
+        return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.classifier$uIr0), CONCEPTS.ClassConcept$IY))).isNotEmpty();
       }
 
     };
@@ -93,8 +93,8 @@ public class AddParameterToDefaultClassCreator {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classifier$bk50 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

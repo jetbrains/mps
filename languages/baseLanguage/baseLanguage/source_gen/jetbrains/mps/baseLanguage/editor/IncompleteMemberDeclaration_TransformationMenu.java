@@ -120,7 +120,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.type$QNev) != null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.type$yO11) != null);
     }
 
     @NotNull
@@ -176,9 +176,9 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode originalType = SLinkOperations.getTarget(_context.getNode(), LINKS.type$QNev);
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.type$QNev, CONCEPTS.ArrayType$Yv);
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$QNev), CONCEPTS.ArrayType$Yv), LINKS.componentType$10w, originalType);
+          SNode originalType = SLinkOperations.getTarget(_context.getNode(), LINKS.type$yO11);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.type$yO11, CONCEPTS.ArrayType$Yv);
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$yO11), CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw, originalType);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -209,7 +209,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_b1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.type$QNev), CONCEPTS.ClassifierType$IZ) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$QNev), CONCEPTS.ClassifierType$IZ), LINKS.parameter$dQne)).isEmpty();
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.type$yO11), CONCEPTS.ClassifierType$IZ) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$yO11), CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)).isEmpty();
     }
 
     @NotNull
@@ -265,8 +265,8 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode originalType = SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$QNev), CONCEPTS.ClassifierType$IZ);
-          SNodeFactoryOperations.addNewChild(originalType, LINKS.parameter$dQne, null);
+          SNode originalType = SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.type$yO11), CONCEPTS.ClassifierType$IZ);
+          SNodeFactoryOperations.addNewChild(originalType, LINKS.parameter$HlfM, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -297,7 +297,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_a2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.visibility$2GiC) == null) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$290) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.visibility$jt1o) == null) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$12n0) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
     }
 
     @NotNull
@@ -356,7 +356,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          SLinkOperations.setTarget(_context.getNode(), LINKS.visibility$2GiC, createdNode);
+          SLinkOperations.setTarget(_context.getNode(), LINKS.visibility$jt1o, createdNode);
           _context.getEditorContext().selectWRTFocusPolicy(_context.getNode());
         }
 
@@ -386,7 +386,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_b2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.visibility$2GiC) == null) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$290) == true && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.visibility$jt1o) == null) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$12n0) == true && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
     }
 
     @NotNull
@@ -445,7 +445,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          SLinkOperations.setTarget(_context.getNode(), LINKS.visibility$2GiC, createdNode);
+          SLinkOperations.setTarget(_context.getNode(), LINKS.visibility$jt1o, createdNode);
           _context.getEditorContext().selectWRTFocusPolicy(_context.getNode());
         }
 
@@ -512,7 +512,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          SLinkOperations.setTarget(_context.getNode(), LINKS.visibility$2GiC, createdNode);
+          SLinkOperations.setTarget(_context.getNode(), LINKS.visibility$jt1o, createdNode);
           _context.getEditorContext().selectWRTFocusPolicy(_context.getNode());
         }
 
@@ -542,7 +542,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_c2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.visibility$2GiC) == null) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Interface$Kp));
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.visibility$jt1o) == null) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Interface$Kp));
     }
 
     @NotNull
@@ -601,7 +601,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          SLinkOperations.setTarget(_context.getNode(), LINKS.visibility$2GiC, createdNode);
+          SLinkOperations.setTarget(_context.getNode(), LINKS.visibility$jt1o, createdNode);
           _context.getEditorContext().selectWRTFocusPolicy(_context.getNode());
         }
 
@@ -631,7 +631,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_d2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.type$QNev) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.type$yO11) == null);
     }
 
     @NotNull
@@ -690,7 +690,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          SLinkOperations.setTarget(_context.getNode(), LINKS.type$QNev, createdNode);
+          SLinkOperations.setTarget(_context.getNode(), LINKS.type$yO11, createdNode);
           _context.getEditorContext().selectWRTFocusPolicy(_context.getNode());
         }
 
@@ -720,7 +720,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_e2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SPropertyOperations.getBoolean(_context.getNode(), PROPS.static$1Wq) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$290) == false;
+      return SPropertyOperations.getBoolean(_context.getNode(), PROPS.static$WgA) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$12n0) == false;
     }
 
     @NotNull
@@ -776,7 +776,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.static$1Wq, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.static$WgA, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -803,7 +803,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_f2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return IncompleteMemberHelper.canBeField(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.transient$JMJL) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
+      return IncompleteMemberHelper.canBeField(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.transient$9_8J) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
     }
 
     @NotNull
@@ -859,7 +859,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.transient$JMJL, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.transient$9_8J, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -886,7 +886,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_g2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return IncompleteMemberHelper.canBeMethod(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.static$1Wq) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.final$27z) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.synchronized$4dBM) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.native$HhhY) == false && (boolean) IncompleteMemberDeclaration__BehaviorDescriptor.canBeMadeAbstract_id5py1MO2Oyuj.invoke(_context.getNode());
+      return IncompleteMemberHelper.canBeMethod(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.static$WgA) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.final$11DX) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.synchronized$2Ahe) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.native$VnH2) == false && (boolean) IncompleteMemberDeclaration__BehaviorDescriptor.canBeMadeAbstract_id5py1MO2Oyuj.invoke(_context.getNode());
     }
 
     @NotNull
@@ -942,7 +942,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.abstract$290, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.abstract$12n0, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -969,7 +969,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_h2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return IncompleteMemberHelper.canBeMethod(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.static$1Wq) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$290) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.native$HhhY) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
+      return IncompleteMemberHelper.canBeMethod(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.static$WgA) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$12n0) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.native$VnH2) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
     }
 
     @NotNull
@@ -1025,7 +1025,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.native$HhhY, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.native$VnH2, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -1052,7 +1052,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_i2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return IncompleteMemberHelper.canBeMethod(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$290) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.synchronized$4dBM) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
+      return IncompleteMemberHelper.canBeMethod(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$12n0) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.synchronized$2Ahe) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
     }
 
     @NotNull
@@ -1108,7 +1108,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.synchronized$4dBM, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.synchronized$2Ahe, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -1135,7 +1135,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_j2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return IncompleteMemberHelper.canBeField(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.final$27z) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.volatile$dZ_X) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
+      return IncompleteMemberHelper.canBeField(_context.getNode()) && SPropertyOperations.getBoolean(_context.getNode(), PROPS.final$11DX) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.volatile$LNoz) == false && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClassConcept$IY);
     }
 
     @NotNull
@@ -1191,7 +1191,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.volatile$dZ_X, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.volatile$LNoz, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -1218,7 +1218,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   public class TMP_Group_rt3nn6_k2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$290) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.final$27z) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.volatile$dZ_X) == false;
+      return SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstract$12n0) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.final$11DX) == false && SPropertyOperations.getBoolean(_context.getNode(), PROPS.volatile$LNoz) == false;
     }
 
     @NotNull
@@ -1274,7 +1274,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.final$27z, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.final$11DX, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -1356,7 +1356,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.IHasModifiers$LF), LINKS.modifiers$akE0)).addElement(createdNode);
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.IHasModifiers$LF), LINKS.modifiers$m0)).addElement(createdNode);
           _context.getEditorContext().selectWRTFocusPolicy(targetNode);
         }
 
@@ -1399,20 +1399,20 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$QNev = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e8b632a8L, "type");
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink modifiers$akE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink type$yO11 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e8b632a8L, "type");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$290 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf99L, "abstract");
-    /*package*/ static final SProperty static$1Wq = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf94L, "static");
-    /*package*/ static final SProperty transient$JMJL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x58197aef3e5e4dd7L, "transient");
-    /*package*/ static final SProperty native$HhhY = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x73f30e3dfbaac721L, "native");
-    /*package*/ static final SProperty final$27z = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf96L, "final");
-    /*package*/ static final SProperty synchronized$4dBM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdb595L, "synchronized");
-    /*package*/ static final SProperty volatile$dZ_X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdbea6L, "volatile");
+    /*package*/ static final SProperty abstract$12n0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf99L, "abstract");
+    /*package*/ static final SProperty static$WgA = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf94L, "static");
+    /*package*/ static final SProperty transient$9_8J = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x58197aef3e5e4dd7L, "transient");
+    /*package*/ static final SProperty native$VnH2 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x73f30e3dfbaac721L, "native");
+    /*package*/ static final SProperty final$11DX = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf96L, "final");
+    /*package*/ static final SProperty synchronized$2Ahe = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdb595L, "synchronized");
+    /*package*/ static final SProperty volatile$LNoz = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdbea6L, "volatile");
   }
 }

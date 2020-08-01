@@ -34,10 +34,10 @@ public final class NodePropertyConstraint__BehaviorDescriptor extends BaseBHDesc
 
   /*package*/ static SNode getApplicableConcept_idhEwIoOT(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.ConceptBehavior$8P)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.ConceptBehavior$8P), LINKS.concept$v6ns);
+      return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.ConceptBehavior$8P), LINKS.concept$45m$);
     }
     if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.ConceptConstraints$St)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.ConceptConstraints$St), LINKS.concept$rRWx);
+      return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.ConceptConstraints$St), LINKS.concept$w6jZ);
     }
     return null;
   }
@@ -94,7 +94,7 @@ public final class NodePropertyConstraint__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$v6ns = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
-    /*package*/ static final SReferenceLink concept$rRWx = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
+    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink concept$w6jZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
   }
 }

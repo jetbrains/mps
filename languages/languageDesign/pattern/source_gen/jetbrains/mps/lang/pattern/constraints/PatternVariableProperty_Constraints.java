@@ -39,7 +39,7 @@ public class PatternVariableProperty_Constraints extends BaseConstraintsDescript
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return Objects.equals(link, LINKS.initValue$nhHN) && SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.INodeBuilderContainer$cS, true, false), CONCEPTS.PatternBuilder$Pa);
+    return Objects.equals(link, LINKS.initValue$h_bH) && SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.INodeBuilderContainer$cS, true, false), CONCEPTS.PatternBuilder$Pa);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "8950533135207612074");
 
@@ -50,6 +50,6 @@ public class PatternVariableProperty_Constraints extends BaseConstraintsDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$nhHN = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
+    /*package*/ static final SContainmentLink initValue$h_bH = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
   }
 }

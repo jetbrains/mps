@@ -70,7 +70,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     return editorCell;
   }
   private boolean nodeCondition_gbleq0_a1a() {
-    return SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(myNode), CONCEPTS.FoldingContainer$br), PROPS.collapsed$Y0yR);
+    return SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(myNode), CONCEPTS.FoldingContainer$br), PROPS.collapsed$2gSD);
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "{");
@@ -160,6 +160,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty collapsed$Y0yR = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0xc06e5dab971f717L, "collapsed");
+    /*package*/ static final SProperty collapsed$2gSD = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x569b712fbc6572f0L, 0xc06e5dab971f717L, "collapsed");
   }
 }

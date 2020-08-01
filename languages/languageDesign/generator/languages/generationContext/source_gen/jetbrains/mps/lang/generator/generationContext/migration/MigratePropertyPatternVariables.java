@@ -48,7 +48,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
-          return SLinkOperations.getTarget(usage, LINKS.propertyPatternVar$HJtt);
+          return SLinkOperations.getTarget(usage, LINKS.propertyPatternVar$9Zh3);
         }
         @Override
         protected void migrateRawValue(SNode usage, SNode datatype) {
@@ -73,6 +73,6 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyPatternVar$HJtt = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, 0x186874d40ed9c75cL, "propertyPatternVar");
+    /*package*/ static final SReferenceLink propertyPatternVar$9Zh3 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, 0x186874d40ed9c75cL, "propertyPatternVar");
   }
 }

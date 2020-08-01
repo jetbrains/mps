@@ -29,17 +29,17 @@ public class OverrideImplementMethodsInEnumHelper extends OverrideImplementMetho
   }
 
   public List<SNode> insertMethods(List<SNode> baseMethods) {
-    int index = (myContextMember != null && SNodeOperations.isInstanceOf(myContextMember, CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.getParent(myContextMember) == enumConstant ? ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$3$mN)).indexOf(SNodeOperations.cast(myContextMember, CONCEPTS.InstanceMethodDeclaration$An)) + 1 : -1);
+    int index = (myContextMember != null && SNodeOperations.isInstanceOf(myContextMember, CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.getParent(myContextMember) == enumConstant ? ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$IB2H)).indexOf(SNodeOperations.cast(myContextMember, CONCEPTS.InstanceMethodDeclaration$An)) + 1 : -1);
     List<SNode> result = new ArrayList<SNode>();
     for (SNode m : baseMethods) {
       SNode baseMethod = SNodeOperations.cast(m, CONCEPTS.InstanceMethodDeclaration$An);
       SNode method = SNodeOperations.cast(((SNode) BHReflection.invoke0(baseMethod, CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("getMethodToImplement", CONCEPTS.BaseMethodDeclaration$RR, "3RE744JWbF"), myClassifier)), CONCEPTS.InstanceMethodDeclaration$An);
-      SPropertyOperations.assign(method, PROPS.isAbstract$cU_H, false);
-      SLinkOperations.setTarget(method, LINKS.body$WIlu, SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(myClassifier), CONCEPTS.StatementList$TN, null));
+      SPropertyOperations.assign(method, PROPS.isAbstract$gogN, false);
+      SLinkOperations.setTarget(method, LINKS.body$qspy, SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(myClassifier), CONCEPTS.StatementList$TN, null));
       if (index != -1) {
-        ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$3$mN)).insertElement(index++, method);
+        ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$IB2H)).insertElement(index++, method);
       } else {
-        ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$3$mN)).addElement(method);
+        ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$IB2H)).addElement(method);
       }
       update(method, baseMethod);
       ListSequence.fromList(result).addElement(method);
@@ -54,11 +54,11 @@ public class OverrideImplementMethodsInEnumHelper extends OverrideImplementMetho
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink method$3$mN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink method$IB2H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

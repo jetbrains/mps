@@ -23,9 +23,9 @@ public class typeof_ArrayLiteral_InferenceRule extends AbstractInferenceRule_Run
   public typeof_ArrayLiteral_InferenceRule() {
   }
   public void applyRule(final SNode arrayLiteral, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(arrayLiteral, LINKS.item$zjRO)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(arrayLiteral, LINKS.item$6C2c)).isNotEmpty()) {
       final SNode elementType_typevar_1188221443596 = typeCheckingContext.createNewRuntimeTypesVariable();
-      for (SNode item : SLinkOperations.getChildren(arrayLiteral, LINKS.item$zjRO)) {
+      for (SNode item : SLinkOperations.getChildren(arrayLiteral, LINKS.item$6C2c)) {
         {
           SNode _nodeToCheck_1029348928467 = item;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1188221461712", 0, null);
@@ -42,10 +42,10 @@ public class typeof_ArrayLiteral_InferenceRule extends AbstractInferenceRule_Run
       if ((creator == null)) {
         return;
       }
-      SNode componentType = SLinkOperations.getTarget(creator, LINKS.componentType$5JdX);
+      SNode componentType = SLinkOperations.getTarget(creator, LINKS.componentType$LRKz);
       SNode parent = arrayLiteral;
       while (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ArrayType$Yv) && SNodeOperations.isInstanceOf(parent, CONCEPTS.ArrayLiteral$dK)) {
-        componentType = SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ArrayType$Yv), LINKS.componentType$10w);
+        componentType = SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw);
         parent = SNodeOperations.getParent(SNodeOperations.cast(parent, CONCEPTS.ArrayLiteral$dK));
       }
       if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ArrayLiteral$dK)) {
@@ -90,9 +90,9 @@ public class typeof_ArrayLiteral_InferenceRule extends AbstractInferenceRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink item$zjRO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, 0x114a770fdbfL, "item");
-    /*package*/ static final SContainmentLink componentType$5JdX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink item$6C2c = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a770dc0dL, 0x114a770fdbfL, "item");
+    /*package*/ static final SContainmentLink componentType$LRKz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {

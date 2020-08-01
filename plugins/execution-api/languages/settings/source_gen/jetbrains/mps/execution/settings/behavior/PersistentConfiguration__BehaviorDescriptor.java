@@ -66,14 +66,14 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
     return createPersistentConfigurationType_4ves9l_a0a3(__thisNode__);
   }
   /*package*/ static List<SNode> getTemplateProperties_idO$iR4J$g3e(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistentProperty$2oY0)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistentProperty$a620)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it);
       }
     }).toListSequence();
   }
   /*package*/ static List<SNode> getNonTemplateProperties_idO$iR4J$g3y(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistentProperty$2oY0)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.persistentProperty$a620)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !((boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(it));
       }
@@ -98,7 +98,7 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
     if (configuration == null) {
       SNode executor = SNodeOperations.getNodeAncestor(node, CONCEPTS.PersistentConfigurationAssistent$f6, false, false);
       if (executor != null) {
-        configuration = SLinkOperations.getTarget(executor, LINKS.configuration$RmX0);
+        configuration = SLinkOperations.getTarget(executor, LINKS.configuration$O7z0);
       }
     }
     return configuration;
@@ -108,7 +108,7 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
     if ((configuration == null)) {
       return new ArrayList<SNode>();
     }
-    return SLinkOperations.getChildren(configuration, LINKS.persistentProperty$2oY0);
+    return SLinkOperations.getChildren(configuration, LINKS.persistentProperty$a620);
   }
   /*package*/ static String getCheckMethodName_idO$iR4J$g2y(@NotNull SAbstractConcept __thisConcept__) {
     return "checkConfiguration";
@@ -181,14 +181,14 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
   }
   private static SNode createPersistentConfigurationType_4ves9l_a0a3(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
-    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$2710, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink persistentProperty$2oY0 = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910122L, 0xd244b712f910123L, "persistentProperty");
-    /*package*/ static final SReferenceLink configuration$RmX0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
-    /*package*/ static final SReferenceLink persistentConfiguration$28v0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SContainmentLink persistentProperty$a620 = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910122L, 0xd244b712f910123L, "persistentProperty");
+    /*package*/ static final SReferenceLink configuration$O7z0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
+    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class CONCEPTS {

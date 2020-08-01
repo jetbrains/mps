@@ -32,10 +32,10 @@ public final class EnumValuesExpression__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static SNode getClassifier_id7S22xyoLQG7(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$8ABG);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$aHek);
   }
   /*package*/ static void setClassifier_id7S22xyoLQH8(@NotNull SNode __thisNode__, SNode classifier) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.enumClass$8ABG, (SNode) classifier);
+    SLinkOperations.setTarget(__thisNode__, LINKS.enumClass$aHek, (SNode) classifier);
   }
 
   /*package*/ EnumValuesExpression__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class EnumValuesExpression__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumClass$8ABG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, 0x11d1e4bf6afL, "enumClass");
+    /*package*/ static final SReferenceLink enumClass$aHek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, 0x11d1e4bf6afL, "enumClass");
   }
 }

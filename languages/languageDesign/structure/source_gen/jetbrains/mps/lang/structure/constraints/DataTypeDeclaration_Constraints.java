@@ -51,7 +51,7 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
   public static class DatatypeId_Property extends BasePropertyConstraintsDescriptor {
     public DatatypeId_Property(ConstraintsDescriptor container) {
-      super(PROPS.datatypeId$Bvg3, container);
+      super(PROPS.datatypeId$88Lt, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -80,7 +80,7 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
   public static class LanguageId_Property extends BasePropertyConstraintsDescriptor {
     public LanguageId_Property(ConstraintsDescriptor container) {
-      super(PROPS.languageId$Bvgy, container);
+      super(PROPS.languageId$890u, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -110,8 +110,8 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.datatypeId$Bvg3, new DatatypeId_Property(this));
-    properties.put(PROPS.languageId$Bvgy, new LanguageId_Property(this));
+    properties.put(PROPS.datatypeId$88Lt, new DatatypeId_Property(this));
+    properties.put(PROPS.languageId$890u, new LanguageId_Property(this));
     return properties;
   }
   private static final SNodePointer breakingNode_gntvk6_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805350");
@@ -121,7 +121,7 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty datatypeId$Bvg3 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
-    /*package*/ static final SProperty languageId$Bvgy = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044404L, "languageId");
+    /*package*/ static final SProperty datatypeId$88Lt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
+    /*package*/ static final SProperty languageId$890u = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044404L, "languageId");
   }
 }

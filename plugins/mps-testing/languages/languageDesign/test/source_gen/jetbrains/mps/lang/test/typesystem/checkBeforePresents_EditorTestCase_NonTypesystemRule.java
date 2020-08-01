@@ -20,7 +20,7 @@ public class checkBeforePresents_EditorTestCase_NonTypesystemRule extends Abstra
   public checkBeforePresents_EditorTestCase_NonTypesystemRule() {
   }
   public void applyRule(final SNode test, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(test, LINKS.testNodeBefore$BOcn) == null)) {
+    if ((SLinkOperations.getTarget(test, LINKS.testNodeBefore$ihZ9) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(test, "A node in the 'before' section must be provided", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "5960383906433085526", null, errorTarget);
@@ -38,7 +38,7 @@ public class checkBeforePresents_EditorTestCase_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink testNodeBefore$BOcn = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore");
+    /*package*/ static final SContainmentLink testNodeBefore$ihZ9 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore");
   }
 
   private static final class CONCEPTS {

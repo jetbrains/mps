@@ -44,9 +44,9 @@
       <node id="1213104840151" at="96,0,97,0" concept="10" trace="CellModel_Component$1X" />
       <node id="1213104840151" at="97,0,98,0" concept="10" trace="EditorComponentDeclaration$Lb" />
       <node id="1213104840151" at="98,0,99,0" concept="10" trace="LayoutContainer$PT" />
-      <node id="1213104840151" at="102,0,103,0" concept="10" trace="editorComponent$AnLw" />
-      <node id="1213104840151" at="103,0,104,0" concept="10" trace="cellModel$3wIV" />
-      <node id="1213104840151" at="104,0,105,0" concept="10" trace="styleItem$$mEY" />
+      <node id="1213104840151" at="102,0,103,0" concept="10" trace="editorComponent$_wYw" />
+      <node id="1213104840151" at="103,0,104,0" concept="10" trace="cellModel$GQI_" />
+      <node id="1213104840151" at="104,0,105,0" concept="10" trace="styleItem$AYO2" />
       <node id="1213104840151" at="35,0,38,0" concept="0" trace="CellModel_Component_Constraints#()V" />
       <node id="1213104840151" at="45,0,48,9" concept="4" />
       <node id="332515575063469097" at="84,188,87,7" concept="4" />
@@ -126,7 +126,7 @@
       <node id="1213104846218" at="60,0,61,0" concept="10" trace="breakingNode_1eovyz_a0a0a0a0a1a0a0a0c" />
       <node id="1213104846218" at="63,0,64,0" concept="10" trace="CellMenuComponentFeature_Link$GD" />
       <node id="1213104846218" at="64,0,65,0" concept="10" trace="CellMenuComponent$EO" />
-      <node id="1213104846218" at="68,0,69,0" concept="10" trace="relationDeclaration$y4$D" />
+      <node id="1213104846218" at="68,0,69,0" concept="10" trace="relationDeclaration$wdJR" />
       <node id="1213104846218" at="27,0,30,0" concept="0" trace="CellMenuComponentFeature_Link_Constraints#()V" />
       <node id="1213104846219" at="34,0,38,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104846219" at="42,0,46,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -178,7 +178,7 @@
       <node id="1213104846421" at="69,0,70,0" concept="10" trace="breakingNode_ykculm_a0a0a0a0a1a0a0a0c" />
       <node id="1213104846421" at="72,0,73,0" concept="10" trace="CellModel_RefCell$VD" />
       <node id="1213104846421" at="73,0,74,0" concept="10" trace="BaseEditorComponent$Sy" />
-      <node id="1213104846421" at="77,0,78,0" concept="10" trace="relationDeclaration$wbRV" />
+      <node id="1213104846421" at="77,0,78,0" concept="10" trace="relationDeclaration$_K5_" />
       <node id="1213104846421" at="31,0,34,0" concept="0" trace="CellModel_RefCell_Constraints#()V" />
       <node id="6836281137582783219" at="57,0,60,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1213104846422" at="38,0,42,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -241,9 +241,9 @@
       <node id="1227090194616" at="74,57,75,99" concept="7" />
       <node id="1213104846580" at="77,0,78,0" concept="10" trace="canBeRootBreakingPoint" />
       <node id="1213104846580" at="80,0,81,0" concept="10" trace="ConceptEditorDeclaration$s6" />
-      <node id="1213104846580" at="84,0,85,0" concept="10" trace="name$tAp1" />
-      <node id="1213104846580" at="88,0,89,0" concept="10" trace="hint$7sDk" />
-      <node id="1213104846580" at="89,0,90,0" concept="10" trace="contextHints$QcT4" />
+      <node id="1213104846580" at="84,0,85,0" concept="10" trace="name$lA7v" />
+      <node id="1213104846580" at="88,0,89,0" concept="10" trace="hint$AS0G" />
+      <node id="1213104846580" at="89,0,90,0" concept="10" trace="contextHints$gfCW" />
       <node id="1213104846580" at="32,0,35,0" concept="0" trace="ConceptEditorDeclaration_Constraints#()V" />
       <node id="1213104846580" at="42,0,45,9" concept="4" />
       <node id="1213104846581" at="52,0,55,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
@@ -313,7 +313,7 @@
       <node id="1213104846625" at="59,0,60,0" concept="10" trace="breakingNode_p94y3m_a0a0a0a0a1a0a0a0c" />
       <node id="1213104846625" at="62,0,63,0" concept="10" trace="CellModel_Property$iE" />
       <node id="1213104846625" at="63,0,64,0" concept="10" trace="BaseEditorComponent$Sy" />
-      <node id="1213104846625" at="67,0,68,0" concept="10" trace="relationDeclaration$wbRV" />
+      <node id="1213104846625" at="67,0,68,0" concept="10" trace="relationDeclaration$_K5_" />
       <node id="1213104846625" at="27,0,30,0" concept="0" trace="CellModel_Property_Constraints#()V" />
       <node id="1213104846626" at="34,0,38,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104846626" at="42,0,46,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -364,7 +364,7 @@
       <node id="1213104855916" at="60,0,61,0" concept="10" trace="breakingNode_m13sco_a0a0a0a0a1a0a0a0c" />
       <node id="1213104855916" at="63,0,64,0" concept="10" trace="CellMenuComponentFeature_Property$7W" />
       <node id="1213104855916" at="64,0,65,0" concept="10" trace="CellMenuComponent$EO" />
-      <node id="1213104855916" at="68,0,69,0" concept="10" trace="relationDeclaration$y4$D" />
+      <node id="1213104855916" at="68,0,69,0" concept="10" trace="relationDeclaration$wdJR" />
       <node id="1213104855916" at="27,0,30,0" concept="0" trace="CellMenuComponentFeature_Property_Constraints#()V" />
       <node id="1213104855917" at="34,0,38,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104855917" at="42,0,46,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -415,7 +415,7 @@
       <node id="1213104856673" at="59,0,60,0" concept="10" trace="breakingNode_myaeud_a0a0a0a0a1a0a0a0c" />
       <node id="1213104856673" at="62,0,63,0" concept="10" trace="CellModel_WithRole$8K" />
       <node id="1213104856673" at="63,0,64,0" concept="10" trace="BaseEditorComponent$Sy" />
-      <node id="1213104856673" at="67,0,68,0" concept="10" trace="relationDeclaration$wbRV" />
+      <node id="1213104856673" at="67,0,68,0" concept="10" trace="relationDeclaration$_K5_" />
       <node id="1213104856673" at="26,0,29,0" concept="0" trace="CellModel_WithRole_Constraints#()V" />
       <node id="1213104856674" at="33,0,37,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104856674" at="41,0,45,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -477,7 +477,7 @@
       <node id="1213104860417" at="68,0,69,0" concept="10" trace="breakingNode_gjggyh_a0a0a0a0a1a0a0a0c" />
       <node id="1213104860417" at="71,0,72,0" concept="10" trace="CellModel_RefNodeList$IL" />
       <node id="1213104860417" at="72,0,73,0" concept="10" trace="BaseEditorComponent$Sy" />
-      <node id="1213104860417" at="76,0,77,0" concept="10" trace="relationDeclaration$wbRV" />
+      <node id="1213104860417" at="76,0,77,0" concept="10" trace="relationDeclaration$_K5_" />
       <node id="1213104860417" at="31,0,34,0" concept="0" trace="CellModel_RefNodeList_Constraints#()V" />
       <node id="6836281137582785910" at="56,0,59,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1213104860418" at="38,0,42,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -537,7 +537,7 @@
       <node id="1213104860579" at="69,0,70,0" concept="10" trace="breakingNode_l5izay_a0a0a0a0a1a0a0a0c" />
       <node id="1213104860579" at="72,0,73,0" concept="10" trace="CellModel_RefNode$Ox" />
       <node id="1213104860579" at="73,0,74,0" concept="10" trace="BaseEditorComponent$Sy" />
-      <node id="1213104860579" at="77,0,78,0" concept="10" trace="relationDeclaration$wbRV" />
+      <node id="1213104860579" at="77,0,78,0" concept="10" trace="relationDeclaration$_K5_" />
       <node id="1213104860579" at="31,0,34,0" concept="0" trace="CellModel_RefNode_Constraints#()V" />
       <node id="6836281137582783657" at="57,0,60,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1213104860580" at="38,0,42,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -595,7 +595,7 @@
       <node id="1216381238253" at="59,0,60,0" concept="10" trace="breakingNode_bnan1a_a0a0a0a0a1a0a0a0c" />
       <node id="1216381238253" at="62,0,63,0" concept="10" trace="CellModel_TransactionalProperty$oo" />
       <node id="1216381238253" at="63,0,64,0" concept="10" trace="BaseEditorComponent$Sy" />
-      <node id="1216381238253" at="67,0,68,0" concept="10" trace="property$p2l_" />
+      <node id="1216381238253" at="67,0,68,0" concept="10" trace="property$88sV" />
       <node id="1216381238253" at="27,0,30,0" concept="0" trace="CellModel_TransactionalProperty_Constraints#()V" />
       <node id="1216381240441" at="34,0,38,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="1216381240441" at="42,0,46,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -645,7 +645,7 @@
       <node id="1225459366922" at="47,119,48,63" concept="2" />
       <node id="1225459364437" at="48,63,49,22" concept="7" />
       <node id="1225459364437" at="53,0,54,0" concept="10" trace="RGBColor$1P" />
-      <node id="1225459364437" at="57,0,58,0" concept="10" trace="value$QcLX" />
+      <node id="1225459364437" at="57,0,58,0" concept="10" trace="value$gccz" />
       <node id="1225459364437" at="20,0,23,0" concept="0" trace="RGBColor_Constraints#()V" />
       <node id="1225459366922" at="25,0,28,0" concept="0" trace="Value_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1225459366922" at="35,99,38,7" concept="4" />
@@ -889,7 +889,7 @@
       <node id="1227861662670" at="59,0,60,0" concept="10" trace="breakingNode_bj07nb_a0a0a0a0a1a0a0a0c" />
       <node id="1227861662670" at="62,0,63,0" concept="10" trace="NavigatableReferenceStyleClassItem$jn" />
       <node id="1227861662670" at="63,0,64,0" concept="10" trace="BaseEditorComponent$Sy" />
-      <node id="1227861662670" at="67,0,68,0" concept="10" trace="link$NFBb" />
+      <node id="1227861662670" at="67,0,68,0" concept="10" trace="link$27Yl" />
       <node id="1227861662670" at="27,0,30,0" concept="0" trace="NavigatableReferenceStyleClassItem_Constraints#()V" />
       <node id="1227861665046" at="34,0,38,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="1227861665046" at="42,0,46,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -987,7 +987,7 @@
       <node id="1630016958697344100" at="61,0,62,0" concept="10" trace="breakingNode_dae2tc_a0a0a0a0a1a0a0a0c" />
       <node id="1630016958697344100" at="64,0,65,0" concept="10" trace="IMenu_Default$EZ" />
       <node id="1630016958697344100" at="65,0,66,0" concept="10" trace="AbstractConceptDeclaration$UN" />
-      <node id="1630016958697344100" at="69,0,70,0" concept="10" trace="conceptDeclaration$acmt" />
+      <node id="1630016958697344100" at="69,0,70,0" concept="10" trace="conceptDeclaration$VYS3" />
       <node id="1630016958697344100" at="27,0,30,0" concept="0" trace="IMenu_Default_Constraints#()V" />
       <node id="6836281137582785371" at="48,66,51,13" concept="4" />
       <node id="1630016958697344101" at="34,0,38,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -1038,7 +1038,7 @@
       <node id="1630016958697347701" at="61,0,62,0" concept="10" trace="breakingNode_ib2924_a0a0a0a0a1a0a0a0c" />
       <node id="1630016958697347701" at="64,0,65,0" concept="10" trace="IMenu_Named$Ew" />
       <node id="1630016958697347701" at="65,0,66,0" concept="10" trace="AbstractConceptDeclaration$UN" />
-      <node id="1630016958697347701" at="69,0,70,0" concept="10" trace="conceptDeclaration$acmt" />
+      <node id="1630016958697347701" at="69,0,70,0" concept="10" trace="conceptDeclaration$VYS3" />
       <node id="1630016958697347701" at="27,0,30,0" concept="0" trace="IMenu_Named_Constraints#()V" />
       <node id="6836281137582784766" at="48,66,51,13" concept="4" />
       <node id="1630016958697347702" at="34,0,38,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -1126,7 +1126,7 @@
       <node id="1630016958698374830" at="55,0,56,0" concept="10" trace="breakingNode_bj65la_a0a0a0a0a1a0a0a0c" />
       <node id="1630016958698374830" at="58,0,59,0" concept="10" trace="IMenuReference_Default$Hp" />
       <node id="1630016958698374830" at="59,0,60,0" concept="10" trace="AbstractConceptDeclaration$UN" />
-      <node id="1630016958698374830" at="63,0,64,0" concept="10" trace="concept$x5r" />
+      <node id="1630016958698374830" at="63,0,64,0" concept="10" trace="concept$g1C5" />
       <node id="1630016958698374830" at="24,0,27,0" concept="0" trace="IMenuReference_Default_Constraints#()V" />
       <node id="1630016958698374833" at="31,0,35,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="1630016958698374833" at="39,0,43,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -1174,7 +1174,7 @@
       <node id="1630016958698440087" at="53,42,54,22" concept="7" />
       <node id="1630016958698440087" at="56,0,57,0" concept="10" trace="breakingNode_56onsx_a0a0a0a0a1a0a0a0c" />
       <node id="1630016958698440087" at="59,0,60,0" concept="10" trace="SubstituteMenuReference_Named$Ud" />
-      <node id="1630016958698440087" at="63,0,64,0" concept="10" trace="menu$6o5e" />
+      <node id="1630016958698440087" at="63,0,64,0" concept="10" trace="menu$5ExM" />
       <node id="1630016958698440087" at="22,0,25,0" concept="0" trace="SubstituteMenuReference_Named_Constraints#()V" />
       <node id="6836281137582785001" at="43,156,46,13" concept="4" />
       <node id="1630016958698440088" at="29,0,33,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -1332,8 +1332,8 @@
       <node id="3464370922898036409" at="39,119,40,61" concept="2" />
       <node id="1638911550608572439" at="40,61,41,22" concept="7" />
       <node id="1638911550608572439" at="45,0,46,0" concept="10" trace="TransformationMenu_Default$In" />
-      <node id="1638911550608572439" at="49,0,50,0" concept="10" trace="name$tAp1" />
-      <node id="1638911550608572439" at="53,0,54,0" concept="10" trace="conceptDeclaration$acmt" />
+      <node id="1638911550608572439" at="49,0,50,0" concept="10" trace="name$lA7v" />
+      <node id="1638911550608572439" at="53,0,54,0" concept="10" trace="conceptDeclaration$VYS3" />
       <node id="1638911550608572439" at="20,0,23,0" concept="0" trace="TransformationMenu_Default_Constraints#()V" />
       <node id="3464370922898036409" at="25,0,28,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="3464370922898036409" at="28,0,32,0" concept="5" trace="hasOwnGetter#()Z" />
@@ -1449,7 +1449,7 @@
       <node id="2314756748950088815" at="54,0,55,0" concept="10" trace="breakingNode_28ntjz_a0a0a0a0a1a0a0a0c" />
       <node id="2314756748950088815" at="57,0,58,0" concept="10" trace="TransformationMenuVariableReference$nM" />
       <node id="2314756748950088815" at="58,0,59,0" concept="10" trace="TransformationMenuVariableDeclaration$Ff" />
-      <node id="2314756748950088815" at="62,0,63,0" concept="10" trace="variableDeclaration$2ky6" />
+      <node id="2314756748950088815" at="62,0,63,0" concept="10" trace="variableDeclaration$7WwU" />
       <node id="2314756748950088815" at="23,0,26,0" concept="0" trace="TransformationMenuVariableReference_Constraints#()V" />
       <node id="2314756748950088818" at="30,0,34,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="2314756748950088818" at="38,0,42,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -1499,7 +1499,7 @@
       <node id="332515575062472883" at="52,0,53,0" concept="10" trace="InlineStyleDeclaration$ZK" />
       <node id="332515575062472883" at="53,0,54,0" concept="10" trace="CellModel_Constant$SB" />
       <node id="332515575062472883" at="54,0,55,0" concept="10" trace="LayoutContainer$PT" />
-      <node id="332515575062472883" at="58,0,59,0" concept="10" trace="styleItem$$mEY" />
+      <node id="332515575062472883" at="58,0,59,0" concept="10" trace="styleItem$AYO2" />
       <node id="332515575062472883" at="23,0,26,0" concept="0" trace="InlineStyleDeclaration_Constraints#()V" />
       <node id="332515575062472883" at="33,0,36,9" concept="4" />
       <node id="332515575062130601" at="42,128,46,5" concept="4" />
@@ -1550,7 +1550,7 @@
       <node id="332515575062623034" at="50,0,51,0" concept="10" trace="canBeParentBreakingPoint" />
       <node id="332515575062623034" at="53,0,54,0" concept="10" trace="EditorCellModel$5c" />
       <node id="332515575062623034" at="54,0,55,0" concept="10" trace="LayoutContainer$PT" />
-      <node id="332515575062623034" at="58,0,59,0" concept="10" trace="styleItem$$mEY" />
+      <node id="332515575062623034" at="58,0,59,0" concept="10" trace="styleItem$AYO2" />
       <node id="332515575062623034" at="23,0,26,0" concept="0" trace="EditorCellModel_Constraints#()V" />
       <node id="332515575062623034" at="33,0,36,9" concept="4" />
       <node id="332515575062625623" at="42,128,47,5" concept="4" />
@@ -1612,7 +1612,7 @@
       <node id="3431328178503222335" at="74,0,75,0" concept="10" trace="TransformationMenu$ZK" />
       <node id="3431328178503222335" at="75,0,76,0" concept="10" trace="SubstituteMenu$v4" />
       <node id="3431328178503222335" at="76,0,77,0" concept="10" trace="IMenu_Named$Ew" />
-      <node id="3431328178503222335" at="80,0,81,0" concept="10" trace="conceptDeclaration$acmt" />
+      <node id="3431328178503222335" at="80,0,81,0" concept="10" trace="conceptDeclaration$VYS3" />
       <node id="4096547952825422907" at="23,0,26,0" concept="11" trace="getSubstitueMenus#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;I)Ljetbrains/mps/scope/Scope;" />
       <node id="4096547952825433129" at="27,0,30,0" concept="11" trace="getTransformationMenus#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;I)Ljetbrains/mps/scope/Scope;" />
       <node id="4096547952825469075" at="31,0,34,0" concept="11" trace="getTransformationMenus#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/scope/Scope;" />
@@ -1698,7 +1698,7 @@
       <node id="3622263992595042295" at="51,0,52,0" concept="10" trace="SubstituteMenuItem_AbstractOperation$OT" />
       <node id="3622263992595042295" at="52,0,53,0" concept="10" trace="DotExpression$6a" />
       <node id="3622263992595042295" at="53,0,54,0" concept="10" trace="SubstituteMenuItemType$Qe" />
-      <node id="3622263992595042295" at="57,0,58,0" concept="10" trace="operand$Lcrr" />
+      <node id="3622263992595042295" at="57,0,58,0" concept="10" trace="operand$P1i5" />
       <node id="3622263992595042295" at="22,0,25,0" concept="0" trace="SubstituteMenuItem_AbstractOperation_Constraints#()V" />
       <node id="3622263992595042295" at="32,0,35,9" concept="4" />
       <node id="1227128029536558744" at="42,27,45,5" concept="4" />
@@ -1757,7 +1757,7 @@
       <node id="4088952938557443050" at="87,0,88,0" concept="10" trace="breakingNode_ydnl2u_a0a0a0a0a1a0a0a0c" />
       <node id="4088952938557443050" at="90,0,91,0" concept="10" trace="AttributeStyleClassItem$u_" />
       <node id="4088952938557443050" at="91,0,92,0" concept="10" trace="StyleAttributeDeclaration$8S" />
-      <node id="4088952938557443050" at="95,0,96,0" concept="10" trace="attribute$g2fs" />
+      <node id="4088952938557443050" at="95,0,96,0" concept="10" trace="attribute$L5u$" />
       <node id="4088952938557443050" at="36,0,39,0" concept="0" trace="AttributeStyleClassItem_Constraints#()V" />
       <node id="986395761657408064" at="63,80,66,17" concept="4" />
       <node id="986395761657467227" at="67,74,70,17" concept="4" />
@@ -1823,7 +1823,7 @@
       <node id="4202667662394333180" at="53,42,54,22" concept="7" />
       <node id="4202667662394333180" at="56,0,57,0" concept="10" trace="breakingNode_bj2kbe_a0a0a0a0a1a0a0a0c" />
       <node id="4202667662394333180" at="59,0,60,0" concept="10" trace="TransformationMenuReference_Named$fC" />
-      <node id="4202667662394333180" at="63,0,64,0" concept="10" trace="menu$qYc0" />
+      <node id="4202667662394333180" at="63,0,64,0" concept="10" trace="menu$47O0" />
       <node id="4202667662394333180" at="22,0,25,0" concept="0" trace="TransformationMenuReference_Named_Constraints#()V" />
       <node id="6836281137582785580" at="43,156,46,13" concept="4" />
       <node id="4202667662394333181" at="29,0,33,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -1874,7 +1874,7 @@
       <node id="422708224287891218" at="60,0,61,0" concept="10" trace="breakingNode_fw5mta_a0a0a0a0a1a0a0a0c" />
       <node id="422708224287891218" at="63,0,64,0" concept="10" trace="TransformationMenuPart_ReferenceMenu$4R" />
       <node id="422708224287891218" at="64,0,65,0" concept="10" trace="ITransformationMenu$lF" />
-      <node id="422708224287891218" at="68,0,69,0" concept="10" trace="referenceLink$XROw" />
+      <node id="422708224287891218" at="68,0,69,0" concept="10" trace="referenceLink$Y2rw" />
       <node id="422708224287891218" at="28,0,31,0" concept="0" trace="TransformationMenuPart_ReferenceMenu_Constraints#()V" />
       <node id="422708224287892915" at="35,0,39,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="422708224287892915" at="43,0,47,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -1922,7 +1922,7 @@
       <node id="4323500428148828478" at="54,0,55,0" concept="10" trace="breakingNode_pz2436_a0a0a0a0a1a0a0a0c" />
       <node id="4323500428148828478" at="57,0,58,0" concept="10" trace="CellIdReferenceSelector$kl" />
       <node id="4323500428148828478" at="58,0,59,0" concept="10" trace="EditorCellId$LQ" />
-      <node id="4323500428148828478" at="62,0,63,0" concept="10" trace="id$imrt" />
+      <node id="4323500428148828478" at="62,0,63,0" concept="10" trace="id$SRj3" />
       <node id="4323500428148828478" at="23,0,26,0" concept="0" trace="CellIdReferenceSelector_Constraints#()V" />
       <node id="4323500428148829137" at="30,0,34,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="4323500428148829137" at="38,0,42,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -1970,7 +1970,7 @@
       <node id="4510086454767559154" at="54,0,55,0" concept="10" trace="breakingNode_f6obta_a0a0a0a0a1a0a0a0c" />
       <node id="4510086454767559154" at="57,0,58,0" concept="10" trace="PropertyDeclarationCellSelector$M4" />
       <node id="4510086454767559154" at="58,0,59,0" concept="10" trace="PropertyDeclaration$c5" />
-      <node id="4510086454767559154" at="62,0,63,0" concept="10" trace="propertyDeclaration$iiOk" />
+      <node id="4510086454767559154" at="62,0,63,0" concept="10" trace="propertyDeclaration$R7lG" />
       <node id="4510086454767559154" at="23,0,26,0" concept="0" trace="PropertyDeclarationCellSelector_Constraints#()V" />
       <node id="4510086454767559810" at="30,0,34,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="4510086454767559810" at="38,0,42,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -2021,9 +2021,9 @@
       <node id="5120245198449804925" at="79,0,80,0" concept="10" trace="TransformationMenuPart_IncludeSubstituteMenu$j5" />
       <node id="5120245198449804925" at="80,0,81,0" concept="10" trace="ITransformationMenu$lF" />
       <node id="5120245198449804925" at="81,0,82,0" concept="10" trace="LinkDeclaration$bA" />
-      <node id="5120245198449804925" at="85,0,86,0" concept="10" trace="link$QLFo" />
-      <node id="5120245198449804925" at="89,0,90,0" concept="10" trace="metaClass$tHD7" />
-      <node id="5120245198449804925" at="90,0,91,0" concept="10" trace="role$r_O$" />
+      <node id="5120245198449804925" at="85,0,86,0" concept="10" trace="link$y40C" />
+      <node id="5120245198449804925" at="89,0,90,0" concept="10" trace="metaClass$p6Up" />
+      <node id="5120245198449804925" at="90,0,91,0" concept="10" trace="role$nkts" />
       <node id="5120245198449804925" at="34,0,37,0" concept="0" trace="TransformationMenuPart_IncludeSubstituteMenu_Constraints#()V" />
       <node id="6836281137582782585" at="58,0,61,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="5120245198449804930" at="41,0,45,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -2100,9 +2100,9 @@
       <node id="5188168501463728165" at="104,0,105,0" concept="10" trace="IMenu_Concept$UY" />
       <node id="5188168501463728165" at="105,0,106,0" concept="10" trace="MenuTypeNamed$SE" />
       <node id="5188168501463728165" at="106,0,107,0" concept="10" trace="AbstractConceptDeclaration$UN" />
-      <node id="5188168501463728165" at="110,0,111,0" concept="10" trace="name$tAp1" />
-      <node id="5188168501463728165" at="114,0,115,0" concept="10" trace="type$gsXC" />
-      <node id="5188168501463728165" at="115,0,116,0" concept="10" trace="conceptDeclaration$acmt" />
+      <node id="5188168501463728165" at="110,0,111,0" concept="10" trace="name$lA7v" />
+      <node id="5188168501463728165" at="114,0,115,0" concept="10" trace="type$Y1Qo" />
+      <node id="5188168501463728165" at="115,0,116,0" concept="10" trace="conceptDeclaration$VYS3" />
       <node id="5188168501463728165" at="39,0,42,0" concept="0" trace="IMenu_Concept_Constraints#()V" />
       <node id="5991739802483436818" at="44,0,47,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="5188168501463735000" at="88,66,91,13" concept="4" />
@@ -2321,7 +2321,7 @@
       <node id="5944657839017577715" at="76,0,77,0" concept="10" trace="canBeChildBreakingPoint" />
       <node id="5944657839017577715" at="79,0,80,0" concept="10" trace="ConceptEditorHintDeclaration$2r" />
       <node id="5944657839017577715" at="80,0,81,0" concept="10" trace="ConceptEditorContextHints$aY" />
-      <node id="5944657839017577715" at="84,0,85,0" concept="10" trace="name$tAp1" />
+      <node id="5944657839017577715" at="84,0,85,0" concept="10" trace="name$lA7v" />
       <node id="5944657839017577715" at="27,0,30,0" concept="0" trace="ConceptEditorHintDeclaration_Constraints#()V" />
       <node id="5944657839017577715" at="37,0,40,9" concept="4" />
       <node id="5944657839017577716" at="47,0,50,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
@@ -2398,7 +2398,7 @@
       <node id="609408910514948654" at="60,0,61,0" concept="10" trace="breakingNode_wal8bd_a0a0a0a0a1a0a0a0c" />
       <node id="609408910514948654" at="63,0,64,0" concept="10" trace="AbstractComponent$Ng" />
       <node id="609408910514948654" at="64,0,65,0" concept="10" trace="AbstractConceptDeclaration$UN" />
-      <node id="609408910514948654" at="68,0,69,0" concept="10" trace="conceptDeclaration$sbgS" />
+      <node id="609408910514948654" at="68,0,69,0" concept="10" trace="conceptDeclaration$Dtb8" />
       <node id="609408910514948654" at="26,0,29,0" concept="0" trace="AbstractComponent_Constraints#()V" />
       <node id="6836281137582785926" at="47,66,50,13" concept="4" />
       <node id="609408910514949301" at="33,0,37,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -2502,7 +2502,7 @@
       <node id="6524522039911214607" at="54,0,55,0" concept="10" trace="breakingNode_e97mp2_a0a0a0a0a1a0a0a0c" />
       <node id="6524522039911214607" at="57,0,58,0" concept="10" trace="SubstituteMenuVariableReference$At" />
       <node id="6524522039911214607" at="58,0,59,0" concept="10" trace="SubstituteMenuVariableDeclaration$vw" />
-      <node id="6524522039911214607" at="62,0,63,0" concept="10" trace="variableDeclaration$2ky6" />
+      <node id="6524522039911214607" at="62,0,63,0" concept="10" trace="variableDeclaration$7WwU" />
       <node id="6524522039911214607" at="23,0,26,0" concept="0" trace="SubstituteMenuVariableReference_Constraints#()V" />
       <node id="6524522039911214612" at="30,0,34,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="6524522039911214612" at="38,0,42,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -2547,8 +2547,8 @@
       <node id="7671875129588410969" at="39,119,40,61" concept="2" />
       <node id="7671875129588410968" at="40,61,41,22" concept="7" />
       <node id="7671875129588410968" at="45,0,46,0" concept="10" trace="SubstituteMenu_Default$hk" />
-      <node id="7671875129588410968" at="49,0,50,0" concept="10" trace="name$tAp1" />
-      <node id="7671875129588410968" at="53,0,54,0" concept="10" trace="conceptDeclaration$acmt" />
+      <node id="7671875129588410968" at="49,0,50,0" concept="10" trace="name$lA7v" />
+      <node id="7671875129588410968" at="53,0,54,0" concept="10" trace="conceptDeclaration$VYS3" />
       <node id="7671875129588410968" at="20,0,23,0" concept="0" trace="SubstituteMenu_Default_Constraints#()V" />
       <node id="7671875129588410969" at="25,0,28,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="7671875129588410969" at="28,0,32,0" concept="5" trace="hasOwnGetter#()Z" />
@@ -2590,8 +2590,8 @@
       <node id="772883491822712739" at="58,0,59,0" concept="10" trace="breakingNode_yjynvp_a0a0a0a0a1a0a0a0c" />
       <node id="772883491822712739" at="61,0,62,0" concept="10" trace="CompletionCustomization_LinkFeature$PM" />
       <node id="772883491822712739" at="62,0,63,0" concept="10" trace="CompletionCustomizationConceptModifyingSpecificator$jz" />
-      <node id="772883491822712739" at="66,0,67,0" concept="10" trace="link$oN7" />
-      <node id="772883491822712739" at="67,0,68,0" concept="10" trace="conceptDeclaration$UwJH" />
+      <node id="772883491822712739" at="66,0,67,0" concept="10" trace="link$c0Kp" />
+      <node id="772883491822712739" at="67,0,68,0" concept="10" trace="conceptDeclaration$lR6N" />
       <node id="772883491822712739" at="27,0,30,0" concept="0" trace="CompletionCustomization_LinkFeature_Constraints#()V" />
       <node id="772883491822712740" at="34,0,38,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="772883491822712740" at="42,0,46,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -2639,8 +2639,8 @@
       <node id="772883491822835237" at="58,0,59,0" concept="10" trace="breakingNode_g4aoaw_a0a0a0a0a1a0a0a0c" />
       <node id="772883491822835237" at="61,0,62,0" concept="10" trace="CompletionCustomization_PropertyFeature$Pj" />
       <node id="772883491822835237" at="62,0,63,0" concept="10" trace="CompletionCustomizationConceptModifyingSpecificator$jz" />
-      <node id="772883491822835237" at="66,0,67,0" concept="10" trace="property$oM8" />
-      <node id="772883491822835237" at="67,0,68,0" concept="10" trace="conceptDeclaration$UwJH" />
+      <node id="772883491822835237" at="66,0,67,0" concept="10" trace="property$c0hS" />
+      <node id="772883491822835237" at="67,0,68,0" concept="10" trace="conceptDeclaration$lR6N" />
       <node id="772883491822835237" at="27,0,30,0" concept="0" trace="CompletionCustomization_PropertyFeature_Constraints#()V" />
       <node id="772883491822835238" at="34,0,38,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="772883491822835238" at="42,0,46,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -2688,7 +2688,7 @@
       <node id="7788343466325537474" at="54,0,55,0" concept="10" trace="breakingNode_d40log_a0a0a0a0a1a0a0a0c" />
       <node id="7788343466325537474" at="57,0,58,0" concept="10" trace="CellActionMapImport$hk" />
       <node id="7788343466325537474" at="58,0,59,0" concept="10" trace="CellActionMapDeclaration$Fh" />
-      <node id="7788343466325537474" at="62,0,63,0" concept="10" trace="cellActionMap$jBrw" />
+      <node id="7788343466325537474" at="62,0,63,0" concept="10" trace="cellActionMap$w6kw" />
       <node id="7788343466325537474" at="23,0,26,0" concept="0" trace="CellActionMapImport_Constraints#()V" />
       <node id="7788343466325537475" at="30,0,34,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="7788343466325537475" at="38,0,42,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -2737,7 +2737,7 @@
       <node id="7825776669681653847" at="60,0,61,0" concept="10" trace="breakingNode_wbrsow_a0a0a0a0a1a0a0a0c" />
       <node id="7825776669681653847" at="63,0,64,0" concept="10" trace="CompletionCustomizationContextSpecificator_Concept$i6" />
       <node id="7825776669681653847" at="64,0,65,0" concept="10" trace="AbstractConceptDeclaration$UN" />
-      <node id="7825776669681653847" at="68,0,69,0" concept="10" trace="conceptDeclaration$UwJH" />
+      <node id="7825776669681653847" at="68,0,69,0" concept="10" trace="conceptDeclaration$lR6N" />
       <node id="7825776669681653847" at="26,0,29,0" concept="0" trace="CompletionCustomizationContextSpecificator_Concept_Constraints#()V" />
       <node id="7825776669681653855" at="47,66,50,13" concept="4" />
       <node id="7825776669681653848" at="33,0,37,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -2832,8 +2832,8 @@
       <node id="8254632857052578629" at="72,0,73,0" concept="10" trace="TransformationMenuPart_PropertyMenu$WG" />
       <node id="8254632857052578629" at="73,0,74,0" concept="10" trace="ITransformationMenu$lF" />
       <node id="8254632857052578629" at="74,0,75,0" concept="10" trace="PropertyDeclaration$c5" />
-      <node id="8254632857052578629" at="78,0,79,0" concept="10" trace="property$gmE0" />
-      <node id="8254632857052578629" at="82,0,83,0" concept="10" trace="name$tAp1" />
+      <node id="8254632857052578629" at="78,0,79,0" concept="10" trace="property$UYm0" />
+      <node id="8254632857052578629" at="82,0,83,0" concept="10" trace="name$lA7v" />
       <node id="8254632857052578629" at="31,0,34,0" concept="0" trace="TransformationMenuPart_PropertyMenu_Constraints#()V" />
       <node id="8254632857052578630" at="38,0,42,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="8254632857052578630" at="46,0,50,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -2892,7 +2892,7 @@
       <node id="8428109087107344311" at="61,0,62,0" concept="10" trace="breakingNode_2ovwuh_a0a0a0a0a1a0a0a0c" />
       <node id="8428109087107344311" at="64,0,65,0" concept="10" trace="SubstituteMenuPart_ReferenceScope$po" />
       <node id="8428109087107344311" at="65,0,66,0" concept="10" trace="ISubstituteMenu$zI" />
-      <node id="8428109087107344311" at="69,0,70,0" concept="10" trace="reference$w67J" />
+      <node id="8428109087107344311" at="69,0,70,0" concept="10" trace="reference$yXJL" />
       <node id="8428109087107344311" at="29,0,32,0" concept="0" trace="SubstituteMenuPart_ReferenceScope_Constraints#()V" />
       <node id="8428109087107344312" at="36,0,40,0" concept="5" trace="hasOwnScopeProvider#()Z" />
       <node id="8428109087107344312" at="44,0,48,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

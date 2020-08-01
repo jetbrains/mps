@@ -50,7 +50,7 @@ public class InlineMethodModel {
     return myMethod;
   }
   public String getErrors() {
-    if ((SLinkOperations.getTarget(getMethod(), LINKS.body$WIlu) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(getMethod(), LINKS.body$WIlu), CONCEPTS.StubStatementList$2k)) {
+    if ((SLinkOperations.getTarget(getMethod(), LINKS.body$qspy) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(getMethod(), LINKS.body$qspy), CONCEPTS.StubStatementList$2k)) {
       return "No sources attached";
     }
     if (myCall == null && isRecursive()) {
@@ -72,7 +72,7 @@ public class InlineMethodModel {
     return false;
   }
   private boolean isReturnBreaksExecitionFlow() {
-    Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(getMethod(), LINKS.body$WIlu));
+    Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(getMethod(), LINKS.body$qspy));
     for (Instruction instruction : ListSequence.fromList(program.getInstructions())) {
       if (instruction instanceof RetInstruction) {
         Instruction next = program.get(instruction.getIndex() + 1);
@@ -98,6 +98,6 @@ public class InlineMethodModel {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 }

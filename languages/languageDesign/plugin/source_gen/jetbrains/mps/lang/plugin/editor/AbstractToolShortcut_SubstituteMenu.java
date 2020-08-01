@@ -155,7 +155,7 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   private static SNode createCustomToolShortcut_7ty2v0_a0a0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomToolShortcut$gS);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.changes$bLB7).initNode(p0, CONCEPTS.AbstractToolKeystroke$VM, false);
+      SNodeBuilder n1 = n0.forChild(LINKS.changes$H1Wp).initNode(p0, CONCEPTS.AbstractToolKeystroke$VM, false);
     }
     return n0.getResult();
   }
@@ -167,6 +167,6 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink changes$bLB7 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, 0x68b8d4843b765b8L, "changes");
+    /*package*/ static final SContainmentLink changes$H1Wp = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, 0x68b8d4843b765b8L, "changes");
   }
 }

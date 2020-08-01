@@ -33,7 +33,7 @@ public class QuickFixArgumentReference_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.quickFixArgument$8xKF, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.quickFixArgument$8m$P, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,7 +51,7 @@ public class QuickFixArgumentReference_Constraints extends BaseConstraintsDescri
             List<SNode> nodes = new ArrayList<SNode>();
             SNode quickFix = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TypesystemQuickFix$ii, false, false);
             if ((quickFix != null)) {
-              ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(quickFix, LINKS.quickFixArgument$XwdH)));
+              ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(quickFix, LINKS.quickFixArgument$MACN)));
             }
             return ListScope.forResolvableElements(nodes);
           }
@@ -70,7 +70,7 @@ public class QuickFixArgumentReference_Constraints extends BaseConstraintsDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink quickFixArgument$8xKF = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, 0x11b3683c00aL, "quickFixArgument");
-    /*package*/ static final SContainmentLink quickFixArgument$XwdH = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361ae27eL, "quickFixArgument");
+    /*package*/ static final SReferenceLink quickFixArgument$8m$P = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, 0x11b3683c00aL, "quickFixArgument");
+    /*package*/ static final SContainmentLink quickFixArgument$MACN = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361ae27eL, "quickFixArgument");
   }
 }

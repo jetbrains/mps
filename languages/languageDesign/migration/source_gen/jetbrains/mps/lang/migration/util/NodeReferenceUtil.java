@@ -23,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class NodeReferenceUtil {
   public static SNode makeReflection(SNodeReference nodeReference, String presentation) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, "jetbrains.mps.lang.migration.structure.ReflectionNodeReference"));
-    SPropertyOperations.assign(result, PROPS.nodeId$ND71, nodeReference.getNodeId().toString());
-    SPropertyOperations.assign(result, PROPS.modelRef$NCR2, PersistenceFacade.getInstance().asString(nodeReference.getModelReference()));
-    SPropertyOperations.assign(result, PROPS.nodeName$KMmO, presentation);
+    SPropertyOperations.assign(result, PROPS.nodeId$Upv, nodeReference.getNodeId().toString());
+    SPropertyOperations.assign(result, PROPS.modelRef$MDY, PersistenceFacade.getInstance().asString(nodeReference.getModelReference()));
+    SPropertyOperations.assign(result, PROPS.nodeName$Cp3c, presentation);
     return result;
   }
   public static String getNodePresentation(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV)) {
-      return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+      return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.LinkDeclaration$bA)) {
-      return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.LinkDeclaration$bA), PROPS.role$r_O$);
+      return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.LinkDeclaration$bA), PROPS.role$nkts);
     } else {
       Iterable<SProperty> properties = SNodeOperations.getConcept(node).getProperties();
       Iterable<SProperty> stringProperties = Sequence.fromIterable(properties).where(new IWhereFilter<SProperty>() {
         public boolean accept(SProperty it) {
-          return !(Objects.equals(it.getOwner(), CONCEPTS.BaseConcept$Sz)) && (boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleString_idhKtFG6a.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it.getDeclarationNode(), CONCEPTS.PropertyDeclaration$c5), LINKS.dataType$fLUl));
+          return !(Objects.equals(it.getOwner(), CONCEPTS.BaseConcept$Sz)) && (boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleString_idhKtFG6a.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it.getDeclarationNode(), CONCEPTS.PropertyDeclaration$c5), LINKS.dataType$Dbgb));
         }
       }).toListSequence();
       if (Sequence.fromIterable(stringProperties).count() == 1) {
@@ -52,16 +52,16 @@ public class NodeReferenceUtil {
   }
   public static SNode makeDirect(SNode targetNode) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, "jetbrains.mps.lang.migration.structure.DirectNodeReference"));
-    SLinkOperations.setTarget(result, LINKS.target$A3Ex, targetNode);
+    SLinkOperations.setTarget(result, LINKS.target$rL_Z, targetNode);
     return result;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeId$ND71 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f44fL, "nodeId");
-    /*package*/ static final SProperty modelRef$NCR2 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f443L, "modelRef");
-    /*package*/ static final SProperty nodeName$KMmO = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
-    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty nodeId$Upv = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f44fL, "nodeId");
+    /*package*/ static final SProperty modelRef$MDY = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f443L, "modelRef");
+    /*package*/ static final SProperty nodeName$Cp3c = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
+    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -72,7 +72,7 @@ public class NodeReferenceUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SReferenceLink target$A3Ex = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, 0x67236d4a58303a10L, "target");
+    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink target$rL_Z = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, 0x67236d4a58303a10L, "target");
   }
 }

@@ -14,11 +14,11 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class FigureUtils {
   public static boolean isMovable(SNode figureReference) {
-    return SNodeOperations.isInstanceOf(figureReference, CONCEPTS.AttributedFigureReference$7_) && ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(SLinkOperations.getTarget(SNodeOperations.cast(figureReference, CONCEPTS.AttributedFigureReference$7_), LINKS.figureAttribute$Fuko)))).contains(SNodeOperations.getNode("r:05147575-afa1-4d0f-b2e0-f20b32ad3e33(jetbrains.mps.lang.editor.diagram.runtime.jetpad.views)", "8082246476498952649"));
+    return SNodeOperations.isInstanceOf(figureReference, CONCEPTS.AttributedFigureReference$7_) && ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(SLinkOperations.getTarget(SNodeOperations.cast(figureReference, CONCEPTS.AttributedFigureReference$7_), LINKS.figureAttribute$3FRC)))).contains(SNodeOperations.getNode("r:05147575-afa1-4d0f-b2e0-f20b32ad3e33(jetbrains.mps.lang.editor.diagram.runtime.jetpad.views)", "8082246476498952649"));
   }
 
   public static boolean isResizable(SNode figureReference) {
-    return SNodeOperations.isInstanceOf(figureReference, CONCEPTS.AttributedFigureReference$7_) && ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(SLinkOperations.getTarget(SNodeOperations.cast(figureReference, CONCEPTS.AttributedFigureReference$7_), LINKS.figureAttribute$Fuko)))).contains(SNodeOperations.getNode("r:05147575-afa1-4d0f-b2e0-f20b32ad3e33(jetbrains.mps.lang.editor.diagram.runtime.jetpad.views)", "7493754406620213986"));
+    return SNodeOperations.isInstanceOf(figureReference, CONCEPTS.AttributedFigureReference$7_) && ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(SLinkOperations.getTarget(SNodeOperations.cast(figureReference, CONCEPTS.AttributedFigureReference$7_), LINKS.figureAttribute$3FRC)))).contains(SNodeOperations.getNode("r:05147575-afa1-4d0f-b2e0-f20b32ad3e33(jetbrains.mps.lang.editor.diagram.runtime.jetpad.views)", "7493754406620213986"));
   }
 
   private static final class CONCEPTS {
@@ -26,6 +26,6 @@ public class FigureUtils {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink figureAttribute$Fuko = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, 0x4b412569a0e43041L, "figureAttribute");
+    /*package*/ static final SReferenceLink figureAttribute$3FRC = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, 0x4b412569a0e43041L, "figureAttribute");
   }
 }

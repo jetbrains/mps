@@ -255,8 +255,8 @@
       <node id="5575318041730242139" at="95,40,96,19" concept="5" />
       <node id="5575318041730242139" at="100,0,101,0" concept="6" trace="SourceDataType$UQ" />
       <node id="5575318041730242139" at="101,0,102,0" concept="6" trace="TargetDataType$W" />
-      <node id="5575318041730242139" at="105,0,106,0" concept="6" trace="type$I_50" />
-      <node id="5575318041730242139" at="106,0,107,0" concept="6" trace="type$PKy0" />
+      <node id="5575318041730242139" at="105,0,106,0" concept="6" trace="type$zXr0" />
+      <node id="5575318041730242139" at="106,0,107,0" concept="6" trace="type$2wu0" />
       <node id="5575318041730242139" at="36,0,38,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5575318041730242139" at="49,0,51,0" concept="0" trace="Converter__BehaviorDescriptor#()V" />
       <node id="5575318041730242139" at="39,0,42,0" concept="7" trace="getDescriptor_idUBgfI9eMAt#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />

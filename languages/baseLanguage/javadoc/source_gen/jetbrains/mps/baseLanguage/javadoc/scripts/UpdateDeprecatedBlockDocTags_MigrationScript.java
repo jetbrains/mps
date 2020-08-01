@@ -33,11 +33,11 @@ public final class UpdateDeprecatedBlockDocTags_MigrationScript extends BaseMigr
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return (SLinkOperations.getTarget(node, LINKS.text$e7yL) == null);
+        return (SLinkOperations.getTarget(node, LINKS.text$PDPJ) == null);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.text$e7yL, null);
+        SNodeFactoryOperations.setNewChild(node, LINKS.text$PDPJ, null);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -57,6 +57,6 @@ public final class UpdateDeprecatedBlockDocTags_MigrationScript extends BaseMigr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$e7yL = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
+    /*package*/ static final SContainmentLink text$PDPJ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
   }
 }

@@ -25,10 +25,10 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   }
   public void applyRule(final SNode throwStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Iterable<SNode> thrownTypes;
-    if (SNodeOperations.hasRole(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(throwStatement, LINKS.throwable$o3ty), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), LINKS.throwable$5XW_)) {
-      thrownTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(throwStatement, LINKS.throwable$o3ty), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6)), CONCEPTS.CatchClause$hu));
+    if (SNodeOperations.hasRole(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), LINKS.throwable$T0lV)) {
+      thrownTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU)), CONCEPTS.CatchClause$hu));
     } else {
-      thrownTypes = SNodeOperations.ofConcept(Sequence.<SNode>singleton(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(throwStatement, LINKS.throwable$o3ty))), CONCEPTS.Type$IG);
+      thrownTypes = SNodeOperations.ofConcept(Sequence.<SNode>singleton(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju))), CONCEPTS.Type$IG);
     }
     RulesFunctions_BaseLanguage.check(typeCheckingContext, SetSequence.fromSetWithValues(new HashSet<SNode>(), thrownTypes), throwStatement);
   }
@@ -43,9 +43,9 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$o3ty = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink throwable$5XW_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
+    /*package*/ static final SContainmentLink throwable$DFju = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink throwable$T0lV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
   }
 
   private static final class CONCEPTS {

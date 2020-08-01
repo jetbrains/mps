@@ -92,7 +92,7 @@ public class GoToConceptDescendants_Action extends BaseAction {
       public String caption(final int usagesFound, final boolean finished) {
         return new ModelAccessHelper(mpsProject.getRepository()).runReadAction(new Computable<String>() {
           public String compute() {
-            return MPSCodeInsightBundle.message("goto.implementation.chooserTitle", SPropertyOperations.getString(node, PROPS.name$tAp1), usagesFound, (finished ? "" : " so far"));
+            return MPSCodeInsightBundle.message("goto.implementation.chooserTitle", SPropertyOperations.getString(node, PROPS.name$lA7v), usagesFound, (finished ? "" : " so far"));
           }
         });
       }
@@ -104,6 +104,6 @@ public class GoToConceptDescendants_Action extends BaseAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -18,7 +18,7 @@ public class DSLDescriptorUtil {
     if (SNodeOperations.isInstanceOf(n, CONCEPTS.AutoInitDSLClass$sF)) {
       return AutoInitDSLClass__BehaviorDescriptor.getDescriptor_idUBgfI9eMAt.invoke(SNodeOperations.cast(n, CONCEPTS.AutoInitDSLClass$sF));
     }
-    return SLinkOperations.getTarget(AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)), LINKS.descriptor$Zoot);
+    return SLinkOperations.getTarget(AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)), LINKS.descriptor$GNQ3);
   }
 
   private static final class CONCEPTS {
@@ -27,6 +27,6 @@ public class DSLDescriptorUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$Zoot = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
+    /*package*/ static final SReferenceLink descriptor$GNQ3 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
   }
 }

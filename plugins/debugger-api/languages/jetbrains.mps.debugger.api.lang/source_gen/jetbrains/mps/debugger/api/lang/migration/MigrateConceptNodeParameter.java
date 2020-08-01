@@ -50,7 +50,7 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
   public Iterable<Problem> check(SModule m) {
     return Sequence.fromIterable(getNodesToMigrate(m)).select(new ISelector<SNode, Problem>() {
       public Problem select(SNode it) {
-        return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.isDeprecated$K_Sf);
+        return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.isDeprecated$ymfh);
       }
     });
   }
@@ -71,7 +71,7 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
       };
       nodes = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptFunctionParameter_Concept$zb, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !((SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(it), CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.AsNodeOperation$SU)));
+          return !((SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(it), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.AsNodeOperation$SU)));
         }
       });
     }
@@ -96,7 +96,7 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isDeprecated$K_Sf = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
+    /*package*/ static final SProperty isDeprecated$ymfh = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
   }
 
   private static final class CONCEPTS {
@@ -106,6 +106,6 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

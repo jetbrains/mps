@@ -21,7 +21,7 @@ public class typeof_CustomStatement_InferenceRule extends AbstractInferenceRule_
   }
   public void applyRule(final SNode customStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(customStatement, LINKS.inner$S6YY);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(customStatement, LINKS.inner$bow2);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:fa0a0934-5f41-4999-a12b-c153e96f8a6c(jetbrains.mps.transformation.test.outputLang.typesystem)", "6266395626234295840", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:fa0a0934-5f41-4999-a12b-c153e96f8a6c(jetbrains.mps.transformation.test.outputLang.typesystem)", "6266395626234257715", true), (SNode) _quotation_createNode_ofzqhv_a1a0c0a0b(), _info_12389875345);
     }
@@ -43,7 +43,7 @@ public class typeof_CustomStatement_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inner$S6YY = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x2535e9813339efcaL, 0x2535e9813339efcdL, "inner");
+    /*package*/ static final SContainmentLink inner$bow2 = MetaAdapterFactory.getContainmentLink(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x2535e9813339efcaL, 0x2535e9813339efcdL, "inner");
   }
 
   private static final class CONCEPTS {

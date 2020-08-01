@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PageOperation_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.fromElement$WJgV));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.toElement$GTC$));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.fromElement$qTc_));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.toElement$JUDs));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fromElement$WJgV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11108717200L, 0x1110871a70cL, "fromElement");
-    /*package*/ static final SContainmentLink toElement$GTC$ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11108717200L, 0x1110871d001L, "toElement");
+    /*package*/ static final SContainmentLink fromElement$qTc_ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11108717200L, 0x1110871a70cL, "fromElement");
+    /*package*/ static final SContainmentLink toElement$JUDs = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11108717200L, 0x1110871d001L, "toElement");
   }
 }

@@ -22,19 +22,19 @@ public class typeof_LinkArgument_InferenceRule extends AbstractInferenceRule_Run
   public typeof_LinkArgument_InferenceRule() {
   }
   public void applyRule(final SNode linkArgument, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode linkDeclaration = SLinkOperations.getTarget(linkArgument, LINKS.link$hXgy);
+    SNode linkDeclaration = SLinkOperations.getTarget(linkArgument, LINKS.link$GF0u);
     if (linkDeclaration != null) {
       if ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(linkDeclaration)) {
         {
           SNode _nodeToCheck_1029348928467 = linkArgument;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547582167761", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547582167629", true), (SNode) _quotation_createNode_dj4g65_a1a0c0a0a0b0b(SLinkOperations.getTarget(linkDeclaration, LINKS.target$egp8)), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547582167629", true), (SNode) _quotation_createNode_dj4g65_a1a0c0a0a0b0b(SLinkOperations.getTarget(linkDeclaration, LINKS.target$TWaS)), _info_12389875345);
         }
       } else {
         {
           SNode _nodeToCheck_1029348928467 = linkArgument;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547582239625", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547582239628", true), (SNode) _quotation_createNode_dj4g65_a1a0c0a0a0a1a1(SLinkOperations.getTarget(linkDeclaration, LINKS.target$egp8)), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "342110547582239628", true), (SNode) _quotation_createNode_dj4g65_a1a0c0a0a0a1a1(SLinkOperations.getTarget(linkDeclaration, LINKS.target$TWaS)), _info_12389875345);
         }
       }
     }
@@ -64,8 +64,8 @@ public class typeof_LinkArgument_InferenceRule extends AbstractInferenceRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$hXgy = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x3f6e840fd86f9b7L, 0x3f6e840fdc4a7a7L, "link");
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink link$GF0u = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x3f6e840fd86f9b7L, 0x3f6e840fdc4a7a7L, "link");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class CONCEPTS {

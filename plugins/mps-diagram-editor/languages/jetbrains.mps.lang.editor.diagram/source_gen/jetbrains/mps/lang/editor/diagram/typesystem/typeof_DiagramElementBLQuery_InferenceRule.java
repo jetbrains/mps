@@ -23,7 +23,7 @@ public class typeof_DiagramElementBLQuery_InferenceRule extends AbstractInferenc
     {
       SNode _nodeToCheck_1029348928467 = diagramElementBLQuery;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725048329", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725048196", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(diagramElementBLQuery, LINKS.query$IH5_), "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725048359", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725048196", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(diagramElementBLQuery, LINKS.query$BPGV), "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725048359", true), _info_12389875345);
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
@@ -53,7 +53,7 @@ public class typeof_DiagramElementBLQuery_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$IH5_ = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4a53d4fb31aaee31L, 0x4a53d4fb31aaee59L, "query");
+    /*package*/ static final SContainmentLink query$BPGV = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4a53d4fb31aaee31L, 0x4a53d4fb31aaee59L, "query");
   }
 
   private static final class CONCEPTS {

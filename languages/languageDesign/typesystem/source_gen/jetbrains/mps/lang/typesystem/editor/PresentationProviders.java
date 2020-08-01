@@ -16,8 +16,8 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      if (isNotEmptyString(SPropertyOperations.getString(targetNode, PROPS.label$ndJm))) {
-        return SPropertyOperations.getString(targetNode, PROPS.label$ndJm) + " " + SConceptOperations.conceptAlias(SNodeOperations.getConcept(targetNode));
+      if (isNotEmptyString(SPropertyOperations.getString(targetNode, PROPS.label$fDVE))) {
+        return SPropertyOperations.getString(targetNode, PROPS.label$fDVE) + " " + SConceptOperations.conceptAlias(SNodeOperations.getConcept(targetNode));
       } else {
         return SConceptOperations.conceptAlias(SNodeOperations.getConcept(targetNode));
       }
@@ -28,6 +28,6 @@ public class PresentationProviders {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$ndJm = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x42501924d0bd6481L, "label");
+    /*package*/ static final SProperty label$fDVE = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x42501924d0bd6481L, "label");
   }
 }

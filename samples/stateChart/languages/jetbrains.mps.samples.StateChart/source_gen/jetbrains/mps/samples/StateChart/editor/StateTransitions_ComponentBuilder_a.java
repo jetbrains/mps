@@ -69,7 +69,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.transitions$m8d3;
+      return LINKS.transitions$HYkt;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Transition$UE;
@@ -82,7 +82,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(transitionsListHandler_hbe0cm_a0.this.getNode(), LINKS.transitions$m8d3));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(transitionsListHandler_hbe0cm_a0.this.getNode(), LINKS.transitions$HYkt));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -124,7 +124,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink transitions$m8d3 = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x148d06483264e4afL, "transitions");
+    /*package*/ static final SContainmentLink transitions$HYkt = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x148d06483264e4afL, "transitions");
   }
 
   private static final class CONCEPTS {

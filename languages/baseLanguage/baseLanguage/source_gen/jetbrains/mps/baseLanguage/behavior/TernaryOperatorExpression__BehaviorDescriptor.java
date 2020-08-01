@@ -39,56 +39,56 @@ public final class TernaryOperatorExpression__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static void setSyntacticallyLeftSideExpression_id1wHCnsn58ZK(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.condition$CEb4, expr);
+    SLinkOperations.setTarget(__thisNode__, LINKS.condition$GrmW, expr);
   }
   /*package*/ static void setSyntacticallyRightSideExpression_id1wHCnsn58ZY(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.ifFalse$2BqC, expr);
+    SLinkOperations.setTarget(__thisNode__, LINKS.ifFalse$h5To, expr);
   }
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.condition$CEb4);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.condition$GrmW);
   }
   /*package*/ static SNode getSyntacticallyRightSideExpression_id1wHCnsn590i(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$2BqC);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$h5To);
   }
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$CEb4)) {
+    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$GrmW)) {
       return null;
     }
     if (value) {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$eU9r) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$eU9r), false);
+      if (SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$ea$5) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$ea$5), false);
       } else {
         return NextProgramPoint.continueAfter(__thisNode__);
       }
     } else {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$2BqC) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$2BqC), true);
+      if (SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$h5To) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$h5To), true);
       } else {
         return NextProgramPoint.continueAfter(__thisNode__);
       }
     }
   }
   /*package*/ static boolean isCompileTimeConstant_idi1LOPRp(@NotNull SNode __thisNode__) {
-    boolean b = (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.condition$CEb4));
+    boolean b = (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.condition$GrmW));
     if (b) {
-      Object value = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.condition$CEb4), SNodeOperations.getModel(__thisNode__).getModule());
+      Object value = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.condition$GrmW), SNodeOperations.getModel(__thisNode__).getModule());
       if (value != null && value instanceof Boolean) {
         if (((Boolean) value).booleanValue()) {
-          return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$eU9r));
+          return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$ea$5));
         } else {
-          return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$2BqC));
+          return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$h5To));
         }
       }
     }
     return false;
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    Object value = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.condition$CEb4), SNodeOperations.getModel(__thisNode__).getModule());
+    Object value = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.condition$GrmW), SNodeOperations.getModel(__thisNode__).getModule());
     if (value != null && value instanceof Boolean) {
       if (((Boolean) value).booleanValue()) {
-        return Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$eU9r), module);
+        return Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ifTrue$ea$5), module);
       } else {
-        return Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$2BqC), module);
+        return Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.ifFalse$h5To), module);
       }
     }
     return null;
@@ -155,8 +155,8 @@ public final class TernaryOperatorExpression__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$CEb4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
-    /*package*/ static final SContainmentLink ifFalse$2BqC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
-    /*package*/ static final SContainmentLink ifTrue$eU9r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
+    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink ifFalse$h5To = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
+    /*package*/ static final SContainmentLink ifTrue$ea$5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
   }
 }

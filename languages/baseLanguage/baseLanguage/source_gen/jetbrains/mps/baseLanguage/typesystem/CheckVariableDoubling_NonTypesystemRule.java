@@ -31,7 +31,7 @@ public class CheckVariableDoubling_NonTypesystemRule extends AbstractNonTypesyst
     Scope variablesScope = Scope.getScope(Scope.parent(localVariableDeclaration), localVariableDeclaration, CONCEPTS.VariableDeclaration$xe);
     Iterable<SNode> variablesInScope;
     if (variablesScope != null) {
-      variablesInScope = Sequence.fromIterable(variablesScope.getAvailableElements(SPropertyOperations.getString(localVariableDeclaration, PROPS.name$tAp1))).where(new IWhereFilter<SNode>() {
+      variablesInScope = Sequence.fromIterable(variablesScope.getAvailableElements(SPropertyOperations.getString(localVariableDeclaration, PROPS.name$lA7v))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.isInstanceOf(it, CONCEPTS.VariableDeclaration$xe);
         }
@@ -41,7 +41,7 @@ public class CheckVariableDoubling_NonTypesystemRule extends AbstractNonTypesyst
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(localVariableDeclaration, PROPS.name$tAp1));
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(localVariableDeclaration, PROPS.name$lA7v));
         }
       });
     } else {
@@ -60,8 +60,8 @@ public class CheckVariableDoubling_NonTypesystemRule extends AbstractNonTypesyst
       }
     })) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$tAp1);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(localVariableDeclaration, "Variable " + SPropertyOperations.getString(localVariableDeclaration, PROPS.name$tAp1) + " is already defined in the scope", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4164094338984214928", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(localVariableDeclaration, "Variable " + SPropertyOperations.getString(localVariableDeclaration, PROPS.name$lA7v) + " is already defined in the scope", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4164094338984214928", null, errorTarget);
       }
     }
   }
@@ -83,6 +83,6 @@ public class CheckVariableDoubling_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

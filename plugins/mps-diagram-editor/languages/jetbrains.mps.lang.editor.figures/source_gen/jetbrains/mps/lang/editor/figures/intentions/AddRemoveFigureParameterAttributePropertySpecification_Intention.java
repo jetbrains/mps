@@ -43,15 +43,15 @@ public final class AddRemoveFigureParameterAttributePropertySpecification_Intent
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe))) {
       return false;
     }
-    SNode classifierType = SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ);
-    if (classifierType == null && SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R) == null) {
+    SNode classifierType = SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ);
+    if (classifierType == null && SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD) == null) {
       return false;
     }
 
-    Set<SNode> allExtendedClassifiers = Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R));
+    Set<SNode> allExtendedClassifiers = Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD));
     return SetSequence.fromSet(allExtendedClassifiers).contains(SNodeOperations.getNode("67b3c41d-58b3-4756-b971-30bf8a9d63e6/java:jetbrains.jetpad.projectional.view(jetbrains.jetpad/)", "~ViewPropertySpec"));
   }
   @Override
@@ -87,9 +87,9 @@ public final class AddRemoveFigureParameterAttributePropertySpecification_Intent
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

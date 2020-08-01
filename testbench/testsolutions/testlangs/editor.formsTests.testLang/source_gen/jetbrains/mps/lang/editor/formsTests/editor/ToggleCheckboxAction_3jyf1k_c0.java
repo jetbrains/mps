@@ -20,7 +20,7 @@ public class ToggleCheckboxAction_3jyf1k_c0 extends AbstractToggleCheckboxAction
   }
 
   protected void doExecute() {
-    SPropertyOperations.assign(myNode, PROPS.booleanProperty1$tXXw, !(SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty1$tXXw)));
+    SPropertyOperations.assign(myNode, PROPS.booleanProperty1$x0Mw, !(SPropertyOperations.getBoolean(myNode, PROPS.booleanProperty1$x0Mw)));
   }
 
   protected CellSelector createCellSelector(EditorCell selectedCell) {
@@ -29,6 +29,6 @@ public class ToggleCheckboxAction_3jyf1k_c0 extends AbstractToggleCheckboxAction
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty booleanProperty1$tXXw = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x455f8dda63d636dL, 0x455f8dda63d636eL, "booleanProperty1");
+    /*package*/ static final SProperty booleanProperty1$x0Mw = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x455f8dda63d636dL, 0x455f8dda63d636eL, "booleanProperty1");
   }
 }

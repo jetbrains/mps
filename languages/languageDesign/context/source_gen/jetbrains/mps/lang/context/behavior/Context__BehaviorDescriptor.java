@@ -40,10 +40,10 @@ public final class Context__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.TypedDef$hM)) {
-      return new NamedElementsScope(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.defs$oW_n), CONCEPTS.TypedDef$hM));
+      return new NamedElementsScope(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.defs$5m69), CONCEPTS.TypedDef$hM));
     }
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.ContextConceptParameter$gx)) {
-      return ListScope.forNamedElements(Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.conceptParameter$JcMo)));
+      return ListScope.forNamedElements(Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.conceptParameter$RcpC)));
     }
     return null;
   }
@@ -100,7 +100,7 @@ public final class Context__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defs$oW_n = MetaAdapterFactory.getContainmentLink(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, 0x653030359355429eL, "defs");
-    /*package*/ static final SContainmentLink conceptParameter$JcMo = MetaAdapterFactory.getContainmentLink(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, 0x6f483a2ad72c3cdbL, "conceptParameter");
+    /*package*/ static final SContainmentLink defs$5m69 = MetaAdapterFactory.getContainmentLink(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, 0x653030359355429eL, "defs");
+    /*package*/ static final SContainmentLink conceptParameter$RcpC = MetaAdapterFactory.getContainmentLink(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, 0x6f483a2ad72c3cdbL, "conceptParameter");
   }
 }

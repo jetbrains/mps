@@ -55,7 +55,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_c4zoug_a0a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.property$Ho30);
+    return SPropertyOperations.getBoolean(myNode, PROPS.property$YDt0);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "x");
@@ -71,6 +71,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty property$Ho30 = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x4a35f271d9f26e94L, 0x4a35f271d9f26e95L, "property");
+    /*package*/ static final SProperty property$YDt0 = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x4a35f271d9f26e94L, 0x4a35f271d9f26e95L, "property");
   }
 }

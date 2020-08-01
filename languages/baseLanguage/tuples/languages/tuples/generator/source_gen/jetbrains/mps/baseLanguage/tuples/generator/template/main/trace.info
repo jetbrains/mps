@@ -30,7 +30,7 @@
   <root nodeRef="r:c71b740e-a20d-4190-9688-0f8df932da4d(jetbrains.mps.baseLanguage.tuples.generator.template.main@generator)/1238919387774">
     <file name="QueriesGenerated.java">
       <node id="6272899139367875116" at="71,83,72,179" concept="5" />
-      <node id="6272899139367941142" at="74,83,75,182" concept="5" />
+      <node id="6272899139367941142" at="74,83,75,183" concept="5" />
       <node id="1238938131283" at="77,83,78,154" concept="5" />
       <node id="8836955480108787722" at="80,83,81,216" concept="4" />
       <node id="8836955480108787738" at="81,216,82,245" concept="4" />
@@ -278,7 +278,7 @@
       <node id="8836955480108787840" at="365,0,377,0" concept="7" trace="sourceNodeQuery_0_6#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8836955480108788054" at="380,0,396,0" concept="7" trace="sourceNodeQuery_0_8#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="6272899139367875114" at="71,83,72,179" />
-      <scope id="6272899139367941141" at="74,83,75,182" />
+      <scope id="6272899139367941141" at="74,83,75,183" />
       <scope id="1238938129879" at="77,83,78,154" />
       <scope id="8836955480108787706" at="85,83,86,179" />
       <scope id="1241263926484" at="88,83,89,243" />
@@ -980,7 +980,7 @@
         <var name="_context" id="2682363017137741883" />
       </scope>
       <unit id="2682363017137697543" at="520,115,524,5" name="jetbrains.mps.baseLanguage.tuples.generator.template.main.QueriesGenerated$6" />
-      <unit id="2682363017137741906" at="528,116,532,5" name="jetbrains.mps.baseLanguage.tuples.generator.template.main.QueriesGenerated$7" />
+      <unit id="2682363017137741906" at="528,115,532,5" name="jetbrains.mps.baseLanguage.tuples.generator.template.main.QueriesGenerated$7" />
       <unit id="2682363017137741922" at="532,26,536,5" name="jetbrains.mps.baseLanguage.tuples.generator.template.main.QueriesGenerated$8" />
       <unit id="2682363017137741934" at="536,24,540,5" name="jetbrains.mps.baseLanguage.tuples.generator.template.main.QueriesGenerated$9" />
       <unit id="2682363017137741873" at="543,210,547,5" name="jetbrains.mps.baseLanguage.tuples.generator.template.main.QueriesGenerated$10" />

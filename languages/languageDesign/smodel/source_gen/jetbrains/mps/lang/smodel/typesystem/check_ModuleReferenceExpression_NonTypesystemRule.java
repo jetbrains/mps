@@ -25,7 +25,7 @@ public class check_ModuleReferenceExpression_NonTypesystemRule extends AbstractN
       // XXX CheckedModuleReference does the same with property constraint, what's the right approach? 
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(moduleRefExpr, (SPropertyOperations.getString(moduleRefExpr, PROPS.moduleId$IIeZ) == null ? "Module is not specified" : "Couldn't find module"), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "6857306964584715722", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(moduleRefExpr, (SPropertyOperations.getString(moduleRefExpr, PROPS.moduleId$Cpgx) == null ? "Module is not specified" : "Couldn't find module"), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "6857306964584715722", null, errorTarget);
       }
     }
   }
@@ -40,7 +40,7 @@ public class check_ModuleReferenceExpression_NonTypesystemRule extends AbstractN
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$IIeZ = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId");
+    /*package*/ static final SProperty moduleId$Cpgx = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId");
   }
 
   private static final class CONCEPTS {

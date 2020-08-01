@@ -93,13 +93,13 @@ public class TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart extends T
       @Nullable
       @Override
       public boolean canExecute(String pattern) {
-        return SPropertyOperations.getString(targetNode, PROPS.name$tAp1).contains("1");
+        return SPropertyOperations.getString(targetNode, PROPS.name$lA7v).contains("1");
       }
 
     }
     @Override
     protected SReferenceLink getReferenceLink(TransformationMenuContext context) {
-      return LINKS.referenceWithReferenceMenuPart$PCOI;
+      return LINKS.referenceWithReferenceMenuPart$YLyi;
     }
     @Nullable
     @Override
@@ -109,11 +109,11 @@ public class TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart extends T
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink referenceWithReferenceMenuPart$PCOI = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x70e6651a9408d373L, "referenceWithReferenceMenuPart");
+    /*package*/ static final SReferenceLink referenceWithReferenceMenuPart$YLyi = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, 0x70e6651a9408d373L, "referenceWithReferenceMenuPart");
   }
 
   private static final class CONCEPTS {

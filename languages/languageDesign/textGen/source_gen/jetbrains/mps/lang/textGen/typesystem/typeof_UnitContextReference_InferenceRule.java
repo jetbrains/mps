@@ -25,7 +25,7 @@ public class typeof_UnitContextReference_InferenceRule extends AbstractInference
     {
       SNode _nodeToCheck_1029348928467 = ref;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "2160817178329685080", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "2160817178329682466", true), (SNode) (((SLinkOperations.getTarget(SLinkOperations.getTarget(ref, LINKS.context$PeF0), LINKS.type$EJVB) == null) ? createClassifierType_cc7gcy_a0b0a2a0a1() : SLinkOperations.getTarget(SLinkOperations.getTarget(ref, LINKS.context$PeF0), LINKS.type$EJVB))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "2160817178329682466", true), (SNode) (((SLinkOperations.getTarget(SLinkOperations.getTarget(ref, LINKS.context$M6P0), LINKS.type$HdRT) == null) ? createClassifierType_cc7gcy_a0b0a2a0a1() : SLinkOperations.getTarget(SLinkOperations.getTarget(ref, LINKS.context$M6P0), LINKS.type$HdRT))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -40,14 +40,14 @@ public class typeof_UnitContextReference_InferenceRule extends AbstractInference
   private static SNode createClassifierType_cc7gcy_a0b0a2a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    n0.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    n0.setReference(LINKS.classifier$xslD, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink context$PeF0 = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ab5a81L, 0x377692d961ab5a82L, "context");
-    /*package*/ static final SContainmentLink type$EJVB = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961aaee79L, 0x377692d961aaee7eL, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink context$M6P0 = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961ab5a81L, 0x377692d961ab5a82L, "context");
+    /*package*/ static final SContainmentLink type$HdRT = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961aaee79L, 0x377692d961aaee7eL, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

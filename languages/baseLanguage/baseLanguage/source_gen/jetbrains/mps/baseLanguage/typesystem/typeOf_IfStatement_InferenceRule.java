@@ -21,9 +21,9 @@ public class typeOf_IfStatement_InferenceRule extends AbstractInferenceRule_Runt
   }
   public void applyRule(final SNode ifStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "condition should be boolean", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176898861472", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176898833121", true), (SNode) _quotation_createNode_ffe21p_a1a0c0a0b(), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176898833121", true), (SNode) _quotation_createNode_ffe21p_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -43,7 +43,7 @@ public class typeOf_IfStatement_InferenceRule extends AbstractInferenceRule_Runt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$WJ1b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
   }
 
   private static final class CONCEPTS {

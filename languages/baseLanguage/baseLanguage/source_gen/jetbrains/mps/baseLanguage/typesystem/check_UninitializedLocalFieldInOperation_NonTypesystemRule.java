@@ -21,20 +21,20 @@ public class check_UninitializedLocalFieldInOperation_NonTypesystemRule extends 
   public check_UninitializedLocalFieldInOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode fieldReferenceOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode operand = SLinkOperations.getTarget(IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(fieldReferenceOperation), LINKS.operand$Lcrr);
+    SNode operand = SLinkOperations.getTarget(IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(fieldReferenceOperation), LINKS.operand$P1i5);
     if (operand == null || !(SNodeOperations.isInstanceOf(operand, CONCEPTS.ThisExpression$7A))) {
       return;
     }
-    SNode field = SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$mLBy);
-    SNode body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.ConstructorDeclaration$5U, false, false), LINKS.body$WIlu);
+    SNode field = SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$229u);
+    SNode body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.ConstructorDeclaration$5U, false, false), LINKS.body$qspy);
     if ((body == null)) {
-      body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.InstanceInitializer$BJ, false, false), LINKS.statementList$nSOm);
+      body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.InstanceInitializer$BJ, false, false), LINKS.statementList$$xmE);
       if ((body == null)) {
         return;
       }
     }
 
-    if ((SLinkOperations.getTarget(field, LINKS.initializer$KgD) == null) && Objects.equals(SNodeOperations.getNodeAncestor(body, CONCEPTS.Classifier$hJ, false, false), SNodeOperations.getParent(field))) {
+    if ((SLinkOperations.getTarget(field, LINKS.initializer$no3R) == null) && Objects.equals(SNodeOperations.getNodeAncestor(body, CONCEPTS.Classifier$hJ, false, false), SNodeOperations.getParent(field))) {
       VariableReferenceUtil.checkPrecedingWriteInstructions(typeCheckingContext, fieldReferenceOperation, body, field);
     }
 
@@ -50,11 +50,11 @@ public class check_UninitializedLocalFieldInOperation_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statementList$nSOm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, 0x118f0b95a3bL, "statementList");
-    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statementList$$xmE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, 0x118f0b95a3bL, "statementList");
+    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {

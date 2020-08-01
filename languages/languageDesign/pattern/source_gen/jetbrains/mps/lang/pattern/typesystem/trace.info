@@ -36,8 +36,8 @@
       <node id="1196515055998" at="43,30,44,228" concept="2" />
       <node id="1196515055998" at="44,228,45,196" concept="2" />
       <node id="1196515055998" at="45,196,46,24" concept="6" />
-      <node id="1196515055991" at="50,0,51,0" concept="8" trace="pattern$fJGl" />
-      <node id="1196515055991" at="51,0,52,0" concept="8" trace="quotedNode$kInw" />
+      <node id="1196515055991" at="50,0,51,0" concept="8" trace="pattern$C6ub" />
+      <node id="1196515055991" at="51,0,52,0" concept="8" trace="quotedNode$2tow" />
       <node id="1196515055991" at="55,0,56,0" concept="8" trace="PatternExpression$Lc" />
       <node id="1196515055991" at="23,0,25,0" concept="1" trace="typeof_PatternExpression_InferenceRule#()V" />
       <node id="1196515055991" at="32,0,35,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -162,8 +162,8 @@
       <node id="1202488176884" at="51,63,52,30" concept="5" />
       <node id="1202488176884" at="52,30,53,230" concept="2" />
       <node id="1202488176884" at="53,230,54,24" concept="6" />
-      <node id="1202488162378" at="58,0,59,0" concept="8" trace="dataType$fLUl" />
-      <node id="1202488162378" at="62,0,63,0" concept="8" trace="stringValueMigrated$gFe8" />
+      <node id="1202488162378" at="58,0,59,0" concept="8" trace="dataType$Dbgb" />
+      <node id="1202488162378" at="62,0,63,0" concept="8" trace="stringValueMigrated$4VPS" />
       <node id="1202488162378" at="66,0,67,0" concept="8" trace="PropertyPatternVariableDeclaration$Xj" />
       <node id="1202488162378" at="24,0,26,0" concept="1" trace="typeof_PropertyPatternVariableDeclaration_InferenceRule#()V" />
       <node id="1202488162378" at="41,0,44,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -473,7 +473,7 @@
       <node id="1678856199540929249" at="41,63,42,30" concept="5" />
       <node id="1678856199540929249" at="42,30,43,228" concept="2" />
       <node id="1678856199540929249" at="43,228,44,24" concept="6" />
-      <node id="1678856199540924752" at="48,0,49,0" concept="8" trace="expression$nt1k" />
+      <node id="1678856199540924752" at="48,0,49,0" concept="8" trace="expression$n3CG" />
       <node id="1678856199540924752" at="52,0,53,0" concept="8" trace="PatternSwitchStatement$rK" />
       <node id="1678856199540924752" at="20,0,22,0" concept="1" trace="typeof_PatternSwitchStatement_InferenceRule#()V" />
       <node id="1678856199540924752" at="31,0,34,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -526,13 +526,13 @@
     <file name="typeof_PatternVariableProperty_InferenceRule.java">
       <node id="2793477601722920079" at="25,7,26,67" concept="5" />
       <node id="2793477601722920079" at="26,67,27,205" concept="5" />
-      <node id="2793477601722920079" at="27,205,28,477" concept="2" />
+      <node id="2793477601722920079" at="27,205,28,476" concept="2" />
       <node id="2793477601722917786" at="32,50,33,47" concept="6" />
       <node id="2793477601722917786" at="35,68,36,102" concept="6" />
       <node id="2793477601722917786" at="38,30,39,17" concept="6" />
-      <node id="2793477601722917786" at="43,0,44,0" concept="8" trace="initValue$nhHN" />
-      <node id="2793477601722917786" at="44,0,45,0" concept="8" trace="property$NCMw" />
-      <node id="2793477601722917786" at="45,0,46,0" concept="8" trace="dataType$fLUl" />
+      <node id="2793477601722917786" at="43,0,44,0" concept="8" trace="initValue$h_bH" />
+      <node id="2793477601722917786" at="44,0,45,0" concept="8" trace="property$Ktw" />
+      <node id="2793477601722917786" at="45,0,46,0" concept="8" trace="dataType$Dbgb" />
       <node id="2793477601722917786" at="49,0,50,0" concept="8" trace="NodeBuilderInitProperty$wV" />
       <node id="2793477601722917786" at="50,0,51,0" concept="8" trace="PatternVariableProperty$JI" />
       <node id="2793477601722917786" at="21,0,23,0" concept="1" trace="typeof_PatternVariableProperty_InferenceRule#()V" />
@@ -547,7 +547,7 @@
       <scope id="2793477601722917786" at="35,68,36,102" />
       <scope id="2793477601722917786" at="38,30,39,17" />
       <scope id="2793477601722917786" at="21,0,23,0" />
-      <scope id="2793477601722920079" at="25,7,28,477">
+      <scope id="2793477601722920079" at="25,7,28,476">
         <var name="_info_12389875345" id="2793477601722920079" />
         <var name="_nodeToCheck_1029348928467" id="2793477601722920079" />
       </scope>
@@ -611,10 +611,10 @@
       <node id="1973444367045983396" at="81,30,82,228" concept="2" />
       <node id="1973444367045983396" at="82,228,83,196" concept="2" />
       <node id="1973444367045983396" at="83,196,84,24" concept="6" />
-      <node id="2793477601722933391" at="88,0,89,0" concept="8" trace="initValue$UJfh" />
-      <node id="2793477601722933391" at="89,0,90,0" concept="8" trace="link$ckAZ" />
-      <node id="2793477601722933391" at="90,0,91,0" concept="8" trace="target$egp8" />
-      <node id="2793477601722933391" at="91,0,92,0" concept="8" trace="nodes$$MVw" />
+      <node id="2793477601722933391" at="88,0,89,0" concept="8" trace="initValue$sSpf" />
+      <node id="2793477601722933391" at="89,0,90,0" concept="8" trace="link$XYSx" />
+      <node id="2793477601722933391" at="90,0,91,0" concept="8" trace="target$TWaS" />
+      <node id="2793477601722933391" at="91,0,92,0" concept="8" trace="nodes$OEOw" />
       <node id="2793477601722933391" at="95,0,96,0" concept="8" trace="NodeBuilderInitLink$Xj" />
       <node id="2793477601722933391" at="96,0,97,0" concept="8" trace="PatternVariableNode$dP" />
       <node id="2793477601722933391" at="24,0,26,0" concept="1" trace="typeof_PatternVariableNode_InferenceRule#()V" />
@@ -715,10 +715,10 @@
       <node id="410791833645439499" at="51,0,52,0" concept="8" trace="PatternBuilder$Pa" />
       <node id="410791833645439499" at="52,0,53,0" concept="8" trace="NodeBuilderInitLink$Xj" />
       <node id="410791833645439499" at="53,0,54,0" concept="8" trace="NodeBuilderList$lD" />
-      <node id="410791833645439499" at="57,0,58,0" concept="8" trace="nodes$$MVw" />
-      <node id="410791833645439499" at="58,0,59,0" concept="8" trace="initValue$UJfh" />
-      <node id="410791833645439499" at="59,0,60,0" concept="8" trace="link$ckAZ" />
-      <node id="410791833645439499" at="63,0,64,0" concept="8" trace="unordered$A9T6" />
+      <node id="410791833645439499" at="57,0,58,0" concept="8" trace="nodes$OEOw" />
+      <node id="410791833645439499" at="58,0,59,0" concept="8" trace="initValue$sSpf" />
+      <node id="410791833645439499" at="59,0,60,0" concept="8" trace="link$XYSx" />
+      <node id="410791833645439499" at="63,0,64,0" concept="8" trace="unordered$uMDU" />
       <node id="410791833645439499" at="26,0,28,0" concept="1" trace="check_NodeBuilderList_NonTypesystemRule#()V" />
       <node id="410791833645448402" at="28,128,31,5" concept="3" />
       <node id="410791833645439499" at="39,0,42,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -771,7 +771,7 @@
       <node id="6280652366637142386" at="27,50,28,55" concept="6" />
       <node id="6280652366637142386" at="30,68,31,102" concept="6" />
       <node id="6280652366637142386" at="33,30,34,17" concept="6" />
-      <node id="6280652366637142386" at="38,0,39,0" concept="8" trace="declaration$GelY" />
+      <node id="6280652366637142386" at="38,0,39,0" concept="8" trace="declaration$qWD2" />
       <node id="6280652366637142386" at="42,0,43,0" concept="8" trace="PatternBuilderVariableReference$Sm" />
       <node id="6280652366637142386" at="18,0,20,0" concept="1" trace="typeof_PatternBuilderVariableReference_InferenceRule#()V" />
       <node id="6280652366637142386" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -819,7 +819,7 @@
       <node id="7939357357339320452" at="31,50,32,49" concept="6" />
       <node id="7939357357339320452" at="34,68,35,102" concept="6" />
       <node id="7939357357339320452" at="37,30,38,17" concept="6" />
-      <node id="7939357357339320452" at="42,0,43,0" concept="8" trace="expression$2how" />
+      <node id="7939357357339320452" at="42,0,43,0" concept="8" trace="expression$6qRw" />
       <node id="7939357357339320452" at="46,0,47,0" concept="8" trace="QualifiedPatternReference$kN" />
       <node id="7939357357339320452" at="47,0,48,0" concept="8" trace="ExpressionPatternProvider$PJ" />
       <node id="7939357357339320452" at="21,0,23,0" concept="1" trace="check_ExpressionPatternProvider_NonTypesystemRule#()V" />
@@ -865,7 +865,7 @@
       <node id="8187773339869241923" at="45,68,46,102" concept="6" />
       <node id="8187773339869241923" at="48,30,49,17" concept="6" />
       <node id="8187773339869684375" at="51,52,52,44" concept="6" />
-      <node id="8187773339869241923" at="56,0,57,0" concept="8" trace="name$tAp1" />
+      <node id="8187773339869241923" at="56,0,57,0" concept="8" trace="name$lA7v" />
       <node id="8187773339869241923" at="60,0,61,0" concept="8" trace="Classifier$hJ" />
       <node id="8187773339869241923" at="61,0,62,0" concept="8" trace="PatternBuilderClassifierMember$75" />
       <node id="8187773339869241923" at="25,0,27,0" concept="1" trace="PatternMemberDuplication_NonTypesystemRule#()V" />
@@ -932,7 +932,7 @@
       <node id="8187773339869673229" at="46,68,47,102" concept="6" />
       <node id="8187773339869673229" at="49,30,50,17" concept="6" />
       <node id="8187773339869715155" at="52,52,53,44" concept="6" />
-      <node id="8187773339869673229" at="57,0,58,0" concept="8" trace="name$tAp1" />
+      <node id="8187773339869673229" at="57,0,58,0" concept="8" trace="name$lA7v" />
       <node id="8187773339869673229" at="61,0,62,0" concept="8" trace="PatternBuilder$Pa" />
       <node id="8187773339869673229" at="62,0,63,0" concept="8" trace="PatternBuilderVariable$In" />
       <node id="8187773339869673229" at="26,0,28,0" concept="1" trace="PatternVariableDuplication_NonTypesystemRule#()V" />
@@ -1010,7 +1010,7 @@
       <node id="967124561400348632" at="41,30,42,228" concept="2" />
       <node id="967124561400348632" at="42,228,43,196" concept="2" />
       <node id="967124561400348632" at="43,196,44,24" concept="6" />
-      <node id="967124561400348159" at="48,0,49,0" concept="8" trace="concept$lMG$" />
+      <node id="967124561400348159" at="48,0,49,0" concept="8" trace="concept$zz_s" />
       <node id="967124561400348159" at="52,0,53,0" concept="8" trace="LabeledNode$iM" />
       <node id="967124561400348159" at="21,0,23,0" concept="1" trace="typeof_LabeledNode_InferenceRule#()V" />
       <node id="967124561400348159" at="30,0,33,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

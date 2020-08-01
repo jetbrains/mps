@@ -21,7 +21,7 @@ public class typeof_CustomConstructorParameterReference_InferenceRule extends Ab
     {
       SNode _nodeToCheck_1029348928467 = customConstructorParameterReference;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "5379647004618398331", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "5379647004618398328", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(customConstructorParameterReference, LINKS.parameter$CYx0), "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "4563030478604909007", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "5379647004618398328", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(customConstructorParameterReference, LINKS.parameter$QhZ0), "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "4563030478604909007", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_CustomConstructorParameterReference_InferenceRule extends Ab
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$CYx0 = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, 0x4aa85872b745ce65L, "parameter");
+    /*package*/ static final SReferenceLink parameter$QhZ0 = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, 0x4aa85872b745ce65L, "parameter");
   }
 
   private static final class CONCEPTS {

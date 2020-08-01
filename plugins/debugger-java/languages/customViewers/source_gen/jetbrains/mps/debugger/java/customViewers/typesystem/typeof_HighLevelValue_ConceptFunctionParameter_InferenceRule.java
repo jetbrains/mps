@@ -36,7 +36,7 @@ public class typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule extend
   }
   private static SNode check_vmwfy8_a1a0c0a0b(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.valueType$Xd$1);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.valueType$D$sv);
     }
     return null;
   }
@@ -47,6 +47,6 @@ public class typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink valueType$Xd$1 = MetaAdapterFactory.getContainmentLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, 0x9a1514043fbc1aL, "valueType");
+    /*package*/ static final SContainmentLink valueType$D$sv = MetaAdapterFactory.getContainmentLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, 0x9a1514043fbc1aL, "valueType");
   }
 }

@@ -25,7 +25,7 @@ public class typeof_XMLSAXHandler_resultObject_InferenceRule extends AbstractInf
       {
         SNode _nodeToCheck_1029348928467 = node;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140448", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140457", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.XMLSAXParser$Sn), LINKS.root$YA4Z), LINKS.type$Y_Mw), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140457", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.XMLSAXParser$Sn), LINKS.root$ksqx), LINKS.type$kjtw), _info_12389875345);
       }
     } else {
       SNode parentMacro = SNodeOperations.getNodeAncestor(node, CONCEPTS.XMLSAXNodeRule$AV, false, false);
@@ -33,7 +33,7 @@ public class typeof_XMLSAXHandler_resultObject_InferenceRule extends AbstractInf
         {
           SNode _nodeToCheck_1029348928467 = node;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140475", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140477", true), (SNode) SLinkOperations.getTarget(parentMacro, LINKS.type$Y_Mw), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140477", true), (SNode) SLinkOperations.getTarget(parentMacro, LINKS.type$kjtw), _info_12389875345);
         }
       }
     }
@@ -56,7 +56,7 @@ public class typeof_XMLSAXHandler_resultObject_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink root$YA4Z = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e303L, "root");
-    /*package*/ static final SContainmentLink type$Y_Mw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
+    /*package*/ static final SReferenceLink root$ksqx = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e303L, "root");
+    /*package*/ static final SContainmentLink type$kjtw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
   }
 }

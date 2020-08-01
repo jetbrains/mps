@@ -78,8 +78,8 @@
       <node id="1217012833662768755" at="109,89,110,145" concept="6" />
       <node id="1217012833662768755" at="111,12,112,24" concept="6" />
       <node id="1217012833662768755" at="113,15,114,40" concept="1" />
-      <node id="1217012833662768584" at="119,0,120,0" concept="7" trace="name$tAp1" />
-      <node id="1217012833662768584" at="120,0,121,0" concept="7" trace="richCompactProperty$APQX" />
+      <node id="1217012833662768584" at="119,0,120,0" concept="7" trace="name$lA7v" />
+      <node id="1217012833662768584" at="120,0,121,0" concept="7" trace="richCompactProperty$O5Bz" />
       <node id="1217012833662768584" at="124,0,125,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="1217012833662768584" at="33,0,35,0" concept="2" trace="myNode" />
       <node id="1217012833662768584" at="47,0,50,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -216,8 +216,8 @@
       <node id="8572332134194711091" at="111,89,112,145" concept="6" />
       <node id="8572332134194711091" at="113,12,114,24" concept="6" />
       <node id="8572332134194711091" at="115,15,116,40" concept="1" />
-      <node id="6355695904178424145" at="121,0,122,0" concept="7" trace="name$tAp1" />
-      <node id="6355695904178424145" at="122,0,123,0" concept="7" trace="richCompactProperty$WRgA" />
+      <node id="6355695904178424145" at="121,0,122,0" concept="7" trace="name$lA7v" />
+      <node id="6355695904178424145" at="122,0,123,0" concept="7" trace="richCompactProperty$uL2q" />
       <node id="6355695904178424145" at="126,0,127,0" concept="7" trace="PropertyAttribute$jT" />
       <node id="6355695904178424145" at="33,0,35,0" concept="2" trace="myNode" />
       <node id="6355695904178424145" at="47,0,50,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

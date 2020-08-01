@@ -96,7 +96,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode res = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.IntegerConstant$$H);
-        SPropertyOperations.set(res, PROPS.value$c9Xz, Integer.parseInt(pattern));
+        SPropertyOperations.set(res, PROPS.value$SONX, Integer.parseInt(pattern));
         return res;
       }
 
@@ -170,9 +170,9 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         SNode res = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.FloatingPointConstant$2U);
         if (pattern.endsWith(".")) {
-          SPropertyOperations.set(res, PROPS.value$zHkc, pattern + "0");
+          SPropertyOperations.set(res, PROPS.value$iWLO, pattern + "0");
         } else {
-          SPropertyOperations.set(res, PROPS.value$zHkc, pattern);
+          SPropertyOperations.set(res, PROPS.value$iWLO, pattern);
         }
         return res;
       }
@@ -232,7 +232,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$c9Xz = MetaAdapterFactory.getProperty(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8aa3f9L, 0x102db8ae25bL, "value");
-    /*package*/ static final SProperty value$zHkc = MetaAdapterFactory.getProperty(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, 0x1033349beb2L, "value");
+    /*package*/ static final SProperty value$SONX = MetaAdapterFactory.getProperty(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8aa3f9L, 0x102db8ae25bL, "value");
+    /*package*/ static final SProperty value$iWLO = MetaAdapterFactory.getProperty(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, 0x1033349beb2L, "value");
   }
 }

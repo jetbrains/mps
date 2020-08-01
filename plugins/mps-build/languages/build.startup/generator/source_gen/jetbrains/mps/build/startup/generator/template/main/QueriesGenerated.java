@@ -35,393 +35,393 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("%s.icns", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("%s.icns", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("%s Project", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.fullName$6Y3p), null));
+    return String.format("%s Project", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.fullName$o3D7), null));
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null);
 
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("%s.icns", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("%s.icns", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null);
   }
   public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.fullName$6Y3p), null) + " $version$";
+    return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.fullName$o3D7), null) + " $version$";
   }
   public static Object propertyMacro_GetValue_1_6(final PropertyMacroContext _context) {
     String pathString = "";
     String prefix = "$APP_PACKAGE/Contents/";
-    List<SNode> classPathItemList = SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$zxWs);
+    List<SNode> classPathItemList = SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$dsh$);
     for (SNode cpItem : ListSequence.fromList(classPathItemList).cut(1)) {
-      pathString += prefix + SPropertyOperations.getString(cpItem, PROPS.path$yWC0).replace("\\", "/") + ":";
+      pathString += prefix + SPropertyOperations.getString(cpItem, PROPS.path$Vno0).replace("\\", "/") + ":";
     }
-    pathString += prefix + SPropertyOperations.getString(ListSequence.fromList(classPathItemList).last(), PROPS.path$yWC0).replace("\\", "/");
+    pathString += prefix + SPropertyOperations.getString(ListSequence.fromList(classPathItemList).last(), PROPS.path$Vno0).replace("\\", "/");
     return pathString;
   }
   public static Object propertyMacro_GetValue_1_7(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.startupClass$QVS_);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.startupClass$B0pV);
   }
   public static Object propertyMacro_GetValue_1_8(final PropertyMacroContext _context) {
     return (String) MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_1_9(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.company$Av4_), LINKS.name$fPxS), null));
+    return ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.vendor$PzGQ) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.vendor$PzGQ), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.company$D3dV), LINKS.name$EVq8), null));
   }
   public static Object propertyMacro_GetValue_1_10(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null);
   }
   public static Object propertyMacro_GetValue_1_11(final PropertyMacroContext _context) {
     String vmoptionsFileName = MpsStartupScript__BehaviorDescriptor.getVmOptionsFileName_id2lwFGYOYlNP.invoke(_context.getNode(), ((boolean) false));
     String appFolder = "MPS";
 
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) != null)) {
-      appFolder = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null) + Integer.toString(SPropertyOperations.getInteger(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), PROPS.major$wNoh)) + "." + Integer.toString(SPropertyOperations.getInteger(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), PROPS.minor$wNoK));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) != null)) {
+      appFolder = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null) + Integer.toString(SPropertyOperations.getInteger(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), PROPS.major$SSKf)) + "." + Integer.toString(SPropertyOperations.getInteger(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), PROPS.minor$SSZg));
     }
 
     return String.format(_context.getTemplateValue(), vmoptionsFileName, appFolder, vmoptionsFileName);
   }
   public static Object propertyMacro_GetValue_1_12(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + "/" + SPropertyOperations.getString(_context.getNode(), PROPS.startupFolder$yWCu);
+    return _context.getTemplateValue() + "/" + SPropertyOperations.getString(_context.getNode(), PROPS.startupFolder$VnAy);
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format(":: %s startup script.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.fullName$6Y3p), null));
+    return String.format(":: %s startup script.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.fullName$o3D7), null));
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  echo    You are trying to run %s from generic distribution", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.fullName$6Y3p), null));
+    return String.format("  echo    You are trying to run %s from generic distribution", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.fullName$o3D7), null));
   }
   public static Object propertyMacro_GetValue_2_2(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  echo and then run %s.bat from there", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  echo and then run %s.bat from there", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_2_3(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format(":: Try (in order): %s_JDK, %s%%BITS%%.exe.jdk, ..\\jre, JDK_HOME, JAVA_HOME.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format(":: Try (in order): %s_JDK, %s%%BITS%%.exe.jdk, ..\\jre, JDK_HOME, JAVA_HOME.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_2_4(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format(":: Try (in order): %s_JDK, %s%%BITS%%.exe.jdk, ..\\jre, JDK_HOME, JAVA_HOME.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format(":: Try (in order): %s_JDK, %s%%BITS%%.exe.jdk, ..\\jre, JDK_HOME, JAVA_HOME.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_2_5(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    String vendor = ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.company$Av4_), LINKS.name$fPxS), null));
+    String vendor = ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.vendor$PzGQ) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.vendor$PzGQ), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.company$D3dV), LINKS.name$EVq8), null));
     return String.format("SET IDEA_VENDOR_NAME=%s", vendor);
   }
   public static Object propertyMacro_GetValue_2_6(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    String productShortName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null);
+    String productShortName = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null);
     return String.format("IF EXIST \"%%%s_JDK%%\" SET JDK=%%%s_JDK%%", productShortName, productShortName);
   }
   public static Object propertyMacro_GetValue_2_7(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("SET USER_JDK64_FILE=%%APPDATA%%\\%%IDEA_VENDOR_NAME%%\\%s\\%s%%BITS%%.exe.jdk", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("SET USER_JDK64_FILE=%%APPDATA%%\\%%IDEA_VENDOR_NAME%%\\%s\\%s%%BITS%%.exe.jdk", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_2_8(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("SET USER_JDK_FILE=%%APPDATA%%\\%%IDEA_VENDOR_NAME%%\\%s\\%s%%BITS%%.exe.jdk", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("SET USER_JDK_FILE=%%APPDATA%%\\%%IDEA_VENDOR_NAME%%\\%s\\%s%%BITS%%.exe.jdk", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_2_9(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  ECHO ERROR: cannot start %s.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.fullName$6Y3p), null));
+    return String.format("  ECHO ERROR: cannot start %s.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.fullName$o3D7), null));
   }
   public static Object propertyMacro_GetValue_2_10(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  ECHO No JDK found. Please validate either %s_JDK, JDK_HOME or JAVA_HOME points to valid JDK installation.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("  ECHO No JDK found. Please validate either %s_JDK, JDK_HOME or JAVA_HOME points to valid JDK installation.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_2_11(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    String script = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null);
+    String script = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null);
     return String.format("IF NOT \"%%%s_PROPERTIES%%\" == \"\" SET IDE_PROPERTIES_PROPERTY=\"-Didea.properties.file=%%%s_PROPERTIES%%\"", script, script);
   }
   public static Object propertyMacro_GetValue_2_12(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("SET VM_OPTIONS_FILE=%%%s_VM_OPTIONS%%", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("SET VM_OPTIONS_FILE=%%%s_VM_OPTIONS%%", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_2_13(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  SET VM_OPTIONS_FILE=%%APPDATA%%\\%%IDEA_VENDOR_NAME%%\\%s\\mps%%BITS%%.exe.vmoptions", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  SET VM_OPTIONS_FILE=%%APPDATA%%\\%%IDEA_VENDOR_NAME%%\\%s\\mps%%BITS%%.exe.vmoptions", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_2_14(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  SET VM_OPTIONS_FILE=%%IDE_BIN_DIR%%\\%s%%BITS%%.exe.vmoptions", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  SET VM_OPTIONS_FILE=%%IDE_BIN_DIR%%\\%s%%BITS%%.exe.vmoptions", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_2_15(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  SET VM_OPTIONS_FILE=%%IDE_BIN_DIR%%\\win\\%s%%BITS%%.exe.vmoptions", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  SET VM_OPTIONS_FILE=%%IDE_BIN_DIR%%\\win\\%s%%BITS%%.exe.vmoptions", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_2_16(final PropertyMacroContext _context) {
     return _context.getTemplateValue() + MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_2_17(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("SET PRODUCT=\"%s\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("SET PRODUCT=\"%s\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_2_18(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$zxWs)).first(), PROPS.path$yWC0).replace("/", "\\");
+    return _context.getTemplateValue() + SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$dsh$)).first(), PROPS.path$Vno0).replace("/", "\\");
   }
   public static Object propertyMacro_GetValue_2_19(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + SPropertyOperations.getString(_context.getNode(), PROPS.path$yWC0).replace("/", "\\");
+    return _context.getTemplateValue() + SPropertyOperations.getString(_context.getNode(), PROPS.path$Vno0).replace("/", "\\");
   }
   public static Object propertyMacro_GetValue_2_20(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + SPropertyOperations.getString(_context.getNode(), PROPS.startupClass$QVS_);
+    return _context.getTemplateValue() + SPropertyOperations.getString(_context.getNode(), PROPS.startupClass$B0pV);
   }
   public static Object propertyMacro_GetValue_2_21(final PropertyMacroContext _context) {
-    return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null) + ".bat";
+    return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null) + ".bat";
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
     return (String) MpsStartupScript__BehaviorDescriptor.getVmOptionsFileName_id2lwFGYOYlNP.invoke(_context.getNode(), ((boolean) false));
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("# %s startup script.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.fullName$6Y3p), null));
+    return String.format("# %s startup script.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.fullName$o3D7), null));
   }
   public static Object propertyMacro_GetValue_4_1(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  TITLE=\"Cannot start %s\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.fullName$6Y3p), null));
+    return String.format("  TITLE=\"Cannot start %s\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.fullName$o3D7), null));
   }
   public static Object propertyMacro_GetValue_4_2(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("# Try (in order): $%s_JDK, .../%s.jdk, .../jbr, .../jbr-x86, $JDK_HOME, $JAVA_HOME, \"java\" in $PATH.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null).toLowerCase());
+    return String.format("# Try (in order): $%s_JDK, .../%s.jdk, .../jbr, .../jbr-x86, $JDK_HOME, $JAVA_HOME, \"java\" in $PATH.", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null).toLowerCase());
   }
   public static Object propertyMacro_GetValue_4_3(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    String vendor = ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.vendor$uCoa), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.company$Av4_), LINKS.name$fPxS), null));
+    String vendor = ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.vendor$PzGQ) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.vendor$PzGQ), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.company$D3dV), LINKS.name$EVq8), null));
     return String.format("IDEA_VENDOR_NAME='%s'", vendor);
   }
   public static Object propertyMacro_GetValue_4_4(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("if [ -n \"$%s_JDK\" ] && [ -x \"$%s_JDK/bin/java\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("if [ -n \"$%s_JDK\" ] && [ -x \"$%s_JDK/bin/java\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_4_5(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  JDK=\"$%s_JDK\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("  JDK=\"$%s_JDK\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_4_6(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("if [ -z \"$JDK\" ] && [ -s \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s.jdk\" ]; then", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null).toLowerCase());
+    return String.format("if [ -z \"$JDK\" ] && [ -s \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s.jdk\" ]; then", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null).toLowerCase());
   }
   public static Object propertyMacro_GetValue_4_7(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  USER_JRE=$(\"$CAT\" \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s.jdk\")", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null).toLowerCase());
+    return String.format("  USER_JRE=$(\"$CAT\" \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s.jdk\")", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null).toLowerCase());
 
   }
   public static Object propertyMacro_GetValue_4_8(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  message \"No JDK found. Please validate either %s_JDK, JDK_HOME or JAVA_HOME environment variable points to valid JDK installation.\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("  message \"No JDK found. Please validate either %s_JDK, JDK_HOME or JAVA_HOME environment variable points to valid JDK installation.\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_4_9(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("if [ -n \"$%s_PROPERTIES\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("if [ -n \"$%s_PROPERTIES\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_4_10(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  IDE_PROPERTIES_PROPERTY=\"-Didea.properties.file=$%s_PROPERTIES\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("  IDE_PROPERTIES_PROPERTY=\"-Didea.properties.file=$%s_PROPERTIES\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_4_11(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("elif [ -r \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s$BITS.vmoptions\" ]; then", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("elif [ -r \"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s$BITS.vmoptions\" ]; then", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_4_12(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  VM_OPTIONS_FILE=\"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s$BITS.vmoptions\"", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  VM_OPTIONS_FILE=\"${XDG_CONFIG_HOME:-$HOME/.config}/$IDEA_VENDOR_NAME/%s/%s$BITS.vmoptions\"", MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode()), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_4_13(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("elif [ -r \"$IDE_BIN_HOME/%s$BITS.vmoptions\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("elif [ -r \"$IDE_BIN_HOME/%s$BITS.vmoptions\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_4_14(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/%s$BITS.vmoptions\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/%s$BITS.vmoptions\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_4_15(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/$OS_SPECIFIC/%s$BITS.vmoptions\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null));
+    return String.format("  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/$OS_SPECIFIC/%s$BITS.vmoptions\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null));
   }
   public static Object propertyMacro_GetValue_4_16(final PropertyMacroContext _context) {
     if (((Integer) _context.getVariable("cv:pathIndex")) == 0) {
-      return "CLASSPATH=\"$IDE_HOME/" + SPropertyOperations.getString(_context.getNode(), PROPS.path$yWC0) + "\"";
+      return "CLASSPATH=\"$IDE_HOME/" + SPropertyOperations.getString(_context.getNode(), PROPS.path$Vno0) + "\"";
     }
-    return _context.getTemplateValue() + SPropertyOperations.getString(_context.getNode(), PROPS.path$yWC0) + "\"";
+    return _context.getTemplateValue() + SPropertyOperations.getString(_context.getNode(), PROPS.path$Vno0) + "\"";
   }
   public static Object propertyMacro_GetValue_4_17(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("if [ -n \"$%s_CLASSPATH\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("if [ -n \"$%s_CLASSPATH\" ]; then", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_4_18(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  CLASSPATH=\"$CLASSPATH:$%s_CLASSPATH\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("  CLASSPATH=\"$CLASSPATH:$%s_CLASSPATH\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_4_19(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + SPropertyOperations.getString(_context.getNode(), PROPS.startupClass$QVS_);
+    return _context.getTemplateValue() + SPropertyOperations.getString(_context.getNode(), PROPS.startupClass$B0pV);
   }
   public static Object propertyMacro_GetValue_4_20(final PropertyMacroContext _context) {
     return _context.getTemplateValue() + MpsStartupScript__BehaviorDescriptor.getIdeaPathSelector_idBsOHnja5fe.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_4_21(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  \"-XX:ErrorFile=$HOME/java_error_in_%s_%%p.log\" \\", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("  \"-XX:ErrorFile=$HOME/java_error_in_%s_%%p.log\" \\", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_4_22(final PropertyMacroContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf) == null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh) == null)) {
       return _context.getTemplateValue();
     }
 
-    return String.format("  \"-XX:HeapDumpPath=$HOME/java_error_in_%s.hprof\" \\", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.product$6Y2U), null));
+    return String.format("  \"-XX:HeapDumpPath=$HOME/java_error_in_%s.hprof\" \\", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.product$o3q6), null));
   }
   public static Object propertyMacro_GetValue_4_23(final PropertyMacroContext _context) {
-    return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$leLf), LINKS.script$K6vZ), null) + ".sh";
+    return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$i9Qh), LINKS.script$j9vx), null) + ".sh";
   }
   public static Object propertyMacro_GetValue_5_0(final PropertyMacroContext _context) {
     return (String) MpsStartupScript__BehaviorDescriptor.getVmOptionsFileName_id2lwFGYOYlNP.invoke(_context.getNode(), ((boolean) true));
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$zxWs)).skip(1);
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$dsh$)).skip(1);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
     return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getDefaultVmOptionsLines_id2lwFGYOXBOk.invoke(_context.getNode(), ((boolean) false));
@@ -430,7 +430,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getCommentedVmOptionsLines_id31jVCtHhzv9.invoke(_context.getNode(), ((boolean) false));
   }
   public static Iterable<SNode> sourceNodesQuery_4_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$zxWs);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$dsh$);
   }
   public static Iterable<SNode> sourceNodesQuery_5_0(final SourceSubstituteMacroNodesContext _context) {
     return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getDefaultVmOptionsLines_id2lwFGYOXBOk.invoke(_context.getNode(), ((boolean) true));
@@ -694,21 +694,21 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink branding$leLf = MetaAdapterFactory.getReferenceLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x30a61e6d55f6abc9L, "branding");
-    /*package*/ static final SContainmentLink script$K6vZ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0xccf01929cb3b53bL, "script");
-    /*package*/ static final SContainmentLink fullName$6Y3p = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230b0L, "fullName");
-    /*package*/ static final SContainmentLink product$6Y2U = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230afL, "product");
-    /*package*/ static final SContainmentLink bootClasspath$zxWs = MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3437728L, "bootClasspath");
-    /*package*/ static final SContainmentLink vendor$uCoa = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x565a3894500dd6d9L, "vendor");
-    /*package*/ static final SContainmentLink company$Av4_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0xad72aee24ac230dL, "company");
-    /*package*/ static final SContainmentLink name$fPxS = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e1L, "name");
+    /*package*/ static final SReferenceLink branding$i9Qh = MetaAdapterFactory.getReferenceLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x30a61e6d55f6abc9L, "branding");
+    /*package*/ static final SContainmentLink script$j9vx = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0xccf01929cb3b53bL, "script");
+    /*package*/ static final SContainmentLink fullName$o3D7 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230b0L, "fullName");
+    /*package*/ static final SContainmentLink product$o3q6 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230afL, "product");
+    /*package*/ static final SContainmentLink bootClasspath$dsh$ = MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3437728L, "bootClasspath");
+    /*package*/ static final SContainmentLink vendor$PzGQ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x565a3894500dd6d9L, "vendor");
+    /*package*/ static final SContainmentLink company$D3dV = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0xad72aee24ac230dL, "company");
+    /*package*/ static final SContainmentLink name$EVq8 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e1L, "name");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty path$yWC0 = MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437509L, 0x35ebd6e5b343750aL, "path");
-    /*package*/ static final SProperty startupClass$QVS_ = MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3443492L, "startupClass");
-    /*package*/ static final SProperty minor$wNoK = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e45L, "minor");
-    /*package*/ static final SProperty major$wNoh = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e44L, "major");
-    /*package*/ static final SProperty startupFolder$yWCu = MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b343750bL, "startupFolder");
+    /*package*/ static final SProperty path$Vno0 = MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437509L, 0x35ebd6e5b343750aL, "path");
+    /*package*/ static final SProperty startupClass$B0pV = MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3443492L, "startupClass");
+    /*package*/ static final SProperty minor$SSZg = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e45L, "minor");
+    /*package*/ static final SProperty major$SSKf = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e44L, "major");
+    /*package*/ static final SProperty startupFolder$VnAy = MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b343750bL, "startupFolder");
   }
 }

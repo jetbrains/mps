@@ -33,17 +33,17 @@ public class Tuple_classifier_supertypeOf_indexedTupleType_SubtypingRule extends
   }
   public List<SNode> getSubOrSuperTypes(SNode itt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
-    final String ifcname = "_" + ListSequence.fromList(SLinkOperations.getChildren(itt, LINKS.componentType$62ij)).count();
-    SNode ifc = Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(SLinkOperations.getTarget(_quotation_createNode_tm6bn3_a0a0a2a1(), LINKS.classifier$pQ_R))).findFirst(new IWhereFilter<SNode>() {
+    final String ifcname = "_" + ListSequence.fromList(SLinkOperations.getChildren(itt, LINKS.componentType$V6Rd)).count();
+    SNode ifc = Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(SLinkOperations.getTarget(_quotation_createNode_tm6bn3_a0a0a2a1(), LINKS.classifier$xslD))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode ifc) {
-        return ifcname.equals(SPropertyOperations.getString(ifc, PROPS.name$tAp1));
+        return ifcname.equals(SPropertyOperations.getString(ifc, PROPS.name$lA7v));
       }
     });
     SNode supertype = _quotation_createNode_tm6bn3_a0d0b(ifc);
     ListSequence.fromList(result).addElement(supertype);
-    for (SNode comptype : SLinkOperations.getChildren(itt, LINKS.componentType$62ij)) {
+    for (SNode comptype : SLinkOperations.getChildren(itt, LINKS.componentType$V6Rd)) {
       SNode javatype = ClassifierTypeUtil.getTypeCoercedToClassifierType(comptype);
-      ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$dQne)).addElement(SNodeOperations.copyNode(javatype));
+      ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$HlfM)).addElement(SNodeOperations.copyNode(javatype));
     }
     return result;
   }
@@ -72,13 +72,13 @@ public class Tuple_classifier_supertypeOf_indexedTupleType_SubtypingRule extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$62ij = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$dQne = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink componentType$V6Rd = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

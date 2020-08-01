@@ -26,11 +26,11 @@ public class DispatchGroupDescriptor {
   private boolean isStatic;
   private Iterable<SNode> otherParamTypes;
   public DispatchGroupDescriptor(SNode pattern) {
-    methodName = SPropertyOperations.getString(pattern, PROPS.name$tAp1);
+    methodName = SPropertyOperations.getString(pattern, PROPS.name$lA7v);
     isStatic = SNodeOperations.isInstanceOf(pattern, CONCEPTS.StaticMethodDeclaration$eX);
-    otherParamTypes = ListSequence.fromList(SLinkOperations.getChildren(pattern, LINKS.parameter$WIkZ)).skip(1).select(new ISelector<SNode, SNode>() {
+    otherParamTypes = ListSequence.fromList(SLinkOperations.getChildren(pattern, LINKS.parameter$qsax)).skip(1).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.type$pLrO);
+        return SLinkOperations.getTarget(it, LINKS.type$uWuc);
       }
     });
   }
@@ -83,7 +83,7 @@ public class DispatchGroupDescriptor {
         {
           final SNode cls2 = typ2;
           if (SNodeOperations.isInstanceOf(cls2, CONCEPTS.ClassifierType$IZ)) {
-            return SLinkOperations.getTarget(cls, LINKS.classifier$pQ_R) == SLinkOperations.getTarget(cls2, LINKS.classifier$pQ_R);
+            return SLinkOperations.getTarget(cls, LINKS.classifier$xslD) == SLinkOperations.getTarget(cls2, LINKS.classifier$xslD);
           }
         }
         return false;
@@ -98,14 +98,14 @@ public class DispatchGroupDescriptor {
     {
       final SNode cls = typ;
       if (SNodeOperations.isInstanceOf(cls, CONCEPTS.ClassifierType$IZ)) {
-        return SLinkOperations.getTarget(cls, LINKS.classifier$pQ_R).hashCode();
+        return SLinkOperations.getTarget(cls, LINKS.classifier$xslD).hashCode();
       }
     }
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(typ).hashCode();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -114,8 +114,8 @@ public class DispatchGroupDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

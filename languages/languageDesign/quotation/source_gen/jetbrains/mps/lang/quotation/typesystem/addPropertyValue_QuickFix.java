@@ -21,21 +21,21 @@ public class addPropertyValue_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "5721350981296923906"));
   }
   public String getDescription(SNode node) {
-    return "Initialize `" + SPropertyOperations.getString(((SNode) addPropertyValue_QuickFix.this.getField("property")[0]), PROPS.name$tAp1) + "'";
+    return "Initialize `" + SPropertyOperations.getString(((SNode) addPropertyValue_QuickFix.this.getField("property")[0]), PROPS.name$lA7v) + "'";
   }
   public void execute(SNode node) {
     SNode val = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty"));
-    SLinkOperations.setTarget(val, LINKS.property$NCMw, ((SNode) addPropertyValue_QuickFix.this.getField("property")[0]));
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.NodeBuilderNode$RN), LINKS.values$oju9)).addElement(val);
+    SLinkOperations.setTarget(val, LINKS.property$Ktw, ((SNode) addPropertyValue_QuickFix.this.getField("property")[0]));
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.NodeBuilderNode$RN), LINKS.values$LrAn)).addElement(val);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$NCMw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
-    /*package*/ static final SContainmentLink values$oju9 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
+    /*package*/ static final SReferenceLink property$Ktw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
+    /*package*/ static final SContainmentLink values$LrAn = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
   }
 
   private static final class CONCEPTS {

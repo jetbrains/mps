@@ -51,7 +51,7 @@ public class BeanPropertyBuilder_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_i1rqlx_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BeanPropertyBuilder$T, LINKS.setter$3Djw);
+      super((SAbstractConcept) CONCEPTS.BeanPropertyBuilder$T, LINKS.setter$L0sw);
     }
     @NotNull
     @Override
@@ -83,7 +83,7 @@ public class BeanPropertyBuilder_SmartReference extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return (String) BeanPropertyBuilder__BehaviorDescriptor.getPropertyName_id2kIZjjSEvS7.invoke(SNodeOperations.asSConcept(CONCEPTS.BeanPropertyBuilder$T), SPropertyOperations.getString(referencedNode, PROPS.name$tAp1));
+        return (String) BeanPropertyBuilder__BehaviorDescriptor.getPropertyName_id2kIZjjSEvS7.invoke(SNodeOperations.asSConcept(CONCEPTS.BeanPropertyBuilder$T), SPropertyOperations.getString(referencedNode, PROPS.name$lA7v));
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -102,10 +102,10 @@ public class BeanPropertyBuilder_SmartReference extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink setter$3Djw = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, 0x252efd34f8a58ec8L, "setter");
+    /*package*/ static final SReferenceLink setter$L0sw = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, 0x252efd34f8a58ec8L, "setter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -22,7 +22,7 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
   public check_ConstructorInvocationStatementHasConstructor_NonTypesystemRule() {
   }
   public void applyRule(final SNode constructorInvocation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(constructorInvocation, LINKS.baseMethodDeclaration$$A7i) == null)) {
+    if ((SLinkOperations.getTarget(constructorInvocation, LINKS.baseMethodDeclaration$ItxI) == null)) {
       SNode referent = constructorInvocation.getReferenceTarget("constructorDeclaration");
       if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ConstructorDeclaration$5U)) {
         {
@@ -54,7 +54,7 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {

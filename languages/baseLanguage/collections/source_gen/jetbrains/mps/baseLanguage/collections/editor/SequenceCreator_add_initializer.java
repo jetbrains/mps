@@ -52,10 +52,10 @@ public class SequenceCreator_add_initializer extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return (SLinkOperations.getTarget(node, LINKS.initializer$DGPV) == null);
+      return (SLinkOperations.getTarget(node, LINKS.initializer$cI7_) == null);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.setNewChild(node, LINKS.initializer$DGPV, CONCEPTS.ClosureLiteral$zJ);
+      SNodeFactoryOperations.setNewChild(node, LINKS.initializer$cI7_, CONCEPTS.ClosureLiteral$zJ);
     }
     public String getKeyStroke() {
       return " ENTER";
@@ -68,6 +68,6 @@ public class SequenceCreator_add_initializer extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$DGPV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer");
+    /*package*/ static final SContainmentLink initializer$cI7_ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer");
   }
 }

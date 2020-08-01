@@ -22,10 +22,10 @@ public class check_IncludingDefaultTransformationMenu_NonTypesystemRule extends 
   public check_IncludingDefaultTransformationMenu_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.menuReference$5IwX), CONCEPTS.TransformationMenuReference_Default$h5) && (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.menuReference$5IwX), CONCEPTS.TransformationMenuReference_Default$h5), LINKS.concept$x5r) == null)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.menuReference$LxXz), CONCEPTS.TransformationMenuReference_Default$h5) && (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.menuReference$LxXz), CONCEPTS.TransformationMenuReference_Default$h5), LINKS.concept$g1C5) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(node, LINKS.menuReference$5IwX), "Concept should be specified", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539916846", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(node, LINKS.menuReference$LxXz), "Concept should be specified", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539916846", null, errorTarget);
       }
     }
   }
@@ -40,8 +40,8 @@ public class check_IncludingDefaultTransformationMenu_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$5IwX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x5d3b34577b3f7ee5L, "menuReference");
-    /*package*/ static final SReferenceLink concept$x5r = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
+    /*package*/ static final SContainmentLink menuReference$LxXz = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x5d3b34577b3f7ee5L, "menuReference");
+    /*package*/ static final SReferenceLink concept$g1C5 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
   }
 
   private static final class CONCEPTS {

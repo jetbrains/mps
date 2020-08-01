@@ -25,9 +25,9 @@ public class check_ExtensionPointDeclaration_NonTypesystemRule extends AbstractN
   public check_ExtensionPointDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode extensionPoint, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(extensionPoint, LINKS.objectType$NJyf), SLinkOperations.getTarget(_quotation_createNode_k652mq_a1a0a0a0b(), LINKS.descriptor$ZkDR))))) {
+    if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(extensionPoint, LINKS.objectType$41_h), SLinkOperations.getTarget(_quotation_createNode_k652mq_a1a0a0a0b(), LINKS.descriptor$F0hD))))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(extensionPoint, LINKS.objectType$NJyf), "primitive types not allowed", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "2141245758541445226", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(extensionPoint, LINKS.objectType$41_h), "primitive types not allowed", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "2141245758541445226", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -48,8 +48,8 @@ public class check_ExtensionPointDeclaration_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink objectType$NJyf = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
-    /*package*/ static final SReferenceLink descriptor$ZkDR = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink objectType$41_h = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x6f6f7f3b7a17bd0bL, "objectType");
+    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
   }
 
   private static final class CONCEPTS {

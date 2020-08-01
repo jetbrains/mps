@@ -110,7 +110,7 @@ public class LightPattern_Child_Test extends TestCase {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
-      n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.NullLiteral$q4);
+      n0.forChild(LINKS.expression$zDGg).init(CONCEPTS.NullLiteral$q4);
       setMatcher(n0.getMatcher());
       return super.match(nodeToMatch);
     }
@@ -119,7 +119,7 @@ public class LightPattern_Child_Test extends TestCase {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
-      n0.forChild(LINKS.expression$EsbK).initNull();
+      n0.forChild(LINKS.expression$zDGg).initNull();
       setMatcher(n0.getMatcher());
       return super.match(nodeToMatch);
     }
@@ -136,14 +136,14 @@ public class LightPattern_Child_Test extends TestCase {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
-      n0.forChild(LINKS.expression$EsbK).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
+      n0.forChild(LINKS.expression$zDGg).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
       setMatcher(n0.getMatcher());
       return super.match(nodeToMatch);
     }
     @Nullable
     public static SNode getVar(SNode rootNode) {
       SNode container = SNodeOperations.as(rootNode, CONCEPTS.ReturnStatement$SF);
-      return AbstractGeneratedPattern.getNullableHead(container.getChildren(LINKS.expression$EsbK));
+      return AbstractGeneratedPattern.getNullableHead(container.getChildren(LINKS.expression$zDGg));
     }
   }
   private static SNode _quotation_createNode_55eq59_a0b0a0() {
@@ -226,6 +226,6 @@ public class LightPattern_Child_Test extends TestCase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 }

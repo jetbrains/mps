@@ -50,7 +50,7 @@ public class MigrateDeclarations extends MigrationScriptBase {
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode oldNode) {
-        SNode newNode = _quotation_createNode_9wc3oy_a0a0a0a1a5(SLinkOperations.getChildren(oldNode, LINKS.member$b5zN), SPropertyOperations.getString(oldNode, PROPS.name$tAp1));
+        SNode newNode = _quotation_createNode_9wc3oy_a0a0a0a1a5(SLinkOperations.getChildren(oldNode, LINKS.member$nGlH), SPropertyOperations.getString(oldNode, PROPS.name$lA7v));
         ((jetbrains.mps.smodel.SNode) newNode).setId(((jetbrains.mps.smodel.SNode) oldNode).getNodeId());
         SNodeOperations.replaceWithAnother(oldNode, newNode);
       }
@@ -80,10 +80,10 @@ public class MigrateDeclarations extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$b5zN = MetaAdapterFactory.getContainmentLink(0x1d2b03a474044a1eL, 0x939c9c1c316327e7L, 0x6aff2c1049316cdaL, 0x6aff2c104931bb27L, "member");
+    /*package*/ static final SContainmentLink member$nGlH = MetaAdapterFactory.getContainmentLink(0x1d2b03a474044a1eL, 0x939c9c1c316327e7L, 0x6aff2c1049316cdaL, 0x6aff2c104931bb27L, "member");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

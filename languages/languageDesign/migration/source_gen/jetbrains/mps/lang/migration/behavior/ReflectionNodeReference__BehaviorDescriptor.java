@@ -38,12 +38,12 @@ public final class ReflectionNodeReference__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static SNodeReference getNodeReference_id4uVwhQyQbdz(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.modelRef$NCR2)) || isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.nodeId$ND71))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.modelRef$MDY)) || isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.nodeId$Upv))) {
       return null;
     }
     SNodePointer result = null;
     try {
-      result = new SNodePointer(SPropertyOperations.getString(__thisNode__, PROPS.modelRef$NCR2), SPropertyOperations.getString(__thisNode__, PROPS.nodeId$ND71));
+      result = new SNodePointer(SPropertyOperations.getString(__thisNode__, PROPS.modelRef$MDY), SPropertyOperations.getString(__thisNode__, PROPS.nodeId$Upv));
     } catch (IllegalArgumentException ignored) {
     }
     return result;
@@ -56,7 +56,7 @@ public final class ReflectionNodeReference__BehaviorDescriptor extends BaseBHDes
     return myReference != null && myReference.equals(reference.getTargetNodeReference());
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.nodeName$KMmO);
+    return SPropertyOperations.getString(__thisNode__, PROPS.nodeName$Cp3c);
   }
 
   /*package*/ ReflectionNodeReference__BehaviorDescriptor() {
@@ -121,8 +121,8 @@ public final class ReflectionNodeReference__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeId$ND71 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f44fL, "nodeId");
-    /*package*/ static final SProperty modelRef$NCR2 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f443L, "modelRef");
-    /*package*/ static final SProperty nodeName$KMmO = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
+    /*package*/ static final SProperty nodeId$Upv = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f44fL, "nodeId");
+    /*package*/ static final SProperty modelRef$MDY = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f443L, "modelRef");
+    /*package*/ static final SProperty nodeName$Cp3c = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
   }
 }

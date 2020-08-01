@@ -21,7 +21,7 @@ public class typeof_WhenConcreteVariableReference_InferenceRule extends Abstract
     {
       SNode _nodeToCheck_1029348928467 = nodeToCheck;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762759668", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762761609", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(nodeToCheck, LINKS.whenConcreteVar$7HuF), "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762764972", false), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762761609", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(nodeToCheck, LINKS.whenConcreteVar$J1QP), "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762764972", false), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -35,7 +35,7 @@ public class typeof_WhenConcreteVariableReference_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink whenConcreteVar$7HuF = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
+    /*package*/ static final SReferenceLink whenConcreteVar$J1QP = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
   }
 
   private static final class CONCEPTS {

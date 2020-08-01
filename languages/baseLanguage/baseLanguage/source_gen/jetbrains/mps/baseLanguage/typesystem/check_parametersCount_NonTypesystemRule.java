@@ -27,12 +27,12 @@ public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesyst
   public check_parametersCount_NonTypesystemRule() {
   }
   public void applyRule(final SNode iMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode baseMethodDeclaration = SLinkOperations.getTarget(iMethodCall, LINKS.baseMethodDeclaration$$A7i);
+    SNode baseMethodDeclaration = SLinkOperations.getTarget(iMethodCall, LINKS.baseMethodDeclaration$ItxI);
     boolean isParamNumOk;
     if (baseMethodDeclaration != null) {
-      List<SNode> parameterDeclarations = SLinkOperations.getChildren(baseMethodDeclaration, LINKS.parameter$WIkZ);
-      List<SNode> actualArguments = SLinkOperations.getChildren(iMethodCall, LINKS.actualArgument$$A7L);
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).last(), LINKS.type$pLrO), CONCEPTS.VariableArityType$jT)) {
+      List<SNode> parameterDeclarations = SLinkOperations.getChildren(baseMethodDeclaration, LINKS.parameter$qsax);
+      List<SNode> actualArguments = SLinkOperations.getChildren(iMethodCall, LINKS.actualArgument$ItKJ);
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).last(), LINKS.type$uWuc), CONCEPTS.VariableArityType$jT)) {
         isParamNumOk = ListSequence.fromList(parameterDeclarations).count() - 1 <= ListSequence.fromList(actualArguments).count();
       } else {
         isParamNumOk = ListSequence.fromList(parameterDeclarations).count() == ListSequence.fromList(actualArguments).count();
@@ -56,10 +56,10 @@ public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesyst
         boolean isParamTypesOk = true;
         for (int i = 0; i < ListSequence.fromList(parameterDeclarations).count(); i++) {
           SNode argType = SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(actualArguments).getElement(i)), CONCEPTS.Type$IG);
-          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO), CONCEPTS.VariableArityType$jT)) {
-            SNode typeToMatch = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO), CONCEPTS.VariableArityType$jT), LINKS.componentType$knmw);
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$uWuc), CONCEPTS.VariableArityType$jT)) {
+            SNode typeToMatch = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$uWuc), CONCEPTS.VariableArityType$jT), LINKS.componentType$RjTw);
             if (SNodeOperations.isInstanceOf(argType, CONCEPTS.ArrayType$Yv)) {
-              isParamTypesOk = isParamTypesOk && (SNodeOperations.getConcept(ListSequence.fromList(actualArguments).getElement(i)).isAbstract() || ParameterNameUtil.isArgumentSubtypeOfParameter(SLinkOperations.getTarget(SNodeOperations.as(argType, CONCEPTS.ArrayType$Yv), LINKS.componentType$10w), typeToMatch));
+              isParamTypesOk = isParamTypesOk && (SNodeOperations.getConcept(ListSequence.fromList(actualArguments).getElement(i)).isAbstract() || ParameterNameUtil.isArgumentSubtypeOfParameter(SLinkOperations.getTarget(SNodeOperations.as(argType, CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw), typeToMatch));
 
             } else {
               for (int j = i; j < ListSequence.fromList(actualArguments).count(); j++) {
@@ -69,7 +69,7 @@ public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesyst
             }
             break;
           }
-          isParamTypesOk = isParamTypesOk && (SNodeOperations.getConcept(ListSequence.fromList(actualArguments).getElement(i)).isAbstract() || ParameterNameUtil.isArgumentSubtypeOfParameter(SNodeOperations.as(argType, CONCEPTS.Type$IG), SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO)));
+          isParamTypesOk = isParamTypesOk && (SNodeOperations.getConcept(ListSequence.fromList(actualArguments).getElement(i)).isAbstract() || ParameterNameUtil.isArgumentSubtypeOfParameter(SNodeOperations.as(argType, CONCEPTS.Type$IG), SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$uWuc)));
 
 
         }
@@ -103,12 +103,12 @@ public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink componentType$knmw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
-    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink componentType$RjTw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
+    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {

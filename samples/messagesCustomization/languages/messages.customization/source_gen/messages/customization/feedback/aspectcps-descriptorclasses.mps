@@ -2615,7 +2615,7 @@
                 <ref role="37wK5l" to="j809:~FailingPropertyConstraintProblemId.&lt;init&gt;(org.jetbrains.mps.openapi.language.SProperty)" resolve="FailingPropertyConstraintProblemId" />
                 <node concept="1BaE9c" id="eH" role="37wK5m">
                   <property role="1ouuDV" value="PROPS" />
-                  <property role="1BaxDp" value="prop$PGpb" />
+                  <property role="1BaxDp" value="prop$wcl" />
                   <node concept="2YIFZM" id="eJ" role="1Bazha">
                     <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getProperty(long,long,long,long,java.lang.String)" resolve="getProperty" />
                     <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
@@ -2818,7 +2818,7 @@
                 <ref role="37wK5l" to="j809:~RefOutOfScopeProblemId.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink)" resolve="RefOutOfScopeProblemId" />
                 <node concept="1BaE9c" id="fU" role="37wK5m">
                   <property role="1ouuDV" value="LINKS" />
-                  <property role="1BaxDp" value="link$1Bcs" />
+                  <property role="1BaxDp" value="link$LZ1$" />
                   <node concept="2YIFZM" id="fW" role="1Bazha">
                     <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                     <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />

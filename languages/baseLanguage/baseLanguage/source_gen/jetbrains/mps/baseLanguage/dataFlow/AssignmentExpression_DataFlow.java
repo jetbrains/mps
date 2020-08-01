@@ -15,27 +15,27 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class AssignmentExpression_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$J0E2));
-    SNode variable = SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$J0D4);
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$LkmY));
+    SNode variable = SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$LjSW);
     if (SNodeOperations.isInstanceOf(variable, CONCEPTS.VariableReference$sQ)) {
-      if (!((SNodeOperations.isInstanceOf(variable, CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variable, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf))) || (boolean) VariableReference__BehaviorDescriptor.isVariableDefinedInThisMethod_idhPiSGi6.invoke(SNodeOperations.cast(variable, CONCEPTS.VariableReference$sQ))) {
-        _context.getBuilder().emitWrite(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$J0E2), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1225456606795");
+      if (!((SNodeOperations.isInstanceOf(variable, CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variable, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf))) || (boolean) VariableReference__BehaviorDescriptor.isVariableDefinedInThisMethod_idhPiSGi6.invoke(SNodeOperations.cast(variable, CONCEPTS.VariableReference$sQ))) {
+        _context.getBuilder().emitWrite(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$LjSW), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$LkmY), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1225456606795");
       }
     } else {
-      if (SNodeOperations.isInstanceOf(variable, CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variable, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.FieldReferenceOperation$N8)) {
-        _context.getBuilder().emitWrite(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(variable, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$mLBy), SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$J0E2), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/2359846675286592328");
+      if (SNodeOperations.isInstanceOf(variable, CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(variable, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8)) {
+        _context.getBuilder().emitWrite(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(variable, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$229u), SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$LkmY), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/2359846675286592328");
       } else {
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$J0D4));
+        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$LjSW));
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rValue$J0E2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink lValue$J0D4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink fieldDeclaration$mLBy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 
   private static final class CONCEPTS {

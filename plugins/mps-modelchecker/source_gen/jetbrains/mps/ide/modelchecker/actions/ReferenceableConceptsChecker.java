@@ -61,16 +61,16 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
 
     if (SModuleOperations.isAspect(model, "structure")) {
       for (SNode concept : ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.AbstractConceptDeclaration$UN))) {
-        for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$lL6$)).where(new IWhereFilter<SNode>() {
+        for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.linkDeclaration$yMbs)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b8L);
+            return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b8L);
           }
         })) {
-          SNode target = SLinkOperations.getTarget(ref, LINKS.target$egp8);
+          SNode target = SLinkOperations.getTarget(ref, LINKS.target$TWaS);
           if (SNodeOperations.isInstanceOf(target, CONCEPTS.ConceptDeclaration$qU)) {
             SNode decl = SNodeOperations.cast(target, CONCEPTS.ConceptDeclaration$qU);
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(decl, PROPS.staticScope$SzuZ), 0x4b014033eedc8becL)) {
-              ListSequence.fromList(results).addElement(new NodeReportItemBase(MessageStatus.ERROR, SNodeOperations.getPointer(ref), "Reference to a non-referenceable concept found: " + SPropertyOperations.getString(target, PROPS.name$tAp1)) {
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(decl, PROPS.staticScope$pc0x), 0x4b014033eedc8becL)) {
+              ListSequence.fromList(results).addElement(new NodeReportItemBase(MessageStatus.ERROR, SNodeOperations.getPointer(ref), "Reference to a non-referenceable concept found: " + SPropertyOperations.getString(target, PROPS.name$lA7v)) {
                 @Override
                 public IssueKindReportItem.ItemKind getIssueKind() {
                   return ILLEGAL_REFERENCES.deriveItemKind("reference to a non-referenceable concept");
@@ -79,7 +79,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
             }
           }
         }
-        if (SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$qU) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(concept, CONCEPTS.ConceptDeclaration$qU), PROPS.staticScope$SzuZ), 0x4b014033eedc8becL)) {
+        if (SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$qU) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(concept, CONCEPTS.ConceptDeclaration$qU), PROPS.staticScope$pc0x), 0x4b014033eedc8becL)) {
           if (((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("isSubconceptOf", CONCEPTS.AbstractConceptDeclaration$UN, "73yVtVlWOga"), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468")))) {
             ListSequence.fromList(results).addElement(new NodeReportItemBase(MessageStatus.WARNING, SNodeOperations.getPointer(concept), "INamedConcept inheritors are usually referenceable") {
               @Override
@@ -174,8 +174,8 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
   }
 
   private static final class CONCEPTS {
@@ -186,8 +186,8 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty staticScope$SzuZ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope");
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty staticScope$pc0x = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 }

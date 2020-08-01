@@ -149,7 +149,7 @@
       <node id="23293207022912758" at="57,348,58,221" concept="1" />
       <node id="23293207022857626" at="58,221,59,348" concept="1" />
       <node id="23293207022857579" at="66,0,67,0" concept="7" trace="NodeContainer$3D" />
-      <node id="23293207022857579" at="70,0,71,0" concept="7" trace="node$_a4Q" />
+      <node id="23293207022857579" at="70,0,71,0" concept="7" trace="node$ZSma" />
       <node id="23293207022857579" at="24,0,26,0" concept="7" trace="ourParamCache" />
       <node id="23293207022857579" at="27,0,30,0" concept="0" trace="StyleAttributeNonInheritanceTest_Test#()V" />
       <node id="23293207022857579" at="38,0,41,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -203,7 +203,7 @@
       <node id="23293207023035536" at="57,223,58,220" concept="1" />
       <node id="23293207023053521" at="58,220,59,224" concept="1" />
       <node id="23293207022980697" at="66,0,67,0" concept="7" trace="NodeContainer$3D" />
-      <node id="23293207022980697" at="70,0,71,0" concept="7" trace="node$_a4Q" />
+      <node id="23293207022980697" at="70,0,71,0" concept="7" trace="node$ZSma" />
       <node id="23293207022980697" at="24,0,26,0" concept="7" trace="ourParamCache" />
       <node id="23293207022980697" at="27,0,30,0" concept="0" trace="StyleAttributePriorityTest_Test#()V" />
       <node id="23293207022980697" at="38,0,41,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -257,7 +257,7 @@
       <node id="23293207023100731" at="57,223,58,216" concept="1" />
       <node id="23293207023100742" at="58,216,59,220" concept="1" />
       <node id="23293207023100634" at="66,0,67,0" concept="7" trace="NodeContainer$3D" />
-      <node id="23293207023100634" at="70,0,71,0" concept="7" trace="node$_a4Q" />
+      <node id="23293207023100634" at="70,0,71,0" concept="7" trace="node$ZSma" />
       <node id="23293207023100634" at="24,0,26,0" concept="7" trace="ourParamCache" />
       <node id="23293207023100634" at="27,0,30,0" concept="0" trace="StyleAttributeUnapplyTest_Test#()V" />
       <node id="23293207023100634" at="38,0,41,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -311,7 +311,7 @@
       <node id="23293207023146586" at="57,224,58,219" concept="1" />
       <node id="23293207023146597" at="58,219,59,223" concept="1" />
       <node id="23293207023146489" at="66,0,67,0" concept="7" trace="NodeContainer$3D" />
-      <node id="23293207023146489" at="70,0,71,0" concept="7" trace="node$_a4Q" />
+      <node id="23293207023146489" at="70,0,71,0" concept="7" trace="node$ZSma" />
       <node id="23293207023146489" at="24,0,26,0" concept="7" trace="ourParamCache" />
       <node id="23293207023146489" at="27,0,30,0" concept="0" trace="StyleAttributeSetHiddenThenUnhideTest_Test#()V" />
       <node id="23293207023146489" at="38,0,41,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -364,7 +364,7 @@
       <node id="23293207023320180" at="56,218,57,225" concept="1" />
       <node id="23293207023326471" at="57,225,58,214" concept="1" />
       <node id="23293207023291586" at="65,0,66,0" concept="7" trace="NodeContainer$3D" />
-      <node id="23293207023291586" at="69,0,70,0" concept="7" trace="node$_a4Q" />
+      <node id="23293207023291586" at="69,0,70,0" concept="7" trace="node$ZSma" />
       <node id="23293207023291586" at="24,0,26,0" concept="7" trace="ourParamCache" />
       <node id="23293207023291586" at="27,0,30,0" concept="0" trace="StyleAttributeThreeLayerTest_Test#()V" />
       <node id="23293207023291586" at="38,0,41,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -641,7 +641,7 @@
       <node id="4078300376848910752" at="52,213,53,216" concept="1" />
       <node id="4078300376848968352" at="53,216,54,220" concept="1" />
       <node id="6609104295326585615" at="61,0,62,0" concept="7" trace="NodeContainer$3D" />
-      <node id="6609104295326585615" at="65,0,66,0" concept="7" trace="node$_a4Q" />
+      <node id="6609104295326585615" at="65,0,66,0" concept="7" trace="node$ZSma" />
       <node id="6609104295326585615" at="24,0,26,0" concept="7" trace="ourParamCache" />
       <node id="6609104295326585615" at="27,0,30,0" concept="0" trace="StyleAttributeInheritanceTest_Test#()V" />
       <node id="6609104295326585615" at="38,0,41,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />

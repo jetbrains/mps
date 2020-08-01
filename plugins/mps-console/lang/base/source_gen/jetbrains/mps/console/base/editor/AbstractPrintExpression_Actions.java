@@ -23,7 +23,7 @@ public class AbstractPrintExpression_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.object$gmkA));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.object$UNYq));
       }
 
     };
@@ -71,6 +71,6 @@ public class AbstractPrintExpression_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink object$gmkA = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
+    /*package*/ static final SContainmentLink object$UNYq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
   }
 }

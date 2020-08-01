@@ -28,32 +28,32 @@ public class EditorParenthesisUtil {
     if (binOp == null) {
       return;
     }
-    SNode sidemost = findRightmostOrLeftmostLeafExpression(SLinkOperations.getTarget(expr, LINKS.expression$4_F0), toRight);
-    SNode leaf = findRightmostOrLeftmostLeafExpression((toRight ? SLinkOperations.getTarget(binOp, LINKS.rightExpression$rxBl) : SLinkOperations.getTarget(binOp, LINKS.leftExpression$rxLZ)), !(toRight));
-    SNode backsideSubtree = (toRight ? SLinkOperations.getTarget(binOp, LINKS.leftExpression$rxLZ) : SLinkOperations.getTarget(binOp, LINKS.rightExpression$rxBl));
+    SNode sidemost = findRightmostOrLeftmostLeafExpression(SLinkOperations.getTarget(expr, LINKS.expression$efP0), toRight);
+    SNode leaf = findRightmostOrLeftmostLeafExpression((toRight ? SLinkOperations.getTarget(binOp, LINKS.rightExpression$li3b) : SLinkOperations.getTarget(binOp, LINKS.leftExpression$lndx)), !(toRight));
+    SNode backsideSubtree = (toRight ? SLinkOperations.getTarget(binOp, LINKS.leftExpression$lndx) : SLinkOperations.getTarget(binOp, LINKS.rightExpression$li3b));
     SNodeOperations.deleteNode(backsideSubtree);
     SNodeOperations.replaceWithAnother(binOp, backsideSubtree);
     SNodeOperations.replaceWithAnother(sidemost, binOp);
     if (toRight) {
-      SLinkOperations.setTarget(binOp, LINKS.leftExpression$rxLZ, sidemost);
+      SLinkOperations.setTarget(binOp, LINKS.leftExpression$lndx, sidemost);
     } else {
-      SLinkOperations.setTarget(binOp, LINKS.rightExpression$rxBl, sidemost);
+      SLinkOperations.setTarget(binOp, LINKS.rightExpression$li3b, sidemost);
     }
-    SNode sideSubtree = (toRight ? SLinkOperations.getTarget(binOp, LINKS.rightExpression$rxBl) : SLinkOperations.getTarget(binOp, LINKS.leftExpression$rxLZ));
+    SNode sideSubtree = (toRight ? SLinkOperations.getTarget(binOp, LINKS.rightExpression$li3b) : SLinkOperations.getTarget(binOp, LINKS.leftExpression$lndx));
     SNodeOperations.deleteNode(leaf);
     if (toRight) {
-      SLinkOperations.setTarget(binOp, LINKS.rightExpression$rxBl, leaf);
+      SLinkOperations.setTarget(binOp, LINKS.rightExpression$li3b, leaf);
     } else {
-      SLinkOperations.setTarget(binOp, LINKS.leftExpression$rxLZ, leaf);
+      SLinkOperations.setTarget(binOp, LINKS.leftExpression$lndx, leaf);
     }
     if (sideSubtree != leaf) {
       SNode leafParentOperation = SNodeOperations.cast(sideSubtree, CONCEPTS.BinaryOperation$vf);
       SNode exprParent = SNodeOperations.getParent(expr);
       SNodeOperations.replaceWithAnother(expr, sideSubtree);
       if (toRight) {
-        SLinkOperations.setTarget(leafParentOperation, LINKS.leftExpression$rxLZ, expr);
+        SLinkOperations.setTarget(leafParentOperation, LINKS.leftExpression$lndx, expr);
       } else {
-        SLinkOperations.setTarget(leafParentOperation, LINKS.rightExpression$rxBl, expr);
+        SLinkOperations.setTarget(leafParentOperation, LINKS.rightExpression$li3b, expr);
       }
       if (SNodeOperations.isInstanceOf(exprParent, CONCEPTS.BinaryOperation$vf)) {
         ParenthesisUtil.checkOperationWRTPriority(SNodeOperations.cast(exprParent, CONCEPTS.BinaryOperation$vf));
@@ -74,19 +74,19 @@ public class EditorParenthesisUtil {
     }
   }
   public static void moveParenthesisToTheLeftOrRightInside(SNode expr, EditorContext context, boolean toRight) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(expr, LINKS.expression$4_F0), CONCEPTS.BinaryOperation$vf))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(expr, LINKS.expression$efP0), CONCEPTS.BinaryOperation$vf))) {
       return;
     }
-    SNode sidemost = findRightmostOrLeftmostLeafExpression(SLinkOperations.getTarget(expr, LINKS.expression$4_F0), !(toRight));
+    SNode sidemost = findRightmostOrLeftmostLeafExpression(SLinkOperations.getTarget(expr, LINKS.expression$efP0), !(toRight));
     SNode binOp = SNodeOperations.cast(SNodeOperations.getParent(sidemost), CONCEPTS.BinaryOperation$vf);
-    SNode sideExpr = (toRight ? SLinkOperations.getTarget(binOp, LINKS.rightExpression$rxBl) : SLinkOperations.getTarget(binOp, LINKS.leftExpression$rxLZ));
+    SNode sideExpr = (toRight ? SLinkOperations.getTarget(binOp, LINKS.rightExpression$li3b) : SLinkOperations.getTarget(binOp, LINKS.leftExpression$lndx));
     SNodeOperations.deleteNode(sideExpr);
     SNodeOperations.replaceWithAnother(binOp, sideExpr);
     SNodeOperations.replaceWithAnother(expr, binOp);
     if (toRight) {
-      SLinkOperations.setTarget(binOp, LINKS.rightExpression$rxBl, expr);
+      SLinkOperations.setTarget(binOp, LINKS.rightExpression$li3b, expr);
     } else {
-      SLinkOperations.setTarget(binOp, LINKS.leftExpression$rxLZ, expr);
+      SLinkOperations.setTarget(binOp, LINKS.leftExpression$lndx, expr);
     }
     ParenthesisUtil.checkOperationWRTPriority(binOp);
     selectNode(context, expr, !(toRight));
@@ -112,8 +112,8 @@ public class EditorParenthesisUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 }

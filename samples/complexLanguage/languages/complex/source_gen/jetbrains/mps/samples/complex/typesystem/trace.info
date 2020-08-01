@@ -33,7 +33,7 @@
       <node id="1196268989257" at="39,63,40,30" concept="4" />
       <node id="1196268989257" at="40,30,41,234" concept="2" />
       <node id="1196268989257" at="41,234,42,24" concept="5" />
-      <node id="1196267612159" at="46,0,47,0" concept="6" trace="complexExpression$MUES" />
+      <node id="1196267612159" at="46,0,47,0" concept="6" trace="complexExpression$EqL8" />
       <node id="1196267612159" at="50,0,51,0" concept="6" trace="SingleComplexExpression$dj" />
       <node id="1196267612159" at="20,0,22,0" concept="1" trace="typeof_ComplexExpression_InferenceRule#()V" />
       <node id="1196267612159" at="29,0,32,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -99,7 +99,7 @@
       <node id="1196422212476" at="50,63,51,30" concept="4" />
       <node id="1196422212476" at="51,30,52,230" concept="2" />
       <node id="1196422212476" at="52,230,53,24" concept="5" />
-      <node id="1196422182398" at="57,0,58,0" concept="6" trace="degree$7LSs" />
+      <node id="1196422182398" at="57,0,58,0" concept="6" trace="degree$Lal$" />
       <node id="1196422182398" at="61,0,62,0" concept="6" trace="DegreeComplexExpression$wH" />
       <node id="1196422182398" at="20,0,22,0" concept="1" trace="typeof_DegreeComplexExpression_InferenceRule#()V" />
       <node id="1196422182398" at="34,0,37,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -210,7 +210,7 @@
       <node id="1196434498632" at="36,30,37,244" concept="2" />
       <node id="1196434498632" at="37,244,38,479" concept="2" />
       <node id="1196434498632" at="38,479,39,24" concept="5" />
-      <node id="1196434481781" at="43,0,44,0" concept="6" trace="descriptor$ZkDR" />
+      <node id="1196434481781" at="43,0,44,0" concept="6" trace="descriptor$F0hD" />
       <node id="1196434481781" at="47,0,48,0" concept="6" trace="ComplexType$CD" />
       <node id="1196434481781" at="20,0,22,0" concept="1" trace="Complex_is_Numeric_SubtypingRule#()V" />
       <node id="1196434481781" at="22,0,25,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />

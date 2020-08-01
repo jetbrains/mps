@@ -51,10 +51,10 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
         }
       };
       for (SNode node : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$1$, false))) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ)).isNotEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)).isNotEmpty()) {
           AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$E1), createReviewMigration_old_5d7h7i_a0a0a0a0a0a6());
         } else {
-          SNode replacement = createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(NodePointerMigrations.nodeIdentityForNamedNode(SLinkOperations.getTarget(node, LINKS.referentNode$RAe0)));
+          SNode replacement = createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(NodePointerMigrations.nodeIdentityForNamedNode(SLinkOperations.getTarget(node, LINKS.referentNode$VwM0)));
           if (!(NodePointerMigrations.isSafeToReplace(node))) {
             replacement = createSemanticDowncastExpression_5d7h7i_a0a0b0a0a0a0a6(replacement);
           }
@@ -86,18 +86,18 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
 
   private static SNode createReviewMigration_old_5d7h7i_a0a0a0a0a0a6() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ReviewMigration_old$E1);
-    n0.setProperty(PROPS.readableId$WLXq, "MigrateOldNodePointerExpressions");
-    n0.setProperty(PROPS.reasonShort$7yZv, "Couldn't migrate node with attributes");
+    n0.setProperty(PROPS.readableId$scJA, "MigrateOldNodePointerExpressions");
+    n0.setProperty(PROPS.reasonShort$DWK1, "Couldn't migrate node with attributes");
     return n0.getResult();
   }
   private static SNode createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
-    n0.forChild(LINKS.ref$Xkjz).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+    n0.forChild(LINKS.ref$GPtX).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
     return n0.getResult();
   }
   private static SNode createSemanticDowncastExpression_5d7h7i_a0a0b0a0a0a0a6(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SemanticDowncastExpression$us);
-    n0.forChild(LINKS.leftExpression$flIo).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.leftExpression$rxtC).initNode(p0, CONCEPTS.Expression$TP, true);
     return n0.getResult();
   }
 
@@ -111,14 +111,14 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SReferenceLink referentNode$RAe0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x195fd0576ac9bb4aL, "referentNode");
-    /*package*/ static final SContainmentLink ref$Xkjz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
-    /*package*/ static final SContainmentLink leftExpression$flIo = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, 0x10aaf6f6e81L, "leftExpression");
+    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SReferenceLink referentNode$VwM0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x195fd0576ac9bb4aL, "referentNode");
+    /*package*/ static final SContainmentLink ref$GPtX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
+    /*package*/ static final SContainmentLink leftExpression$rxtC = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, 0x10aaf6f6e81L, "leftExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty readableId$WLXq = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e9f6eaL, "readableId");
-    /*package*/ static final SProperty reasonShort$7yZv = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
+    /*package*/ static final SProperty readableId$scJA = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e9f6eaL, "readableId");
+    /*package*/ static final SProperty reasonShort$DWK1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
   }
 }

@@ -21,8 +21,8 @@ public class AddMissingParensToNotExpression_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode parens = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$vE, null);
-    SLinkOperations.setTarget(parens, LINKS.expression$4_F0, SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.NotExpression$oq), LINKS.expression$bUD_));
-    SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.NotExpression$oq), LINKS.expression$bUD_, parens);
+    SLinkOperations.setTarget(parens, LINKS.expression$efP0, SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.NotExpression$oq), LINKS.expression$Lq8V));
+    SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.NotExpression$oq), LINKS.expression$Lq8V, parens);
   }
 
   private static final class CONCEPTS {
@@ -31,7 +31,7 @@ public class AddMissingParensToNotExpression_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$4_F0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink expression$bUD_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
   }
 }

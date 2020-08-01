@@ -11,14 +11,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SequenceCreator_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$DGPV) != null)) {
-      if ((SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$DGPV) != null)) {
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$DGPV));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$cI7_) != null)) {
+      if ((SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$cI7_) != null)) {
+        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$cI7_));
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$DGPV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer");
+    /*package*/ static final SContainmentLink initializer$cI7_ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer");
   }
 }

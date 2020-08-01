@@ -72,7 +72,7 @@ public class add_dependencies extends TransformationMenuBase {
   public class TMP_Group_f5pfyb_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.after$Gju$)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.after$trNs)).isEmpty();
     }
 
     @NotNull
@@ -128,7 +128,7 @@ public class add_dependencies extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.after$Gju$)).addElement(SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfSubTaskDependency$kZ));
+          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.after$trNs)).addElement(SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfSubTaskDependency$kZ));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -154,7 +154,7 @@ public class add_dependencies extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink after$Gju$ = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after");
+    /*package*/ static final SContainmentLink after$trNs = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after");
   }
 
   private static final class CONCEPTS {

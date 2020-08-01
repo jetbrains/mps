@@ -59,16 +59,16 @@ public class BuildSimpleName_text extends KeyMapImpl {
       if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BuildStringPart$vo))) {
         return false;
       }
-      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$2p89));
+      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$aaWn));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       int index = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
 
-      String currText = SPropertyOperations.getString(node, PROPS.text$2p89);
+      String currText = SPropertyOperations.getString(node, PROPS.text$aaWn);
       if (index < currText.length() && index > 0) {
         SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildTextStringPart$xk);
-        SPropertyOperations.assign(newText, PROPS.text$2p89, currText.substring(index));
-        SPropertyOperations.assign(node, PROPS.text$2p89, currText.substring(0, index));
+        SPropertyOperations.assign(newText, PROPS.text$aaWn, currText.substring(index));
+        SPropertyOperations.assign(node, PROPS.text$aaWn, currText.substring(0, index));
         SNodeOperations.insertNextSiblingChild(node, newText);
       }
       SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildVarRefStringPart$wm);
@@ -94,6 +94,6 @@ public class BuildSimpleName_text extends KeyMapImpl {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$2p89 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 }

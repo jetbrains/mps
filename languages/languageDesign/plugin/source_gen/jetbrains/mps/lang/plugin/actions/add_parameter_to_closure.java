@@ -17,18 +17,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class add_parameter_to_closure {
   public static class NodeFactory_485694842828664421 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNode disposeTabClosure = SLinkOperations.getTarget(newNode, LINKS.disposeTabClosure$waev);
+      SNode disposeTabClosure = SLinkOperations.getTarget(newNode, LINKS.disposeTabClosure$$X11);
       if ((disposeTabClosure == null)) {
-        disposeTabClosure = SNodeFactoryOperations.setNewChild(newNode, LINKS.disposeTabClosure$waev, CONCEPTS.ClosureLiteral$zJ);
+        disposeTabClosure = SNodeFactoryOperations.setNewChild(newNode, LINKS.disposeTabClosure$$X11, CONCEPTS.ClosureLiteral$zJ);
       }
-      SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(disposeTabClosure, CONCEPTS.ClosureLiteral$zJ), LINKS.parameter$WRt7, CONCEPTS.SmartDisposeClosureParameterDeclaration$PR);
-      SPropertyOperations.set(pd, PROPS.name$tAp1, "component");
+      SNode pd = SNodeFactoryOperations.addNewChild(SNodeOperations.cast(disposeTabClosure, CONCEPTS.ClosureLiteral$zJ), LINKS.parameter$uR6p, CONCEPTS.SmartDisposeClosureParameterDeclaration$PR);
+      SPropertyOperations.set(pd, PROPS.name$lA7v, "component");
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink disposeTabClosure$waev = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad13L, "disposeTabClosure");
-    /*package*/ static final SContainmentLink parameter$WRt7 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink disposeTabClosure$$X11 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad13L, "disposeTabClosure");
+    /*package*/ static final SContainmentLink parameter$uR6p = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
   }
 
   private static final class CONCEPTS {
@@ -37,6 +37,6 @@ public class add_parameter_to_closure {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

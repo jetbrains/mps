@@ -54,7 +54,7 @@ public class ParameterUsages_Finder extends GeneratedFinder {
       }
       // 
       for (SNode methodNode : ListSequence.fromList(overridingMethods)) {
-        SNode parameterNode = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(methodNode, CONCEPTS.BaseMethodDeclaration$RR), LINKS.parameter$WIkZ)).getElement(SNodeOperations.getIndexInParent(node));
+        SNode parameterNode = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(methodNode, CONCEPTS.BaseMethodDeclaration$RR), LINKS.parameter$qsax)).getElement(SNodeOperations.getIndexInParent(node));
         for (SNode parameterUsage : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder", parameterNode, scope, monitor.subTask(1)))) {
           callback.onUsageFound(createSingleResult(parameterUsage));
         }
@@ -74,7 +74,7 @@ public class ParameterUsages_Finder extends GeneratedFinder {
     }
     // 
     for (SNode methodNode : ListSequence.fromList(overridingMethods)) {
-      ListSequence.fromList(_results).addElement(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(methodNode, CONCEPTS.BaseMethodDeclaration$RR), LINKS.parameter$WIkZ)).getElement(SNodeOperations.getIndexInParent(node)));
+      ListSequence.fromList(_results).addElement(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(methodNode, CONCEPTS.BaseMethodDeclaration$RR), LINKS.parameter$qsax)).getElement(SNodeOperations.getIndexInParent(node)));
     }
   }
   @Override
@@ -96,6 +96,6 @@ public class ParameterUsages_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }
