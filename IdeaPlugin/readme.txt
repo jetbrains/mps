@@ -107,7 +107,7 @@ How to develop MPS plugin for IntelliJ IDEA
 4. Project structure
     Short introduction into MPS4IDEA plugin project structure
 
-    - There are 3 artifacts configured in this project: mps-common.jar, mps-core-jps-plugin.jar & mps-java-jps-plugin.jar.
+    - There are 5 artifacts configured in this project: mps-common.jar, mps-core-jps-plugin(-j8).jar & mps-java-jps-plugin(-j8).jar.
       These artifacts present inside the project because corresponding .jar files are specified as jps-extensions inside
       corresponding plugin.xml(s) (see <compileServer.plugin> XML tags). In order to let jps correctly load those files
       they all should be created before running new instance of IDEA (see "before" section in corresponding run

@@ -15,28 +15,25 @@
  */
 package jetbrains.mps.idea.java.sourceStubs;
 
-import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
-import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import com.intellij.openapi.util.SystemInfo;
 import jetbrains.mps.idea.core.project.JpsModelRootContributor;
-import jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot;
-import jetbrains.mps.vfs.FileSystem;
 import org.jetbrains.jps.model.module.JpsModule;
-import org.jetbrains.jps.model.module.JpsModuleSourceRoot;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.util.ArrayList;
-import java.util.List;
+public class J8JavaSourceJpsModelRootContributor implements JpsModelRootContributor {
+  private Object myDelegate = null;
 
-public class JavaSourceJpsModelRootContributor implements JpsModelRootContributor {
   @Override
   public Iterable<ModelRoot> getModelRoots(JpsModule module) {
-    List<ModelRoot> modelRoots = new ArrayList<>();
-    for (JpsModuleSourceRoot sourceRoot : module.getSourceRoots()) {
-      String path = sourceRoot.getFile().getPath();
-      JavaSourceStubModelRoot modelRoot = new JavaSourceStubModelRoot();
-      modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(path, FileSystem.getInstance().getFile(path)));
-      modelRoots.add(modelRoot);
+    if (!SystemInfo.isJavaVersionAtLeast(11)) {
+      return null;
     }
-    return modelRoots;
+
+    synchronized (this) {
+      if (myDelegate == null) {
+        myDelegate = new JavaSourceJpsModelRootContributor();
+      }
+    }
+    return ((JavaSourceJpsModelRootContributor) myDelegate).getModelRoots(module);
   }
 }
