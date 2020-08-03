@@ -103,8 +103,8 @@
           <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
         </dependencies>
         <uses />
-        <library jar="../../git4idea/lib/git4idea-rt.jar" />
         <library jar="../../git4idea/lib/git4idea.jar" />
+        <library jar="../../git4idea/lib/git4idea-rt.jar" />
         <library jar="../../git4idea/lib/remote-servers-get.jar" />
         <library jar="../../git4idea/lib/resources_en.jar" />
         <sources jar="." descriptor="jetbrains.mps.git4idea.stubs.msd" />
