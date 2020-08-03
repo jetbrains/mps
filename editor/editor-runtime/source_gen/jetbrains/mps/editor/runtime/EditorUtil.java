@@ -122,15 +122,8 @@ public class EditorUtil {
         });
 
         if (!(isUnderModule.value)) {
-          StringBuffer msg = new StringBuffer();
-          msg.append("The image file is outside of the module directory ");
-          msg.append("(" + moduleDir.value.getPath() + ").");
-          msg.append("\n");
-          msg.append("MPS will copy the file to <module>/icons folder.");
-          msg.append("\n");
-          msg.append("Would you like to proceed?");
-          int copyAnswer = Messages.showYesNoDialog(msg.toString(), "Copy Image", Messages.getQuestionIcon());
-          if (copyAnswer != Messages.YES) {
+          String message = String.format("The image file is outside of the module directory.%nMPS will copy the file to %s/icons folder.%nWould you like to proceed?", moduleDir.value.getPath());
+          if (Messages.showYesNoDialog(button, message, "Copy Image", Messages.getQuestionIcon()) != Messages.YES) {
             return;
           }
 
@@ -139,8 +132,8 @@ public class EditorUtil {
             public void run() {
               IFile copiedFile = moduleDir.value.findChild("icons").findChild(chosenFile.getName());
               if (copiedFile.exists()) {
-                int rewriteAnswer = Messages.showYesNoDialog("File alread exists.\nRewrite?", "Error", Messages.getWarningIcon());
-                if (rewriteAnswer != Messages.YES) {
+                String rewriteMessage = String.format("A file named %s already exists in the target folder.%nDo you want to replace it?", chosenFile.getName());
+                if (Messages.showYesNoDialog(button, rewriteMessage, "Warning", Messages.getWarningIcon()) != Messages.YES) {
                   success.value = false;
                   return;
                 }
