@@ -32742,5 +32742,27 @@
       </node>
     </node>
   </node>
+  <node concept="1lH9Xt" id="7k2oRj$QnSK">
+    <property role="3GE5qa" value="typeSystem" />
+    <property role="TrG5h" value="AbstractFinalClass" />
+    <node concept="1qefOq" id="7k2oRj$QnSN" role="1SKRRt">
+      <node concept="312cEu" id="7k2oRj$QnSL" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <property role="1sVAO0" value="true" />
+        <property role="1EXbeo" value="true" />
+        <node concept="3Tm1VV" id="7k2oRj$QnSM" role="1B3o_S" />
+        <node concept="7CXmI" id="7k2oRj$QnVa" role="lGtFl">
+          <node concept="1TM$A" id="7k2oRj$QnVl" role="7EUXB">
+            <node concept="2PYRI3" id="7k2oRj$QnVm" role="3lydEf">
+              <ref role="39XzEq" to="tpeh:7k2oRj$Jwbl" />
+            </node>
+            <node concept="1DMPye" id="7k2oRj$QnVn" role="1DMPz9">
+              <property role="1DMPyf" value="Error: Illegal combination of modifiers 'final' and 'abstract'" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

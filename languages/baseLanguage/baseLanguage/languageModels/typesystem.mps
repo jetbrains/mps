@@ -73399,7 +73399,7 @@
               <ref role="3cqZAo" node="1muh51ormT0" resolve="method" />
             </node>
             <node concept="3Cnw8n" id="2f5oWa0aetr" role="1urrFz">
-              <ref role="QpYPw" node="2f5oWa05dQV" resolve="RemoveAbstractModifier" />
+              <ref role="QpYPw" node="2f5oWa05dQV" resolve="RemoveAbstractMethodModifier" />
               <node concept="3CnSsL" id="2f5oWa0aetP" role="3Coj4f">
                 <ref role="QkamJ" node="6WSEafdwzGO" resolve="method" />
                 <node concept="37vLTw" id="2f5oWa0aeu2" role="3CoRuB">
@@ -73631,7 +73631,7 @@
     </node>
   </node>
   <node concept="Q5z_Y" id="2f5oWa05dQV">
-    <property role="TrG5h" value="RemoveAbstractModifier" />
+    <property role="TrG5h" value="RemoveAbstractMethodModifier" />
     <node concept="Q6JDH" id="6WSEafdwzGO" role="Q6Id_">
       <property role="TrG5h" value="method" />
       <node concept="3Tqbb2" id="6WSEafdwzGP" role="Q6QK4">
@@ -74146,6 +74146,120 @@
                 </node>
               </node>
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="18kY7G" id="7k2oRj$JqB4">
+    <property role="TrG5h" value="check_ClassConceptAbstractAndFinal" />
+    <property role="3GE5qa" value="classifiers.classifiers" />
+    <node concept="3clFbS" id="7k2oRj$JqB5" role="18ibNy">
+      <node concept="3clFbJ" id="7k2oRj$JsZ$" role="3cqZAp">
+        <node concept="1Wc70l" id="7k2oRj$Juws" role="3clFbw">
+          <node concept="2OqwBi" id="7k2oRj$JuYR" role="3uHU7w">
+            <node concept="1YBJjd" id="7k2oRj$Juxu" role="2Oq$k0">
+              <ref role="1YBMHb" node="7k2oRj$JqB7" resolve="classConcept" />
+            </node>
+            <node concept="3TrcHB" id="7k2oRj$JwaA" role="2OqNvi">
+              <ref role="3TsBF5" to="tpee:fDsVARU" resolve="abstractClass" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="7k2oRj$Jto_" role="3uHU7B">
+            <node concept="1YBJjd" id="7k2oRj$Jt0c" role="2Oq$k0">
+              <ref role="1YBMHb" node="7k2oRj$JqB7" resolve="classConcept" />
+            </node>
+            <node concept="3TrcHB" id="7k2oRj$Ju9e" role="2OqNvi">
+              <ref role="3TsBF5" to="tpee:hLEXba4" resolve="isFinal" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="7k2oRj$JsZA" role="3clFbx">
+          <node concept="2MkqsV" id="7k2oRj$Jwbl" role="3cqZAp">
+            <node concept="3Cnw8n" id="7k2oRj$J$z5" role="1urrFz">
+              <ref role="QpYPw" node="7k2oRj$JwmA" resolve="RemoveFinalClassModifier" />
+            </node>
+            <node concept="3Cnw8n" id="7k2oRj$NeSm" role="1urrFz">
+              <ref role="QpYPw" node="7k2oRj$Nd_q" resolve="RemoveAbstractClassModifier" />
+            </node>
+            <node concept="Xl_RD" id="7k2oRj$JwbJ" role="2MkJ7o">
+              <property role="Xl_RC" value="Illegal combination of modifiers 'final' and 'abstract'" />
+            </node>
+            <node concept="1YBJjd" id="7k2oRj$JwkV" role="1urrMF">
+              <ref role="1YBMHb" node="7k2oRj$JqB7" resolve="classConcept" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="7k2oRj$JqB7" role="1YuTPh">
+      <property role="TrG5h" value="classConcept" />
+      <ref role="1YaFvo" to="tpee:fz12cDA" resolve="ClassConcept" />
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="7k2oRj$JwmA">
+    <property role="3GE5qa" value="classifiers.classifiers" />
+    <property role="TrG5h" value="RemoveFinalClassModifier" />
+    <node concept="Q5ZZ6" id="7k2oRj$JwmB" role="Q6x$H">
+      <node concept="3clFbS" id="7k2oRj$JwmC" role="2VODD2">
+        <node concept="3clFbF" id="7k2oRj$JwN3" role="3cqZAp">
+          <node concept="37vLTI" id="7k2oRj$Jz8S" role="3clFbG">
+            <node concept="3clFbT" id="7k2oRj$JzaN" role="37vLTx" />
+            <node concept="2OqwBi" id="7k2oRj$Jxj4" role="37vLTJ">
+              <node concept="1PxgMI" id="7k2oRj$JwUz" role="2Oq$k0">
+                <property role="1BlNFB" value="true" />
+                <node concept="chp4Y" id="7k2oRj$JwVB" role="3oSUPX">
+                  <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                </node>
+                <node concept="Q6c8r" id="7k2oRj$JwN2" role="1m5AlR" />
+              </node>
+              <node concept="3TrcHB" id="7k2oRj$Jy17" role="2OqNvi">
+                <ref role="3TsBF5" to="tpee:hLEXba4" resolve="isFinal" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="QznSV" id="7k2oRj$Jwpr" role="QzAvj">
+      <node concept="3clFbS" id="7k2oRj$Jwps" role="2VODD2">
+        <node concept="3clFbF" id="7k2oRj$JwuD" role="3cqZAp">
+          <node concept="Xl_RD" id="7k2oRj$JwuC" role="3clFbG">
+            <property role="Xl_RC" value="Remove the 'final' modifier" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="7k2oRj$Nd_q">
+    <property role="3GE5qa" value="classifiers.classifiers" />
+    <property role="TrG5h" value="RemoveAbstractClassModifier" />
+    <node concept="Q5ZZ6" id="7k2oRj$Nd_r" role="Q6x$H">
+      <node concept="3clFbS" id="7k2oRj$Nd_s" role="2VODD2">
+        <node concept="3clFbF" id="7k2oRj$Nd_t" role="3cqZAp">
+          <node concept="37vLTI" id="7k2oRj$Nd_u" role="3clFbG">
+            <node concept="3clFbT" id="7k2oRj$Nd_v" role="37vLTx" />
+            <node concept="2OqwBi" id="7k2oRj$Nd_w" role="37vLTJ">
+              <node concept="1PxgMI" id="7k2oRj$Nd_x" role="2Oq$k0">
+                <property role="1BlNFB" value="true" />
+                <node concept="chp4Y" id="7k2oRj$Nd_y" role="3oSUPX">
+                  <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                </node>
+                <node concept="Q6c8r" id="7k2oRj$Nd_z" role="1m5AlR" />
+              </node>
+              <node concept="3TrcHB" id="7k2oRj$NeIS" role="2OqNvi">
+                <ref role="3TsBF5" to="tpee:fDsVARU" resolve="abstractClass" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="QznSV" id="7k2oRj$Nd__" role="QzAvj">
+      <node concept="3clFbS" id="7k2oRj$Nd_A" role="2VODD2">
+        <node concept="3clFbF" id="7k2oRj$Nd_B" role="3cqZAp">
+          <node concept="Xl_RD" id="7k2oRj$Nd_C" role="3clFbG">
+            <property role="Xl_RC" value="Remove the 'abstract' modifier" />
           </node>
         </node>
       </node>
