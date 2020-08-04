@@ -29,8 +29,8 @@
       <node id="8425555512443914486" at="58,14,59,58" concept="9" />
       <node id="8425555512443914486" at="65,48,66,22" concept="5" />
       <node id="8425555512443914486" at="71,40,72,19" concept="5" />
-      <node id="8425555512443914486" at="76,0,77,0" concept="6" trace="type$uWuc" />
-      <node id="8425555512443914486" at="80,0,81,0" concept="6" trace="UndefinedType$1H" />
+      <node id="8425555512443914486" at="76,0,77,0" concept="6" trace="type$a1UY" />
+      <node id="8425555512443914486" at="80,0,81,0" concept="6" trace="UndefinedType$uv" />
       <node id="8425555512443914486" at="31,0,33,0" concept="0" trace="VarVariableDeclaration__BehaviorDescriptor#()V" />
       <node id="8425555512443914486" at="26,0,29,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8425555512443914486" at="41,49,44,5" concept="2" />

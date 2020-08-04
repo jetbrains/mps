@@ -32,13 +32,13 @@ public class Executor_TabDescriptor extends RelationDescriptor {
     throw new RuntimeException("NOT IMPLEMENTED");
   }
   public SNode getBaseNode(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractRunConfigurationExecutor$YM)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.AbstractRunConfigurationExecutor$YM), LINKS.configuration$O7z0);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractRunConfigurationExecutor$Fp)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.AbstractRunConfigurationExecutor$Fp), LINKS.configuration$CM7P);
     }
     return null;
   }
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.RunConfiguration$UX);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.RunConfiguration$B$);
   }
   public List<SNode> getNodes(SNode node) {
     List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
@@ -54,29 +54,29 @@ public class Executor_TabDescriptor extends RelationDescriptor {
   }
   public SNode getNode(SNode node) {
     final SNode nodeFinal = node;
-    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.AbstractRunConfigurationExecutor$YM)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.configuration$O7z0) == nodeFinal;
+        return SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == nodeFinal;
       }
     });
   }
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.RunConfigurationExecutor$pj);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.RunConfigurationExecutor$5U);
   }
   public SNode createAspect(final SNode node, final SConcept concept) {
     SNode executor = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor"));
-    SLinkOperations.setTarget(executor, LINKS.configuration$O7z0, node);
+    SLinkOperations.setTarget(executor, LINKS.configuration$CM7P, node);
     SModelOperations.addRootNode(SNodeOperations.getModel(node), executor);
     return executor;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractRunConfigurationExecutor$YM = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
-    /*package*/ static final SConcept RunConfiguration$UX = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
-    /*package*/ static final SConcept RunConfigurationExecutor$pj = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor");
+    /*package*/ static final SConcept AbstractRunConfigurationExecutor$Fp = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
+    /*package*/ static final SConcept RunConfiguration$B$ = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
+    /*package*/ static final SConcept RunConfigurationExecutor$5U = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink configuration$O7z0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
+    /*package*/ static final SReferenceLink configuration$CM7P = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
   }
 }

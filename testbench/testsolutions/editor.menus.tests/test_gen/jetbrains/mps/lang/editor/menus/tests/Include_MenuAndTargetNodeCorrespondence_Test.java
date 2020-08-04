@@ -83,17 +83,17 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
 
     private static SNode createSNodeType_sxmjox_a0a0a0c0d9() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SNodeType$gn);
-      rootBuilder1.setReference(LINKS.concept$gpfa, new SNodePointer(facade.createModelReference("r:c6b5a119-ed4d-420e-b7df-fa1b4101c68f(jetbrains.mps.lang.editor.menus.testLanguage.structure)"), facade.createNodeId("2705676212746996052")));
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SNodeType$hR);
+      rootBuilder1.setReference(LINKS.concept$OMgE, new SNodePointer(facade.createModelReference("r:c6b5a119-ed4d-420e-b7df-fa1b4101c68f(jetbrains.mps.lang.editor.menus.testLanguage.structure)"), facade.createNodeId("2705676212746996052")));
       return rootBuilder1.getResult();
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SNodeType$gn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink concept$OMgE = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 }

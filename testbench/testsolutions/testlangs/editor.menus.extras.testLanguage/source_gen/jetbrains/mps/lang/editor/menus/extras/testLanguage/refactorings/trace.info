@@ -37,7 +37,7 @@
       <node id="121597702824488217" at="20,64,21,101" concept="4" />
       <node id="121597702824488217" at="24,51,25,19" concept="4" />
       <node id="121597702824488684" at="26,5,27,17" concept="4" />
-      <node id="121597702824488217" at="31,0,32,0" concept="5" trace="TransformationMenuTestConcept$Xv" />
+      <node id="121597702824488217" at="31,0,32,0" concept="5" trace="TransformationMenuTestConcept$JM" />
       <node id="121597702824488217" at="12,0,14,0" concept="0" trace="InapplicableRefactoring_Target#()V" />
       <node id="121597702824488217" at="14,0,17,0" concept="3" trace="getTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget/TargetType;" />
       <node id="121597702824488217" at="17,0,20,0" concept="3" trace="allowMultipleTargets#()Z" />
@@ -92,7 +92,7 @@
       <node id="6820996345401025746" at="20,64,21,101" concept="4" />
       <node id="6820996345401025746" at="24,51,25,19" concept="4" />
       <node id="6820996345401025746" at="26,5,27,16" concept="4" />
-      <node id="6820996345401025746" at="31,0,32,0" concept="5" trace="TransformationMenuTestConcept$Xv" />
+      <node id="6820996345401025746" at="31,0,32,0" concept="5" trace="TransformationMenuTestConcept$JM" />
       <node id="6820996345401025746" at="12,0,14,0" concept="0" trace="ApplicableRefactoring_Target#()V" />
       <node id="6820996345401025746" at="14,0,17,0" concept="3" trace="getTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget/TargetType;" />
       <node id="6820996345401025746" at="17,0,20,0" concept="3" trace="allowMultipleTargets#()Z" />

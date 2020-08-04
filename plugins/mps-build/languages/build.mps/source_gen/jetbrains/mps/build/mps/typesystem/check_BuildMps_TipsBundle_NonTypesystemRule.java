@@ -23,8 +23,8 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
   public check_BuildMps_TipsBundle_NonTypesystemRule() {
   }
   public void applyRule(final SNode buildMps_TipsBundle, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isNotEmptyString(SPropertyOperations.getString(buildMps_TipsBundle, PROPS.name$lA7v))) {
-      if (!(SPropertyOperations.getString(buildMps_TipsBundle, PROPS.name$lA7v).endsWith(".jar"))) {
+    if (isNotEmptyString(SPropertyOperations.getString(buildMps_TipsBundle, PROPS.name$MnvL))) {
+      if (!(SPropertyOperations.getString(buildMps_TipsBundle, PROPS.name$MnvL).endsWith(".jar"))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(buildMps_TipsBundle, "should end with .jar", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "5730480978702381242", null, errorTarget);
@@ -33,7 +33,7 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
     }
     if (ListSequence.fromList(SNodeOperations.getNodeAncestors(buildMps_TipsBundle, null, false)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Jar$CE);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Jar$bd);
       }
     })) {
       {
@@ -44,7 +44,7 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildMps_TipsPackage$2r;
+    return CONCEPTS.BuildMps_TipsPackage$uN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -57,11 +57,11 @@ public class check_BuildMps_TipsBundle_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_Jar$CE = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
-    /*package*/ static final SConcept BuildMps_TipsPackage$2r = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, "jetbrains.mps.build.mps.structure.BuildMps_TipsPackage");
+    /*package*/ static final SConcept BuildLayout_Jar$bd = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
+    /*package*/ static final SConcept BuildMps_TipsPackage$uN = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, "jetbrains.mps.build.mps.structure.BuildMps_TipsPackage");
   }
 }

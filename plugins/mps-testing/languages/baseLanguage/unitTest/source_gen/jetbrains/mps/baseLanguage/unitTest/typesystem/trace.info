@@ -34,8 +34,8 @@
       <node id="2032731141110265667" at="39,63,40,30" concept="5" />
       <node id="2032731141110265667" at="40,30,41,230" concept="2" />
       <node id="2032731141110265667" at="41,230,42,24" concept="6" />
-      <node id="7080278351417151336" at="46,0,47,0" concept="7" trace="message$FDXV" />
-      <node id="7080278351417151336" at="50,0,51,0" concept="7" trace="Message$SJ" />
+      <node id="7080278351417151336" at="46,0,47,0" concept="7" trace="message$FmaW" />
+      <node id="7080278351417151336" at="50,0,51,0" concept="7" trace="Message$5K" />
       <node id="7080278351417151336" at="20,0,22,0" concept="1" trace="typeof_Message_InferenceRule#()V" />
       <node id="7080278351417151336" at="29,0,32,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7080278351417151336" at="32,0,35,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -88,9 +88,9 @@
       <node id="8396091035812112107" at="30,50,31,39" concept="6" />
       <node id="8396091035812112107" at="33,68,34,102" concept="6" />
       <node id="8396091035812112107" at="36,30,37,17" concept="6" />
-      <node id="8396091035812112107" at="41,0,42,0" concept="7" trace="IStatementListContainer$4L" />
-      <node id="8396091035812112107" at="42,0,43,0" concept="7" trace="TestMethod$uW" />
-      <node id="8396091035812112107" at="43,0,44,0" concept="7" trace="AssertStatement$c7" />
+      <node id="8396091035812112107" at="41,0,42,0" concept="7" trace="IStatementListContainer$xz" />
+      <node id="8396091035812112107" at="42,0,43,0" concept="7" trace="TestMethod$FX" />
+      <node id="8396091035812112107" at="43,0,44,0" concept="7" trace="AssertStatement$CT" />
       <node id="8396091035812112107" at="20,0,22,0" concept="1" trace="check_AssertStatementInsideTestMethod_NonTypesystemRule#()V" />
       <node id="8396091035812112107" at="30,0,33,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8396091035812112107" at="33,0,36,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -141,7 +141,7 @@
       <node id="8797237962358911312" at="39,30,40,17" concept="6" />
       <node id="8797237962361651660" at="43,36,44,43" concept="6" />
       <node id="8797237962361651660" at="45,5,46,16" concept="6" />
-      <node id="8797237962358911312" at="50,0,51,0" concept="7" trace="ITestCase$uo" />
+      <node id="8797237962358911312" at="50,0,51,0" concept="7" trace="ITestCase$Fp" />
       <node id="8797237962358911312" at="22,0,24,0" concept="1" trace="check_TestIsCompiledAndLoadedByMPS_NonTypesystemRule#()V" />
       <node id="8797237962358911312" at="33,0,36,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8797237962358911312" at="36,0,39,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

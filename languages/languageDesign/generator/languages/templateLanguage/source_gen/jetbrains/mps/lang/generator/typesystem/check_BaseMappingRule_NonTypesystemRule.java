@@ -25,16 +25,16 @@ public class check_BaseMappingRule_NonTypesystemRule extends AbstractNonTypesyst
   public check_BaseMappingRule_NonTypesystemRule() {
   }
   public void applyRule(final SNode bmr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(bmr, LINKS.applicableConcept$ksFC) == null)) {
+    if ((SLinkOperations.getTarget(bmr, LINKS.applicableConcept$Hpnk) == null)) {
       return;
     }
-    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$ksFC), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161"))) {
+    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$Hpnk), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161"))) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$ksFC);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableConcept$Hpnk);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(bmr, "Transformation of an attribute may end up with hard to explain outcome", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "2826485732397637989", null, errorTarget);
       }
     }
-    if (!(SPropertyOperations.getBoolean(bmr, PROPS.applyToConceptInheritors$sj5A)) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$ksFC), PROPS.abstract$Q3$6)) {
+    if (!(SPropertyOperations.getBoolean(bmr, PROPS.applyToConceptInheritors$PfLi)) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(bmr, LINKS.applicableConcept$Hpnk), PROPS.abstract$ibpT)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(bmr, "Rule for an abstract concept with disabled inheritors won't apply ever. Pick non-abstract concept or enable rule for concept inheritors as well", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "3381764287261048628", null, errorTarget);
@@ -42,7 +42,7 @@ public class check_BaseMappingRule_NonTypesystemRule extends AbstractNonTypesyst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BaseMappingRule$8p;
+    return CONCEPTS.BaseMappingRule$O5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -52,15 +52,15 @@ public class check_BaseMappingRule_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$Hpnk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty applyToConceptInheritors$sj5A = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc6d8f674L, "applyToConceptInheritors");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty applyToConceptInheritors$PfLi = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc6d8f674L, "applyToConceptInheritors");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMappingRule$8p = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule");
+    /*package*/ static final SConcept BaseMappingRule$O5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule");
   }
 }

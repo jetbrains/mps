@@ -28,7 +28,7 @@ public class SimpleBuilder_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_sk38n_a(), CONCEPTS.SimpleBuilder$Bb));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_sk38n_a(), CONCEPTS.SimpleBuilder$AQ));
     result.add(new SMP_Subconcepts_sk38n_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class SimpleBuilder_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_sk38n_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.SimpleBuilder$Bb, LINKS.declaration$Sj_w);
+      super((SAbstractConcept) CONCEPTS.SimpleBuilder$AQ, LINKS.declaration$kO_b);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class SimpleBuilder_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_sk38n_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SimpleBuilder$Bb);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SimpleBuilder$AQ);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class SimpleBuilder_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleBuilder$Bb = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilder");
+    /*package*/ static final SConcept SimpleBuilder$AQ = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilder");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$Sj_w = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, 0x6524536b2e24c0bbL, "declaration");
+    /*package*/ static final SReferenceLink declaration$kO_b = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, 0x6524536b2e24c0bbL, "declaration");
   }
 }

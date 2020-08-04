@@ -22,7 +22,7 @@ public class check_TransformationFeaturesAreNotDuplicated_NonTypesystemRule exte
   public check_TransformationFeaturesAreNotDuplicated_NonTypesystemRule() {
   }
   public void applyRule(final SNode part, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(DuplicationUtil.getDuplications(SLinkOperations.getChildren(part, LINKS.features$VYBA))).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(DuplicationUtil.getDuplications(SLinkOperations.getChildren(part, LINKS.features$gNd))).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -32,7 +32,7 @@ public class check_TransformationFeaturesAreNotDuplicated_NonTypesystemRule exte
     });
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IExtensibleTransformationMenuPart$sZ;
+    return CONCEPTS.IExtensibleTransformationMenuPart$CA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,10 +42,10 @@ public class check_TransformationFeaturesAreNotDuplicated_NonTypesystemRule exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink features$VYBA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
+    /*package*/ static final SContainmentLink features$gNd = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$sZ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
+    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$CA = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
   }
 }

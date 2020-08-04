@@ -49,7 +49,7 @@ public class BwfJavaDependency_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_qn58zx_a(), CONCEPTS.BwfJavaClassPath$EP));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_qn58zx_a(), CONCEPTS.BwfJavaClassPath$at));
     result.add(new SMP_Subconcepts_qn58zx_b());
     return result;
   }
@@ -90,14 +90,14 @@ public class BwfJavaDependency_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.BwfJavaClassPath$EP;
+          return CONCEPTS.BwfJavaClassPath$at;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SNode cp = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfJavaClassPath$EP);
-          SLinkOperations.setTarget(cp, LINKS.classpath$RCXw, nodeToWrap);
+          SNode cp = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfJavaClassPath$at);
+          SLinkOperations.setTarget(cp, LINKS.classpath$Bst8, nodeToWrap);
           return cp;
         }
 
@@ -124,19 +124,19 @@ public class BwfJavaDependency_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.XmlBaseElement$oX;
+      return CONCEPTS.XmlBaseElement$Ns;
     }
   }
   public class SMP_Subconcepts_qn58zx_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BwfJavaDependency$Au).stream().filter(new Predicate<SAbstractConcept>() {
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BwfJavaDependency$66).stream().filter(new Predicate<SAbstractConcept>() {
         public boolean test(SAbstractConcept concept) {
           return filterConcept(_context, concept);
         }
       }).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-      return !(Objects.equals(concept, CONCEPTS.BwfJavaDependency$Au));
+      return !(Objects.equals(concept, CONCEPTS.BwfJavaDependency$66));
     }
     @NotNull
     @Override
@@ -157,12 +157,12 @@ public class BwfJavaDependency_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfJavaClassPath$EP = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath");
-    /*package*/ static final SConcept XmlBaseElement$oX = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486dL, "jetbrains.mps.core.xml.structure.XmlBaseElement");
-    /*package*/ static final SConcept BwfJavaDependency$Au = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede06eL, "jetbrains.mps.build.workflow.structure.BwfJavaDependency");
+    /*package*/ static final SConcept BwfJavaClassPath$at = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath");
+    /*package*/ static final SConcept XmlBaseElement$Ns = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486dL, "jetbrains.mps.core.xml.structure.XmlBaseElement");
+    /*package*/ static final SConcept BwfJavaDependency$66 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede06eL, "jetbrains.mps.build.workflow.structure.BwfJavaDependency");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classpath$RCXw = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, 0x6e014d63c0847621L, "classpath");
+    /*package*/ static final SContainmentLink classpath$Bst8 = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, 0x6e014d63c0847621L, "classpath");
   }
 }

@@ -36,12 +36,12 @@
       <node id="1213104844717" at="65,131,66,42" concept="1" />
       <node id="1213104844716" at="66,42,67,22" concept="6" />
       <node id="1213104844716" at="69,0,70,0" concept="8" trace="breakingNode_i5q66v_a0a0a0a0a1a0a0a0c" />
-      <node id="1213104844716" at="72,0,73,0" concept="8" trace="TestNodeReference$1R" />
-      <node id="1213104844716" at="73,0,74,0" concept="8" trace="TestNode$kc" />
-      <node id="1213104844716" at="74,0,75,0" concept="8" trace="NodesTestCase$7I" />
-      <node id="1213104844716" at="75,0,76,0" concept="8" trace="EditorTestCase$qk" />
-      <node id="1213104844716" at="76,0,77,0" concept="8" trace="TestNodeAnnotation$MC" />
-      <node id="1213104844716" at="80,0,81,0" concept="8" trace="declaration$plv0" />
+      <node id="1213104844716" at="72,0,73,0" concept="8" trace="TestNodeReference$hm" />
+      <node id="1213104844716" at="73,0,74,0" concept="8" trace="TestNode$zF" />
+      <node id="1213104844716" at="74,0,75,0" concept="8" trace="NodesTestCase$nd" />
+      <node id="1213104844716" at="75,0,76,0" concept="8" trace="EditorTestCase$DN" />
+      <node id="1213104844716" at="76,0,77,0" concept="8" trace="TestNodeAnnotation$27" />
+      <node id="1213104844716" at="80,0,81,0" concept="8" trace="declaration$hXIv" />
       <node id="1213104844716" at="29,0,32,0" concept="0" trace="TestNodeReference_Constraints#()V" />
       <node id="6836281137582846020" at="49,80,52,13" concept="3" />
       <node id="6836281137582846054" at="55,31,58,15" concept="2" />
@@ -99,8 +99,8 @@
       <node id="2501421320959186739" at="49,201,50,18" concept="6" />
       <node id="1225972903834105533" at="51,5,52,188" concept="6" />
       <node id="3143335925186804909" at="54,0,55,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="3143335925186804909" at="57,0,58,0" concept="8" trace="AbstractTestNodeAnnotation$5M" />
-      <node id="3143335925186804909" at="58,0,59,0" concept="8" trace="ITestAnnotationsContainer$pG" />
+      <node id="3143335925186804909" at="57,0,58,0" concept="8" trace="AbstractTestNodeAnnotation$lh" />
+      <node id="3143335925186804909" at="58,0,59,0" concept="8" trace="ITestAnnotationsContainer$Db" />
       <node id="3143335925186804909" at="25,0,28,0" concept="0" trace="AbstractTestNodeAnnotation_Constraints#()V" />
       <node id="3143335925186804909" at="35,0,38,9" concept="3" />
       <node id="2472582545956512952" at="45,56,48,5" concept="3" />
@@ -155,9 +155,9 @@
       <node id="4091667478583473652" at="71,36,72,41" concept="6" />
       <node id="4091667478583473652" at="73,5,74,16" concept="6" />
       <node id="3798371591902558756" at="76,0,77,0" concept="8" trace="breakingNode_1jj8js_a0a0a0a0a1a0a0a0c" />
-      <node id="3798371591902558756" at="79,0,80,0" concept="8" trace="ScopesExpectedNode$8Q" />
-      <node id="3798371591902558756" at="80,0,81,0" concept="8" trace="ScopesTest$Ea" />
-      <node id="3798371591902558756" at="84,0,85,0" concept="8" trace="ref$Z5qB" />
+      <node id="3798371591902558756" at="79,0,80,0" concept="8" trace="ScopesExpectedNode$ol" />
+      <node id="3798371591902558756" at="80,0,81,0" concept="8" trace="ScopesTest$TD" />
+      <node id="3798371591902558756" at="84,0,85,0" concept="8" trace="ref$RHE6" />
       <node id="3798371591902558756" at="28,0,31,0" concept="0" trace="ScopesExpectedNode_Constraints#()V" />
       <node id="6836281137582846235" at="49,167,52,13" concept="3" />
       <node id="4091667478583475432" at="64,103,67,5" concept="3" />
@@ -225,8 +225,8 @@
       <node id="5449224527592362453" at="76,131,77,42" concept="1" />
       <node id="5449224527592362452" at="77,42,78,22" concept="6" />
       <node id="5449224527592362452" at="80,0,81,0" concept="8" trace="breakingNode_jzm89w_a0a0a0a0a1a0a0a0c" />
-      <node id="5449224527592362452" at="83,0,84,0" concept="8" trace="ScopesTest$Ea" />
-      <node id="5449224527592362452" at="87,0,88,0" concept="8" trace="checkingReference$S$wE" />
+      <node id="5449224527592362452" at="83,0,84,0" concept="8" trace="ScopesTest$TD" />
+      <node id="5449224527592362452" at="87,0,88,0" concept="8" trace="checkingReference$LcK9" />
       <node id="5449224527592362452" at="30,0,33,0" concept="0" trace="ScopesTest_Constraints#()V" />
       <node id="6836281137582846186" at="54,59,57,17" concept="2" />
       <node id="5449224527592362453" at="37,0,41,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -298,8 +298,8 @@
       <node id="5476670926298711517" at="46,84,47,119" concept="5" />
       <node id="5476670926298730448" at="47,119,48,89" concept="1" />
       <node id="5476670926298711517" at="48,89,49,22" concept="6" />
-      <node id="5476670926298711517" at="53,0,54,0" concept="8" trace="MigrationTestCase$Sn" />
-      <node id="5476670926298711517" at="57,0,58,0" concept="8" trace="canNotRunInProcess$h_Xf" />
+      <node id="5476670926298711517" at="53,0,54,0" concept="8" trace="MigrationTestCase$7Q" />
+      <node id="5476670926298711517" at="57,0,58,0" concept="8" trace="canNotRunInProcess$hiag" />
       <node id="5476670926298711517" at="20,0,23,0" concept="0" trace="MigrationTestCase_Constraints#()V" />
       <node id="5476670926298730448" at="25,0,28,0" concept="0" trace="CanNotRunInProcess_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="5476670926298730448" at="35,100,38,7" concept="3" />
@@ -349,9 +349,9 @@
       <node id="6109541130560494669" at="35,0,36,22" concept="6" />
       <node id="6109541130560495140" at="40,128,41,126" concept="6" />
       <node id="6109541130560494669" at="43,0,44,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="6109541130560494669" at="46,0,47,0" concept="8" trace="IgnoreMigrationDataOption$oc" />
-      <node id="6109541130560494669" at="47,0,48,0" concept="8" trace="MigrationTestCase$Sn" />
-      <node id="6109541130560494669" at="51,0,52,0" concept="8" trace="option$UVFw" />
+      <node id="6109541130560494669" at="46,0,47,0" concept="8" trace="IgnoreMigrationDataOption$BF" />
+      <node id="6109541130560494669" at="47,0,48,0" concept="8" trace="MigrationTestCase$7Q" />
+      <node id="6109541130560494669" at="51,0,52,0" concept="8" trace="option$NzUZ" />
       <node id="6109541130560494669" at="21,0,24,0" concept="0" trace="IgnoreMigrationDataOption_Constraints#()V" />
       <node id="6109541130560494669" at="31,0,34,9" concept="3" />
       <node id="6109541130560494669" at="40,0,43,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -392,11 +392,11 @@
       <node id="6626913010124378670" at="43,6,44,131" concept="5" />
       <node id="6626913010124378671" at="44,131,45,42" concept="1" />
       <node id="6626913010124378670" at="45,42,46,22" concept="6" />
-      <node id="6626913010124378670" at="50,0,51,0" concept="8" trace="MigrationReference$BB" />
-      <node id="6626913010124378670" at="51,0,52,0" concept="8" trace="MigrationTestCase$Sn" />
-      <node id="6626913010124378670" at="55,0,56,0" concept="8" trace="migration$5jNw" />
-      <node id="6626913010124378670" at="56,0,57,0" concept="8" trace="migration$JaVZ" />
-      <node id="6626913010124378670" at="60,0,61,0" concept="8" trace="name$lA7v" />
+      <node id="6626913010124378670" at="50,0,51,0" concept="8" trace="MigrationReference$R6" />
+      <node id="6626913010124378670" at="51,0,52,0" concept="8" trace="MigrationTestCase$7Q" />
+      <node id="6626913010124378670" at="55,0,56,0" concept="8" trace="migration$XW2Z" />
+      <node id="6626913010124378670" at="56,0,57,0" concept="8" trace="migration$BNbu" />
+      <node id="6626913010124378670" at="60,0,61,0" concept="8" trace="name$MnvL" />
       <node id="6626913010124378670" at="22,0,25,0" concept="0" trace="MigrationReference_Constraints#()V" />
       <node id="6626913010124378808" at="38,119,41,9" concept="3" />
       <node id="6626913010124378671" at="29,0,33,0" concept="4" trace="hasOwnOnReferenceSetHandler#()Z" />
@@ -448,8 +448,8 @@
       <node id="7896212496293420315" at="66,63,67,340" concept="6" />
       <node id="7896212496293420315" at="71,67,72,18" concept="6" />
       <node id="7896212496293418436" at="76,51,77,19" concept="10" />
-      <node id="7896212496293418436" at="81,0,82,0" concept="8" trace="ITestable$$d" />
-      <node id="7896212496293418436" at="82,0,83,0" concept="8" trace="BTestCase$o9" />
+      <node id="7896212496293418436" at="81,0,82,0" concept="8" trace="ITestable$Le" />
+      <node id="7896212496293418436" at="82,0,83,0" concept="8" trace="BTestCase$_a" />
       <node id="7896212496293587255" at="45,71,48,7" concept="3" />
       <node id="7896212496293587255" at="52,0,55,0" concept="9" trace="isDefined#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
       <node id="7896212496293420315" at="61,0,64,0" concept="0" trace="Rule_unnamed_5silxy_b0#()V" />

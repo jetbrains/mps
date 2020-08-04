@@ -300,12 +300,12 @@
       <node id="1209603916390" at="646,0,647,0" concept="12" trace="templArgCall_ief6mt_b0a0a1a0a4a1p" />
       <node id="1209603916390" at="647,0,648,0" concept="12" trace="propertyMacro_ief6mt_c0a0c0a0b0b0b0c0b0b0f0b61" />
       <node id="1209603916390" at="648,0,649,0" concept="12" trace="templateSwitchNodeNoInput_ief6mt_a0a0c0f0b91" />
-      <node id="1209603916390" at="651,0,652,0" concept="12" trace="OutputNode_forDontApplyReductionTwice_test$3R" />
-      <node id="1209603916390" at="652,0,653,0" concept="12" trace="OutputNode$mO" />
-      <node id="1209603916390" at="653,0,654,0" concept="12" trace="CustomStatementRef$Tr" />
-      <node id="1209603916390" at="654,0,655,0" concept="12" trace="TwoVarStatement$EG" />
-      <node id="1209603916390" at="655,0,656,0" concept="12" trace="CustomRoot$p1" />
-      <node id="1209603916390" at="656,0,657,0" concept="12" trace="BlockStatement$1i" />
+      <node id="1209603916390" at="651,0,652,0" concept="12" trace="OutputNode_forDontApplyReductionTwice_test$xx" />
+      <node id="1209603916390" at="652,0,653,0" concept="12" trace="OutputNode$Ou" />
+      <node id="1209603916390" at="653,0,654,0" concept="12" trace="CustomStatementRef$n5" />
+      <node id="1209603916390" at="654,0,655,0" concept="12" trace="TwoVarStatement$8m" />
+      <node id="1209603916390" at="655,0,656,0" concept="12" trace="CustomRoot$QF" />
+      <node id="1209603916390" at="656,0,657,0" concept="12" trace="BlockStatement$u4" />
       <node id="1209604172327" at="64,0,67,0" concept="1" trace="ReductionRule0#()V" />
       <node id="1209604251671" at="77,188,80,11" concept="5" />
       <node id="8900764248744322637" at="89,0,92,0" concept="1" trace="ReductionRule1#()V" />
@@ -3206,7 +3206,7 @@
       <node id="8371596541809090603" at="73,80,74,225" concept="8" />
       <node id="8371596541809090603" at="75,11,76,162" concept="3" />
       <node id="8371596541809090603" at="78,7,79,48" concept="9" />
-      <node id="8371596541809088655" at="84,0,85,0" concept="12" trace="CustomStatement$K4" />
+      <node id="8371596541809088655" at="84,0,85,0" concept="12" trace="CustomStatement$dI" />
       <node id="8371596541809088655" at="43,0,45,0" concept="7" trace="processNull#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljetbrains/mps/generator/runtime/TemplateContext;)V" />
       <node id="8371596541809088655" at="28,0,31,0" concept="1" trace="Switch_customStatement#()V" />
       <node id="8371596541809088655" at="31,0,34,0" concept="7" trace="getSwitchNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

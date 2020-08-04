@@ -43,7 +43,7 @@ public class AddWorkbenchToActionParameters_Contribution extends SubstituteMenuB
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_bkyuyj_a(), CONCEPTS.ActionDataParameterDeclaration$Wd));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_bkyuyj_a(), CONCEPTS.ActionDataParameterDeclaration$Tg));
     return result;
   }
 
@@ -80,7 +80,7 @@ public class AddWorkbenchToActionParameters_Contribution extends SubstituteMenuB
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(_quotation_createNode_bkyuyj_a0a0a0a()), CONCEPTS.StaticFieldDeclaration$R5);
+      return SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(_quotation_createNode_bkyuyj_a0a0a0a()), CONCEPTS.StaticFieldDeclaration$jR);
     }
     private class SMP_Action_bkyuyj_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -115,7 +115,7 @@ public class AddWorkbenchToActionParameters_Contribution extends SubstituteMenuB
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.ActionDataParameterDeclaration$Wd, context);
+          super(CONCEPTS.ActionDataParameterDeclaration$Tg, context);
           _context = context;
         }
 
@@ -126,8 +126,8 @@ public class AddWorkbenchToActionParameters_Contribution extends SubstituteMenuB
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ActionDataParameterDeclaration$Wd, null);
-          SLinkOperations.setTarget(result, LINKS.key$ywJf, myParameterObject);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ActionDataParameterDeclaration$Tg, null);
+          SLinkOperations.setTarget(result, LINKS.key$K5Gi, myParameterObject);
           return result;
         }
 
@@ -137,7 +137,7 @@ public class AddWorkbenchToActionParameters_Contribution extends SubstituteMenuB
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.ActionDataParameterDeclaration$Wd, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.ActionDataParameterDeclaration$Tg, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -158,7 +158,7 @@ public class AddWorkbenchToActionParameters_Contribution extends SubstituteMenuB
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          return (String) ActionDataParameterDeclaration__BehaviorDescriptor.getDescription_id2DsqYJxu5P.invoke(SNodeOperations.asSConcept(CONCEPTS.ActionDataParameterDeclaration$Wd), myParameterObject);
+          return (String) ActionDataParameterDeclaration__BehaviorDescriptor.getDescription_id2DsqYJxu5P.invoke(SNodeOperations.asSConcept(CONCEPTS.ActionDataParameterDeclaration$Tg), myParameterObject);
         }
       }
     }
@@ -173,11 +173,11 @@ public class AddWorkbenchToActionParameters_Contribution extends SubstituteMenuB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionDataParameterDeclaration$Wd = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept ActionDataParameterDeclaration$Tg = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink key$ywJf = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, 0x11b69e95df5L, "key");
+    /*package*/ static final SReferenceLink key$K5Gi = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, 0x11b69e95df5L, "key");
   }
 }

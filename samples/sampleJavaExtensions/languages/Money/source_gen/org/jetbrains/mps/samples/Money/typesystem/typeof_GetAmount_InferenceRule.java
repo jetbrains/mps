@@ -26,7 +26,7 @@ public class typeof_GetAmount_InferenceRule extends AbstractInferenceRule_Runtim
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetAmount$i3;
+    return CONCEPTS.GetAmount$vs;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_GetAmount_InferenceRule extends AbstractInferenceRule_Runtim
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetAmount$i3 = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe55913c339L, "org.jetbrains.mps.samples.Money.structure.GetAmount");
+    /*package*/ static final SConcept GetAmount$vs = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe55913c339L, "org.jetbrains.mps.samples.Money.structure.GetAmount");
   }
 }

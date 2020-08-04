@@ -76,7 +76,7 @@ public class assert_ extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode targetExppression = PrecedenceUtil.getTargetForRightTransform(_context.getNode());
-      return targetExppression != null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetExppression), CONCEPTS.AssertStatement$c7) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetExppression), CONCEPTS.AssertStatement$c7), LINKS.message$cNOs) == null;
+      return targetExppression != null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetExppression), CONCEPTS.AssertStatement$CT) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(targetExppression), CONCEPTS.AssertStatement$CT), LINKS.message$RThe) == null;
     }
 
     @NotNull
@@ -133,9 +133,9 @@ public class assert_ extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode targetExpression = PrecedenceUtil.getTargetForRightTransform(_context.getNode());
-          SNode assertion = SNodeOperations.cast(SNodeOperations.getParent(targetExpression), CONCEPTS.AssertStatement$c7);
-          SNodeFactoryOperations.setNewChild(assertion, LINKS.message$cNOs, null);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(assertion, LINKS.message$cNOs), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNode assertion = SNodeOperations.cast(SNodeOperations.getParent(targetExpression), CONCEPTS.AssertStatement$CT);
+          SNodeFactoryOperations.setNewChild(assertion, LINKS.message$RThe, null);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(assertion, LINKS.message$RThe), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -160,10 +160,10 @@ public class assert_ extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AssertStatement$c7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement");
+    /*package*/ static final SConcept AssertStatement$CT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$cNOs = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message");
+    /*package*/ static final SContainmentLink message$RThe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message");
   }
 }

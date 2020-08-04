@@ -40,7 +40,7 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ((SNodeOperations.getParent(node) == null) || SNodeOperations.getContainingLink(node).isMultiple()) && ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.RequirementTrace$Xe, true)).isEmpty();
+    return ((SNodeOperations.getParent(node) == null) || SNodeOperations.getContainingLink(node).isMultiple()) && ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.RequirementTrace$U6, true)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,7 +57,7 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$Xe)) != null)) {
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6)) != null)) {
         return "Remove Requirement Traces";
       } else {
         return "Add Requirement Traces";
@@ -65,8 +65,8 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$Xe)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$Xe)));
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6)) != null)) {
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6)));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
       } else {
         try {
@@ -85,8 +85,8 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
           editorContext.getEditorComponent().getUpdater().setInitialEditorHints(newHints);
           editorContext.getEditorComponent().getUpdater().update();
         } finally {
-          AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$Xe), CONCEPTS.RequirementTrace$Xe);
-          SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$Xe)), SelectionManager.LAST_EDITABLE_CELL);
+          AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6), CONCEPTS.RequirementTrace$U6);
+          SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6)), SelectionManager.LAST_EDITABLE_CELL);
         }
 
       }
@@ -98,6 +98,6 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequirementTrace$Xe = MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementTrace");
+    /*package*/ static final SConcept RequirementTrace$U6 = MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementTrace");
   }
 }

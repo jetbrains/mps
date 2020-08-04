@@ -21,8 +21,8 @@
       <node id="8780540425167303919" at="35,84,36,119" concept="3" />
       <node id="8780540425167303920" at="36,119,37,61" concept="1" />
       <node id="8780540425167303919" at="37,61,38,22" concept="4" />
-      <node id="8780540425167303919" at="42,0,43,0" concept="5" trace="LanguageDescriptor$hv" />
-      <node id="8780540425167303919" at="46,0,47,0" concept="5" trace="name$lA7v" />
+      <node id="8780540425167303919" at="42,0,43,0" concept="5" trace="LanguageDescriptor$uh" />
+      <node id="8780540425167303919" at="46,0,47,0" concept="5" trace="name$MnvL" />
       <node id="8780540425167303919" at="17,0,20,0" concept="0" trace="LanguageDescriptor_Constraints#()V" />
       <node id="8780540425167303920" at="22,0,25,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="8780540425167303920" at="25,0,29,0" concept="2" trace="hasOwnGetter#()Z" />

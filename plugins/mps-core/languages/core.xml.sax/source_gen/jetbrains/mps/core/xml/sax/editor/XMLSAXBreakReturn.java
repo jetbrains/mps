@@ -39,7 +39,7 @@ public class XMLSAXBreakReturn extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.XMLSAXBreakStatement$LX))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.XMLSAXBreakStatement$6U))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -49,11 +49,11 @@ public class XMLSAXBreakReturn extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return (SLinkOperations.getTarget(node, LINKS.result$hpdx) == null);
+      return (SLinkOperations.getTarget(node, LINKS.result$z_yu) == null);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      if ((SLinkOperations.getTarget(node, LINKS.result$hpdx) == null)) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.result$hpdx, null);
+      if ((SLinkOperations.getTarget(node, LINKS.result$z_yu) == null)) {
+        SNodeFactoryOperations.setNewChild(node, LINKS.result$z_yu, null);
       }
     }
     public String getKeyStroke() {
@@ -62,10 +62,10 @@ public class XMLSAXBreakReturn extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXBreakStatement$LX = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, "jetbrains.mps.core.xml.sax.structure.XMLSAXBreakStatement");
+    /*package*/ static final SConcept XMLSAXBreakStatement$6U = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, "jetbrains.mps.core.xml.sax.structure.XMLSAXBreakStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink result$hpdx = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, 0x1f6c736337b5e2d1L, "result");
+    /*package*/ static final SContainmentLink result$z_yu = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, 0x1f6c736337b5e2d1L, "result");
   }
 }

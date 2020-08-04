@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractStateMachineElement_Constraints extends BaseConstraintsDescriptor {
   public AbstractStateMachineElement_Constraints() {
-    super(CONCEPTS.AbstractStateMachineElement$ma);
+    super(CONCEPTS.AbstractStateMachineElement$xm);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class AbstractStateMachineElement_Constraints extends BaseConstraintsDesc
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.StateMachine$$0);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.StateMachine$Jc);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:3337c730-5e29-47e4-8453-e911897300b4(jetbrains.mps.samples.multipleProjections.stateMachine.constraints)", "1227128029536582713");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractStateMachineElement$ma = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0x6e3eaf7a54e76eeaL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.AbstractStateMachineElement");
-    /*package*/ static final SConcept StateMachine$$0 = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.StateMachine");
+    /*package*/ static final SConcept AbstractStateMachineElement$xm = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0x6e3eaf7a54e76eeaL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.AbstractStateMachineElement");
+    /*package*/ static final SConcept StateMachine$Jc = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.StateMachine");
   }
 }

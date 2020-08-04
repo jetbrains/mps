@@ -56,27 +56,27 @@ public final class BuildRelativePath__BehaviorDescriptor extends BaseBHDescripto
     return basePath + BuildRelativePath__BehaviorDescriptor.getPathTail_id15RAxQX0M4T.invoke(__thisNode__);
   }
   /*package*/ static String getPathTail_id15RAxQX0M4T(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$ZDgp) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$blMW) == null)) {
       return "";
     }
-    return (String) BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$ZDgp));
+    return (String) BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$blMW));
   }
   /*package*/ static String getLastSegment_id5dwDdJ8yckN(@NotNull SNode __thisNode__) {
-    return ((SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$ZDgp) != null) ? BuildCompositePath__BehaviorDescriptor.getLastSegment_id1bWeed$oUbg.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$ZDgp)) : null);
+    return ((SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$blMW) != null) ? BuildCompositePath__BehaviorDescriptor.getLastSegment_id1bWeed$oUbg.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$blMW)) : null);
   }
   /*package*/ static SNode getParent_id7wpYgMyTXsR(@NotNull SNode __thisNode__) {
-    if ((boolean) BuildRelativePath__BehaviorDescriptor.isEmptyTail_id7wpYgMyU0sQ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$dD), SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$ZDgp))) {
+    if ((boolean) BuildRelativePath__BehaviorDescriptor.isEmptyTail_id7wpYgMyU0sQ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$Kc), SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$blMW))) {
       return null;
     }
     SNode copy = SNodeOperations.copyNode(__thisNode__);
-    SNode cp = SLinkOperations.getTarget(copy, LINKS.compositePart$ZDgp);
-    if ((boolean) BuildRelativePath__BehaviorDescriptor.isEmptyTail_id7wpYgMyU0sQ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$dD), SLinkOperations.getTarget(cp, LINKS.tail$ozR0))) {
-      SLinkOperations.setTarget(copy, LINKS.compositePart$ZDgp, null);
+    SNode cp = SLinkOperations.getTarget(copy, LINKS.compositePart$blMW);
+    if ((boolean) BuildRelativePath__BehaviorDescriptor.isEmptyTail_id7wpYgMyU0sQ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$Kc), SLinkOperations.getTarget(cp, LINKS.tail$$gpz))) {
+      SLinkOperations.setTarget(copy, LINKS.compositePart$blMW, null);
     } else {
       SNode prev = cp;
-      cp = BuildRelativePath__BehaviorDescriptor.next_id7wpYgMyU0gZ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$dD), cp);
+      cp = BuildRelativePath__BehaviorDescriptor.next_id7wpYgMyU0gZ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$Kc), cp);
       while (cp != null) {
-        SNode next = BuildRelativePath__BehaviorDescriptor.next_id7wpYgMyU0gZ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$dD), cp);
+        SNode next = BuildRelativePath__BehaviorDescriptor.next_id7wpYgMyU0gZ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$Kc), cp);
         if (next != null) {
           prev = cp;
           cp = next;
@@ -84,21 +84,21 @@ public final class BuildRelativePath__BehaviorDescriptor extends BaseBHDescripto
           break;
         }
       }
-      SLinkOperations.setTarget(prev, LINKS.tail$ozR0, null);
+      SLinkOperations.setTarget(prev, LINKS.tail$$gpz, null);
     }
     return copy;
   }
   /*package*/ static boolean isEmptyTail_id7wpYgMyU0sQ(@NotNull SAbstractConcept __thisConcept__, SNode cp) {
-    return cp == null || isEmptyString(SPropertyOperations.getString(cp, PROPS.head$o$61)) && (boolean) BuildRelativePath__BehaviorDescriptor.isEmptyTail_id7wpYgMyU0sQ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$dD), SLinkOperations.getTarget(cp, LINKS.tail$ozR0));
+    return cp == null || isEmptyString(SPropertyOperations.getString(cp, PROPS.head$$gC$)) && (boolean) BuildRelativePath__BehaviorDescriptor.isEmptyTail_id7wpYgMyU0sQ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$Kc), SLinkOperations.getTarget(cp, LINKS.tail$$gpz));
   }
   /*package*/ static SNode next_id7wpYgMyU0gZ(@NotNull SAbstractConcept __thisConcept__, SNode cp) {
-    if ((SLinkOperations.getTarget(cp, LINKS.tail$ozR0) == null)) {
+    if ((SLinkOperations.getTarget(cp, LINKS.tail$$gpz) == null)) {
       return null;
     }
-    if (isEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(cp, LINKS.tail$ozR0), PROPS.head$o$61))) {
-      return BuildRelativePath__BehaviorDescriptor.next_id7wpYgMyU0gZ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$dD), SLinkOperations.getTarget(cp, LINKS.tail$ozR0));
+    if (isEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(cp, LINKS.tail$$gpz), PROPS.head$$gC$))) {
+      return BuildRelativePath__BehaviorDescriptor.next_id7wpYgMyU0gZ.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildRelativePath$Kc), SLinkOperations.getTarget(cp, LINKS.tail$$gpz));
     }
-    return SLinkOperations.getTarget(cp, LINKS.tail$ozR0);
+    return SLinkOperations.getTarget(cp, LINKS.tail$$gpz);
   }
 
   /*package*/ BuildRelativePath__BehaviorDescriptor() {
@@ -163,15 +163,15 @@ public final class BuildRelativePath__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
-    /*package*/ static final SContainmentLink tail$ozR0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
+    /*package*/ static final SContainmentLink compositePart$blMW = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SContainmentLink tail$$gpz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildRelativePath$dD = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
+    /*package*/ static final SConcept BuildRelativePath$Kc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty head$o$61 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
+    /*package*/ static final SProperty head$$gC$ = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
   }
 }

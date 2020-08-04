@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class DefaultClassifierFieldDeclaration_Constraints extends BaseConstraintsDescriptor {
   public DefaultClassifierFieldDeclaration_Constraints() {
-    super(CONCEPTS.DefaultClassifierFieldDeclaration$HF);
+    super(CONCEPTS.DefaultClassifierFieldDeclaration$Hv);
   }
 
   @Override
@@ -38,12 +38,12 @@ public class DefaultClassifierFieldDeclaration_Constraints extends BaseConstrain
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.IClassifier$Cb, true, false) != null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.IClassifier$BZ, true, false) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959036e(jetbrains.mps.baseLanguage.classifiers.constraints)", "1227128029536559882");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultClassifierFieldDeclaration$HF = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierFieldDeclaration");
-    /*package*/ static final SInterfaceConcept IClassifier$Cb = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
+    /*package*/ static final SConcept DefaultClassifierFieldDeclaration$Hv = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11aa7fc0293L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierFieldDeclaration");
+    /*package*/ static final SInterfaceConcept IClassifier$BZ = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
   }
 }

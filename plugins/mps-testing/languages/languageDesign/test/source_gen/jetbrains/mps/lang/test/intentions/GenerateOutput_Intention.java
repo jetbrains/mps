@@ -55,7 +55,7 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.migration$JaVZ), LINKS.migration$5jNw)).select(new ISelector<SNode, MigrationScript>() {
+    List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.migration$BNbu), LINKS.migration$XW2Z)).select(new ISelector<SNode, MigrationScript>() {
       public MigrationScript select(SNode it) {
         if (!(SNodeOperations.getModel(it).getModule() instanceof Language)) {
           return null;
@@ -89,27 +89,27 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SModel tempModel = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
-      List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.migration$JaVZ), LINKS.migration$5jNw)).select(new ISelector<SNode, MigrationScript>() {
+      List<MigrationScript> migrationScripts = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.migration$BNbu), LINKS.migration$XW2Z)).select(new ISelector<SNode, MigrationScript>() {
         public MigrationScript select(SNode it) {
           return check_hr1otd_a0a0a0a0b0c7(check_hr1otd_a0a0a0a0a1a2h(LanguageRegistry.getInstance().getLanguage(((Language) SNodeOperations.getModel(it).getModule()))), it);
         }
       }).toListSequence();
-      Collection<SNode> output = BaseMigrationTestBody.runMigration(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.inputNodes$i16P), LINKS.nodeToCheck$VYXt)).toListSequence(), tempModel, ListSequence.fromList(migrationScripts).toGenericArray(MigrationScript.class));
-      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$Q6pY)).count() != CollectionSequence.fromCollection(output).count()) {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$Q6pY)).clear();
+      Collection<SNode> output = BaseMigrationTestBody.runMigration(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.inputNodes$aDmk), LINKS.nodeToCheck$OBcW)).toListSequence(), tempModel, ListSequence.fromList(migrationScripts).toGenericArray(MigrationScript.class));
+      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$IIDt)).count() != CollectionSequence.fromCollection(output).count()) {
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$IIDt)).clear();
         for (SNode n : CollectionSequence.fromCollection(output)) {
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$Q6pY)).addElement(createTestNode_8ua06z_a0a0a1a3a0(n));
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$IIDt)).addElement(createTestNode_8ua06z_a0a0a1a3a0(n));
         }
       } else {
         {
           Iterator<SNode> n_it = CollectionSequence.fromCollection(output).iterator();
-          Iterator<SNode> current_it = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$Q6pY)).iterator();
+          Iterator<SNode> current_it = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.outputNodes$IIDt)).iterator();
           SNode n_var;
           SNode current_var;
           while (n_it.hasNext() && current_it.hasNext()) {
             n_var = n_it.next();
             current_var = current_it.next();
-            SLinkOperations.setTarget(current_var, LINKS.nodeToCheck$VYXt, n_var);
+            SLinkOperations.setTarget(current_var, LINKS.nodeToCheck$OBcW, n_var);
           }
         }
       }
@@ -145,21 +145,21 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
     return null;
   }
   private static SNode createTestNode_8ua06z_a0a0a1a3a0(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TestNode$kc);
-    rootBuilder1.forChild(LINKS.nodeToCheck$VYXt).initNode(node0, CONCEPTS.BaseConcept$Sz, true);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TestNode$zF);
+    rootBuilder1.forChild(LINKS.nodeToCheck$OBcW).initNode(node0, CONCEPTS.BaseConcept$gP, true);
     return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink migration$JaVZ = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x5bf7864595df8b02L, "migration");
-    /*package*/ static final SReferenceLink migration$5jNw = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
-    /*package*/ static final SContainmentLink inputNodes$i16P = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x4c010b30d9be4be8L, "inputNodes");
-    /*package*/ static final SContainmentLink nodeToCheck$VYXt = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
-    /*package*/ static final SContainmentLink outputNodes$Q6pY = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x4c010b30d9be5494L, "outputNodes");
+    /*package*/ static final SContainmentLink migration$BNbu = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x5bf7864595df8b02L, "migration");
+    /*package*/ static final SReferenceLink migration$XW2Z = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
+    /*package*/ static final SContainmentLink inputNodes$aDmk = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x4c010b30d9be4be8L, "inputNodes");
+    /*package*/ static final SContainmentLink nodeToCheck$OBcW = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
+    /*package*/ static final SContainmentLink outputNodes$IIDt = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x4c010b30d9be5494L, "outputNodes");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestNode$kc = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept TestNode$zF = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

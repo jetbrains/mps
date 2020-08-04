@@ -77,7 +77,7 @@ public class InferenceRule_add_OverridesConceptFunction extends TransformationMe
   public class TMP_Group_5qd74_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.overridesFun$_ogP) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.overridesFun$YeyF) == null);
     }
 
     @NotNull
@@ -162,16 +162,16 @@ public class InferenceRule_add_OverridesConceptFunction extends TransformationMe
 
           @Override
           public void execute(@NotNull String pattern) {
-            SPropertyOperations.remove(_context.getNode(), PROPS.overrides$sqyj);
-            SNode fun = SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.overridesFun$_ogP, CONCEPTS.OverridesConceptFunction$wN);
+            SPropertyOperations.remove(_context.getNode(), PROPS.overrides$PgO9);
+            SNode fun = SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.overridesFun$YeyF, CONCEPTS.OverridesConceptFunction$MD);
 
             if (!("{".equals(myParameterObject))) {
-              SNode estmt = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(fun, LINKS.body$z0FY), LINKS.statement$pYcS, CONCEPTS.ExpressionStatement$nm);
-              SNode bcst = SNodeFactoryOperations.setNewChild(estmt, LINKS.expression$qFF0, CONCEPTS.BooleanConstant$Ui);
-              SPropertyOperations.set(bcst, PROPS.value$qt90, Boolean.valueOf(myParameterObject));
-              SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.overridesFun$_ogP), LINKS.body$z0FY), LINKS.statement$pYcS)).first(), CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0), SelectionManager.FIRST_CELL);
+              SNode estmt = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(fun, LINKS.body$e68K), LINKS.statement$53DE, CONCEPTS.ExpressionStatement$O8);
+              SNode bcst = SNodeFactoryOperations.setNewChild(estmt, LINKS.expression$5L7M, CONCEPTS.BooleanConstant$n4);
+              SPropertyOperations.set(bcst, PROPS.value$5y_M, Boolean.valueOf(myParameterObject));
+              SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.overridesFun$YeyF), LINKS.body$e68K), LINKS.statement$53DE)).first(), CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), SelectionManager.FIRST_CELL);
             } else {
-              SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.overridesFun$_ogP), LINKS.body$z0FY), SelectionManager.FIRST_CELL);
+              SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.overridesFun$YeyF), LINKS.body$e68K), SelectionManager.FIRST_CELL);
             }
 
           }
@@ -199,20 +199,20 @@ public class InferenceRule_add_OverridesConceptFunction extends TransformationMe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink overridesFun$_ogP = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun");
-    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink overridesFun$YeyF = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun");
+    /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty overrides$sqyj = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty overrides$PgO9 = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OverridesConceptFunction$wN = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1885777d1370d97bL, "jetbrains.mps.lang.typesystem.structure.OverridesConceptFunction");
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept BooleanConstant$Ui = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept OverridesConceptFunction$MD = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1885777d1370d97bL, "jetbrains.mps.lang.typesystem.structure.OverridesConceptFunction");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
   }
 }

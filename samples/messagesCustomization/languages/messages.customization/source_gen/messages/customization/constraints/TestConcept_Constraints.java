@@ -33,12 +33,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestConcept_Constraints extends BaseConstraintsDescriptor {
   public TestConcept_Constraints() {
-    super(CONCEPTS.TestConcept$83);
+    super(CONCEPTS.TestConcept$cw);
   }
 
   public static class Prop_Property extends BasePropertyConstraintsDescriptor {
     public Prop_Property(ConstraintsDescriptor container) {
-      super(PROPS.prop$wcl, container);
+      super(PROPS.prop$FBgM, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -60,12 +60,12 @@ public class TestConcept_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.prop$wcl, new Prop_Property(this));
+    properties.put(PROPS.prop$FBgM, new Prop_Property(this));
     return properties;
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$LZ1$, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$t661, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -82,7 +82,7 @@ public class TestConcept_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SModel> seq = ListSequence.fromList(new ArrayList<SModel>());
             ListSequence.fromList(seq).addElement(SNodeOperations.getModel(_context.getContextNode()));
-            return new ModelsScope(seq, false, CONCEPTS.TestConcept$83);
+            return new ModelsScope(seq, false, CONCEPTS.TestConcept$cw);
           }
         };
       }
@@ -94,14 +94,14 @@ public class TestConcept_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_72100m_a0a0a0a0a1a0a0a0e = new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "8918166317255507159");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestConcept$83 = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");
+    /*package*/ static final SConcept TestConcept$cw = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty prop$wcl = MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop");
+    /*package*/ static final SProperty prop$FBgM = MetaAdapterFactory.getProperty(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x50310db2af989958L, "prop");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$LZ1$ = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link");
+    /*package*/ static final SReferenceLink link$t661 = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link");
   }
 }

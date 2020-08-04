@@ -37,8 +37,8 @@ public final class ConsoleRoot__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, NodeReportItem reportItem) {
     SNode node = reportItem.getNode().resolve(SNodeOperations.getModel(__thisNode__).getModule().getRepository());
-    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.history$p07x)) || ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.hiddenCommand$Tger))) {
-      return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id3612de_vrfV.invoke0(__thisNode__, CONCEPTS.ISuppressErrors$2l, reportItem));
+    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.history$LSLq)) || ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.hiddenCommand$i8Sk))) {
+      return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id3612de_vrfV.invoke0(__thisNode__, CONCEPTS.ISuppressErrors$qB, reportItem));
     } else {
       return false;
     }
@@ -91,11 +91,11 @@ public final class ConsoleRoot__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ISuppressErrors$2l = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors");
+    /*package*/ static final SInterfaceConcept ISuppressErrors$qB = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink history$p07x = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bafL, "history");
-    /*package*/ static final SContainmentLink hiddenCommand$Tger = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x3c5a21a481abf26dL, "hiddenCommand");
+    /*package*/ static final SContainmentLink history$LSLq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bafL, "history");
+    /*package*/ static final SContainmentLink hiddenCommand$i8Sk = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x3c5a21a481abf26dL, "hiddenCommand");
   }
 }

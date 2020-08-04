@@ -19,7 +19,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c89590283(jetbrains.mps.lang.core.constraints)/1213104856219">
     <file name="BaseConcept_Constraints.java">
       <node id="1213104856219" at="10,36,11,35" concept="9" />
-      <node id="1213104856219" at="15,0,16,0" concept="7" trace="BaseConcept$Sz" />
+      <node id="1213104856219" at="15,0,16,0" concept="7" trace="BaseConcept$gP" />
       <node id="1213104856219" at="10,0,13,0" concept="0" trace="BaseConcept_Constraints#()V" />
       <scope id="1213104856219" at="10,36,11,35" />
       <scope id="1213104856219" at="10,0,13,0" />
@@ -39,8 +39,8 @@
       <node id="1213104856824" at="47,84,48,119" concept="4" />
       <node id="1213104856825" at="48,119,49,75" concept="1" />
       <node id="1213104856824" at="49,75,50,22" concept="5" />
-      <node id="1213104856824" at="54,0,55,0" concept="7" trace="IResolveInfo$c2" />
-      <node id="1213104856824" at="58,0,59,0" concept="7" trace="resolveInfo$TaKS" />
+      <node id="1213104856824" at="54,0,55,0" concept="7" trace="IResolveInfo$$k" />
+      <node id="1213104856824" at="58,0,59,0" concept="7" trace="resolveInfo$lW9a" />
       <node id="1213104856824" at="18,0,21,0" concept="0" trace="IResolveInfo_Constraints#()V" />
       <node id="1213104856825" at="23,0,26,0" concept="0" trace="ResolveInfo_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213104856825" at="42,0,45,0" concept="8" trace="staticSetPropertyValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
@@ -101,8 +101,8 @@
       <node id="8703179436979151869" at="56,84,57,119" concept="4" />
       <node id="8703179436979151870" at="57,119,58,83" concept="1" />
       <node id="8703179436979151869" at="58,83,59,22" concept="5" />
-      <node id="8703179436979151869" at="63,0,64,0" concept="7" trace="MigrationAnnotation$aP" />
-      <node id="8703179436979151869" at="67,0,68,0" concept="7" trace="createdByScript$L5qw" />
+      <node id="8703179436979151869" at="63,0,64,0" concept="7" trace="MigrationAnnotation$z7" />
+      <node id="8703179436979151869" at="67,0,68,0" concept="7" trace="createdByScript$dQMM" />
       <node id="8703179436979151869" at="22,0,25,0" concept="0" trace="MigrationAnnotation_Constraints#()V" />
       <node id="8703179436979151870" at="27,0,30,0" concept="0" trace="CreatedByScript_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="8703179436979151870" at="37,99,40,7" concept="2" />

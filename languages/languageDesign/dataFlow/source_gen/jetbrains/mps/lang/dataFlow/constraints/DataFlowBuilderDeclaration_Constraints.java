@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescriptor {
   public DataFlowBuilderDeclaration_Constraints() {
-    super(CONCEPTS.DataFlowBuilderDeclaration$ZP);
+    super(CONCEPTS.DataFlowBuilderDeclaration$NP);
   }
 
   @Override
@@ -49,7 +49,7 @@ public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescr
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -57,8 +57,8 @@ public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescr
     }
     @Override
     public Object getValue(SNode node) {
-      String name = SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$_Dk3), PROPS.name$lA7v);
-      for (SNode mode : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modes$S9of))) {
+      String name = SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$vN83), PROPS.name$MnvL);
+      for (SNode mode : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modes$Mjcf))) {
         name += "_" + SNodeOperations.getConcept(mode).getName();
       }
       return name + "_DataFlow";
@@ -67,7 +67,7 @@ public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescr
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
   private static boolean staticCanBeARoot(SModel model) {
@@ -76,15 +76,15 @@ public class DataFlowBuilderDeclaration_Constraints extends BaseConstraintsDescr
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590377(jetbrains.mps.lang.dataFlow.constraints)", "1227089120379");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DataFlowBuilderDeclaration$ZP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
+    /*package*/ static final SConcept DataFlowBuilderDeclaration$NP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$_Dk3 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink modes$S9of = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x6e8db6877fd04efbL, "modes");
+    /*package*/ static final SReferenceLink conceptDeclaration$vN83 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink modes$Mjcf = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x6e8db6877fd04efbL, "modes");
   }
 }

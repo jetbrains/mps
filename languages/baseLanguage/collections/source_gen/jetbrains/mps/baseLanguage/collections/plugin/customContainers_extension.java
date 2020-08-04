@@ -25,12 +25,12 @@ public class customContainers_extension extends Extension.Default<_FunctionTypes
       public List<SNode> invoke(SRepository repo) {
         // Find the model(s) with custom container declarations 
         SModel mdl = PersistenceFacade.getInstance().createModelReference("r:dfdf3542-dbcf-43df-870a-3c3504b3c840(jetbrains.mps.baseLanguage.collections.custom)").resolve(repo);
-        return SModelOperations.nodes(mdl, CONCEPTS.CustomContainers$$4);
+        return SModelOperations.nodes(mdl, CONCEPTS.CustomContainers$Mn);
       }
     };
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomContainers$$4 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c84cL, "jetbrains.mps.baseLanguage.collections.structure.CustomContainers");
+    /*package*/ static final SConcept CustomContainers$Mn = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c84cL, "jetbrains.mps.baseLanguage.collections.structure.CustomContainers");
   }
 }

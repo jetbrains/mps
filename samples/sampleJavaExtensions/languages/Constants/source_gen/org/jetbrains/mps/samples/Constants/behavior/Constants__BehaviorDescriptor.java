@@ -36,8 +36,8 @@ public final class Constants__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, final SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.Constant$9C)) {
-      SimpleRoleScope forNamedElements = SimpleRoleScope.forNamedElements(__thisNode__, LINKS.constants$TLVU);
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.Constant$Ym)) {
+      SimpleRoleScope forNamedElements = SimpleRoleScope.forNamedElements(__thisNode__, LINKS.constants$KxKC);
       FilteringScope filteringScope = new FilteringScope(forNamedElements) {
         @Override
         public boolean isExcluded(SNode node) {
@@ -96,10 +96,10 @@ public final class Constants__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Constant$9C = MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, "org.jetbrains.mps.samples.Constants.structure.Constant");
+    /*package*/ static final SConcept Constant$Ym = MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, "org.jetbrains.mps.samples.Constants.structure.Constant");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink constants$TLVU = MetaAdapterFactory.getContainmentLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861417L, 0x14be6cdec1861428L, "constants");
+    /*package*/ static final SContainmentLink constants$KxKC = MetaAdapterFactory.getContainmentLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861417L, 0x14be6cdec1861428L, "constants");
   }
 }

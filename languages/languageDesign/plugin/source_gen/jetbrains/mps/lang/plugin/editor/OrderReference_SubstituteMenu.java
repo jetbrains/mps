@@ -28,7 +28,7 @@ public class OrderReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_fi7th9_a(), CONCEPTS.OrderReference$ge));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_fi7th9_a(), CONCEPTS.OrderReference$dh));
     result.add(new SMP_Subconcepts_fi7th9_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class OrderReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_fi7th9_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.OrderReference$ge, LINKS.order$VC70);
+      super((SAbstractConcept) CONCEPTS.OrderReference$dh, LINKS.order$9d43);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class OrderReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_fi7th9_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OrderReference$ge);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OrderReference$dh);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class OrderReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OrderReference$ge = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd79211L, "jetbrains.mps.lang.plugin.structure.OrderReference");
+    /*package*/ static final SConcept OrderReference$dh = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd79211L, "jetbrains.mps.lang.plugin.structure.OrderReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink order$VC70 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd79211L, 0x22035699bdd79212L, "order");
+    /*package*/ static final SReferenceLink order$9d43 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd79211L, 0x22035699bdd79212L, "order");
   }
 }

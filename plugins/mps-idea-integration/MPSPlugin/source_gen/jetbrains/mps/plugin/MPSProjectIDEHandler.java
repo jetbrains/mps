@@ -307,10 +307,10 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
           MPSProjectIDEHandler.LOG.error("Can't find a class " + classFqName);
           return;
         }
-        Iterable<SNode> allMethods = SNodeOperations.ofConcept(SNodeOperations.getChildren(cls), CONCEPTS.BaseMethodDeclaration$RR);
+        Iterable<SNode> allMethods = SNodeOperations.ofConcept(SNodeOperations.getChildren(cls), CONCEPTS.BaseMethodDeclaration$kD);
         SNode method = Sequence.fromIterable(allMethods).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return methodName.equals(SPropertyOperations.getString(it, PROPS.name$lA7v)) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$qsax)).count() == parameterCount;
+            return methodName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).count() == parameterCount;
           }
         });
         if (method == null) {
@@ -337,8 +337,8 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
         continue;
       }
       SModel model = m;
-      for (SNode root : ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.Classifier$hJ))) {
-        if (name.equals(SPropertyOperations.getString(root, PROPS.name$lA7v))) {
+      for (SNode root : ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.Classifier$Ix))) {
+        if (name.equals(SPropertyOperations.getString(root, PROPS.name$MnvL))) {
           return root;
         }
       }
@@ -347,15 +347,15 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

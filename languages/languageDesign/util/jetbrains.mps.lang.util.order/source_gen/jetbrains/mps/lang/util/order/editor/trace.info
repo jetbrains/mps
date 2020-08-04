@@ -219,10 +219,10 @@
       <node id="174635545557535256" at="391,58,392,40" concept="2" />
       <node id="174635545557535256" at="392,40,393,34" concept="2" />
       <node id="174635545557535256" at="393,34,394,22" concept="7" />
-      <node id="174635545557535256" at="398,0,399,0" concept="9" trace="seq$xqZ1" />
-      <node id="174635545557535256" at="402,0,403,0" concept="9" trace="OrderParticipantReference$Rs" />
-      <node id="174635545557535256" at="403,0,404,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="174635545557535256" at="407,0,408,0" concept="9" trace="name$lA7v" />
+      <node id="174635545557535256" at="398,0,399,0" concept="9" trace="seq$cXFU" />
+      <node id="174635545557535256" at="402,0,403,0" concept="9" trace="OrderParticipantReference$$l" />
+      <node id="174635545557535256" at="403,0,404,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="174635545557535256" at="407,0,408,0" concept="9" trace="name$MnvL" />
       <node id="174635545557535256" at="51,0,53,0" concept="3" trace="myNode" />
       <node id="174635545557535256" at="75,10,77,5" concept="0" />
       <node id="174635545557535256" at="110,0,112,0" concept="3" trace="myNode" />
@@ -563,10 +563,10 @@
       <node id="2450897840534688278" at="153,91,154,147" concept="7" />
       <node id="2450897840534688278" at="155,14,156,26" concept="7" />
       <node id="2450897840534688278" at="157,17,158,42" concept="2" />
-      <node id="174635545557574558" at="164,0,165,0" concept="9" trace="order$VC70" />
-      <node id="174635545557574558" at="168,0,169,0" concept="9" trace="LinkAttribute$7j" />
-      <node id="174635545557574558" at="169,0,170,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="174635545557574558" at="173,0,174,0" concept="9" trace="name$lA7v" />
+      <node id="174635545557574558" at="164,0,165,0" concept="9" trace="order$BaNT" />
+      <node id="174635545557574558" at="168,0,169,0" concept="9" trace="LinkAttribute$v_" />
+      <node id="174635545557574558" at="169,0,170,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="174635545557574558" at="173,0,174,0" concept="9" trace="name$MnvL" />
       <node id="174635545557574558" at="43,0,45,0" concept="3" trace="myNode" />
       <node id="2450897840534688277" at="113,0,115,0" concept="3" trace="myNode" />
       <node id="174635545557574558" at="57,0,60,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

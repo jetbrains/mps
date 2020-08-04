@@ -23,7 +23,7 @@ public class CompactInvokeFunctionExpression_DELETE {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.function$70k5));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.function$NebJ));
       }
 
     };
@@ -71,6 +71,6 @@ public class CompactInvokeFunctionExpression_DELETE {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink function$70k5 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, 0x11fb842c1adL, "function");
+    /*package*/ static final SContainmentLink function$NebJ = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, 0x11fb842c1adL, "function");
   }
 }

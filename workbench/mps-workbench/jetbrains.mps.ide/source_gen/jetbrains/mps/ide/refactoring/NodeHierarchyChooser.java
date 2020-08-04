@@ -29,7 +29,7 @@ public class NodeHierarchyChooser extends JBScrollPane {
     this.myTree = new MyHierarchyTree(mpsProject.getRepository());
     mpsProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        NodeHierarchyChooser.this.myTree.setHierarchyNode(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$UN, false, false));
+        NodeHierarchyChooser.this.myTree.setHierarchyNode(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$KA, false, false));
       }
     });
     this.setViewportView(this.myTree);
@@ -82,6 +82,6 @@ public class NodeHierarchyChooser extends JBScrollPane {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

@@ -44,7 +44,7 @@ public final class ChangePropertyWithNonEmpty_Intention extends AbstractIntentio
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.CellModel_Property$iE);
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.CellModel_Property$uh);
   }
   @Override
   public boolean isSurroundWith() {
@@ -65,9 +65,9 @@ public final class ChangePropertyWithNonEmpty_Intention extends AbstractIntentio
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode nonEmpty = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_NonEmptyProperty$s6, node);
-      SLinkOperations.setTarget(nonEmpty, LINKS.relationDeclaration$_K5_, SLinkOperations.getTarget(node, LINKS.relationDeclaration$_K5_));
-      SLinkOperations.setTarget(node, LINKS.relationDeclaration$_K5_, null);
+      SNode nonEmpty = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_NonEmptyProperty$BH, node);
+      SLinkOperations.setTarget(nonEmpty, LINKS.relationDeclaration$E2hc, SLinkOperations.getTarget(node, LINKS.relationDeclaration$E2hc));
+      SLinkOperations.setTarget(node, LINKS.relationDeclaration$E2hc, null);
       for (SNode child : ListSequence.fromList(jetbrains.mps.util.SNodeOperations.getChildren(node))) {
         SContainmentLink role = child.getContainmentLink();
         node.removeChild(child);
@@ -88,11 +88,11 @@ public final class ChangePropertyWithNonEmpty_Intention extends AbstractIntentio
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_Property$iE = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
-    /*package*/ static final SConcept CellModel_NonEmptyProperty$s6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x113bef3a464L, "jetbrains.mps.lang.editor.structure.CellModel_NonEmptyProperty");
+    /*package*/ static final SConcept CellModel_Property$uh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
+    /*package*/ static final SConcept CellModel_NonEmptyProperty$BH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x113bef3a464L, "jetbrains.mps.lang.editor.structure.CellModel_NonEmptyProperty");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 }

@@ -30,7 +30,7 @@ public final class ScriptKindClassItem__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean isApplicableInLayout_iditlittOTkB(@NotNull SAbstractConcept __thisConcept__, SConcept layoutConcept) {
-    return CONCEPTS.CellLayout_Superscript$OP.equals(layoutConcept);
+    return CONCEPTS.CellLayout_Superscript$s.equals(layoutConcept);
   }
 
   /*package*/ ScriptKindClassItem__BehaviorDescriptor() {
@@ -80,6 +80,6 @@ public final class ScriptKindClassItem__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellLayout_Superscript$OP = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1a2fd43187388681L, "jetbrains.mps.lang.editor.structure.CellLayout_Superscript");
+    /*package*/ static final SConcept CellLayout_Superscript$s = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1a2fd43187388681L, "jetbrains.mps.lang.editor.structure.CellLayout_Superscript");
   }
 }

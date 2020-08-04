@@ -35,7 +35,7 @@ public class ModifiersInsertHandler {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode newModifier = SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$m0, null);
+        SNode newModifier = SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$F5MM, null);
         SelectionUtil.selectNode(editorContext, newModifier);
       }
       @Override
@@ -45,7 +45,7 @@ public class ModifiersInsertHandler {
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
         EditorCell contextCell = editorContext.getSelectedCell();
         SNode contextNode = contextCell.getSNode();
-        if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Modifier$Ra) && Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).first(), contextNode)) {
+        if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Modifier$jW) && Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).first(), contextNode)) {
           return false;
         }
         return true;
@@ -62,7 +62,7 @@ public class ModifiersInsertHandler {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode newModifier = SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$m0, null);
+        SNode newModifier = SNodeFactoryOperations.addNewChild(node, LINKS.modifiers$F5MM, null);
         SelectionUtil.selectNode(editorContext, newModifier);
       }
       @Override
@@ -72,22 +72,22 @@ public class ModifiersInsertHandler {
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
         EditorCell contextCell = editorContext.getSelectedCell();
         SNode contextNode = contextCell.getSNode();
-        if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Modifier$Ra)) {
-          if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).count() <= 1) {
+        if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Modifier$jW)) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).count() <= 1) {
             // here I calculate whether there are some modifier concepts to insert at all. 
             // if yes then we allow to add a child into node.modifiers collection 
             SModel model = SNodeOperations.getModel(node);
-            List<SNode> modifiers = SLinkOperations.getChildren(node, LINKS.modifiers$m0);
+            List<SNode> modifiers = SLinkOperations.getChildren(node, LINKS.modifiers$F5MM);
             return !(ListSequence.fromList(modifiers).select(new ISelector<SNode, SConcept>() {
               public SConcept select(SNode it) {
                 return SNodeOperations.getConcept(it);
               }
-            }).containsSequence(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Modifier$Ra, model)).where(new IWhereFilter<SConcept>() {
+            }).containsSequence(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Modifier$jW, model)).where(new IWhereFilter<SConcept>() {
               public boolean accept(SConcept it) {
                 return !(it.isAbstract());
               }
             })));
-          } else if (Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).last(), contextNode)) {
+          } else if (Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).last(), contextNode)) {
             return false;
           }
         }
@@ -143,10 +143,10 @@ public class ModifiersInsertHandler {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Modifier$Ra = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier");
+    /*package*/ static final SConcept Modifier$jW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier");
   }
 }

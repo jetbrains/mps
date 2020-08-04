@@ -37,10 +37,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     // init package simple names (i.e. name of classes from the same package) 
     // indeed, there could be other models that generate into this package, and we could have a conflict with a 'java.lang' class then if the name matches. 
     myPackageSimpleNames = new HashSet<String>();
-    for (SNode classifier : SModelOperations.roots(SNodeOperations.getModel(rootNode), CONCEPTS.Classifier$hJ)) {
+    for (SNode classifier : SModelOperations.roots(SNodeOperations.getModel(rootNode), CONCEPTS.Classifier$Ix)) {
       String fqName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classifier);
       if (myPackageName.equals(JavaNameUtil.packageName(fqName))) {
-        myPackageSimpleNames.add(SPropertyOperations.getString(classifier, PROPS.name$lA7v));
+        myPackageSimpleNames.add(SPropertyOperations.getString(classifier, PROPS.name$MnvL));
       }
     }
   }
@@ -62,7 +62,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
         while (n != null && SNodeOperations.getParent(n) != myRootNode) {
           n = SNodeOperations.getParent(n);
         }
-        if (n != null && SNodeOperations.hasRole(n, LINKS.member$6v_r)) {
+        if (n != null && SNodeOperations.hasRole(n, LINKS.member$L_2d)) {
           assert nestedPart.startsWith(".");
           return new ImportEntry(nestedPart.substring(1));
         }
@@ -117,14 +117,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

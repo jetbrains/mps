@@ -33,7 +33,7 @@ public final class PredefinedSymbolClassSymbolClassPart__BehaviorDescriptor exte
   }
 
   /*package*/ static String getRepresentation_id75Jea4IEZbM(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$SIgd), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$GbT1), PROPS.name$MnvL);
   }
 
   /*package*/ PredefinedSymbolClassSymbolClassPart__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class PredefinedSymbolClassSymbolClassPart__BehaviorDescriptor exte
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$SIgd = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117928d9f2L, 0x111792942ceL, "declaration");
+    /*package*/ static final SReferenceLink declaration$GbT1 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117928d9f2L, 0x111792942ceL, "declaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

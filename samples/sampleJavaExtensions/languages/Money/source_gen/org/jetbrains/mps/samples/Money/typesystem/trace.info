@@ -34,7 +34,7 @@
       <node id="654553635094918433" at="37,63,38,30" concept="4" />
       <node id="654553635094918433" at="38,30,39,239" concept="2" />
       <node id="654553635094918433" at="39,239,40,24" concept="5" />
-      <node id="1861416031385290160" at="44,0,45,0" concept="6" trace="ConvertTo$Tv" />
+      <node id="1861416031385290160" at="44,0,45,0" concept="6" trace="ConvertTo$6S" />
       <node id="1861416031385290160" at="18,0,20,0" concept="1" trace="typeof_ConvertTo_InferenceRule#()V" />
       <node id="1861416031385290160" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1861416031385290160" at="30,0,33,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -82,7 +82,7 @@
       <node id="3694786099210006967" at="34,30,35,234" concept="2" />
       <node id="3694786099210006967" at="35,234,36,435" concept="2" />
       <node id="3694786099210006967" at="36,435,37,24" concept="5" />
-      <node id="3694786099210003295" at="41,0,42,0" concept="6" trace="MoneyType$DO" />
+      <node id="3694786099210003295" at="41,0,42,0" concept="6" trace="MoneyType$Rd" />
       <node id="3694786099210003295" at="18,0,20,0" concept="1" trace="Money_extends_java_lang_Object_SubtypingRule#()V" />
       <node id="3694786099210003295" at="20,0,23,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3694786099210003295" at="23,0,26,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -142,7 +142,7 @@
       <node id="4001135958233292349" at="37,63,38,30" concept="4" />
       <node id="4001135958233292349" at="38,30,39,239" concept="2" />
       <node id="4001135958233292349" at="39,239,40,24" concept="5" />
-      <node id="4001135958233292020" at="44,0,45,0" concept="6" trace="CurrentStockPrice$Ba" />
+      <node id="4001135958233292020" at="44,0,45,0" concept="6" trace="CurrentStockPrice$Oz" />
       <node id="4001135958233292020" at="18,0,20,0" concept="1" trace="typeof_StockPriceInquiry_InferenceRule#()V" />
       <node id="4001135958233292020" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4001135958233292020" at="30,0,33,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -203,7 +203,7 @@
       <node id="4001135958235924599" at="42,234,43,439" concept="2" />
       <node id="4001135958235924599" at="43,439,44,168" concept="2" />
       <node id="4001135958235924599" at="44,168,45,24" concept="5" />
-      <node id="4001135958235924255" at="49,0,50,0" concept="6" trace="MovingAverage$qm" />
+      <node id="4001135958235924255" at="49,0,50,0" concept="6" trace="MovingAverage$BJ" />
       <node id="4001135958235924255" at="19,0,21,0" concept="1" trace="typeof_MovingAverage_InferenceRule#()V" />
       <node id="4001135958235924255" at="28,0,31,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4001135958235924255" at="31,0,34,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -261,7 +261,7 @@
       <node id="5447719361346496417" at="37,63,38,30" concept="4" />
       <node id="5447719361346496417" at="38,30,39,239" concept="2" />
       <node id="5447719361346496417" at="39,239,40,24" concept="5" />
-      <node id="5447719361346490733" at="44,0,45,0" concept="6" trace="MoneyLiteral$ml" />
+      <node id="5447719361346490733" at="44,0,45,0" concept="6" trace="MoneyLiteral$zI" />
       <node id="5447719361346490733" at="18,0,20,0" concept="1" trace="typeof_MoneyLiteral_InferenceRule#()V" />
       <node id="5447719361346490733" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5447719361346490733" at="30,0,33,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -447,7 +447,7 @@
       <node id="654553635094958814" at="39,30,40,234" concept="2" />
       <node id="654553635094958814" at="40,234,41,439" concept="2" />
       <node id="654553635094958814" at="41,439,42,24" concept="5" />
-      <node id="654553635094964690" at="46,0,47,0" concept="6" trace="GetAmount$i3" />
+      <node id="654553635094964690" at="46,0,47,0" concept="6" trace="GetAmount$vs" />
       <node id="654553635094964690" at="19,0,21,0" concept="1" trace="typeof_GetAmount_InferenceRule#()V" />
       <node id="654553635094964690" at="28,0,31,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="654553635094964690" at="31,0,34,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -504,7 +504,7 @@
       <node id="654553635094967321" at="37,63,38,30" concept="4" />
       <node id="654553635094967321" at="38,30,39,230" concept="2" />
       <node id="654553635094967321" at="39,230,40,24" concept="5" />
-      <node id="654553635094966707" at="44,0,45,0" concept="6" trace="GetCurrency$$g" />
+      <node id="654553635094966707" at="44,0,45,0" concept="6" trace="GetCurrency$LD" />
       <node id="654553635094966707" at="18,0,20,0" concept="1" trace="typeof_GetCurrency_InferenceRule#()V" />
       <node id="654553635094966707" at="27,0,30,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="654553635094966707" at="30,0,33,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

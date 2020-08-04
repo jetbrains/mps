@@ -14,19 +14,19 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class Formula_node_factories {
   public static class NodeFactory_1162840292118 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Operation$Lv)) {
-        SLinkOperations.setTarget(newNode, LINKS.leftOperand$yXYE, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Operation$Lv), LINKS.leftOperand$yXYE));
-        SLinkOperations.setTarget(newNode, LINKS.rightOperand$Wy7J, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Operation$Lv), LINKS.rightOperand$Wy7J));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Operation$Dj)) {
+        SLinkOperations.setTarget(newNode, LINKS.leftOperand$mKQu, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Operation$Dj), LINKS.leftOperand$mKQu));
+        SLinkOperations.setTarget(newNode, LINKS.rightOperand$KkZz, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.Operation$Dj), LINKS.rightOperand$KkZz));
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Operation$Lv = MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation");
+    /*package*/ static final SConcept Operation$Dj = MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftOperand$yXYE = MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand");
-    /*package*/ static final SContainmentLink rightOperand$Wy7J = MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db87696bL, "rightOperand");
+    /*package*/ static final SContainmentLink leftOperand$mKQu = MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand");
+    /*package*/ static final SContainmentLink rightOperand$KkZz = MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db87696bL, "rightOperand");
   }
 }

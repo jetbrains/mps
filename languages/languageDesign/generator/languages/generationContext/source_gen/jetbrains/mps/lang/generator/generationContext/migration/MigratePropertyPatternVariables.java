@@ -44,11 +44,11 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
       new PropertyPatternVariableMigration<SNode>() {
         @Override
         protected Iterable<SNode> getUsagesToMigrate() {
-          return CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.GenerationContextOp_PropertyPatternRef$X8, false);
+          return CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.GenerationContextOp_PropertyPatternRef$mI, false);
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
-          return SLinkOperations.getTarget(usage, LINKS.propertyPatternVar$9Zh3);
+          return SLinkOperations.getTarget(usage, LINKS.propertyPatternVar$pUED);
         }
         @Override
         protected void migrateRawValue(SNode usage, SNode datatype) {
@@ -69,10 +69,10 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_PropertyPatternRef$X8 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_PropertyPatternRef");
+    /*package*/ static final SConcept GenerationContextOp_PropertyPatternRef$mI = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_PropertyPatternRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyPatternVar$9Zh3 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, 0x186874d40ed9c75cL, "propertyPatternVar");
+    /*package*/ static final SReferenceLink propertyPatternVar$pUED = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, 0x186874d40ed9c75cL, "propertyPatternVar");
   }
 }

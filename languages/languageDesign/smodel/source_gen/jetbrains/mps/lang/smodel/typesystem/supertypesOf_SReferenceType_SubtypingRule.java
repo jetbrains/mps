@@ -21,7 +21,7 @@ public class supertypesOf_SReferenceType_SubtypingRule extends SubtypingRule_Run
     return _quotation_createNode_kps41k_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SReferenceType$4h;
+    return CONCEPTS.SReferenceType$5L;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class supertypesOf_SReferenceType_SubtypingRule extends SubtypingRule_Run
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SReferenceType$4h = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x798c0d67da9d2175L, "jetbrains.mps.lang.smodel.structure.SReferenceType");
+    /*package*/ static final SConcept SReferenceType$5L = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x798c0d67da9d2175L, "jetbrains.mps.lang.smodel.structure.SReferenceType");
   }
 }

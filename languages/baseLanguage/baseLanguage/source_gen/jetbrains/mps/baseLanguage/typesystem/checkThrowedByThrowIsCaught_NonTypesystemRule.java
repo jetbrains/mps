@@ -22,21 +22,21 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   public checkThrowedByThrowIsCaught_NonTypesystemRule() {
   }
   public void applyRule(final SNode throwStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode throwable = SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju);
+    SNode throwable = SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg);
     if ((throwable == null)) {
       return;
     }
     SNode throwableType = TypecheckingFacade.getFromContext().getTypeOf(throwable);
     Set<SNode> throwables = SetSequence.fromSet(new HashSet<SNode>());
-    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(throwable), CONCEPTS.Type$IG)) {
-      SetSequence.fromSet(throwables).addElement(SNodeOperations.cast(throwableType, CONCEPTS.Type$IG));
+    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(throwable), CONCEPTS.Type$bu)) {
+      SetSequence.fromSet(throwables).addElement(SNodeOperations.cast(throwableType, CONCEPTS.Type$bu));
     }
-    if (SNodeOperations.isInstanceOf(throwableType, CONCEPTS.Type$IG)) {
+    if (SNodeOperations.isInstanceOf(throwableType, CONCEPTS.Type$bu)) {
       RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, throwStatement);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ThrowStatement$yK;
+    return CONCEPTS.ThrowStatement$Zy;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,11 +46,11 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$DFju = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
+    /*package*/ static final SContainmentLink throwable$kKKg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept ThrowStatement$yK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept ThrowStatement$Zy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
   }
 }

@@ -38,7 +38,7 @@ public class UpdateConceptReferencesParticipant extends UpdateReferencesParticip
 
   @Override
   protected boolean shouldUpdateReference(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, SNode containingNode, SReferenceLink role, SNode movingNode, RefactoringSession refactoringSession) {
-    return Objects.equals(role, LINKS.extends$9AAt) || Objects.equals(role, LINKS.intfc$7Eer);
+    return Objects.equals(role, LINKS.extends$_Isg) || Objects.equals(role, LINKS.intfc$zM4e);
   }
 
   @Override
@@ -66,7 +66,7 @@ public class UpdateConceptReferencesParticipant extends UpdateReferencesParticip
     final UpdateReferencesParticipantBase.MyMoveNodeRefactoringDataCollector dataCollector = new UpdateReferencesParticipantBase.MyMoveNodeRefactoringDataCollector();
     return new MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<UpdateReferencesParticipantBase.NodeData<Void>, UpdateReferencesParticipantBase.NodeData<Void>>() {
       public UpdateReferencesParticipantBase.NodeData<Void> beforeMove(SNode nodeToMove) {
-        if (!(SNodeOperations.isInstanceOf(nodeToMove, CONCEPTS.AbstractConceptDeclaration$UN)) || !(check_m5uax2_a0a0a0a0a0b0k(nodeToMove.getModel()) instanceof Language)) {
+        if (!(SNodeOperations.isInstanceOf(nodeToMove, CONCEPTS.AbstractConceptDeclaration$KA)) || !(check_m5uax2_a0a0a0a0a0b0k(nodeToMove.getModel()) instanceof Language)) {
           return null;
         }
         return new NodeData<Void>(dataCollector.beforeMove(nodeToMove), ((Void) null));
@@ -103,11 +103,11 @@ public class UpdateConceptReferencesParticipant extends UpdateReferencesParticip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

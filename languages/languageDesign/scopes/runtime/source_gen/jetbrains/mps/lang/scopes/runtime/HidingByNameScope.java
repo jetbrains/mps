@@ -75,7 +75,7 @@ public class HidingByNameScope extends Scope {
   }
   @Override
   public boolean contains(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV)) || !(SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(kindConcept)))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) || !(SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(kindConcept)))) {
       return false;
     }
     if (scope.contains(node)) {
@@ -88,6 +88,6 @@ public class HidingByNameScope extends Scope {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

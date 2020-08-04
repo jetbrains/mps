@@ -34,8 +34,8 @@ public final class QueryFunction_TransformationMenu_Extensible__BehaviorDescript
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, CONCEPTS.QueryFunction_TransformationMenu_Extensible$_D);
-    SNode extensibleMenuPart = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IExtensibleTransformationMenuPart$sZ, false, false);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, CONCEPTS.QueryFunction_TransformationMenu_Extensible$Lg);
+    SNode extensibleMenuPart = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IExtensibleTransformationMenuPart$CA, false, false);
     if ((extensibleMenuPart != null)) {
       ListSequence.fromList(result).addSequence(ListSequence.fromList(IExtensibleTransformationMenuPart__BehaviorDescriptor.getAdditionalFeatureParameters_id6kJcyCQ_bk0.invoke(extensibleMenuPart)));
     }
@@ -89,7 +89,7 @@ public final class QueryFunction_TransformationMenu_Extensible__BehaviorDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryFunction_TransformationMenu_Extensible$_D = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a36971630L, "jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Extensible");
-    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$sZ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
+    /*package*/ static final SConcept QueryFunction_TransformationMenu_Extensible$Lg = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a36971630L, "jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Extensible");
+    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$CA = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
   }
 }

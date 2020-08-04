@@ -34,13 +34,13 @@ public final class InstancesExpression__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static Iterable<SConcept> getSupportedParameters_id3J6h25QXCDW(@NotNull SAbstractConcept __thisConcept__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.QueryParameterScope_old$sE, CONCEPTS.QueryParameterScope$rU, CONCEPTS.QueryParameterIncludeReadOnly_old$Lp, CONCEPTS.QueryParameterExact$8x);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.QueryParameterScope_old$ZG, CONCEPTS.QueryParameterScope$YW, CONCEPTS.QueryParameterIncludeReadOnly_old$kr, CONCEPTS.QueryParameterExact$Fz);
   }
   /*package*/ static String getHelpPage_id64VftqEen2L(@NotNull SAbstractConcept __thisConcept__) {
-    return HelpProvider__BehaviorDescriptor.getHelpPage_id64VftqEen2L.invokeSuper(__thisConcept__, CONCEPTS.InstancesExpression$OR) + "\nImplementation of this command uses the IDE indexes to speed up execution";
+    return HelpProvider__BehaviorDescriptor.getHelpPage_id64VftqEen2L.invokeSuper(__thisConcept__, CONCEPTS.InstancesExpression$nT) + "\nImplementation of this command uses the IDE indexes to speed up execution";
   }
   /*package*/ static String getDisplayString_id5YxQmqOFZEf(@NotNull SAbstractConcept __thisConcept__) {
-    return HelpProvider__BehaviorDescriptor.getDisplayString_id5YxQmqOFZEf.invokeSuper(__thisConcept__, CONCEPTS.InstancesExpression$OR) + "(concept)";
+    return HelpProvider__BehaviorDescriptor.getDisplayString_id5YxQmqOFZEf.invokeSuper(__thisConcept__, CONCEPTS.InstancesExpression$nT) + "(concept)";
   }
 
   /*package*/ InstancesExpression__BehaviorDescriptor() {
@@ -94,10 +94,10 @@ public final class InstancesExpression__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryParameterScope_old$sE = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ed2fL, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope_old");
-    /*package*/ static final SConcept QueryParameterScope$rU = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope");
-    /*package*/ static final SConcept QueryParameterIncludeReadOnly_old$Lp = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ec86L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterIncludeReadOnly_old");
-    /*package*/ static final SConcept QueryParameterExact$8x = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x967fc67f6f09d70L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterExact");
-    /*package*/ static final SConcept InstancesExpression$OR = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x6b643f33718aa10dL, "jetbrains.mps.lang.smodel.query.structure.InstancesExpression");
+    /*package*/ static final SConcept QueryParameterScope_old$ZG = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ed2fL, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope_old");
+    /*package*/ static final SConcept QueryParameterScope$YW = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope");
+    /*package*/ static final SConcept QueryParameterIncludeReadOnly_old$kr = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ec86L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterIncludeReadOnly_old");
+    /*package*/ static final SConcept QueryParameterExact$Fz = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x967fc67f6f09d70L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterExact");
+    /*package*/ static final SConcept InstancesExpression$nT = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x6b643f33718aa10dL, "jetbrains.mps.lang.smodel.query.structure.InstancesExpression");
   }
 }

@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubtypingRule_Constraints extends BaseConstraintsDescriptor {
   public SubtypingRule_Constraints() {
-    super(CONCEPTS.SubtypingRule$86);
+    super(CONCEPTS.SubtypingRule$pW);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class SubtypingRule_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "1227088641112");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubtypingRule$86 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c426ccaL, "jetbrains.mps.lang.typesystem.structure.SubtypingRule");
+    /*package*/ static final SConcept SubtypingRule$pW = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c426ccaL, "jetbrains.mps.lang.typesystem.structure.SubtypingRule");
   }
 }

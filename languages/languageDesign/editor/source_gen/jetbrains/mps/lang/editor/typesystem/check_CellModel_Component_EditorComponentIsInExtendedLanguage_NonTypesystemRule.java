@@ -28,7 +28,7 @@ public class check_CellModel_Component_EditorComponentIsInExtendedLanguage_NonTy
   public check_CellModel_Component_EditorComponentIsInExtendedLanguage_NonTypesystemRule() {
   }
   public void applyRule(final SNode cmc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(cmc, LINKS.editorComponent$_wYw) == null)) {
+    if ((SLinkOperations.getTarget(cmc, LINKS.editorComponent$DNa7) == null)) {
       return;
     }
     Language language = as_5bg4jt_a0a1a1(check_5bg4jt_a0a1a1(cmc.getModel()), Language.class);
@@ -37,11 +37,11 @@ public class check_CellModel_Component_EditorComponentIsInExtendedLanguage_NonTy
     }
     Set<Language> extendedLanguages = language.getAllExtendedLanguages();
 
-    Language ecLanguage = as_5bg4jt_a0a5a1(check_5bg4jt_a0a5a1(SLinkOperations.getTarget(cmc, LINKS.editorComponent$_wYw).getModel()), Language.class);
+    Language ecLanguage = as_5bg4jt_a0a5a1(check_5bg4jt_a0a5a1(SLinkOperations.getTarget(cmc, LINKS.editorComponent$DNa7).getModel()), Language.class);
     if (!(SetSequence.fromSet(extendedLanguages).contains(ecLanguage))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cmc, "language " + ecLanguage.getModuleName() + " of editor component " + SPropertyOperations.getString(SLinkOperations.getTarget(cmc, LINKS.editorComponent$_wYw), PROPS.name$lA7v) + " is not extended by " + language.getModuleName(), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1235136520823", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cmc, "language " + ecLanguage.getModuleName() + " of editor component " + SPropertyOperations.getString(SLinkOperations.getTarget(cmc, LINKS.editorComponent$DNa7), PROPS.name$MnvL) + " is not extended by " + language.getModuleName(), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1235136520823", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.editor.typesystem.AddExtendedLanguage_QuickFix", false);
           intentionProvider.putArgument("extLang", ecLanguage);
@@ -53,7 +53,7 @@ public class check_CellModel_Component_EditorComponentIsInExtendedLanguage_NonTy
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellModel_Component$1X;
+    return CONCEPTS.CellModel_Component$d$;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -81,14 +81,14 @@ public class check_CellModel_Component_EditorComponentIsInExtendedLanguage_NonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink editorComponent$_wYw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
+    /*package*/ static final SReferenceLink editorComponent$DNa7 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_Component$1X = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, "jetbrains.mps.lang.editor.structure.CellModel_Component");
+    /*package*/ static final SConcept CellModel_Component$d$ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, "jetbrains.mps.lang.editor.structure.CellModel_Component");
   }
 }

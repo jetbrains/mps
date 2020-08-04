@@ -33,8 +33,8 @@ public final class QueryFunctionParameter_parameterObject__BehaviorDescriptor ex
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    SNode parameterizable = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IParameterizableMenuPart$eI, false, false);
-    return SLinkOperations.getTarget(IParameterizableMenuPart__BehaviorDescriptor.getParameterizer_id1quYWAD0Tfp.invoke(parameterizable), LINKS.parameterType$XGVw);
+    SNode parameterizable = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IParameterizableMenuPart$ql, false, false);
+    return SLinkOperations.getTarget(IParameterizableMenuPart__BehaviorDescriptor.getParameterizer_id1quYWAD0Tfp.invoke(parameterizable), LINKS.parameterType$1Z77);
   }
 
   /*package*/ QueryFunctionParameter_parameterObject__BehaviorDescriptor() {
@@ -84,10 +84,10 @@ public final class QueryFunctionParameter_parameterObject__BehaviorDescriptor ex
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IParameterizableMenuPart$eI = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0dL, "jetbrains.mps.lang.editor.structure.IParameterizableMenuPart");
+    /*package*/ static final SInterfaceConcept IParameterizableMenuPart$ql = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0dL, "jetbrains.mps.lang.editor.structure.IParameterizableMenuPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$XGVw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, 0x169efbc9a9002d10L, "parameterType");
+    /*package*/ static final SContainmentLink parameterType$1Z77 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, 0x169efbc9a9002d10L, "parameterType");
   }
 }

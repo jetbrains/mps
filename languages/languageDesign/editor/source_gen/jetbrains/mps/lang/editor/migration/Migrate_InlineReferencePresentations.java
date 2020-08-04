@@ -44,26 +44,26 @@ public class Migrate_InlineReferencePresentations extends MigrationScriptBase {
           return scope_5nvoa5_a0e_0;
         }
       };
-      Iterable<SNode> refCells = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_RefCell$VD, false);
+      Iterable<SNode> refCells = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_RefCell$7g, false);
       for (SNode refCell : Sequence.fromIterable(refCells)) {
-        SNode concept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(SNodeOperations.getNodeAncestor(refCell, CONCEPTS.BaseEditorComponent$Sy, false, false));
-        SNode link = SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$_K5_);
+        SNode concept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(SNodeOperations.getNodeAncestor(refCell, CONCEPTS.BaseEditorComponent$49, false, false));
+        SNode link = SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$E2hc);
         SNode refPresentation = RefPresentationFunctionUtil.getPresentationFromConstraints(concept, link);
 
         if (refPresentation != null) {
           boolean hasParameter_inEditor = RefPresentationFunctionUtil.hasParameter_inEditor(refPresentation);
           boolean hasParameter_visible = RefPresentationFunctionUtil.hasParameter_visible(refPresentation);
 
-          Iterable<SNode> refPresentationCells = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(refCell, LINKS.editorComponent$w13s), CONCEPTS.CellModel_ReferencePresentation$Wr, false, new SAbstractConcept[]{});
+          Iterable<SNode> refPresentationCells = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(refCell, LINKS.editorComponent$$jf3), CONCEPTS.CellModel_ReferencePresentation$82, false, new SAbstractConcept[]{});
 
           for (SNode refPresentationCell : Sequence.fromIterable(refPresentationCells)) {
-            if ((SLinkOperations.getTarget(refPresentationCell, LINKS.referentPresentation$eXlc) == null)) {
+            if ((SLinkOperations.getTarget(refPresentationCell, LINKS.referentPresentation$jfwN) == null)) {
               migrate_inEditor(refPresentationCell, refPresentation);
             }
           }
 
-          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$w13s), LINKS.cellModel$GQI_), CONCEPTS.CellModel_ReferencePresentation$Wr)) {
-            SNode refPresentationCell = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$w13s), LINKS.cellModel$GQI_), CONCEPTS.CellModel_ReferencePresentation$Wr);
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$$jf3), LINKS.cellModel$L8Uc), CONCEPTS.CellModel_ReferencePresentation$82)) {
+            SNode refPresentationCell = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$$jf3), LINKS.cellModel$L8Uc), CONCEPTS.CellModel_ReferencePresentation$82);
             if (hasParameter_inEditor || hasParameter_visible) {
               SNode menuPart = extractMenuPart_ReferentPrimary(refCell);
               if ((menuPart != null)) {
@@ -94,14 +94,14 @@ public class Migrate_InlineReferencePresentations extends MigrationScriptBase {
 
 
   private SNode extractMenuPart_ReferentPrimary(SNode refCell) {
-    if ((SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$lbDX) == null)) {
+    if ((SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$) == null)) {
       SNode newPart = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary"));
-      SLinkOperations.setNewChild(refCell, LINKS.menuDescriptor$lbDX, null);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$lbDX), LINKS.cellMenuPart$f1$2)).addElement(newPart);
+      SLinkOperations.setNewChild(refCell, LINKS.menuDescriptor$ptP$, null);
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).addElement(newPart);
       return newPart;
     } else {
-      SNode extractedPart = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$lbDX), LINKS.cellMenuPart$f1$2), CONCEPTS.CellMenuPart_ReferentPrimary$j6)).first();
-      if ((SLinkOperations.getTarget(extractedPart, LINKS.visibleMatchingText$o9XG) == null) && (SLinkOperations.getTarget(extractedPart, LINKS.matchingText$DPxL) == null)) {
+      SNode extractedPart = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_ReferentPrimary$uH)).first();
+      if ((SLinkOperations.getTarget(extractedPart, LINKS.visibleMatchingText$ss9j) == null) && (SLinkOperations.getTarget(extractedPart, LINKS.matchingText$I7Ho) == null)) {
         return extractedPart;
       }
       return null;
@@ -109,21 +109,21 @@ public class Migrate_InlineReferencePresentations extends MigrationScriptBase {
   }
 
   private void migrate_inEditor(SNode refPresentationCell, SNode refPresentation) {
-    SLinkOperations.setNewChild(refPresentationCell, LINKS.referentPresentation$eXlc, null);
-    SLinkOperations.setTarget(SLinkOperations.getTarget(refPresentationCell, LINKS.referentPresentation$eXlc), LINKS.body$z0FY, SNodeOperations.copyNode(refPresentation));
-    REPLACER_EDITOR.adjustFunctionBody(SLinkOperations.getTarget(SLinkOperations.getTarget(refPresentationCell, LINKS.referentPresentation$eXlc), LINKS.body$z0FY));
+    SLinkOperations.setNewChild(refPresentationCell, LINKS.referentPresentation$jfwN, null);
+    SLinkOperations.setTarget(SLinkOperations.getTarget(refPresentationCell, LINKS.referentPresentation$jfwN), LINKS.body$e68K, SNodeOperations.copyNode(refPresentation));
+    REPLACER_EDITOR.adjustFunctionBody(SLinkOperations.getTarget(SLinkOperations.getTarget(refPresentationCell, LINKS.referentPresentation$jfwN), LINKS.body$e68K));
   }
 
   private void migrate_matchingText(SNode menuPart, SNode refPresentation) {
-    SLinkOperations.setNewChild(menuPart, LINKS.matchingText$DPxL, null);
-    SLinkOperations.setTarget(SLinkOperations.getTarget(menuPart, LINKS.matchingText$DPxL), LINKS.body$z0FY, SNodeOperations.copyNode(refPresentation));
-    REPLACER_MATCHING.adjustFunctionBody(SLinkOperations.getTarget(SLinkOperations.getTarget(menuPart, LINKS.matchingText$DPxL), LINKS.body$z0FY));
+    SLinkOperations.setNewChild(menuPart, LINKS.matchingText$I7Ho, null);
+    SLinkOperations.setTarget(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho), LINKS.body$e68K, SNodeOperations.copyNode(refPresentation));
+    REPLACER_MATCHING.adjustFunctionBody(SLinkOperations.getTarget(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho), LINKS.body$e68K));
   }
 
   private void migrate_visibleMatchingText(SNode menuPart, SNode refPresentation) {
-    SLinkOperations.setNewChild(menuPart, LINKS.visibleMatchingText$o9XG, null);
-    SLinkOperations.setTarget(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$o9XG), LINKS.body$z0FY, SNodeOperations.copyNode(refPresentation));
-    REPLACER_VISIBLE_MATCHING.adjustFunctionBody(SLinkOperations.getTarget(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$o9XG), LINKS.body$z0FY));
+    SLinkOperations.setNewChild(menuPart, LINKS.visibleMatchingText$ss9j, null);
+    SLinkOperations.setTarget(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j), LINKS.body$e68K, SNodeOperations.copyNode(refPresentation));
+    REPLACER_VISIBLE_MATCHING.adjustFunctionBody(SLinkOperations.getTarget(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j), LINKS.body$e68K));
   }
 
   private static final RefPresentationFunctionUtil.ParameterReplacer REPLACER_EDITOR = new RefPresentationFunctionUtil.ParameterReplacer(false, true);
@@ -131,21 +131,21 @@ public class Migrate_InlineReferencePresentations extends MigrationScriptBase {
   private static final RefPresentationFunctionUtil.ParameterReplacer REPLACER_VISIBLE_MATCHING = new RefPresentationFunctionUtil.ParameterReplacer(true, false);
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_RefCell$VD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
-    /*package*/ static final SConcept BaseEditorComponent$Sy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, "jetbrains.mps.lang.editor.structure.BaseEditorComponent");
-    /*package*/ static final SConcept CellModel_ReferencePresentation$Wr = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation");
-    /*package*/ static final SConcept CellMenuPart_ReferentPrimary$j6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary");
+    /*package*/ static final SConcept CellModel_RefCell$7g = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
+    /*package*/ static final SConcept BaseEditorComponent$49 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, "jetbrains.mps.lang.editor.structure.BaseEditorComponent");
+    /*package*/ static final SConcept CellModel_ReferencePresentation$82 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation");
+    /*package*/ static final SConcept CellMenuPart_ReferentPrimary$uH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SContainmentLink editorComponent$w13s = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
-    /*package*/ static final SContainmentLink referentPresentation$eXlc = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, 0x6c035fefdf050085L, "referentPresentation");
-    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SContainmentLink menuDescriptor$lbDX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor");
-    /*package*/ static final SContainmentLink cellMenuPart$f1$2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart");
-    /*package*/ static final SContainmentLink matchingText$DPxL = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText");
-    /*package*/ static final SContainmentLink visibleMatchingText$o9XG = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText");
-    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SContainmentLink editorComponent$$jf3 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
+    /*package*/ static final SContainmentLink referentPresentation$jfwN = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, 0x6c035fefdf050085L, "referentPresentation");
+    /*package*/ static final SContainmentLink cellModel$L8Uc = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SContainmentLink menuDescriptor$ptP$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor");
+    /*package*/ static final SContainmentLink cellMenuPart$jjJD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart");
+    /*package*/ static final SContainmentLink matchingText$I7Ho = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText");
+    /*package*/ static final SContainmentLink visibleMatchingText$ss9j = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x5c3ee006520dfad6L, "visibleMatchingText");
+    /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 }

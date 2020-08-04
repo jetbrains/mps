@@ -34,8 +34,8 @@
       <node id="2689537970575039654" at="50,9,51,82" concept="2" />
       <node id="4098794966557889127" at="54,42,55,21" concept="8" />
       <node id="4098794966557888877" at="62,41,63,158" concept="8" />
-      <node id="4098794966557888877" at="67,0,68,0" concept="9" trace="BaseConcept$Sz" />
-      <node id="4098794966557888877" at="68,0,69,0" concept="9" trace="NodeOperationsContainer$UO" />
+      <node id="4098794966557888877" at="67,0,68,0" concept="9" trace="BaseConcept$gP" />
+      <node id="4098794966557888877" at="68,0,69,0" concept="9" trace="NodeOperationsContainer$aj" />
       <node id="6388125092638981861" at="46,97,49,11" concept="5" />
       <node id="4098794966557889127" at="25,0,29,0" concept="6" trace="getName#()Ljava/lang/String;" />
       <node id="4098794966557889127" at="29,0,33,0" concept="6" trace="getAdditionalInfo#()Ljava/lang/String;" />
@@ -103,7 +103,7 @@
       <node id="7796829026680947410" at="63,76,64,83" concept="8" />
       <node id="7796829026681053994" at="67,72,68,99" concept="7" />
       <node id="7432464101918576363" at="68,99,69,87" concept="2" />
-      <node id="7796829026680935427" at="73,0,74,0" concept="9" trace="NodeOperationsContainer$UO" />
+      <node id="7796829026680935427" at="73,0,74,0" concept="9" trace="NodeOperationsContainer$aj" />
       <node id="2689537970574954471" at="47,140,50,7" concept="5" />
       <node id="2689537970574891491" at="34,0,38,0" concept="1" trace="SpecifyRuleMessagesHelper#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/components/ComponentHost;)V" />
       <node id="2689537970574962654" at="55,62,59,5" concept="5" />

@@ -22,7 +22,7 @@ public class checkBeforeContainsCellAnnotation_EditorTestCase_NonTypesystemRule 
   public checkBeforeContainsCellAnnotation_EditorTestCase_NonTypesystemRule() {
   }
   public void applyRule(final SNode test, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(test, LINKS.testNodeBefore$ihZ9), LINKS.nodeToCheck$VYXt) != null) && ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SLinkOperations.getTarget(test, LINKS.testNodeBefore$ihZ9), LINKS.nodeToCheck$VYXt), CONCEPTS.AnonymousCellAnnotation$28, false, new SAbstractConcept[]{})).isEmpty()) {
+    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(test, LINKS.testNodeBefore$aUeC), LINKS.nodeToCheck$OBcW) != null) && ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SLinkOperations.getTarget(test, LINKS.testNodeBefore$aUeC), LINKS.nodeToCheck$OBcW), CONCEPTS.AnonymousCellAnnotation$hB, false, new SAbstractConcept[]{})).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(test, "The 'before' section must have an AnonymousCellAnnotation attached", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "5960383906433090718", null, errorTarget);
@@ -30,7 +30,7 @@ public class checkBeforeContainsCellAnnotation_EditorTestCase_NonTypesystemRule 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EditorTestCase$qk;
+    return CONCEPTS.EditorTestCase$DN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,12 +40,12 @@ public class checkBeforeContainsCellAnnotation_EditorTestCase_NonTypesystemRule 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink testNodeBefore$ihZ9 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore");
-    /*package*/ static final SContainmentLink nodeToCheck$VYXt = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
+    /*package*/ static final SContainmentLink testNodeBefore$aUeC = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x2b9f5f5eae643562L, "testNodeBefore");
+    /*package*/ static final SContainmentLink nodeToCheck$OBcW = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, 0x11b5a397b92L, "nodeToCheck");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnonymousCellAnnotation$28 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
-    /*package*/ static final SConcept EditorTestCase$qk = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase");
+    /*package*/ static final SConcept AnonymousCellAnnotation$hB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
+    /*package*/ static final SConcept EditorTestCase$DN = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase");
   }
 }

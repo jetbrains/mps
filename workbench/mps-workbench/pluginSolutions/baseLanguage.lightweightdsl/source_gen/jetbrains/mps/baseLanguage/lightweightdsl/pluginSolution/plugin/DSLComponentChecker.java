@@ -25,7 +25,7 @@ public class DSLComponentChecker extends BaseEventProcessingEditorChecker {
   @Override
   public UpdateResult update(EditorComponent editorComponent, boolean b, boolean b1, Cancellable cancellable) {
     final Set<EditorMessage> messages = SetSequence.fromSet(new HashSet<EditorMessage>());
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(((SNode) editorComponent.getEditedNode()), CONCEPTS.MemberInstance$D8, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(((SNode) editorComponent.getEditedNode()), CONCEPTS.MemberInstance$YT, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         messages.add(new DSLComponentMessage(it, DSLComponentChecker.this, "Go to declaration"));
       }
@@ -34,6 +34,6 @@ public class DSLComponentChecker extends BaseEventProcessingEditorChecker {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept MemberInstance$D8 = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9179L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberInstance");
+    /*package*/ static final SInterfaceConcept MemberInstance$YT = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9179L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberInstance");
   }
 }

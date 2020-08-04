@@ -37,18 +37,18 @@ public final class CellMenuPart_Abstract__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static SNode getEditedFeature_idhJEvH7P(@NotNull SNode __thisNode__) {
-    return CellMenuUtil.getEditedFeature(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.CellMenuDescriptor$$G));
+    return CellMenuUtil.getEditedFeature(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.CellMenuDescriptor$Kj));
   }
   /*package*/ static SNode getEditedLink_idhJEvotS(@NotNull SNode __thisNode__) {
     SNode editedFeature = CellMenuPart_Abstract__BehaviorDescriptor.getEditedFeature_idhJEvH7P.invoke(__thisNode__);
-    if (SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$bA)) {
-      return SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$bA);
+    if (SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$1p)) {
+      return SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$1p);
     }
     return null;
   }
   /*package*/ static SNode getEditedAggregationLink_idhJEvgUM(@NotNull SNode __thisNode__) {
     SNode editedLink = CellMenuPart_Abstract__BehaviorDescriptor.getEditedLink_idhJEvotS.invoke(__thisNode__);
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(editedLink, PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(editedLink, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
       return editedLink;
     }
     return null;
@@ -110,11 +110,11 @@ public final class CellMenuPart_Abstract__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellMenuDescriptor$$G = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, "jetbrains.mps.lang.editor.structure.CellMenuDescriptor");
-    /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
+    /*package*/ static final SConcept CellMenuDescriptor$Kj = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, "jetbrains.mps.lang.editor.structure.CellMenuDescriptor");
+    /*package*/ static final SConcept LinkDeclaration$1p = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 }

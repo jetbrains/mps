@@ -32,7 +32,7 @@ public class Text_SubstituteMenuContribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_dmpu6l_a(), CONCEPTS.IPlaceholderContent$md));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_dmpu6l_a(), CONCEPTS.IPlaceholderContent$Iv));
     return result;
   }
 
@@ -77,7 +77,7 @@ public class Text_SubstituteMenuContribution extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.IPlaceholderContent$md, context);
+        super(CONCEPTS.IPlaceholderContent$Iv, context);
         _context = context;
       }
 
@@ -89,7 +89,7 @@ public class Text_SubstituteMenuContribution extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text"));
-        SLinkOperations.addNewChild(node, LINKS.lines$y1jy, null);
+        SLinkOperations.addNewChild(node, LINKS.lines$U$m7, null);
         return node;
       }
 
@@ -111,10 +111,10 @@ public class Text_SubstituteMenuContribution extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IPlaceholderContent$md = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x38518aff8a105fd6L, "jetbrains.mps.lang.core.structure.IPlaceholderContent");
+    /*package*/ static final SInterfaceConcept IPlaceholderContent$Iv = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x38518aff8a105fd6L, "jetbrains.mps.lang.core.structure.IPlaceholderContent");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$y1jy = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink lines$U$m7 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
   }
 }

@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FigureParameterMapping_Constraints extends BaseConstraintsDescriptor {
   public FigureParameterMapping_Constraints() {
-    super(CONCEPTS.FigureParameterMapping$U0);
+    super(CONCEPTS.FigureParameterMapping$LN);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class FigureParameterMapping_Constraints extends BaseConstraintsDescripto
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.CellModel_DiagramNode$Ry);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.CellModel_DiagramNode$Jl);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:1af2ba06-e725-4940-9c06-d6b80c641b75(jetbrains.mps.lang.editor.diagram.constraints)", "1227128029536565015");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FigureParameterMapping$U0 = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a7d7c7L, "jetbrains.mps.lang.editor.diagram.structure.FigureParameterMapping");
-    /*package*/ static final SConcept CellModel_DiagramNode$Ry = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_DiagramNode");
+    /*package*/ static final SConcept FigureParameterMapping$LN = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a7d7c7L, "jetbrains.mps.lang.editor.diagram.structure.FigureParameterMapping");
+    /*package*/ static final SConcept CellModel_DiagramNode$Jl = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_DiagramNode");
   }
 }

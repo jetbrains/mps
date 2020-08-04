@@ -68,7 +68,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_6blbyb_a1a() {
-    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.problems$TNoI)).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.problems$4CuI)).isNotEmpty();
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
@@ -253,10 +253,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.problems$TNoI;
+      return LINKS.problems$4CuI;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.RefPresentationMigratedProblem$Pu;
+      return CONCEPTS.RefPresentationMigratedProblem$Vu;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -266,7 +266,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(problemsListHandler_6blbyb_b5b1a.this.getNode(), LINKS.problems$TNoI));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(problemsListHandler_6blbyb_b5b1a.this.getNode(), LINKS.problems$4CuI));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -319,10 +319,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink problems$TNoI = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, 0x4fd9d41024c6d474L, "problems");
+    /*package*/ static final SContainmentLink problems$4CuI = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, 0x4fd9d41024c6d474L, "problems");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefPresentationMigratedProblem$Pu = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aac3L, "jetbrains.mps.lang.constraints.structure.RefPresentationMigratedProblem");
+    /*package*/ static final SConcept RefPresentationMigratedProblem$Vu = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aac3L, "jetbrains.mps.lang.constraints.structure.RefPresentationMigratedProblem");
   }
 }

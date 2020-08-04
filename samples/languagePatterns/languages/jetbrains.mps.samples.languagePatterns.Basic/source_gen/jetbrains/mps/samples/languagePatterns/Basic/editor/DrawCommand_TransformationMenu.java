@@ -135,13 +135,13 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode style = (Objects.equals(myParameterObject, "solid") ? SNodeFactoryOperations.createNewNode(CONCEPTS.SolidLine$75, null) : SNodeFactoryOperations.createNewNode(CONCEPTS.DottedLine$FX, null));
-          SLinkOperations.setTarget(_context.getNode(), LINKS.lineStyle$UJ57, style);
+          SNode style = (Objects.equals(myParameterObject, "solid") ? SNodeFactoryOperations.createNewNode(CONCEPTS.SolidLine$iD, null) : SNodeFactoryOperations.createNewNode(CONCEPTS.DottedLine$Rx, null));
+          SLinkOperations.setTarget(_context.getNode(), LINKS.lineStyle$ejgF, style);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return (SLinkOperations.getTarget(_context.getNode(), LINKS.lineStyle$UJ57) == null);
+          return (SLinkOperations.getTarget(_context.getNode(), LINKS.lineStyle$ejgF) == null);
         }
 
 
@@ -165,11 +165,11 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SolidLine$75 = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666fc55L, "jetbrains.mps.samples.languagePatterns.Basic.structure.SolidLine");
-    /*package*/ static final SConcept DottedLine$FX = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666ff96L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DottedLine");
+    /*package*/ static final SConcept SolidLine$iD = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666fc55L, "jetbrains.mps.samples.languagePatterns.Basic.structure.SolidLine");
+    /*package*/ static final SConcept DottedLine$Rx = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666ff96L, "jetbrains.mps.samples.languagePatterns.Basic.structure.DottedLine");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lineStyle$UJ57 = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
+    /*package*/ static final SContainmentLink lineStyle$ejgF = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
   }
 }

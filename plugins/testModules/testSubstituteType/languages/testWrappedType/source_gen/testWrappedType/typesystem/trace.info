@@ -22,11 +22,11 @@
       </scope>
     </file>
     <file name="substitute_WrapperType_SubstituteTypeRule.java">
-      <node id="1252378774017438032" at="23,29,24,74" concept="5" />
+      <node id="1252378774017438032" at="23,29,24,73" concept="5" />
       <node id="1252378774017437901" at="28,50,29,35" concept="5" />
       <node id="1252378774017437901" at="31,68,32,102" concept="5" />
-      <node id="1252378774017437901" at="36,0,37,0" concept="6" trace="wrapped$AFy0" />
-      <node id="1252378774017437901" at="40,0,41,0" concept="6" trace="WrapperType$n4" />
+      <node id="1252378774017437901" at="36,0,37,0" concept="6" trace="wrapped$8do" />
+      <node id="1252378774017437901" at="40,0,41,0" concept="6" trace="WrapperType$2s" />
       <node id="1252378774017437901" at="19,0,21,0" concept="1" trace="substitute_WrapperType_SubstituteTypeRule#()V" />
       <node id="1252378774017437901" at="23,0,26,0" concept="3" trace="invoke#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1252378774017437901" at="28,0,31,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -34,7 +34,7 @@
       <node id="1252378774017437901" at="21,165,26,109" concept="5" />
       <node id="1252378774017437901" at="21,0,28,0" concept="3" trace="substitution#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Ljetbrains/mps/typesystem/inference/TypeSubstitution;" />
       <scope id="1252378774017437901" at="19,54,19,54" />
-      <scope id="1252378774017437901" at="23,29,24,74" />
+      <scope id="1252378774017437901" at="23,29,24,73" />
       <scope id="1252378774017437901" at="28,50,29,35" />
       <scope id="1252378774017437901" at="31,68,32,102" />
       <scope id="1252378774017437901" at="19,0,21,0" />

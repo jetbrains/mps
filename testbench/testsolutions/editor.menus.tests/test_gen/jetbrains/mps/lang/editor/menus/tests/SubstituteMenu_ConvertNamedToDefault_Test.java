@@ -35,11 +35,11 @@ public class SubstituteMenu_ConvertNamedToDefault_Test extends BaseTransformatio
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3685717980265770648", "3685717980265770660");
-      invokeParameterizedIntention("jetbrains.mps.lang.editor.intentions.ConvertSubstituteMenu_Intention", CONCEPTS.SubstituteMenu_Default$hk, myStart.getNode());
+      invokeParameterizedIntention("jetbrains.mps.lang.editor.intentions.ConvertSubstituteMenu_Intention", CONCEPTS.SubstituteMenu_Default$sV, myStart.getNode());
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenu_Default$hk = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default");
+    /*package*/ static final SConcept SubstituteMenu_Default$sV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default");
   }
 }

@@ -32,7 +32,7 @@ public class GetToolInProjectOperation_SubstituteMenu extends SubstituteMenuBase
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8l9mrv_a(), CONCEPTS.GetToolInProjectOperation$ir));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8l9mrv_a(), CONCEPTS.GetToolInProjectOperation$Wy));
     result.add(new SMP_Subconcepts_8l9mrv_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class GetToolInProjectOperation_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_8l9mrv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.GetToolInProjectOperation$ir, LINKS.tool$qDdw);
+      super((SAbstractConcept) CONCEPTS.GetToolInProjectOperation$Wy, LINKS.tool$ptRB);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class GetToolInProjectOperation_SubstituteMenu extends SubstituteMenuBase
   }
   public class SMP_Subconcepts_8l9mrv_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GetToolInProjectOperation$ir);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GetToolInProjectOperation$Wy);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class GetToolInProjectOperation_SubstituteMenu extends SubstituteMenuBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetToolInProjectOperation$ir = MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2115L, "jetbrains.mps.lang.plugin.standalone.structure.GetToolInProjectOperation");
+    /*package*/ static final SConcept GetToolInProjectOperation$Wy = MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2115L, "jetbrains.mps.lang.plugin.standalone.structure.GetToolInProjectOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink tool$qDdw = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2115L, 0x9766f9338aa2116L, "tool");
+    /*package*/ static final SReferenceLink tool$ptRB = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2115L, 0x9766f9338aa2116L, "tool");
   }
 }

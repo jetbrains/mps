@@ -25,7 +25,7 @@ public class typeof_ConvertTo_InferenceRule extends AbstractInferenceRule_Runtim
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConvertTo$Tv;
+    return CONCEPTS.ConvertTo$6S;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_ConvertTo_InferenceRule extends AbstractInferenceRule_Runtim
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConvertTo$Tv = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x18d8e0833b34209aL, "org.jetbrains.mps.samples.Money.structure.ConvertTo");
+    /*package*/ static final SConcept ConvertTo$6S = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x18d8e0833b34209aL, "org.jetbrains.mps.samples.Money.structure.ConvertTo");
   }
 }

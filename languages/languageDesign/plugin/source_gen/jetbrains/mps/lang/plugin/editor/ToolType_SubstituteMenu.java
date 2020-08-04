@@ -32,7 +32,7 @@ public class ToolType_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_hl7rib_a(), CONCEPTS.ToolType$FM));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_hl7rib_a(), CONCEPTS.ToolType$CP));
     result.add(new SMP_Subconcepts_hl7rib_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class ToolType_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_hl7rib_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ToolType$FM, LINKS.tool$ccb0);
+      super((SAbstractConcept) CONCEPTS.ToolType$CP, LINKS.tool$pL83);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class ToolType_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_hl7rib_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ToolType$FM);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ToolType$CP);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class ToolType_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToolType$FM = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, "jetbrains.mps.lang.plugin.structure.ToolType");
+    /*package*/ static final SConcept ToolType$CP = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, "jetbrains.mps.lang.plugin.structure.ToolType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink tool$ccb0 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, 0x11961f94babL, "tool");
+    /*package*/ static final SReferenceLink tool$pL83 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, 0x11961f94babL, "tool");
   }
 }

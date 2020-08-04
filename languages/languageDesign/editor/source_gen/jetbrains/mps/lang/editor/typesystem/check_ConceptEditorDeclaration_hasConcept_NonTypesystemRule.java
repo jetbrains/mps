@@ -20,15 +20,15 @@ public class check_ConceptEditorDeclaration_hasConcept_NonTypesystemRule extends
   public check_ConceptEditorDeclaration_hasConcept_NonTypesystemRule() {
   }
   public void applyRule(final SNode conceptEditorDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(conceptEditorDeclaration, LINKS.conceptDeclaration$Dtb8) == null) {
+    if (SLinkOperations.getTarget(conceptEditorDeclaration, LINKS.conceptDeclaration$HJmJ) == null) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$Dtb8);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$HJmJ);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptEditorDeclaration, "Concept declaration should be specified", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "294197224123550794", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptEditorDeclaration$s6;
+    return CONCEPTS.ConceptEditorDeclaration$BH;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,10 +38,10 @@ public class check_ConceptEditorDeclaration_hasConcept_NonTypesystemRule extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptEditorDeclaration$s6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
+    /*package*/ static final SConcept ConceptEditorDeclaration$BH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
   }
 }

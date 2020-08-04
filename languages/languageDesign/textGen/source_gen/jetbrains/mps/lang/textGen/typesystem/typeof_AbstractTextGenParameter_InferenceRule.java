@@ -19,7 +19,7 @@ public class typeof_AbstractTextGenParameter_InferenceRule extends AbstractInfer
   public typeof_AbstractTextGenParameter_InferenceRule() {
   }
   public void applyRule(final SNode parameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode textGen = SNodeOperations.getNodeAncestor(parameter, CONCEPTS.AbstractTextGenDeclaration$6M, false, false);
+    SNode textGen = SNodeOperations.getNodeAncestor(parameter, CONCEPTS.AbstractTextGenDeclaration$lk, false, false);
     if ((textGen == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -28,7 +28,7 @@ public class typeof_AbstractTextGenParameter_InferenceRule extends AbstractInfer
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractTextGenParameter$sD;
+    return CONCEPTS.AbstractTextGenParameter$Fb;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,7 +38,7 @@ public class typeof_AbstractTextGenParameter_InferenceRule extends AbstractInfer
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractTextGenDeclaration$6M = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f60f06a49L, "jetbrains.mps.lang.textGen.structure.AbstractTextGenDeclaration");
-    /*package*/ static final SConcept AbstractTextGenParameter$sD = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f84e1988dL, "jetbrains.mps.lang.textGen.structure.AbstractTextGenParameter");
+    /*package*/ static final SConcept AbstractTextGenDeclaration$lk = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f60f06a49L, "jetbrains.mps.lang.textGen.structure.AbstractTextGenDeclaration");
+    /*package*/ static final SConcept AbstractTextGenParameter$Fb = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f84e1988dL, "jetbrains.mps.lang.textGen.structure.AbstractTextGenParameter");
   }
 }

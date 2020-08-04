@@ -18,19 +18,19 @@ public class ListOfNodes {
     List<SNode> list = ListSequence.fromListAndArray(new ArrayList<SNode>(), e1, e2);
   }
   public void first(SNode sl) {
-    ListSequence.fromList(SLinkOperations.getChildren(sl, LINKS.statement$pYcS)).first();
-    Iterable<SNode> nodes = ListSequence.fromList(SLinkOperations.getChildren(sl, LINKS.statement$pYcS)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(sl, LINKS.statement$53DE)).first();
+    Iterable<SNode> nodes = ListSequence.fromList(SLinkOperations.getChildren(sl, LINKS.statement$53DE)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.IfStatement$pi);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.IfStatement$Q4);
       }
     });
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

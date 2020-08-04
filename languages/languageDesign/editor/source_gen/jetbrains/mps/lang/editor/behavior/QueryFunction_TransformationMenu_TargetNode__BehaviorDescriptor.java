@@ -39,7 +39,7 @@ public final class QueryFunction_TransformationMenu_TargetNode__BehaviorDescript
     return _quotation_createNode_gq3t2b_a0a0(QueryFunction_TransformationMenu_TargetNode__BehaviorDescriptor.getExpectedReturnConcept_id5ZcqSl_NE$j.invoke(__thisNode__));
   }
   /*package*/ static SNode getExpectedReturnConcept_id5ZcqSl_NE$j(@NotNull SNode __thisNode__) {
-    return check_gq3t2b_a0a1(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.TransformationMenuPart_IncludeMenu$sD, false, false));
+    return check_gq3t2b_a0a1(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.TransformationMenuPart_IncludeMenu$Cg, false, false));
   }
   /*package*/ static boolean showName_id1653mnvAgry(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -109,6 +109,6 @@ public final class QueryFunction_TransformationMenu_TargetNode__BehaviorDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuPart_IncludeMenu$sD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_IncludeMenu");
+    /*package*/ static final SConcept TransformationMenuPart_IncludeMenu$Cg = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_IncludeMenu");
   }
 }

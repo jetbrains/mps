@@ -30,7 +30,7 @@
       <node id="1240068587799" at="39,9,40,21" concept="6" />
       <node id="1240068547760" at="46,42,47,21" concept="6" />
       <node id="1240068519431" at="54,41,55,155" concept="6" />
-      <node id="1240068519431" at="59,0,60,0" concept="8" trace="BaseConcept$Sz" />
+      <node id="1240068519431" at="59,0,60,0" concept="8" trace="BaseConcept$gP" />
       <node id="1240068622698" at="35,83,38,11" concept="3" />
       <node id="1240068547760" at="42,0,45,0" concept="4" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1240068547760" at="20,0,24,0" concept="4" trace="getName#()Ljava/lang/String;" />
@@ -93,10 +93,10 @@
       <node id="1645752949777350409" at="89,63,90,88" concept="5" />
       <node id="1645752949777350409" at="90,88,91,195" concept="1" />
       <node id="1645752949777350409" at="91,195,92,36" concept="6" />
-      <node id="1645752949772869851" at="96,0,97,0" concept="8" trace="ClassConcept$IY" />
-      <node id="1645752949772869851" at="97,0,98,0" concept="8" trace="AnnotationInstance$5z" />
-      <node id="1645752949772869851" at="101,0,102,0" concept="8" trace="annotation$4YGW" />
-      <node id="1645752949772869851" at="102,0,103,0" concept="8" trace="annotation$lXdy" />
+      <node id="1645752949772869851" at="96,0,97,0" concept="8" trace="ClassConcept$bK" />
+      <node id="1645752949772869851" at="97,0,98,0" concept="8" trace="AnnotationInstance$yl" />
+      <node id="1645752949772869851" at="101,0,102,0" concept="8" trace="annotation$K49I" />
+      <node id="1645752949772869851" at="102,0,103,0" concept="8" trace="annotation$12Ek" />
       <node id="1645752949776289690" at="48,0,51,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1645752949776314835" at="53,28,56,9" concept="3" />
       <node id="1645752949777015860" at="65,0,68,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -207,9 +207,9 @@
       <node id="3299924278393509561" at="100,52,101,87" concept="1" />
       <node id="3299924278393485145" at="104,42,105,20" concept="6" />
       <node id="1704189004094297789" at="112,41,113,161" concept="6" />
-      <node id="1704189004094297789" at="117,0,118,0" concept="8" trace="FieldReferenceOperation$N8" />
-      <node id="1704189004094297789" at="118,0,119,0" concept="8" trace="InstanceMethodCallOperation$1G" />
-      <node id="1704189004094297789" at="119,0,120,0" concept="8" trace="StaticMethodCall$eu" />
+      <node id="1704189004094297789" at="117,0,118,0" concept="8" trace="FieldReferenceOperation$fU" />
+      <node id="1704189004094297789" at="118,0,119,0" concept="8" trace="InstanceMethodCallOperation$uu" />
+      <node id="1704189004094297789" at="119,0,120,0" concept="8" trace="StaticMethodCall$Fg" />
       <node id="8217292422591552714" at="35,59,38,9" concept="3" />
       <node id="8217292422591552702" at="64,59,67,9" concept="3" />
       <node id="8217292422591552721" at="93,59,96,9" concept="3" />
@@ -312,10 +312,10 @@
       <node id="2214637407304168068" at="40,107,41,111" concept="1" />
       <node id="2214637407304092438" at="44,42,45,21" concept="6" />
       <node id="2214637407304092437" at="52,41,53,161" concept="6" />
-      <node id="2214637407304092437" at="57,0,58,0" concept="8" trace="FloatingPointConstant$AA" />
-      <node id="2214637407304092437" at="58,0,59,0" concept="8" trace="FloatingPointFloatConstant$pv" />
-      <node id="2214637407304092437" at="62,0,63,0" concept="8" trace="value$ZImm" />
-      <node id="2214637407304092437" at="63,0,64,0" concept="8" trace="value$DcYx" />
+      <node id="2214637407304092437" at="57,0,58,0" concept="8" trace="FloatingPointConstant$3o" />
+      <node id="2214637407304092437" at="58,0,59,0" concept="8" trace="FloatingPointFloatConstant$Qh" />
+      <node id="2214637407304092437" at="62,0,63,0" concept="8" trace="value$ENN8" />
+      <node id="2214637407304092437" at="63,0,64,0" concept="8" trace="value$kirj" />
       <node id="2214637407304092438" at="22,0,26,0" concept="4" trace="getName#()Ljava/lang/String;" />
       <node id="2214637407304092438" at="26,0,30,0" concept="4" trace="getAdditionalInfo#()Ljava/lang/String;" />
       <node id="2214637407304092438" at="30,0,34,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -371,10 +371,10 @@
       <node id="4536253685767024277" at="42,114,43,76" concept="1" />
       <node id="4536253685767007399" at="46,42,47,21" concept="6" />
       <node id="4536253685767003451" at="54,41,55,161" concept="6" />
-      <node id="4536253685767003451" at="59,0,60,0" concept="8" trace="NotExpression$oq" />
-      <node id="4536253685767003451" at="60,0,61,0" concept="8" trace="ParenthesizedExpression$vE" />
-      <node id="4536253685767003451" at="64,0,65,0" concept="8" trace="expression$Lq8V" />
-      <node id="4536253685767003451" at="65,0,66,0" concept="8" trace="expression$efP0" />
+      <node id="4536253685767003451" at="59,0,60,0" concept="8" trace="NotExpression$Pc" />
+      <node id="4536253685767003451" at="60,0,61,0" concept="8" trace="ParenthesizedExpression$Ws" />
+      <node id="4536253685767003451" at="64,0,65,0" concept="8" trace="expression$sv_H" />
+      <node id="4536253685767003451" at="65,0,66,0" concept="8" trace="expression$TlhM" />
       <node id="4536253685767007399" at="23,0,27,0" concept="4" trace="getName#()Ljava/lang/String;" />
       <node id="4536253685767007399" at="27,0,31,0" concept="4" trace="getAdditionalInfo#()Ljava/lang/String;" />
       <node id="4536253685767007399" at="31,0,35,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -423,10 +423,10 @@
       <node id="4900012836837561093" at="43,9,44,251" concept="5" />
       <node id="4900012836837561104" at="45,126,46,23" concept="6" />
       <node id="4900012836837561113" at="47,9,48,126" concept="5" />
-      <node id="4900012836837561122" at="49,389,50,23" concept="6" />
-      <node id="4900012836837561133" at="52,204,53,23" concept="6" />
-      <node id="4900012836837561145" at="55,140,56,23" concept="6" />
-      <node id="4900012836837561156" at="58,184,59,23" concept="6" />
+      <node id="4900012836837561122" at="49,387,50,23" concept="6" />
+      <node id="4900012836837561133" at="52,203,53,23" concept="6" />
+      <node id="4900012836837561145" at="55,139,56,23" concept="6" />
+      <node id="4900012836837561156" at="58,183,59,23" concept="6" />
       <node id="4900012836837561166" at="60,9,61,20" concept="6" />
       <node id="4900012836837561042" at="64,52,65,251" concept="5" />
       <node id="4900012836837561051" at="65,251,66,199" concept="5" />
@@ -442,10 +442,10 @@
       <node id="4900012836837561222" at="94,9,95,251" concept="5" />
       <node id="4900012836837561233" at="96,127,97,23" concept="6" />
       <node id="4900012836837561242" at="98,9,99,128" concept="5" />
-      <node id="4900012836837561251" at="100,391,101,23" concept="6" />
-      <node id="4900012836837561262" at="103,205,104,23" concept="6" />
-      <node id="4900012836837561274" at="106,141,107,23" concept="6" />
-      <node id="4900012836837561285" at="109,185,110,23" concept="6" />
+      <node id="4900012836837561251" at="100,389,101,23" concept="6" />
+      <node id="4900012836837561262" at="103,204,104,23" concept="6" />
+      <node id="4900012836837561274" at="106,140,107,23" concept="6" />
+      <node id="4900012836837561285" at="109,184,110,23" concept="6" />
       <node id="4900012836837561295" at="111,9,112,20" concept="6" />
       <node id="4900012836837561171" at="115,52,116,251" concept="5" />
       <node id="4900012836837561180" at="116,251,117,199" concept="5" />
@@ -461,22 +461,22 @@
       <node id="4900012836837561419" at="146,52,147,74" concept="1" />
       <node id="4900012836837561416" at="150,42,151,21" concept="6" />
       <node id="4581730695772514123" at="158,41,159,161" concept="6" />
-      <node id="4581730695772514123" at="163,0,164,0" concept="8" trace="AssignmentExpression$rS" />
-      <node id="4581730695772514123" at="164,0,165,0" concept="8" trace="VariableReference$sQ" />
-      <node id="4581730695772514123" at="165,0,166,0" concept="8" trace="LocalVariableDeclaration$Bf" />
-      <node id="4581730695772514123" at="166,0,167,0" concept="8" trace="PlusExpression$Re" />
-      <node id="4581730695772514123" at="167,0,168,0" concept="8" trace="IntegerConstant$mo" />
-      <node id="4581730695772514123" at="168,0,169,0" concept="8" trace="MinusExpression$E9" />
-      <node id="4581730695772514123" at="169,0,170,0" concept="8" trace="ClassifierType$IZ" />
-      <node id="4581730695772514123" at="170,0,171,0" concept="8" trace="StringType$2b" />
-      <node id="4581730695772514123" at="174,0,175,0" concept="8" trace="lValue$LjSW" />
-      <node id="4581730695772514123" at="175,0,176,0" concept="8" trace="variableDeclaration$7WwU" />
-      <node id="4581730695772514123" at="176,0,177,0" concept="8" trace="rValue$LkmY" />
-      <node id="4581730695772514123" at="177,0,178,0" concept="8" trace="leftExpression$lndx" />
-      <node id="4581730695772514123" at="178,0,179,0" concept="8" trace="rightExpression$li3b" />
-      <node id="4581730695772514123" at="179,0,180,0" concept="8" trace="expression$NMtu" />
-      <node id="4581730695772514123" at="180,0,181,0" concept="8" trace="classifier$xslD" />
-      <node id="4581730695772514123" at="184,0,185,0" concept="8" trace="value$Cbc0" />
+      <node id="4581730695772514123" at="163,0,164,0" concept="8" trace="AssignmentExpression$SE" />
+      <node id="4581730695772514123" at="164,0,165,0" concept="8" trace="VariableReference$TC" />
+      <node id="4581730695772514123" at="165,0,166,0" concept="8" trace="LocalVariableDeclaration$41" />
+      <node id="4581730695772514123" at="166,0,167,0" concept="8" trace="PlusExpression$k0" />
+      <node id="4581730695772514123" at="167,0,168,0" concept="8" trace="IntegerConstant$Na" />
+      <node id="4581730695772514123" at="168,0,169,0" concept="8" trace="MinusExpression$6V" />
+      <node id="4581730695772514123" at="169,0,170,0" concept="8" trace="ClassifierType$bL" />
+      <node id="4581730695772514123" at="170,0,171,0" concept="8" trace="StringType$uX" />
+      <node id="4581730695772514123" at="174,0,175,0" concept="8" trace="lValue$splI" />
+      <node id="4581730695772514123" at="175,0,176,0" concept="8" trace="variableDeclaration$N1XG" />
+      <node id="4581730695772514123" at="176,0,177,0" concept="8" trace="rValue$spNK" />
+      <node id="4581730695772514123" at="177,0,178,0" concept="8" trace="leftExpression$sEj" />
+      <node id="4581730695772514123" at="178,0,179,0" concept="8" trace="rightExpression$nvX" />
+      <node id="4581730695772514123" at="179,0,180,0" concept="8" trace="expression$uRUg" />
+      <node id="4581730695772514123" at="180,0,181,0" concept="8" trace="classifier$cxMr" />
+      <node id="4581730695772514123" at="184,0,185,0" concept="8" trace="value$jgCM" />
       <node id="4900012836837561082" at="40,59,43,9" concept="3" />
       <node id="4900012836837561102" at="44,251,47,9" concept="3" />
       <node id="4900012836837561120" at="48,126,51,9" concept="3" />
@@ -517,20 +517,20 @@
       <scope id="4900012836837561039" at="36,54,37,48" />
       <scope id="4900012836837561090" at="41,365,42,23" />
       <scope id="4900012836837561103" at="45,126,46,23" />
-      <scope id="4900012836837561121" at="49,389,50,23" />
-      <scope id="4900012836837561132" at="52,204,53,23" />
-      <scope id="4900012836837561144" at="55,140,56,23" />
-      <scope id="4900012836837561155" at="58,184,59,23" />
+      <scope id="4900012836837561121" at="49,387,50,23" />
+      <scope id="4900012836837561132" at="52,203,53,23" />
+      <scope id="4900012836837561144" at="55,139,56,23" />
+      <scope id="4900012836837561155" at="58,183,59,23" />
       <scope id="4900012836837561039" at="73,42,74,20" />
       <scope id="4900012836837561168" at="79,31,80,37" />
       <scope id="4900012836837561168" at="83,41,84,37" />
       <scope id="4900012836837561168" at="87,54,88,48" />
       <scope id="4900012836837561219" at="92,365,93,23" />
       <scope id="4900012836837561232" at="96,127,97,23" />
-      <scope id="4900012836837561250" at="100,391,101,23" />
-      <scope id="4900012836837561261" at="103,205,104,23" />
-      <scope id="4900012836837561273" at="106,141,107,23" />
-      <scope id="4900012836837561284" at="109,185,110,23" />
+      <scope id="4900012836837561250" at="100,389,101,23" />
+      <scope id="4900012836837561261" at="103,204,104,23" />
+      <scope id="4900012836837561273" at="106,140,107,23" />
+      <scope id="4900012836837561284" at="109,184,110,23" />
       <scope id="4900012836837561168" at="124,42,125,20" />
       <scope id="4900012836837561416" at="130,31,131,36" />
       <scope id="4900012836837561416" at="134,41,135,36" />
@@ -617,10 +617,10 @@
       <node id="481464699807405256" at="43,115,44,77" concept="1" />
       <node id="481464699838546380" at="47,42,48,21" concept="6" />
       <node id="481464699838541779" at="55,41,56,160" concept="6" />
-      <node id="481464699838541779" at="60,0,61,0" concept="8" trace="CastExpression$7m" />
-      <node id="481464699838541779" at="61,0,62,0" concept="8" trace="ParenthesizedExpression$vE" />
-      <node id="481464699838541779" at="65,0,66,0" concept="8" trace="expression$izU1" />
-      <node id="481464699838541779" at="66,0,67,0" concept="8" trace="expression$efP0" />
+      <node id="481464699838541779" at="60,0,61,0" concept="8" trace="CastExpression$$8" />
+      <node id="481464699838541779" at="61,0,62,0" concept="8" trace="ParenthesizedExpression$Ws" />
+      <node id="481464699838541779" at="65,0,66,0" concept="8" trace="expression$XDmN" />
+      <node id="481464699838541779" at="66,0,67,0" concept="8" trace="expression$TlhM" />
       <node id="481464699838546380" at="24,0,28,0" concept="4" trace="getName#()Ljava/lang/String;" />
       <node id="481464699838546380" at="28,0,32,0" concept="4" trace="getAdditionalInfo#()Ljava/lang/String;" />
       <node id="481464699838546380" at="32,0,36,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -674,11 +674,11 @@
       <node id="818296778609449102" at="43,109,44,71" concept="1" />
       <node id="818296778609449087" at="47,42,48,21" concept="6" />
       <node id="818296778609449086" at="55,41,56,160" concept="6" />
-      <node id="818296778609449086" at="60,0,61,0" concept="8" trace="TernaryOperatorExpression$HC" />
-      <node id="818296778609449086" at="61,0,62,0" concept="8" trace="BinaryOperation$vf" />
-      <node id="818296778609449086" at="62,0,63,0" concept="8" trace="ParenthesizedExpression$vE" />
-      <node id="818296778609449086" at="66,0,67,0" concept="8" trace="condition$GrmW" />
-      <node id="818296778609449086" at="67,0,68,0" concept="8" trace="expression$efP0" />
+      <node id="818296778609449086" at="60,0,61,0" concept="8" trace="TernaryOperatorExpression$aq" />
+      <node id="818296778609449086" at="61,0,62,0" concept="8" trace="BinaryOperation$W1" />
+      <node id="818296778609449086" at="62,0,63,0" concept="8" trace="ParenthesizedExpression$Ws" />
+      <node id="818296778609449086" at="66,0,67,0" concept="8" trace="condition$nwNI" />
+      <node id="818296778609449086" at="67,0,68,0" concept="8" trace="expression$TlhM" />
       <node id="818296778609449087" at="24,0,28,0" concept="4" trace="getName#()Ljava/lang/String;" />
       <node id="818296778609449087" at="28,0,32,0" concept="4" trace="getAdditionalInfo#()Ljava/lang/String;" />
       <node id="818296778609449087" at="32,0,36,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -726,8 +726,8 @@
       <node id="8355037393080368576" at="38,52,39,69" concept="1" />
       <node id="8355037393080352115" at="42,42,43,21" concept="6" />
       <node id="8355037393080348187" at="50,41,51,161" concept="6" />
-      <node id="8355037393080348187" at="55,0,56,0" concept="8" trace="MethodDeclaration$93" />
-      <node id="8355037393080348187" at="59,0,60,0" concept="8" trace="isNative$1I9T" />
+      <node id="8355037393080348187" at="55,0,56,0" concept="8" trace="MethodDeclaration$_P" />
+      <node id="8355037393080348187" at="59,0,60,0" concept="8" trace="isNative$GNAF" />
       <node id="8355037393080352115" at="21,0,25,0" concept="4" trace="getName#()Ljava/lang/String;" />
       <node id="8355037393080352115" at="25,0,29,0" concept="4" trace="getAdditionalInfo#()Ljava/lang/String;" />
       <node id="8355037393080352115" at="29,0,33,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

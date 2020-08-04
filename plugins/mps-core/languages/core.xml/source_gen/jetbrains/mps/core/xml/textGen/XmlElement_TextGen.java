@@ -25,13 +25,13 @@ public class XmlElement_TextGen extends TextGenDescriptorBase {
       tgs.indent();
     }
     tgs.append("<");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.tagName$60jo));
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.attributes$604n)).isNotEmpty()) {
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.tagName$ZoHR));
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.attributes$ZouQ)).isNotEmpty()) {
       tgs.append(" ");
     }
     ctx.getBuffer().area().increaseIndent();
     {
-      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.attributes$604n);
+      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.attributes$ZouQ);
       final SNode lastItem = Sequence.fromIterable(collection).last();
       for (SNode item : collection) {
         tgs.appendNode(item);
@@ -41,7 +41,7 @@ public class XmlElement_TextGen extends TextGenDescriptorBase {
       }
     }
     ctx.getBuffer().area().decreaseIndent();
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.content$DWs3)).isEmpty() && SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.shortEmptyNotation$HKi0)) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.content$zkQy)).isEmpty() && SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.shortEmptyNotation$B8Gv)) {
       tgs.append(" />");
       return;
     }
@@ -50,7 +50,7 @@ public class XmlElement_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.content$DWs3)) {
+      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.content$zkQy)) {
         tgs.appendNode(item);
       }
       ctx.getBuffer().area().decreaseIndent();
@@ -59,24 +59,24 @@ public class XmlElement_TextGen extends TextGenDescriptorBase {
     } else {
       ctx.getBuffer().area().increaseIndent();
       ctx.getBuffer().area().increaseIndent();
-      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.content$DWs3)) {
+      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.content$zkQy)) {
         tgs.appendNode(item);
       }
       ctx.getBuffer().area().decreaseIndent();
       ctx.getBuffer().area().decreaseIndent();
     }
     tgs.append("</");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.tagName$60jo));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.tagName$ZoHR));
     tgs.append(">");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
-    /*package*/ static final SProperty shortEmptyNotation$HKi0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
+    /*package*/ static final SProperty tagName$ZoHR = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty shortEmptyNotation$B8Gv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink attributes$604n = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
-    /*package*/ static final SContainmentLink content$DWs3 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
+    /*package*/ static final SContainmentLink attributes$ZouQ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
+    /*package*/ static final SContainmentLink content$zkQy = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
   }
 }

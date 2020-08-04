@@ -34,9 +34,9 @@ public class XmlConverter {
   public static SNode convertDocument(String name, Document document) {
     // TODO replace dom-based implementation with a good XML parser 
     SNode file = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, "jetbrains.mps.core.xml.structure.XmlFile"));
-    SPropertyOperations.assign(file, PROPS.name$lA7v, name);
-    SLinkOperations.setNewChild(file, LINKS.document$xlg0, null);
-    SLinkOperations.setTarget(SLinkOperations.getTarget(file, LINKS.document$xlg0), LINKS.rootElement$Cncd, convertElement(document.getRootElement()));
+    SPropertyOperations.assign(file, PROPS.name$MnvL, name);
+    SLinkOperations.setNewChild(file, LINKS.document$qHEv, null);
+    SLinkOperations.setTarget(SLinkOperations.getTarget(file, LINKS.document$qHEv), LINKS.rootElement$xJAG, convertElement(document.getRootElement()));
     ((jetbrains.mps.smodel.SNode) file).setId(SNodeId.fromString("~" + name));
     return file;
   }
@@ -44,13 +44,13 @@ public class XmlConverter {
   private static SNode convertElement(Element elem) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement"));
     String namespacePrefix = elem.getNamespacePrefix();
-    SPropertyOperations.assign(result, PROPS.tagName$60jo, ((namespacePrefix == null || namespacePrefix.length() == 0) ? elem.getName() : namespacePrefix + ":" + elem.getName()));
+    SPropertyOperations.assign(result, PROPS.tagName$ZoHR, ((namespacePrefix == null || namespacePrefix.length() == 0) ? elem.getName() : namespacePrefix + ":" + elem.getName()));
     for (Attribute a : ListSequence.fromList((List<Attribute>) elem.getAttributes())) {
-      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.attributes$604n)).addElement(convertAttribute(a));
+      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.attributes$ZouQ)).addElement(convertAttribute(a));
     }
     List<Namespace> additionalNamespaces = (List<Namespace>) elem.getAdditionalNamespaces();
     for (Namespace ns : ListSequence.fromList(additionalNamespaces)) {
-      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.attributes$604n)).addElement(createXmlAttribute_h7fa2c_a0a0a5a3(convertAttributeText(ns.getURI()), "xmlns:" + ns.getPrefix()));
+      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.attributes$ZouQ)).addElement(createXmlAttribute_h7fa2c_a0a0a5a3(convertAttributeText(ns.getURI()), "xmlns:" + ns.getPrefix()));
     }
 
     List<Content> list = (List<Content>) elem.getContent();
@@ -58,11 +58,11 @@ public class XmlConverter {
     for (int i = 0; i < contents.length; i++) {
       Iterable<SNode> content = convertContent((i > 0 ? contents[i - 1] : null), contents[i], (i + 1 < contents.length ? contents[i + 1] : null));
       if (content != null) {
-        ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.content$DWs3)).addSequence(Sequence.fromIterable(content));
+        ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.content$zkQy)).addSequence(Sequence.fromIterable(content));
       }
 
     }
-    SPropertyOperations.assign(result, PROPS.shortEmptyNotation$HKi0, elem.getContentSize() == 0);
+    SPropertyOperations.assign(result, PROPS.shortEmptyNotation$B8Gv, elem.getContentSize() == 0);
     return result;
   }
   private static Iterable<SNode> convertContent(Content prev, Content c, Content next) {
@@ -71,7 +71,7 @@ public class XmlConverter {
     } else if (c instanceof Comment) {
       String commentText = ((Comment) c).getText();
       SNode res = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, "jetbrains.mps.core.xml.structure.XmlComment"));
-      ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.lines$bdqa)).addSequence(Sequence.fromIterable(Sequence.fromArray(commentText.split("\r?\n"))).select(new ISelector<String, SNode>() {
+      ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.lines$4_OD)).addSequence(Sequence.fromIterable(Sequence.fromArray(commentText.split("\r?\n"))).select(new ISelector<String, SNode>() {
         public SNode select(String it) {
           return createXmlCommentLine_h7fa2c_a0a0a0a0c0a0a4(it);
         }
@@ -166,7 +166,7 @@ public class XmlConverter {
       if (len > start) {
         ListSequence.fromList(result).addElement(createXmlText_h7fa2c_a0a0a4a1a5(s.substring(start, len)));
       }
-      if (!(SNodeOperations.isInstanceOf(ListSequence.fromList(result).last(), CONCEPTS.XmlText$ZE)) && i + 1 < lines.length || len == 0) {
+      if (!(SNodeOperations.isInstanceOf(ListSequence.fromList(result).last(), CONCEPTS.XmlText$q9)) && i + 1 < lines.length || len == 0) {
         ListSequence.fromList(result).addElement(createXmlText_h7fa2c_a0a0a5a1a5());
       }
     }
@@ -218,137 +218,137 @@ public class XmlConverter {
 
   private static SNode convertAttribute(Attribute elem) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, "jetbrains.mps.core.xml.structure.XmlAttribute"));
-    SPropertyOperations.assign(result, PROPS.attrName$uXT2, elem.getName());
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.value$7SEa)).addSequence(Sequence.fromIterable(convertAttributeText(elem.getValue())));
+    SPropertyOperations.assign(result, PROPS.attrName$omjx, elem.getName());
+    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.value$1h4D)).addSequence(Sequence.fromIterable(convertAttributeText(elem.getValue())));
     return result;
   }
 
   public static SNode newDocument(String name) {
     SNode file = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, "jetbrains.mps.core.xml.structure.XmlFile"));
-    SPropertyOperations.assign(file, PROPS.name$lA7v, name);
-    SLinkOperations.setTarget(file, LINKS.document$xlg0, createXmlDocument_h7fa2c_a0a2a11(name));
+    SPropertyOperations.assign(file, PROPS.name$MnvL, name);
+    SLinkOperations.setTarget(file, LINKS.document$qHEv, createXmlDocument_h7fa2c_a0a2a11(name));
     return file;
   }
   private static SNode createXmlAttribute_h7fa2c_a0a0a5a3(Iterable<? extends SNode> seq0, Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlAttribute$UQ);
-    rootBuilder1.setProperty(PROPS.attrName$uXT2, PROPS.attrName$uXT2.getType().toString(p0));
-    rootBuilder1.forChild(LINKS.value$7SEa).initNodeList(seq0, CONCEPTS.XmlValuePart$Ad);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlAttribute$ll);
+    rootBuilder1.setProperty(PROPS.attrName$omjx, PROPS.attrName$omjx.getType().toString(p0));
+    rootBuilder1.forChild(LINKS.value$1h4D).initNodeList(seq0, CONCEPTS.XmlValuePart$G);
     return rootBuilder1.getResult();
   }
   private static SNode createXmlCommentLine_h7fa2c_a0a0a0a0c0a0a4(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCommentLine$tE);
-    rootBuilder1.setProperty(PROPS.text$9eP0, PROPS.text$9eP0.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCommentLine$S9);
+    rootBuilder1.setProperty(PROPS.text$2Bfv, PROPS.text$2Bfv.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlProcessingInstruction_h7fa2c_a0a1a1a0e(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlProcessingInstruction$B0);
-    rootBuilder1.setProperty(PROPS.target$Yjw0, PROPS.target$Yjw0.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.rawData$YjJ1, PROPS.rawData$YjJ1.getType().toString(p1));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlProcessingInstruction$1v);
+    rootBuilder1.setProperty(PROPS.target$RFUv, PROPS.target$RFUv.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.rawData$RG9w, PROPS.rawData$RG9w.getType().toString(p1));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlCDATA_h7fa2c_a0a1a2a0e(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCDATA$Dr);
-    rootBuilder1.setProperty(PROPS.content$IPF6, PROPS.content$IPF6.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCDATA$3U);
+    rootBuilder1.setProperty(PROPS.content$Ce5_, PROPS.content$Ce5_.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlEntityRef_h7fa2c_a0a1a4a0e(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$k8);
-    rootBuilder1.setProperty(PROPS.entityName$_kyv, PROPS.entityName$_kyv.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$IB);
+    rootBuilder1.setProperty(PROPS.entityName$uGWY, PROPS.entityName$uGWY.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlText_h7fa2c_a0a0a0a1a3a1a5(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
-    rootBuilder1.setProperty(PROPS.value$ds10, PROPS.value$ds10.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$q9);
+    rootBuilder1.setProperty(PROPS.value$6Orv, PROPS.value$6Orv.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlCharRef_h7fa2c_a0a0a2a1a3a1a5(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCharRef$xa);
-    rootBuilder1.setProperty(PROPS.charCode$Ig_0, PROPS.charCode$Ig_0.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCharRef$VD);
+    rootBuilder1.setProperty(PROPS.charCode$BCZv, PROPS.charCode$BCZv.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlEntityRef_h7fa2c_a0a2a0c0b0d0b0f(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$k8);
-    rootBuilder1.setProperty(PROPS.entityName$_kyv, PROPS.entityName$_kyv.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$IB);
+    rootBuilder1.setProperty(PROPS.entityName$uGWY, PROPS.entityName$uGWY.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlText_h7fa2c_a0a0a4a1a5(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
-    rootBuilder1.setProperty(PROPS.value$ds10, PROPS.value$ds10.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$q9);
+    rootBuilder1.setProperty(PROPS.value$6Orv, PROPS.value$6Orv.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlText_h7fa2c_a0a0a5a1a5() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
-    rootBuilder1.setProperty(PROPS.value$ds10, "");
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$q9);
+    rootBuilder1.setProperty(PROPS.value$6Orv, "");
     return rootBuilder1.getResult();
   }
   private static SNode createXmlTextValue_h7fa2c_a0a0a0a1a3a6(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$BE);
-    rootBuilder1.setProperty(PROPS.text$GoKl, PROPS.text$GoKl.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$29);
+    rootBuilder1.setProperty(PROPS.text$_LaO, PROPS.text$_LaO.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlCharRefValue_h7fa2c_a0a0a2a1a3a6(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCharRefValue$_9);
-    rootBuilder1.setProperty(PROPS.charCode$VgIs, PROPS.charCode$VgIs.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCharRefValue$ZC);
+    rootBuilder1.setProperty(PROPS.charCode$OD8V, PROPS.charCode$OD8V.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlEntityRefValue_h7fa2c_a0a2a0c0b0d0g(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRefValue$MN);
-    rootBuilder1.setProperty(PROPS.entityName$IwWS, PROPS.entityName$IwWS.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRefValue$di);
+    rootBuilder1.setProperty(PROPS.entityName$BTnn, PROPS.entityName$BTnn.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlTextValue_h7fa2c_a0a0a4a6(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$BE);
-    rootBuilder1.setProperty(PROPS.text$GoKl, PROPS.text$GoKl.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$29);
+    rootBuilder1.setProperty(PROPS.text$_LaO, PROPS.text$_LaO.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createXmlDocument_h7fa2c_a0a2a11(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlDocument$RD);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlDocument$i8);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.rootElement$Cncd).init(CONCEPTS.XmlElement$Pm);
-      n2.setProperty(PROPS.tagName$60jo, PROPS.tagName$60jo.getType().toString(p0));
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.rootElement$xJAG).init(CONCEPTS.XmlElement$fP);
+      n2.setProperty(PROPS.tagName$ZoHR, PROPS.tagName$ZoHR.getType().toString(p0));
     }
     return rootBuilder1.getResult();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
-    /*package*/ static final SProperty shortEmptyNotation$HKi0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
-    /*package*/ static final SProperty attrName$uXT2 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
-    /*package*/ static final SProperty text$9eP0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, 0x16838b3fce9bec5fL, "text");
-    /*package*/ static final SProperty target$Yjw0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494876L, "target");
-    /*package*/ static final SProperty rawData$YjJ1 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494877L, "rawData");
-    /*package*/ static final SProperty content$IPF6 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549487aL, 0x16838b3fce9b2633L, "content");
-    /*package*/ static final SProperty entityName$_kyv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, 0x16838b3fce9c6f8fL, "entityName");
-    /*package*/ static final SProperty value$ds10 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
-    /*package*/ static final SProperty charCode$Ig_0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, 0x2abf08504ffe9887L, "charCode");
-    /*package*/ static final SProperty text$GoKl = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
-    /*package*/ static final SProperty charCode$VgIs = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, 0x2abf08504ffed806L, "charCode");
-    /*package*/ static final SProperty entityName$IwWS = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty tagName$ZoHR = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty shortEmptyNotation$B8Gv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
+    /*package*/ static final SProperty attrName$omjx = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54b8df6L, "attrName");
+    /*package*/ static final SProperty text$2Bfv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, 0x16838b3fce9bec5fL, "text");
+    /*package*/ static final SProperty target$RFUv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494876L, "target");
+    /*package*/ static final SProperty rawData$RG9w = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494877L, "rawData");
+    /*package*/ static final SProperty content$Ce5_ = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549487aL, 0x16838b3fce9b2633L, "content");
+    /*package*/ static final SProperty entityName$uGWY = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, 0x16838b3fce9c6f8fL, "entityName");
+    /*package*/ static final SProperty value$6Orv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
+    /*package*/ static final SProperty charCode$BCZv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, 0x2abf08504ffe9887L, "charCode");
+    /*package*/ static final SProperty text$_LaO = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
+    /*package*/ static final SProperty charCode$OD8V = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, 0x2abf08504ffed806L, "charCode");
+    /*package*/ static final SProperty entityName$BTnn = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink document$xlg0 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, 0x5c842a42c54c94c1L, "document");
-    /*package*/ static final SContainmentLink rootElement$Cncd = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c549486fL, "rootElement");
-    /*package*/ static final SContainmentLink attributes$604n = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
-    /*package*/ static final SContainmentLink content$DWs3 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
-    /*package*/ static final SContainmentLink lines$bdqa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
-    /*package*/ static final SContainmentLink value$7SEa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
+    /*package*/ static final SContainmentLink document$qHEv = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, 0x5c842a42c54c94c1L, "document");
+    /*package*/ static final SContainmentLink rootElement$xJAG = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, 0x5c842a42c549486fL, "rootElement");
+    /*package*/ static final SContainmentLink attributes$ZouQ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
+    /*package*/ static final SContainmentLink content$zkQy = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
+    /*package*/ static final SContainmentLink lines$4_OD = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
+    /*package*/ static final SContainmentLink value$1h4D = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlText$ZE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, "jetbrains.mps.core.xml.structure.XmlText");
-    /*package*/ static final SConcept XmlAttribute$UQ = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, "jetbrains.mps.core.xml.structure.XmlAttribute");
-    /*package*/ static final SConcept XmlValuePart$Ad = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart");
-    /*package*/ static final SConcept XmlCommentLine$tE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, "jetbrains.mps.core.xml.structure.XmlCommentLine");
-    /*package*/ static final SConcept XmlProcessingInstruction$B0 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, "jetbrains.mps.core.xml.structure.XmlProcessingInstruction");
-    /*package*/ static final SConcept XmlCDATA$Dr = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549487aL, "jetbrains.mps.core.xml.structure.XmlCDATA");
-    /*package*/ static final SConcept XmlEntityRef$k8 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, "jetbrains.mps.core.xml.structure.XmlEntityRef");
-    /*package*/ static final SConcept XmlCharRef$xa = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, "jetbrains.mps.core.xml.structure.XmlCharRef");
-    /*package*/ static final SConcept XmlTextValue$BE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue");
-    /*package*/ static final SConcept XmlCharRefValue$_9 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, "jetbrains.mps.core.xml.structure.XmlCharRefValue");
-    /*package*/ static final SConcept XmlEntityRefValue$MN = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, "jetbrains.mps.core.xml.structure.XmlEntityRefValue");
-    /*package*/ static final SConcept XmlDocument$RD = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, "jetbrains.mps.core.xml.structure.XmlDocument");
-    /*package*/ static final SConcept XmlElement$Pm = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
+    /*package*/ static final SConcept XmlText$q9 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, "jetbrains.mps.core.xml.structure.XmlText");
+    /*package*/ static final SConcept XmlAttribute$ll = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, "jetbrains.mps.core.xml.structure.XmlAttribute");
+    /*package*/ static final SConcept XmlValuePart$G = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart");
+    /*package*/ static final SConcept XmlCommentLine$S9 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, "jetbrains.mps.core.xml.structure.XmlCommentLine");
+    /*package*/ static final SConcept XmlProcessingInstruction$1v = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, "jetbrains.mps.core.xml.structure.XmlProcessingInstruction");
+    /*package*/ static final SConcept XmlCDATA$3U = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549487aL, "jetbrains.mps.core.xml.structure.XmlCDATA");
+    /*package*/ static final SConcept XmlEntityRef$IB = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, "jetbrains.mps.core.xml.structure.XmlEntityRef");
+    /*package*/ static final SConcept XmlCharRef$VD = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, "jetbrains.mps.core.xml.structure.XmlCharRef");
+    /*package*/ static final SConcept XmlTextValue$29 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue");
+    /*package*/ static final SConcept XmlCharRefValue$ZC = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, "jetbrains.mps.core.xml.structure.XmlCharRefValue");
+    /*package*/ static final SConcept XmlEntityRefValue$di = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, "jetbrains.mps.core.xml.structure.XmlEntityRefValue");
+    /*package*/ static final SConcept XmlDocument$i8 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5e2f66f285946ac9L, "jetbrains.mps.core.xml.structure.XmlDocument");
+    /*package*/ static final SConcept XmlElement$fP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
   }
 }

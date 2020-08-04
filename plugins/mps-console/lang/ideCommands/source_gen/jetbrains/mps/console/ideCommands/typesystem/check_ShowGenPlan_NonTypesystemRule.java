@@ -23,28 +23,28 @@ public class check_ShowGenPlan_NonTypesystemRule extends AbstractNonTypesystemRu
   public check_ShowGenPlan_NonTypesystemRule() {
   }
   public void applyRule(final SNode showGenPlan, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(showGenPlan, LINKS.targetModelOld$XlGg) != null)) {
+    if ((SLinkOperations.getTarget(showGenPlan, LINKS.targetModelOld$vCw2) != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showGenPlan, LINKS.targetModelOld$XlGg), "Use of deprecated model specification", "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5213660723432954034", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showGenPlan, LINKS.targetModelOld$vCw2), "Use of deprecated model specification", "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "5213660723432954034", null, errorTarget);
       }
     } else {
       final SModel model;
-      if (SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$4GVQ) != null && ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$4GVQ)) != null) {
-        model = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$4GVQ)).resolve(SNodeOperations.getModel(showGenPlan).getRepository());
+      if (SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC) != null && ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC)) != null) {
+        model = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC)).resolve(SNodeOperations.getModel(showGenPlan).getRepository());
       } else {
         model = null;
       }
       if (model != null) {
         if (!(jetbrains.mps.util.SNodeOperations.isGeneratable(model))) {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$4GVQ), "model should be generatable", "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "9053534423438583802", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showGenPlan, LINKS.targetModel$AZJC), "model should be generatable", "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "9053534423438583802", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ShowGenPlan$yv;
+    return CONCEPTS.ShowGenPlan$mh;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,11 +54,11 @@ public class check_ShowGenPlan_NonTypesystemRule extends AbstractNonTypesystemRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targetModelOld$XlGg = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x61f2dd6de47f867aL, "targetModelOld");
-    /*package*/ static final SContainmentLink targetModel$4GVQ = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
+    /*package*/ static final SContainmentLink targetModelOld$vCw2 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x61f2dd6de47f867aL, "targetModelOld");
+    /*package*/ static final SContainmentLink targetModel$AZJC = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ShowGenPlan$yv = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan");
+    /*package*/ static final SConcept ShowGenPlan$mh = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan");
   }
 }

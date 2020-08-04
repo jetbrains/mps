@@ -13,10 +13,10 @@ public final class ActionsUtil {
   private ActionsUtil() {
   }
   public static boolean isInstanceOfIType(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.IType$LR);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.IType$a9);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IType$LR = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11f8a0774f2L, "jetbrains.mps.lang.core.structure.IType");
+    /*package*/ static final SInterfaceConcept IType$a9 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11f8a0774f2L, "jetbrains.mps.lang.core.structure.IType");
   }
 }

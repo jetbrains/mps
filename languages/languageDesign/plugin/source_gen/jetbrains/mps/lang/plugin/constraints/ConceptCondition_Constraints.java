@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConceptCondition_Constraints extends BaseConstraintsDescriptor {
   public ConceptCondition_Constraints() {
-    super(CONCEPTS.ConceptCondition$3B);
+    super(CONCEPTS.ConceptCondition$E);
   }
 
   @Override
@@ -41,7 +41,7 @@ public class ConceptCondition_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ActionDataParameterDeclaration$Wd, true, false)), _quotation_createNode_y4qgg5_b0a0a3());
+    return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ActionDataParameterDeclaration$Tg, true, false)), _quotation_createNode_y4qgg5_b0a0a3());
   }
   private static SNode _quotation_createNode_y4qgg5_b0a0a3() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -53,7 +53,7 @@ public class ConceptCondition_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "1227128029536562320");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptCondition$3B = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0xe9375051ff52781L, "jetbrains.mps.lang.plugin.structure.ConceptCondition");
-    /*package*/ static final SConcept ActionDataParameterDeclaration$Wd = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
+    /*package*/ static final SConcept ConceptCondition$E = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0xe9375051ff52781L, "jetbrains.mps.lang.plugin.structure.ConceptCondition");
+    /*package*/ static final SConcept ActionDataParameterDeclaration$Tg = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
   }
 }

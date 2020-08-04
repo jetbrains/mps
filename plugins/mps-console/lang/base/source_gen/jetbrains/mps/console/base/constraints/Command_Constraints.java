@@ -8,16 +8,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Command_Constraints extends BaseConstraintsDescriptor {
   public Command_Constraints() {
-    super(CONCEPTS.Command$sT);
+    super(CONCEPTS.Command$6M);
   }
 
   @Override
   public SConcept getDefaultConcreteConcept() {
-    return CONCEPTS.BLCommand$ib;
+    return CONCEPTS.BLCommand$W4;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Command$sT = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5f1fb64db424879fL, "jetbrains.mps.console.base.structure.Command");
-    /*package*/ static final SConcept BLCommand$ib = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4bd43869e610f3e9L, "jetbrains.mps.console.base.structure.BLCommand");
+    /*package*/ static final SConcept Command$6M = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5f1fb64db424879fL, "jetbrains.mps.console.base.structure.Command");
+    /*package*/ static final SConcept BLCommand$W4 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4bd43869e610f3e9L, "jetbrains.mps.console.base.structure.BLCommand");
   }
 }

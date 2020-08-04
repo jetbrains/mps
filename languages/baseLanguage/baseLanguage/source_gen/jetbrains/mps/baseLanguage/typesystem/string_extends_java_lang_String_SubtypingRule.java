@@ -21,7 +21,7 @@ public class string_extends_java_lang_String_SubtypingRule extends SubtypingRule
     return _quotation_createNode_s518me_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StringType$2b;
+    return CONCEPTS.StringType$uX;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class string_extends_java_lang_String_SubtypingRule extends SubtypingRule
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StringType$2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
+    /*package*/ static final SConcept StringType$uX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
   }
 }

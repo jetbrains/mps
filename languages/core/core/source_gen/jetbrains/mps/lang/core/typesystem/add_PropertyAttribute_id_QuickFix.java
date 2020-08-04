@@ -18,11 +18,11 @@ public class add_PropertyAttribute_id_QuickFix extends QuickFix_Runtime {
     return "Add id to property attribute";
   }
   public void execute(SNode node) {
-    SNode propertyAttribute = SNodeOperations.as(node, CONCEPTS.PropertyAttribute$jT);
+    SNode propertyAttribute = SNodeOperations.as(node, CONCEPTS.PropertyAttribute$Gb);
     PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(propertyAttribute, PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(propertyAttribute));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

@@ -73,7 +73,7 @@ public class SubstituteMenuReference_Default_QueryMenu extends TransformationMen
   public class TMP_Group_whxqoe_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SubstituteMenuPart$$W) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.TransformationMenuPart$BX);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SubstituteMenuPart$Kz) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.TransformationMenuPart$N$);
     }
 
     @NotNull
@@ -130,10 +130,10 @@ public class SubstituteMenuReference_Default_QueryMenu extends TransformationMen
         @Override
         public void execute(@NotNull String pattern) {
           SNode substituteMenuReference = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x71f19593ac95dee9L, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_DefaultWithFunction"));
-          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SubstituteMenuPart$$W)) {
-            SLinkOperations.setTarget(substituteMenuReference, LINKS.query$fuow, SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_SubstituteMenu_Concept$Ye, null));
+          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SubstituteMenuPart$Kz)) {
+            SLinkOperations.setTarget(substituteMenuReference, LINKS.query$jK$7, SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_SubstituteMenu_Concept$9P, null));
           } else {
-            SLinkOperations.setTarget(substituteMenuReference, LINKS.query$fuow, SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_TransformationMenu_Concept$W6, null));
+            SLinkOperations.setTarget(substituteMenuReference, LINKS.query$jK$7, SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_TransformationMenu_Concept$7H, null));
           }
           SNodeOperations.replaceWithAnother(_context.getNode(), substituteMenuReference);
         }
@@ -160,13 +160,13 @@ public class SubstituteMenuReference_Default_QueryMenu extends TransformationMen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuPart$BX = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efffeL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart");
-    /*package*/ static final SConcept SubstituteMenuPart$$W = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart");
-    /*package*/ static final SConcept QueryFunction_SubstituteMenu_Concept$Ye = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x71f19593ac95deecL, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_Concept");
-    /*package*/ static final SConcept QueryFunction_TransformationMenu_Concept$W6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22d135351a17ef45L, "jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Concept");
+    /*package*/ static final SConcept TransformationMenuPart$N$ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efffeL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart");
+    /*package*/ static final SConcept SubstituteMenuPart$Kz = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart");
+    /*package*/ static final SConcept QueryFunction_SubstituteMenu_Concept$9P = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x71f19593ac95deecL, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_Concept");
+    /*package*/ static final SConcept QueryFunction_TransformationMenu_Concept$7H = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22d135351a17ef45L, "jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Concept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$fuow = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x71f19593ac95dee9L, 0x71f19593ac95deeaL, "query");
+    /*package*/ static final SContainmentLink query$jK$7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x71f19593ac95dee9L, 0x71f19593ac95deeaL, "query");
   }
 }

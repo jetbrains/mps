@@ -82,7 +82,7 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
       result.add(new TMP_IncludeSM_mhpf25_d0());
       result.add(new TMP_Param_mhpf25_e0());
       result.add(new TMP_SubMenu_mhpf25_f0());
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.MenuTraceTransformationChild$LY)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.MenuTraceTransformationChild$yb)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -260,7 +260,7 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.MenuTraceTransformationChild$LY, "jetbrains.mps.lang.editor.editorTest.editor.MenuTraceTransformationChild_NamedTransformationMenu");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.MenuTraceTransformationChild$yb, "jetbrains.mps.lang.editor.editorTest.editor.MenuTraceTransformationChild_NamedTransformationMenu");
     }
 
   }
@@ -479,7 +479,7 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.editorTest.editor.MenuTraceSubstituteChild_NamedSubstituteMenu");
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.MenuTraceSubstituteChild$jq;
+      return CONCEPTS.MenuTraceSubstituteChild$3B;
     }
 
 
@@ -510,7 +510,7 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MenuTraceTransformationChild$LY = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776035327cL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceTransformationChild");
-    /*package*/ static final SConcept MenuTraceSubstituteChild$jq = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild");
+    /*package*/ static final SConcept MenuTraceTransformationChild$yb = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776035327cL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceTransformationChild");
+    /*package*/ static final SConcept MenuTraceSubstituteChild$3B = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xac2d3ee357de209L, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceSubstituteChild");
   }
 }

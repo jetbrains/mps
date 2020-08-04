@@ -85,7 +85,7 @@ public class JavaToMpsUtils {
       List<SNode> res = parser.parse(code, howToParse, null, true).getNodes();
       Assert.assertSame(ListSequence.fromList(res).count(), 1);
 
-      final SNode result = SNodeOperations.cast(res.get(0), CONCEPTS.Classifier$hJ);
+      final SNode result = SNodeOperations.cast(res.get(0), CONCEPTS.Classifier$Ix);
       SModelOperations.addRootNode(mdl, result);
       new ModelImports(mdl).copyUsedLanguagesFrom(SNodeOperations.getModel(expected));
 
@@ -135,7 +135,7 @@ public class JavaToMpsUtils {
 
     Iterator<? extends SNode> roots = models.next().getRootNodes().iterator();
     Assert.assertTrue("The model has no roots", roots.hasNext());
-    SNode result = SNodeOperations.cast((roots.next()), CONCEPTS.Classifier$hJ);
+    SNode result = SNodeOperations.cast((roots.next()), CONCEPTS.Classifier$Ix);
     result = SNodeOperations.copyNode(result);
     expected = SNodeOperations.copyNode(expected);
 
@@ -171,8 +171,8 @@ public class JavaToMpsUtils {
       SModel m = expmr.resolve(myRepo);
       ListSequence.fromList(expectedModels).addElement(m);
       for (SNode root : ListSequence.fromList(SModelOperations.roots(m, null))) {
-        NodePatcher.removeStatements(SNodeOperations.cast(root, CONCEPTS.Classifier$hJ));
-        NodePatcher.fixNonStatic(SNodeOperations.cast(root, CONCEPTS.Classifier$hJ));
+        NodePatcher.removeStatements(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix));
+        NodePatcher.fixNonStatic(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix));
       }
     }
     compare(models, expectedModels);
@@ -215,7 +215,7 @@ public class JavaToMpsUtils {
       final SModel resultModel = ListSequence.fromList(parsedModels).getElement(0);
 
       SModel expected = expectedRef.resolve(myRepo);
-      for (SNode root : ListSequence.fromList(SModelOperations.roots(expected, CONCEPTS.Classifier$hJ))) {
+      for (SNode root : ListSequence.fromList(SModelOperations.roots(expected, CONCEPTS.Classifier$Ix))) {
         NodePatcher.fixNonStatic(root);
       }
 
@@ -255,7 +255,7 @@ public class JavaToMpsUtils {
         NodePatcher.removeExtendsObject(binRoot);
         NodePatcher.removeInitializers(binRoot);
 
-        NodePatcher.sortNestedClass(SNodeOperations.cast(binRoot, CONCEPTS.Classifier$hJ));
+        NodePatcher.sortNestedClass(SNodeOperations.cast(binRoot, CONCEPTS.Classifier$Ix));
 
         // FIXME should be fixed in java source stubs 
         NodePatcher.removeStatements(binRoot);
@@ -279,7 +279,7 @@ public class JavaToMpsUtils {
         NodePatcher.fixNonStatic(srcRoot);
         NodePatcher.removeSourceLevelAnnotations(srcRoot, myRepo);
 
-        NodePatcher.sortNestedClass(SNodeOperations.cast(srcRoot, CONCEPTS.Classifier$hJ));
+        NodePatcher.sortNestedClass(SNodeOperations.cast(srcRoot, CONCEPTS.Classifier$Ix));
       }
     }
 
@@ -323,17 +323,17 @@ public class JavaToMpsUtils {
   }
 
   public static boolean compare2models(SModel left, SModel right, Map<SNode, SNode> nodeMap) {
-    List<SNode> binRoots = SModelOperations.roots(left, CONCEPTS.Classifier$hJ);
-    List<SNode> srcRoots = SModelOperations.roots(right, CONCEPTS.Classifier$hJ);
+    List<SNode> binRoots = SModelOperations.roots(left, CONCEPTS.Classifier$Ix);
+    List<SNode> srcRoots = SModelOperations.roots(right, CONCEPTS.Classifier$Ix);
 
     binRoots = ListSequence.fromList(binRoots).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$lA7v);
+        return SPropertyOperations.getString(it, PROPS.name$MnvL);
       }
     }, true).toListSequence();
     srcRoots = ListSequence.fromList(srcRoots).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$lA7v);
+        return SPropertyOperations.getString(it, PROPS.name$MnvL);
       }
     }, true).toListSequence();
 
@@ -349,12 +349,12 @@ public class JavaToMpsUtils {
 
   public static void buildModelNodeMap(SModel left, SModel right, Map<SNode, SNode> nodeMap) {
     Map<String, SNode> rightRootIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-    for (SNode rightRoot : ListSequence.fromList(SModelOperations.roots(right, CONCEPTS.Classifier$hJ))) {
-      MapSequence.fromMap(rightRootIndex).put(SPropertyOperations.getString(rightRoot, PROPS.name$lA7v), rightRoot);
+    for (SNode rightRoot : ListSequence.fromList(SModelOperations.roots(right, CONCEPTS.Classifier$Ix))) {
+      MapSequence.fromMap(rightRootIndex).put(SPropertyOperations.getString(rightRoot, PROPS.name$MnvL), rightRoot);
     }
 
-    for (SNode leftRoot : ListSequence.fromList(SModelOperations.roots(left, CONCEPTS.Classifier$hJ))) {
-      SNode rightBrother = MapSequence.fromMap(rightRootIndex).get(SPropertyOperations.getString(leftRoot, PROPS.name$lA7v));
+    for (SNode leftRoot : ListSequence.fromList(SModelOperations.roots(left, CONCEPTS.Classifier$Ix))) {
+      SNode rightBrother = MapSequence.fromMap(rightRootIndex).get(SPropertyOperations.getString(leftRoot, PROPS.name$MnvL));
       if ((rightBrother != null)) {
         NodePatcher.copyImportAttrs(leftRoot, rightBrother);
       }
@@ -365,31 +365,31 @@ public class JavaToMpsUtils {
   public static void buildClassifierNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
     // handling this class and nested classes 
     Map<String, SNode> rightNestedIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(right, CONCEPTS.Classifier$hJ, true, new SAbstractConcept[]{}))) {
-      MapSequence.fromMap(rightNestedIndex).put(SPropertyOperations.getString(cl, PROPS.name$lA7v), cl);
+    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(right, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{}))) {
+      MapSequence.fromMap(rightNestedIndex).put(SPropertyOperations.getString(cl, PROPS.name$MnvL), cl);
     }
 
-    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(left, CONCEPTS.Classifier$hJ, true, new SAbstractConcept[]{}))) {
-      SNode rightBrother = MapSequence.fromMap(rightNestedIndex).get(SPropertyOperations.getString(cl, PROPS.name$lA7v));
+    for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(left, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{}))) {
+      SNode rightBrother = MapSequence.fromMap(rightNestedIndex).get(SPropertyOperations.getString(cl, PROPS.name$MnvL));
 
 
       Assert.assertNull(MapSequence.fromMap(nodeMap).get(cl));
       MapSequence.fromMap(nodeMap).put(cl, rightBrother);
 
-      buildJustNodeMap(SLinkOperations.getChildren(left, LINKS.typeVariableDeclaration$6cWB), SLinkOperations.getChildren(right, LINKS.typeVariableDeclaration$6cWB), nodeMap);
+      buildJustNodeMap(SLinkOperations.getChildren(left, LINKS.typeVariableDeclaration$Lipp), SLinkOperations.getChildren(right, LINKS.typeVariableDeclaration$Lipp), nodeMap);
       buildMethodsNodeMap(left, right, nodeMap);
 
     }
 
-    if (SNodeOperations.isInstanceOf(left, CONCEPTS.Annotation$Os) && SNodeOperations.isInstanceOf(right, CONCEPTS.Annotation$Os)) {
+    if (SNodeOperations.isInstanceOf(left, CONCEPTS.Annotation$he) && SNodeOperations.isInstanceOf(right, CONCEPTS.Annotation$he)) {
       Map<String, SNode> rightMethodIndex = MapSequence.fromMap(new HashMap<String, SNode>());
-      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(right, CONCEPTS.Annotation$Os), LINKS.method$U$bY))) {
-        MapSequence.fromMap(rightMethodIndex).put(SPropertyOperations.getString(mthd, PROPS.name$lA7v), mthd);
+      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(right, CONCEPTS.Annotation$he), LINKS.method$_DCK))) {
+        MapSequence.fromMap(rightMethodIndex).put(SPropertyOperations.getString(mthd, PROPS.name$MnvL), mthd);
       }
 
-      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(left, CONCEPTS.Annotation$Os), LINKS.method$U$bY))) {
+      for (SNode mthd : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(left, CONCEPTS.Annotation$he), LINKS.method$_DCK))) {
         Assert.assertNull(MapSequence.fromMap(nodeMap).get(mthd));
-        MapSequence.fromMap(nodeMap).put(mthd, MapSequence.fromMap(rightMethodIndex).get(SPropertyOperations.getString(mthd, PROPS.name$lA7v)));
+        MapSequence.fromMap(nodeMap).put(mthd, MapSequence.fromMap(rightMethodIndex).get(SPropertyOperations.getString(mthd, PROPS.name$MnvL)));
       }
     }
   }
@@ -402,28 +402,28 @@ public class JavaToMpsUtils {
 
     Map<String, SNode> rightIndex = MapSequence.fromMap(new HashMap<String, SNode>());
     for (SNode rightMthd : ListSequence.fromList(rightMethods)) {
-      MapSequence.fromMap(rightIndex).put(SPropertyOperations.getString(rightMthd, PROPS.name$lA7v), rightMthd);
+      MapSequence.fromMap(rightIndex).put(SPropertyOperations.getString(rightMthd, PROPS.name$MnvL), rightMthd);
     }
 
     for (SNode leftMthd : ListSequence.fromList(leftMethods)) {
-      MapSequence.fromMap(nodeMap).put(leftMthd, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftMthd, PROPS.name$lA7v)));
-      buildMethodBodyNodeMap(leftMthd, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftMthd, PROPS.name$lA7v)), nodeMap);
+      MapSequence.fromMap(nodeMap).put(leftMthd, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftMthd, PROPS.name$MnvL)));
+      buildMethodBodyNodeMap(leftMthd, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftMthd, PROPS.name$MnvL)), nodeMap);
     }
   }
 
   public static void buildMethodBodyNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
 
     //  type vars 
-    buildJustNodeMap(SLinkOperations.getChildren(left, LINKS.typeVariableDeclaration$6cWB), SLinkOperations.getChildren(right, LINKS.typeVariableDeclaration$6cWB), nodeMap);
+    buildJustNodeMap(SLinkOperations.getChildren(left, LINKS.typeVariableDeclaration$Lipp), SLinkOperations.getChildren(right, LINKS.typeVariableDeclaration$Lipp), nodeMap);
 
     // local vars and params 
     List<SNode> leftVars = new ArrayList<SNode>();
-    ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(left, LINKS.parameter$qsax)));
-    ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(left, CONCEPTS.LocalVariableDeclaration$Bf, false, new SAbstractConcept[]{CONCEPTS.AnonymousClass$aF})));
+    ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(left, LINKS.parameter$5xBj)));
+    ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(left, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{CONCEPTS.AnonymousClass$Bt})));
 
     List<SNode> rightVars = new ArrayList<SNode>();
-    ListSequence.fromList(rightVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(right, LINKS.parameter$qsax)));
-    ListSequence.fromList(rightVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(right, CONCEPTS.LocalVariableDeclaration$Bf, false, new SAbstractConcept[]{CONCEPTS.AnonymousClass$aF})));
+    ListSequence.fromList(rightVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(right, LINKS.parameter$5xBj)));
+    ListSequence.fromList(rightVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(right, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{CONCEPTS.AnonymousClass$Bt})));
 
     buildJustNodeMap(leftVars, rightVars, nodeMap);
 
@@ -433,28 +433,28 @@ public class JavaToMpsUtils {
   public static void buildJustNodeMap(List<SNode> left, List<SNode> right, Map<SNode, SNode> nodeMap) {
     Map<String, SNode> rightIndex = MapSequence.fromMap(new HashMap<String, SNode>());
     for (SNode rightNode : ListSequence.fromList(right)) {
-      MapSequence.fromMap(rightIndex).put(SPropertyOperations.getString(rightNode, PROPS.name$lA7v), rightNode);
+      MapSequence.fromMap(rightIndex).put(SPropertyOperations.getString(rightNode, PROPS.name$MnvL), rightNode);
     }
 
     for (SNode leftNode : ListSequence.fromList(left)) {
-      MapSequence.fromMap(nodeMap).put(leftNode, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftNode, PROPS.name$lA7v)));
+      MapSequence.fromMap(nodeMap).put(leftNode, MapSequence.fromMap(rightIndex).get(SPropertyOperations.getString(leftNode, PROPS.name$MnvL)));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept Annotation$Os = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Annotation$he = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink method$U$bY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink method$_DCK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

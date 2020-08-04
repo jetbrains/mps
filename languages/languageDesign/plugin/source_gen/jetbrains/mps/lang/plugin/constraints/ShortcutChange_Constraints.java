@@ -24,12 +24,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ShortcutChange_Constraints extends BaseConstraintsDescriptor {
   public ShortcutChange_Constraints() {
-    super(CONCEPTS.ShortcutChange$2D);
+    super(CONCEPTS.ShortcutChange$ZG);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.action$jfMa, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.action$wOJd, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -44,7 +44,7 @@ public class ShortcutChange_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SModelOperations.roots(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ActionDeclaration$VX));
+            return ListScope.forResolvableElements(SModelOperations.roots(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ActionDeclaration$T0));
           }
         };
       }
@@ -56,11 +56,11 @@ public class ShortcutChange_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_mh2v7q_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "6836281137582796510");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ShortcutChange$2D = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L, "jetbrains.mps.lang.plugin.structure.ShortcutChange");
-    /*package*/ static final SConcept ActionDeclaration$VX = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
+    /*package*/ static final SInterfaceConcept ShortcutChange$ZG = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L, "jetbrains.mps.lang.plugin.structure.ShortcutChange");
+    /*package*/ static final SConcept ActionDeclaration$T0 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink action$jfMa = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L, 0x55f30a5d1e096c76L, "action");
+    /*package*/ static final SReferenceLink action$wOJd = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L, 0x55f30a5d1e096c76L, "action");
   }
 }

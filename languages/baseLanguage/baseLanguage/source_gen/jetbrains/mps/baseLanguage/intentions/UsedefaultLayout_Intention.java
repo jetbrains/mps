@@ -34,7 +34,7 @@ public final class UsedefaultLayout_Intention extends AbstractIntentionDescripto
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SPropertyOperations.getBoolean(node, PROPS.forceMultiLine$d112) || SPropertyOperations.getBoolean(node, PROPS.forceOneLine$d0M1);
+    return SPropertyOperations.getBoolean(node, PROPS.forceMultiLine$S6tO) || SPropertyOperations.getBoolean(node, PROPS.forceOneLine$S6eN);
   }
   @Override
   public boolean isSurroundWith() {
@@ -55,8 +55,8 @@ public final class UsedefaultLayout_Intention extends AbstractIntentionDescripto
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.forceMultiLine$d112, false);
-      SPropertyOperations.assign(node, PROPS.forceOneLine$d0M1, false);
+      SPropertyOperations.assign(node, PROPS.forceMultiLine$S6tO, false);
+      SPropertyOperations.assign(node, PROPS.forceOneLine$S6eN, false);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -65,7 +65,7 @@ public final class UsedefaultLayout_Intention extends AbstractIntentionDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty forceOneLine$d0M1 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x3dffcc410476e370L, "forceOneLine");
-    /*package*/ static final SProperty forceMultiLine$d112 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x3dffcc410476e371L, "forceMultiLine");
+    /*package*/ static final SProperty forceOneLine$S6eN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x3dffcc410476e370L, "forceOneLine");
+    /*package*/ static final SProperty forceMultiLine$S6tO = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x3dffcc410476e371L, "forceMultiLine");
   }
 }

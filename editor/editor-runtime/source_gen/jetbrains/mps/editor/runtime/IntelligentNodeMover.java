@@ -184,9 +184,9 @@ public class IntelligentNodeMover {
     SNode nextAnchor = place.myAnchor;
     for (SNode node : myNodesToMove) {
       getNodesCommonParent().removeChild(node);
-      SContainmentLink link = (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$XQ) ? LINKS.smodelAttribute$jXFL : place.myLink);
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$XQ)) {
-        BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzM"), place.myLink);
+      SContainmentLink link = (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : place.myLink);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8)) {
+        BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), place.myLink);
       }
       if (place.myIsAfter) {
         place.myParent.insertChildAfter(link, node, nextAnchor);
@@ -332,17 +332,17 @@ public class IntelligentNodeMover {
     return findNode.runRead(editorContext.getRepository().getModelAccess());
   }
   private static SContainmentLink getNodesContainmentLink(@NotNull SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$XQ)) {
-      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf")));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8)) {
+      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")));
     }
     return node.getContainmentLink();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildAttribute$XQ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
   }
 }

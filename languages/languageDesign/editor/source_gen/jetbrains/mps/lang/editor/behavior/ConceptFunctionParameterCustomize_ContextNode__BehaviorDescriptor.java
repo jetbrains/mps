@@ -36,7 +36,7 @@ public final class ConceptFunctionParameterCustomize_ContextNode__BehaviorDescri
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    SNode concept = CompletionCustomizationContextSpecificator__BehaviorDescriptor.getConcept_id7U0pk79eiL7.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CompletionStyling$sP, false, false), LINKS.specificator$9hwX));
+    SNode concept = CompletionCustomizationContextSpecificator__BehaviorDescriptor.getConcept_id7U0pk79eiL7.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CompletionStyling$Cs, false, false), LINKS.specificator$dzG$));
     return _quotation_createNode_o1ng4y_a1a0(concept);
   }
 
@@ -94,10 +94,10 @@ public final class ConceptFunctionParameterCustomize_ContextNode__BehaviorDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompletionStyling$sP = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionStyling");
+    /*package*/ static final SConcept CompletionStyling$Cs = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionStyling");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink specificator$9hwX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator");
+    /*package*/ static final SContainmentLink specificator$dzG$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator");
   }
 }

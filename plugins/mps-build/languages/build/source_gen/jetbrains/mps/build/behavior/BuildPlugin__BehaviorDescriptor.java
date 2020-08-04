@@ -37,7 +37,7 @@ public final class BuildPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getProject_id13YBgBBS7ex(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildProject$BF);
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildProject$ae);
   }
   /*package*/ static Scope getProjectStructureScope_id3fifI_xCJOQ(@NotNull SNode __thisNode__, SAbstractConcept kind) {
     return null;
@@ -102,6 +102,6 @@ public final class BuildPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

@@ -71,7 +71,7 @@ public class TextCommentLinePart_TransformationMenu extends TransformationMenuBa
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.TextCommentLinePart$RY)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.TextCommentLinePart$Eb)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -104,9 +104,9 @@ public class TextCommentLinePart_TransformationMenu extends TransformationMenuBa
     @Override
     protected Iterable<? extends String> getParameters(TransformationMenuContext _context) {
       List<String> options = ListSequence.fromListAndArray(new ArrayList<String>(), "@author", "@since", "@version", "@deprecated", "@see");
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BaseDocComment$pH, false, false), CONCEPTS.ClassifierDocComment$$4)) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BaseDocComment$bU, false, false), CONCEPTS.ClassifierDocComment$mh)) {
         ListSequence.fromList(options).addElement("@param");
-      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BaseDocComment$pH, false, false), CONCEPTS.MethodDocComment$Vx)) {
+      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BaseDocComment$bU, false, false), CONCEPTS.MethodDocComment$HI)) {
         ListSequence.fromList(options).addElement("@param");
         ListSequence.fromList(options).addElement("@throws");
         ListSequence.fromList(options).addElement("@return");
@@ -167,46 +167,46 @@ public class TextCommentLinePart_TransformationMenu extends TransformationMenuBa
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode comment = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BaseDocComment$pH, false, false);
-          boolean isClassifier = SNodeOperations.isInstanceOf(comment, CONCEPTS.ClassifierDocComment$$4);
-          boolean isMethod = SNodeOperations.isInstanceOf(comment, CONCEPTS.MethodDocComment$Vx);
+          SNode comment = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BaseDocComment$bU, false, false);
+          boolean isClassifier = SNodeOperations.isInstanceOf(comment, CONCEPTS.ClassifierDocComment$mh);
+          boolean isMethod = SNodeOperations.isInstanceOf(comment, CONCEPTS.MethodDocComment$HI);
 
           SNode tag = null;
           if (Objects.equals(myParameterObject, "@author")) {
-            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.AuthorBlockDocTag$xE);
+            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$stUD, CONCEPTS.AuthorBlockDocTag$jR);
           }
           if (Objects.equals(myParameterObject, "@since")) {
-            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.SinceBlockDocTag$YE);
+            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$stUD, CONCEPTS.SinceBlockDocTag$KR);
           }
 
           if (Objects.equals(myParameterObject, "@version")) {
-            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.VersionBlockDocTag$Ic);
+            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$stUD, CONCEPTS.VersionBlockDocTag$wp);
           }
           if (Objects.equals(myParameterObject, "@deprecated")) {
-            IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IBLDeprecatable$Hv, false, false));
-            _context.getEditorContext().selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).where(new IWhereFilter<SNode>() {
+            IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IBLDeprecatable$ah, false, false));
+            _context.getEditorContext().selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$ma);
+                return SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n);
               }
             }).first());
           }
           if (Objects.equals(myParameterObject, "@see")) {
-            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.SeeBlockDocTag$tx);
+            tag = SNodeFactoryOperations.addNewChild(comment, LINKS.tags$stUD, CONCEPTS.SeeBlockDocTag$fI);
           }
           if (Objects.equals(myParameterObject, "@param") && isClassifier) {
-            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassifierDocComment$$4, false, false), LINKS.tags$658s, CONCEPTS.ParameterBlockDocTag$w1);
+            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassifierDocComment$mh, false, false), LINKS.tags$stUD, CONCEPTS.ParameterBlockDocTag$ie);
           }
           if (Objects.equals(myParameterObject, "@param") && isMethod) {
-            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$658s, CONCEPTS.ParameterBlockDocTag$w1);
+            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$HI, false, false), LINKS.tags$stUD, CONCEPTS.ParameterBlockDocTag$ie);
           }
           if (Objects.equals(myParameterObject, "@throws") && isMethod) {
-            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$658s, CONCEPTS.ThrowsBlockDocTag$ph);
+            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$HI, false, false), LINKS.tags$stUD, CONCEPTS.ThrowsBlockDocTag$bu);
           }
           if (Objects.equals(myParameterObject, "@return") && isMethod) {
-            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$Vx, false, false), LINKS.tags$658s, CONCEPTS.ReturnBlockDocTag$Ys);
+            tag = SNodeFactoryOperations.addNewChild(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.MethodDocComment$HI, false, false), LINKS.tags$stUD, CONCEPTS.ReturnBlockDocTag$KD);
           }
 
-          SPropertyOperations.assign(_context.getNode(), PROPS.text$OrZ0, "");
+          SPropertyOperations.assign(_context.getNode(), PROPS.text$aOLd, "");
           DocTagHelper.organizeTags(comment);
           if (tag != null) {
             _context.getEditorContext().selectWRTFocusPolicy(tag);
@@ -235,26 +235,26 @@ public class TextCommentLinePart_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextCommentLinePart$RY = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
-    /*package*/ static final SConcept BaseDocComment$pH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
-    /*package*/ static final SConcept ClassifierDocComment$$4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
-    /*package*/ static final SConcept MethodDocComment$Vx = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
-    /*package*/ static final SConcept AuthorBlockDocTag$xE = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, "jetbrains.mps.baseLanguage.javadoc.structure.AuthorBlockDocTag");
-    /*package*/ static final SConcept SinceBlockDocTag$YE = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL, "jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag");
-    /*package*/ static final SConcept VersionBlockDocTag$Ic = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87dda0L, "jetbrains.mps.baseLanguage.javadoc.structure.VersionBlockDocTag");
-    /*package*/ static final SInterfaceConcept IBLDeprecatable$Hv = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, "jetbrains.mps.baseLanguage.structure.IBLDeprecatable");
-    /*package*/ static final SConcept DeprecatedBlockDocTag$ma = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
-    /*package*/ static final SConcept SeeBlockDocTag$tx = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252ca3abL, "jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag");
-    /*package*/ static final SConcept ParameterBlockDocTag$w1 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, "jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag");
-    /*package*/ static final SConcept ThrowsBlockDocTag$ph = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, "jetbrains.mps.baseLanguage.javadoc.structure.ThrowsBlockDocTag");
-    /*package*/ static final SConcept ReturnBlockDocTag$Ys = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, "jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag");
+    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept BaseDocComment$bU = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+    /*package*/ static final SConcept ClassifierDocComment$mh = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
+    /*package*/ static final SConcept MethodDocComment$HI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
+    /*package*/ static final SConcept AuthorBlockDocTag$jR = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, "jetbrains.mps.baseLanguage.javadoc.structure.AuthorBlockDocTag");
+    /*package*/ static final SConcept SinceBlockDocTag$KR = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL, "jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag");
+    /*package*/ static final SConcept VersionBlockDocTag$wp = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87dda0L, "jetbrains.mps.baseLanguage.javadoc.structure.VersionBlockDocTag");
+    /*package*/ static final SInterfaceConcept IBLDeprecatable$ah = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, "jetbrains.mps.baseLanguage.structure.IBLDeprecatable");
+    /*package*/ static final SConcept DeprecatedBlockDocTag$8n = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
+    /*package*/ static final SConcept SeeBlockDocTag$fI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252ca3abL, "jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag");
+    /*package*/ static final SConcept ParameterBlockDocTag$ie = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, "jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag");
+    /*package*/ static final SConcept ThrowsBlockDocTag$bu = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, "jetbrains.mps.baseLanguage.javadoc.structure.ThrowsBlockDocTag");
+    /*package*/ static final SConcept ReturnBlockDocTag$KD = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, "jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink tags$stUD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$aOLd = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

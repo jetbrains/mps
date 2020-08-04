@@ -24,7 +24,7 @@ public class Text_InsertPlaceholder_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BasePlaceholder$1w);
+        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BasePlaceholder$pM);
         SNode newPlaceholder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder"));
         ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(newPlaceholder, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(parent));
         SNodeOperations.insertNextSiblingChild(parent, newPlaceholder);
@@ -34,7 +34,7 @@ public class Text_InsertPlaceholder_ActionMap {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BasePlaceholder$1w);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BasePlaceholder$pM);
       }
 
     };
@@ -45,7 +45,7 @@ public class Text_InsertPlaceholder_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BasePlaceholder$1w);
+        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BasePlaceholder$pM);
         SNode newPlaceholder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder"));
         ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(newPlaceholder, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(parent));
         SNodeOperations.insertNextSiblingChild(parent, newPlaceholder);
@@ -55,7 +55,7 @@ public class Text_InsertPlaceholder_ActionMap {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BasePlaceholder$1w);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BasePlaceholder$pM);
       }
 
     };
@@ -107,6 +107,6 @@ public class Text_InsertPlaceholder_ActionMap {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BasePlaceholder$1w = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder");
+    /*package*/ static final SConcept BasePlaceholder$pM = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x339681b4da4ef1a7L, "jetbrains.mps.lang.core.structure.BasePlaceholder");
   }
 }

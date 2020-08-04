@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CanWrapHighLevelValue_ConceptFunction_Constraints extends BaseConstraintsDescriptor {
   public CanWrapHighLevelValue_ConceptFunction_Constraints() {
-    super(CONCEPTS.CanWrapHighLevelValue_ConceptFunction$JA);
+    super(CONCEPTS.CanWrapHighLevelValue_ConceptFunction$a2);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class CanWrapHighLevelValue_ConceptFunction_Constraints extends BaseConst
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.HighLevelCustomViewer$cJ);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.HighLevelCustomViewer$Bb);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:90c5d87d-81cd-4991-8860-6ac3ba3269c4(jetbrains.mps.debugger.java.customViewers.constraints)", "1227128029536564833");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CanWrapHighLevelValue_ConceptFunction$JA = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x9a1514043ecbdbL, "jetbrains.mps.debugger.java.customViewers.structure.CanWrapHighLevelValue_ConceptFunction");
-    /*package*/ static final SConcept HighLevelCustomViewer$cJ = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelCustomViewer");
+    /*package*/ static final SConcept CanWrapHighLevelValue_ConceptFunction$a2 = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x9a1514043ecbdbL, "jetbrains.mps.debugger.java.customViewers.structure.CanWrapHighLevelValue_ConceptFunction");
+    /*package*/ static final SConcept HighLevelCustomViewer$Bb = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelCustomViewer");
   }
 }

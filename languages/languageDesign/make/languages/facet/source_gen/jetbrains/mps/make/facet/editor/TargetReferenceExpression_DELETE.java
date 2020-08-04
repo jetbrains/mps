@@ -27,7 +27,7 @@ public class TargetReferenceExpression_DELETE {
         if (DeletionApproverUtil.approve(editorContext, node, "targetRefCollection")) {
           return;
         }
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.facetRef$ahL8));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.facetRef$yBq0));
       }
 
     };
@@ -75,6 +75,6 @@ public class TargetReferenceExpression_DELETE {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink facetRef$ahL8 = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, 0x78c916bd7aecc3aeL, "facetRef");
+    /*package*/ static final SContainmentLink facetRef$yBq0 = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, 0x78c916bd7aecc3aeL, "facetRef");
   }
 }

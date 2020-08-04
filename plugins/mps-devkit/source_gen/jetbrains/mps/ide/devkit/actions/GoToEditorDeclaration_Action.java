@@ -86,7 +86,7 @@ public class GoToEditorDeclaration_Action extends BaseAction {
     return new ModelAccessHelper(repo).runReadAction(new Computable<SNodeReference>() {
       public SNodeReference compute() {
         SNode conceptNode = sn.resolve(repo);
-        if (!(SNodeOperations.isInstanceOf(conceptNode, CONCEPTS.AbstractConceptDeclaration$UN))) {
+        if (!(SNodeOperations.isInstanceOf(conceptNode, CONCEPTS.AbstractConceptDeclaration$KA))) {
           return null;
         }
         if (!(LanguageAspect.STRUCTURE.is(SNodeOperations.getModel(conceptNode)))) {
@@ -103,6 +103,6 @@ public class GoToEditorDeclaration_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

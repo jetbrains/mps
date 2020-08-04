@@ -32,7 +32,7 @@ public class BuildMps_DevKitExportLanguage_SubstituteMenu extends SubstituteMenu
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_37zm5j_a(), CONCEPTS.BuildMps_DevKitExportLanguage$ez));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_37zm5j_a(), CONCEPTS.BuildMps_DevKitExportLanguage$EV));
     result.add(new SMP_Subconcepts_37zm5j_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class BuildMps_DevKitExportLanguage_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_37zm5j_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildMps_DevKitExportLanguage$ez, LINKS.language$Ve4X);
+      super((SAbstractConcept) CONCEPTS.BuildMps_DevKitExportLanguage$EV, LINKS.language$qqxl);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class BuildMps_DevKitExportLanguage_SubstituteMenu extends SubstituteMenu
   }
   public class SMP_Subconcepts_37zm5j_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildMps_DevKitExportLanguage$ez);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildMps_DevKitExportLanguage$EV);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class BuildMps_DevKitExportLanguage_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_DevKitExportLanguage$ez = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExportLanguage");
+    /*package*/ static final SConcept BuildMps_DevKitExportLanguage$EV = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExportLanguage");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink language$Ve4X = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, 0x4780308f5d29d73L, "language");
+    /*package*/ static final SReferenceLink language$qqxl = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, 0x4780308f5d29d73L, "language");
   }
 }

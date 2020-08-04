@@ -25,7 +25,7 @@ public class NegativeSymbolClassRegexp_toPositive {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.PositiveSymbolClassRegexp$86);
+        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.PositiveSymbolClassRegexp$KU);
       }
 
     };
@@ -73,6 +73,6 @@ public class NegativeSymbolClassRegexp_toPositive {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PositiveSymbolClassRegexp$86 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2f48cL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveSymbolClassRegexp");
+    /*package*/ static final SConcept PositiveSymbolClassRegexp$KU = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2f48cL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveSymbolClassRegexp");
   }
 }

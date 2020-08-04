@@ -36,9 +36,9 @@ public class TextCommentPart_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_cldlt5_a(), CONCEPTS.TextCommentPart$lb));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_cldlt5_a(), CONCEPTS.TextCommentPart$LX));
     result.add(new SMP_Subconcepts_cldlt5_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TextCommentPart$lb) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TextCommentPart$LX) {
 
       @NotNull
       @Override
@@ -51,7 +51,7 @@ public class TextCommentPart_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.TextCommentPart$lb));
+    }, CONCEPTS.TextCommentPart$LX));
     return result;
   }
 
@@ -96,7 +96,7 @@ public class TextCommentPart_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TextCommentPart$lb, context);
+        super(CONCEPTS.TextCommentPart$LX, context);
         _context = context;
       }
 
@@ -107,8 +107,8 @@ public class TextCommentPart_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.TextCommentPart$lb, null);
-        SPropertyOperations.set(result, PROPS.text$va_w, pattern);
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.TextCommentPart$LX, null);
+        SPropertyOperations.set(result, PROPS.text$ag2i, pattern);
         return result;
       }
 
@@ -136,7 +136,7 @@ public class TextCommentPart_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_cldlt5_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TextCommentPart$lb);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TextCommentPart$LX);
     }
     @NotNull
     @Override
@@ -157,10 +157,10 @@ public class TextCommentPart_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty text$ag2i = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 }

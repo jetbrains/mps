@@ -34,8 +34,8 @@ public final class CodeInlineDocTag__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static String buildCommentText_id7Qt73fl50wX(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$bY76)).isNotEmpty()) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$bY76)).select(new ISelector<SNode, String>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$ymTj)).isNotEmpty()) {
+      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$ymTj)).select(new ISelector<SNode, String>() {
         public String select(SNode it) {
           return (String) CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(it);
         }
@@ -96,6 +96,6 @@ public final class CodeInlineDocTag__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$bY76 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252a7b73L, 0x2b1cb7939650a121L, "line");
+    /*package*/ static final SContainmentLink line$ymTj = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252a7b73L, 0x2b1cb7939650a121L, "line");
   }
 }

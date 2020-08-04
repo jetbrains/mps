@@ -38,7 +38,7 @@ public class GoToMemberDeclaration_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.MemberInstance$D8))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.MemberInstance$YT))) {
         node = null;
       }
       if (node == null) {
@@ -58,7 +58,7 @@ public class GoToMemberDeclaration_Action extends BaseAction {
     // XXX we don't need node here, node-ptr would suffice 
     SNodeReference ptr = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(new Computable<SNodeReference>() {
       public SNodeReference compute() {
-        SNode methodDescriptor = MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.MemberInstance$D8));
+        SNode methodDescriptor = MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.MemberInstance$YT));
         return SNodeOperations.getPointer(methodDescriptor);
       }
     });
@@ -66,6 +66,6 @@ public class GoToMemberDeclaration_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept MemberInstance$D8 = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9179L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberInstance");
+    /*package*/ static final SInterfaceConcept MemberInstance$YT = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9179L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberInstance");
   }
 }

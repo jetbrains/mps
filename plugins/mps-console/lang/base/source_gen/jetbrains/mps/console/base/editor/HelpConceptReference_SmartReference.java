@@ -28,7 +28,7 @@ public class HelpConceptReference_SmartReference extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_gtqjni_a(), CONCEPTS.HelpConceptReference$kf));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_gtqjni_a(), CONCEPTS.HelpConceptReference$Y8));
     return result;
   }
 
@@ -49,7 +49,7 @@ public class HelpConceptReference_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_gtqjni_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.HelpConceptReference$kf, LINKS.command$Mb5s);
+      super((SAbstractConcept) CONCEPTS.HelpConceptReference$Y8, LINKS.command$b3Jl);
     }
     @NotNull
     @Override
@@ -96,10 +96,10 @@ public class HelpConceptReference_SmartReference extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept HelpConceptReference$kf = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, "jetbrains.mps.console.base.structure.HelpConceptReference");
+    /*package*/ static final SConcept HelpConceptReference$Y8 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, "jetbrains.mps.console.base.structure.HelpConceptReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink command$Mb5s = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, 0x60279080c2f3f8d6L, "command");
+    /*package*/ static final SReferenceLink command$b3Jl = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, 0x60279080c2f3f8d6L, "command");
   }
 }

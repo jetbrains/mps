@@ -28,14 +28,14 @@ public class typeof_PropertRefValueOperation_InferenceRule extends AbstractInfer
           {
             SNode _nodeToCheck_1029348928467 = propertyPointerValueOperation;
             EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834077809", 0, null);
-            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834077255", true), (SNode) DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SNodeOperations.as(typeCheckingContext.getExpandedNode(pointerType), CONCEPTS.PropertyPointerType$EW), LINKS.dataType$K26p)), _info_12389875345);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834077255", true), (SNode) DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SNodeOperations.as(typeCheckingContext.getExpandedNode(pointerType), CONCEPTS.PropertyPointerType$Jt), LINKS.dataType$ciaU)), _info_12389875345);
           }
         }
       }, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "8697758915834102963", false, false);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PropertyPointerValueOperation$sT;
+    return CONCEPTS.PropertyPointerValueOperation$xq;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,11 +45,11 @@ public class typeof_PropertRefValueOperation_InferenceRule extends AbstractInfer
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyPointerType$EW = MetaAdapterFactory.getConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846de35L, "jetbrains.mps.lang.checkedName.structure.PropertyPointerType");
-    /*package*/ static final SConcept PropertyPointerValueOperation$sT = MetaAdapterFactory.getConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846d5abL, "jetbrains.mps.lang.checkedName.structure.PropertyPointerValueOperation");
+    /*package*/ static final SConcept PropertyPointerType$Jt = MetaAdapterFactory.getConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846de35L, "jetbrains.mps.lang.checkedName.structure.PropertyPointerType");
+    /*package*/ static final SConcept PropertyPointerValueOperation$xq = MetaAdapterFactory.getConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846d5abL, "jetbrains.mps.lang.checkedName.structure.PropertyPointerValueOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataType$K26p = MetaAdapterFactory.getReferenceLink(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846de35L, 0x2cda7ac1f2c80e2fL, "dataType");
+    /*package*/ static final SReferenceLink dataType$ciaU = MetaAdapterFactory.getReferenceLink(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846de35L, 0x2cda7ac1f2c80e2fL, "dataType");
   }
 }

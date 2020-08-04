@@ -22,13 +22,13 @@ public class superTypesOfMeet_SubtypingRule extends SubtypingRule_Runtime implem
   }
   public List<SNode> getSubOrSuperTypes(SNode meet, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(meet, LINKS.argument$2bV3))) {
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(meet, LINKS.argument$r2cT))) {
       ListSequence.fromList(result).addElement(SNodeOperations.copyNode(arg));
     }
     return result;
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MeetType$HQ;
+    return CONCEPTS.MeetType$ZG;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,10 +38,10 @@ public class superTypesOfMeet_SubtypingRule extends SubtypingRule_Runtime implem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink argument$r2cT = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MeetType$HQ = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType");
+    /*package*/ static final SConcept MeetType$ZG = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType");
   }
 }

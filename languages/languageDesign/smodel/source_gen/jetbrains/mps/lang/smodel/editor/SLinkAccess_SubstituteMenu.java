@@ -28,7 +28,7 @@ public class SLinkAccess_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_owr0ar_a(), CONCEPTS.SLinkAccess$NO));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_owr0ar_a(), CONCEPTS.SLinkAccess$Pk));
     result.add(new SMP_Subconcepts_owr0ar_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class SLinkAccess_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_owr0ar_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.SLinkAccess$NO, LINKS.link$Z5Np);
+      super((SAbstractConcept) CONCEPTS.SLinkAccess$Pk, LINKS.link$zuOT);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class SLinkAccess_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_owr0ar_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SLinkAccess$NO);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SLinkAccess$Pk);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class SLinkAccess_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SLinkAccess$NO = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, "jetbrains.mps.lang.smodel.structure.SLinkAccess");
+    /*package*/ static final SConcept SLinkAccess$Pk = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, "jetbrains.mps.lang.smodel.structure.SLinkAccess");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$Z5Np = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, 0x108f974549cL, "link");
+    /*package*/ static final SReferenceLink link$zuOT = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, 0x108f974549cL, "link");
   }
 }

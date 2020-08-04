@@ -36,9 +36,9 @@ public class LinkedListCreator_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_524n7l_a(), CONCEPTS.LinkedListCreator$nK));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_524n7l_a(), CONCEPTS.LinkedListCreator$A3));
     result.add(new SMP_Subconcepts_524n7l_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LinkedListCreator$nK) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LinkedListCreator$A3) {
 
       @NotNull
       @Override
@@ -51,7 +51,7 @@ public class LinkedListCreator_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.LinkedListCreator$nK));
+    }, CONCEPTS.LinkedListCreator$A3));
     return result;
   }
 
@@ -96,7 +96,7 @@ public class LinkedListCreator_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.LinkedListCreator$nK, context);
+        super(CONCEPTS.LinkedListCreator$A3, context);
         _context = context;
       }
 
@@ -107,8 +107,8 @@ public class LinkedListCreator_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.LinkedListCreator$nK, null);
-        SNodeFactoryOperations.setNewChild(creator, LINKS.elementType$id8C, null);
+        SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.LinkedListCreator$A3, null);
+        SNodeFactoryOperations.setNewChild(creator, LINKS.elementType$WxmV, null);
         return creator;
       }
 
@@ -119,13 +119,13 @@ public class LinkedListCreator_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        return SConceptOperations.conceptAlias(CONCEPTS.LinkedListCreator$nK) + "<";
+        return SConceptOperations.conceptAlias(CONCEPTS.LinkedListCreator$A3) + "<";
       }
     }
   }
   public class SMP_Subconcepts_524n7l_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LinkedListCreator$nK);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LinkedListCreator$A3);
     }
     @NotNull
     @Override
@@ -146,10 +146,10 @@ public class LinkedListCreator_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LinkedListCreator$nK = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11daf69a138L, "jetbrains.mps.baseLanguage.collections.structure.LinkedListCreator");
+    /*package*/ static final SConcept LinkedListCreator$A3 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11daf69a138L, "jetbrains.mps.baseLanguage.collections.structure.LinkedListCreator");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$id8C = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
+    /*package*/ static final SContainmentLink elementType$WxmV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
   }
 }

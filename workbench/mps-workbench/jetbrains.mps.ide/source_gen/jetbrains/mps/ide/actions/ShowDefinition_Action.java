@@ -113,7 +113,7 @@ public class ShowDefinition_Action extends BaseAction {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.ImplementingClasses_Finder");
     } else if (ShowDefinition_Action.this.isClass(_params)) {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder");
-    } else if (ShowDefinition_Action.this.isMethodDeclaration(_params) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(ShowDefinition_Action.this.getUnwrapped(_params)), CONCEPTS.Interface$Kp)) {
+    } else if (ShowDefinition_Action.this.isMethodDeclaration(_params) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(ShowDefinition_Action.this.getUnwrapped(_params)), CONCEPTS.Interface$db)) {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.InterfaceMethodImplementations_Finder");
     } else if (ShowDefinition_Action.this.isMethodDeclaration(_params)) {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedMethods_Finder");
@@ -129,16 +129,16 @@ public class ShowDefinition_Action extends BaseAction {
     return nodes;
   }
   private SNode getUnwrapped(final Map<String, Object> _params) {
-    return (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$IZ) ? SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD) : ((SNode) MapSequence.fromMap(_params).get("node")));
+    return (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$bL) ? SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) : ((SNode) MapSequence.fromMap(_params).get("node")));
   }
   private boolean isInterface(final Map<String, Object> _params) {
-    return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.Interface$Kp);
+    return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.Interface$db);
   }
   private boolean isClass(final Map<String, Object> _params) {
-    return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.ClassConcept$IY);
+    return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.ClassConcept$bK);
   }
   private boolean isMethodDeclaration(final Map<String, Object> _params) {
-    return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(ShowDefinition_Action.this.getUnwrapped(_params)), CONCEPTS.Classifier$hJ);
+    return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.InstanceMethodDeclaration$39) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(ShowDefinition_Action.this.getUnwrapped(_params)), CONCEPTS.Classifier$Ix);
   }
   private SNode findNodeDeclaration(final Map<String, Object> _params) {
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().checkReadAccess();
@@ -151,14 +151,14 @@ public class ShowDefinition_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

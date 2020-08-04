@@ -97,7 +97,7 @@ public class AddModelImportByRoot_Action extends BaseAction {
     SNode contextNode = null;
     if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) != null) {
       contextNode = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getCommandContext().getContextNode();
-      unresolvedReference.value = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.UnresolvedNameReference$p0);
+      unresolvedReference.value = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.UnresolvedNameReference$PM);
       errorLabel.value = AddModelImportByRoot_Action.this.getErrorCell(_params);
       NodeSubstituteChooser nodeSubstituteChooser = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getNodeSubstituteChooser();
       if (check_a68f4j_a4a5a0(nodeSubstituteChooser)) {
@@ -119,7 +119,7 @@ public class AddModelImportByRoot_Action extends BaseAction {
         if (errorLabel.value != null) {
           initialText.value = errorLabel.value.getRenderedText();
         } else if (unresolvedReference.value != null) {
-          initialText.value = SPropertyOperations.getString(unresolvedReference.value, PROPS.resolveName$acw0);
+          initialText.value = SPropertyOperations.getString(unresolvedReference.value, PROPS.resolveName$PhWM);
         }
       }
 
@@ -195,10 +195,10 @@ public class AddModelImportByRoot_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UnresolvedNameReference$p0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x28e9fc3ba3fa3940L, "jetbrains.mps.baseLanguage.structure.UnresolvedNameReference");
+    /*package*/ static final SConcept UnresolvedNameReference$PM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x28e9fc3ba3fa3940L, "jetbrains.mps.baseLanguage.structure.UnresolvedNameReference");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty resolveName$acw0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x28e9fc3ba3fa3940L, 0x28e9fc3ba3fa3941L, "resolveName");
+    /*package*/ static final SProperty resolveName$PhWM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x28e9fc3ba3fa3940L, 0x28e9fc3ba3fa3941L, "resolveName");
   }
 }

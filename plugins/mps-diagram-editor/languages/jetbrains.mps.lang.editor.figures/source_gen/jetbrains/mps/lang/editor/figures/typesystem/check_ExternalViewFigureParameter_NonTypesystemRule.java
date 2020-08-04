@@ -28,7 +28,7 @@ public class check_ExternalViewFigureParameter_NonTypesystemRule extends Abstrac
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ExternalViewFigureParameter$As;
+    return CONCEPTS.ExternalViewFigureParameter$gW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class check_ExternalViewFigureParameter_NonTypesystemRule extends Abstrac
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExternalViewFigureParameter$As = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f749406L, "jetbrains.mps.lang.editor.figures.structure.ExternalViewFigureParameter");
+    /*package*/ static final SConcept ExternalViewFigureParameter$gW = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f749406L, "jetbrains.mps.lang.editor.figures.structure.ExternalViewFigureParameter");
   }
 }

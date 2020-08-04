@@ -81,25 +81,25 @@ public class ShowClassInHierarchy_Action extends BaseAction {
 
     if (((EditorCell) MapSequence.fromMap(_params).get("editorCell")) != null) {
       SNode refNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("editorCell")));
-      if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.Classifier$hJ)) {
-        return SNodeOperations.cast(refNode, CONCEPTS.Classifier$hJ);
+      if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.Classifier$Ix)) {
+        return SNodeOperations.cast(refNode, CONCEPTS.Classifier$Ix);
       }
-      if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.ConstructorDeclaration$5U)) {
-        SNode classifier = SNodeOperations.getNodeAncestor(refNode, CONCEPTS.Classifier$hJ, false, false);
+      if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.ConstructorDeclaration$yG)) {
+        SNode classifier = SNodeOperations.getNodeAncestor(refNode, CONCEPTS.Classifier$Ix, false, false);
         if (classifier != null) {
           return classifier;
         }
       }
     }
 
-    SNode outerClass = SNodeOperations.cast(SNodeOperations.getNodeAncestorWhereConceptInList(((SNode) MapSequence.fromMap(_params).get("selectedNode")), new SAbstractConcept[]{CONCEPTS.ClassConcept$IY, CONCEPTS.Interface$Kp}, true, false), CONCEPTS.Classifier$hJ);
+    SNode outerClass = SNodeOperations.cast(SNodeOperations.getNodeAncestorWhereConceptInList(((SNode) MapSequence.fromMap(_params).get("selectedNode")), new SAbstractConcept[]{CONCEPTS.ClassConcept$bK, CONCEPTS.Interface$db}, true, false), CONCEPTS.Classifier$Ix);
     return outerClass;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

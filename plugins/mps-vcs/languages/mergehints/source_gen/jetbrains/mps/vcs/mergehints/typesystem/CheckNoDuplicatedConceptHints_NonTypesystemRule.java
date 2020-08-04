@@ -29,29 +29,29 @@ public class CheckNoDuplicatedConceptHints_NonTypesystemRule extends AbstractNon
   public CheckNoDuplicatedConceptHints_NonTypesystemRule() {
   }
   public void applyRule(final SNode cd, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(cd, LINKS.cncpt$qo3X) == null)) {
+    if ((SLinkOperations.getTarget(cd, LINKS.cncpt$ubC$) == null)) {
       return;
     }
 
     // check only one hint is specified for exact concept 
-    Iterable<SNode> sameConceptHints = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(cd), CONCEPTS.VCSHints$JZ)).translate(new ITranslator2<SNode, SNode>() {
+    Iterable<SNode> sameConceptHints = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(cd), CONCEPTS.VCSHints$kA)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.concepts$jnZw);
+        return SLinkOperations.getChildren(it, LINKS.concepts$nb$7);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.cncpt$qo3X) == SLinkOperations.getTarget(cd, LINKS.cncpt$qo3X);
+        return SLinkOperations.getTarget(it, LINKS.cncpt$ubC$) == SLinkOperations.getTarget(cd, LINKS.cncpt$ubC$);
       }
     });
     if (Sequence.fromIterable(sameConceptHints).count() != 1) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.cncpt$qo3X);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cd, "Multiple hints are defined for concept " + SPropertyOperations.getString(SLinkOperations.getTarget(cd, LINKS.cncpt$qo3X), PROPS.name$lA7v), "r:09da38a1-d679-467f-8975-eacacbd1c0a3(jetbrains.mps.vcs.mergehints.typesystem)", "6556262262332720020", null, errorTarget);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.cncpt$ubC$);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cd, "Multiple hints are defined for concept " + SPropertyOperations.getString(SLinkOperations.getTarget(cd, LINKS.cncpt$ubC$), PROPS.name$MnvL), "r:09da38a1-d679-467f-8975-eacacbd1c0a3(jetbrains.mps.vcs.mergehints.typesystem)", "6556262262332720020", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptVCSDescriptor$QW;
+    return CONCEPTS.ConceptVCSDescriptor$rz;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,16 +61,16 @@ public class CheckNoDuplicatedConceptHints_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cncpt$qo3X = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
-    /*package*/ static final SContainmentLink concepts$jnZw = MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, 0x39744cf955c648faL, "concepts");
+    /*package*/ static final SReferenceLink cncpt$ubC$ = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
+    /*package*/ static final SContainmentLink concepts$nb$7 = MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, 0x39744cf955c648faL, "concepts");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VCSHints$JZ = MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, "jetbrains.mps.vcs.mergehints.structure.VCSHints");
-    /*package*/ static final SConcept ConceptVCSDescriptor$QW = MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, "jetbrains.mps.vcs.mergehints.structure.ConceptVCSDescriptor");
+    /*package*/ static final SConcept VCSHints$kA = MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, "jetbrains.mps.vcs.mergehints.structure.VCSHints");
+    /*package*/ static final SConcept ConceptVCSDescriptor$rz = MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, "jetbrains.mps.vcs.mergehints.structure.ConceptVCSDescriptor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

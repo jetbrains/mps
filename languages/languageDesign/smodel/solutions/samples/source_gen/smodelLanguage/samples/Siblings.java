@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class Siblings {
   public void nextSibling(SNode statement) {
     SNode next1 = SNodeOperations.getNextSibling(statement);
-    SNode next2 = SNodeOperations.cast(SNodeOperations.getNextSibling(statement), CONCEPTS.Statement$ok);
+    SNode next2 = SNodeOperations.cast(SNodeOperations.getNextSibling(statement), CONCEPTS.Statement$P6);
     SNode next3 = SNodeOperations.insertNewNextSiblingChild(statement, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
     SNodeOperations.insertNextSiblingChild(statement, SNodeOperations.copyNode(next3));
   }
@@ -24,6 +24,6 @@ public class Siblings {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

@@ -13,10 +13,10 @@ public class DimensionExpression_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$pDbL) != null)) {
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$4ICz) != null)) {
       tgs.append("[");
-      if (SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$pDbL) != null) {
-        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$pDbL));
+      if (SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$4ICz) != null) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$4ICz));
       }
       tgs.append("]");
     } else {
@@ -25,6 +25,6 @@ public class DimensionExpression_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$pDbL = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4b2dfdaL, 0x113e4b846d4L, "expression");
+    /*package*/ static final SContainmentLink expression$4ICz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4b2dfdaL, 0x113e4b846d4L, "expression");
   }
 }

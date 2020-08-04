@@ -25,10 +25,10 @@
       <node id="24399255755617834" at="63,131,64,42" concept="1" />
       <node id="24399255755617833" at="64,42,65,22" concept="4" />
       <node id="24399255755617833" at="67,0,68,0" concept="5" trace="breakingNode_nfg5l8_a0a0a0a0a1a0a0a0c" />
-      <node id="24399255755617833" at="70,0,71,0" concept="5" trace="FailingPropertyConstraintsProblem$oG" />
-      <node id="24399255755617833" at="71,0,72,0" concept="5" trace="AbstractConceptDeclaration$UN" />
-      <node id="24399255755617833" at="75,0,76,0" concept="5" trace="property$xAYm" />
-      <node id="24399255755617833" at="76,0,77,0" concept="5" trace="propertyDeclaration$yMqt" />
+      <node id="24399255755617833" at="70,0,71,0" concept="5" trace="FailingPropertyConstraintsProblem$It" />
+      <node id="24399255755617833" at="71,0,72,0" concept="5" trace="AbstractConceptDeclaration$KA" />
+      <node id="24399255755617833" at="75,0,76,0" concept="5" trace="property$vk7" />
+      <node id="24399255755617833" at="76,0,77,0" concept="5" trace="propertyDeclaration$YUgg" />
       <node id="24399255755617833" at="30,0,33,0" concept="0" trace="FailingPropertyConstraintsProblem_Constraints#()V" />
       <node id="2559059706674900578" at="53,0,56,0" concept="2" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="24399255755617834" at="37,0,41,0" concept="2" trace="hasOwnScopeProvider#()Z" />

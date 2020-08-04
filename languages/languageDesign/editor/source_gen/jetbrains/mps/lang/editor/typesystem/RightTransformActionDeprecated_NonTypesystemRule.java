@@ -21,7 +21,7 @@ public class RightTransformActionDeprecated_NonTypesystemRule extends AbstractNo
   public RightTransformActionDeprecated_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellActionMapItem, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(cellActionMapItem, PROPS.actionId$K4QO), 0x10951993704L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(cellActionMapItem, PROPS.actionId$On2r), 0x10951993704L)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(cellActionMapItem, "Right transform in action map is deprecated.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "9215127012917439383", null, errorTarget);
@@ -29,7 +29,7 @@ public class RightTransformActionDeprecated_NonTypesystemRule extends AbstractNo
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellActionMapItem$fu;
+    return CONCEPTS.CellActionMapItem$r5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,10 +39,10 @@ public class RightTransformActionDeprecated_NonTypesystemRule extends AbstractNo
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty actionId$K4QO = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
+    /*package*/ static final SProperty actionId$On2r = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellActionMapItem$fu = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem");
+    /*package*/ static final SConcept CellActionMapItem$r5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem");
   }
 }

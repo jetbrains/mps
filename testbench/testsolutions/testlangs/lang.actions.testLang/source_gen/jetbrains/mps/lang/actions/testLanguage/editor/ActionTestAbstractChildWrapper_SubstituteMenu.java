@@ -65,7 +65,7 @@ public class ActionTestAbstractChildWrapper_SubstituteMenu extends SubstituteMen
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_WrapperSubstituteDefaultSelection");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ActionTestAbstractChildWrapper$jU;
+      return CONCEPTS.ActionTestAbstractChildWrapper$$J;
     }
   }
   public class SMP_Include_sqd4vv_b extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -89,11 +89,11 @@ public class ActionTestAbstractChildWrapper_SubstituteMenu extends SubstituteMen
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_WrapperSubstitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ActionTestAbstractChildWrapper$jU;
+      return CONCEPTS.ActionTestAbstractChildWrapper$$J;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestAbstractChildWrapper$jU = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec53f71L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestAbstractChildWrapper");
+    /*package*/ static final SConcept ActionTestAbstractChildWrapper$$J = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec53f71L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestAbstractChildWrapper");
   }
 }

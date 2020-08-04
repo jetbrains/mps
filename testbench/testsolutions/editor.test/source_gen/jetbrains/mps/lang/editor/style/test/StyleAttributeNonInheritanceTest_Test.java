@@ -44,12 +44,12 @@ public class StyleAttributeNonInheritanceTest_Test extends BaseTransformationTes
       initEditorComponent("23293207022863752", "");
       getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          SNode root = SNodeOperations.cast(getEditorComponent().getEditedNode(), CONCEPTS.NodeContainer$3D);
-          SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$ZSma)).getElement(0);
-          SNode inner1 = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$ZSma)).getElement(1);
-          SNode inner1Leaf = ListSequence.fromList(SLinkOperations.getChildren(inner1, LINKS.node$ZSma)).getElement(0);
-          SNode inner2 = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$ZSma)).getElement(2);
-          SNode inner2Leaf = ListSequence.fromList(SLinkOperations.getChildren(inner2, LINKS.node$ZSma)).getElement(0);
+          SNode root = SNodeOperations.cast(getEditorComponent().getEditedNode(), CONCEPTS.NodeContainer$kH);
+          SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(0);
+          SNode inner1 = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(1);
+          SNode inner1Leaf = ListSequence.fromList(SLinkOperations.getChildren(inner1, LINKS.node$4FBe)).getElement(0);
+          SNode inner2 = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(2);
+          SNode inner2Leaf = ListSequence.fromList(SLinkOperations.getChildren(inner2, LINKS.node$4FBe)).getElement(0);
 
           Assert.assertEquals(getEditorComponent().findNodeCell(root).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), Boolean.TRUE);
           Assert.assertEquals(getEditorComponent().findNodeCell(leaf).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute").combine(null, null));
@@ -63,10 +63,10 @@ public class StyleAttributeNonInheritanceTest_Test extends BaseTransformationTes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeContainer$3D = MetaAdapterFactory.getConcept(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, "jetbrains.mps.lang.editor.styleTests.structure.NodeContainer");
+    /*package*/ static final SConcept NodeContainer$kH = MetaAdapterFactory.getConcept(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, "jetbrains.mps.lang.editor.styleTests.structure.NodeContainer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$ZSma = MetaAdapterFactory.getContainmentLink(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, 0x74e28664f05605aeL, "node");
+    /*package*/ static final SContainmentLink node$4FBe = MetaAdapterFactory.getContainmentLink(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, 0x74e28664f05605aeL, "node");
   }
 }

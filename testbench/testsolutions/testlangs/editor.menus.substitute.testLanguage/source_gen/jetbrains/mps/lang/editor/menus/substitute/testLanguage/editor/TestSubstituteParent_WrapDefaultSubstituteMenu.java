@@ -89,7 +89,7 @@ public class TestSubstituteParent_WrapDefaultSubstituteMenu extends Transformati
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.TestSubstituteToWrapFromTransformMenu$UL;
+      return CONCEPTS.TestSubstituteToWrapFromTransformMenu$bi;
     }
 
     @Override
@@ -106,7 +106,7 @@ public class TestSubstituteParent_WrapDefaultSubstituteMenu extends Transformati
         public void execute(@NotNull String pattern) {
           SNode createdNode = item.createNode(pattern);
           boolean b = _context.getEditorContext() != null && _context.getNode() != null & _context.getModel() != null && createdNode != null && targetNode != null;
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.TestSubstituteParent$sk), LINKS.wrapDefaultSubstituteMenuFromTransform$9I$v)).addElement(createdNode);
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.TestSubstituteParent$GP), LINKS.wrapDefaultSubstituteMenuFromTransform$8lP0)).addElement(createdNode);
         }
 
         @Override
@@ -127,11 +127,11 @@ public class TestSubstituteParent_WrapDefaultSubstituteMenu extends Transformati
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteToWrapFromTransformMenu$UL = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7315fee8e56db2aeL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteToWrapFromTransformMenu");
-    /*package*/ static final SConcept TestSubstituteParent$sk = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteParent");
+    /*package*/ static final SConcept TestSubstituteToWrapFromTransformMenu$bi = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7315fee8e56db2aeL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteToWrapFromTransformMenu");
+    /*package*/ static final SConcept TestSubstituteParent$GP = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteParent");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink wrapDefaultSubstituteMenuFromTransform$9I$v = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x7315fee8e56ddaeeL, "wrapDefaultSubstituteMenuFromTransform");
+    /*package*/ static final SContainmentLink wrapDefaultSubstituteMenuFromTransform$8lP0 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x7315fee8e56ddaeeL, "wrapDefaultSubstituteMenuFromTransform");
   }
 }

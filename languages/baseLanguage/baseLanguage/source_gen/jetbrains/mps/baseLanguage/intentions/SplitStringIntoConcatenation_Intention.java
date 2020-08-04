@@ -61,11 +61,11 @@ public final class SplitStringIntoConcatenation_Intention extends AbstractIntent
     public void execute(final SNode node, final EditorContext editorContext) {
       EditorCell_Property cell = ((EditorCell_Property) editorContext.getContextCell());
       int caretPosition = cell.getCaretPosition();
-      String s1 = (SPropertyOperations.getString(node, PROPS.value$P2m0) != null ? SPropertyOperations.getString(node, PROPS.value$P2m0).substring(0, caretPosition) : "");
-      String s2 = (SPropertyOperations.getString(node, PROPS.value$P2m0) != null ? SPropertyOperations.getString(node, PROPS.value$P2m0).substring(caretPosition) : "");
-      SNode plusExpression = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.PlusExpression$Re);
-      SPropertyOperations.set(SNodeFactoryOperations.setNewChild(plusExpression, LINKS.leftExpression$lndx, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0, s1);
-      SPropertyOperations.set(SNodeFactoryOperations.setNewChild(plusExpression, LINKS.rightExpression$li3b, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0, s2);
+      String s1 = (SPropertyOperations.getString(node, PROPS.value$w7MM) != null ? SPropertyOperations.getString(node, PROPS.value$w7MM).substring(0, caretPosition) : "");
+      String s2 = (SPropertyOperations.getString(node, PROPS.value$w7MM) != null ? SPropertyOperations.getString(node, PROPS.value$w7MM).substring(caretPosition) : "");
+      SNode plusExpression = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.PlusExpression$k0);
+      SPropertyOperations.set(SNodeFactoryOperations.setNewChild(plusExpression, LINKS.leftExpression$sEj, CONCEPTS.StringLiteral$xu), PROPS.value$w7MM, s1);
+      SPropertyOperations.set(SNodeFactoryOperations.setNewChild(plusExpression, LINKS.rightExpression$nvX, CONCEPTS.StringLiteral$xu), PROPS.value$w7MM, s2);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -74,16 +74,16 @@ public final class SplitStringIntoConcatenation_Intention extends AbstractIntent
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PlusExpression$Re = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression");
-    /*package*/ static final SConcept StringLiteral$4G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    /*package*/ static final SConcept PlusExpression$k0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression");
+    /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 }

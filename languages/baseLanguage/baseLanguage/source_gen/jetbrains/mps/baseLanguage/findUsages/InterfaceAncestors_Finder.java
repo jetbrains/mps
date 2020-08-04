@@ -24,7 +24,7 @@ public class InterfaceAncestors_Finder extends GeneratedFinder {
   public InterfaceAncestors_Finder() {
   }
   public boolean isVisible(SNode node, SearchScope scope) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.extendedInterface$a$v2)).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.extendedInterface$PDVO)).isNotEmpty();
   }
   @Override
   public boolean isVisible(SNode node) {
@@ -40,19 +40,19 @@ public class InterfaceAncestors_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.Interface$Kp;
+    return CONCEPTS.Interface$db;
   }
 
   @Override
   protected void doFind0(@NotNull SNode node, SearchScope scope, IFinder.FindCallback callback, ProgressMonitor monitor) {
     monitor.start(getDescription(), 1);
     try {
-      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.extendedInterface$a$v2)).isEmpty()) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.extendedInterface$PDVO)).isEmpty()) {
         return;
       }
       SNode current = node;
-      for (SNode ancestor : ListSequence.fromList(SLinkOperations.getChildren(current, LINKS.extendedInterface$a$v2))) {
-        SNode ancestorNode = (SNode) SLinkOperations.getTarget(ancestor, LINKS.classifier$xslD);
+      for (SNode ancestor : ListSequence.fromList(SLinkOperations.getChildren(current, LINKS.extendedInterface$PDVO))) {
+        SNode ancestorNode = (SNode) SLinkOperations.getTarget(ancestor, LINKS.classifier$cxMr);
         callback.onUsageFound(createSingleResult(ancestorNode));
         for (SNode ancestorAncestor : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.InterfaceAncestors_Finder", ancestorNode, scope, monitor.subTask(1)))) {
           callback.onUsageFound(createSingleResult(ancestorAncestor));
@@ -75,11 +75,11 @@ public class InterfaceAncestors_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

@@ -58,10 +58,10 @@ public final class ReplaceWithModuleRef_Intention extends AbstractIntentionDescr
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       PersistenceFacade pf = PersistenceFacade.getInstance();
-      SModuleId mid = pf.createModuleId(SPropertyOperations.getString(node, PROPS.moduleId$Cpgx));
-      SModuleReference moduleRef = pf.createModuleReference(mid, SPropertyOperations.getString(node, PROPS.name$Cp1w));
-      SNode expr = SNodeOperations.replaceWithNewChild(node, CONCEPTS.ModuleRefExpression$Hw);
-      SNode mp = SLinkOperations.setNewChild(expr, LINKS.moduleId$2s9n, CONCEPTS.ModulePointer$_2);
+      SModuleId mid = pf.createModuleId(SPropertyOperations.getString(node, PROPS.moduleId$cMi1));
+      SModuleReference moduleRef = pf.createModuleReference(mid, SPropertyOperations.getString(node, PROPS.name$cM30));
+      SNode expr = SNodeOperations.replaceWithNewChild(node, CONCEPTS.ModuleRefExpression$J0);
+      SNode mp = SLinkOperations.setNewChild(expr, LINKS.moduleId$APaR, CONCEPTS.ModulePointer$Ay);
       ModuleIdentity__BehaviorDescriptor.setModuleReference_idnJmxU5cSTj.invoke(mp, moduleRef);
     }
     @Override
@@ -71,16 +71,16 @@ public final class ReplaceWithModuleRef_Intention extends AbstractIntentionDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$Cpgx = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId");
-    /*package*/ static final SProperty name$Cp1w = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name");
+    /*package*/ static final SProperty moduleId$cMi1 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af3L, "moduleId");
+    /*package*/ static final SProperty name$cM30 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModuleRefExpression$Hw = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, "jetbrains.mps.lang.smodel.structure.ModuleRefExpression");
-    /*package*/ static final SConcept ModulePointer$_2 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
+    /*package*/ static final SConcept ModuleRefExpression$J0 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, "jetbrains.mps.lang.smodel.structure.ModuleRefExpression");
+    /*package*/ static final SConcept ModulePointer$Ay = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleId$2s9n = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId");
+    /*package*/ static final SContainmentLink moduleId$APaR = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId");
   }
 }

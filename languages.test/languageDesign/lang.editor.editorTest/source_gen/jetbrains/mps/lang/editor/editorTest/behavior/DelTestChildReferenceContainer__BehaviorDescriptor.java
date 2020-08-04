@@ -38,10 +38,10 @@ public final class DelTestChildReferenceContainer__BehaviorDescriptor extends Ba
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.DelTestNodeToReference$k4)) {
-      return new NamedElementsScope(SLinkOperations.getTarget(__thisNode__, LINKS.childToReference$yBcx));
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.DelTestNodeToReference$4h)) {
+      return new NamedElementsScope(SLinkOperations.getTarget(__thisNode__, LINKS.childToReference$lcWI));
     }
-    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child);
+    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child);
   }
 
   /*package*/ DelTestChildReferenceContainer__BehaviorDescriptor() {
@@ -91,11 +91,11 @@ public final class DelTestChildReferenceContainer__BehaviorDescriptor extends Ba
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DelTestNodeToReference$k4 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69daeL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestNodeToReference");
-    /*package*/ static final SInterfaceConcept ScopeProvider$M8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
+    /*package*/ static final SConcept DelTestNodeToReference$4h = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69daeL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestNodeToReference");
+    /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childToReference$yBcx = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x5a98420815d28284L, "childToReference");
+    /*package*/ static final SContainmentLink childToReference$lcWI = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69da7L, 0x5a98420815d28284L, "childToReference");
   }
 }

@@ -25,7 +25,7 @@ public class typeof_ConceptEditorHintDeclarationReferenceExpression_InferenceRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptEditorHintDeclarationReferenceExpression$l5;
+    return CONCEPTS.ConceptEditorHintDeclarationReferenceExpression$wG;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_ConceptEditorHintDeclarationReferenceExpression_InferenceRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptEditorHintDeclarationReferenceExpression$l5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x42e5e943db1f2dd0L, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclarationReferenceExpression");
+    /*package*/ static final SConcept ConceptEditorHintDeclarationReferenceExpression$wG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x42e5e943db1f2dd0L, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclarationReferenceExpression");
   }
 }

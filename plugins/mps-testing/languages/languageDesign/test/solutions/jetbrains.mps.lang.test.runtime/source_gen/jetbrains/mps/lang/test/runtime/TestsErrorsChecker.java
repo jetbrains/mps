@@ -120,7 +120,7 @@ public final class TestsErrorsChecker {
         SNodeReference node = NodeReportItem.FLAVOUR_NODE.tryToGet(it);
         return node == null || Sequence.fromIterable(helper.getActiveSuppressors(node.resolve(repository), it)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode suppressor) {
-            return !(SNodeOperations.isInstanceOf(suppressor, CONCEPTS.AbstractTestNodeAnnotation$5M));
+            return !(SNodeOperations.isInstanceOf(suppressor, CONCEPTS.AbstractTestNodeAnnotation$lh));
           }
         }).isEmpty();
       }
@@ -141,6 +141,6 @@ public final class TestsErrorsChecker {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractTestNodeAnnotation$5M = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
+    /*package*/ static final SConcept AbstractTestNodeAnnotation$lh = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
   }
 }

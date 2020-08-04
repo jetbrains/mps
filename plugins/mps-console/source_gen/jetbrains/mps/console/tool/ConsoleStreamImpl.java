@@ -58,7 +58,7 @@ public class ConsoleStreamImpl implements ConsoleStream {
 
   public void addNodeRef(SNode target) {
     SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bbb600cL, "jetbrains.mps.console.base.structure.NodeReferencePresentation"));
-    SLinkOperations.setTarget(node, LINKS.target$BJML, target);
+    SLinkOperations.setTarget(node, LINKS.target$CsE, target);
     addNode(node);
   }
 
@@ -66,14 +66,14 @@ public class ConsoleStreamImpl implements ConsoleStream {
     StringWriter writer = new StringWriter();
     t.printStackTrace(new PrintWriter(writer));
     SNode exceptionHolder = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, "jetbrains.mps.console.base.structure.ExceptionHolder"));
-    SPropertyOperations.set(exceptionHolder, PROPS.stackTrace$Aif1, writer.toString());
-    SPropertyOperations.set(exceptionHolder, PROPS.text$DQEz, t.getClass().getName());
+    SPropertyOperations.set(exceptionHolder, PROPS.stackTrace$ZaSU, writer.toString());
+    SPropertyOperations.set(exceptionHolder, PROPS.text$2Jks, t.getClass().getName());
     addNode(exceptionHolder);
   }
 
   public void addClosure(Runnable closure, String text) {
     SNode nodeWithClosure = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xf6d4d958ec2f2c6L, "jetbrains.mps.console.base.structure.NodeWithClosure"));
-    SPropertyOperations.assign(nodeWithClosure, PROPS.text$DQEz, text);
+    SPropertyOperations.assign(nodeWithClosure, PROPS.text$2Jks, text);
     ClosureHoldingNodeUtil.getInstance().register(nodeWithClosure, closure);
     addNode(nodeWithClosure);
   }
@@ -102,42 +102,42 @@ public class ConsoleStreamImpl implements ConsoleStream {
       public void doExecute() {
         for (SNode r : ListSequence.fromList(myResponse)) {
           myTab.addNodeImports(r);
-          ListSequence.fromList(SLinkOperations.getChildren(myTab.getLastReponse(), LINKS.item$5x2K)).addElement(r);
+          ListSequence.fromList(SLinkOperations.getChildren(myTab.getLastReponse(), LINKS.item$upGD)).addElement(r);
         }
       }
     });
   }
   private static SNode createTextResponseItem_kp3e3v_a0a0b0b0f(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TextResponseItem$3v);
-    rootBuilder1.setProperty(PROPS.text$PL8L, PROPS.text$PL8L.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TextResponseItem$Ho);
+    rootBuilder1.setProperty(PROPS.text$eDME, PROPS.text$eDME.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createNewLineResponseItem_kp3e3v_a0a0c0b0f() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NewLineResponseItem$r4);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NewLineResponseItem$4X);
     return rootBuilder1.getResult();
   }
   private static SNode createNodeResponseItem_kp3e3v_a0a0j(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$jy);
-    rootBuilder1.forChild(LINKS.node$$9L0).initNode(node0, CONCEPTS.BaseConcept$Sz, true);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$Xr);
+    rootBuilder1.forChild(LINKS.node$X2qT).initNode(node0, CONCEPTS.BaseConcept$gP, true);
     return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$BJML = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target");
-    /*package*/ static final SContainmentLink item$5x2K = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item");
-    /*package*/ static final SContainmentLink node$$9L0 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c14L, 0x4e3b035171b35c15L, "node");
+    /*package*/ static final SReferenceLink target$CsE = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x36ac6f29ae8c1fb5L, 0x4904fd89e74fc6fL, "target");
+    /*package*/ static final SContainmentLink item$upGD = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item");
+    /*package*/ static final SContainmentLink node$X2qT = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c14L, 0x4e3b035171b35c15L, "node");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stackTrace$Aif1 = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, 0x5b02f032bc9cb8a9L, "stackTrace");
-    /*package*/ static final SProperty text$DQEz = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L, 0x360b134fc047ce2aL, "text");
-    /*package*/ static final SProperty text$PL8L = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c38L, 0x4e3b035171b35d11L, "text");
+    /*package*/ static final SProperty stackTrace$ZaSU = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5b02f032bc93b714L, 0x5b02f032bc9cb8a9L, "stackTrace");
+    /*package*/ static final SProperty text$2Jks = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L, 0x360b134fc047ce2aL, "text");
+    /*package*/ static final SProperty text$eDME = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c38L, 0x4e3b035171b35d11L, "text");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextResponseItem$3v = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c38L, "jetbrains.mps.console.base.structure.TextResponseItem");
-    /*package*/ static final SConcept NewLineResponseItem$r4 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35d30L, "jetbrains.mps.console.base.structure.NewLineResponseItem");
-    /*package*/ static final SConcept NodeResponseItem$jy = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c14L, "jetbrains.mps.console.base.structure.NodeResponseItem");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept TextResponseItem$Ho = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c38L, "jetbrains.mps.console.base.structure.TextResponseItem");
+    /*package*/ static final SConcept NewLineResponseItem$4X = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35d30L, "jetbrains.mps.console.base.structure.NewLineResponseItem");
+    /*package*/ static final SConcept NodeResponseItem$Xr = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c14L, "jetbrains.mps.console.base.structure.NodeResponseItem");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

@@ -40,13 +40,13 @@ public final class StyleAttributeDeclaration__BehaviorDescriptor extends BaseBHD
     return SNodeOperations.getModel(__thisNode__).getModule().getModuleName();
   }
   /*package*/ static SNode getDefaultValue_id6EcLR7UbKOp(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.defaultValue$AUBL);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.defaultValue$FcNo);
   }
   /*package*/ static SNode getType_id6EcLR7UbLta(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.valueType$tOnZ);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.valueType$y6zA);
   }
   /*package*/ static SNode getClassifierType_id5eGiGGHenb_(@NotNull SNode __thisNode__) {
-    return TypecheckingFacade.getFromContext().coerceType(StyleAttributeDeclaration__BehaviorDescriptor.getType_id6EcLR7UbLta.invoke(__thisNode__), CONCEPTS.ClassifierType$IZ);
+    return TypecheckingFacade.getFromContext().coerceType(StyleAttributeDeclaration__BehaviorDescriptor.getType_id6EcLR7UbLta.invoke(__thisNode__), CONCEPTS.ClassifierType$bL);
   }
 
   /*package*/ StyleAttributeDeclaration__BehaviorDescriptor() {
@@ -102,11 +102,11 @@ public final class StyleAttributeDeclaration__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultValue$AUBL = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea545afbL, "defaultValue");
-    /*package*/ static final SContainmentLink valueType$tOnZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
+    /*package*/ static final SContainmentLink defaultValue$FcNo = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea545afbL, "defaultValue");
+    /*package*/ static final SContainmentLink valueType$y6zA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

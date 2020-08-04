@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IRootWithUniqueName_Constraints extends BaseConstraintsDescriptor {
   public IRootWithUniqueName_Constraints() {
-    super(CONCEPTS.IRootWithUniqueName$qX);
+    super(CONCEPTS.IRootWithUniqueName$GJ);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class IRootWithUniqueName_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:34afaabb-1c5b-40d4-ae6d-6f5312d7475d(jetbrains.mps.lang.extension.constraints)", "1227128029536561650");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IRootWithUniqueName$qX = MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L, "jetbrains.mps.lang.extension.structure.IRootWithUniqueName");
+    /*package*/ static final SInterfaceConcept IRootWithUniqueName$GJ = MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L, "jetbrains.mps.lang.extension.structure.IRootWithUniqueName");
   }
 }

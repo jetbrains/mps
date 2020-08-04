@@ -31,10 +31,10 @@
       <node id="1048903277984902131" at="65,131,66,42" concept="1" />
       <node id="1048903277984813908" at="66,42,67,22" concept="5" />
       <node id="1048903277984813908" at="69,0,70,0" concept="7" trace="breakingNode_uv4m3v_a0a0a0a0a1a0a0a0c" />
-      <node id="1048903277984813908" at="72,0,73,0" concept="7" trace="GenerationContextOp_VarRef2$D1" />
-      <node id="1048903277984813908" at="73,0,74,0" concept="7" trace="VarMacro2$J_" />
-      <node id="1048903277984813908" at="77,0,78,0" concept="7" trace="vardecl$hkww" />
-      <node id="1048903277984813908" at="78,0,79,0" concept="7" trace="variables$htEz" />
+      <node id="1048903277984813908" at="72,0,73,0" concept="7" trace="GenerationContextOp_VarRef2$2B" />
+      <node id="1048903277984813908" at="73,0,74,0" concept="7" trace="VarMacro2$rh" />
+      <node id="1048903277984813908" at="77,0,78,0" concept="7" trace="vardecl$xfU6" />
+      <node id="1048903277984813908" at="78,0,79,0" concept="7" trace="variables$Eqmf" />
       <node id="1048903277984813908" at="30,0,33,0" concept="0" trace="GenerationContextOp_VarRef2_Constraints#()V" />
       <node id="5121314058278954882" at="54,43,57,15" concept="2" />
       <node id="1048903277984902131" at="37,0,41,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -87,11 +87,11 @@
       <node id="1758784108619297717" at="62,131,63,42" concept="1" />
       <node id="1758784108619297716" at="63,42,64,22" concept="5" />
       <node id="1758784108619297716" at="66,0,67,0" concept="7" trace="breakingNode_ij7vb1_a0a0a0a0a1a0a0a0c" />
-      <node id="1758784108619297716" at="69,0,70,0" concept="7" trace="GenerationContextOp_LinkPatternRef$WD" />
-      <node id="1758784108619297716" at="70,0,71,0" concept="7" trace="PatternReduction_MappingRule$g5" />
-      <node id="1758784108619297716" at="71,0,72,0" concept="7" trace="LinkPatternVariableDeclaration$UB" />
-      <node id="1758784108619297716" at="75,0,76,0" concept="7" trace="linkPatternVar$9Z1z" />
-      <node id="1758784108619297716" at="76,0,77,0" concept="7" trace="pattern$wkGb" />
+      <node id="1758784108619297716" at="69,0,70,0" concept="7" trace="GenerationContextOp_LinkPatternRef$mf" />
+      <node id="1758784108619297716" at="70,0,71,0" concept="7" trace="PatternReduction_MappingRule$VL" />
+      <node id="1758784108619297716" at="71,0,72,0" concept="7" trace="LinkPatternVariableDeclaration$8a" />
+      <node id="1758784108619297716" at="75,0,76,0" concept="7" trace="linkPatternVar$pUr9" />
+      <node id="1758784108619297716" at="76,0,77,0" concept="7" trace="pattern$ThnR" />
       <node id="1758784108619297716" at="31,0,34,0" concept="0" trace="GenerationContextOp_LinkPatternRef_Constraints#()V" />
       <node id="6836281137582787320" at="53,140,56,13" concept="2" />
       <node id="1758784108619297717" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -142,11 +142,11 @@
       <node id="1758784108619297782" at="62,131,63,42" concept="1" />
       <node id="1758784108619297779" at="63,42,64,22" concept="5" />
       <node id="1758784108619297779" at="66,0,67,0" concept="7" trace="breakingNode_wqjpsb_a0a0a0a0a1a0a0a0c" />
-      <node id="1758784108619297779" at="69,0,70,0" concept="7" trace="GenerationContextOp_PropertyPatternRef$X8" />
-      <node id="1758784108619297779" at="70,0,71,0" concept="7" trace="PatternReduction_MappingRule$g5" />
-      <node id="1758784108619297779" at="71,0,72,0" concept="7" trace="PropertyPatternVariableDeclaration$Xj" />
-      <node id="1758784108619297779" at="75,0,76,0" concept="7" trace="propertyPatternVar$9Zh3" />
-      <node id="1758784108619297779" at="76,0,77,0" concept="7" trace="pattern$wkGb" />
+      <node id="1758784108619297779" at="69,0,70,0" concept="7" trace="GenerationContextOp_PropertyPatternRef$mI" />
+      <node id="1758784108619297779" at="70,0,71,0" concept="7" trace="PatternReduction_MappingRule$VL" />
+      <node id="1758784108619297779" at="71,0,72,0" concept="7" trace="PropertyPatternVariableDeclaration$aQ" />
+      <node id="1758784108619297779" at="75,0,76,0" concept="7" trace="propertyPatternVar$pUED" />
+      <node id="1758784108619297779" at="76,0,77,0" concept="7" trace="pattern$ThnR" />
       <node id="1758784108619297779" at="31,0,34,0" concept="0" trace="GenerationContextOp_PropertyPatternRef_Constraints#()V" />
       <node id="6836281137582787196" at="53,140,56,13" concept="2" />
       <node id="1758784108619297782" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -194,10 +194,10 @@
       <node id="2507865635201658712" at="53,131,54,42" concept="1" />
       <node id="2507865635201658711" at="54,42,55,22" concept="5" />
       <node id="2507865635201658711" at="57,0,58,0" concept="7" trace="breakingNode_bxu0yd_a0a0a0a0a1a0a0a0c" />
-      <node id="2507865635201658711" at="60,0,61,0" concept="7" trace="GenerationContextOp_GenParameterRef$RZ" />
-      <node id="2507865635201658711" at="61,0,62,0" concept="7" trace="MappingConfiguration$rB" />
-      <node id="2507865635201658711" at="65,0,66,0" concept="7" trace="importClause$KrZw" />
-      <node id="2507865635201658711" at="66,0,67,0" concept="7" trace="generationParameters$gm2B" />
+      <node id="2507865635201658711" at="60,0,61,0" concept="7" trace="GenerationContextOp_GenParameterRef$h_" />
+      <node id="2507865635201658711" at="61,0,62,0" concept="7" trace="MappingConfiguration$7j" />
+      <node id="2507865635201658711" at="65,0,66,0" concept="7" trace="importClause$np6" />
+      <node id="2507865635201658711" at="66,0,67,0" concept="7" trace="generationParameters$DiIj" />
       <node id="2507865635201658711" at="27,0,30,0" concept="0" trace="GenerationContextOp_GenParameterRef_Constraints#()V" />
       <node id="2507865635201658712" at="34,0,38,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="2507865635201658712" at="42,0,46,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -244,9 +244,9 @@
       <node id="2721957369897614820" at="62,131,63,42" concept="1" />
       <node id="2721957369897614819" at="63,42,64,22" concept="5" />
       <node id="2721957369897614819" at="66,0,67,0" concept="7" trace="breakingNode_m6rnzp_a0a0a0a0a1a0a0a0c" />
-      <node id="2721957369897614819" at="69,0,70,0" concept="7" trace="GenerationContextOp_VarRef$c3" />
-      <node id="2721957369897614819" at="70,0,71,0" concept="7" trace="VarMacro$nM" />
-      <node id="2721957369897614819" at="74,0,75,0" concept="7" trace="varmacro$2bbQ" />
+      <node id="2721957369897614819" at="69,0,70,0" concept="7" trace="GenerationContextOp_VarRef$_D" />
+      <node id="2721957369897614819" at="70,0,71,0" concept="7" trace="VarMacro$3u" />
+      <node id="2721957369897614819" at="74,0,75,0" concept="7" trace="varmacro$i6_s" />
       <node id="2721957369897614819" at="28,0,31,0" concept="0" trace="GenerationContextOp_VarRef_Constraints#()V" />
       <node id="6836281137582787552" at="51,43,54,15" concept="2" />
       <node id="2721957369897614820" at="35,0,39,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -299,11 +299,11 @@
       <node id="4589968773278063863" at="62,131,63,42" concept="1" />
       <node id="4589968773278063862" at="63,42,64,22" concept="5" />
       <node id="4589968773278063862" at="66,0,67,0" concept="7" trace="breakingNode_1txhs1_a0a0a0a0a1a0a0a0c" />
-      <node id="4589968773278063862" at="69,0,70,0" concept="7" trace="GenerationContextOp_NodePatternRef$s9" />
-      <node id="4589968773278063862" at="70,0,71,0" concept="7" trace="PatternReduction_MappingRule$g5" />
-      <node id="4589968773278063862" at="71,0,72,0" concept="7" trace="PatternVariableDeclaration$Ma" />
-      <node id="4589968773278063862" at="75,0,76,0" concept="7" trace="patternVarDecl$ymDM" />
-      <node id="4589968773278063862" at="76,0,77,0" concept="7" trace="pattern$wkGb" />
+      <node id="4589968773278063862" at="69,0,70,0" concept="7" trace="GenerationContextOp_NodePatternRef$PJ" />
+      <node id="4589968773278063862" at="70,0,71,0" concept="7" trace="PatternReduction_MappingRule$VL" />
+      <node id="4589968773278063862" at="71,0,72,0" concept="7" trace="PatternVariableDeclaration$ZH" />
+      <node id="4589968773278063862" at="75,0,76,0" concept="7" trace="patternVarDecl$Mi3o" />
+      <node id="4589968773278063862" at="76,0,77,0" concept="7" trace="pattern$ThnR" />
       <node id="4589968773278063862" at="31,0,34,0" concept="0" trace="GenerationContextOp_NodePatternRef_Constraints#()V" />
       <node id="6836281137582787072" at="53,140,56,13" concept="2" />
       <node id="4589968773278063863" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -354,10 +354,10 @@
       <node id="5190093307972812909" at="62,131,63,42" concept="1" />
       <node id="5190093307972812908" at="63,42,64,22" concept="5" />
       <node id="5190093307972812908" at="66,0,67,0" concept="7" trace="breakingNode_6l8zlg_a0a0a0a0a1a0a0a0c" />
-      <node id="5190093307972812908" at="69,0,70,0" concept="7" trace="GenerationContextOp_ParameterRef$_i" />
-      <node id="5190093307972812908" at="70,0,71,0" concept="7" trace="IParameterizedTemplate$qA" />
-      <node id="5190093307972812908" at="74,0,75,0" concept="7" trace="parameter$jCnp" />
-      <node id="5190093307972812908" at="75,0,76,0" concept="7" trace="parameter$GT0v" />
+      <node id="5190093307972812908" at="69,0,70,0" concept="7" trace="GenerationContextOp_ParameterRef$YS" />
+      <node id="5190093307972812908" at="70,0,71,0" concept="7" trace="IParameterizedTemplate$6i" />
+      <node id="5190093307972812908" at="74,0,75,0" concept="7" trace="parameter$zzKZ" />
+      <node id="5190093307972812908" at="75,0,76,0" concept="7" trace="parameter$5PGb" />
       <node id="5190093307972812908" at="31,0,34,0" concept="0" trace="GenerationContextOp_ParameterRef_Constraints#()V" />
       <node id="6836281137582786952" at="53,146,56,13" concept="2" />
       <node id="5190093307972812909" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -412,10 +412,10 @@
       <node id="7430509679014316106" at="65,84,66,119" concept="4" />
       <node id="7430509679014316429" at="66,119,67,81" concept="1" />
       <node id="7430509679014316106" at="67,81,68,22" concept="5" />
-      <node id="7430509679014316106" at="72,0,73,0" concept="7" trace="GenerationContextOp_ContextVarRef$EO" />
-      <node id="7430509679014316106" at="73,0,74,0" concept="7" trace="ContextVariableProvider$W7" />
-      <node id="7430509679014316106" at="77,0,78,0" concept="7" trace="contextVarName$wML_" />
-      <node id="7430509679014316106" at="78,0,79,0" concept="7" trace="name$lA7v" />
+      <node id="7430509679014316106" at="72,0,73,0" concept="7" trace="GenerationContextOp_ContextVarRef$4q" />
+      <node id="7430509679014316106" at="73,0,74,0" concept="7" trace="ContextVariableProvider$BN" />
+      <node id="7430509679014316106" at="77,0,78,0" concept="7" trace="contextVarName$KIbb" />
+      <node id="7430509679014316106" at="78,0,79,0" concept="7" trace="name$MnvL" />
       <node id="7430509679014316106" at="26,0,29,0" concept="0" trace="GenerationContextOp_ContextVarRef_Constraints#()V" />
       <node id="7430509679014316429" at="31,0,34,0" concept="0" trace="ContextVarName_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="7430509679014316429" at="41,99,44,7" concept="2" />

@@ -113,68 +113,68 @@ public class LogBuilder {
     });
   }
   public void addPart(RefactoringParticipant.PersistentRefactoringParticipant participant, SNode initialState, SNode finalState) {
-    ListSequence.fromList(SLinkOperations.getChildren(myRefactoringStep, LINKS.part$vBMy)).addElement(createRefactoringPart_1o8b1n_a0a0a4(initialState, finalState, participant.getId()));
+    ListSequence.fromList(SLinkOperations.getChildren(myRefactoringStep, LINKS.part$cm5i)).addElement(createRefactoringPart_1o8b1n_a0a0a4(initialState, finalState, participant.getId()));
   }
   public int getFromVersion() {
-    return SPropertyOperations.getInteger(this.myRefactoringStep, PROPS.fromVersion$vBzx);
+    return SPropertyOperations.getInteger(this.myRefactoringStep, PROPS.fromVersion$clQh);
   }
   public void addOptions(Iterable<RefactoringParticipant.Option> selectedOptions) {
-    if ((SLinkOperations.getTarget(myRefactoringStep, LINKS.options$3ZSK) == null)) {
-      SLinkOperations.setNewChild(myRefactoringStep, LINKS.options$3ZSK, CONCEPTS.RefactoringOptions$IZ);
+    if ((SLinkOperations.getTarget(myRefactoringStep, LINKS.options$KIbw) == null)) {
+      SLinkOperations.setNewChild(myRefactoringStep, LINKS.options$KIbw, CONCEPTS.RefactoringOptions$1J);
     }
     for (RefactoringParticipant.Option option : Sequence.fromIterable(selectedOptions)) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRefactoringStep, LINKS.options$3ZSK), LINKS.options$CoE_)).select(new ISelector<SNode, RefactoringParticipant.Option>() {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRefactoringStep, LINKS.options$KIbw), LINKS.options$l6Xl)).select(new ISelector<SNode, RefactoringParticipant.Option>() {
         public RefactoringParticipant.Option select(SNode it) {
-          return new RefactoringParticipant.Option(SPropertyOperations.getString(it, PROPS.optionId$Coe0), SPropertyOperations.getString(it, PROPS.description$ZWLR));
+          return new RefactoringParticipant.Option(SPropertyOperations.getString(it, PROPS.optionId$l6wK), SPropertyOperations.getString(it, PROPS.description$GF4B));
         }
       }).contains(option))) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRefactoringStep, LINKS.options$3ZSK), LINKS.options$CoE_)).addElement(createRefactoringOption_1o8b1n_a0a0a0a1a6(option.getId(), option.getDescription()));
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRefactoringStep, LINKS.options$KIbw), LINKS.options$l6Xl)).addElement(createRefactoringOption_1o8b1n_a0a0a0a1a6(option.getId(), option.getDescription()));
       }
     }
   }
   private static SNode createRefactoringLog_1o8b1n_a0h0d(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefactoringLog$eD);
-    rootBuilder1.setProperty(PROPS.virtualPackage$dz_3, "refactoring");
-    rootBuilder1.setProperty(PROPS.fromVersion$vBzx, PROPS.fromVersion$vBzx.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.name$lA7v, PROPS.name$lA7v.getType().toString(p1));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefactoringLog$xp);
+    rootBuilder1.setProperty(PROPS.virtualPackage$EkXl, "refactoring");
+    rootBuilder1.setProperty(PROPS.fromVersion$clQh, PROPS.fromVersion$clQh.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.name$MnvL, PROPS.name$MnvL.getType().toString(p1));
     return rootBuilder1.getResult();
   }
   private static SNode createRefactoringPart_1o8b1n_a0a0a4(SNode node0, SNode node1, Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefactoringPart$34);
-    rootBuilder1.setProperty(PROPS.participant$l33U, PROPS.participant$l33U.getType().toString(p0));
-    rootBuilder1.forChild(LINKS.initialState$l3xW).initNode(node0, CONCEPTS.BaseConcept$Sz, true);
-    rootBuilder1.forChild(LINKS.finalState$l3ZY).initNode(node1, CONCEPTS.BaseConcept$Sz, true);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefactoringPart$lO);
+    rootBuilder1.setProperty(PROPS.participant$1LmE, PROPS.participant$1LmE.getType().toString(p0));
+    rootBuilder1.forChild(LINKS.initialState$1LOG).initNode(node0, CONCEPTS.BaseConcept$gP, true);
+    rootBuilder1.forChild(LINKS.finalState$1MiI).initNode(node1, CONCEPTS.BaseConcept$gP, true);
     return rootBuilder1.getResult();
   }
   private static SNode createRefactoringOption_1o8b1n_a0a0a0a1a6(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefactoringOption$Ks);
-    rootBuilder1.setProperty(PROPS.optionId$Coe0, PROPS.optionId$Coe0.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.description$ZWLR, PROPS.description$ZWLR.getType().toString(p1));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefactoringOption$3c);
+    rootBuilder1.setProperty(PROPS.optionId$l6wK, PROPS.optionId$l6wK.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.description$GF4B, PROPS.description$GF4B.getType().toString(p1));
     return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$vBMy = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d92L, "part");
-    /*package*/ static final SContainmentLink options$3ZSK = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x31ee543051f2333cL, "options");
-    /*package*/ static final SContainmentLink options$CoE_ = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23340L, 0x31ee543051f23346L, "options");
-    /*package*/ static final SContainmentLink initialState$l3xW = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, 0x325b97b223b9e3acL, "initialState");
-    /*package*/ static final SContainmentLink finalState$l3ZY = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, 0x325b97b223b9e3aeL, "finalState");
+    /*package*/ static final SContainmentLink part$cm5i = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d92L, "part");
+    /*package*/ static final SContainmentLink options$KIbw = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x31ee543051f2333cL, "options");
+    /*package*/ static final SContainmentLink options$l6Xl = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23340L, 0x31ee543051f23346L, "options");
+    /*package*/ static final SContainmentLink initialState$1LOG = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, 0x325b97b223b9e3acL, "initialState");
+    /*package*/ static final SContainmentLink finalState$1MiI = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, 0x325b97b223b9e3aeL, "finalState");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fromVersion$vBzx = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d91L, "fromVersion");
-    /*package*/ static final SProperty optionId$Coe0 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23343L, 0x31ee543051f23344L, "optionId");
-    /*package*/ static final SProperty description$ZWLR = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23343L, 0x31ee543051f30774L, "description");
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty participant$l33U = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, 0x325b97b223b9e3aaL, "participant");
+    /*package*/ static final SProperty fromVersion$clQh = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d91L, "fromVersion");
+    /*package*/ static final SProperty optionId$l6wK = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23343L, 0x31ee543051f23344L, "optionId");
+    /*package*/ static final SProperty description$GF4B = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23343L, 0x31ee543051f30774L, "description");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty participant$1LmE = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, 0x325b97b223b9e3aaL, "participant");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefactoringOptions$IZ = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23340L, "jetbrains.mps.lang.migration.structure.RefactoringOptions");
-    /*package*/ static final SConcept RefactoringLog$eD = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog");
-    /*package*/ static final SConcept RefactoringPart$34 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, "jetbrains.mps.lang.migration.structure.RefactoringPart");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept RefactoringOption$Ks = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23343L, "jetbrains.mps.lang.migration.structure.RefactoringOption");
+    /*package*/ static final SConcept RefactoringOptions$1J = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23340L, "jetbrains.mps.lang.migration.structure.RefactoringOptions");
+    /*package*/ static final SConcept RefactoringLog$xp = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog");
+    /*package*/ static final SConcept RefactoringPart$lO = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c163158L, "jetbrains.mps.lang.migration.structure.RefactoringPart");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept RefactoringOption$3c = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x31ee543051f23343L, "jetbrains.mps.lang.migration.structure.RefactoringOption");
   }
 }

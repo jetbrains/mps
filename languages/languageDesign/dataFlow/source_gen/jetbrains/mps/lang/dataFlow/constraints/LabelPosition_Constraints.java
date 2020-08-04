@@ -27,12 +27,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LabelPosition_Constraints extends BaseConstraintsDescriptor {
   public LabelPosition_Constraints() {
-    super(CONCEPTS.LabelPosition$Nw);
+    super(CONCEPTS.LabelPosition$Bw);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.label$aeCv, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.label$4osv, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -48,8 +48,8 @@ public class LabelPosition_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> labels = new ArrayList<SNode>();
-            SNode builder = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.DataFlowBuilderDeclaration$ZP, true, false);
-            ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(builder, CONCEPTS.EmitLabelStatement$Er, true, new SAbstractConcept[]{})));
+            SNode builder = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.DataFlowBuilderDeclaration$NP, true, false);
+            ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(builder, CONCEPTS.EmitLabelStatement$ur, true, new SAbstractConcept[]{})));
             return ListScope.forResolvableElements(labels);
           }
         };
@@ -62,12 +62,12 @@ public class LabelPosition_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_t9qyyi_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590377(jetbrains.mps.lang.dataFlow.constraints)", "6836281137582782170");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LabelPosition$Nw = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a8b1526L, "jetbrains.mps.lang.dataFlow.structure.LabelPosition");
-    /*package*/ static final SConcept DataFlowBuilderDeclaration$ZP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
-    /*package*/ static final SConcept EmitLabelStatement$Er = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a87adadL, "jetbrains.mps.lang.dataFlow.structure.EmitLabelStatement");
+    /*package*/ static final SConcept LabelPosition$Bw = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a8b1526L, "jetbrains.mps.lang.dataFlow.structure.LabelPosition");
+    /*package*/ static final SConcept DataFlowBuilderDeclaration$NP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
+    /*package*/ static final SConcept EmitLabelStatement$ur = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a87adadL, "jetbrains.mps.lang.dataFlow.structure.EmitLabelStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink label$aeCv = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a8b1526L, 0x1190a8b2ed8L, "label");
+    /*package*/ static final SReferenceLink label$4osv = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a8b1526L, 0x1190a8b2ed8L, "label");
   }
 }

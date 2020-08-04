@@ -38,7 +38,7 @@ public final class IntroduceConstant_Intention extends AbstractIntentionDescript
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.getNodeAncestor(node, CONCEPTS.Constant$9C, false, false) != null;
+    return SNodeOperations.getNodeAncestor(node, CONCEPTS.Constant$Ym, false, false) != null;
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,11 +60,11 @@ public final class IntroduceConstant_Intention extends AbstractIntentionDescript
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode constant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, "org.jetbrains.mps.samples.Constants.structure.Constant"));
-      SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.Constant$9C, false, false), constant);
+      SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.Constant$Ym, false, false), constant);
       SNode constantReference = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x37600150f5294665L, "org.jetbrains.mps.samples.Constants.structure.ConstantReference"));
-      SLinkOperations.setTarget(constantReference, LINKS.original$OT6l, constant);
+      SLinkOperations.setTarget(constantReference, LINKS.original$FCV3, constant);
       SNodeOperations.replaceWithAnother(node, constantReference);
-      SLinkOperations.setTarget(constant, LINKS.initializer$C3o2, node);
+      SLinkOperations.setTarget(constant, LINKS.initializer$uNcK, node);
       editorContext.selectWRTFocusPolicy(constant);
     }
     @Override
@@ -74,11 +74,11 @@ public final class IntroduceConstant_Intention extends AbstractIntentionDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Constant$9C = MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, "org.jetbrains.mps.samples.Constants.structure.Constant");
+    /*package*/ static final SConcept Constant$Ym = MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, "org.jetbrains.mps.samples.Constants.structure.Constant");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink original$OT6l = MetaAdapterFactory.getReferenceLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x37600150f5294665L, 0x37600150f5294666L, "original");
-    /*package*/ static final SContainmentLink initializer$C3o2 = MetaAdapterFactory.getContainmentLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, 0x1bc7b724b7dec5e1L, "initializer");
+    /*package*/ static final SReferenceLink original$FCV3 = MetaAdapterFactory.getReferenceLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x37600150f5294665L, 0x37600150f5294666L, "original");
+    /*package*/ static final SContainmentLink initializer$uNcK = MetaAdapterFactory.getContainmentLink(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, 0x1bc7b724b7dec5e1L, "initializer");
   }
 }

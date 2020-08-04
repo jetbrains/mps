@@ -118,7 +118,7 @@ public class MethodCallsFixer extends BaseEditorChecker {
     }
 
     if (!(incremental)) {
-      for (SNode methodCall : SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.IMethodCall$ln, false, new SAbstractConcept[]{})) {
+      for (SNode methodCall : SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.IMethodCall$M9, false, new SAbstractConcept[]{})) {
         myCurrentSession.checkMethodCall(methodCall);
       }
     }
@@ -132,7 +132,7 @@ public class MethodCallsFixer extends BaseEditorChecker {
               for (SNode methodCall : methodCallsToUpdate.keySet()) {
                 SNode referent = methodCallsToUpdate.get(methodCall);
                 if (referent != null && SNodeUtil.isAccessible(referent, repository)) {
-                  SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$ItxI, referent);
+                  SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$pyYw, referent);
                 }
               }
             }
@@ -143,10 +143,10 @@ public class MethodCallsFixer extends BaseEditorChecker {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

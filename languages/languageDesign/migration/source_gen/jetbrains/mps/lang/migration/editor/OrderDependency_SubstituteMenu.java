@@ -28,7 +28,7 @@ public class OrderDependency_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_g2oj2n_a(), CONCEPTS.OrderDependency$Bh));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_g2oj2n_a(), CONCEPTS.OrderDependency$U1));
     result.add(new SMP_Subconcepts_g2oj2n_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class OrderDependency_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_g2oj2n_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.OrderDependency$Bh, LINKS.script$UNCw);
+      super((SAbstractConcept) CONCEPTS.OrderDependency$U1, LINKS.script$BxVg);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class OrderDependency_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_g2oj2n_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OrderDependency$Bh);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OrderDependency$U1);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class OrderDependency_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OrderDependency$Bh = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x398343344f099b7aL, "jetbrains.mps.lang.migration.structure.OrderDependency");
+    /*package*/ static final SConcept OrderDependency$U1 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x398343344f099b7aL, "jetbrains.mps.lang.migration.structure.OrderDependency");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink script$UNCw = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x398343344f099b7aL, 0x398343344f099b7bL, "script");
+    /*package*/ static final SReferenceLink script$BxVg = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x398343344f099b7aL, 0x398343344f099b7bL, "script");
   }
 }

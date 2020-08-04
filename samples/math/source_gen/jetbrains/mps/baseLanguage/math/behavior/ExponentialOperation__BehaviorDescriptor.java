@@ -38,7 +38,7 @@ public final class ExponentialOperation__BehaviorDescriptor extends BaseBHDescri
   }
   /*package*/ static List<SNode> getAllowedSubstituends_id2D1PBM_bxH0(@NotNull SAbstractConcept __thisConcept__) {
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    ListSequence.fromList(result).addElement(SNodeOperations.asNode(CONCEPTS.ExponentialOperation$Ov));
+    ListSequence.fromList(result).addElement(SNodeOperations.asNode(CONCEPTS.ExponentialOperation$AR));
     return result;
   }
 
@@ -91,6 +91,6 @@ public final class ExponentialOperation__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExponentialOperation$Ov = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, "jetbrains.mps.baseLanguage.math.structure.ExponentialOperation");
+    /*package*/ static final SConcept ExponentialOperation$AR = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, "jetbrains.mps.baseLanguage.math.structure.ExponentialOperation");
   }
 }

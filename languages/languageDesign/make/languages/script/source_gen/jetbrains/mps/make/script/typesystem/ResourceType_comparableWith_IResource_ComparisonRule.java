@@ -37,7 +37,7 @@ public class ResourceType_comparableWith_IResource_ComparisonRule extends Compar
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.ResourceType$uY;
+    return CONCEPTS.ResourceType$sR;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -51,6 +51,6 @@ public class ResourceType_comparableWith_IResource_ComparisonRule extends Compar
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ResourceType$uY = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, "jetbrains.mps.make.script.structure.ResourceType");
+    /*package*/ static final SConcept ResourceType$sR = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, "jetbrains.mps.make.script.structure.ResourceType");
   }
 }

@@ -28,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NodeFactory_Constraints extends BaseConstraintsDescriptor {
   public NodeFactory_Constraints() {
-    super(CONCEPTS.NodeFactory$bs);
+    super(CONCEPTS.NodeFactory$TJ);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableConcept$R1jC, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableConcept$8F1V, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,9 +52,9 @@ public class NodeFactory_Constraints extends BaseConstraintsDescriptor {
             Language language = Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode()));
             SModel structureModel = language.getStructureModelDescriptor();
             // XXX in fact, shall include concepts from extended languages as well 
-            return new ListScope(SModelOperations.roots(structureModel, CONCEPTS.AbstractConceptDeclaration$UN)) {
+            return new ListScope(SModelOperations.roots(structureModel, CONCEPTS.AbstractConceptDeclaration$KA)) {
               public String getName(SNode child) {
-                return SPropertyOperations.getString(child, PROPS.name$lA7v);
+                return SPropertyOperations.getString(child, PROPS.name$MnvL);
               }
             };
           }
@@ -68,15 +68,15 @@ public class NodeFactory_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_i503fz_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902a4(jetbrains.mps.lang.actions.constraints)", "6836281137582779028");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeFactory$bs = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, "jetbrains.mps.lang.actions.structure.NodeFactory");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept NodeFactory$TJ = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, "jetbrains.mps.lang.actions.structure.NodeFactory");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$R1jC = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$8F1V = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

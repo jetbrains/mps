@@ -45,7 +45,7 @@ public final class TypeOfExpression__BehaviorDescriptor extends BaseBHDescriptor
       return false;
     }
     Collection<RuleIdFlavouredItem.TypesystemRuleId> rules = RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reportItem);
-    return CollectionSequence.fromCollection(rules).intersect(ListSequence.fromList(TypeVarReference__BehaviorDescriptor.antiquotationSuppressRules_id2FXdWdhG0kq.invoke(SNodeOperations.asSConcept(CONCEPTS.TypeVarReference$Zu)))).isNotEmpty();
+    return CollectionSequence.fromCollection(rules).intersect(ListSequence.fromList(TypeVarReference__BehaviorDescriptor.antiquotationSuppressRules_id2FXdWdhG0kq.invoke(SNodeOperations.asSConcept(CONCEPTS.TypeVarReference$hk)))).isNotEmpty();
   }
 
   /*package*/ TypeOfExpression__BehaviorDescriptor() {
@@ -97,6 +97,6 @@ public final class TypeOfExpression__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVarReference$Zu = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f90b04cL, "jetbrains.mps.lang.typesystem.structure.TypeVarReference");
+    /*package*/ static final SConcept TypeVarReference$hk = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f90b04cL, "jetbrains.mps.lang.typesystem.structure.TypeVarReference");
   }
 }

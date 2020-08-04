@@ -23,13 +23,13 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
     return concept.equals(applicableConcept) || concept.isSubConceptOf(applicableConcept);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InstanceOfExpression$JG;
+    return CONCEPTS.InstanceOfExpression$cu;
   }
   public void performActions(Program o, SNode node) {
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IConditional$bU))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IConditional$CG))) {
       return;
     }
-    SNode conditional = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IConditional$bU);
+    SNode conditional = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IConditional$CG);
 
     NextProgramPoint pp = IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(conditional, node, ((boolean) true));
     if (pp != null) {
@@ -41,7 +41,7 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
           if (((Program) o).contains(object)) {
             boolean before = false;
             int position = ((Program) (o)).getEnd(object);
-            Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.leftExpression$dnS9));
+            Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.leftExpression$StkV));
             instruction.setRuleReference("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7701013275659709424");
             instruction.setSource(node);
             ((Program) (o)).insert(instruction, position, true, before);
@@ -53,7 +53,7 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
           if (((Program) o).contains(object)) {
             boolean before = true;
             int position = ((Program) (o)).getStart(pp.getSucceedingNode());
-            Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.leftExpression$dnS9));
+            Instruction instruction = new notNullInstruction(SLinkOperations.getTarget(node, LINKS.leftExpression$StkV));
             instruction.setRuleReference("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7701013275659713511");
             instruction.setSource(node);
             ((Program) (o)).insert(instruction, position, true, before);
@@ -65,11 +65,11 @@ public class RuleInstanceofExpression implements DataFlowConstructor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceOfExpression$JG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
-    /*package*/ static final SInterfaceConcept IConditional$bU = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ac89e1b122cd5c2L, "jetbrains.mps.baseLanguage.structure.IConditional");
+    /*package*/ static final SConcept InstanceOfExpression$cu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
+    /*package*/ static final SInterfaceConcept IConditional$CG = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ac89e1b122cd5c2L, "jetbrains.mps.baseLanguage.structure.IConditional");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$StkV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
   }
 }

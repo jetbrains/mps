@@ -32,9 +32,9 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
       return;
     }
 
-    SNode ed = SNodeOperations.as(SNodeOperations.getParent(emd), CONCEPTS.EnumerationDeclaration$rG);
+    SNode ed = SNodeOperations.as(SNodeOperations.getParent(emd), CONCEPTS.EnumerationDeclaration$hv);
 
-    if (isEmptyString(SPropertyOperations.getString(emd, PROPS.memberId$lO88))) {
+    if (isEmptyString(SPropertyOperations.getString(emd, PROPS.memberId$LVXV))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(emd, "Absent member id.\n" + "Please invoke the \"Correct ID\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1421157252384318991", null, errorTarget);
@@ -45,9 +45,9 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
-    } else if (ListSequence.fromList(SLinkOperations.getChildren(ed, LINKS.members$4eAY)).any(new IWhereFilter<SNode>() {
+    } else if (ListSequence.fromList(SLinkOperations.getChildren(ed, LINKS.members$wmsL)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != emd && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$lO88), SPropertyOperations.getString(emd, PROPS.memberId$lO88));
+        return it != emd && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$LVXV), SPropertyOperations.getString(emd, PROPS.memberId$LVXV));
       }
     })) {
       {
@@ -63,7 +63,7 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EnumerationMemberDeclaration$Am;
+    return CONCEPTS.EnumerationMemberDeclaration$s9;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -76,15 +76,15 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
-    /*package*/ static final SConcept EnumerationMemberDeclaration$Am = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
+    /*package*/ static final SConcept EnumerationDeclaration$hv = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
+    /*package*/ static final SConcept EnumerationMemberDeclaration$s9 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty memberId$lO88 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
+    /*package*/ static final SProperty memberId$LVXV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SContainmentLink members$wmsL = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 }

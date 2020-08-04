@@ -42,17 +42,17 @@ public final class Order__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String getGeneratedClassName_id2CFL3ni7zCY(@NotNull SNode __thisNode__) {
     String n;
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v))) {
-      n = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EditorTab$AL, false, false), PROPS.name$lA7v);
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL))) {
+      n = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EditorTab$zO, false, false), PROPS.name$MnvL);
     } else {
-      n = SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+      n = SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
     }
     return NameUtil.toValidCamelIdentifier(n) + "_Order";
   }
   /*package*/ static boolean presents_id1jgMklchcXk(@NotNull SNode __thisNode__, final SNode tab) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.tab$xqZ1)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.tab$IZW4)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.editorTab$xwDl) == tab;
+        return SLinkOperations.getTarget(it, LINKS.editorTab$J5Ao) == tab;
       }
     }).isNotEmpty();
   }
@@ -114,15 +114,15 @@ public final class Order__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorTab$AL = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, "jetbrains.mps.lang.plugin.structure.EditorTab");
+    /*package*/ static final SConcept EditorTab$zO = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, "jetbrains.mps.lang.plugin.structure.EditorTab");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tab$xqZ1 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd78147L, 0x22035699bdd78149L, "tab");
-    /*package*/ static final SReferenceLink editorTab$xwDl = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "editorTab");
+    /*package*/ static final SContainmentLink tab$IZW4 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd78147L, 0x22035699bdd78149L, "tab");
+    /*package*/ static final SReferenceLink editorTab$J5Ao = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "editorTab");
   }
 }

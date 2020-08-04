@@ -31,12 +31,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ModificationStatement_Constraints extends BaseConstraintsDescriptor {
   public ModificationStatement_Constraints() {
-    super(CONCEPTS.ModificationStatement$vQ);
+    super(CONCEPTS.ModificationStatement$sT);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.point$8TAg, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.point$muzj, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,11 +51,11 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode contents = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(_context.getReferenceNode(), CONCEPTS.ModificationStatement$vQ), LINKS.modifiedGroup$IeYH), LINKS.contents$IJF3);
-            if (SNodeOperations.isInstanceOf(contents, CONCEPTS.ElementListContents$QC)) {
-              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contents, CONCEPTS.ElementListContents$QC), LINKS.reference$Ke1L)).where(new IWhereFilter<SNode>() {
+            SNode contents = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(_context.getReferenceNode(), CONCEPTS.ModificationStatement$sT), LINKS.modifiedGroup$VNVK), LINKS.contents$WkC6);
+            if (SNodeOperations.isInstanceOf(contents, CONCEPTS.ElementListContents$NF)) {
+              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contents, CONCEPTS.ElementListContents$NF), LINKS.reference$XMYO)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, CONCEPTS.GroupAnchor$MS);
+                  return SNodeOperations.isInstanceOf(it, CONCEPTS.GroupAnchor$JV);
                 }
               }).toListSequence());
             }
@@ -64,7 +64,7 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedGroup$IeYH, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedGroup$VNVK, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -79,11 +79,11 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            List<SNode> actionGroupDeclarations = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ActionGroupDeclaration$YL);
-            SNode groupDeclaration = SNodeOperations.getNodeAncestor(_context.getReferenceNode(), CONCEPTS.ActionGroupDeclaration$YL, false, false);
+            List<SNode> actionGroupDeclarations = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ActionGroupDeclaration$VO);
+            SNode groupDeclaration = SNodeOperations.getNodeAncestor(_context.getReferenceNode(), CONCEPTS.ActionGroupDeclaration$VO, false, false);
             List<SNode> thisGroupChildGroups = ((List<SNode>) ListSequence.fromList(SNodeOperations.getNodeDescendants(groupDeclaration, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.ActionGroupDeclaration$YL);
+                return SNodeOperations.isInstanceOf(it, CONCEPTS.ActionGroupDeclaration$VO);
               }
             }).toListSequence());
             ListSequence.fromList(thisGroupChildGroups).addElement(groupDeclaration);
@@ -101,16 +101,16 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
   private static final SNodePointer breakingNode_184bjp_a0a0a0a0a1a0a0b0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "6836281137582795790");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModificationStatement$vQ = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, "jetbrains.mps.lang.plugin.structure.ModificationStatement");
-    /*package*/ static final SConcept ElementListContents$QC = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, "jetbrains.mps.lang.plugin.structure.ElementListContents");
-    /*package*/ static final SConcept GroupAnchor$MS = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11840f36089L, "jetbrains.mps.lang.plugin.structure.GroupAnchor");
-    /*package*/ static final SConcept ActionGroupDeclaration$YL = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration");
+    /*package*/ static final SConcept ModificationStatement$sT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, "jetbrains.mps.lang.plugin.structure.ModificationStatement");
+    /*package*/ static final SConcept ElementListContents$NF = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, "jetbrains.mps.lang.plugin.structure.ElementListContents");
+    /*package*/ static final SConcept GroupAnchor$JV = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11840f36089L, "jetbrains.mps.lang.plugin.structure.GroupAnchor");
+    /*package*/ static final SConcept ActionGroupDeclaration$VO = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink point$8TAg = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, 0x1188f2392baL, "point");
-    /*package*/ static final SReferenceLink modifiedGroup$IeYH = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, 0x1181dea4861L, "modifiedGroup");
-    /*package*/ static final SContainmentLink contents$IJF3 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents");
-    /*package*/ static final SContainmentLink reference$Ke1L = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, 0x1190f75fe95L, "reference");
+    /*package*/ static final SReferenceLink point$muzj = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, 0x1188f2392baL, "point");
+    /*package*/ static final SReferenceLink modifiedGroup$VNVK = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL, 0x1181dea4861L, "modifiedGroup");
+    /*package*/ static final SContainmentLink contents$WkC6 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents");
+    /*package*/ static final SContainmentLink reference$XMYO = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, 0x1190f75fe95L, "reference");
   }
 }

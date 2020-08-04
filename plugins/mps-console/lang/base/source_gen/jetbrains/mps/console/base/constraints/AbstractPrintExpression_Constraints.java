@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractPrintExpression_Constraints extends BaseConstraintsDescriptor {
   public AbstractPrintExpression_Constraints() {
-    super(CONCEPTS.AbstractPrintExpression$cC);
+    super(CONCEPTS.AbstractPrintExpression$Qx);
   }
 
   @Override
@@ -37,10 +37,10 @@ public class AbstractPrintExpression_Constraints extends BaseConstraintsDescript
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if ((SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.Statement$ok, true, false) != null)) {
-      return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ExpressionStatement$nm);
-    } else if ((SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BLExpression$iZ, true, false) != null)) {
-      return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BLExpression$iZ);
+    if ((SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.Statement$P6, true, false) != null)) {
+      return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ExpressionStatement$O8);
+    } else if ((SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BLExpression$WS, true, false) != null)) {
+      return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BLExpression$WS);
     } else {
       return true;
     }
@@ -48,9 +48,9 @@ public class AbstractPrintExpression_Constraints extends BaseConstraintsDescript
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:a35e9456-af18-4589-b3c4-ed9896a657c9(jetbrains.mps.console.base.constraints)", "1227128029536564502");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractPrintExpression$cC = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, "jetbrains.mps.console.base.structure.AbstractPrintExpression");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept BLExpression$iZ = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression");
+    /*package*/ static final SConcept AbstractPrintExpression$Qx = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, "jetbrains.mps.console.base.structure.AbstractPrintExpression");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept BLExpression$WS = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression");
   }
 }

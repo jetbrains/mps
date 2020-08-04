@@ -26,18 +26,18 @@ public class BinaryOperationUtil {
     myModel = m;
   }
   private Iterable<SNode> getOperatorContainers() {
-    Iterable<SNode> visibleContainers = SLinkOperations.collect(SModelOperations.roots(myModel, CONCEPTS.ContainerImport$MJ), LINKS.container$7u$u);
+    Iterable<SNode> visibleContainers = SLinkOperations.collect(SModelOperations.roots(myModel, CONCEPTS.ContainerImport$sY), LINKS.container$EWeH);
     if (Sequence.fromIterable(visibleContainers).isEmpty()) {
-      visibleContainers = SModelOperations.rootsIncludingImported(myModel, CONCEPTS.OverloadedOperatorContainer$s0);
+      visibleContainers = SModelOperations.rootsIncludingImported(myModel, CONCEPTS.OverloadedOperatorContainer$6f);
     }
-    return SLinkOperations.collectMany(visibleContainers, LINKS.operators$CFEw);
+    return SLinkOperations.collectMany(visibleContainers, LINKS.operators$c9kJ);
   }
   public boolean hasOverloadedOperators(SNode node, SNode leftType, SNode rightType) {
     for (SNode operator : getOperatorContainers()) {
       if (isOverloading(node, leftType, rightType, operator)) {
         return true;
       }
-      if (SPropertyOperations.getBoolean(operator, PROPS.commutative$TAwD) && isOverloading(SNodeOperations.cast(node, CONCEPTS.BinaryOperation$vf), rightType, leftType, operator)) {
+      if (SPropertyOperations.getBoolean(operator, PROPS.commutative$t4aS) && isOverloading(SNodeOperations.cast(node, CONCEPTS.BinaryOperation$W1), rightType, leftType, operator)) {
         return true;
       }
     }
@@ -45,54 +45,54 @@ public class BinaryOperationUtil {
   }
   private Map<SNode, Boolean> getOverloadedOperators(SNode node, SNode leftType, SNode rightType) {
     Map<SNode, Boolean> result = MapSequence.fromMap(new HashMap<SNode, Boolean>());
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BinaryOperation$vf))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BinaryOperation$W1))) {
       return result;
     }
     for (SNode operator : getOperatorContainers()) {
-      if (isOverloading(SNodeOperations.cast(node, CONCEPTS.BinaryOperation$vf), leftType, rightType, operator)) {
+      if (isOverloading(SNodeOperations.cast(node, CONCEPTS.BinaryOperation$W1), leftType, rightType, operator)) {
         MapSequence.fromMap(result).put(operator, false);
       }
-      if (SPropertyOperations.getBoolean(operator, PROPS.commutative$TAwD) && isOverloading(SNodeOperations.cast(node, CONCEPTS.BinaryOperation$vf), rightType, leftType, operator)) {
+      if (SPropertyOperations.getBoolean(operator, PROPS.commutative$t4aS) && isOverloading(SNodeOperations.cast(node, CONCEPTS.BinaryOperation$W1), rightType, leftType, operator)) {
         MapSequence.fromMap(result).put(operator, true);
       }
     }
     return result;
   }
   private static boolean isOverloading(SNode node, SNode leftType, SNode rightType, SNode operator) {
-    if (!((TypecheckingFacade.getFromContext().isSubtype(leftType, SLinkOperations.getTarget(operator, LINKS.leftType$BshI)) && TypecheckingFacade.getFromContext().isSubtype(rightType, SLinkOperations.getTarget(operator, LINKS.rightType$BswJ))))) {
+    if (!((TypecheckingFacade.getFromContext().isSubtype(leftType, SLinkOperations.getTarget(operator, LINKS.leftType$aTVX)) && TypecheckingFacade.getFromContext().isSubtype(rightType, SLinkOperations.getTarget(operator, LINKS.rightType$aUaY))))) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operator, LINKS.operator$qvY1), CONCEPTS.BinaryOperationReference$Q7)) {
-      if (SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(operator, LINKS.operator$qvY1), CONCEPTS.BinaryOperationReference$Q7), LINKS.binaryOperation$yr3w))))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operator, LINKS.operator$XXCg), CONCEPTS.BinaryOperationReference$wm)) {
+      if (SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(operator, LINKS.operator$XXCg), CONCEPTS.BinaryOperationReference$wm), LINKS.binaryOperation$5SHJ))))) {
         return true;
       }
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operator, LINKS.operator$qvY1), CONCEPTS.CustomOperator$an) && SNodeOperations.isInstanceOf(node, CONCEPTS.CustomOperatorUsage$2Y)) {
-      if (SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CustomOperatorUsage$2Y), LINKS.operator$jAql) == SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(operator, LINKS.operator$qvY1), CONCEPTS.CustomOperator$an), LINKS.declaration$m5qx)) {
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operator, LINKS.operator$XXCg), CONCEPTS.CustomOperator$OA) && SNodeOperations.isInstanceOf(node, CONCEPTS.CustomOperatorUsage$Hd)) {
+      if (SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CustomOperatorUsage$Hd), LINKS.operator$R44$) == SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(operator, LINKS.operator$XXCg), CONCEPTS.CustomOperator$OA), LINKS.declaration$Tz4K)) {
         return true;
       }
     }
     return false;
   }
   private static boolean isSubTypeOperatorStraight(SNode subOperator, SNode superOperator) {
-    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(superOperator, LINKS.leftType$BshI), SLinkOperations.getTarget(subOperator, LINKS.leftType$BshI))) {
+    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(superOperator, LINKS.leftType$aTVX), SLinkOperations.getTarget(subOperator, LINKS.leftType$aTVX))) {
       return false;
     }
-    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(subOperator, LINKS.leftType$BshI), SLinkOperations.getTarget(superOperator, LINKS.leftType$BshI))) {
+    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(subOperator, LINKS.leftType$aTVX), SLinkOperations.getTarget(superOperator, LINKS.leftType$aTVX))) {
       return true;
     }
-    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(superOperator, LINKS.rightType$BswJ), SLinkOperations.getTarget(subOperator, LINKS.rightType$BswJ))) {
+    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(superOperator, LINKS.rightType$aUaY), SLinkOperations.getTarget(subOperator, LINKS.rightType$aUaY))) {
       return false;
     }
     return true;
   }
   private static boolean isReversedSubTypeOperator(SNode subOperator, SNode superOperator) {
-    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(superOperator, LINKS.rightType$BswJ), SLinkOperations.getTarget(subOperator, LINKS.leftType$BshI))) {
+    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(superOperator, LINKS.rightType$aUaY), SLinkOperations.getTarget(subOperator, LINKS.leftType$aTVX))) {
       return false;
     }
-    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(subOperator, LINKS.leftType$BshI), SLinkOperations.getTarget(superOperator, LINKS.rightType$BswJ))) {
+    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(subOperator, LINKS.leftType$aTVX), SLinkOperations.getTarget(superOperator, LINKS.rightType$aUaY))) {
       return true;
     }
-    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(superOperator, LINKS.leftType$BshI), SLinkOperations.getTarget(subOperator, LINKS.rightType$BswJ))) {
+    if (TypecheckingFacade.getFromContext().isStrongSubtype(SLinkOperations.getTarget(superOperator, LINKS.leftType$aTVX), SLinkOperations.getTarget(subOperator, LINKS.rightType$aUaY))) {
       return false;
     }
     return true;
@@ -104,14 +104,14 @@ public class BinaryOperationUtil {
     return isReversedSubTypeOperator(subOperator, superOperator);
   }
   public SNode getNearestOverloaded(SNode node, SNode leftType, SNode rightType) {
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BinaryOperation$vf))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BinaryOperation$W1))) {
       return null;
     }
     SNode result = (SNode) (node.getUserObject("operator"));
     if (result != null) {
       return result;
     }
-    Map<SNode, Boolean> operatorMap = getOverloadedOperators(SNodeOperations.cast(node, CONCEPTS.BinaryOperation$vf), leftType, rightType);
+    Map<SNode, Boolean> operatorMap = getOverloadedOperators(SNodeOperations.cast(node, CONCEPTS.BinaryOperation$W1), leftType, rightType);
     if (MapSequence.fromMap(operatorMap).isEmpty()) {
       return null;
     }
@@ -131,26 +131,26 @@ public class BinaryOperationUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ContainerImport$MJ = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x66302c3c8df72c49L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.ContainerImport");
-    /*package*/ static final SConcept OverloadedOperatorContainer$s0 = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.OverloadedOperatorContainer");
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
-    /*package*/ static final SConcept BinaryOperationReference$Q7 = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.BinaryOperationReference");
-    /*package*/ static final SConcept CustomOperatorUsage$2Y = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, "jetbrains.mps.baseLanguage.overloadedOperators.structure.CustomOperatorUsage");
-    /*package*/ static final SConcept CustomOperator$an = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d60237L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.CustomOperator");
+    /*package*/ static final SConcept ContainerImport$sY = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x66302c3c8df72c49L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.ContainerImport");
+    /*package*/ static final SConcept OverloadedOperatorContainer$6f = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.OverloadedOperatorContainer");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept BinaryOperationReference$wm = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.BinaryOperationReference");
+    /*package*/ static final SConcept CustomOperatorUsage$Hd = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, "jetbrains.mps.baseLanguage.overloadedOperators.structure.CustomOperatorUsage");
+    /*package*/ static final SConcept CustomOperator$OA = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d60237L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.CustomOperator");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink container$7u$u = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x66302c3c8df72c49L, 0x66302c3c8df72d45L, "container");
-    /*package*/ static final SContainmentLink operators$CFEw = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x6b6f5c413011208L, "operators");
-    /*package*/ static final SContainmentLink leftType$BshI = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x5cab13b82bf359b1L, "leftType");
-    /*package*/ static final SContainmentLink rightType$BswJ = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x5cab13b82bf359b2L, "rightType");
-    /*package*/ static final SContainmentLink operator$qvY1 = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x2764eda929d23eb6L, "operator");
-    /*package*/ static final SReferenceLink binaryOperation$yr3w = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, 0x2764eda929d23eb5L, "binaryOperation");
-    /*package*/ static final SReferenceLink declaration$m5qx = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d60237L, 0x2764eda929d60239L, "declaration");
-    /*package*/ static final SReferenceLink operator$jAql = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, 0x15c86fdc60847670L, "operator");
+    /*package*/ static final SReferenceLink container$EWeH = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x66302c3c8df72c49L, 0x66302c3c8df72d45L, "container");
+    /*package*/ static final SContainmentLink operators$c9kJ = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x6b6f5c413011208L, "operators");
+    /*package*/ static final SContainmentLink leftType$aTVX = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x5cab13b82bf359b1L, "leftType");
+    /*package*/ static final SContainmentLink rightType$aUaY = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x5cab13b82bf359b2L, "rightType");
+    /*package*/ static final SContainmentLink operator$XXCg = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x2764eda929d23eb6L, "operator");
+    /*package*/ static final SReferenceLink binaryOperation$5SHJ = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, 0x2764eda929d23eb5L, "binaryOperation");
+    /*package*/ static final SReferenceLink declaration$Tz4K = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d60237L, 0x2764eda929d60239L, "declaration");
+    /*package*/ static final SReferenceLink operator$R44$ = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, 0x15c86fdc60847670L, "operator");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty commutative$TAwD = MetaAdapterFactory.getProperty(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x2519632ce12e26e2L, "commutative");
+    /*package*/ static final SProperty commutative$t4aS = MetaAdapterFactory.getProperty(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c41300f84dL, 0x2519632ce12e26e2L, "commutative");
   }
 }

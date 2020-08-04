@@ -27,7 +27,7 @@ public class ChildOfParentWithEmptyCell_SubstituteMenu extends SubstituteMenuBas
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vrdora_a(), CONCEPTS.ChildOfParentWithEmptyCell$3k));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vrdora_a(), CONCEPTS.ChildOfParentWithEmptyCell$PB));
     return result;
   }
 
@@ -72,7 +72,7 @@ public class ChildOfParentWithEmptyCell_SubstituteMenu extends SubstituteMenuBas
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.ChildOfParentWithEmptyCell$3k, context);
+        super(CONCEPTS.ChildOfParentWithEmptyCell$PB, context);
         _context = context;
       }
 
@@ -99,6 +99,6 @@ public class ChildOfParentWithEmptyCell_SubstituteMenu extends SubstituteMenuBas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildOfParentWithEmptyCell$3k = MetaAdapterFactory.getConcept(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x7cc9c0c2af1b18deL, "jetbrains.mps.lang.editor.menus.testLanguage.structure.ChildOfParentWithEmptyCell");
+    /*package*/ static final SConcept ChildOfParentWithEmptyCell$PB = MetaAdapterFactory.getConcept(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x7cc9c0c2af1b18deL, "jetbrains.mps.lang.editor.menus.testLanguage.structure.ChildOfParentWithEmptyCell");
   }
 }

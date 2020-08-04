@@ -38,9 +38,9 @@
       <node id="2554379189369939327" at="50,62,51,105" concept="1" />
       <node id="2554379189369939347" at="53,121,54,146" concept="1" />
       <node id="2554379189369939327" at="56,34,57,18" concept="6" />
-      <node id="2554379189369939326" at="62,0,63,0" concept="9" trace="InlineMessageProvider$lb" />
-      <node id="2554379189369939326" at="63,0,64,0" concept="9" trace="CombinedMessageExpression$e_" />
-      <node id="2554379189369939326" at="67,0,68,0" concept="9" trace="messagesExpr$RPc3" />
+      <node id="2554379189369939326" at="62,0,63,0" concept="9" trace="InlineMessageProvider$bB" />
+      <node id="2554379189369939326" at="63,0,64,0" concept="9" trace="CombinedMessageExpression$6z" />
+      <node id="2554379189369939326" at="67,0,68,0" concept="9" trace="messagesExpr$Ys2v" />
       <node id="2554379189369939327" at="29,0,32,0" concept="0" trace="NoMessageKeymap_Action0#()V" />
       <node id="2554379189369939327" at="32,0,35,0" concept="4" trace="isMenuAlwaysShown#()Z" />
       <node id="2554379189369939327" at="36,62,39,7" concept="3" />
@@ -147,7 +147,7 @@
       <node id="315923949160668006" at="119,35,120,26" concept="6" />
       <node id="315923949160668006" at="121,17,122,42" concept="1" />
       <node id="315923949160668006" at="125,40,126,33" concept="6" />
-      <node id="315923949160668006" at="131,0,132,0" concept="9" trace="messagesExpr$RPc3" />
+      <node id="315923949160668006" at="131,0,132,0" concept="9" trace="messagesExpr$Ys2v" />
       <node id="315923949160668006" at="31,0,33,0" concept="2" trace="myNode" />
       <node id="315923949160668006" at="78,0,80,0" concept="2" trace="myNode" />
       <node id="315923949160668006" at="45,0,48,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -258,7 +258,7 @@
       <node id="5258059200640676198" at="95,60,96,66" concept="1" />
       <node id="4356326056162525250" at="98,60,99,66" concept="1" />
       <node id="4356326056162914811" at="101,67,102,73" concept="1" />
-      <node id="5258059200640676197" at="107,0,108,0" concept="9" trace="RuleWithMessage$jq" />
+      <node id="5258059200640676197" at="107,0,108,0" concept="9" trace="RuleWithMessage$9Q" />
       <node id="5258059200640676198" at="23,0,26,0" concept="4" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="4709299072833137333" at="26,77,29,9" concept="3" />
       <node id="4356326056162525250" at="36,0,39,0" concept="4" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
@@ -376,7 +376,7 @@
       <node id="668954446731667492" at="65,70,66,80" concept="5" />
       <node id="668954446731667492" at="66,80,67,128" concept="6" />
       <node id="668954446731667492" at="69,86,70,41" concept="6" />
-      <node id="668954446731666655" at="75,0,76,0" concept="9" trace="RuleWithMessage$jq" />
+      <node id="668954446731666655" at="75,0,76,0" concept="9" trace="RuleWithMessage$9Q" />
       <node id="668954446731666655" at="25,0,28,0" concept="0" trace="AddMyselfToMenuOfRuleBlockMember#()V" />
       <node id="668954446731667492" at="69,0,72,0" concept="4" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="668954446731666655" at="40,280,45,5" concept="12" />
@@ -448,8 +448,8 @@
       <node id="6839459717313143837" at="65,70,66,0" concept="8" />
       <node id="6839459717313143837" at="66,0,67,77" concept="7" />
       <node id="6839459717313143838" at="68,60,69,66" concept="1" />
-      <node id="6839459717313143837" at="74,0,75,0" concept="9" trace="members$Uxpw" />
-      <node id="6839459717313143837" at="78,0,79,0" concept="9" trace="RuleWithMessage$jq" />
+      <node id="6839459717313143837" at="74,0,75,0" concept="9" trace="members$9HnD" />
+      <node id="6839459717313143837" at="78,0,79,0" concept="9" trace="RuleWithMessage$9Q" />
       <node id="6839459717313143838" at="22,0,25,0" concept="4" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="6839459717313143838" at="25,0,28,0" concept="4" trace="execute_internal#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6839459717313143837" at="42,74,45,5" concept="3" />
@@ -581,8 +581,8 @@
       <node id="7291380803376279013" at="151,35,152,26" concept="6" />
       <node id="7291380803376279013" at="153,17,154,42" concept="1" />
       <node id="7291380803376279013" at="157,40,158,36" concept="6" />
-      <node id="7291380803376279013" at="163,0,164,0" concept="9" trace="rule$n6fG" />
-      <node id="7291380803376279013" at="164,0,165,0" concept="9" trace="messageProvider$Jjr8" />
+      <node id="7291380803376279013" at="163,0,164,0" concept="9" trace="rule$tH68" />
+      <node id="7291380803376279013" at="164,0,165,0" concept="9" trace="messageProvider$PUh$" />
       <node id="7291380803376279013" at="23,0,25,0" concept="2" trace="myNode" />
       <node id="7291380803376279013" at="55,0,57,0" concept="2" trace="myNode" />
       <node id="7291380803376279013" at="111,0,113,0" concept="2" trace="myNode" />
@@ -801,11 +801,11 @@
       <node id="4607300357955718843" at="235,91,236,147" concept="6" />
       <node id="4607300357955718843" at="237,14,238,26" concept="6" />
       <node id="4607300357955718843" at="239,17,240,42" concept="1" />
-      <node id="7291380803376279013" at="246,0,247,0" concept="9" trace="rule$n6fG" />
-      <node id="7291380803376279013" at="250,0,251,0" concept="9" trace="Rule$LR" />
-      <node id="7291380803376279013" at="251,0,252,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="7291380803376279013" at="255,0,256,0" concept="9" trace="name$lA7v" />
-      <node id="7291380803376279013" at="256,0,257,0" concept="9" trace="ruleId$rAly" />
+      <node id="7291380803376279013" at="246,0,247,0" concept="9" trace="rule$tH68" />
+      <node id="7291380803376279013" at="250,0,251,0" concept="9" trace="Rule$DP" />
+      <node id="7291380803376279013" at="251,0,252,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="7291380803376279013" at="255,0,256,0" concept="9" trace="name$MnvL" />
+      <node id="7291380803376279013" at="256,0,257,0" concept="9" trace="ruleId$WGdw" />
       <node id="7291380803376279013" at="38,0,40,0" concept="2" trace="myNode" />
       <node id="4607300357955179447" at="107,0,109,0" concept="2" trace="myNode" />
       <node id="4607300357955718829" at="195,0,197,0" concept="2" trace="myNode" />
@@ -1093,8 +1093,8 @@
       <node id="6878448148913175123" at="103,69,104,79" concept="5" />
       <node id="6878448148913175123" at="104,79,105,128" concept="6" />
       <node id="6878448148913175123" at="107,90,108,36" concept="6" />
-      <node id="8973525032381723877" at="113,0,114,0" concept="9" trace="RuleWithMessage$jq" />
-      <node id="8973525032381723877" at="114,0,115,0" concept="9" trace="DefForRule$Hm" />
+      <node id="8973525032381723877" at="113,0,114,0" concept="9" trace="RuleWithMessage$9Q" />
+      <node id="8973525032381723877" at="114,0,115,0" concept="9" trace="DefForRule$_k" />
       <node id="8973525032381723877" at="29,0,32,0" concept="0" trace="AddMyselfToTransformationMenu#()V" />
       <node id="8973525032381724523" at="82,0,85,0" concept="4" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6878448148913175123" at="107,0,110,0" concept="4" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   public DataTypeDeclaration_Constraints() {
-    super(CONCEPTS.DataTypeDeclaration$KQ);
+    super(CONCEPTS.DataTypeDeclaration$AD);
   }
 
   @Override
@@ -43,7 +43,7 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.DataTypeDeclaration$KQ);
+            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.DataTypeDeclaration$AD);
           }
         };
       }
@@ -51,7 +51,7 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
   public static class DatatypeId_Property extends BasePropertyConstraintsDescriptor {
     public DatatypeId_Property(ConstraintsDescriptor container) {
-      super(PROPS.datatypeId$88Lt, container);
+      super(PROPS.datatypeId$$gBg, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -80,7 +80,7 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
   public static class LanguageId_Property extends BasePropertyConstraintsDescriptor {
     public LanguageId_Property(ConstraintsDescriptor container) {
-      super(PROPS.languageId$890u, container);
+      super(PROPS.languageId$$gQh, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -110,18 +110,18 @@ public class DataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.datatypeId$88Lt, new DatatypeId_Property(this));
-    properties.put(PROPS.languageId$890u, new LanguageId_Property(this));
+    properties.put(PROPS.datatypeId$$gBg, new DatatypeId_Property(this));
+    properties.put(PROPS.languageId$$gQh, new LanguageId_Property(this));
     return properties;
   }
   private static final SNodePointer breakingNode_gntvk6_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805350");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DataTypeDeclaration$KQ = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
+    /*package*/ static final SConcept DataTypeDeclaration$AD = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty datatypeId$88Lt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
-    /*package*/ static final SProperty languageId$890u = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044404L, "languageId");
+    /*package*/ static final SProperty datatypeId$$gBg = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
+    /*package*/ static final SProperty languageId$$gQh = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044404L, "languageId");
   }
 }

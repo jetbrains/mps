@@ -26,7 +26,7 @@ public class check_VariableArityType_NonTypesystemRule extends AbstractNonTypesy
         {
           SNode matchingNode_x4f43m_a0a = SNodeOperations.getParent(variableArityType);
           if (matchingNode_x4f43m_a0a != null) {
-            matches_x4f43m_a0a = matchingNode_x4f43m_a0a.getConcept().isSubConceptOf(CONCEPTS.ParameterDeclaration$qU);
+            matches_x4f43m_a0a = matchingNode_x4f43m_a0a.getConcept().isSubConceptOf(CONCEPTS.ParameterDeclaration$RG);
           }
         }
         if (matches_x4f43m_a0a) {
@@ -44,7 +44,7 @@ public class check_VariableArityType_NonTypesystemRule extends AbstractNonTypesy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.VariableArityType$jT;
+    return CONCEPTS.VariableArityType$KF;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,7 +54,7 @@ public class check_VariableArityType_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SConcept VariableArityType$jT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
   }
 }

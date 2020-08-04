@@ -34,7 +34,7 @@ public final class IndexedTupleLiteral__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean isLValue_idhEwJgmE(@NotNull SNode __thisNode__) {
-    for (SNode mexp : SLinkOperations.getChildren(__thisNode__, LINKS.component$dehX)) {
+    for (SNode mexp : SLinkOperations.getChildren(__thisNode__, LINKS.component$uznI)) {
       if (!((boolean) Expression__BehaviorDescriptor.isLValue_idhEwJgmE.invoke(mexp))) {
         return false;
       }
@@ -99,6 +99,6 @@ public final class IndexedTupleLiteral__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink component$dehX = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, 0x1207171832eL, "component");
+    /*package*/ static final SContainmentLink component$uznI = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, 0x1207171832eL, "component");
   }
 }

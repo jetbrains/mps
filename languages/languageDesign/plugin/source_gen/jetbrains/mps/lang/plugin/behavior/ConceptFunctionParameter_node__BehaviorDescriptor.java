@@ -37,11 +37,11 @@ public final class ConceptFunctionParameter_node__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    if ((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EditorTab$AL, false, false) != null)) {
-      SNode editorTab = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EditorTab$AL, false, false);
-      return _quotation_createNode_luv170_a1a0a0(SLinkOperations.getTarget(editorTab, LINKS.baseNodeConcept$tSjP));
+    if ((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EditorTab$zO, false, false) != null)) {
+      SNode editorTab = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EditorTab$zO, false, false);
+      return _quotation_createNode_luv170_a1a0a0(SLinkOperations.getTarget(editorTab, LINKS.baseNodeConcept$FtgS));
     } else {
-      return ConceptFunctionParameter__BehaviorDescriptor.getType_id27DJnJtIQ9C.invokeSuper(__thisNode__, CONCEPTS.ConceptFunctionParameter_node$m4);
+      return ConceptFunctionParameter__BehaviorDescriptor.getType_id27DJnJtIQ9C.invokeSuper(__thisNode__, CONCEPTS.ConceptFunctionParameter_node$j7);
     }
   }
 
@@ -99,11 +99,11 @@ public final class ConceptFunctionParameter_node__BehaviorDescriptor extends Bas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorTab$AL = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, "jetbrains.mps.lang.plugin.structure.EditorTab");
-    /*package*/ static final SConcept ConceptFunctionParameter_node$m4 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1184b3b848fL, "jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_node");
+    /*package*/ static final SConcept EditorTab$zO = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, "jetbrains.mps.lang.plugin.structure.EditorTab");
+    /*package*/ static final SConcept ConceptFunctionParameter_node$j7 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1184b3b848fL, "jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_node");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseNodeConcept$tSjP = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, 0x33f4c34299ff0d30L, "baseNodeConcept");
+    /*package*/ static final SReferenceLink baseNodeConcept$FtgS = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, 0x33f4c34299ff0d30L, "baseNodeConcept");
   }
 }

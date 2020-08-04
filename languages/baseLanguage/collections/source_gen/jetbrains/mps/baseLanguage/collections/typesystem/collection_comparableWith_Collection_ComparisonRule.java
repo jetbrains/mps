@@ -37,7 +37,7 @@ public class collection_comparableWith_Collection_ComparisonRule extends Compari
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.CollectionType$jq;
+    return CONCEPTS.CollectionType$xH;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -54,6 +54,6 @@ public class collection_comparableWith_Collection_ComparisonRule extends Compari
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CollectionType$jq = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x62e1df06bd2172b2L, "jetbrains.mps.baseLanguage.collections.structure.CollectionType");
+    /*package*/ static final SConcept CollectionType$xH = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x62e1df06bd2172b2L, "jetbrains.mps.baseLanguage.collections.structure.CollectionType");
   }
 }

@@ -27,7 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlDoctypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   public XmlDoctypeDeclaration_Constraints() {
-    super(CONCEPTS.XmlDoctypeDeclaration$in);
+    super(CONCEPTS.XmlDoctypeDeclaration$GQ);
   }
 
   @Override
@@ -47,7 +47,7 @@ public class XmlDoctypeDeclaration_Constraints extends BaseConstraintsDescriptor
   }
   public static class DoctypeName_Property extends BasePropertyConstraintsDescriptor {
     public DoctypeName_Property(ConstraintsDescriptor container) {
-      super(PROPS.doctypeName$LI$R, container);
+      super(PROPS.doctypeName$F6Zm, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -69,23 +69,23 @@ public class XmlDoctypeDeclaration_Constraints extends BaseConstraintsDescriptor
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.doctypeName$LI$R, new DoctypeName_Property(this));
+    properties.put(PROPS.doctypeName$F6Zm, new DoctypeName_Property(this));
     return properties;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return ListSequence.fromList(SNodeOperations.getPrevSiblings(node, false)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.XmlDoctypeDeclaration$in);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.XmlDoctypeDeclaration$GQ);
       }
     }).isEmpty();
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:edc2e1a3-c4ab-4f36-a908-e29e4c77f1bb(jetbrains.mps.core.xml.constraints)", "1227128029536582485");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlDoctypeDeclaration$in = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, "jetbrains.mps.core.xml.structure.XmlDoctypeDeclaration");
+    /*package*/ static final SConcept XmlDoctypeDeclaration$GQ = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, "jetbrains.mps.core.xml.structure.XmlDoctypeDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty doctypeName$LI$R = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f4069eL, "doctypeName");
+    /*package*/ static final SProperty doctypeName$F6Zm = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f4069bL, 0x1d9c27c394f4069eL, "doctypeName");
   }
 }

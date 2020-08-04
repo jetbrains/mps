@@ -31,15 +31,15 @@ public class DataFlow {
     for (Instruction i : unreachable) {
       if (!(DataFlow.mayBeUnreachable(i)) && i.getSource() != null) {
         SNode unreachableNode = (SNode) i.getSource();
-        if (SNodeOperations.isInstanceOf(unreachableNode, CONCEPTS.Statement$ok)) {
+        if (SNodeOperations.isInstanceOf(unreachableNode, CONCEPTS.Statement$P6)) {
           unreachableNodes.add((SNode) i.getSource());
         } else {
-          if (SNodeOperations.isInstanceOf(unreachableNode, CONCEPTS.StatementList$TN)) {
-            if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(unreachableNode), CONCEPTS.Statement$ok))) {
+          if (SNodeOperations.isInstanceOf(unreachableNode, CONCEPTS.StatementList$m_)) {
+            if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(unreachableNode), CONCEPTS.Statement$P6))) {
               unreachableNodes.add((SNode) i.getSource());
             }
           } else {
-            unreachableNodes.add(SNodeOperations.getNodeAncestor(unreachableNode, CONCEPTS.Statement$ok, true, false));
+            unreachableNodes.add(SNodeOperations.getNodeAncestor(unreachableNode, CONCEPTS.Statement$P6, true, false));
           }
         }
       }
@@ -95,7 +95,7 @@ public class DataFlow {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 }

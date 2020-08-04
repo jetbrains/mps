@@ -33,11 +33,11 @@
       <node id="9116681015574412896" at="36,84,37,191" concept="2" />
       <node id="9116681015574412896" at="37,191,38,80" concept="2" />
       <node id="9116681015574412896" at="38,80,39,36" concept="6" />
-      <node id="1842653058274902924" at="43,0,44,0" concept="7" trace="WatchableListType$LM" />
-      <node id="1842653058274902924" at="44,0,45,0" concept="7" trace="ClassifierType$IZ" />
-      <node id="1842653058274902924" at="45,0,46,0" concept="7" trace="WatchableType$1t" />
-      <node id="1842653058274902924" at="49,0,50,0" concept="7" trace="classifier$xslD" />
-      <node id="1842653058274902924" at="50,0,51,0" concept="7" trace="parameter$HlfM" />
+      <node id="1842653058274902924" at="43,0,44,0" concept="7" trace="WatchableListType$ce" />
+      <node id="1842653058274902924" at="44,0,45,0" concept="7" trace="ClassifierType$bL" />
+      <node id="1842653058274902924" at="45,0,46,0" concept="7" trace="WatchableType$rT" />
+      <node id="1842653058274902924" at="49,0,50,0" concept="7" trace="classifier$cxMr" />
+      <node id="1842653058274902924" at="50,0,51,0" concept="7" trace="parameter$oqG$" />
       <node id="1842653058274902924" at="20,0,22,0" concept="1" trace="WatchableListIsAListOrWatchables_SubtypingRule#()V" />
       <node id="1842653058274902924" at="22,0,25,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1842653058274902924" at="25,0,28,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -92,7 +92,7 @@
       <node id="1842653058275008955" at="37,433,38,232" concept="2" />
       <node id="1842653058275008955" at="38,232,39,166" concept="2" />
       <node id="1842653058275008955" at="39,166,40,24" concept="6" />
-      <node id="1842653058275008950" at="44,0,45,0" concept="7" trace="WatchableListType$LM" />
+      <node id="1842653058275008950" at="44,0,45,0" concept="7" trace="WatchableListType$ce" />
       <node id="1842653058275008950" at="18,0,20,0" concept="1" trace="WatchableListIsAList_SubtypingRule#()V" />
       <node id="1842653058275008950" at="20,0,23,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1842653058275008950" at="23,0,26,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -143,8 +143,8 @@
       <node id="1842653058275013459" at="32,30,33,17" concept="6" />
       <node id="9116681015574437833" at="35,67,36,87" concept="5" />
       <node id="9116681015574437833" at="36,87,37,36" concept="6" />
-      <node id="1842653058275013459" at="41,0,42,0" concept="7" trace="WatchablesListCreator$Lj" />
-      <node id="1842653058275013459" at="42,0,43,0" concept="7" trace="WatchableListType$LM" />
+      <node id="1842653058275013459" at="41,0,42,0" concept="7" trace="WatchablesListCreator$bJ" />
+      <node id="1842653058275013459" at="42,0,43,0" concept="7" trace="WatchableListType$ce" />
       <node id="1842653058275013459" at="17,0,19,0" concept="1" trace="typeof_WatchablesListCreator_InferenceRule#()V" />
       <node id="1842653058275013459" at="26,0,29,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1842653058275013459" at="29,0,32,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -198,8 +198,8 @@
       <node id="43370322128290635" at="32,30,33,17" concept="6" />
       <node id="9116681015574451954" at="35,63,36,83" concept="5" />
       <node id="9116681015574451954" at="36,83,37,36" concept="6" />
-      <node id="43370322128290635" at="41,0,42,0" concept="7" trace="HighLevelWatchableCreator$Z$" />
-      <node id="43370322128290635" at="42,0,43,0" concept="7" trace="WatchableType$1t" />
+      <node id="43370322128290635" at="41,0,42,0" concept="7" trace="HighLevelWatchableCreator$q0" />
+      <node id="43370322128290635" at="42,0,43,0" concept="7" trace="WatchableType$rT" />
       <node id="43370322128290635" at="17,0,19,0" concept="1" trace="typeof_HighLevelWatchableCreator_InferenceRule#()V" />
       <node id="43370322128290635" at="26,0,29,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="43370322128290635" at="29,0,32,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -253,9 +253,9 @@
       <node id="43370322128303938" at="34,30,35,17" concept="6" />
       <node id="43370322128304578" at="38,36,39,80" concept="6" />
       <node id="43370322128304578" at="40,5,41,16" concept="6" />
-      <node id="43370322128303938" at="45,0,46,0" concept="7" trace="HighLevelCustomViewer$cJ" />
-      <node id="43370322128303938" at="46,0,47,0" concept="7" trace="HighLevelValue_ConceptFunctionParameter$pD" />
-      <node id="43370322128303938" at="50,0,51,0" concept="7" trace="valueType$D$sv" />
+      <node id="43370322128303938" at="45,0,46,0" concept="7" trace="HighLevelCustomViewer$Bb" />
+      <node id="43370322128303938" at="46,0,47,0" concept="7" trace="HighLevelValue_ConceptFunctionParameter$O5" />
+      <node id="43370322128303938" at="50,0,51,0" concept="7" trace="valueType$ShQV" />
       <node id="43370322128303938" at="19,0,21,0" concept="1" trace="typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule#()V" />
       <node id="43370322128303938" at="28,0,31,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="43370322128303938" at="31,0,34,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

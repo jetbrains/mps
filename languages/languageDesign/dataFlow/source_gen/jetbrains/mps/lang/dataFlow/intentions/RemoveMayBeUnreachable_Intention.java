@@ -35,7 +35,7 @@ public final class RemoveMayBeUnreachable_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.EmitMayBeUnreachable$ph);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.EmitMayBeUnreachable$dh);
   }
   @Override
   public boolean isSurroundWith() {
@@ -66,6 +66,6 @@ public final class RemoveMayBeUnreachable_Intention extends AbstractIntentionDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EmitMayBeUnreachable$ph = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, "jetbrains.mps.lang.dataFlow.structure.EmitMayBeUnreachable");
+    /*package*/ static final SConcept EmitMayBeUnreachable$dh = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, "jetbrains.mps.lang.dataFlow.structure.EmitMayBeUnreachable");
   }
 }

@@ -20,12 +20,12 @@ public class Queries {
     List<SNode> leastCommonSupertypes = SubtypingUtil.leastCommonSuperTypes(Arrays.asList(leftType, rightType), null);
     if (leastCommonSupertypes.isEmpty()) {
       SNode runtimeErrorType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956f9L, "jetbrains.mps.lang.typesystem.structure.RuntimeErrorType"));
-      SPropertyOperations.assign(runtimeErrorType, PROPS.errorText$WoF0, "incompatible types");
+      SPropertyOperations.assign(runtimeErrorType, PROPS.errorText$leWQ, "incompatible types");
       return runtimeErrorType;
     }
     SNode type = leastCommonSupertypes.iterator().next();
     {
-      SNode coercedNode_j6k1pf_d0b = TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.PrimitiveType$5);
+      SNode coercedNode_j6k1pf_d0b = TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.PrimitiveType$sR);
       if (coercedNode_j6k1pf_d0b != null) {
         return coercedNode_j6k1pf_d0b;
       } else {
@@ -35,10 +35,10 @@ public class Queries {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty errorText$WoF0 = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956f9L, 0x113f84956faL, "errorText");
+    /*package*/ static final SProperty errorText$leWQ = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956f9L, 0x113f84956faL, "errorText");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
   }
 }

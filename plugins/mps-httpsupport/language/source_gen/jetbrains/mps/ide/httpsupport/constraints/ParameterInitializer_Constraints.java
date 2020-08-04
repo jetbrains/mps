@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor {
   public ParameterInitializer_Constraints() {
-    super(CONCEPTS.ParameterInitializer$Et);
+    super(CONCEPTS.ParameterInitializer$k5);
   }
 
   @Override
@@ -53,7 +53,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$Ilew, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$DxS8, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -68,17 +68,17 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            final SNode bilder = (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.RequestURLBuilderExpression$JC) ? SNodeOperations.as(_context.getContextNode(), CONCEPTS.RequestURLBuilderExpression$JC) : SNodeOperations.as(SNodeOperations.getParent(_context.getContextNode()), CONCEPTS.RequestURLBuilderExpression$JC));
+            final SNode bilder = (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.RequestURLBuilderExpression$pg) ? SNodeOperations.as(_context.getContextNode(), CONCEPTS.RequestURLBuilderExpression$pg) : SNodeOperations.as(SNodeOperations.getParent(_context.getContextNode()), CONCEPTS.RequestURLBuilderExpression$pg));
 
-            return new FilteringScope(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(bilder, LINKS.requestHandler$EI79), CONCEPTS.QueryParameter$k9, null)) {
+            return new FilteringScope(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(bilder, LINKS.requestHandler$_UKL), CONCEPTS.QueryParameter$XL, null)) {
 
               @Override
               public boolean isExcluded(final SNode node) {
-                return ListSequence.fromList(SLinkOperations.getChildren(bilder, LINKS.initializer$5K$w)).findFirst(new IWhereFilter<SNode>() {
+                return ListSequence.fromList(SLinkOperations.getChildren(bilder, LINKS.initializer$Xe8)).findFirst(new IWhereFilter<SNode>() {
                   public boolean accept(SNode it) {
-                    return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b0a0a0a3(SLinkOperations.getTarget(it, LINKS.parameter$Ilew), node);
+                    return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b0a0a0a3(SLinkOperations.getTarget(it, LINKS.parameter$DxS8), node);
                   }
-                }) != null && !((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.parameter$Ilew) != null));
+                }) != null && !((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.parameter$DxS8) != null));
               }
             };
           }
@@ -90,7 +90,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.RequestURLBuilderExpression$JC);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.RequestURLBuilderExpression$pg);
   }
   private static boolean check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b0a0a0a3(SNode checkedDotOperand, SNode node) {
     if (null != checkedDotOperand) {
@@ -102,14 +102,14 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
   private static final SNodePointer breakingNode_9zeh4o_a0a0a0a0a1a0a0a0d = new SNodePointer("r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)", "6836281137582836959");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParameterInitializer$Et = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, "jetbrains.mps.ide.httpsupport.structure.ParameterInitializer");
-    /*package*/ static final SConcept RequestURLBuilderExpression$JC = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, "jetbrains.mps.ide.httpsupport.structure.RequestURLBuilderExpression");
-    /*package*/ static final SConcept QueryParameter$k9 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, "jetbrains.mps.ide.httpsupport.structure.QueryParameter");
+    /*package*/ static final SConcept ParameterInitializer$k5 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, "jetbrains.mps.ide.httpsupport.structure.ParameterInitializer");
+    /*package*/ static final SConcept RequestURLBuilderExpression$pg = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, "jetbrains.mps.ide.httpsupport.structure.RequestURLBuilderExpression");
+    /*package*/ static final SConcept QueryParameter$XL = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, "jetbrains.mps.ide.httpsupport.structure.QueryParameter");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$Ilew = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, 0x4027f9073ff5cf18L, "parameter");
-    /*package*/ static final SContainmentLink initializer$5K$w = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, 0x4027f9073ff652f7L, "initializer");
-    /*package*/ static final SReferenceLink requestHandler$EI79 = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, 0x4027f9073ff5cebeL, "requestHandler");
+    /*package*/ static final SReferenceLink parameter$DxS8 = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, 0x4027f9073ff5cf18L, "parameter");
+    /*package*/ static final SContainmentLink initializer$Xe8 = MetaAdapterFactory.getContainmentLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, 0x4027f9073ff652f7L, "initializer");
+    /*package*/ static final SReferenceLink requestHandler$_UKL = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, 0x4027f9073ff5cebeL, "requestHandler");
   }
 }

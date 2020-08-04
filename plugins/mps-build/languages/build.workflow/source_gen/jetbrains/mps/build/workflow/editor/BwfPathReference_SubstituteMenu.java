@@ -32,7 +32,7 @@ public class BwfPathReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_51lqj5_a(), CONCEPTS.BwfPathReference$gi));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_51lqj5_a(), CONCEPTS.BwfPathReference$JU));
     result.add(new SMP_Subconcepts_51lqj5_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class BwfPathReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_51lqj5_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BwfPathReference$gi, LINKS.target$3890);
+      super((SAbstractConcept) CONCEPTS.BwfPathReference$JU, LINKS.target$MVCC);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class BwfPathReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_51lqj5_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BwfPathReference$gi);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BwfPathReference$JU);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class BwfPathReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfPathReference$gi = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, "jetbrains.mps.build.workflow.structure.BwfPathReference");
+    /*package*/ static final SConcept BwfPathReference$JU = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, "jetbrains.mps.build.workflow.structure.BwfPathReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$3890 = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, 0x5c3f3e2c1cef4c20L, "target");
+    /*package*/ static final SReferenceLink target$MVCC = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, 0x5c3f3e2c1cef4c20L, "target");
   }
 }

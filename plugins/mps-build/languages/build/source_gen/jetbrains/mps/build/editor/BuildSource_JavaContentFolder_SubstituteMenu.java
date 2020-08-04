@@ -34,7 +34,7 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_v1e5qc_a(), CONCEPTS.BuildSource_JavaContentFolder$aT));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_v1e5qc_a(), CONCEPTS.BuildSource_JavaContentFolder$Hs));
     return result;
   }
 
@@ -106,7 +106,7 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.BuildSource_JavaContentFolder$aT, context);
+          super(CONCEPTS.BuildSource_JavaContentFolder$Hs, context);
           _context = context;
         }
 
@@ -117,8 +117,8 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.BuildSource_JavaContentFolder$aT, null);
-          SPropertyOperations.setEnum(node, PROPS.kind$yL59, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"), myParameterObject));
+          SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.BuildSource_JavaContentFolder$Hs, null);
+          SPropertyOperations.setEnum(node, PROPS.kind$ItBG, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974f7L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolderKind"), myParameterObject));
           return node;
         }
 
@@ -128,7 +128,7 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.BuildSource_JavaContentFolder$aT, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.BuildSource_JavaContentFolder$Hs, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -151,10 +151,10 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaContentFolder$aT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolder");
+    /*package*/ static final SConcept BuildSource_JavaContentFolder$Hs = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, "jetbrains.mps.build.structure.BuildSource_JavaContentFolder");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty kind$yL59 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, 0x48d5d03db92974fbL, "kind");
+    /*package*/ static final SProperty kind$ItBG = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, 0x48d5d03db92974fbL, "kind");
   }
 }

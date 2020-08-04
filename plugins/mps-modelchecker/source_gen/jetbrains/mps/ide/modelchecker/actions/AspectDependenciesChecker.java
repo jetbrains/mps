@@ -74,7 +74,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
       }
       // Check for unresolved references 
       for (final SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
-        if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, ref.getLink())) != null)) {
+        if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref.getLink())) != null)) {
           continue;
         }
         SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
@@ -161,8 +161,8 @@ public class AspectDependenciesChecker extends SpecificChecker {
       }
       if (moduleFqName.equals("MPS.Classpath")) {
         SNode refTargetRoot = reference.getTargetNode().getContainingRoot();
-        if (SNodeOperations.isInstanceOf(refTargetRoot, CONCEPTS.Classifier$hJ)) {
-          String cName = SPropertyOperations.getString(SNodeOperations.cast(refTargetRoot, CONCEPTS.Classifier$hJ), PROPS.name$lA7v);
+        if (SNodeOperations.isInstanceOf(refTargetRoot, CONCEPTS.Classifier$Ix)) {
+          String cName = SPropertyOperations.getString(SNodeOperations.cast(refTargetRoot, CONCEPTS.Classifier$Ix), PROPS.name$MnvL);
           String modelName = model.getModelName();
           if (findInModule(coreModule, modelName, cName)) {
             return CORE;
@@ -195,7 +195,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
       if (d.getModelName().equals(modelName)) {
         for (SNode _n : d.getRootNodes()) {
           SNode n = (SNode) _n;
-          if (SNodeOperations.isInstanceOf(n, CONCEPTS.Classifier$hJ) && SPropertyOperations.getString(SNodeOperations.cast(n, CONCEPTS.Classifier$hJ), PROPS.name$lA7v).equals(rootName)) {
+          if (SNodeOperations.isInstanceOf(n, CONCEPTS.Classifier$Ix) && SPropertyOperations.getString(SNodeOperations.cast(n, CONCEPTS.Classifier$Ix), PROPS.name$MnvL).equals(rootName)) {
             return true;
           }
         }
@@ -217,11 +217,11 @@ public class AspectDependenciesChecker extends SpecificChecker {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReferenceMacro$nk = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ReferenceMacro$30 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

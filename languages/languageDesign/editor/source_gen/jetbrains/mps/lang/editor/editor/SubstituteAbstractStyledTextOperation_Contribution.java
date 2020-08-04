@@ -43,7 +43,7 @@ public class SubstituteAbstractStyledTextOperation_Contribution extends Substitu
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_86ir5e_a(), CONCEPTS.AbstractStyledTextOperation$7y));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_86ir5e_a(), CONCEPTS.AbstractStyledTextOperation$j9));
     return result;
   }
 
@@ -81,19 +81,19 @@ public class SubstituteAbstractStyledTextOperation_Contribution extends Substitu
     @Override
     protected Iterable<? extends SConcept> getParameters(SubstituteMenuContext _context) {
       List<SConcept> emptyList = ListSequence.fromList(new ArrayList<SConcept>());
-      if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$6a))) {
+      if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$yW))) {
         return emptyList;
       }
-      SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
+      SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
       if (operand == null) {
         return emptyList;
       }
       final SNode type = TypecheckingFacade.getFromContext().getTypeOf(operand);
-      List<SConcept> list = SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractStyledTextOperation$7y, _context.getModel());
-      ListSequence.fromList(list).removeElement(CONCEPTS.AbstractStyledTextOperation$7y);
+      List<SConcept> list = SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractStyledTextOperation$j9, _context.getModel());
+      ListSequence.fromList(list).removeElement(CONCEPTS.AbstractStyledTextOperation$j9);
       return ListSequence.fromList(list).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
-          return SNodeOperations.isInstanceOf(type, CONCEPTS.StyledTextType$_w);
+          return SNodeOperations.isInstanceOf(type, CONCEPTS.StyledTextType$L7);
         }
       }).toListSequence();
     }
@@ -130,7 +130,7 @@ public class SubstituteAbstractStyledTextOperation_Contribution extends Substitu
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.AbstractStyledTextOperation$7y, context);
+          super(CONCEPTS.AbstractStyledTextOperation$j9, context);
           _context = context;
         }
 
@@ -151,7 +151,7 @@ public class SubstituteAbstractStyledTextOperation_Contribution extends Substitu
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.AbstractStyledTextOperation$7y, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.AbstractStyledTextOperation$j9, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -183,12 +183,12 @@ public class SubstituteAbstractStyledTextOperation_Contribution extends Substitu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractStyledTextOperation$7y = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ee423fc2ad10eceL, "jetbrains.mps.lang.editor.structure.AbstractStyledTextOperation");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept StyledTextType$_w = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x362b8be848e5c49bL, "jetbrains.mps.lang.editor.structure.StyledTextType");
+    /*package*/ static final SConcept AbstractStyledTextOperation$j9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ee423fc2ad10eceL, "jetbrains.mps.lang.editor.structure.AbstractStyledTextOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept StyledTextType$L7 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x362b8be848e5c49bL, "jetbrains.mps.lang.editor.structure.StyledTextType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

@@ -36,7 +36,7 @@ public class commandReference extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_h8zl7k_a(), CONCEPTS.CommandReferenceExpression$9D));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_h8zl7k_a(), CONCEPTS.CommandReferenceExpression$Kl));
     return result;
   }
 
@@ -73,7 +73,7 @@ public class commandReference extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.CommandDeclaration$r5);
+      return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.CommandDeclaration$1L);
     }
     private class SMP_Action_h8zl7k_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -108,7 +108,7 @@ public class commandReference extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.CommandReferenceExpression$9D, context);
+          super(CONCEPTS.CommandReferenceExpression$Kl, context);
           _context = context;
         }
 
@@ -119,8 +119,8 @@ public class commandReference extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode reference = SNodeFactoryOperations.createNewNode(CONCEPTS.CommandReferenceExpression$9D, null);
-          SLinkOperations.setTarget(reference, LINKS.command$l53x, myParameterObject);
+          SNode reference = SNodeFactoryOperations.createNewNode(CONCEPTS.CommandReferenceExpression$Kl, null);
+          SLinkOperations.setTarget(reference, LINKS.command$ZaEd, myParameterObject);
           return reference;
         }
 
@@ -130,7 +130,7 @@ public class commandReference extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.CommandReferenceExpression$9D, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.CommandReferenceExpression$Kl, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -143,12 +143,12 @@ public class commandReference extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
         }
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          return "reference to a " + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + " command";
+          return "reference to a " + SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL) + " command";
         }
       }
     }
@@ -156,15 +156,15 @@ public class commandReference extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CommandReferenceExpression$9D = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, "jetbrains.mps.execution.commands.structure.CommandReferenceExpression");
-    /*package*/ static final SConcept CommandDeclaration$r5 = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, "jetbrains.mps.execution.commands.structure.CommandDeclaration");
+    /*package*/ static final SConcept CommandReferenceExpression$Kl = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, "jetbrains.mps.execution.commands.structure.CommandReferenceExpression");
+    /*package*/ static final SConcept CommandDeclaration$1L = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be8L, "jetbrains.mps.execution.commands.structure.CommandDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink command$l53x = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, 0xbe3a0d5ba1a2bdbL, "command");
+    /*package*/ static final SReferenceLink command$ZaEd = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bd9L, 0xbe3a0d5ba1a2bdbL, "command");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

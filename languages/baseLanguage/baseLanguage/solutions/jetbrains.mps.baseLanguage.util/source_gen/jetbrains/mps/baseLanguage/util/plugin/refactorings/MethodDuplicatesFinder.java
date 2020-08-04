@@ -35,7 +35,7 @@ public class MethodDuplicatesFinder {
   }
   public List<MethodMatch> findDuplicates(SNode root) {
     List<MethodMatch> found = new ArrayList<MethodMatch>();
-    for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.BaseConcept$Sz, false, new SAbstractConcept[]{}))) {
+    for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.BaseConcept$gP, false, new SAbstractConcept[]{}))) {
       SNode current = node;
       MethodMatchModifier modifier = new MethodMatchModifier();
       boolean hasNoErrors = true;
@@ -99,6 +99,6 @@ public class MethodDuplicatesFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

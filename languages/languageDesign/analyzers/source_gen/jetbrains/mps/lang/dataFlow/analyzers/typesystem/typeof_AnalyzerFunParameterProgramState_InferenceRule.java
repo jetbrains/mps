@@ -26,7 +26,7 @@ public class typeof_AnalyzerFunParameterProgramState_InferenceRule extends Abstr
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AnalyzerFunParameterProgramState$EQ;
+    return CONCEPTS.AnalyzerFunParameterProgramState$xz;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_AnalyzerFunParameterProgramState_InferenceRule extends Abstr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnalyzerFunParameterProgramState$EQ = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1dd4d2L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterProgramState");
+    /*package*/ static final SConcept AnalyzerFunParameterProgramState$xz = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1dd4d2L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterProgramState");
   }
 }

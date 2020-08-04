@@ -41,16 +41,16 @@ public abstract class InlineVariableRefactoring {
       if (instruction instanceof WriteInstruction) {
         WriteInstruction write = (WriteInstruction) instruction;
         if (write.getSource() != variable && write.getVariable() == variable) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(variable, LINKS.initializer$no3R));
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(variable, LINKS.initializer$2twD));
           return;
         }
       }
     }
-    SNodeOperations.deleteNode(SNodeOperations.getNodeAncestor(variable, CONCEPTS.Statement$ok, false, false));
+    SNodeOperations.deleteNode(SNodeOperations.getNodeAncestor(variable, CONCEPTS.Statement$P6, false, false));
   }
   public void optimizeAssignment(SNode assignment, SNode variable) {
-    SNode method = SNodeOperations.getNodeAncestor(assignment, CONCEPTS.BaseMethodDeclaration$RR, false, false);
-    Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(method, LINKS.body$qspy));
+    SNode method = SNodeOperations.getNodeAncestor(assignment, CONCEPTS.BaseMethodDeclaration$kD, false, false);
+    Program program = new MPSProgramBuilder().buildProgram(SLinkOperations.getTarget(method, LINKS.body$5xQk));
     AnalysisResult<Set<ReadInstruction>> reachingReads = program.analyze(new ReachingReadsAnalyzer());
     for (Instruction instruction : ListSequence.fromList(program.getInstructionsFor(assignment))) {
       for (Instruction next : SetSequence.fromSet(instruction.succ())) {
@@ -64,11 +64,11 @@ public abstract class InlineVariableRefactoring {
     SNodeOperations.deleteNode(SNodeOperations.getParent(assignment));
   }
   public SNode getBaseStatementList(SNode node) {
-    SNode current = SNodeOperations.getNodeAncestor(node, CONCEPTS.StatementList$TN, false, false);
-    while ((SNodeOperations.getNodeAncestorWhereConceptInList(current, new SAbstractConcept[]{CONCEPTS.StatementList$TN, CONCEPTS.IControlFlowInterrupter$qo}, false, false) != null)) {
-      SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(current, new SAbstractConcept[]{CONCEPTS.StatementList$TN, CONCEPTS.IControlFlowInterrupter$qo}, false, false);
-      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.StatementList$TN)) {
-        current = SNodeOperations.cast(ancestor, CONCEPTS.StatementList$TN);
+    SNode current = SNodeOperations.getNodeAncestor(node, CONCEPTS.StatementList$m_, false, false);
+    while ((SNodeOperations.getNodeAncestorWhereConceptInList(current, new SAbstractConcept[]{CONCEPTS.StatementList$m_, CONCEPTS.IControlFlowInterrupter$Ra}, false, false) != null)) {
+      SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(current, new SAbstractConcept[]{CONCEPTS.StatementList$m_, CONCEPTS.IControlFlowInterrupter$Ra}, false, false);
+      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.StatementList$m_)) {
+        current = SNodeOperations.cast(ancestor, CONCEPTS.StatementList$m_);
       } else {
         break;
       }
@@ -76,24 +76,24 @@ public abstract class InlineVariableRefactoring {
     return current;
   }
   public static InlineVariableRefactoring createRefactoring(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.LocalVariableDeclaration$Bf)) {
-      return new InlineVariableAssignmentRefactoring(SNodeOperations.cast(node, CONCEPTS.LocalVariableDeclaration$Bf));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.LocalVariableDeclaration$41)) {
+      return new InlineVariableAssignmentRefactoring(SNodeOperations.cast(node, CONCEPTS.LocalVariableDeclaration$41));
     } else {
-      return new InlineVariableReferenceRefactoring(SNodeOperations.cast(node, CONCEPTS.VariableReference$sQ));
+      return new InlineVariableReferenceRefactoring(SNodeOperations.cast(node, CONCEPTS.VariableReference$TC));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SInterfaceConcept IControlFlowInterrupter$qo = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7c8556154508e980L, "jetbrains.mps.baseLanguage.structure.IControlFlowInterrupter");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SInterfaceConcept IControlFlowInterrupter$Ra = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7c8556154508e980L, "jetbrains.mps.baseLanguage.structure.IControlFlowInterrupter");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 }

@@ -35,7 +35,7 @@ public class DerivedClasses_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.ClassConcept$IY;
+    return CONCEPTS.ClassConcept$bK;
   }
 
   @Override
@@ -43,7 +43,7 @@ public class DerivedClasses_Finder extends GeneratedFinder {
     try {
       monitor.start("Derived Classes", 1000);
       final Queue<SNode> currentClasses = QueueSequence.fromQueue(new LinkedList<SNode>());
-      QueueSequence.fromQueue(currentClasses).addLastElement(SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY));
+      QueueSequence.fromQueue(currentClasses).addLastElement(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK));
       while (QueueSequence.fromQueue(currentClasses).isNotEmpty()) {
         SNode nextNode = QueueSequence.fromQueue(currentClasses).removeFirstElement();
         FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
@@ -51,9 +51,9 @@ public class DerivedClasses_Finder extends GeneratedFinder {
             SNode nodeParam = (SNode) searchResult.getObject();
             new _FunctionTypes._void_P1_E0<SNode>() {
               public void invoke(SNode directDescendant) {
-                SNode foundClass = SNodeOperations.cast(directDescendant, CONCEPTS.ClassConcept$IY);
+                SNode foundClass = SNodeOperations.cast(directDescendant, CONCEPTS.ClassConcept$bK);
                 callback.onUsageFound(createSingleResult(foundClass));
-                if (!(SNodeOperations.isInstanceOf(foundClass, CONCEPTS.AnonymousClass$aF))) {
+                if (!(SNodeOperations.isInstanceOf(foundClass, CONCEPTS.AnonymousClass$Bt))) {
                   QueueSequence.fromQueue(currentClasses).addLastElement(foundClass);
                 }
               }
@@ -78,7 +78,7 @@ public class DerivedClasses_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 }

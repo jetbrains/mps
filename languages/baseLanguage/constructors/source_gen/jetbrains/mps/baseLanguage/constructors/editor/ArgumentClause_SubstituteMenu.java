@@ -70,7 +70,7 @@ public class ArgumentClause_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.constructors.editor.CustomArgumentClauseSubstitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ArgumentClause$13;
+      return CONCEPTS.ArgumentClause$Kb;
     }
   }
   public class SMP_Include_5erpue_b extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -94,12 +94,12 @@ public class ArgumentClause_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.constructors.editor.ListArgumentClauseSubstitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ArgumentClause$13;
+      return CONCEPTS.ArgumentClause$Kb;
     }
   }
   public class SMP_Subconcepts_5erpue_c extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ArgumentClause$13);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ArgumentClause$Kb);
     }
     @NotNull
     @Override
@@ -120,6 +120,6 @@ public class ArgumentClause_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArgumentClause$13 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b7L, "jetbrains.mps.baseLanguage.constructors.structure.ArgumentClause");
+    /*package*/ static final SConcept ArgumentClause$Kb = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b7L, "jetbrains.mps.baseLanguage.constructors.structure.ArgumentClause");
   }
 }

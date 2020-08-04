@@ -36,9 +36,9 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_amdhzc_a(), CONCEPTS.PropertiesDeclaration$1Z));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_amdhzc_a(), CONCEPTS.PropertiesDeclaration$8A));
     result.add(new SMP_Subconcepts_amdhzc_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.PropertiesLine$2u) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.PropertiesLine$95) {
 
       @NotNull
       @Override
@@ -51,7 +51,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.PropertiesLine$2u));
+    }, CONCEPTS.PropertiesLine$95));
     return result;
   }
 
@@ -96,7 +96,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.PropertiesDeclaration$1Z, context);
+        super(CONCEPTS.PropertiesDeclaration$8A, context);
         _context = context;
       }
 
@@ -107,13 +107,13 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode pd = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.PropertiesDeclaration$1Z, null);
+        SNode pd = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.PropertiesDeclaration$8A, null);
         if (!((pattern == null || pattern.length() == 0))) {
           String name = pattern;
           if (pattern.endsWith("=")) {
             name = name.substring(0, name.length() - 1);
           }
-          SPropertyOperations.assign(pd, PROPS.name$lA7v, name);
+          SPropertyOperations.assign(pd, PROPS.name$MnvL, name);
         }
         return pd;
       }
@@ -138,7 +138,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_amdhzc_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PropertiesLine$2u);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PropertiesLine$95);
     }
     @NotNull
     @Override
@@ -159,11 +159,11 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertiesDeclaration$1Z = MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, "jetbrains.mps.core.properties.structure.PropertiesDeclaration");
-    /*package*/ static final SConcept PropertiesLine$2u = MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac2L, "jetbrains.mps.core.properties.structure.PropertiesLine");
+    /*package*/ static final SConcept PropertiesDeclaration$8A = MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, "jetbrains.mps.core.properties.structure.PropertiesDeclaration");
+    /*package*/ static final SConcept PropertiesLine$95 = MetaAdapterFactory.getConcept(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac2L, "jetbrains.mps.core.properties.structure.PropertiesLine");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

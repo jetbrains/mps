@@ -35,7 +35,7 @@ public final class AddModeToDataFlowBuilder_Intention extends AbstractIntentionD
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modes$S9of)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modes$Mjcf)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -56,7 +56,7 @@ public final class AddModeToDataFlowBuilder_Intention extends AbstractIntentionD
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.addNewChild(node, LINKS.modes$S9of, null);
+      SLinkOperations.addNewChild(node, LINKS.modes$Mjcf, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -65,6 +65,6 @@ public final class AddModeToDataFlowBuilder_Intention extends AbstractIntentionD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modes$S9of = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x6e8db6877fd04efbL, "modes");
+    /*package*/ static final SContainmentLink modes$Mjcf = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x6e8db6877fd04efbL, "modes");
   }
 }

@@ -38,15 +38,15 @@ public final class PasteWrappers__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getBaseConceptCollection_id4$$3zrO3UBG(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode nodeFactory : SLinkOperations.getChildren(__thisNode__, LINKS.wrapper$Kh6d)) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(nodeFactory, LINKS.sourceConcept$cqr2));
+    for (SNode nodeFactory : SLinkOperations.getChildren(__thisNode__, LINKS.wrapper$1UOw)) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(nodeFactory, LINKS.sourceConcept$u49l));
     }
     return result;
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SNode pasteWrapper = SNodeFactoryOperations.createNewNode(CONCEPTS.PasteWrapper$7H, null);
-    SLinkOperations.setTarget(pasteWrapper, LINKS.sourceConcept$cqr2, baseConcept);
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.wrapper$Kh6d)).addElement(pasteWrapper);
+    SNode pasteWrapper = SNodeFactoryOperations.createNewNode(CONCEPTS.PasteWrapper$Q0, null);
+    SLinkOperations.setTarget(pasteWrapper, LINKS.sourceConcept$u49l, baseConcept);
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.wrapper$1UOw)).addElement(pasteWrapper);
   }
 
   /*package*/ PasteWrappers__BehaviorDescriptor() {
@@ -99,11 +99,11 @@ public final class PasteWrappers__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink sourceConcept$cqr2 = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, 0x11c5159fc58L, "sourceConcept");
-    /*package*/ static final SContainmentLink wrapper$Kh6d = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51553d4eL, 0x11c515647fcL, "wrapper");
+    /*package*/ static final SReferenceLink sourceConcept$u49l = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, 0x11c5159fc58L, "sourceConcept");
+    /*package*/ static final SContainmentLink wrapper$1UOw = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51553d4eL, 0x11c515647fcL, "wrapper");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PasteWrapper$7H = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, "jetbrains.mps.lang.actions.structure.PasteWrapper");
+    /*package*/ static final SConcept PasteWrapper$Q0 = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, "jetbrains.mps.lang.actions.structure.PasteWrapper");
   }
 }

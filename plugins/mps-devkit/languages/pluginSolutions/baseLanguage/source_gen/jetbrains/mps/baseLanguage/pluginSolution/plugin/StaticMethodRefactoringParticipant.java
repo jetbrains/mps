@@ -36,41 +36,41 @@ public class StaticMethodRefactoringParticipant extends StaticMemberRefactoringP
   }
 
   public boolean isApplicable(SNode nodeToMove) {
-    return SNodeOperations.isInstanceOf(nodeToMove, CONCEPTS.StaticMethodDeclaration$eX);
+    return SNodeOperations.isInstanceOf(nodeToMove, CONCEPTS.StaticMethodDeclaration$FJ);
   }
 
   @Override
   protected void doUpdateReference(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, final SNode containingNode, final SReferenceLink role, UpdateReferencesParticipantBase.NodeData<UpdateReferencesParticipantBase.NamedNodeReference> newTarget, final String resolveInfo) {
-    if (!(SNodeOperations.isInstanceOf(containingNode, CONCEPTS.IMethodCall$ln)) || newTarget.other() == null) {
+    if (!(SNodeOperations.isInstanceOf(containingNode, CONCEPTS.IMethodCall$M9)) || newTarget.other() == null) {
       super.doUpdateReference(selectedOptions, repository, containingNode, role, newTarget, resolveInfo);
     } else {
       @Nullable SNode tryToResolveNewTarget = newTarget.baseData().reference().resolve(repository);
       SNode replacement;
-      if (tryToResolveNewTarget != null && SNodeOperations.getNodeAncestor(containingNode, CONCEPTS.Classifier$hJ, false, false) == SNodeOperations.getNodeAncestor(tryToResolveNewTarget, CONCEPTS.Classifier$hJ, false, false)) {
+      if (tryToResolveNewTarget != null && SNodeOperations.getNodeAncestor(containingNode, CONCEPTS.Classifier$Ix, false, false) == SNodeOperations.getNodeAncestor(tryToResolveNewTarget, CONCEPTS.Classifier$Ix, false, false)) {
         replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
         SNodeOperations.replaceWithAnother(containingNode, replacement);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.baseMethodDeclaration$ItxI, newTarget, resolveInfo);
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.baseMethodDeclaration$pyYw, newTarget, resolveInfo);
       } else {
         replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
         SNodeOperations.replaceWithAnother(containingNode, replacement);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.baseMethodDeclaration$ItxI, newTarget, resolveInfo);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.classConcept$70aQ, new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(newTarget.other(), ((UpdateReferencesParticipantBase.NamedNodeReference) null)), newTarget.other().name());
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.baseMethodDeclaration$pyYw, newTarget, resolveInfo);
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.classConcept$M5BC, new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(newTarget.other(), ((UpdateReferencesParticipantBase.NamedNodeReference) null)), newTarget.other().name());
       }
-      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(containingNode, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$ItKJ)));
-      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.typeArgument$C5i1)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(containingNode, CONCEPTS.IMethodCall$ln), LINKS.typeArgument$C5i1)));
+      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(containingNode, CONCEPTS.IMethodCall$M9), LINKS.actualArgument$pzdx)));
+      ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.typeArgument$jaIN)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(containingNode, CONCEPTS.IMethodCall$M9), LINKS.typeArgument$jaIN)));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classConcept$M5BC = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeArgument$jaIN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
   }
 }

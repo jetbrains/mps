@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RGBColor_Constraints extends BaseConstraintsDescriptor {
   public RGBColor_Constraints() {
-    super(CONCEPTS.RGBColor$1P);
+    super(CONCEPTS.RGBColor$ds);
   }
 
   public static class Value_Property extends BasePropertyConstraintsDescriptor {
     public Value_Property(ConstraintsDescriptor container) {
-      super(PROPS.value$gccz, container);
+      super(PROPS.value$kuoa, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -39,21 +39,21 @@ public class RGBColor_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return SPropertyOperations.getString(node, PROPS.value$gccz) == null || propertyValue.matches("[0-9a-fA-Z]{1,6}");
+      return SPropertyOperations.getString(node, PROPS.value$kuoa) == null || propertyValue.matches("[0-9a-fA-Z]{1,6}");
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.value$gccz, new Value_Property(this));
+    properties.put(PROPS.value$kuoa, new Value_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RGBColor$1P = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, "jetbrains.mps.lang.editor.structure.RGBColor");
+    /*package*/ static final SConcept RGBColor$ds = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, "jetbrains.mps.lang.editor.structure.RGBColor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$gccz = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, 0x11d52e5171bL, "value");
+    /*package*/ static final SProperty value$kuoa = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, 0x11d52e5171bL, "value");
   }
 }

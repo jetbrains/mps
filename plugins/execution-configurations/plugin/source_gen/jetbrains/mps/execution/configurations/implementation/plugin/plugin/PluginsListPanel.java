@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class PluginsListPanel extends ListPanel<SNodeReference> {
   private final Function<SNode, String> myPluginNameFunc = new Function<SNode, String>() {
     public String apply(SNode n) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(n, CONCEPTS.BuildMpsLayout_Plugin$JV), LINKS.plugin$E24g), PROPS.id$sSa_);
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(n, CONCEPTS.BuildMpsLayout_Plugin$cj), LINKS.plugin$9ewC), PROPS.id$W4AX);
     }
   };
 
@@ -78,7 +78,7 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
     return accessHelper.runReadAction(new Computable<List<SNodeReference>>() {
       public List<SNodeReference> compute() {
         CollectConsumer<SNode> collector = new CollectConsumer<SNode>();
-        FindUsagesFacade.getInstance().findInstances(new GlobalScope(mpsProject.getRepository()), Collections.singleton(CONCEPTS.BuildMpsLayout_Plugin$JV), false, collector, progress);
+        FindUsagesFacade.getInstance().findInstances(new GlobalScope(mpsProject.getRepository()), Collections.singleton(CONCEPTS.BuildMpsLayout_Plugin$cj), false, collector, progress);
         List<SNodeReference> rv = ListSequence.fromList(new ArrayList<SNodeReference>());
         for (SNode node : CollectionSequence.fromCollection(collector.getResult())) {
           ListSequence.fromList(rv).addElement(node.getReference());
@@ -96,14 +96,14 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_Plugin$JV = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin");
+    /*package*/ static final SConcept BuildMpsLayout_Plugin$cj = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink plugin$E24g = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
+    /*package*/ static final SReferenceLink plugin$9ewC = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty id$sSa_ = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
+    /*package*/ static final SProperty id$W4AX = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
   }
 }

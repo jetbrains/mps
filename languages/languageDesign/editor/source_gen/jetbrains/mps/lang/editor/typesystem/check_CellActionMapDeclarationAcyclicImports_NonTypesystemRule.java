@@ -32,7 +32,7 @@ public class check_CellActionMapDeclarationAcyclicImports_NonTypesystemRule exte
     });
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellActionMapDeclaration$Fh;
+    return CONCEPTS.CellActionMapDeclaration$QS;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,6 +42,6 @@ public class check_CellActionMapDeclarationAcyclicImports_NonTypesystemRule exte
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellActionMapDeclaration$Fh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
+    /*package*/ static final SConcept CellActionMapDeclaration$QS = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
   }
 }

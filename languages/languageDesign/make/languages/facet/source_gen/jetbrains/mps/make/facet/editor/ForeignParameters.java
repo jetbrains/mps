@@ -44,7 +44,7 @@ public class ForeignParameters extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_gb3jz3_a(), CONCEPTS.ForeignParametersComponentExpression$qb));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_gb3jz3_a(), CONCEPTS.ForeignParametersComponentExpression$33));
     return result;
   }
 
@@ -81,23 +81,23 @@ public class ForeignParameters extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      final SNode td = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TargetDeclaration$7n, false, false);
-      SNode fd = SNodeOperations.cast(SNodeOperations.getParent(td), CONCEPTS.FacetDeclaration$al);
-      return ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.targetDeclaration$aHx5)).where(new IWhereFilter<SNode>() {
+      final SNode td = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TargetDeclaration$Kf, false, false);
+      SNode fd = SNodeOperations.cast(SNodeOperations.getParent(td), CONCEPTS.FacetDeclaration$Nd);
+      return ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.targetDeclaration$z39X)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode sibl) {
           return sibl != td;
         }
-      }).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.required$WZui)).translate(new ITranslator2<SNode, SNode>() {
+      }).concat(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.required$ll7a)).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode rfd) {
-          return SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$e6yw), LINKS.targetDeclaration$aHx5);
+          return SLinkOperations.getChildren(SLinkOperations.getTarget(rfd, LINKS.facet$Asbo), LINKS.targetDeclaration$z39X);
         }
       })).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode rtd) {
-          return SLinkOperations.getTarget(rtd, LINKS.parameters$4w7G);
+          return SLinkOperations.getTarget(rtd, LINKS.parameters$sPK$);
         }
       }).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode p) {
-          return SLinkOperations.getChildren(p, LINKS.component$fjBK);
+          return SLinkOperations.getChildren(p, LINKS.component$wCHx);
         }
       }).toListSequence();
     }
@@ -134,7 +134,7 @@ public class ForeignParameters extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.ForeignParametersComponentExpression$qb, context);
+          super(CONCEPTS.ForeignParametersComponentExpression$33, context);
           _context = context;
         }
 
@@ -145,7 +145,7 @@ public class ForeignParameters extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode fve = _quotation_createNode_gb3jz3_a0a0a0a(SNodeOperations.getNodeAncestor(myParameterObject, CONCEPTS.TargetDeclaration$7n, false, false));
+          SNode fve = _quotation_createNode_gb3jz3_a0a0a0a(SNodeOperations.getNodeAncestor(myParameterObject, CONCEPTS.TargetDeclaration$Kf, false, false));
           SNode op = _quotation_createNode_gb3jz3_a0b0a0a(myParameterObject);
           return _quotation_createNode_gb3jz3_a2a0a0(fve, op);
         }
@@ -156,7 +156,7 @@ public class ForeignParameters extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.ForeignParametersComponentExpression$qb, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.ForeignParametersComponentExpression$33, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -177,7 +177,7 @@ public class ForeignParameters extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(myParameterObject, CONCEPTS.TargetDeclaration$7n, false, false), PROPS.name$lA7v) + "." + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+          return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(myParameterObject, CONCEPTS.TargetDeclaration$Kf, false, false), PROPS.name$MnvL) + "." + SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
         }
       }
     }
@@ -215,20 +215,20 @@ public class ForeignParameters extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ForeignParametersComponentExpression$qb = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b1L, "jetbrains.mps.make.facet.structure.ForeignParametersComponentExpression");
-    /*package*/ static final SConcept TargetDeclaration$7n = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
-    /*package*/ static final SConcept FacetDeclaration$al = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
+    /*package*/ static final SConcept ForeignParametersComponentExpression$33 = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b1L, "jetbrains.mps.make.facet.structure.ForeignParametersComponentExpression");
+    /*package*/ static final SConcept TargetDeclaration$Kf = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
+    /*package*/ static final SConcept FacetDeclaration$Nd = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targetDeclaration$aHx5 = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5912a2ab1cd4153eL, "targetDeclaration");
-    /*package*/ static final SContainmentLink required$WZui = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5979ed6d2b21b300L, "required");
-    /*package*/ static final SReferenceLink facet$e6yw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
-    /*package*/ static final SContainmentLink parameters$4w7G = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
-    /*package*/ static final SContainmentLink component$fjBK = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
+    /*package*/ static final SContainmentLink targetDeclaration$z39X = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5912a2ab1cd4153eL, "targetDeclaration");
+    /*package*/ static final SContainmentLink required$ll7a = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5979ed6d2b21b300L, "required");
+    /*package*/ static final SReferenceLink facet$Asbo = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
+    /*package*/ static final SContainmentLink parameters$sPK$ = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
+    /*package*/ static final SContainmentLink component$wCHx = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

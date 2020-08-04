@@ -73,25 +73,25 @@ public class GoToEditorDeclarationHelper {
     return SModuleOperations.getAspect(language, "editor");
   }
   public static SNode findEditorDeclaration(SModel editorModel, final SNode conceptDeclaration) {
-    return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.ConceptEditorDeclaration$s6)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.ConceptEditorDeclaration$BH)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$Dtb8) == conceptDeclaration;
+        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$HJmJ) == conceptDeclaration;
       }
     });
   }
   public static SNode createEditorDeclaration(SNode conceptDeclaration, SModel editorModelDescriptor) {
     SModel editorModel = editorModelDescriptor;
-    SNode result = SNodeFactoryOperations.createNewNode(editorModel, CONCEPTS.ConceptEditorDeclaration$s6, null);
-    SLinkOperations.setTarget(result, LINKS.conceptDeclaration$Dtb8, conceptDeclaration);
+    SNode result = SNodeFactoryOperations.createNewNode(editorModel, CONCEPTS.ConceptEditorDeclaration$BH, null);
+    SLinkOperations.setTarget(result, LINKS.conceptDeclaration$HJmJ, conceptDeclaration);
     SModelOperations.addRootNode(editorModel, result);
     return result;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptEditorDeclaration$s6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
+    /*package*/ static final SConcept ConceptEditorDeclaration$BH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 }

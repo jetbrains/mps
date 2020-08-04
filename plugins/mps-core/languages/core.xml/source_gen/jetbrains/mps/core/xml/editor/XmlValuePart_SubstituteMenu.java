@@ -36,9 +36,9 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_rajt6d_a(), CONCEPTS.XmlValuePart$Ad));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_rajt6d_b(), CONCEPTS.XmlValuePart$Ad));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_rajt6d_c(), CONCEPTS.XmlValuePart$Ad));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_rajt6d_a(), CONCEPTS.XmlValuePart$G));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_rajt6d_b(), CONCEPTS.XmlValuePart$G));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_rajt6d_c(), CONCEPTS.XmlValuePart$G));
     result.add(new SMP_Subconcepts_rajt6d_d());
     return result;
   }
@@ -84,7 +84,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.XmlValuePart$Ad, context);
+        super(CONCEPTS.XmlValuePart$G, context);
         _context = context;
       }
 
@@ -95,7 +95,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlCharRefValue$_9, null);
+        return SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlCharRefValue$ZC, null);
       }
 
       @Override
@@ -137,7 +137,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.XmlValuePart$Ad, context);
+        super(CONCEPTS.XmlValuePart$G, context);
         _context = context;
       }
 
@@ -148,7 +148,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlEntityRefValue$MN, null);
+        return SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlEntityRefValue$di, null);
       }
 
       @Override
@@ -190,7 +190,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.XmlValuePart$Ad, context);
+        super(CONCEPTS.XmlValuePart$G, context);
         _context = context;
       }
 
@@ -201,8 +201,8 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlTextValue$BE, null);
-        SPropertyOperations.assign(val, PROPS.text$GoKl, pattern);
+        SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlTextValue$29, null);
+        SPropertyOperations.assign(val, PROPS.text$_LaO, pattern);
         return val;
       }
 
@@ -225,7 +225,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_rajt6d_d extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.XmlValuePart$Ad);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.XmlValuePart$G);
     }
     @NotNull
     @Override
@@ -246,13 +246,13 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlValuePart$Ad = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart");
-    /*package*/ static final SConcept XmlCharRefValue$_9 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, "jetbrains.mps.core.xml.structure.XmlCharRefValue");
-    /*package*/ static final SConcept XmlEntityRefValue$MN = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, "jetbrains.mps.core.xml.structure.XmlEntityRefValue");
-    /*package*/ static final SConcept XmlTextValue$BE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue");
+    /*package*/ static final SConcept XmlValuePart$G = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart");
+    /*package*/ static final SConcept XmlCharRefValue$ZC = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffed7feL, "jetbrains.mps.core.xml.structure.XmlCharRefValue");
+    /*package*/ static final SConcept XmlEntityRefValue$di = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, "jetbrains.mps.core.xml.structure.XmlEntityRefValue");
+    /*package*/ static final SConcept XmlTextValue$29 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$GoKl = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
+    /*package*/ static final SProperty text$_LaO = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
   }
 }

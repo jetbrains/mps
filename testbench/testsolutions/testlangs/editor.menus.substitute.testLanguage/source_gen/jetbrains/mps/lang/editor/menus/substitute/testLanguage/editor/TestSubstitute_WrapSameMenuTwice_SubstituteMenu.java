@@ -38,8 +38,8 @@ public class TestSubstitute_WrapSameMenuTwice_SubstituteMenu extends SubstituteM
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_aqil95_a(), CONCEPTS.TestSubstitute_WrapSameMenuTwice$w1));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_aqil95_b(), CONCEPTS.TestSubstitute_WrapSameMenuTwice$w1));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_aqil95_a(), CONCEPTS.TestSubstitute_WrapSameMenuTwice$Ky));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_aqil95_b(), CONCEPTS.TestSubstitute_WrapSameMenuTwice$Ky));
     return result;
   }
 
@@ -79,7 +79,7 @@ public class TestSubstitute_WrapSameMenuTwice_SubstituteMenu extends SubstituteM
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.TestSubstitute_WrapSameMenuTwice$w1;
+          return CONCEPTS.TestSubstitute_WrapSameMenuTwice$Ky;
         }
         @Nullable
         @Override
@@ -117,7 +117,7 @@ public class TestSubstitute_WrapSameMenuTwice_SubstituteMenu extends SubstituteM
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_SameMenu_ToWrap");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.TestSubstitute_WrapSameMenuTwice$w1;
+      return CONCEPTS.TestSubstitute_WrapSameMenuTwice$Ky;
     }
   }
   private class SMP_Wrap_aqil95_b extends WrapperSubstituteMenuPart {
@@ -143,7 +143,7 @@ public class TestSubstitute_WrapSameMenuTwice_SubstituteMenu extends SubstituteM
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.TestSubstitute_WrapSameMenuTwice$w1;
+          return CONCEPTS.TestSubstitute_WrapSameMenuTwice$Ky;
         }
         @Nullable
         @Override
@@ -181,11 +181,11 @@ public class TestSubstitute_WrapSameMenuTwice_SubstituteMenu extends SubstituteM
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_SameMenu_ToWrap");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.TestSubstitute_WrapSameMenuTwice$w1;
+      return CONCEPTS.TestSubstitute_WrapSameMenuTwice$Ky;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstitute_WrapSameMenuTwice$w1 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709dL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_WrapSameMenuTwice");
+    /*package*/ static final SConcept TestSubstitute_WrapSameMenuTwice$Ky = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709dL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_WrapSameMenuTwice");
   }
 }

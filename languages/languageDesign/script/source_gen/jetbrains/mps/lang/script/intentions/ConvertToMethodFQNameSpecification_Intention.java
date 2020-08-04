@@ -54,8 +54,8 @@ public final class ConvertToMethodFQNameSpecification_Intention extends Abstract
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode methodSpecification = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.FQNameMethodSpecification$xL);
-      SPropertyOperations.assign(methodSpecification, PROPS.snodeId$rqKY, SLinkOperations.getTarget(node, LINKS.methodDeclaration$hUh0).getNodeId().toString());
+      SNode methodSpecification = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.FQNameMethodSpecification$6z);
+      SPropertyOperations.assign(methodSpecification, PROPS.snodeId$n_lK, SLinkOperations.getTarget(node, LINKS.methodDeclaration$e4PM).getNodeId().toString());
       SNodeOperations.deleteNode(node);
     }
     @Override
@@ -65,14 +65,14 @@ public final class ConvertToMethodFQNameSpecification_Intention extends Abstract
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FQNameMethodSpecification$xL = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, "jetbrains.mps.lang.script.structure.FQNameMethodSpecification");
+    /*package*/ static final SConcept FQNameMethodSpecification$6z = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, "jetbrains.mps.lang.script.structure.FQNameMethodSpecification");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty snodeId$rqKY = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, 0x1fcdfeb518d2fe29L, "snodeId");
+    /*package*/ static final SProperty snodeId$n_lK = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, 0x1fcdfeb518d2fe29L, "snodeId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink methodDeclaration$hUh0 = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, 0x1fcdfeb518c43c59L, "methodDeclaration");
+    /*package*/ static final SReferenceLink methodDeclaration$e4PM = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, 0x1fcdfeb518c43c59L, "methodDeclaration");
   }
 }

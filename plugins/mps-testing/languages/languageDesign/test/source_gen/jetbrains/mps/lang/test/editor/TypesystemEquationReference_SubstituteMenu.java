@@ -28,7 +28,7 @@ public class TypesystemEquationReference_SubstituteMenu extends SubstituteMenuBa
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_fdkso1_a(), CONCEPTS.TypesystemEquationReference$JO));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_fdkso1_a(), CONCEPTS.TypesystemEquationReference$Zj));
     result.add(new SMP_Subconcepts_fdkso1_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class TypesystemEquationReference_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_fdkso1_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TypesystemEquationReference$JO, LINKS.declaration$w83C);
+      super((SAbstractConcept) CONCEPTS.TypesystemEquationReference$Zj, LINKS.declaration$oKj7);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class TypesystemEquationReference_SubstituteMenu extends SubstituteMenuBa
   }
   public class SMP_Subconcepts_fdkso1_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TypesystemEquationReference$JO);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TypesystemEquationReference$Zj);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class TypesystemEquationReference_SubstituteMenu extends SubstituteMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypesystemEquationReference$JO = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x408630be7237fedfL, "jetbrains.mps.lang.test.structure.TypesystemEquationReference");
+    /*package*/ static final SConcept TypesystemEquationReference$Zj = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x408630be7237fedfL, "jetbrains.mps.lang.test.structure.TypesystemEquationReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$w83C = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
+    /*package*/ static final SReferenceLink declaration$oKj7 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
   }
 }

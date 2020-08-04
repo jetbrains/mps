@@ -34,13 +34,13 @@ public final class QuotationConsequence__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static boolean isMyAntiquotationExpression_id4SwrQttKYC0(@NotNull SNode __thisNode__, SNode expression) {
     // when quotation is embedded into transform statement via QuotationConsequoence, antiquotations detach nodes passed to them 
-    if (!(SNodeOperations.hasRole(expression, LINKS.expression$2sE0)) || SNodeOperations.getNodeAncestor(expression, CONCEPTS.Quotation$UL, false, false) != SLinkOperations.getTarget(__thisNode__, LINKS.quotation$jX1v)) {
+    if (!(SNodeOperations.hasRole(expression, LINKS.expression$hE$)) || SNodeOperations.getNodeAncestor(expression, CONCEPTS.Quotation$Vl, false, false) != SLinkOperations.getTarget(__thisNode__, LINKS.quotation$Fkf)) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(expression), CONCEPTS.Antiquotation$Ui)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(expression), CONCEPTS.Antiquotation$UQ)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(expression), CONCEPTS.ListAntiquotation$Xc)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(expression), CONCEPTS.ListAntiquotation$XK)) {
       return true;
     }
     return false;
@@ -93,13 +93,13 @@ public final class QuotationConsequence__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$2sE0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression");
-    /*package*/ static final SContainmentLink quotation$jX1v = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532d41L, 0x550f7de0eda6517eL, "quotation");
+    /*package*/ static final SContainmentLink expression$hE$ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, 0x1168c104657L, "expression");
+    /*package*/ static final SContainmentLink quotation$Fkf = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532d41L, 0x550f7de0eda6517eL, "quotation");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Quotation$UL = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
-    /*package*/ static final SConcept Antiquotation$Ui = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104658L, "jetbrains.mps.lang.quotation.structure.Antiquotation");
-    /*package*/ static final SConcept ListAntiquotation$Xc = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
+    /*package*/ static final SConcept Quotation$Vl = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
+    /*package*/ static final SConcept Antiquotation$UQ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104658L, "jetbrains.mps.lang.quotation.structure.Antiquotation");
+    /*package*/ static final SConcept ListAntiquotation$XK = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
   }
 }

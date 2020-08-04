@@ -39,11 +39,11 @@ public final class ConstraintFunction_CanBeAChild__BehaviorDescriptor extends Ba
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintsFunctionParameter_node$TM);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_parentNode$YF);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_childConcept$8U);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_link$Ay);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintsFunctionParameter_node$ZM);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_parentNode$4F);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_childConcept$eU);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConstraintFunctionParameter_link$Gy);
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -107,10 +107,10 @@ public final class ConstraintFunction_CanBeAChild__BehaviorDescriptor extends Ba
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept ConstraintsFunctionParameter_node$TM = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a71bcdcL, "jetbrains.mps.lang.constraints.structure.ConstraintsFunctionParameter_node");
-    /*package*/ static final SConcept ConstraintFunctionParameter_parentNode$YF = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11817c5715bL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_parentNode");
-    /*package*/ static final SConcept ConstraintFunctionParameter_childConcept$8U = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x3bb86c2f921c3e95L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_childConcept");
-    /*package*/ static final SConcept ConstraintFunctionParameter_link$Ay = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x3bb86c2f92200404L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_link");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ConstraintsFunctionParameter_node$ZM = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a71bcdcL, "jetbrains.mps.lang.constraints.structure.ConstraintsFunctionParameter_node");
+    /*package*/ static final SConcept ConstraintFunctionParameter_parentNode$4F = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11817c5715bL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_parentNode");
+    /*package*/ static final SConcept ConstraintFunctionParameter_childConcept$eU = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x3bb86c2f921c3e95L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_childConcept");
+    /*package*/ static final SConcept ConstraintFunctionParameter_link$Gy = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x3bb86c2f92200404L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_link");
   }
 }

@@ -29,7 +29,7 @@ public class StaticFieldInClassifier extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5xvqjt_a(), CONCEPTS.StaticFieldDeclaration$R5));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5xvqjt_a(), CONCEPTS.StaticFieldDeclaration$jR));
     return result;
   }
 
@@ -74,7 +74,7 @@ public class StaticFieldInClassifier extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.StaticFieldDeclaration$R5, context);
+        super(CONCEPTS.StaticFieldDeclaration$jR, context);
         _context = context;
       }
 
@@ -85,13 +85,13 @@ public class StaticFieldInClassifier extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        if (_context.getCurrentTargetNode() == null && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Classifier$hJ)) {
-          SNode field = SNodeFactoryOperations.createNewNode(CONCEPTS.StaticFieldDeclaration$R5, null);
-          SNodeFactoryOperations.setNewChild(field, LINKS.visibility$jt1o, CONCEPTS.PublicVisibility$qe);
-          SNodeFactoryOperations.setNewChild(field, LINKS.initializer$no3R, null);
+        if (_context.getCurrentTargetNode() == null && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Classifier$Ix)) {
+          SNode field = SNodeFactoryOperations.createNewNode(CONCEPTS.StaticFieldDeclaration$jR, null);
+          SNodeFactoryOperations.setNewChild(field, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
+          SNodeFactoryOperations.setNewChild(field, LINKS.initializer$2twD, null);
           return field;
         } else {
-          return SNodeFactoryOperations.replaceWithNewChild(_context.getCurrentTargetNode(), CONCEPTS.StaticFieldDeclaration$R5);
+          return SNodeFactoryOperations.replaceWithNewChild(_context.getCurrentTargetNode(), CONCEPTS.StaticFieldDeclaration$jR);
         }
       }
 
@@ -102,7 +102,7 @@ public class StaticFieldInClassifier extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.Interface$Kp, true, false) != null)) {
+        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.Interface$db, true, false) != null)) {
           return "field";
         } else {
           return "static field";
@@ -111,7 +111,7 @@ public class StaticFieldInClassifier extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getDescriptionText(@NotNull String pattern) {
-        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.Interface$Kp, true, false) != null)) {
+        if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.Interface$db, true, false) != null)) {
           return "static final field declaration";
         } else {
           return "static field declaration";
@@ -121,14 +121,14 @@ public class StaticFieldInClassifier extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SConcept PublicVisibility$qe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

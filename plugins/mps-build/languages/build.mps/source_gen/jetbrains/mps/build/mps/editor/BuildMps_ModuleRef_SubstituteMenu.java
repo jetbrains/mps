@@ -28,7 +28,7 @@ public class BuildMps_ModuleRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_tsnwlz_a(), CONCEPTS.BuildMps_ModuleRef$Zl));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_tsnwlz_a(), CONCEPTS.BuildMps_ModuleRef$rH));
     result.add(new SMP_Subconcepts_tsnwlz_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class BuildMps_ModuleRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_tsnwlz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleRef$Zl, LINKS.module$evEw);
+      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleRef$rH, LINKS.module$HG6S);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class BuildMps_ModuleRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_tsnwlz_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildMps_ModuleRef$Zl);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildMps_ModuleRef$rH);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class BuildMps_ModuleRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_ModuleRef$Zl = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleRef");
+    /*package*/ static final SConcept BuildMps_ModuleRef$rH = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$evEw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, 0x6e2dd2f4c4c3e91bL, "module");
+    /*package*/ static final SReferenceLink module$HG6S = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL, 0x6e2dd2f4c4c3e91bL, "module");
   }
 }

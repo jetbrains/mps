@@ -59,11 +59,11 @@ public final class FlipBinaryOperation_Intention extends AbstractIntentionDescri
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode leftExpression = SLinkOperations.getTarget(node, LINKS.leftExpression$lndx);
-      SNode rightExpression = SLinkOperations.getTarget(node, LINKS.rightExpression$li3b);
+      SNode leftExpression = SLinkOperations.getTarget(node, LINKS.leftExpression$sEj);
+      SNode rightExpression = SLinkOperations.getTarget(node, LINKS.rightExpression$nvX);
       SNode flippedOperator = BinaryOperation__BehaviorDescriptor.getFlippedOperator_id14Lzlw0K236.invoke(node);
-      SLinkOperations.setTarget(flippedOperator, LINKS.leftExpression$lndx, SNodeOperations.copyNode(rightExpression));
-      SLinkOperations.setTarget(flippedOperator, LINKS.rightExpression$li3b, SNodeOperations.copyNode(leftExpression));
+      SLinkOperations.setTarget(flippedOperator, LINKS.leftExpression$sEj, SNodeOperations.copyNode(rightExpression));
+      SLinkOperations.setTarget(flippedOperator, LINKS.rightExpression$nvX, SNodeOperations.copyNode(leftExpression));
       if (!(Objects.equals(node, flippedOperator))) {
         SNodeOperations.replaceWithAnother(node, flippedOperator);
         SelectionUtil.selectCell(editorContext, flippedOperator, "ALIAS_EDITOR_COMPONENT");
@@ -76,7 +76,7 @@ public final class FlipBinaryOperation_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 }

@@ -39,10 +39,10 @@ public final class BuildLayout_AbstractCopy__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U)) {
       SNode parent = helper.parent(__thisNode__);
       String parentLocation = helper.getContentLocation(parent);
-      SNode path = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz);
+      SNode path = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6);
       if (path != null) {
         String lastSegment = BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(path);
         if (lastSegment != null) {
@@ -53,15 +53,15 @@ public final class BuildLayout_AbstractCopy__BehaviorDescriptor extends BaseBHDe
     }
   }
   /*package*/ static boolean isFile_id1bWeed$oPZ2(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U);
   }
   /*package*/ static void appendName_id1bWeed$ownT(@NotNull SNode __thisNode__, SNode parent, StringBuilder sb) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn)) {
-      SNode path = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U)) {
+      SNode path = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6);
       if (path != null) {
         String lastSegment = BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(path);
         if (lastSegment != null) {
-          if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Node$kC)) {
+          if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Node$Rb)) {
             sb.append("/");
           }
           sb.append(lastSegment);
@@ -69,17 +69,17 @@ public final class BuildLayout_AbstractCopy__BehaviorDescriptor extends BaseBHDe
       }
       return;
     }
-    BuildLayout_PathElement__BehaviorDescriptor.appendName_id1bWeed$ownT.invokeSuper(__thisNode__, CONCEPTS.BuildLayout_AbstractCopy$lT, parent, sb);
+    BuildLayout_PathElement__BehaviorDescriptor.appendName_id1bWeed$ownT.invokeSuper(__thisNode__, CONCEPTS.BuildLayout_AbstractCopy$Ss, parent, sb);
   }
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object object) {
     if (object instanceof SNode) {
       SNode node = (SNode) object;
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSourcePath$ua) && SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(__thisNode__)) {
-        SNode required = SNodeOperations.cast(node, CONCEPTS.BuildSourcePath$ua);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSourcePath$H) && SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(__thisNode__)) {
+        SNode required = SNodeOperations.cast(node, CONCEPTS.BuildSourcePath$H);
         String relativePath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(required);
 
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn)) {
-          return Objects.equals(relativePath, BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz)));
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U)) {
+          return Objects.equals(relativePath, BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6)));
         }
       }
     }
@@ -89,8 +89,8 @@ public final class BuildLayout_AbstractCopy__BehaviorDescriptor extends BaseBHDe
         return false;
       }
 
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn) && !(art.isFolder())) {
-        return Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$ie0O), CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz)));
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U) && !(art.isFolder())) {
+        return Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6)));
       }
     }
     return false;
@@ -151,14 +151,14 @@ public final class BuildLayout_AbstractCopy__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fileset$ie0O = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
-    /*package*/ static final SContainmentLink path$2hSz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
+    /*package*/ static final SContainmentLink fileset$tUzn = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink path$dYr6 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildInputSingleFile$yn = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
-    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
-    /*package*/ static final SConcept BuildLayout_AbstractCopy$lT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy");
-    /*package*/ static final SConcept BuildSourcePath$ua = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath");
+    /*package*/ static final SConcept BuildInputSingleFile$4U = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SConcept BuildLayout_AbstractCopy$Ss = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy");
+    /*package*/ static final SConcept BuildSourcePath$H = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath");
   }
 }

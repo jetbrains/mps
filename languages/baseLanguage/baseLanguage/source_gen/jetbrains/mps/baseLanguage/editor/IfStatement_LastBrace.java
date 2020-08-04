@@ -27,13 +27,13 @@ public class IfStatement_LastBrace {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$ZQja)).isNotEmpty()) {
-          if (DeletionApproverUtil.approve(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$ZQja)).first())) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$EVJW)).isNotEmpty()) {
+          if (DeletionApproverUtil.approve(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$EVJW)).first())) {
             return;
           }
-          SNodeOperations.deleteNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$ZQja)).first());
-        } else if ((SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY) != null)) {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY))) {
+          SNodeOperations.deleteNode(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$EVJW)).first());
+        } else if ((SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK) != null)) {
+          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK))) {
             return;
           }
           SNode nodeToSelect = UnwrapStatementsUtil.unwrapElse(node);
@@ -46,7 +46,7 @@ public class IfStatement_LastBrace {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
           }
-          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.ifTrue$qLNm), LINKS.statement$pYcS)).isNotEmpty()) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).isNotEmpty()) {
             UnwrapStatementsUtil.unwrapIf(node);
           } else {
             SNodeOperations.deleteNode(node);
@@ -99,9 +99,9 @@ public class IfStatement_LastBrace {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-    /*package*/ static final SContainmentLink elsifClauses$ZQja = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
-    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink elsifClauses$EVJW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
+    /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

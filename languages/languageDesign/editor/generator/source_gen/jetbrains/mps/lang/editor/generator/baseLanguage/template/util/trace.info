@@ -69,23 +69,23 @@
       <node id="1075751739012225815" at="132,39,133,95" concept="10" />
       <node id="1075751739012231895" at="136,39,137,95" concept="10" />
       <node id="474635177867904266" at="141,58,142,213" concept="10" />
-      <node id="1186771508849" at="146,0,147,0" concept="13" trace="CellKeyMapDeclaration$T9" />
-      <node id="1186771508849" at="147,0,148,0" concept="13" trace="CellModel_RefCell$VD" />
-      <node id="1186771508849" at="148,0,149,0" concept="13" trace="CellModel_ReferencePresentation$Wr" />
-      <node id="1186771508849" at="149,0,150,0" concept="13" trace="AutoDeletableStyleClassItem$mK" />
-      <node id="1186771508849" at="150,0,151,0" concept="13" trace="CellModel_Property$iE" />
-      <node id="1186771508849" at="151,0,152,0" concept="13" trace="ConceptEditorDeclaration$s6" />
-      <node id="1186771508849" at="152,0,153,0" concept="13" trace="EditorComponentDeclaration$Lb" />
-      <node id="1186771508849" at="153,0,154,0" concept="13" trace="ConceptEditorContextHints$aY" />
-      <node id="1186771508849" at="154,0,155,0" concept="13" trace="ITransformationMenu$lF" />
-      <node id="1186771508849" at="155,0,156,0" concept="13" trace="ISubstituteMenu$zI" />
-      <node id="1186771508849" at="159,0,160,0" concept="13" trace="item$7u3i" />
-      <node id="1186771508849" at="160,0,161,0" concept="13" trace="childCellModel$Dkkw" />
-      <node id="1186771508849" at="161,0,162,0" concept="13" trace="relationDeclaration$_K5_" />
-      <node id="1186771508849" at="162,0,163,0" concept="13" trace="cellModel$GQI_" />
-      <node id="1186771508849" at="163,0,164,0" concept="13" trace="styleItem$AYO2" />
-      <node id="1186771508849" at="164,0,165,0" concept="13" trace="parentStyleClass$4KPv" />
-      <node id="1186771508849" at="168,0,169,0" concept="13" trace="name$lA7v" />
+      <node id="1186771508849" at="146,0,147,0" concept="13" trace="CellKeyMapDeclaration$4K" />
+      <node id="1186771508849" at="147,0,148,0" concept="13" trace="CellModel_RefCell$7g" />
+      <node id="1186771508849" at="148,0,149,0" concept="13" trace="CellModel_ReferencePresentation$82" />
+      <node id="1186771508849" at="149,0,150,0" concept="13" trace="AutoDeletableStyleClassItem$yn" />
+      <node id="1186771508849" at="150,0,151,0" concept="13" trace="CellModel_Property$uh" />
+      <node id="1186771508849" at="151,0,152,0" concept="13" trace="ConceptEditorDeclaration$BH" />
+      <node id="1186771508849" at="152,0,153,0" concept="13" trace="EditorComponentDeclaration$WM" />
+      <node id="1186771508849" at="153,0,154,0" concept="13" trace="ConceptEditorContextHints$m_" />
+      <node id="1186771508849" at="154,0,155,0" concept="13" trace="ITransformationMenu$xi" />
+      <node id="1186771508849" at="155,0,156,0" concept="13" trace="ISubstituteMenu$Jl" />
+      <node id="1186771508849" at="159,0,160,0" concept="13" trace="item$bKeT" />
+      <node id="1186771508849" at="160,0,161,0" concept="13" trace="childCellModel$HAw7" />
+      <node id="1186771508849" at="161,0,162,0" concept="13" trace="relationDeclaration$E2hc" />
+      <node id="1186771508849" at="162,0,163,0" concept="13" trace="cellModel$L8Uc" />
+      <node id="1186771508849" at="163,0,164,0" concept="13" trace="styleItem$FgZD" />
+      <node id="1186771508849" at="164,0,165,0" concept="13" trace="parentStyleClass$9316" />
+      <node id="1186771508849" at="168,0,169,0" concept="13" trace="name$MnvL" />
       <node id="1189585858333" at="95,114,98,7" concept="7" />
       <node id="9186828658634792525" at="104,130,107,5" concept="7" />
       <node id="9186828658636001286" at="108,281,111,7" concept="7" />
@@ -207,17 +207,17 @@
       <node id="1630016958697896125" at="38,98,39,144" concept="10" />
       <node id="1630016958697982077" at="41,96,42,138" concept="10" />
       <node id="1630016958697986028" at="44,94,45,136" concept="10" />
-      <node id="1630016958697987822" at="47,92,48,129" concept="10" />
-      <node id="6718020819490797825" at="52,0,53,0" concept="13" trace="IMenu$ym" />
-      <node id="6718020819490797825" at="53,0,54,0" concept="13" trace="IMenu_Contribution$E$" />
-      <node id="6718020819490797825" at="54,0,55,0" concept="13" trace="TransformationMenu_Default$In" />
-      <node id="6718020819490797825" at="55,0,56,0" concept="13" trace="TransformationMenuReference_Default$h5" />
-      <node id="6718020819490797825" at="56,0,57,0" concept="13" trace="TransformationMenu_Named$1E" />
-      <node id="6718020819490797825" at="57,0,58,0" concept="13" trace="TransformationMenuReference_Named$fC" />
-      <node id="6718020819490797825" at="58,0,59,0" concept="13" trace="SubstituteMenu_Default$hk" />
-      <node id="6718020819490797825" at="59,0,60,0" concept="13" trace="SubstituteMenuReference_Default$TI" />
-      <node id="6718020819490797825" at="60,0,61,0" concept="13" trace="SubstituteMenu_Named$J" />
-      <node id="6718020819490797825" at="61,0,62,0" concept="13" trace="SubstituteMenuReference_Named$Ud" />
+      <node id="1630016958697987822" at="47,92,48,130" concept="10" />
+      <node id="6718020819490797825" at="52,0,53,0" concept="13" trace="IMenu$HX" />
+      <node id="6718020819490797825" at="53,0,54,0" concept="13" trace="IMenu_Contribution$Qb" />
+      <node id="6718020819490797825" at="54,0,55,0" concept="13" trace="TransformationMenu_Default$TY" />
+      <node id="6718020819490797825" at="55,0,56,0" concept="13" trace="TransformationMenuReference_Default$sG" />
+      <node id="6718020819490797825" at="56,0,57,0" concept="13" trace="TransformationMenu_Named$dh" />
+      <node id="6718020819490797825" at="57,0,58,0" concept="13" trace="TransformationMenuReference_Named$rf" />
+      <node id="6718020819490797825" at="58,0,59,0" concept="13" trace="SubstituteMenu_Default$sV" />
+      <node id="6718020819490797825" at="59,0,60,0" concept="13" trace="SubstituteMenuReference_Default$5l" />
+      <node id="6718020819490797825" at="60,0,61,0" concept="13" trace="SubstituteMenu_Named$cm" />
+      <node id="6718020819490797825" at="61,0,62,0" concept="13" trace="SubstituteMenuReference_Named$5O" />
       <node id="1630016958698029977" at="21,0,24,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1630016958698033224" at="26,0,29,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6718020819490811460" at="32,0,35,0" concept="14" trace="getDefaultMenusAndContributions#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/lang/Iterable;" />
@@ -236,7 +236,7 @@
       <scope id="1630016958697895704" at="38,98,39,144" />
       <scope id="1630016958697982076" at="41,96,42,138" />
       <scope id="1630016958697986027" at="44,94,45,136" />
-      <scope id="1630016958697987821" at="47,92,48,129" />
+      <scope id="1630016958697987821" at="47,92,48,130" />
       <scope id="1630016958698029977" at="21,0,24,0">
         <var name="it" id="1630016958698029977" />
       </scope>

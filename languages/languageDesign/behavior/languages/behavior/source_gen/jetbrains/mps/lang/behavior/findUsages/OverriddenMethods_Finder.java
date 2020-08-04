@@ -38,7 +38,7 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
   public OverriddenMethods_Finder() {
   }
   public boolean isVisible(SNode node, SearchScope scope) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ConceptBehavior$8P);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ConceptBehavior$2);
   }
   @Override
   public boolean isVisible(SNode node) {
@@ -54,11 +54,11 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.ConceptMethodDeclaration$VN;
+    return CONCEPTS.ConceptMethodDeclaration$N0;
   }
   @Override
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ConceptBehavior$8P);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ConceptBehavior$2);
   }
 
   @Override
@@ -93,12 +93,12 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
               if (monitor.isCanceled()) {
                 return;
               }
-              SNode ancestorBehavior = SNodeOperations.cast(Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(SNodeOperations.cast(ancestorConcept, CONCEPTS.AbstractConceptDeclaration$UN), aspectModel)).where(new IWhereFilter<SNode>() {
+              SNode ancestorBehavior = SNodeOperations.cast(Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspects_id4G9PD8$NvPM.invoke(SNodeOperations.cast(ancestorConcept, CONCEPTS.AbstractConceptDeclaration$KA), aspectModel)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, CONCEPTS.ConceptBehavior$8P);
+                  return SNodeOperations.isInstanceOf(it, CONCEPTS.ConceptBehavior$2);
                 }
-              }).first(), CONCEPTS.ConceptBehavior$8P);
-              List<SNode> candidateMethodsInAncestor = ListSequence.fromList(SLinkOperations.getChildren(ancestorBehavior, LINKS.method$6$ra)).where(new IWhereFilter<SNode>() {
+              }).first(), CONCEPTS.ConceptBehavior$2);
+              List<SNode> candidateMethodsInAncestor = ListSequence.fromList(SLinkOperations.getChildren(ancestorBehavior, LINKS.method$w_in)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(it) == topMostOverriddenMethod;
                 }
@@ -124,12 +124,12 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink method$6$ra = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
+    /*package*/ static final SContainmentLink method$w_in = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
   }
 }

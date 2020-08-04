@@ -30,18 +30,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class WrappersUtils {
   public static List<SNode> collectVariableDeclarationsToWrap2(SNode closure) {
     List<SNode> resVdecls = ListSequence.fromList(new ArrayList<SNode>());
-    SNode wrpPrgNode = SNodeOperations.getNodeAncestorWhereConceptInList(closure, new SAbstractConcept[]{CONCEPTS.StatementList$TN, CONCEPTS.BaseMethodDeclaration$RR}, false, false);
+    SNode wrpPrgNode = SNodeOperations.getNodeAncestorWhereConceptInList(closure, new SAbstractConcept[]{CONCEPTS.StatementList$m_, CONCEPTS.BaseMethodDeclaration$kD}, false, false);
     if ((wrpPrgNode != null)) {
-      Map<SNode, Integer> clsMap = collectVariableUsages(SLinkOperations.getTarget(closure, LINKS.body$e5Do));
+      Map<SNode, Integer> clsMap = collectVariableUsages(SLinkOperations.getTarget(closure, LINKS.body$Ujx2));
       for (IMapping<SNode, Integer> m : SetSequence.fromSet(MapSequence.fromMap(clsMap).mappingsSet())) {
-        ListSequence.fromList(resVdecls).addElement(SNodeOperations.cast(m.key(), CONCEPTS.VariableDeclaration$xe));
+        ListSequence.fromList(resVdecls).addElement(SNodeOperations.cast(m.key(), CONCEPTS.VariableDeclaration$Y0));
       }
       if (MapSequence.fromMap(clsMap).isNotEmpty()) {
         Map<SNode, Integer> wrpMap = collectVariableUsages(wrpPrgNode);
         for (IMapping<SNode, Integer> m : SetSequence.fromSet(MapSequence.fromMap(clsMap).mappingsSet())) {
           if (m.value() == 0) {
             if (!(MapSequence.fromMap(wrpMap).containsKey(m.key())) || MapSequence.fromMap(wrpMap).get(m.key()) <= 1) {
-              ListSequence.fromList(resVdecls).removeElement(SNodeOperations.cast(m.key(), CONCEPTS.VariableDeclaration$xe));
+              ListSequence.fromList(resVdecls).removeElement(SNodeOperations.cast(m.key(), CONCEPTS.VariableDeclaration$Y0));
             }
           }
         }
@@ -72,14 +72,14 @@ public class WrappersUtils {
   public static List<SNode> collectVariableDeclarationsToWrap(SNode closure) {
     List<SNode> vdecls = ListSequence.fromList(new ArrayList<SNode>());
     for (SNode desc : SNodeOperations.getNodeDescendants(closure, null, false, new SAbstractConcept[]{})) {
-      if (!(SNodeOperations.isInstanceOf(desc, CONCEPTS.VariableReference$sQ))) {
+      if (!(SNodeOperations.isInstanceOf(desc, CONCEPTS.VariableReference$TC))) {
         continue;
       }
-      SNode varRef = SNodeOperations.cast(desc, CONCEPTS.VariableReference$sQ);
-      if ((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU)) && closure == SNodeOperations.getNodeAncestor(desc, CONCEPTS.ClosureLiteral$zJ, false, false)) {
-        SNode vd = SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU);
-        if (closure != SNodeOperations.getNodeAncestor(vd, CONCEPTS.ClosureLiteral$zJ, false, false)) {
-          if (!(ListSequence.fromList(vdecls).contains(vd)) && !(SPropertyOperations.getBoolean(vd, PROPS.isFinal$_qt3))) {
+      SNode varRef = SNodeOperations.cast(desc, CONCEPTS.VariableReference$TC);
+      if ((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG)) && closure == SNodeOperations.getNodeAncestor(desc, CONCEPTS.ClosureLiteral$rp, false, false)) {
+        SNode vd = SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG);
+        if (closure != SNodeOperations.getNodeAncestor(vd, CONCEPTS.ClosureLiteral$rp, false, false)) {
+          if (!(ListSequence.fromList(vdecls).contains(vd)) && !(SPropertyOperations.getBoolean(vd, PROPS.isFinal$gvTP))) {
             ListSequence.fromList(vdecls).addElement(vd);
           }
         }
@@ -90,22 +90,22 @@ public class WrappersUtils {
 with_decls:
     for (Iterator<SNode> it = ListSequence.fromList(vdecls).iterator(); it.hasNext();) {
       SNode vd = it.next();
-      SNode sl = SNodeOperations.getNodeAncestorWhereConceptInList(vd, new SAbstractConcept[]{CONCEPTS.StatementList$TN, CONCEPTS.BaseMethodDeclaration$RR}, false, false);
+      SNode sl = SNodeOperations.getNodeAncestorWhereConceptInList(vd, new SAbstractConcept[]{CONCEPTS.StatementList$m_, CONCEPTS.BaseMethodDeclaration$kD}, false, false);
       for (SNode desc : SNodeOperations.getNodeDescendants(sl, null, false, new SAbstractConcept[]{})) {
-        if (!(SNodeOperations.isInstanceOf(desc, CONCEPTS.VariableReference$sQ))) {
+        if (!(SNodeOperations.isInstanceOf(desc, CONCEPTS.VariableReference$TC))) {
           continue;
         }
-        SNode varRef = SNodeOperations.cast(desc, CONCEPTS.VariableReference$sQ);
-        if ((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU)) && SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$7WwU) == vd) {
-          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.BaseAssignmentExpression$oO) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.BaseAssignmentExpression$oO), LINKS.lValue$LjSW) == desc) {
+        SNode varRef = SNodeOperations.cast(desc, CONCEPTS.VariableReference$TC);
+        if ((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG)) && SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG) == vd) {
+          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.BaseAssignmentExpression$PA) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.BaseAssignmentExpression$PA), LINKS.lValue$splI) == desc) {
             continue with_decls;
-          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PostfixIncrementExpression$3_) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PostfixIncrementExpression$3_), LINKS.expression$NMtu) == desc) {
+          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PostfixIncrementExpression$wn) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PostfixIncrementExpression$wn), LINKS.expression$uRUg) == desc) {
             continue with_decls;
-          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PrefixIncrementExpression$4W) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PrefixIncrementExpression$4W), LINKS.expression$NMtu) == desc) {
+          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PrefixIncrementExpression$xI) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PrefixIncrementExpression$xI), LINKS.expression$uRUg) == desc) {
             continue with_decls;
-          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PostfixDecrementExpression$gc) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PostfixDecrementExpression$gc), LINKS.expression$NMtu) == desc) {
+          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PostfixDecrementExpression$GY) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PostfixDecrementExpression$GY), LINKS.expression$uRUg) == desc) {
             continue with_decls;
-          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PrefixDecrementExpression$d_) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PrefixDecrementExpression$d_), LINKS.expression$NMtu) == desc) {
+          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(desc), CONCEPTS.PrefixDecrementExpression$En) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(desc), CONCEPTS.PrefixDecrementExpression$En), LINKS.expression$uRUg) == desc) {
             continue with_decls;
           }
         }
@@ -117,28 +117,28 @@ with_decls:
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept ClosureLiteral$zJ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept BaseAssignmentExpression$oO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
-    /*package*/ static final SConcept PostfixIncrementExpression$3_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11adecdb4f0L, "jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression");
-    /*package*/ static final SConcept PrefixIncrementExpression$4W = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a46df580L, "jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression");
-    /*package*/ static final SConcept PostfixDecrementExpression$gc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11aded05fe6L, "jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression");
-    /*package*/ static final SConcept PrefixDecrementExpression$d_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a472f0e8L, "jetbrains.mps.baseLanguage.structure.PrefixDecrementExpression");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept BaseAssignmentExpression$PA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
+    /*package*/ static final SConcept PostfixIncrementExpression$wn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11adecdb4f0L, "jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression");
+    /*package*/ static final SConcept PrefixIncrementExpression$xI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a46df580L, "jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression");
+    /*package*/ static final SConcept PostfixDecrementExpression$GY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11aded05fe6L, "jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression");
+    /*package*/ static final SConcept PrefixDecrementExpression$En = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a472f0e8L, "jetbrains.mps.baseLanguage.structure.PrefixDecrementExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink expression$uRUg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

@@ -28,7 +28,7 @@ public class NotExpression_Parens_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode expression = SLinkOperations.getTarget(node, LINKS.expression$Lq8V);
+        SNode expression = SLinkOperations.getTarget(node, LINKS.expression$sv_H);
         SNodeOperations.replaceWithAnother(node, expression);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, expression, SelectionManager.FIRST_CELL, 0);
       }
@@ -78,6 +78,6 @@ public class NotExpression_Parens_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink expression$sv_H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
   }
 }

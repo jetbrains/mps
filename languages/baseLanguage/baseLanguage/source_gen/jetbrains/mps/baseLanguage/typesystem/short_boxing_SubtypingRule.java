@@ -21,7 +21,7 @@ public class short_boxing_SubtypingRule extends SubtypingRule_Runtime implements
     return _quotation_createNode_xys8ef_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ShortType$YA;
+    return CONCEPTS.ShortType$ro;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class short_boxing_SubtypingRule extends SubtypingRule_Runtime implements
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ShortType$YA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cc380dL, "jetbrains.mps.baseLanguage.structure.ShortType");
+    /*package*/ static final SConcept ShortType$ro = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cc380dL, "jetbrains.mps.baseLanguage.structure.ShortType");
   }
 }

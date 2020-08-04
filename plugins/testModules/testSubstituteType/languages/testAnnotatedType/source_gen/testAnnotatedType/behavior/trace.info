@@ -106,8 +106,8 @@
       <node id="1470921783545455335" at="73,14,74,58" concept="9" />
       <node id="1470921783545455335" at="80,48,81,22" concept="5" />
       <node id="1470921783545455335" at="86,40,87,19" concept="5" />
-      <node id="1470921783545455335" at="91,0,92,0" concept="6" trace="PrimIntType$to" />
-      <node id="1470921783545455335" at="92,0,93,0" concept="6" trace="PrimFloatType$_e" />
+      <node id="1470921783545455335" at="91,0,92,0" concept="6" trace="PrimIntType$Ur" />
+      <node id="1470921783545455335" at="92,0,93,0" concept="6" trace="PrimFloatType$2h" />
       <node id="1470921783545455335" at="31,0,33,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1470921783545455335" at="44,0,46,0" concept="0" trace="PrimDoubleType__BehaviorDescriptor#()V" />
       <node id="1470921783545458183" at="34,98,37,5" concept="2" />
@@ -186,7 +186,7 @@
       <node id="6405009306797675389" at="66,14,67,58" concept="9" />
       <node id="6405009306797675389" at="73,48,74,22" concept="5" />
       <node id="6405009306797675389" at="79,40,80,19" concept="5" />
-      <node id="6405009306797675389" at="84,0,85,0" concept="6" trace="name$lA7v" />
+      <node id="6405009306797675389" at="84,0,85,0" concept="6" trace="name$MnvL" />
       <node id="6405009306797675389" at="30,0,32,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6405009306797675389" at="37,0,39,0" concept="0" trace="PresenceCondition__BehaviorDescriptor#()V" />
       <node id="6405009306797675389" at="33,0,36,0" concept="7" trace="isSatisfied_id5zzawu2JLe0#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

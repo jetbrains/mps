@@ -32,10 +32,10 @@ public final class InstanceOfExpression__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$dnS9);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$StkV);
   }
   /*package*/ static void setSyntacticallyLeftSideExpression_id1wHCnsn58ZK(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.leftExpression$dnS9, expr);
+    SLinkOperations.setTarget(__thisNode__, LINKS.leftExpression$StkV, expr);
   }
 
   /*package*/ InstanceOfExpression__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class InstanceOfExpression__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$StkV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
   }
 }

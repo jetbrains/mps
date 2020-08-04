@@ -33,8 +33,8 @@ public final class DefaultGeneratorParameter__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static String getUniqueId_id$79JWCe2bn(@NotNull SNode __thisNode__) {
-    String containerName = ((SNodeOperations.getParent(__thisNode__) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.INamedConcept$nV) ? SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v) : "default");
-    return SNodeOperations.getModel(__thisNode__).getModelId() + "." + containerName + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+    String containerName = ((SNodeOperations.getParent(__thisNode__) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.INamedConcept$Kd) ? SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) : "default");
+    return SNodeOperations.getModel(__thisNode__).getModelId() + "." + containerName + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
 
   /*package*/ DefaultGeneratorParameter__BehaviorDescriptor() {
@@ -84,10 +84,10 @@ public final class DefaultGeneratorParameter__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

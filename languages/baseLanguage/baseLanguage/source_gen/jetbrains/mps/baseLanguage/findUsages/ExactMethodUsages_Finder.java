@@ -23,7 +23,7 @@ public class ExactMethodUsages_Finder extends GeneratedFinder {
   }
   @Override
   public boolean isUsedByDefault(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$RR);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD);
   }
   @Override
   public String getDescription() {
@@ -35,11 +35,11 @@ public class ExactMethodUsages_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.BaseMethodDeclaration$RR;
+    return CONCEPTS.BaseMethodDeclaration$kD;
   }
   @Override
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$RR);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD);
   }
 
   @Override
@@ -70,6 +70,6 @@ public class ExactMethodUsages_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 }

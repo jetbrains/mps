@@ -21,14 +21,14 @@ public class UpdateModelPointerName_QuickFix extends QuickFix_Runtime {
     return "Update model name to reflect actual value";
   }
   public void execute(SNode node) {
-    ModelName__BehaviorDescriptor.updateValue_id2bm9xT0zPoJ.invoke(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.ModelPointer$rg), LINKS.name$fJX8), ((SModelName) UpdateModelPointerName_QuickFix.this.getField("actualName")[0]));
+    ModelName__BehaviorDescriptor.updateValue_id2bm9xT0zPoJ.invoke(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.ModelPointer$6N), LINKS.name$a8CF), ((SModelName) UpdateModelPointerName_QuickFix.this.getField("actualName")[0]));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelPointer$rg = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
+    /*package*/ static final SConcept ModelPointer$6N = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink name$fJX8 = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x96ca5405afc2bccL, "name");
+    /*package*/ static final SContainmentLink name$a8CF = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x96ca5405afc2bccL, "name");
   }
 }

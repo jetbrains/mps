@@ -20,45 +20,45 @@ public class Model {
     String name = SModelOperations.getModelName(model);
   }
   public void new_node_1(SModel model) {
-    SNode new_stmt = SModelOperations.createNewNode(model, null, CONCEPTS.IfStatement$pi);
+    SNode new_stmt = SModelOperations.createNewNode(model, null, CONCEPTS.IfStatement$Q4);
     SNode new_class = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
     SModelOperations.addRootNode(model, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")));
-    SModelOperations.addRootNode(model, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(CONCEPTS.Statement$ok)));
+    SModelOperations.addRootNode(model, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(CONCEPTS.Statement$P6)));
   }
   public void new_node_2(SModel model) {
-    SNode named = SModelOperations.createNewNode(model, null, CONCEPTS.ClassConcept$IY);
-    SPropertyOperations.assign(named, PROPS.name$lA7v, "a");
+    SNode named = SModelOperations.createNewNode(model, null, CONCEPTS.ClassConcept$bK);
+    SPropertyOperations.assign(named, PROPS.name$MnvL, "a");
   }
   public void roots_access_1(SModel model) {
     List<SNode> roots1 = SModelOperations.roots(model, null);
     SModelOperations.rootsIncludingImported(model, null);
-    List<SNode> roots2 = SModelOperations.roots(model, CONCEPTS.ClassConcept$IY);
-    Iterable<SNode> roots3 = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
+    List<SNode> roots2 = SModelOperations.roots(model, CONCEPTS.ClassConcept$bK);
+    Iterable<SNode> roots3 = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode c) {
-        return SPropertyOperations.hasValue(c, PROPS.name$lA7v, "Utils");
+        return SPropertyOperations.hasValue(c, PROPS.name$MnvL, "Utils");
       }
     });
   }
   public void roots_access_2(SModel model) {
-    SModelOperations.rootsIncludingImported(model, CONCEPTS.IfStatement$pi);
+    SModelOperations.rootsIncludingImported(model, CONCEPTS.IfStatement$Q4);
   }
   public void nodes_access_1(SModel model) {
     List<SNode> nodes1 = SModelOperations.nodes(model, null);
-    List<SNode> nodes2 = SModelOperations.nodes(model, CONCEPTS.ClassConcept$IY);
-    Iterable<SNode> nodes3 = ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
+    List<SNode> nodes2 = SModelOperations.nodes(model, CONCEPTS.ClassConcept$bK);
+    Iterable<SNode> nodes3 = ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode c) {
-        return SPropertyOperations.hasValue(c, PROPS.name$lA7v, "Utils");
+        return SPropertyOperations.hasValue(c, PROPS.name$MnvL, "Utils");
       }
     });
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

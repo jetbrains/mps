@@ -30,7 +30,7 @@ public class DefaultClassCreator_SmartReference extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8tkoyu_a(), CONCEPTS.DefaultClassCreator$sQ));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8tkoyu_a(), CONCEPTS.DefaultClassCreator$TC));
     return result;
   }
 
@@ -51,7 +51,7 @@ public class DefaultClassCreator_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_8tkoyu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DefaultClassCreator$sQ, LINKS.classifier$uIr0);
+      super((SAbstractConcept) CONCEPTS.DefaultClassCreator$TC, LINKS.classifier$9NRM);
     }
     @NotNull
     @Override
@@ -83,7 +83,7 @@ public class DefaultClassCreator_SmartReference extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        if (!(SNodeOperations.isInstanceOf(referencedNode, CONCEPTS.ClassConcept$IY)) || Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(referencedNode, CONCEPTS.ClassConcept$IY))).isNotEmpty()) {
+        if (!(SNodeOperations.isInstanceOf(referencedNode, CONCEPTS.ClassConcept$bK)) || Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(referencedNode, CONCEPTS.ClassConcept$bK))).isNotEmpty()) {
           return null;
         }
         return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(referencedNode, _context.getParentNode()) + "()";
@@ -101,11 +101,11 @@ public class DefaultClassCreator_SmartReference extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultClassCreator$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept DefaultClassCreator$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SReferenceLink classifier$9NRM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
   }
 }

@@ -28,7 +28,7 @@
       <node id="1234791340838" at="50,42,51,21" concept="7" />
       <node id="1234374055844" at="56,31,57,37" concept="7" />
       <node id="1234374055844" at="60,41,61,37" concept="7" />
-      <node id="1234374055844" at="64,54,65,52" concept="7" />
+      <node id="1234374055844" at="64,54,65,53" concept="7" />
       <node id="1234374120031" at="68,59,69,153" concept="7" />
       <node id="1234374127523" at="72,52,73,41" concept="2" />
       <node id="1234374055844" at="76,42,77,21" concept="7" />
@@ -42,7 +42,7 @@
       <node id="1234365773600" at="104,42,105,21" concept="7" />
       <node id="1234366008860" at="110,31,111,51" concept="7" />
       <node id="1234366008860" at="114,41,115,51" concept="7" />
-      <node id="1234366008860" at="118,54,119,60" concept="7" />
+      <node id="1234366008860" at="118,54,119,61" concept="7" />
       <node id="1234781753684" at="122,59,123,226" concept="6" />
       <node id="1234366043062" at="123,226,124,130" concept="7" />
       <node id="1234366172738" at="127,52,128,216" concept="6" />
@@ -73,21 +73,21 @@
       <node id="1234797468064" at="202,67,203,107" concept="2" />
       <node id="1234797058467" at="206,42,207,21" concept="7" />
       <node id="1234198385755" at="214,41,215,154" concept="7" />
-      <node id="1234198385755" at="219,0,220,0" concept="10" trace="PaddingRightStyleClassItem$RM" />
-      <node id="1234198385755" at="220,0,221,0" concept="10" trace="PaddingLeftStyleClassItem$G" />
-      <node id="1234198385755" at="221,0,222,0" concept="10" trace="FirstPositionAllowedStyleClassItem$Jp" />
-      <node id="1234198385755" at="222,0,223,0" concept="10" trace="LastPositionAllowedStyleClassItem$W" />
-      <node id="1234198385755" at="223,0,224,0" concept="10" trace="IStyleContainer$fN" />
-      <node id="1234198385755" at="224,0,225,0" concept="10" trace="SelectableStyleSheetItem$qR" />
-      <node id="1234198385755" at="225,0,226,0" concept="10" trace="CellModel_Constant$SB" />
-      <node id="1234198385755" at="226,0,227,0" concept="10" trace="CellModel_Collection$CD" />
-      <node id="1234198385755" at="227,0,228,0" concept="10" trace="EditorCellModel$5c" />
-      <node id="1234198385755" at="228,0,229,0" concept="10" trace="CellModel_RefCell$VD" />
-      <node id="1234198385755" at="232,0,233,0" concept="10" trace="value$PPrd" />
-      <node id="1234198385755" at="233,0,234,0" concept="10" trace="flag$3Afb" />
-      <node id="1234198385755" at="237,0,238,0" concept="10" trace="editorComponent$w13s" />
-      <node id="1234198385755" at="238,0,239,0" concept="10" trace="cellModel$GQI_" />
-      <node id="1234198385755" at="239,0,240,0" concept="10" trace="styleItem$AYO2" />
+      <node id="1234198385755" at="219,0,220,0" concept="10" trace="PaddingRightStyleClassItem$3p" />
+      <node id="1234198385755" at="220,0,221,0" concept="10" trace="PaddingLeftStyleClassItem$cj" />
+      <node id="1234198385755" at="221,0,222,0" concept="10" trace="FirstPositionAllowedStyleClassItem$V0" />
+      <node id="1234198385755" at="222,0,223,0" concept="10" trace="LastPositionAllowedStyleClassItem$cz" />
+      <node id="1234198385755" at="223,0,224,0" concept="10" trace="IStyleContainer$rq" />
+      <node id="1234198385755" at="224,0,225,0" concept="10" trace="SelectableStyleSheetItem$Au" />
+      <node id="1234198385755" at="225,0,226,0" concept="10" trace="CellModel_Constant$4e" />
+      <node id="1234198385755" at="226,0,227,0" concept="10" trace="CellModel_Collection$Og" />
+      <node id="1234198385755" at="227,0,228,0" concept="10" trace="EditorCellModel$gN" />
+      <node id="1234198385755" at="228,0,229,0" concept="10" trace="CellModel_RefCell$7g" />
+      <node id="1234198385755" at="232,0,233,0" concept="10" trace="value$U7AO" />
+      <node id="1234198385755" at="233,0,234,0" concept="10" trace="flag$7SqM" />
+      <node id="1234198385755" at="237,0,238,0" concept="10" trace="editorComponent$$jf3" />
+      <node id="1234198385755" at="238,0,239,0" concept="10" trace="cellModel$L8Uc" />
+      <node id="1234198385755" at="239,0,240,0" concept="10" trace="styleItem$FgZD" />
       <node id="1234797137769" at="187,60,190,11" concept="4" />
       <node id="1234797320703" at="191,82,194,13" concept="4" />
       <node id="1234791340838" at="29,0,33,0" concept="5" trace="getName#()Ljava/lang/String;" />
@@ -145,7 +145,7 @@
       <scope id="1234791340838" at="50,42,51,21" />
       <scope id="1234374055844" at="56,31,57,37" />
       <scope id="1234374055844" at="60,41,61,37" />
-      <scope id="1234374055844" at="64,54,65,52" />
+      <scope id="1234374055844" at="64,54,65,53" />
       <scope id="1234374119217" at="68,59,69,153" />
       <scope id="1234374055846" at="72,52,73,41" />
       <scope id="1234374055844" at="76,42,77,21" />
@@ -156,7 +156,7 @@
       <scope id="1234365773600" at="104,42,105,21" />
       <scope id="1234366008860" at="110,31,111,51" />
       <scope id="1234366008860" at="114,41,115,51" />
-      <scope id="1234366008860" at="118,54,119,60" />
+      <scope id="1234366008860" at="118,54,119,61" />
       <scope id="1234366008860" at="133,42,134,21" />
       <scope id="1234369918848" at="139,31,140,34" />
       <scope id="1234369918848" at="143,41,144,34" />
@@ -288,8 +288,8 @@
       <node id="5076612878472126629" at="67,41,68,39" concept="7" />
       <node id="5076612878472126629" at="71,54,72,60" concept="7" />
       <node id="5076612878472126629" at="75,59,76,20" concept="7" />
-      <node id="5486166368171977402" at="79,52,80,114" concept="6" />
-      <node id="916425739034827706" at="80,114,81,94" concept="8" />
+      <node id="5486166368171977402" at="79,52,80,115" concept="6" />
+      <node id="916425739034827706" at="80,115,81,94" concept="8" />
       <node id="916425739034832418" at="81,94,82,97" concept="8" />
       <node id="916425739034837134" at="82,97,83,109" concept="8" />
       <node id="916425739034841869" at="83,109,84,65" concept="8" />
@@ -308,14 +308,14 @@
       <node id="5486166368171989554" at="114,11,115,43" concept="2" />
       <node id="5076612878472126629" at="118,42,119,20" concept="7" />
       <node id="5076612878471698562" at="126,41,127,160" concept="7" />
-      <node id="5076612878471698562" at="131,0,132,0" concept="10" trace="GeneratedSubstituteMenuAttribute$Mz" />
-      <node id="5076612878471698562" at="132,0,133,0" concept="10" trace="SubstituteMenu_Named$J" />
-      <node id="5076612878471698562" at="133,0,134,0" concept="10" trace="SubstituteMenuReference_Named$Ud" />
-      <node id="5076612878471698562" at="134,0,135,0" concept="10" trace="SubstituteMenuPart_IncludeMenu$8K" />
-      <node id="5076612878471698562" at="135,0,136,0" concept="10" trace="AbstractOutputConceptContainerSubstituteMenuPart$a0" />
-      <node id="5076612878471698562" at="136,0,137,0" concept="10" trace="ISubstituteMenu$zI" />
-      <node id="5076612878471698562" at="140,0,141,0" concept="10" trace="parts$uqCt" />
-      <node id="5076612878471698562" at="141,0,142,0" concept="10" trace="outputConcept$O98u" />
+      <node id="5076612878471698562" at="131,0,132,0" concept="10" trace="GeneratedSubstituteMenuAttribute$Ya" />
+      <node id="5076612878471698562" at="132,0,133,0" concept="10" trace="SubstituteMenu_Named$cm" />
+      <node id="5076612878471698562" at="133,0,134,0" concept="10" trace="SubstituteMenuReference_Named$5O" />
+      <node id="5076612878471698562" at="134,0,135,0" concept="10" trace="SubstituteMenuPart_IncludeMenu$kn" />
+      <node id="5076612878471698562" at="135,0,136,0" concept="10" trace="AbstractOutputConceptContainerSubstituteMenuPart$lB" />
+      <node id="5076612878471698562" at="136,0,137,0" concept="10" trace="ISubstituteMenu$Jl" />
+      <node id="5076612878471698562" at="140,0,141,0" concept="10" trace="parts$yGO4" />
+      <node id="5076612878471698562" at="141,0,142,0" concept="10" trace="outputConcept$Srk5" />
       <node id="5486166368171947239" at="90,0,93,0" concept="5" trace="select#(Ljetbrains/mps/ide/findusages/model/SearchResult;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5486166368172139621" at="94,0,97,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5486166368172368412" at="104,120,107,19" concept="4" />

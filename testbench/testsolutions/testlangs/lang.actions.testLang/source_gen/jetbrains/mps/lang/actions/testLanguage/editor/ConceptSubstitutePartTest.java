@@ -51,7 +51,7 @@ public class ConceptSubstitutePartTest extends SubstituteMenuBase {
       tmpVar = tmpVar && _context.getEditorContext() != null;
       tmpVar = tmpVar && _context.getModel() != null;
 
-      return _context.getLink() == LINKS.conceptSubstitutePart$37Gw;
+      return _context.getLink() == LINKS.conceptSubstitutePart$FFXl;
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class ConceptSubstitutePartTest extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ActionTestChild1$O9) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ActionTestChild1$4Y) {
 
         @NotNull
         @Override
@@ -80,15 +80,15 @@ public class ConceptSubstitutePartTest extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.ActionTestChild1$O9));
+      }, CONCEPTS.ActionTestChild1$4Y));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink conceptSubstitutePart$37Gw = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2365c14e167221c6L, "conceptSubstitutePart");
+    /*package*/ static final SContainmentLink conceptSubstitutePart$FFXl = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2365c14e167221c6L, "conceptSubstitutePart");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestChild1$O9 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1");
+    /*package*/ static final SConcept ActionTestChild1$4Y = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1");
   }
 }

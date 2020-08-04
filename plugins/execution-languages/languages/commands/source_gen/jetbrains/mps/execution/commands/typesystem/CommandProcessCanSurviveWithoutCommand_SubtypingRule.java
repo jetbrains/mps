@@ -19,7 +19,7 @@ public class CommandProcessCanSurviveWithoutCommand_SubtypingRule extends Subtyp
     return createCommandProcessType_6vbhke_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CommandProcessType$Cb;
+    return CONCEPTS.CommandProcessType$eR;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -31,11 +31,11 @@ public class CommandProcessCanSurviveWithoutCommand_SubtypingRule extends Subtyp
     return true;
   }
   private static SNode createCommandProcessType_6vbhke_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CommandProcessType$Cb);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CommandProcessType$eR);
     return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CommandProcessType$Cb = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, "jetbrains.mps.execution.commands.structure.CommandProcessType");
+    /*package*/ static final SConcept CommandProcessType$eR = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x87f99370d7e1ea3L, "jetbrains.mps.execution.commands.structure.CommandProcessType");
   }
 }

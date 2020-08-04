@@ -35,7 +35,7 @@ public final class TransformationMenu_Default__BehaviorDescriptor extends BaseBH
   /*package*/ static boolean canBeAppliedToNode_id7IH442d05tK(@NotNull SAbstractConcept __thisConcept__, SNode candidate) {
     List<SNode> existing = AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(candidate, LanguageAspect.EDITOR);
     for (SNode node : existing) {
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.TransformationMenu_Default$In)) {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.TransformationMenu_Default$TY)) {
         return false;
       }
     }
@@ -89,6 +89,6 @@ public final class TransformationMenu_Default__BehaviorDescriptor extends BaseBH
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenu_Default$In = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
+    /*package*/ static final SConcept TransformationMenu_Default$TY = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
   }
 }

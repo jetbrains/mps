@@ -33,14 +33,14 @@ public class MoveStaticFieldRefactoring extends BasicMoveRefactoring {
   @Override
   public void replaceSingleUsage(SNode usage) {
     super.replaceSingleUsage(usage);
-    if (SNodeOperations.getNodeAncestor(usage, CONCEPTS.Classifier$hJ, false, false) == this.myDestination) {
+    if (SNodeOperations.getNodeAncestor(usage, CONCEPTS.Classifier$Ix, false, false) == this.myDestination) {
       SNodeOperations.replaceWithAnother(usage, _quotation_createNode_fls06q_a0a0a1a2(this.myReplacing));
     } else {
       SNodeOperations.replaceWithAnother(usage, _quotation_createNode_fls06q_a0a0a0b0c(this.myDestination, this.myReplacing));
     }
   }
   protected boolean goodDestination() {
-    return SNodeOperations.isInstanceOf(this.myDestination, CONCEPTS.Classifier$hJ);
+    return SNodeOperations.isInstanceOf(this.myDestination, CONCEPTS.Classifier$Ix);
   }
   private static SNode _quotation_createNode_fls06q_a0a0a0b0c(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -59,6 +59,6 @@ public class MoveStaticFieldRefactoring extends BasicMoveRefactoring {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

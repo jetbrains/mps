@@ -83,7 +83,7 @@ public class CreateFirstDeclaration extends TransformationMenuBase {
   public class TMP_Group_ofqub7_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.propertyDeclaration$yMqt)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.propertyDeclaration$YUgg)).isEmpty();
     }
 
     @NotNull
@@ -139,7 +139,7 @@ public class CreateFirstDeclaration extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull final String pattern) {
-          SNode property = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.propertyDeclaration$yMqt, null);
+          SNode property = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.propertyDeclaration$YUgg, null);
           SelectionUtil.selectCell(_context.getEditorContext(), property, "name");
           EditorCell selectedCell = _context.getEditorContext().getSelectedCell();
           if (selectedCell instanceof EditorCell_Label) {
@@ -188,9 +188,9 @@ public class CreateFirstDeclaration extends TransformationMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), CONCEPTS.DataTypeDeclaration$KQ).getAvailableElements("")).select(new ISelector<SNode, SNode>() {
+        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), CONCEPTS.DataTypeDeclaration$AD).getAvailableElements("")).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
-            return SNodeOperations.as(it, CONCEPTS.DataTypeDeclaration$KQ);
+            return SNodeOperations.as(it, CONCEPTS.DataTypeDeclaration$AD);
           }
         }).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -252,8 +252,8 @@ public class CreateFirstDeclaration extends TransformationMenuBase {
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNode property = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.propertyDeclaration$yMqt, null);
-            SLinkOperations.setTarget(property, LINKS.dataType$Dbgb, myParameterObject);
+            SNode property = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.propertyDeclaration$YUgg, null);
+            SLinkOperations.setTarget(property, LINKS.dataType$5j5Y, myParameterObject);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), property, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 
@@ -284,11 +284,11 @@ public class CreateFirstDeclaration extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink propertyDeclaration$YUgg = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SReferenceLink dataType$5j5Y = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DataTypeDeclaration$KQ = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
+    /*package*/ static final SConcept DataTypeDeclaration$AD = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
   }
 }

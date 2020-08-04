@@ -25,7 +25,7 @@ public class NodeFeature extends AbstractNodeFeature {
     SNode node = getNodePointer().resolve(repo);
     SNode parentNode = SNodeOperations.getParent(node);
     if (parentNode == null) {
-      String virtualPackage = SPropertyOperations.getString(node, PROPS.virtualPackage$dz_3);
+      String virtualPackage = SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl);
       if ((virtualPackage == null || virtualPackage.length() == 0)) {
         return null;
       } else {
@@ -41,6 +41,6 @@ public class NodeFeature extends AbstractNodeFeature {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

@@ -32,7 +32,7 @@ public final class AttributeQualifier__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getAttributeContainerType_id5zEkxuKhwBG(@NotNull SNode __thisNode__) {
-    return (SNode) AttributeAccess__BehaviorDescriptor.getAttributeContainerType_id62qhzb6UOqI.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.AttributeAccess$w9));
+    return (SNode) AttributeAccess__BehaviorDescriptor.getAttributeContainerType_id62qhzb6UOqI.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.AttributeAccess$xD));
   }
   /*package*/ static SNode getTargetConcept_id5zEkxuKhyRq(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161");
@@ -87,6 +87,6 @@ public final class AttributeQualifier__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AttributeAccess$w9 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045a3b2L, "jetbrains.mps.lang.smodel.structure.AttributeAccess");
+    /*package*/ static final SConcept AttributeAccess$xD = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045a3b2L, "jetbrains.mps.lang.smodel.structure.AttributeAccess");
   }
 }

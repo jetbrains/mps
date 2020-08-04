@@ -36,7 +36,7 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_h3zx5f_a(), CONCEPTS.LiteralReplacement$zq));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_h3zx5f_a(), CONCEPTS.LiteralReplacement$ce));
     result.add(new SMP_Subconcepts_h3zx5f_b());
     return result;
   }
@@ -82,7 +82,7 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.LiteralReplacement$zq, context);
+        super(CONCEPTS.LiteralReplacement$ce, context);
         _context = context;
       }
 
@@ -93,8 +93,8 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.LiteralReplacement$zq, null);
-        SPropertyOperations.assign(literal, PROPS.text$F715, pattern);
+        SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.LiteralReplacement$ce, null);
+        SPropertyOperations.assign(literal, PROPS.text$u$DT, pattern);
         return literal;
       }
 
@@ -127,7 +127,7 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_h3zx5f_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Replacement$Ak);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Replacement$f8);
     }
     @NotNull
     @Override
@@ -149,11 +149,11 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
   private static final Pattern REGEXP_h3zx5f_a0a0a31c5 = Pattern.compile("[^\\\\]+", 0);
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LiteralReplacement$zq = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, "jetbrains.mps.baseLanguage.regexp.structure.LiteralReplacement");
-    /*package*/ static final SConcept Replacement$Ak = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab952L, "jetbrains.mps.baseLanguage.regexp.structure.Replacement");
+    /*package*/ static final SConcept LiteralReplacement$ce = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, "jetbrains.mps.baseLanguage.regexp.structure.LiteralReplacement");
+    /*package*/ static final SConcept Replacement$f8 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab952L, "jetbrains.mps.baseLanguage.regexp.structure.Replacement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$F715 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, 0x34ae970c192b203bL, "text");
+    /*package*/ static final SProperty text$u$DT = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, 0x34ae970c192b203bL, "text");
   }
 }

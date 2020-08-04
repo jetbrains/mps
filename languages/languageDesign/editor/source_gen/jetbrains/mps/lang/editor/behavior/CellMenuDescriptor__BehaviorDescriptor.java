@@ -34,14 +34,14 @@ public final class CellMenuDescriptor__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getEditedFeature_idhKy3mrJ(@NotNull SNode __thisNode__) {
-    SNode owner = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.EditorCellModel$5c, CONCEPTS.CellMenuComponent$EO}, false, false);
-    if (SNodeOperations.isInstanceOf(owner, CONCEPTS.CellModel_WithRole$8K)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(owner, CONCEPTS.CellModel_WithRole$8K), LINKS.relationDeclaration$_K5_);
-    } else if (SNodeOperations.isInstanceOf(owner, CONCEPTS.CellMenuComponent$EO)) {
-      SNode component = SNodeOperations.cast(owner, CONCEPTS.CellMenuComponent$EO);
-      SNode feature = SLinkOperations.getTarget(component, LINKS.applicableFeature$hs1p);
+    SNode owner = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.EditorCellModel$gN, CONCEPTS.CellMenuComponent$Qr}, false, false);
+    if (SNodeOperations.isInstanceOf(owner, CONCEPTS.CellModel_WithRole$kn)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(owner, CONCEPTS.CellModel_WithRole$kn), LINKS.relationDeclaration$E2hc);
+    } else if (SNodeOperations.isInstanceOf(owner, CONCEPTS.CellMenuComponent$Qr)) {
+      SNode component = SNodeOperations.cast(owner, CONCEPTS.CellMenuComponent$Qr);
+      SNode feature = SLinkOperations.getTarget(component, LINKS.applicableFeature$lId0);
       if ((feature != null)) {
-        return SLinkOperations.getTarget(feature, LINKS.relationDeclaration$wdJR);
+        return SLinkOperations.getTarget(feature, LINKS.relationDeclaration$$vVu);
       }
       return null;
     } else {
@@ -96,14 +96,14 @@ public final class CellMenuDescriptor__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorCellModel$5c = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
-    /*package*/ static final SConcept CellMenuComponent$EO = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, "jetbrains.mps.lang.editor.structure.CellMenuComponent");
-    /*package*/ static final SConcept CellModel_WithRole$8K = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, "jetbrains.mps.lang.editor.structure.CellModel_WithRole");
+    /*package*/ static final SConcept EditorCellModel$gN = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
+    /*package*/ static final SConcept CellMenuComponent$Qr = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, "jetbrains.mps.lang.editor.structure.CellMenuComponent");
+    /*package*/ static final SConcept CellModel_WithRole$kn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, "jetbrains.mps.lang.editor.structure.CellModel_WithRole");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SContainmentLink applicableFeature$hs1p = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, 0x10f7d739ad9L, "applicableFeature");
-    /*package*/ static final SReferenceLink relationDeclaration$wdJR = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d762adcL, 0x10f7e408e08L, "relationDeclaration");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SContainmentLink applicableFeature$lId0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, 0x10f7d739ad9L, "applicableFeature");
+    /*package*/ static final SReferenceLink relationDeclaration$$vVu = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d762adcL, 0x10f7e408e08L, "relationDeclaration");
   }
 }

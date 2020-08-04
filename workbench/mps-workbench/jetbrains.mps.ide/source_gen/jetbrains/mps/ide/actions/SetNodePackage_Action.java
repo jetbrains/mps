@@ -74,7 +74,7 @@ public class SetNodePackage_Action extends BaseAction {
       if (nodes != null) {
         boolean error = false;
         for (SNode node : ListSequence.fromList(nodes)) {
-          if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseConcept$Sz))) {
+          if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseConcept$gP))) {
             error = true;
             break;
           }
@@ -120,7 +120,7 @@ public class SetNodePackage_Action extends BaseAction {
     modelAccess.runReadAction(new Runnable() {
       public void run() {
         packages.value = SetNodePackage_Action.this.fetchExistingPackages(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params);
-        oldPackage.value = SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$dz_3);
+        oldPackage.value = SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$EkXl);
       }
     });
     final SetNodePackageDialog dialog = new SetNodePackageDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), packages.value);
@@ -131,10 +131,10 @@ public class SetNodePackage_Action extends BaseAction {
     modelAccess.executeCommandInEDT(new Runnable() {
       public void run() {
         for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
-          SPropertyOperations.assign(node, PROPS.virtualPackage$dz_3, dialog.getPackage());
-          if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN)) {
-            for (SNode aspect : ListSequence.fromList(SetNodePackage_Action.this.findAllAspects(((Project) MapSequence.fromMap(_params).get("ideaProject")), SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$UN), _params))) {
-              SPropertyOperations.assign(aspect, PROPS.virtualPackage$dz_3, dialog.getPackage());
+          SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, dialog.getPackage());
+          if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
+            for (SNode aspect : ListSequence.fromList(SetNodePackage_Action.this.findAllAspects(((Project) MapSequence.fromMap(_params).get("ideaProject")), SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), _params))) {
+              SPropertyOperations.assign(aspect, PROPS.virtualPackage$EkXl, dialog.getPackage());
             }
           }
         }
@@ -149,11 +149,11 @@ public class SetNodePackage_Action extends BaseAction {
     }));
     Set<String> packages = SetSequence.fromSetWithValues(new HashSet<String>(), SetSequence.fromSet(models).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel m) {
-        return jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(m, CONCEPTS.BaseConcept$Sz);
+        return jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(m, CONCEPTS.BaseConcept$gP);
       }
     }).select(new ISelector<SNode, String>() {
       public String select(SNode r) {
-        return SPropertyOperations.getString(r, PROPS.virtualPackage$dz_3);
+        return SPropertyOperations.getString(r, PROPS.virtualPackage$EkXl);
       }
     }).where(new IWhereFilter<String>() {
       public boolean accept(String p) {
@@ -190,11 +190,11 @@ public class SetNodePackage_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

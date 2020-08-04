@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
   public XmlExternalId_Constraints() {
-    super(CONCEPTS.XmlExternalId$et);
+    super(CONCEPTS.XmlExternalId$CW);
   }
 
   public static class PublicId_Property extends BasePropertyConstraintsDescriptor {
     public PublicId_Property(ConstraintsDescriptor container) {
-      super(PROPS.publicId$KGQS, container);
+      super(PROPS.publicId$E5hn, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -44,7 +44,7 @@ public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
   }
   public static class SystemId_Property extends BasePropertyConstraintsDescriptor {
     public SystemId_Property(ConstraintsDescriptor container) {
-      super(PROPS.systemId$KH5T, container);
+      super(PROPS.systemId$E5wo, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -66,17 +66,17 @@ public class XmlExternalId_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.publicId$KGQS, new PublicId_Property(this));
-    properties.put(PROPS.systemId$KH5T, new SystemId_Property(this));
+    properties.put(PROPS.publicId$E5hn, new PublicId_Property(this));
+    properties.put(PROPS.systemId$E5wo, new SystemId_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlExternalId$et = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, "jetbrains.mps.core.xml.structure.XmlExternalId");
+    /*package*/ static final SConcept XmlExternalId$CW = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, "jetbrains.mps.core.xml.structure.XmlExternalId");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty publicId$KGQS = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60343L, "publicId");
-    /*package*/ static final SProperty systemId$KH5T = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60344L, "systemId");
+    /*package*/ static final SProperty publicId$E5hn = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60343L, "publicId");
+    /*package*/ static final SProperty systemId$E5wo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394f6033fL, 0x1d9c27c394f60344L, "systemId");
   }
 }

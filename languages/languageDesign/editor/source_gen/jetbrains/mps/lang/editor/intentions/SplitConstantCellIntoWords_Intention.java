@@ -43,7 +43,7 @@ public final class SplitConstantCellIntoWords_Intention extends AbstractIntentio
     if ((SNodeOperations.getParent(node) == null)) {
       return false;
     }
-    String text = SPropertyOperations.getString(node, PROPS.text$Lsjw);
+    String text = SPropertyOperations.getString(node, PROPS.text$PIv7);
     if (text == null || text.length() == 0) {
       return false;
     }
@@ -71,40 +71,40 @@ public final class SplitConstantCellIntoWords_Intention extends AbstractIntentio
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      String text = SPropertyOperations.getString(node, PROPS.text$Lsjw).trim();
-      SNode collection = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), CONCEPTS.CellModel_Collection$CD, null);
-      SNodeFactoryOperations.setNewChild(collection, LINKS.cellLayout$JWT7, CONCEPTS.CellLayout_Flow$Ss);
+      String text = SPropertyOperations.getString(node, PROPS.text$PIv7).trim();
+      SNode collection = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), CONCEPTS.CellModel_Collection$Og, null);
+      SNodeFactoryOperations.setNewChild(collection, LINKS.cellLayout$Of4I, CONCEPTS.CellLayout_Flow$43);
       SNodeOperations.replaceWithAnother(node, collection);
       String[] strings = text.split(" ");
       int i = 0;
       for (String word : strings) {
         SNode constantCell = SNodeOperations.copyNode(node);
-        SPropertyOperations.set(constantCell, PROPS.text$Lsjw, word);
+        SPropertyOperations.set(constantCell, PROPS.text$PIv7, word);
         boolean leftPaddingSet = false;
         boolean rightPaddingSet = false;
-        for (SNode styleClassItem : SLinkOperations.getChildren(constantCell, LINKS.styleItem$AYO2)) {
-          if (SNodeOperations.isInstanceOf(styleClassItem, CONCEPTS.PaddingLeftStyleClassItem$G)) {
+        for (SNode styleClassItem : SLinkOperations.getChildren(constantCell, LINKS.styleItem$FgZD)) {
+          if (SNodeOperations.isInstanceOf(styleClassItem, CONCEPTS.PaddingLeftStyleClassItem$cj)) {
             leftPaddingSet = true;
             if (i != 0) {
-              SPropertyOperations.assign(SNodeOperations.cast(styleClassItem, CONCEPTS.PaddingLeftStyleClassItem$G), PROPS.value$PPrd, "0.5");
+              SPropertyOperations.assign(SNodeOperations.cast(styleClassItem, CONCEPTS.PaddingLeftStyleClassItem$cj), PROPS.value$U7AO, "0.5");
             }
           }
-          if (SNodeOperations.isInstanceOf(styleClassItem, CONCEPTS.PaddingRightStyleClassItem$RM)) {
+          if (SNodeOperations.isInstanceOf(styleClassItem, CONCEPTS.PaddingRightStyleClassItem$3p)) {
             rightPaddingSet = true;
             if (i != strings.length - 1) {
-              SPropertyOperations.assign(SNodeOperations.cast(styleClassItem, CONCEPTS.PaddingRightStyleClassItem$RM), PROPS.value$PPrd, "0.5");
+              SPropertyOperations.assign(SNodeOperations.cast(styleClassItem, CONCEPTS.PaddingRightStyleClassItem$3p), PROPS.value$U7AO, "0.5");
             }
           }
         }
         if (!(leftPaddingSet)) {
-          SNode paddingLeftStyleClassItem = SNodeFactoryOperations.addNewChild(constantCell, LINKS.styleItem$AYO2, CONCEPTS.PaddingLeftStyleClassItem$G);
-          SPropertyOperations.set(paddingLeftStyleClassItem, PROPS.value$PPrd, "0.5");
+          SNode paddingLeftStyleClassItem = SNodeFactoryOperations.addNewChild(constantCell, LINKS.styleItem$FgZD, CONCEPTS.PaddingLeftStyleClassItem$cj);
+          SPropertyOperations.set(paddingLeftStyleClassItem, PROPS.value$U7AO, "0.5");
         }
         if (!(rightPaddingSet)) {
-          SNode paddingRightStyleClassItem = SNodeFactoryOperations.addNewChild(constantCell, LINKS.styleItem$AYO2, CONCEPTS.PaddingRightStyleClassItem$RM);
-          SPropertyOperations.set(paddingRightStyleClassItem, PROPS.value$PPrd, "0.5");
+          SNode paddingRightStyleClassItem = SNodeFactoryOperations.addNewChild(constantCell, LINKS.styleItem$FgZD, CONCEPTS.PaddingRightStyleClassItem$3p);
+          SPropertyOperations.set(paddingRightStyleClassItem, PROPS.value$U7AO, "0.5");
         }
-        ListSequence.fromList(SLinkOperations.getChildren(collection, LINKS.childCellModel$Dkkw)).addElement(constantCell);
+        ListSequence.fromList(SLinkOperations.getChildren(collection, LINKS.childCellModel$HAw7)).addElement(constantCell);
         i++;
       }
     }
@@ -115,20 +115,20 @@ public final class SplitConstantCellIntoWords_Intention extends AbstractIntentio
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$Lsjw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
-    /*package*/ static final SProperty value$PPrd = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value");
+    /*package*/ static final SProperty text$PIv7 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
+    /*package*/ static final SProperty value$U7AO = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41b27e5L, 0x11ae41bc2afL, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_Collection$CD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
-    /*package*/ static final SConcept CellLayout_Flow$Ss = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192de4f16L, "jetbrains.mps.lang.editor.structure.CellLayout_Flow");
-    /*package*/ static final SConcept PaddingLeftStyleClassItem$G = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41cffc4L, "jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem");
-    /*package*/ static final SConcept PaddingRightStyleClassItem$RM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41d378fL, "jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem");
+    /*package*/ static final SConcept CellModel_Collection$Og = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
+    /*package*/ static final SConcept CellLayout_Flow$43 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192de4f16L, "jetbrains.mps.lang.editor.structure.CellLayout_Flow");
+    /*package*/ static final SConcept PaddingLeftStyleClassItem$cj = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41cffc4L, "jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem");
+    /*package*/ static final SConcept PaddingRightStyleClassItem$3p = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11ae41d378fL, "jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
-    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SContainmentLink cellLayout$Of4I = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink styleItem$FgZD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink childCellModel$HAw7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
   }
 }

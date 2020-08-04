@@ -131,10 +131,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$8TJC;
+      return LINKS.children$VvvP;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.SelectionChild$km;
+      return CONCEPTS.SelectionChild$4z;
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
       return nodeFactory();
@@ -142,7 +142,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
     public SNode nodeFactory() {
       SNode ch = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x617705b269dc8251L, "jetbrains.mps.lang.editor.editorTest.structure.SelectionChild"));
-      SPropertyOperations.assign(ch, PROPS.flag$FEb0, true);
+      SPropertyOperations.assign(ch, PROPS.flag$ufVd, true);
       return ch;
     }
     public EditorCell createNodeCell(SNode elementNode) {
@@ -154,7 +154,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_o1wjm3_c2a.this.getNode(), LINKS.children$8TJC));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_o1wjm3_c2a.this.getNode(), LINKS.children$VvvP));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -194,7 +194,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       }
     }
     public boolean filter(SNode childNode) {
-      return SPropertyOperations.getBoolean(childNode, PROPS.flag$FEb0);
+      return SPropertyOperations.getBoolean(childNode, PROPS.flag$ufVd);
     }
   }
   public static class RangeSelectionFilter_o1wjm3_c2a extends NodeRangeSelection.RangeSelectionFilter {
@@ -204,7 +204,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       super(editorContext);
     }
     public boolean accept(SNode childNode) {
-      return SPropertyOperations.getBoolean(childNode, PROPS.flag$FEb0);
+      return SPropertyOperations.getBoolean(childNode, PROPS.flag$ufVd);
     }
     public String getModuleReference() {
       return "81f0abb8-d71e-4d13-a0c1-d2291fbb28b7(jetbrains.mps.lang.editor.editorTest)";
@@ -263,10 +263,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.children$8TJC;
+      return LINKS.children$VvvP;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.SelectionChild$km;
+      return CONCEPTS.SelectionChild$4z;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -278,7 +278,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_o1wjm3_c3a.this.getNode(), LINKS.children$8TJC));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(childrenListHandler_o1wjm3_c3a.this.getNode(), LINKS.children$VvvP));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -318,7 +318,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       }
     }
     public boolean filter(SNode childNode) {
-      return !(SPropertyOperations.getBoolean(childNode, PROPS.flag$FEb0));
+      return !(SPropertyOperations.getBoolean(childNode, PROPS.flag$ufVd));
     }
   }
   public static class RangeSelectionFilter_o1wjm3_c3a extends NodeRangeSelection.RangeSelectionFilter {
@@ -328,7 +328,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       super(editorContext);
     }
     public boolean accept(SNode childNode) {
-      return !(SPropertyOperations.getBoolean(childNode, PROPS.flag$FEb0));
+      return !(SPropertyOperations.getBoolean(childNode, PROPS.flag$ufVd));
     }
     public String getModuleReference() {
       return "81f0abb8-d71e-4d13-a0c1-d2291fbb28b7(jetbrains.mps.lang.editor.editorTest)";
@@ -345,14 +345,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink children$8TJC = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x617705b269dc6674L, 0x617705b269dc8255L, "children");
+    /*package*/ static final SContainmentLink children$VvvP = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x617705b269dc6674L, 0x617705b269dc8255L, "children");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SelectionChild$km = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x617705b269dc8251L, "jetbrains.mps.lang.editor.editorTest.structure.SelectionChild");
+    /*package*/ static final SConcept SelectionChild$4z = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x617705b269dc8251L, "jetbrains.mps.lang.editor.editorTest.structure.SelectionChild");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty flag$FEb0 = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x617705b269dc8251L, 0x617705b269dc8252L, "flag");
+    /*package*/ static final SProperty flag$ufVd = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x617705b269dc8251L, 0x617705b269dc8252L, "flag");
   }
 }

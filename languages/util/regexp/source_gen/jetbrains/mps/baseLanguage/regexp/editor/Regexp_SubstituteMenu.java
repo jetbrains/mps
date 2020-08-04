@@ -36,10 +36,10 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6gqf7r_a(), CONCEPTS.UnicodeCharacterRegexp$KI));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6gqf7r_b(), CONCEPTS.MatchParensRegexp$1m));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6gqf7r_c(), CONCEPTS.StringLiteralRegexp$g9));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6gqf7r_d(), CONCEPTS.StringLiteralRegexp$g9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6gqf7r_a(), CONCEPTS.UnicodeCharacterRegexp$py));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6gqf7r_b(), CONCEPTS.MatchParensRegexp$Ea));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6gqf7r_c(), CONCEPTS.StringLiteralRegexp$SX));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6gqf7r_d(), CONCEPTS.StringLiteralRegexp$SX));
     result.add(new SMP_Subconcepts_6gqf7r_e());
     return result;
   }
@@ -85,7 +85,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.UnicodeCharacterRegexp$KI, context);
+        super(CONCEPTS.UnicodeCharacterRegexp$py, context);
         _context = context;
       }
 
@@ -96,8 +96,8 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.UnicodeCharacterRegexp$KI, null);
-        SPropertyOperations.assign(literal, PROPS.code$wug6, pattern.substring(2));
+        SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.UnicodeCharacterRegexp$py, null);
+        SPropertyOperations.assign(literal, PROPS.code$jVSU, pattern.substring(2));
         return literal;
       }
 
@@ -151,7 +151,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.MatchParensRegexp$1m, context);
+        super(CONCEPTS.MatchParensRegexp$Ea, context);
         _context = context;
       }
 
@@ -162,8 +162,8 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.MatchParensRegexp$1m, _context.getCurrentTargetNode());
-        SPropertyOperations.assign(node, PROPS.name$lA7v, (pattern.endsWith(":") ? pattern.substring(1, pattern.length() - 1) : ((pattern == null || pattern.length() == 0) ? "" : pattern.substring(1))));
+        SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.MatchParensRegexp$Ea, _context.getCurrentTargetNode());
+        SPropertyOperations.assign(node, PROPS.name$MnvL, (pattern.endsWith(":") ? pattern.substring(1, pattern.length() - 1) : ((pattern == null || pattern.length() == 0) ? "" : pattern.substring(1))));
         return node;
       }
 
@@ -213,7 +213,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.StringLiteralRegexp$g9, context);
+        super(CONCEPTS.StringLiteralRegexp$SX, context);
         _context = context;
       }
 
@@ -224,8 +224,8 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.StringLiteralRegexp$g9, null);
-        SPropertyOperations.assign(literal, PROPS.text$8qD5, pattern);
+        SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.StringLiteralRegexp$SX, null);
+        SPropertyOperations.assign(literal, PROPS.text$VShT, pattern);
         return literal;
       }
 
@@ -284,7 +284,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.StringLiteralRegexp$g9, context);
+        super(CONCEPTS.StringLiteralRegexp$SX, context);
         _context = context;
       }
 
@@ -295,8 +295,8 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.StringLiteralRegexp$g9, null);
-        SPropertyOperations.assign(literal, PROPS.text$8qD5, pattern.substring(1));
+        SNode literal = SNodeFactoryOperations.createNewNode(CONCEPTS.StringLiteralRegexp$SX, null);
+        SPropertyOperations.assign(literal, PROPS.text$VShT, pattern.substring(1));
         return literal;
       }
 
@@ -329,7 +329,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_6gqf7r_e extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Regexp$xM);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Regexp$aA);
     }
     @NotNull
     @Override
@@ -354,15 +354,15 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
   private static final Pattern REGEXP_6gqf7r_a0a0a31c8 = Pattern.compile("^\\\\[\\-\\+\\*\\[\\]\\.\\{\\}\\(\\)\\^'\\$]$", 0);
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UnicodeCharacterRegexp$KI = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11831260718L, "jetbrains.mps.baseLanguage.regexp.structure.UnicodeCharacterRegexp");
-    /*package*/ static final SConcept MatchParensRegexp$1m = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
-    /*package*/ static final SConcept StringLiteralRegexp$g9 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, "jetbrains.mps.baseLanguage.regexp.structure.StringLiteralRegexp");
-    /*package*/ static final SConcept Regexp$xM = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");
+    /*package*/ static final SConcept UnicodeCharacterRegexp$py = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11831260718L, "jetbrains.mps.baseLanguage.regexp.structure.UnicodeCharacterRegexp");
+    /*package*/ static final SConcept MatchParensRegexp$Ea = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
+    /*package*/ static final SConcept StringLiteralRegexp$SX = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, "jetbrains.mps.baseLanguage.regexp.structure.StringLiteralRegexp");
+    /*package*/ static final SConcept Regexp$aA = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty code$wug6 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11831260718L, 0x1183127443bL, "code");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty text$8qD5 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
+    /*package*/ static final SProperty code$jVSU = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11831260718L, 0x1183127443bL, "code");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty text$VShT = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
   }
 }

@@ -22,15 +22,15 @@ public class check_SimpleBuilderDeclaration_NonTypesystemRule extends AbstractNo
   public check_SimpleBuilderDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode builder, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getBoolean(builder, PROPS.isAbstract$bZJf)) {
-      if ((SLinkOperations.getTarget(builder, LINKS.creator$9Y7T) != null)) {
+    if (SPropertyOperations.getBoolean(builder, PROPS.isAbstract$CwIU)) {
+      if ((SLinkOperations.getTarget(builder, LINKS.creator$Av7$) != null)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(builder, LINKS.creator$9Y7T), "abstract builder cannot have create clause", "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "5613258673505634497", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(builder, LINKS.creator$Av7$), "abstract builder cannot have create clause", "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "5613258673505634497", null, errorTarget);
         }
       }
     } else {
-      if ((SLinkOperations.getTarget(builder, LINKS.creator$9Y7T) == null)) {
+      if ((SLinkOperations.getTarget(builder, LINKS.creator$Av7$) == null)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(builder, "please, specify create clause", "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "5613258673505634588", null, errorTarget);
@@ -39,7 +39,7 @@ public class check_SimpleBuilderDeclaration_NonTypesystemRule extends AbstractNo
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SimpleBuilderDeclaration$fS;
+    return CONCEPTS.SimpleBuilderDeclaration$fz;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,14 +49,14 @@ public class check_SimpleBuilderDeclaration_NonTypesystemRule extends AbstractNo
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$bZJf = MetaAdapterFactory.getProperty(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x34f5c07463deaa83L, "isAbstract");
+    /*package*/ static final SProperty isAbstract$CwIU = MetaAdapterFactory.getProperty(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x34f5c07463deaa83L, "isAbstract");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink creator$9Y7T = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x6524536b2e2bab2eL, "creator");
+    /*package*/ static final SContainmentLink creator$Av7$ = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x6524536b2e2bab2eL, "creator");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleBuilderDeclaration$fS = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderDeclaration");
+    /*package*/ static final SConcept SimpleBuilderDeclaration$fz = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderDeclaration");
   }
 }

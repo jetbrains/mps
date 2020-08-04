@@ -33,7 +33,7 @@ public final class IndexedTupleMemberAccessExpression__BehaviorDescriptor extend
   }
 
   /*package*/ static boolean isLValue_idhEwJgmE(@NotNull SNode __thisNode__) {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.tuple$iJS7), CONCEPTS.IndexedTupleLiteral$PE));
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.tuple$$4XS), CONCEPTS.IndexedTupleLiteral$Vr));
   }
 
   /*package*/ IndexedTupleMemberAccessExpression__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class IndexedTupleMemberAccessExpression__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tuple$iJS7 = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple");
+    /*package*/ static final SContainmentLink tuple$$4XS = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IndexedTupleLiteral$PE = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleLiteral");
+    /*package*/ static final SConcept IndexedTupleLiteral$Vr = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleLiteral");
   }
 }

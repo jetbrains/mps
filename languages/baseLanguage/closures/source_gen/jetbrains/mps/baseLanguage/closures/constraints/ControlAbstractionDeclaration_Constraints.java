@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ControlAbstractionDeclaration_Constraints extends BaseConstraintsDescriptor {
   public ControlAbstractionDeclaration_Constraints() {
-    super(CONCEPTS.ControlAbstractionDeclaration$AY);
+    super(CONCEPTS.ControlAbstractionDeclaration$uC);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class ControlAbstractionDeclaration_Constraints extends BaseConstraintsDe
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ControlAbstractionContainer$Tj);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ControlAbstractionContainer$KX);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590334(jetbrains.mps.baseLanguage.closures.constraints)", "1227128029536560051");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ControlAbstractionDeclaration$AY = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11e49dc8097L, "jetbrains.mps.baseLanguage.closures.structure.ControlAbstractionDeclaration");
-    /*package*/ static final SConcept ControlAbstractionContainer$Tj = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11e49db3870L, "jetbrains.mps.baseLanguage.closures.structure.ControlAbstractionContainer");
+    /*package*/ static final SConcept ControlAbstractionDeclaration$uC = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11e49dc8097L, "jetbrains.mps.baseLanguage.closures.structure.ControlAbstractionDeclaration");
+    /*package*/ static final SConcept ControlAbstractionContainer$KX = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11e49db3870L, "jetbrains.mps.baseLanguage.closures.structure.ControlAbstractionContainer");
   }
 }

@@ -32,7 +32,7 @@ public final class IntegerConstant__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    return SPropertyOperations.getInteger(__thisNode__, PROPS.value$Cbc0);
+    return SPropertyOperations.getInteger(__thisNode__, PROPS.value$jgCM);
   }
 
   /*package*/ IntegerConstant__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class IntegerConstant__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$jgCM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
   }
 }

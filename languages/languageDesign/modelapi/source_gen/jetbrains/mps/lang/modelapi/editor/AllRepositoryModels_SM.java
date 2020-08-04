@@ -35,7 +35,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_vzoe42_a(), CONCEPTS.ModelPointer$rg));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_vzoe42_a(), CONCEPTS.ModelPointer$6N));
     return result;
   }
 
@@ -111,7 +111,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.ModelPointer$rg, context);
+          super(CONCEPTS.ModelPointer$6N, context);
           _context = context;
         }
 
@@ -122,7 +122,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          return (SNode) ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$rg), _context.getModel(), myParameterObject);
+          return (SNode) ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$6N), _context.getModel(), myParameterObject);
         }
 
         @Override
@@ -131,7 +131,7 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.ModelPointer$rg, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.ModelPointer$6N, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -154,6 +154,6 @@ public class AllRepositoryModels_SM extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelPointer$rg = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
+    /*package*/ static final SConcept ModelPointer$6N = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
   }
 }

@@ -33,7 +33,7 @@ public final class DependentTypeInstance__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static SNode getMyType_id7T23sO8yx5P(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.decl$fIG0) == null ? null : DependentTypeDescriptor__BehaviorDescriptor.getType_id3geGFOI14GE.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.decl$fIG0), SLinkOperations.getTarget(__thisNode__, LINKS.point$Dc$v)));
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.decl$HI1L) == null ? null : DependentTypeDescriptor__BehaviorDescriptor.getType_id3geGFOI14GE.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.decl$HI1L), SLinkOperations.getTarget(__thisNode__, LINKS.point$7bUg)));
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     SNode myType = DependentTypeInstance__BehaviorDescriptor.getMyType_id7T23sO8yx5P.invoke(__thisNode__);
@@ -93,7 +93,7 @@ public final class DependentTypeInstance__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$fIG0 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x340eb2bd2e03d16cL, "decl");
-    /*package*/ static final SReferenceLink point$Dc$v = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x7e420dcd0899aa0eL, "point");
+    /*package*/ static final SReferenceLink decl$HI1L = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x340eb2bd2e03d16cL, "decl");
+    /*package*/ static final SReferenceLink point$7bUg = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x7e420dcd0899aa0eL, "point");
   }
 }

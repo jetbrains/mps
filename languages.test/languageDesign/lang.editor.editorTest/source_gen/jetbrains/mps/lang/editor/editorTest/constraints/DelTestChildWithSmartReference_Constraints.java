@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DelTestChildWithSmartReference_Constraints extends BaseConstraintsDescriptor {
   public DelTestChildWithSmartReference_Constraints() {
-    super(CONCEPTS.DelTestChildWithSmartReference$j_);
+    super(CONCEPTS.DelTestChildWithSmartReference$3M);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$DIGy, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$sksJ, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class DelTestChildWithSmartReference_Constraints extends BaseConstraintsD
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.DelTestNodeToReference$k4);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.DelTestNodeToReference$4h);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -54,11 +54,11 @@ public class DelTestChildWithSmartReference_Constraints extends BaseConstraintsD
   private static final SNodePointer breakingNode_qe5jpr_a0a0a0a0a1a0a0a0c = new SNodePointer("r:94b1feee-20bf-48e9-9677-814a5fdcaf90(jetbrains.mps.lang.editor.editorTest.constraints)", "2876890010455304545");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DelTestChildWithSmartReference$j_ = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestChildWithSmartReference");
-    /*package*/ static final SConcept DelTestNodeToReference$k4 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69daeL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestNodeToReference");
+    /*package*/ static final SConcept DelTestChildWithSmartReference$3M = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestChildWithSmartReference");
+    /*package*/ static final SConcept DelTestNodeToReference$4h = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69daeL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestNodeToReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$DIGy = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, 0x7a6a3ef59ad69e4aL, "reference");
+    /*package*/ static final SReferenceLink reference$sksJ = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, 0x7a6a3ef59ad69e4aL, "reference");
   }
 }

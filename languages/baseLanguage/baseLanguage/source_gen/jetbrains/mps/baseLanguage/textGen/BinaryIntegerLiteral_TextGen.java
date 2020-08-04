@@ -13,10 +13,10 @@ public class BinaryIntegerLiteral_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append("0b" + SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$fgqW));
+    tgs.append("0b" + SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$UlRI));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$fgqW = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10872a073bf6450aL, 0x11297628b3cL, "value");
+    /*package*/ static final SProperty value$UlRI = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10872a073bf6450aL, 0x11297628b3cL, "value");
   }
 }

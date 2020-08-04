@@ -47,15 +47,15 @@ public final class AddRemoveUnconditionalPresenceAnnotation_Intention extends Ab
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$9U)) == null) ? "Add Uncondtitional Presence Annotation" : "Remove Unconditional Presence Annotation");
+      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$2L)) == null) ? "Add Uncondtitional Presence Annotation" : "Remove Unconditional Presence Annotation");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$9U)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$9U), CONCEPTS.UnconditionalOverrideAnnotation$9U);
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$2L)) == null)) {
+        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$2L), CONCEPTS.UnconditionalOverrideAnnotation$2L);
 
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$9U)));
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$2L)));
       }
     }
     @Override
@@ -65,6 +65,6 @@ public final class AddRemoveUnconditionalPresenceAnnotation_Intention extends Ab
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UnconditionalOverrideAnnotation$9U = MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x19f3ac4f6f2a050aL, "testOverridingType.structure.UnconditionalOverrideAnnotation");
+    /*package*/ static final SConcept UnconditionalOverrideAnnotation$2L = MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x19f3ac4f6f2a050aL, "testOverridingType.structure.UnconditionalOverrideAnnotation");
   }
 }

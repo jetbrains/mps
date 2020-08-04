@@ -43,10 +43,10 @@ public final class Text__BehaviorDescriptor extends BaseBHDescriptor {
       public void consume(IconCreationUtil.DrawContext dc) {
         Font font = new Font(Font.DIALOG, Font.BOLD, 12);
 
-        dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.color$Zicg))));
+        dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.color$VAO2))));
         dc.g.setFont(font);
 
-        TextLayout text = new TextLayout(SPropertyOperations.getString(__thisNode__, PROPS.text$t_Dp), font, dc.g.getFontRenderContext());
+        TextLayout text = new TextLayout(SPropertyOperations.getString(__thisNode__, PROPS.text$pUhb), font, dc.g.getFontRenderContext());
         Rectangle2D rect = text.getBounds();
 
         text.draw(dc.g, ((float) (((float) dc.width) / 2 - rect.getCenterX())), ((float) (((float) dc.height) / 2 - rect.getCenterY())));
@@ -101,10 +101,10 @@ public final class Text__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink color$Zicg = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x19d079f4ec114c16L, "color");
+    /*package*/ static final SContainmentLink color$VAO2 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x19d079f4ec114c16L, "color");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$t_Dp = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x26417c37742e28beL, "text");
+    /*package*/ static final SProperty text$pUhb = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x26417c37742e28beL, "text");
   }
 }

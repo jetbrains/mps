@@ -17,7 +17,7 @@ public class interface_node_types_are_comparable_ComparisonRule extends Comparis
   public interface_node_types_are_comparable_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, LINKS.concept$gpfa), CONCEPTS.InterfaceConceptDeclaration$MT) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, LINKS.concept$gpfa), CONCEPTS.InterfaceConceptDeclaration$MT)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, LINKS.concept$OMgE), CONCEPTS.InterfaceConceptDeclaration$CG) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, LINKS.concept$OMgE), CONCEPTS.InterfaceConceptDeclaration$CG)) {
       return true;
     }
     return false;
@@ -33,18 +33,18 @@ public class interface_node_types_are_comparable_ComparisonRule extends Comparis
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.SNodeType$gn;
+    return CONCEPTS.SNodeType$hR;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return CONCEPTS.SNodeType$gn;
+    return CONCEPTS.SNodeType$hR;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink concept$OMgE = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
-    /*package*/ static final SConcept SNodeType$gn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
   }
 }

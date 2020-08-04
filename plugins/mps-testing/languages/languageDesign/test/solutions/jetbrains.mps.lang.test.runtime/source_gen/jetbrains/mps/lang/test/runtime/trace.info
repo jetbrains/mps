@@ -49,15 +49,15 @@
       <node id="5219682431664851949" at="69,81,70,65" concept="11" />
       <node id="5219682431664851960" at="70,65,71,130" concept="11" />
       <node id="5219682431664851967" at="71,130,72,167" concept="6" />
-      <node id="1215078243118" at="79,0,80,0" concept="15" trace="NodeOperationsContainer$UO" />
-      <node id="1215078243118" at="80,0,81,0" concept="15" trace="NodeReachable$3f" />
-      <node id="1215078243118" at="81,0,82,0" concept="15" trace="NodeUnreachable$YN" />
-      <node id="1215078243118" at="82,0,83,0" concept="15" trace="VariableInitialized$3y" />
-      <node id="1215078243118" at="83,0,84,0" concept="15" trace="VariableAlive$cg" />
-      <node id="1215078243118" at="84,0,85,0" concept="15" trace="BaseConcept$Sz" />
-      <node id="1215078243118" at="88,0,89,0" concept="15" trace="nodeOperations$TBZE" />
-      <node id="1215078243118" at="89,0,90,0" concept="15" trace="var$pNcf" />
-      <node id="1215078243118" at="90,0,91,0" concept="15" trace="variableDeclaration$7WwU" />
+      <node id="1215078243118" at="79,0,80,0" concept="15" trace="NodeOperationsContainer$aj" />
+      <node id="1215078243118" at="80,0,81,0" concept="15" trace="NodeReachable$iI" />
+      <node id="1215078243118" at="81,0,82,0" concept="15" trace="NodeUnreachable$ei" />
+      <node id="1215078243118" at="82,0,83,0" concept="15" trace="VariableInitialized$j1" />
+      <node id="1215078243118" at="83,0,84,0" concept="15" trace="VariableAlive$rJ" />
+      <node id="1215078243118" at="84,0,85,0" concept="15" trace="BaseConcept$gP" />
+      <node id="1215078243118" at="88,0,89,0" concept="15" trace="nodeOperations$Mgf9" />
+      <node id="1215078243118" at="89,0,90,0" concept="15" trace="var$irrI" />
+      <node id="1215078243118" at="90,0,91,0" concept="15" trace="variableDeclaration$N1XG" />
       <node id="8042441407353530942" at="31,0,33,0" concept="3" trace="NodeDataFlowCheckerUtil#()V" />
       <node id="5219682431664851873" at="51,14,53,9" concept="1" />
       <node id="245688835342282923" at="42,0,45,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -130,7 +130,7 @@
       <node id="1228145369672" at="39,9,40,34" concept="6" />
       <node id="1221570180079" at="48,45,49,63" concept="12" />
       <node id="1221570218042" at="56,49,57,51" concept="12" />
-      <node id="1221569991485" at="61,0,62,0" concept="15" trace="AbstractTestNodeAnnotation$5M" />
+      <node id="1221569991485" at="61,0,62,0" concept="15" trace="AbstractTestNodeAnnotation$lh" />
       <node id="1228145369660" at="36,54,39,9" concept="8" />
       <node id="1221570180054" at="48,0,51,0" concept="10" trace="getNodeById#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1221570218022" at="56,0,59,0" concept="10" trace="getRealNodeById#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -304,7 +304,7 @@
       <node id="154255203839415927" at="409,37,410,20" concept="12" />
       <node id="5219531754070520691" at="413,67,414,0" concept="14" />
       <node id="154255203839424321" at="417,60,418,52" concept="6" />
-      <node id="1225981767950" at="422,0,423,0" concept="15" trace="AnonymousCellAnnotation$28" />
+      <node id="1225981767950" at="422,0,423,0" concept="15" trace="AnonymousCellAnnotation$hB" />
       <node id="1154062923596134150" at="70,0,73,0" concept="3" trace="BaseEditorTestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="3818729150937313401" at="76,90,79,5" concept="9" />
       <node id="5810745293358918315" at="90,7,93,5" concept="9" />
@@ -682,13 +682,13 @@
       <node id="7556920020845005463" at="69,102,70,196" concept="6" />
       <node id="7556920020845005474" at="70,196,71,193" concept="6" />
       <node id="5097407566122005890" at="72,12,73,76" concept="6" />
-      <node id="1226949310940" at="78,0,79,0" concept="15" trace="AnonymousCellAnnotation$28" />
-      <node id="1226949310940" at="82,0,83,0" concept="15" trace="cellId$3x40" />
-      <node id="1226949310940" at="83,0,84,0" concept="15" trace="isInInspector$3JJj" />
-      <node id="1226949310940" at="84,0,85,0" concept="15" trace="selectionStart$hNAV" />
-      <node id="1226949310940" at="85,0,86,0" concept="15" trace="selectionEnd$hO4X" />
-      <node id="1226949310940" at="89,0,90,0" concept="15" trace="nodeRangeSelectionStart$XOcA" />
-      <node id="1226949310940" at="90,0,91,0" concept="15" trace="nodeRangeSelectionEnd$XOrB" />
+      <node id="1226949310940" at="78,0,79,0" concept="15" trace="AnonymousCellAnnotation$hB" />
+      <node id="1226949310940" at="82,0,83,0" concept="15" trace="cellId$W9jv" />
+      <node id="1226949310940" at="83,0,84,0" concept="15" trace="isInInspector$WnYM" />
+      <node id="1226949310940" at="84,0,85,0" concept="15" trace="selectionStart$arQq" />
+      <node id="1226949310940" at="85,0,86,0" concept="15" trace="selectionEnd$asks" />
+      <node id="1226949310940" at="89,0,90,0" concept="15" trace="nodeRangeSelectionStart$Qss5" />
+      <node id="1226949310940" at="90,0,91,0" concept="15" trace="nodeRangeSelectionEnd$QsF6" />
       <node id="5097407566121991608" at="72,10,74,5" concept="1" />
       <node id="1227009788555" at="36,0,39,0" concept="10" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1228589548291" at="45,0,48,0" concept="10" trace="setupSelection#(Ljetbrains/mps/nodeEditor/NodeEditorComponent;)Ljetbrains/mps/openapi/editor/EditorComponent;" />
@@ -992,7 +992,7 @@
       <node id="5256253775190389392" at="133,0,134,0" concept="7" trace="myCachedErrors" />
       <node id="5256253775189887017" at="135,25,136,28" concept="12" />
       <node id="5256253775189945267" at="138,36,139,79" concept="6" />
-      <node id="3740508248791186293" at="144,0,145,0" concept="15" trace="AbstractTestNodeAnnotation$5M" />
+      <node id="3740508248791186293" at="144,0,145,0" concept="15" trace="AbstractTestNodeAnnotation$lh" />
       <node id="2689537970574874294" at="41,0,43,0" concept="7" trace="myHost" />
       <node id="1890524422884933686" at="61,0,64,0" concept="10" trace="getRoot#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5091186398080935941" at="65,0,68,0" concept="10" trace="getAllErrors#()Ljava/lang/Iterable;" />
@@ -2073,7 +2073,7 @@
       <node id="6852093964161556412" at="47,39,48,14" concept="2" />
       <node id="6852093964161556414" at="49,7,50,27" concept="6" />
       <node id="573205947724998730" at="51,5,52,57" concept="6" />
-      <node id="7187651930234842193" at="56,0,57,0" concept="15" trace="BaseConcept$Sz" />
+      <node id="7187651930234842193" at="56,0,57,0" concept="15" trace="BaseConcept$gP" />
       <node id="7187651930234842195" at="21,0,23,0" concept="3" trace="TypeSystemCheckUtil#()V" />
       <node id="2506344354198946764" at="28,64,31,7" concept="9" />
       <node id="6852093964161556402" at="46,51,49,7" concept="9" />

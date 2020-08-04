@@ -43,7 +43,7 @@ public class CustomContainersRegistry {
         }
       }).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode cc) {
-          return SLinkOperations.getChildren(cc, LINKS.containerDeclaration$iMh1);
+          return SLinkOperations.getChildren(cc, LINKS.containerDeclaration$X6vk);
         }
       }));
     }
@@ -66,6 +66,6 @@ public class CustomContainersRegistry {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink containerDeclaration$iMh1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c84cL, 0x54a5d587c1f3c84eL, "containerDeclaration");
+    /*package*/ static final SContainmentLink containerDeclaration$X6vk = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c84cL, 0x54a5d587c1f3c84eL, "containerDeclaration");
   }
 }

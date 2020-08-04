@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class MoveConceptUtil {
 
   public static List<SNode> getConceptsAspects(final Iterable<SNode> concepts, SModel aspectModel) {
-    return ListSequence.fromList(SModelOperations.roots(aspectModel, CONCEPTS.IConceptAspect$9g)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(aspectModel, CONCEPTS.IConceptAspect$Z3)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         List<SNode> baseConcepts = IConceptAspect__BehaviorDescriptor.getBaseConceptCollection_id4$$3zrO3UBG.invoke(it);
         return ListSequence.fromList(baseConcepts).isNotEmpty() && Sequence.fromIterable(concepts).containsSequence(ListSequence.fromList(baseConcepts));
@@ -70,7 +70,7 @@ public class MoveConceptUtil {
   }
 
   public static void setExtendsDependencies(Iterable<SNode> conceptsToMove, SModel sourceModel, Language sourceLanguage, final Language targetLanguage) {
-    Iterable<SNode> conceptsToRest = ListSequence.fromList(SModelOperations.roots(sourceModel, CONCEPTS.AbstractConceptDeclaration$UN)).subtract(Sequence.fromIterable(conceptsToMove));
+    Iterable<SNode> conceptsToRest = ListSequence.fromList(SModelOperations.roots(sourceModel, CONCEPTS.AbstractConceptDeclaration$KA)).subtract(Sequence.fromIterable(conceptsToMove));
     if (Sequence.fromIterable(conceptsToRest).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (List<SNode>) AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(it);
@@ -95,7 +95,7 @@ public class MoveConceptUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IConceptAspect$9g = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept IConceptAspect$Z3 = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

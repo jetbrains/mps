@@ -32,8 +32,8 @@ public final class MatrixExponentialOperation__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static List<SNode> getAllowedSubstituends_id2D1PBM_bxH0(@NotNull SAbstractConcept __thisConcept__) {
-    List<SNode> result = ExponentialOperation__BehaviorDescriptor.getAllowedSubstituends_id2D1PBM_bxH0.invoke0(__thisConcept__, CONCEPTS.ExponentialOperation$Ov);
-    ListSequence.fromList(result).addElement(SNodeOperations.asNode(CONCEPTS.MatrixExponentialOperation$7h));
+    List<SNode> result = ExponentialOperation__BehaviorDescriptor.getAllowedSubstituends_id2D1PBM_bxH0.invoke0(__thisConcept__, CONCEPTS.ExponentialOperation$AR);
+    ListSequence.fromList(result).addElement(SNodeOperations.asNode(CONCEPTS.MatrixExponentialOperation$TD));
     return result;
   }
 
@@ -84,7 +84,7 @@ public final class MatrixExponentialOperation__BehaviorDescriptor extends BaseBH
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExponentialOperation$Ov = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, "jetbrains.mps.baseLanguage.math.structure.ExponentialOperation");
-    /*package*/ static final SConcept MatrixExponentialOperation$7h = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e647ad7dL, "jetbrains.mps.baseLanguage.math.structure.MatrixExponentialOperation");
+    /*package*/ static final SConcept ExponentialOperation$AR = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, "jetbrains.mps.baseLanguage.math.structure.ExponentialOperation");
+    /*package*/ static final SConcept MatrixExponentialOperation$TD = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e647ad7dL, "jetbrains.mps.baseLanguage.math.structure.MatrixExponentialOperation");
   }
 }

@@ -54,7 +54,7 @@ public class TypeVariableDeclaration_addAuxBoundAfterBound_KeyMap extends KeyMap
 
       // Selected node should be within TypeVariableDeclaration 
       SNode selectedNode = ListSequence.fromList(selectedNodes).first();
-      SNode typeVarDeclaration = SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.TypeVariableDeclaration$Cc, true, false);
+      SNode typeVarDeclaration = SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.TypeVariableDeclaration$4Y, true, false);
       if (typeVarDeclaration == null) {
         return false;
       }
@@ -69,8 +69,8 @@ public class TypeVariableDeclaration_addAuxBoundAfterBound_KeyMap extends KeyMap
       return nextCellNode != null && nextCellNode != typeVarDeclaration;
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode typeVarDeclaration = SNodeOperations.getNodeAncestor(ListSequence.fromList(selectedNodes).first(), CONCEPTS.TypeVariableDeclaration$Cc, true, false);
-      SNodeFactoryOperations.addNewChild(typeVarDeclaration, LINKS.auxBounds$CbkD, null);
+      SNode typeVarDeclaration = SNodeOperations.getNodeAncestor(ListSequence.fromList(selectedNodes).first(), CONCEPTS.TypeVariableDeclaration$4Y, true, false);
+      SNodeFactoryOperations.addNewChild(typeVarDeclaration, LINKS.auxBounds$jgLr, null);
     }
     public String getKeyStroke() {
       return " &";
@@ -78,10 +78,10 @@ public class TypeVariableDeclaration_addAuxBoundAfterBound_KeyMap extends KeyMap
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableDeclaration$Cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
+    /*package*/ static final SConcept TypeVariableDeclaration$4Y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink auxBounds$CbkD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
+    /*package*/ static final SContainmentLink auxBounds$jgLr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
   }
 }

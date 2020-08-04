@@ -15,7 +15,7 @@
     <file name="StructureIds_PastePostProcessor_0.java">
       <node id="1135871461211091351" at="15,50,16,42" concept="4" />
       <node id="1135871461211204022" at="19,49,20,91" concept="0" />
-      <node id="1135871461211091351" at="24,0,25,0" concept="5" trace="ConceptDeclaration$qU" />
+      <node id="1135871461211091351" at="24,0,25,0" concept="5" trace="ConceptDeclaration$gH" />
       <node id="1135871461211091351" at="14,0,18,0" concept="2" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1135871461211091351" at="18,0,22,0" concept="2" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="1135871461211091351" at="15,50,16,42" />
@@ -30,7 +30,7 @@
     <file name="StructureIds_PastePostProcessor_1.java">
       <node id="7209189852292022688" at="15,50,16,51" concept="4" />
       <node id="7209189852292022691" at="19,49,20,91" concept="0" />
-      <node id="7209189852292022688" at="24,0,25,0" concept="5" trace="InterfaceConceptDeclaration$MT" />
+      <node id="7209189852292022688" at="24,0,25,0" concept="5" trace="InterfaceConceptDeclaration$CG" />
       <node id="7209189852292022688" at="14,0,18,0" concept="2" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7209189852292022688" at="18,0,22,0" concept="2" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="7209189852292022688" at="15,50,16,51" />
@@ -46,8 +46,8 @@
       <node id="1135871461211121602" at="15,50,16,43" concept="4" />
       <node id="1135871461211219238" at="19,49,20,120" concept="3" />
       <node id="1135871461211213191" at="21,20,22,59" concept="0" />
-      <node id="1135871461211121602" at="27,0,28,0" concept="5" trace="PropertyDeclaration$c5" />
-      <node id="1135871461211121602" at="28,0,29,0" concept="5" trace="AbstractConceptDeclaration$UN" />
+      <node id="1135871461211121602" at="27,0,28,0" concept="5" trace="PropertyDeclaration$1S" />
+      <node id="1135871461211121602" at="28,0,29,0" concept="5" trace="AbstractConceptDeclaration$KA" />
       <node id="1135871461211219496" at="20,120,23,5" concept="1" />
       <node id="1135871461211121602" at="14,0,18,0" concept="2" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1135871461211121602" at="18,0,25,0" concept="2" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -67,8 +67,8 @@
       <node id="1135871461211121631" at="15,50,16,39" concept="4" />
       <node id="1135871461211220699" at="19,49,20,120" concept="3" />
       <node id="1135871461211220708" at="21,20,22,55" concept="0" />
-      <node id="1135871461211121631" at="27,0,28,0" concept="5" trace="LinkDeclaration$bA" />
-      <node id="1135871461211121631" at="28,0,29,0" concept="5" trace="AbstractConceptDeclaration$UN" />
+      <node id="1135871461211121631" at="27,0,28,0" concept="5" trace="LinkDeclaration$1p" />
+      <node id="1135871461211121631" at="28,0,29,0" concept="5" trace="AbstractConceptDeclaration$KA" />
       <node id="1135871461211220706" at="20,120,23,5" concept="1" />
       <node id="1135871461211121631" at="14,0,18,0" concept="2" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1135871461211121631" at="18,0,25,0" concept="2" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -87,7 +87,7 @@
     <file name="StructureIds_PastePostProcessor_4.java">
       <node id="7791109065627100723" at="15,50,16,43" concept="4" />
       <node id="7791109065627100954" at="19,49,20,86" concept="0" />
-      <node id="7791109065627100723" at="24,0,25,0" concept="5" trace="DataTypeDeclaration$KQ" />
+      <node id="7791109065627100723" at="24,0,25,0" concept="5" trace="DataTypeDeclaration$AD" />
       <node id="7791109065627100723" at="14,0,18,0" concept="2" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7791109065627100723" at="18,0,22,0" concept="2" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="7791109065627100723" at="15,50,16,43" />
@@ -103,8 +103,8 @@
       <node id="1421157252384386406" at="15,50,16,52" concept="4" />
       <node id="1421157252384386514" at="19,49,20,116" concept="3" />
       <node id="1421157252384386524" at="21,20,22,55" concept="0" />
-      <node id="1421157252384386406" at="27,0,28,0" concept="5" trace="EnumerationMemberDeclaration$Am" />
-      <node id="1421157252384386406" at="28,0,29,0" concept="5" trace="EnumerationDeclaration$rG" />
+      <node id="1421157252384386406" at="27,0,28,0" concept="5" trace="EnumerationMemberDeclaration$s9" />
+      <node id="1421157252384386406" at="28,0,29,0" concept="5" trace="EnumerationDeclaration$hv" />
       <node id="1421157252384386522" at="20,116,23,5" concept="1" />
       <node id="1421157252384386406" at="14,0,18,0" concept="2" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1421157252384386406" at="18,0,25,0" concept="2" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -124,7 +124,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028a(jetbrains.mps.lang.structure.actions)/1163111159679">
     <file name="STRL_node_factories.java">
       <node id="1163111233683" at="15,91,16,174" concept="0" />
-      <node id="1163111159679" at="21,0,22,0" concept="5" trace="extends$9AAt" />
+      <node id="1163111159679" at="21,0,22,0" concept="5" trace="extends$_Isg" />
       <node id="1163111194508" at="15,0,18,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="1163111194508" at="15,91,16,174" />
       <scope id="1163111194508" at="15,0,18,0">
@@ -145,13 +145,13 @@
       <node id="5424895381999015718" at="27,91,28,190" concept="0" />
       <node id="5424895381999035240" at="32,91,33,182" concept="0" />
       <node id="1421157252384198382" at="37,91,38,186" concept="0" />
-      <node id="5424895381998988244" at="43,0,44,0" concept="5" trace="conceptId$ZjQr" />
-      <node id="5424895381998988244" at="44,0,45,0" concept="5" trace="datatypeId$88Lt" />
-      <node id="5424895381998988244" at="45,0,46,0" concept="5" trace="propertyId$TXS7" />
-      <node id="5424895381998988244" at="46,0,47,0" concept="5" trace="linkId$Uajt" />
-      <node id="5424895381998988244" at="47,0,48,0" concept="5" trace="memberId$lO88" />
-      <node id="5424895381998988244" at="51,0,52,0" concept="5" trace="AbstractConceptDeclaration$UN" />
-      <node id="5424895381998988244" at="52,0,53,0" concept="5" trace="EnumerationDeclaration$rG" />
+      <node id="5424895381998988244" at="43,0,44,0" concept="5" trace="conceptId$rrGe" />
+      <node id="5424895381998988244" at="44,0,45,0" concept="5" trace="datatypeId$$gBg" />
+      <node id="5424895381998988244" at="45,0,46,0" concept="5" trace="propertyId$m5HU" />
+      <node id="5424895381998988244" at="46,0,47,0" concept="5" trace="linkId$mi9g" />
+      <node id="5424895381998988244" at="47,0,48,0" concept="5" trace="memberId$LVXV" />
+      <node id="5424895381998988244" at="51,0,52,0" concept="5" trace="AbstractConceptDeclaration$KA" />
+      <node id="5424895381998988244" at="52,0,53,0" concept="5" trace="EnumerationDeclaration$hv" />
       <node id="5424895381998988571" at="17,0,20,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="7791109065626944384" at="22,0,25,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="5424895381999015715" at="27,0,30,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
@@ -212,14 +212,14 @@
       <node id="850862791450340443" at="30,86,31,97" concept="3" />
       <node id="850862791450341712" at="31,97,32,128" concept="0" />
       <node id="850862791450347976" at="32,128,33,125" concept="0" />
-      <node id="850862791448415349" at="39,0,40,0" concept="5" trace="LinkDeclaration$bA" />
-      <node id="850862791448415349" at="40,0,41,0" concept="5" trace="PropertyDeclaration$c5" />
-      <node id="850862791448415349" at="44,0,45,0" concept="5" trace="metaClass$p6Up" />
-      <node id="850862791448415349" at="45,0,46,0" concept="5" trace="sourceCardinality$Kq8X" />
-      <node id="850862791448415349" at="46,0,47,0" concept="5" trace="role$nkts" />
-      <node id="850862791448415349" at="47,0,48,0" concept="5" trace="name$lA7v" />
-      <node id="850862791448415349" at="51,0,52,0" concept="5" trace="target$TWaS" />
-      <node id="850862791448415349" at="52,0,53,0" concept="5" trace="dataType$Dbgb" />
+      <node id="850862791448415349" at="39,0,40,0" concept="5" trace="LinkDeclaration$1p" />
+      <node id="850862791448415349" at="40,0,41,0" concept="5" trace="PropertyDeclaration$1S" />
+      <node id="850862791448415349" at="44,0,45,0" concept="5" trace="metaClass$PeKc" />
+      <node id="850862791448415349" at="45,0,46,0" concept="5" trace="sourceCardinality$cxYK" />
+      <node id="850862791448415349" at="46,0,47,0" concept="5" trace="role$Nsjf" />
+      <node id="850862791448415349" at="47,0,48,0" concept="5" trace="name$MnvL" />
+      <node id="850862791448415349" at="51,0,52,0" concept="5" trace="target$m40F" />
+      <node id="850862791448415349" at="52,0,53,0" concept="5" trace="dataType$5j5Y" />
       <node id="850862791450338376" at="29,91,34,7" concept="1" />
       <node id="850862791448416715" at="18,91,25,7" concept="1" />
       <node id="850862791450337452" at="29,0,36,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />

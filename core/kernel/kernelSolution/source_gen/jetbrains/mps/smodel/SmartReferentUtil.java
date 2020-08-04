@@ -19,26 +19,26 @@ public final class SmartReferentUtil {
   }
 
   public static String getPresentation(SNode reference, SNode referent) {
-    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$GP)) {
-      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$GP)), CONCEPTS.ISmartReferent$GP, SMethodTrimmedId.create("getPresentation", null, "69Qfsw3IoJg"), reference));
+    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$57)) {
+      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodTrimmedId.create("getPresentation", null, "69Qfsw3IoJg"), reference));
     }
     return null;
   }
 
   public static String getMatchingText(SNode reference, SNode referent) {
-    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$GP)) {
-      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$GP)), CONCEPTS.ISmartReferent$GP, SMethodTrimmedId.create("getMatchingText", null, "69Qfsw3InJX"), reference));
+    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$57)) {
+      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodTrimmedId.create("getMatchingText", null, "69Qfsw3InJX"), reference));
     }
     // IResolveInfo now uses to distinct matchingText and visibleMatchingText 
-    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.IResolveInfo$c2)) {
-      return SPropertyOperations.getString((SNodeOperations.cast(referent, CONCEPTS.IResolveInfo$c2)), PROPS.resolveInfo$TaKS);
+    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.IResolveInfo$$k)) {
+      return SPropertyOperations.getString((SNodeOperations.cast(referent, CONCEPTS.IResolveInfo$$k)), PROPS.resolveInfo$lW9a);
     }
     return null;
   }
 
   public static String getVisibleMatchingText(SNode reference, SNode referent) {
-    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$GP)) {
-      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$GP)), CONCEPTS.ISmartReferent$GP, SMethodTrimmedId.create("getVisibleMatchingText", null, "69Qfsw3Ipre"), reference));
+    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$57)) {
+      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodTrimmedId.create("getVisibleMatchingText", null, "69Qfsw3Ipre"), reference));
     }
     return null;
   }
@@ -52,20 +52,20 @@ public final class SmartReferentUtil {
   }
 
   public static String getDescriptionText(SNode reference, SNode referent) {
-    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$GP)) {
-      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$GP)), CONCEPTS.ISmartReferent$GP, SMethodTrimmedId.create("getDescriptionText", null, "69Qfsw3IqwE"), reference));
+    if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$57)) {
+      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodTrimmedId.create("getDescriptionText", null, "69Qfsw3IqwE"), reference));
     }
     // compatiblity with legacy. after 3.5 -> "return null" 
-    return SPropertyOperations.getString(referent, PROPS.shortDescription$xrGd);
+    return SPropertyOperations.getString(referent, PROPS.shortDescription$Yd4v);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ISmartReferent$GP = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x62763dc803b97bd8L, "jetbrains.mps.lang.core.structure.ISmartReferent");
-    /*package*/ static final SInterfaceConcept IResolveInfo$c2 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
+    /*package*/ static final SInterfaceConcept ISmartReferent$57 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x62763dc803b97bd8L, "jetbrains.mps.lang.core.structure.ISmartReferent");
+    /*package*/ static final SInterfaceConcept IResolveInfo$$k = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty resolveInfo$TaKS = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
-    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty resolveInfo$lW9a = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
+    /*package*/ static final SProperty shortDescription$Yd4v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 }

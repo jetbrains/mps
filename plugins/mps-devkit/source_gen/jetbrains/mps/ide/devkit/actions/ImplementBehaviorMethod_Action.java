@@ -35,7 +35,7 @@ public class ImplementBehaviorMethod_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return !(event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).isInspector()) && (SNodeOperations.getNodeAncestor(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.ConceptBehavior$8P, true, false) != null);
+    return !(event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).isInspector()) && (SNodeOperations.getNodeAncestor(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.ConceptBehavior$2, true, false) != null);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -73,6 +73,6 @@ public class ImplementBehaviorMethod_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
   }
 }

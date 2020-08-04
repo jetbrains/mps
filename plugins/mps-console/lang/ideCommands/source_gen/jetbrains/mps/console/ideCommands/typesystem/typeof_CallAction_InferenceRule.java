@@ -25,7 +25,7 @@ public class typeof_CallAction_InferenceRule extends AbstractInferenceRule_Runti
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CallActionExpression$Q3;
+    return CONCEPTS.CallActionExpression$DP;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_CallAction_InferenceRule extends AbstractInferenceRule_Runti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CallActionExpression$Q3 = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587adL, "jetbrains.mps.console.ideCommands.structure.CallActionExpression");
+    /*package*/ static final SConcept CallActionExpression$DP = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4d7759afce9587adL, "jetbrains.mps.console.ideCommands.structure.CallActionExpression");
   }
 }

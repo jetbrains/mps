@@ -42,22 +42,22 @@ public final class Stateful__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.State$J2) && ScopeUtils.comeFrom(LINKS.states$C$sW, __thisNode__, child)) {
-      ListScope myStates = new ListScope(SLinkOperations.getChildren(__thisNode__, LINKS.states$C$sW)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.State$lb) && ScopeUtils.comeFrom(LINKS.states$$835, __thisNode__, child)) {
+      ListScope myStates = new ListScope(SLinkOperations.getChildren(__thisNode__, LINKS.states$$835)) {
         public String getName(SNode child) {
-          return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.State$J2), PROPS.name$lA7v);
+          return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.State$lb), PROPS.name$MnvL);
         }
       };
-      return new HidingByNameScope(CONCEPTS.State$J2, CONCEPTS.State$J2, myStates, ScopeUtils.lazyParentScope(__thisNode__, kind));
-    } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.Event$H_) && ScopeUtils.comeFrom(LINKS.states$C$sW, __thisNode__, child)) {
-      ListScope myEvents = new ListScope(SLinkOperations.getChildren(__thisNode__, LINKS.availableTriggers$Cv3_)) {
+      return new HidingByNameScope(CONCEPTS.State$lb, CONCEPTS.State$lb, myStates, ScopeUtils.lazyParentScope(__thisNode__, kind));
+    } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.Event$jI) && ScopeUtils.comeFrom(LINKS.states$$835, __thisNode__, child)) {
+      ListScope myEvents = new ListScope(SLinkOperations.getChildren(__thisNode__, LINKS.availableTriggers$$2DI)) {
         public String getName(SNode child) {
-          return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.Event$H_), PROPS.name$lA7v);
+          return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.Event$jI), PROPS.name$MnvL);
         }
       };
-      return new HidingByNameScope(CONCEPTS.Event$H_, CONCEPTS.Event$H_, myEvents, ScopeUtils.lazyParentScope(__thisNode__, kind));
+      return new HidingByNameScope(CONCEPTS.Event$jI, CONCEPTS.Event$jI, myEvents, ScopeUtils.lazyParentScope(__thisNode__, kind));
     } else {
-      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child);
+      return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child);
     }
   }
 
@@ -108,17 +108,17 @@ public final class Stateful__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept State$J2 = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, "jetbrains.mps.samples.StateChart.structure.State");
-    /*package*/ static final SConcept Event$H_ = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a3L, "jetbrains.mps.samples.StateChart.structure.Event");
-    /*package*/ static final SInterfaceConcept ScopeProvider$M8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
+    /*package*/ static final SConcept State$lb = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, "jetbrains.mps.samples.StateChart.structure.State");
+    /*package*/ static final SConcept Event$jI = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a3L, "jetbrains.mps.samples.StateChart.structure.Event");
+    /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink states$C$sW = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b3L, "states");
-    /*package*/ static final SContainmentLink availableTriggers$Cv3_ = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b1L, "availableTriggers");
+    /*package*/ static final SContainmentLink states$$835 = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b3L, "states");
+    /*package*/ static final SContainmentLink availableTriggers$$2DI = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b1L, "availableTriggers");
   }
 }

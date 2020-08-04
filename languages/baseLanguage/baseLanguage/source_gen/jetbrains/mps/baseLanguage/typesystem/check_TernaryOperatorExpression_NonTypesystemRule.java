@@ -23,7 +23,7 @@ public class check_TernaryOperatorExpression_NonTypesystemRule extends AbstractN
   public check_TernaryOperatorExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode ternaryOperatorExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ternaryOperatorExpression), CONCEPTS.BinaryOperation$vf)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ternaryOperatorExpression), CONCEPTS.BinaryOperation$W1)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ternaryOperatorExpression, "A ternary operator must be wrapped in parenthesis when being an operand of binary operations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "818296778583740232", null, errorTarget);
@@ -33,7 +33,7 @@ public class check_TernaryOperatorExpression_NonTypesystemRule extends AbstractN
         }
       }
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ternaryOperatorExpression), CONCEPTS.TernaryOperatorExpression$HC) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(ternaryOperatorExpression), CONCEPTS.TernaryOperatorExpression$HC), LINKS.condition$GrmW), ternaryOperatorExpression)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ternaryOperatorExpression), CONCEPTS.TernaryOperatorExpression$aq) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(ternaryOperatorExpression), CONCEPTS.TernaryOperatorExpression$aq), LINKS.condition$nwNI), ternaryOperatorExpression)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ternaryOperatorExpression, "A ternary operator must be wrapped in parenthesis when being a condition of a ternary operations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "818296778607035886", null, errorTarget);
@@ -46,7 +46,7 @@ public class check_TernaryOperatorExpression_NonTypesystemRule extends AbstractN
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TernaryOperatorExpression$HC;
+    return CONCEPTS.TernaryOperatorExpression$aq;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,11 +56,11 @@ public class check_TernaryOperatorExpression_NonTypesystemRule extends AbstractN
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
-    /*package*/ static final SConcept TernaryOperatorExpression$HC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept TernaryOperatorExpression$aq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink condition$nwNI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
   }
 }

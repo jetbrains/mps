@@ -26,7 +26,7 @@ public class UpperBoundToWildcard {
         if (DeletionApproverUtil.approve(editorContext, node, "extends")) {
           return;
         }
-        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.WildCardType$29);
+        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.WildCardType$uV);
       }
 
     };
@@ -74,6 +74,6 @@ public class UpperBoundToWildcard {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WildCardType$29 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept WildCardType$uV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
   }
 }

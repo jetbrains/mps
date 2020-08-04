@@ -38,13 +38,13 @@ public final class ClosureLiteralType__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getPublicType_idhEwIXGa(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_okkob5_a0a0(SLinkOperations.getChildren(__thisNode__, LINKS.parameterType$Ix$U), SLinkOperations.getTarget(__thisNode__, LINKS.resultType$maWY), SLinkOperations.getChildren(__thisNode__, LINKS.throwsType$TUQv));
+    return _quotation_createNode_okkob5_a0a0(SLinkOperations.getChildren(__thisNode__, LINKS.parameterType$qJs$), SLinkOperations.getTarget(__thisNode__, LINKS.resultType$2oOC), SLinkOperations.getChildren(__thisNode__, LINKS.throwsType$A8I9));
   }
   /*package*/ static SNode getJavaType_idhEwIzO1(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.runtimeIface$AWER) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.runtimeIface$jayx) == null)) {
       return FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(__thisNode__);
     } else {
-      return ClosureLiteralUtil.fillParams(_quotation_createNode_okkob5_a0a0a0a1(SLinkOperations.getTarget(__thisNode__, LINKS.runtimeIface$AWER)), __thisNode__);
+      return ClosureLiteralUtil.fillParams(_quotation_createNode_okkob5_a0a0a0a1(SLinkOperations.getTarget(__thisNode__, LINKS.runtimeIface$jayx)), __thisNode__);
     }
   }
 
@@ -129,9 +129,9 @@ public final class ClosureLiteralType__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$Ix$U = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
-    /*package*/ static final SContainmentLink resultType$maWY = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType");
-    /*package*/ static final SContainmentLink throwsType$TUQv = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType");
-    /*package*/ static final SReferenceLink runtimeIface$AWER = MetaAdapterFactory.getReferenceLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x16630bea72d45e9L, "runtimeIface");
+    /*package*/ static final SContainmentLink parameterType$qJs$ = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
+    /*package*/ static final SContainmentLink resultType$2oOC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType");
+    /*package*/ static final SContainmentLink throwsType$A8I9 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType");
+    /*package*/ static final SReferenceLink runtimeIface$jayx = MetaAdapterFactory.getReferenceLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x16630bea72d45e9L, "runtimeIface");
   }
 }

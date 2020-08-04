@@ -21,7 +21,7 @@ public class supertypesOf_DateType_Object_SubtypingRule extends SubtypingRule_Ru
     return _quotation_createNode_rjv840_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DateType$_S;
+    return CONCEPTS.DateType$qp;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class supertypesOf_DateType_Object_SubtypingRule extends SubtypingRule_Ru
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DateType$_S = MetaAdapterFactory.getConcept(0x4b7c56eb93474ed1L, 0xa5d9938a850b9e1dL, 0x3515a7f64b6fe2d2L, "jetbrains.mps.baseLanguage.date.structure.DateType");
+    /*package*/ static final SConcept DateType$qp = MetaAdapterFactory.getConcept(0x4b7c56eb93474ed1L, 0xa5d9938a850b9e1dL, 0x3515a7f64b6fe2d2L, "jetbrains.mps.baseLanguage.date.structure.DateType");
   }
 }

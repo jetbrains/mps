@@ -311,8 +311,8 @@
   </root>
   <root nodeRef="r:1b8e1ff1-9bb5-4fe5-848a-c2f4efdb6402(jetbrains.mps.lang.migration.generator.template.main@generator)/2664852246014130153">
     <file name="QueriesGenerated.java">
-      <node id="5629622023958975603" at="93,83,94,820" concept="4" />
-      <node id="5629622023959014407" at="96,83,97,824" concept="4" />
+      <node id="5629622023958975603" at="93,83,94,822" concept="4" />
+      <node id="5629622023959014407" at="96,83,97,826" concept="4" />
       <node id="7335099364345916019" at="624,56,625,56" concept="0" />
       <node id="7335099364346018711" at="625,56,626,56" concept="0" />
       <node id="7335099364345916019" at="652,15,653,58" concept="4" />
@@ -327,8 +327,8 @@
       <node id="5629622023959014433" at="1396,78,1399,5" concept="1" />
       <node id="5629622023959001699" at="1390,0,1396,0" concept="6" trace="check_x583g4_a0a0a4#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="5629622023959014433" at="1396,0,1402,0" concept="6" trace="check_x583g4_a0a0a5#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <scope id="7335099364345916033" at="93,83,94,820" />
-      <scope id="7335099364346018725" at="96,83,97,824" />
+      <scope id="7335099364345916033" at="93,83,94,822" />
+      <scope id="7335099364346018725" at="96,83,97,826" />
       <scope id="7335099364345916019" at="652,15,653,58" />
       <scope id="7335099364346018711" at="654,15,655,58" />
       <scope id="5629622023959001699" at="1391,36,1392,46" />
@@ -1522,7 +1522,7 @@
   <root nodeRef="r:1b8e1ff1-9bb5-4fe5-848a-c2f4efdb6402(jetbrains.mps.lang.migration.generator.template.main@generator)/5636302460526781695">
     <file name="QueriesGenerated.java">
       <node id="3286233802027198475" at="173,88,174,81" concept="4" />
-      <node id="4391914101925772686" at="270,78,271,147" concept="4" />
+      <node id="4391914101925772686" at="270,78,271,148" concept="4" />
       <node id="3815816958998184177" at="273,78,274,89" concept="4" />
       <node id="5636302460526837074" at="315,92,316,77" concept="4" />
       <node id="5636302460526820761" at="318,92,319,205" concept="4" />
@@ -1580,7 +1580,7 @@
       <node id="3286233802026944632" at="588,0,591,0" concept="6" trace="sourceNodesQuery_4_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="5636302460526827917" at="1402,0,1425,0" concept="6" trace="_quotation_createNode_x583g4_a0a0wc#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="3286233802027187825" at="173,88,174,81" />
-      <scope id="1758937410079391651" at="270,78,271,147" />
+      <scope id="1758937410079391651" at="270,78,271,148" />
       <scope id="3815816958998180924" at="273,78,274,89" />
       <scope id="5636302460526837073" at="315,92,316,77" />
       <scope id="5636302460526820674" at="318,92,319,205" />

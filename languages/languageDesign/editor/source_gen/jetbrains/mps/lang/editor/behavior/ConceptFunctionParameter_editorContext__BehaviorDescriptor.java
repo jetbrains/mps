@@ -34,7 +34,7 @@ public final class ConceptFunctionParameter_editorContext__BehaviorDescriptor ex
   /*package*/ static boolean useGenericAccessor_id1PvcgmUaIFz(@NotNull SNode __thisNode__) {
     SNode conceptFunction = ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__);
     // TODO: remove conceptFunction != null check. It is here only for the compatibility with mbeddr generator 
-    return conceptFunction != null && !((boolean) IEditorContextAccessQualifier__BehaviorDescriptor.useDefaultAccessor_id1PvcgmUaKhn.invoke(SNodeOperations.as(conceptFunction, CONCEPTS.IEditorContextAccessQualifier$uQ)));
+    return conceptFunction != null && !((boolean) IEditorContextAccessQualifier__BehaviorDescriptor.useDefaultAccessor_id1PvcgmUaKhn.invoke(SNodeOperations.as(conceptFunction, CONCEPTS.IEditorContextAccessQualifier$Et)));
   }
 
   /*package*/ ConceptFunctionParameter_editorContext__BehaviorDescriptor() {
@@ -84,6 +84,6 @@ public final class ConceptFunctionParameter_editorContext__BehaviorDescriptor ex
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IEditorContextAccessQualifier$uQ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5f3105ba2b044bL, "jetbrains.mps.lang.editor.structure.IEditorContextAccessQualifier");
+    /*package*/ static final SInterfaceConcept IEditorContextAccessQualifier$Et = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5f3105ba2b044bL, "jetbrains.mps.lang.editor.structure.IEditorContextAccessQualifier");
   }
 }

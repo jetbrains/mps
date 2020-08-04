@@ -66,12 +66,12 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
       super.initialize(_context);
       condition = new Computable<Boolean>() {
         public Boolean compute() {
-          return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BuildLayout_JarManifest$Ns);
+          return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BuildLayout_JarManifest$lZ);
         }
       }.compute();
       condition_1 = new Computable<Boolean>() {
         public Boolean compute() {
-          return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BuildLayout_JarManifest_Section$zw) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BuildLayout_JarManifest$Ns);
+          return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BuildLayout_JarManifest_Section$63) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BuildLayout_JarManifest$lZ);
         }
       }.compute();
     }
@@ -110,7 +110,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_aabwkk_a.SMP_Group_aabwkk_a0.SMP_Action_aabwkk_a0a(), CONCEPTS.BuildLayout_JarManifest_Section$zw));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_aabwkk_a.SMP_Group_aabwkk_a0.SMP_Action_aabwkk_a0a(), CONCEPTS.BuildLayout_JarManifest_Section$63));
       }
       private class SMP_Action_aabwkk_a0a extends SingleItemSubstituteMenuPart {
 
@@ -140,7 +140,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.BuildLayout_JarManifest_Section$zw, context);
+            super(CONCEPTS.BuildLayout_JarManifest_Section$63, context);
             _context = context;
           }
 
@@ -151,8 +151,8 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode section = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.BuildLayout_JarManifest_Section$zw, null);
-            SNodeFactoryOperations.setNewChild(section, LINKS.name$Nwp0, null);
+            SNode section = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.BuildLayout_JarManifest_Section$63, null);
+            SNodeFactoryOperations.setNewChild(section, LINKS.name$ZcVz, null);
             return section;
           }
 
@@ -192,7 +192,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_aabwkk_a.SMP_Group_aabwkk_b0.SMP_Action_aabwkk_a1a(), CONCEPTS.BuildLayout_JarManifest_Attribute$Oq));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_aabwkk_a.SMP_Group_aabwkk_b0.SMP_Action_aabwkk_a1a(), CONCEPTS.BuildLayout_JarManifest_Attribute$mX));
       }
       private class SMP_Action_aabwkk_a1a extends SingleItemSubstituteMenuPart {
 
@@ -222,7 +222,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.BuildLayout_JarManifest_Attribute$Oq, context);
+            super(CONCEPTS.BuildLayout_JarManifest_Attribute$mX, context);
             _context = context;
           }
 
@@ -233,7 +233,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode newInitializedNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.BuildLayout_JarManifest_Attribute$Oq, null);
+            SNode newInitializedNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.BuildLayout_JarManifest_Attribute$mX, null);
             String name;
             String value = null;
             if (pattern.contains(":")) {
@@ -242,9 +242,9 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
             } else {
               name = pattern;
             }
-            SLinkOperations.setTarget(newInitializedNode, LINKS.name$yUd0, createBuildStringNotEmpty_aabwkk_a0a4a0a1a(name));
+            SLinkOperations.setTarget(newInitializedNode, LINKS.name$IAJz, createBuildStringNotEmpty_aabwkk_a0a4a0a1a(name));
             if ((value != null && value.length() > 0)) {
-              SLinkOperations.setTarget(newInitializedNode, LINKS.value$yZnm, createBuildStringNotEmpty_aabwkk_a0a0a5a0a1a(value));
+              SLinkOperations.setTarget(newInitializedNode, LINKS.value$IFTT, createBuildStringNotEmpty_aabwkk_a0a0a5a0a1a(value));
             }
             return newInitializedNode;
           }
@@ -270,7 +270,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
             return canExecute_internal(pattern, true);
           }
           public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-            return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BuildLayout_JarManifest_Section$zw) || !(pattern.equals("section")) && !(pattern.contains("$"));
+            return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BuildLayout_JarManifest_Section$63) || !(pattern.equals("section")) && !(pattern.contains("$"));
           }
         }
       }
@@ -298,7 +298,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
       }
       public class SMP_Subconcepts_aabwkk_a2a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildLayout_JarManifest_Part$7y);
+          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildLayout_JarManifest_Part$E5);
         }
         @NotNull
         @Override
@@ -320,39 +320,39 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
     }
   }
   private static SNode createBuildStringNotEmpty_aabwkk_a0a4a0a1a(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$FZ);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$ey);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.parts$j33t).init(CONCEPTS.BuildTextStringPart$xk);
-      n2.setProperty(PROPS.text$aaWn, PROPS.text$aaWn.getType().toString(p0));
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.parts$uJA0).init(CONCEPTS.BuildTextStringPart$3R);
+      n2.setProperty(PROPS.text$lRuU, PROPS.text$lRuU.getType().toString(p0));
     }
     return rootBuilder1.getResult();
   }
   private static SNode createBuildStringNotEmpty_aabwkk_a0a0a5a0a1a(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$FZ);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$ey);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.parts$j33t).init(CONCEPTS.BuildTextStringPart$xk);
-      n2.setProperty(PROPS.text$aaWn, PROPS.text$aaWn.getType().toString(p0));
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.parts$uJA0).init(CONCEPTS.BuildTextStringPart$3R);
+      n2.setProperty(PROPS.text$lRuU, PROPS.text$lRuU.getType().toString(p0));
     }
     return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_JarManifest$Ns = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, "jetbrains.mps.build.structure.BuildLayout_JarManifest");
-    /*package*/ static final SConcept BuildLayout_JarManifest_Section$zw = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf47d7bL, "jetbrains.mps.build.structure.BuildLayout_JarManifest_Section");
-    /*package*/ static final SConcept BuildLayout_JarManifest_Attribute$Oq = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, "jetbrains.mps.build.structure.BuildLayout_JarManifest_Attribute");
-    /*package*/ static final SConcept BuildLayout_JarManifest_Part$7y = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x76d807f8dd95718eL, "jetbrains.mps.build.structure.BuildLayout_JarManifest_Part");
-    /*package*/ static final SConcept BuildStringNotEmpty$FZ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee17fe57L, "jetbrains.mps.build.structure.BuildStringNotEmpty");
-    /*package*/ static final SConcept BuildTextStringPart$xk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
+    /*package*/ static final SConcept BuildLayout_JarManifest$lZ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, "jetbrains.mps.build.structure.BuildLayout_JarManifest");
+    /*package*/ static final SConcept BuildLayout_JarManifest_Section$63 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf47d7bL, "jetbrains.mps.build.structure.BuildLayout_JarManifest_Section");
+    /*package*/ static final SConcept BuildLayout_JarManifest_Attribute$mX = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, "jetbrains.mps.build.structure.BuildLayout_JarManifest_Attribute");
+    /*package*/ static final SConcept BuildLayout_JarManifest_Part$E5 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x76d807f8dd95718eL, "jetbrains.mps.build.structure.BuildLayout_JarManifest_Part");
+    /*package*/ static final SConcept BuildStringNotEmpty$ey = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee17fe57L, "jetbrains.mps.build.structure.BuildStringNotEmpty");
+    /*package*/ static final SConcept BuildTextStringPart$3R = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink name$Nwp0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf47d7bL, 0x5ee439f214c0c758L, "name");
-    /*package*/ static final SContainmentLink name$yUd0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f31L, "name");
-    /*package*/ static final SContainmentLink value$yZnm = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f32L, "value");
-    /*package*/ static final SContainmentLink parts$j33t = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
+    /*package*/ static final SContainmentLink name$ZcVz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf47d7bL, 0x5ee439f214c0c758L, "name");
+    /*package*/ static final SContainmentLink name$IAJz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f31L, "name");
+    /*package*/ static final SContainmentLink value$IFTT = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f32L, "value");
+    /*package*/ static final SContainmentLink parts$uJA0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty text$lRuU = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 }

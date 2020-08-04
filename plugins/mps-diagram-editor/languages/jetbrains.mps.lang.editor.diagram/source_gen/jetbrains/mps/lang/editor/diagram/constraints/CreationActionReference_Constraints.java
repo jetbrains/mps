@@ -29,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class CreationActionReference_Constraints extends BaseConstraintsDescriptor {
   public CreationActionReference_Constraints() {
-    super(CONCEPTS.CreationActionReference$34);
+    super(CONCEPTS.CreationActionReference$UR);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.elementsCreation$F2XG, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.elementsCreation$ibPv, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,8 +51,8 @@ public class CreationActionReference_Constraints extends BaseConstraintsDescript
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
             List<SNode> creationBlocks = ListSequence.fromList(new ArrayList<SNode>());
-            ListSequence.fromList(creationBlocks).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(enclosingNode), CONCEPTS.CellModel_Diagram$zA), LINKS.elementsCreation$4Q8F)));
-            ListSequence.fromList(creationBlocks).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(enclosingNode), CONCEPTS.CellModel_Diagram$zA), LINKS.connectorCreation$FEIz)));
+            ListSequence.fromList(creationBlocks).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(enclosingNode), CONCEPTS.CellModel_Diagram$rp), LINKS.elementsCreation$FZ0u)));
+            ListSequence.fromList(creationBlocks).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(enclosingNode), CONCEPTS.CellModel_Diagram$rp), LINKS.connectorCreation$iNAm)));
             return new SimpleScope(creationBlocks) {
               @Nullable
               public String getReferenceText(@NotNull SNode target) {
@@ -70,13 +70,13 @@ public class CreationActionReference_Constraints extends BaseConstraintsDescript
   private static final SNodePointer breakingNode_s0k26e_a0a0a0a0a1a0a0a0c = new SNodePointer("r:1af2ba06-e725-4940-9c06-d6b80c641b75(jetbrains.mps.lang.editor.diagram.constraints)", "6836281137582822533");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CreationActionReference$34 = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x5bdb7aaec13745e9L, "jetbrains.mps.lang.editor.diagram.structure.CreationActionReference");
-    /*package*/ static final SConcept CellModel_Diagram$zA = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_Diagram");
+    /*package*/ static final SConcept CreationActionReference$UR = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x5bdb7aaec13745e9L, "jetbrains.mps.lang.editor.diagram.structure.CreationActionReference");
+    /*package*/ static final SConcept CellModel_Diagram$rp = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_Diagram");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink elementsCreation$F2XG = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x5bdb7aaec13745e9L, 0x5bdb7aaec13ef3f4L, "elementsCreation");
-    /*package*/ static final SContainmentLink elementsCreation$4Q8F = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x76f1cb20ba7a1c35L, "elementsCreation");
-    /*package*/ static final SContainmentLink connectorCreation$FEIz = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0xd0b2f9de3717551L, "connectorCreation");
+    /*package*/ static final SReferenceLink elementsCreation$ibPv = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x5bdb7aaec13745e9L, 0x5bdb7aaec13ef3f4L, "elementsCreation");
+    /*package*/ static final SContainmentLink elementsCreation$FZ0u = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x76f1cb20ba7a1c35L, "elementsCreation");
+    /*package*/ static final SContainmentLink connectorCreation$iNAm = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0xd0b2f9de3717551L, "connectorCreation");
   }
 }

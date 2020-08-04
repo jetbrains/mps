@@ -33,7 +33,7 @@ public final class XMLSAXDefaultChildHandler__BehaviorDescriptor extends BaseBHD
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
-    ListSequence.fromList(result).addElement(CONCEPTS.XMLSAXDefaultChildHandler_tagName$r9);
+    ListSequence.fromList(result).addElement(CONCEPTS.XMLSAXDefaultChildHandler_tagName$K6);
     return result;
   }
 
@@ -84,6 +84,6 @@ public final class XMLSAXDefaultChildHandler__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXDefaultChildHandler_tagName$r9 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x3afd69375a089554L, "jetbrains.mps.core.xml.sax.structure.XMLSAXDefaultChildHandler_tagName");
+    /*package*/ static final SConcept XMLSAXDefaultChildHandler_tagName$K6 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x3afd69375a089554L, "jetbrains.mps.core.xml.sax.structure.XMLSAXDefaultChildHandler_tagName");
   }
 }

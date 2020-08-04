@@ -30,7 +30,7 @@ public final class H__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Object foo6_id186XXh$CxOf(@NotNull SNode __thisNode__) {
-    return ((Object) B__BehaviorDescriptor.foo6_id186XXh$CxOf.invokeSuper(__thisNode__, CONCEPTS.H$xy));
+    return ((Object) B__BehaviorDescriptor.foo6_id186XXh$CxOf.invokeSuper(__thisNode__, CONCEPTS.H$Rr));
   }
 
   /*package*/ H__BehaviorDescriptor() {
@@ -80,6 +80,6 @@ public final class H__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept H$xy = MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x1206f7d464a22147L, "BHL6.structure.H");
+    /*package*/ static final SConcept H$Rr = MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x1206f7d464a22147L, "BHL6.structure.H");
   }
 }

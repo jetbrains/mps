@@ -32,8 +32,8 @@
       <node id="3825148134790537984" at="32,30,33,17" concept="5" />
       <node id="3825148134790538114" at="35,58,36,78" concept="4" />
       <node id="3825148134790538114" at="36,78,37,36" concept="5" />
-      <node id="3825148134790537984" at="41,0,42,0" concept="6" trace="DateLiteral$4P" />
-      <node id="3825148134790537984" at="42,0,43,0" concept="6" trace="DateType$_S" />
+      <node id="3825148134790537984" at="41,0,42,0" concept="6" trace="DateLiteral$Tm" />
+      <node id="3825148134790537984" at="42,0,43,0" concept="6" trace="DateType$qp" />
       <node id="3825148134790537984" at="17,0,19,0" concept="1" trace="typeof_DateLiteral_InferenceRule#()V" />
       <node id="3825148134790537984" at="26,0,29,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3825148134790537984" at="29,0,32,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -145,7 +145,7 @@
       <node id="8192696647778148184" at="37,30,38,234" concept="2" />
       <node id="8192696647778148184" at="38,234,39,435" concept="2" />
       <node id="8192696647778148184" at="39,435,40,24" concept="5" />
-      <node id="8192696647778148033" at="44,0,45,0" concept="6" trace="DateType$_S" />
+      <node id="8192696647778148033" at="44,0,45,0" concept="6" trace="DateType$qp" />
       <node id="8192696647778148033" at="18,0,20,0" concept="1" trace="supertypesOf_DateType_Object_SubtypingRule#()V" />
       <node id="8192696647778148033" at="20,0,23,0" concept="3" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8192696647778148033" at="23,0,26,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

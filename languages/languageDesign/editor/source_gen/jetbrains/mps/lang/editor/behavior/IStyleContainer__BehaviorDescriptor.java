@@ -48,7 +48,7 @@ public final class IStyleContainer__BehaviorDescriptor extends BaseBHDescriptor 
     return result;
   }
   /*package*/ static void fillClassItems_id2dDK17997Ii(@NotNull SNode __thisNode__, List<SNode> classItems, SConcept itemConcept, Set<SNode> visitedContainers) {
-    for (SNode item : SLinkOperations.getChildren(__thisNode__, LINKS.styleItem$AYO2)) {
+    for (SNode item : SLinkOperations.getChildren(__thisNode__, LINKS.styleItem$FgZD)) {
       if (SNodeOperations.isInstanceOf(item, SNodeOperations.asSConcept(itemConcept))) {
         ListSequence.fromList(classItems).addElement(item);
       }
@@ -111,6 +111,6 @@ public final class IStyleContainer__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink styleItem$FgZD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
   }
 }

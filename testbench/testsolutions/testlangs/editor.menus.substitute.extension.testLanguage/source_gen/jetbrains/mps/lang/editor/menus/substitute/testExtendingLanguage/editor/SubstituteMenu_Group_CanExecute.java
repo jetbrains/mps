@@ -34,7 +34,7 @@ public class SubstituteMenu_Group_CanExecute extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_ulw6p1_a(), CONCEPTS.TestSubstituteChild$sN));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_ulw6p1_a(), CONCEPTS.TestSubstituteChild$Hk));
     result.add(new SMP_Group_ulw6p1_b());
     return result;
   }
@@ -80,7 +80,7 @@ public class SubstituteMenu_Group_CanExecute extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TestSubstituteChild$sN, context);
+        super(CONCEPTS.TestSubstituteChild$Hk, context);
         _context = context;
       }
 
@@ -92,7 +92,7 @@ public class SubstituteMenu_Group_CanExecute extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChild"));
-        SPropertyOperations.set(node, PROPS.name$lA7v, "named_canexecute");
+        SPropertyOperations.set(node, PROPS.name$MnvL, "named_canexecute");
         return node;
       }
 
@@ -137,7 +137,7 @@ public class SubstituteMenu_Group_CanExecute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ulw6p1_b.SMP_Action_ulw6p1_a1(), CONCEPTS.TestSubstituteChild$sN));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ulw6p1_b.SMP_Action_ulw6p1_a1(), CONCEPTS.TestSubstituteChild$Hk));
     }
     private class SMP_Action_ulw6p1_a1 extends SingleItemSubstituteMenuPart {
 
@@ -167,7 +167,7 @@ public class SubstituteMenu_Group_CanExecute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.TestSubstituteChild$sN, context);
+          super(CONCEPTS.TestSubstituteChild$Hk, context);
           _context = context;
         }
 
@@ -179,7 +179,7 @@ public class SubstituteMenu_Group_CanExecute extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChild"));
-          SPropertyOperations.set(node, PROPS.name$lA7v, "named_group");
+          SPropertyOperations.set(node, PROPS.name$MnvL, "named_group");
           return node;
         }
 
@@ -197,10 +197,10 @@ public class SubstituteMenu_Group_CanExecute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteChild$sN = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChild");
+    /*package*/ static final SConcept TestSubstituteChild$Hk = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChild");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -40,7 +40,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_5f0wb9_a(), CONCEPTS.ModulePointer$rJ));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_5f0wb9_a(), CONCEPTS.ModulePointer$7i));
     return result;
   }
 
@@ -116,7 +116,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.ModulePointer$rJ, context);
+          super(CONCEPTS.ModulePointer$7i, context);
           _context = context;
         }
 
@@ -127,7 +127,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          return (SNode) ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(CONCEPTS.ModulePointer$rJ), _context.getModel(), myParameterObject);
+          return (SNode) ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(CONCEPTS.ModulePointer$7i), _context.getModel(), myParameterObject);
         }
 
         @Override
@@ -136,7 +136,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.ModulePointer$rJ, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.ModulePointer$7i, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -194,6 +194,6 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModulePointer$rJ = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
+    /*package*/ static final SConcept ModulePointer$7i = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
   }
 }

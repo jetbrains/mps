@@ -23,8 +23,8 @@ public class ModelReferenceDelete {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.name$Bddz, null);
-        SPropertyOperations.assign(node, PROPS.stereotype$l2kK, null);
+        SPropertyOperations.assign(node, PROPS.name$bAf3, null);
+        SPropertyOperations.assign(node, PROPS.stereotype$Trmg, null);
         SelectionUtil.selectCell(editorContext, node, "NoFQName");
       }
 
@@ -73,7 +73,7 @@ public class ModelReferenceDelete {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$Bddz = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x7c3f2da20e92b66L, "name");
-    /*package*/ static final SProperty stereotype$l2kK = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x7c3f2da20e93b6fL, "stereotype");
+    /*package*/ static final SProperty name$bAf3 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x7c3f2da20e92b66L, "name");
+    /*package*/ static final SProperty stereotype$Trmg = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, 0x7c3f2da20e93b6fL, "stereotype");
   }
 }

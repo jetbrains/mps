@@ -46,7 +46,7 @@ public final class BaseDocReference__BehaviorDescriptor extends BaseBHDescriptor
   }
   /*package*/ static String getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi(@NotNull SNode __thisNode__, SNode classifier) {
     String fqNameInContext = BaseDocReference__BehaviorDescriptor.getFQNameInContext_idM5aELaKhPF.invoke(__thisNode__, classifier);
-    if (Objects.equals(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false), classifier)) {
+    if (Objects.equals(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false), classifier)) {
       return "";
     } else {
       return fqNameInContext + "#";
@@ -102,6 +102,6 @@ public final class BaseDocReference__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

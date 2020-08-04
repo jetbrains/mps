@@ -23,7 +23,7 @@ public class QueryParameterList_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode queryExpression = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.QueryExpression$ML);
+        SNode queryExpression = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.QueryExpression$lN);
         SNodeOperations.deleteNode(node);
         if (queryExpression != null) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, queryExpression, "ALIAS_EDITOR_COMPONENT", -1);
@@ -75,6 +75,6 @@ public class QueryParameterList_Actions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryExpression$ML = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
+    /*package*/ static final SConcept QueryExpression$lN = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
   }
 }

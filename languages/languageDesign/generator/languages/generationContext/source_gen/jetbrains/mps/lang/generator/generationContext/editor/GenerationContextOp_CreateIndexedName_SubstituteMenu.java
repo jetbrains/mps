@@ -29,8 +29,8 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_8ml84f_a(), CONCEPTS.GenerationContextOp_CreateIndexedName$RK));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_8ml84f_b(), CONCEPTS.GenerationContextOp_CreateIndexedName$RK));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_8ml84f_a(), CONCEPTS.GenerationContextOp_CreateIndexedName$hm));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_8ml84f_b(), CONCEPTS.GenerationContextOp_CreateIndexedName$hm));
     return result;
   }
 
@@ -75,7 +75,7 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.GenerationContextOp_CreateIndexedName$RK, context);
+        super(CONCEPTS.GenerationContextOp_CreateIndexedName$hm, context);
         _context = context;
       }
 
@@ -86,8 +86,8 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode rv = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.GenerationContextOp_CreateIndexedName$RK);
-        SPropertyOperations.assign(rv, PROPS.skipFirstIndex$Uvo_, false);
+        SNode rv = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.GenerationContextOp_CreateIndexedName$hm);
+        SPropertyOperations.assign(rv, PROPS.skipFirstIndex$aqMb, false);
         return rv;
       }
 
@@ -135,7 +135,7 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.GenerationContextOp_CreateIndexedName$RK, context);
+        super(CONCEPTS.GenerationContextOp_CreateIndexedName$hm, context);
         _context = context;
       }
 
@@ -146,8 +146,8 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode rv = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.GenerationContextOp_CreateIndexedName$RK);
-        SPropertyOperations.assign(rv, PROPS.skipFirstIndex$Uvo_, true);
+        SNode rv = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.GenerationContextOp_CreateIndexedName$hm);
+        SPropertyOperations.assign(rv, PROPS.skipFirstIndex$aqMb, true);
         return rv;
       }
 
@@ -169,10 +169,10 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_CreateIndexedName$RK = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateIndexedName");
+    /*package*/ static final SConcept GenerationContextOp_CreateIndexedName$hm = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateIndexedName");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty skipFirstIndex$Uvo_ = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, 0x107ac9fcd2448676L, "skipFirstIndex");
+    /*package*/ static final SProperty skipFirstIndex$aqMb = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, 0x107ac9fcd2448676L, "skipFirstIndex");
   }
 }

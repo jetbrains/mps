@@ -30,7 +30,7 @@ public class StaticFieldReference_DeleteDot {
         if (DeletionApproverUtil.approve(editorContext, node, "field")) {
           return;
         }
-        SNodeOperations.replaceWithAnother(node, _quotation_createNode_65e73j_a0a1a0a(SLinkOperations.getTarget(node, LINKS.classifier$WKxm)));
+        SNodeOperations.replaceWithAnother(node, _quotation_createNode_65e73j_a0a1a0a(SLinkOperations.getTarget(node, LINKS.classifier$BPY8)));
       }
 
     };
@@ -85,6 +85,6 @@ public class StaticFieldReference_DeleteDot {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink classifier$BPY8 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 }

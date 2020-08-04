@@ -29,7 +29,7 @@
       <node id="2574029987314617115" at="26,50,27,33" concept="7" />
       <node id="2574029987314617115" at="29,68,30,102" concept="7" />
       <node id="2574029987314617115" at="32,30,33,17" concept="7" />
-      <node id="2574029987314617115" at="37,0,38,0" concept="8" trace="InputPort$Ko" />
+      <node id="2574029987314617115" at="37,0,38,0" concept="8" trace="InputPort$GW" />
       <node id="2574029987314617115" at="18,0,20,0" concept="1" trace="check_port_NonTypesystemRule#()V" />
       <node id="2574029987314617115" at="26,0,29,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2574029987314617115" at="29,0,32,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -75,7 +75,7 @@
       <node id="3804439703459446717" at="26,50,27,34" concept="7" />
       <node id="3804439703459446717" at="29,68,30,102" concept="7" />
       <node id="3804439703459446717" at="32,30,33,17" concept="7" />
-      <node id="3804439703459446717" at="37,0,38,0" concept="8" trace="OutputPort$ZS" />
+      <node id="3804439703459446717" at="37,0,38,0" concept="8" trace="OutputPort$Ws" />
       <node id="3804439703459446717" at="18,0,20,0" concept="1" trace="check_outputport_NonTypesystemRule#()V" />
       <node id="3804439703459446717" at="26,0,29,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3804439703459446717" at="29,0,32,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -121,7 +121,7 @@
       <node id="4883444763024798188" at="29,50,30,37" concept="7" />
       <node id="4883444763024798188" at="32,68,33,102" concept="7" />
       <node id="4883444763024798188" at="35,30,36,17" concept="7" />
-      <node id="4883444763024798188" at="40,0,41,0" concept="8" trace="BlockInstance$_m" />
+      <node id="4883444763024798188" at="40,0,41,0" concept="8" trace="BlockInstance$xU" />
       <node id="4883444763024798188" at="19,0,21,0" concept="1" trace="blockInstance_NonTypesystemRule#()V" />
       <node id="4883444763024798188" at="29,0,32,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4883444763024798188" at="32,0,35,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -176,13 +176,13 @@
       <node id="884514646183009561" at="49,50,50,29" concept="7" />
       <node id="884514646183009561" at="52,68,53,102" concept="7" />
       <node id="884514646183009561" at="55,30,56,17" concept="7" />
-      <node id="884514646183009561" at="60,0,61,0" concept="8" trace="inputPort$zoXt" />
-      <node id="884514646183009561" at="61,0,62,0" concept="8" trace="connectors$w095" />
-      <node id="884514646183009561" at="62,0,63,0" concept="8" trace="inputPorts$z8W2" />
-      <node id="884514646183009561" at="63,0,64,0" concept="8" trace="outputPort$zo1p" />
-      <node id="884514646183009561" at="64,0,65,0" concept="8" trace="outputPorts$z9q4" />
-      <node id="884514646183009561" at="68,0,69,0" concept="8" trace="Diagram$k$" />
-      <node id="884514646183009561" at="69,0,70,0" concept="8" trace="Block$eu" />
+      <node id="884514646183009561" at="60,0,61,0" concept="8" trace="inputPort$udU1" />
+      <node id="884514646183009561" at="61,0,62,0" concept="8" trace="connectors$qP5D" />
+      <node id="884514646183009561" at="62,0,63,0" concept="8" trace="inputPorts$tXSA" />
+      <node id="884514646183009561" at="63,0,64,0" concept="8" trace="outputPort$ucXX" />
+      <node id="884514646183009561" at="64,0,65,0" concept="8" trace="outputPorts$tYmC" />
+      <node id="884514646183009561" at="68,0,69,0" concept="8" trace="Diagram$h8" />
+      <node id="884514646183009561" at="69,0,70,0" concept="8" trace="Block$b2" />
       <node id="884514646183009561" at="24,0,26,0" concept="1" trace="check_all_ports_NonTypesystemRule#()V" />
       <node id="884514646183013983" at="29,33,32,7" concept="3" />
       <node id="884514646184233499" at="36,33,39,7" concept="3" />
@@ -257,7 +257,7 @@
       <node id="884514646186392376" at="26,50,27,41" concept="7" />
       <node id="884514646186392376" at="29,68,30,102" concept="7" />
       <node id="884514646186392376" at="32,30,33,17" concept="7" />
-      <node id="884514646186392376" at="37,0,38,0" concept="8" trace="ConnectorInstance$$$" />
+      <node id="884514646186392376" at="37,0,38,0" concept="8" trace="ConnectorInstance$x8" />
       <node id="884514646186392376" at="18,0,20,0" concept="1" trace="connector_NonTypesystemRule#()V" />
       <node id="884514646186392376" at="26,0,29,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="884514646186392376" at="29,0,32,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

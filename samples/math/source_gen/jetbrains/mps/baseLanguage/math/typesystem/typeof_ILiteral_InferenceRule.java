@@ -24,7 +24,7 @@ public class typeof_ILiteral_InferenceRule extends AbstractInferenceRule_Runtime
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.LiteralI$17;
+    return CONCEPTS.LiteralI$Nv;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,6 +34,6 @@ public class typeof_ILiteral_InferenceRule extends AbstractInferenceRule_Runtime
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LiteralI$17 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205202c5edL, "jetbrains.mps.baseLanguage.math.structure.LiteralI");
+    /*package*/ static final SConcept LiteralI$Nv = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1205202c5edL, "jetbrains.mps.baseLanguage.math.structure.LiteralI");
   }
 }

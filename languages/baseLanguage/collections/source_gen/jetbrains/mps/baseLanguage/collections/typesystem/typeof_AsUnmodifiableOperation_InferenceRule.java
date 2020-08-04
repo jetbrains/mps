@@ -33,7 +33,7 @@ public class typeof_AsUnmodifiableOperation_InferenceRule extends AbstractInfere
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AsUnmodifiableOperation$iI;
+    return CONCEPTS.AsUnmodifiableOperation$x1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,6 +54,6 @@ public class typeof_AsUnmodifiableOperation_InferenceRule extends AbstractInfere
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AsUnmodifiableOperation$iI = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x230f7a18a5abce80L, "jetbrains.mps.baseLanguage.collections.structure.AsUnmodifiableOperation");
+    /*package*/ static final SConcept AsUnmodifiableOperation$x1 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x230f7a18a5abce80L, "jetbrains.mps.baseLanguage.collections.structure.AsUnmodifiableOperation");
   }
 }

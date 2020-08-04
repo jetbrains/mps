@@ -27,7 +27,7 @@ public class blockInstance_NonTypesystemRule extends AbstractNonTypesystemRule_R
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BlockInstance$_m;
+    return CONCEPTS.BlockInstance$xU;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,6 +37,6 @@ public class blockInstance_NonTypesystemRule extends AbstractNonTypesystemRule_R
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BlockInstance$_m = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance");
+    /*package*/ static final SConcept BlockInstance$xU = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance");
   }
 }

@@ -84,7 +84,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_5fx40y_a1a() {
-    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.lines$bdqa)).count() <= 1;
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.lines$4_OD)).count() <= 1;
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
@@ -113,10 +113,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.lines$bdqa;
+      return LINKS.lines$4_OD;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.XmlCommentLine$tE;
+      return CONCEPTS.XmlCommentLine$S9;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -126,7 +126,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(linesListHandler_5fx40y_a0b0.this.getNode(), LINKS.lines$bdqa));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(linesListHandler_5fx40y_a0b0.this.getNode(), LINKS.lines$4_OD));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_1();
@@ -209,10 +209,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.lines$bdqa;
+      return LINKS.lines$4_OD;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.XmlCommentLine$tE;
+      return CONCEPTS.XmlCommentLine$S9;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -222,7 +222,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(linesListHandler_5fx40y_a0b0_0.this.getNode(), LINKS.lines$bdqa));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(linesListHandler_5fx40y_a0b0_0.this.getNode(), LINKS.lines$4_OD));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -277,10 +277,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$bdqa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
+    /*package*/ static final SContainmentLink lines$4_OD = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlCommentLine$tE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, "jetbrains.mps.core.xml.structure.XmlCommentLine");
+    /*package*/ static final SConcept XmlCommentLine$S9 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, "jetbrains.mps.core.xml.structure.XmlCommentLine");
   }
 }

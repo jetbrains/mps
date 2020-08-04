@@ -32,37 +32,37 @@ public class StaticFieldRefactoringParticipant extends StaticMemberRefactoringPa
   }
 
   public boolean isApplicable(SNode nodeToMove) {
-    return SNodeOperations.isInstanceOf(nodeToMove, CONCEPTS.StaticFieldDeclaration$R5);
+    return SNodeOperations.isInstanceOf(nodeToMove, CONCEPTS.StaticFieldDeclaration$jR);
   }
 
   @Override
   protected void doUpdateReference(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, final SNode containingNode, final SReferenceLink role, UpdateReferencesParticipantBase.NodeData<UpdateReferencesParticipantBase.NamedNodeReference> newTarget, final String resolveInfo) {
-    if (!((SNodeOperations.isInstanceOf(containingNode, CONCEPTS.VariableReference$sQ) || SNodeOperations.isInstanceOf(containingNode, CONCEPTS.StaticFieldReference$K8))) || newTarget.other() == null) {
+    if (!((SNodeOperations.isInstanceOf(containingNode, CONCEPTS.VariableReference$TC) || SNodeOperations.isInstanceOf(containingNode, CONCEPTS.StaticFieldReference$cU))) || newTarget.other() == null) {
       super.doUpdateReference(selectedOptions, repository, containingNode, role, newTarget, resolveInfo);
     } else {
       @Nullable SNode tryToResolveNewTarget = newTarget.baseData().reference().resolve(repository);
-      if (tryToResolveNewTarget != null && SNodeOperations.getNodeAncestor(containingNode, CONCEPTS.Classifier$hJ, false, false) == SNodeOperations.getNodeAncestor(tryToResolveNewTarget, CONCEPTS.Classifier$hJ, false, false)) {
+      if (tryToResolveNewTarget != null && SNodeOperations.getNodeAncestor(containingNode, CONCEPTS.Classifier$Ix, false, false) == SNodeOperations.getNodeAncestor(tryToResolveNewTarget, CONCEPTS.Classifier$Ix, false, false)) {
         SNode replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
         SNodeOperations.replaceWithAnother(containingNode, replacement);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.variableDeclaration$7WwU, newTarget, resolveInfo);
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.variableDeclaration$N1XG, newTarget, resolveInfo);
       } else {
         SNode replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
         SNodeOperations.replaceWithAnother(containingNode, replacement);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.variableDeclaration$7WwU, newTarget, resolveInfo);
-        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.classifier$WKxm, new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(newTarget.other(), ((UpdateReferencesParticipantBase.NamedNodeReference) null)), newTarget.other().name());
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.variableDeclaration$N1XG, newTarget, resolveInfo);
+        super.doUpdateReference(selectedOptions, repository, replacement, LINKS.classifier$BPY8, new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(newTarget.other(), ((UpdateReferencesParticipantBase.NamedNodeReference) null)), newTarget.other().name());
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept StaticFieldReference$K8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept StaticFieldReference$cU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classifier$BPY8 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 }

@@ -75,7 +75,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
   }
 
   private void processStreams(Iterable<String> names, SModelData into) throws ModelLoadException {
-    SContainmentLink containmentOfProperties = LINKS.properties$PFKE;
+    SContainmentLink containmentOfProperties = LINKS.properties$$hSY;
     for (String fileName : names) {
       Set<SNode> oldNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), MapSequence.fromMap(myRootsPerFile).get(fileName));
       try {
@@ -150,14 +150,14 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
   }
 
   private static SNode createPropertyCollection_fmf8ck_a0c0b0b0b0m(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PropertyCollection$cr);
-    rootBuilder1.setProperty(PROPS.name$lA7v, PROPS.name$lA7v.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PropertyCollection$kJ);
+    rootBuilder1.setProperty(PROPS.name$MnvL, PROPS.name$MnvL.getType().toString(p0));
     return rootBuilder1.getResult();
   }
   private static SNode createProperty_fmf8ck_a0c0a1a6a1a1a1a21(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Property$dS);
-    rootBuilder1.setProperty(PROPS.name$lA7v, PROPS.name$lA7v.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.value$MBq2, PROPS.value$MBq2.getType().toString(p1));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Property$mc);
+    rootBuilder1.setProperty(PROPS.name$MnvL, PROPS.name$MnvL.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.value$xdym, PROPS.value$xdym.getType().toString(p1));
     return rootBuilder1.getResult();
   }
   public static String trim_fmf8ck_a0a0a0b0g0b0b0b0m(String str) {
@@ -168,16 +168,16 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink properties$PFKE = MetaAdapterFactory.getContainmentLink(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46eeL, 0x4d8762f6d73a4730L, "properties");
+    /*package*/ static final SContainmentLink properties$$hSY = MetaAdapterFactory.getContainmentLink(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46eeL, 0x4d8762f6d73a4730L, "properties");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyCollection$cr = MetaAdapterFactory.getConcept(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46eeL, "jetbrains.mps.samples.PropertyDefinition.structure.PropertyCollection");
-    /*package*/ static final SConcept Property$dS = MetaAdapterFactory.getConcept(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46f1L, "jetbrains.mps.samples.PropertyDefinition.structure.Property");
+    /*package*/ static final SConcept PropertyCollection$kJ = MetaAdapterFactory.getConcept(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46eeL, "jetbrains.mps.samples.PropertyDefinition.structure.PropertyCollection");
+    /*package*/ static final SConcept Property$mc = MetaAdapterFactory.getConcept(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46f1L, "jetbrains.mps.samples.PropertyDefinition.structure.Property");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$MBq2 = MetaAdapterFactory.getProperty(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46f1L, 0x4d8762f6d73a46f4L, "value");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$xdym = MetaAdapterFactory.getProperty(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, 0x4d8762f6d73a46f1L, 0x4d8762f6d73a46f4L, "value");
   }
 }

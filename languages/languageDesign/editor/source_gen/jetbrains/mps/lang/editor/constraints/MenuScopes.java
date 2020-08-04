@@ -22,7 +22,7 @@ public class MenuScopes {
 
     // Uses the scope of allowed concepts (for default menus) to restrict the set of named menus to those 
     // reference allowed concepts. 
-    final Scope allowedConcepts = Scope.getScope(contextNode, link, position, CONCEPTS.AbstractConceptDeclaration$UN);
+    final Scope allowedConcepts = Scope.getScope(contextNode, link, position, CONCEPTS.AbstractConceptDeclaration$KA);
     if (allowedConcepts == null) {
       return new EmptyScope();
     }
@@ -30,17 +30,17 @@ public class MenuScopes {
     return new FilteringScope(allNamedMenus) {
       @Override
       public boolean isExcluded(SNode node) {
-        return !(allowedConcepts.contains(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IMenu_Named$Ew), LINKS.conceptDeclaration$VYS3)));
+        return !(allowedConcepts.contains(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IMenu_Named$Q7), LINKS.conceptDeclaration$h3E)));
       }
     };
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SInterfaceConcept IMenu_Named$Ew = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c46L, "jetbrains.mps.lang.editor.structure.IMenu_Named");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept IMenu_Named$Q7 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c46L, "jetbrains.mps.lang.editor.structure.IMenu_Named");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$h3E = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
   }
 }

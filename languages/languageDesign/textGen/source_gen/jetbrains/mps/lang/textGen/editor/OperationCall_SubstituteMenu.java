@@ -28,7 +28,7 @@ public class OperationCall_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_pkbewp_a(), CONCEPTS.OperationCall$KM));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_pkbewp_a(), CONCEPTS.OperationCall$Zk));
     result.add(new SMP_Subconcepts_pkbewp_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class OperationCall_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_pkbewp_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.OperationCall$KM, LINKS.function$VGdv);
+      super((SAbstractConcept) CONCEPTS.OperationCall$Zk, LINKS.function$S4s1);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class OperationCall_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_pkbewp_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OperationCall$KM);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OperationCall$Zk);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class OperationCall_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OperationCall$KM = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4ba6faaaL, "jetbrains.mps.lang.textGen.structure.OperationCall");
+    /*package*/ static final SConcept OperationCall$Zk = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4ba6faaaL, "jetbrains.mps.lang.textGen.structure.OperationCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink function$VGdv = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4ba6faaaL, 0x11f5b7f02d9L, "function");
+    /*package*/ static final SReferenceLink function$S4s1 = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4ba6faaaL, 0x11f5b7f02d9L, "function");
   }
 }

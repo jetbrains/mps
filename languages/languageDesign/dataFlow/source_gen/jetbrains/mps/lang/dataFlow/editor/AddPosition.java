@@ -24,8 +24,8 @@ public class AddPosition {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SLinkOperations.getTarget(node, LINKS.position$nx$B) == null) {
-          SLinkOperations.setTarget(node, LINKS.position$nx$B, SNodeFactoryOperations.createNewNode(CONCEPTS.InsertPosition$SX, null));
+        if (SLinkOperations.getTarget(node, LINKS.position$hFoB) == null) {
+          SLinkOperations.setTarget(node, LINKS.position$hFoB, SNodeFactoryOperations.createNewNode(CONCEPTS.InsertPosition$GX, null));
         }
       }
 
@@ -74,10 +74,10 @@ public class AddPosition {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink position$nx$B = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position");
+    /*package*/ static final SContainmentLink position$hFoB = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InsertPosition$SX = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, "jetbrains.mps.lang.dataFlow.structure.InsertPosition");
+    /*package*/ static final SConcept InsertPosition$GX = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, "jetbrains.mps.lang.dataFlow.structure.InsertPosition");
   }
 }

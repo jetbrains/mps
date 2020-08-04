@@ -21,7 +21,7 @@ public class typeof_Concept_IsExactlyOperation_InferenceRule extends AbstractInf
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.conceptArgument$Px9n);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.conceptArgument$pUaR);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7057947030084340457", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7057947030084340460", true), (SNode) _quotation_createNode_54sxeo_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -33,7 +33,7 @@ public class typeof_Concept_IsExactlyOperation_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Concept_IsExactlyOperation$g$;
+    return CONCEPTS.Concept_IsExactlyOperation$i4;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -55,10 +55,10 @@ public class typeof_Concept_IsExactlyOperation_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink conceptArgument$Px9n = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f41acfb7L, 0x118f6ee3856L, "conceptArgument");
+    /*package*/ static final SContainmentLink conceptArgument$pUaR = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f41acfb7L, 0x118f6ee3856L, "conceptArgument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Concept_IsExactlyOperation$g$ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f41acfb7L, "jetbrains.mps.lang.smodel.structure.Concept_IsExactlyOperation");
+    /*package*/ static final SConcept Concept_IsExactlyOperation$i4 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f41acfb7L, "jetbrains.mps.lang.smodel.structure.Concept_IsExactlyOperation");
   }
 }

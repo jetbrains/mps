@@ -60,7 +60,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
       public void run() {
         IconLoader.activate();
         GlobalIconManager iconManager = GlobalIconManager.getInstance();
-        Icon icon = iconManager.getIconFor(CONCEPTS.TestConcept$2C);
+        Icon icon = iconManager.getIconFor(CONCEPTS.TestConcept$ND);
         Assert.assertNotNull(icon);
         Assert.assertEquals(icon.getIconWidth(), 16);
         Assert.assertEquals(icon.getIconHeight(), 16);
@@ -80,7 +80,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
         }
         Assert.assertNotNull(libraryModel);
         Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).count(), 1);
-        Assert.assertEquals(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).first(), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v), "DummyLibraryClass");
+        Assert.assertEquals(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).first(), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL), "DummyLibraryClass");
       }
     });
   }
@@ -93,11 +93,11 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestConcept$2C = MetaAdapterFactory.getConcept(0x2d9a25d302b84024L, 0xafe2bb9457a02cbfL, 0x6005c4080114d50fL, "testPackagedLanguage.structure.TestConcept");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept TestConcept$ND = MetaAdapterFactory.getConcept(0x2d9a25d302b84024L, 0xafe2bb9457a02cbfL, 0x6005c4080114d50fL, "testPackagedLanguage.structure.TestConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

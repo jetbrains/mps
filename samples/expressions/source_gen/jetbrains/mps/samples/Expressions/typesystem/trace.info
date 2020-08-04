@@ -40,10 +40,10 @@
       <node id="2073504467207965653" at="45,30,46,17" concept="6" />
       <node id="2073504467208624598" at="48,71,49,91" concept="5" />
       <node id="2073504467208624598" at="49,91,50,36" concept="6" />
-      <node id="2073504467207965653" at="54,0,55,0" concept="8" trace="left$Nk0U" />
-      <node id="2073504467207965653" at="55,0,56,0" concept="8" trace="right$NkuW" />
-      <node id="2073504467207965653" at="59,0,60,0" concept="8" trace="LogicalSimpleMathExpression$gV" />
-      <node id="2073504467207965653" at="60,0,61,0" concept="8" trace="SimpleMathBooleanType$9q" />
+      <node id="2073504467207965653" at="54,0,55,0" concept="8" trace="left$lPLn" />
+      <node id="2073504467207965653" at="55,0,56,0" concept="8" trace="right$lQfp" />
+      <node id="2073504467207965653" at="59,0,60,0" concept="8" trace="LogicalSimpleMathExpression$1o" />
+      <node id="2073504467207965653" at="60,0,61,0" concept="8" trace="SimpleMathBooleanType$TR" />
       <node id="2073504467207965653" at="20,0,22,0" concept="1" trace="typeof_LogicalSimpleMathExpression_InferenceRule#()V" />
       <node id="2073504467207965653" at="39,0,42,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467207965653" at="42,0,45,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -96,7 +96,7 @@
       <node id="2073504467208085695" at="21,50,22,45" concept="6" />
       <node id="2073504467208085695" at="24,68,25,102" concept="6" />
       <node id="2073504467208085695" at="27,27,28,17" concept="6" />
-      <node id="2073504467208085695" at="32,0,33,0" concept="8" trace="SimpleMathBooleanType$9q" />
+      <node id="2073504467208085695" at="32,0,33,0" concept="8" trace="SimpleMathBooleanType$TR" />
       <node id="2073504467208085695" at="16,0,18,0" concept="1" trace="SimpleMathBoolean_subtypeOf_Element_SubtypingRule#()V" />
       <node id="2073504467208085695" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467208085695" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -153,9 +153,9 @@
       <node id="2073504467208655871" at="43,91,44,36" concept="6" />
       <node id="2073504467208655915" at="46,71,47,91" concept="5" />
       <node id="2073504467208655915" at="47,91,48,36" concept="6" />
-      <node id="2073504467208515079" at="52,0,53,0" concept="8" trace="original$pyv0" />
-      <node id="2073504467208515079" at="56,0,57,0" concept="8" trace="NotSimpleMathExpression$jw" />
-      <node id="2073504467208515079" at="57,0,58,0" concept="8" trace="SimpleMathBooleanType$9q" />
+      <node id="2073504467208515079" at="52,0,53,0" concept="8" trace="original$W4ft" />
+      <node id="2073504467208515079" at="56,0,57,0" concept="8" trace="NotSimpleMathExpression$3X" />
+      <node id="2073504467208515079" at="57,0,58,0" concept="8" trace="SimpleMathBooleanType$TR" />
       <node id="2073504467208515079" at="19,0,21,0" concept="1" trace="typeof_NotSimpleMathExpression_InferenceRule#()V" />
       <node id="2073504467208515079" at="33,0,36,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467208515079" at="36,0,39,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -218,8 +218,8 @@
       <node id="2073504467208524984" at="27,50,28,49" concept="6" />
       <node id="2073504467208524984" at="30,68,31,102" concept="6" />
       <node id="2073504467208524984" at="33,30,34,17" concept="6" />
-      <node id="2073504467208524984" at="38,0,39,0" concept="8" trace="original$pyv0" />
-      <node id="2073504467208524984" at="42,0,43,0" concept="8" trace="UnarySimpleMathExpression$9D" />
+      <node id="2073504467208524984" at="38,0,39,0" concept="8" trace="original$W4ft" />
+      <node id="2073504467208524984" at="42,0,43,0" concept="8" trace="UnarySimpleMathExpression$U6" />
       <node id="2073504467208524984" at="18,0,20,0" concept="1" trace="typeof_UnarySimpleMathExpression_InferenceRule#()V" />
       <node id="2073504467208524984" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467208524984" at="30,0,33,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -269,8 +269,8 @@
       <node id="2073504467208540237" at="32,30,33,17" concept="6" />
       <node id="2073504467208601023" at="35,71,36,91" concept="5" />
       <node id="2073504467208601023" at="36,91,37,36" concept="6" />
-      <node id="2073504467208540237" at="41,0,42,0" concept="8" trace="SimpleMathBooleanConstant$Pq" />
-      <node id="2073504467208540237" at="42,0,43,0" concept="8" trace="SimpleMathBooleanType$9q" />
+      <node id="2073504467208540237" at="41,0,42,0" concept="8" trace="SimpleMathBooleanConstant$_R" />
+      <node id="2073504467208540237" at="42,0,43,0" concept="8" trace="SimpleMathBooleanType$TR" />
       <node id="2073504467208540237" at="17,0,19,0" concept="1" trace="typeof_SimpleMathBooleanConstant_InferenceRule#()V" />
       <node id="2073504467208540237" at="26,0,29,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467208540237" at="29,0,32,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -324,8 +324,8 @@
       <node id="2073504467208541211" at="32,30,33,17" concept="6" />
       <node id="2073504467208601170" at="35,71,36,91" concept="5" />
       <node id="2073504467208601170" at="36,91,37,36" concept="6" />
-      <node id="2073504467208541211" at="41,0,42,0" concept="8" trace="SimpleMathIntegerConstant$2z" />
-      <node id="2073504467208541211" at="42,0,43,0" concept="8" trace="SimpleMathIntegerType$TX" />
+      <node id="2073504467208541211" at="41,0,42,0" concept="8" trace="SimpleMathIntegerConstant$N0" />
+      <node id="2073504467208541211" at="42,0,43,0" concept="8" trace="SimpleMathIntegerType$Eq" />
       <node id="2073504467208541211" at="17,0,19,0" concept="1" trace="typeof_SimpleMathIntegerConstant_InferenceRule#()V" />
       <node id="2073504467208541211" at="26,0,29,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467208541211" at="29,0,32,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -367,7 +367,7 @@
       <node id="2073504467208542717" at="21,50,22,45" concept="6" />
       <node id="2073504467208542717" at="24,68,25,102" concept="6" />
       <node id="2073504467208542717" at="27,27,28,17" concept="6" />
-      <node id="2073504467208542717" at="32,0,33,0" concept="8" trace="SimpleMathIntegerType$TX" />
+      <node id="2073504467208542717" at="32,0,33,0" concept="8" trace="SimpleMathIntegerType$Eq" />
       <node id="2073504467208542717" at="16,0,18,0" concept="1" trace="SimpleMathIntegerType_subtypeOf_Number_SubtypingRule#()V" />
       <node id="2073504467208542717" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467208542717" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -440,11 +440,11 @@
       <node id="2073504467209636580" at="92,90,93,36" concept="6" />
       <node id="2073504467209636991" at="95,70,96,90" concept="5" />
       <node id="2073504467209636991" at="96,90,97,36" concept="6" />
-      <node id="2073504467208952445" at="101,0,102,0" concept="8" trace="left$Nk0U" />
-      <node id="2073504467208952445" at="102,0,103,0" concept="8" trace="right$NkuW" />
-      <node id="2073504467208952445" at="106,0,107,0" concept="8" trace="operator$yhuJ" />
-      <node id="2073504467208952445" at="110,0,111,0" concept="8" trace="ArithmeticSimpleMathExpression$zN" />
-      <node id="2073504467208952445" at="111,0,112,0" concept="8" trace="SimpleMathNumberType$zZ" />
+      <node id="2073504467208952445" at="101,0,102,0" concept="8" trace="left$lPLn" />
+      <node id="2073504467208952445" at="102,0,103,0" concept="8" trace="right$lQfp" />
+      <node id="2073504467208952445" at="106,0,107,0" concept="8" trace="operator$4Nfc" />
+      <node id="2073504467208952445" at="110,0,111,0" concept="8" trace="ArithmeticSimpleMathExpression$kg" />
+      <node id="2073504467208952445" at="111,0,112,0" concept="8" trace="SimpleMathNumberType$ks" />
       <node id="2073504467208952445" at="25,0,27,0" concept="1" trace="typeof_ArithmeticSimpleMathExpression_InferenceRule#()V" />
       <node id="2073504467208952445" at="78,0,81,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467208952445" at="81,0,84,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -560,8 +560,8 @@
       <node id="2073504467209342370" at="27,50,28,48" concept="6" />
       <node id="2073504467209342370" at="30,68,31,102" concept="6" />
       <node id="2073504467209342370" at="33,30,34,17" concept="6" />
-      <node id="2073504467209342370" at="38,0,39,0" concept="8" trace="initializer$pF5B" />
-      <node id="2073504467209342370" at="42,0,43,0" concept="8" trace="SimpleMathVarDeclaration$It" />
+      <node id="2073504467209342370" at="38,0,39,0" concept="8" trace="initializer$WcQ4" />
+      <node id="2073504467209342370" at="42,0,43,0" concept="8" trace="SimpleMathVarDeclaration$uU" />
       <node id="2073504467209342370" at="18,0,20,0" concept="1" trace="typeof_SimpleMathVarDeclaration_InferenceRule#()V" />
       <node id="2073504467209342370" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467209342370" at="30,0,33,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -609,8 +609,8 @@
       <node id="2073504467209348344" at="27,50,28,46" concept="6" />
       <node id="2073504467209348344" at="30,68,31,102" concept="6" />
       <node id="2073504467209348344" at="33,30,34,17" concept="6" />
-      <node id="2073504467209348344" at="38,0,39,0" concept="8" trace="declaration$1Ngw" />
-      <node id="2073504467209348344" at="42,0,43,0" concept="8" trace="SimpleMathVarReference$Ax" />
+      <node id="2073504467209348344" at="38,0,39,0" concept="8" trace="declaration$$l0X" />
+      <node id="2073504467209348344" at="42,0,43,0" concept="8" trace="SimpleMathVarReference$mY" />
       <node id="2073504467209348344" at="18,0,20,0" concept="1" trace="typeof_SimpleMathVarReference_InferenceRule#()V" />
       <node id="2073504467209348344" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467209348344" at="30,0,33,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -651,8 +651,8 @@
       <node id="2073504467209504627" at="30,39,31,16" concept="6" />
       <node id="2073504467209570045" at="33,66,34,91" concept="5" />
       <node id="2073504467209570045" at="34,91,35,36" concept="6" />
-      <node id="2073504467209504627" at="39,0,40,0" concept="8" trace="SimpleMathNumberType$zZ" />
-      <node id="2073504467209504627" at="40,0,41,0" concept="8" trace="SimpleMathElementType$o$" />
+      <node id="2073504467209504627" at="39,0,40,0" concept="8" trace="SimpleMathNumberType$ks" />
+      <node id="2073504467209504627" at="40,0,41,0" concept="8" trace="SimpleMathElementType$91" />
       <node id="2073504467209504627" at="16,0,18,0" concept="1" trace="SimpleMathNumberType_subtypeOf_Element_SubtypingRule#()V" />
       <node id="2073504467209504627" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467209504627" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -703,8 +703,8 @@
       <node id="2073504467209660703" at="30,39,31,16" concept="6" />
       <node id="2073504467209660719" at="33,64,34,89" concept="5" />
       <node id="2073504467209660719" at="34,89,35,36" concept="6" />
-      <node id="2073504467209660703" at="39,0,40,0" concept="8" trace="SimpleMathLongType$jS" />
-      <node id="2073504467209660703" at="40,0,41,0" concept="8" trace="SimpleMathFloatType$Lj" />
+      <node id="2073504467209660703" at="39,0,40,0" concept="8" trace="SimpleMathLongType$4l" />
+      <node id="2073504467209660703" at="40,0,41,0" concept="8" trace="SimpleMathFloatType$xK" />
       <node id="2073504467209660703" at="16,0,18,0" concept="1" trace="SimpleMathLongType_subtypeOf_Float_SubtypingRule#()V" />
       <node id="2073504467209660703" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467209660703" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -764,8 +764,8 @@
       <node id="2073504467209943151" at="32,30,33,17" concept="6" />
       <node id="2073504467209943740" at="35,68,36,88" concept="5" />
       <node id="2073504467209943740" at="36,88,37,36" concept="6" />
-      <node id="2073504467209943151" at="41,0,42,0" concept="8" trace="SimpleMathLongConstant$ut" />
-      <node id="2073504467209943151" at="42,0,43,0" concept="8" trace="SimpleMathLongType$jS" />
+      <node id="2073504467209943151" at="41,0,42,0" concept="8" trace="SimpleMathLongConstant$eU" />
+      <node id="2073504467209943151" at="42,0,43,0" concept="8" trace="SimpleMathLongType$4l" />
       <node id="2073504467209943151" at="17,0,19,0" concept="1" trace="typeof_SimpleMathLongConstant_InferenceRule#()V" />
       <node id="2073504467209943151" at="26,0,29,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467209943151" at="29,0,32,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -810,8 +810,8 @@
       <node id="2073504467210017720" at="30,39,31,16" concept="6" />
       <node id="2073504467210017736" at="33,63,34,88" concept="5" />
       <node id="2073504467210017736" at="34,88,35,36" concept="6" />
-      <node id="2073504467210017720" at="39,0,40,0" concept="8" trace="SimpleMathIntegerType$TX" />
-      <node id="2073504467210017720" at="40,0,41,0" concept="8" trace="SimpleMathLongType$jS" />
+      <node id="2073504467210017720" at="39,0,40,0" concept="8" trace="SimpleMathIntegerType$Eq" />
+      <node id="2073504467210017720" at="40,0,41,0" concept="8" trace="SimpleMathLongType$4l" />
       <node id="2073504467210017720" at="16,0,18,0" concept="1" trace="SimpleMathIntegerType_subtypeOf_Long_SubtypingRule#()V" />
       <node id="2073504467210017720" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467210017720" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1139,8 +1139,8 @@
       <node id="2073504467210944275" at="30,39,31,16" concept="6" />
       <node id="2073504467210944554" at="33,65,34,90" concept="5" />
       <node id="2073504467210944554" at="34,90,35,36" concept="6" />
-      <node id="2073504467210944275" at="39,0,40,0" concept="8" trace="SimpleMathFloatType$Lj" />
-      <node id="2073504467210944275" at="40,0,41,0" concept="8" trace="SimpleMathNumberType$zZ" />
+      <node id="2073504467210944275" at="39,0,40,0" concept="8" trace="SimpleMathFloatType$xK" />
+      <node id="2073504467210944275" at="40,0,41,0" concept="8" trace="SimpleMathNumberType$ks" />
       <node id="2073504467210944275" at="16,0,18,0" concept="1" trace="SimpleMathFloatType_subtypeOf_Number_SubtypingRule#()V" />
       <node id="2073504467210944275" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467210944275" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1200,8 +1200,8 @@
       <node id="2073504467210944707" at="32,30,33,17" concept="6" />
       <node id="2073504467210945308" at="35,69,36,89" concept="5" />
       <node id="2073504467210945308" at="36,89,37,36" concept="6" />
-      <node id="2073504467210944707" at="41,0,42,0" concept="8" trace="SimpleMathFloatConstant$Fa" />
-      <node id="2073504467210944707" at="42,0,43,0" concept="8" trace="SimpleMathFloatType$Lj" />
+      <node id="2073504467210944707" at="41,0,42,0" concept="8" trace="SimpleMathFloatConstant$rB" />
+      <node id="2073504467210944707" at="42,0,43,0" concept="8" trace="SimpleMathFloatType$xK" />
       <node id="2073504467210944707" at="17,0,19,0" concept="1" trace="typeof_SimpleMathFloatConstant_InferenceRule#()V" />
       <node id="2073504467210944707" at="26,0,29,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467210944707" at="29,0,32,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -1253,8 +1253,8 @@
       <node id="8620208551721419345" at="27,50,28,53" concept="6" />
       <node id="8620208551721419345" at="30,68,31,102" concept="6" />
       <node id="8620208551721419345" at="33,30,34,17" concept="6" />
-      <node id="8620208551721419345" at="38,0,39,0" concept="8" trace="type$CK8Q" />
-      <node id="8620208551721419345" at="42,0,43,0" concept="8" trace="SimpleMathTypedVarDeclaration$oL" />
+      <node id="8620208551721419345" at="38,0,39,0" concept="8" trace="type$bhTj" />
+      <node id="8620208551721419345" at="42,0,43,0" concept="8" trace="SimpleMathTypedVarDeclaration$9e" />
       <node id="8620208551721419345" at="18,0,20,0" concept="1" trace="typeof_SimpleMathTypedVarDeclaration_InferenceRule#()V" />
       <node id="8620208551721419345" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8620208551721419345" at="30,0,33,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -1309,9 +1309,9 @@
       <node id="930174696942551209" at="38,50,39,44" concept="6" />
       <node id="930174696942551209" at="41,68,42,102" concept="6" />
       <node id="930174696942551209" at="44,30,45,17" concept="6" />
-      <node id="930174696942551209" at="49,0,50,0" concept="8" trace="expression$Fea0" />
-      <node id="930174696942551209" at="50,0,51,0" concept="8" trace="variable$FdFY" />
-      <node id="930174696942551209" at="54,0,55,0" concept="8" trace="SimpleMathAssignment$sD" />
+      <node id="930174696942551209" at="49,0,50,0" concept="8" trace="expression$dJUt" />
+      <node id="930174696942551209" at="50,0,51,0" concept="8" trace="variable$dJsr" />
+      <node id="930174696942551209" at="54,0,55,0" concept="8" trace="SimpleMathAssignment$d6" />
       <node id="930174696942551209" at="18,0,20,0" concept="1" trace="typeof_SimpleMathAssignment_InferenceRule#()V" />
       <node id="930174696942551209" at="38,0,41,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="930174696942551209" at="41,0,44,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

@@ -31,7 +31,7 @@ public final class CommandClosureLiteral__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static boolean isExecuteSynchronous_idhTIpcC8(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BaseExecuteCommandStatementSync$Vl);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BaseExecuteCommandStatementSync$U2);
   }
 
   /*package*/ CommandClosureLiteral__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class CommandClosureLiteral__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseExecuteCommandStatementSync$Vl = MetaAdapterFactory.getConcept(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20cL, "jetbrains.mps.lang.access.structure.BaseExecuteCommandStatementSync");
+    /*package*/ static final SConcept BaseExecuteCommandStatementSync$U2 = MetaAdapterFactory.getConcept(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20cL, "jetbrains.mps.lang.access.structure.BaseExecuteCommandStatementSync");
   }
 }

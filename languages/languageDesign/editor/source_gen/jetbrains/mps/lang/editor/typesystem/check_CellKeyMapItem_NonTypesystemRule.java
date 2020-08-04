@@ -21,22 +21,22 @@ public class check_CellKeyMapItem_NonTypesystemRule extends AbstractNonTypesyste
   public check_CellKeyMapItem_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellKeyMapKeystroke, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$$Xvq) != null && SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$$Xvq).length() > 1 && !(AWTKeymapHandler.getValidKeyCodes().contains(SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$$Xvq)))) {
+    if (SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$DfF1) != null && SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$DfF1).length() > 1 && !(AWTKeymapHandler.getValidKeyCodes().contains(SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$DfF1)))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.keycode$$Xvq);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cellKeyMapKeystroke, "Invalid keymap keycode: " + SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$$Xvq), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1324308523799901888", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.keycode$DfF1);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cellKeyMapKeystroke, "Invalid keymap keycode: " + SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.keycode$DfF1), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1324308523799901888", null, errorTarget);
       }
     }
-    if (SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$$Xgp) != null && !(AWTKeymapHandler.getValidModifiers().contains(SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$$Xgp)))) {
+    if (SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$Dfs0) != null && !(AWTKeymapHandler.getValidModifiers().contains(SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$Dfs0)))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.modifiers$$Xgp);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cellKeyMapKeystroke, "Invalide keymap modifiers: " + SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$$Xgp), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1324308523799924995", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.modifiers$Dfs0);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(cellKeyMapKeystroke, "Invalide keymap modifiers: " + SPropertyOperations.getString(cellKeyMapKeystroke, PROPS.modifiers$Dfs0), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1324308523799924995", null, errorTarget);
       }
     }
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellKeyMapKeystroke$S3;
+    return CONCEPTS.CellKeyMapKeystroke$3E;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,11 +46,11 @@ public class check_CellKeyMapItem_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty keycode$$Xvq = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, 0x108b5f30ab0L, "keycode");
-    /*package*/ static final SProperty modifiers$$Xgp = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, 0x108b5f30aafL, "modifiers");
+    /*package*/ static final SProperty keycode$DfF1 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, 0x108b5f30ab0L, "keycode");
+    /*package*/ static final SProperty modifiers$Dfs0 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, 0x108b5f30aafL, "modifiers");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellKeyMapKeystroke$S3 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, "jetbrains.mps.lang.editor.structure.CellKeyMapKeystroke");
+    /*package*/ static final SConcept CellKeyMapKeystroke$3E = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x108b5885461L, "jetbrains.mps.lang.editor.structure.CellKeyMapKeystroke");
   }
 }

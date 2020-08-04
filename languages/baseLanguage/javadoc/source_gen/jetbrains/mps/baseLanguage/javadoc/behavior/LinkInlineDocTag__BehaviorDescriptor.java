@@ -35,9 +35,9 @@ public final class LinkInlineDocTag__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static String buildCommentText_id7Qt73fl50wX(@NotNull SNode __thisNode__) {
-    String result = "link " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.reference$giF4));
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$FIUA)).isNotEmpty()) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$FIUA)).select(new ISelector<SNode, String>() {
+    String result = "link " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.reference$AFth));
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$27GN)).isNotEmpty()) {
+      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$27GN)).select(new ISelector<SNode, String>() {
         public String select(SNode it) {
           return (String) CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(it);
         }
@@ -98,7 +98,7 @@ public final class LinkInlineDocTag__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink reference$giF4 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x235789022a5d3a34L, "reference");
-    /*package*/ static final SContainmentLink line$FIUA = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x2b1cb7939653411eL, "line");
+    /*package*/ static final SContainmentLink reference$AFth = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x235789022a5d3a34L, "reference");
+    /*package*/ static final SContainmentLink line$27GN = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x235789022a5d3a2fL, 0x2b1cb7939653411eL, "line");
   }
 }

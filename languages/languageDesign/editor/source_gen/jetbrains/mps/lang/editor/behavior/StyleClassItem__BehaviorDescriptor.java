@@ -56,7 +56,7 @@ public final class StyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static SNode getStyleContainer_id6VCLXpKS8DC(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.IStyleContainer$fN);
+    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.IStyleContainer$rq);
   }
 
   /*package*/ StyleClassItem__BehaviorDescriptor() {
@@ -114,6 +114,6 @@ public final class StyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IStyleContainer$fN = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, "jetbrains.mps.lang.editor.structure.IStyleContainer");
+    /*package*/ static final SInterfaceConcept IStyleContainer$rq = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, "jetbrains.mps.lang.editor.structure.IStyleContainer");
   }
 }

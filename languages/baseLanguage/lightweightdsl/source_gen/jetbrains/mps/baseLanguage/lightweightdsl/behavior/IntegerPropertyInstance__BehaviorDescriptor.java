@@ -34,7 +34,7 @@ public final class IntegerPropertyInstance__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static SNode getValueExpression_id3m06Jgserfw(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_6r0hdw_a0a0(SPropertyOperations.getInteger(__thisNode__, PROPS.value$PCww));
+    return _quotation_createNode_6r0hdw_a0a0(SPropertyOperations.getInteger(__thisNode__, PROPS.value$jBQh));
   }
 
   /*package*/ IntegerPropertyInstance__BehaviorDescriptor() {
@@ -91,6 +91,6 @@ public final class IntegerPropertyInstance__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$PCww = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec5L, 0x59e9926e84100ec6L, "value");
+    /*package*/ static final SProperty value$jBQh = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec5L, 0x59e9926e84100ec6L, "value");
   }
 }

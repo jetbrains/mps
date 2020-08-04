@@ -27,20 +27,20 @@ public class check_ConceptEditorHintDeclarationUniqueness_NonTypesystemRule exte
   public check_ConceptEditorHintDeclarationUniqueness_NonTypesystemRule() {
   }
   public void applyRule(final SNode conceptEditorHintDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode hintDeclarartion : Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(conceptEditorHintDeclaration), CONCEPTS.ConceptEditorContextHints$aY), LINKS.hints$htjW))) {
+    for (SNode hintDeclarartion : Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(conceptEditorHintDeclaration), CONCEPTS.ConceptEditorContextHints$m_), LINKS.hints$lJvz))) {
       if (hintDeclarartion == conceptEditorHintDeclaration) {
         continue;
       }
-      if (Objects.equals(SPropertyOperations.getString(hintDeclarartion, PROPS.name$lA7v), SPropertyOperations.getString(conceptEditorHintDeclaration, PROPS.name$lA7v))) {
+      if (Objects.equals(SPropertyOperations.getString(hintDeclarartion, PROPS.name$MnvL), SPropertyOperations.getString(conceptEditorHintDeclaration, PROPS.name$MnvL))) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptEditorHintDeclaration, "Editor hint with such ID was already defined in this language: " + ConceptEditorHintDeclaration__BehaviorDescriptor.getQualifiedName_id59ZEGVRaGvv.invoke(hintDeclarartion), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "5944657839032566761", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptEditorHintDeclaration$2r;
+    return CONCEPTS.ConceptEditorHintDeclaration$e2;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,15 +50,15 @@ public class check_ConceptEditorHintDeclarationUniqueness_NonTypesystemRule exte
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptEditorContextHints$aY = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints");
-    /*package*/ static final SConcept ConceptEditorHintDeclaration$2r = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef50d095eL, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclaration");
+    /*package*/ static final SConcept ConceptEditorContextHints$m_ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints");
+    /*package*/ static final SConcept ConceptEditorHintDeclaration$e2 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef50d095eL, "jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink hints$htjW = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, 0x527faacef4e379fbL, "hints");
+    /*package*/ static final SContainmentLink hints$lJvz = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, 0x527faacef4e379fbL, "hints");
   }
 }

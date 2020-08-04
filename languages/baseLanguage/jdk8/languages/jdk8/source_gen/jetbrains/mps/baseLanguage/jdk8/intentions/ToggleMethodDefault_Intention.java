@@ -42,7 +42,7 @@ public final class ToggleMethodDefault_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$Kp);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$db);
   }
   @Override
   public boolean isSurroundWith() {
@@ -59,23 +59,23 @@ public final class ToggleMethodDefault_Intention extends AbstractIntentionDescri
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String methodName = SPropertyOperations.getString(node, PROPS.name$lA7v);
-      return (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).any(new IWhereFilter<SNode>() {
+      String methodName = SPropertyOperations.getString(node, PROPS.name$MnvL);
+      return (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$Z2);
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$PN);
         }
       }) ? "Make '" + methodName + "' Not Default" : "Make '" + methodName + "' Default");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).any(new IWhereFilter<SNode>() {
+      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$Z2);
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$PN);
         }
       })) {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).where(new IWhereFilter<SNode>() {
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$Z2);
+            return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$PN);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
@@ -83,10 +83,10 @@ public final class ToggleMethodDefault_Intention extends AbstractIntentionDescri
           }
         });
         if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(node))) {
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$qspy), LINKS.statement$pYcS)).clear();
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$5xQk), LINKS.statement$53DE)).clear();
         }
       } else {
-        SLinkOperations.addNewChild(node, LINKS.modifiers$m0, CONCEPTS.DefaultModifier$Z2);
+        SLinkOperations.addNewChild(node, LINKS.modifiers$F5MM, CONCEPTS.DefaultModifier$PN);
       }
       editorContext.selectWRTFocusPolicy(node);
     }
@@ -97,17 +97,17 @@ public final class ToggleMethodDefault_Intention extends AbstractIntentionDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept DefaultModifier$Z2 = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept DefaultModifier$PN = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

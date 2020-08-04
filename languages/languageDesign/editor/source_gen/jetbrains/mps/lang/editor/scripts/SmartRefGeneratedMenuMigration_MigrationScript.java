@@ -43,7 +43,7 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.GeneratedSubstituteMenuAttribute$Mz;
+        return CONCEPTS.GeneratedSubstituteMenuAttribute$Ya;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -69,7 +69,7 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.GeneratedSubstituteMenuAttribute$Mz;
+        return CONCEPTS.GeneratedSubstituteMenuAttribute$Ya;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -77,7 +77,7 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        final SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.SubstituteMenu_Named$J);
+        final SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.SubstituteMenu_Named$cm);
         // we need a scope with project modules (the script deals with modules in a project). 
         // I assume the node comes from a project module here. Since there's no RepositoryScope, 
         // I resort to GlobalScope that takes SRepository. I don't need to persist/re-run these find results 
@@ -90,20 +90,20 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
           public SNode select(SearchResult<SNode> it) {
             return it.getObject();
           }
-        }), CONCEPTS.SubstituteMenuReference_Named$Ud)).select(new ISelector<SNode, SNode>() {
+        }), CONCEPTS.SubstituteMenuReference_Named$5O)).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
             return SNodeOperations.getParent(it);
           }
-        }), CONCEPTS.SubstituteMenuPart_IncludeMenu$8K)).visitAll(new IVisitor<SNode>() {
+        }), CONCEPTS.SubstituteMenuPart_IncludeMenu$kn)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode includeMenu) {
 
-            Iterable<SNode> parts = SLinkOperations.getChildren(parent, LINKS.parts$uqCt);
+            Iterable<SNode> parts = SLinkOperations.getChildren(parent, LINKS.parts$yGO4);
             for (SNode part : Sequence.fromIterable(parts)) {
               {
                 final SNode aPart = part;
-                if (SNodeOperations.isInstanceOf(aPart, CONCEPTS.AbstractOutputConceptContainerSubstituteMenuPart$a0)) {
-                  if (SLinkOperations.getTarget(aPart, LINKS.outputConcept$O98u) == null && IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart) != IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(includeMenu, CONCEPTS.ISubstituteMenu$zI, false, false))) {
-                    SLinkOperations.setTarget(aPart, LINKS.outputConcept$O98u, IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart));
+                if (SNodeOperations.isInstanceOf(aPart, CONCEPTS.AbstractOutputConceptContainerSubstituteMenuPart$lB)) {
+                  if (SLinkOperations.getTarget(aPart, LINKS.outputConcept$Srk5) == null && IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart) != IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(includeMenu, CONCEPTS.ISubstituteMenu$Jl, false, false))) {
+                    SLinkOperations.setTarget(aPart, LINKS.outputConcept$Srk5, IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(aPart));
                   }
                 }
               }
@@ -128,16 +128,16 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GeneratedSubstituteMenuAttribute$Mz = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5b104bd5525fa7L, "jetbrains.mps.lang.editor.structure.GeneratedSubstituteMenuAttribute");
-    /*package*/ static final SConcept SubstituteMenu_Named$J = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named");
-    /*package*/ static final SConcept SubstituteMenuReference_Named$Ud = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named");
-    /*package*/ static final SConcept SubstituteMenuPart_IncludeMenu$8K = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu");
-    /*package*/ static final SConcept AbstractOutputConceptContainerSubstituteMenuPart$a0 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x326f55034e5c1baaL, "jetbrains.mps.lang.editor.structure.AbstractOutputConceptContainerSubstituteMenuPart");
-    /*package*/ static final SInterfaceConcept ISubstituteMenu$zI = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
+    /*package*/ static final SConcept GeneratedSubstituteMenuAttribute$Ya = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5b104bd5525fa7L, "jetbrains.mps.lang.editor.structure.GeneratedSubstituteMenuAttribute");
+    /*package*/ static final SConcept SubstituteMenu_Named$cm = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named");
+    /*package*/ static final SConcept SubstituteMenuReference_Named$5O = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named");
+    /*package*/ static final SConcept SubstituteMenuPart_IncludeMenu$kn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu");
+    /*package*/ static final SConcept AbstractOutputConceptContainerSubstituteMenuPart$lB = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x326f55034e5c1baaL, "jetbrains.mps.lang.editor.structure.AbstractOutputConceptContainerSubstituteMenuPart");
+    /*package*/ static final SInterfaceConcept ISubstituteMenu$Jl = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$uqCt = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts");
-    /*package*/ static final SReferenceLink outputConcept$O98u = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee6ee2b8485887fL, 0x6ee6ee2b84858889L, "outputConcept");
+    /*package*/ static final SContainmentLink parts$yGO4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts");
+    /*package*/ static final SReferenceLink outputConcept$Srk5 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee6ee2b8485887fL, 0x6ee6ee2b84858889L, "outputConcept");
   }
 }

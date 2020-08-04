@@ -36,7 +36,7 @@ public class IgnoreRightSquareBracketInVariableName extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.VariableDeclaration$xe))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.VariableDeclaration$Y0))) {
         return false;
       }
       return true;
@@ -53,6 +53,6 @@ public class IgnoreRightSquareBracketInVariableName extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
   }
 }

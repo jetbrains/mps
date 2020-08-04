@@ -34,10 +34,10 @@
       <node id="1213104840433" at="70,61,71,22" concept="6" />
       <node id="1227089120381" at="73,57,74,57" concept="6" />
       <node id="1213104840433" at="76,0,77,0" concept="8" trace="canBeRootBreakingPoint" />
-      <node id="1213104840433" at="79,0,80,0" concept="8" trace="DataFlowBuilderDeclaration$ZP" />
-      <node id="1213104840433" at="83,0,84,0" concept="8" trace="name$lA7v" />
-      <node id="1213104840433" at="87,0,88,0" concept="8" trace="conceptDeclaration$_Dk3" />
-      <node id="1213104840433" at="88,0,89,0" concept="8" trace="modes$S9of" />
+      <node id="1213104840433" at="79,0,80,0" concept="8" trace="DataFlowBuilderDeclaration$NP" />
+      <node id="1213104840433" at="83,0,84,0" concept="8" trace="name$MnvL" />
+      <node id="1213104840433" at="87,0,88,0" concept="8" trace="conceptDeclaration$vN83" />
+      <node id="1213104840433" at="88,0,89,0" concept="8" trace="modes$Mjcf" />
       <node id="1213104840433" at="31,0,34,0" concept="0" trace="DataFlowBuilderDeclaration_Constraints#()V" />
       <node id="1213104840433" at="41,0,44,9" concept="3" />
       <node id="1213104840434" at="51,0,54,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
@@ -106,10 +106,10 @@
       <node id="1213104855808" at="58,131,59,42" concept="1" />
       <node id="1213104855807" at="59,42,60,22" concept="6" />
       <node id="1213104855807" at="62,0,63,0" concept="8" trace="breakingNode_t9qyyi_a0a0a0a0a1a0a0a0c" />
-      <node id="1213104855807" at="65,0,66,0" concept="8" trace="LabelPosition$Nw" />
-      <node id="1213104855807" at="66,0,67,0" concept="8" trace="DataFlowBuilderDeclaration$ZP" />
-      <node id="1213104855807" at="67,0,68,0" concept="8" trace="EmitLabelStatement$Er" />
-      <node id="1213104855807" at="71,0,72,0" concept="8" trace="label$aeCv" />
+      <node id="1213104855807" at="65,0,66,0" concept="8" trace="LabelPosition$Bw" />
+      <node id="1213104855807" at="66,0,67,0" concept="8" trace="DataFlowBuilderDeclaration$NP" />
+      <node id="1213104855807" at="67,0,68,0" concept="8" trace="EmitLabelStatement$ur" />
+      <node id="1213104855807" at="71,0,72,0" concept="8" trace="label$4osv" />
       <node id="1213104855807" at="29,0,32,0" concept="0" trace="LabelPosition_Constraints#()V" />
       <node id="1213104855808" at="36,0,40,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104855808" at="44,0,48,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -155,8 +155,8 @@
       <node id="1213107437881" at="34,0,35,22" concept="6" />
       <node id="1227128029536561050" at="39,128,40,102" concept="6" />
       <node id="1213107437881" at="42,0,43,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="1213107437881" at="45,0,46,0" concept="8" trace="EmitStatement$qn" />
-      <node id="1213107437881" at="46,0,47,0" concept="8" trace="BuilderBlock$9V" />
+      <node id="1213107437881" at="45,0,46,0" concept="8" trace="EmitStatement$en" />
+      <node id="1213107437881" at="46,0,47,0" concept="8" trace="BuilderBlock$XV" />
       <node id="1213107437881" at="20,0,23,0" concept="0" trace="EmitStatement_Constraints#()V" />
       <node id="1213107437881" at="30,0,33,9" concept="3" />
       <node id="1213107437881" at="39,0,42,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -197,10 +197,10 @@
       <node id="1823319949748058982" at="36,0,37,22" concept="6" />
       <node id="1227128029536561061" at="41,128,42,321" concept="6" />
       <node id="1823319949748058982" at="44,0,45,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="1823319949748058982" at="47,0,48,0" concept="8" trace="BaseInstructionOperation$NM" />
-      <node id="1823319949748058982" at="48,0,49,0" concept="8" trace="DotExpression$6a" />
-      <node id="1823319949748058982" at="49,0,50,0" concept="8" trace="InstructionType$uJ" />
-      <node id="1823319949748058982" at="53,0,54,0" concept="8" trace="operand$P1i5" />
+      <node id="1823319949748058982" at="47,0,48,0" concept="8" trace="BaseInstructionOperation$BM" />
+      <node id="1823319949748058982" at="48,0,49,0" concept="8" trace="DotExpression$yW" />
+      <node id="1823319949748058982" at="49,0,50,0" concept="8" trace="InstructionType$iJ" />
+      <node id="1823319949748058982" at="53,0,54,0" concept="8" trace="operand$w6IR" />
       <node id="1823319949748058982" at="22,0,25,0" concept="0" trace="BaseInstructionOperation_Constraints#()V" />
       <node id="1823319949748058982" at="32,0,35,9" concept="3" />
       <node id="1823319949748058982" at="41,0,44,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -234,7 +234,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590377(jetbrains.mps.lang.dataFlow.constraints)/3727642986273380409">
     <file name="GetCodeForExpression_Constraints.java">
-      <node id="3727642986273380409" at="20,45,21,44" concept="10" />
+      <node id="3727642986273380409" at="20,45,21,43" concept="10" />
       <node id="3727642986273380409" at="28,127,29,128" concept="5" />
       <node id="3727642986273380409" at="29,128,30,0" concept="7" />
       <node id="3727642986273380409" at="31,55,32,71" concept="1" />
@@ -242,15 +242,15 @@
       <node id="3727642986273380409" at="34,0,35,22" concept="6" />
       <node id="1227128029536561080" at="39,128,40,127" concept="6" />
       <node id="3727642986273380409" at="42,0,43,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="3727642986273380409" at="45,0,46,0" concept="8" trace="GetCodeForExpression$cV" />
-      <node id="3727642986273380409" at="46,0,47,0" concept="8" trace="DataFlowBuilderDeclaration$ZP" />
+      <node id="3727642986273380409" at="45,0,46,0" concept="8" trace="GetCodeForExpression$V" />
+      <node id="3727642986273380409" at="46,0,47,0" concept="8" trace="DataFlowBuilderDeclaration$NP" />
       <node id="3727642986273380409" at="20,0,23,0" concept="0" trace="GetCodeForExpression_Constraints#()V" />
       <node id="3727642986273380409" at="30,0,33,9" concept="3" />
       <node id="3727642986273380409" at="39,0,42,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="3727642986273380409" at="27,0,37,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="3727642986273380409" at="25,103,37,6" concept="6" />
       <node id="3727642986273380409" at="24,0,39,0" concept="4" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="3727642986273380409" at="20,45,21,44" />
+      <scope id="3727642986273380409" at="20,45,21,43" />
       <scope id="3727642986273380409" at="31,55,32,71" />
       <scope id="1227128029536561079" at="39,128,40,127" />
       <scope id="3727642986273380409" at="20,0,23,0" />

@@ -38,15 +38,15 @@ public final class LanguageId__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SLanguage getLanguage_id34EJa6aIcyj(@NotNull SNode __thisNode__) {
-    return MetaAdapterFactory.getLanguage(SLanguageId.deserialize(SPropertyOperations.getString(__thisNode__, PROPS.languageId$DABy)), SPropertyOperations.getString(__thisNode__, PROPS.namespace$DAox));
+    return MetaAdapterFactory.getLanguage(SLanguageId.deserialize(SPropertyOperations.getString(__thisNode__, PROPS.languageId$dZD2)), SPropertyOperations.getString(__thisNode__, PROPS.namespace$dZq1));
   }
   /*package*/ static void setLanguage_id34EJa6aIcyw(@NotNull SNode __thisNode__, SLanguage language) {
-    SPropertyOperations.assign(__thisNode__, PROPS.languageId$DABy, MetaIdHelper.getLanguage(language).serialize());
-    SPropertyOperations.assign(__thisNode__, PROPS.namespace$DAox, language.getQualifiedName());
+    SPropertyOperations.assign(__thisNode__, PROPS.languageId$dZD2, MetaIdHelper.getLanguage(language).serialize());
+    SPropertyOperations.assign(__thisNode__, PROPS.namespace$dZq1, language.getQualifiedName());
   }
   /*package*/ static void setLanguage_id5e7X3XCKW4J(@NotNull SNode __thisNode__, Language language) {
-    SPropertyOperations.assign(__thisNode__, PROPS.languageId$DABy, MetaIdByDeclaration.getLanguageId(language).serialize());
-    SPropertyOperations.assign(__thisNode__, PROPS.namespace$DAox, language.getModuleName());
+    SPropertyOperations.assign(__thisNode__, PROPS.languageId$dZD2, MetaIdByDeclaration.getLanguageId(language).serialize());
+    SPropertyOperations.assign(__thisNode__, PROPS.namespace$dZq1, language.getModuleName());
   }
 
   /*package*/ LanguageId__BehaviorDescriptor() {
@@ -102,7 +102,7 @@ public final class LanguageId__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty languageId$DABy = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, 0x312abca18ab8ccd8L, "languageId");
-    /*package*/ static final SProperty namespace$DAox = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, 0x312abca18ab8ccd7L, "namespace");
+    /*package*/ static final SProperty languageId$dZD2 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, 0x312abca18ab8ccd8L, "languageId");
+    /*package*/ static final SProperty namespace$dZq1 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, 0x312abca18ab8ccd7L, "namespace");
   }
 }

@@ -40,12 +40,12 @@ public final class SubstituteMenuPart_Group__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.SubstituteMenuVariableDeclaration$vw)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.SubstituteMenuVariableDeclaration$F7)) {
       // For simplicity this does not take into account the position of the child, so variables declared earlier may 
       // (incorrectly) reference variables declared later. 
-      return new HidingByNameScope(CONCEPTS.SubstituteMenuVariableDeclaration$vw, kind, new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$u7gf)), ScopeUtils.lazyParentScope(__thisNode__, kind));
+      return new HidingByNameScope(CONCEPTS.SubstituteMenuVariableDeclaration$F7, kind, new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$yprQ)), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
-    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child);
+    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child);
   }
 
   /*package*/ SubstituteMenuPart_Group__BehaviorDescriptor() {
@@ -95,11 +95,11 @@ public final class SubstituteMenuPart_Group__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenuVariableDeclaration$vw = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x780e6728403987bL, "jetbrains.mps.lang.editor.structure.SubstituteMenuVariableDeclaration");
-    /*package*/ static final SInterfaceConcept ScopeProvider$M8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
+    /*package*/ static final SConcept SubstituteMenuVariableDeclaration$F7 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x780e6728403987bL, "jetbrains.mps.lang.editor.structure.SubstituteMenuVariableDeclaration");
+    /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variables$u7gf = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546bL, 0x780e672842433a1L, "variables");
+    /*package*/ static final SContainmentLink variables$yprQ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546bL, 0x780e672842433a1L, "variables");
   }
 }

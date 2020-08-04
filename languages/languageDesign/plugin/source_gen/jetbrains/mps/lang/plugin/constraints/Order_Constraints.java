@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Order_Constraints extends BaseConstraintsDescriptor {
   public Order_Constraints() {
-    super(CONCEPTS.Order$Pw);
+    super(CONCEPTS.Order$Mz);
   }
 
   @Override
@@ -36,7 +36,7 @@ public class Order_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.Order$Pw);
+            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.Order$Mz);
           }
         };
       }
@@ -45,6 +45,6 @@ public class Order_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_mjlnwi_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "5090936610551068893");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Order$Pw = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd78147L, "jetbrains.mps.lang.plugin.structure.Order");
+    /*package*/ static final SConcept Order$Mz = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd78147L, "jetbrains.mps.lang.plugin.structure.Order");
   }
 }

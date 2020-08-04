@@ -88,7 +88,7 @@ public class BooleanStyleSheetItem_FlagMenu extends TransformationMenuBase {
 
     @Override
     protected SProperty getProperty(TransformationMenuContext context) {
-      return PROPS.flag$3Afb;
+      return PROPS.flag$7SqM;
     }
   }
   private class TMP_Action_k8kzk0_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
@@ -129,7 +129,7 @@ public class BooleanStyleSheetItem_FlagMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SLinkOperations.setTarget(_context.getNode(), LINKS.query$GgiI, SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_Boolean$Kg, null));
+        SLinkOperations.setTarget(_context.getNode(), LINKS.query$Kyul, SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_Boolean$VR, null));
       }
 
 
@@ -153,14 +153,14 @@ public class BooleanStyleSheetItem_FlagMenu extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty flag$3Afb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
+    /*package*/ static final SProperty flag$7SqM = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$GgiI = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x11cd79149a9L, "query");
+    /*package*/ static final SContainmentLink query$Kyul = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x11cd79149a9L, "query");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryFunction_Boolean$Kg = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11cd78e1636L, "jetbrains.mps.lang.editor.structure.QueryFunction_Boolean");
+    /*package*/ static final SConcept QueryFunction_Boolean$VR = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11cd78e1636L, "jetbrains.mps.lang.editor.structure.QueryFunction_Boolean");
   }
 }

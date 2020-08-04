@@ -16,10 +16,10 @@ public class SinceBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@since ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$dZ$1));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$$ome));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$dZ$1 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL, 0x757ba20a4c87ddafL, "text");
+    /*package*/ static final SProperty text$$ome = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL, 0x757ba20a4c87ddafL, "text");
   }
 }

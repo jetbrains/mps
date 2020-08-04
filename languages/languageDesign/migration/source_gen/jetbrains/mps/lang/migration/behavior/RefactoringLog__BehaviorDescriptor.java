@@ -33,7 +33,7 @@ public final class RefactoringLog__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static RefactoringScriptReference getDescriptor_id4uVwhQyPQ_Z(@NotNull SNode __thisNode__) {
-    return new RefactoringScriptReference(SNodeOperations.getModel(__thisNode__).getModule(), SPropertyOperations.getInteger(__thisNode__, PROPS.fromVersion$vBzx));
+    return new RefactoringScriptReference(SNodeOperations.getModel(__thisNode__).getModule(), SPropertyOperations.getInteger(__thisNode__, PROPS.fromVersion$clQh));
   }
 
   /*package*/ RefactoringLog__BehaviorDescriptor() {
@@ -83,6 +83,6 @@ public final class RefactoringLog__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fromVersion$vBzx = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d91L, "fromVersion");
+    /*package*/ static final SProperty fromVersion$clQh = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, 0x1bf9eb43276b6d91L, "fromVersion");
   }
 }

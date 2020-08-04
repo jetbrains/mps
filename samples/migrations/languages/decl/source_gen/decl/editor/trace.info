@@ -103,7 +103,7 @@
       <node id="7709929535540674261" at="175,28,176,25" concept="1" />
       <node id="7709929535540674261" at="180,28,181,20" concept="6" />
       <node id="7709929535540674261" at="183,40,184,31" concept="6" />
-      <node id="7709929535540674261" at="186,48,187,44" concept="6" />
+      <node id="7709929535540674261" at="186,48,187,43" concept="6" />
       <node id="7709929535540674261" at="190,57,191,83" concept="5" />
       <node id="7709929535540674261" at="191,83,192,65" concept="1" />
       <node id="7709929535540674261" at="192,65,193,25" concept="6" />
@@ -132,10 +132,10 @@
       <node id="7709929535540674261" at="243,58,244,40" concept="1" />
       <node id="7709929535540674261" at="244,40,245,34" concept="1" />
       <node id="7709929535540674261" at="245,34,246,22" concept="6" />
-      <node id="7709929535540674261" at="250,0,251,0" concept="7" trace="name$lA7v" />
-      <node id="7709929535540674261" at="254,0,255,0" concept="7" trace="PropertyAttribute$jT" />
-      <node id="7709929535540674261" at="255,0,256,0" concept="7" trace="OldComponentMember$qC" />
-      <node id="7709929535540674261" at="259,0,260,0" concept="7" trace="member$nGlH" />
+      <node id="7709929535540674261" at="250,0,251,0" concept="7" trace="name$MnvL" />
+      <node id="7709929535540674261" at="254,0,255,0" concept="7" trace="PropertyAttribute$Gb" />
+      <node id="7709929535540674261" at="255,0,256,0" concept="7" trace="OldComponentMember$u" />
+      <node id="7709929535540674261" at="259,0,260,0" concept="7" trace="member$dqVz" />
       <node id="7709929535540674261" at="49,0,51,0" concept="2" trace="myNode" />
       <node id="7709929535540674261" at="171,0,173,0" concept="2" trace="myNode" />
       <node id="7709929535540674261" at="63,0,66,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -185,7 +185,7 @@
       <scope id="7709929535540722971" at="134,15,135,40" />
       <scope id="7709929535540674261" at="180,28,181,20" />
       <scope id="7709929535540674261" at="183,40,184,31" />
-      <scope id="7709929535540674261" at="186,48,187,44" />
+      <scope id="7709929535540674261" at="186,48,187,43" />
       <scope id="7709929535540674261" at="204,17,205,42" />
       <scope id="7709929535540674261" at="231,34,232,91" />
       <scope id="7709929535540674261" at="52,92,54,18" />
@@ -410,10 +410,10 @@
       <node id="7709929535540733489" at="243,58,244,40" concept="1" />
       <node id="7709929535540733489" at="244,40,245,34" concept="1" />
       <node id="7709929535540733489" at="245,34,246,22" concept="6" />
-      <node id="7709929535540733489" at="250,0,251,0" concept="7" trace="name$lA7v" />
-      <node id="7709929535540733489" at="254,0,255,0" concept="7" trace="PropertyAttribute$jT" />
-      <node id="7709929535540733489" at="255,0,256,0" concept="7" trace="NewComponentMember$Tl" />
-      <node id="7709929535540733489" at="259,0,260,0" concept="7" trace="member$$kgn" />
+      <node id="7709929535540733489" at="250,0,251,0" concept="7" trace="name$MnvL" />
+      <node id="7709929535540733489" at="254,0,255,0" concept="7" trace="PropertyAttribute$Gb" />
+      <node id="7709929535540733489" at="255,0,256,0" concept="7" trace="NewComponentMember$vb" />
+      <node id="7709929535540733489" at="259,0,260,0" concept="7" trace="member$q2Qd" />
       <node id="7709929535540733489" at="49,0,51,0" concept="2" trace="myNode" />
       <node id="7709929535540733489" at="171,0,173,0" concept="2" trace="myNode" />
       <node id="7709929535540733489" at="63,0,66,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

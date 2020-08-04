@@ -16,34 +16,34 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class NewNode {
   public void newNode1(SModel model) {
     SNode newClass = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept"));
-    SLinkOperations.addNewChild(newClass, LINKS.member$6v_r, CONCEPTS.ConstructorDeclaration$5U);
-    SLinkOperations.addNewChild(SLinkOperations.addNewChild(newClass, LINKS.member$6v_r, CONCEPTS.ConstructorDeclaration$5U), LINKS.parameter$qsax, null);
+    SLinkOperations.addNewChild(newClass, LINKS.member$L_2d, CONCEPTS.ConstructorDeclaration$yG);
+    SLinkOperations.addNewChild(SLinkOperations.addNewChild(newClass, LINKS.member$L_2d, CONCEPTS.ConstructorDeclaration$yG), LINKS.parameter$5xBj, null);
   }
   public void newNode2(SNode node) {
-    SNode newIfStatement = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.IfStatement$pi);
-    SNode newCondition = SLinkOperations.setNewChild(newIfStatement, LINKS.condition$qL$l, null);
-    SNode newCondition2 = SNodeOperations.replaceWithNewChild(newCondition, CONCEPTS.AndExpression$zq);
-    SNode newStatement = SLinkOperations.addNewChild(SLinkOperations.getTarget(newIfStatement, LINKS.ifTrue$qLNm), LINKS.statement$pYcS, CONCEPTS.ReturnStatement$SF);
+    SNode newIfStatement = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.IfStatement$Q4);
+    SNode newCondition = SLinkOperations.setNewChild(newIfStatement, LINKS.condition$5R17, null);
+    SNode newCondition2 = SNodeOperations.replaceWithNewChild(newCondition, CONCEPTS.AndExpression$c);
+    SNode newStatement = SLinkOperations.addNewChild(SLinkOperations.getTarget(newIfStatement, LINKS.ifTrue$5Rg8), LINKS.statement$53DE, CONCEPTS.ReturnStatement$lt);
   }
   public void newNode3(SNode sample) {
     SNode ifStatement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement"));
-    SNode ifStatement1 = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$pi, sample);
-    SNode ifStatement2 = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(CONCEPTS.IfStatement$pi));
-    SNode ifStatement3 = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$pi, sample);
+    SNode ifStatement1 = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$Q4, sample);
+    SNode ifStatement2 = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(CONCEPTS.IfStatement$Q4));
+    SNode ifStatement3 = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$Q4, sample);
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept AndExpression$zq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb7c3070eeL, "jetbrains.mps.baseLanguage.structure.AndExpression");
-    /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept AndExpression$c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb7c3070eeL, "jetbrains.mps.baseLanguage.structure.AndExpression");
+    /*package*/ static final SConcept ReturnStatement$lt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
   }
 }

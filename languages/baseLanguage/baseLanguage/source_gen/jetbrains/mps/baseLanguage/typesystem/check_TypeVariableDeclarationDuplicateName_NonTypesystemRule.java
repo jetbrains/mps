@@ -26,16 +26,16 @@ public class check_TypeVariableDeclarationDuplicateName_NonTypesystemRule extend
   public void applyRule(final SNode typeVariableDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     boolean duplicateName = ListSequence.fromList(SNodeOperations.getAllSiblings(typeVariableDeclaration, false)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.TypeVariableDeclaration$Cc) && SNodeOperations.getIndexInParent(it) < SNodeOperations.getIndexInParent(typeVariableDeclaration);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.TypeVariableDeclaration$4Y) && SNodeOperations.getIndexInParent(it) < SNodeOperations.getIndexInParent(typeVariableDeclaration);
       }
     }).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.TypeVariableDeclaration$Cc), PROPS.name$lA7v), SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$lA7v));
+        return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.TypeVariableDeclaration$4Y), PROPS.name$MnvL), SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$MnvL));
       }
     });
 
     if (duplicateName) {
-      String msg = "Duplicate type parameter " + SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$lA7v);
+      String msg = "Duplicate type parameter " + SPropertyOperations.getString(typeVariableDeclaration, PROPS.name$MnvL);
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeVariableDeclaration, msg, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2970924421776837790", null, errorTarget);
@@ -43,7 +43,7 @@ public class check_TypeVariableDeclarationDuplicateName_NonTypesystemRule extend
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TypeVariableDeclaration$Cc;
+    return CONCEPTS.TypeVariableDeclaration$4Y;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -53,10 +53,10 @@ public class check_TypeVariableDeclarationDuplicateName_NonTypesystemRule extend
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableDeclaration$Cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
+    /*package*/ static final SConcept TypeVariableDeclaration$4Y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

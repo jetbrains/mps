@@ -132,7 +132,7 @@ public class JavaParser {
           attachComments(source, converter, util.recordedParsingInformation);
           resultNodes = ListSequence.fromList(new ArrayList<SNode>());
           // stmtList may have new statements (comments) by now, after attachComments 
-          for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(stmtList, LINKS.statement$pYcS))) {
+          for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(stmtList, LINKS.statement$53DE))) {
             SNodeOperations.deleteNode(stmt);
             ListSequence.fromList(resultNodes).addElement(stmt);
           }
@@ -179,9 +179,9 @@ public class JavaParser {
         for (String text : lines) {
           SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine"));
           SNode part = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart"));
-          SPropertyOperations.assign(part, PROPS.text$OrZ0, text);
-          ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$w5LD)).addElement(part);
-          ListSequence.fromList(SLinkOperations.getChildren(doc, LINKS.body$udUc)).addElement(commentLine);
+          SPropertyOperations.assign(part, PROPS.text$aOLd, text);
+          ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$QuzQ)).addElement(part);
+          ListSequence.fromList(SLinkOperations.getChildren(doc, LINKS.body$OAGp)).addElement(commentLine);
         }
 
         continue;
@@ -197,7 +197,7 @@ public class JavaParser {
         }
       }
       if ((block != null)) {
-        int pos = ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$pYcS)).where(new IWhereFilter<SNode>() {
+        int pos = ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(MapSequence.fromMap(positions.value).containsKey(it)) || Math.abs(MapSequence.fromMap(positions.value).get(it)) <= linestart;
           }
@@ -208,8 +208,8 @@ public class JavaParser {
             line_ = line.substring(1);
           }
           SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-          BHReflection.invoke0(commentLine, CONCEPTS.SingleLineComment$jI, SMethodTrimmedId.create("parseAndAddWords", CONCEPTS.SingleLineComment$jI, "45vN3dBFprj"), line_);
-          ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$pYcS)).insertElement(pos++, commentLine);
+          BHReflection.invoke0(commentLine, CONCEPTS.SingleLineComment$Kw, SMethodTrimmedId.create("parseAndAddWords", CONCEPTS.SingleLineComment$Kw, "45vN3dBFprj"), line_);
+          ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).insertElement(pos++, commentLine);
         }
       } else {
         // no place to insert comment 
@@ -225,18 +225,18 @@ public class JavaParser {
     // putting first: current package in terms of source code 
     if (compResult.currentPackage != null) {
       SNode currPkg = makeImport(compResult.currentPackage);
-      SPropertyOperations.assign(currPkg, PROPS.onDemand$1gKw, true);
-      ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$G9yA)).addElement(currPkg);
+      SPropertyOperations.assign(currPkg, PROPS.onDemand$Gmdi, true);
+      ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$neZo)).addElement(currPkg);
     }
 
     if (compResult.imports != null) {
       for (ImportReference imprt : compResult.imports) {
-        ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$G9yA)).addElement(makeImport(imprt));
+        ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$neZo)).addElement(makeImport(imprt));
       }
     }
 
     // inserting it in the beginning 
-    clas.addChild(LINKS.smodelAttribute$jXFL, imports);
+    clas.addChild(LINKS.smodelAttribute$KJ43, imports);
 
     // we want to insert imports section before any javadoc 
     // because javadoc is data while imports section is meta-data for assisting class resolving 
@@ -248,8 +248,8 @@ public class JavaParser {
     boolean onDemand = (impRef.bits & ASTNode.OnDemand) != 0;
     boolean isStatic = impRef.isStatic();
 
-    SPropertyOperations.assign(imp, PROPS.onDemand$1gKw, onDemand);
-    SPropertyOperations.assign(imp, PROPS.static$4x24, isStatic);
+    SPropertyOperations.assign(imp, PROPS.onDemand$Gmdi, onDemand);
+    SPropertyOperations.assign(imp, PROPS.static$JAuQ, isStatic);
 
     char[][] toks = impRef.getImportName();
     StringBuffer sb = new StringBuffer();
@@ -258,7 +258,7 @@ public class JavaParser {
       sb.append('.');
     }
     sb.deleteCharAt(sb.length() - 1);
-    SPropertyOperations.assign(imp, PROPS.tokens$3W1y, sb.toString());
+    SPropertyOperations.assign(imp, PROPS.tokens$J1uk, sb.toString());
     return imp;
   }
   private String problemDescription(RecordedParsingInformation info) {
@@ -342,21 +342,21 @@ public class JavaParser {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
-    /*package*/ static final SContainmentLink body$udUc = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
-    /*package*/ static final SContainmentLink entries$G9yA = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink body$OAGp = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink entries$neZo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
-    /*package*/ static final SProperty onDemand$1gKw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
-    /*package*/ static final SProperty static$4x24 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x4d5c30eb30af1572L, "static");
-    /*package*/ static final SProperty tokens$3W1y = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
+    /*package*/ static final SProperty text$aOLd = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty onDemand$Gmdi = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
+    /*package*/ static final SProperty static$JAuQ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x4d5c30eb30af1572L, "static");
+    /*package*/ static final SProperty tokens$J1uk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SingleLineComment$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
+    /*package*/ static final SConcept SingleLineComment$Kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
   }
 }

@@ -19,7 +19,7 @@ public class TemplatePersistentConfigurationTypeIsTemplatePersistentConfiguratio
     return createTemplatePersistentConfigurationType_n8elw8_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TemplatePersistentConfigurationType$ht;
+    return CONCEPTS.TemplatePersistentConfigurationType$Qi;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -31,11 +31,11 @@ public class TemplatePersistentConfigurationTypeIsTemplatePersistentConfiguratio
     return true;
   }
   private static SNode createTemplatePersistentConfigurationType_n8elw8_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$Qi);
     return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplatePersistentConfigurationType$ht = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType");
+    /*package*/ static final SConcept TemplatePersistentConfigurationType$Qi = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType");
   }
 }

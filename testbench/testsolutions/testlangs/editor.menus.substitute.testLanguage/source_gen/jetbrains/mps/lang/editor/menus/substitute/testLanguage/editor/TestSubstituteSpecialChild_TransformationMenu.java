@@ -110,7 +110,7 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$De)) != null)) {
+        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ)) != null)) {
           return "Remove Attribute ";
         } else {
           return "Add Attribute";
@@ -119,10 +119,10 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
 
       @Override
       public void execute(@NotNull String pattern) {
-        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$De)) != null)) {
-          SNodeOperations.deleteNode(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$De)));
+        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ)) != null)) {
+          SNodeOperations.deleteNode(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ)));
         } else {
-          AttributeOperations.createAndSetAttrbiute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$De), CONCEPTS.TestSubstituteSpecialChildAttribute$De);
+          AttributeOperations.createAndSetAttrbiute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ), CONCEPTS.TestSubstituteSpecialChildAttribute$TJ);
         }
       }
 
@@ -139,6 +139,6 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteSpecialChildAttribute$De = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x51ed57d5dc9c3b8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChildAttribute");
+    /*package*/ static final SConcept TestSubstituteSpecialChildAttribute$TJ = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x51ed57d5dc9c3b8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChildAttribute");
   }
 }

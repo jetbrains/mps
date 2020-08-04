@@ -11,10 +11,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @GeneratedClass(node = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)/2216760464199540788", model = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)")
 public class TypeSystemUtil {
   public static boolean shouldApplyTypeSystemRules(SNode node) {
-    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.IDontApplyTypesystemRules$pp));
+    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.IDontApplyTypesystemRules$LF));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IDontApplyTypesystemRules$pp = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x1ec383e5b4bdca56L, "jetbrains.mps.lang.core.structure.IDontApplyTypesystemRules");
+    /*package*/ static final SInterfaceConcept IDontApplyTypesystemRules$LF = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x1ec383e5b4bdca56L, "jetbrains.mps.lang.core.structure.IDontApplyTypesystemRules");
   }
 }

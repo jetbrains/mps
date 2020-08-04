@@ -46,11 +46,11 @@ public final class TestConcept0_ConstraintRules extends BaseRulesConstraintsDesc
       if (!(isDefined(context))) {
         return null;
       }
-      return (SNode) SNodeOperations.cast(context.getParentNode(), CONCEPTS.TestConcept0$6z);
+      return (SNode) SNodeOperations.cast(context.getParentNode(), CONCEPTS.TestConcept0$b0);
     }
 
     public static boolean isDefined(@NotNull ContainmentContext context) {
-      return SNodeOperations.isInstanceOf(context.getParentNode(), CONCEPTS.TestConcept0$6z);
+      return SNodeOperations.isInstanceOf(context.getParentNode(), CONCEPTS.TestConcept0$b0);
     }
   }
 
@@ -64,7 +64,7 @@ public final class TestConcept0_ConstraintRules extends BaseRulesConstraintsDesc
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return SPropertyOperations.getString(context.getChildNode(), PROPS.name$lA7v).startsWith(SPropertyOperations.getString(Def_Parent2884486869351404345.getValue(context), PROPS.name$lA7v));
+      return SPropertyOperations.getString(context.getChildNode(), PROPS.name$MnvL).startsWith(SPropertyOperations.getString(Def_Parent2884486869351404345.getValue(context), PROPS.name$MnvL));
     }
 
     @Override
@@ -72,7 +72,7 @@ public final class TestConcept0_ConstraintRules extends BaseRulesConstraintsDesc
       if (!(Def_Parent2884486869351404345.isDefined(context))) {
         return false;
       }
-      return isNotEmptyString(SPropertyOperations.getString(context.getChildNode(), PROPS.name$lA7v)) && isNotEmptyString(SPropertyOperations.getString(Def_Parent2884486869351404345.getValue(context), PROPS.name$lA7v));
+      return isNotEmptyString(SPropertyOperations.getString(context.getChildNode(), PROPS.name$MnvL)) && isNotEmptyString(SPropertyOperations.getString(Def_Parent2884486869351404345.getValue(context), PROPS.name$MnvL));
     }
     private static boolean isNotEmptyString(String str) {
       return str != null && str.length() > 0;
@@ -84,10 +84,10 @@ public final class TestConcept0_ConstraintRules extends BaseRulesConstraintsDesc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept TestConcept0$6z = MetaAdapterFactory.getInterfaceConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x2807c18666f81300L, "messages.customization.structure.TestConcept0");
+    /*package*/ static final SInterfaceConcept TestConcept0$b0 = MetaAdapterFactory.getInterfaceConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x2807c18666f81300L, "messages.customization.structure.TestConcept0");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

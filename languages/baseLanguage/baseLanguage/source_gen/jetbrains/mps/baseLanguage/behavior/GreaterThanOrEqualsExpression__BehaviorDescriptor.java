@@ -57,7 +57,7 @@ public final class GreaterThanOrEqualsExpression__BehaviorDescriptor extends Bas
     return null;
   }
   /*package*/ static SNode getFlippedOperator_id14Lzlw0K236(@NotNull SNode __thisNode__) {
-    return SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanOrEqualsExpression$Rc, __thisNode__);
+    return SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanOrEqualsExpression$jY, __thisNode__);
   }
 
   /*package*/ GreaterThanOrEqualsExpression__BehaviorDescriptor() {
@@ -111,6 +111,6 @@ public final class GreaterThanOrEqualsExpression__BehaviorDescriptor extends Bas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LessThanOrEqualsExpression$Rc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d53a915L, "jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression");
+    /*package*/ static final SConcept LessThanOrEqualsExpression$jY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d53a915L, "jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression");
   }
 }

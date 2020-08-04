@@ -86,9 +86,9 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
   public class TMP_Group_zaql19_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$yMbs)).where(new IWhereFilter<SNode>() {
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$YU1f)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
+          return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
         }
       }).isEmpty();
     }
@@ -146,8 +146,8 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull final String pattern) {
-          SNode childLink = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.linkDeclaration$yMbs, CONCEPTS.LinkDeclaration$bA);
-          SPropertyOperations.setEnum(childLink, PROPS.metaClass$p6Up, 0xfc6f4e95b9L, "aggregation");
+          SNode childLink = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.linkDeclaration$YU1f, CONCEPTS.LinkDeclaration$1p);
+          SPropertyOperations.setEnum(childLink, PROPS.metaClass$PeKc, 0xfc6f4e95b9L, "aggregation");
           SelectionUtil.selectCell(_context.getEditorContext(), childLink, "role");
           EditorCell selectedCell = _context.getEditorContext().getSelectedCell();
           if (selectedCell instanceof EditorCell_Label) {
@@ -196,9 +196,9 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), CONCEPTS.AbstractConceptDeclaration$UN).getAvailableElements("")).select(new ISelector<SNode, SNode>() {
+        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), CONCEPTS.AbstractConceptDeclaration$KA).getAvailableElements("")).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
-            return SNodeOperations.as(it, CONCEPTS.AbstractConceptDeclaration$UN);
+            return SNodeOperations.as(it, CONCEPTS.AbstractConceptDeclaration$KA);
           }
         }).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -260,9 +260,9 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNode childLink = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.linkDeclaration$yMbs, null);
-            SPropertyOperations.setEnum(childLink, PROPS.metaClass$p6Up, 0xfc6f4e95b9L, "aggregation");
-            SLinkOperations.setTarget(childLink, LINKS.target$TWaS, myParameterObject);
+            SNode childLink = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.linkDeclaration$YU1f, null);
+            SPropertyOperations.setEnum(childLink, PROPS.metaClass$PeKc, 0xfc6f4e95b9L, "aggregation");
+            SLinkOperations.setTarget(childLink, LINKS.target$m40F, myParameterObject);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), childLink, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 
@@ -293,16 +293,16 @@ public class CreateFirstDeclaration_ext_2 extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink linkDeclaration$YU1f = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept LinkDeclaration$1p = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

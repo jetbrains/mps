@@ -35,7 +35,7 @@ public final class AddModeToRule_Intention extends AbstractIntentionDescriptor i
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modes$AUkP)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modes$N0by)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -56,7 +56,7 @@ public final class AddModeToRule_Intention extends AbstractIntentionDescriptor i
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.addNewChild(node, LINKS.modes$AUkP, null);
+      SLinkOperations.addNewChild(node, LINKS.modes$N0by, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -65,6 +65,6 @@ public final class AddModeToRule_Intention extends AbstractIntentionDescriptor i
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modes$AUkP = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, 0x6e8db6877fd04efbL, "modes");
+    /*package*/ static final SContainmentLink modes$N0by = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, 0x6e8db6877fd04efbL, "modes");
   }
 }

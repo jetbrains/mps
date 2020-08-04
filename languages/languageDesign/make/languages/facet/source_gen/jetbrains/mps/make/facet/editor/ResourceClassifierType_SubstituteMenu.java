@@ -49,7 +49,7 @@ public class ResourceClassifierType_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_k868c7_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ResourceTypeDeclaration$CJ);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ResourceTypeDeclaration$hB);
     }
     @NotNull
     @Override
@@ -88,13 +88,13 @@ public class ResourceClassifierType_SubstituteMenu extends SubstituteMenuBase {
         return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.make.facet.editor.ResourceClassifierType_SmartReference");
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return CONCEPTS.ResourceClassifierType$W7;
+        return CONCEPTS.ResourceClassifierType$$Z;
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ResourceTypeDeclaration$CJ = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aab1d4L, "jetbrains.mps.make.facet.structure.ResourceTypeDeclaration");
-    /*package*/ static final SConcept ResourceClassifierType$W7 = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aea0b4L, "jetbrains.mps.make.facet.structure.ResourceClassifierType");
+    /*package*/ static final SConcept ResourceTypeDeclaration$hB = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aab1d4L, "jetbrains.mps.make.facet.structure.ResourceTypeDeclaration");
+    /*package*/ static final SConcept ResourceClassifierType$$Z = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aea0b4L, "jetbrains.mps.make.facet.structure.ResourceClassifierType");
   }
 }

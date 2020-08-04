@@ -17,18 +17,18 @@ public class fix_ChildAttribute_name_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545515840164"));
   }
   public String getDescription(SNode node) {
-    return "Change name to \"" + ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.as(node, CONCEPTS.ChildAttribute$XQ)).getName() + "\"";
+    return "Change name to \"" + ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.as(node, CONCEPTS.ChildAttribute$m8)).getName() + "\"";
   }
   public void execute(SNode node) {
-    SNode linkAttribute = SNodeOperations.as(node, CONCEPTS.ChildAttribute$XQ);
-    SPropertyOperations.assign(linkAttribute, PROPS.role_DebugInfo$M0yX, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(linkAttribute).getName());
+    SNode linkAttribute = SNodeOperations.as(node, CONCEPTS.ChildAttribute$m8);
+    SPropertyOperations.assign(linkAttribute, PROPS.role_DebugInfo$eLVf, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(linkAttribute).getName());
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildAttribute$XQ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role_DebugInfo$M0yX = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, 0x9d98713f249b585L, "role_DebugInfo");
+    /*package*/ static final SProperty role_DebugInfo$eLVf = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, 0x9d98713f249b585L, "role_DebugInfo");
   }
 }

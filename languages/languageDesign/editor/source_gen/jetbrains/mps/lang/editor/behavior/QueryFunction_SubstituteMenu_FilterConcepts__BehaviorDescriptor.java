@@ -37,8 +37,8 @@ public final class QueryFunction_SubstituteMenu_FilterConcepts__BehaviorDescript
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> parameters = ListSequence.fromList(new ArrayList<SConcept>());
-    ListSequence.fromList(parameters).addElement(CONCEPTS.QueryFunctionParameter_SubstituteMenu_Concept$_I);
-    ListSequence.fromList(parameters).addSequence(ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, CONCEPTS.QueryFunction_SubstituteMenu_FilterConcepts$lJ)));
+    ListSequence.fromList(parameters).addElement(CONCEPTS.QueryFunctionParameter_SubstituteMenu_Concept$Ll);
+    ListSequence.fromList(parameters).addSequence(ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, CONCEPTS.QueryFunction_SubstituteMenu_FilterConcepts$xm)));
     return parameters;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -100,7 +100,7 @@ public final class QueryFunction_SubstituteMenu_FilterConcepts__BehaviorDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_Concept$_I = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x68666ddb0403c2d8L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_Concept");
-    /*package*/ static final SConcept QueryFunction_SubstituteMenu_FilterConcepts$lJ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x68666ddb0403c2ccL, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_FilterConcepts");
+    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_Concept$Ll = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x68666ddb0403c2d8L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_Concept");
+    /*package*/ static final SConcept QueryFunction_SubstituteMenu_FilterConcepts$xm = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x68666ddb0403c2ccL, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_FilterConcepts");
   }
 }

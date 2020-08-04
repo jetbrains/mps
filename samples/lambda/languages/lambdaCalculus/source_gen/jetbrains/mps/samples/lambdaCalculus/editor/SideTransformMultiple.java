@@ -66,7 +66,7 @@ public class SideTransformMultiple extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_u26oaa_a0(), CONCEPTS.MultipleExpression$p8));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_u26oaa_a0(), CONCEPTS.MultipleExpression$xc));
     }
     return result;
   }
@@ -109,9 +109,9 @@ public class SideTransformMultiple extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode multiple = SNodeFactoryOperations.createNewNode(CONCEPTS.MultipleExpression$p8, null);
+        SNode multiple = SNodeFactoryOperations.createNewNode(CONCEPTS.MultipleExpression$xc, null);
         SNodeOperations.replaceWithAnother(_context.getNode(), multiple);
-        ListSequence.fromList(SLinkOperations.getChildren(multiple, LINKS.expressions$tG$0)).insertElement(0, _context.getNode());
+        ListSequence.fromList(SLinkOperations.getChildren(multiple, LINKS.expressions$d7G4)).insertElement(0, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), multiple, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -119,7 +119,7 @@ public class SideTransformMultiple extends TransformationMenuBase {
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.MultipleExpression$p8;
+        return CONCEPTS.MultipleExpression$xc;
       }
 
 
@@ -130,7 +130,7 @@ public class SideTransformMultiple extends TransformationMenuBase {
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.MultipleExpression$p8;
+        SAbstractConcept outputConcept = CONCEPTS.MultipleExpression$xc;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -141,10 +141,10 @@ public class SideTransformMultiple extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MultipleExpression$p8 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x15b75b54f176d1a3L, "jetbrains.mps.samples.lambdaCalculus.structure.MultipleExpression");
+    /*package*/ static final SConcept MultipleExpression$xc = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x15b75b54f176d1a3L, "jetbrains.mps.samples.lambdaCalculus.structure.MultipleExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expressions$tG$0 = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x15b75b54f176d1a3L, 0x15b75b54f176d1a4L, "expressions");
+    /*package*/ static final SContainmentLink expressions$d7G4 = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x15b75b54f176d1a3L, 0x15b75b54f176d1a4L, "expressions");
   }
 }

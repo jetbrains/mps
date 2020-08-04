@@ -51,14 +51,14 @@ public final class BuildLayout_Node__BehaviorDescriptor extends BaseBHDescriptor
     return helper.getLocation(__thisNode__);
   }
   /*package*/ static void appendName_id1bWeed$ownT(@NotNull SNode __thisNode__, SNode parent, StringBuilder sb) {
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Node$kC)) {
+    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Node$Rb)) {
       sb.append("/");
     }
     sb.append((SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) != null ? SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) : SNodeOperations.getConcept(__thisNode__).getName()));
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder();
-    BuildLayout_Node__BehaviorDescriptor.appendName_internal_id1bWeed$oEMe.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_Node$kC), __thisNode__, sb);
+    BuildLayout_Node__BehaviorDescriptor.appendName_internal_id1bWeed$oEMe.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_Node$Rb), __thisNode__, sb);
     return sb.toString();
   }
   /*package*/ static boolean isFolder_id1bWeed$oPYW(@NotNull SNode __thisNode__) {
@@ -68,9 +68,9 @@ public final class BuildLayout_Node__BehaviorDescriptor extends BaseBHDescriptor
     return false;
   }
   /*package*/ static void appendName_internal_id1bWeed$oEMe(@NotNull SAbstractConcept __thisConcept__, SNode node, StringBuilder sb) {
-    SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.BuildLayout_PathElement$FJ);
+    SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.BuildLayout_PathElement$ei);
     if (parent != null) {
-      BuildLayout_Node__BehaviorDescriptor.appendName_internal_id1bWeed$oEMe.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_Node$kC), parent, sb);
+      BuildLayout_Node__BehaviorDescriptor.appendName_internal_id1bWeed$oEMe.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildLayout_Node$Rb), parent, sb);
     }
     BuildLayout_PathElement__BehaviorDescriptor.appendName_id1bWeed$ownT.invoke(node, parent, sb);
   }
@@ -139,7 +139,7 @@ public final class BuildLayout_Node__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
-    /*package*/ static final SInterfaceConcept BuildLayout_PathElement$FJ = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SInterfaceConcept BuildLayout_PathElement$ei = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement");
   }
 }

@@ -18,10 +18,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       public boolean accept(SModel it) {
         return SModelStereotype.isGeneratorModel(it);
       }
-    }), true, CONCEPTS.INamedConcept$nV);
+    }), true, CONCEPTS.INamedConcept$Kd);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

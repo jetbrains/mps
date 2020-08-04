@@ -24,7 +24,7 @@ public class typeof_IsActionApplicableExpression_InferenceRule extends AbstractI
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IsActionApplicableExpression$3a;
+    return CONCEPTS.IsActionApplicableExpression$iD;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,6 +34,6 @@ public class typeof_IsActionApplicableExpression_InferenceRule extends AbstractI
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IsActionApplicableExpression$3a = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0xb4991e715d477d8L, "jetbrains.mps.lang.test.structure.IsActionApplicableExpression");
+    /*package*/ static final SConcept IsActionApplicableExpression$iD = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0xb4991e715d477d8L, "jetbrains.mps.lang.test.structure.IsActionApplicableExpression");
   }
 }

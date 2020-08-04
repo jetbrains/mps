@@ -61,56 +61,56 @@ public class TestBlPriorities_Test extends BaseTransformationTest {
 
     public void check(SNode expr, Object expectedValue) {
       this.expressionPriorityRebalance(expr);
-      Assert.assertEquals(expectedValue, this.eval(SLinkOperations.getTarget(expr, LINKS.expression$efP0)));
+      Assert.assertEquals(expectedValue, this.eval(SLinkOperations.getTarget(expr, LINKS.expression$TlhM)));
     }
     public void expressionPriorityRebalance(SNode e) {
       for (SNode child : SNodeOperations.getChildren(e)) {
-        if (SNodeOperations.isInstanceOf(child, CONCEPTS.Expression$TP)) {
-          this.expressionPriorityRebalance(SNodeOperations.cast(child, CONCEPTS.Expression$TP));
+        if (SNodeOperations.isInstanceOf(child, CONCEPTS.Expression$mB)) {
+          this.expressionPriorityRebalance(SNodeOperations.cast(child, CONCEPTS.Expression$mB));
         }
       }
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BinaryOperation$vf)) {
-        ParenthesisUtil.checkOperationWRTPriority(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$vf));
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BinaryOperation$W1)) {
+        ParenthesisUtil.checkOperationWRTPriority(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$W1));
       }
     }
     public Object eval(SNode e) {
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BinaryOperation$vf)) {
-        return this.evalBinaryOperation(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$vf));
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BinaryOperation$W1)) {
+        return this.evalBinaryOperation(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$W1));
       }
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.IntegerConstant$mo)) {
-        return SPropertyOperations.getInteger(SNodeOperations.cast(e, CONCEPTS.IntegerConstant$mo), PROPS.value$Cbc0);
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.IntegerConstant$Na)) {
+        return SPropertyOperations.getInteger(SNodeOperations.cast(e, CONCEPTS.IntegerConstant$Na), PROPS.value$jgCM);
       }
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BooleanConstant$Ui)) {
-        return SPropertyOperations.getBoolean(SNodeOperations.cast(e, CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90);
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BooleanConstant$n4)) {
+        return SPropertyOperations.getBoolean(SNodeOperations.cast(e, CONCEPTS.BooleanConstant$n4), PROPS.value$5y_M);
       }
 
       throw new UnsupportedOperationException(e.getPresentation());
     }
     public Object evalBinaryOperation(SNode e) {
-      Object left = this.eval(SLinkOperations.getTarget(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$lndx));
-      Object right = this.eval(SLinkOperations.getTarget(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$li3b));
+      Object left = this.eval(SLinkOperations.getTarget(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$W1), LINKS.leftExpression$sEj));
+      Object right = this.eval(SLinkOperations.getTarget(SNodeOperations.cast(e, CONCEPTS.BinaryOperation$W1), LINKS.rightExpression$nvX));
 
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.ShiftLeftExpression$pQ)) {
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.ShiftLeftExpression$QC)) {
         return ((Integer) left) << ((Integer) right);
       }
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BitwiseAndExpression$Go)) {
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BitwiseAndExpression$9a)) {
         return ((Integer) left) & ((Integer) right);
       }
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BitwiseOrExpression$o_)) {
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BitwiseOrExpression$Pn)) {
         return ((Integer) left) | ((Integer) right);
       }
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BitwiseXorExpression$GD)) {
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.BitwiseXorExpression$9r)) {
         return ((Integer) left) ^ ((Integer) right);
       }
 
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.AndExpression$zq)) {
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.AndExpression$c)) {
         return ((Boolean) left) && ((Boolean) right);
       }
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.OrExpression$uY)) {
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.OrExpression$VK)) {
         return ((Boolean) left) || ((Boolean) right);
       }
 
-      if (SNodeOperations.isInstanceOf(e, CONCEPTS.EqualsExpression$lT)) {
+      if (SNodeOperations.isInstanceOf(e, CONCEPTS.EqualsExpression$MF)) {
         return Objects.equals(left, right);
       }
 
@@ -188,27 +188,27 @@ public class TestBlPriorities_Test extends BaseTransformationTest {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
-    /*package*/ static final SConcept IntegerConstant$mo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
-    /*package*/ static final SConcept BooleanConstant$Ui = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
-    /*package*/ static final SConcept ShiftLeftExpression$pQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6cde9fb9L, "jetbrains.mps.baseLanguage.structure.ShiftLeftExpression");
-    /*package*/ static final SConcept BitwiseAndExpression$Go = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d19eede01L, "jetbrains.mps.baseLanguage.structure.BitwiseAndExpression");
-    /*package*/ static final SConcept BitwiseOrExpression$o_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d19ef4652L, "jetbrains.mps.baseLanguage.structure.BitwiseOrExpression");
-    /*package*/ static final SConcept BitwiseXorExpression$GD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d19ef69abL, "jetbrains.mps.baseLanguage.structure.BitwiseXorExpression");
-    /*package*/ static final SConcept AndExpression$zq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb7c3070eeL, "jetbrains.mps.baseLanguage.structure.AndExpression");
-    /*package*/ static final SConcept OrExpression$uY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb8255689fL, "jetbrains.mps.baseLanguage.structure.OrExpression");
-    /*package*/ static final SConcept EqualsExpression$lT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept IntegerConstant$Na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept ShiftLeftExpression$QC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6cde9fb9L, "jetbrains.mps.baseLanguage.structure.ShiftLeftExpression");
+    /*package*/ static final SConcept BitwiseAndExpression$9a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d19eede01L, "jetbrains.mps.baseLanguage.structure.BitwiseAndExpression");
+    /*package*/ static final SConcept BitwiseOrExpression$Pn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d19ef4652L, "jetbrains.mps.baseLanguage.structure.BitwiseOrExpression");
+    /*package*/ static final SConcept BitwiseXorExpression$9r = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d19ef69abL, "jetbrains.mps.baseLanguage.structure.BitwiseXorExpression");
+    /*package*/ static final SConcept AndExpression$c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb7c3070eeL, "jetbrains.mps.baseLanguage.structure.AndExpression");
+    /*package*/ static final SConcept OrExpression$VK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb8255689fL, "jetbrains.mps.baseLanguage.structure.OrExpression");
+    /*package*/ static final SConcept EqualsExpression$MF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$jgCM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

@@ -31,7 +31,7 @@ public final class DataDependencyReference__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static SNode getVariable_idSORzhOpB6t(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.dataDependency$4Mp2);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.dataDependency$LwFM);
   }
 
   /*package*/ DataDependencyReference__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class DataDependencyReference__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataDependency$4Mp2 = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x63476c2ad9bcd736L, 0x63476c2ad9bcd739L, "dataDependency");
+    /*package*/ static final SReferenceLink dataDependency$LwFM = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x63476c2ad9bcd736L, 0x63476c2ad9bcd739L, "dataDependency");
   }
 }

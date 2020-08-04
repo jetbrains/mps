@@ -15,19 +15,19 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class ModifiersFactories {
   public static class NodeFactory_8823436878019221504 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNode propertyDescriptor = SNodeOperations.getNodeAncestor(enclosingNode, CONCEPTS.PropertyDescriptor$hh, true, false);
+      SNode propertyDescriptor = SNodeOperations.getNodeAncestor(enclosingNode, CONCEPTS.PropertyDescriptor$B2, true, false);
       if ((propertyDescriptor != null)) {
-        SLinkOperations.setTarget(newNode, LINKS.value$su3, SNodeOperations.cast(DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(propertyDescriptor, model), CONCEPTS.PropertyInstance$LJ));
+        SLinkOperations.setTarget(newNode, LINKS.value$urNO, SNodeOperations.cast(DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(propertyDescriptor, model), CONCEPTS.PropertyInstance$7w));
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyDescriptor$hh = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyDescriptor");
-    /*package*/ static final SConcept PropertyInstance$LJ = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyInstance");
+    /*package*/ static final SConcept PropertyDescriptor$B2 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyDescriptor");
+    /*package*/ static final SConcept PropertyInstance$7w = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyInstance");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$su3 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7a7325178c68eba9L, 0x7a7325178c68f138L, "value");
+    /*package*/ static final SContainmentLink value$urNO = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7a7325178c68eba9L, 0x7a7325178c68f138L, "value");
   }
 }

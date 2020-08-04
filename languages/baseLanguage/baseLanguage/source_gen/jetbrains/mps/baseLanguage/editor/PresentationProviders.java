@@ -46,10 +46,10 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      if ((SNodeOperations.getNodeAncestor(sourceNode, CONCEPTS.NestedNewExpression$79, false, false) == null)) {
+      if ((SNodeOperations.getNodeAncestor(sourceNode, CONCEPTS.NestedNewExpression$zV, false, false) == null)) {
         return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(targetNode, SNodeOperations.getParent(sourceNode));
       } else {
-        return SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+        return SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
       }
     }
   };
@@ -57,14 +57,14 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(SNodeOperations.cast(SNodeOperations.getParent(targetNode), CONCEPTS.Classifier$hJ), SNodeOperations.getParent(sourceNode));
+      return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(SNodeOperations.cast(SNodeOperations.getParent(targetNode), CONCEPTS.Classifier$Ix), SNodeOperations.getParent(sourceNode));
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_53xyyk_a1a1a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+      return SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_53xyyk_a1a1a_0 = new IReferentPresentationProvider() {
@@ -78,16 +78,16 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.name$lA7v) + "()";
+      return SPropertyOperations.getString(targetNode, PROPS.name$MnvL) + "()";
     }
   };
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NestedNewExpression$79 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept NestedNewExpression$zV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

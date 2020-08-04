@@ -31,7 +31,7 @@ public class typeof_PeekOperation_InferenceRule extends AbstractInferenceRule_Ru
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PeekOperation$eB;
+    return CONCEPTS.PeekOperation$sU;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_PeekOperation_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PeekOperation$eB = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x50486375c8941225L, "jetbrains.mps.baseLanguage.collections.structure.PeekOperation");
+    /*package*/ static final SConcept PeekOperation$sU = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x50486375c8941225L, "jetbrains.mps.baseLanguage.collections.structure.PeekOperation");
   }
 }

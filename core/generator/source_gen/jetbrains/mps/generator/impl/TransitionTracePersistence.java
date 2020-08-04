@@ -39,30 +39,30 @@ public final class TransitionTracePersistence {
         continue;
       }
       SNodeId origin = originTrace.getOrigin(n);
-      SNode nid = ((SNode) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.ElementaryNodeId$ix), CONCEPTS.ElementaryNodeId$ix, SMethodTrimmedId.create("create", CONCEPTS.ElementaryNodeId$ix, "6UZRahyzeh3"), myCheckpointModel, origin));
-      SNode ot = AttributeOperations.createAndSetAttrbiute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$D0), CONCEPTS.OriginTrace$D0);
-      SLinkOperations.setTarget(ot, LINKS.origin$pPs4, nid);
+      SNode nid = ((SNode) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.ElementaryNodeId$Yd), CONCEPTS.ElementaryNodeId$Yd, SMethodTrimmedId.create("create", CONCEPTS.ElementaryNodeId$Yd, "6UZRahyzeh3"), myCheckpointModel, origin));
+      SNode ot = AttributeOperations.createAndSetAttrbiute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$kG), CONCEPTS.OriginTrace$kG);
+      SLinkOperations.setTarget(ot, LINKS.origin$MM7K, nid);
     }
   }
 
   public void load(TransitionTrace into) {
     for (SNode n : SNodeUtil.getDescendants(myCheckpointModel)) {
-      SNode originTrace = AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$D0));
+      SNode originTrace = AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$kG));
       if ((originTrace == null)) {
         continue;
       }
-      SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, LINKS.origin$pPs4), CONCEPTS.NodeIdentity$K7, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
+      SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, LINKS.origin$MM7K), CONCEPTS.NodeIdentity$rN, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
       into.setOrigin(n, value);
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ElementaryNodeId$ix = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, "jetbrains.mps.lang.generator.structure.ElementaryNodeId");
-    /*package*/ static final SConcept OriginTrace$D0 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, "jetbrains.mps.lang.generator.structure.OriginTrace");
-    /*package*/ static final SInterfaceConcept NodeIdentity$K7 = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b5e358L, "jetbrains.mps.lang.generator.structure.NodeIdentity");
+    /*package*/ static final SConcept ElementaryNodeId$Yd = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, "jetbrains.mps.lang.generator.structure.ElementaryNodeId");
+    /*package*/ static final SConcept OriginTrace$kG = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, "jetbrains.mps.lang.generator.structure.OriginTrace");
+    /*package*/ static final SInterfaceConcept NodeIdentity$rN = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b5e358L, "jetbrains.mps.lang.generator.structure.NodeIdentity");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink origin$pPs4 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, 0x6ebfdca4628bfd4dL, "origin");
+    /*package*/ static final SContainmentLink origin$MM7K = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6ebfdca4628bfd48L, 0x6ebfdca4628bfd4dL, "origin");
   }
 }

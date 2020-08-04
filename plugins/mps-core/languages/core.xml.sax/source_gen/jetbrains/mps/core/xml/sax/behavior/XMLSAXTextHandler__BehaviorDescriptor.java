@@ -32,8 +32,8 @@ public final class XMLSAXTextHandler__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.XMLSAXHandlerFunction$fZ);
-    ListSequence.fromList(result).addElement(CONCEPTS.XMLSAXTextHandler_value$v3);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.XMLSAXHandlerFunction$$W);
+    ListSequence.fromList(result).addElement(CONCEPTS.XMLSAXTextHandler_value$O0);
     return result;
   }
 
@@ -84,7 +84,7 @@ public final class XMLSAXTextHandler__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXHandlerFunction$fZ = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2e3L, "jetbrains.mps.core.xml.sax.structure.XMLSAXHandlerFunction");
-    /*package*/ static final SConcept XMLSAXTextHandler_value$v3 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x30181d5ee4a78284L, "jetbrains.mps.core.xml.sax.structure.XMLSAXTextHandler_value");
+    /*package*/ static final SConcept XMLSAXHandlerFunction$$W = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2e3L, "jetbrains.mps.core.xml.sax.structure.XMLSAXHandlerFunction");
+    /*package*/ static final SConcept XMLSAXTextHandler_value$O0 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x30181d5ee4a78284L, "jetbrains.mps.core.xml.sax.structure.XMLSAXTextHandler_value");
   }
 }

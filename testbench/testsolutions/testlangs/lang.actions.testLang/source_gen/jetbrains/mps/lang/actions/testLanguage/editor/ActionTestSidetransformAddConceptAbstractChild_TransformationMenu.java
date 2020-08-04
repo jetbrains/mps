@@ -65,7 +65,7 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ActionTestSidetransformAddConceptAbstractChild$De)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ActionTestSidetransformAddConceptAbstractChild$U3)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -110,7 +110,7 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.ActionTestSidetransformAddConceptChild$60;
+      return CONCEPTS.ActionTestSidetransformAddConceptChild$mP;
     }
 
 
@@ -162,7 +162,7 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.ActionTestSidetransformAddConceptChild$60;
+      return CONCEPTS.ActionTestSidetransformAddConceptChild$mP;
     }
 
 
@@ -195,7 +195,7 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestSidetransformAddConceptAbstractChild$De = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d415e8d80L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptAbstractChild");
-    /*package*/ static final SConcept ActionTestSidetransformAddConceptChild$60 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d4168a426L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptChild");
+    /*package*/ static final SConcept ActionTestSidetransformAddConceptAbstractChild$U3 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d415e8d80L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptAbstractChild");
+    /*package*/ static final SConcept ActionTestSidetransformAddConceptChild$mP = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d4168a426L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptChild");
   }
 }

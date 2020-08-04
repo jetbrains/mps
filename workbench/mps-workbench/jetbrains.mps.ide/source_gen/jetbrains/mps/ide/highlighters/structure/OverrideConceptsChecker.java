@@ -32,11 +32,11 @@ public final class OverrideConceptsChecker extends BaseEventProcessingEditorChec
   @Override
   public UpdateResult update(EditorComponent component, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
     SNode rootNode = component.getEditedNode();
-    if (!(SNodeOperations.isInstanceOf(rootNode, CONCEPTS.AbstractConceptDeclaration$UN))) {
+    if (!(SNodeOperations.isInstanceOf(rootNode, CONCEPTS.AbstractConceptDeclaration$KA))) {
       return new UpdateResult.Completed(false, emptyListEditorMessage());
     }
 
-    List<EditorMessage> result = calculateEditorMessages(SNodeOperations.cast(rootNode, CONCEPTS.AbstractConceptDeclaration$UN), cancellable);
+    List<EditorMessage> result = calculateEditorMessages(SNodeOperations.cast(rootNode, CONCEPTS.AbstractConceptDeclaration$KA), cancellable);
     if (cancellable.isCancelled()) {
       return new UpdateResult.Cancelled();
     }
@@ -54,6 +54,6 @@ public final class OverrideConceptsChecker extends BaseEventProcessingEditorChec
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

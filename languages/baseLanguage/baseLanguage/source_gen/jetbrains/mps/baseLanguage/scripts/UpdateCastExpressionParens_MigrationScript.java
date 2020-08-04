@@ -31,17 +31,17 @@ public final class UpdateCastExpressionParens_MigrationScript extends BaseMigrat
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.CastExpression$7m;
+        return CONCEPTS.CastExpression$$8;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.expression$izU1), CONCEPTS.ParenthesizedExpression$vE)) && PrecedenceUtil.needsParensInsideCastExpression(node);
+        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.expression$XDmN), CONCEPTS.ParenthesizedExpression$Ws)) && PrecedenceUtil.needsParensInsideCastExpression(node);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode expression = SLinkOperations.getTarget(node, LINKS.expression$izU1);
-        SNode result = SNodeFactoryOperations.replaceWithNewChild(expression, CONCEPTS.ParenthesizedExpression$vE);
-        SLinkOperations.setTarget(result, LINKS.expression$efP0, expression);
+        SNode expression = SLinkOperations.getTarget(node, LINKS.expression$XDmN);
+        SNode result = SNodeFactoryOperations.replaceWithNewChild(expression, CONCEPTS.ParenthesizedExpression$Ws);
+        SLinkOperations.setTarget(result, LINKS.expression$TlhM, expression);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -57,12 +57,12 @@ public final class UpdateCastExpressionParens_MigrationScript extends BaseMigrat
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CastExpression$7m = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$XDmN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

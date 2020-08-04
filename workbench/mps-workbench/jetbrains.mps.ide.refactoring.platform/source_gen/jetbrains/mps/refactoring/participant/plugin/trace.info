@@ -41,7 +41,7 @@
       <node id="3846646991041791083" at="49,33,50,27" concept="9" />
       <node id="3846646991041801772" at="51,12,52,121" concept="16" />
       <node id="3846646991041880272" at="55,27,56,18" concept="10" />
-      <node id="1519954259332631192" at="61,0,62,0" concept="12" trace="name$lA7v" />
+      <node id="1519954259332631192" at="61,0,62,0" concept="12" trace="name$MnvL" />
       <node id="3846646991041815411" at="51,10,53,5" concept="0" />
       <node id="3846646991041477907" at="32,0,35,0" concept="7" trace="getRefactoringName#()Ljava/lang/String;" />
       <node id="3846646991041477913" at="35,0,38,0" concept="7" trace="getAllAvailableParticipants#()Ljava/lang/Iterable;" />
@@ -360,7 +360,7 @@
       <node id="1473188155723160896" at="256,7,257,72" concept="8" />
       <node id="8476977820285790073" at="257,72,258,203" concept="2" />
       <node id="8609501485360754401" at="260,109,261,46" concept="2" />
-      <node id="4661652150171662291" at="269,0,270,0" concept="12" trace="virtualPackage$dz_3" />
+      <node id="4661652150171662291" at="269,0,270,0" concept="12" trace="virtualPackage$EkXl" />
       <node id="5863271989071947421" at="45,92,48,5" concept="6" />
       <node id="5863271989071947467" at="57,0,60,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6425285003181066336" at="68,43,71,7" concept="4" />

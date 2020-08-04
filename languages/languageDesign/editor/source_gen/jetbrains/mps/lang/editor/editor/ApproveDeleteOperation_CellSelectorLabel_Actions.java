@@ -27,7 +27,7 @@ public class ApproveDeleteOperation_CellSelectorLabel_Actions {
         if (DeletionApproverUtil.approve(editorContext, node, "cellSelector")) {
           return;
         }
-        SLinkOperations.setTarget(node, LINKS.cellSelector$rz$9, null);
+        SLinkOperations.setTarget(node, LINKS.cellSelector$vPJK, null);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "closingBracket", 0);
       }
 
@@ -76,6 +76,6 @@ public class ApproveDeleteOperation_CellSelectorLabel_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellSelector$rz$9 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, 0x7c9cb4f2b6826b88L, "cellSelector");
+    /*package*/ static final SContainmentLink cellSelector$vPJK = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, 0x7c9cb4f2b6826b88L, "cellSelector");
   }
 }

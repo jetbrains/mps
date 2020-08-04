@@ -36,7 +36,7 @@ public class commandBuilderExpression extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_rk0f2c_a(), CONCEPTS.CommandBuilderExpression$Pf));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_rk0f2c_a(), CONCEPTS.CommandBuilderExpression$rV));
     return result;
   }
 
@@ -73,7 +73,7 @@ public class commandBuilderExpression extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.ExecuteCommandPart$EP);
+      return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.ExecuteCommandPart$hx);
     }
     private class SMP_Action_rk0f2c_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -108,7 +108,7 @@ public class commandBuilderExpression extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.CommandBuilderExpression$Pf, context);
+          super(CONCEPTS.CommandBuilderExpression$rV, context);
           _context = context;
         }
 
@@ -119,8 +119,8 @@ public class commandBuilderExpression extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode builder = SNodeFactoryOperations.createNewNode(CONCEPTS.CommandBuilderExpression$Pf, null);
-          SLinkOperations.setTarget(builder, LINKS.commandPart$gLqz, myParameterObject);
+          SNode builder = SNodeFactoryOperations.createNewNode(CONCEPTS.CommandBuilderExpression$rV, null);
+          SLinkOperations.setTarget(builder, LINKS.commandPart$UR1f, myParameterObject);
           return builder;
         }
 
@@ -130,7 +130,7 @@ public class commandBuilderExpression extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.CommandBuilderExpression$Pf, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.CommandBuilderExpression$rV, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -143,7 +143,7 @@ public class commandBuilderExpression extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
         }
         @Nullable
         @Override
@@ -156,15 +156,15 @@ public class commandBuilderExpression extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CommandBuilderExpression$Pf = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, "jetbrains.mps.execution.commands.structure.CommandBuilderExpression");
-    /*package*/ static final SConcept ExecuteCommandPart$EP = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, "jetbrains.mps.execution.commands.structure.ExecuteCommandPart");
+    /*package*/ static final SConcept CommandBuilderExpression$rV = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, "jetbrains.mps.execution.commands.structure.CommandBuilderExpression");
+    /*package*/ static final SConcept ExecuteCommandPart$hx = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x550ea9458ea107acL, "jetbrains.mps.execution.commands.structure.ExecuteCommandPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink commandPart$gLqz = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
+    /*package*/ static final SReferenceLink commandPart$UR1f = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2bf4L, 0x550ea9458ea1ac11L, "commandPart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

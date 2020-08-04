@@ -98,7 +98,7 @@
       <node id="6837509207609450986" at="237,5,238,0" concept="13" />
       <node id="6837509207609004138" at="240,68,241,47" concept="11" />
       <node id="6837509207609795230" at="243,66,244,47" concept="11" />
-      <node id="1488452273262903215" at="248,0,249,0" concept="14" trace="BaseConcept$Sz" />
+      <node id="1488452273262903215" at="248,0,249,0" concept="14" trace="BaseConcept$gP" />
       <node id="6837509207611940148" at="93,10,95,5" concept="1" />
       <node id="5261681305249361488" at="134,0,136,0" concept="6" trace="historyXml" />
       <node id="6616598509830283957" at="49,0,52,0" concept="15" trace="getKeymap#()Ljava/util/Map;" />
@@ -314,11 +314,11 @@
       <node id="7908305341670729473" at="51,33,52,33" concept="5" />
       <node id="649933975388310428" at="52,33,53,87" concept="5" />
       <node id="7458928938653665549" at="57,54,58,48" concept="5" />
-      <node id="2893936025727763809" at="63,0,64,0" concept="14" trace="history$p07x" />
-      <node id="2893936025727763809" at="64,0,65,0" concept="14" trace="commandHolder$p0_z" />
-      <node id="2893936025727763809" at="65,0,66,0" concept="14" trace="cursor$SYjB" />
-      <node id="2893936025727763809" at="66,0,67,0" concept="14" trace="target$VJDw" />
-      <node id="2893936025727763809" at="70,0,71,0" concept="14" trace="OutputConsoleRoot$Ek" />
+      <node id="2893936025727763809" at="63,0,64,0" concept="14" trace="history$LSLq" />
+      <node id="2893936025727763809" at="64,0,65,0" concept="14" trace="commandHolder$LTfs" />
+      <node id="2893936025727763809" at="65,0,66,0" concept="14" trace="cursor$hQXw" />
+      <node id="2893936025727763809" at="66,0,67,0" concept="14" trace="target$kCjp" />
+      <node id="2893936025727763809" at="70,0,71,0" concept="14" trace="OutputConsoleRoot$kd" />
       <node id="1377757278866704449" at="39,14,41,9" concept="1" />
       <node id="2893936025728872568" at="28,0,31,0" concept="3" trace="OutputConsoleTab#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/console/tool/ConsoleTool;Ljava/lang/String;Lorg/jdom/Element;)V" />
       <node id="7458928938653635131" at="57,0,60,0" concept="9" trace="actionPerformed#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
@@ -539,8 +539,8 @@
       <node id="4692848271444225313" at="51,50,52,59" concept="5" />
       <node id="7315649411652328383" at="55,41,56,59" concept="5" />
       <node id="2348043250037290191" at="59,40,60,210" concept="10" />
-      <node id="2348043250038028746" at="60,210,61,63" concept="5" />
-      <node id="4598452390225789587" at="61,63,62,18" concept="5" />
+      <node id="2348043250038028746" at="60,210,61,62" concept="5" />
+      <node id="4598452390225789587" at="61,62,62,18" concept="5" />
       <node id="6558068108107683969" at="65,41,66,45" concept="10" />
       <node id="6558068108107683974" at="66,45,67,47" concept="5" />
       <node id="6558068108108370769" at="67,47,68,211" concept="10" />
@@ -565,16 +565,16 @@
       <node id="7315649411652345147" at="119,73,120,86" concept="10" />
       <node id="7315649411652345147" at="120,86,121,90" concept="5" />
       <node id="7315649411652345147" at="121,90,122,36" concept="11" />
-      <node id="4692848271443657146" at="126,0,127,0" concept="14" trace="target$BJML" />
-      <node id="4692848271443657146" at="127,0,128,0" concept="14" trace="item$5x2K" />
-      <node id="4692848271443657146" at="128,0,129,0" concept="14" trace="node$$9L0" />
-      <node id="4692848271443657146" at="132,0,133,0" concept="14" trace="stackTrace$Aif1" />
-      <node id="4692848271443657146" at="133,0,134,0" concept="14" trace="text$DQEz" />
-      <node id="4692848271443657146" at="134,0,135,0" concept="14" trace="text$PL8L" />
-      <node id="4692848271443657146" at="138,0,139,0" concept="14" trace="TextResponseItem$3v" />
-      <node id="4692848271443657146" at="139,0,140,0" concept="14" trace="NewLineResponseItem$r4" />
-      <node id="4692848271443657146" at="140,0,141,0" concept="14" trace="NodeResponseItem$jy" />
-      <node id="4692848271443657146" at="141,0,142,0" concept="14" trace="BaseConcept$Sz" />
+      <node id="4692848271443657146" at="126,0,127,0" concept="14" trace="target$CsE" />
+      <node id="4692848271443657146" at="127,0,128,0" concept="14" trace="item$upGD" />
+      <node id="4692848271443657146" at="128,0,129,0" concept="14" trace="node$X2qT" />
+      <node id="4692848271443657146" at="132,0,133,0" concept="14" trace="stackTrace$ZaSU" />
+      <node id="4692848271443657146" at="133,0,134,0" concept="14" trace="text$2Jks" />
+      <node id="4692848271443657146" at="134,0,135,0" concept="14" trace="text$eDME" />
+      <node id="4692848271443657146" at="138,0,139,0" concept="14" trace="TextResponseItem$Ho" />
+      <node id="4692848271443657146" at="139,0,140,0" concept="14" trace="NewLineResponseItem$4X" />
+      <node id="4692848271443657146" at="140,0,141,0" concept="14" trace="NodeResponseItem$Xr" />
+      <node id="4692848271443657146" at="141,0,142,0" concept="14" trace="BaseConcept$gP" />
       <node id="4692848271443779922" at="34,0,37,0" concept="3" trace="ConsoleStreamImpl#(Ljetbrains/mps/console/tool/BaseConsoleTab;)V" />
       <node id="7538089231777682927" at="41,39,44,7" concept="8" />
       <node id="7538089231777682942" at="44,7,47,7" concept="8" />
@@ -807,8 +807,8 @@
       <node id="7538089231777683524" at="378,11,379,62" concept="10" />
       <node id="7538089231777683530" at="379,62,380,96" concept="10" />
       <node id="7538089231777683539" at="381,162,382,220" concept="10" />
-      <node id="7538089231777683545" at="382,220,383,88" concept="5" />
-      <node id="7538089231777683552" at="383,88,384,116" concept="10" />
+      <node id="7538089231777683545" at="382,220,383,87" concept="5" />
+      <node id="7538089231777683552" at="383,87,384,116" concept="10" />
       <node id="7538089231777683563" at="385,47,386,40" concept="5" />
       <node id="7538089231777683580" at="387,80,388,66" concept="5" />
       <node id="7538089231777683587" at="389,13,390,69" concept="5" />
@@ -874,17 +874,17 @@
       <node id="1019533896406625905" at="573,36,574,30" concept="5" />
       <node id="1019533896406625905" at="575,5,576,0" concept="13" />
       <node id="3024471776891737930" at="578,76,579,47" concept="11" />
-      <node id="4914591330900787311" at="583,0,584,0" concept="14" trace="commandHolder$p0_z" />
-      <node id="4914591330900787311" at="584,0,585,0" concept="14" trace="target$BJML" />
-      <node id="4914591330900787311" at="585,0,586,0" concept="14" trace="history$p07x" />
-      <node id="4914591330900787311" at="586,0,587,0" concept="14" trace="item$gD5b" />
-      <node id="4914591330900787311" at="587,0,588,0" concept="14" trace="command$uNCs" />
-      <node id="4914591330900787311" at="588,0,589,0" concept="14" trace="cursor$SYjB" />
-      <node id="4914591330900787311" at="589,0,590,0" concept="14" trace="target$VJDw" />
-      <node id="4914591330900787311" at="593,0,594,0" concept="14" trace="HistoryItem$Pq" />
-      <node id="4914591330900787311" at="594,0,595,0" concept="14" trace="Response$4M" />
-      <node id="4914591330900787311" at="595,0,596,0" concept="14" trace="CommandHolder$6b" />
-      <node id="4914591330900787311" at="596,0,597,0" concept="14" trace="Command$sT" />
+      <node id="4914591330900787311" at="583,0,584,0" concept="14" trace="commandHolder$LTfs" />
+      <node id="4914591330900787311" at="584,0,585,0" concept="14" trace="target$CsE" />
+      <node id="4914591330900787311" at="585,0,586,0" concept="14" trace="history$LSLq" />
+      <node id="4914591330900787311" at="586,0,587,0" concept="14" trace="item$DxJ4" />
+      <node id="4914591330900787311" at="587,0,588,0" concept="14" trace="command$RGil" />
+      <node id="4914591330900787311" at="588,0,589,0" concept="14" trace="cursor$hQXw" />
+      <node id="4914591330900787311" at="589,0,590,0" concept="14" trace="target$kCjp" />
+      <node id="4914591330900787311" at="593,0,594,0" concept="14" trace="HistoryItem$vj" />
+      <node id="4914591330900787311" at="594,0,595,0" concept="14" trace="Response$IF" />
+      <node id="4914591330900787311" at="595,0,596,0" concept="14" trace="CommandHolder$K4" />
+      <node id="4914591330900787311" at="596,0,597,0" concept="14" trace="Command$6M" />
       <node id="7538089231777683610" at="393,16,395,11" concept="1" />
       <node id="1019533896406625894" at="525,18,527,13" concept="1" />
       <node id="8871522752922343330" at="112,0,115,0" concept="9" trace="getTitle#()Ljava/lang/String;" />
@@ -1476,17 +1476,17 @@
       <node id="773462683490873669" at="210,28,211,120" concept="5" />
       <node id="2353285998750723142" at="216,42,217,37" concept="11" />
       <node id="2353285998750729158" at="218,5,219,16" concept="11" />
-      <node id="7538089231777628716" at="223,0,224,0" concept="14" trace="cursor$SYjB" />
-      <node id="7538089231777628716" at="224,0,225,0" concept="14" trace="target$VJDw" />
-      <node id="7538089231777628716" at="225,0,226,0" concept="14" trace="commandHolder$p0_z" />
-      <node id="7538089231777628716" at="226,0,227,0" concept="14" trace="history$p07x" />
-      <node id="7538089231777628716" at="227,0,228,0" concept="14" trace="item$gD5b" />
-      <node id="7538089231777628716" at="228,0,229,0" concept="14" trace="command$uNCs" />
-      <node id="7538089231777628716" at="229,0,230,0" concept="14" trace="hiddenCommand$Tger" />
-      <node id="7538089231777628716" at="230,0,231,0" concept="14" trace="modifiedCommand$$NiR" />
-      <node id="7538089231777628716" at="234,0,235,0" concept="14" trace="CommandHolder$6b" />
-      <node id="7538089231777628716" at="235,0,236,0" concept="14" trace="HistoryItem$Pq" />
-      <node id="7538089231777628716" at="236,0,237,0" concept="14" trace="ConsoleRoot$4U" />
+      <node id="7538089231777628716" at="223,0,224,0" concept="14" trace="cursor$hQXw" />
+      <node id="7538089231777628716" at="224,0,225,0" concept="14" trace="target$kCjp" />
+      <node id="7538089231777628716" at="225,0,226,0" concept="14" trace="commandHolder$LTfs" />
+      <node id="7538089231777628716" at="226,0,227,0" concept="14" trace="history$LSLq" />
+      <node id="7538089231777628716" at="227,0,228,0" concept="14" trace="item$DxJ4" />
+      <node id="7538089231777628716" at="228,0,229,0" concept="14" trace="command$RGil" />
+      <node id="7538089231777628716" at="229,0,230,0" concept="14" trace="hiddenCommand$i8Sk" />
+      <node id="7538089231777628716" at="230,0,231,0" concept="14" trace="modifiedCommand$XFWK" />
+      <node id="7538089231777628716" at="234,0,235,0" concept="14" trace="CommandHolder$K4" />
+      <node id="7538089231777628716" at="235,0,236,0" concept="14" trace="HistoryItem$vj" />
+      <node id="7538089231777628716" at="236,0,237,0" concept="14" trace="ConsoleRoot$IN" />
       <node id="4348825380613242235" at="51,10,53,5" concept="1" />
       <node id="7538089231777683768" at="198,14,200,9" concept="1" />
       <node id="5758176878587650421" at="40,54,43,5" concept="8" />

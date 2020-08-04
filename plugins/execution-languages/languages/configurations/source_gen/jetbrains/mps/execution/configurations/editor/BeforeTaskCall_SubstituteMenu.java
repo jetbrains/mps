@@ -28,7 +28,7 @@ public class BeforeTaskCall_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_tv94kr_a(), CONCEPTS.BeforeTaskCall$_R));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_tv94kr_a(), CONCEPTS.BeforeTaskCall$iu));
     result.add(new SMP_Subconcepts_tv94kr_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class BeforeTaskCall_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_tv94kr_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BeforeTaskCall$_R, LINKS.beforeTask$viVw);
+      super((SAbstractConcept) CONCEPTS.BeforeTaskCall$iu, LINKS.beforeTask$2WC7);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class BeforeTaskCall_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_tv94kr_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BeforeTaskCall$_R);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BeforeTaskCall$iu);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class BeforeTaskCall_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BeforeTaskCall$_R = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, "jetbrains.mps.execution.configurations.structure.BeforeTaskCall");
+    /*package*/ static final SConcept BeforeTaskCall$iu = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, "jetbrains.mps.execution.configurations.structure.BeforeTaskCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink beforeTask$viVw = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x5ae6ebde781f1fd9L, "beforeTask");
+    /*package*/ static final SReferenceLink beforeTask$2WC7 = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x5ae6ebde781f1fd9L, "beforeTask");
   }
 }

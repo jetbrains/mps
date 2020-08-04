@@ -31,18 +31,18 @@ public class typeof_AnalyzerRunnerCreator_InferenceRule extends AbstractInferenc
     {
       SNode _nodeToCheck_1029348928467 = analyzerRunnerCreator;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "178770917832644953", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "178770917832644950", true), (SNode) _quotation_createNode_tazfkf_a1a0c0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(analyzerRunnerCreator, LINKS.analyzer$uE8w), LINKS.latticeElementType$bYxl)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "178770917832644950", true), (SNode) _quotation_createNode_tazfkf_a1a0c0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(analyzerRunnerCreator, LINKS.analyzer$EJZd), LINKS.latticeElementType$o4o2)), _info_12389875345);
     }
-    SNode analyzer = SLinkOperations.getTarget(analyzerRunnerCreator, LINKS.analyzer$uE8w);
-    if (ListSequence.fromList(SLinkOperations.getChildren(analyzerRunnerCreator, LINKS.parameters$MF4Z)).count() != ListSequence.fromList(SLinkOperations.getChildren(analyzer, LINKS.constructorParameters$Qa7m)).count()) {
+    SNode analyzer = SLinkOperations.getTarget(analyzerRunnerCreator, LINKS.analyzer$EJZd);
+    if (ListSequence.fromList(SLinkOperations.getChildren(analyzerRunnerCreator, LINKS.parameters$YKVG)).count() != ListSequence.fromList(SLinkOperations.getChildren(analyzer, LINKS.constructorParameters$2fY3)).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(analyzerRunnerCreator, "wrong number of parameters", "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "3993089038374551275", null, errorTarget);
       }
     }
     {
-      Iterator<SNode> actualParameter_it = ListSequence.fromList(SLinkOperations.getChildren(analyzerRunnerCreator, LINKS.parameters$MF4Z)).iterator();
-      Iterator<SNode> parameter_it = ListSequence.fromList(SLinkOperations.getChildren(analyzer, LINKS.constructorParameters$Qa7m)).iterator();
+      Iterator<SNode> actualParameter_it = ListSequence.fromList(SLinkOperations.getChildren(analyzerRunnerCreator, LINKS.parameters$YKVG)).iterator();
+      Iterator<SNode> parameter_it = ListSequence.fromList(SLinkOperations.getChildren(analyzer, LINKS.constructorParameters$2fY3)).iterator();
       SNode actualParameter_var;
       SNode parameter_var;
       while (actualParameter_it.hasNext() && parameter_it.hasNext()) {
@@ -59,7 +59,7 @@ public class typeof_AnalyzerRunnerCreator_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AnalyzerRunnerCreator$kh;
+    return CONCEPTS.AnalyzerRunnerCreator$aY;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -81,13 +81,13 @@ public class typeof_AnalyzerRunnerCreator_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink analyzer$uE8w = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x151c4f99e489a17L, "analyzer");
-    /*package*/ static final SContainmentLink latticeElementType$bYxl = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
-    /*package*/ static final SContainmentLink constructorParameters$Qa7m = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x376a4d52f8c2e303L, "constructorParameters");
-    /*package*/ static final SContainmentLink parameters$MF4Z = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x376a4d52f8d10dc6L, "parameters");
+    /*package*/ static final SReferenceLink analyzer$EJZd = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x151c4f99e489a17L, "analyzer");
+    /*package*/ static final SContainmentLink latticeElementType$o4o2 = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
+    /*package*/ static final SContainmentLink constructorParameters$2fY3 = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x376a4d52f8c2e303L, "constructorParameters");
+    /*package*/ static final SContainmentLink parameters$YKVG = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x376a4d52f8d10dc6L, "parameters");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnalyzerRunnerCreator$kh = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerRunnerCreator");
+    /*package*/ static final SConcept AnalyzerRunnerCreator$aY = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerRunnerCreator");
   }
 }

@@ -55,10 +55,10 @@ public final class AutoSpacing_Intention extends AbstractIntentionDescriptor imp
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       boolean previousIsMethodLike = false;
-      for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r))) {
-        boolean currentIsMethodLike = SNodeOperations.isInstanceOf(member, CONCEPTS.IStatementListContainer$4L);
+      for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d))) {
+        boolean currentIsMethodLike = SNodeOperations.isInstanceOf(member, CONCEPTS.IStatementListContainer$xz);
         if (previousIsMethodLike && currentIsMethodLike) {
-          SNodeOperations.insertPrevSiblingChild(member, SNodeFactoryOperations.createNewNode(CONCEPTS.PlaceholderMember$Zm, null));
+          SNodeOperations.insertPrevSiblingChild(member, SNodeFactoryOperations.createNewNode(CONCEPTS.PlaceholderMember$s8, null));
         }
         previousIsMethodLike = currentIsMethodLike;
       }
@@ -70,11 +70,11 @@ public final class AutoSpacing_Intention extends AbstractIntentionDescriptor imp
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
-    /*package*/ static final SConcept PlaceholderMember$Zm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember");
+    /*package*/ static final SInterfaceConcept IStatementListContainer$xz = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
+    /*package*/ static final SConcept PlaceholderMember$s8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

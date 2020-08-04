@@ -28,7 +28,7 @@ public class Friend_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8e6ru5_a(), CONCEPTS.Friend$F4));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8e6ru5_a(), CONCEPTS.Friend$NG));
     result.add(new SMP_Subconcepts_8e6ru5_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class Friend_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_8e6ru5_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.Friend$F4, LINKS.friend$Zly0);
+      super((SAbstractConcept) CONCEPTS.Friend$NG, LINKS.friend$sHEC);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class Friend_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_8e6ru5_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Friend$F4);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Friend$NG);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class Friend_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Friend$F4 = MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf13be7aL, "testDefaultEditor.structure.Friend");
+    /*package*/ static final SConcept Friend$NG = MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf13be7aL, "testDefaultEditor.structure.Friend");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink friend$Zly0 = MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf13be7aL, 0xd0768d7cf13be7bL, "friend");
+    /*package*/ static final SReferenceLink friend$sHEC = MetaAdapterFactory.getReferenceLink(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf13be7aL, 0xd0768d7cf13be7bL, "friend");
   }
 }

@@ -20,22 +20,22 @@
       <node id="3562028609770883763" at="31,85,32,138" concept="0" />
       <node id="7834938100936651364" at="40,76,41,185" concept="0" />
       <node id="224926278906398657" at="47,84,48,87" concept="0" />
-      <node id="1198265022560" at="54,0,55,0" concept="4" trace="NodeMacro$Je" />
-      <node id="1198265022560" at="55,0,56,0" concept="4" trace="SourceSubstituteMacro_SourceNodeQuery$An" />
-      <node id="1198265022560" at="56,0,57,0" concept="4" trace="MapSrcNodeMacro$Hp" />
-      <node id="1198265022560" at="57,0,58,0" concept="4" trace="TemplateCallMacro$Iu" />
-      <node id="1198265022560" at="58,0,59,0" concept="4" trace="TraceMacro$lp" />
-      <node id="1198265022560" at="59,0,60,0" concept="4" trace="CopySrcNodeMacro$ud" />
-      <node id="1198265022560" at="60,0,61,0" concept="4" trace="LoopMacro$md" />
-      <node id="1198265022560" at="61,0,62,0" concept="4" trace="TemplateSwitch$BT" />
-      <node id="1198265022560" at="65,0,66,0" concept="4" trace="mappingLabel$Uf98" />
-      <node id="1198265022560" at="66,0,67,0" concept="4" trace="sourceNodeQuery$Y46t" />
-      <node id="1198265022560" at="67,0,68,0" concept="4" trace="sourceNodeQuery$2dcC" />
-      <node id="1198265022560" at="68,0,69,0" concept="4" trace="sourceNodeQuery$G8w9" />
-      <node id="1198265022560" at="69,0,70,0" concept="4" trace="sourceNodeQuery$ABzl" />
-      <node id="1198265022560" at="70,0,71,0" concept="4" trace="sourceNodesQuery$uLwL" />
-      <node id="1198265022560" at="71,0,72,0" concept="4" trace="sourceNodesQuery$$mF2" />
-      <node id="1198265022560" at="75,0,76,0" concept="4" trace="applyToConceptInheritors$sj5A" />
+      <node id="1198265022560" at="54,0,55,0" concept="4" trace="NodeMacro$qU" />
+      <node id="1198265022560" at="55,0,56,0" concept="4" trace="SourceSubstituteMacro_SourceNodeQuery$i3" />
+      <node id="1198265022560" at="56,0,57,0" concept="4" trace="MapSrcNodeMacro$p5" />
+      <node id="1198265022560" at="57,0,58,0" concept="4" trace="TemplateCallMacro$qa" />
+      <node id="1198265022560" at="58,0,59,0" concept="4" trace="TraceMacro$15" />
+      <node id="1198265022560" at="59,0,60,0" concept="4" trace="CopySrcNodeMacro$9T" />
+      <node id="1198265022560" at="60,0,61,0" concept="4" trace="LoopMacro$1T" />
+      <node id="1198265022560" at="61,0,62,0" concept="4" trace="TemplateSwitch$j_" />
+      <node id="1198265022560" at="65,0,66,0" concept="4" trace="mappingLabel$jbOO" />
+      <node id="1198265022560" at="66,0,67,0" concept="4" trace="sourceNodeQuery$n0M9" />
+      <node id="1198265022560" at="67,0,68,0" concept="4" trace="sourceNodeQuery$r9Sk" />
+      <node id="1198265022560" at="68,0,69,0" concept="4" trace="sourceNodeQuery$55bP" />
+      <node id="1198265022560" at="69,0,70,0" concept="4" trace="sourceNodeQuery$Z$f1" />
+      <node id="1198265022560" at="70,0,71,0" concept="4" trace="sourceNodesQuery$RIct" />
+      <node id="1198265022560" at="71,0,72,0" concept="4" trace="sourceNodesQuery$XjmI" />
+      <node id="1198265022560" at="75,0,76,0" concept="4" trace="applyToConceptInheritors$PfLi" />
       <node id="7834938100936651353" at="39,91,42,7" concept="1" />
       <node id="224926278906350088" at="46,91,49,7" concept="1" />
       <node id="7834938100936651350" at="39,0,44,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />

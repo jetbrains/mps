@@ -44,7 +44,7 @@ public class ProblemPointsToKindRoot_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_46r982_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ProblemPointsToKindRoot$nW);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ProblemPointsToKindRoot$AQ);
     }
     @NotNull
     @Override
@@ -65,6 +65,6 @@ public class ProblemPointsToKindRoot_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ProblemPointsToKindRoot$nW = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, "jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot");
+    /*package*/ static final SConcept ProblemPointsToKindRoot$AQ = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, "jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot");
   }
 }

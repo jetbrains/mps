@@ -112,7 +112,7 @@ public class TodoViewer extends JPanel {
     @NotNull
     @Override
     public String getPresentation(SNode node) {
-      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$lb), PROPS.text$va_w);
+      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$LX), PROPS.text$ag2i);
     }
     @Override
     public String getResultsText(TextOptions options) {
@@ -139,10 +139,10 @@ public class TodoViewer extends JPanel {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty text$ag2i = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 }

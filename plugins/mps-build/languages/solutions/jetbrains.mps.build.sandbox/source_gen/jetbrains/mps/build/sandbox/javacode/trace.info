@@ -11,7 +11,7 @@
       <node id="7778259556894515686" at="29,39,30,75" concept="3" />
       <node id="7778259556894515732" at="36,68,37,16" concept="3" />
       <node id="7778259556894515740" at="43,30,44,21" concept="3" />
-      <node id="7778259556894381376" at="50,0,51,0" concept="4" trace="DotExpression$6a" />
+      <node id="7778259556894381376" at="50,0,51,0" concept="4" trace="DotExpression$yW" />
       <node id="7778259556894381378" at="23,0,25,0" concept="0" trace="TestScope#()V" />
       <node id="7778259556894515682" at="29,0,32,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7778259556894515738" at="43,0,46,0" concept="2" trace="invoke#()Ljava/lang/String;" />

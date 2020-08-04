@@ -38,7 +38,7 @@ public final class SpecifyRuleMessagesHelper {
 
   public void fillContainerWithRuleMessages() {
     attachNewContainerIfNeeded(myNodeWeCheck);
-    SNode operationsContainer = AttributeOperations.getAttribute(myNodeWeCheck, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO));
+    SNode operationsContainer = AttributeOperations.getAttribute(myNodeWeCheck, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj));
     assert (operationsContainer != null);
     NodeOperationsContainer__BehaviorDescriptor.detachAllErrorOperations_id4QaU5oI0Q4j.invoke(operationsContainer);
     Iterable<NodeReportItem> reporters = getErrorReporters();
@@ -53,9 +53,9 @@ public final class SpecifyRuleMessagesHelper {
   }
 
   private static void attachNewContainerIfNeeded(SNode node) {
-    if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO)) == null)) {
+    if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) == null)) {
       SNode container = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer"));
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO), container);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj), container);
     }
   }
 
@@ -70,6 +70,6 @@ public final class SpecifyRuleMessagesHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeOperationsContainer$UO = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
+    /*package*/ static final SConcept NodeOperationsContainer$aj = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
   }
 }

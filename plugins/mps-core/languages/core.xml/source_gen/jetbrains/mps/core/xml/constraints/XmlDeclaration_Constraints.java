@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlDeclaration_Constraints extends BaseConstraintsDescriptor {
   public XmlDeclaration_Constraints() {
-    super(CONCEPTS.XmlDeclaration$A$);
+    super(CONCEPTS.XmlDeclaration$13);
   }
 
   @Override
@@ -42,6 +42,6 @@ public class XmlDeclaration_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:edc2e1a3-c4ab-4f36-a908-e29e4c77f1bb(jetbrains.mps.core.xml.constraints)", "1227128029536582504");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlDeclaration$A$ = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x4890619bb401ef6eL, "jetbrains.mps.core.xml.structure.XmlDeclaration");
+    /*package*/ static final SConcept XmlDeclaration$13 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x4890619bb401ef6eL, "jetbrains.mps.core.xml.structure.XmlDeclaration");
   }
 }

@@ -21,7 +21,7 @@ public class Typeof_ApplicationPluginType_SubtypingRule extends SubtypingRule_Ru
     return _quotation_createNode_mtmcrl_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ApplicationPluginType$3o;
+    return CONCEPTS.ApplicationPluginType$Hv;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class Typeof_ApplicationPluginType_SubtypingRule extends SubtypingRule_Ru
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ApplicationPluginType$3o = MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x6b059b0986f204fL, "jetbrains.mps.lang.plugin.standalone.structure.ApplicationPluginType");
+    /*package*/ static final SConcept ApplicationPluginType$Hv = MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x6b059b0986f204fL, "jetbrains.mps.lang.plugin.standalone.structure.ApplicationPluginType");
   }
 }

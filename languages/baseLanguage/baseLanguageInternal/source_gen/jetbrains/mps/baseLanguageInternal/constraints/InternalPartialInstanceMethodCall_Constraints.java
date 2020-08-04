@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InternalPartialInstanceMethodCall_Constraints extends BaseConstraintsDescriptor {
   public InternalPartialInstanceMethodCall_Constraints() {
-    super(CONCEPTS.InternalPartialInstanceMethodCall$bN);
+    super(CONCEPTS.InternalPartialInstanceMethodCall$s_);
   }
 
   @Override
@@ -42,6 +42,6 @@ public class InternalPartialInstanceMethodCall_Constraints extends BaseConstrain
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:1ce54900-c35b-4aa5-b24f-b47c871a6d6f(jetbrains.mps.baseLanguageInternal.constraints)", "1227128029536559766");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InternalPartialInstanceMethodCall$bN = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, "jetbrains.mps.baseLanguageInternal.structure.InternalPartialInstanceMethodCall");
+    /*package*/ static final SConcept InternalPartialInstanceMethodCall$s_ = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1116962fa68L, "jetbrains.mps.baseLanguageInternal.structure.InternalPartialInstanceMethodCall");
   }
 }

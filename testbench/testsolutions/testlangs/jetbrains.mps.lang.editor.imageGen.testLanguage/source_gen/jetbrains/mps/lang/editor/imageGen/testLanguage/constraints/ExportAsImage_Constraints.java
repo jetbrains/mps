@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExportAsImage_Constraints extends BaseConstraintsDescriptor {
   public ExportAsImage_Constraints() {
-    super(CONCEPTS.ExportAsImage$Ua);
+    super(CONCEPTS.ExportAsImage$xS);
   }
 
   @Override
@@ -42,6 +42,6 @@ public class ExportAsImage_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:0ef2f444-056f-4c81-955a-1c2ea83ba701(jetbrains.mps.lang.editor.imageGen.testLanguage.constraints)", "1227128029536583726");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExportAsImage$Ua = MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage");
+    /*package*/ static final SConcept ExportAsImage$xS = MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage");
   }
 }

@@ -43,22 +43,22 @@ public final class ModelPointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode create_id_GDk1qZ2JP(@NotNull SAbstractConcept __thisConcept__, SModel where, SModel target) {
-    return (SNode) ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2LQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$rg), where, SModelOperations.getPointer(target));
+    return (SNode) ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2LQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$6N), where, SModelOperations.getPointer(target));
   }
   /*package*/ static SNode create_id_GDk1qZ2LQ(@NotNull SAbstractConcept __thisConcept__, SModel where, SModelReference target) {
-    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModelPointer$rg);
-    SLinkOperations.setTarget(rv, LINKS.name$fJX8, ModelName__BehaviorDescriptor.create_id_GDk1qZ6bz.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelName$Ux), where, target.getModelName()));
-    SPropertyOperations.assign(rv, PROPS.modelId$5sFD, PersistenceFacade.getInstance().asString(target.getModelId()));
+    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModelPointer$6N);
+    SLinkOperations.setTarget(rv, LINKS.name$a8CF, ModelName__BehaviorDescriptor.create_id_GDk1qZ6bz.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelName$A4), where, target.getModelName()));
+    SPropertyOperations.assign(rv, PROPS.modelId$ZPnc, PersistenceFacade.getInstance().asString(target.getModelId()));
     if (target.getModuleReference() != null) {
-      SLinkOperations.setTarget(rv, LINKS.moduleRef$EoAB, ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(CONCEPTS.ModulePointer$rJ), where, target.getModuleReference()));
+      SLinkOperations.setTarget(rv, LINKS.moduleRef$$Lia, ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(CONCEPTS.ModulePointer$7i), where, target.getModuleReference()));
     }
     return rv;
   }
   /*package*/ static SModelReference toModelReference_id1Bs_61$mvvu(@NotNull SNode __thisNode__) {
     final PersistenceFacade pf = PersistenceFacade.getInstance();
-    SModelId mid = pf.createModelId(SPropertyOperations.getString(__thisNode__, PROPS.modelId$5sFD));
-    SModuleReference moduleRef = ((SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$EoAB) == null) ? null : ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$EoAB)));
-    return pf.createModelReference(moduleRef, mid, SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.name$fJX8), PROPS.value$SXgw));
+    SModelId mid = pf.createModelId(SPropertyOperations.getString(__thisNode__, PROPS.modelId$ZPnc));
+    SModuleReference moduleRef = ((SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$$Lia) == null) ? null : ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$$Lia)));
+    return pf.createModelReference(moduleRef, mid, SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.name$a8CF), PROPS.value$NlW3));
   }
 
   /*package*/ ModelPointer__BehaviorDescriptor() {
@@ -112,18 +112,18 @@ public final class ModelPointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelPointer$rg = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
-    /*package*/ static final SConcept ModelName$Ux = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, "jetbrains.mps.lang.modelapi.structure.ModelName");
-    /*package*/ static final SConcept ModulePointer$rJ = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
+    /*package*/ static final SConcept ModelPointer$6N = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
+    /*package*/ static final SConcept ModelName$A4 = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, "jetbrains.mps.lang.modelapi.structure.ModelName");
+    /*package*/ static final SConcept ModulePointer$7i = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink name$fJX8 = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x96ca5405afc2bccL, "name");
-    /*package*/ static final SContainmentLink moduleRef$EoAB = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645ce35cL, "moduleRef");
+    /*package*/ static final SContainmentLink name$a8CF = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x96ca5405afc2bccL, "name");
+    /*package*/ static final SContainmentLink moduleRef$$Lia = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645ce35cL, "moduleRef");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty modelId$5sFD = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645c7f56L, "modelId");
-    /*package*/ static final SProperty value$SXgw = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, 0x96ca5405afbf491L, "value");
+    /*package*/ static final SProperty modelId$ZPnc = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x19dc9460645c7f56L, "modelId");
+    /*package*/ static final SProperty value$NlW3 = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, 0x96ca5405afbf491L, "value");
   }
 }

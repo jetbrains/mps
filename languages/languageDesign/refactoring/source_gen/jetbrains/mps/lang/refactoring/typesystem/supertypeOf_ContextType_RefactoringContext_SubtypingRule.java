@@ -21,7 +21,7 @@ public class supertypeOf_ContextType_RefactoringContext_SubtypingRule extends Su
     return _quotation_createNode_v18lly_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ContextType$kP;
+    return CONCEPTS.ContextType$Lu;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class supertypeOf_ContextType_RefactoringContext_SubtypingRule extends Su
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ContextType$kP = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x6e6245e06b65b84aL, "jetbrains.mps.lang.refactoring.structure.ContextType");
+    /*package*/ static final SConcept ContextType$Lu = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x6e6245e06b65b84aL, "jetbrains.mps.lang.refactoring.structure.ContextType");
   }
 }

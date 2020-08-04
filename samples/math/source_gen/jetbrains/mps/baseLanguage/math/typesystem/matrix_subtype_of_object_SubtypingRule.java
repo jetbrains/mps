@@ -21,7 +21,7 @@ public class matrix_subtype_of_object_SubtypingRule extends SubtypingRule_Runtim
     return _quotation_createNode_9nrg6k_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MatrixType$qA;
+    return CONCEPTS.MatrixType$cY;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class matrix_subtype_of_object_SubtypingRule extends SubtypingRule_Runtim
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MatrixType$qA = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType");
+    /*package*/ static final SConcept MatrixType$cY = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType");
   }
 }

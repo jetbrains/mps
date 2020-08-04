@@ -19,12 +19,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildVariableMacroInitWithDate_Constraints extends BaseConstraintsDescriptor {
   public BuildVariableMacroInitWithDate_Constraints() {
-    super(CONCEPTS.BuildVariableMacroInitWithDate$30);
+    super(CONCEPTS.BuildVariableMacroInitWithDate$_z);
   }
 
   public static class Pattern_Property extends BasePropertyConstraintsDescriptor {
     public Pattern_Property(ConstraintsDescriptor container) {
-      super(PROPS.pattern$h90w, container);
+      super(PROPS.pattern$sPz3, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -51,15 +51,15 @@ public class BuildVariableMacroInitWithDate_Constraints extends BaseConstraintsD
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.pattern$h90w, new Pattern_Property(this));
+    properties.put(PROPS.pattern$sPz3, new Pattern_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildVariableMacroInitWithDate$30 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x365f30e12d2c3e4L, "jetbrains.mps.build.structure.BuildVariableMacroInitWithDate");
+    /*package*/ static final SConcept BuildVariableMacroInitWithDate$_z = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x365f30e12d2c3e4L, "jetbrains.mps.build.structure.BuildVariableMacroInitWithDate");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty pattern$h90w = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x365f30e12d2c3e4L, 0x365f30e12d2c3f0L, "pattern");
+    /*package*/ static final SProperty pattern$sPz3 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x365f30e12d2c3e4L, 0x365f30e12d2c3f0L, "pattern");
   }
 }

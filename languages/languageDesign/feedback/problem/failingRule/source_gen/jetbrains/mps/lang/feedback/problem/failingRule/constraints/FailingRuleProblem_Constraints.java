@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
   public FailingRuleProblem_Constraints() {
-    super(CONCEPTS.FailingRuleProblem$JN);
+    super(CONCEPTS.FailingRuleProblem$j3);
   }
 
   @Override
@@ -53,7 +53,7 @@ public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.rule$uf55, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.rule$zFCl, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -70,23 +70,23 @@ public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             if ((_context.getContextNode() != null)) {
               SNode containingRoot = SNodeOperations.getContainingRoot(_context.getContextNode());
-              final SNode concept = (SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.FeedbackPerConceptRoot$oJ) ? SLinkOperations.getTarget(SNodeOperations.cast(containingRoot, CONCEPTS.FeedbackPerConceptRoot$oJ), LINKS.concept$HGgS) : null);
-              ModelPlusImportedScope baseScope = new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.Rule$LR);
+              final SNode concept = (SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.FeedbackPerConceptRoot$Vm) ? SLinkOperations.getTarget(SNodeOperations.cast(containingRoot, CONCEPTS.FeedbackPerConceptRoot$Vm), LINKS.concept$NMNv) : null);
+              ModelPlusImportedScope baseScope = new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.Rule$DP);
               return new FilteringScope(baseScope) {
                 @Override
                 public boolean isExcluded(SNode node) {
                   if (concept == null) {
                     return true;
                   }
-                  SNode containingRoot = SNodeOperations.getContainingRoot(SNodeOperations.cast(node, CONCEPTS.Rule$LR));
-                  if (!(SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.RulesConstraintsRoot$xz))) {
+                  SNode containingRoot = SNodeOperations.getContainingRoot(SNodeOperations.cast(node, CONCEPTS.Rule$DP));
+                  if (!(SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.RulesConstraintsRoot$vG))) {
                     return false;
                   }
-                  return !(Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(containingRoot, CONCEPTS.RulesConstraintsRoot$xz), LINKS.concept$khuz), concept));
+                  return !(Objects.equals(SLinkOperations.getTarget(SNodeOperations.cast(containingRoot, CONCEPTS.RulesConstraintsRoot$vG), LINKS.concept$ztsG), concept));
                 }
               };
             }
-            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.Rule$LR);
+            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.Rule$DP);
           }
         };
       }
@@ -96,21 +96,21 @@ public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return !(SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(node), CONCEPTS.FeedbackPerConceptRoot$oJ)) || SModelStereotype.isGeneratorModel(SNodeOperations.getModel(node));
+    return !(SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(node), CONCEPTS.FeedbackPerConceptRoot$Vm)) || SModelStereotype.isGeneratorModel(SNodeOperations.getModel(node));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:a3bec607-7151-4d0d-93f7-37e8de283287(jetbrains.mps.lang.feedback.problem.failingRule.constraints)", "7614984822540739031");
   private static final SNodePointer breakingNode_9cv73f_a0a0a0a0a1a0a0a0d = new SNodePointer("r:a3bec607-7151-4d0d-93f7-37e8de283287(jetbrains.mps.lang.feedback.problem.failingRule.constraints)", "1938781798615217722");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FailingRuleProblem$JN = MetaAdapterFactory.getConcept(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L, "jetbrains.mps.lang.feedback.problem.failingRule.structure.FailingRuleProblem");
-    /*package*/ static final SConcept FeedbackPerConceptRoot$oJ = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");
-    /*package*/ static final SConcept Rule$LR = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule");
-    /*package*/ static final SConcept RulesConstraintsRoot$xz = MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesConstraintsRoot");
+    /*package*/ static final SConcept FailingRuleProblem$j3 = MetaAdapterFactory.getConcept(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L, "jetbrains.mps.lang.feedback.problem.failingRule.structure.FailingRuleProblem");
+    /*package*/ static final SConcept FeedbackPerConceptRoot$Vm = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");
+    /*package*/ static final SConcept Rule$DP = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule");
+    /*package*/ static final SConcept RulesConstraintsRoot$vG = MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesConstraintsRoot");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink rule$uf55 = MetaAdapterFactory.getReferenceLink(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L, 0x573ae5b8b8cd1498L, "rule");
-    /*package*/ static final SReferenceLink concept$HGgS = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
-    /*package*/ static final SReferenceLink concept$khuz = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept");
+    /*package*/ static final SReferenceLink rule$zFCl = MetaAdapterFactory.getReferenceLink(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L, 0x573ae5b8b8cd1498L, "rule");
+    /*package*/ static final SReferenceLink concept$NMNv = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
+    /*package*/ static final SReferenceLink concept$ztsG = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept");
   }
 }

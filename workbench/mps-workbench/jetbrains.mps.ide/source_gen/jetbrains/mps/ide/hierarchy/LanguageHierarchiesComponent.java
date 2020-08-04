@@ -227,7 +227,7 @@ public class LanguageHierarchiesComponent extends JComponent implements Scrollab
 
     Map<SNode, ConceptContainer> processed = new HashMap<SNode, ConceptContainer>();
 outer:
-    for (SNode concept : SModelOperations.roots(structureModel, CONCEPTS.ConceptDeclaration$qU)) {
+    for (SNode concept : SModelOperations.roots(structureModel, CONCEPTS.ConceptDeclaration$gH)) {
       SNode parentConcept = concept;
       ConceptContainer prevConceptContainer = null;
       while (parentConcept != null && !(SNodeOperations.is(parentConcept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))) && !((mySkipAncestors && SNodeOperations.getModel(parentConcept) != structureModel))) {
@@ -241,7 +241,7 @@ outer:
           continue outer;
         }
         processed.put(parentConcept, newConceptContainer);
-        parentConcept = SLinkOperations.getTarget(parentConcept, LINKS.extends$9AAt);
+        parentConcept = SLinkOperations.getTarget(parentConcept, LINKS.extends$_Isg);
       }
       if (prevConceptContainer != null) {
         result.add(prevConceptContainer);
@@ -369,8 +369,8 @@ outer:
       if (myIsOtherLanguage) {
         myColor = ColorAndGraphicsUtil.saturateColor(Color.ORANGE, 0.5f);
       }
-      myRootable = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.rootable$91zK);
-      myIsAbstract = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$Q3$6);
+      myRootable = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.rootable$_9pz);
+      myIsAbstract = SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$ibpT);
       myNamespace = SModelUtil.getDeclaringLanguage(conceptDeclaration).getModuleName();
       myNodePointer = new SNodePointer(conceptDeclaration);
       addMouseListener(new MouseAdapter() {
@@ -392,7 +392,7 @@ outer:
       });
     }
     public SNode getNode() {
-      return SNodeOperations.cast(myNodePointer.resolve(myComponent.myProject.getRepository()), CONCEPTS.ConceptDeclaration$qU);
+      return SNodeOperations.cast(myNodePointer.resolve(myComponent.myProject.getRepository()), CONCEPTS.ConceptDeclaration$gH);
     }
     public void paint(Graphics graphics) {
       Graphics2D g = (Graphics2D) graphics;
@@ -432,7 +432,7 @@ outer:
           if (conceptDeclaration == null) {
             return "";
           }
-          String name = SPropertyOperations.getString(conceptDeclaration, PROPS.name$lA7v);
+          String name = SPropertyOperations.getString(conceptDeclaration, PROPS.name$MnvL);
           return (name != null ? name : "");
         }
       });
@@ -642,16 +642,16 @@ outer:
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
-    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty rootable$_9pz = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

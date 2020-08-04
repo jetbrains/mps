@@ -37,8 +37,8 @@ public final class PlaceholderModifier__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static SNode create_id7T23sO8tTvX(@NotNull SNode __thisNode__) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberPlaceholder"));
-    SLinkOperations.setTarget(result, LINKS.decl$euzy, SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLClassMember$68, false, false));
-    SPropertyOperations.assign(result, PROPS.caption$eu5w, SPropertyOperations.getString(__thisNode__, PROPS.caption$zwPy));
+    SLinkOperations.setTarget(result, LINKS.decl$GtTj, SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLClassMember$rT, false, false));
+    SPropertyOperations.assign(result, PROPS.caption$Gtrh, SPropertyOperations.getString(__thisNode__, PROPS.caption$1wbj));
     return result;
   }
 
@@ -89,15 +89,15 @@ public final class PlaceholderModifier__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$euzy = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
+    /*package*/ static final SReferenceLink decl$GtTj = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept DSLClassMember$68 = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fe4c7L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLClassMember");
+    /*package*/ static final SInterfaceConcept DSLClassMember$rT = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fe4c7L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLClassMember");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty caption$eu5w = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db3L, "caption");
-    /*package*/ static final SProperty caption$zwPy = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044804f29L, 0x72b255a044805055L, "caption");
+    /*package*/ static final SProperty caption$Gtrh = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db3L, "caption");
+    /*package*/ static final SProperty caption$1wbj = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044804f29L, 0x72b255a044805055L, "caption");
   }
 }

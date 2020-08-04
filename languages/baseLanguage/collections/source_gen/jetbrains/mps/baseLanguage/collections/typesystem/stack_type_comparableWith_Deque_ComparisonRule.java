@@ -37,7 +37,7 @@ public class stack_type_comparableWith_Deque_ComparisonRule extends ComparisonRu
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.StackType$pL;
+    return CONCEPTS.StackType$C4;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -54,6 +54,6 @@ public class stack_type_comparableWith_Deque_ComparisonRule extends ComparisonRu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StackType$pL = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x5e6446aa46ee5eecL, "jetbrains.mps.baseLanguage.collections.structure.StackType");
+    /*package*/ static final SConcept StackType$C4 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x5e6446aa46ee5eecL, "jetbrains.mps.baseLanguage.collections.structure.StackType");
   }
 }

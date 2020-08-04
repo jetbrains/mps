@@ -37,9 +37,9 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_q0hc0b_a(), CONCEPTS.ConstantStringAppendPart$AE));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_q0hc0b_a(), CONCEPTS.ConstantStringAppendPart$Pc));
     result.add(new SMP_Subconcepts_q0hc0b_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ConstantStringAppendPart$AE) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ConstantStringAppendPart$Pc) {
 
       @NotNull
       @Override
@@ -52,7 +52,7 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.ConstantStringAppendPart$AE));
+    }, CONCEPTS.ConstantStringAppendPart$Pc));
     return result;
   }
 
@@ -97,7 +97,7 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.ConstantStringAppendPart$AE, context);
+        super(CONCEPTS.ConstantStringAppendPart$Pc, context);
         _context = context;
       }
 
@@ -108,8 +108,8 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ConstantStringAppendPart$AE, _context.getCurrentTargetNode());
-        SPropertyOperations.set(result, PROPS.value$YJN0, NameUtil.stripQuotes(pattern, "\"", "\""));
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ConstantStringAppendPart$Pc, _context.getCurrentTargetNode());
+        SPropertyOperations.set(result, PROPS.value$V81y, NameUtil.stripQuotes(pattern, "\"", "\""));
         return result;
       }
 
@@ -137,7 +137,7 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
   }
   public class SMP_Subconcepts_q0hc0b_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ConstantStringAppendPart$AE);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ConstantStringAppendPart$Pc);
     }
     @NotNull
     @Override
@@ -158,10 +158,10 @@ public class ConstantStringAppendPart_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstantStringAppendPart$AE = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart");
+    /*package*/ static final SConcept ConstantStringAppendPart$Pc = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$YJN0 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201528caacL, "value");
+    /*package*/ static final SProperty value$V81y = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201528caacL, "value");
   }
 }

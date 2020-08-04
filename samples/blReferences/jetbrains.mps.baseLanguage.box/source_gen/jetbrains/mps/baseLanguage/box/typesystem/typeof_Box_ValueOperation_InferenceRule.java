@@ -33,7 +33,7 @@ public class typeof_Box_ValueOperation_InferenceRule extends AbstractInferenceRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Box_ValueOperation$TC;
+    return CONCEPTS.Box_ValueOperation$Jm;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,6 +54,6 @@ public class typeof_Box_ValueOperation_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Box_ValueOperation$TC = MetaAdapterFactory.getConcept(0x1c5b433b3a0b47c4L, 0xbed8d496b01eb018L, 0x7cd580cc400b35fcL, "jetbrains.mps.baseLanguage.box.structure.Box_ValueOperation");
+    /*package*/ static final SConcept Box_ValueOperation$Jm = MetaAdapterFactory.getConcept(0x1c5b433b3a0b47c4L, 0xbed8d496b01eb018L, 0x7cd580cc400b35fcL, "jetbrains.mps.baseLanguage.box.structure.Box_ValueOperation");
   }
 }

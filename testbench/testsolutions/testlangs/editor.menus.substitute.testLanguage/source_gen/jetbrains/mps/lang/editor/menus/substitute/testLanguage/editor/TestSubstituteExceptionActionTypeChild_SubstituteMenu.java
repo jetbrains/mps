@@ -27,8 +27,8 @@ public class TestSubstituteExceptionActionTypeChild_SubstituteMenu extends Subst
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_nbkj2f_a(), CONCEPTS.TestSubstituteExceptionActionTypeChild$_h));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_nbkj2f_b(), CONCEPTS.TestSubstituteExceptionActionTypeChild$_h));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_nbkj2f_a(), CONCEPTS.TestSubstituteExceptionActionTypeChild$PM));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_nbkj2f_b(), CONCEPTS.TestSubstituteExceptionActionTypeChild$PM));
     return result;
   }
 
@@ -73,7 +73,7 @@ public class TestSubstituteExceptionActionTypeChild_SubstituteMenu extends Subst
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TestSubstituteExceptionActionTypeChild$_h, context);
+        super(CONCEPTS.TestSubstituteExceptionActionTypeChild$PM, context);
         _context = context;
       }
 
@@ -126,7 +126,7 @@ public class TestSubstituteExceptionActionTypeChild_SubstituteMenu extends Subst
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TestSubstituteExceptionActionTypeChild$_h, context);
+        super(CONCEPTS.TestSubstituteExceptionActionTypeChild$PM, context);
         _context = context;
       }
 
@@ -158,6 +158,6 @@ public class TestSubstituteExceptionActionTypeChild_SubstituteMenu extends Subst
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteExceptionActionTypeChild$_h = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb581c35cL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionActionTypeChild");
+    /*package*/ static final SConcept TestSubstituteExceptionActionTypeChild$PM = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb581c35cL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionActionTypeChild");
   }
 }

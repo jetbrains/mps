@@ -31,7 +31,7 @@ public class typeof_RemoveLastElementOperation_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RemoveLastElementOperation$3d;
+    return CONCEPTS.RemoveLastElementOperation$hw;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_RemoveLastElementOperation_InferenceRule extends AbstractInf
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RemoveLastElementOperation$3d = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11db074584bL, "jetbrains.mps.baseLanguage.collections.structure.RemoveLastElementOperation");
+    /*package*/ static final SConcept RemoveLastElementOperation$hw = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11db074584bL, "jetbrains.mps.baseLanguage.collections.structure.RemoveLastElementOperation");
   }
 }

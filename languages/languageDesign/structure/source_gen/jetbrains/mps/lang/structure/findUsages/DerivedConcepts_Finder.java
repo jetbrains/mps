@@ -35,7 +35,7 @@ public class DerivedConcepts_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.ConceptDeclaration$qU;
+    return CONCEPTS.ConceptDeclaration$gH;
   }
 
   @Override
@@ -43,7 +43,7 @@ public class DerivedConcepts_Finder extends GeneratedFinder {
     try {
       monitor.start("Derived Concepts", 1000);
       final Queue<SNode> currentConcepts = QueueSequence.fromQueue(new LinkedList<SNode>());
-      QueueSequence.fromQueue(currentConcepts).addLastElement(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU));
+      QueueSequence.fromQueue(currentConcepts).addLastElement(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH));
       while (QueueSequence.fromQueue(currentConcepts).isNotEmpty()) {
         SNode nextNode = QueueSequence.fromQueue(currentConcepts).removeFirstElement();
         FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
@@ -51,7 +51,7 @@ public class DerivedConcepts_Finder extends GeneratedFinder {
             SNode nodeParam = (SNode) searchResult.getObject();
             new _FunctionTypes._void_P1_E0<SNode>() {
               public void invoke(SNode directDescendant) {
-                SNode foundConcept = SNodeOperations.cast(directDescendant, CONCEPTS.ConceptDeclaration$qU);
+                SNode foundConcept = SNodeOperations.cast(directDescendant, CONCEPTS.ConceptDeclaration$gH);
                 QueueSequence.fromQueue(currentConcepts).addLastElement(foundConcept);
                 callback.onUsageFound(createSingleResult(foundConcept));
               }
@@ -76,6 +76,6 @@ public class DerivedConcepts_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 }

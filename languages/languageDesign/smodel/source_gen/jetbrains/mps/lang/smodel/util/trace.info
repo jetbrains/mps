@@ -6,7 +6,7 @@
   <root nodeRef="r:7e967a7c-8f21-4c1f-a331-9afa31a24388(jetbrains.mps.lang.smodel.util)/6410670351274277864">
     <file name="AbstractConceptUtil.java">
       <node id="6410670351274286086" at="12,77,13,272" concept="0" />
-      <node id="6410670351274277864" at="17,0,18,0" concept="1" trace="ConceptDeclaration$qU" />
+      <node id="6410670351274277864" at="17,0,18,0" concept="1" trace="ConceptDeclaration$gH" />
       <node id="6410670351274277928" at="12,0,15,0" concept="2" trace="hasSurelyNoInterfacesBeneath#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <scope id="6410670351274277932" at="12,77,13,272" />
       <scope id="6410670351274277928" at="12,0,15,0">

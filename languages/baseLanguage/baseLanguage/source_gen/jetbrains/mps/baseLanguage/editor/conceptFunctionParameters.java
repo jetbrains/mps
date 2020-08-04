@@ -30,7 +30,7 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_4x8do5_a(), CONCEPTS.ConceptFunctionParameter$sy));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_4x8do5_a(), CONCEPTS.ConceptFunctionParameter$Tk));
     return result;
   }
 
@@ -49,11 +49,11 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
 
   public class SMP_Concepts_4x8do5_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(SubstituteMenuContext _context) {
-      List<SNode> functions = SNodeOperations.getNodeAncestors(_context.getParentNode(), CONCEPTS.ConceptFunction$Tt, false);
+      List<SNode> functions = SNodeOperations.getNodeAncestors(_context.getParentNode(), CONCEPTS.ConceptFunction$mf, false);
       // skip Closure 
       SNode parentFunction = ListSequence.fromList(functions).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Closure$5Q));
+          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Closure$yC));
         }
       }).first();
       if (parentFunction == null) {
@@ -92,8 +92,8 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunctionParameter$sy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept Closure$5Q = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
+    /*package*/ static final SConcept ConceptFunctionParameter$Tk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept Closure$yC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
   }
 }

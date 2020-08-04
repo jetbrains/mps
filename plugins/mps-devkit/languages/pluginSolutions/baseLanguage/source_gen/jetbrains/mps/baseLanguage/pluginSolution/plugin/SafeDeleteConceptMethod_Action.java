@@ -47,7 +47,7 @@ public class SafeDeleteConceptMethod_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptMethodDeclaration$VN))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptMethodDeclaration$N0))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("target", node);
@@ -81,6 +81,6 @@ public class SafeDeleteConceptMethod_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

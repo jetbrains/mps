@@ -31,19 +31,19 @@ public final class MigrateEnumPropertyAttributes_Antiquotation_MigrationScript e
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.StringToTypedValueMigrationInfo$dM;
+        return CONCEPTS.StringToTypedValueMigrationInfo$em;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return !(SPropertyOperations.getBoolean(node, PROPS.stringValueMigrated$4VPS)) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(SNodeOperations.as(node, CONCEPTS.PropertyAttribute$jT))), CONCEPTS.EnumPropertyMigrationInfo$Yg);
+        return !(SPropertyOperations.getBoolean(node, PROPS.stringValueMigrated$2KQs)) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(SNodeOperations.as(node, CONCEPTS.PropertyAttribute$Gb))), CONCEPTS.EnumPropertyMigrationInfo$O3);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SPropertyOperations.assign(node, PROPS.stringValueMigrated$4VPS, true);
+        SPropertyOperations.assign(node, PROPS.stringValueMigrated$2KQs, true);
 
-        SNode propAttribute = SNodeOperations.as(node, CONCEPTS.PropertyAttribute$jT);
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propAttribute)), CONCEPTS.EnumPropertyMigrationInfo$Yg)) {
-          SPropertyOperations.assign(propAttribute, PROPS.enumUsageMigrated$DjAE, true);
+        SNode propAttribute = SNodeOperations.as(node, CONCEPTS.PropertyAttribute$Gb);
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propAttribute)), CONCEPTS.EnumPropertyMigrationInfo$O3)) {
+          SPropertyOperations.assign(propAttribute, PROPS.enumUsageMigrated$64YW, true);
         }
       }
       @Override
@@ -60,13 +60,13 @@ public final class MigrateEnumPropertyAttributes_Antiquotation_MigrationScript e
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept StringToTypedValueMigrationInfo$dM = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, "jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+    /*package*/ static final SInterfaceConcept StringToTypedValueMigrationInfo$em = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, "jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo$O3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringValueMigrated$4VPS = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
-    /*package*/ static final SProperty enumUsageMigrated$DjAE = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
+    /*package*/ static final SProperty stringValueMigrated$2KQs = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
+    /*package*/ static final SProperty enumUsageMigrated$64YW = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
   }
 }

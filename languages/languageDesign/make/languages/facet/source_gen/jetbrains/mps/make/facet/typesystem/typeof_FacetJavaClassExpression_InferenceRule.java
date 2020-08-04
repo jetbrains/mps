@@ -26,7 +26,7 @@ public class typeof_FacetJavaClassExpression_InferenceRule extends AbstractInfer
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.FacetJavaClassExpression$ZI;
+    return CONCEPTS.FacetJavaClassExpression$CA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,6 +47,6 @@ public class typeof_FacetJavaClassExpression_InferenceRule extends AbstractInfer
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FacetJavaClassExpression$ZI = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a4b910f856c1c94L, "jetbrains.mps.make.facet.structure.FacetJavaClassExpression");
+    /*package*/ static final SConcept FacetJavaClassExpression$CA = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a4b910f856c1c94L, "jetbrains.mps.make.facet.structure.FacetJavaClassExpression");
   }
 }

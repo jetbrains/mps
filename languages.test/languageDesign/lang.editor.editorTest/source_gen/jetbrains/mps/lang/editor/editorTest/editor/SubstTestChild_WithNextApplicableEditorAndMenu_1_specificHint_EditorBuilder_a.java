@@ -62,7 +62,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ReplaceWith_SubstTestChild_WithNextApplicableEditorAndMenu_2_cellMenu_eiugxc_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.SubstTestChild_WithNextApplicableEditorAndMenu_2$l8;
+      return CONCEPTS.SubstTestChild_WithNextApplicableEditorAndMenu_2$5l;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -77,6 +77,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstTestChild_WithNextApplicableEditorAndMenu_2$l8 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x818e8ddb10b1390L, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestChild_WithNextApplicableEditorAndMenu_2");
+    /*package*/ static final SConcept SubstTestChild_WithNextApplicableEditorAndMenu_2$5l = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x818e8ddb10b1390L, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestChild_WithNextApplicableEditorAndMenu_2");
   }
 }

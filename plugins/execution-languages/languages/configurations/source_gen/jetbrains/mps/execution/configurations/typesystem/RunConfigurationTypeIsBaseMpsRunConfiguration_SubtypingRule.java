@@ -21,7 +21,7 @@ public class RunConfigurationTypeIsBaseMpsRunConfiguration_SubtypingRule extends
     return _quotation_createNode_mu1l93_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RunConfigurationType$qY;
+    return CONCEPTS.RunConfigurationType$7_;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class RunConfigurationTypeIsBaseMpsRunConfiguration_SubtypingRule extends
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RunConfigurationType$qY = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType");
+    /*package*/ static final SConcept RunConfigurationType$7_ = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType");
   }
 }

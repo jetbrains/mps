@@ -21,16 +21,16 @@ public abstract class InlineFieldRefactoring {
   public abstract SNode doRefactoring();
 
   public Iterable<SNode> findAllReferences(final SNode variable) {
-    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.VariableReference$sQ)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.VariableReference$TC)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU) == variable;
+        return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == variable;
       }
     });
   }
   public Iterable<SNode> findAllReferenceOperations(final SNode variable) {
-    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.FieldReferenceOperation$N8)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(variable), CONCEPTS.FieldReferenceOperation$fU)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.fieldDeclaration$229u) == variable;
+        return SLinkOperations.getTarget(it, LINKS.fieldDeclaration$H7Ag) == variable;
       }
     });
   }
@@ -42,21 +42,21 @@ public abstract class InlineFieldRefactoring {
   }
 
   public static InlineFieldRefactoring createRefactoring(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableDeclaration$xe)) {
-      return new InlineFieldAssignmentRefactoring(SNodeOperations.cast(node, CONCEPTS.VariableDeclaration$xe));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableDeclaration$Y0)) {
+      return new InlineFieldAssignmentRefactoring(SNodeOperations.cast(node, CONCEPTS.VariableDeclaration$Y0));
     } else {
-      return new InlineFieldReferenceRefactoring(SNodeOperations.cast(node, CONCEPTS.VariableReference$sQ));
+      return new InlineFieldReferenceRefactoring(SNodeOperations.cast(node, CONCEPTS.VariableReference$TC));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept FieldReferenceOperation$N8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept FieldReferenceOperation$fU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$H7Ag = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 }

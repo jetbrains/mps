@@ -25,15 +25,15 @@ public class check_IncludingNonMatchingSubstituteMenu_NonTypesystemRule extends 
   public check_IncludingNonMatchingSubstituteMenu_NonTypesystemRule() {
   }
   public void applyRule(final SNode part, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(part, LINKS.menuReference$L$Q2) == null)) {
+    if ((SLinkOperations.getTarget(part, LINKS.menuReference$PR1D) == null)) {
       return;
     }
-    SNode includedMenuConcept = IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(SLinkOperations.getTarget(part, LINKS.menuReference$L$Q2));
+    SNode includedMenuConcept = IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(SLinkOperations.getTarget(part, LINKS.menuReference$PR1D));
     if ((includedMenuConcept == null)) {
       return;
     }
     SNode destinationMenuConcept;
-    destinationMenuConcept = check_uv1jfo_a0e0b(SNodeOperations.getNodeAncestor(part, CONCEPTS.ISubstituteMenu$zI, false, false));
+    destinationMenuConcept = check_uv1jfo_a0e0b(SNodeOperations.getNodeAncestor(part, CONCEPTS.ISubstituteMenu$Jl, false, false));
     if ((destinationMenuConcept == null)) {
       return;
     }
@@ -44,11 +44,11 @@ public class check_IncludingNonMatchingSubstituteMenu_NonTypesystemRule extends 
 
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(part, LINKS.menuReference$L$Q2), String.format("Menu for %s or its subconcept is expected", destinationMenuConcept), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8777569553578237881", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(part, LINKS.menuReference$PR1D), String.format("Menu for %s or its subconcept is expected", destinationMenuConcept), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8777569553578237881", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SubstituteMenuPart_IncludeMenu$8K;
+    return CONCEPTS.SubstituteMenuPart_IncludeMenu$kn;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -64,11 +64,11 @@ public class check_IncludingNonMatchingSubstituteMenu_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$L$Q2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference");
+    /*package*/ static final SContainmentLink menuReference$PR1D = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ISubstituteMenu$zI = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
-    /*package*/ static final SConcept SubstituteMenuPart_IncludeMenu$8K = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu");
+    /*package*/ static final SInterfaceConcept ISubstituteMenu$Jl = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
+    /*package*/ static final SConcept SubstituteMenuPart_IncludeMenu$kn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu");
   }
 }

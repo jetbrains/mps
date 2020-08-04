@@ -45,11 +45,11 @@ public final class MakeFieldVolatile_Intention extends AbstractIntentionDescript
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.isVolatile$2Bfn) ? "Make Field Not Volatile" : "Make Field Volatile");
+      return (SPropertyOperations.getBoolean(node, PROPS.isVolatile$HGG9) ? "Make Field Not Volatile" : "Make Field Volatile");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.isVolatile$2Bfn, !(SPropertyOperations.getBoolean(node, PROPS.isVolatile$2Bfn)));
+      SPropertyOperations.assign(node, PROPS.isVolatile$HGG9, !(SPropertyOperations.getBoolean(node, PROPS.isVolatile$HGG9)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -58,6 +58,6 @@ public final class MakeFieldVolatile_Intention extends AbstractIntentionDescript
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isVolatile$2Bfn = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
+    /*package*/ static final SProperty isVolatile$HGG9 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
   }
 }

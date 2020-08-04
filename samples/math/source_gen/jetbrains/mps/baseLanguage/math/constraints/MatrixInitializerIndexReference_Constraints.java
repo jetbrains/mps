@@ -29,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MatrixInitializerIndexReference_Constraints extends BaseConstraintsDescriptor {
   public MatrixInitializerIndexReference_Constraints() {
-    super(CONCEPTS.MatrixInitializerIndexReference$Oz);
+    super(CONCEPTS.MatrixInitializerIndexReference$AV);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.index$yDLc, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.index$gez$, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,7 +49,7 @@ public class MatrixInitializerIndexReference_Constraints extends BaseConstraints
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode n = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MatrixOrVectorInitializer$Vb, true, false);
+            SNode n = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MatrixOrVectorInitializer$Hz, true, false);
             List<SNode> indices = new ArrayList<SNode>();
             while (n != null) {
               {
@@ -59,27 +59,27 @@ public class MatrixInitializerIndexReference_Constraints extends BaseConstraints
                   {
                     SNode matchingNode_5upoaw_a0a2a1a0a0a1a0a0a0c = n;
                     if (matchingNode_5upoaw_a0a2a1a0a0a1a0a0a0c != null) {
-                      matches_5upoaw_a0a2a1a0a0a1a0a0a0c = matchingNode_5upoaw_a0a2a1a0a0a1a0a0a0c.getConcept().isSubConceptOf(CONCEPTS.MatrixInitializer$6r);
+                      matches_5upoaw_a0a2a1a0a0a1a0a0a0c = matchingNode_5upoaw_a0a2a1a0a0a1a0a0a0c.getConcept().isSubConceptOf(CONCEPTS.MatrixInitializer$SN);
                     }
                   }
                   if (matches_5upoaw_a0a2a1a0a0a1a0a0a0c) {
-                    ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.colIndex$4tl1));
-                    ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.rowIndex$1Zrw));
+                    ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.colIndex$M27p));
+                    ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.rowIndex$J$dS));
                   } else {
                     boolean matches_5upoaw_b0a2a1a0a0a1a0a0a0c = false;
                     {
                       SNode matchingNode_5upoaw_b0a2a1a0a0a1a0a0a0c = n;
                       if (matchingNode_5upoaw_b0a2a1a0a0a1a0a0a0c != null) {
-                        matches_5upoaw_b0a2a1a0a0a1a0a0a0c = matchingNode_5upoaw_b0a2a1a0a0a1a0a0a0c.getConcept().isSubConceptOf(CONCEPTS.VectorInitializer$hg);
+                        matches_5upoaw_b0a2a1a0a0a1a0a0a0c = matchingNode_5upoaw_b0a2a1a0a0a1a0a0a0c.getConcept().isSubConceptOf(CONCEPTS.VectorInitializer$3C);
                       }
                     }
                     if (matches_5upoaw_b0a2a1a0a0a1a0a0a0c) {
-                      ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.rowIndex$wCR1));
+                      ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(matchedNode_5upoaw_a0c0b0a0a0b0a0a0a2, LINKS.rowIndex$edDp));
                     }
                   }
                 }
               }
-              n = SNodeOperations.getNodeAncestor(n, CONCEPTS.MatrixOrVectorInitializer$Vb, false, false);
+              n = SNodeOperations.getNodeAncestor(n, CONCEPTS.MatrixOrVectorInitializer$Hz, false, false);
             }
             return ListScope.forResolvableElements(indices);
           }
@@ -93,16 +93,16 @@ public class MatrixInitializerIndexReference_Constraints extends BaseConstraints
   private static final SNodePointer breakingNode_5upoaw_a0a0a0a0a1a0a0a0c = new SNodePointer("r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)", "6836281137582848190");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MatrixInitializerIndexReference$Oz = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, "jetbrains.mps.baseLanguage.math.structure.MatrixInitializerIndexReference");
-    /*package*/ static final SInterfaceConcept MatrixOrVectorInitializer$Vb = MetaAdapterFactory.getInterfaceConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d5141L, "jetbrains.mps.baseLanguage.math.structure.MatrixOrVectorInitializer");
-    /*package*/ static final SConcept MatrixInitializer$6r = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, "jetbrains.mps.baseLanguage.math.structure.MatrixInitializer");
-    /*package*/ static final SConcept VectorInitializer$hg = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, "jetbrains.mps.baseLanguage.math.structure.VectorInitializer");
+    /*package*/ static final SConcept MatrixInitializerIndexReference$AV = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, "jetbrains.mps.baseLanguage.math.structure.MatrixInitializerIndexReference");
+    /*package*/ static final SInterfaceConcept MatrixOrVectorInitializer$Hz = MetaAdapterFactory.getInterfaceConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d5141L, "jetbrains.mps.baseLanguage.math.structure.MatrixOrVectorInitializer");
+    /*package*/ static final SConcept MatrixInitializer$SN = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, "jetbrains.mps.baseLanguage.math.structure.MatrixInitializer");
+    /*package*/ static final SConcept VectorInitializer$3C = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, "jetbrains.mps.baseLanguage.math.structure.VectorInitializer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink index$yDLc = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, 0x5650ac0d4240f275L, "index");
-    /*package*/ static final SContainmentLink colIndex$4tl1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25cL, "colIndex");
-    /*package*/ static final SContainmentLink rowIndex$1Zrw = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25bL, "rowIndex");
-    /*package*/ static final SContainmentLink rowIndex$wCR1 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb7L, "rowIndex");
+    /*package*/ static final SReferenceLink index$gez$ = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, 0x5650ac0d4240f275L, "index");
+    /*package*/ static final SContainmentLink colIndex$M27p = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25cL, "colIndex");
+    /*package*/ static final SContainmentLink rowIndex$J$dS = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240a048L, 0x5650ac0d4240f25bL, "rowIndex");
+    /*package*/ static final SContainmentLink rowIndex$edDp = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d424d0fb5L, 0x5650ac0d424d0fb7L, "rowIndex");
   }
 }

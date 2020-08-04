@@ -37,7 +37,7 @@ public class queue_type_comparableWith_Queue_ComparisonRule extends ComparisonRu
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.QueueType$4E;
+    return CONCEPTS.QueueType$iX;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -54,6 +54,6 @@ public class queue_type_comparableWith_Queue_ComparisonRule extends ComparisonRu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueueType$4E = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf74491L, "jetbrains.mps.baseLanguage.collections.structure.QueueType");
+    /*package*/ static final SConcept QueueType$iX = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf74491L, "jetbrains.mps.baseLanguage.collections.structure.QueueType");
   }
 }

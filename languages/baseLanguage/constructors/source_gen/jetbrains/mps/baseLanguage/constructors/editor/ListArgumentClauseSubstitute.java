@@ -52,8 +52,8 @@ public class ListArgumentClauseSubstitute extends SubstituteMenuBase {
   public class SMP_Group_fp1u36_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.CustomConstructor$$1)) {
-        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.CustomConstructor$$1), LINKS.arguments$k0CZ), CONCEPTS.ListArgumentsClause$21));
+      if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.CustomConstructor$j9)) {
+        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.CustomConstructor$j9), LINKS.arguments$xto7), CONCEPTS.ListArgumentsClause$L9));
       }
       return false;
     }
@@ -71,7 +71,7 @@ public class ListArgumentClauseSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_fp1u36_a.SMP_Action_fp1u36_a0(), CONCEPTS.ListArgumentsClause$21));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_fp1u36_a.SMP_Action_fp1u36_a0(), CONCEPTS.ListArgumentsClause$L9));
     }
     private class SMP_Action_fp1u36_a0 extends SingleItemSubstituteMenuPart {
 
@@ -101,7 +101,7 @@ public class ListArgumentClauseSubstitute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.ListArgumentsClause$21, context);
+          super(CONCEPTS.ListArgumentsClause$L9, context);
           _context = context;
         }
 
@@ -112,7 +112,7 @@ public class ListArgumentClauseSubstitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          return SNodeFactoryOperations.createNewNode(CONCEPTS.ListArgumentsClause$21, null);
+          return SNodeFactoryOperations.createNewNode(CONCEPTS.ListArgumentsClause$L9, null);
         }
 
         @Override
@@ -129,11 +129,11 @@ public class ListArgumentClauseSubstitute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomConstructor$$1 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructor");
-    /*package*/ static final SConcept ListArgumentsClause$21 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b9L, "jetbrains.mps.baseLanguage.constructors.structure.ListArgumentsClause");
+    /*package*/ static final SConcept CustomConstructor$j9 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructor");
+    /*package*/ static final SConcept ListArgumentsClause$L9 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b9L, "jetbrains.mps.baseLanguage.constructors.structure.ListArgumentsClause");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink arguments$k0CZ = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
+    /*package*/ static final SContainmentLink arguments$xto7 = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
   }
 }

@@ -26,12 +26,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GenerationContextOp_VarRef_Constraints extends BaseConstraintsDescriptor {
   public GenerationContextOp_VarRef_Constraints() {
-    super(CONCEPTS.GenerationContextOp_VarRef$c3);
+    super(CONCEPTS.GenerationContextOp_VarRef$_D);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.varmacro$2bbQ, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.varmacro$i6_s, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,8 +49,8 @@ public class GenerationContextOp_VarRef_Constraints extends BaseConstraintsDescr
             SNode contextNode = _context.getContextNode();
             List<SNode> vars = new ArrayList<SNode>();
             while ((contextNode != null)) {
-              if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.VarMacro$nM)) {
-                ListSequence.fromList(vars).addElement(SNodeOperations.cast(contextNode, CONCEPTS.VarMacro$nM));
+              if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.VarMacro$3u)) {
+                ListSequence.fromList(vars).addElement(SNodeOperations.cast(contextNode, CONCEPTS.VarMacro$3u));
               }
               contextNode = Scope.parent(contextNode);
             }
@@ -66,11 +66,11 @@ public class GenerationContextOp_VarRef_Constraints extends BaseConstraintsDescr
   private static final SNodePointer breakingNode_m6rnzp_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902ee(jetbrains.mps.lang.generator.generationContext.constraints)", "6836281137582787530");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_VarRef$c3 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef");
-    /*package*/ static final SConcept VarMacro$nM = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro");
+    /*package*/ static final SConcept GenerationContextOp_VarRef$_D = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef");
+    /*package*/ static final SConcept VarMacro$3u = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x45991daad6a3d34eL, "jetbrains.mps.lang.generator.structure.VarMacro");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink varmacro$2bbQ = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
+    /*package*/ static final SReferenceLink varmacro$i6_s = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
   }
 }

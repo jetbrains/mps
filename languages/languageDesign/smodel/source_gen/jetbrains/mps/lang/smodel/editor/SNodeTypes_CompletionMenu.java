@@ -104,13 +104,13 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.SNodeType$gn);
+        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.SNodeType$hR);
       }
 
 
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
-        return SConceptOperations.shortDescription(CONCEPTS.SNodeType$gn);
+        return SConceptOperations.shortDescription(CONCEPTS.SNodeType$hR);
       }
 
 
@@ -168,13 +168,13 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.SNodePointerType$2t);
+        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.SNodePointerType$3X);
       }
 
 
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
-        return SConceptOperations.shortDescription(CONCEPTS.SNodePointerType$2t);
+        return SConceptOperations.shortDescription(CONCEPTS.SNodePointerType$3X);
       }
 
 
@@ -232,13 +232,13 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.SConceptType$nF);
+        SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.SConceptType$pb);
       }
 
 
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
-        return SConceptOperations.shortDescription(CONCEPTS.SConceptType$nF);
+        return SConceptOperations.shortDescription(CONCEPTS.SConceptType$pb);
       }
 
 
@@ -260,8 +260,8 @@ public class SNodeTypes_CompletionMenu extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SNodeType$gn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
-    /*package*/ static final SConcept SNodePointerType$2t = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
-    /*package*/ static final SConcept SConceptType$nF = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
+    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept SNodePointerType$3X = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
+    /*package*/ static final SConcept SConceptType$pb = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
   }
 }

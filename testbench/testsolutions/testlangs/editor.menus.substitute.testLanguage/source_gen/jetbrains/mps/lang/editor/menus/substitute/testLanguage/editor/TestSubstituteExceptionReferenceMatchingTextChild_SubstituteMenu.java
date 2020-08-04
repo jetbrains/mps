@@ -31,8 +31,8 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_tafz9j_a(), CONCEPTS.TestSubstituteExceptionReferenceMatchingTextChild$rK));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_tafz9j_b(), CONCEPTS.TestSubstituteExceptionReferenceMatchingTextChild$rK));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_tafz9j_a(), CONCEPTS.TestSubstituteExceptionReferenceMatchingTextChild$Gh));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_tafz9j_b(), CONCEPTS.TestSubstituteExceptionReferenceMatchingTextChild$Gh));
     return result;
   }
 
@@ -53,7 +53,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
 
     public SMP_ReferenceScope_tafz9j_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TestSubstituteExceptionReferenceMatchingTextChild$rK, LINKS.reference$6V_l);
+      super((SAbstractConcept) CONCEPTS.TestSubstituteExceptionReferenceMatchingTextChild$Gh, LINKS.reference$5yPQ);
     }
     @NotNull
     @Override
@@ -126,7 +126,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TestSubstituteExceptionReferenceMatchingTextChild$rK, context);
+        super(CONCEPTS.TestSubstituteExceptionReferenceMatchingTextChild$Gh, context);
         _context = context;
       }
 
@@ -153,10 +153,10 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteExceptionReferenceMatchingTextChild$rK = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceMatchingTextChild");
+    /*package*/ static final SConcept TestSubstituteExceptionReferenceMatchingTextChild$Gh = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceMatchingTextChild");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$6V_l = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, 0x63457d5cb582a92aL, "reference");
+    /*package*/ static final SReferenceLink reference$5yPQ = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL, 0x63457d5cb582a92aL, "reference");
   }
 }

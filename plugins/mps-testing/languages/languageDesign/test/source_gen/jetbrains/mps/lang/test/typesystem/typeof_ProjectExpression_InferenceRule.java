@@ -26,7 +26,7 @@ public class typeof_ProjectExpression_InferenceRule extends AbstractInferenceRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ProjectExpression$nU;
+    return CONCEPTS.ProjectExpression$Bp;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_ProjectExpression_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ProjectExpression$nU = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11d5387d7a1L, "jetbrains.mps.lang.test.structure.ProjectExpression");
+    /*package*/ static final SConcept ProjectExpression$Bp = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11d5387d7a1L, "jetbrains.mps.lang.test.structure.ProjectExpression");
   }
 }

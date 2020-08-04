@@ -203,10 +203,10 @@
       <node id="44712766211798117" at="367,49,368,56" concept="6" />
       <node id="3787933655124830727" at="371,87,372,48" concept="5" />
       <node id="3787933655124853418" at="372,48,373,61" concept="5" />
-      <node id="3787933655124902546" at="375,39,376,223" concept="6" />
+      <node id="3787933655124902546" at="375,39,376,222" concept="6" />
       <node id="44712766211269572" at="381,78,382,48" concept="5" />
       <node id="44712766211269577" at="382,48,383,61" concept="5" />
-      <node id="44712766211269595" at="385,39,386,87" concept="6" />
+      <node id="44712766211269595" at="385,39,386,86" concept="6" />
       <node id="1646528537536978914" at="413,57,414,64" concept="5" />
       <node id="1646528537537051015" at="419,17,420,29" concept="1" />
       <node id="1646528537537047493" at="421,35,422,25" concept="1" />
@@ -269,21 +269,21 @@
       <node id="44712766211124743" at="500,253,501,203" concept="1" />
       <node id="44712766211124743" at="501,203,502,178" concept="1" />
       <node id="44712766211124743" at="502,178,503,24" concept="6" />
-      <node id="2925222852789993400" at="507,0,508,0" concept="9" trace="SmartReferenceAttribute$Lg" />
-      <node id="2925222852789993400" at="508,0,509,0" concept="9" trace="SubstituteMenuPart_ReferenceScope$po" />
-      <node id="2925222852789993400" at="509,0,510,0" concept="9" trace="CellMenuPart_ReferentPrimary$j6" />
-      <node id="2925222852789993400" at="510,0,511,0" concept="9" trace="SubstituteMenu_Named$J" />
-      <node id="2925222852789993400" at="511,0,512,0" concept="9" trace="GeneratedSubstituteMenuAttribute$Mz" />
-      <node id="2925222852789993400" at="512,0,513,0" concept="9" trace="SubstituteMenu_Default$hk" />
-      <node id="2925222852789993400" at="516,0,517,0" concept="9" trace="parts$uqCt" />
-      <node id="2925222852789993400" at="517,0,518,0" concept="9" trace="matchingTextFunction$yAjl" />
-      <node id="2925222852789993400" at="518,0,519,0" concept="9" trace="visibleMatchingTextFunction$bUNu" />
-      <node id="2925222852789993400" at="519,0,520,0" concept="9" trace="menuDescriptor$lbDX" />
-      <node id="2925222852789993400" at="520,0,521,0" concept="9" trace="cellMenuPart$f1$2" />
-      <node id="2925222852789993400" at="521,0,522,0" concept="9" trace="matchingText$DPxL" />
-      <node id="2925222852789993400" at="522,0,523,0" concept="9" trace="visibleMatchingText$o9XG" />
-      <node id="2925222852789993400" at="523,0,524,0" concept="9" trace="referentPresentation$eXlc" />
-      <node id="2925222852789993400" at="524,0,525,0" concept="9" trace="conceptDeclaration$VYS3" />
+      <node id="2925222852789993400" at="507,0,508,0" concept="9" trace="SmartReferenceAttribute$B3" />
+      <node id="2925222852789993400" at="508,0,509,0" concept="9" trace="SubstituteMenuPart_ReferenceScope$$Z" />
+      <node id="2925222852789993400" at="509,0,510,0" concept="9" trace="CellMenuPart_ReferentPrimary$uH" />
+      <node id="2925222852789993400" at="510,0,511,0" concept="9" trace="SubstituteMenu_Named$cm" />
+      <node id="2925222852789993400" at="511,0,512,0" concept="9" trace="GeneratedSubstituteMenuAttribute$Ya" />
+      <node id="2925222852789993400" at="512,0,513,0" concept="9" trace="SubstituteMenu_Default$sV" />
+      <node id="2925222852789993400" at="516,0,517,0" concept="9" trace="parts$yGO4" />
+      <node id="2925222852789993400" at="517,0,518,0" concept="9" trace="matchingTextFunction$ASuW" />
+      <node id="2925222852789993400" at="518,0,519,0" concept="9" trace="visibleMatchingTextFunction$gcZ5" />
+      <node id="2925222852789993400" at="519,0,520,0" concept="9" trace="menuDescriptor$ptP$" />
+      <node id="2925222852789993400" at="520,0,521,0" concept="9" trace="cellMenuPart$jjJD" />
+      <node id="2925222852789993400" at="521,0,522,0" concept="9" trace="matchingText$I7Ho" />
+      <node id="2925222852789993400" at="522,0,523,0" concept="9" trace="visibleMatchingText$ss9j" />
+      <node id="2925222852789993400" at="523,0,524,0" concept="9" trace="referentPresentation$jfwN" />
+      <node id="2925222852789993400" at="524,0,525,0" concept="9" trace="conceptDeclaration$h3E" />
       <node id="7273969254452768777" at="342,0,345,0" concept="10" trace="ref#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="3787933655125051785" at="346,0,349,0" concept="10" trace="modelref#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SModelReference;" />
       <node id="7273969254452883829" at="351,0,354,0" concept="4" trace="resolveCD#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -380,8 +380,8 @@
       <scope id="44712766210806125" at="359,48,360,56" />
       <scope id="44712766211758934" at="363,50,364,56" />
       <scope id="44712766211798116" at="367,49,368,56" />
-      <scope id="3787933655124899531" at="375,39,376,223" />
-      <scope id="44712766211269594" at="385,39,386,87" />
+      <scope id="3787933655124899531" at="375,39,376,222" />
+      <scope id="44712766211269594" at="385,39,386,86" />
       <scope id="1646528537536978110" at="419,17,420,29" />
       <scope id="1646528537536978111" at="421,0,422,25">
         <var name="t" id="1646528537536978112" />
@@ -655,7 +655,7 @@
         <var name="runnable" id="2977992321850854117" />
       </scope>
       <scope id="3787933655124775141" at="132,0,154,0" />
-      <unit id="3787933655124899530" at="374,107,378,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$19" />
+      <unit id="3787933655124899530" at="374,108,378,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$19" />
       <unit id="44712766211269593" at="384,110,388,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$20" />
       <unit id="7273969254452934177" at="72,25,78,5" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$1" />
       <unit id="2925222852789993400" at="506,0,514,0" name="jetbrains.mps.tests.sraMigration.test.SmartRefAttrMigration_Test$CONCEPTS" />

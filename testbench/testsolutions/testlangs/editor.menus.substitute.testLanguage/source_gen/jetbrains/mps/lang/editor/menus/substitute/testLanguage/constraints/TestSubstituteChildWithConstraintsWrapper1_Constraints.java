@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestSubstituteChildWithConstraintsWrapper1_Constraints extends BaseConstraintsDescriptor {
   public TestSubstituteChildWithConstraintsWrapper1_Constraints() {
-    super(CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$Ef);
+    super(CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$UK);
   }
 
   @Override
@@ -37,15 +37,15 @@ public class TestSubstituteChildWithConstraintsWrapper1_Constraints extends Base
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return !(Objects.equals(link, LINKS.childWrapperCanBeChild$Lj1T));
+    return !(Objects.equals(link, LINKS.childWrapperCanBeChild$JUiq));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1227128029536583183");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteChildWithConstraintsWrapper1$Ef = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21687L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsWrapper1");
+    /*package*/ static final SConcept TestSubstituteChildWithConstraintsWrapper1$UK = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21687L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsWrapper1");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childWrapperCanBeChild$Lj1T = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d41c87L, "childWrapperCanBeChild");
+    /*package*/ static final SContainmentLink childWrapperCanBeChild$JUiq = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d41c87L, "childWrapperCanBeChild");
   }
 }

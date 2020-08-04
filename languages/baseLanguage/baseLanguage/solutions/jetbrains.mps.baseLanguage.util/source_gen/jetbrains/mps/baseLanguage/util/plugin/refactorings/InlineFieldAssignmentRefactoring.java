@@ -21,13 +21,13 @@ public class InlineFieldAssignmentRefactoring extends InlineFieldRefactoring {
   @Override
   public SNode doRefactoring() {
     for (SNode reference : this.findAllReferences(this.myVariable)) {
-      SNode expr = SNodeOperations.copyNode(SLinkOperations.getTarget(this.myVariable, LINKS.initializer$no3R));
+      SNode expr = SNodeOperations.copyNode(SLinkOperations.getTarget(this.myVariable, LINKS.initializer$2twD));
       SNodeOperations.replaceWithAnother(reference, expr);
       InlinePrecedenceUtil.parenthesiseIfNecessary(expr);
     }
     for (SNode reference : this.findAllReferenceOperations(this.myVariable)) {
-      SNode expr = SNodeOperations.copyNode(SLinkOperations.getTarget(this.myVariable, LINKS.initializer$no3R));
-      SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(reference, CONCEPTS.DotExpression$6a, false, false), expr);
+      SNode expr = SNodeOperations.copyNode(SLinkOperations.getTarget(this.myVariable, LINKS.initializer$2twD));
+      SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(reference, CONCEPTS.DotExpression$yW, false, false), expr);
       InlinePrecedenceUtil.parenthesiseIfNecessary(expr);
     }
     this.optimizeDeclaration(this.myVariable);
@@ -35,10 +35,10 @@ public class InlineFieldAssignmentRefactoring extends InlineFieldRefactoring {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 }

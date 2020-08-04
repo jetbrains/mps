@@ -20,23 +20,23 @@ public class RegexUtil {
   }
   public static List<SNode> collectMatchReferences(SNode enclosingNode) {
     List<SNode> matches = new ArrayList<SNode>();
-    for (SNode ruc : SNodeOperations.getNodeAncestors(enclosingNode, CONCEPTS.RegexpUsingConstruction$q_, true)) {
+    for (SNode ruc : SNodeOperations.getNodeAncestors(enclosingNode, CONCEPTS.RegexpUsingConstruction$3p, true)) {
       ListSequence.fromList(matches).addSequence(ListSequence.fromList(collectNamedParentheses(ruc)));
     }
-    for (SNode ifst : SNodeOperations.getNodeAncestors(enclosingNode, CONCEPTS.IfStatement$pi, true)) {
+    for (SNode ifst : SNodeOperations.getNodeAncestors(enclosingNode, CONCEPTS.IfStatement$Q4, true)) {
       SNode toCollect = null;
-      if (ListSequence.fromList(SNodeOperations.getNodeAncestors(enclosingNode, null, true)).contains(SLinkOperations.getTarget(ifst, LINKS.ifTrue$qLNm))) {
-        toCollect = SLinkOperations.getTarget(ifst, LINKS.condition$qL$l);
+      if (ListSequence.fromList(SNodeOperations.getNodeAncestors(enclosingNode, null, true)).contains(SLinkOperations.getTarget(ifst, LINKS.ifTrue$5Rg8))) {
+        toCollect = SLinkOperations.getTarget(ifst, LINKS.condition$5R17);
       } else {
-        for (SNode elseif : SLinkOperations.getChildren(ifst, LINKS.elsifClauses$ZQja)) {
-          if (ListSequence.fromList(SNodeOperations.getNodeAncestors(enclosingNode, null, true)).contains(SLinkOperations.getTarget(elseif, LINKS.statementList$G9pt))) {
-            toCollect = SLinkOperations.getTarget(elseif, LINKS.condition$CVsn);
+        for (SNode elseif : SLinkOperations.getChildren(ifst, LINKS.elsifClauses$EVJW)) {
+          if (ListSequence.fromList(SNodeOperations.getNodeAncestors(enclosingNode, null, true)).contains(SLinkOperations.getTarget(elseif, LINKS.statementList$neQf))) {
+            toCollect = SLinkOperations.getTarget(elseif, LINKS.condition$k0T9);
             break;
           }
         }
       }
       if (toCollect != null) {
-        for (SNode expr : SNodeOperations.getNodeDescendants(toCollect, CONCEPTS.FindMatchExpression$3_, true, new SAbstractConcept[]{})) {
+        for (SNode expr : SNodeOperations.getNodeDescendants(toCollect, CONCEPTS.FindMatchExpression$Gp, true, new SAbstractConcept[]{})) {
           ListSequence.fromList(matches).addSequence(ListSequence.fromList(collectNamedParentheses(expr)));
         }
       }
@@ -44,26 +44,26 @@ public class RegexUtil {
     return matches;
   }
   public static SNode findRegexpUsingConstructionFor(SNode ref) {
-    SNode parens = SLinkOperations.getTarget(ref, LINKS.match$urIF);
-    SNode ruc = SNodeOperations.getNodeAncestor(parens, CONCEPTS.RegexpUsingConstruction$q_, false, false);
+    SNode parens = SLinkOperations.getTarget(ref, LINKS.match$hTnv);
+    SNode ruc = SNodeOperations.getNodeAncestor(parens, CONCEPTS.RegexpUsingConstruction$3p, false, false);
     if (ruc != null) {
       return ruc;
     }
 
-    SNode dcl = SNodeOperations.getNodeAncestor(parens, CONCEPTS.RegexpDeclaration$tP, false, false);
+    SNode dcl = SNodeOperations.getNodeAncestor(parens, CONCEPTS.RegexpDeclaration$6D, false, false);
     if (dcl != null) {
-      for (SNode parentRuc : SNodeOperations.getNodeAncestors(ref, CONCEPTS.RegexpUsingConstruction$q_, false)) {
-        for (SNode regref : SNodeOperations.getNodeDescendants(parentRuc, CONCEPTS.RegexpDeclarationReferenceRegexp$8P, false, new SAbstractConcept[]{})) {
-          if (SLinkOperations.getTarget(regref, LINKS.regexp$_0Rc) == dcl) {
+      for (SNode parentRuc : SNodeOperations.getNodeAncestors(ref, CONCEPTS.RegexpUsingConstruction$3p, false)) {
+        for (SNode regref : SNodeOperations.getNodeDescendants(parentRuc, CONCEPTS.RegexpDeclarationReferenceRegexp$LD, false, new SAbstractConcept[]{})) {
+          if (SLinkOperations.getTarget(regref, LINKS.regexp$ouw0) == dcl) {
             return parentRuc;
           }
         }
       }
     }
 
-    for (SNode ifst : SNodeOperations.getNodeAncestors(ref, CONCEPTS.IfStatement$pi, true)) {
-      for (SNode expr : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(ifst, LINKS.condition$qL$l), CONCEPTS.FindMatchExpression$3_, true, new SAbstractConcept[]{})) {
-        if (ListSequence.fromList(collectNamedParentheses(expr)).contains(SLinkOperations.getTarget(ref, LINKS.match$urIF))) {
+    for (SNode ifst : SNodeOperations.getNodeAncestors(ref, CONCEPTS.IfStatement$Q4, true)) {
+      for (SNode expr : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(ifst, LINKS.condition$5R17), CONCEPTS.FindMatchExpression$Gp, true, new SAbstractConcept[]{})) {
+        if (ListSequence.fromList(collectNamedParentheses(expr)).contains(SLinkOperations.getTarget(ref, LINKS.match$hTnv))) {
           return expr;
         }
       }
@@ -81,41 +81,41 @@ public class RegexUtil {
     }
     ListSequence.fromList(seen).addElement(node);
 
-    for (SNode ref : SNodeOperations.getNodeDescendants(node, CONCEPTS.RegexpDeclarationReferenceRegexp$8P, false, new SAbstractConcept[]{})) {
-      if (SLinkOperations.getTarget(ref, LINKS.regexp$_0Rc) != null) {
-        collectNamedParenthesesInternal(SLinkOperations.getTarget(ref, LINKS.regexp$_0Rc), seen, found);
+    for (SNode ref : SNodeOperations.getNodeDescendants(node, CONCEPTS.RegexpDeclarationReferenceRegexp$LD, false, new SAbstractConcept[]{})) {
+      if (SLinkOperations.getTarget(ref, LINKS.regexp$ouw0) != null) {
+        collectNamedParenthesesInternal(SLinkOperations.getTarget(ref, LINKS.regexp$ouw0), seen, found);
       }
     }
-    for (SNode mpe : SNodeOperations.getNodeDescendants(node, CONCEPTS.MatchParensRegexp$1m, false, new SAbstractConcept[]{})) {
+    for (SNode mpe : SNodeOperations.getNodeDescendants(node, CONCEPTS.MatchParensRegexp$Ea, false, new SAbstractConcept[]{})) {
       ListSequence.fromList(found).addElement(mpe);
     }
   }
   public static SNode getRegexpIfContainer(SNode n) {
-    SNode container = SNodeOperations.getNodeAncestor(n, CONCEPTS.Statement$ok, false, false);
-    if ((container != null) && (SNodeOperations.getParent(container) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(container), CONCEPTS.StatementList$TN) && SNodeOperations.isInstanceOf(container, CONCEPTS.IfStatement$pi)) {
-      return SNodeOperations.cast(container, CONCEPTS.IfStatement$pi);
+    SNode container = SNodeOperations.getNodeAncestor(n, CONCEPTS.Statement$P6, false, false);
+    if ((container != null) && (SNodeOperations.getParent(container) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(container), CONCEPTS.StatementList$m_) && SNodeOperations.isInstanceOf(container, CONCEPTS.IfStatement$Q4)) {
+      return SNodeOperations.cast(container, CONCEPTS.IfStatement$Q4);
     }
     return null;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept RegexpUsingConstruction$q_ = MetaAdapterFactory.getInterfaceConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpUsingConstruction");
-    /*package*/ static final SConcept FindMatchExpression$3_ = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, "jetbrains.mps.baseLanguage.regexp.structure.FindMatchExpression");
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept RegexpDeclaration$tP = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclaration");
-    /*package*/ static final SConcept RegexpDeclarationReferenceRegexp$8P = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclarationReferenceRegexp");
-    /*package*/ static final SConcept MatchParensRegexp$1m = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SInterfaceConcept RegexpUsingConstruction$3p = MetaAdapterFactory.getInterfaceConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ecbc07aL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpUsingConstruction");
+    /*package*/ static final SConcept FindMatchExpression$Gp = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, "jetbrains.mps.baseLanguage.regexp.structure.FindMatchExpression");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept RegexpDeclaration$6D = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclaration");
+    /*package*/ static final SConcept RegexpDeclarationReferenceRegexp$LD = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclarationReferenceRegexp");
+    /*package*/ static final SConcept MatchParensRegexp$Ea = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink elsifClauses$ZQja = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
-    /*package*/ static final SContainmentLink condition$CVsn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
-    /*package*/ static final SContainmentLink statementList$G9pt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
-    /*package*/ static final SReferenceLink match$urIF = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117987ff5eL, 0x11179881f99L, "match");
-    /*package*/ static final SReferenceLink regexp$_0Rc = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
+    /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink elsifClauses$EVJW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
+    /*package*/ static final SContainmentLink condition$k0T9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
+    /*package*/ static final SContainmentLink statementList$neQf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
+    /*package*/ static final SReferenceLink match$hTnv = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117987ff5eL, 0x11179881f99L, "match");
+    /*package*/ static final SReferenceLink regexp$ouw0 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
   }
 }

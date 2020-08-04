@@ -25,8 +25,8 @@
       <node id="9152904044274469613" at="34,0,35,22" concept="5" />
       <node id="1227128029536583056" at="39,128,40,102" concept="5" />
       <node id="9152904044274469613" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="9152904044274469613" at="45,0,46,0" concept="7" trace="TextMacro$9U" />
-      <node id="9152904044274469613" at="46,0,47,0" concept="7" trace="XmlLiteral$XX" />
+      <node id="9152904044274469613" at="45,0,46,0" concept="7" trace="TextMacro$gT" />
+      <node id="9152904044274469613" at="46,0,47,0" concept="7" trace="XmlLiteral$4W" />
       <node id="9152904044274469613" at="20,0,23,0" concept="0" trace="TextMacro_Constraints#()V" />
       <node id="9152904044274469613" at="30,0,33,9" concept="2" />
       <node id="9152904044274469613" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -67,8 +67,8 @@
       <node id="9152904044274518160" at="34,0,35,22" concept="5" />
       <node id="1227128029536583067" at="39,128,40,102" concept="5" />
       <node id="9152904044274518160" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="9152904044274518160" at="45,0,46,0" concept="7" trace="ElementMacro$N_" />
-      <node id="9152904044274518160" at="46,0,47,0" concept="7" trace="XmlLiteral$XX" />
+      <node id="9152904044274518160" at="45,0,46,0" concept="7" trace="ElementMacro$U$" />
+      <node id="9152904044274518160" at="46,0,47,0" concept="7" trace="XmlLiteral$4W" />
       <node id="9152904044274518160" at="20,0,23,0" concept="0" trace="ElementMacro_Constraints#()V" />
       <node id="9152904044274518160" at="30,0,33,9" concept="2" />
       <node id="9152904044274518160" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

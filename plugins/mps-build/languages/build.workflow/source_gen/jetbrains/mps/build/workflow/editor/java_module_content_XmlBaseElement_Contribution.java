@@ -59,7 +59,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
   public class SMP_Group_fc12n3_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BwfJavaModule$KR) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BwfFileSet$Db) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BwfJavaClassPath$EP);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BwfJavaModule$gv) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BwfFileSet$8N) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BwfJavaClassPath$at);
     }
     @NotNull
     @Override
@@ -75,7 +75,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0(), CONCEPTS.XmlElement$Pm));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0(), CONCEPTS.XmlElement$fP));
     }
     private class SMP_Param_fc12n3_a0 extends ParameterizedMenuPart<String, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -132,7 +132,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.XmlElement$Pm, context);
+            super(CONCEPTS.XmlElement$fP, context);
             _context = context;
           }
 
@@ -143,9 +143,9 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode res = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.XmlElement$Pm);
-            SPropertyOperations.assign(res, PROPS.tagName$60jo, myParameterObject);
-            SPropertyOperations.assign(res, PROPS.shortEmptyNotation$HKi0, true);
+            SNode res = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.XmlElement$fP);
+            SPropertyOperations.assign(res, PROPS.tagName$ZoHR, myParameterObject);
+            SPropertyOperations.assign(res, PROPS.shortEmptyNotation$B8Gv, true);
             return res;
           }
 
@@ -155,7 +155,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.XmlElement$Pm, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.XmlElement$fP, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -179,14 +179,14 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfJavaClassPath$EP = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath");
-    /*package*/ static final SConcept BwfJavaModule$KR = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule");
-    /*package*/ static final SConcept BwfFileSet$Db = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, "jetbrains.mps.build.workflow.structure.BwfFileSet");
-    /*package*/ static final SConcept XmlElement$Pm = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
+    /*package*/ static final SConcept BwfJavaClassPath$at = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, "jetbrains.mps.build.workflow.structure.BwfJavaClassPath");
+    /*package*/ static final SConcept BwfJavaModule$gv = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, "jetbrains.mps.build.workflow.structure.BwfJavaModule");
+    /*package*/ static final SConcept BwfFileSet$8N = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, "jetbrains.mps.build.workflow.structure.BwfFileSet");
+    /*package*/ static final SConcept XmlElement$fP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
-    /*package*/ static final SProperty shortEmptyNotation$HKi0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
+    /*package*/ static final SProperty tagName$ZoHR = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty shortEmptyNotation$B8Gv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
   }
 }

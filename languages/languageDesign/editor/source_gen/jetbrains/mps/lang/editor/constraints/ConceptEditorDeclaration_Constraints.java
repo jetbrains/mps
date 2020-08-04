@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescriptor {
   public ConceptEditorDeclaration_Constraints() {
-    super(CONCEPTS.ConceptEditorDeclaration$s6);
+    super(CONCEPTS.ConceptEditorDeclaration$BH);
   }
 
   @Override
@@ -50,7 +50,7 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -58,9 +58,9 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
     }
     @Override
     public Object getValue(SNode node) {
-      String editorName = SPropertyOperations.getString(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(node), PROPS.name$lA7v);
-      for (SNode contextHint : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.contextHints$gfCW))) {
-        editorName += "_" + SPropertyOperations.getString(SLinkOperations.getTarget(contextHint, LINKS.hint$AS0G), PROPS.name$lA7v);
+      String editorName = SPropertyOperations.getString(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(node), PROPS.name$MnvL);
+      for (SNode contextHint : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.contextHints$kxOz))) {
+        editorName += "_" + SPropertyOperations.getString(SLinkOperations.getTarget(contextHint, LINKS.hint$Facj), PROPS.name$MnvL);
       }
       return editorName + "_Editor";
     }
@@ -68,7 +68,7 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
   private static boolean staticCanBeARoot(SModel model) {
@@ -77,15 +77,15 @@ public class ConceptEditorDeclaration_Constraints extends BaseConstraintsDescrip
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "1227090187426");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptEditorDeclaration$s6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
+    /*package*/ static final SConcept ConceptEditorDeclaration$BH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink hint$AS0G = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint");
-    /*package*/ static final SContainmentLink contextHints$gfCW = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints");
+    /*package*/ static final SReferenceLink hint$Facj = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5eadaecad41188dcL, 0x527faacef66db74dL, "hint");
+    /*package*/ static final SContainmentLink contextHints$kxOz = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, 0x240ba2de0c6c0b6eL, "contextHints");
   }
 }

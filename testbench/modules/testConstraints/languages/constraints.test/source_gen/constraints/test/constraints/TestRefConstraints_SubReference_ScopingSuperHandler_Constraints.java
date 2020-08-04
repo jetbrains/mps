@@ -29,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TestRefConstraints_SubReference_ScopingSuperHandler_Constraints extends BaseConstraintsDescriptor {
   public TestRefConstraints_SubReference_ScopingSuperHandler_Constraints() {
-    super(CONCEPTS.TestRefConstraints_SubReference_ScopingSuperHandler$PW);
+    super(CONCEPTS.TestRefConstraints_SubReference_ScopingSuperHandler$RU);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$ndby, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$Ukdw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,9 +49,9 @@ public class TestRefConstraints_SubReference_ScopingSuperHandler_Constraints ext
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Ur, true, false), LINKS.targets$mtUz)).where(new IWhereFilter<SNode>() {
+            return ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Wp, true, false), LINKS.targets$T$Wx)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SPropertyOperations.getBoolean(it, PROPS.inScope$iPcw);
+                return SPropertyOperations.getBoolean(it, PROPS.inScope$PWeu);
               }
             }));
           }
@@ -65,16 +65,16 @@ public class TestRefConstraints_SubReference_ScopingSuperHandler_Constraints ext
   private static final SNodePointer breakingNode_mav7ye_a0a0a0a0a1a0a0a0c = new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "2614955748380029706");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestRefConstraints_SubReference_ScopingSuperHandler$PW = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc08eL, "constraints.test.structure.TestRefConstraints_SubReference_ScopingSuperHandler");
-    /*package*/ static final SConcept TestRefConstraints_Container$Ur = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, "constraints.test.structure.TestRefConstraints_Container");
+    /*package*/ static final SConcept TestRefConstraints_SubReference_ScopingSuperHandler$RU = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc08eL, "constraints.test.structure.TestRefConstraints_SubReference_ScopingSuperHandler");
+    /*package*/ static final SConcept TestRefConstraints_Container$Wp = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, "constraints.test.structure.TestRefConstraints_Container");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$ndby = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target");
-    /*package*/ static final SContainmentLink targets$mtUz = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
+    /*package*/ static final SReferenceLink target$Ukdw = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target");
+    /*package*/ static final SContainmentLink targets$T$Wx = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty inScope$iPcw = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c80L, "inScope");
+    /*package*/ static final SProperty inScope$PWeu = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c80L, "inScope");
   }
 }

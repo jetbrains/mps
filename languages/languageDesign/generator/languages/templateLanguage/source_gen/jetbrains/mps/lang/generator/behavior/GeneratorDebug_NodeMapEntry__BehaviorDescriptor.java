@@ -33,7 +33,7 @@ public final class GeneratorDebug_NodeMapEntry__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.inputNode$qf_h)) + " -> " + ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.outputNode$mFty)).count();
+    return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.inputNode$NcgX)) + " -> " + ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.outputNode$JC9e)).count();
   }
 
   /*package*/ GeneratorDebug_NodeMapEntry__BehaviorDescriptor() {
@@ -83,7 +83,7 @@ public final class GeneratorDebug_NodeMapEntry__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink outputNode$mFty = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806d5L, "outputNode");
-    /*package*/ static final SContainmentLink inputNode$qf_h = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x509c00a99889f77eL, "inputNode");
+    /*package*/ static final SContainmentLink outputNode$JC9e = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806d5L, "outputNode");
+    /*package*/ static final SContainmentLink inputNode$NcgX = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x509c00a99889f77eL, "inputNode");
   }
 }

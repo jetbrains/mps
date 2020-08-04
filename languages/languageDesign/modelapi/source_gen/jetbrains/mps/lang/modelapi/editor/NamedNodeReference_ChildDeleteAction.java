@@ -27,7 +27,7 @@ public class NamedNodeReference_ChildDeleteAction {
           return;
         }
 
-        SLinkOperations.setTarget(node, LINKS.child$ldRY, null);
+        SLinkOperations.setTarget(node, LINKS.child$fAzx, null);
       }
 
     };
@@ -75,6 +75,6 @@ public class NamedNodeReference_ChildDeleteAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink child$ldRY = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402fbcL, "child");
+    /*package*/ static final SContainmentLink child$fAzx = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402fbcL, "child");
   }
 }

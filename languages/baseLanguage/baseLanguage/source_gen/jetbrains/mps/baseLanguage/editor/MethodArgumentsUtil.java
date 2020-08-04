@@ -15,24 +15,24 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class MethodArgumentsUtil {
   public static SNode getMethodArgumentAncestor(SNode innerExpression) {
     List<SNode> ancestors = SNodeOperations.getNodeAncestors(innerExpression, null, true);
-    SNode methodCall = Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(ancestors).skip(1), CONCEPTS.IMethodCall$ln)).first();
+    SNode methodCall = Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(ancestors).skip(1), CONCEPTS.IMethodCall$M9)).first();
     if (methodCall == null) {
       return null;
     }
     SNode lastAncestor = ListSequence.fromList(ancestors).getElement(ListSequence.fromList(ancestors).indexOf(methodCall) - 1);
-    if (SNodeOperations.hasRole(lastAncestor, LINKS.actualArgument$ItKJ)) {
-      return SNodeOperations.cast(lastAncestor, CONCEPTS.Expression$TP);
+    if (SNodeOperations.hasRole(lastAncestor, LINKS.actualArgument$pzdx)) {
+      return SNodeOperations.cast(lastAncestor, CONCEPTS.Expression$mB);
     } else {
       return null;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

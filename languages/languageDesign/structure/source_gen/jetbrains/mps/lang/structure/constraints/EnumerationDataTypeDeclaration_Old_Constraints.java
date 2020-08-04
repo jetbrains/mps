@@ -37,7 +37,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstraintsDescriptor {
   public EnumerationDataTypeDeclaration_Old_Constraints() {
-    super(CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll);
+    super(CONCEPTS.EnumerationDataTypeDeclaration_Old$B8);
   }
 
   @Override
@@ -57,7 +57,7 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
   }
   public static class HasNoDefaultMember_Property extends BasePropertyConstraintsDescriptor {
     public HasNoDefaultMember_Property(ConstraintsDescriptor container) {
-      super(PROPS.hasNoDefaultMember$M06k, container);
+      super(PROPS.hasNoDefaultMember$e7W7, container);
     }
     @Override
     public boolean hasOwnSetter() {
@@ -68,21 +68,21 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
       staticSetPropertyValue(node, SPropertyOperations.castBoolean(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, boolean propertyValue) {
-      SPropertyOperations.assign(node, PROPS.hasNoDefaultMember$M06k, propertyValue);
+      SPropertyOperations.assign(node, PROPS.hasNoDefaultMember$e7W7, propertyValue);
       if (propertyValue == true) {
-        SLinkOperations.setTarget(node, LINKS.defaultMember$szLC, null);
+        SLinkOperations.setTarget(node, LINKS.defaultMember$SFBr, null);
       }
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.hasNoDefaultMember$M06k, new HasNoDefaultMember_Property(this));
+    properties.put(PROPS.hasNoDefaultMember$e7W7, new HasNoDefaultMember_Property(this));
     return properties;
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.defaultMember$szLC, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.defaultMember$SFBr, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -114,14 +114,14 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
   private static final SNodePointer breakingNode_njbcyv_a0a0a0a0a1a0a0a0f = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805030");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$Ll = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
+    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$B8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty hasNoDefaultMember$M06k = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
+    /*package*/ static final SProperty hasNoDefaultMember$e7W7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink defaultMember$szLC = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
+    /*package*/ static final SReferenceLink defaultMember$SFBr = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
   }
 }

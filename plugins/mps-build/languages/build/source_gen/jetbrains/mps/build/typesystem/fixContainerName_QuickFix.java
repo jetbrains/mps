@@ -23,32 +23,32 @@ public class fixContainerName_QuickFix extends QuickFix_Runtime {
     return "Change extension to " + ((String) fixContainerName_QuickFix.this.getField("newExtension")[0]);
   }
   public void execute(SNode node) {
-    SNode containerName = SNodeOperations.cast(node, CONCEPTS.BuildString$CM);
-    SNode last = ListSequence.fromList(SLinkOperations.getChildren(containerName, LINKS.parts$j33t)).last();
-    if (SNodeOperations.isInstanceOf(last, CONCEPTS.BuildTextStringPart$xk)) {
-      SNode text = SNodeOperations.cast(last, CONCEPTS.BuildTextStringPart$xk);
-      int dot = SPropertyOperations.getString(text, PROPS.text$aaWn).indexOf('.');
-      SPropertyOperations.assign(text, PROPS.text$aaWn, ((dot >= 0 ? SPropertyOperations.getString(text, PROPS.text$aaWn).substring(0, dot) : SPropertyOperations.getString(text, PROPS.text$aaWn))) + ((String) fixContainerName_QuickFix.this.getField("newExtension")[0]));
+    SNode containerName = SNodeOperations.cast(node, CONCEPTS.BuildString$bl);
+    SNode last = ListSequence.fromList(SLinkOperations.getChildren(containerName, LINKS.parts$uJA0)).last();
+    if (SNodeOperations.isInstanceOf(last, CONCEPTS.BuildTextStringPart$3R)) {
+      SNode text = SNodeOperations.cast(last, CONCEPTS.BuildTextStringPart$3R);
+      int dot = SPropertyOperations.getString(text, PROPS.text$lRuU).indexOf('.');
+      SPropertyOperations.assign(text, PROPS.text$lRuU, ((dot >= 0 ? SPropertyOperations.getString(text, PROPS.text$lRuU).substring(0, dot) : SPropertyOperations.getString(text, PROPS.text$lRuU))) + ((String) fixContainerName_QuickFix.this.getField("newExtension")[0]));
     } else {
-      ListSequence.fromList(SLinkOperations.getChildren(containerName, LINKS.parts$j33t)).addElement(createBuildTextStringPart_uzundk_a0a0a0c0c(((String) fixContainerName_QuickFix.this.getField("newExtension")[0])));
+      ListSequence.fromList(SLinkOperations.getChildren(containerName, LINKS.parts$uJA0)).addElement(createBuildTextStringPart_uzundk_a0a0a0c0c(((String) fixContainerName_QuickFix.this.getField("newExtension")[0])));
     }
   }
   private static SNode createBuildTextStringPart_uzundk_a0a0a0c0c(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildTextStringPart$xk);
-    rootBuilder1.setProperty(PROPS.text$aaWn, PROPS.text$aaWn.getType().toString(p0));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildTextStringPart$3R);
+    rootBuilder1.setProperty(PROPS.text$lRuU, PROPS.text$lRuU.getType().toString(p0));
     return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildString$CM = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, "jetbrains.mps.build.structure.BuildString");
-    /*package*/ static final SConcept BuildTextStringPart$xk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
+    /*package*/ static final SConcept BuildString$bl = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, "jetbrains.mps.build.structure.BuildString");
+    /*package*/ static final SConcept BuildTextStringPart$3R = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$j33t = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
+    /*package*/ static final SContainmentLink parts$uJA0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty text$lRuU = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 }

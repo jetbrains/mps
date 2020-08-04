@@ -32,7 +32,7 @@ public final class CellModel_HierarchycalTable__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static SNode getContainingConceptDeclaration_id5p3TFWLvETA(@NotNull SNode __thisNode__) {
-    SNode editorComponent = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BaseEditorComponent$Sy, false, false);
+    SNode editorComponent = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BaseEditorComponent$49, false, false);
     return (SNode) AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editorComponent);
   }
 
@@ -83,6 +83,6 @@ public final class CellModel_HierarchycalTable__BehaviorDescriptor extends BaseB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseEditorComponent$Sy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, "jetbrains.mps.lang.editor.structure.BaseEditorComponent");
+    /*package*/ static final SConcept BaseEditorComponent$49 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, "jetbrains.mps.lang.editor.structure.BaseEditorComponent");
   }
 }

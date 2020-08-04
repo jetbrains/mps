@@ -21,7 +21,7 @@ public class Money_extends_java_lang_Object_SubtypingRule extends SubtypingRule_
     return _quotation_createNode_ni8w3q_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MoneyType$DO;
+    return CONCEPTS.MoneyType$Rd;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class Money_extends_java_lang_Object_SubtypingRule extends SubtypingRule_
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MoneyType$DO = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe55913516aL, "org.jetbrains.mps.samples.Money.structure.MoneyType");
+    /*package*/ static final SConcept MoneyType$Rd = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe55913516aL, "org.jetbrains.mps.samples.Money.structure.MoneyType");
   }
 }

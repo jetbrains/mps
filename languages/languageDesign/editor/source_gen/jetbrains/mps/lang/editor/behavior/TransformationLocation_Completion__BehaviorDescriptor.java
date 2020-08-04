@@ -33,7 +33,7 @@ public final class TransformationLocation_Completion__BehaviorDescriptor extends
   }
 
   /*package*/ static Collection<SConcept> getAvailableFeatures_id1A4kJjlZ$rL(@NotNull SNode __thisNode__) {
-    return CollectionSequence.fromCollectionAndArray(new HashSet<SConcept>(), CONCEPTS.TransformationFeature_Icon$xS, CONCEPTS.TransformationFeature_ActionType$Ek, CONCEPTS.TransformationFeature_DescriptionText$V);
+    return CollectionSequence.fromCollectionAndArray(new HashSet<SConcept>(), CONCEPTS.TransformationFeature_Icon$Hv, CONCEPTS.TransformationFeature_ActionType$PV, CONCEPTS.TransformationFeature_DescriptionText$cy);
   }
 
   /*package*/ TransformationLocation_Completion__BehaviorDescriptor() {
@@ -83,8 +83,8 @@ public final class TransformationLocation_Completion__BehaviorDescriptor extends
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationFeature_Icon$xS = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x198452f4d5ee6651L, "jetbrains.mps.lang.editor.structure.TransformationFeature_Icon");
-    /*package*/ static final SConcept TransformationFeature_ActionType$Ek = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x198452f4d5eea7f2L, "jetbrains.mps.lang.editor.structure.TransformationFeature_ActionType");
-    /*package*/ static final SConcept TransformationFeature_DescriptionText$V = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x198452f4d5ee9587L, "jetbrains.mps.lang.editor.structure.TransformationFeature_DescriptionText");
+    /*package*/ static final SConcept TransformationFeature_Icon$Hv = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x198452f4d5ee6651L, "jetbrains.mps.lang.editor.structure.TransformationFeature_Icon");
+    /*package*/ static final SConcept TransformationFeature_ActionType$PV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x198452f4d5eea7f2L, "jetbrains.mps.lang.editor.structure.TransformationFeature_ActionType");
+    /*package*/ static final SConcept TransformationFeature_DescriptionText$cy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x198452f4d5ee9587L, "jetbrains.mps.lang.editor.structure.TransformationFeature_DescriptionText");
   }
 }

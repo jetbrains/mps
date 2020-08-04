@@ -25,7 +25,7 @@ public class supertypesOf_RequestType_SubtypingRule extends SubtypingRule_Runtim
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RequestType$Ul;
+    return CONCEPTS.RequestType$zX;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,6 +45,6 @@ public class supertypesOf_RequestType_SubtypingRule extends SubtypingRule_Runtim
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequestType$Ul = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x878f56dbf94c377L, "jetbrains.mps.ide.httpsupport.structure.RequestType");
+    /*package*/ static final SConcept RequestType$zX = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x878f56dbf94c377L, "jetbrains.mps.ide.httpsupport.structure.RequestType");
   }
 }

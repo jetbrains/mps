@@ -146,14 +146,14 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
         public void execute(@NotNull String pattern) {
           SNode conjuction;
           if (myParameterObject.equals("and")) {
-            conjuction = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.And$hB);
+            conjuction = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.And$pu);
           } else if (myParameterObject.equals("or")) {
-            conjuction = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.Or$l6);
+            conjuction = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.Or$sX);
           } else {
             throw new IllegalArgumentException("Cannot find a match for " + myParameterObject);
           }
-          SLinkOperations.setTarget(conjuction, LINKS.right$QsXp, _context.getNode());
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(conjuction, LINKS.left$QsIo), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(conjuction, LINKS.right$uL5g, _context.getNode());
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(conjuction, LINKS.left$uKQf), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -253,8 +253,8 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
             SNodeOperations.replaceWithAnother(_context.getNode(), orNode);
             conjuction = orNode;
           }
-          SLinkOperations.setTarget(conjuction, LINKS.left$QsIo, _context.getNode());
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(conjuction, LINKS.right$QsXp), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(conjuction, LINKS.left$uKQf, _context.getNode());
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(conjuction, LINKS.right$uL5g), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -279,12 +279,12 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept And$hB = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a460aL, "jetbrains.mps.samples.KajaAndOr.structure.And");
-    /*package*/ static final SConcept Or$l6 = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46bbL, "jetbrains.mps.samples.KajaAndOr.structure.Or");
+    /*package*/ static final SConcept And$pu = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a460aL, "jetbrains.mps.samples.KajaAndOr.structure.And");
+    /*package*/ static final SConcept Or$sX = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46bbL, "jetbrains.mps.samples.KajaAndOr.structure.Or");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink right$QsXp = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460dL, "right");
-    /*package*/ static final SContainmentLink left$QsIo = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460cL, "left");
+    /*package*/ static final SContainmentLink right$uL5g = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460dL, "right");
+    /*package*/ static final SContainmentLink left$uKQf = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460cL, "left");
   }
 }

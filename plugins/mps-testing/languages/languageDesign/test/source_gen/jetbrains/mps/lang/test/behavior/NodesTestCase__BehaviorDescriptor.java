@@ -45,10 +45,10 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getTestSet_idhGB2z8L(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.testMethods$oPch))) {
+    for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.testMethods$htrK))) {
       ListSequence.fromList(result).addElement(method);
     }
-    for (SNode operation : ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.INodesTestMethod$ck, false, new SAbstractConcept[]{}))) {
+    for (SNode operation : ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.INodesTestMethod$rN, false, new SAbstractConcept[]{}))) {
       ListSequence.fromList(result).addElement(operation);
     }
     return result;
@@ -61,13 +61,13 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   }
   @Deprecated
   /*package*/ static boolean isIntentionApplicable_idhHDM9no(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    return (SNodeOperations.getNodeAncestor(node, CONCEPTS.TestNode$kc, false, false) != null);
+    return (SNodeOperations.getNodeAncestor(node, CONCEPTS.TestNode$zF, false, false) != null);
   }
   /*package*/ static String getTestBodyName_idhOw0ICJ(@NotNull SAbstractConcept __thisConcept__) {
     return "TestBody";
   }
   /*package*/ static boolean needsWriteAction_id5vTxdEzuQjU(@NotNull SNode __thisNode__) {
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.needsNoWriteAction$L_2O));
+    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.needsNoWriteAction$Edij));
   }
 
   /*package*/ NodesTestCase__BehaviorDescriptor() {
@@ -127,15 +127,15 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink testMethods$oPch = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x11b78c499b5L, "testMethods");
+    /*package*/ static final SContainmentLink testMethods$htrK = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x11b78c499b5L, "testMethods");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INodesTestMethod$ck = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod");
-    /*package*/ static final SConcept TestNode$kc = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
+    /*package*/ static final SInterfaceConcept INodesTestMethod$rN = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod");
+    /*package*/ static final SConcept TestNode$zF = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty needsNoWriteAction$L_2O = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x57f984daa37add4aL, "needsNoWriteAction");
+    /*package*/ static final SProperty needsNoWriteAction$Edij = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x57f984daa37add4aL, "needsNoWriteAction");
   }
 }

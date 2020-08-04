@@ -34,7 +34,7 @@
       <node id="2893726635884035574" at="39,30,40,234" concept="2" />
       <node id="2893726635884035574" at="40,234,41,471" concept="2" />
       <node id="2893726635884035574" at="41,471,42,24" concept="5" />
-      <node id="2893726635884034887" at="46,0,47,0" concept="6" trace="ConceptFunctionParameter_scope$Ub" />
+      <node id="2893726635884034887" at="46,0,47,0" concept="6" trace="ConceptFunctionParameter_scope$VB" />
       <node id="2893726635884034887" at="19,0,21,0" concept="1" trace="typeof_ConceptFunctionParameter_scope_InferenceRule#()V" />
       <node id="2893726635884034887" at="28,0,31,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2893726635884034887" at="31,0,34,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -92,7 +92,7 @@
       <node id="558005353046665207" at="39,30,40,234" concept="2" />
       <node id="558005353046665207" at="40,234,41,473" concept="2" />
       <node id="558005353046665207" at="41,473,42,24" concept="5" />
-      <node id="558005353046665155" at="46,0,47,0" concept="6" trace="ConceptFunctionParameter_progressMonitor$UB" />
+      <node id="558005353046665155" at="46,0,47,0" concept="6" trace="ConceptFunctionParameter_progressMonitor$W3" />
       <node id="558005353046665155" at="19,0,21,0" concept="1" trace="typeof_ConceptFunctionParameter_progressMonitor_InferenceRule#()V" />
       <node id="558005353046665155" at="28,0,31,0" concept="3" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="558005353046665155" at="31,0,34,0" concept="3" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

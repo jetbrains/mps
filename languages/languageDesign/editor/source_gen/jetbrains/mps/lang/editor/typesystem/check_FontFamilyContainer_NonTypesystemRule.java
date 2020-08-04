@@ -21,7 +21,7 @@ public class check_FontFamilyContainer_NonTypesystemRule extends AbstractNonType
   public check_FontFamilyContainer_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.family$Ugkw)) && !(FontRegistry.getInstance().getAvailableFontFamilyNames().contains(SPropertyOperations.getString(node, PROPS.family$Ugkw)))) {
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.family$Yyw7)) && !(FontRegistry.getInstance().getAvailableFontFamilyNames().contains(SPropertyOperations.getString(node, PROPS.family$Yyw7)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, "The font is not available", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "7228435049763095199", null, errorTarget);
@@ -29,7 +29,7 @@ public class check_FontFamilyContainer_NonTypesystemRule extends AbstractNonType
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.FontFamilyContainer$wD;
+    return CONCEPTS.FontFamilyContainer$Gg;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,10 +42,10 @@ public class check_FontFamilyContainer_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty family$Ugkw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64508f613f1cbac1L, 0x64508f613f1cbac2L, "family");
+    /*package*/ static final SProperty family$Yyw7 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64508f613f1cbac1L, 0x64508f613f1cbac2L, "family");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept FontFamilyContainer$wD = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64508f613f1cbac1L, "jetbrains.mps.lang.editor.structure.FontFamilyContainer");
+    /*package*/ static final SInterfaceConcept FontFamilyContainer$Gg = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64508f613f1cbac1L, "jetbrains.mps.lang.editor.structure.FontFamilyContainer");
   }
 }

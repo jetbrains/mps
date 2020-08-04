@@ -33,7 +33,7 @@ public class ImplementingConcepts_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.InterfaceConceptDeclaration$MT;
+    return CONCEPTS.InterfaceConceptDeclaration$CG;
   }
 
   @Override
@@ -51,9 +51,9 @@ public class ImplementingConcepts_Finder extends GeneratedFinder {
                   new _FunctionTypes._void_P1_E0<SNode>() {
                     public void invoke(SNode interfaceNode) {
                       SNode conceptNode = SNodeOperations.getParent(interfaceNode);
-                      if (SNodeOperations.isInstanceOf(conceptNode, CONCEPTS.ConceptDeclaration$qU)) {
+                      if (SNodeOperations.isInstanceOf(conceptNode, CONCEPTS.ConceptDeclaration$gH)) {
                         // concept implements interface case 
-                        if (SNodeOperations.hasRole(interfaceNode, LINKS.implements$2tZf)) {
+                        if (SNodeOperations.hasRole(interfaceNode, LINKS.implements$u_P2)) {
                           callback.onUsageFound(createSingleResult(conceptNode));
                           FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
                             public void onUsageFound(@NotNull SearchResult<?> searchResult) {
@@ -92,11 +92,11 @@ public class ImplementingConcepts_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SContainmentLink implements$u_P2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
   }
 }

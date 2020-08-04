@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ForEachNodeFoundClosureParameterDeclaration_Constraints extends BaseConstraintsDescriptor {
   public ForEachNodeFoundClosureParameterDeclaration_Constraints() {
-    super(CONCEPTS.ForEachNodeFoundClosureParameterDeclaration$4h);
+    super(CONCEPTS.ForEachNodeFoundClosureParameterDeclaration$PJ);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class ForEachNodeFoundClosureParameterDeclaration_Constraints extends Bas
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.OnEachFoundNodeCallback$GA);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.OnEachFoundNodeCallback$u4);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590358(jetbrains.mps.lang.findUsages.constraints)", "1237139122105329692");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ForEachNodeFoundClosureParameterDeclaration$4h = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x112b337a16d39f72L, "jetbrains.mps.lang.findUsages.structure.ForEachNodeFoundClosureParameterDeclaration");
-    /*package*/ static final SConcept OnEachFoundNodeCallback$GA = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x112b337a16caa96eL, "jetbrains.mps.lang.findUsages.structure.OnEachFoundNodeCallback");
+    /*package*/ static final SConcept ForEachNodeFoundClosureParameterDeclaration$PJ = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x112b337a16d39f72L, "jetbrains.mps.lang.findUsages.structure.ForEachNodeFoundClosureParameterDeclaration");
+    /*package*/ static final SConcept OnEachFoundNodeCallback$u4 = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x112b337a16caa96eL, "jetbrains.mps.lang.findUsages.structure.OnEachFoundNodeCallback");
   }
 }

@@ -67,7 +67,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
   public class SMP_Group_qp9nsj_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return _context.getLink() == LINKS.addMenu_parameterizedSubstitute$TiF0;
+      return _context.getLink() == LINKS.addMenu_parameterizedSubstitute$xQVP;
     }
     @NotNull
     @Override
@@ -83,7 +83,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_qp9nsj_a.SMP_Param_qp9nsj_a0(), CONCEPTS.ActionTestAbstractChild$QA));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_qp9nsj_a.SMP_Param_qp9nsj_a0(), CONCEPTS.ActionTestAbstractChild$7r));
     }
     private class SMP_Param_qp9nsj_a0 extends ParameterizedMenuPart<SConcept, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -112,9 +112,9 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
         tmpVar = tmpVar && _context.getEditorContext() != null;
         tmpVar = tmpVar && _context.getModel() != null;
 
-        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestAbstractChild$QA, _context.getModel())).where(new IWhereFilter<SConcept>() {
+        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestAbstractChild$7r, _context.getModel())).where(new IWhereFilter<SConcept>() {
           public boolean accept(SConcept it) {
-            return !(Objects.equals(it, CONCEPTS.ActionTestAbstractChild$QA));
+            return !(Objects.equals(it, CONCEPTS.ActionTestAbstractChild$7r));
           }
         });
       }
@@ -151,7 +151,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.ActionTestAbstractChild$QA, context);
+            super(CONCEPTS.ActionTestAbstractChild$7r, context);
             _context = context;
           }
 
@@ -171,8 +171,8 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
             tmpVar = tmpVar && _context.getModel() != null;
 
             SNode result = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(myParameterObject));
-            if (Objects.equals(myParameterObject, CONCEPTS.ActionTestChild1$O9)) {
-              SLinkOperations.addNewChild(SNodeOperations.cast(result, CONCEPTS.ActionTestChild1$O9), LINKS.child1$dQ8b, CONCEPTS.ActionTestChild1Child$uv);
+            if (Objects.equals(myParameterObject, CONCEPTS.ActionTestChild1$4Y)) {
+              SLinkOperations.addNewChild(SNodeOperations.cast(result, CONCEPTS.ActionTestChild1$4Y), LINKS.child1$Qqp0, CONCEPTS.ActionTestChild1Child$Jk);
             }
             return result;
           }
@@ -183,7 +183,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.ActionTestAbstractChild$QA, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.ActionTestAbstractChild$7r, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -222,7 +222,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
             tmpVar = tmpVar && _context.getLink() != null;
             tmpVar = tmpVar && _context.getModel() != null;
 
-            boolean useNodeType = Objects.equals(myParameterObject, CONCEPTS.ActionTestChild1SubConcept$5C);
+            boolean useNodeType = Objects.equals(myParameterObject, CONCEPTS.ActionTestChild1SubConcept$mt);
             return (useNodeType ? _quotation_createNode_qp9nsj_a0j0a2a0a_0() : _quotation_createNode_qp9nsj_a0j0a2a0a((SNode) SNodeOperations.asNode(myParameterObject)));
           }
           @Nullable
@@ -249,7 +249,7 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
             tmpVar = tmpVar && _context.getModel() != null;
             tmpVar = tmpVar && _context.getEditorContext() != null;
 
-            if (Objects.equals(myParameterObject, CONCEPTS.ActionTestChild2$vZ)) {
+            if (Objects.equals(myParameterObject, CONCEPTS.ActionTestChild2$KO)) {
               // selecting a custom cell 
               _context.getEditorContext().flushEvents();
               EditorCell createdNodeCell = _context.getEditorContext().getEditorComponent().findNodeCell(createdNode);
@@ -262,9 +262,9 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
                 return;
               }
             }
-            if (Objects.equals(myParameterObject, CONCEPTS.ActionTestChild1$O9)) {
+            if (Objects.equals(myParameterObject, CONCEPTS.ActionTestChild1$4Y)) {
               // returning node to select 
-              SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(createdNode, CONCEPTS.ActionTestChild1$O9), LINKS.child1$dQ8b)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+              SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(createdNode, CONCEPTS.ActionTestChild1$4Y), LINKS.child1$Qqp0)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
               return;
             }
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -289,15 +289,15 @@ public class AddMenuPart_ParameterizedSubstitute extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink addMenu_parameterizedSubstitute$TiF0 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2d9c6017d86af8c9L, "addMenu_parameterizedSubstitute");
-    /*package*/ static final SContainmentLink child1$dQ8b = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, 0x7f805f0c2dd46343L, "child1");
+    /*package*/ static final SContainmentLink addMenu_parameterizedSubstitute$xQVP = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2d9c6017d86af8c9L, "addMenu_parameterizedSubstitute");
+    /*package*/ static final SContainmentLink child1$Qqp0 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, 0x7f805f0c2dd46343L, "child1");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestAbstractChild$QA = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671a9caL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestAbstractChild");
-    /*package*/ static final SConcept ActionTestChild1$O9 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1");
-    /*package*/ static final SConcept ActionTestChild1Child$uv = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x7f805f0c2dd45b4eL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1Child");
-    /*package*/ static final SConcept ActionTestChild1SubConcept$5C = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c99ba4dd5ff2533L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1SubConcept");
-    /*package*/ static final SConcept ActionTestChild2$vZ = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1672224dL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild2");
+    /*package*/ static final SConcept ActionTestAbstractChild$7r = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671a9caL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestAbstractChild");
+    /*package*/ static final SConcept ActionTestChild1$4Y = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e167220f9L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1");
+    /*package*/ static final SConcept ActionTestChild1Child$Jk = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x7f805f0c2dd45b4eL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1Child");
+    /*package*/ static final SConcept ActionTestChild1SubConcept$mt = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c99ba4dd5ff2533L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1SubConcept");
+    /*package*/ static final SConcept ActionTestChild2$KO = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1672224dL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild2");
   }
 }

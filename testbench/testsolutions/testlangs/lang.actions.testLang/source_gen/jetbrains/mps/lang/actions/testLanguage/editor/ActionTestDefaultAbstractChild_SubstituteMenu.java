@@ -61,17 +61,17 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
       super.initialize(_context);
       condition = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.removeDefaultsPart$kq2t);
+          return Objects.equals(_context.getLink(), LINKS.removeDefaultsPart$WYji);
         }
       }.compute();
       condition1 = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.removeByConditionPart$bUoQ);
+          return Objects.equals(_context.getLink(), LINKS.removeByConditionPart$OuDF);
         }
       }.compute();
       condition2 = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.removePart$j2cJ);
+          return Objects.equals(_context.getLink(), LINKS.removePart$VAt$);
         }
       }.compute();
     }
@@ -112,7 +112,7 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
         return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.actions.testLanguage.editor.RemoveDefaultsPart");
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return CONCEPTS.ActionTestDefaultAbstractChild$jp;
+        return CONCEPTS.ActionTestDefaultAbstractChild$$e;
       }
     }
     public class SMP_Include_c1nwm3_b0 extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -136,7 +136,7 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
         return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.actions.testLanguage.editor.RemoveByConditionPart");
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return CONCEPTS.ActionTestDefaultAbstractChild$jp;
+        return CONCEPTS.ActionTestDefaultAbstractChild$$e;
       }
     }
     public class SMP_Include_c1nwm3_c0 extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -160,7 +160,7 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
         return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.actions.testLanguage.editor.RemovePart");
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return CONCEPTS.ActionTestDefaultAbstractChild$jp;
+        return CONCEPTS.ActionTestDefaultAbstractChild$$e;
       }
     }
     public class SMP_Group_c1nwm3_d0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
@@ -186,7 +186,7 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
       }
       public class SMP_Subconcepts_c1nwm3_a3a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ActionTestDefaultAbstractChild$jp);
+          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ActionTestDefaultAbstractChild$$e);
         }
         @NotNull
         @Override
@@ -209,12 +209,12 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink removeDefaultsPart$kq2t = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc257b7aaaL, "removeDefaultsPart");
-    /*package*/ static final SContainmentLink removeByConditionPart$bUoQ = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc2552e60aL, "removeByConditionPart");
-    /*package*/ static final SContainmentLink removePart$j2cJ = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc25762f5fL, "removePart");
+    /*package*/ static final SContainmentLink removeDefaultsPart$WYji = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc257b7aaaL, "removeDefaultsPart");
+    /*package*/ static final SContainmentLink removeByConditionPart$OuDF = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc2552e60aL, "removeByConditionPart");
+    /*package*/ static final SContainmentLink removePart$VAt$ = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x73dfe0fc25762f5fL, "removePart");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestDefaultAbstractChild$jp = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x73dfe0fc25514b8dL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestDefaultAbstractChild");
+    /*package*/ static final SConcept ActionTestDefaultAbstractChild$$e = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x73dfe0fc25514b8dL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestDefaultAbstractChild");
   }
 }

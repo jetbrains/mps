@@ -23,7 +23,7 @@ public class check_TypesystemIntentionWithoutDescription_NonTypesystemRule exten
   public check_TypesystemIntentionWithoutDescription_NonTypesystemRule() {
   }
   public void applyRule(final SNode typesystemIntention, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SPropertyOperations.getBoolean(typesystemIntention, PROPS.applyImmediately$veFS)) && (SLinkOperations.getTarget(typesystemIntention, LINKS.quickFix$fvFg) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(typesystemIntention, LINKS.quickFix$fvFg), LINKS.descriptionBlock$Aygs) == null)) {
+    if (!(SPropertyOperations.getBoolean(typesystemIntention, PROPS.applyImmediately$S4XI)) && (SLinkOperations.getTarget(typesystemIntention, LINKS.quickFix$ClX6) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(typesystemIntention, LINKS.quickFix$ClX6), LINKS.descriptionBlock$Zoyi) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typesystemIntention, "QuickFix that is not applied immediately will be shown in intentions menu. It must have a description.", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1035511193819771010", null, errorTarget);
@@ -31,7 +31,7 @@ public class check_TypesystemIntentionWithoutDescription_NonTypesystemRule exten
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TypesystemIntention$aE;
+    return CONCEPTS.TypesystemIntention$sw;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,15 +41,15 @@ public class check_TypesystemIntentionWithoutDescription_NonTypesystemRule exten
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink quickFix$fvFg = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
-    /*package*/ static final SContainmentLink descriptionBlock$Aygs = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b368e66c8L, "descriptionBlock");
+    /*package*/ static final SReferenceLink quickFix$ClX6 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
+    /*package*/ static final SContainmentLink descriptionBlock$Zoyi = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b368e66c8L, "descriptionBlock");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty applyImmediately$veFS = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b26df4083L, "applyImmediately");
+    /*package*/ static final SProperty applyImmediately$S4XI = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b26df4083L, "applyImmediately");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypesystemIntention$aE = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, "jetbrains.mps.lang.typesystem.structure.TypesystemIntention");
+    /*package*/ static final SConcept TypesystemIntention$sw = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, "jetbrains.mps.lang.typesystem.structure.TypesystemIntention");
   }
 }

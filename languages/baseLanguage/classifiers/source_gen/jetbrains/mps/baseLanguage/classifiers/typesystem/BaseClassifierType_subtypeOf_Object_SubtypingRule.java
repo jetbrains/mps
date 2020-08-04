@@ -21,7 +21,7 @@ public class BaseClassifierType_subtypeOf_Object_SubtypingRule extends Subtyping
     return _quotation_createNode_knfsey_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BaseClassifierType$Sj;
+    return CONCEPTS.BaseClassifierType$S7;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class BaseClassifierType_subtypeOf_Object_SubtypingRule extends Subtyping
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseClassifierType$Sj = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc77d845L, "jetbrains.mps.baseLanguage.classifiers.structure.BaseClassifierType");
+    /*package*/ static final SConcept BaseClassifierType$S7 = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc77d845L, "jetbrains.mps.baseLanguage.classifiers.structure.BaseClassifierType");
   }
 }

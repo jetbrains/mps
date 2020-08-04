@@ -37,7 +37,7 @@ public final class MapSrcListMacro__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static SNode getInputNodeTypeInsideOfMacro_idhEwIosJ(@NotNull SNode __thisNode__) {
     {
       GeneratedMatchingPattern pattern_wn5chh_a0a = new Pattern_wn5chh_a0a0a0a(_quotation_createNode_wn5chh_a0a0a0a0a());
-      SNode coercedNode_wn5chh_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodesQuery$hptk)), pattern_wn5chh_a0a);
+      SNode coercedNode_wn5chh_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodesQuery$Em90)), pattern_wn5chh_a0a);
       if (coercedNode_wn5chh_a0a != null) {
         return pattern_wn5chh_a0a.getMatchedNode("concept");
       } else {
@@ -102,6 +102,6 @@ public final class MapSrcListMacro__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink sourceNodesQuery$hptk = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, 0x11003977640L, "sourceNodesQuery");
+    /*package*/ static final SContainmentLink sourceNodesQuery$Em90 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x107ce4fbf98L, 0x11003977640L, "sourceNodesQuery");
   }
 }

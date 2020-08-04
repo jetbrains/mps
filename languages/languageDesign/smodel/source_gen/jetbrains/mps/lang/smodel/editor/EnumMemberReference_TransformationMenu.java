@@ -66,7 +66,7 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.EnumMemberReference$9_)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.EnumMemberReference$b5)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -93,18 +93,18 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
       super.initialize(_context);
       enumSwitchCase = new Computable<SNode>() {
         public SNode compute() {
-          return SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.EnumSwitchCase$37);
+          return SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.EnumSwitchCase$4B);
         }
       }.compute();
       enumSwitchExpression = new Computable<SNode>() {
         public SNode compute() {
-          return SNodeOperations.as(SNodeOperations.getParent(enumSwitchCase), CONCEPTS.EnumSwitchExpression$R0);
+          return SNodeOperations.as(SNodeOperations.getParent(enumSwitchCase), CONCEPTS.EnumSwitchExpression$Sw);
         }
       }.compute();
     }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (enumSwitchExpression != null) && (SNodeOperations.getNextSibling(enumSwitchCase) == null) && ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).isEmpty() && (SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$Lc1M) == null);
+      return (enumSwitchExpression != null) && (SNodeOperations.getNextSibling(enumSwitchCase) == null) && ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).isEmpty() && (SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$l_3i) == null);
     }
 
     @NotNull
@@ -161,7 +161,7 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
         @Override
         public void execute(@NotNull String pattern) {
           SNodeOperations.deleteNode(enumSwitchCase);
-          SLinkOperations.setTarget(enumSwitchExpression, LINKS.otherwiseBody$Lc1M, SLinkOperations.getTarget(enumSwitchCase, LINKS.body$tjtn));
+          SLinkOperations.setTarget(enumSwitchExpression, LINKS.otherwiseBody$l_3i, SLinkOperations.getTarget(enumSwitchCase, LINKS.body$1GuR));
         }
 
 
@@ -186,13 +186,13 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumMemberReference$9_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference");
-    /*package*/ static final SConcept EnumSwitchCase$37 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCase");
-    /*package*/ static final SConcept EnumSwitchExpression$R0 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression");
+    /*package*/ static final SConcept EnumMemberReference$b5 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference");
+    /*package*/ static final SConcept EnumSwitchCase$4B = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCase");
+    /*package*/ static final SConcept EnumSwitchExpression$Sw = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink otherwiseBody$Lc1M = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
-    /*package*/ static final SContainmentLink body$tjtn = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
+    /*package*/ static final SContainmentLink otherwiseBody$l_3i = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
+    /*package*/ static final SContainmentLink body$1GuR = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
   }
 }

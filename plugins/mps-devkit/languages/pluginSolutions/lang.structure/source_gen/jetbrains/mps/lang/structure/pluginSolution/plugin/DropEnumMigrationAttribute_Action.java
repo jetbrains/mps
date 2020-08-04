@@ -37,7 +37,7 @@ public class DropEnumMigrationAttribute_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SNode node = event.getData(MPSCommonDataKeys.NODE);
-    return (AttributeOperations.getAttribute(SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclaration$rG, true, false), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)) != null);
+    return (AttributeOperations.getAttribute(SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclaration$hv, true, false), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)) != null);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -62,31 +62,31 @@ public class DropEnumMigrationAttribute_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     SNode node = event.getData(MPSCommonDataKeys.NODE);
-    SNode enumm = SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclaration$rG, true, false);
-    SNode migrationInfoAttribute = AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L));
+    SNode enumm = SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclaration$hv, true, false);
+    SNode migrationInfoAttribute = AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$));
 
     int result = Messages.showOkCancelDialog("<html>Enumeration migration's attribute is required for migration of projects that might depend on containing language or uses it. Consider keeping the attribute until the moment when all dependent projects should be migrated.</html>", "Drop Enumeration Migration's Attribute", "Drop Attribute", "Cancel", null);
 
     if (result == Messages.OK) {
-      for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$4eAY))) {
-        SLinkOperations.setTarget(member, LINKS.oldMember$$lAu, null);
+      for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$wmsL))) {
+        SLinkOperations.setTarget(member, LINKS.oldMember$tsh, null);
       }
       SNodeOperations.deleteNode(migrationInfoAttribute);
     }
   }
   public boolean nodeCondition(SNode parameter) {
     SNode node = parameter;
-    SNode enumDecl = SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclaration$rG, true, false);
-    return (AttributeOperations.getAttribute(enumDecl, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)) != null);
+    SNode enumDecl = SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclaration$hv, true, false);
+    return (AttributeOperations.getAttribute(enumDecl, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)) != null);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
-    /*package*/ static final SConcept EnumMigrationInfo$2L = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo");
+    /*package*/ static final SConcept EnumerationDeclaration$hv = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
+    /*package*/ static final SConcept EnumMigrationInfo$S$ = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink oldMember$$lAu = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0xc7a22b1ac1ed15fL, "oldMember");
-    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SReferenceLink oldMember$tsh = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0xc7a22b1ac1ed15fL, "oldMember");
+    /*package*/ static final SContainmentLink members$wmsL = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 }

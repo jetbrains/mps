@@ -31,97 +31,97 @@ public class buildScript_nodeFactories {
         return;
       }
 
-      SPropertyOperations.set(newNode, PROPS.internalBaseDirectory$pssS, ".");
-      SLinkOperations.setTarget(newNode, LINKS.scriptsDir$uQRP, createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a());
+      SPropertyOperations.set(newNode, PROPS.internalBaseDirectory$_8Zr, ".");
+      SLinkOperations.setTarget(newNode, LINKS.scriptsDir$Ezqo, createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a());
     }
     private static SNode createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildSourceProjectRelativePath$VD);
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildSourceProjectRelativePath$uc);
       return rootBuilder1.getResult();
     }
   }
   public static class NodeFactory_7389400916848172015 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildSourceProjectRelativePath$VD)) {
-        SLinkOperations.setTarget(newNode, LINKS.compositePart$ZDgp, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildSourceProjectRelativePath$VD), LINKS.compositePart$ZDgp)));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildSourceProjectRelativePath$uc)) {
+        SLinkOperations.setTarget(newNode, LINKS.compositePart$blMW, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildSourceProjectRelativePath$uc), LINKS.compositePart$blMW)));
       }
     }
   }
   public static class NodeFactory_5481553824944787386 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildSourceMacroRelativePath$C$)) {
-        SLinkOperations.setTarget(newNode, LINKS.compositePart$ZDgp, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildSourceMacroRelativePath$C$), LINKS.compositePart$ZDgp)));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildSourceMacroRelativePath$b7)) {
+        SLinkOperations.setTarget(newNode, LINKS.compositePart$blMW, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildSourceMacroRelativePath$b7), LINKS.compositePart$blMW)));
       }
     }
   }
   public static class NodeFactory_1258644073389160370 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildInputSingleFile$yn)) {
-        SLinkOperations.setTarget(newNode, LINKS.path$2hSz, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildInputSingleFile$4U)) {
+        SLinkOperations.setTarget(newNode, LINKS.path$dYr6, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6));
       }
     }
   }
   public static class NodeFactory_1258644073389160421 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildInputFiles$Nk)) {
-        SLinkOperations.setTarget(newNode, LINKS.dir$2pT1, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildInputFiles$Nk), LINKS.dir$2pT1));
-        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.selectors$5H35)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.BuildInputFiles$Nk), LINKS.selectors$5H35)));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildInputFiles$lR)) {
+        SLinkOperations.setTarget(newNode, LINKS.dir$e6r$, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildInputFiles$lR), LINKS.dir$e6r$));
+        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.selectors$hp_C)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.BuildInputFiles$lR), LINKS.selectors$hp_C)));
       }
     }
   }
   public static class NodeFactory_6099797596647417250 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.INamedConcept$nV) && SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.INamedConcept$nV)) {
-        SPropertyOperations.assign(SNodeOperations.cast(newNode, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v));
+      if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.INamedConcept$Kd) && SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.INamedConcept$Kd)) {
+        SPropertyOperations.assign(SNodeOperations.cast(newNode, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
       }
     }
   }
   public static class NodeFactory_6099797596647438149 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildLayout_NamedContainer$nH)) {
-        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.children$Z6lh)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.BuildLayout_NamedContainer$nH), LINKS.children$Z6lh)));
-        SLinkOperations.setTarget(newNode, LINKS.containerName$vc3r, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildLayout_NamedContainer$nH), LINKS.containerName$vc3r));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildLayout_NamedContainer$Ug)) {
+        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.children$aMRO)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.BuildLayout_NamedContainer$Ug), LINKS.children$aMRO)));
+        SLinkOperations.setTarget(newNode, LINKS.containerName$ES_Y, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildLayout_NamedContainer$Ug), LINKS.containerName$ES_Y));
       }
     }
   }
   public static class NodeFactory_6099797596647440630 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildMacro$RE)) {
-        SPropertyOperations.assign(newNode, PROPS.name$lA7v, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.BuildMacro$RE), PROPS.name$lA7v));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildMacro$qd)) {
+        SPropertyOperations.assign(newNode, PROPS.name$MnvL, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.BuildMacro$qd), PROPS.name$MnvL));
       }
     }
   }
   public static class NodeFactory_6977615362526183835 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildLayout_AbstractCopy$lT)) {
-        SLinkOperations.setTarget(newNode, LINKS.fileset$ie0O, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildLayout_AbstractCopy$lT), LINKS.fileset$ie0O));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildLayout_AbstractCopy$Ss)) {
+        SLinkOperations.setTarget(newNode, LINKS.fileset$tUzn, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildLayout_AbstractCopy$Ss), LINKS.fileset$tUzn));
       }
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty internalBaseDirectory$pssS = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x48387ebae1a07a23L, "internalBaseDirectory");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty internalBaseDirectory$_8Zr = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x48387ebae1a07a23L, "internalBaseDirectory");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink scriptsDir$uQRP = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4291308148e8c6beL, "scriptsDir");
-    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
-    /*package*/ static final SContainmentLink path$2hSz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
-    /*package*/ static final SContainmentLink dir$2pT1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
-    /*package*/ static final SContainmentLink selectors$5H35 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
-    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
-    /*package*/ static final SContainmentLink containerName$vc3r = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
-    /*package*/ static final SContainmentLink fileset$ie0O = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink scriptsDir$Ezqo = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4291308148e8c6beL, "scriptsDir");
+    /*package*/ static final SContainmentLink compositePart$blMW = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SContainmentLink path$dYr6 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
+    /*package*/ static final SContainmentLink dir$e6r$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
+    /*package*/ static final SContainmentLink selectors$hp_C = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
+    /*package*/ static final SContainmentLink children$aMRO = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SContainmentLink containerName$ES_Y = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
+    /*package*/ static final SContainmentLink fileset$tUzn = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSourceProjectRelativePath$VD = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
-    /*package*/ static final SConcept BuildSourceMacroRelativePath$C$ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath");
-    /*package*/ static final SConcept BuildInputSingleFile$yn = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
-    /*package*/ static final SConcept BuildInputFiles$Nk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, "jetbrains.mps.build.structure.BuildInputFiles");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SConcept BuildLayout_NamedContainer$nH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, "jetbrains.mps.build.structure.BuildLayout_NamedContainer");
-    /*package*/ static final SConcept BuildMacro$RE = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro");
-    /*package*/ static final SConcept BuildLayout_AbstractCopy$lT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy");
+    /*package*/ static final SConcept BuildSourceProjectRelativePath$uc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
+    /*package*/ static final SConcept BuildSourceMacroRelativePath$b7 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath");
+    /*package*/ static final SConcept BuildInputSingleFile$4U = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
+    /*package*/ static final SConcept BuildInputFiles$lR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, "jetbrains.mps.build.structure.BuildInputFiles");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept BuildLayout_NamedContainer$Ug = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, "jetbrains.mps.build.structure.BuildLayout_NamedContainer");
+    /*package*/ static final SConcept BuildMacro$qd = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro");
+    /*package*/ static final SConcept BuildLayout_AbstractCopy$Ss = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy");
   }
 }

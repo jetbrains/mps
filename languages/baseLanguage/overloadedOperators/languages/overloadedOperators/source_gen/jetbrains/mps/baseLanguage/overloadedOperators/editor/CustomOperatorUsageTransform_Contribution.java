@@ -74,7 +74,7 @@ public class CustomOperatorUsageTransform_Contribution extends TransformationMen
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_z54bif_a0(), CONCEPTS.CustomOperatorUsage$2Y));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_z54bif_a0(), CONCEPTS.CustomOperatorUsage$Hd));
     }
     return result;
   }
@@ -90,7 +90,7 @@ public class CustomOperatorUsageTransform_Contribution extends TransformationMen
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-      return (List<SNode>) CustomOperatorUsage__BehaviorDescriptor.getVisibleCustomOperators_idZogSShiOAT.invoke(SNodeOperations.asSConcept(CONCEPTS.CustomOperatorUsage$2Y), _context.getModel());
+      return (List<SNode>) CustomOperatorUsage__BehaviorDescriptor.getVisibleCustomOperators_idZogSShiOAT.invoke(SNodeOperations.asSConcept(CONCEPTS.CustomOperatorUsage$Hd), _context.getModel());
     }
     @NotNull
     @Override
@@ -141,15 +141,15 @@ public class CustomOperatorUsageTransform_Contribution extends TransformationMen
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
         }
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode usage = SNodeFactoryOperations.createNewNode(CONCEPTS.CustomOperatorUsage$2Y, null);
+          SNode usage = SNodeFactoryOperations.createNewNode(CONCEPTS.CustomOperatorUsage$Hd, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), usage);
-          SLinkOperations.setTarget(usage, LINKS.operator$jAql, myParameterObject);
-          SLinkOperations.setTarget(usage, LINKS.leftExpression$lndx, _context.getNode());
+          SLinkOperations.setTarget(usage, LINKS.operator$R44$, myParameterObject);
+          SLinkOperations.setTarget(usage, LINKS.leftExpression$sEj, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), usage, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -157,7 +157,7 @@ public class CustomOperatorUsageTransform_Contribution extends TransformationMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.CustomOperatorUsage$2Y;
+          return CONCEPTS.CustomOperatorUsage$Hd;
         }
 
 
@@ -168,7 +168,7 @@ public class CustomOperatorUsageTransform_Contribution extends TransformationMen
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.CustomOperatorUsage$2Y;
+          SAbstractConcept outputConcept = CONCEPTS.CustomOperatorUsage$Hd;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -180,15 +180,15 @@ public class CustomOperatorUsageTransform_Contribution extends TransformationMen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomOperatorUsage$2Y = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, "jetbrains.mps.baseLanguage.overloadedOperators.structure.CustomOperatorUsage");
+    /*package*/ static final SConcept CustomOperatorUsage$Hd = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, "jetbrains.mps.baseLanguage.overloadedOperators.structure.CustomOperatorUsage");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink operator$jAql = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, 0x15c86fdc60847670L, "operator");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SReferenceLink operator$R44$ = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, 0x15c86fdc60847670L, "operator");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 }

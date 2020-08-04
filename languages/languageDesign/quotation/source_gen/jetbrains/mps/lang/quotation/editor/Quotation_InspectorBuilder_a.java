@@ -74,10 +74,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_29llnk_a1a0() {
-    return SLinkOperations.getTarget(myNode, LINKS.quotedNode$2tow) != null;
+    return SLinkOperations.getTarget(myNode, LINKS.quotedNode$ip4) != null;
   }
   private boolean nodeCondition_29llnk_a2a0() {
-    return SLinkOperations.getTarget(myNode, LINKS.quotedNode$2tow) == null;
+    return SLinkOperations.getTarget(myNode, LINKS.quotedNode$ip4) == null;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "concept:");
@@ -92,7 +92,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        return (SLinkOperations.getTarget(myNode, LINKS.quotedNode$2tow) != null ? SNodeOperations.getConcept(SLinkOperations.getTarget(myNode, LINKS.quotedNode$2tow)).getName() : "<not specified>");
+        return (SLinkOperations.getTarget(myNode, LINKS.quotedNode$ip4) != null ? SNodeOperations.getConcept(SLinkOperations.getTarget(myNode, LINKS.quotedNode$ip4)).getName() : "<not specified>");
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -130,6 +130,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink quotedNode$2tow = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
+    /*package*/ static final SContainmentLink quotedNode$ip4 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
   }
 }

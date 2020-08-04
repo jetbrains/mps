@@ -37,8 +37,8 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_9g126d_a(), CONCEPTS.DotExpression$6a));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_9g126d_b(), CONCEPTS.DotExpression$6a));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_9g126d_a(), CONCEPTS.DotExpression$yW));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_9g126d_b(), CONCEPTS.DotExpression$yW));
     return result;
   }
 
@@ -83,7 +83,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.DotExpression$6a, context);
+        super(CONCEPTS.DotExpression$yW, context);
         _context = context;
       }
 
@@ -119,7 +119,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-        SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.cast(SLinkOperations.getTarget(createdNode, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), SelectionManager.LAST_EDITABLE_CELL);
+        SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.cast(SLinkOperations.getTarget(createdNode, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), SelectionManager.LAST_EDITABLE_CELL);
       }
     }
   }
@@ -151,7 +151,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.DotExpression$6a, context);
+        super(CONCEPTS.DotExpression$yW, context);
         _context = context;
       }
 
@@ -187,7 +187,7 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-        SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.cast(SLinkOperations.getTarget(createdNode, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G), SelectionManager.LAST_EDITABLE_CELL);
+        SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.cast(SLinkOperations.getTarget(createdNode, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), SelectionManager.LAST_EDITABLE_CELL);
       }
     }
   }
@@ -223,11 +223,11 @@ public class liveTemplates_Expression extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept InstanceMethodCallOperation$1G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

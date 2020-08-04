@@ -71,7 +71,7 @@ public class SampleRefMigration extends MigrationScriptBase {
       };
 
       // get all old references in all models of this module 
-      List<SNode> references = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponentRef$GK, true)).toListSequence();
+      List<SNode> references = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponentRef$jA, true)).toListSequence();
 
       // cache for reading data annotations 
       final Map<SModule, Map<String, String>> idMaps = MapSequence.fromMap(new HashMap<SModule, Map<String, String>>());
@@ -83,7 +83,7 @@ public class SampleRefMigration extends MigrationScriptBase {
           SNode newNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104932a6c9L, "ref.structure.NewComponentRef"));
 
           // find the target of the old reference and its containing model 
-          SReference oldRef = oldNode.getReference(LINKS.target$j8yo);
+          SReference oldRef = oldNode.getReference(LINKS.target$f69e);
           SModel targetModel = oldRef.getTargetSModelReference().resolve(m.getRepository());
           SModule targetModule = targetModel.getModule();
 
@@ -91,7 +91,7 @@ public class SampleRefMigration extends MigrationScriptBase {
           if (MapSequence.fromMap(idMaps).get(targetModule) == null) {
             Map<String, String> idMap = MapSequence.fromMap(new HashMap<String, String>());
             for (SNode dataAnnotation : ListSequence.fromList(getDeclData(targetModule))) {
-              MapSequence.fromMap(idMap).put(SPropertyOperations.getString(dataAnnotation, PROPS.oldId$lFYx), SPropertyOperations.getString(dataAnnotation, PROPS.newId$lGdy));
+              MapSequence.fromMap(idMap).put(SPropertyOperations.getString(dataAnnotation, PROPS.oldId$bq$n), SPropertyOperations.getString(dataAnnotation, PROPS.newId$bqNo));
             }
             MapSequence.fromMap(idMaps).put(targetModule, idMap);
           }
@@ -104,7 +104,7 @@ public class SampleRefMigration extends MigrationScriptBase {
           SNode newTarget = targetModel.getNode(PersistenceFacade.getInstance().createNodeId(newId));
 
           // set the reference to point to it 
-          SLinkOperations.setTarget(newNode, LINKS.target$kdU0, (SNode) newTarget);
+          SLinkOperations.setTarget(newNode, LINKS.target$gbwQ, (SNode) newTarget);
 
           // replace the old reference in the model with the newly created one 
           SNodeOperations.replaceWithAnother(oldNode, newNode);
@@ -122,7 +122,7 @@ public class SampleRefMigration extends MigrationScriptBase {
           return scope_u457zm_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponentRef$GK, false)).select(new ISelector<SNode, NotMigratedNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponentRef$jA, false)).select(new ISelector<SNode, NotMigratedNode>() {
         public NotMigratedNode select(SNode it) {
           return new NotMigratedNode(it) {
             public String getMessage() {
@@ -145,13 +145,13 @@ public class SampleRefMigration extends MigrationScriptBase {
           return scope_u457zm_a0h_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationDataAnnotation$gb, false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationDataAnnotation$Ct, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(MigrationScriptReference.deserialize(SPropertyOperations.getString(it, PROPS.createdByScript$L5qw)), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 1));
+          return Objects.equals(MigrationScriptReference.deserialize(SPropertyOperations.getString(it, PROPS.createdByScript$dQMM)), new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 1));
         }
       }).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.dataNode$T4nK);
+          return SLinkOperations.getTarget(it, LINKS.dataNode$lPK2);
         }
       }).toListSequence();
     }
@@ -163,19 +163,19 @@ public class SampleRefMigration extends MigrationScriptBase {
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OldComponentRef$GK = MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104931574dL, "ref.structure.OldComponentRef");
-    /*package*/ static final SConcept MigrationDataAnnotation$gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation");
+    /*package*/ static final SConcept OldComponentRef$jA = MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104931574dL, "ref.structure.OldComponentRef");
+    /*package*/ static final SConcept MigrationDataAnnotation$Ct = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$j8yo = MetaAdapterFactory.getReferenceLink(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104931574dL, 0x6aff2c104932a69aL, "target");
-    /*package*/ static final SReferenceLink target$kdU0 = MetaAdapterFactory.getReferenceLink(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104932a6c9L, 0x6aff2c104932a6caL, "target");
-    /*package*/ static final SContainmentLink dataNode$T4nK = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, 0x5e7aa366c292fcceL, "dataNode");
+    /*package*/ static final SReferenceLink target$f69e = MetaAdapterFactory.getReferenceLink(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104931574dL, 0x6aff2c104932a69aL, "target");
+    /*package*/ static final SReferenceLink target$gbwQ = MetaAdapterFactory.getReferenceLink(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104932a6c9L, 0x6aff2c104932a6caL, "target");
+    /*package*/ static final SContainmentLink dataNode$lPK2 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, 0x5e7aa366c292fcceL, "dataNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty oldId$lFYx = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdeL, "oldId");
-    /*package*/ static final SProperty newId$lGdy = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdfL, "newId");
-    /*package*/ static final SProperty createdByScript$L5qw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
+    /*package*/ static final SProperty oldId$bq$n = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdeL, "oldId");
+    /*package*/ static final SProperty newId$bqNo = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdfL, "newId");
+    /*package*/ static final SProperty createdByScript$dQMM = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
   }
 }

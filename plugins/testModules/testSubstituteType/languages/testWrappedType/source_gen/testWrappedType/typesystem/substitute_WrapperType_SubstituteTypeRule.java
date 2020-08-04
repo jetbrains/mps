@@ -21,22 +21,22 @@ public class substitute_WrapperType_SubstituteTypeRule extends AbstractSubstitut
   public TypeSubstitution substitution(final SNode wrapperType, SNode originalType, final TypeCheckingContext typeCheckingContext, final IsApplicableStatus status) {
     return new TypeSubstitution(originalType, new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
-        return SLinkOperations.getTarget(wrapperType, LINKS.wrapped$AFy0);
+        return SLinkOperations.getTarget(wrapperType, LINKS.wrapped$8do);
       }
     }.invoke(), "r:5e8bba55-70f5-4849-b486-7e33cf1b5bd1(testWrappedType.typesystem)", "7323318266641941989");
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.WrapperType$n4;
+    return CONCEPTS.WrapperType$2s;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink wrapped$AFy0 = MetaAdapterFactory.getContainmentLink(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, 0x116157dc0d8c52bdL, "wrapped");
+    /*package*/ static final SContainmentLink wrapped$8do = MetaAdapterFactory.getContainmentLink(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, 0x116157dc0d8c52bdL, "wrapped");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WrapperType$n4 = MetaAdapterFactory.getConcept(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, "testWrappedType.structure.WrapperType");
+    /*package*/ static final SConcept WrapperType$2s = MetaAdapterFactory.getConcept(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, "testWrappedType.structure.WrapperType");
   }
 }

@@ -37,9 +37,9 @@ public final class IContainsStatementList__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static SNode getStatementList_idi0zv5tb(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getChildren(__thisNode__)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.StatementList$TN);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.StatementList$m_);
       }
-    }).first(), CONCEPTS.StatementList$TN);
+    }).first(), CONCEPTS.StatementList$m_);
   }
   /*package*/ static boolean isStatementListCompactable_idi0zvp2S(@NotNull SNode __thisNode__) {
     return false;
@@ -99,6 +99,6 @@ public final class IContainsStatementList__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 }

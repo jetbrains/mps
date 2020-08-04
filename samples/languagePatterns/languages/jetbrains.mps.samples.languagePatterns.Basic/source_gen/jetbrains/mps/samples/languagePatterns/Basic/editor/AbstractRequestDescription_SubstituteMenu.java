@@ -36,7 +36,7 @@ public class AbstractRequestDescription_SubstituteMenu extends SubstituteMenuBas
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Subconcepts_dcepxw_a());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_dcepxw_b(), CONCEPTS.AbstractRequestDescription$43));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_dcepxw_b(), CONCEPTS.AbstractRequestDescription$fB));
     return result;
   }
 
@@ -55,7 +55,7 @@ public class AbstractRequestDescription_SubstituteMenu extends SubstituteMenuBas
 
   public class SMP_Subconcepts_dcepxw_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.AbstractRequestDescription$43);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.AbstractRequestDescription$fB);
     }
     @NotNull
     @Override
@@ -102,7 +102,7 @@ public class AbstractRequestDescription_SubstituteMenu extends SubstituteMenuBas
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.AbstractRequestDescription$43, context);
+        super(CONCEPTS.AbstractRequestDescription$fB, context);
         _context = context;
       }
 
@@ -113,8 +113,8 @@ public class AbstractRequestDescription_SubstituteMenu extends SubstituteMenuBas
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode desc = SNodeFactoryOperations.createNewNode(CONCEPTS.StringDescription$EU, null);
-        SPropertyOperations.assign(desc, PROPS.value$dlt0, pattern);
+        SNode desc = SNodeFactoryOperations.createNewNode(CONCEPTS.StringDescription$Qu, null);
+        SPropertyOperations.assign(desc, PROPS.value$wTC$, pattern);
         return desc;
       }
 
@@ -147,11 +147,11 @@ public class AbstractRequestDescription_SubstituteMenu extends SubstituteMenuBas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractRequestDescription$43 = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x1a2a793c4db2238aL, "jetbrains.mps.samples.languagePatterns.Basic.structure.AbstractRequestDescription");
-    /*package*/ static final SConcept StringDescription$EU = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x1a2a793c4db223d5L, "jetbrains.mps.samples.languagePatterns.Basic.structure.StringDescription");
+    /*package*/ static final SConcept AbstractRequestDescription$fB = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x1a2a793c4db2238aL, "jetbrains.mps.samples.languagePatterns.Basic.structure.AbstractRequestDescription");
+    /*package*/ static final SConcept StringDescription$Qu = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x1a2a793c4db223d5L, "jetbrains.mps.samples.languagePatterns.Basic.structure.StringDescription");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$dlt0 = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x1a2a793c4db223d5L, 0x1a2a793c4db223d6L, "value");
+    /*package*/ static final SProperty value$wTC$ = MetaAdapterFactory.getProperty(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x1a2a793c4db223d5L, 0x1a2a793c4db223d6L, "value");
   }
 }

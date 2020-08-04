@@ -17,7 +17,7 @@ public class MeetType_comparable_with_arguments_ComparisonRule extends Compariso
   public MeetType_comparable_with_arguments_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    for (SNode arg : SLinkOperations.getChildren(node2, LINKS.argument$2bV3)) {
+    for (SNode arg : SLinkOperations.getChildren(node2, LINKS.argument$r2cT)) {
       if (MatchingUtil.matchNodes(arg, node1)) {
         return true;
       }
@@ -35,18 +35,18 @@ public class MeetType_comparable_with_arguments_ComparisonRule extends Compariso
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.Type$IG;
+    return CONCEPTS.Type$bu;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return CONCEPTS.MeetType$HQ;
+    return CONCEPTS.MeetType$ZG;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink argument$r2cT = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept MeetType$HQ = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept MeetType$ZG = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType");
   }
 }

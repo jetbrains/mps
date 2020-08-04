@@ -18,10 +18,10 @@ public class RunConfigurationIsSubtypeOfPersistentConfiguration_SubtypingRule ex
   public RunConfigurationIsSubtypeOfPersistentConfiguration_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode runConfigurationType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return createPersistentConfigurationType_xmktnv_a0a1(SLinkOperations.getTarget(runConfigurationType, LINKS.persistentConfiguration$2710));
+    return createPersistentConfigurationType_xmktnv_a0a1(SLinkOperations.getTarget(runConfigurationType, LINKS.persistentConfiguration$QL_P));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RunConfigurationType$qY;
+    return CONCEPTS.RunConfigurationType$7_;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -30,17 +30,17 @@ public class RunConfigurationIsSubtypeOfPersistentConfiguration_SubtypingRule ex
     return false;
   }
   private static SNode createPersistentConfigurationType_xmktnv_a0a1(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
-    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$2710, node0);
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$MR);
+    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$QL_P, node0);
     return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink persistentConfiguration$QL_P = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RunConfigurationType$qY = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType");
-    /*package*/ static final SConcept PersistentConfigurationType$e2 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
+    /*package*/ static final SConcept RunConfigurationType$7_ = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3d4448ebeaf86568L, "jetbrains.mps.execution.configurations.structure.RunConfigurationType");
+    /*package*/ static final SConcept PersistentConfigurationType$MR = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
   }
 }

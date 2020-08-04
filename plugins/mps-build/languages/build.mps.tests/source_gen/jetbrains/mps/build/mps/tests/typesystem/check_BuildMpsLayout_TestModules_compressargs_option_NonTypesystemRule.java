@@ -21,8 +21,8 @@ public class check_BuildMpsLayout_TestModules_compressargs_option_NonTypesystemR
   public check_BuildMpsLayout_TestModules_compressargs_option_NonTypesystemRule() {
   }
   public void applyRule(final SNode options, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(options, LINKS.compressArgs$ZwZk) != null)) {
-      String approxPresentation = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(options, LINKS.compressArgs$ZwZk), null);
+    if ((SLinkOperations.getTarget(options, LINKS.compressArgs$RBk7) != null)) {
+      String approxPresentation = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(options, LINKS.compressArgs$RBk7), null);
       if (approxPresentation.contains("${")) {
         return;
       } else if (approxPresentation.equals("true")) {
@@ -32,13 +32,13 @@ public class check_BuildMpsLayout_TestModules_compressargs_option_NonTypesystemR
       } else {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(options, LINKS.compressArgs$ZwZk), "Inappropriate value for 'compressargs' property", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "1688667350638521131", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(options, LINKS.compressArgs$RBk7), "Inappropriate value for 'compressargs' property", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "1688667350638521131", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildMpsLayout_TestModules_Options$XW;
+    return CONCEPTS.BuildMpsLayout_TestModules_Options$iJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -48,10 +48,10 @@ public class check_BuildMpsLayout_TestModules_compressargs_option_NonTypesystemR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink compressArgs$ZwZk = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x176f5a022a9bdb0eL, "compressArgs");
+    /*package*/ static final SContainmentLink compressArgs$RBk7 = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x176f5a022a9bdb0eL, "compressArgs");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_TestModules_Options$XW = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules_Options");
+    /*package*/ static final SConcept BuildMpsLayout_TestModules_Options$iJ = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules_Options");
   }
 }

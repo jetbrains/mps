@@ -37,7 +37,7 @@ public class Devkits_Substitute extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_a6fyxv_a(), CONCEPTS.DevkitPointer$OX));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_a6fyxv_a(), CONCEPTS.DevkitPointer$Qt));
     return result;
   }
 
@@ -114,7 +114,7 @@ public class Devkits_Substitute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.DevkitPointer$OX, context);
+          super(CONCEPTS.DevkitPointer$Qt, context);
           _context = context;
         }
 
@@ -125,7 +125,7 @@ public class Devkits_Substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode v = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.DevkitPointer$OX);
+          SNode v = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.DevkitPointer$Qt);
           DevkitIdentity__BehaviorDescriptor.setModuleReference_id78qQRpbgix9.invoke(v, myParameterObject);
           return v;
         }
@@ -136,7 +136,7 @@ public class Devkits_Substitute extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.DevkitPointer$OX, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.DevkitPointer$Qt, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -180,6 +180,6 @@ public class Devkits_Substitute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DevkitPointer$OX = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, "jetbrains.mps.lang.smodel.structure.DevkitPointer");
+    /*package*/ static final SConcept DevkitPointer$Qt = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, "jetbrains.mps.lang.smodel.structure.DevkitPointer");
   }
 }

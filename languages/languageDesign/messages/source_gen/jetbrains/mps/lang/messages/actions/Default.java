@@ -14,17 +14,17 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class Default {
   public static class NodeFactory_5258059200644005943 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.MacroMessageExpression$LH)) {
-        SLinkOperations.setTarget(newNode, LINKS.defRef$6TXJ, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MacroMessageExpression$LH), LINKS.defRef$6TXJ)));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.MacroMessageExpression$DF)) {
+        SLinkOperations.setTarget(newNode, LINKS.defRef$oUPH, SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MacroMessageExpression$DF), LINKS.defRef$oUPH)));
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MacroMessageExpression$LH = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression");
+    /*package*/ static final SConcept MacroMessageExpression$DF = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defRef$6TXJ = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x25b197ac2c49e208L, "defRef");
+    /*package*/ static final SContainmentLink defRef$oUPH = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x25b197ac2c49e208L, "defRef");
   }
 }

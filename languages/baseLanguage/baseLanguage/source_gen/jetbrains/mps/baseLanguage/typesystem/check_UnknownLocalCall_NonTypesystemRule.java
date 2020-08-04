@@ -40,7 +40,7 @@ public class check_UnknownLocalCall_NonTypesystemRule extends AbstractNonTypesys
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.UnknownLocalCall$Bc;
+    return CONCEPTS.UnknownLocalCall$3Y;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,6 +50,6 @@ public class check_UnknownLocalCall_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UnknownLocalCall$Bc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x245faa02186fc5d6L, "jetbrains.mps.baseLanguage.structure.UnknownLocalCall");
+    /*package*/ static final SConcept UnknownLocalCall$3Y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x245faa02186fc5d6L, "jetbrains.mps.baseLanguage.structure.UnknownLocalCall");
   }
 }

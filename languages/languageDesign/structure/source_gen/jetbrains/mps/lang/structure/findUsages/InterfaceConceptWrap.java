@@ -25,17 +25,17 @@ public final class InterfaceConceptWrap extends AbstractConceptWrap implements A
   @Override
   public List<AbstractConceptLike.InterfaceConceptLike> getSuperInterfaces() {
     List<AbstractConceptLike.InterfaceConceptLike> result = new ArrayList<AbstractConceptLike.InterfaceConceptLike>();
-    List<SNode> superInterfaces = SLinkOperations.getChildren(myPeer, LINKS.extends$V2F7);
+    List<SNode> superInterfaces = SLinkOperations.getChildren(myPeer, LINKS.extends$nawU);
     for (SNode superInterfaceRef : ListSequence.fromList(superInterfaces)) {
-      if ((SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$7Eer) != null)) {
-        result.add(new InterfaceConceptWrap(SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$7Eer)));
+      if ((SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$zM4e) != null)) {
+        result.add(new InterfaceConceptWrap(SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$zM4e)));
       }
     }
     return result;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink extends$nawU = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
   }
 }

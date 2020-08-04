@@ -37,7 +37,7 @@ public class DefaultMenuReferences_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.TransformationMenu_Default$In;
+    return CONCEPTS.TransformationMenu_Default$TY;
   }
 
   @Override
@@ -49,7 +49,7 @@ public class DefaultMenuReferences_Finder extends GeneratedFinder {
         List<SNode> allReferences = (List<SNode>) FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)", "6718020819487620876"), scope, monitor.subTask(1));
 
         for (SNode ref : ListSequence.fromList(allReferences)) {
-          if (SLinkOperations.getTarget(ref, LINKS.concept$g1C5) == SLinkOperations.getTarget(node, LINKS.conceptDeclaration$VYS3)) {
+          if (SLinkOperations.getTarget(ref, LINKS.concept$kjNG) == SLinkOperations.getTarget(node, LINKS.conceptDeclaration$h3E)) {
             callback.onUsageFound(createSingleResult(ref));
           }
         }
@@ -73,11 +73,11 @@ public class DefaultMenuReferences_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenu_Default$In = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
+    /*package*/ static final SConcept TransformationMenu_Default$TY = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
-    /*package*/ static final SReferenceLink concept$g1C5 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
+    /*package*/ static final SReferenceLink conceptDeclaration$h3E = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink concept$kjNG = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
   }
 }

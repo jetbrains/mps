@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TestConstraintsInheritance_Base_Constraints extends BaseConstraintsDescriptor {
   public TestConstraintsInheritance_Base_Constraints() {
-    super(CONCEPTS.TestConstraintsInheritance_Base$vN);
+    super(CONCEPTS.TestConstraintsInheritance_Base$xL);
   }
 
   @Override
@@ -40,16 +40,16 @@ public class TestConstraintsInheritance_Base_Constraints extends BaseConstraints
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return !(SPropertyOperations.getBoolean((SNodeOperations.cast(parentNode, CONCEPTS.TestConstraintsInheritance_Container$gj)), PROPS.triggerBase$i_v7));
+    return !(SPropertyOperations.getBoolean((SNodeOperations.cast(parentNode, CONCEPTS.TestConstraintsInheritance_Container$ih)), PROPS.triggerBase$PGx5));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "5816870305080488341");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept TestConstraintsInheritance_Base$vN = MetaAdapterFactory.getInterfaceConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x50b9acb92ed730ffL, "constraints.test.structure.TestConstraintsInheritance_Base");
-    /*package*/ static final SConcept TestConstraintsInheritance_Container$gj = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x50b9acb92ed730f4L, "constraints.test.structure.TestConstraintsInheritance_Container");
+    /*package*/ static final SInterfaceConcept TestConstraintsInheritance_Base$xL = MetaAdapterFactory.getInterfaceConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x50b9acb92ed730ffL, "constraints.test.structure.TestConstraintsInheritance_Base");
+    /*package*/ static final SConcept TestConstraintsInheritance_Container$ih = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x50b9acb92ed730f4L, "constraints.test.structure.TestConstraintsInheritance_Container");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty triggerBase$i_v7 = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x50b9acb92ed730f4L, 0x50b9acb92ed73128L, "triggerBase");
+    /*package*/ static final SProperty triggerBase$PGx5 = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x50b9acb92ed730f4L, 0x50b9acb92ed73128L, "triggerBase");
   }
 }

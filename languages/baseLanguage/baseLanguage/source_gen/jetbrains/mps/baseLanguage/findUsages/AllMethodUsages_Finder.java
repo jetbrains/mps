@@ -34,14 +34,14 @@ public class AllMethodUsages_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.BaseMethodDeclaration$RR;
+    return CONCEPTS.BaseMethodDeclaration$kD;
   }
   @Override
   public boolean isApplicable(SNode node) {
-    if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false) == null && SNodeOperations.getNodeAncestor(node, CONCEPTS.Interface$Kp, false, false) == null) {
+    if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) == null && SNodeOperations.getNodeAncestor(node, CONCEPTS.Interface$db, false, false) == null) {
       return false;
     }
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.StaticMethodDeclaration$eX)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$An))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.StaticMethodDeclaration$FJ)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$39))) {
       return false;
     }
     return true;
@@ -52,8 +52,8 @@ public class AllMethodUsages_Finder extends GeneratedFinder {
     try {
       monitor.start("All method usages", 10);
       List<SNode> methodDeclarations;
-      if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false) != null) {
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$An)) {
+      if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) != null) {
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$39)) {
           methodDeclarations = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.OverridingMethods_Finder", node, scope, monitor.subTask(1));
         } else {
           methodDeclarations = new ArrayList<SNode>();
@@ -68,7 +68,7 @@ public class AllMethodUsages_Finder extends GeneratedFinder {
         sm.start("", ListSequence.fromList(methodDeclarations).count());
         for (SNode methodDeclaration : methodDeclarations) {
           for (SNode nodeUsage : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder", methodDeclaration, scope, sm.subTask(1)))) {
-            if (!(SNodeOperations.isInstanceOf(nodeUsage, CONCEPTS.IMethodCall$ln))) {
+            if (!(SNodeOperations.isInstanceOf(nodeUsage, CONCEPTS.IMethodCall$M9))) {
               continue;
             }
             callback.onUsageFound(createSingleResult(nodeUsage));
@@ -85,8 +85,8 @@ public class AllMethodUsages_Finder extends GeneratedFinder {
   @Override
   public void getSearchedNodes(SNode node, SearchScope scope, List<SNode> _results) {
     List<SNode> methodDeclarations = new ArrayList<SNode>();
-    if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false) != null) {
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$An)) {
+    if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) != null) {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$39)) {
         ListSequence.fromList(methodDeclarations).addSequence(ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.OverridingMethods_Finder", node, scope, new EmptyProgressMonitor())));
       }
       ListSequence.fromList(methodDeclarations).addElement(node);
@@ -110,11 +110,11 @@ public class AllMethodUsages_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

@@ -45,7 +45,7 @@ public final class ToggleMultiLine_Intention extends AbstractIntentionDescriptor
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if (SPropertyOperations.getBoolean(node, PROPS.forceMultiLine$U3QH)) {
+      if (SPropertyOperations.getBoolean(node, PROPS.forceMultiLine$AhIn)) {
         return "Remove Force Multi Line";
       } else {
         return "Make Force Multi Line";
@@ -53,7 +53,7 @@ public final class ToggleMultiLine_Intention extends AbstractIntentionDescriptor
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.forceMultiLine$U3QH, !(SPropertyOperations.getBoolean(node, PROPS.forceMultiLine$U3QH)));
+      SPropertyOperations.assign(node, PROPS.forceMultiLine$AhIn, !(SPropertyOperations.getBoolean(node, PROPS.forceMultiLine$AhIn)));
       editorContext.getEditorComponent().rebuildEditorContent();
     }
     @Override
@@ -63,6 +63,6 @@ public final class ToggleMultiLine_Intention extends AbstractIntentionDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty forceMultiLine$U3QH = MetaAdapterFactory.getProperty(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0xc5cbfc0eeac457bL, "forceMultiLine");
+    /*package*/ static final SProperty forceMultiLine$AhIn = MetaAdapterFactory.getProperty(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0xc5cbfc0eeac457bL, "forceMultiLine");
   }
 }

@@ -21,7 +21,7 @@ public class TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMen
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestCompletionCustomization_ChildNoPriority$En) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestCompletionCustomization_ChildNoPriority$uM) {
 
       @NotNull
       @Override
@@ -34,8 +34,8 @@ public class TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMen
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.TestCompletionCustomization_ChildNoPriority$En));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestCompletionCustomization_ChildWithPriority$EQ) {
+    }, CONCEPTS.TestCompletionCustomization_ChildNoPriority$uM));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestCompletionCustomization_ChildWithPriority$vh) {
 
       @NotNull
       @Override
@@ -48,7 +48,7 @@ public class TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMen
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.TestCompletionCustomization_ChildWithPriority$EQ));
+    }, CONCEPTS.TestCompletionCustomization_ChildWithPriority$vh));
     return result;
   }
 
@@ -66,7 +66,7 @@ public class TestCompletionCustomization_ChildSimpleSubstituteMenu_SubstituteMen
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestCompletionCustomization_ChildNoPriority$En = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510979992L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildNoPriority");
-    /*package*/ static final SConcept TestCompletionCustomization_ChildWithPriority$EQ = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510979993L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildWithPriority");
+    /*package*/ static final SConcept TestCompletionCustomization_ChildNoPriority$uM = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510979992L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildNoPriority");
+    /*package*/ static final SConcept TestCompletionCustomization_ChildWithPriority$vh = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510979993L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildWithPriority");
   }
 }

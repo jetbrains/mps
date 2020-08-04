@@ -16,12 +16,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Circle_Constraints extends BaseConstraintsDescriptor {
   public Circle_Constraints() {
-    super(CONCEPTS.Circle$yH);
+    super(CONCEPTS.Circle$4Q);
   }
 
   public static class Radius_Property extends BasePropertyConstraintsDescriptor {
     public Radius_Property(ConstraintsDescriptor container) {
-      super(PROPS.radius$lix_, container);
+      super(PROPS.radius$ww3I, container);
     }
     @Override
     public boolean hasOwnSetter() {
@@ -32,22 +32,22 @@ public class Circle_Constraints extends BaseConstraintsDescriptor {
       staticSetPropertyValue(node, SPropertyOperations.castInteger(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, int propertyValue) {
-      SPropertyOperations.assign(node, PROPS.radius$lix_, 11110);
-      SPropertyOperations.assign(node, PROPS.radius$lix_, propertyValue);
+      SPropertyOperations.assign(node, PROPS.radius$ww3I, 11110);
+      SPropertyOperations.assign(node, PROPS.radius$ww3I, propertyValue);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.radius$lix_, new Radius_Property(this));
+    properties.put(PROPS.radius$ww3I, new Radius_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Circle$yH = MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, "jetbrains.mps.samples.Shapes.structure.Circle");
+    /*package*/ static final SConcept Circle$4Q = MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, "jetbrains.mps.samples.Shapes.structure.Circle");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty radius$lix_ = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius");
+    /*package*/ static final SProperty radius$ww3I = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius");
   }
 }

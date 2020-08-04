@@ -19,81 +19,81 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class QueriesUtil {
   public static List<SNode> getNodeOperation_ConceptList_concepts(SNode operation) {
-    SNode parm_ConceptList = SNodeOperations.cast(SModelLanguageUtil.findNodeOperationParameter(operation, CONCEPTS.OperationParm_ConceptList$lK), CONCEPTS.OperationParm_ConceptList$lK);
+    SNode parm_ConceptList = SNodeOperations.cast(SModelLanguageUtil.findNodeOperationParameter(operation, CONCEPTS.OperationParm_ConceptList$ng), CONCEPTS.OperationParm_ConceptList$ng);
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_ConceptList, LINKS.concept$5b71))) {
-      if (SLinkOperations.getTarget(cRef, LINKS.concept$otA2) != null) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, LINKS.concept$otA2));
+    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_ConceptList, LINKS.concept$D$8x))) {
+      if (SLinkOperations.getTarget(cRef, LINKS.concept$WQBy) != null) {
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, LINKS.concept$WQBy));
       }
     }
     return result;
   }
   public static List<SNode> getNodeOperation_StopList_concepts(SNode operation) {
-    SNode parm_StopList = SNodeOperations.cast(SModelLanguageUtil.findNodeOperationParameter(operation, CONCEPTS.OperationParm_StopConceptList$Ff), CONCEPTS.OperationParm_StopConceptList$Ff);
+    SNode parm_StopList = SNodeOperations.cast(SModelLanguageUtil.findNodeOperationParameter(operation, CONCEPTS.OperationParm_StopConceptList$GJ), CONCEPTS.OperationParm_StopConceptList$GJ);
     List<SNode> result = new ArrayList<SNode>();
     if ((parm_StopList == null)) {
       return result;
     }
-    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_StopList, LINKS.concept$TPBw))) {
-      if (SLinkOperations.getTarget(cRef, LINKS.concept$otA2) != null) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, LINKS.concept$otA2));
+    for (SNode cRef : ListSequence.fromList(SLinkOperations.getChildren(parm_StopList, LINKS.concept$ueD0))) {
+      if (SLinkOperations.getTarget(cRef, LINKS.concept$WQBy) != null) {
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(cRef, LINKS.concept$WQBy));
       }
     }
     return result;
   }
   public static boolean operationHasParm_Inclusion(SNode inputNode) {
-    return SModelLanguageUtil.findNodeOperationParameter(inputNode, CONCEPTS.OperationParm_Inclusion$d) != null;
+    return SModelLanguageUtil.findNodeOperationParameter(inputNode, CONCEPTS.OperationParm_Inclusion$1H) != null;
   }
   public static boolean operationHasParm_SameMetaLevel(SNode inputNode) {
-    return SModelLanguageUtil.findNodeOperationParameter(inputNode, CONCEPTS.OperationParm_SameMetaLevel$8n) != null;
+    return SModelLanguageUtil.findNodeOperationParameter(inputNode, CONCEPTS.OperationParm_SameMetaLevel$9R) != null;
   }
   public static boolean operationHasParm_Root(SNode inputNode) {
-    return SModelLanguageUtil.findNodeOperationParameter(inputNode, CONCEPTS.OperationParm_Root$wK) != null;
+    return SModelLanguageUtil.findNodeOperationParameter(inputNode, CONCEPTS.OperationParm_Root$yg) != null;
   }
   public static String get_SPropertyAccess_enum_defaultValue(SNode operation) {
-    return SPropertyOperations.getString(DataTypeUtil.getDefaultMember(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(operation, LINKS.property$lTMY), LINKS.dataType$Dbgb), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)), PROPS.internalValue$_gAE);
+    return SPropertyOperations.getString(DataTypeUtil.getDefaultMember(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(operation, LINKS.property$UiOu), LINKS.dataType$5j5Y), CONCEPTS.EnumerationDataTypeDeclaration_Old$B8)), PROPS.internalValue$1ost);
   }
   public static boolean nodeOp_noParm_conceptList(SNode op) {
-    SNode parm = SModelLanguageUtil.findNodeOperationParameter(op, CONCEPTS.OperationParm_Concept$Vf);
+    SNode parm = SModelLanguageUtil.findNodeOperationParameter(op, CONCEPTS.OperationParm_Concept$WJ);
     if (parm != null) {
       return true;
     }
-    parm = SModelLanguageUtil.findNodeOperationParameter(op, CONCEPTS.OperationParm_ConceptList$lK);
+    parm = SModelLanguageUtil.findNodeOperationParameter(op, CONCEPTS.OperationParm_ConceptList$ng);
     return parm == null;
   }
   public static boolean isProperty_hasValueEnum_notNullDefaultValue(SNode op) {
     SNode dataTypeDeclaration = jetbrains.mps.lang.smodel.behavior.SModelLanguageUtil.getDatatypeFromLeft_SPropertyAccess(op);
-    SNode defMember = EnumerationDataTypeDeclaration_Old__BehaviorDescriptor.getDefaultMember_idhEwIM$p.invoke(SNodeOperations.cast(dataTypeDeclaration, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll));
-    return SPropertyOperations.getString(defMember, PROPS.internalValue$_gAE) != null;
+    SNode defMember = EnumerationDataTypeDeclaration_Old__BehaviorDescriptor.getDefaultMember_idhEwIM$p.invoke(SNodeOperations.cast(dataTypeDeclaration, CONCEPTS.EnumerationDataTypeDeclaration_Old$B8));
+    return SPropertyOperations.getString(defMember, PROPS.internalValue$1ost) != null;
   }
   public static boolean isProperty_hasValueEnum_nullDefaultValue(SNode op) {
     SNode datatype = jetbrains.mps.lang.smodel.behavior.SModelLanguageUtil.getDatatypeFromLeft_SPropertyAccess(op);
-    SNode defMemberNode = EnumerationDataTypeDeclaration_Old__BehaviorDescriptor.getDefaultMember_idhEwIM$p.invoke(SNodeOperations.cast(datatype, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll));
-    return SPropertyOperations.getString(defMemberNode, PROPS.internalValue$_gAE) == null;
+    SNode defMemberNode = EnumerationDataTypeDeclaration_Old__BehaviorDescriptor.getDefaultMember_idhEwIM$p.invoke(SNodeOperations.cast(datatype, CONCEPTS.EnumerationDataTypeDeclaration_Old$B8));
+    return SPropertyOperations.getString(defMemberNode, PROPS.internalValue$1ost) == null;
   }
   public static String getConceptFqName(SNode concept) {
     return NameUtil.nodeFQName(concept);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OperationParm_ConceptList$lK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList");
-    /*package*/ static final SConcept OperationParm_StopConceptList$Ff = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, "jetbrains.mps.lang.smodel.structure.OperationParm_StopConceptList");
-    /*package*/ static final SConcept OperationParm_Inclusion$d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion");
-    /*package*/ static final SConcept OperationParm_SameMetaLevel$8n = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x155fb7143719d578L, "jetbrains.mps.lang.smodel.structure.OperationParm_SameMetaLevel");
-    /*package*/ static final SConcept OperationParm_Root$wK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61c4f312L, "jetbrains.mps.lang.smodel.structure.OperationParm_Root");
-    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$Ll = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
-    /*package*/ static final SConcept OperationParm_Concept$Vf = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61caab68L, "jetbrains.mps.lang.smodel.structure.OperationParm_Concept");
+    /*package*/ static final SConcept OperationParm_ConceptList$ng = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList");
+    /*package*/ static final SConcept OperationParm_StopConceptList$GJ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, "jetbrains.mps.lang.smodel.structure.OperationParm_StopConceptList");
+    /*package*/ static final SConcept OperationParm_Inclusion$1H = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion");
+    /*package*/ static final SConcept OperationParm_SameMetaLevel$9R = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x155fb7143719d578L, "jetbrains.mps.lang.smodel.structure.OperationParm_SameMetaLevel");
+    /*package*/ static final SConcept OperationParm_Root$yg = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61c4f312L, "jetbrains.mps.lang.smodel.structure.OperationParm_Root");
+    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$B8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
+    /*package*/ static final SConcept OperationParm_Concept$WJ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61caab68L, "jetbrains.mps.lang.smodel.structure.OperationParm_Concept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$otA2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept");
-    /*package*/ static final SContainmentLink concept$5b71 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, 0x10cd05bec73L, "concept");
-    /*package*/ static final SContainmentLink concept$TPBw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, 0x190735f308e2250cL, "concept");
-    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
-    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink concept$WQBy = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept");
+    /*package*/ static final SContainmentLink concept$D$8x = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, 0x10cd05bec73L, "concept");
+    /*package*/ static final SContainmentLink concept$ueD0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, 0x190735f308e2250cL, "concept");
+    /*package*/ static final SReferenceLink property$UiOu = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink dataType$5j5Y = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty internalValue$_gAE = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
+    /*package*/ static final SProperty internalValue$1ost = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
   }
 }

@@ -27,64 +27,64 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy) != null);
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf) != null);
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy) != null);
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf) != null);
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy) != null);
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf) != null);
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy) != null);
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf) != null);
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf);
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf);
   }
   public static SNode sourceNodeQuery_0_3(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   public static SNode sourceNodeQuery_0_4(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf);
   }
   public static SNode sourceNodeQuery_0_5(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   public static SNode sourceNodeQuery_0_6(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf);
   }
   public static SNode sourceNodeQuery_0_7(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   public static SNode sourceNodeQuery_0_8(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf);
   }
   public static SNode sourceNodeQuery_0_9(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   public static SNode sourceNodeQuery_2_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   public static SNode sourceNodeQuery_4_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   public static SNode sourceNodeQuery_5_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf);
   }
   public static SNode sourceNodeQuery_5_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead);
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -200,7 +200,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink repo$EFuy = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x13bfe1ec0ded851eL, "repo");
-    /*package*/ static final SContainmentLink commandClosureLiteral$gXbw = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x7c8b08a50a3ea20bL, "commandClosureLiteral");
+    /*package*/ static final SContainmentLink repo$aWtf = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x13bfe1ec0ded851eL, "repo");
+    /*package*/ static final SContainmentLink commandClosureLiteral$Lead = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x7c8b08a50a3ea20bL, "commandClosureLiteral");
   }
 }

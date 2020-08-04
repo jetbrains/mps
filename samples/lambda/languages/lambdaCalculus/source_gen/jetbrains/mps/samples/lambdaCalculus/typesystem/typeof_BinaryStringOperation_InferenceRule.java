@@ -25,7 +25,7 @@ public class typeof_BinaryStringOperation_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BinaryStringOperation$at;
+    return CONCEPTS.BinaryStringOperation$ix;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_BinaryStringOperation_InferenceRule extends AbstractInferenc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BinaryStringOperation$at = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x1a34313bb1413cb6L, "jetbrains.mps.samples.lambdaCalculus.structure.BinaryStringOperation");
+    /*package*/ static final SConcept BinaryStringOperation$ix = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x1a34313bb1413cb6L, "jetbrains.mps.samples.lambdaCalculus.structure.BinaryStringOperation");
   }
 }

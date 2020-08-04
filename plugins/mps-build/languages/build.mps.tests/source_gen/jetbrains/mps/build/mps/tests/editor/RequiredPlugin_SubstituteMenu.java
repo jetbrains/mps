@@ -28,7 +28,7 @@ public class RequiredPlugin_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_cpu6qr_a(), CONCEPTS.RequiredPlugin$6a));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_cpu6qr_a(), CONCEPTS.RequiredPlugin$qX));
     result.add(new SMP_Subconcepts_cpu6qr_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class RequiredPlugin_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_cpu6qr_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.RequiredPlugin$6a, LINKS.plugin$yz50);
+      super((SAbstractConcept) CONCEPTS.RequiredPlugin$qX, LINKS.plugin$qDpN);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class RequiredPlugin_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_cpu6qr_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RequiredPlugin$6a);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RequiredPlugin$qX);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class RequiredPlugin_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequiredPlugin$6a = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, "jetbrains.mps.build.mps.tests.structure.RequiredPlugin");
+    /*package*/ static final SConcept RequiredPlugin$qX = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, "jetbrains.mps.build.mps.tests.structure.RequiredPlugin");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink plugin$yz50 = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
+    /*package*/ static final SReferenceLink plugin$qDpN = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
   }
 }

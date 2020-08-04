@@ -214,10 +214,10 @@
       <node id="831924260440060932" at="321,40,322,34" concept="2" />
       <node id="831924260440060932" at="322,34,323,22" concept="7" />
       <node id="831924260440060900" at="325,52,326,44" concept="7" />
-      <node id="1402683484349262389" at="330,0,331,0" concept="8" trace="width$eSSX" />
-      <node id="1402683484349262389" at="331,0,332,0" concept="8" trace="height$eT7Y" />
-      <node id="1402683484349262389" at="332,0,333,0" concept="8" trace="file$__2q" />
-      <node id="1402683484349262389" at="336,0,337,0" concept="8" trace="PropertyAttribute$jT" />
+      <node id="1402683484349262389" at="330,0,331,0" concept="8" trace="width$vrrv" />
+      <node id="1402683484349262389" at="331,0,332,0" concept="8" trace="height$vrEw" />
+      <node id="1402683484349262389" at="332,0,333,0" concept="8" trace="file$Q7$W" />
+      <node id="1402683484349262389" at="336,0,337,0" concept="8" trace="PropertyAttribute$Gb" />
       <node id="1402683484349262389" at="46,0,48,0" concept="3" trace="myNode" />
       <node id="1402683484349262389" at="259,10,261,5" concept="0" />
       <node id="1402683484349262389" at="282,10,284,5" concept="0" />
@@ -514,10 +514,10 @@
       <node id="6818892319999113499" at="187,34,188,69" concept="2" />
       <node id="6818892319999113499" at="188,69,189,146" concept="2" />
       <node id="6818892319999113499" at="193,34,194,91" concept="2" />
-      <node id="6818892319999113499" at="201,0,202,0" concept="8" trace="name$lA7v" />
-      <node id="6818892319999113499" at="205,0,206,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="6818892319999113499" at="206,0,207,0" concept="8" trace="MPSTipsAndTricks_Tip$nU" />
-      <node id="6818892319999113499" at="210,0,211,0" concept="8" trace="tips$oxMY" />
+      <node id="6818892319999113499" at="201,0,202,0" concept="8" trace="name$MnvL" />
+      <node id="6818892319999113499" at="205,0,206,0" concept="8" trace="PropertyAttribute$Gb" />
+      <node id="6818892319999113499" at="206,0,207,0" concept="8" trace="MPSTipsAndTricks_Tip$Us" />
+      <node id="6818892319999113499" at="210,0,211,0" concept="8" trace="tips$D4lw" />
       <node id="6818892319999113499" at="47,0,49,0" concept="3" trace="myNode" />
       <node id="6818892319999113499" at="133,0,135,0" concept="3" trace="myNode" />
       <node id="6818892319999113499" at="61,0,64,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -821,13 +821,13 @@
       <node id="6818892319999346527" at="351,63,352,40" concept="2" />
       <node id="6818892319999346527" at="352,40,353,34" concept="2" />
       <node id="6818892319999346527" at="353,34,354,22" concept="7" />
-      <node id="6818892319999289483" at="358,0,359,0" concept="8" trace="MPSTipsAndTricks$dS" />
-      <node id="6818892319999289483" at="359,0,360,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="6818892319999289483" at="360,0,361,0" concept="8" trace="MPSTipsAndTricks_Text$co" />
-      <node id="6818892319999289483" at="364,0,365,0" concept="8" trace="tips$oxMY" />
-      <node id="6818892319999289483" at="365,0,366,0" concept="8" trace="text$vwxS" />
-      <node id="6818892319999289483" at="366,0,367,0" concept="8" trace="image$ik0$" />
-      <node id="6818892319999289483" at="370,0,371,0" concept="8" trace="name$lA7v" />
+      <node id="6818892319999289483" at="358,0,359,0" concept="8" trace="MPSTipsAndTricks$Kq" />
+      <node id="6818892319999289483" at="359,0,360,0" concept="8" trace="PropertyAttribute$Gb" />
+      <node id="6818892319999289483" at="360,0,361,0" concept="8" trace="MPSTipsAndTricks_Text$IU" />
+      <node id="6818892319999289483" at="364,0,365,0" concept="8" trace="tips$D4lw" />
+      <node id="6818892319999289483" at="365,0,366,0" concept="8" trace="text$K34q" />
+      <node id="6818892319999289483" at="366,0,367,0" concept="8" trace="image$yQz6" />
+      <node id="6818892319999289483" at="370,0,371,0" concept="8" trace="name$MnvL" />
       <node id="6818892319999289483" at="51,0,53,0" concept="3" trace="myNode" />
       <node id="6818892319999289483" at="205,0,207,0" concept="3" trace="myNode" />
       <node id="6818892319999289483" at="293,0,295,0" concept="3" trace="myNode" />
@@ -1143,10 +1143,10 @@
       <node id="6818892320000388821" at="198,93,199,47" concept="2" />
       <node id="6818892320000388821" at="199,47,200,34" concept="2" />
       <node id="6818892320000388821" at="200,34,201,22" concept="7" />
-      <node id="6818892319999697590" at="205,0,206,0" concept="8" trace="language$HIUl" />
-      <node id="6818892319999697590" at="209,0,210,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="6818892319999697590" at="210,0,211,0" concept="8" trace="XmlElement$Pm" />
-      <node id="6818892319999697590" at="214,0,215,0" concept="8" trace="element$IwEm" />
+      <node id="6818892319999697590" at="205,0,206,0" concept="8" trace="language$YhsR" />
+      <node id="6818892319999697590" at="209,0,210,0" concept="8" trace="PropertyAttribute$Gb" />
+      <node id="6818892319999697590" at="210,0,211,0" concept="8" trace="XmlElement$fP" />
+      <node id="6818892319999697590" at="214,0,215,0" concept="8" trace="element$Z3cS" />
       <node id="6818892319999697590" at="47,0,49,0" concept="3" trace="myNode" />
       <node id="6818892319999697590" at="131,0,133,0" concept="3" trace="myNode" />
       <node id="6818892319999697590" at="61,0,64,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

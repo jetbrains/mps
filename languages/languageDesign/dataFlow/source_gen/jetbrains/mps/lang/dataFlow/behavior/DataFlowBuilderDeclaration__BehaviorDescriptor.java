@@ -32,10 +32,10 @@ public final class DataFlowBuilderDeclaration__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$_Dk3);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$vN83);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$_Dk3, baseConcept);
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$vN83, baseConcept);
   }
 
   /*package*/ DataFlowBuilderDeclaration__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class DataFlowBuilderDeclaration__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$_Dk3 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$vN83 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
   }
 }

@@ -66,8 +66,8 @@ public class postfix extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_wa3l4q_a0(), CONCEPTS.PostfixIncrementExpression$3_));
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_wa3l4q_b0(), CONCEPTS.PostfixDecrementExpression$gc));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_wa3l4q_a0(), CONCEPTS.PostfixIncrementExpression$wn));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_wa3l4q_b0(), CONCEPTS.PostfixDecrementExpression$GY));
     }
     return result;
   }
@@ -110,8 +110,8 @@ public class postfix extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        final SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.PostfixIncrementExpression$3_, null);
-        SLinkOperations.setTarget(result, LINKS.expression$NMtu, SNodeOperations.copyNode(_context.getNode()));
+        final SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.PostfixIncrementExpression$wn, null);
+        SLinkOperations.setTarget(result, LINKS.expression$uRUg, SNodeOperations.copyNode(_context.getNode()));
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.LAST_CELL, -1);
         return;
@@ -121,7 +121,7 @@ public class postfix extends TransformationMenuBase {
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.PostfixIncrementExpression$3_;
+        return CONCEPTS.PostfixIncrementExpression$wn;
       }
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
@@ -136,7 +136,7 @@ public class postfix extends TransformationMenuBase {
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.PostfixIncrementExpression$3_;
+        SAbstractConcept outputConcept = CONCEPTS.PostfixIncrementExpression$wn;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -183,8 +183,8 @@ public class postfix extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.PostfixDecrementExpression$gc, null);
-        SLinkOperations.setTarget(result, LINKS.expression$NMtu, SNodeOperations.copyNode(_context.getNode()));
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.PostfixDecrementExpression$GY, null);
+        SLinkOperations.setTarget(result, LINKS.expression$uRUg, SNodeOperations.copyNode(_context.getNode()));
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.LAST_CELL, -1);
         return;
@@ -194,7 +194,7 @@ public class postfix extends TransformationMenuBase {
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.PostfixDecrementExpression$gc;
+        return CONCEPTS.PostfixDecrementExpression$GY;
       }
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
@@ -209,7 +209,7 @@ public class postfix extends TransformationMenuBase {
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.PostfixDecrementExpression$gc;
+        SAbstractConcept outputConcept = CONCEPTS.PostfixDecrementExpression$GY;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -220,11 +220,11 @@ public class postfix extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PostfixIncrementExpression$3_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11adecdb4f0L, "jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression");
-    /*package*/ static final SConcept PostfixDecrementExpression$gc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11aded05fe6L, "jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression");
+    /*package*/ static final SConcept PostfixIncrementExpression$wn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11adecdb4f0L, "jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression");
+    /*package*/ static final SConcept PostfixDecrementExpression$GY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11aded05fe6L, "jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink expression$uRUg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 }

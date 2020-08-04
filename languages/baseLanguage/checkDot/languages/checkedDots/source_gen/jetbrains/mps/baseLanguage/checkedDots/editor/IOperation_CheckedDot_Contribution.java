@@ -70,10 +70,10 @@ public class IOperation_CheckedDot_Contribution extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ishp4m_a0(), CONCEPTS.CheckedDotExpression$nB));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ishp4m_a0(), CONCEPTS.CheckedDotExpression$Du));
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ishp4m_a0(), CONCEPTS.CheckedDotExpression$nB));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ishp4m_a0(), CONCEPTS.CheckedDotExpression$Du));
     }
     return result;
   }
@@ -117,9 +117,9 @@ public class IOperation_CheckedDot_Contribution extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode dot = IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(_context.getNode());
-        SNode checkedDot = SNodeFactoryOperations.replaceWithNewChild(dot, CONCEPTS.CheckedDotExpression$nB);
-        SLinkOperations.setTarget(checkedDot, LINKS.operand$P1i5, SLinkOperations.getTarget(dot, LINKS.operand$P1i5));
-        SLinkOperations.setTarget(checkedDot, LINKS.operation$_mGS, SLinkOperations.getTarget(dot, LINKS.operation$_mGS));
+        SNode checkedDot = SNodeFactoryOperations.replaceWithNewChild(dot, CONCEPTS.CheckedDotExpression$Du);
+        SLinkOperations.setTarget(checkedDot, LINKS.operand$w6IR, SLinkOperations.getTarget(dot, LINKS.operand$w6IR));
+        SLinkOperations.setTarget(checkedDot, LINKS.operation$gs9E, SLinkOperations.getTarget(dot, LINKS.operation$gs9E));
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), checkedDot, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -127,7 +127,7 @@ public class IOperation_CheckedDot_Contribution extends TransformationMenuBase {
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.CheckedDotExpression$nB;
+        return CONCEPTS.CheckedDotExpression$Du;
       }
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
@@ -142,7 +142,7 @@ public class IOperation_CheckedDot_Contribution extends TransformationMenuBase {
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.CheckedDotExpression$nB;
+        SAbstractConcept outputConcept = CONCEPTS.CheckedDotExpression$Du;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -153,11 +153,11 @@ public class IOperation_CheckedDot_Contribution extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CheckedDotExpression$nB = MetaAdapterFactory.getConcept(0x774bf8a062e541e1L, 0xaf63f4812e60e48bL, 0x389ce13592c3023bL, "jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression");
+    /*package*/ static final SConcept CheckedDotExpression$Du = MetaAdapterFactory.getConcept(0x774bf8a062e541e1L, 0xaf63f4812e60e48bL, 0x389ce13592c3023bL, "jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

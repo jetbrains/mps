@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RequestHandler_Constraints extends BaseConstraintsDescriptor {
   public RequestHandler_Constraints() {
-    super(CONCEPTS.RequestHandler$Wu);
+    super(CONCEPTS.RequestHandler$A6);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequestHandler$Wu = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, "jetbrains.mps.ide.httpsupport.structure.RequestHandler");
+    /*package*/ static final SConcept RequestHandler$A6 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, "jetbrains.mps.ide.httpsupport.structure.RequestHandler");
   }
 }

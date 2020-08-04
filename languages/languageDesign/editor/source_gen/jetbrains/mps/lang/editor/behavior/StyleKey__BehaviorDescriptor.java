@@ -37,16 +37,16 @@ public final class StyleKey__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.value$P2m0);
+    return SPropertyOperations.getString(__thisNode__, PROPS.value$w7MM);
   }
   /*package*/ static String getClassName_id3w77Jl_kKl7(@NotNull SNode __thisNode__) {
-    return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.value$P2m0)) + "_StyleKey";
+    return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.value$w7MM)) + "_StyleKey";
   }
   /*package*/ static String getClassFQName_id3w77Jl_kKlh(@NotNull SNode __thisNode__) {
     return StyleKeyPack__BehaviorDescriptor.getClassFqName_id3w77Jl_kWGD.invoke(StyleKey__BehaviorDescriptor.getStyleKeyPack_id3w77Jl_kPZ_.invoke(__thisNode__)) + "." + StyleKey__BehaviorDescriptor.getClassName_id3w77Jl_kKl7.invoke(__thisNode__);
   }
   /*package*/ static SNode getStyleKeyPack_id3w77Jl_kPZ_(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.StyleKeyPack$Yl);
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.StyleKeyPack$9W);
   }
 
   /*package*/ StyleKey__BehaviorDescriptor() {
@@ -102,10 +102,10 @@ public final class StyleKey__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StyleKeyPack$Yl = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x399cb6c68aa9af02L, "jetbrains.mps.lang.editor.structure.StyleKeyPack");
+    /*package*/ static final SConcept StyleKeyPack$9W = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x399cb6c68aa9af02L, "jetbrains.mps.lang.editor.structure.StyleKeyPack");
   }
 }

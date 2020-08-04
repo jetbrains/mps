@@ -39,11 +39,11 @@ public final class BwfTask__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.BwfSubTask$xl)) {
-      Scope result = SimpleRoleScope.forNamedElements(__thisNode__, LINKS.subTasks$IgSz);
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.BwfSubTask$X)) {
+      Scope result = SimpleRoleScope.forNamedElements(__thisNode__, LINKS.subTasks$u4ob);
       for (SNode n : SNodeOperations.getAllSiblings(__thisNode__, false)) {
-        if (SNodeOperations.isInstanceOf(n, CONCEPTS.BwfTaskPart$Xf) && SLinkOperations.getTarget(SNodeOperations.cast(n, CONCEPTS.BwfTaskPart$Xf), LINKS.task$quBw) == __thisNode__) {
-          result = CompositeScope.createComposite(result, SimpleRoleScope.forNamedElements(n, LINKS.subTasks$quQx));
+        if (SNodeOperations.isInstanceOf(n, CONCEPTS.BwfTaskPart$sR) && SLinkOperations.getTarget(SNodeOperations.cast(n, CONCEPTS.BwfTaskPart$sR), LINKS.task$ai78) == __thisNode__) {
+          result = CompositeScope.createComposite(result, SimpleRoleScope.forNamedElements(n, LINKS.subTasks$aim9));
         }
       }
       return result;
@@ -103,13 +103,13 @@ public final class BwfTask__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink subTasks$IgSz = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L, 0x2670d5989d5a6277L, "subTasks");
-    /*package*/ static final SContainmentLink subTasks$quQx = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd32c1baL, "subTasks");
-    /*package*/ static final SReferenceLink task$quBw = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd32c1b9L, "task");
+    /*package*/ static final SContainmentLink subTasks$u4ob = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L, 0x2670d5989d5a6277L, "subTasks");
+    /*package*/ static final SContainmentLink subTasks$aim9 = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd32c1baL, "subTasks");
+    /*package*/ static final SReferenceLink task$ai78 = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd32c1b9L, "task");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfTaskPart$Xf = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, "jetbrains.mps.build.workflow.structure.BwfTaskPart");
-    /*package*/ static final SConcept BwfSubTask$xl = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, "jetbrains.mps.build.workflow.structure.BwfSubTask");
+    /*package*/ static final SConcept BwfTaskPart$sR = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, "jetbrains.mps.build.workflow.structure.BwfTaskPart");
+    /*package*/ static final SConcept BwfSubTask$X = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, "jetbrains.mps.build.workflow.structure.BwfSubTask");
   }
 }

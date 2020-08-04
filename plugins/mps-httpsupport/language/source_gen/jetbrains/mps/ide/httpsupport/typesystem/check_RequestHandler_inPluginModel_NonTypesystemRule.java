@@ -23,7 +23,7 @@ public class check_RequestHandler_inPluginModel_NonTypesystemRule extends Abstra
   }
   public void applyRule(final SNode requestHandler, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     String modelName = SModelOperations.getModelName(SNodeOperations.getModel(requestHandler));
-    String correctName = SPropertyOperations.getString(SModelOperations.getModuleStub(SNodeOperations.getModel(requestHandler)), PROPS.namespace$2Et4) + ".plugin";
+    String correctName = SPropertyOperations.getString(SModelOperations.getModuleStub(SNodeOperations.getModel(requestHandler)), PROPS.namespace$oGs) + ".plugin";
 
     if (!(modelName.equals(correctName))) {
       {
@@ -33,7 +33,7 @@ public class check_RequestHandler_inPluginModel_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RequestHandler$Wu;
+    return CONCEPTS.RequestHandler$A6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,10 +43,10 @@ public class check_RequestHandler_inPluginModel_NonTypesystemRule extends Abstra
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty namespace$2Et4 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace");
+    /*package*/ static final SProperty namespace$oGs = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequestHandler$Wu = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, "jetbrains.mps.ide.httpsupport.structure.RequestHandler");
+    /*package*/ static final SConcept RequestHandler$A6 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, "jetbrains.mps.ide.httpsupport.structure.RequestHandler");
   }
 }

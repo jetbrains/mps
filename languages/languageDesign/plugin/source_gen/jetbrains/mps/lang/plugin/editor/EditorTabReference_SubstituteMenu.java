@@ -28,7 +28,7 @@ public class EditorTabReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_psw2q2_a(), CONCEPTS.EditorTabReference$Rs));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_psw2q2_a(), CONCEPTS.EditorTabReference$Ov));
     result.add(new SMP_Subconcepts_psw2q2_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class EditorTabReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_psw2q2_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.EditorTabReference$Rs, LINKS.editorTab$xwDl);
+      super((SAbstractConcept) CONCEPTS.EditorTabReference$Ov, LINKS.editorTab$J5Ao);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class EditorTabReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_psw2q2_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EditorTabReference$Rs);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EditorTabReference$Ov);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class EditorTabReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorTabReference$Rs = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd7814bL, "jetbrains.mps.lang.plugin.structure.EditorTabReference");
+    /*package*/ static final SConcept EditorTabReference$Ov = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd7814bL, "jetbrains.mps.lang.plugin.structure.EditorTabReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink editorTab$xwDl = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "editorTab");
+    /*package*/ static final SReferenceLink editorTab$J5Ao = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "editorTab");
   }
 }

@@ -1043,13 +1043,13 @@
       <node id="3806643308052361846" at="164,86,165,39" concept="6" />
       <node id="3806643308052387205" at="166,123,167,53" concept="2" />
       <node id="3806643308052308071" at="168,9,169,159" concept="7" />
-      <node id="8373324885176989047" at="175,0,176,0" concept="9" trace="stringProperty$R6$8" />
-      <node id="8373324885176989047" at="176,0,177,0" concept="9" trace="customActionEnumProperty$3_rP" />
-      <node id="8373324885176989047" at="177,0,178,0" concept="9" trace="name$lA7v" />
-      <node id="8373324885176989047" at="181,0,182,0" concept="9" trace="customActionReference$rr9e" />
-      <node id="8373324885176989047" at="182,0,183,0" concept="9" trace="customActionChildInMatchingLink$uCcS" />
-      <node id="8373324885176989047" at="186,0,187,0" concept="9" trace="TestCompletionCustomization_ContextMatcherChildInMatchingLink$7q" />
-      <node id="8373324885176989047" at="187,0,188,0" concept="9" trace="TestCompletionCustomization_ParentTestContextMatcher$5W" />
+      <node id="8373324885176989047" at="175,0,176,0" concept="9" trace="stringProperty$OUoz" />
+      <node id="8373324885176989047" at="176,0,177,0" concept="9" trace="customActionEnumProperty$1pgg" />
+      <node id="8373324885176989047" at="177,0,178,0" concept="9" trace="name$MnvL" />
+      <node id="8373324885176989047" at="181,0,182,0" concept="9" trace="customActionReference$peXD" />
+      <node id="8373324885176989047" at="182,0,183,0" concept="9" trace="customActionChildInMatchingLink$ss1j" />
+      <node id="8373324885176989047" at="186,0,187,0" concept="9" trace="TestCompletionCustomization_ContextMatcherChildInMatchingLink$VP" />
+      <node id="8373324885176989047" at="187,0,188,0" concept="9" trace="TestCompletionCustomization_ParentTestContextMatcher$Un" />
       <node id="2739111710915099829" at="100,20,102,15" concept="0" />
       <node id="2739111710912672026" at="120,0,123,0" concept="5" trace="invoke#(Ljetbrains/mps/openapi/editor/EditorContext;Ljava/lang/String;Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3806643308052253702" at="128,0,131,0" concept="5" trace="getIconNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />

@@ -137,7 +137,7 @@
       <node id="1892993302480310367" at="47,103,48,80" concept="8" />
       <node id="1892993302480310367" at="48,80,49,300" concept="8" />
       <node id="1892993302480310367" at="49,300,50,20" concept="9" />
-      <node id="1892993302480310366" at="55,0,56,0" concept="11" trace="InputNode_A$Am" />
+      <node id="1892993302480310366" at="55,0,56,0" concept="11" trace="InputNode_A$Jt" />
       <node id="1892993302480310366" at="40,0,42,0" concept="7" trace="processNull#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljetbrains/mps/generator/runtime/TemplateContext;)V" />
       <node id="1892993302480310366" at="25,0,28,0" concept="1" trace="Switch_switch_InputNode_A#()V" />
       <node id="1892993302480310366" at="28,0,31,0" concept="7" trace="getSwitchNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -299,8 +299,8 @@
       <node id="3893401255414086885" at="68,103,69,80" concept="8" />
       <node id="3893401255414086885" at="69,80,70,285" concept="8" />
       <node id="3893401255414086885" at="70,285,71,20" concept="9" />
-      <node id="3893401255414084744" at="76,0,77,0" concept="11" trace="InputNode_A$Am" />
-      <node id="3893401255414084744" at="77,0,78,0" concept="11" trace="InputRoot$eR" />
+      <node id="3893401255414084744" at="76,0,77,0" concept="11" trace="InputNode_A$Jt" />
+      <node id="3893401255414084744" at="77,0,78,0" concept="11" trace="InputRoot$nY" />
       <node id="3893401255414086883" at="45,0,48,0" concept="1" trace="ReductionRule0#()V" />
       <node id="3893401255414086885" at="60,0,63,0" concept="1" trace="RootMappingRule0#()V" />
       <node id="3893401255414084744" at="36,0,40,0" concept="7" trace="getReductionRules#()Ljava/util/Collection;" />
@@ -656,7 +656,7 @@
       <node id="8371596541809066877" at="56,103,57,80" concept="8" />
       <node id="8371596541809066877" at="57,80,58,293" concept="8" />
       <node id="8371596541809066877" at="58,293,59,20" concept="9" />
-      <node id="8371596541809066874" at="64,0,65,0" concept="11" trace="InputNode_A$Am" />
+      <node id="8371596541809066874" at="64,0,65,0" concept="11" trace="InputNode_A$Jt" />
       <node id="8371596541809066874" at="28,0,31,0" concept="1" trace="Switch_betterSwitch#()V" />
       <node id="8371596541809066874" at="31,0,34,0" concept="7" trace="getSwitchNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="8371596541809066874" at="34,0,37,0" concept="7" trace="getModifiesSwitch#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

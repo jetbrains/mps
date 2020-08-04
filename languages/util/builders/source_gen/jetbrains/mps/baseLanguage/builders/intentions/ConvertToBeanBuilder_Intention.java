@@ -54,16 +54,16 @@ public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.BuilderCreator$E1, null);
-      SNode builder = SNodeFactoryOperations.createNewNode(CONCEPTS.BeanBuilder$st, null);
-      SLinkOperations.setTarget(builder, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI));
-      for (SNode arg : SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)) {
-        ListSequence.fromList(SLinkOperations.getChildren(builder, LINKS.actualArgument$ItKJ)).addElement(arg);
+      SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.BuilderCreator$DG, null);
+      SNode builder = SNodeFactoryOperations.createNewNode(CONCEPTS.BeanBuilder$s8, null);
+      SLinkOperations.setTarget(builder, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw));
+      for (SNode arg : SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)) {
+        ListSequence.fromList(SLinkOperations.getChildren(builder, LINKS.actualArgument$pzdx)).addElement(arg);
       }
-      SLinkOperations.setTarget(creator, LINKS.builder$hk0B, builder);
+      SLinkOperations.setTarget(creator, LINKS.builder$HP0i, builder);
       SNodeOperations.replaceWithAnother(node, creator);
 
-      editorContext.select(SLinkOperations.getTarget(creator, LINKS.body$5Coy));
+      editorContext.select(SLinkOperations.getTarget(creator, LINKS.body$y9od));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -72,14 +72,14 @@ public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuilderCreator$E1 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0eL, "jetbrains.mps.baseLanguage.builders.structure.BuilderCreator");
-    /*package*/ static final SConcept BeanBuilder$st = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x5c83892592e1ebbfL, "jetbrains.mps.baseLanguage.builders.structure.BeanBuilder");
+    /*package*/ static final SConcept BuilderCreator$DG = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0eL, "jetbrains.mps.baseLanguage.builders.structure.BuilderCreator");
+    /*package*/ static final SConcept BeanBuilder$s8 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x5c83892592e1ebbfL, "jetbrains.mps.baseLanguage.builders.structure.BeanBuilder");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink builder$hk0B = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
-    /*package*/ static final SContainmentLink body$5Coy = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e25129cL, "body");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink builder$HP0i = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
+    /*package*/ static final SContainmentLink body$y9od = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e25129cL, "body");
   }
 }

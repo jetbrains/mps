@@ -33,7 +33,7 @@ public final class BooleanConstant__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.value$qt90);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.value$5y_M);
   }
   /*package*/ static boolean constant_id1653mnvAgr2(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -88,6 +88,6 @@ public final class BooleanConstant__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

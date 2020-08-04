@@ -71,7 +71,7 @@ public class HashMapCreator_add_keyType_valueType extends TransformationMenuBase
   public class TMP_Group_2d88er_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SLinkOperations.getTarget(_context.getNode(), LINKS.keyType$fYQv) == null && SLinkOperations.getTarget(_context.getNode(), LINKS.valueType$omG5) == null;
+      return SLinkOperations.getTarget(_context.getNode(), LINKS.keyType$Uj4M) == null && SLinkOperations.getTarget(_context.getNode(), LINKS.valueType$2EUo) == null;
     }
 
     @NotNull
@@ -127,8 +127,8 @@ public class HashMapCreator_add_keyType_valueType extends TransformationMenuBase
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.keyType$fYQv, null);
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.valueType$omG5, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.keyType$Uj4M, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.valueType$2EUo, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -158,7 +158,7 @@ public class HashMapCreator_add_keyType_valueType extends TransformationMenuBase
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink valueType$omG5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
-    /*package*/ static final SContainmentLink keyType$fYQv = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
+    /*package*/ static final SContainmentLink valueType$2EUo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5d76dL, "valueType");
+    /*package*/ static final SContainmentLink keyType$Uj4M = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x116dbb5b4d0L, "keyType");
   }
 }

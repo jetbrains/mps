@@ -16,30 +16,30 @@ public class ConstraintsUtil {
   }
 
   public static boolean isInsideOfBehavior(SNode node) {
-    return (SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptBehavior$8P, true, false) != null);
+    return (SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptBehavior$2, true, false) != null);
   }
 
   public static boolean isInsideOfBehavior(SNode node, final boolean isStatic) {
     if (!(isInsideOfBehavior(node))) {
       return false;
     }
-    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptConstructorDeclaration$wi, true, false) != null)) {
+    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptConstructorDeclaration$nv, true, false) != null)) {
       return !(isStatic);
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.ConceptMethodDeclaration$VN, true)).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.ConceptMethodDeclaration$N0, true)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.isStatic$lgS1) == isStatic;
+        return SPropertyOperations.getBoolean(it, PROPS.isStatic$JhJe) == isStatic;
       }
     });
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
-    /*package*/ static final SConcept ConceptConstructorDeclaration$wi = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration");
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept ConceptConstructorDeclaration$nv = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isStatic$lgS1 = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
+    /*package*/ static final SProperty isStatic$JhJe = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x51613f7fe129b24dL, "isStatic");
   }
 }

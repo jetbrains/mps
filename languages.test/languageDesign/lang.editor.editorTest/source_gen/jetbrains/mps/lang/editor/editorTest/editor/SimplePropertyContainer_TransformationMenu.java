@@ -66,7 +66,7 @@ public class SimplePropertyContainer_TransformationMenu extends TransformationMe
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.SimplePropertyContainer$1p)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.SimplePropertyContainer$LA)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -82,10 +82,10 @@ public class SimplePropertyContainer_TransformationMenu extends TransformationMe
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_k9kyyu_a1(), CONCEPTS.Composition$9E));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_k9kyyu_a1(), CONCEPTS.Composition$TR));
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_k9kyyu_a2(), CONCEPTS.Composition$9E));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_k9kyyu_a2(), CONCEPTS.Composition$TR));
     }
     return result;
   }
@@ -128,7 +128,7 @@ public class SimplePropertyContainer_TransformationMenu extends TransformationMe
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.SimplePropertyContainer$1p, null);
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.SimplePropertyContainer$LA, null);
         SNodeOperations.insertPrevSiblingChild(_context.getNode(), result);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -137,7 +137,7 @@ public class SimplePropertyContainer_TransformationMenu extends TransformationMe
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.Composition$9E;
+        return CONCEPTS.Composition$TR;
       }
 
 
@@ -148,7 +148,7 @@ public class SimplePropertyContainer_TransformationMenu extends TransformationMe
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.Composition$9E;
+        SAbstractConcept outputConcept = CONCEPTS.Composition$TR;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -195,7 +195,7 @@ public class SimplePropertyContainer_TransformationMenu extends TransformationMe
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.SimplePropertyContainer$1p, null);
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.SimplePropertyContainer$LA, null);
         SNodeOperations.insertNextSiblingChild(_context.getNode(), result);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -204,7 +204,7 @@ public class SimplePropertyContainer_TransformationMenu extends TransformationMe
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.Composition$9E;
+        return CONCEPTS.Composition$TR;
       }
 
 
@@ -215,7 +215,7 @@ public class SimplePropertyContainer_TransformationMenu extends TransformationMe
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.Composition$9E;
+        SAbstractConcept outputConcept = CONCEPTS.Composition$TR;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -226,7 +226,7 @@ public class SimplePropertyContainer_TransformationMenu extends TransformationMe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimplePropertyContainer$1p = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2c59702023f8181eL, "jetbrains.mps.lang.editor.editorTest.structure.SimplePropertyContainer");
-    /*package*/ static final SConcept Composition$9E = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2fd7ff1ee43ef592L, "jetbrains.mps.lang.editor.editorTest.structure.Composition");
+    /*package*/ static final SConcept SimplePropertyContainer$LA = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2c59702023f8181eL, "jetbrains.mps.lang.editor.editorTest.structure.SimplePropertyContainer");
+    /*package*/ static final SConcept Composition$TR = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2fd7ff1ee43ef592L, "jetbrains.mps.lang.editor.editorTest.structure.Composition");
   }
 }

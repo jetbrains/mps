@@ -44,7 +44,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_adcwvm_a(), CONCEPTS.GenerationContextOp_ContextVarRef$EO));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_adcwvm_a(), CONCEPTS.GenerationContextOp_ContextVarRef$4q));
     result.add(new SMP_Subconcepts_adcwvm_b());
     return result;
   }
@@ -85,10 +85,10 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
       SNode n = _context.getParentNode();
       List<String> rv = ListSequence.fromList(new ArrayList<String>());
       while (n != null) {
-        if (SNodeOperations.isInstanceOf(n, CONCEPTS.ContextVariableProvider$W7)) {
-          ListSequence.fromList(rv).addSequence(ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, CONCEPTS.ContextVariableProvider$W7))).select(new ISelector<SNode, String>() {
+        if (SNodeOperations.isInstanceOf(n, CONCEPTS.ContextVariableProvider$BN)) {
+          ListSequence.fromList(rv).addSequence(ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, CONCEPTS.ContextVariableProvider$BN))).select(new ISelector<SNode, String>() {
             public String select(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$lA7v);
+              return SPropertyOperations.getString(it, PROPS.name$MnvL);
             }
           }));
         }
@@ -129,7 +129,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.GenerationContextOp_ContextVarRef$EO, context);
+          super(CONCEPTS.GenerationContextOp_ContextVarRef$4q, context);
           _context = context;
         }
 
@@ -140,8 +140,8 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode rv = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.GenerationContextOp_ContextVarRef$EO, null);
-          SPropertyOperations.assign(rv, PROPS.contextVarName$wML_, myParameterObject);
+          SNode rv = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.GenerationContextOp_ContextVarRef$4q, null);
+          SPropertyOperations.assign(rv, PROPS.contextVarName$KIbb, myParameterObject);
           return rv;
         }
 
@@ -151,7 +151,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.GenerationContextOp_ContextVarRef$EO, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.GenerationContextOp_ContextVarRef$4q, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -174,7 +174,7 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
   }
   public class SMP_Subconcepts_adcwvm_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GenerationContextOp_ContextVarRef$EO);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GenerationContextOp_ContextVarRef$4q);
     }
     @NotNull
     @Override
@@ -195,12 +195,12 @@ public class GenerationContextOp_ContextVarRef_SubstituteMenu extends Substitute
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_ContextVarRef$EO = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef");
-    /*package*/ static final SInterfaceConcept ContextVariableProvider$W7 = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d934cacL, "jetbrains.mps.lang.generator.structure.ContextVariableProvider");
+    /*package*/ static final SConcept GenerationContextOp_ContextVarRef$4q = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef");
+    /*package*/ static final SInterfaceConcept ContextVariableProvider$BN = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d934cacL, "jetbrains.mps.lang.generator.structure.ContextVariableProvider");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty contextVarName$wML_ = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty contextVarName$KIbb = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
   }
 }

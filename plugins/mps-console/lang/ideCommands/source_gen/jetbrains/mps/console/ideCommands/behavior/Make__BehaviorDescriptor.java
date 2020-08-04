@@ -32,7 +32,7 @@ public final class Make__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Iterable<SConcept> getSupportedParameters_id3J6h25QXCDW(@NotNull SAbstractConcept __thisConcept__) {
-    return Sequence.<SConcept>singleton(CONCEPTS.WithDependencies$TS);
+    return Sequence.<SConcept>singleton(CONCEPTS.WithDependencies$HE);
   }
   /*package*/ static String getHelpPage_id64VftqEen2L(@NotNull SAbstractConcept __thisConcept__) {
     return "Makes the models specified as the argument.\nAccepts argument of types: model, SModule, sequence<model>, sequence<SModule>.\nIf no arguments is provided, make is invoked on the whole project.\nAffects only the models that need generation (marked by MPS as `generation required`).\nWith the option <withDependencies> set, the models specified in the argument are generated as well as their dependencies.";
@@ -87,6 +87,6 @@ public final class Make__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WithDependencies$TS = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x826e97ca237a1b1L, "jetbrains.mps.console.ideCommands.structure.WithDependencies");
+    /*package*/ static final SConcept WithDependencies$HE = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x826e97ca237a1b1L, "jetbrains.mps.console.ideCommands.structure.WithDependencies");
   }
 }

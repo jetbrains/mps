@@ -33,7 +33,7 @@ public final class InstructionReference__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static String getPresentation_id7wwiZxTDPva(@NotNull SNode __thisNode__) {
-    String result = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.instruction$19qt), PROPS.name$lA7v);
+    String result = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.instruction$dfha), PROPS.name$MnvL);
     return result;
   }
 
@@ -84,10 +84,10 @@ public final class InstructionReference__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink instruction$19qt = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x3a887e9da0b4cedcL, 0x3a887e9da0b4cee5L, "instruction");
+    /*package*/ static final SReferenceLink instruction$dfha = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x3a887e9da0b4cedcL, 0x3a887e9da0b4cee5L, "instruction");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -21,7 +21,7 @@ public class supertypesOf_SModelPointerType_ClassifierTypeSModelReference_Subtyp
     return _quotation_createNode_msu18j_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SModelPointerType$8T;
+    return CONCEPTS.SModelPointerType$ap;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class supertypesOf_SModelPointerType_ClassifierTypeSModelReference_Subtyp
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SModelPointerType$8T = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645d088bL, "jetbrains.mps.lang.smodel.structure.SModelPointerType");
+    /*package*/ static final SConcept SModelPointerType$ap = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x19dc9460645d088bL, "jetbrains.mps.lang.smodel.structure.SModelPointerType");
   }
 }

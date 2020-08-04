@@ -22,14 +22,14 @@ public class classifierTypeWithSameClassifier_InequationReplacementRule extends 
   public classifierTypeWithSameClassifier_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$xslD)), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(supertype, LINKS.classifier$xslD))) && SLinkOperations.getTarget(subtype, LINKS.classifier$xslD) != SLinkOperations.getTarget(supertype, LINKS.classifier$xslD);
+    return Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr)), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr))) && SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr) != SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr);
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     // todo this is a hack helping to avoid type errors when mps code compiled in idea returns back to mps as stubs 
     // we definitely need proper solution that allows fully functional clear subtyping for such things 
 
     SNode subTypeReplaced = SNodeOperations.copyNode(subtype);
-    SLinkOperations.setTarget(subTypeReplaced, LINKS.classifier$xslD, SLinkOperations.getTarget(supertype, LINKS.classifier$xslD));
+    SLinkOperations.setTarget(subTypeReplaced, LINKS.classifier$cxMr, SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr));
     {
       SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2938172522550993212", 0, null);
@@ -44,7 +44,7 @@ public class classifierTypeWithSameClassifier_InequationReplacementRule extends 
       // we definitely need proper solution that allows fully functional clear subtyping for such things 
 
       SNode subTypeReplaced = SNodeOperations.copyNode(subtype);
-      SLinkOperations.setTarget(subTypeReplaced, LINKS.classifier$xslD, SLinkOperations.getTarget(supertype, LINKS.classifier$xslD));
+      SLinkOperations.setTarget(subTypeReplaced, LINKS.classifier$cxMr, SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr));
       result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isStrongSubtype((SNode) subTypeReplaced, (SNode) supertype);
     }
     return result_14532009;
@@ -60,17 +60,17 @@ public class classifierTypeWithSameClassifier_InequationReplacementRule extends 
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

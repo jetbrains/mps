@@ -36,9 +36,9 @@
       <node id="1236696569510" at="44,50,45,46" concept="6" />
       <node id="1236696569510" at="47,68,48,102" concept="6" />
       <node id="1236696569510" at="50,30,51,16" concept="6" />
-      <node id="1236696569510" at="55,0,56,0" concept="7" trace="initializer$no3R" />
-      <node id="1236696569510" at="59,0,60,0" concept="7" trace="Type$IG" />
-      <node id="1236696569510" at="60,0,61,0" concept="7" trace="VarVariableDeclaration$Of" />
+      <node id="1236696569510" at="55,0,56,0" concept="7" trace="initializer$2twD" />
+      <node id="1236696569510" at="59,0,60,0" concept="7" trace="Type$bu" />
+      <node id="1236696569510" at="60,0,61,0" concept="7" trace="VarVariableDeclaration$pa" />
       <node id="1236696569510" at="20,0,22,0" concept="1" trace="typeof_VarVariableDeclaration_InferenceRule#()V" />
       <node id="1236696569510" at="44,0,47,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1236696569510" at="47,0,50,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -103,8 +103,8 @@
       <node id="8067700594454594112" at="28,50,29,46" concept="6" />
       <node id="8067700594454594112" at="31,68,32,102" concept="6" />
       <node id="8067700594454594112" at="34,30,35,17" concept="6" />
-      <node id="8067700594454594112" at="39,0,40,0" concept="7" trace="initializer$no3R" />
-      <node id="8067700594454594112" at="43,0,44,0" concept="7" trace="VarVariableDeclaration$Of" />
+      <node id="8067700594454594112" at="39,0,40,0" concept="7" trace="initializer$2twD" />
+      <node id="8067700594454594112" at="43,0,44,0" concept="7" trace="VarVariableDeclaration$pa" />
       <node id="8067700594454594112" at="20,0,22,0" concept="1" trace="check_VarVariableDeclaration_NonTypesystemRule#()V" />
       <node id="8067700594454594112" at="28,0,31,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8067700594454594112" at="31,0,34,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

@@ -233,7 +233,7 @@
       <node id="6202297022024049614" at="62,86,63,65" concept="5" />
       <node id="6202297022024049620" at="65,25,66,163" concept="2" />
       <node id="6202297022024049645" at="68,7,69,24" concept="6" />
-      <node id="2344528742722136214" at="73,0,74,0" concept="9" trace="INamedConcept$nV" />
+      <node id="2344528742722136214" at="73,0,74,0" concept="9" trace="INamedConcept$Kd" />
       <node id="3743352646564461112" at="32,0,35,0" concept="4" trace="run#()V" />
       <node id="6202297022024036736" at="39,0,42,0" concept="10" trace="loadNamedMenu#(Ljetbrains/mps/openapi/editor/EditorComponent;Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljava/lang/String;)Ljava/util/List;" />
       <node id="3743352646564338788" at="53,0,56,0" concept="4" trace="run#()V" />
@@ -428,8 +428,8 @@
       <node id="6903010549536975861" at="85,65,86,81" concept="5" />
       <node id="6903010549536975861" at="86,81,87,241" concept="2" />
       <node id="6903010549536975861" at="87,241,88,38" concept="6" />
-      <node id="2705676212746996045" at="93,0,94,0" concept="9" trace="SNodeType$gn" />
-      <node id="2705676212746996045" at="97,0,98,0" concept="9" trace="concept$gpfa" />
+      <node id="2705676212746996045" at="93,0,94,0" concept="9" trace="SNodeType$hR" />
+      <node id="2705676212746996045" at="97,0,98,0" concept="9" trace="concept$OMgE" />
       <node id="2705676212746996045" at="35,0,37,0" concept="9" trace="ourParamCache" />
       <node id="2705676212746996045" at="37,0,39,0" concept="3" trace="myWithCommandRule" />
       <node id="2705676212746996045" at="40,0,43,0" concept="1" trace="Include_MenuAndTargetNodeCorrespondence_Test#()V" />
@@ -551,7 +551,7 @@
       <node id="3597524805843306523" at="31,52,32,19" concept="11" />
       <node id="3597524805843306523" at="36,51,37,72" concept="2" />
       <node id="3597524805843309530" at="37,72,38,170" concept="2" />
-      <node id="3597524805843306523" at="43,0,44,0" concept="9" trace="TransformationMenu_Default$In" />
+      <node id="3597524805843306523" at="43,0,44,0" concept="9" trace="TransformationMenu_Default$TY" />
       <node id="3597524805843306523" at="17,0,19,0" concept="9" trace="ourParamCache" />
       <node id="3597524805843306523" at="20,0,23,0" concept="1" trace="TransformationMenu_ConvertNamedToDefault_Test#()V" />
       <node id="3597524805843306523" at="31,0,34,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -578,8 +578,8 @@
       <node id="3685717980265770617" at="25,76,26,36" concept="2" />
       <node id="3685717980265770617" at="31,52,32,19" concept="11" />
       <node id="3685717980265770617" at="36,51,37,72" concept="2" />
-      <node id="3685717980265770619" at="37,72,38,159" concept="2" />
-      <node id="3685717980265770617" at="43,0,44,0" concept="9" trace="SubstituteMenu_Named$J" />
+      <node id="3685717980265770619" at="37,72,38,160" concept="2" />
+      <node id="3685717980265770617" at="43,0,44,0" concept="9" trace="SubstituteMenu_Named$cm" />
       <node id="3685717980265770617" at="17,0,19,0" concept="9" trace="ourParamCache" />
       <node id="3685717980265770617" at="20,0,23,0" concept="1" trace="SubstituteMenu_ConvertDefaultToNamed_Test#()V" />
       <node id="3685717980265770617" at="31,0,34,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -588,7 +588,7 @@
       <scope id="3685717980265770617" at="20,54,21,25" />
       <scope id="3685717980265770617" at="25,76,26,36" />
       <scope id="3685717980265770617" at="31,52,32,19" />
-      <scope id="3685717980265770617" at="36,51,38,159" />
+      <scope id="3685717980265770617" at="36,51,38,160" />
       <scope id="3685717980265770617" at="20,0,23,0" />
       <scope id="3685717980265770617" at="31,0,34,0">
         <var name="owner" id="3685717980265770617" />
@@ -607,7 +607,7 @@
       <node id="3685717980265770644" at="31,52,32,19" concept="11" />
       <node id="3685717980265770644" at="36,51,37,72" concept="2" />
       <node id="3685717980265770646" at="37,72,38,162" concept="2" />
-      <node id="3685717980265770644" at="43,0,44,0" concept="9" trace="SubstituteMenu_Default$hk" />
+      <node id="3685717980265770644" at="43,0,44,0" concept="9" trace="SubstituteMenu_Default$sV" />
       <node id="3685717980265770644" at="17,0,19,0" concept="9" trace="ourParamCache" />
       <node id="3685717980265770644" at="20,0,23,0" concept="1" trace="SubstituteMenu_ConvertNamedToDefault_Test#()V" />
       <node id="3685717980265770644" at="31,0,34,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -705,7 +705,7 @@
       <node id="5339489019635994809" at="31,52,32,19" concept="11" />
       <node id="5339489019635994809" at="36,51,37,72" concept="2" />
       <node id="5339489019635994811" at="37,72,38,168" concept="2" />
-      <node id="5339489019635994809" at="43,0,44,0" concept="9" trace="TransformationMenu_Named$1E" />
+      <node id="5339489019635994809" at="43,0,44,0" concept="9" trace="TransformationMenu_Named$dh" />
       <node id="5339489019635994809" at="17,0,19,0" concept="9" trace="ourParamCache" />
       <node id="5339489019635994809" at="20,0,23,0" concept="1" trace="TransformationMenu_ConvertDefaultToNamed_Test#()V" />
       <node id="5339489019635994809" at="31,0,34,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />

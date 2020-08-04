@@ -84,9 +84,9 @@ public class ChangesCalculationTest extends ChangesTestBase {
         return detachedCopy;
       }
     });
-    myRootNode = ListSequence.fromList(SModelOperations.roots(myTestModel, CONCEPTS.ClassConcept$IY)).first();
+    myRootNode = ListSequence.fromList(SModelOperations.roots(myTestModel, CONCEPTS.ClassConcept$bK)).first();
     myRootNodeId = myRootNode.getNodeId();
-    Assert.assertEquals("[sanity]", "Root", SPropertyOperations.getString(myRootNode, PROPS.name$lA7v));
+    Assert.assertEquals("[sanity]", "Root", SPropertyOperations.getString(myRootNode, PROPS.name$MnvL));
     Assert.assertEquals("[sanity]", new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705").getNodeId(), myRootNodeId);
   }
 
@@ -116,23 +116,23 @@ public class ChangesCalculationTest extends ChangesTestBase {
   public void testPropertyChange() {
     testDiffCorrectness(new Runnable() {
       public void run() {
-        SPropertyOperations.assign(myRootNode, PROPS.name$lA7v, "RenamedRoot");
+        SPropertyOperations.assign(myRootNode, PROPS.name$MnvL, "RenamedRoot");
       }
-    }, new SetPropertyChange(createFakeChangeSet(), myRootNodeId, PROPS.name$lA7v, "RenamedRoot"));
+    }, new SetPropertyChange(createFakeChangeSet(), myRootNodeId, PROPS.name$MnvL, "RenamedRoot"));
   }
 
   @Test
   public void changeReference() {
     SetReferenceChange change;
-    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$hJ, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
+    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), "method1");
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
-    change = new SetReferenceChange(createFakeChangeSet(), SLinkOperations.getTarget(method1, LINKS.returnType$qrVw).getNodeId(), LINKS.classifier$xslD, myTestModel.getReference(), myRootNodeId, "Root");
+    change = new SetReferenceChange(createFakeChangeSet(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), LINKS.classifier$cxMr, myTestModel.getReference(), myRootNodeId, "Root");
     testDiffCorrectness(new Runnable() {
       public void run() {
-        SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(method1, LINKS.returnType$qrVw), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, myRootNode);
+        SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(method1, LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, myRootNode);
       }
     }, change);
   }
@@ -141,104 +141,104 @@ public class ChangesCalculationTest extends ChangesTestBase {
   public void addChild() {
     testDiffCorrectness(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
-        return SLinkOperations.setTarget(myRootNode, LINKS.superclass$7jGM, _quotation_createNode_7w1430_a0a0a0a0q());
+        return SLinkOperations.setTarget(myRootNode, LINKS.superclass$Mp9$, _quotation_createNode_7w1430_a0a0a0a0q());
       }
-    }), new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.superclass$7jGM, 0, 0, 0, 1));
+    }), new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.superclass$Mp9$, 0, 0, 0, 1));
   }
 
   @Test
   public void addSameRoleChildren() {
     testDiffCorrectness(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
-        ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$KoQU)).addElement(_quotation_createNode_7w1430_a0a0a0a0a81());
-        ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$KoQU)).addElement(_quotation_createNode_7w1430_a0a1a0a0a81());
-        return ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$KoQU)).addElement(_quotation_createNode_7w1430_a0a2a0a0a81());
+        ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_7w1430_a0a0a0a0a81());
+        ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_7w1430_a0a1a0a0a81());
+        return ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_7w1430_a0a2a0a0a81());
       }
-    }), new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.implementedInterface$KoQU, 0, 0, 0, 3));
+    }), new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.implementedInterface$rujG, 0, 0, 0, 3));
   }
 
   @Test
   public void addNodeAttribute() {
     testDiffCorrectness(new Runnable() {
       public void run() {
-        AttributeOperations.createAndSetAttrbiute(myRootNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$Kc), CONCEPTS.ReviewMigration$Kc);
+        AttributeOperations.createAndSetAttrbiute(myRootNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), CONCEPTS.ReviewMigration$8u);
       }
-    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.smodelAttribute$jXFL, 0, 0, 0, 1));
+    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.smodelAttribute$KJ43, 0, 0, 0, 1));
   }
   @Test
   public void addChildAttribute() {
     testDiffCorrectness(new Runnable() {
       public void run() {
-        ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$6v_r)).last());
+        ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last());
 
       }
-    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$6v_r, 3, 3, 3, 4));
+    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$L_2d, 3, 3, 3, 4));
   }
 
   @Test
   public void addChildAttributeAndCheckItIsAboutRole() {
     List<ModelChange> changes = applyAndDiff(new Runnable() {
       public void run() {
-        ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$6v_r)).last());
+        ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last());
       }
     });
-    junit.framework.Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupChange && ((NodeGroupChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$6v_r));
+    junit.framework.Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupChange && ((NodeGroupChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$L_2d));
   }
 
   @Test
   public void removeChild() {
-    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$hJ, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
+    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), "method1");
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
     testDiffCorrectness(new Runnable() {
       public void run() {
         SNodeOperations.deleteNode(method1);
       }
-    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$6v_r, 0, 1, 0, 0));
+    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 0));
   }
 
   @Test
   public void removeChildAttribute() {
-    final SNode commented = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(AttributeOperations.getAttributeList(myRootNode, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.member$6v_r)), LINKS.commentedNode$md7q), CONCEPTS.InstanceMethodDeclaration$An)).where(new IWhereFilter<SNode>() {
+    final SNode commented = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(AttributeOperations.getAttributeList(myRootNode, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d)), LINKS.commentedNode$MYvG), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), "commented");
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "commented");
       }
     }).first();
     testDiffCorrectness(new Runnable() {
       public void run() {
-        SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(commented), CONCEPTS.BaseCommentAttribute$Zd));
+        SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(commented), CONCEPTS.BaseCommentAttribute$nv));
       }
-    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$6v_r, 1, 2, 1, 1));
+    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$L_2d, 1, 2, 1, 1));
   }
 
   @Test
   public void replaceChild() {
-    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$hJ, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
+    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), "method1");
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
     testDiffCorrectness(new Runnable() {
       public void run() {
         SNodeOperations.deleteNode(method1);
-        ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$6v_r)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
+        ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
       }
-    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$6v_r, 0, 1, 0, 1));
+    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 1));
   }
   @Test
   public void commentChild() {
-    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$hJ, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
+    final SNode method1 = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), "method1");
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
     testDiffCorrectness(new Runnable() {
       public void run() {
         CommentUtil.commentOut(method1);
       }
-    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$6v_r, 0, 1, 0, 1));
+    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 1));
   }
   @Test
   public void uncommentChild() {
@@ -246,7 +246,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
       public void run() {
         ChangesTestUtil.uncommentFirstCommentedMethod(myRootNode);
       }
-    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$6v_r, 1, 2, 1, 2));
+    }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, LINKS.member$L_2d, 1, 2, 1, 2));
   }
 
   @Test
@@ -277,8 +277,8 @@ public class ChangesCalculationTest extends ChangesTestBase {
     return diff.getModelChanges();
   }
   private static SNode createClassConcept_7w1430_a0a0a0b0k() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
-    rootBuilder1.setProperty(PROPS.name$lA7v, "NewRoot");
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassConcept$bK);
+    rootBuilder1.setProperty(PROPS.name$MnvL, "NewRoot");
     return rootBuilder1.getResult();
   }
   private static SNode _quotation_createNode_7w1430_a0a0a0a0q() {
@@ -311,25 +311,25 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept ReviewMigration$Kc = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration");
-    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ReviewMigration$8u = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink commentedNode$md7q = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink commentedNode$MYvG = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
   }
 }

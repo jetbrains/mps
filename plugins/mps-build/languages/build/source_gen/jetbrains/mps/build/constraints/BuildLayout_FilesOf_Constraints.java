@@ -22,12 +22,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class BuildLayout_FilesOf_Constraints extends BaseConstraintsDescriptor {
   public BuildLayout_FilesOf_Constraints() {
-    super(CONCEPTS.BuildLayout_FilesOf$Pb);
+    super(CONCEPTS.BuildLayout_FilesOf$nI);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.element$DZJQ, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.element$PGip, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -42,7 +42,7 @@ public class BuildLayout_FilesOf_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildSource_FilesetProjectPart$Od);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildSource_FilesetProjectPart$mK);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -55,11 +55,11 @@ public class BuildLayout_FilesOf_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_jcryfz_a0a0a0a0a1a0a0a0c = new SNodePointer("r:5076fdb3-19c3-4563-aa26-7ace7591e78d(jetbrains.mps.build.constraints)", "1224588814562040209");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_FilesOf$Pb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6b9a2011083f9404L, "jetbrains.mps.build.structure.BuildLayout_FilesOf");
-    /*package*/ static final SInterfaceConcept BuildSource_FilesetProjectPart$Od = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6b9a2011083f9402L, "jetbrains.mps.build.structure.BuildSource_FilesetProjectPart");
+    /*package*/ static final SConcept BuildLayout_FilesOf$nI = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6b9a2011083f9404L, "jetbrains.mps.build.structure.BuildLayout_FilesOf");
+    /*package*/ static final SInterfaceConcept BuildSource_FilesetProjectPart$mK = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6b9a2011083f9402L, "jetbrains.mps.build.structure.BuildSource_FilesetProjectPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink element$DZJQ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6b9a2011083f9404L, 0x6b9a2011083f9406L, "element");
+    /*package*/ static final SReferenceLink element$PGip = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6b9a2011083f9404L, 0x6b9a2011083f9406L, "element");
   }
 }

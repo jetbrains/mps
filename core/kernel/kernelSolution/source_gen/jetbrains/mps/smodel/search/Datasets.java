@@ -82,30 +82,30 @@ import org.jetbrains.mps.openapi.language.SProperty;
         // AbstractConceptDeclaration 
         for (SNode cd : frontier) {
           SConcept cdConcept = SNodeOperations.getConcept(cd);
-          if (CONCEPTS.InterfaceConceptDeclaration$MT.equals(cdConcept)) {
-            for (SNode interfaceDeclaration : SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$V2F7), LINKS.intfc$7Eer)) {
+          if (CONCEPTS.InterfaceConceptDeclaration$CG.equals(cdConcept)) {
+            for (SNode interfaceDeclaration : SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU), LINKS.intfc$zM4e)) {
               if (interfaceDeclaration != null && !(result.contains(interfaceDeclaration))) {
                 newFrontier.add(interfaceDeclaration);
                 result.add(interfaceDeclaration);
               }
             }
-            for (SNode n : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$V2F7)).where(new NotNullWhereFilter<SNode>())) {
+            for (SNode n : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU)).where(new NotNullWhereFilter<SNode>())) {
               myDependsOnNodes.add(n);
             }
           } else
-          if (CONCEPTS.ConceptDeclaration$qU.equals(cdConcept)) {
-            SNode anExtends = SLinkOperations.getTarget(SNodeOperations.cast(cd, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$9AAt);
+          if (CONCEPTS.ConceptDeclaration$gH.equals(cdConcept)) {
+            SNode anExtends = SLinkOperations.getTarget(SNodeOperations.cast(cd, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg);
             if (anExtends != null && !(result.contains(anExtends))) {
               newFrontier.add(anExtends);
               result.add(anExtends);
             }
-            for (SNode interfaceDeclaration : SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$2tZf), LINKS.intfc$7Eer)) {
+            for (SNode interfaceDeclaration : SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.ConceptDeclaration$gH), LINKS.implements$u_P2), LINKS.intfc$zM4e)) {
               if (interfaceDeclaration != null && !(result.contains(interfaceDeclaration))) {
                 newFrontier.add(interfaceDeclaration);
                 result.add(interfaceDeclaration);
               }
             }
-            for (SNode n : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$2tZf)).where(new NotNullWhereFilter<SNode>())) {
+            for (SNode n : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.ConceptDeclaration$gH), LINKS.implements$u_P2)).where(new NotNullWhereFilter<SNode>())) {
               myDependsOnNodes.add(n);
             }
           }
@@ -121,7 +121,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public void childAdded(SModelChildEvent event) {
       //  event handling 
       SNode parent = event.getParent();
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$KA)) {
         //  don't process adding of smth. to concept unless it is extended/implemented interface-concept 
         if (isExtendsImplementsRole(event)) {
           super.childAdded(event);
@@ -132,7 +132,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public void childRemoved(SModelChildEvent event) {
       SNode parent = event.getParent();
 
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$KA)) {
         //  don't process removing of smth. from concept unless it is extended/implemented interface-concept 
         if (isExtendsImplementsRole(event)) {
           super.childRemoved(event);
@@ -141,7 +141,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
     private boolean isExtendsImplementsRole(SModelChildEvent event) {
       SContainmentLink aggregationLink = event.getAggregationLink();
-      return LINKS.implements$2tZf.equals(aggregationLink) || LINKS.extends$V2F7.equals(aggregationLink);
+      return LINKS.implements$u_P2.equals(aggregationLink) || LINKS.extends$nawU.equals(aggregationLink);
     }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
@@ -173,9 +173,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
       SNode[] concepts = ((ConceptAndSuperConceptsCache) getOwnerCache()).getConcepts();
       //  iterate bottom-up 
       for (int i = concepts.length - 1; i >= 0; i--) {
-        for (SNode prop : SLinkOperations.getChildren(concepts[i], LINKS.propertyDeclaration$yMqt)) {
+        for (SNode prop : SLinkOperations.getChildren(concepts[i], LINKS.propertyDeclaration$YUgg)) {
           allProperties.add(prop);
-          String name = SPropertyOperations.getString(prop, PROPS.name$lA7v);
+          String name = SPropertyOperations.getString(prop, PROPS.name$MnvL);
           if (name == null) {
             continue;
           }
@@ -204,7 +204,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public void childAdded(SModelChildEvent event) {
       // ------event handling 
       SNode parent = event.getParent();
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$KA)) {
         //  don't process adding of smth. to concept unless it is property-declaration 
         if (isPropertyDeclarationRole(event)) {
           super.childAdded(event);
@@ -214,7 +214,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     @Override
     public void childRemoved(SModelChildEvent event) {
       SNode parent = event.getParent();
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$KA)) {
         //  don't process removing of smth. from concept unless it is property-declaration 
         if (isPropertyDeclarationRole(event)) {
           super.childRemoved(event);
@@ -222,12 +222,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
       }
     }
     private boolean isPropertyDeclarationRole(SModelChildEvent event) {
-      return LINKS.propertyDeclaration$yMqt.equals(event.getAggregationLink());
+      return LINKS.propertyDeclaration$YUgg.equals(event.getAggregationLink());
     }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
       //  don't process unless it is property name 
-      if (CONCEPTS.PropertyDeclaration$c5.equals(event.getNode().getConcept())) {
+      if (CONCEPTS.PropertyDeclaration$1S.equals(event.getNode().getConcept())) {
         super.propertyChanged(event);
       }
     }
@@ -271,10 +271,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
       SNode[] concepts = ((ConceptAndSuperConceptsCache) getOwnerCache()).getConcepts();
       FlattenIterable<SNode> allLinks = new FlattenIterable<SNode>(new ArrayList<Iterable<SNode>>(concepts.length));
       for (SNode concept : concepts) {
-        Iterable<SNode> list = SLinkOperations.getChildren(concept, LINKS.linkDeclaration$yMbs);
+        Iterable<SNode> list = SLinkOperations.getChildren(concept, LINKS.linkDeclaration$YU1f);
         allLinks.add(list);
         for (SNode link : list) {
-          String role1 = SPropertyOperations.getString(link, PROPS.role$nkts);
+          String role1 = SPropertyOperations.getString(link, PROPS.role$Nsjf);
           if (role1 == null) {
             continue;
           }
@@ -289,7 +289,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       }
       Map<SNode, SNode> specializedLinks = new HashMap<SNode, SNode>();
       for (SNode link : allLinks) {
-        SNode specializedLink = SLinkOperations.getTarget(link, LINKS.specializedLink$FRN0);
+        SNode specializedLink = SLinkOperations.getTarget(link, LINKS.specializedLink$7ZCN);
         if (specializedLink != null) {
           specializedLinks.put(specializedLink, link);
         }
@@ -324,7 +324,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public void childAdded(SModelChildEvent event) {
       //  event handling 
       SNode parent = event.getParent();
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$KA)) {
         //  don't process adding of smth. to concept unless it is link-declaration 
         if (isLinkDeclarationRole(event)) {
           super.childAdded(event);
@@ -334,7 +334,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     @Override
     public void childRemoved(SModelChildEvent event) {
       SNode parent = event.getParent();
-      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$KA)) {
         //  don't process removing of smth. from concept unless it is link-declaration 
         if (isLinkDeclarationRole(event)) {
           super.childRemoved(event);
@@ -342,12 +342,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
       }
     }
     private boolean isLinkDeclarationRole(SModelChildEvent event) {
-      return LINKS.linkDeclaration$yMbs.equals(event.getAggregationLink());
+      return LINKS.linkDeclaration$YU1f.equals(event.getAggregationLink());
     }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
       //  don't process unless it is link's role 
-      if (!(PROPS.role$nkts.equals(event.getProperty()))) {
+      if (!(PROPS.role$Nsjf.equals(event.getProperty()))) {
         return;
       }
       String oldRole = event.getOldPropertyValue();
@@ -371,24 +371,24 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-    /*package*/ static final SReferenceLink specializedLink$FRN0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink implements$u_P2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink extends$nawU = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SContainmentLink propertyDeclaration$YUgg = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$YU1f = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SReferenceLink specializedLink$7ZCN = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$Nsjf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 }

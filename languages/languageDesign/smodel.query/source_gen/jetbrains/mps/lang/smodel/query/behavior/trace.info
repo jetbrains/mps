@@ -38,10 +38,10 @@
       <node id="4307205004146936308" at="79,14,80,58" concept="10" />
       <node id="4307205004146936308" at="86,48,87,22" concept="6" />
       <node id="4307205004146936308" at="92,40,93,19" concept="6" />
-      <node id="4307205004146936308" at="97,0,98,0" concept="7" trace="QueryParameterScope_old$sE" />
-      <node id="4307205004146936308" at="98,0,99,0" concept="7" trace="QueryParameterScope$rU" />
-      <node id="4307205004146936308" at="99,0,100,0" concept="7" trace="QueryParameterIncludeReadOnly_old$Lp" />
-      <node id="4307205004146936308" at="100,0,101,0" concept="7" trace="UsagesExpression$_w" />
+      <node id="4307205004146936308" at="97,0,98,0" concept="7" trace="QueryParameterScope_old$ZG" />
+      <node id="4307205004146936308" at="98,0,99,0" concept="7" trace="QueryParameterScope$YW" />
+      <node id="4307205004146936308" at="99,0,100,0" concept="7" trace="QueryParameterIncludeReadOnly_old$kr" />
+      <node id="4307205004146936308" at="100,0,101,0" concept="7" trace="UsagesExpression$8y" />
       <node id="4307205004146936308" at="33,0,35,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4307205004146936308" at="46,0,48,0" concept="1" trace="UsagesExpression__BehaviorDescriptor#()V" />
       <node id="4307205004146936308" at="36,0,39,0" concept="8" trace="getSupportedParameters_id3J6h25QXCDW#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/lang/Iterable;" />
@@ -139,9 +139,9 @@
       <node id="4307205004146945906" at="92,14,93,58" concept="10" />
       <node id="4307205004146945906" at="99,48,100,22" concept="6" />
       <node id="4307205004146945906" at="105,40,106,19" concept="6" />
-      <node id="4307205004146945906" at="110,0,111,0" concept="7" trace="QueryParameterScope$rU" />
-      <node id="4307205004146945906" at="111,0,112,0" concept="7" trace="QueryParameterExact$8x" />
-      <node id="4307205004146945906" at="112,0,113,0" concept="7" trace="ExpressionHelpProvider$44" />
+      <node id="4307205004146945906" at="110,0,111,0" concept="7" trace="QueryParameterScope$YW" />
+      <node id="4307205004146945906" at="111,0,112,0" concept="7" trace="QueryParameterExact$Fz" />
+      <node id="4307205004146945906" at="112,0,113,0" concept="7" trace="ExpressionHelpProvider$B6" />
       <node id="4307205004146945906" at="34,0,36,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6891027939994784978" at="54,10,56,5" concept="0" />
       <node id="4307205004146945906" at="59,0,61,0" concept="1" trace="QueryExpression__BehaviorDescriptor#()V" />
@@ -239,9 +239,9 @@
       <node id="4307205004146945952" at="67,14,68,58" concept="10" />
       <node id="4307205004146945952" at="74,48,75,22" concept="6" />
       <node id="4307205004146945952" at="80,40,81,19" concept="6" />
-      <node id="4307205004146945952" at="85,0,86,0" concept="7" trace="QueryParameterScope_old$sE" />
-      <node id="4307205004146945952" at="86,0,87,0" concept="7" trace="QueryParameterScope$rU" />
-      <node id="4307205004146945952" at="87,0,88,0" concept="7" trace="QueryParameterIncludeReadOnly_old$Lp" />
+      <node id="4307205004146945952" at="85,0,86,0" concept="7" trace="QueryParameterScope_old$ZG" />
+      <node id="4307205004146945952" at="86,0,87,0" concept="7" trace="QueryParameterScope$YW" />
+      <node id="4307205004146945952" at="87,0,88,0" concept="7" trace="QueryParameterIncludeReadOnly_old$kr" />
       <node id="4307205004146945952" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4307205004146945952" at="38,0,40,0" concept="1" trace="NodesExpression__BehaviorDescriptor#()V" />
       <node id="4307205004146945952" at="34,0,37,0" concept="8" trace="getSupportedParameters_id3J6h25QXCDW#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/lang/Iterable;" />
@@ -315,9 +315,9 @@
       <node id="4307205004146956485" at="67,14,68,58" concept="10" />
       <node id="4307205004146956485" at="74,48,75,22" concept="6" />
       <node id="4307205004146956485" at="80,40,81,19" concept="6" />
-      <node id="4307205004146956485" at="85,0,86,0" concept="7" trace="QueryParameterScope_old$sE" />
-      <node id="4307205004146956485" at="86,0,87,0" concept="7" trace="QueryParameterScope$rU" />
-      <node id="4307205004146956485" at="87,0,88,0" concept="7" trace="QueryParameterIncludeReadOnly_old$Lp" />
+      <node id="4307205004146956485" at="85,0,86,0" concept="7" trace="QueryParameterScope_old$ZG" />
+      <node id="4307205004146956485" at="86,0,87,0" concept="7" trace="QueryParameterScope$YW" />
+      <node id="4307205004146956485" at="87,0,88,0" concept="7" trace="QueryParameterIncludeReadOnly_old$kr" />
       <node id="4307205004146956485" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4307205004146956485" at="38,0,40,0" concept="1" trace="ModulesExpression__BehaviorDescriptor#()V" />
       <node id="4307205004146956485" at="34,0,37,0" concept="8" trace="getSupportedParameters_id3J6h25QXCDW#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/lang/Iterable;" />
@@ -391,9 +391,9 @@
       <node id="4307205004146963229" at="67,14,68,58" concept="10" />
       <node id="4307205004146963229" at="74,48,75,22" concept="6" />
       <node id="4307205004146963229" at="80,40,81,19" concept="6" />
-      <node id="4307205004146963229" at="85,0,86,0" concept="7" trace="QueryParameterScope_old$sE" />
-      <node id="4307205004146963229" at="86,0,87,0" concept="7" trace="QueryParameterScope$rU" />
-      <node id="4307205004146963229" at="87,0,88,0" concept="7" trace="QueryParameterIncludeReadOnly_old$Lp" />
+      <node id="4307205004146963229" at="85,0,86,0" concept="7" trace="QueryParameterScope_old$ZG" />
+      <node id="4307205004146963229" at="86,0,87,0" concept="7" trace="QueryParameterScope$YW" />
+      <node id="4307205004146963229" at="87,0,88,0" concept="7" trace="QueryParameterIncludeReadOnly_old$kr" />
       <node id="4307205004146963229" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4307205004146963229" at="38,0,40,0" concept="1" trace="ModelsExpression__BehaviorDescriptor#()V" />
       <node id="4307205004146963229" at="34,0,37,0" concept="8" trace="getSupportedParameters_id3J6h25QXCDW#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/lang/Iterable;" />
@@ -473,11 +473,11 @@
       <node id="4307205004146970004" at="79,14,80,58" concept="10" />
       <node id="4307205004146970004" at="86,48,87,22" concept="6" />
       <node id="4307205004146970004" at="92,40,93,19" concept="6" />
-      <node id="4307205004146970004" at="97,0,98,0" concept="7" trace="QueryParameterScope_old$sE" />
-      <node id="4307205004146970004" at="98,0,99,0" concept="7" trace="QueryParameterScope$rU" />
-      <node id="4307205004146970004" at="99,0,100,0" concept="7" trace="QueryParameterIncludeReadOnly_old$Lp" />
-      <node id="4307205004146970004" at="100,0,101,0" concept="7" trace="QueryParameterExact$8x" />
-      <node id="4307205004146970004" at="101,0,102,0" concept="7" trace="InstancesExpression$OR" />
+      <node id="4307205004146970004" at="97,0,98,0" concept="7" trace="QueryParameterScope_old$ZG" />
+      <node id="4307205004146970004" at="98,0,99,0" concept="7" trace="QueryParameterScope$YW" />
+      <node id="4307205004146970004" at="99,0,100,0" concept="7" trace="QueryParameterIncludeReadOnly_old$kr" />
+      <node id="4307205004146970004" at="100,0,101,0" concept="7" trace="QueryParameterExact$Fz" />
+      <node id="4307205004146970004" at="101,0,102,0" concept="7" trace="InstancesExpression$nT" />
       <node id="4307205004146970004" at="33,0,35,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4307205004146970004" at="46,0,48,0" concept="1" trace="InstancesExpression__BehaviorDescriptor#()V" />
       <node id="4307205004146970004" at="36,0,39,0" concept="8" trace="getSupportedParameters_id3J6h25QXCDW#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/lang/Iterable;" />
@@ -563,9 +563,9 @@
       <node id="4307205004146976962" at="67,14,68,58" concept="10" />
       <node id="4307205004146976962" at="74,48,75,22" concept="6" />
       <node id="4307205004146976962" at="80,40,81,19" concept="6" />
-      <node id="4307205004146976962" at="85,0,86,0" concept="7" trace="QueryParameterScope_old$sE" />
-      <node id="4307205004146976962" at="86,0,87,0" concept="7" trace="QueryParameterScope$rU" />
-      <node id="4307205004146976962" at="87,0,88,0" concept="7" trace="QueryParameterIncludeReadOnly_old$Lp" />
+      <node id="4307205004146976962" at="85,0,86,0" concept="7" trace="QueryParameterScope_old$ZG" />
+      <node id="4307205004146976962" at="86,0,87,0" concept="7" trace="QueryParameterScope$YW" />
+      <node id="4307205004146976962" at="87,0,88,0" concept="7" trace="QueryParameterIncludeReadOnly_old$kr" />
       <node id="4307205004146976962" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4307205004146976962" at="38,0,40,0" concept="1" trace="ReferencesExpression__BehaviorDescriptor#()V" />
       <node id="4307205004146976962" at="34,0,37,0" concept="8" trace="getSupportedParameters_id3J6h25QXCDW#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/lang/Iterable;" />

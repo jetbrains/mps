@@ -37,12 +37,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BinaryOperationReference_Constraints extends BaseConstraintsDescriptor {
   public BinaryOperationReference_Constraints() {
-    super(CONCEPTS.BinaryOperationReference$Q7);
+    super(CONCEPTS.BinaryOperationReference$wm);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.binaryOperation$yr3w, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.binaryOperation$5SHJ, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -63,9 +63,9 @@ public class BinaryOperationReference_Constraints extends BaseConstraintsDescrip
             Collection<Language> langs = new GlobalModuleDependenciesManager(sourceModule).getUsedLanguages();
             for (Language language : langs) {
               SModel sm = SModuleOperations.getAspect(language, "structure");
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SModelOperations.roots(sm, CONCEPTS.ConceptDeclaration$qU)).where(new IWhereFilter<SNode>() {
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(SModelOperations.roots(sm, CONCEPTS.ConceptDeclaration$gH)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(it, SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1081773326031")) && !(SPropertyOperations.getBoolean(it, PROPS.abstract$Q3$6));
+                  return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(it, SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1081773326031")) && !(SPropertyOperations.getBoolean(it, PROPS.abstract$ibpT));
                 }
               }));
             }
@@ -81,15 +81,15 @@ public class BinaryOperationReference_Constraints extends BaseConstraintsDescrip
   private static final SNodePointer breakingNode_4xi24e_a0a0a0a0a1a0a0a0c = new SNodePointer("r:9b7a7baa-7b52-4b41-8293-5aa14d41220f(jetbrains.mps.baseLanguage.overloadedOperators.constraints)", "6836281137582776736");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BinaryOperationReference$Q7 = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.BinaryOperationReference");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept BinaryOperationReference$wm = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.BinaryOperationReference");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink binaryOperation$yr3w = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, 0x2764eda929d23eb5L, "binaryOperation");
+    /*package*/ static final SReferenceLink binaryOperation$5SHJ = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, 0x2764eda929d23eb5L, "binaryOperation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 }

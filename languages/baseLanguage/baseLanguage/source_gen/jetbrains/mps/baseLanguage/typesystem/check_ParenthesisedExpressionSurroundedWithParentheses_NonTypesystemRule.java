@@ -23,10 +23,10 @@ public class check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesyste
   public check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesystemRule() {
   }
   public void applyRule(final SNode parenthesizedExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) Expression__BehaviorDescriptor.singleValue_id1o8Ht9sES3u.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(parenthesizedExpression, LINKS.expression$efP0)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parenthesizedExpression, LINKS.expression$efP0), CONCEPTS.ParenthesizedExpression$vE)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parenthesizedExpression), CONCEPTS.ParenthesizedExpression$vE))) {
+    if ((boolean) Expression__BehaviorDescriptor.singleValue_id1o8Ht9sES3u.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(parenthesizedExpression, LINKS.expression$TlhM)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parenthesizedExpression, LINKS.expression$TlhM), CONCEPTS.ParenthesizedExpression$Ws)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parenthesizedExpression), CONCEPTS.ParenthesizedExpression$Ws))) {
       SNode currentParent = parenthesizedExpression;
-      while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentParent), CONCEPTS.ParenthesizedExpression$vE)) {
-        currentParent = SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.ParenthesizedExpression$vE);
+      while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentParent), CONCEPTS.ParenthesizedExpression$Ws)) {
+        currentParent = SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.ParenthesizedExpression$Ws);
       }
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -40,7 +40,7 @@ public class check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ParenthesizedExpression$vE;
+    return CONCEPTS.ParenthesizedExpression$Ws;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,10 +50,10 @@ public class check_ParenthesisedExpressionSurroundedWithParentheses_NonTypesyste
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

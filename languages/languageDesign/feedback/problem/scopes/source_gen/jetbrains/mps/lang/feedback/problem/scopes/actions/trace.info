@@ -15,7 +15,7 @@
       <node id="1054866243096622789" at="18,193,19,56" concept="2" />
       <node id="1054866243096648198" at="19,56,20,172" concept="0" />
       <node id="1054866243096655006" at="20,172,21,25" concept="0" />
-      <node id="1592627013225788521" at="26,0,27,0" concept="3" trace="kind$ebY0" />
+      <node id="1592627013225788521" at="26,0,27,0" concept="3" trace="kind$EscU" />
       <node id="1592627013225788522" at="17,0,23,0" concept="1" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="1592627013225788522" at="17,91,21,25">
         <var name="importer" id="1054866243096622790" />

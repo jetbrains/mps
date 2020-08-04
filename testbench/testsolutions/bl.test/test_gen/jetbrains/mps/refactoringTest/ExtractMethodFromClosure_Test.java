@@ -54,7 +54,7 @@ public class ExtractMethodFromClosure_Test extends BaseTransformationTest {
       params.setName("foo");
       MethodParameter p0 = ListSequence.fromList(params.getParameters()).getElement(0);
       MethodParameter p1 = ListSequence.fromList(params.getParameters()).getElement(1);
-      if (SNodeOperations.isInstanceOf(p0.getDeclaration(), CONCEPTS.LocalVariableDeclaration$Bf)) {
+      if (SNodeOperations.isInstanceOf(p0.getDeclaration(), CONCEPTS.LocalVariableDeclaration$41)) {
         ListSequence.fromList(params.getParameters()).setElement(0, p1);
         ListSequence.fromList(params.getParameters()).setElement(1, p0);
       }
@@ -71,6 +71,6 @@ public class ExtractMethodFromClosure_Test extends BaseTransformationTest {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }
 }

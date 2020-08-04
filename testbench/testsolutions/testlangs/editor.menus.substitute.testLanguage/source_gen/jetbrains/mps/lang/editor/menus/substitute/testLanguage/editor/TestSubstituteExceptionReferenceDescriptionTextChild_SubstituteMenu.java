@@ -27,7 +27,7 @@ public class TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_utuqn2_a(), CONCEPTS.TestSubstituteExceptionReferenceDescriptionTextChild$Qv));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_utuqn2_a(), CONCEPTS.TestSubstituteExceptionReferenceDescriptionTextChild$70));
     return result;
   }
 
@@ -48,7 +48,7 @@ public class TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu
 
     public SMP_ReferenceScope_utuqn2_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TestSubstituteExceptionReferenceDescriptionTextChild$Qv, LINKS.reference$Wrfw);
+      super((SAbstractConcept) CONCEPTS.TestSubstituteExceptionReferenceDescriptionTextChild$70, LINKS.reference$V2w1);
     }
     @NotNull
     @Override
@@ -99,10 +99,10 @@ public class TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteExceptionReferenceDescriptionTextChild$Qv = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceDescriptionTextChild");
+    /*package*/ static final SConcept TestSubstituteExceptionReferenceDescriptionTextChild$70 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionReferenceDescriptionTextChild");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$Wrfw = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L, 0x63457d5cb582c0d3L, "reference");
+    /*package*/ static final SReferenceLink reference$V2w1 = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L, 0x63457d5cb582c0d3L, "reference");
   }
 }

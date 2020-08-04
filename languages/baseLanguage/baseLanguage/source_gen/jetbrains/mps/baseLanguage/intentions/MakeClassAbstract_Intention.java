@@ -41,10 +41,10 @@ public final class MakeClassAbstract_Intention extends AbstractIntentionDescript
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$aF)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.EnumClass$uy));
+    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$Bt)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.EnumClass$Vk));
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return SNodeOperations.hasRole(childNode, LINKS.visibility$jt1o) && Objects.equals(SNodeOperations.getParent(childNode), node);
+    return SNodeOperations.hasRole(childNode, LINKS.visibility$Yyua) && Objects.equals(SNodeOperations.getParent(childNode), node);
   }
   @Override
   public boolean isSurroundWith() {
@@ -61,11 +61,11 @@ public final class MakeClassAbstract_Intention extends AbstractIntentionDescript
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Make Class" + ((SPropertyOperations.getBoolean(node, PROPS.abstractClass$e4_b) ? " Non" : "")) + " Abstract";
+      return "Make Class" + ((SPropertyOperations.getBoolean(node, PROPS.abstractClass$Ta1X) ? " Non" : "")) + " Abstract";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.abstractClass$e4_b, !(SPropertyOperations.getBoolean(node, PROPS.abstractClass$e4_b)));
+      SPropertyOperations.set(node, PROPS.abstractClass$Ta1X, !(SPropertyOperations.getBoolean(node, PROPS.abstractClass$Ta1X)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -74,15 +74,15 @@ public final class MakeClassAbstract_Intention extends AbstractIntentionDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

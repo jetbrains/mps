@@ -411,8 +411,8 @@
       <node id="6328114375521211527" at="106,36,107,86" concept="4" />
       <node id="6961970966447033918" at="107,86,108,84" concept="4" />
       <node id="7579951321841650288" at="108,84,109,32" concept="4" />
-      <node id="2123674641099917718" at="116,0,117,0" concept="13" trace="value$bjp0" />
-      <node id="2123674641099917718" at="117,0,118,0" concept="13" trace="url$wboS" />
+      <node id="2123674641099917718" at="116,0,117,0" concept="13" trace="value$zQr_" />
+      <node id="2123674641099917718" at="117,0,118,0" concept="13" trace="url$SIrt" />
       <node id="693268764742675105" at="56,0,59,0" concept="8" trace="run#()V" />
       <node id="6328114375521596090" at="89,58,92,5" concept="7" />
       <node id="6961970966446727481" at="95,0,98,0" concept="8" trace="getLinkText#()Ljava/lang/String;" />
@@ -1456,8 +1456,8 @@
       <node id="6726690416034419025" at="188,36,189,46" concept="10" />
       <node id="6726690416034419025" at="190,5,191,17" concept="10" />
       <node id="1875480895988610370" at="193,52,194,44" concept="10" />
-      <node id="3467203700125709807" at="198,0,199,0" concept="13" trace="UnresolvedNameReference$p0" />
-      <node id="3467203700125709807" at="202,0,203,0" concept="13" trace="resolveName$acw0" />
+      <node id="3467203700125709807" at="198,0,199,0" concept="13" trace="UnresolvedNameReference$PM" />
+      <node id="3467203700125709807" at="202,0,203,0" concept="13" trace="resolveName$PhWM" />
       <node id="3467203700125709807" at="53,95,56,5" concept="7" />
       <node id="4543927510274902180" at="59,53,62,7" concept="7" />
       <node id="3467203700125709852" at="66,51,69,7" concept="7" />
@@ -2062,14 +2062,14 @@
       <node id="6774261846361407533" at="115,98,116,206" concept="9" />
       <node id="6774261846361407539" at="116,206,117,84" concept="4" />
       <node id="6774261846361407546" at="117,84,118,59" concept="4" />
-      <node id="4362199797783336771" at="124,0,125,0" concept="13" trace="EditorCellModel$5c" />
-      <node id="4362199797783336771" at="125,0,126,0" concept="13" trace="BaseEditorComponent$Sy" />
-      <node id="4362199797783336771" at="126,0,127,0" concept="13" trace="AbstractComponent$Ng" />
-      <node id="4362199797783336771" at="130,0,131,0" concept="13" trace="name$lA7v" />
-      <node id="4362199797783336771" at="131,0,132,0" concept="13" trace="virtualPackage$dz_3" />
-      <node id="4362199797783336771" at="135,0,136,0" concept="13" trace="conceptDeclaration$Dtb8" />
-      <node id="4362199797783336771" at="136,0,137,0" concept="13" trace="cellModel$GQI_" />
-      <node id="4362199797783336771" at="137,0,138,0" concept="13" trace="editorComponent$_wYw" />
+      <node id="4362199797783336771" at="124,0,125,0" concept="13" trace="EditorCellModel$gN" />
+      <node id="4362199797783336771" at="125,0,126,0" concept="13" trace="BaseEditorComponent$49" />
+      <node id="4362199797783336771" at="126,0,127,0" concept="13" trace="AbstractComponent$YR" />
+      <node id="4362199797783336771" at="130,0,131,0" concept="13" trace="name$MnvL" />
+      <node id="4362199797783336771" at="131,0,132,0" concept="13" trace="virtualPackage$EkXl" />
+      <node id="4362199797783336771" at="135,0,136,0" concept="13" trace="conceptDeclaration$HJmJ" />
+      <node id="4362199797783336771" at="136,0,137,0" concept="13" trace="cellModel$L8Uc" />
+      <node id="4362199797783336771" at="137,0,138,0" concept="13" trace="editorComponent$DNa7" />
       <node id="4362199797783336771" at="59,95,62,5" concept="7" />
       <node id="4362199797783336782" at="64,57,67,7" concept="7" />
       <node id="8898893144448210052" at="68,53,71,7" concept="7" />
@@ -2831,7 +2831,7 @@
       <node id="5238877291854232239" at="68,36,69,21" concept="10" />
       <node id="5238877291854194705" at="71,5,72,16" concept="10" />
       <node id="6552822018369882461" at="75,96,76,129" concept="4" />
-      <node id="5238877291854194705" at="80,0,81,0" concept="13" trace="IOldCommentContainer$Ia" />
+      <node id="5238877291854194705" at="80,0,81,0" concept="13" trace="IOldCommentContainer$6s" />
       <node id="548229885685787405" at="41,113,44,5" concept="7" />
       <node id="3993419886484600499" at="44,5,47,5" concept="7" />
       <node id="548229885685660107" at="49,0,52,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -2910,8 +2910,8 @@
       <node id="889738731447445949" at="71,50,72,81" concept="10" />
       <node id="889738731447445966" at="73,12,74,55" concept="10" />
       <node id="5556712693571970064" at="78,66,79,310" concept="10" />
-      <node id="5556712693571726627" at="83,0,84,0" concept="13" trace="statement$pYcS" />
-      <node id="5556712693571726627" at="87,0,88,0" concept="13" trace="ChildAttribute$XQ" />
+      <node id="5556712693571726627" at="83,0,84,0" concept="13" trace="statement$53DE" />
+      <node id="5556712693571726627" at="87,0,88,0" concept="13" trace="ChildAttribute$m8" />
       <node id="889738731447445964" at="73,10,75,5" concept="1" />
       <node id="5556712693571735609" at="29,0,32,0" concept="14" trace="canExecute#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Z" />
       <node id="5556712693572957211" at="35,0,38,0" concept="8" trace="accept#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
@@ -3129,8 +3129,8 @@
       <node id="6573807532044005480" at="64,5,65,16" concept="10" />
       <node id="6328114375521042058" at="68,96,69,125" concept="4" />
       <node id="693268764742511246" at="71,52,72,44" concept="10" />
-      <node id="6573807532044005480" at="76,0,77,0" concept="13" trace="url$wboS" />
-      <node id="6573807532044005480" at="80,0,81,0" concept="13" trace="Word$AM" />
+      <node id="6573807532044005480" at="76,0,77,0" concept="13" trace="url$SIrt" />
+      <node id="6573807532044005480" at="80,0,81,0" concept="13" trace="Word$Dn" />
       <node id="6573807532044005480" at="43,95,46,5" concept="7" />
       <node id="852282000897947218" at="48,90,51,7" concept="7" />
       <node id="852282000897947219" at="51,7,54,7" concept="7" />
@@ -3379,7 +3379,7 @@
       <node id="3200220852365485565" at="54,22,55,21" concept="10" />
       <node id="6893431717880288043" at="57,5,58,16" concept="10" />
       <node id="6893431717880288047" at="61,96,62,212" concept="4" />
-      <node id="6893431717880288043" at="66,0,67,0" concept="13" trace="SuppressErrorsAnnotation$gJ" />
+      <node id="6893431717880288043" at="66,0,67,0" concept="13" trace="SuppressErrorsAnnotation$D1" />
       <node id="6893431717880288043" at="37,95,40,5" concept="7" />
       <node id="5272353921214662140" at="43,50,46,7" concept="7" />
       <node id="3200220852365852366" at="50,51,53,7" concept="7" />
@@ -3434,8 +3434,8 @@
       <node id="693268764742355428" at="54,5,55,16" concept="10" />
       <node id="693268764742355452" at="58,96,59,92" concept="4" />
       <node id="693268764742518146" at="61,55,62,43" concept="10" />
-      <node id="693268764742355428" at="66,0,67,0" concept="13" trace="url$wboS" />
-      <node id="693268764742355428" at="70,0,71,0" concept="13" trace="Word$AM" />
+      <node id="693268764742355428" at="66,0,67,0" concept="13" trace="url$SIrt" />
+      <node id="693268764742355428" at="70,0,71,0" concept="13" trace="Word$Dn" />
       <node id="693268764742355428" at="42,95,45,5" concept="7" />
       <node id="693268764742355431" at="47,57,50,7" concept="7" />
       <node id="693268764742355432" at="50,7,53,7" concept="7" />
@@ -3547,10 +3547,10 @@
       <node id="6287146539697687554" at="203,215,204,171" concept="4" />
       <node id="6287146539697772922" at="204,171,205,68" concept="10" />
       <node id="6287146539697831246" at="206,12,207,18" concept="10" />
-      <node id="7589693931096220921" at="212,0,213,0" concept="13" trace="filter$kXgf" />
-      <node id="7589693931096220921" at="213,0,214,0" concept="13" trace="message$8_1l" />
-      <node id="7589693931096220921" at="217,0,218,0" concept="13" trace="ICanSuppressErrors$1Q" />
-      <node id="7589693931096220921" at="218,0,219,0" concept="13" trace="SuppressErrorsAnnotation$gJ" />
+      <node id="7589693931096220921" at="212,0,213,0" concept="13" trace="filter$LICx" />
+      <node id="7589693931096220921" at="213,0,214,0" concept="13" trace="message$_mpB" />
+      <node id="7589693931096220921" at="217,0,218,0" concept="13" trace="ICanSuppressErrors$q8" />
+      <node id="7589693931096220921" at="218,0,219,0" concept="13" trace="SuppressErrorsAnnotation$D1" />
       <node id="7312822374746251110" at="152,22,154,17" concept="1" />
       <node id="6287146539697687569" at="206,10,208,5" concept="1" />
       <node id="7589693931096220921" at="80,95,83,5" concept="7" />

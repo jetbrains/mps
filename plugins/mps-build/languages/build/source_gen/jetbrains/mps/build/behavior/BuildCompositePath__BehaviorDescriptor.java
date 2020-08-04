@@ -43,27 +43,27 @@ public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescript
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPath_id7usrAn05okK, getLastSegment_id1bWeed$oUbg, getPathToHead_id3skBIrUiCOV, getHeadSuggestions_id4jjtc7X04td, getFile_idIG8oXsODon);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.set(__thisNode__, PROPS.head$o$61, "");
+    SPropertyOperations.set(__thisNode__, PROPS.head$$gC$, "");
   }
 
   /*package*/ static String getPath_id7usrAn05okK(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.tail$ozR0) != null)) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.head$o$61) + "/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.tail$ozR0));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.tail$$gpz) != null)) {
+      return SPropertyOperations.getString(__thisNode__, PROPS.head$$gC$) + "/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.tail$$gpz));
     }
-    return SPropertyOperations.getString(__thisNode__, PROPS.head$o$61);
+    return SPropertyOperations.getString(__thisNode__, PROPS.head$$gC$);
   }
   /*package*/ static String getLastSegment_id1bWeed$oUbg(@NotNull SNode __thisNode__) {
     SNode last = __thisNode__;
-    while ((SLinkOperations.getTarget(last, LINKS.tail$ozR0) != null)) {
-      last = SLinkOperations.getTarget(last, LINKS.tail$ozR0);
+    while ((SLinkOperations.getTarget(last, LINKS.tail$$gpz) != null)) {
+      last = SLinkOperations.getTarget(last, LINKS.tail$$gpz);
     }
-    return SPropertyOperations.getString(last, PROPS.head$o$61);
+    return SPropertyOperations.getString(last, PROPS.head$$gC$);
   }
   /*package*/ static String getPathToHead_id3skBIrUiCOV(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$7I)) {
-      return BuildCompositePath__BehaviorDescriptor.getPathToHead_id3skBIrUiCOV.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$7I)) + "/" + SPropertyOperations.getString(__thisNode__, PROPS.head$o$61);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$Eh)) {
+      return BuildCompositePath__BehaviorDescriptor.getPathToHead_id3skBIrUiCOV.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$Eh)) + "/" + SPropertyOperations.getString(__thisNode__, PROPS.head$$gC$);
     }
-    return SPropertyOperations.getString(__thisNode__, PROPS.head$o$61);
+    return SPropertyOperations.getString(__thisNode__, PROPS.head$$gC$);
   }
   /*package*/ static List<String> getHeadSuggestions_id4jjtc7X04td(@NotNull SNode __thisNode__, String basePath) {
     String relativePath = basePath;
@@ -71,8 +71,8 @@ public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescript
       return ListSequence.fromList(new ArrayList<String>());
     }
 
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$7I)) {
-      relativePath += "/" + BuildCompositePath__BehaviorDescriptor.getPathToHead_id3skBIrUiCOV.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$7I));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$Eh)) {
+      relativePath += "/" + BuildCompositePath__BehaviorDescriptor.getPathToHead_id3skBIrUiCOV.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildCompositePath$Eh));
     }
 
     IFile file = FileSystem.getInstance().getFile(relativePath);
@@ -95,7 +95,7 @@ public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescript
     }, true).toListSequence();
   }
   /*package*/ static IFile getFile_idIG8oXsODon(@NotNull SNode __thisNode__, Context context) {
-    String basePath = BuildRelativePath__BehaviorDescriptor.getBasePath_id4jjtc7WZMYz.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildRelativePath$dD, false, false), context);
+    String basePath = BuildRelativePath__BehaviorDescriptor.getBasePath_id4jjtc7WZMYz.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildRelativePath$Kc, false, false), context);
     if ((basePath == null || basePath.length() == 0)) {
       return null;
     }
@@ -159,15 +159,15 @@ public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty head$o$61 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
+    /*package*/ static final SProperty head$$gC$ = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tail$ozR0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
+    /*package*/ static final SContainmentLink tail$$gpz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildCompositePath$7I = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath");
-    /*package*/ static final SConcept BuildRelativePath$dD = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
+    /*package*/ static final SConcept BuildCompositePath$Eh = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath");
+    /*package*/ static final SConcept BuildRelativePath$Kc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
   }
 }

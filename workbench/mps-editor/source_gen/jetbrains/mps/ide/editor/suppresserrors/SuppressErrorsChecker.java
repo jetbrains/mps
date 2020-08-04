@@ -32,8 +32,8 @@ public class SuppressErrorsChecker extends BaseEventProcessingEditorChecker {
   public UpdateResult update(final EditorComponent editorComponent, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     SNode node = editorComponent.getEditedNode();
-    for (SNode n : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.ICanSuppressErrors$1Q, true, new SAbstractConcept[]{}))) {
-      List<SNode> suppresses = AttributeOperations.getAttributeList(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ));
+    for (SNode n : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.ICanSuppressErrors$q8, true, new SAbstractConcept[]{}))) {
+      List<SNode> suppresses = AttributeOperations.getAttributeList(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1));
       if (ListSequence.fromList(suppresses).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SuppressErrorsMessage.getOwnCell(editorComponent, it) != null;
@@ -50,7 +50,7 @@ public class SuppressErrorsChecker extends BaseEventProcessingEditorChecker {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SuppressErrorsAnnotation$gJ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
-    /*package*/ static final SInterfaceConcept ICanSuppressErrors$1Q = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f42L, "jetbrains.mps.lang.core.structure.ICanSuppressErrors");
+    /*package*/ static final SConcept SuppressErrorsAnnotation$D1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
+    /*package*/ static final SInterfaceConcept ICanSuppressErrors$q8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f42L, "jetbrains.mps.lang.core.structure.ICanSuppressErrors");
   }
 }

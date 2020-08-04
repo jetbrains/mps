@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ProblemKind_Constraints extends BaseConstraintsDescriptor {
   public ProblemKind_Constraints() {
-    super(CONCEPTS.ProblemKind$14);
+    super(CONCEPTS.ProblemKind$fY);
   }
 
   @Override
@@ -44,6 +44,6 @@ public class ProblemKind_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:7a404819-62e4-484e-8389-7ac268c0886e(jetbrains.mps.lang.feedback.problem.constraints)", "24399255755752753");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ProblemKind$14 = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, "jetbrains.mps.lang.feedback.problem.structure.ProblemKind");
+    /*package*/ static final SConcept ProblemKind$fY = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, "jetbrains.mps.lang.feedback.problem.structure.ProblemKind");
   }
 }

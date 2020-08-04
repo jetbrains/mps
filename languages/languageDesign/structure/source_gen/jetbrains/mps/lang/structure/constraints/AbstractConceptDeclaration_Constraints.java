@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   public AbstractConceptDeclaration_Constraints() {
-    super(CONCEPTS.AbstractConceptDeclaration$UN);
+    super(CONCEPTS.AbstractConceptDeclaration$KA);
   }
 
   @Override
@@ -43,7 +43,7 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$UN);
+            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$KA);
           }
         };
       }
@@ -51,7 +51,7 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   }
   public static class ConceptId_Property extends BasePropertyConstraintsDescriptor {
     public ConceptId_Property(ConstraintsDescriptor container) {
-      super(PROPS.conceptId$ZjQr, container);
+      super(PROPS.conceptId$rrGe, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -80,7 +80,7 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   }
   public static class LanguageId_Property extends BasePropertyConstraintsDescriptor {
     public LanguageId_Property(ConstraintsDescriptor container) {
-      super(PROPS.languageId$F1XV, container);
+      super(PROPS.languageId$79NI, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -110,18 +110,18 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.conceptId$ZjQr, new ConceptId_Property(this));
-    properties.put(PROPS.languageId$F1XV, new LanguageId_Property(this));
+    properties.put(PROPS.conceptId$rrGe, new ConceptId_Property(this));
+    properties.put(PROPS.languageId$79NI, new LanguageId_Property(this));
     return properties;
   }
   private static final SNodePointer breakingNode_c1kwet_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805233");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty languageId$F1XV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId");
+    /*package*/ static final SProperty conceptId$rrGe = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty languageId$79NI = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId");
   }
 }

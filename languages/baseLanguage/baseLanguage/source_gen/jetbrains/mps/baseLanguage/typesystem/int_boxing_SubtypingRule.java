@@ -21,7 +21,7 @@ public class int_boxing_SubtypingRule extends SubtypingRule_Runtime implements I
     return _quotation_createNode_cqci4d_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IntegerType$Eo;
+    return CONCEPTS.IntegerType$7a;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class int_boxing_SubtypingRule extends SubtypingRule_Runtime implements I
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IntegerType$Eo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
+    /*package*/ static final SConcept IntegerType$7a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
   }
 }

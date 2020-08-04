@@ -27,12 +27,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TemplateArgumentParameterExpression_Constraints extends BaseConstraintsDescriptor {
   public TemplateArgumentParameterExpression_Constraints() {
-    super(CONCEPTS.TemplateArgumentParameterExpression$SR);
+    super(CONCEPTS.TemplateArgumentParameterExpression$$z);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$SWrw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$hT7c, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,8 +47,8 @@ public class TemplateArgumentParameterExpression_Constraints extends BaseConstra
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(_context.getContextNode()), CONCEPTS.IParameterizedTemplate$qA)) {
-              return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getContextNode()), CONCEPTS.IParameterizedTemplate$qA), LINKS.parameter$GT0v));
+            if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(_context.getContextNode()), CONCEPTS.IParameterizedTemplate$6i)) {
+              return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getContextNode()), CONCEPTS.IParameterizedTemplate$6i), LINKS.parameter$5PGb));
             }
             return ListScope.forResolvableElements(new ArrayList<SNode>());
           }
@@ -62,12 +62,12 @@ public class TemplateArgumentParameterExpression_Constraints extends BaseConstra
   private static final SNodePointer breakingNode_teh60w_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "6836281137582788791");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateArgumentParameterExpression$SR = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, "jetbrains.mps.lang.generator.structure.TemplateArgumentParameterExpression");
-    /*package*/ static final SInterfaceConcept IParameterizedTemplate$qA = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, "jetbrains.mps.lang.generator.structure.IParameterizedTemplate");
+    /*package*/ static final SConcept TemplateArgumentParameterExpression$$z = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, "jetbrains.mps.lang.generator.structure.TemplateArgumentParameterExpression");
+    /*package*/ static final SInterfaceConcept IParameterizedTemplate$6i = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, "jetbrains.mps.lang.generator.structure.IParameterizedTemplate");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$SWrw = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, 0x457655815a794e7aL, "parameter");
-    /*package*/ static final SContainmentLink parameter$GT0v = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
+    /*package*/ static final SReferenceLink parameter$hT7c = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, 0x457655815a794e7aL, "parameter");
+    /*package*/ static final SContainmentLink parameter$5PGb = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
   }
 }

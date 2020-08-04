@@ -34,19 +34,19 @@ public final class SuperConstructorInvocation__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$bK, false, false);
     SNode superclassType = ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(classConcept);
     if ((superclassType == null)) {
       return new ArrayList<SNode>();
     }
 
-    SNode superClassifier = SLinkOperations.getTarget(superclassType, LINKS.classifier$xslD);
+    SNode superClassifier = SLinkOperations.getTarget(superclassType, LINKS.classifier$cxMr);
 
-    if ((superClassifier == null) || !(SNodeOperations.isInstanceOf(superClassifier, CONCEPTS.ClassConcept$IY))) {
+    if ((superClassifier == null) || !(SNodeOperations.isInstanceOf(superClassifier, CONCEPTS.ClassConcept$bK))) {
       return new ArrayList<SNode>();
     }
 
-    SNode superclass = SNodeOperations.cast(superClassifier, CONCEPTS.ClassConcept$IY);
+    SNode superclass = SNodeOperations.cast(superClassifier, CONCEPTS.ClassConcept$bK);
     return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superclass);
   }
 
@@ -97,10 +97,10 @@ public final class SuperConstructorInvocation__BehaviorDescriptor extends BaseBH
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

@@ -24,13 +24,13 @@ public class check_CellModel_Diagram_NonTypesystemRule extends AbstractNonTypesy
   }
   public void applyRule(final SNode diagram, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode topLevelCell = diagram;
-    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(topLevelCell), CONCEPTS.EditorCellModel$5c)) {
-      topLevelCell = SNodeOperations.cast(SNodeOperations.getParent(topLevelCell), CONCEPTS.EditorCellModel$5c);
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(topLevelCell), CONCEPTS.EditorCellModel$gN)) {
+      topLevelCell = SNodeOperations.cast(SNodeOperations.getParent(topLevelCell), CONCEPTS.EditorCellModel$gN);
     }
 
-    for (SNode nonSynchronizeableCellModel : ListSequence.fromList(SNodeOperations.getNodeDescendants(topLevelCell, CONCEPTS.EditorCellModel$5c, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    for (SNode nonSynchronizeableCellModel : ListSequence.fromList(SNodeOperations.getNodeDescendants(topLevelCell, CONCEPTS.EditorCellModel$gN, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Synchronizeable$94));
+        return !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(it)), CONCEPTS.Synchronizeable$kF));
       }
     })) {
       {
@@ -40,7 +40,7 @@ public class check_CellModel_Diagram_NonTypesystemRule extends AbstractNonTypesy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellModel_Diagram$zA;
+    return CONCEPTS.CellModel_Diagram$rp;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,8 +50,8 @@ public class check_CellModel_Diagram_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorCellModel$5c = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
-    /*package*/ static final SInterfaceConcept Synchronizeable$94 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x79b75ced2c4a134dL, "jetbrains.mps.lang.editor.structure.Synchronizeable");
-    /*package*/ static final SConcept CellModel_Diagram$zA = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_Diagram");
+    /*package*/ static final SConcept EditorCellModel$gN = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
+    /*package*/ static final SInterfaceConcept Synchronizeable$kF = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x79b75ced2c4a134dL, "jetbrains.mps.lang.editor.structure.Synchronizeable");
+    /*package*/ static final SConcept CellModel_Diagram$rp = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_Diagram");
   }
 }

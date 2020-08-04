@@ -34,7 +34,7 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
   private static final String INDENT = "     ";
 
   private static boolean isOverridden(SNode method) {
-    return (SLinkOperations.getTarget(method, LINKS.body$qspy) != null);
+    return (SLinkOperations.getTarget(method, LINKS.body$5xQk) != null);
   }
 
   private final boolean myOverridden;
@@ -63,7 +63,7 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
   }
 
   private static String getTextFromOverride(SNode override) {
-    return ((String) BHReflection.invoke0(((SNode) BHReflection.invoke0(override, CONCEPTS.ConceptMethodDeclaration$VN, SMethodTrimmedId.create("getContainingConcept", CONCEPTS.ConceptMethodDeclaration$VN, "i3POAMX"))), CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) BHReflection.invoke0(((SNode) BHReflection.invoke0(override, CONCEPTS.ConceptMethodDeclaration$N0, SMethodTrimmedId.create("getContainingConcept", CONCEPTS.ConceptMethodDeclaration$N0, "i3POAMX"))), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
   }
 
   @Override
@@ -83,11 +83,11 @@ public final class MethodIsOverriddenEditorMessage extends AbstractOverrideEdito
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

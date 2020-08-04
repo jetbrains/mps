@@ -21,32 +21,32 @@
       <node id="1005490780642124074" at="31,7,32,42" concept="4" />
       <node id="1005490780642129895" at="33,87,34,130" concept="1" />
       <node id="1005490780642141971" at="37,7,38,42" concept="4" />
-      <node id="1005490780642141976" at="39,83,40,129" concept="1" />
+      <node id="1005490780642141976" at="39,83,40,130" concept="1" />
       <node id="1005490780642144966" at="43,7,44,42" concept="4" />
       <node id="1005490780642144971" at="45,80,46,127" concept="1" />
       <node id="1005490780642148230" at="53,7,54,42" concept="4" />
-      <node id="1005490780642148235" at="55,87,56,129" concept="1" />
+      <node id="1005490780642148235" at="55,87,56,130" concept="1" />
       <node id="1005490780642148243" at="59,7,60,42" concept="4" />
-      <node id="1005490780642148248" at="61,83,62,128" concept="1" />
+      <node id="1005490780642148248" at="61,83,62,130" concept="1" />
       <node id="1005490780642148256" at="65,7,66,42" concept="4" />
-      <node id="1005490780642148261" at="67,80,68,126" concept="1" />
+      <node id="1005490780642148261" at="67,80,68,127" concept="1" />
       <node id="1005490780642154324" at="75,7,76,42" concept="4" />
       <node id="1005490780642154329" at="77,87,78,127" concept="1" />
       <node id="1005490780642154337" at="81,7,82,42" concept="4" />
-      <node id="1005490780642154342" at="83,83,84,126" concept="1" />
+      <node id="1005490780642154342" at="83,83,84,127" concept="1" />
       <node id="1005490780642154350" at="87,7,88,42" concept="4" />
       <node id="1005490780642154355" at="89,80,90,124" concept="1" />
-      <node id="1005490780641997346" at="97,0,98,0" concept="5" trace="AbstractReportStatement$Qn" />
-      <node id="1005490780641997346" at="98,0,99,0" concept="5" trace="ReportErrorStatement$db" />
-      <node id="1005490780641997346" at="99,0,100,0" concept="5" trace="WarningStatement$15" />
-      <node id="1005490780641997346" at="100,0,101,0" concept="5" trace="InfoStatement$Gf" />
-      <node id="1005490780641997346" at="104,0,105,0" concept="5" trace="nodeToReport$8wNS" />
-      <node id="1005490780641997346" at="105,0,106,0" concept="5" trace="helginsIntention$zrno" />
-      <node id="1005490780641997346" at="106,0,107,0" concept="5" trace="messageTarget$EHkq" />
-      <node id="1005490780641997346" at="107,0,108,0" concept="5" trace="foreignMessageSource$LZwt" />
-      <node id="1005490780641997346" at="108,0,109,0" concept="5" trace="errorString$E4XJ" />
-      <node id="1005490780641997346" at="109,0,110,0" concept="5" trace="warningText$vgK" />
-      <node id="1005490780641997346" at="110,0,111,0" concept="5" trace="infoText$Cduv" />
+      <node id="1005490780641997346" at="97,0,98,0" concept="5" trace="AbstractReportStatement$8d" />
+      <node id="1005490780641997346" at="98,0,99,0" concept="5" trace="ReportErrorStatement$v1" />
+      <node id="1005490780641997346" at="99,0,100,0" concept="5" trace="WarningStatement$iV" />
+      <node id="1005490780641997346" at="100,0,101,0" concept="5" trace="InfoStatement$Y5" />
+      <node id="1005490780641997346" at="104,0,105,0" concept="5" trace="nodeToReport$xn5I" />
+      <node id="1005490780641997346" at="105,0,106,0" concept="5" trace="helginsIntention$WhDe" />
+      <node id="1005490780641997346" at="106,0,107,0" concept="5" trace="messageTarget$3zAg" />
+      <node id="1005490780641997346" at="107,0,108,0" concept="5" trace="foreignMessageSource$aPMj" />
+      <node id="1005490780641997346" at="108,0,109,0" concept="5" trace="errorString$2Vf_" />
+      <node id="1005490780641997346" at="109,0,110,0" concept="5" trace="warningText$plyA" />
+      <node id="1005490780641997346" at="110,0,111,0" concept="5" trace="infoText$13Kl" />
       <node id="1005490780642124074" at="32,42,35,9" concept="2" />
       <node id="1005490780642141971" at="38,42,41,9" concept="2" />
       <node id="1005490780642144966" at="44,42,47,9" concept="2" />
@@ -72,13 +72,13 @@
       <node id="1005490780642148227" at="52,0,72,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="1005490780642154321" at="74,0,94,0" concept="3" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="1005490780642124078" at="33,87,34,130" />
-      <scope id="1005490780642141975" at="39,83,40,129" />
+      <scope id="1005490780642141975" at="39,83,40,130" />
       <scope id="1005490780642144970" at="45,80,46,127" />
-      <scope id="1005490780642148234" at="55,87,56,129" />
-      <scope id="1005490780642148247" at="61,83,62,128" />
-      <scope id="1005490780642148260" at="67,80,68,126" />
+      <scope id="1005490780642148234" at="55,87,56,130" />
+      <scope id="1005490780642148247" at="61,83,62,130" />
+      <scope id="1005490780642148260" at="67,80,68,127" />
       <scope id="1005490780642154328" at="77,87,78,127" />
-      <scope id="1005490780642154341" at="83,83,84,126" />
+      <scope id="1005490780642154341" at="83,83,84,127" />
       <scope id="1005490780642154354" at="89,80,90,124" />
       <scope id="1005490780642043216" at="20,90,24,148" />
       <scope id="1005490780642124074" at="31,7,35,9">
@@ -162,22 +162,22 @@
       <node id="1178879081523" at="41,184,42,174" concept="1" />
       <node id="1179476590564" at="49,88,50,120" concept="1" />
       <node id="1179476612072" at="51,16,52,170" concept="1" />
-      <node id="1174664633061" at="59,0,60,0" concept="5" trace="AbstractEquationStatement$sp" />
-      <node id="1174664633061" at="60,0,61,0" concept="5" trace="IsSubtypeExpression$sQ" />
-      <node id="1174664633061" at="61,0,62,0" concept="5" trace="CoerceExpression$HZ" />
-      <node id="1174664633061" at="62,0,63,0" concept="5" trace="Expression$TP" />
-      <node id="1174664633061" at="63,0,64,0" concept="5" trace="TypeOfExpression$_5" />
-      <node id="1174664633061" at="67,0,68,0" concept="5" trace="leftExpression$xJ6I" />
-      <node id="1174664633061" at="68,0,69,0" concept="5" trace="rightExpression$xJlJ" />
-      <node id="1174664633061" at="69,0,70,0" concept="5" trace="nodeToCheck$MXlb" />
-      <node id="1174664633061" at="70,0,71,0" concept="5" trace="errorString$VyQO" />
-      <node id="1174664633061" at="71,0,72,0" concept="5" trace="helginsIntention$TFCJ" />
-      <node id="1174664633061" at="72,0,73,0" concept="5" trace="subtypeExpression$HD$w" />
-      <node id="1174664633061" at="73,0,74,0" concept="5" trace="supertypeExpression$fneC" />
-      <node id="1174664633061" at="74,0,75,0" concept="5" trace="nodeToCoerce$rDqh" />
-      <node id="1174664633061" at="75,0,76,0" concept="5" trace="pattern$rDbg" />
-      <node id="1174664633061" at="76,0,77,0" concept="5" trace="term$gtWI" />
-      <node id="1174664633061" at="80,0,81,0" concept="5" trace="checkOnly$DWc_" />
+      <node id="1174664633061" at="59,0,60,0" concept="5" trace="AbstractEquationStatement$If" />
+      <node id="1174664633061" at="60,0,61,0" concept="5" trace="IsSubtypeExpression$IG" />
+      <node id="1174664633061" at="61,0,62,0" concept="5" trace="CoerceExpression$ZP" />
+      <node id="1174664633061" at="62,0,63,0" concept="5" trace="Expression$mB" />
+      <node id="1174664633061" at="63,0,64,0" concept="5" trace="TypeOfExpression$QV" />
+      <node id="1174664633061" at="67,0,68,0" concept="5" trace="leftExpression$U_o$" />
+      <node id="1174664633061" at="68,0,69,0" concept="5" trace="rightExpression$U_B_" />
+      <node id="1174664633061" at="69,0,70,0" concept="5" trace="nodeToCheck$bNB1" />
+      <node id="1174664633061" at="70,0,71,0" concept="5" trace="errorString$kp8E" />
+      <node id="1174664633061" at="71,0,72,0" concept="5" trace="helginsIntention$ixU_" />
+      <node id="1174664633061" at="72,0,73,0" concept="5" trace="subtypeExpression$6vQm" />
+      <node id="1174664633061" at="73,0,74,0" concept="5" trace="supertypeExpression$Cdwu" />
+      <node id="1174664633061" at="74,0,75,0" concept="5" trace="nodeToCoerce$OvG7" />
+      <node id="1174664633061" at="75,0,76,0" concept="5" trace="pattern$Ovt6" />
+      <node id="1174664633061" at="76,0,77,0" concept="5" trace="term$Dke$" />
+      <node id="1174664633061" at="80,0,81,0" concept="5" trace="checkOnly$2Mur" />
       <node id="1179476606430" at="51,14,53,9" concept="0" />
       <node id="1177408265621" at="31,91,35,7" concept="2" />
       <node id="1178879025683" at="39,91,43,7" concept="2" />

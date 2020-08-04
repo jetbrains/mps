@@ -15,27 +15,27 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class set_ascending_order {
   public static class NodeFactory_1225119783187 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNode sd = SNodeFactoryOperations.setNewChild(newNode, LINKS.ascending$Jz52, CONCEPTS.SortDirection$8O);
-      SPropertyOperations.set(sd, PROPS.value$qt90, true);
+      SNode sd = SNodeFactoryOperations.setNewChild(newNode, LINKS.ascending$pRjl, CONCEPTS.SortDirection$n7);
+      SPropertyOperations.set(sd, PROPS.value$5y_M, true);
     }
   }
   public static class NodeFactory_1225119833430 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNode sd = SNodeFactoryOperations.setNewChild(newNode, LINKS.ascending$Bwbt, CONCEPTS.SortDirection$8O);
-      SPropertyOperations.set(sd, PROPS.value$qt90, true);
+      SNode sd = SNodeFactoryOperations.setNewChild(newNode, LINKS.ascending$hOpK, CONCEPTS.SortDirection$n7);
+      SPropertyOperations.set(sd, PROPS.value$5y_M, true);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ascending$Jz52 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118b81cc8f6L, 0x118b81e3c02L, "ascending");
-    /*package*/ static final SContainmentLink ascending$Bwbt = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x119a966b94dL, 0x119a96853fdL, "ascending");
+    /*package*/ static final SContainmentLink ascending$pRjl = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118b81cc8f6L, 0x118b81e3c02L, "ascending");
+    /*package*/ static final SContainmentLink ascending$hOpK = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x119a966b94dL, 0x119a96853fdL, "ascending");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SortDirection$8O = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection");
+    /*package*/ static final SConcept SortDirection$n7 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

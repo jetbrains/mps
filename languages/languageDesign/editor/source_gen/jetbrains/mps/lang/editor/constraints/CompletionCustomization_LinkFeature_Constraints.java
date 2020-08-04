@@ -25,12 +25,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CompletionCustomization_LinkFeature_Constraints extends BaseConstraintsDescriptor {
   public CompletionCustomization_LinkFeature_Constraints() {
-    super(CONCEPTS.CompletionCustomization_LinkFeature$PM);
+    super(CONCEPTS.CompletionCustomization_LinkFeature$1p);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$c0Kp, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$giW0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,7 +45,7 @@ public class CompletionCustomization_LinkFeature_Constraints extends BaseConstra
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode concept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CompletionCustomizationConceptModifyingSpecificator$jz, true, false), LINKS.conceptDeclaration$lR6N);
+            SNode concept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CompletionCustomizationConceptModifyingSpecificator$va, true, false), LINKS.conceptDeclaration$q9iq);
             return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept));
           }
         };
@@ -58,12 +58,12 @@ public class CompletionCustomization_LinkFeature_Constraints extends BaseConstra
   private static final SNodePointer breakingNode_yjynvp_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "772883491822712741");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompletionCustomization_LinkFeature$PM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, "jetbrains.mps.lang.editor.structure.CompletionCustomization_LinkFeature");
-    /*package*/ static final SConcept CompletionCustomizationConceptModifyingSpecificator$jz = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02fdL, "jetbrains.mps.lang.editor.structure.CompletionCustomizationConceptModifyingSpecificator");
+    /*package*/ static final SConcept CompletionCustomization_LinkFeature$1p = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, "jetbrains.mps.lang.editor.structure.CompletionCustomization_LinkFeature");
+    /*package*/ static final SConcept CompletionCustomizationConceptModifyingSpecificator$va = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02fdL, "jetbrains.mps.lang.editor.structure.CompletionCustomizationConceptModifyingSpecificator");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$c0Kp = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, 0xab9d570dedb336fL, "link");
-    /*package*/ static final SReferenceLink conceptDeclaration$lR6N = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02faL, 0x7e806541c93930a5L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink link$giW0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, 0xab9d570dedb336fL, "link");
+    /*package*/ static final SReferenceLink conceptDeclaration$q9iq = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02faL, 0x7e806541c93930a5L, "conceptDeclaration");
   }
 }

@@ -37,10 +37,10 @@ public final class MakeClassAbstractFromMethod_Intention extends AbstractIntenti
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false) == null)) {
+    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) == null)) {
       return false;
     }
-    return SPropertyOperations.getBoolean(node, PROPS.isAbstract$gogN) && Objects.equals(SNodeOperations.getConcept(SNodeOperations.getParent(node)), CONCEPTS.ClassConcept$IY) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.ClassConcept$IY), PROPS.abstractClass$e4_b));
+    return SPropertyOperations.getBoolean(node, PROPS.isAbstract$VtH_) && Objects.equals(SNodeOperations.getConcept(SNodeOperations.getParent(node)), CONCEPTS.ClassConcept$bK) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X));
   }
   @Override
   public boolean isSurroundWith() {
@@ -61,7 +61,7 @@ public final class MakeClassAbstractFromMethod_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false), PROPS.abstractClass$e4_b, true);
+      SPropertyOperations.set(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false), PROPS.abstractClass$Ta1X, true);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -70,11 +70,11 @@ public final class MakeClassAbstractFromMethod_Intention extends AbstractIntenti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
-    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

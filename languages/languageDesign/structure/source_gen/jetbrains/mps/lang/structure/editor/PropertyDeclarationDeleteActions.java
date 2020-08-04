@@ -32,13 +32,13 @@ public class PropertyDeclarationDeleteActions {
         if (DeletionApproverUtil.approve(editorContext, node)) {
           return;
         }
-        SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$UN);
-        if (!(CustomActionsHandler.deleteElementFromCollectionAndSetSelection(node, SLinkOperations.getChildren(containingAbstractConcept, LINKS.propertyDeclaration$yMqt), editorContext))) {
-          if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU)) {
-            SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU);
+        SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$KA);
+        if (!(CustomActionsHandler.deleteElementFromCollectionAndSetSelection(node, SLinkOperations.getChildren(containingAbstractConcept, LINKS.propertyDeclaration$YUgg), editorContext))) {
+          if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH)) {
+            SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH);
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, cd, "emptyPropertiesPlaceHolder", 0);
-          } else if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$MT)) {
-            SNode id = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$MT);
+          } else if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$CG)) {
+            SNode id = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$CG);
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, id, "emptyPropertiesPlaceHolder", 0);
           }
         }
@@ -58,13 +58,13 @@ public class PropertyDeclarationDeleteActions {
         if (DeletionApproverUtil.approve(editorContext, node)) {
           return;
         }
-        SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$UN);
-        if (!(CustomActionsHandler.backspaceElementFromCollectionAndSetSelection(node, SLinkOperations.getChildren(containingAbstractConcept, LINKS.propertyDeclaration$yMqt), editorContext))) {
-          if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU)) {
-            SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU);
+        SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$KA);
+        if (!(CustomActionsHandler.backspaceElementFromCollectionAndSetSelection(node, SLinkOperations.getChildren(containingAbstractConcept, LINKS.propertyDeclaration$YUgg), editorContext))) {
+          if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH)) {
+            SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH);
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, cd, "emptyPropertiesPlaceHolder", 0);
-          } else if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$MT)) {
-            SNode id = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$MT);
+          } else if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$CG)) {
+            SNode id = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$CG);
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, id, "emptyPropertiesPlaceHolder", 0);
           }
         }
@@ -119,12 +119,12 @@ public class PropertyDeclarationDeleteActions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink propertyDeclaration$YUgg = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
   }
 }

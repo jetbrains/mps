@@ -61,15 +61,15 @@
       <node id="6807933448470767091" at="134,87,135,88" concept="1" />
       <node id="6807933448470767091" at="135,88,136,88" concept="1" />
       <node id="6807933448470767091" at="136,88,137,36" concept="6" />
-      <node id="1986963296982667681" at="141,0,142,0" concept="9" trace="OldComponent$sl" />
-      <node id="1986963296982667681" at="142,0,143,0" concept="9" trace="MigrationDataAnnotation$gb" />
-      <node id="1986963296982667681" at="143,0,144,0" concept="9" trace="DeclMigrationData$E1" />
-      <node id="1986963296982667681" at="147,0,148,0" concept="9" trace="member$nGlH" />
-      <node id="1986963296982667681" at="148,0,149,0" concept="9" trace="dataNode$T4nK" />
-      <node id="1986963296982667681" at="152,0,153,0" concept="9" trace="name$lA7v" />
-      <node id="1986963296982667681" at="153,0,154,0" concept="9" trace="createdByScript$L5qw" />
-      <node id="1986963296982667681" at="154,0,155,0" concept="9" trace="oldId$lFYx" />
-      <node id="1986963296982667681" at="155,0,156,0" concept="9" trace="newId$lGdy" />
+      <node id="1986963296982667681" at="141,0,142,0" concept="9" trace="OldComponent$2b" />
+      <node id="1986963296982667681" at="142,0,143,0" concept="9" trace="MigrationDataAnnotation$Ct" />
+      <node id="1986963296982667681" at="143,0,144,0" concept="9" trace="DeclMigrationData$fR" />
+      <node id="1986963296982667681" at="147,0,148,0" concept="9" trace="member$dqVz" />
+      <node id="1986963296982667681" at="148,0,149,0" concept="9" trace="dataNode$lPK2" />
+      <node id="1986963296982667681" at="152,0,153,0" concept="9" trace="name$MnvL" />
+      <node id="1986963296982667681" at="153,0,154,0" concept="9" trace="createdByScript$dQMM" />
+      <node id="1986963296982667681" at="154,0,155,0" concept="9" trace="oldId$bq$n" />
+      <node id="1986963296982667681" at="155,0,156,0" concept="9" trace="newId$bqNo" />
       <node id="1986963296982667681" at="41,0,44,0" concept="4" trace="getCaption#()Ljava/lang/String;" />
       <node id="6807933448471958642" at="55,0,58,0" concept="4" trace="met#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="6807933448471856633" at="64,0,67,0" concept="4" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
