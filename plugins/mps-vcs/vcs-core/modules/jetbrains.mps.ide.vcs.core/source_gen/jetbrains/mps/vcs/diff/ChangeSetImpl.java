@@ -20,13 +20,17 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Objects;
+import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.vcs.diff.changes.NodeChange;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/7082523601896740167", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public class ChangeSetImpl implements ModelChangeSet {
@@ -123,16 +127,37 @@ public class ChangeSetImpl implements ModelChangeSet {
   public Iterable<ModelChange> getChangesForNode(@Nullable final SNodeId nodeId) {
 
     SNode oldNode = getOldModel().getNode(nodeId);
-    final Iterable<SNodeId> oldNodeIds = ListSequence.fromList(SNodeOperations.getNodeDescendants(oldNode, null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    });
+    SNode newNode = getNewModel().getNode(nodeId);
 
-    return ListSequence.fromList(myModelChanges).where(new IWhereFilter<ModelChange>() {
+    if ((oldNode == null) && (newNode == null)) {
+      return Sequence.fromIterable(Collections.<ModelChange>emptyList());
+    }
+
+    SNodeId rootId = (((oldNode == null) ? newNode : oldNode)).getContainingRoot().getNodeId();
+    Iterable<ModelChange> changesForRoot = getChangesForRoot(rootId);
+    if (Objects.equals(rootId, nodeId)) {
+      return changesForRoot;
+    }
+
+    final Set<SNodeId> ids = SetSequence.fromSet(new HashSet<SNodeId>());
+    if ((oldNode != null)) {
+      SetSequence.fromSet(ids).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(oldNode, null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
+        public SNodeId select(SNode it) {
+          return it.getNodeId();
+        }
+      }));
+    }
+    if ((newNode != null)) {
+      SetSequence.fromSet(ids).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(newNode, null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
+        public SNodeId select(SNode it) {
+          return it.getNodeId();
+        }
+      }));
+    }
+    return Sequence.fromIterable(changesForRoot).where(new IWhereFilter<ModelChange>() {
       public boolean accept(ModelChange change) {
         if (change instanceof NodeChange) {
-          return Sequence.fromIterable(oldNodeIds).contains(((NodeChange) change).getAffectedNodeId());
+          return SetSequence.fromSet(ids).contains(((NodeChange) change).getAffectedNodeId());
         }
         if (change instanceof AddRootChange) {
           return ((AddRootChange) change).getRootId().equals(nodeId);
@@ -141,7 +166,10 @@ public class ChangeSetImpl implements ModelChangeSet {
           return ((DeleteRootChange) change).getRootId().equals(nodeId);
         }
         if (change instanceof NodeGroupChange) {
-          return Sequence.fromIterable(oldNodeIds).contains(((NodeGroupChange) change).getNewParentNodeId());
+          return SetSequence.fromSet(ids).contains(((NodeGroupChange) change).getOldParentNodeId());
+        }
+        if (change instanceof NodeIdChange) {
+          return SetSequence.fromSet(ids).contains(((NodeIdChange) change).getNodeId(false));
         }
         return false;
       }

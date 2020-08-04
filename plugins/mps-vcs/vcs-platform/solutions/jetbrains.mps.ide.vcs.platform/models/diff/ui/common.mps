@@ -9919,36 +9919,6 @@
             </node>
           </node>
         </node>
-        <node concept="1X3_iC" id="1iCb9SvhRC6" role="lGtFl">
-          <property role="3V$3am" value="statement" />
-          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-          <node concept="3clFbJ" id="3$YpntjF4VD" role="8Wnug">
-            <node concept="3clFbS" id="3$YpntjF4VE" role="3clFbx">
-              <node concept="3clFbF" id="3$YpntjF4VF" role="3cqZAp">
-                <node concept="2OqwBi" id="3$YpntjF4VG" role="3clFbG">
-                  <node concept="liA8E" id="3$YpntjF4VK" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~EditorComponent.editNode(org.jetbrains.mps.openapi.model.SNode)" resolve="editNode" />
-                    <node concept="37vLTw" id="3GM_nagTxX7" role="37wK5m">
-                      <ref role="3cqZAo" node="3$YpntjF4Vw" resolve="root" />
-                    </node>
-                  </node>
-                  <node concept="1rXfSq" id="4hiugqyzanH" role="2Oq$k0">
-                    <ref role="37wK5l" node="42hl10VHaA0" resolve="getMainEditor" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbC" id="4$Wo$6lAOfx" role="3clFbw">
-              <node concept="10Nm6u" id="4$Wo$6lAOf$" role="3uHU7w" />
-              <node concept="2OqwBi" id="4$Wo$6lAOfs" role="3uHU7B">
-                <node concept="1mfA1w" id="4$Wo$6lAOfw" role="2OqNvi" />
-                <node concept="37vLTw" id="3GM_nagTrYj" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3$YpntjF4Vw" resolve="root" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="37vLTG" id="4$Wo$6lALb1" role="3clF46">
         <property role="TrG5h" value="rootId" />
