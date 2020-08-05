@@ -10,6 +10,10 @@
   <property file="${artifacts.mpsPlugin}/build.properties" prefix="import.mpsPlugin" />
   <property name="mpsPlugin.plugin.version" value="${import.mpsPlugin.mpsPlugin.plugin.version}" />
   <property name="mpsPlugin.date" value="${import.mpsPlugin.mpsPlugin.date}" />
+  <property name="mpsBootstrapCore.version.major" value="${import.mpsPlugin.mpsBootstrapCore.version.major}" />
+  <property name="mpsBootstrapCore.version.minor" value="${import.mpsPlugin.mpsBootstrapCore.version.minor}" />
+  <property name="mpsBootstrapCore.version.bugfixNr" value="${import.mpsPlugin.mpsBootstrapCore.version.bugfixNr}" />
+  <property name="mpsBootstrapCore.version.eap" value="${import.mpsPlugin.mpsBootstrapCore.version.eap}" />
   <property name="mpsBootstrapCore.version" value="${import.mpsPlugin.mpsBootstrapCore.version}" />
   <property name="mpsPluginCommon.plugin.version" value="${import.mpsPlugin.mpsPluginCommon.plugin.version}" />
   <property name="mpsPluginCommon.date" value="${import.mpsPlugin.mpsPluginCommon.date}" />
@@ -196,7 +200,7 @@
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.samples.notesOrganizer-models" prefix="module/models" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.samples.notesOrganizer-generator-template" prefix="module/generator/template" />
     </jar>
-    <echo file="${build.layout}/build.properties">mpsPlugin.plugin.version=${mpsPlugin.plugin.version}${line.separator}mpsPlugin.date=${mpsPlugin.date}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}${line.separator}mpsPluginCommon.plugin.version=${mpsPluginCommon.plugin.version}${line.separator}mpsPluginCommon.date=${mpsPluginCommon.date}${line.separator}mpsPluginCore.plugin.version=${mpsPluginCore.plugin.version}${line.separator}mpsPluginCore.date=${mpsPluginCore.date}${line.separator}mpsIdeaVcs.plugin.version=${mpsIdeaVcs.plugin.version}${line.separator}mpsIdeaVcs.date=${mpsIdeaVcs.date}${line.separator}mpsIdeaMigration.plugin.version=${mpsIdeaMigration.plugin.version}${line.separator}mpsIdeaMigration.date=${mpsIdeaMigration.date}</echo>
+    <echo file="${build.layout}/build.properties">mpsPlugin.plugin.version=${mpsPlugin.plugin.version}${line.separator}mpsPlugin.date=${mpsPlugin.date}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}${line.separator}mpsPluginCommon.plugin.version=${mpsPluginCommon.plugin.version}${line.separator}mpsPluginCommon.date=${mpsPluginCommon.date}${line.separator}mpsPluginCore.plugin.version=${mpsPluginCore.plugin.version}${line.separator}mpsPluginCore.date=${mpsPluginCore.date}${line.separator}mpsIdeaVcs.plugin.version=${mpsIdeaVcs.plugin.version}${line.separator}mpsIdeaVcs.date=${mpsIdeaVcs.date}${line.separator}mpsIdeaMigration.plugin.version=${mpsIdeaMigration.plugin.version}${line.separator}mpsIdeaMigration.date=${mpsIdeaMigration.date}</echo>
   </target>
   
   <target name="buildDependents" />
