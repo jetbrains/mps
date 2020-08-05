@@ -16,24 +16,29 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.ide.PowerSaveMode;
+import com.intellij.ide.ui.AntialiasingType;
 import com.intellij.ide.ui.UISettings;
+import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
+import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.FontPreferences;
+import com.intellij.openapi.editor.ex.util.EditorUtil;
+import com.intellij.openapi.util.Disposer;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.nodeEditor.EditorSettings.MyState;
 import jetbrains.mps.nodeEditor.cells.EditorFontMetricsImpl;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
 import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.TestOnly;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -45,94 +50,101 @@ import java.util.List;
     storages = @Storage("mpsEditor.xml"),
     reportStatistic = true
 )
-public class EditorSettings implements ApplicationComponent, PersistentStateComponent<MyState> {
+public class EditorSettings implements PersistentStateComponent<MyState> {
   private static final Logger LOG = LogManager.getLogger(EditorSettings.class);
   private static final Color DEFAULT_CARET_ROW_COLOR = new Color(255, 255, 215);
-  private static final Color DEFAULT_CARET_COLOR = Color.BLACK;
+  private static final Color DEFAULT_CARET_COLOR = JBColor.BLACK;
 
-  private static final Color DEFAULT_LEFT_HIGHLIGHTER_BACKGROUND_COLOR = Color.WHITE;
-  private static final Color DEFAULT_LEFT_HIGHLIGHTER_TEAR_LINE_COLOR = Color.gray;
+  private static final Color DEFAULT_LEFT_HIGHLIGHTER_BACKGROUND_COLOR = JBColor.WHITE;
+  private static final Color DEFAULT_LEFT_HIGHLIGHTER_TEAR_LINE_COLOR = JBColor.GRAY;
 
   private static final Color DEFAULT_SELECTION_BACKGROUND_COLOR = new Color(82, 109, 165);
-  private static final Color DEFAULT_SELECTION_FOREGROUND_COLOR = Color.WHITE;
-  private static final Color DEFAULT_HYPERLINK_COLOR = Color.BLUE;
+  private static final Color DEFAULT_SELECTION_FOREGROUND_COLOR = JBColor.WHITE;
+  private static final Color DEFAULT_HYPERLINK_COLOR = JBColor.BLUE;
 
   private static final int DEFAULT_CARET_BLINK_PERIOD = 500;
   static final int MIN_CARET_BLINK_PERIOD = 100;
   static final int MAX_CARET_BLINK_PERIOD = 1000;
 
-  private static EditorSettings ourInstance;
+  @TestOnly
+  private static EditorSettings testInstance;
 
   public static EditorSettings getInstance() {
-    if (ourInstance == null) {
-      ourInstance = ApplicationManager.getApplication() == null ? new EditorSettings() : ApplicationManager.getApplication().getComponent(EditorSettings.class);
+    // In JUnit tests application is not loaded so there EditorSettings cannot be retrieved as service
+    if (ApplicationManager.getApplication() == null) {
+      if (testInstance == null) {
+        testInstance = new EditorSettings();
+      }
+      return testInstance;
     }
-    return ourInstance;
+
+    return ServiceManager.getService(EditorSettings.class);
   }
 
-  private List<EditorSettingsListener> myListeners = new ArrayList<>();
-
-  private final EditorColorsManager myColorsManager;
-
+  private final List<EditorSettingsListener> myListeners = new ArrayList<>();
   private MyState myState = new MyState();
-  private boolean myPresentationMode;
-  private int myPresentationModeFontSize = 24;
-  private Font myDefaultEditorFont;
   private EditorFontMetrics myFontMetrics;
 
-  public EditorSettings(EditorColorsManager colorsManager, UISettings uiSettings) {
-    myColorsManager = colorsManager;
-    myPresentationMode = uiSettings.PRESENTATION_MODE;
-    myPresentationModeFontSize = uiSettings.PRESENTATION_MODE_FONT_SIZE;
-    registerUIListener(uiSettings);
+  public EditorSettings() {
   }
 
-  private EditorSettings() {
-    myColorsManager = null;
-  }
-
-  private void registerUIListener(UISettings uiSettings) {
-    uiSettings.addUISettingsListener(source -> {
-      if (myPresentationMode == source.PRESENTATION_MODE && myPresentationModeFontSize == source.PRESENTATION_MODE_FONT_SIZE) {
-        return;
-      }
-      myPresentationMode = source.PRESENTATION_MODE;
-      myPresentationModeFontSize = source.PRESENTATION_MODE_FONT_SIZE;
-      updateCachedValue();
-      fireEditorSettingsChanged();
-    }, ApplicationManager.getApplication());
+  /**
+   * Introduced to shorten call to {@code EditorColorsManager.getInstance()}
+   * <br>
+   * But also used to support hack for MPS-18494
+   * <br><br>
+   * TODO: find a way to avoid this hack
+   *
+   * @return in tests can return null
+   */
+  private EditorColorsManager getECM() {
+    return ApplicationManager.getApplication() != null ? EditorColorsManager.getInstance() : null;
   }
 
   public double getLineSpacing() {
-    return myState.lineSpacing;
+    return getECM() == null ? 1.2d : getECM().getGlobalScheme().getLineSpacing();
   }
 
+  /**
+   * @deprecated Line spacing is set in settings UI, should not be set from code
+   */
+  @ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2", forRemoval = true)
   public void setLineSpacing(double lineSpacing) {
-    myState.lineSpacing = lineSpacing;
   }
 
   public Font getDefaultEditorFont() {
-    if (myDefaultEditorFont == null) {
-      myDefaultEditorFont = FontRegistry.getInstance().getFont(myState.fontFamily, 0, getFontSize());
-    }
-    return myDefaultEditorFont;
+    return getECM() == null ? FontRegistry.getInstance().getFont(getFontFamily(), Font.PLAIN, getFontSize()) : EditorUtil.getEditorFont();
   }
 
+  /**
+   * @deprecated Editor font is set in settings UI, should not be set from code
+   */
+  @ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2", forRemoval = true)
   public void setDefaultEditorFont(Font newFont) {
-    myState.fontFamily = newFont.getFamily();
-    myState.fontSize = newFont.getSize();
   }
 
   public int getFontSize() {
-    return myPresentationMode ? myPresentationModeFontSize : myState.fontSize;
+    return getECM() == null ? 13 : EditorUtil.getEditorFont().getSize();
   }
 
+  /**
+   * @deprecated use {@link EditorSettings#getFontSize()} instead.
+   * <br><br>
+   * Note that {@link EditorSettings#getFontSize()} will return adapted font size if presentation mode is enabled.
+   * <br>
+   * If there is a necessity to get actually set font size without such adaptation use
+   * {@link com.intellij.openapi.editor.colors.EditorColorsScheme#getEditorFontSize}.
+   */
+  @ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2", forRemoval = true)
   public int getSpecifiedFontSize() {
-    return myState.fontSize;
+    return getECM() == null ? getFontSize() : getECM().getGlobalScheme().getEditorFontSize();
   }
 
   public String getFontFamily() {
-    return myState.fontFamily;
+    return getECM() == null ? "Monospaced" : EditorUtil.getEditorFont().getFamily();
   }
 
   public boolean useBraces() {
@@ -163,12 +175,21 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
     return getSpacesWidth(getVerticalBound());
   }
 
+  /**
+   * @deprecated Use {@link AntialiasingType#getKeyForCurrentScope(boolean)} instead
+   */
+  @ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2", forRemoval = true)
   public boolean isUseAntialiasing() {
     return myState.useAntialiasing;
   }
 
+  /**
+   * @deprecated Use {@link UISettings#setEditorAAType(AntialiasingType)} instead
+   */
+  @ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2", forRemoval = true)
   public void setUseAntialiasing(boolean useAntialiasing) {
-    myState.useAntialiasing = useAntialiasing;
   }
 
   public boolean isUseTwoStepDeletion() {
@@ -197,10 +218,20 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
     myState.reflectiveEditorReadonly = reflectiveEditorReadonly;
   }
 
+  /**
+   * @deprecated Use {@link PowerSaveMode#isEnabled()} directly
+   */
+  @ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2", forRemoval = true)
   public boolean isPowerSaveMode() {
     return PowerSaveMode.isEnabled();
   }
 
+  /**
+   * @deprecated Do not toggle <b>Power Save Mode</b> from code
+   */
+  @ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2", forRemoval = true)
   public void setPowerSaveMode(boolean powerSaveMode) {
     //TODO: add PowerSaveModeNotifier.notifyOnPowerSaveMode(e.getData(CommonDataKeys.PROJECT));
     PowerSaveMode.setEnabled(powerSaveMode);
@@ -213,7 +244,6 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
   public void setAutoQuickFix(boolean autoQuickFix) {
     myState.autoQuickFix = autoQuickFix;
   }
-
 
   public boolean isCompletionStyling() {
     return myState.completionStyling;
@@ -274,32 +304,31 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
   }
 
   public Color getCaretRowColor() {
-    return myColorsManager == null ? DEFAULT_CARET_ROW_COLOR : myColorsManager.getGlobalScheme().getColor(EditorColors.CARET_ROW_COLOR);
+    return getECM() == null ? DEFAULT_CARET_ROW_COLOR : getECM().getGlobalScheme().getColor(EditorColors.CARET_ROW_COLOR);
   }
 
   public Color getLeftHighlighterBackgroundColor() {
-    return myColorsManager == null ? DEFAULT_LEFT_HIGHLIGHTER_BACKGROUND_COLOR : myColorsManager.getGlobalScheme().getColor(EditorColors.GUTTER_BACKGROUND);
+    return getECM() == null ? DEFAULT_LEFT_HIGHLIGHTER_BACKGROUND_COLOR : getECM().getGlobalScheme().getColor(EditorColors.GUTTER_BACKGROUND);
   }
 
   public Color getLeftHighlighterTearLineColor() {
-    return myColorsManager == null ? DEFAULT_LEFT_HIGHLIGHTER_TEAR_LINE_COLOR : myColorsManager.getGlobalScheme().getColor(EditorColors.TEARLINE_COLOR);
+    return getECM() == null ? DEFAULT_LEFT_HIGHLIGHTER_TEAR_LINE_COLOR : getECM().getGlobalScheme().getColor(EditorColors.TEARLINE_COLOR);
   }
 
   public Color getSelectionBackgroundColor() {
-    return myColorsManager == null ? DEFAULT_SELECTION_BACKGROUND_COLOR : myColorsManager.getGlobalScheme().getColor(EditorColors.SELECTION_BACKGROUND_COLOR);
+    return getECM() == null ? DEFAULT_SELECTION_BACKGROUND_COLOR : getECM().getGlobalScheme().getColor(EditorColors.SELECTION_BACKGROUND_COLOR);
   }
 
   public Color getSelectionForegroundColor() {
-    return myColorsManager == null ? DEFAULT_SELECTION_FOREGROUND_COLOR : myColorsManager.getGlobalScheme().getColor(EditorColors.SELECTION_FOREGROUND_COLOR);
+    return getECM() == null ? DEFAULT_SELECTION_FOREGROUND_COLOR : getECM().getGlobalScheme().getColor(EditorColors.SELECTION_FOREGROUND_COLOR);
   }
 
   public Color getHyperlinkColor() {
-    return myColorsManager == null ? DEFAULT_HYPERLINK_COLOR : myColorsManager.getGlobalScheme().getAttributes(
-        EditorColors.REFERENCE_HYPERLINK_COLOR).getForegroundColor();
+    return getECM() == null ? DEFAULT_HYPERLINK_COLOR : getECM().getGlobalScheme().getAttributes(EditorColors.REFERENCE_HYPERLINK_COLOR).getForegroundColor();
   }
 
   public Color getCaretColor() {
-    return myColorsManager == null ? DEFAULT_CARET_COLOR : myColorsManager.getGlobalScheme().getColor(EditorColors.CARET_COLOR);
+    return getECM() == null ? DEFAULT_CARET_COLOR : getECM().getGlobalScheme().getColor(EditorColors.CARET_COLOR);
   }
 
   public int getSpacesWidth(int size) {
@@ -341,36 +370,10 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
   public void loadState(@NotNull MyState state) {
     myState = state;
     updateCachedValue();
-    updateGlobalScheme();
-  }
-
-  void updateGlobalScheme() {
-    if (myColorsManager != null) {
-      EditorColorsScheme globalScheme = myColorsManager.getGlobalScheme();
-      globalScheme.setEditorFontSize(getFontSize());
-      globalScheme.setEditorFontName(getFontFamily());
-      globalScheme.setLineSpacing(((float) getLineSpacing()));
-      EditorFactory.getInstance().refreshAllEditors();
-    }
   }
 
   void updateCachedValue() {
-    myDefaultEditorFont = null;
     myFontMetrics = null;
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "EditorSettings";
   }
 
   @SuppressWarnings("WeakerAccess")

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,16 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.ui.ComboBox;
-import com.intellij.ui.FontComboBox;
+import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.ui.IdeBorderFactory;
-import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBRadioButton;
 import com.intellij.ui.components.panels.HorizontalLayout;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.JBInsets;
-import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.nodeEditor.resources.EditorSettingsBundle;
 
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -38,14 +34,9 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import java.awt.BorderLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
 
 class EditorSettingsPreferencesPage implements Disposable {
-  private static final double LINE_SPACING_MIN = 0.6;
-  private static final double LINE_SPACING_MAX = 3.0;
-  private static final double LINE_SPACING_STEP = 0.1;
-
   private static final int RIGHT_MARGIN_MIN = 1;
   private static final int RIGHT_MARGIN_MAX = 1000;
   private static final int RIGHT_MARGIN_STEP = 20;
@@ -55,13 +46,8 @@ class EditorSettingsPreferencesPage implements Disposable {
   private static final int INDENT_SIZE_STEP = 2;
 
   private JPanel myEditorSettingsPanel;
-  private final FontComboBox myFontsComboBox;
-  private final JSpinner myLineSpacing;
-  private final ComboBox myFontSizesComboBox;
   private final JSpinner myRightMargin;
   private final JSpinner myIndentSize;
-  private final JCheckBox myAntialiasingCheckBox;
-  private final JCheckBox myPowerSaveModeCheckBox;
   private final JCheckBox myAutoQuickFixCheckBox;
   private final JCheckBox myCompletionStylingCheckBox;
   private final JCheckBox myUseBraces;
@@ -75,12 +61,10 @@ class EditorSettingsPreferencesPage implements Disposable {
   private final JBRadioButton myAllTabs;
   private JBRadioButton myFirstSelection;
 
-  private final EditorSettings mySettings;
-
-  public EditorSettingsPreferencesPage(EditorSettings settings) {
-    mySettings = settings;
+  public EditorSettingsPreferencesPage() {
     final int gap = 5;
     final JBInsets insets = new JBInsets(gap, gap, gap, gap);
+    int mainPanelRowCount = 0;
     JPanel panel = new JPanel(new GridLayoutManager(4, 1, insets, gap, gap));
 
     ButtonGroup group = new ButtonGroup();
@@ -107,53 +91,25 @@ class EditorSettingsPreferencesPage implements Disposable {
     myFirstSelection = myTabPerAspect;
     myFirstSelection.setSelected(true);
 
-    panel.add(editorTabsRB,
-              new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
-                                  GridConstraints.SIZEPOLICY_FIXED, null, null, null));
+    panel.add(editorTabsRB, getConstraint(mainPanelRowCount++, 0));
 
-    JPanel fontPropertiesPanel = new JPanel(new GridLayoutManager(5, 2, insets, gap, gap));
+    JPanel codeFormattingPanel = new JPanel(new GridLayoutManager(2, 2, insets, gap, gap));
 
-    fontPropertiesPanel.add(new JBLabel(EditorSettingsBundle.message("label.font.name")), getLabelConstraint(0));
-    myFontsComboBox = new FontComboBox();
-    fontPropertiesPanel.add(myFontsComboBox, getEditorConstraint(0));
-
-    fontPropertiesPanel.add(new JLabel(EditorSettingsBundle.message("label.font.size")), getLabelConstraint(1));
-    //noinspection unchecked
-    myFontSizesComboBox = new ComboBox(new DefaultComboBoxModel(UIUtil.getStandardFontSizes()));
-    myFontSizesComboBox.setEditable(true);
-    fontPropertiesPanel.add(myFontSizesComboBox, getEditorConstraint(1));
-
-    fontPropertiesPanel.add(new JLabel(EditorSettingsBundle.message("label.line.spacing")), getLabelConstraint(2));
-    myLineSpacing = new JSpinner(new SpinnerNumberModel(LINE_SPACING_MIN, LINE_SPACING_MIN, LINE_SPACING_MAX, LINE_SPACING_STEP));
-    ((JSpinner.DefaultEditor) myLineSpacing.getEditor()).getTextField().setHorizontalAlignment(JTextField.LEFT);
-    fontPropertiesPanel.add(myLineSpacing, getEditorConstraint(2));
-
-    fontPropertiesPanel.add(new JLabel(EditorSettingsBundle.message("label.text.width")), getLabelConstraint(3));
+    codeFormattingPanel.add(new JLabel(EditorSettingsBundle.message("label.text.width")), getConstraint(0, 0));
     myRightMargin = new JSpinner(new SpinnerNumberModel(RIGHT_MARGIN_MIN, RIGHT_MARGIN_MIN, RIGHT_MARGIN_MAX, RIGHT_MARGIN_STEP));
     ((JSpinner.DefaultEditor) myRightMargin.getEditor()).getTextField().setHorizontalAlignment(JTextField.LEFT);
-    fontPropertiesPanel.add(myRightMargin, getEditorConstraint(3));
+    codeFormattingPanel.add(myRightMargin, getConstraint(0, 1));
 
-    fontPropertiesPanel.add(new JLabel(EditorSettingsBundle.message("label.indent.size")), getLabelConstraint(4));
+    codeFormattingPanel.add(new JLabel(EditorSettingsBundle.message("label.indent.size")), getConstraint(1, 0));
     myIndentSize = new JSpinner(new SpinnerNumberModel(INDENT_SIZE_MIN, INDENT_SIZE_MIN, INDENT_SIZE_MAX, INDENT_SIZE_STEP));
     ((JSpinner.DefaultEditor) myIndentSize.getEditor()).getTextField().setHorizontalAlignment(JTextField.LEFT);
-    fontPropertiesPanel.add(myIndentSize, getEditorConstraint(4));
+    codeFormattingPanel.add(myIndentSize, getConstraint(1, 1));
 
-    panel.add(fontPropertiesPanel,
-              new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
-                                  GridConstraints.SIZEPOLICY_FIXED, null, null, null));
+    panel.add(codeFormattingPanel, getConstraint(mainPanelRowCount++, 0));
 
-    JPanel checkboxes = new JPanel(new GridLayout(3, 1));
+    JPanel checkboxes = new JPanel(new GridLayout(3, 2));
     myUseBraces = new JCheckBox(EditorSettingsBundle.message("checkbox.use.braces"));
     checkboxes.add(myUseBraces);
-
-    myAntialiasingCheckBox = new JCheckBox(EditorSettingsBundle.message("checkbox.use.antialiasing"));
-    checkboxes.add(myAntialiasingCheckBox);
-
-    myPowerSaveModeCheckBox = new JCheckBox(EditorSettingsBundle.message("checkbox.power.save.mode"));
-    checkboxes.add(myPowerSaveModeCheckBox);
-
-    myAutoQuickFixCheckBox = new JCheckBox(EditorSettingsBundle.message("checkbox.auto.resolve.refs"));
-    checkboxes.add(myAutoQuickFixCheckBox);
 
     myCompletionStylingCheckBox = new JCheckBox(EditorSettingsBundle.message("checkbox.completion.styling"));
     checkboxes.add(myCompletionStylingCheckBox);
@@ -167,34 +123,32 @@ class EditorSettingsPreferencesPage implements Disposable {
     myTypeOverExistingText = new JCheckBox(EditorSettingsBundle.message("checkbox.type.over.existing.text"));
     checkboxes.add(myTypeOverExistingText);
 
-    panel.add(checkboxes,
-              new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
-                                  GridConstraints.SIZEPOLICY_FIXED, null, null, null));
+    myAutoQuickFixCheckBox = new JCheckBox(EditorSettingsBundle.message("checkbox.auto.resolve.refs"));
+    checkboxes.add(myAutoQuickFixCheckBox);
+
+    panel.add(checkboxes, getConstraint(mainPanelRowCount++, 0));
 
     JPanel caretBlinkingPanel = new JPanel(new HorizontalLayout(gap));
     caretBlinkingPanel.add(new JLabel(EditorSettingsBundle.message("label.caret.blinking")));
     myCaretBlinkPeriod =
         new JSpinner(
-                        new SpinnerNumberModel(mySettings.getCaretBlinkPeriod(), EditorSettings.MIN_CARET_BLINK_PERIOD, EditorSettings.MAX_CARET_BLINK_PERIOD,
-                                               100));
+            new SpinnerNumberModel(EditorSettings.getInstance().getCaretBlinkPeriod(), EditorSettings.MIN_CARET_BLINK_PERIOD,
+                                   EditorSettings.MAX_CARET_BLINK_PERIOD,
+                                   100));
     caretBlinkingPanel.add(myCaretBlinkPeriod);
 
-    panel.add(caretBlinkingPanel,
-              new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
-                                  GridConstraints.SIZEPOLICY_FIXED, null, null, null));
+    panel.add(caretBlinkingPanel, getConstraint(mainPanelRowCount, 0));
 
     myEditorSettingsPanel = new JPanel(new BorderLayout());
     myEditorSettingsPanel.add(panel, BorderLayout.NORTH);
   }
 
-  private GridConstraints getLabelConstraint(int row) {
-    return new GridConstraints(row, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
-                               GridConstraints.SIZEPOLICY_FIXED, null, null, null);
-  }
-
-  private GridConstraints getEditorConstraint(int row) {
-    return new GridConstraints(row, 1, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL,
-                               GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_CAN_SHRINK, GridConstraints.SIZEPOLICY_FIXED, null, null, null);
+  private GridConstraints getConstraint(int row, int column) {
+    return new GridConstraints(
+        row, column, 1, 1,
+        GridConstraints.ANCHOR_WEST, column == 0 ? GridConstraints.FILL_NONE : GridConstraints.FILL_HORIZONTAL,
+        column == 0 ? GridConstraints.SIZEPOLICY_FIXED : GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_CAN_SHRINK,
+        GridConstraints.SIZEPOLICY_FIXED, null, null, null);
   }
 
   public JComponent getComponent() {
@@ -202,53 +156,39 @@ class EditorSettingsPreferencesPage implements Disposable {
   }
 
   public void commit() {
-    String fontName = myFontsComboBox.getFontName();
-    int fontSize = mySettings.getSpecifiedFontSize();
-    try {
-      fontSize = Integer.parseInt(myFontSizesComboBox.getSelectedItem().toString());
-    } catch (NumberFormatException e) {
-      // ignore wrong formatted value and reset combo box
-      myFontSizesComboBox.setSelectedItem(Integer.toString(fontSize));
-    }
+    final EditorSettings editorSettings = EditorSettings.getInstance();
+    editorSettings.setVerticalBound((Integer) myRightMargin.getModel().getValue());
 
-    Font newFont = new Font(fontName, Font.PLAIN, fontSize);
-    mySettings.setDefaultEditorFont(newFont);
+    editorSettings.setIndentSize((Integer) myIndentSize.getModel().getValue());
 
-    mySettings.setVerticalBound((Integer) myRightMargin.getModel().getValue());
+    editorSettings.setCaretBlinkPeriod((Integer) myCaretBlinkPeriod.getModel().getValue());
 
-    mySettings.setIndentSize((Integer) myIndentSize.getModel().getValue());
+    editorSettings.setUseBraces(myUseBraces.isSelected());
+    editorSettings.setShowContextAssistant(myShowContextAssistant.isSelected());
+    editorSettings.setUseTwoStepDeletion(myUseTwoStepDeletion.isSelected());
+    editorSettings.setTypeOverExistingText(myTypeOverExistingText.isSelected());
 
-    mySettings.setCaretBlinkPeriod((Integer) myCaretBlinkPeriod.getModel().getValue());
+    editorSettings.setAutoQuickFix(myAutoQuickFixCheckBox.isSelected());
 
-    mySettings.setUseAntialiasing(myAntialiasingCheckBox.isSelected());
-    mySettings.setUseBraces(myUseBraces.isSelected());
-    mySettings.setShowContextAssistant(myShowContextAssistant.isSelected());
-    mySettings.setUseTwoStepDeletion(myUseTwoStepDeletion.isSelected());
-    mySettings.setTypeOverExistingText(myTypeOverExistingText.isSelected());
+    editorSettings.setCompletionStyling(myCompletionStylingCheckBox.isSelected());
 
-    mySettings.setPowerSaveMode(myPowerSaveModeCheckBox.isSelected());
-    mySettings.setAutoQuickFix(myAutoQuickFixCheckBox.isSelected());
-
-    mySettings.setCompletionStyling(myCompletionStylingCheckBox.isSelected());
-
-    mySettings.setLineSpacing((Double) myLineSpacing.getModel().getValue());
-
-    mySettings.setShow(myTabPerAspect.isSelected() || myTabPerNode.isSelected() || myAllTabs.isSelected());
-    mySettings.setShowPlain(myTabPerNode.isSelected() || myAllTabs.isSelected());
-    mySettings.setShowGrayed(myAllTabs.isSelected());
+    editorSettings.setShow(myTabPerAspect.isSelected() || myTabPerNode.isSelected() || myAllTabs.isSelected());
+    editorSettings.setShowPlain(myTabPerNode.isSelected() || myAllTabs.isSelected());
+    editorSettings.setShowGrayed(myAllTabs.isSelected());
     applyState();
 
-    mySettings.updateCachedValue();
-    mySettings.updateGlobalScheme();
-    mySettings.fireEditorSettingsChanged();
+    editorSettings.updateCachedValue();
+    EditorFactory.getInstance().refreshAllEditors();
+    editorSettings.fireEditorSettingsChanged();
   }
 
   private void applyState() {
-    if (!mySettings.isShow()) {
+    final EditorSettings editorSettings = EditorSettings.getInstance();
+    if (!editorSettings.isShow()) {
       myFirstSelection = myDontShow;
-    } else if (!mySettings.isShowPlain()) {
+    } else if (!editorSettings.isShowPlain()) {
       myFirstSelection = myTabPerAspect;
-    } else if (!mySettings.isShowGrayed()) {
+    } else if (!editorSettings.isShowGrayed()) {
       myFirstSelection = myTabPerNode;
     } else {
       myFirstSelection = myAllTabs;
@@ -256,55 +196,36 @@ class EditorSettingsPreferencesPage implements Disposable {
   }
 
   public boolean isModified() {
-    boolean sameTextWidth = myRightMargin.getModel().getValue().equals(mySettings.getVerticalBound());
-    boolean sameIndentSize = myIndentSize.getModel().getValue().equals(mySettings.getIndentSize());
-    boolean sameAntialiasing = myAntialiasingCheckBox.isSelected() == mySettings.isUseAntialiasing();
-    boolean sameUseBraces = myUseBraces.isSelected() == mySettings.useBraces();
-    boolean sameTwoStepBackspace = myUseTwoStepDeletion.isSelected() == mySettings.isUseTwoStepDeletion();
-    boolean sameTypeOverExistingText = myTypeOverExistingText.isSelected() == mySettings.isTypeOverExistingText();
-    boolean samePowerSaveMode = myPowerSaveModeCheckBox.isSelected() == mySettings.isPowerSaveMode();
-    boolean sameAutoQuickFix = myAutoQuickFixCheckBox.isSelected() == mySettings.isAutoQuickFix();
-    boolean sameCompletionStyling = myCompletionStylingCheckBox.isSelected() == mySettings.isCompletionStyling();
-    boolean sameFontSize = myFontSizesComboBox.getSelectedItem().equals(Integer.toString(mySettings.getSpecifiedFontSize()));
-    boolean sameFontFamily = myFontsComboBox.getFontName().equals(mySettings.getFontFamily());
-    boolean sameLineSpacing = myLineSpacing.getModel().getValue().equals(mySettings.getLineSpacing());
-    boolean sameBlinkingRate = myCaretBlinkPeriod.getModel().getValue().equals(mySettings.getCaretBlinkPeriod());
+    final EditorSettings editorSettings = EditorSettings.getInstance();
+    boolean sameTextWidth = myRightMargin.getModel().getValue().equals(editorSettings.getVerticalBound());
+    boolean sameIndentSize = myIndentSize.getModel().getValue().equals(editorSettings.getIndentSize());
+    boolean sameUseBraces = myUseBraces.isSelected() == editorSettings.useBraces();
+    boolean sameTwoStepBackspace = myUseTwoStepDeletion.isSelected() == editorSettings.isUseTwoStepDeletion();
+    boolean sameTypeOverExistingText = myTypeOverExistingText.isSelected() == editorSettings.isTypeOverExistingText();
+    boolean sameAutoQuickFix = myAutoQuickFixCheckBox.isSelected() == editorSettings.isAutoQuickFix();
+    boolean sameCompletionStyling = myCompletionStylingCheckBox.isSelected() == editorSettings.isCompletionStyling();
+    boolean sameBlinkingRate = myCaretBlinkPeriod.getModel().getValue().equals(editorSettings.getCaretBlinkPeriod());
     boolean sameTabs = myFirstSelection.isSelected();
-    boolean sameUseContextAssistant = myShowContextAssistant.isSelected() == mySettings.isShowContextAssistant();
+    boolean sameUseContextAssistant = myShowContextAssistant.isSelected() == editorSettings.isShowContextAssistant();
 
-    return !(sameTextWidth && sameIndentSize && sameAntialiasing && sameUseBraces && samePowerSaveMode && sameTwoStepBackspace && sameTypeOverExistingText
-             && sameAutoQuickFix && sameCompletionStyling && sameFontSize && sameFontFamily && sameLineSpacing && sameBlinkingRate && sameTabs && sameUseContextAssistant);
+    return !(sameTextWidth && sameIndentSize &&
+             sameUseBraces && sameTwoStepBackspace &&
+             sameTypeOverExistingText && sameAutoQuickFix &&
+             sameCompletionStyling && sameBlinkingRate &&
+             sameTabs && sameUseContextAssistant);
   }
 
   public void reset() {
-    myRightMargin.setValue(mySettings.getVerticalBound());
-
-    myIndentSize.setValue(mySettings.getIndentSize());
-
-    myAntialiasingCheckBox.setSelected(mySettings.isUseAntialiasing());
-
-    myUseBraces.setSelected(mySettings.useBraces());
-
-    myUseTwoStepDeletion.setSelected(mySettings.isUseTwoStepDeletion());
-
-    myTypeOverExistingText.setSelected(mySettings.isTypeOverExistingText());
-
-    myPowerSaveModeCheckBox.setSelected(mySettings.isPowerSaveMode());
-
-    myAutoQuickFixCheckBox.setSelected(mySettings.isAutoQuickFix());
-
-    myCompletionStylingCheckBox.setSelected(mySettings.isCompletionStyling());
-
-    myShowContextAssistant.setSelected(mySettings.isShowContextAssistant());
-
-    myFontSizesComboBox.setSelectedItem(Integer.toString(mySettings.getSpecifiedFontSize()));
-
-    myFontsComboBox.setFontName(mySettings.getFontFamily());
-
-    myLineSpacing.setValue(mySettings.getLineSpacing());
-
-    myCaretBlinkPeriod.setValue(mySettings.getCaretBlinkPeriod());
-
+    final EditorSettings editorSettings = EditorSettings.getInstance();
+    myRightMargin.setValue(editorSettings.getVerticalBound());
+    myIndentSize.setValue(editorSettings.getIndentSize());
+    myUseBraces.setSelected(editorSettings.useBraces());
+    myUseTwoStepDeletion.setSelected(editorSettings.isUseTwoStepDeletion());
+    myTypeOverExistingText.setSelected(editorSettings.isTypeOverExistingText());
+    myAutoQuickFixCheckBox.setSelected(editorSettings.isAutoQuickFix());
+    myCompletionStylingCheckBox.setSelected(editorSettings.isCompletionStyling());
+    myShowContextAssistant.setSelected(editorSettings.isShowContextAssistant());
+    myCaretBlinkPeriod.setValue(editorSettings.getCaretBlinkPeriod());
     applyState();
     myFirstSelection.setSelected(true);
   }

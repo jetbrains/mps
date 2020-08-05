@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.ide.PowerSaveMode;
 import com.intellij.openapi.application.ApplicationAdapter;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandEvent;
@@ -298,7 +299,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     processAccumulatedEvents();
 
     final Set<EditorCheckerWrapper> checkers = new LinkedHashSet<>();
-    if (!EditorSettings.getInstance().isPowerSaveMode() || myForceUpdateInPowerSaveModeFlag) {
+    if (!PowerSaveMode.isEnabled() || myForceUpdateInPowerSaveModeFlag) {
       // calling checkers only if we are not in powerSafeMode or updateEditorFlag was set by
       // explicit update action (available in powerSafeMode only)
       for (EditorCheckerWrapper checker : myCheckers) {
@@ -311,7 +312,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     }
 
 
-    if (EditorSettings.getInstance().isPowerSaveMode()) {
+    if (PowerSaveMode.isEnabled()) {
       // if we are in powerSaveMode then next editor checkers execution should
       // recheck all editors completely
       myEditorTracker.markEverythingUnchecked();
@@ -507,7 +508,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
    * Otherwise, when there are no commands, there is highlighter 'heartbeat' that asks {@link EditorChecker#needsUpdate(EditorComponent)}.
    * Unfortunately, there are few EditorChecker implementations, that always tell {@code true} and perform internal result caching; therefore
    * one can observe constant activity of highlighter thread even when there's no user activity.
-   *
+   * <p>
    * Thread safe.
    */
   private static class CommandWatcher implements CommandListener {

@@ -21,6 +21,7 @@ import com.intellij.ide.CutProvider;
 import com.intellij.ide.DataManager;
 import com.intellij.ide.PasteProvider;
 import com.intellij.ide.SelectInContext;
+import com.intellij.ide.ui.AntialiasingType;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -232,14 +233,14 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   protected Handle myTypecheckingSessionHandle;
 
   public static void turnOnAliasingIfPossible(Graphics2D g) {
-    if (EditorSettings.getInstance().isUseAntialiasing()) {
+    if (!RenderingHints.VALUE_TEXT_ANTIALIAS_OFF.equals(AntialiasingType.getKeyForCurrentScope(true))) {
       Toolkit tk = Toolkit.getDefaultToolkit();
       //noinspection HardCodedStringLiteral
       Map map = (Map) tk.getDesktopProperty("awt.font.desktophints");
       if (map != null) {
         g.addRenderingHints(map);
       } else {
-        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, AntialiasingType.getKeyForCurrentScope(true));
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
       }

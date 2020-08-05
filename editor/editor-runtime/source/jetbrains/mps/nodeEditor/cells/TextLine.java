@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.DarculaColors;
@@ -207,8 +208,10 @@ public class TextLine {
       int fontSize = styleFontSize != null ? styleFontSize : settings.getFontSize();
 
       final Font font = FontRegistry.getInstance().getFont(family, style, fontSize);
-      myFont = EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences().useLigatures() ?
-               font.deriveFont(Collections.singletonMap(TextAttribute.LIGATURES, TextAttribute.LIGATURES_ON)) : font;
+      if (ApplicationManager.getApplication() != null) {
+        myFont = EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences().useLigatures() ?
+                 font.deriveFont(Collections.singletonMap(TextAttribute.LIGATURES, TextAttribute.LIGATURES_ON)) : font;
+      }
       myFontMetrics = myFontMetricsProvider.getFontMetrics(family, style, fontSize);
       myFontCorrectionRightGap = FontRegistry.getInstance().isFakeItalic(family, style) ? 1 : 0;
       myFontCorrectionTextShift = (style & Font.ITALIC) > 0 ? -1 : 0;

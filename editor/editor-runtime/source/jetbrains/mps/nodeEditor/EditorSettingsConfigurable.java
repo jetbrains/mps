@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.application.options.editor.EditorOptionsProvider;
-import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.nodeEditor.resources.EditorSettingsBundle;
@@ -57,7 +56,7 @@ public class EditorSettingsConfigurable implements SearchableConfigurable {
 
   @Override
   public JComponent createComponent() {
-    mySettingsPreferencesPage = new EditorSettingsPreferencesPage(EditorSettings.getInstance());
+    mySettingsPreferencesPage = new EditorSettingsPreferencesPage();
     return mySettingsPreferencesPage.getComponent();
   }
 
