@@ -32,7 +32,7 @@ public class AddNextNodeFromOutsideOfTheText_Test extends BaseTransformationTest
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("6328114375522083916", "6328114375522083927");
+      initEditorComponent("6328114375522083916", "4665155840284169756");
       invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
     }
   }

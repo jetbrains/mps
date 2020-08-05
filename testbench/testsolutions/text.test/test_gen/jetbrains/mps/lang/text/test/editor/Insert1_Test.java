@@ -32,7 +32,7 @@ public class Insert1_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("7035802921536508609", "7035802921536508620");
+      initEditorComponent("7035802921536508609", "4665155840284276772");
       typeString("abc d");
     }
   }

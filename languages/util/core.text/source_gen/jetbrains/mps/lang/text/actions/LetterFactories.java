@@ -17,9 +17,9 @@ public class LetterFactories {
       {
         final SNode l = sampleNode;
         if (SNodeOperations.isInstanceOf(l, CONCEPTS.Letter$hC)) {
-          SPropertyOperations.assign(newNode, PROPS.underlined$bwKJ, SPropertyOperations.getBoolean(l, PROPS.underlined$bwKJ));
-          SPropertyOperations.assign(newNode, PROPS.bold$bwJL, SPropertyOperations.getBoolean(l, PROPS.bold$bwJL));
-          SPropertyOperations.assign(newNode, PROPS.italic$bwKg, SPropertyOperations.getBoolean(l, PROPS.italic$bwKg));
+          SPropertyOperations.assign(newNode, PROPS.underlined$$RAL, SPropertyOperations.getBoolean(l, PROPS.underlined$$RAL));
+          SPropertyOperations.assign(newNode, PROPS.bold$$R8J, SPropertyOperations.getBoolean(l, PROPS.bold$$R8J));
+          SPropertyOperations.assign(newNode, PROPS.italic$$RnK, SPropertyOperations.getBoolean(l, PROPS.italic$$RnK));
         }
       }
     }
@@ -30,8 +30,8 @@ public class LetterFactories {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty underlined$bwKJ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
-    /*package*/ static final SProperty bold$bwJL = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
-    /*package*/ static final SProperty italic$bwKg = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
+    /*package*/ static final SProperty underlined$$RAL = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
+    /*package*/ static final SProperty bold$$R8J = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
+    /*package*/ static final SProperty italic$$RnK = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
   }
 }
