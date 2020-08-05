@@ -72,7 +72,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$tAp1;
+      final SProperty property = PROPS.name$lA7v;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -132,7 +132,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.paragraphs$$xDo;
+      return LINKS.paragraphs$Gj2C;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Paragraph$V6;
@@ -145,7 +145,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(paragraphsListHandler_m7gelr_c0.this.getNode(), LINKS.paragraphs$$xDo));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(paragraphsListHandler_m7gelr_c0.this.getNode(), LINKS.paragraphs$Gj2C));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -187,7 +187,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
@@ -196,6 +196,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink paragraphs$$xDo = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x61a4317ad7d0a36dL, 0x61a4317ad7d0a52eL, "paragraphs");
+    /*package*/ static final SContainmentLink paragraphs$Gj2C = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x61a4317ad7d0a36dL, 0x61a4317ad7d0a52eL, "paragraphs");
   }
 }

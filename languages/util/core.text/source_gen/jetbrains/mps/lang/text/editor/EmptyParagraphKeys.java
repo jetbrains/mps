@@ -50,8 +50,8 @@ public class EmptyParagraphKeys extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode l = SLinkOperations.addNewChild(node, LINKS.letters$8nfv, CONCEPTS.Letter$hC);
-      SPropertyOperations.assign(l, PROPS.value$OMJc, "\u001B");
+      SNode l = SLinkOperations.addNewChild(node, LINKS.letters$3gw1, CONCEPTS.Letter$hC);
+      SPropertyOperations.assign(l, PROPS.value$$$QO, "\u001B");
     }
     public String getKeyStroke() {
       return "none SPACE";
@@ -64,10 +64,10 @@ public class EmptyParagraphKeys extends KeyMapImpl {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$8nfv = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
+    /*package*/ static final SContainmentLink letters$3gw1 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$OMJc = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty value$$$QO = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 }

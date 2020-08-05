@@ -39,7 +39,7 @@ public class EmptyLetterActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$V6), LINKS.letters$8nfv)).last();
+        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$V6), LINKS.letters$3gw1)).last();
         if ((l != null)) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, l, SelectionManager.LAST_CELL, -1);
         }
@@ -53,7 +53,7 @@ public class EmptyLetterActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode f = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$V6), LINKS.letters$8nfv)).first();
+        SNode f = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$V6), LINKS.letters$3gw1)).first();
         if ((f != null)) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, f, SelectionManager.FIRST_CELL, 0);
         }
@@ -172,6 +172,6 @@ public class EmptyLetterActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$8nfv = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
+    /*package*/ static final SContainmentLink letters$3gw1 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

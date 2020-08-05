@@ -116,7 +116,7 @@ public class Letter_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode l = SNodeFactoryOperations.createNewNode(CONCEPTS.Letter$hC, _context.getNode());
-        SPropertyOperations.assign(l, PROPS.value$OMJc, pattern);
+        SPropertyOperations.assign(l, PROPS.value$$$QO, pattern);
         SNodeOperations.insertPrevSiblingChild(_context.getNode(), l);
       }
 
@@ -182,11 +182,11 @@ public class Letter_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode l = SNodeFactoryOperations.createNewNode(CONCEPTS.Letter$hC, _context.getNode());
-        SPropertyOperations.assign(l, PROPS.value$OMJc, pattern);
+        SPropertyOperations.assign(l, PROPS.value$$$QO, pattern);
         SNodeOperations.insertNextSiblingChild(_context.getNode(), l);
 
         // A workaround to allow spaces to be inserted into an empty line 
-        if (pattern.startsWith(" ") && ListSequence.fromList(SNodeOperations.getAllSiblings(l, false)).count() == 1 && Objects.equals(SPropertyOperations.getString(_context.getNode(), PROPS.value$OMJc), "\u001B")) {
+        if (pattern.startsWith(" ") && ListSequence.fromList(SNodeOperations.getAllSiblings(l, false)).count() == 1 && Objects.equals(SPropertyOperations.getString(_context.getNode(), PROPS.value$$$QO), "\u001B")) {
           SNodeOperations.deleteNode(_context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), l, SelectionManager.LAST_CELL, -1);
         }
@@ -217,6 +217,6 @@ public class Letter_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$OMJc = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty value$$$QO = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 }

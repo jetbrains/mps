@@ -47,38 +47,38 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void initialize_id1v077Wg2A59(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).isEmpty()) {
-      SLinkOperations.addNewChild(__thisNode__, LINKS.letters$8nfv, CONCEPTS.EmptyParagraphLetter$Tx);
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).isEmpty()) {
+      SLinkOperations.addNewChild(__thisNode__, LINKS.letters$3gw1, CONCEPTS.EmptyParagraphLetter$Tx);
     }
   }
   /*package*/ static boolean isEmptyParagraph_id7r4EKYUymRW(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).isEmpty() || !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).isEmpty() || !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$Tx));
       }
-    })) || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).all(new IWhereFilter<SNode>() {
+    })) || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$hC) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$hC), PROPS.value$OMJc));
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$hC) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$hC), PROPS.value$$$QO));
       }
     });
   }
   /*package*/ static Iterable<SNode> nonEmptyLetters_id7r4EKYUyqfh(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$Tx));
       }
     });
   }
   /*package*/ static void merge_id4HqBHuNzqyw(@NotNull SNode __thisNode__, SNode other) {
-    Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyK.invoke(__thisNode__, other, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).last(), ((boolean) false));
+    Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyK.invoke(__thisNode__, other, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).last(), ((boolean) false));
   }
   /*package*/ static void merge_id4HqBHuNzqyK(@NotNull SNode __thisNode__, SNode other, SNode position, final boolean inFrontOfPosition) {
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).contains(position))) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).contains(position))) {
       return;
     }
 
     final Wrappers._T<SNode> currentPosition = new Wrappers._T<SNode>(position);
-    ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.letters$8nfv)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.letters$3gw1)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$Tx));
       }
@@ -91,40 +91,45 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
         }
       }
     });
-    if (!((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(other)) && isEmptyString(trim_7af07r_a0a0e0s(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$hC), PROPS.value$OMJc)))) {
+    if (!((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(other)) && isEmptyString(trim_7af07r_a0a0e0s(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$hC), PROPS.value$$$QO)))) {
       SNodeOperations.deleteNode(position);
     }
   }
   /*package*/ static SNode split_id4HqBHuN_RSC(@NotNull SNode __thisNode__, SNode afterPosition) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph"));
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).contains(afterPosition))) {
-      // todo maybe a letter is not needed on an empty line 
-      SLinkOperations.addNewChild(result, LINKS.letters$8nfv, CONCEPTS.Letter$hC);
+    Iterable<SNode> followingElements = SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(afterPosition, false), CONCEPTS.TextualElement$73);
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).contains(afterPosition)) || Sequence.fromIterable(followingElements).isEmpty()) {
+      SLinkOperations.addNewChild(result, LINKS.letters$3gw1, CONCEPTS.EmptyParagraphLetter$Tx);
       return result;
     }
-
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.letters$8nfv)).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(afterPosition, false), CONCEPTS.TextualElement$73)));
+    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.letters$3gw1)).addSequence(Sequence.fromIterable(followingElements));
     return result;
   }
   /*package*/ static void initializeFromLine_id6n6K0Pj71DU(@NotNull final SNode __thisNode__, SNode l) {
-    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         if (SNodeOperations.isInstanceOf(it, CONCEPTS.Word$AM)) {
-          String s = SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.value$cK70);
-          for (int i = 0; i < s.length(); i++) {
-            SNode letter = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter"));
-            SPropertyOperations.assign(letter, PROPS.value$OMJc, "" + s.charAt(i));
-            SPropertyOperations.assign(letter, PROPS.bold$bwJL, SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.bold$WTX$));
-            SPropertyOperations.assign(letter, PROPS.italic$bwKg, SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.italic$WTZ1));
-            SPropertyOperations.assign(letter, PROPS.underlined$bwKJ, SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.underlined$WUs$));
-            ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).addElement(letter);
+          String s = SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.value$bjp0);
+          if (s.length() == 0) {
+            Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(__thisNode__);
+          } else {
+            for (int i = 0; i < s.length(); i++) {
+              SNode letter = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter"));
+              SPropertyOperations.assign(letter, PROPS.value$$$QO, "" + s.charAt(i));
+              SPropertyOperations.assign(letter, PROPS.bold$$R8J, SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.bold$w4Os));
+              SPropertyOperations.assign(letter, PROPS.italic$$RnK, SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.italic$w5xv));
+              SPropertyOperations.assign(letter, PROPS.underlined$$RAL, SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.underlined$wjPs));
+              ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).addElement(letter);
+            }
+            if ((SNodeOperations.getNextSibling(it) != null)) {
+              SNode l = SLinkOperations.addNewChild(__thisNode__, LINKS.letters$3gw1, CONCEPTS.Letter$hC);
+              SPropertyOperations.assign(l, PROPS.value$$$QO, " ");
+            }
           }
-          SNode l = SLinkOperations.addNewChild(__thisNode__, LINKS.letters$8nfv, CONCEPTS.Letter$hC);
-          SPropertyOperations.assign(l, PROPS.value$OMJc, " ");
         } else if (SNodeOperations.isInstanceOf(it, CONCEPTS.NodeWrapperElement$9z)) {
           SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement"));
-          SLinkOperations.setTarget(w, LINKS.node$Hsx2, SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.NodeWrapperElement$9z), LINKS.node$daCF));
-          ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$8nfv)).addElement(w);
+          SLinkOperations.setTarget(w, LINKS.node$NZY, SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.NodeWrapperElement$9z), LINKS.node$o9GP));
+          ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$3gw1)).addElement(w);
         }
       }
     });
@@ -199,10 +204,10 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$8nfv = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink node$Hsx2 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, 0x2b7b49e536031feaL, "node");
-    /*package*/ static final SContainmentLink node$daCF = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
+    /*package*/ static final SContainmentLink letters$3gw1 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
+    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink node$NZY = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, 0x2b7b49e536031feaL, "node");
+    /*package*/ static final SContainmentLink node$o9GP = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
   }
 
   private static final class CONCEPTS {
@@ -214,13 +219,13 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$OMJc = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty bold$bwJL = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
-    /*package*/ static final SProperty bold$WTX$ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
-    /*package*/ static final SProperty italic$bwKg = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
-    /*package*/ static final SProperty italic$WTZ1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
-    /*package*/ static final SProperty underlined$bwKJ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
-    /*package*/ static final SProperty underlined$WUs$ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
+    /*package*/ static final SProperty value$$$QO = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty bold$$R8J = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
+    /*package*/ static final SProperty bold$w4Os = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
+    /*package*/ static final SProperty italic$$RnK = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
+    /*package*/ static final SProperty italic$w5xv = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
+    /*package*/ static final SProperty underlined$$RAL = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
+    /*package*/ static final SProperty underlined$wjPs = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
   }
 }

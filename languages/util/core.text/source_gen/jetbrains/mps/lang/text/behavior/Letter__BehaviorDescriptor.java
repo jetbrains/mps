@@ -31,7 +31,7 @@ public final class Letter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(insertTextualElementAtCaret_id2MpFNjy4v6O);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.value$OMJc, "");
+    SPropertyOperations.assign(__thisNode__, PROPS.value$$$QO, "");
   }
 
   /*package*/ static void insertTextualElementAtCaret_id2MpFNjy4v6O(@NotNull SNode __thisNode__, EditorContext editorContext, SNode element) {
@@ -91,6 +91,6 @@ public final class Letter__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$OMJc = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty value$$$QO = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 }

@@ -43,7 +43,7 @@ public class ParagraphCollectionActions {
         SNode nodeAbove = LetterRangeSelection.findNodeAbove(currentLetter, cell);
         if (nodeAbove == null) {
           SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$V6);
-          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$8nfv)).first(), currentLetter, false);
+          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$3gw1)).first(), currentLetter, false);
           selectionManager.pushSelection(ws);
         } else {
           LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(nodeAbove, CONCEPTS.TextualElement$73), SNodeOperations.as(currentLetter, CONCEPTS.TextualElement$73), false);
@@ -71,7 +71,7 @@ public class ParagraphCollectionActions {
         if (prevNode == null && includePreviousNodeInSelection) {
           SNode prevParagraph = SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$V6);
           if (prevParagraph != null) {
-            SNode lastLetter = ListSequence.fromList(SLinkOperations.getChildren(prevParagraph, LINKS.letters$8nfv)).last();
+            SNode lastLetter = ListSequence.fromList(SLinkOperations.getChildren(prevParagraph, LINKS.letters$3gw1)).last();
             // todo fix selecting empty lines 
             prevNode = (lastLetter != null ? lastLetter : currentLetter);
           } else {
@@ -104,7 +104,7 @@ public class ParagraphCollectionActions {
         SNode nextSelectableNode = (pos != 0 ? LetterRangeSelection.getNextSelectableNode(currentLetter, true) : null);
         if (nodeBelow == null) {
           SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$V6);
-          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), (nextSelectableNode != null ? nextSelectableNode : currentLetter), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$8nfv)).last(), true);
+          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), (nextSelectableNode != null ? nextSelectableNode : currentLetter), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$3gw1)).last(), true);
           selectionManager.pushSelection(ws);
         } else {
           LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), (nextSelectableNode != null ? nextSelectableNode : currentLetter), SNodeOperations.as(nodeBelow, CONCEPTS.TextualElement$73), true);
@@ -131,7 +131,7 @@ public class ParagraphCollectionActions {
         if (nextNode == null) {
           SNode nextParagraph = SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$V6);
           if (nextParagraph != null) {
-            SNode firstLetter = ListSequence.fromList(SLinkOperations.getChildren(nextParagraph, LINKS.letters$8nfv)).first();
+            SNode firstLetter = ListSequence.fromList(SLinkOperations.getChildren(nextParagraph, LINKS.letters$3gw1)).first();
             nextNode = (firstLetter != null ? firstLetter : currentLetter);
           } else {
             nextNode = currentLetter;
@@ -157,8 +157,8 @@ public class ParagraphCollectionActions {
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
 
         Iterable<SNode> paragraphs = SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(SNodeOperations.getParent(currentLetter), true), CONCEPTS.Paragraph$V6);
-        SNode f = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).first(), LINKS.letters$8nfv)).first();
-        SNode l = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).last(), LINKS.letters$8nfv)).last();
+        SNode f = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).first(), LINKS.letters$3gw1)).first();
+        SNode l = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).last(), LINKS.letters$3gw1)).last();
 
         LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), f, l, true);
         selectionManager.pushSelection(ws);
@@ -219,7 +219,7 @@ public class ParagraphCollectionActions {
 
         if ((SNodeOperations.getPrevSibling(currentLetter) == null) && selection.getSelectionStart() == 0) {
           // cursor at the beginning of a paragraph 
-          SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$V6), LINKS.letters$8nfv)).last();
+          SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$V6), LINKS.letters$3gw1)).last();
           if ((l != null)) {
             currentLetter = l;
           } else {
@@ -379,6 +379,6 @@ public class ParagraphCollectionActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$8nfv = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
+    /*package*/ static final SContainmentLink letters$3gw1 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

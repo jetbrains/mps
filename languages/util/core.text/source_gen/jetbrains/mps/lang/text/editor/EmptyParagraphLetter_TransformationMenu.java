@@ -112,8 +112,8 @@ public class EmptyParagraphLetter_TransformationMenu extends TransformationMenuB
       public void execute(@NotNull String pattern) {
         SNode p = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Paragraph$V6);
         SNodeOperations.deleteNode(_context.getNode());
-        SNode l = SLinkOperations.addNewChild(p, LINKS.letters$8nfv, CONCEPTS.Letter$hC);
-        SPropertyOperations.assign(l, PROPS.value$OMJc, pattern);
+        SNode l = SLinkOperations.addNewChild(p, LINKS.letters$3gw1, CONCEPTS.Letter$hC);
+        SPropertyOperations.assign(l, PROPS.value$$$QO, pattern);
       }
 
 
@@ -142,10 +142,10 @@ public class EmptyParagraphLetter_TransformationMenu extends TransformationMenuB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$8nfv = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
+    /*package*/ static final SContainmentLink letters$3gw1 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$OMJc = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty value$$$QO = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 }

@@ -51,7 +51,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.value$OMJc;
+      final SProperty property = PROPS.value$$$QO;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no value>");
@@ -88,25 +88,25 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return (SNodeOperations.getPrevSibling(getNode()) == null);
   }
   private boolean _StyleParameter_QueryFunction_uxymkz_a3a() {
-    return SPropertyOperations.getBoolean(getNode(), PROPS.underlined$bwKJ);
+    return SPropertyOperations.getBoolean(getNode(), PROPS.underlined$$RAL);
   }
   private int _StyleParameter_QueryFunction_uxymkz_a4a() {
     SNode letter = SNodeOperations.as(getNode(), CONCEPTS.Letter$hC);
-    if (SPropertyOperations.getBoolean(letter, PROPS.bold$bwJL) && (SPropertyOperations.getBoolean(letter, PROPS.italic$bwKg))) {
+    if (SPropertyOperations.getBoolean(letter, PROPS.bold$$R8J) && (SPropertyOperations.getBoolean(letter, PROPS.italic$$RnK))) {
       return MPSFonts.BOLD_ITALIC;
-    } else if (SPropertyOperations.getBoolean(letter, PROPS.bold$bwJL)) {
+    } else if (SPropertyOperations.getBoolean(letter, PROPS.bold$$R8J)) {
       return MPSFonts.BOLD;
-    } else if (SPropertyOperations.getBoolean(letter, PROPS.italic$bwKg)) {
+    } else if (SPropertyOperations.getBoolean(letter, PROPS.italic$$RnK)) {
       return MPSFonts.ITALIC;
     }
     return MPSFonts.PLAIN;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$OMJc = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
-    /*package*/ static final SProperty underlined$bwKJ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
-    /*package*/ static final SProperty italic$bwKg = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
-    /*package*/ static final SProperty bold$bwJL = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
+    /*package*/ static final SProperty value$$$QO = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty underlined$$RAL = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
+    /*package*/ static final SProperty italic$$RnK = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
+    /*package*/ static final SProperty bold$$R8J = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
   }
 
   private static final class CONCEPTS {
