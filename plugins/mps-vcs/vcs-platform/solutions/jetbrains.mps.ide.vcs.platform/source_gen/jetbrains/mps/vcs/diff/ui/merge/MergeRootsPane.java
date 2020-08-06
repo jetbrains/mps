@@ -262,13 +262,17 @@ public class MergeRootsPane implements PropertyChangeListener {
     public void processChangeGroupLayout(@NotNull DiffDividerDrawUtil.DividerPaintable.Handler handler, DiffChangeGroupLayout layout) {
       int prevLeftEnd = -1;
       int prevRightEnd = -1;
+      DiffEditor leftEditor = (mine ? myMineEditor : myResultEditor);
+      DiffEditor rightEditor = (mine ? myResultEditor : myRepositoryEditor);
+      int leftOffset = leftEditor.getMessagesPanelOffset(myInspector);
+      int rightOffset = rightEditor.getMessagesPanelOffset(myInspector);
       for (IMapping<ChangeGroup, Tuples._2<Bounds, Bounds>> groupWithBounds : MapSequence.fromMap(layout.getGroupsWithBounds())) {
         Bounds left = groupWithBounds.value()._0();
         Bounds right = groupWithBounds.value()._1();
-        int leftStart = (int) left.start();
-        int leftEnd = (int) left.end();
-        int rightStart = (int) right.start();
-        int rightEnd = (int) right.end();
+        int leftStart = (int) left.start() + leftOffset;
+        int leftEnd = (int) left.end() + leftOffset;
+        int rightStart = (int) right.start() + rightOffset;
+        int rightEnd = (int) right.end() + rightOffset;
         Color color = ChangeColors.get(groupWithBounds.key().getChangeType());
         // separate changes close to each other 
         if (leftStart == prevLeftEnd) {

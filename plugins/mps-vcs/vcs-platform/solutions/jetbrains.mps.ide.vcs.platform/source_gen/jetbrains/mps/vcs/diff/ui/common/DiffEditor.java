@@ -189,6 +189,10 @@ public class DiffEditor implements EditorMessageOwner {
     return (inspector ? getBottomComponent() : getTopComponent());
   }
 
+  public int getMessagesPanelOffset(boolean inspector) {
+    return (inspector ? myInspectorComponent.getMessagesPanelOffset() : myMainEditorComponent.getMessagesPanelOffset());
+  }
+
   public EditorComponent getEditorComponent(boolean inspector) {
     return (inspector ? myInspectorComponent : myMainEditorComponent);
   }

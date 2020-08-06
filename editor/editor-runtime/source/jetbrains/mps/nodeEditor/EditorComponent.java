@@ -395,7 +395,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myRootCell.setSelectable(false);
 
     setBackground(StyleRegistry.getInstance().getEditorBackground());
-    if(configuration.showSelectionLine){
+    if (configuration.showSelectionLine) {
       myAdditionalPainters.add(new SelectedLinePainter());
     }
 
@@ -762,6 +762,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   public int getHorizontalScrollBarOffset() {
     JScrollBar bar = myScrollPane.getHorizontalScrollBar();
     return bar != null && bar.isVisible() ? bar.getPreferredSize().height : 0;
+  }
+
+  public int getMessagesPanelOffset() {
+    return myMessageHandler.isVisible() ? myMessageHandler.getPreferredSize().height : 0;
   }
 
   Point getViewPosition() {

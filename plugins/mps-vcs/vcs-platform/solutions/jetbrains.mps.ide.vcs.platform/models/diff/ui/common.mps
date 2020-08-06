@@ -10284,6 +10284,41 @@
         <node concept="10P_77" id="4FJKT$Lel1$" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="6rfWsXMjznz" role="jymVt" />
+    <node concept="3clFb_" id="6rfWsXMjTR9" role="jymVt">
+      <property role="TrG5h" value="getMessagesPanelOffset" />
+      <node concept="3clFbS" id="6rfWsXMjTRc" role="3clF47">
+        <node concept="3clFbF" id="6rfWsXMk4r4" role="3cqZAp">
+          <node concept="3K4zz7" id="6rfWsXMk5dx" role="3clFbG">
+            <node concept="2OqwBi" id="6rfWsXMk7cy" role="3K4E3e">
+              <node concept="37vLTw" id="6rfWsXMk5SC" role="2Oq$k0">
+                <ref role="3cqZAo" node="42hl10VHayV" resolve="myInspectorComponent" />
+              </node>
+              <node concept="liA8E" id="6rfWsXMk8z2" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getMessagesPanelOffset()" resolve="getMessagesPanelOffset" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="6rfWsXMkg8d" role="3K4GZi">
+              <node concept="37vLTw" id="6rfWsXMk9CI" role="2Oq$k0">
+                <ref role="3cqZAo" node="42hl10VHayP" resolve="myMainEditorComponent" />
+              </node>
+              <node concept="liA8E" id="6rfWsXMkhBJ" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getMessagesPanelOffset()" resolve="getMessagesPanelOffset" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="6rfWsXMk4r3" role="3K4Cdx">
+              <ref role="3cqZAo" node="6rfWsXMjYQ7" resolve="inspector" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6rfWsXMjOp$" role="1B3o_S" />
+      <node concept="10Oyi0" id="6rfWsXMjSFv" role="3clF45" />
+      <node concept="37vLTG" id="6rfWsXMjYQ7" role="3clF46">
+        <property role="TrG5h" value="inspector" />
+        <node concept="10P_77" id="6rfWsXMjYQ6" role="1tU5fm" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="4FJKT$LeaFt" role="jymVt" />
     <node concept="3clFb_" id="42hl10VHaAc" role="jymVt">
       <property role="TrG5h" value="getEditorComponent" />
