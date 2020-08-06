@@ -53,7 +53,7 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
@@ -243,7 +243,7 @@
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -1172,6 +1172,31 @@
       </node>
       <node concept="3Tm1VV" id="6BLo1MgrGoy" role="1B3o_S" />
       <node concept="3uibUv" id="6BLo1MgrGoz" role="3clF45">
+        <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="245jbU$BLIk" role="jymVt" />
+    <node concept="3clFb_" id="245jbU$BLCn" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="withGit4IdeaStubsPlugin" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <node concept="3clFbS" id="245jbU$BLCo" role="3clF47">
+        <node concept="3cpWs6" id="245jbU$BLCp" role="3cqZAp">
+          <node concept="1rXfSq" id="245jbU$BLCq" role="3cqZAk">
+            <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+            <node concept="Xl_RD" id="245jbU$BLCr" role="37wK5m">
+              <property role="Xl_RC" value="mps-git4idea" />
+            </node>
+            <node concept="Xl_RD" id="245jbU$BLCs" role="37wK5m">
+              <property role="Xl_RC" value="jetbrains.mps.git4idea.stubs" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="245jbU$BLCt" role="1B3o_S" />
+      <node concept="3uibUv" id="245jbU$BLCu" role="3clF45">
         <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
       </node>
     </node>

@@ -106,6 +106,10 @@ public class EnvironmentConfig {
     return addDistributedPlugin("git4idea", "Git4Idea");
   }
 
+  public EnvironmentConfig withGit4IdeaStubsPlugin() {
+    return addDistributedPlugin("mps-git4idea", "jetbrains.mps.git4idea.stubs");
+  }
+
   public EnvironmentConfig withBuildPlugin() {
     return addDistributedPlugin("mps-build", "jetbrains.mps.build");
   }
