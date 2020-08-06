@@ -8777,6 +8777,21 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="245jbU$AGnM" role="3cqZAp">
+          <node concept="37vLTI" id="245jbU$AJfA" role="3clFbG">
+            <node concept="3clFbT" id="245jbU$AJhs" role="37vLTx">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="2OqwBi" id="245jbU$AIl8" role="37vLTJ">
+              <node concept="37vLTw" id="245jbU$AGnK" role="2Oq$k0">
+                <ref role="3cqZAo" node="hO69WBq" resolve="field" />
+              </node>
+              <node concept="3TrcHB" id="245jbU$AIXg" role="2OqNvi">
+                <ref role="3TsBF5" to="tpee:h7TUv0c" resolve="isFinal" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="1nctWZUT7RO" role="3cqZAp">
           <node concept="3cpWsn" id="1nctWZUT7RP" role="3cpWs9">
             <property role="TrG5h" value="lastFieldDecl" />
