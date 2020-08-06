@@ -28,7 +28,7 @@ public class NewComponentRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2nhj69_a(), CONCEPTS.NewComponentRef$rO));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2nhj69_a(), CONCEPTS.NewComponentRef$2E));
     result.add(new SMP_Subconcepts_2nhj69_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class NewComponentRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_2nhj69_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.NewComponentRef$rO, LINKS.target$kdU0);
+      super((SAbstractConcept) CONCEPTS.NewComponentRef$2E, LINKS.target$gbwQ);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class NewComponentRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_2nhj69_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.NewComponentRef$rO);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.NewComponentRef$2E);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class NewComponentRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NewComponentRef$rO = MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104932a6c9L, "ref.structure.NewComponentRef");
+    /*package*/ static final SConcept NewComponentRef$2E = MetaAdapterFactory.getConcept(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104932a6c9L, "ref.structure.NewComponentRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$kdU0 = MetaAdapterFactory.getReferenceLink(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104932a6c9L, 0x6aff2c104932a6caL, "target");
+    /*package*/ static final SReferenceLink target$gbwQ = MetaAdapterFactory.getReferenceLink(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, 0x6aff2c104932a6c9L, 0x6aff2c104932a6caL, "target");
   }
 }

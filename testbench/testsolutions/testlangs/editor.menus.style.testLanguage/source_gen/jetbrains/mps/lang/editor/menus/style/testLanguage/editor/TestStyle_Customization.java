@@ -33,7 +33,7 @@ public class TestStyle_Customization implements EditorMenuItemCustomizer {
 
   private static class TestStyle_CustomizationSpecific implements EditorMenuItemCustomizer {
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ParentTestStyle$Hw) {
+      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ParentTestStyle$xV) {
         protected boolean doMatchesContext(EditorMenuItemCustomizationContext context_) {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
@@ -81,6 +81,6 @@ public class TestStyle_Customization implements EditorMenuItemCustomizer {
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestCompletionCustomization_ParentTestStyle$Hw = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x71cb9a076cd90360L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestStyle");
+    /*package*/ static final SConcept TestCompletionCustomization_ParentTestStyle$xV = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x71cb9a076cd90360L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestStyle");
   }
 }

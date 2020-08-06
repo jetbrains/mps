@@ -27,14 +27,14 @@ public class typevar_comparable_with_classifier_type_ComparisonRule extends Comp
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return CONCEPTS.TypeVariableReference$vZ;
+    return CONCEPTS.TypeVariableReference$WL;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
   }
 }

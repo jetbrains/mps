@@ -25,7 +25,7 @@ public class typeof_GetCurrency_InferenceRule extends AbstractInferenceRule_Runt
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetCurrency$$g;
+    return CONCEPTS.GetCurrency$LD;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_GetCurrency_InferenceRule extends AbstractInferenceRule_Runt
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetCurrency$$g = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x18d8e0833b32f1b1L, "org.jetbrains.mps.samples.Money.structure.GetCurrency");
+    /*package*/ static final SConcept GetCurrency$LD = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x18d8e0833b32f1b1L, "org.jetbrains.mps.samples.Money.structure.GetCurrency");
   }
 }

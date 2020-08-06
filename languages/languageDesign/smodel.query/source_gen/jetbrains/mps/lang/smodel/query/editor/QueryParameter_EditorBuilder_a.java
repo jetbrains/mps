@@ -53,7 +53,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_pp9zo5_a0() {
-    return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.QueryParameter$vQ));
+    return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.QueryParameter$2S));
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
@@ -72,6 +72,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryParameter$vQ = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760badf5L, "jetbrains.mps.lang.smodel.query.structure.QueryParameter");
+    /*package*/ static final SConcept QueryParameter$2S = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760badf5L, "jetbrains.mps.lang.smodel.query.structure.QueryParameter");
   }
 }

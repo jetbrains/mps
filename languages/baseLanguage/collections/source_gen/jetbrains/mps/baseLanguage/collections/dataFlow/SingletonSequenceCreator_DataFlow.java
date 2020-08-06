@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SingletonSequenceCreator_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.singletonValue$W4hZ) != null)) {
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.singletonValue$W4hZ));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.singletonValue$Aowi) != null)) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.singletonValue$Aowi));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink singletonValue$W4hZ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11fade5d82aL, 0x11fade6a3c0L, "singletonValue");
+    /*package*/ static final SContainmentLink singletonValue$Aowi = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11fade5d82aL, 0x11fade6a3c0L, "singletonValue");
   }
 }

@@ -38,13 +38,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     editorCell.setCellId("Constant_1naoec_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.IncludeDefaultAndNullMenu$Yk, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.IncludeDefaultAndNullMenu"));
+    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.IncludeDefaultAndNullMenu$M, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.IncludeDefaultAndNullMenu"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IncludeDefaultAndNullMenu$Yk = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x41299cab94e578eeL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.IncludeDefaultAndNullMenu");
+    /*package*/ static final SConcept IncludeDefaultAndNullMenu$M = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x41299cab94e578eeL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.IncludeDefaultAndNullMenu");
   }
 }

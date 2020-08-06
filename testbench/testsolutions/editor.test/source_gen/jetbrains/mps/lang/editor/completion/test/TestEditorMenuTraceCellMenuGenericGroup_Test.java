@@ -60,28 +60,28 @@ public class TestEditorMenuTraceCellMenuGenericGroup_Test extends BaseTransforma
           Assert.assertTrue(action != null);
 
           EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
-          EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803494772"), LINKS.cellModel$GQI_), CONCEPTS.CellModel_Constant$SB, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+          EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803494772"), LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Constant$4e, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.text$Lsjw), "constant cell");
+              return Objects.equals(SPropertyOperations.getString(it, PROPS.text$PIv7), "constant cell");
             }
-          }).first(), LINKS.menuDescriptor$lbDX), LINKS.cellMenuPart$f1$2), CONCEPTS.CellMenuPart_Generic_Group$R5)).first()));
+          }).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_Generic_Group$2G)).first()));
         }
       });
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SContainmentLink menuDescriptor$lbDX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor");
-    /*package*/ static final SContainmentLink cellMenuPart$f1$2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart");
+    /*package*/ static final SContainmentLink cellModel$L8Uc = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SContainmentLink menuDescriptor$ptP$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor");
+    /*package*/ static final SContainmentLink cellMenuPart$jjJD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_Constant$SB = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant");
-    /*package*/ static final SConcept CellMenuPart_Generic_Group$R5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f58784317L, "jetbrains.mps.lang.editor.structure.CellMenuPart_Generic_Group");
+    /*package*/ static final SConcept CellModel_Constant$4e = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant");
+    /*package*/ static final SConcept CellMenuPart_Generic_Group$2G = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f58784317L, "jetbrains.mps.lang.editor.structure.CellMenuPart_Generic_Group");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$Lsjw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
+    /*package*/ static final SProperty text$PIv7 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, 0xf9eb01232fL, "text");
   }
 }

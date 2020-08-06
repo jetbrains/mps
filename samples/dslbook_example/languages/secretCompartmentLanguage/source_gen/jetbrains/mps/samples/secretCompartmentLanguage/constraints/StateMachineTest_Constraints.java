@@ -16,12 +16,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StateMachineTest_Constraints extends BaseConstraintsDescriptor {
   public StateMachineTest_Constraints() {
-    super(CONCEPTS.StateMachineTest$wd);
+    super(CONCEPTS.StateMachineTest$oe);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -35,15 +35,15 @@ public class StateMachineTest_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StateMachineTest$wd = MetaAdapterFactory.getConcept(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c17a1865L, "jetbrains.mps.samples.secretCompartmentLanguage.structure.StateMachineTest");
+    /*package*/ static final SConcept StateMachineTest$oe = MetaAdapterFactory.getConcept(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c17a1865L, "jetbrains.mps.samples.secretCompartmentLanguage.structure.StateMachineTest");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

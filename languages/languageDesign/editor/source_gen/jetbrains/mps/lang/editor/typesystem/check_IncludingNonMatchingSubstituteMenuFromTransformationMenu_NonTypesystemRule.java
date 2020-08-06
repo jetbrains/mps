@@ -26,18 +26,18 @@ public class check_IncludingNonMatchingSubstituteMenuFromTransformationMenu_NonT
   public check_IncludingNonMatchingSubstituteMenuFromTransformationMenu_NonTypesystemRule() {
   }
   public void applyRule(final SNode part, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(part, LINKS.menuReference$$LRd) == null)) {
+    if ((SLinkOperations.getTarget(part, LINKS.menuReference$D42O) == null)) {
       return;
     }
-    SNode includedMenuConcept = IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(SLinkOperations.getTarget(part, LINKS.menuReference$$LRd));
+    SNode includedMenuConcept = IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(SLinkOperations.getTarget(part, LINKS.menuReference$D42O));
     if ((includedMenuConcept == null)) {
       return;
     }
     SNode destinationMenuConcept;
-    if ((SLinkOperations.getTarget(part, LINKS.link$y40C) != null)) {
-      destinationMenuConcept = SLinkOperations.getTarget(SLinkOperations.getTarget(part, LINKS.link$y40C), LINKS.target$TWaS);
+    if ((SLinkOperations.getTarget(part, LINKS.link$Amcf) != null)) {
+      destinationMenuConcept = SLinkOperations.getTarget(SLinkOperations.getTarget(part, LINKS.link$Amcf), LINKS.target$m40F);
     } else {
-      destinationMenuConcept = check_crrhod_a0a0a4a1(SNodeOperations.getNodeAncestor(part, CONCEPTS.ITransformationMenu$lF, false, false));
+      destinationMenuConcept = check_crrhod_a0a0a4a1(SNodeOperations.getNodeAncestor(part, CONCEPTS.ITransformationMenu$xi, false, false));
     }
     if ((destinationMenuConcept == null)) {
       return;
@@ -49,11 +49,11 @@ public class check_IncludingNonMatchingSubstituteMenuFromTransformationMenu_NonT
 
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(part, LINKS.menuReference$$LRd), String.format("Menu for %s or its subconcept expected", destinationMenuConcept), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8777569553576922645", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(part, LINKS.menuReference$D42O), String.format("Menu for %s or its subconcept expected", destinationMenuConcept), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8777569553576922645", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TransformationMenuPart_IncludeSubstituteMenu$j5;
+    return CONCEPTS.TransformationMenuPart_IncludeSubstituteMenu$uG;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -69,13 +69,13 @@ public class check_IncludingNonMatchingSubstituteMenuFromTransformationMenu_NonT
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$$LRd = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, 0x5480a271c0f085d2L, "menuReference");
-    /*package*/ static final SReferenceLink link$y40C = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, 0x5480a271c0f085b7L, "link");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink menuReference$D42O = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, 0x5480a271c0f085d2L, "menuReference");
+    /*package*/ static final SReferenceLink link$Amcf = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, 0x5480a271c0f085b7L, "link");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITransformationMenu$lF = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
-    /*package*/ static final SConcept TransformationMenuPart_IncludeSubstituteMenu$j5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_IncludeSubstituteMenu");
+    /*package*/ static final SInterfaceConcept ITransformationMenu$xi = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
+    /*package*/ static final SConcept TransformationMenuPart_IncludeSubstituteMenu$uG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a77f9c87420a6caL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_IncludeSubstituteMenu");
   }
 }

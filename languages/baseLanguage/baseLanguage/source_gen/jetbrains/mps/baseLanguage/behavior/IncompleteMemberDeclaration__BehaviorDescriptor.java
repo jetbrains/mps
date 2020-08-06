@@ -37,13 +37,13 @@ public final class IncompleteMemberDeclaration__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static boolean isStatic_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.static$WgA);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.static$G1Ho);
   }
   /*package*/ static boolean canBeInterfaceMember_id2zJQqQIUx2B(@NotNull SAbstractConcept __thisConcept__) {
     return true;
   }
   /*package*/ static boolean canBeMadeAbstract_id5py1MO2Oyuj(@NotNull SNode __thisNode__) {
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.abstract$12n0)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se));
+    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.abstract$G7NM)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0));
   }
 
   /*package*/ IncompleteMemberDeclaration__BehaviorDescriptor() {
@@ -97,15 +97,15 @@ public final class IncompleteMemberDeclaration__BehaviorDescriptor extends BaseB
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty static$WgA = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf94L, "static");
-    /*package*/ static final SProperty abstract$12n0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf99L, "abstract");
+    /*package*/ static final SProperty static$G1Ho = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf94L, "static");
+    /*package*/ static final SProperty abstract$G7NM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf99L, "abstract");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 }

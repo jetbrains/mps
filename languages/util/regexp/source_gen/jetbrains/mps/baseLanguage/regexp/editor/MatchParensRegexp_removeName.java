@@ -27,7 +27,7 @@ public class MatchParensRegexp_removeName {
         if (DeletionApproverUtil.approve(editorContext, node, "*" + CellIdManager.createPropertyId("name"))) {
           return;
         }
-        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.ParensRegexp$7O);
+        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.ParensRegexp$KC);
       }
 
     };
@@ -75,6 +75,6 @@ public class MatchParensRegexp_removeName {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParensRegexp$7O = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp");
+    /*package*/ static final SConcept ParensRegexp$KC = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp");
   }
 }

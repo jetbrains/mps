@@ -19,16 +19,16 @@ public class check_ConceptFunction_NonTypesystemRule extends AbstractNonTypesyst
   public check_ConceptFunction_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(nodeToCheck, LINKS.body$z0FY) != null) {
+    if (SLinkOperations.getTarget(nodeToCheck, LINKS.body$e68K) != null) {
       boolean checkReturns = false;
-      if (ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(nodeToCheck) != null && !(SNodeOperations.isInstanceOf(ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(nodeToCheck), CONCEPTS.VoidType$aT))) {
+      if (ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(nodeToCheck) != null && !(SNodeOperations.isInstanceOf(ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(nodeToCheck), CONCEPTS.VoidType$BF))) {
         checkReturns = true;
       }
-      DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$z0FY), checkReturns);
+      DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$e68K), checkReturns);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptFunction$Tt;
+    return CONCEPTS.ConceptFunction$mf;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,11 +38,11 @@ public class check_ConceptFunction_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 }

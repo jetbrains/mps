@@ -38,9 +38,9 @@ public class Remove_IBLDeprecatable_IsDeprecated_Property extends MigrationScrip
           return scope_xbu0nj_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$Hv, false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          it.setProperty(PROPS.isDeprecated$ymfh, null);
+          it.setProperty(PROPS.isDeprecated$drG3, null);
         }
       });
     }
@@ -50,10 +50,10 @@ public class Remove_IBLDeprecatable_IsDeprecated_Property extends MigrationScrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IBLDeprecatable$Hv = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, "jetbrains.mps.baseLanguage.structure.IBLDeprecatable");
+    /*package*/ static final SInterfaceConcept IBLDeprecatable$ah = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, "jetbrains.mps.baseLanguage.structure.IBLDeprecatable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isDeprecated$ymfh = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
+    /*package*/ static final SProperty isDeprecated$drG3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
   }
 }

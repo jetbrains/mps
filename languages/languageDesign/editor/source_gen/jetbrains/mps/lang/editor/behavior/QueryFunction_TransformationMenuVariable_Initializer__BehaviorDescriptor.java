@@ -33,8 +33,8 @@ public final class QueryFunction_TransformationMenuVariable_Initializer__Behavio
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    SNode varDecl = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.TransformationMenuVariableDeclaration$Ff);
-    return SLinkOperations.getTarget(varDecl, LINKS.type$uWuc);
+    SNode varDecl = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.TransformationMenuVariableDeclaration$QQ);
+    return SLinkOperations.getTarget(varDecl, LINKS.type$a1UY);
   }
 
   /*package*/ QueryFunction_TransformationMenuVariable_Initializer__BehaviorDescriptor() {
@@ -84,10 +84,10 @@ public final class QueryFunction_TransformationMenuVariable_Initializer__Behavio
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuVariableDeclaration$Ff = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11266742db0L, "jetbrains.mps.lang.editor.structure.TransformationMenuVariableDeclaration");
+    /*package*/ static final SConcept TransformationMenuVariableDeclaration$QQ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11266742db0L, "jetbrains.mps.lang.editor.structure.TransformationMenuVariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

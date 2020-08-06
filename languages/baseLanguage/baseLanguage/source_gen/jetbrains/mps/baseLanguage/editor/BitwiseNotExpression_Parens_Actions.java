@@ -26,7 +26,7 @@ public class BitwiseNotExpression_Parens_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$TSjn));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$$XK9));
       }
 
     };
@@ -74,6 +74,6 @@ public class BitwiseNotExpression_Parens_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$TSjn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6d026f5fL, 0x11d6d026f62L, "expression");
+    /*package*/ static final SContainmentLink expression$$XK9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6d026f5fL, 0x11d6d026f62L, "expression");
   }
 }

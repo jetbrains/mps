@@ -131,7 +131,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
         EditorCell cell = ChangeEditorMessage.super.getCell(editor);
         if (cell != null && cell.isBig() && !(isDirectCell(cell))) {
           SNode node = getNode();
-          if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV)) {
+          if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
             cell = CellFinder.getCellForProperty(editor, node, NAME_PROPERTY);
           }
         }
@@ -450,6 +450,6 @@ __switch__:
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

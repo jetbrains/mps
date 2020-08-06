@@ -31,7 +31,7 @@ public class typeof_OfAspectOperation_InferenceRule extends AbstractInferenceRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.OfAspectOperation$9s;
+    return CONCEPTS.OfAspectOperation$cT;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -59,6 +59,6 @@ public class typeof_OfAspectOperation_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OfAspectOperation$9s = MetaAdapterFactory.getConcept(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, "jetbrains.mps.lang.slanguage.structure.OfAspectOperation");
+    /*package*/ static final SConcept OfAspectOperation$cT = MetaAdapterFactory.getConcept(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, "jetbrains.mps.lang.slanguage.structure.OfAspectOperation");
   }
 }

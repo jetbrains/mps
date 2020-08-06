@@ -25,7 +25,7 @@
       <node id="1227089946706" at="33,0,34,22" concept="5" />
       <node id="1227089964162" at="38,57,39,103" concept="5" />
       <node id="1227089946706" at="41,0,42,0" concept="7" trace="canBeRootBreakingPoint" />
-      <node id="1227089946706" at="44,0,45,0" concept="7" trace="IntentionDeclaration$DB" />
+      <node id="1227089946706" at="44,0,45,0" concept="7" trace="IntentionDeclaration$q4" />
       <node id="1227089946706" at="19,0,22,0" concept="0" trace="IntentionDeclaration_Constraints#()V" />
       <node id="1227089946706" at="29,0,32,9" concept="2" />
       <node id="1227089946706" at="38,0,41,0" concept="8" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
@@ -63,7 +63,7 @@
       <node id="6263518417926802270" at="33,0,34,22" concept="5" />
       <node id="6263518417926802274" at="38,57,39,103" concept="5" />
       <node id="6263518417926802270" at="41,0,42,0" concept="7" trace="canBeRootBreakingPoint" />
-      <node id="6263518417926802270" at="44,0,45,0" concept="7" trace="SurroundWithIntentionDeclaration$9G" />
+      <node id="6263518417926802270" at="44,0,45,0" concept="7" trace="SurroundWithIntentionDeclaration$U9" />
       <node id="6263518417926802270" at="19,0,22,0" concept="0" trace="SurroundWithIntentionDeclaration_Constraints#()V" />
       <node id="6263518417926802270" at="29,0,32,9" concept="2" />
       <node id="6263518417926802270" at="38,0,41,0" concept="8" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />

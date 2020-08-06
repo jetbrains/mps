@@ -30,9 +30,9 @@
       <node id="1237825206570" at="56,131,57,42" concept="2" />
       <node id="1236430656078" at="57,42,58,22" concept="6" />
       <node id="1236430656078" at="60,0,61,0" concept="8" trace="breakingNode_cdbkmw_a0a0a0a0a1a0a0a0c" />
-      <node id="1236430656078" at="63,0,64,0" concept="8" trace="MathSymbolIndexReference$$d" />
-      <node id="1236430656078" at="64,0,65,0" concept="8" trace="MathSymbol$FB" />
-      <node id="1236430656078" at="68,0,69,0" concept="8" trace="indexRef$8_ip" />
+      <node id="1236430656078" at="63,0,64,0" concept="8" trace="MathSymbolIndexReference$m_" />
+      <node id="1236430656078" at="64,0,65,0" concept="8" trace="MathSymbol$tZ" />
+      <node id="1236430656078" at="68,0,69,0" concept="8" trace="indexRef$Qa4L" />
       <node id="1236430656078" at="27,0,30,0" concept="1" trace="MathSymbolIndexReference_Constraints#()V" />
       <node id="1237825206570" at="34,0,38,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="1237825206570" at="42,0,46,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -91,14 +91,14 @@
       <node id="6219660258344759922" at="89,131,90,42" concept="2" />
       <node id="6219660258344759919" at="90,42,91,22" concept="6" />
       <node id="6219660258344759919" at="93,0,94,0" concept="8" trace="breakingNode_5upoaw_a0a0a0a0a1a0a0a0c" />
-      <node id="6219660258344759919" at="96,0,97,0" concept="8" trace="MatrixInitializerIndexReference$Oz" />
-      <node id="6219660258344759919" at="97,0,98,0" concept="8" trace="MatrixOrVectorInitializer$Vb" />
-      <node id="6219660258344759919" at="98,0,99,0" concept="8" trace="MatrixInitializer$6r" />
-      <node id="6219660258344759919" at="99,0,100,0" concept="8" trace="VectorInitializer$hg" />
-      <node id="6219660258344759919" at="103,0,104,0" concept="8" trace="index$yDLc" />
-      <node id="6219660258344759919" at="104,0,105,0" concept="8" trace="colIndex$4tl1" />
-      <node id="6219660258344759919" at="105,0,106,0" concept="8" trace="rowIndex$1Zrw" />
-      <node id="6219660258344759919" at="106,0,107,0" concept="8" trace="rowIndex$wCR1" />
+      <node id="6219660258344759919" at="96,0,97,0" concept="8" trace="MatrixInitializerIndexReference$AV" />
+      <node id="6219660258344759919" at="97,0,98,0" concept="8" trace="MatrixOrVectorInitializer$Hz" />
+      <node id="6219660258344759919" at="98,0,99,0" concept="8" trace="MatrixInitializer$SN" />
+      <node id="6219660258344759919" at="99,0,100,0" concept="8" trace="VectorInitializer$3C" />
+      <node id="6219660258344759919" at="103,0,104,0" concept="8" trace="index$gez$" />
+      <node id="6219660258344759919" at="104,0,105,0" concept="8" trace="colIndex$M27p" />
+      <node id="6219660258344759919" at="105,0,106,0" concept="8" trace="rowIndex$J$dS" />
+      <node id="6219660258344759919" at="106,0,107,0" concept="8" trace="rowIndex$edDp" />
       <node id="6219660258344759919" at="31,0,34,0" concept="1" trace="MatrixInitializerIndexReference_Constraints#()V" />
       <node id="6836281137582848214" at="60,70,63,21" concept="3" />
       <node id="6836281137582848231" at="71,72,74,23" concept="3" />
@@ -166,7 +166,7 @@
   </root>
   <root nodeRef="r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)/964810815943407926">
     <file name="MatrixIndexWildcard_Constraints.java">
-      <node id="964810815943407926" at="22,44,23,42" concept="10" />
+      <node id="964810815943407926" at="22,44,23,43" concept="10" />
       <node id="964810815943407926" at="30,127,31,128" concept="5" />
       <node id="964810815943407926" at="31,128,32,0" concept="7" />
       <node id="964810815943407926" at="33,55,34,71" concept="2" />
@@ -176,10 +176,10 @@
       <node id="1227128029536582633" at="44,12,45,95" concept="5" />
       <node id="1227128029536582639" at="45,95,46,172" concept="6" />
       <node id="964810815943407926" at="49,0,50,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="964810815943407926" at="52,0,53,0" concept="8" trace="MatrixIndexWildcard$g" />
-      <node id="964810815943407926" at="53,0,54,0" concept="8" trace="MatrixElementAccessExpression$Dk" />
-      <node id="964810815943407926" at="54,0,55,0" concept="8" trace="VectorType$q7" />
-      <node id="964810815943407926" at="58,0,59,0" concept="8" trace="expression$DVf6" />
+      <node id="964810815943407926" at="52,0,53,0" concept="8" trace="MatrixIndexWildcard$MC" />
+      <node id="964810815943407926" at="53,0,54,0" concept="8" trace="MatrixElementAccessExpression$rG" />
+      <node id="964810815943407926" at="54,0,55,0" concept="8" trace="VectorType$cv" />
+      <node id="964810815943407926" at="58,0,59,0" concept="8" trace="expression$nw1u" />
       <node id="964810815943407926" at="22,0,25,0" concept="1" trace="MatrixIndexWildcard_Constraints#()V" />
       <node id="964810815943407926" at="32,0,35,9" concept="3" />
       <node id="1227128029536582631" at="44,10,47,5" concept="0" />
@@ -188,7 +188,7 @@
       <node id="964810815943407926" at="29,0,39,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="964810815943407926" at="27,103,39,6" concept="6" />
       <node id="964810815943407926" at="26,0,41,0" concept="4" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="964810815943407926" at="22,44,23,42" />
+      <scope id="964810815943407926" at="22,44,23,43" />
       <scope id="964810815943407926" at="33,55,34,71" />
       <scope id="1227128029536582623" at="42,97,43,19" />
       <scope id="1227128029536582632" at="44,12,46,172">
@@ -220,7 +220,7 @@
   <root nodeRef="r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)/964810815943559912">
     <file name="MatrixElementAccessExpression_Constraints.java">
       <node id="964810815943559912" at="10,54,11,53" concept="10" />
-      <node id="964810815943559912" at="15,0,16,0" concept="8" trace="MatrixElementAccessExpression$Dk" />
+      <node id="964810815943559912" at="15,0,16,0" concept="8" trace="MatrixElementAccessExpression$rG" />
       <node id="964810815943559912" at="10,0,13,0" concept="1" trace="MatrixElementAccessExpression_Constraints#()V" />
       <scope id="964810815943559912" at="10,54,11,53" />
       <scope id="964810815943559912" at="10,0,13,0" />

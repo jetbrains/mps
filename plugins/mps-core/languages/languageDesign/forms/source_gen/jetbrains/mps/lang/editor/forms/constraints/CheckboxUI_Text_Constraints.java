@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CheckboxUI_Text_Constraints extends BaseConstraintsDescriptor {
   public CheckboxUI_Text_Constraints() {
-    super(CONCEPTS.CheckboxUI_Text$p8);
+    super(CONCEPTS.CheckboxUI_Text$kO);
   }
 
   @Override
@@ -38,21 +38,21 @@ public class CheckboxUI_Text_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (LINKS.styleItem$AYO2.equals(link)) {
+    if (LINKS.styleItem$FgZD.equals(link)) {
       SConcept styleClassItemConcept = (SConcept) childConcept;
-      return (boolean) StyleClassItem__BehaviorDescriptor.isApplicableToCellConcept_id2u3gVK1lsco.invoke(SNodeOperations.asSConcept(styleClassItemConcept), CONCEPTS.CellModel_Constant$SB) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableForLayout_iditlittOTie.invoke(SNodeOperations.asSConcept(styleClassItemConcept), null) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableInLayout_iditlittOTkB.invoke(SNodeOperations.asSConcept(styleClassItemConcept), CONCEPTS.CellLayout_Horizontal$Ss);
+      return (boolean) StyleClassItem__BehaviorDescriptor.isApplicableToCellConcept_id2u3gVK1lsco.invoke(SNodeOperations.asSConcept(styleClassItemConcept), CONCEPTS.CellModel_Constant$4e) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableForLayout_iditlittOTie.invoke(SNodeOperations.asSConcept(styleClassItemConcept), null) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableInLayout_iditlittOTkB.invoke(SNodeOperations.asSConcept(styleClassItemConcept), CONCEPTS.CellLayout_Horizontal$43);
     }
     return true;
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:de912216-b4aa-4118-a243-c861c965b4d9(jetbrains.mps.lang.editor.forms.constraints)", "332515575062128738");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CheckboxUI_Text$p8 = MetaAdapterFactory.getConcept(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, "jetbrains.mps.lang.editor.forms.structure.CheckboxUI_Text");
-    /*package*/ static final SConcept CellLayout_Horizontal$Ss = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal");
-    /*package*/ static final SConcept CellModel_Constant$SB = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant");
+    /*package*/ static final SConcept CheckboxUI_Text$kO = MetaAdapterFactory.getConcept(0x602c36adcc5547ffL, 0x8c4073d7f12f035cL, 0x1298d6f05780e83bL, "jetbrains.mps.lang.editor.forms.structure.CheckboxUI_Text");
+    /*package*/ static final SConcept CellLayout_Horizontal$43 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal");
+    /*package*/ static final SConcept CellModel_Constant$4e = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb01232eL, "jetbrains.mps.lang.editor.structure.CellModel_Constant");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink styleItem$FgZD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
   }
 }

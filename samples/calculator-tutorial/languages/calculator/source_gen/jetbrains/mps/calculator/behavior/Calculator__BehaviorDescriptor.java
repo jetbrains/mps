@@ -36,8 +36,8 @@ public final class Calculator__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.InputField$6i) && ScopeUtils.comeFrom(LINKS.outputField$LRcW, __thisNode__, child)) {
-      return SimpleRoleScope.forNamedElements(__thisNode__, LINKS.inputField$TUj3);
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.InputField$32) && ScopeUtils.comeFrom(LINKS.outputField$w69G, __thisNode__, child)) {
+      return SimpleRoleScope.forNamedElements(__thisNode__, LINKS.inputField$C9fN);
     }
     return ScopeUtils.lazyParentScope(__thisNode__, kind);
   }
@@ -89,11 +89,11 @@ public final class Calculator__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inputField$TUj3 = MetaAdapterFactory.getContainmentLink(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12106f96410L, 0x12106fb26e8L, "inputField");
-    /*package*/ static final SContainmentLink outputField$LRcW = MetaAdapterFactory.getContainmentLink(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12106f96410L, 0x12106fddf51L, "outputField");
+    /*package*/ static final SContainmentLink inputField$C9fN = MetaAdapterFactory.getContainmentLink(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12106f96410L, 0x12106fb26e8L, "inputField");
+    /*package*/ static final SContainmentLink outputField$w69G = MetaAdapterFactory.getContainmentLink(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12106f96410L, 0x12106fddf51L, "outputField");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InputField$6i = MetaAdapterFactory.getConcept(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12106fa3191L, "jetbrains.mps.calculator.structure.InputField");
+    /*package*/ static final SConcept InputField$32 = MetaAdapterFactory.getConcept(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12106fa3191L, "jetbrains.mps.calculator.structure.InputField");
   }
 }

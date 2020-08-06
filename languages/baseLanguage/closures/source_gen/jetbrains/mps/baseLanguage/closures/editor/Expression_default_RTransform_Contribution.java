@@ -77,12 +77,12 @@ public class Expression_default_RTransform_Contribution extends TransformationMe
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Expression$TP, "jetbrains.mps.baseLanguage.closures.editor.compact_invoke");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Expression$mB, "jetbrains.mps.baseLanguage.closures.editor.compact_invoke");
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MigrationTestCase_Constraints extends BaseConstraintsDescriptor {
   public MigrationTestCase_Constraints() {
-    super(CONCEPTS.MigrationTestCase$Sn);
+    super(CONCEPTS.MigrationTestCase$7Q);
   }
 
   public static class CanNotRunInProcess_Property extends BasePropertyConstraintsDescriptor {
     public CanNotRunInProcess_Property(ConstraintsDescriptor container) {
-      super(PROPS.canNotRunInProcess$h_Xf, container);
+      super(PROPS.canNotRunInProcess$hiag, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,15 +45,15 @@ public class MigrationTestCase_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.canNotRunInProcess$h_Xf, new CanNotRunInProcess_Property(this));
+    properties.put(PROPS.canNotRunInProcess$hiag, new CanNotRunInProcess_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MigrationTestCase$Sn = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, "jetbrains.mps.lang.test.structure.MigrationTestCase");
+    /*package*/ static final SConcept MigrationTestCase$7Q = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, "jetbrains.mps.lang.test.structure.MigrationTestCase");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty canNotRunInProcess$h_Xf = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, 0x59337dc8dffe0d9dL, "canNotRunInProcess");
+    /*package*/ static final SProperty canNotRunInProcess$hiag = MetaAdapterFactory.getProperty(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, 0x59337dc8dffe0d9dL, "canNotRunInProcess");
   }
 }

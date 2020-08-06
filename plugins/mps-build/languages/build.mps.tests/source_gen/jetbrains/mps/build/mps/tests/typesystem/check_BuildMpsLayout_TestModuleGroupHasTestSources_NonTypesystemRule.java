@@ -26,11 +26,11 @@ public class check_BuildMpsLayout_TestModuleGroupHasTestSources_NonTypesystemRul
   }
   public void applyRule(final SNode testGroup, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Iterable<SNode> modules = BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(testGroup);
-    for (SNode solution : Sequence.fromIterable(SNodeOperations.ofConcept(modules, CONCEPTS.BuildMps_Solution$qJ))) {
+    for (SNode solution : Sequence.fromIterable(SNodeOperations.ofConcept(modules, CONCEPTS.BuildMps_Solution$R7))) {
       if (!((boolean) BuildMps_Solution__BehaviorDescriptor.hasTestsSources_id6ogfLD6evrW.invoke(solution))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(testGroup, "The solution '" + SPropertyOperations.getString(solution, PROPS.name$lA7v) + "' sources do not include tests", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "8789333569555671508", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(testGroup, "The solution '" + SPropertyOperations.getString(solution, PROPS.name$MnvL) + "' sources do not include tests", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "8789333569555671508", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.tests.typesystem.addTestSources_QuickFix", false);
             intentionProvider.putArgument("solution", solution);
@@ -41,7 +41,7 @@ public class check_BuildMpsLayout_TestModuleGroupHasTestSources_NonTypesystemRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildMpsLayout_TestModuleGroup$Q_;
+    return CONCEPTS.BuildMpsLayout_TestModuleGroup$bo;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,11 +51,11 @@ public class check_BuildMpsLayout_TestModuleGroupHasTestSources_NonTypesystemRul
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_Solution$qJ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
-    /*package*/ static final SConcept BuildMpsLayout_TestModuleGroup$Q_ = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModuleGroup");
+    /*package*/ static final SConcept BuildMps_Solution$R7 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
+    /*package*/ static final SConcept BuildMpsLayout_TestModuleGroup$bo = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModuleGroup");
   }
 }

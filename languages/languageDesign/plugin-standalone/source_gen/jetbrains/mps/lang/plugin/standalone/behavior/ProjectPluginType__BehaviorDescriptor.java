@@ -32,7 +32,7 @@ public final class ProjectPluginType__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static List<SNode> getMembers_idhEwINC$(@NotNull SNode __thisNode__, SNode contextNode) {
-    return IClassifier__BehaviorDescriptor.getMembers_idhEwJink.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$Ji9x), contextNode);
+    return IClassifier__BehaviorDescriptor.getMembers_idhEwJink.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$I6NC), contextNode);
   }
 
   /*package*/ ProjectPluginType__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class ProjectPluginType__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink plugin$Ji9x = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x6b059b0986f2068L, 0x6b059b0986f206aL, "plugin");
+    /*package*/ static final SReferenceLink plugin$I6NC = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x6b059b0986f2068L, 0x6b059b0986f206aL, "plugin");
   }
 }

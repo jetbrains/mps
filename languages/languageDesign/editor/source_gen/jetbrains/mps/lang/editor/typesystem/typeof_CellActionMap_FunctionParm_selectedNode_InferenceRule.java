@@ -23,9 +23,9 @@ public class typeof_CellActionMap_FunctionParm_selectedNode_InferenceRule extend
   public typeof_CellActionMap_FunctionParm_selectedNode_InferenceRule() {
   }
   public void applyRule(final SNode cellActionMap_FunctionParm_selectedNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellActionMap_FunctionParm_selectedNode, CONCEPTS.CellActionMapDeclaration$Fh, false, false), LINKS.applicableConcept$VlRx);
+    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellActionMap_FunctionParm_selectedNode, CONCEPTS.CellActionMapDeclaration$QS, false, false), LINKS.applicableConcept$ZC38);
     if (applicableConcept == null) {
-      applicableConcept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(SNodeOperations.getNodeAncestor(cellActionMap_FunctionParm_selectedNode, CONCEPTS.BaseEditorComponent$Sy, false, false));
+      applicableConcept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(SNodeOperations.getNodeAncestor(cellActionMap_FunctionParm_selectedNode, CONCEPTS.BaseEditorComponent$49, false, false));
     }
     {
       SNode _nodeToCheck_1029348928467 = cellActionMap_FunctionParm_selectedNode;
@@ -34,7 +34,7 @@ public class typeof_CellActionMap_FunctionParm_selectedNode_InferenceRule extend
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellActionMap_FunctionParm_selectedNode$_8;
+    return CONCEPTS.CellActionMap_FunctionParm_selectedNode$KJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,12 +51,12 @@ public class typeof_CellActionMap_FunctionParm_selectedNode_InferenceRule extend
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellActionMapDeclaration$Fh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
-    /*package*/ static final SConcept BaseEditorComponent$Sy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, "jetbrains.mps.lang.editor.structure.BaseEditorComponent");
-    /*package*/ static final SConcept CellActionMap_FunctionParm_selectedNode$_8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13c3c7bdL, "jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode");
+    /*package*/ static final SConcept CellActionMapDeclaration$QS = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
+    /*package*/ static final SConcept BaseEditorComponent$49 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, "jetbrains.mps.lang.editor.structure.BaseEditorComponent");
+    /*package*/ static final SConcept CellActionMap_FunctionParm_selectedNode$KJ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13c3c7bdL, "jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$VlRx = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x10951978d00L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$ZC38 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x10951978d00L, "applicableConcept");
   }
 }

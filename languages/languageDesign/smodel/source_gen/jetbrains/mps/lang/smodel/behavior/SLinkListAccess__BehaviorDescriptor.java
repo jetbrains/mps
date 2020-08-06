@@ -39,16 +39,16 @@ public final class SLinkListAccess__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static String getVariableExpectedName_idhEwIP$B(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.link$iNEw), PROPS.role$nkts);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.link$RcG0), PROPS.role$Nsjf);
   }
   /*package*/ static boolean isAggregation_id3vpu_siOTrm(@NotNull SNode __thisNode__) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(__thisNode__, LINKS.link$iNEw), PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(__thisNode__, LINKS.link$RcG0), PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
   }
   /*package*/ static boolean isSingularCardinality_id3vpu_siOTrf(@NotNull SNode __thisNode__) {
     return false;
   }
   /*package*/ static SNode getTargetConcept_id3vpu_siOTrr(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.link$iNEw), LINKS.target$TWaS);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.link$RcG0), LINKS.target$m40F);
   }
   /*package*/ static boolean applicableToConcept_id1653mnvAgvQ(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -114,12 +114,12 @@ public final class SLinkListAccess__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$iNEw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink link$RcG0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty role$Nsjf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 }

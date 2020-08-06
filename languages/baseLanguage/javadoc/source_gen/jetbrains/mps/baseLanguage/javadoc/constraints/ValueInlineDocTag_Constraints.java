@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ValueInlineDocTag_Constraints extends BaseConstraintsDescriptor {
   public ValueInlineDocTag_Constraints() {
-    super(CONCEPTS.ValueInlineDocTag$Kj);
+    super(CONCEPTS.ValueInlineDocTag$yw);
   }
 
   @Override
@@ -42,6 +42,6 @@ public class ValueInlineDocTag_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "1227128029536560344");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ValueInlineDocTag$Kj = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e83bL, "jetbrains.mps.baseLanguage.javadoc.structure.ValueInlineDocTag");
+    /*package*/ static final SConcept ValueInlineDocTag$yw = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e83bL, "jetbrains.mps.baseLanguage.javadoc.structure.ValueInlineDocTag");
   }
 }

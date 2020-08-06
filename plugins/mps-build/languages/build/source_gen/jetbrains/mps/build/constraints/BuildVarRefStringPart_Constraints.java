@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildVarRefStringPart_Constraints extends BaseConstraintsDescriptor {
   public BuildVarRefStringPart_Constraints() {
-    super(CONCEPTS.BuildVarRefStringPart$wm);
+    super(CONCEPTS.BuildVarRefStringPart$2T);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.macro$nKb0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.macro$zsHz, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class BuildVarRefStringPart_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildMacro$RE);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildMacro$qd);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -54,11 +54,11 @@ public class BuildVarRefStringPart_Constraints extends BaseConstraintsDescriptor
   private static final SNodePointer breakingNode_99t0ze_a0a0a0a0a1a0a0a0c = new SNodePointer("r:5076fdb3-19c3-4563-aa26-7ace7591e78d(jetbrains.mps.build.constraints)", "4903714810883713096");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildVarRefStringPart$wm = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, "jetbrains.mps.build.structure.BuildVarRefStringPart");
-    /*package*/ static final SConcept BuildMacro$RE = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro");
+    /*package*/ static final SConcept BuildVarRefStringPart$2T = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, "jetbrains.mps.build.structure.BuildVarRefStringPart");
+    /*package*/ static final SConcept BuildMacro$qd = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a1fL, "jetbrains.mps.build.structure.BuildMacro");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink macro$nKb0 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro");
+    /*package*/ static final SReferenceLink macro$zsHz = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, 0x440d7ea3b68b7d02L, "macro");
   }
 }

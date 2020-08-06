@@ -35,12 +35,12 @@ public class ReferenceCustomAction_Customization implements EditorMenuItemCustom
 
   private static class ReferenceCustomAction_CustomizationSpecific implements EditorMenuItemCustomizer {
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$5W) {
+      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$Un) {
         protected boolean doMatchesContext(EditorMenuItemCustomizationContext context_) {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
         protected boolean doMatchesContext_(SNode contextNode, SContainmentLink containmentLink, SReferenceLink referenceLink, SProperty property) {
-          return Objects.equals(referenceLink, LINKS.customActionReference$rr9e);
+          return Objects.equals(referenceLink, LINKS.customActionReference$peXD);
         }
       }.matchesContext(context);
     }
@@ -68,7 +68,7 @@ public class ReferenceCustomAction_Customization implements EditorMenuItemCustom
     }
     private void customize_(SNode contextNode, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
       Object parameterObject = itemInformation.getParameterObject();
-      if (parameterObject instanceof SNode && SNodeOperations.isInstanceOf(((SNode) parameterObject), CONCEPTS.INamedConcept$nV) && Objects.equals(SPropertyOperations.getString(((SNode) parameterObject), PROPS.name$lA7v), "b")) {
+      if (parameterObject instanceof SNode && SNodeOperations.isInstanceOf(((SNode) parameterObject), CONCEPTS.INamedConcept$Kd) && Objects.equals(SPropertyOperations.getString(((SNode) parameterObject), PROPS.name$MnvL), "b")) {
         style.setPriority(1.0);
         style.setBold();
       }
@@ -78,15 +78,15 @@ public class ReferenceCustomAction_Customization implements EditorMenuItemCustom
 
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink customActionReference$rr9e = MetaAdapterFactory.getReferenceLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb93127264L, "customActionReference");
+    /*package*/ static final SReferenceLink customActionReference$peXD = MetaAdapterFactory.getReferenceLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb93127264L, "customActionReference");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher$5W = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher$Un = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

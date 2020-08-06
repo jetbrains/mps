@@ -38,10 +38,10 @@ public final class SmartCompletionParent__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.SmartCompletionChildToRef$aO)) {
-      return ListScope.forNamedElements(SLinkOperations.getChildren(__thisNode__, LINKS.childrenToRef$p$Ey));
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.SmartCompletionChildToRef$V1)) {
+      return ListScope.forNamedElements(SLinkOperations.getChildren(__thisNode__, LINKS.childrenToRef$caqJ));
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child));
   }
 
   /*package*/ SmartCompletionParent__BehaviorDescriptor() {
@@ -91,11 +91,11 @@ public final class SmartCompletionParent__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childrenToRef$p$Ey = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c89L, "childrenToRef");
+    /*package*/ static final SContainmentLink childrenToRef$caqJ = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c86L, 0x61249b1bf0876c89L, "childrenToRef");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SmartCompletionChildToRef$aO = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c8bL, "jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionChildToRef");
-    /*package*/ static final SInterfaceConcept ScopeProvider$M8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
+    /*package*/ static final SConcept SmartCompletionChildToRef$V1 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf0876c8bL, "jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionChildToRef");
+    /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
   }
 }

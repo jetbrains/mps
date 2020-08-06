@@ -68,7 +68,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new replacementNodeSingleRoleHandler_h2b33p_c0(myNode, LINKS.replacementNode$jrKa, getEditorContext());
+    SingleRoleCellProvider provider = new replacementNodeSingleRoleHandler_h2b33p_c0(myNode, LINKS.replacementNode$ROLE, getEditorContext());
     return provider.createCell();
   }
   private static class replacementNodeSingleRoleHandler_h2b33p_c0 extends SingleRoleCellProvider {
@@ -88,8 +88,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.replacementNode$jrKa, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.replacementNode$jrKa, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.replacementNode$ROLE, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.replacementNode$ROLE, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -101,13 +101,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.replacementNode$jrKa);
+        editorCell.setSRole(LINKS.replacementNode$ROLE);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.replacementNode$jrKa));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.replacementNode$ROLE));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_replacementNode");
@@ -133,6 +133,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink replacementNode$jrKa = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975273750L, 0x10975279575L, "replacementNode");
+    /*package*/ static final SContainmentLink replacementNode$ROLE = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975273750L, 0x10975279575L, "replacementNode");
   }
 }

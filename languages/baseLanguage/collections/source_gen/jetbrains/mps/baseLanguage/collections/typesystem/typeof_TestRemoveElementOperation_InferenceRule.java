@@ -30,7 +30,7 @@ public class typeof_TestRemoveElementOperation_InferenceRule extends AbstractInf
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tro, LINKS.argument$l2uw);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tro, LINKS.argument$ZmGN);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4073682006117732283", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4073682006117732287", true), (SNode) typeCheckingContext.getRepresentative(ELEMENT_typevar_4073682006117732270), true, true, _info_12389875345);
       }
@@ -42,7 +42,7 @@ public class typeof_TestRemoveElementOperation_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TestRemoveElementOperation$KL;
+    return CONCEPTS.TestRemoveElementOperation$Z4;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -69,10 +69,10 @@ public class typeof_TestRemoveElementOperation_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$l2uw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
+    /*package*/ static final SContainmentLink argument$ZmGN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestRemoveElementOperation$KL = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x3888a033868c4fa5L, "jetbrains.mps.baseLanguage.collections.structure.TestRemoveElementOperation");
+    /*package*/ static final SConcept TestRemoveElementOperation$Z4 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x3888a033868c4fa5L, "jetbrains.mps.baseLanguage.collections.structure.TestRemoveElementOperation");
   }
 }

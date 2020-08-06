@@ -107,10 +107,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.placeInCell$cCIF;
+      return LINKS.placeInCell$gUUi;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.TransformationLocation_SideTransform_PlaceInCellHolder$oQ;
+      return CONCEPTS.TransformationLocation_SideTransform_PlaceInCellHolder$$t;
     }
 
     private String getSeparatorText(SNode prevNode, SNode nextNode) {
@@ -123,7 +123,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(placeInCellListHandler_gmxq4c_d0.this.getNode(), LINKS.placeInCell$cCIF));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(placeInCellListHandler_gmxq4c_d0.this.getNode(), LINKS.placeInCell$gUUi));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -187,10 +187,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink placeInCell$cCIF = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x28336854e4c19a06L, 0x30335f3d1845bdcfL, "placeInCell");
+    /*package*/ static final SContainmentLink placeInCell$gUUi = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x28336854e4c19a06L, 0x30335f3d1845bdcfL, "placeInCell");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationLocation_SideTransform_PlaceInCellHolder$oQ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder");
+    /*package*/ static final SConcept TransformationLocation_SideTransform_PlaceInCellHolder$$t = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x30335f3d1845bdccL, "jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder");
   }
 }

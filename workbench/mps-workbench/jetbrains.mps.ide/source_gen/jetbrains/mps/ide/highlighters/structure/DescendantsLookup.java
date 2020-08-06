@@ -44,7 +44,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   @Nullable
   /*package*/ EditorMessage calcMessage() {
-    if (SPropertyOperations.getBoolean(myConcept, PROPS.final$Q4Jb)) {
+    if (SPropertyOperations.getBoolean(myConcept, PROPS.final$ic$Y)) {
       return null;
     }
     Set<SNode> overrides = findDescendantsOverrides(myCancellable);
@@ -71,8 +71,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
         SNode nodeParam = (SNode) searchResult.getObject();
         new _FunctionTypes._void_P1_E0<SNode>() {
           public void invoke(SNode res) {
-            if (SNodeOperations.isInstanceOf(res, CONCEPTS.AbstractConceptDeclaration$UN)) {
-              SetSequence.fromSet(result).addElement(SNodeOperations.cast(res, CONCEPTS.AbstractConceptDeclaration$UN));
+            if (SNodeOperations.isInstanceOf(res, CONCEPTS.AbstractConceptDeclaration$KA)) {
+              SetSequence.fromSet(result).addElement(SNodeOperations.cast(res, CONCEPTS.AbstractConceptDeclaration$KA));
               if (SetSequence.fromSet(result).count() > myMaxResultsToCollect) {
                 monitor.cancel();
               }
@@ -85,10 +85,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$Q4Jb = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
+    /*package*/ static final SProperty final$ic$Y = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

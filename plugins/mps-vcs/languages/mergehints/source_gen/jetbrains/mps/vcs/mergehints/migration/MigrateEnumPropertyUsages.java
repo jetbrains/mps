@@ -47,8 +47,8 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
         }
       };
       EnumUsagesMigration migration = new EnumUsagesMigration();
-      for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyVCSDescriptor$S8, false))) {
-        migration.migratePropertyReference(propMessageTarget, LINKS.prop$floh);
+      for (SNode propMessageTarget : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyVCSDescriptor$sJ, false))) {
+        migration.migratePropertyReference(propMessageTarget, LINKS.prop$j8WS);
       }
     }
   }
@@ -62,13 +62,13 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
           return scope_32rjqx_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyVCSDescriptor$S8, false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyVCSDescriptor$sJ, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.prop$floh)), CONCEPTS.EnumPropertyMigrationInfo$Yg);
+          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(it, LINKS.prop$j8WS)), CONCEPTS.EnumPropertyMigrationInfo$O3);
         }
       }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
         public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
-          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.prop$floh));
+          return new UsageOfMigrateNodeNotMigratedProblem(it, SLinkOperations.getTarget(it, LINKS.prop$j8WS));
         }
       });
     }
@@ -81,11 +81,11 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink prop$floh = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop");
+    /*package*/ static final SReferenceLink prop$j8WS = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, 0x4f2cc0d970a4f877L, "prop");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyVCSDescriptor$S8 = MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, "jetbrains.mps.vcs.mergehints.structure.PropertyVCSDescriptor");
-    /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+    /*package*/ static final SConcept PropertyVCSDescriptor$sJ = MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x4f2cc0d970a4f9d0L, "jetbrains.mps.vcs.mergehints.structure.PropertyVCSDescriptor");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo$O3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 }

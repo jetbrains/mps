@@ -26,9 +26,9 @@ public class TypeVariableDeclaration_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.GenericDeclaration$IQ);
-        if (ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.typeVariableDeclaration$6cWB)).isEmpty()) {
-          SelectionUtil.selectCell(editorContext, SNodeOperations.cast(parent, CONCEPTS.GenericDeclaration$IQ), "TYPE_VARIABLES_ANCHOR");
+        SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.GenericDeclaration$bC);
+        if (ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.typeVariableDeclaration$Lipp)).isEmpty()) {
+          SelectionUtil.selectCell(editorContext, SNodeOperations.cast(parent, CONCEPTS.GenericDeclaration$bC), "TYPE_VARIABLES_ANCHOR");
         }
       }
 
@@ -77,10 +77,10 @@ public class TypeVariableDeclaration_ActionMap {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenericDeclaration$IQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, "jetbrains.mps.baseLanguage.structure.GenericDeclaration");
+    /*package*/ static final SConcept GenericDeclaration$bC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, "jetbrains.mps.baseLanguage.structure.GenericDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 }

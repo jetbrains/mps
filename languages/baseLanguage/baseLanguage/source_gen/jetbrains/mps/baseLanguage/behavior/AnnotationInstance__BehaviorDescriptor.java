@@ -40,15 +40,15 @@ public final class AnnotationInstance__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    Iterable<SNode> methods = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.annotation$lXdy), LINKS.method$U$bY);
+    Iterable<SNode> methods = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.annotation$12Ek), LINKS.method$_DCK);
 
     SAbstractConcept cncpt = kind;
     boolean noneMatched = true;
-    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AnnotationMethodDeclaration$C2)) {
+    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AnnotationMethodDeclaration$4O)) {
       noneMatched = false;
       return new NamedElementsScope(methods);
     }
-    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ImplicitAnnotationMethodKind$WE)) {
+    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ImplicitAnnotationMethodKind$ps)) {
       noneMatched = false;
       return (Sequence.fromIterable(methods).count() == 1 ? new NamedElementsScope(methods) : new EmptyScope());
     }
@@ -103,12 +103,12 @@ public final class AnnotationInstance__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink method$U$bY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink method$_DCK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnnotationMethodDeclaration$C2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration");
-    /*package*/ static final SInterfaceConcept ImplicitAnnotationMethodKind$WE = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5ce6f8ed8648519aL, "jetbrains.mps.baseLanguage.structure.ImplicitAnnotationMethodKind");
+    /*package*/ static final SConcept AnnotationMethodDeclaration$4O = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration");
+    /*package*/ static final SInterfaceConcept ImplicitAnnotationMethodKind$ps = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5ce6f8ed8648519aL, "jetbrains.mps.baseLanguage.structure.ImplicitAnnotationMethodKind");
   }
 }

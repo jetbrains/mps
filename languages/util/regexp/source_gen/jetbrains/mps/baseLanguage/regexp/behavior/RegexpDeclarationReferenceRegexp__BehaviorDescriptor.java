@@ -32,7 +32,7 @@ public final class RegexpDeclarationReferenceRegexp__BehaviorDescriptor extends 
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    return Regexp__BehaviorDescriptor.par_idhMuIPHY.invoke(__thisNode__, Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$_0Rc), LINKS.regexp$k0vL), vars));
+    return Regexp__BehaviorDescriptor.par_idhMuIPHY.invoke(__thisNode__, Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.regexp$ouw0), LINKS.regexp$7u8_), vars));
   }
 
   /*package*/ RegexpDeclarationReferenceRegexp__BehaviorDescriptor() {
@@ -82,7 +82,7 @@ public final class RegexpDeclarationReferenceRegexp__BehaviorDescriptor extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink regexp$_0Rc = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
-    /*package*/ static final SContainmentLink regexp$k0vL = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, 0x11174a66599L, "regexp");
+    /*package*/ static final SReferenceLink regexp$ouw0 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
+    /*package*/ static final SContainmentLink regexp$7u8_ = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, 0x11174a66599L, "regexp");
   }
 }

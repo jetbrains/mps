@@ -21,24 +21,24 @@ public class ClassLikeMemberPlaceholderMenu extends AbstractCellMenuPart_Generic
   public ClassLikeMemberPlaceholderMenu() {
   }
   public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, LINKS.decl$euzy));
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, LINKS.decl$GtTj));
   }
   @Override
   protected String getMatchingText(Object object) {
     return (String) DSLClassMember__BehaviorDescriptor.getMatchingText_id2nUiI4k7qhh.invoke(((SNode) object));
   }
   protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-    EditorUtil.substitutePlaceholder(SNodeOperations.cast(node, CONCEPTS.MemberPlaceholder$Wb), model);
+    EditorUtil.substitutePlaceholder(SNodeOperations.cast(node, CONCEPTS.MemberPlaceholder$hW), model);
   }
   public boolean isReferentPresentation() {
     return false;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$euzy = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
+    /*package*/ static final SReferenceLink decl$GtTj = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MemberPlaceholder$Wb = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberPlaceholder");
+    /*package*/ static final SConcept MemberPlaceholder$hW = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberPlaceholder");
   }
 }

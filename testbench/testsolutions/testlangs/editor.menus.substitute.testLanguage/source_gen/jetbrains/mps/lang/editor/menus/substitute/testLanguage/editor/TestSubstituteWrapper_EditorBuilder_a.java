@@ -90,14 +90,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.wrappedMatchingText$SIEL;
+      final SProperty property = PROPS.wrappedMatchingText$RlVi;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no wrappedMatchingText>");
       editorCell.setCellId("property_wrappedMatchingText");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -125,14 +125,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.wrappedDescriptionText$SJ8N;
+      final SProperty property = PROPS.wrappedDescriptionText$Rmpk;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no wrappedDescriptionText>");
       editorCell.setCellId("property_wrappedDescriptionText");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -160,14 +160,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_2() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.wrappedConceptAlias$SJPQ;
+      final SProperty property = PROPS.wrappedConceptAlias$Rn6n;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no wrappedConceptAlias>");
       editorCell.setCellId("property_wrappedConceptAlias");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -220,7 +220,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new childSingleRoleHandler_svk57m_c5a(myNode, LINKS.child$hte3, getEditorContext());
+    SingleRoleCellProvider provider = new childSingleRoleHandler_svk57m_c5a(myNode, LINKS.child$g4u$, getEditorContext());
     return provider.createCell();
   }
   private static class childSingleRoleHandler_svk57m_c5a extends SingleRoleCellProvider {
@@ -240,8 +240,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.child$hte3, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.child$hte3, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.child$g4u$, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.child$g4u$, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -253,7 +253,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.child$hte3);
+        editorCell.setSRole(LINKS.child$g4u$);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
@@ -263,7 +263,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.child$hte3));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.child$g4u$));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_child");
@@ -289,16 +289,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty wrappedMatchingText$SIEL = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c00L, "wrappedMatchingText");
-    /*package*/ static final SProperty wrappedDescriptionText$SJ8N = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c02L, "wrappedDescriptionText");
-    /*package*/ static final SProperty wrappedConceptAlias$SJPQ = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c05L, "wrappedConceptAlias");
+    /*package*/ static final SProperty wrappedMatchingText$RlVi = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c00L, "wrappedMatchingText");
+    /*package*/ static final SProperty wrappedDescriptionText$Rmpk = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c02L, "wrappedDescriptionText");
+    /*package*/ static final SProperty wrappedConceptAlias$Rn6n = MetaAdapterFactory.getProperty(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x52ae9daefcc45c05L, "wrappedConceptAlias");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink child$hte3 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x401156263ff3470fL, "child");
+    /*package*/ static final SContainmentLink child$g4u$ = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL, 0x401156263ff3470fL, "child");
   }
 }

@@ -69,12 +69,12 @@ public class DefaultClassCreator_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.DefaultClassCreator_SmartReference");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.DefaultClassCreator$sQ;
+      return CONCEPTS.DefaultClassCreator$TC;
     }
   }
   public class SMP_Subconcepts_wld8vl_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DefaultClassCreator$sQ);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DefaultClassCreator$TC);
     }
     @NotNull
     @Override
@@ -95,6 +95,6 @@ public class DefaultClassCreator_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultClassCreator$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
+    /*package*/ static final SConcept DefaultClassCreator$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
   }
 }

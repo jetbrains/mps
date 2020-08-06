@@ -68,7 +68,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        return PropEscapeUtil.escapeKey(SPropertyOperations.getString(myNode, PROPS.name$lA7v));
+        return PropEscapeUtil.escapeKey(SPropertyOperations.getString(myNode, PROPS.name$MnvL));
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -93,7 +93,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell createReadOnlyModelAccessor_1() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        return PropEscapeUtil.escapeValue(SPropertyOperations.getString(myNode, PROPS.value$yRK1));
+        return PropEscapeUtil.escapeValue(SPropertyOperations.getString(myNode, PROPS.value$q$QC));
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -106,7 +106,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$yRK1 = MetaAdapterFactory.getProperty(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, 0x36fb0dc9fd3a3ae4L, "value");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$q$QC = MetaAdapterFactory.getProperty(0x58f98fef90ad4b72L, 0xa390fad66ec7005aL, 0x36fb0dc9fd3a3ac1L, 0x36fb0dc9fd3a3ae4L, "value");
   }
 }

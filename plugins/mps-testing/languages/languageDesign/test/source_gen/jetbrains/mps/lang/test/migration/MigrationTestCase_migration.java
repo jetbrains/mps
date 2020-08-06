@@ -48,15 +48,15 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
           return scope_y0ige7_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationTestCase$Sn, true)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationTestCase$7Q, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.migration_old$QeQy) != null);
+          return (SLinkOperations.getTarget(it, LINKS.migration_old$IR61) != null);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.migration$JaVZ)).addElement(createMigrationReference_y0ige7_a0a0a0a0a0a0d(SLinkOperations.getTarget(it, LINKS.migration_old$QeQy)));
-          SPropertyOperations.assign(it, PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.migration_old$QeQy), PROPS.name$lA7v) + "_Test");
-          SLinkOperations.setTarget(it, LINKS.migration_old$QeQy, null);
+          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.migration$BNbu)).addElement(createMigrationReference_y0ige7_a0a0a0a0a0a0d(SLinkOperations.getTarget(it, LINKS.migration_old$IR61)));
+          SPropertyOperations.assign(it, PROPS.name$MnvL, SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.migration_old$IR61), PROPS.name$MnvL) + "_Test");
+          SLinkOperations.setTarget(it, LINKS.migration_old$IR61, null);
         }
       });
     }
@@ -71,13 +71,13 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
           return scope_y0ige7_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationTestCase$Sn, true)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationTestCase$7Q, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.migration_old$QeQy) != null);
+          return (SLinkOperations.getTarget(it, LINKS.migration_old$IR61) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedReferenceLink(it, LINKS.migration_old$QeQy);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedReferenceLink(it, LINKS.migration_old$IR61);
         }
       });
     }
@@ -88,23 +88,23 @@ public class MigrationTestCase_migration extends MigrationScriptBase {
 
 
   private static SNode createMigrationReference_y0ige7_a0a0a0a0a0a0d(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MigrationReference$BB);
-    n0.setReferenceTarget(LINKS.migration$5jNw, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MigrationReference$R6);
+    n0.setReferenceTarget(LINKS.migration$XW2Z, p0);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MigrationTestCase$Sn = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, "jetbrains.mps.lang.test.structure.MigrationTestCase");
-    /*package*/ static final SConcept MigrationReference$BB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, "jetbrains.mps.lang.test.structure.MigrationReference");
+    /*package*/ static final SConcept MigrationTestCase$7Q = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, "jetbrains.mps.lang.test.structure.MigrationTestCase");
+    /*package*/ static final SConcept MigrationReference$R6 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, "jetbrains.mps.lang.test.structure.MigrationReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink migration_old$QeQy = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x4c010b30d9be54a3L, "migration_old");
-    /*package*/ static final SContainmentLink migration$JaVZ = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x5bf7864595df8b02L, "migration");
-    /*package*/ static final SReferenceLink migration$5jNw = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
+    /*package*/ static final SReferenceLink migration_old$IR61 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x4c010b30d9be54a3L, "migration_old");
+    /*package*/ static final SContainmentLink migration$BNbu = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L, 0x5bf7864595df8b02L, "migration");
+    /*package*/ static final SReferenceLink migration$XW2Z = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L, 0x5bf7864595dddf8aL, "migration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -94,7 +94,7 @@ public class MappingDialog extends DialogWrapper {
             MPSTreeNode modelTreeNode = newTreeNode(iconManager.getIconFor(md), md.toString(), md.getName().getValue());
             generatorTreeNode.add(modelTreeNode);
             SModel model = md;
-            for (SNode node : SModelOperations.roots(model, CONCEPTS.MappingConfiguration$rB)) {
+            for (SNode node : SModelOperations.roots(model, CONCEPTS.MappingConfiguration$7j)) {
               MPSTreeNode mcTreeNode = newTreeNode(iconManager.getIconFor(node), node.getNodeId().toString(), node.getPresentation());
               mcTreeNode.setUserObject(node);
               modelTreeNode.add(mcTreeNode);
@@ -153,6 +153,6 @@ public class MappingDialog extends DialogWrapper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MappingConfiguration$rB = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    /*package*/ static final SConcept MappingConfiguration$7j = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
   }
 }

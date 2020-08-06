@@ -25,16 +25,16 @@ public class typeof_EnumValueOfExpression_InferenceRule extends AbstractInferenc
     {
       SNode _nodeToCheck_1029348928467 = expression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1224575709356", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1224575703072", true), (SNode) _quotation_createNode_ib1j5f_a1a0c0a0b(SLinkOperations.getTarget(expression, LINKS.enumClass$fVAA)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1224575703072", true), (SNode) _quotation_createNode_ib1j5f_a1a0c0a0b(SLinkOperations.getTarget(expression, LINKS.enumClass$V13o)), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.value$XtBC);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.value$Cz4q);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1224575743684", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1224575743686", true), (SNode) _quotation_createNode_ib1j5f_a1a0c0b0b(), false, false, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EnumValueOfExpression$Bn;
+    return CONCEPTS.EnumValueOfExpression$49;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -57,11 +57,11 @@ public class typeof_EnumValueOfExpression_InferenceRule extends AbstractInferenc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumClass$fVAA = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e45e8L, "enumClass");
-    /*package*/ static final SContainmentLink value$XtBC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e065dL, "value");
+    /*package*/ static final SReferenceLink enumClass$V13o = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e45e8L, "enumClass");
+    /*package*/ static final SContainmentLink value$Cz4q = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e065dL, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumValueOfExpression$Bn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, "jetbrains.mps.baseLanguage.structure.EnumValueOfExpression");
+    /*package*/ static final SConcept EnumValueOfExpression$49 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, "jetbrains.mps.baseLanguage.structure.EnumValueOfExpression");
   }
 }

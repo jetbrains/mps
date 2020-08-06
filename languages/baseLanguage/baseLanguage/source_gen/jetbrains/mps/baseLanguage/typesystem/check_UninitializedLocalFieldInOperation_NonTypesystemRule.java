@@ -21,26 +21,26 @@ public class check_UninitializedLocalFieldInOperation_NonTypesystemRule extends 
   public check_UninitializedLocalFieldInOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode fieldReferenceOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode operand = SLinkOperations.getTarget(IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(fieldReferenceOperation), LINKS.operand$P1i5);
-    if (operand == null || !(SNodeOperations.isInstanceOf(operand, CONCEPTS.ThisExpression$7A))) {
+    SNode operand = SLinkOperations.getTarget(IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(fieldReferenceOperation), LINKS.operand$w6IR);
+    if (operand == null || !(SNodeOperations.isInstanceOf(operand, CONCEPTS.ThisExpression$$o))) {
       return;
     }
-    SNode field = SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$229u);
-    SNode body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.ConstructorDeclaration$5U, false, false), LINKS.body$qspy);
+    SNode field = SLinkOperations.getTarget(fieldReferenceOperation, LINKS.fieldDeclaration$H7Ag);
+    SNode body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.ConstructorDeclaration$yG, false, false), LINKS.body$5xQk);
     if ((body == null)) {
-      body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.InstanceInitializer$BJ, false, false), LINKS.statementList$$xmE);
+      body = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(fieldReferenceOperation, CONCEPTS.InstanceInitializer$4x, false, false), LINKS.statementList$fANs);
       if ((body == null)) {
         return;
       }
     }
 
-    if ((SLinkOperations.getTarget(field, LINKS.initializer$no3R) == null) && Objects.equals(SNodeOperations.getNodeAncestor(body, CONCEPTS.Classifier$hJ, false, false), SNodeOperations.getParent(field))) {
+    if ((SLinkOperations.getTarget(field, LINKS.initializer$2twD) == null) && Objects.equals(SNodeOperations.getNodeAncestor(body, CONCEPTS.Classifier$Ix, false, false), SNodeOperations.getParent(field))) {
       VariableReferenceUtil.checkPrecedingWriteInstructions(typeCheckingContext, fieldReferenceOperation, body, field);
     }
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.FieldReferenceOperation$N8;
+    return CONCEPTS.FieldReferenceOperation$fU;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,18 +50,18 @@ public class check_UninitializedLocalFieldInOperation_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statementList$$xmE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, 0x118f0b95a3bL, "statementList");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink fieldDeclaration$H7Ag = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statementList$fANs = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, 0x118f0b95a3bL, "statementList");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ThisExpression$7A = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept InstanceInitializer$BJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, "jetbrains.mps.baseLanguage.structure.InstanceInitializer");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept FieldReferenceOperation$N8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept ThisExpression$$o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept InstanceInitializer$4x = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118f0b909f7L, "jetbrains.mps.baseLanguage.structure.InstanceInitializer");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept FieldReferenceOperation$fU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
   }
 }

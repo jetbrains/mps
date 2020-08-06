@@ -41,7 +41,7 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016165577"), CONCEPTS.Expression$TP, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016165577"), CONCEPTS.Expression$mB, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -58,7 +58,7 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016171124"), CONCEPTS.Expression$TP, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016171124"), CONCEPTS.Expression$mB, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -96,7 +96,7 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016174162"), CONCEPTS.Expression$TP, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016174162"), CONCEPTS.Expression$mB, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -116,6 +116,6 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
   private static final SNodePointer copySrcMacro_z6su2d_b0a0d0c5 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1010197743173143128");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

@@ -102,10 +102,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.dependencies$Cbr0;
+      return LINKS.dependencies$kTHK;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.AnnotationDataDependency$s$;
+      return CONCEPTS.AnnotationDataDependency$Jk;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -115,7 +115,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(dependenciesListHandler_ofdymt_c0.this.getNode(), LINKS.dependencies$Cbr0));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(dependenciesListHandler_ofdymt_c0.this.getNode(), LINKS.dependencies$kTHK));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -157,10 +157,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dependencies$Cbr0 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ad9bc0L, 0x5e7aa366c2ad9bc1L, "dependencies");
+    /*package*/ static final SContainmentLink dependencies$kTHK = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ad9bc0L, 0x5e7aa366c2ad9bc1L, "dependencies");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnnotationDataDependency$s$ = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2b3ece9L, "jetbrains.mps.lang.migration.structure.AnnotationDataDependency");
+    /*package*/ static final SConcept AnnotationDataDependency$Jk = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2b3ece9L, "jetbrains.mps.lang.migration.structure.AnnotationDataDependency");
   }
 }

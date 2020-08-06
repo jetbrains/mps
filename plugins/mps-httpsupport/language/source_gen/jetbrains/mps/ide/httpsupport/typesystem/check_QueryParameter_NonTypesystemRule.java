@@ -25,7 +25,7 @@ public class check_QueryParameter_NonTypesystemRule extends AbstractNonTypesyste
   public void applyRule(final SNode queryParameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(ListSequence.fromList(SNodeOperations.getAllSiblings(queryParameter, false)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(check_z5utj9_a0a0a0a0a0b(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.QueryParameter$k9), PROPS.name$lA7v), queryParameter));
+        return !(check_z5utj9_a0a0a0a0a0b(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.QueryParameter$XL), PROPS.name$MnvL), queryParameter));
       }
     }))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
@@ -33,7 +33,7 @@ public class check_QueryParameter_NonTypesystemRule extends AbstractNonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.QueryParameter$k9;
+    return CONCEPTS.QueryParameter$XL;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,16 +43,16 @@ public class check_QueryParameter_NonTypesystemRule extends AbstractNonTypesyste
   }
   private static boolean check_z5utj9_a0a0a0a0a0b(String checkedDotOperand, SNode queryParameter) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.equals(SPropertyOperations.getString(queryParameter, PROPS.name$lA7v));
+      return checkedDotOperand.equals(SPropertyOperations.getString(queryParameter, PROPS.name$MnvL));
     }
     return false;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryParameter$k9 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, "jetbrains.mps.ide.httpsupport.structure.QueryParameter");
+    /*package*/ static final SConcept QueryParameter$XL = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L, "jetbrains.mps.ide.httpsupport.structure.QueryParameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

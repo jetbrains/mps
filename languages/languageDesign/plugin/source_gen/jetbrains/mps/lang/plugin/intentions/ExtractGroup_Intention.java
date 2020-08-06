@@ -60,9 +60,9 @@ public final class ExtractGroup_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode rootGroup = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.ActionGroupDeclaration$YL, null);
-      SPropertyOperations.set(rootGroup, PROPS.name$lA7v, SPropertyOperations.getString(node, PROPS.name$lA7v));
-      SLinkOperations.setTarget(rootGroup, LINKS.contents$IJF3, SLinkOperations.getTarget(node, LINKS.contents$IJF3));
+      SNode rootGroup = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.ActionGroupDeclaration$VO, null);
+      SPropertyOperations.set(rootGroup, PROPS.name$MnvL, SPropertyOperations.getString(node, PROPS.name$MnvL));
+      SLinkOperations.setTarget(rootGroup, LINKS.contents$WkC6, SLinkOperations.getTarget(node, LINKS.contents$WkC6));
       SNodeOperations.deleteNode(node);
     }
     @Override
@@ -72,14 +72,14 @@ public final class ExtractGroup_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionGroupDeclaration$YL = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration");
+    /*package*/ static final SConcept ActionGroupDeclaration$VO = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink contents$IJF3 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents");
+    /*package*/ static final SContainmentLink contents$WkC6 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x1190f76acfcL, "contents");
   }
 }

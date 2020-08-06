@@ -80,13 +80,13 @@ public final class SNodeUtil {
   }
   public static String getPresentation(SNode node) {
     try {
-      return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+      return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
     } catch (Throwable t) {
       return node.getName();
     }
   }
   public static String getDetailedPresentation(SNode node) {
-    return ((String) (String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getDetailedPresentation", null, "22G2W3WJ92t")));
+    return ((String) (String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getDetailedPresentation", null, "22G2W3WJ92t")));
   }
   /**
    * 
@@ -96,60 +96,60 @@ public final class SNodeUtil {
   @ToRemove(version = 2018.3)
   public static boolean isDefaultSubstitutable(SAbstractConcept concept) {
     // 1 use in mbeddr 
-    return !(concept.isAbstract()) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IDontSubstituteByDefault$kG));
+    return !(concept.isAbstract()) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IDontSubstituteByDefault$GY));
   }
   public static int getMetaLevel(SNode node) {
-    return ((int) (Integer) BHReflection.invoke0(node, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getMetaLevel", null, "3t0v3yFOD1A")));
+    return ((int) (Integer) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getMetaLevel", null, "3t0v3yFOD1A")));
   }
   public static boolean isInstanceOfConceptDeclaration(SNode node) {
     if (node == null) {
       return false;
     }
-    return SNodeOperations.getConcept(node).equals(CONCEPTS.ConceptDeclaration$qU);
+    return SNodeOperations.getConcept(node).equals(CONCEPTS.ConceptDeclaration$gH);
   }
   public static SContainmentLink getChildLink(SNode attribute) {
-    return ((SContainmentLink) (SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf")));
+    return ((SContainmentLink) (SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")));
   }
   public static SProperty getProperty(SNode attribute) {
-    return ((SProperty) (SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$jT), CONCEPTS.PropertyAttribute$jT, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$jT, "1avfQ4BBzOo")));
+    return ((SProperty) (SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo")));
   }
   public static SNode getLinkTarget(SNode link) {
-    return SLinkOperations.getTarget(link, LINKS.target$TWaS);
+    return SLinkOperations.getTarget(link, LINKS.target$m40F);
   }
   public static String getNodeShortDescription(SNode node) {
-    return SPropertyOperations.getString(node, PROPS.shortDescription$xrGd);
+    return SPropertyOperations.getString(node, PROPS.shortDescription$Yd4v);
   }
   public static String getConceptShortDescription(SNode concept) {
-    return SPropertyOperations.getString(concept, PROPS.conceptShortDescription$Qkjq);
+    return SPropertyOperations.getString(concept, PROPS.conceptShortDescription$is9d);
   }
   public static String getConceptAlias(SNode concept) {
-    return SPropertyOperations.getString(concept, PROPS.conceptAlias$oDJY);
+    return SPropertyOperations.getString(concept, PROPS.conceptAlias$OL_L);
   }
   public static String getResolveInfo(SNode node) {
-    return SPropertyOperations.getString(node, PROPS.resolveInfo$TaKS);
+    return SPropertyOperations.getString(node, PROPS.resolveInfo$lW9a);
   }
 
   public static boolean getLinkDeclaration_IsReference(SNode link) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$p6Up), 0xfc6f4e95b8L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
   }
   @Deprecated
   @ToRemove(version = 2019.3)
   public static boolean getLinkDeclaration_IsExactlyOneMultiplicity(SNode link) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$Kq8X), 0xfc6f3944c4L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$cxYK), 0xfc6f3944c4L);
   }
   @Deprecated
   @ToRemove(version = 2019.3)
   public static boolean getLinkDeclaration_IsAtLeastOneMultiplicity(SNode link) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$Kq8X), 0xfc6f3944c4L) || SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$Kq8X), 0xfc6f3944c6L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$cxYK), 0xfc6f3944c4L) || SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$cxYK), 0xfc6f3944c6L);
   }
   @Deprecated
   @ToRemove(version = 2019.3)
   public static boolean getLinkDeclaration_IsSingular(SNode link) {
     SNode genuineLinkDeclaration = ((SNode) SModelUtil.getGenuineLinkDeclaration(link));
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLinkDeclaration, PROPS.sourceCardinality$Kq8X), 0xfc6f3944c3L) || SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLinkDeclaration, PROPS.sourceCardinality$Kq8X), 0xfc6f3944c4L);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLinkDeclaration, PROPS.sourceCardinality$cxYK), 0xfc6f3944c3L) || SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLinkDeclaration, PROPS.sourceCardinality$cxYK), 0xfc6f3944c4L);
   }
   public static boolean isSideTransformInfo(SNode node) {
-    return SNodeOperations.getConcept(node).equals(CONCEPTS.SideTransformInfo$l0);
+    return SNodeOperations.getConcept(node).equals(CONCEPTS.SideTransformInfo$Hi);
   }
   @Deprecated
   @ToRemove(version = 2019.3)
@@ -164,7 +164,7 @@ public final class SNodeUtil {
     return SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c4L, "_1")).equals(cardinality) || SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1")).equals(cardinality);
   }
   public static SReferenceLink getLink(SNode attribute) {
-    return ((SReferenceLink) (SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$7j), CONCEPTS.LinkAttribute$7j, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$7j, "1avfQ4BEFo6")));
+    return ((SReferenceLink) (SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6")));
   }
   @Deprecated
   @ToRemove(version = 2019.3)
@@ -179,7 +179,7 @@ public final class SNodeUtil {
     return metaclass == null || SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass"), 0xfc6f4e95b8L, "reference")).equals(metaclass);
   }
   public static String getConstrainedDataTypeDeclaration_constraint(SNode constrainedDataType) {
-    return SPropertyOperations.getString(constrainedDataType, PROPS.constraint$glmq);
+    return SPropertyOperations.getString(constrainedDataType, PROPS.constraint$Gtcd);
   }
   public static boolean isStringDatatypeDeclaration(SNode datatype) {
     return SNodeOperations.is(datatype, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843"));
@@ -192,26 +192,26 @@ public final class SNodeUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SInterfaceConcept IDontSubstituteByDefault$kG = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x19796fa16a19888bL, "jetbrains.mps.lang.core.structure.IDontSubstituteByDefault");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept ChildAttribute$XQ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept SideTransformInfo$l0 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo");
-    /*package*/ static final SConcept LinkAttribute$7j = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SInterfaceConcept IDontSubstituteByDefault$GY = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x19796fa16a19888bL, "jetbrains.mps.lang.core.structure.IDontSubstituteByDefault");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept SideTransformInfo$Hi = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo");
+    /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
-    /*package*/ static final SProperty conceptShortDescription$Qkjq = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772bbe20L, "conceptShortDescription");
-    /*package*/ static final SProperty conceptAlias$oDJY = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
-    /*package*/ static final SProperty resolveInfo$TaKS = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty sourceCardinality$Kq8X = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
-    /*package*/ static final SProperty constraint$glmq = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, 0xfc2bc4ff02L, "constraint");
+    /*package*/ static final SProperty shortDescription$Yd4v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty conceptShortDescription$is9d = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772bbe20L, "conceptShortDescription");
+    /*package*/ static final SProperty conceptAlias$OL_L = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
+    /*package*/ static final SProperty resolveInfo$lW9a = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty sourceCardinality$cxYK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
+    /*package*/ static final SProperty constraint$Gtcd = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, 0xfc2bc4ff02L, "constraint");
   }
 }

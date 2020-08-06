@@ -50,8 +50,8 @@ public final class AbstractAntiquotation__BehaviorDescriptor extends BaseBHDescr
     SNode node = __thisNode__;
     int metaLevelChange = 0;
     while ((node != null)) {
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.IMetaLevelChanger$8i)) {
-        metaLevelChange += (int) IMetaLevelChanger__BehaviorDescriptor.getMetaLevelChange_idbc0iGlxcsE.invoke(SNodeOperations.cast(node, CONCEPTS.IMetaLevelChanger$8i));
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.IMetaLevelChanger$w$)) {
+        metaLevelChange += (int) IMetaLevelChanger__BehaviorDescriptor.getMetaLevelChange_idbc0iGlxcsE.invoke(SNodeOperations.cast(node, CONCEPTS.IMetaLevelChanger$w$));
       }
       if (metaLevelChange == 0) {
         break;
@@ -117,6 +117,6 @@ public final class AbstractAntiquotation__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMetaLevelChanger$8i = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2cc012b1584bd3aL, "jetbrains.mps.lang.core.structure.IMetaLevelChanger");
+    /*package*/ static final SInterfaceConcept IMetaLevelChanger$w$ = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2cc012b1584bd3aL, "jetbrains.mps.lang.core.structure.IMetaLevelChanger");
   }
 }

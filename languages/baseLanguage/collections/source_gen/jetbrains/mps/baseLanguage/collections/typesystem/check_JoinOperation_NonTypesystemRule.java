@@ -22,13 +22,13 @@ public class check_JoinOperation_NonTypesystemRule extends AbstractNonTypesystem
   public check_JoinOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode jo, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jo), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), CONCEPTS.SequenceType$n9), LINKS.elementType$655u), CONCEPTS.StringType$2b) != null))) {
+    if (!((TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jo), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.SequenceType$_s), LINKS.elementType$KpjL), CONCEPTS.StringType$uX) != null))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(jo, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809121299089", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.JoinOperation$O5;
+    return CONCEPTS.JoinOperation$2o;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,14 +38,14 @@ public class check_JoinOperation_NonTypesystemRule extends AbstractNonTypesystem
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept SequenceType$n9 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
-    /*package*/ static final SConcept StringType$2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
-    /*package*/ static final SConcept JoinOperation$O5 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, "jetbrains.mps.baseLanguage.collections.structure.JoinOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SequenceType$_s = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
+    /*package*/ static final SConcept StringType$uX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
+    /*package*/ static final SConcept JoinOperation$2o = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, "jetbrains.mps.baseLanguage.collections.structure.JoinOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink elementType$KpjL = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
   }
 }

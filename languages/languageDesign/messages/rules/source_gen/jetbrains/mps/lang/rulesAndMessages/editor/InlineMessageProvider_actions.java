@@ -24,7 +24,7 @@ public class InlineMessageProvider_actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (!(DeletionApproverUtil.approve(editorContext, SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.RuleWithMessage$jq)))) {
+        if (!(DeletionApproverUtil.approve(editorContext, SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.RuleWithMessage$9Q)))) {
           SNodeOperations.deleteNode(SNodeOperations.getParent(node));
         }
       }
@@ -37,7 +37,7 @@ public class InlineMessageProvider_actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.insertNewNextSiblingChild(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.RuleWithMessage$jq), CONCEPTS.RuleWithMessage$jq);
+        SNodeFactoryOperations.insertNewNextSiblingChild(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.RuleWithMessage$9Q), CONCEPTS.RuleWithMessage$9Q);
       }
 
     };
@@ -48,7 +48,7 @@ public class InlineMessageProvider_actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.insertNewPrevSiblingChild(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.RuleWithMessage$jq), CONCEPTS.RuleWithMessage$jq);
+        SNodeFactoryOperations.insertNewPrevSiblingChild(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.RuleWithMessage$9Q), CONCEPTS.RuleWithMessage$9Q);
       }
 
     };
@@ -104,6 +104,6 @@ public class InlineMessageProvider_actions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RuleWithMessage$jq = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage");
+    /*package*/ static final SConcept RuleWithMessage$9Q = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage");
   }
 }

@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class BaseProjectOperation_Constraints extends BaseConstraintsDescriptor {
   public BaseProjectOperation_Constraints() {
-    super(CONCEPTS.BaseProjectOperation$qM);
+    super(CONCEPTS.BaseProjectOperation$nP);
   }
 
   @Override
@@ -43,8 +43,8 @@ public class BaseProjectOperation_Constraints extends BaseConstraintsDescriptor 
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     boolean can = false;
-    if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a)) {
-      can = TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), _quotation_createNode_u117dn_b0a0a0b0d());
+    if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW)) {
+      can = TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), _quotation_createNode_u117dn_b0a0a0b0d());
     }
     return can;
   }
@@ -58,11 +58,11 @@ public class BaseProjectOperation_Constraints extends BaseConstraintsDescriptor 
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "1227128029536562214");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseProjectOperation$qM = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2e56fadb4d375f27L, "jetbrains.mps.lang.plugin.structure.BaseProjectOperation");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept BaseProjectOperation$nP = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2e56fadb4d375f27L, "jetbrains.mps.lang.plugin.structure.BaseProjectOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

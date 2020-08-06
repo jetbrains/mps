@@ -54,13 +54,13 @@ public final class SurroundWithIf_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode ifStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$pi, null);
+      SNode ifStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$Q4, null);
       List<SNode> selectedNodes = editorContext.getSelectedNodes();
       SNodeOperations.insertNextSiblingChild(ListSequence.fromList(selectedNodes).last(), ifStatement);
       for (SNode selectedNode : ListSequence.fromList(selectedNodes)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$qLNm), LINKS.statement$pYcS)).addElement(SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.Statement$ok, true, false));
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).addElement(SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.Statement$P6, true, false));
       }
-      editorContext.select(SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l));
+      editorContext.select(SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -69,13 +69,13 @@ public final class SurroundWithIf_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
   }
 }

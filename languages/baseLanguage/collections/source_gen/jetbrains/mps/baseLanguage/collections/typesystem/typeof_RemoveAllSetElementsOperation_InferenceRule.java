@@ -30,7 +30,7 @@ public class typeof_RemoveAllSetElementsOperation_InferenceRule extends Abstract
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.argument$Mqf6);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.argument$sItp);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1226594108936", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1226594108944", true), (SNode) _quotation_createNode_t2vuix_a1a0c0a0c0b(typeCheckingContext.getRepresentative(elementType_typevar_1226594108923)), true, true, _info_12389875345);
       }
@@ -42,7 +42,7 @@ public class typeof_RemoveAllSetElementsOperation_InferenceRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RemoveAllSetElementsOperation$kF;
+    return CONCEPTS.RemoveAllSetElementsOperation$yY;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -80,10 +80,10 @@ public class typeof_RemoveAllSetElementsOperation_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$Mqf6 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d96b14ae4L, 0x11d96b1a226L, "argument");
+    /*package*/ static final SContainmentLink argument$sItp = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d96b14ae4L, 0x11d96b1a226L, "argument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RemoveAllSetElementsOperation$kF = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d96b14ae4L, "jetbrains.mps.baseLanguage.collections.structure.RemoveAllSetElementsOperation");
+    /*package*/ static final SConcept RemoveAllSetElementsOperation$yY = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d96b14ae4L, "jetbrains.mps.baseLanguage.collections.structure.RemoveAllSetElementsOperation");
   }
 }

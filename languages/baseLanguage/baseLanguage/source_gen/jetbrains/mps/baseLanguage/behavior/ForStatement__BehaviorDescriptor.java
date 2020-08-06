@@ -42,35 +42,35 @@ public final class ForStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<SNode> getScopeVariables_id4pl5GY7LKmA(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.variable$4Igk));
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.variable$JNH6));
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$Y0)) {
       List<SNode> variables = new ArrayList<SNode>();
-      if (!(ScopeUtils.comeFrom(LINKS.variable$4Igk, __thisNode__, child))) {
-        ListSequence.fromList(variables).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.variable$4Igk));
-        if (ScopeUtils.comeFrom(LINKS.additionalVar$QrML, __thisNode__, child)) {
-          for (SNode variable : SLinkOperations.getChildren(__thisNode__, LINKS.additionalVar$QrML)) {
+      if (!(ScopeUtils.comeFrom(LINKS.variable$JNH6, __thisNode__, child))) {
+        ListSequence.fromList(variables).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.variable$JNH6));
+        if (ScopeUtils.comeFrom(LINKS.additionalVar$xxfz, __thisNode__, child)) {
+          for (SNode variable : SLinkOperations.getChildren(__thisNode__, LINKS.additionalVar$xxfz)) {
             if (variable == child) {
               break;
             }
             ListSequence.fromList(variables).addElement(variable);
           }
         } else {
-          ListSequence.fromList(variables).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.additionalVar$QrML)));
+          ListSequence.fromList(variables).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.additionalVar$xxfz)));
         }
       }
       return Scopes.forVariables(kind, variables, ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.ForStatement$Y9, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.ForStatement$qV, kind, child));
   }
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$PxqS)) {
+    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$wARE)) {
       return null;
     }
     if (value) {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.body$wVZ$) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.body$wVZ$), false);
+      if (SLinkOperations.getTarget(__thisNode__, LINKS.body$c1sm) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.body$c1sm), false);
       } else {
         return NextProgramPoint.continueAt(__thisNode__, true);
       }
@@ -130,14 +130,14 @@ public final class ForStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink additionalVar$QrML = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
-    /*package*/ static final SContainmentLink condition$PxqS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");
-    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink additionalVar$xxfz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
+    /*package*/ static final SContainmentLink condition$wARE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");
+    /*package*/ static final SContainmentLink body$c1sm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept ForStatement$Y9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
   }
 }

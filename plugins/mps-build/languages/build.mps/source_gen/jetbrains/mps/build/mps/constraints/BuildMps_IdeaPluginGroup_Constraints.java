@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMps_IdeaPluginGroup_Constraints extends BaseConstraintsDescriptor {
   public BuildMps_IdeaPluginGroup_Constraints() {
-    super(CONCEPTS.BuildMps_IdeaPluginGroup$9v);
+    super(CONCEPTS.BuildMps_IdeaPluginGroup$_R);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.group$V$Jw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.group$qLbS, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class BuildMps_IdeaPluginGroup_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildMps_Group$iO);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildMps_Group$Jc);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -54,11 +54,11 @@ public class BuildMps_IdeaPluginGroup_Constraints extends BaseConstraintsDescrip
   private static final SNodePointer breakingNode_h6r07b_a0a0a0a0a1a0a0a0c = new SNodePointer("r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)", "1224588814561913833");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_IdeaPluginGroup$9v = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
-    /*package*/ static final SConcept BuildMps_Group$iO = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
+    /*package*/ static final SConcept BuildMps_IdeaPluginGroup$_R = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
+    /*package*/ static final SConcept BuildMps_Group$Jc = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink group$V$Jw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
+    /*package*/ static final SReferenceLink group$qLbS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
   }
 }

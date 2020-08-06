@@ -31,7 +31,7 @@ public final class SettingsEditor__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<SNode> getDeclaredOperations_idO$iR4J$gbn(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.EditorOperationDeclaration$mT, false, new SAbstractConcept[]{});
+    return SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.EditorOperationDeclaration$VI, false, new SAbstractConcept[]{});
   }
 
   /*package*/ SettingsEditor__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class SettingsEditor__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorOperationDeclaration$mT = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012dL, "jetbrains.mps.execution.settings.structure.EditorOperationDeclaration");
+    /*package*/ static final SConcept EditorOperationDeclaration$VI = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012dL, "jetbrains.mps.execution.settings.structure.EditorOperationDeclaration");
   }
 }

@@ -47,27 +47,27 @@ public final class ModelReference__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SModelReference toModelReference_id2BHFktfnfdc(@NotNull SNode __thisNode__) {
     SModuleReference moduleRef = null;
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.module$cAPU) != null) {
-      moduleRef = ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.module$cAPU));
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.module$al5i) != null) {
+      moduleRef = ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.module$al5i));
     }
     PersistenceFacade pf = PersistenceFacade.getInstance();
-    return pf.createModelReference(moduleRef, pf.createModelId(SPropertyOperations.getString(__thisNode__, PROPS.uuid$5fB_)), new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.qualifiedName$5kLV), SPropertyOperations.getString(__thisNode__, PROPS.stereotype$jknN)).getValue());
+    return pf.createModelReference(moduleRef, pf.createModelId(SPropertyOperations.getString(__thisNode__, PROPS.uuid$2XQX)), new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.qualifiedName$331j), SPropertyOperations.getString(__thisNode__, PROPS.stereotype$h2Bb)).getValue());
   }
   /*package*/ static void populateFrom_id2BHFktfniCd(@NotNull SNode __thisNode__, SModelReference modelRef) {
     if (modelRef.getModelId().isGloballyUnique()) {
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(__thisNode__, LINKS.module$cAPU));
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(__thisNode__, LINKS.module$al5i));
     } else {
-      SNode moduleRef = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ModuleReference$xK);
+      SNode moduleRef = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ModuleReference$L8);
       ModuleReference__BehaviorDescriptor.populateFrom_id2BHFktfnlSL.invoke(moduleRef, modelRef.getModuleReference());
-      SLinkOperations.setTarget(__thisNode__, LINKS.module$cAPU, moduleRef);
+      SLinkOperations.setTarget(__thisNode__, LINKS.module$al5i, moduleRef);
     }
-    SPropertyOperations.assign(__thisNode__, PROPS.uuid$5fB_, PersistenceFacade.getInstance().asString(modelRef.getModelId()));
+    SPropertyOperations.assign(__thisNode__, PROPS.uuid$2XQX, PersistenceFacade.getInstance().asString(modelRef.getModelId()));
     SModelName modelName = modelRef.getName();
-    SPropertyOperations.assign(__thisNode__, PROPS.qualifiedName$5kLV, modelName.getLongName());
+    SPropertyOperations.assign(__thisNode__, PROPS.qualifiedName$331j, modelName.getLongName());
     if (modelName.hasStereotype()) {
-      SPropertyOperations.assign(__thisNode__, PROPS.stereotype$jknN, modelName.getStereotype());
+      SPropertyOperations.assign(__thisNode__, PROPS.stereotype$h2Bb, modelName.getStereotype());
     } else {
-      SPropertyOperations.remove(__thisNode__, PROPS.stereotype$jknN);
+      SPropertyOperations.remove(__thisNode__, PROPS.stereotype$h2Bb);
     }
   }
 
@@ -123,16 +123,16 @@ public final class ModelReference__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink module$cAPU = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x29edad474f5d54b1L, "module");
+    /*package*/ static final SContainmentLink module$al5i = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x29edad474f5d54b1L, "module");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty uuid$5fB_ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5869770da61dfe2dL, "uuid");
-    /*package*/ static final SProperty qualifiedName$5kLV = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5869770da61dfe2eL, "qualifiedName");
-    /*package*/ static final SProperty stereotype$jknN = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5c5cb5cdd09abfb1L, "stereotype");
+    /*package*/ static final SProperty uuid$2XQX = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5869770da61dfe2dL, "uuid");
+    /*package*/ static final SProperty qualifiedName$331j = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5869770da61dfe2eL, "qualifiedName");
+    /*package*/ static final SProperty stereotype$h2Bb = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5c5cb5cdd09abfb1L, "stereotype");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModuleReference$xK = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, "jetbrains.mps.lang.project.structure.ModuleReference");
+    /*package*/ static final SConcept ModuleReference$L8 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, "jetbrains.mps.lang.project.structure.ModuleReference");
   }
 }

@@ -31,7 +31,7 @@ public final class IntervalSymbolClassPart__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static String getRepresentation_id75Jea4IEZbM(@NotNull SNode __thisNode__) {
-    return SymbolClassPart__BehaviorDescriptor.escapeChar_id75Jea4IEVWQ.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.start$MnhF)) + "-" + SymbolClassPart__BehaviorDescriptor.escapeChar_id75Jea4IEVWQ.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.end$x8Io));
+    return SymbolClassPart__BehaviorDescriptor.escapeChar_id75Jea4IEVWQ.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.start$_OUv)) + "-" + SymbolClassPart__BehaviorDescriptor.escapeChar_id75Jea4IEVWQ.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.end$kAnc));
   }
 
   /*package*/ IntervalSymbolClassPart__BehaviorDescriptor() {
@@ -81,7 +81,7 @@ public final class IntervalSymbolClassPart__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty start$MnhF = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11179215e8bL, 0x1117921931aL, "start");
-    /*package*/ static final SProperty end$x8Io = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11179215e8bL, 0x11179219cfeL, "end");
+    /*package*/ static final SProperty start$_OUv = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11179215e8bL, 0x1117921931aL, "start");
+    /*package*/ static final SProperty end$kAnc = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11179215e8bL, 0x11179219cfeL, "end");
   }
 }

@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ClassifierClassExpression_Constraints extends BaseConstraintsDescriptor {
   public ClassifierClassExpression_Constraints() {
-    super(CONCEPTS.ClassifierClassExpression$T1);
+    super(CONCEPTS.ClassifierClassExpression$lN);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$s_4n, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$7Ex9, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -53,10 +53,10 @@ public class ClassifierClassExpression_Constraints extends BaseConstraintsDescri
   private static final SNodePointer breakingNode_w155fn_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643064");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierClassExpression$T1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, "jetbrains.mps.baseLanguage.structure.ClassifierClassExpression");
+    /*package*/ static final SConcept ClassifierClassExpression$lN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, "jetbrains.mps.baseLanguage.structure.ClassifierClassExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$s_4n = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
+    /*package*/ static final SReferenceLink classifier$7Ex9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
   }
 }

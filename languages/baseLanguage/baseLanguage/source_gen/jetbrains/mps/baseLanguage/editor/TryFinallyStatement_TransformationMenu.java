@@ -67,7 +67,7 @@ public class TryFinallyStatement_TransformationMenu extends TransformationMenuBa
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.TryFinallyStatement$Vw)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.TryFinallyStatement$oi)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -83,7 +83,7 @@ public class TryFinallyStatement_TransformationMenu extends TransformationMenuBa
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_wnif5s_a1(), CONCEPTS.TryCatchStatement$x5));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_wnif5s_a1(), CONCEPTS.TryCatchStatement$XR));
     }
     return result;
   }
@@ -126,16 +126,16 @@ public class TryFinallyStatement_TransformationMenu extends TransformationMenuBa
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode catchClause = SNodeFactoryOperations.createNewNode(CONCEPTS.CatchClause$hu, null);
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$EvoR)).insertElement(0, catchClause);
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$EvoR)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SNode catchClause = SNodeFactoryOperations.createNewNode(CONCEPTS.CatchClause$Ig, null);
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$l$PD)).insertElement(0, catchClause);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$l$PD)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.TryCatchStatement$x5;
+        return CONCEPTS.TryCatchStatement$XR;
       }
 
 
@@ -146,7 +146,7 @@ public class TryFinallyStatement_TransformationMenu extends TransformationMenuBa
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.TryCatchStatement$x5;
+        SAbstractConcept outputConcept = CONCEPTS.TryCatchStatement$XR;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -157,12 +157,12 @@ public class TryFinallyStatement_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
-    /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
-    /*package*/ static final SConcept CatchClause$hu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
+    /*package*/ static final SConcept TryFinallyStatement$oi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
+    /*package*/ static final SConcept TryCatchStatement$XR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+    /*package*/ static final SConcept CatchClause$Ig = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$EvoR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
+    /*package*/ static final SContainmentLink catchClause$l$PD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
   }
 }

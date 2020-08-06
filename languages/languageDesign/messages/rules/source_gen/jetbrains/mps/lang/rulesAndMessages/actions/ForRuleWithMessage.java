@@ -14,19 +14,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class ForRuleWithMessage {
   public static class NodeFactory_6990313848119162803 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.RuleWithMessage$jq)) {
-        if (SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$jq), LINKS.messageProvider$Jjr8) != null) {
-          SLinkOperations.setTarget(newNode, LINKS.messageProvider$Jjr8, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$jq), LINKS.messageProvider$Jjr8));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.RuleWithMessage$9Q)) {
+        if (SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$9Q), LINKS.messageProvider$PUh$) != null) {
+          SLinkOperations.setTarget(newNode, LINKS.messageProvider$PUh$, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.RuleWithMessage$9Q), LINKS.messageProvider$PUh$));
         }
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink messageProvider$Jjr8 = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider");
+    /*package*/ static final SContainmentLink messageProvider$PUh$ = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, 0x46263286dc0ce86L, "messageProvider");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RuleWithMessage$jq = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage");
+    /*package*/ static final SConcept RuleWithMessage$9Q = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage");
   }
 }

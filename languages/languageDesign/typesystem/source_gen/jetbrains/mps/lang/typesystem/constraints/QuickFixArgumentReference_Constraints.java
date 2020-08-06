@@ -28,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class QuickFixArgumentReference_Constraints extends BaseConstraintsDescriptor {
   public QuickFixArgumentReference_Constraints() {
-    super(CONCEPTS.QuickFixArgumentReference$zj);
+    super(CONCEPTS.QuickFixArgumentReference$P9);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.quickFixArgument$8m$P, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.quickFixArgument$xcQF, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,9 +49,9 @@ public class QuickFixArgumentReference_Constraints extends BaseConstraintsDescri
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> nodes = new ArrayList<SNode>();
-            SNode quickFix = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TypesystemQuickFix$ii, false, false);
+            SNode quickFix = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TypesystemQuickFix$$8, false, false);
             if ((quickFix != null)) {
-              ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(quickFix, LINKS.quickFixArgument$MACN)));
+              ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(quickFix, LINKS.quickFixArgument$bsUD)));
             }
             return ListScope.forResolvableElements(nodes);
           }
@@ -65,12 +65,12 @@ public class QuickFixArgumentReference_Constraints extends BaseConstraintsDescri
   private static final SNodePointer breakingNode_tpj9r2_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "6836281137582806409");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QuickFixArgumentReference$zj = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, "jetbrains.mps.lang.typesystem.structure.QuickFixArgumentReference");
-    /*package*/ static final SConcept TypesystemQuickFix$ii = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, "jetbrains.mps.lang.typesystem.structure.TypesystemQuickFix");
+    /*package*/ static final SConcept QuickFixArgumentReference$P9 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, "jetbrains.mps.lang.typesystem.structure.QuickFixArgumentReference");
+    /*package*/ static final SConcept TypesystemQuickFix$$8 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, "jetbrains.mps.lang.typesystem.structure.TypesystemQuickFix");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink quickFixArgument$8m$P = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, 0x11b3683c00aL, "quickFixArgument");
-    /*package*/ static final SContainmentLink quickFixArgument$MACN = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361ae27eL, "quickFixArgument");
+    /*package*/ static final SReferenceLink quickFixArgument$xcQF = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, 0x11b3683c00aL, "quickFixArgument");
+    /*package*/ static final SContainmentLink quickFixArgument$bsUD = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361ae27eL, "quickFixArgument");
   }
 }

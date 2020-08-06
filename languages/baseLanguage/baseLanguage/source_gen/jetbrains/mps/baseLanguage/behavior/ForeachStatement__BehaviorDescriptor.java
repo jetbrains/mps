@@ -33,7 +33,7 @@ public final class ForeachStatement__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static List<SNode> getScopeVariables_id4pl5GY7LKmA(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.variable$4Igk));
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.variable$JNH6));
   }
 
   /*package*/ ForeachStatement__BehaviorDescriptor() {
@@ -83,6 +83,6 @@ public final class ForeachStatement__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
   }
 }

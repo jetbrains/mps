@@ -52,7 +52,7 @@ public class AbstractOperationParameter_SubstituteMenu extends SubstituteMenuBas
   public class SMP_Group_6hfhq2_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.SNodeOperation$o6);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.SNodeOperation$pA);
     }
     @NotNull
     @Override
@@ -68,11 +68,11 @@ public class AbstractOperationParameter_SubstituteMenu extends SubstituteMenuBas
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_6hfhq2_a0(), CONCEPTS.AbstractOperationParameter$PJ));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_6hfhq2_a0(), CONCEPTS.AbstractOperationParameter$Rf));
     }
     public class SMP_Concepts_6hfhq2_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {
-        return (List<SConcept>) SNodeOperation__BehaviorDescriptor.getParameterConcepts_id6ALWH9fQysn.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.SNodeOperation$o6))));
+        return (List<SConcept>) SNodeOperation__BehaviorDescriptor.getParameterConcepts_id6ALWH9fQysn.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.SNodeOperation$pA))));
       }
 
       @NotNull
@@ -106,7 +106,7 @@ public class AbstractOperationParameter_SubstituteMenu extends SubstituteMenuBas
   }
   public class SMP_Subconcepts_6hfhq2_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.AbstractOperationParameter$PJ);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.AbstractOperationParameter$Rf);
     }
     @NotNull
     @Override
@@ -127,7 +127,7 @@ public class AbstractOperationParameter_SubstituteMenu extends SubstituteMenuBas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SNodeOperation$o6 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
-    /*package*/ static final SConcept AbstractOperationParameter$PJ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61b7ea2aL, "jetbrains.mps.lang.smodel.structure.AbstractOperationParameter");
+    /*package*/ static final SConcept SNodeOperation$pA = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+    /*package*/ static final SConcept AbstractOperationParameter$Rf = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61b7ea2aL, "jetbrains.mps.lang.smodel.structure.AbstractOperationParameter");
   }
 }

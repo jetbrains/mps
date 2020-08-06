@@ -33,10 +33,10 @@ public class typeof_JoinOperation_InferenceRule extends AbstractInferenceRule_Ru
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120539", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_mb39ki_a0a0c0c0b(typeCheckingContext.getRepresentative(STRING_typevar_1240688053371)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240687848904", true), false, true, _info_12389875345);
     }
-    if ((SLinkOperations.getTarget(operation, LINKS.delimiter$FOIq) != null)) {
+    if ((SLinkOperations.getTarget(operation, LINKS.delimiter$m8WH) != null)) {
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
-          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.delimiter$FOIq);
+          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.delimiter$m8WH);
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240687879037", 0, null);
           typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240687870949", true), (SNode) typeCheckingContext.getRepresentative(STRING_typevar_1240688053371), true, true, _info_12389875345);
         }
@@ -49,7 +49,7 @@ public class typeof_JoinOperation_InferenceRule extends AbstractInferenceRule_Ru
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.JoinOperation$O5;
+    return CONCEPTS.JoinOperation$2o;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -76,10 +76,10 @@ public class typeof_JoinOperation_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink delimiter$FOIq = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, 0x120debf4541L, "delimiter");
+    /*package*/ static final SContainmentLink delimiter$m8WH = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, 0x120debf4541L, "delimiter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept JoinOperation$O5 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, "jetbrains.mps.baseLanguage.collections.structure.JoinOperation");
+    /*package*/ static final SConcept JoinOperation$2o = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120debe16c6L, "jetbrains.mps.baseLanguage.collections.structure.JoinOperation");
   }
 }

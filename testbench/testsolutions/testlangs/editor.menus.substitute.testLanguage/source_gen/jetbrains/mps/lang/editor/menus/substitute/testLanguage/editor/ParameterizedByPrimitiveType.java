@@ -30,7 +30,7 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_ud82js_a(), CONCEPTS.TestConceptForMenuParameterizedByPrimitiveType$Wr));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_ud82js_a(), CONCEPTS.TestConceptForMenuParameterizedByPrimitiveType$cW));
     return result;
   }
 
@@ -102,7 +102,7 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.TestConceptForMenuParameterizedByPrimitiveType$Wr, context);
+          super(CONCEPTS.TestConceptForMenuParameterizedByPrimitiveType$cW, context);
           _context = context;
         }
 
@@ -127,7 +127,7 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.TestConceptForMenuParameterizedByPrimitiveType$Wr, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.TestConceptForMenuParameterizedByPrimitiveType$cW, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -150,6 +150,6 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestConceptForMenuParameterizedByPrimitiveType$Wr = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x75a761fb50351afbL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestConceptForMenuParameterizedByPrimitiveType");
+    /*package*/ static final SConcept TestConceptForMenuParameterizedByPrimitiveType$cW = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x75a761fb50351afbL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestConceptForMenuParameterizedByPrimitiveType");
   }
 }

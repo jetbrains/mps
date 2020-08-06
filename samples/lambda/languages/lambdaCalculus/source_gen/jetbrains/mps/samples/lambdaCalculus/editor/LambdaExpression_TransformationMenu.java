@@ -52,7 +52,7 @@ public class LambdaExpression_TransformationMenu extends TransformationMenuBase 
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.LambdaExpression$wE)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.LambdaExpression$CI)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -92,7 +92,7 @@ public class LambdaExpression_TransformationMenu extends TransformationMenuBase 
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.LambdaExpression$wE, "jetbrains.mps.samples.lambdaCalculus.editor.SideTransformMultiple");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.LambdaExpression$CI, "jetbrains.mps.samples.lambdaCalculus.editor.SideTransformMultiple");
     }
 
   }
@@ -115,7 +115,7 @@ public class LambdaExpression_TransformationMenu extends TransformationMenuBase 
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.LambdaExpression$wE, "jetbrains.mps.samples.lambdaCalculus.editor.BinaryOperations");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.LambdaExpression$CI, "jetbrains.mps.samples.lambdaCalculus.editor.BinaryOperations");
     }
 
   }
@@ -138,12 +138,12 @@ public class LambdaExpression_TransformationMenu extends TransformationMenuBase 
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.LambdaExpression$wE, "jetbrains.mps.samples.lambdaCalculus.editor.SideTransformApplication");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.LambdaExpression$CI, "jetbrains.mps.samples.lambdaCalculus.editor.SideTransformApplication");
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LambdaExpression$wE = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaExpression");
+    /*package*/ static final SConcept LambdaExpression$CI = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaExpression");
   }
 }

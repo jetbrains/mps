@@ -36,7 +36,7 @@ public final class RequiredDataDeclaration__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, final MembersPopulatingContext context, SNode classifier) {
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$LqJx)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$u92h)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         context.exposeMember(it, null);
       }
@@ -96,6 +96,6 @@ public final class RequiredDataDeclaration__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dependencies$LqJx = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x3d90e8d384845a8fL, 0x6dbdc0e8bf0bc82aL, "dependencies");
+    /*package*/ static final SContainmentLink dependencies$u92h = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x3d90e8d384845a8fL, 0x6dbdc0e8bf0bc82aL, "dependencies");
   }
 }

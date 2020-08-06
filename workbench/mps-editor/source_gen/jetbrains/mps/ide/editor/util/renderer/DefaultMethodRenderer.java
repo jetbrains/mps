@@ -20,8 +20,8 @@ public class DefaultMethodRenderer extends DefaultNodeRenderer {
   @Override
   protected String getElementText(final NodeNavigatable element) {
     SNode labelNode = getLabelNode(element);
-    if (SNodeOperations.isInstanceOf(labelNode, CONCEPTS.EnumConstantDeclaration$ma)) {
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(labelNode), CONCEPTS.EnumClass$uy)) {
+    if (SNodeOperations.isInstanceOf(labelNode, CONCEPTS.EnumConstantDeclaration$MW)) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(labelNode), CONCEPTS.EnumClass$Vk)) {
         return "Enum constant '" + labelNode.getName() + "' in " + SNodeOperations.getParent(labelNode).getPresentation();
       }
     }
@@ -35,7 +35,7 @@ public class DefaultMethodRenderer extends DefaultNodeRenderer {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
   }
 }

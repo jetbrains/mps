@@ -71,7 +71,7 @@ public class LocalMethodCall_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.LocalMethodCall$77)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.LocalMethodCall$zT)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -95,7 +95,7 @@ public class LocalMethodCall_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_lfi7em_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$ItxI), CONCEPTS.InstanceMethodDeclaration$An);
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39);
     }
 
     @NotNull
@@ -111,7 +111,7 @@ public class LocalMethodCall_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_lfi7em_a0b(), CONCEPTS.DotExpression$6a));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_lfi7em_a0b(), CONCEPTS.DotExpression$yW));
     }
     private class TMP_Action_lfi7em_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -151,13 +151,13 @@ public class LocalMethodCall_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode dot = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
-          SNode operation = SNodeFactoryOperations.createNewNode(CONCEPTS.InstanceMethodCallOperation$1G, null);
-          ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ItKJ)));
-          SLinkOperations.setTarget(operation, LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$ItxI), CONCEPTS.InstanceMethodDeclaration$An));
-          ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.typeArgument$C5i1)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeArgument$C5i1)));
-          ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.smodelAttribute$jXFL)));
-          SLinkOperations.setTarget(dot, LINKS.operation$_mGS, operation);
+          SNode dot = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$yW, null);
+          SNode operation = SNodeFactoryOperations.createNewNode(CONCEPTS.InstanceMethodCallOperation$uu, null);
+          ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$pzdx)));
+          SLinkOperations.setTarget(operation, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39));
+          ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.typeArgument$jaIN)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeArgument$jaIN)));
+          ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.smodelAttribute$KJ43)));
+          SLinkOperations.setTarget(dot, LINKS.operation$gs9E, operation);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.replaceWithAnother(_context.getNode(), dot), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -165,7 +165,7 @@ public class LocalMethodCall_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.DotExpression$6a;
+          return CONCEPTS.DotExpression$yW;
         }
 
 
@@ -176,7 +176,7 @@ public class LocalMethodCall_TransformationMenu extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.DotExpression$6a;
+          SAbstractConcept outputConcept = CONCEPTS.DotExpression$yW;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -188,17 +188,17 @@ public class LocalMethodCall_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalMethodCall$77 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept InstanceMethodCallOperation$1G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept LocalMethodCall$zT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeArgument$jaIN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

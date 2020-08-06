@@ -24,12 +24,12 @@ public class typeof_DefaultGeneratorParameter_InferenceRule extends AbstractInfe
       {
         SNode _nodeToCheck_1029348928467 = parameter;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "Type of generation parameter should be string, boolean or int", "r:6bf8c04d-71a0-4d35-a802-6419d6241f0a(jetbrains.mps.lang.generator.generationParameters.typesystem)", "5540778578667542587", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(parameter, LINKS.type$yt60), (SNode) _quotation_createNode_b7w76n_a1a0c0a0a0b(), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(parameter, LINKS.type$VpLG), (SNode) _quotation_createNode_b7w76n_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DefaultGeneratorParameter$JZ;
+    return CONCEPTS.DefaultGeneratorParameter$sv;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,10 +54,10 @@ public class typeof_DefaultGeneratorParameter_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$yt60 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283822d4L, 0x90726ff283822d5L, "type");
+    /*package*/ static final SContainmentLink type$VpLG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283822d4L, 0x90726ff283822d5L, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultGeneratorParameter$JZ = MetaAdapterFactory.getConcept(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x75bebc44281efab4L, "jetbrains.mps.lang.generator.generationParameters.structure.DefaultGeneratorParameter");
+    /*package*/ static final SConcept DefaultGeneratorParameter$sv = MetaAdapterFactory.getConcept(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x75bebc44281efab4L, "jetbrains.mps.lang.generator.generationParameters.structure.DefaultGeneratorParameter");
   }
 }

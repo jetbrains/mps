@@ -31,7 +31,7 @@ public final class Property_HasValue_Simple__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static boolean applicableToProperty_id45eRmv019Ae(@NotNull SAbstractConcept __thisConcept__, SNode datatype) {
-    return SNodeOperations.isInstanceOf(datatype, CONCEPTS.PrimitiveDataTypeDeclaration$id);
+    return SNodeOperations.isInstanceOf(datatype, CONCEPTS.PrimitiveDataTypeDeclaration$80);
   }
 
   /*package*/ Property_HasValue_Simple__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class Property_HasValue_Simple__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimitiveDataTypeDeclaration$id = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration");
+    /*package*/ static final SConcept PrimitiveDataTypeDeclaration$80 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration");
   }
 }

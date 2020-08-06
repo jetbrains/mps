@@ -14,26 +14,26 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class wrappers_PasteWrapper_16 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return CONCEPTS.AbstractCreator$CY;
+    return CONCEPTS.AbstractCreator$5K;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.Expression$TP;
+    return CONCEPTS.Expression$mB;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
-    SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.GenericNewExpression$ev, null);
-    SLinkOperations.setTarget(result, LINKS.creator$Wnha, sourceNode);
+    SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.GenericNewExpression$Fh, null);
+    SLinkOperations.setTarget(result, LINKS.creator$BsHW, sourceNode);
     return result;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractCreator$CY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL, "jetbrains.mps.baseLanguage.structure.AbstractCreator");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept GenericNewExpression$ev = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
+    /*package*/ static final SConcept AbstractCreator$5K = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL, "jetbrains.mps.baseLanguage.structure.AbstractCreator");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept GenericNewExpression$Fh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SContainmentLink creator$BsHW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
   }
 }

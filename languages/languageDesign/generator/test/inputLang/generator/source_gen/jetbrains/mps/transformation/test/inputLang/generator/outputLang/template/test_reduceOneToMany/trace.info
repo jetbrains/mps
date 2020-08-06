@@ -131,7 +131,7 @@
       <node id="1892993302480310367" at="42,103,43,80" concept="8" />
       <node id="1892993302480310367" at="43,80,44,300" concept="8" />
       <node id="1892993302480310367" at="44,300,45,20" concept="9" />
-      <node id="1892993302480310366" at="50,0,51,0" concept="11" trace="InputNode_A$Am" />
+      <node id="1892993302480310366" at="50,0,51,0" concept="11" trace="InputNode_A$Jt" />
       <node id="1892993302480310366" at="25,0,28,0" concept="1" trace="Switch_switch_InputNode_A#()V" />
       <node id="1892993302480310366" at="28,0,31,0" concept="7" trace="getSwitchNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1892993302480310366" at="31,0,34,0" concept="7" trace="getModifiesSwitch#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -273,8 +273,8 @@
       <node id="3893401255414086885" at="68,103,69,80" concept="8" />
       <node id="3893401255414086885" at="69,80,70,285" concept="8" />
       <node id="3893401255414086885" at="70,285,71,20" concept="9" />
-      <node id="3893401255414084744" at="76,0,77,0" concept="11" trace="InputNode_A$Am" />
-      <node id="3893401255414084744" at="77,0,78,0" concept="11" trace="InputRoot$eR" />
+      <node id="3893401255414084744" at="76,0,77,0" concept="11" trace="InputNode_A$Jt" />
+      <node id="3893401255414084744" at="77,0,78,0" concept="11" trace="InputRoot$nY" />
       <node id="3893401255414086883" at="45,0,48,0" concept="1" trace="ReductionRule0#()V" />
       <node id="3893401255414086885" at="60,0,63,0" concept="1" trace="RootMappingRule0#()V" />
       <node id="3893401255414084744" at="36,0,40,0" concept="7" trace="getReductionRules#()Ljava/util/Collection;" />
@@ -633,7 +633,7 @@
       <node id="8371596541809066877" at="57,103,58,80" concept="8" />
       <node id="8371596541809066877" at="58,80,59,293" concept="8" />
       <node id="8371596541809066877" at="59,293,60,20" concept="9" />
-      <node id="8371596541809066874" at="65,0,66,0" concept="11" trace="InputNode_A$Am" />
+      <node id="8371596541809066874" at="65,0,66,0" concept="11" trace="InputNode_A$Jt" />
       <node id="8371596541809066874" at="28,0,31,0" concept="1" trace="Switch_betterSwitch#()V" />
       <node id="8371596541809066874" at="31,0,34,0" concept="7" trace="getSwitchNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="8371596541809066874" at="34,0,37,0" concept="7" trace="getModifiesSwitch#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

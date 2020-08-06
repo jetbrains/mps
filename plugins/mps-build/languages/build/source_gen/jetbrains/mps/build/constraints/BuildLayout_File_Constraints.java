@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildLayout_File_Constraints extends BaseConstraintsDescriptor {
   public BuildLayout_File_Constraints() {
-    super(CONCEPTS.BuildLayout_File$dL);
+    super(CONCEPTS.BuildLayout_File$Kk);
   }
 
   @Override
@@ -38,19 +38,19 @@ public class BuildLayout_File_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (link == LINKS.parameters$lL_m) {
-      return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.BuildLayout_CopyHandler$pA);
+    if (link == LINKS.parameters$xu7T) {
+      return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.BuildLayout_CopyHandler$W9);
     }
     return true;
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:5076fdb3-19c3-4563-aa26-7ace7591e78d(jetbrains.mps.build.constraints)", "1227128029536580613");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_File$dL = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, "jetbrains.mps.build.structure.BuildLayout_File");
-    /*package*/ static final SConcept BuildLayout_CopyHandler$pA = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394dcc33L, "jetbrains.mps.build.structure.BuildLayout_CopyHandler");
+    /*package*/ static final SConcept BuildLayout_File$Kk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, "jetbrains.mps.build.structure.BuildLayout_File");
+    /*package*/ static final SConcept BuildLayout_CopyHandler$W9 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394dcc33L, "jetbrains.mps.build.structure.BuildLayout_CopyHandler");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameters$lL_m = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c126L, "parameters");
+    /*package*/ static final SContainmentLink parameters$xu7T = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c126L, "parameters");
   }
 }

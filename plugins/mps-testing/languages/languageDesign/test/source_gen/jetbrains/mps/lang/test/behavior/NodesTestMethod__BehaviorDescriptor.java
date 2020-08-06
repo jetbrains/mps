@@ -35,14 +35,14 @@ public final class NodesTestMethod__BehaviorDescriptor extends BaseBHDescriptor 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestCase_idhGBgWVd, getTestName_idhGBohAB, isMpsStartRequired_id2RMg39tmiFh);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.returnType$qrVw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
+    SLinkOperations.setTarget(__thisNode__, LINKS.returnType$5xoi, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
   }
 
   /*package*/ static SNode getTestCase_idhGBgWVd(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.NodesTestCase$7I, false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.NodesTestCase$nd, false, false);
   }
   /*package*/ static String getTestName_idhGBohAB(@NotNull SNode __thisNode__) {
-    return "test_" + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+    return "test_" + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
   /*package*/ static boolean isMpsStartRequired_id2RMg39tmiFh(@NotNull SNode __thisNode__) {
     return true;
@@ -99,14 +99,14 @@ public final class NodesTestMethod__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodesTestCase$7I = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
+    /*package*/ static final SConcept NodesTestCase$nd = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

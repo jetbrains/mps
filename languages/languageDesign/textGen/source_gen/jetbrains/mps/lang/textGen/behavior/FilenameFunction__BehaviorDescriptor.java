@@ -36,7 +36,7 @@ public final class FilenameFunction__BehaviorDescriptor extends BaseBHDescriptor
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> rv = ListSequence.fromList(new ArrayList<SConcept>());
-    ListSequence.fromList(rv).addElement(CONCEPTS.NodeParameter$eU);
+    ListSequence.fromList(rv).addElement(CONCEPTS.NodeParameter$ts);
     return rv;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -98,6 +98,6 @@ public final class FilenameFunction__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeParameter$eU = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f411d576bL, "jetbrains.mps.lang.textGen.structure.NodeParameter");
+    /*package*/ static final SConcept NodeParameter$ts = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f411d576bL, "jetbrains.mps.lang.textGen.structure.NodeParameter");
   }
 }

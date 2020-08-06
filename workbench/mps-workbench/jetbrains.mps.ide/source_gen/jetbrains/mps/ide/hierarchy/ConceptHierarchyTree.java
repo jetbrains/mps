@@ -50,13 +50,13 @@ public class ConceptHierarchyTree extends AbstractHierarchyTree {
     if (visited.contains(node)) {
       throw new CircularHierarchyException(node, "circular concept hierarchy");
     }
-    return SetSequence.fromSetWithValues(new HashSet<SNode>(), ((List<SNode>) BHReflection.invoke0(node, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("getImmediateSuperconcepts", null, "hMuxyK2"))));
+    return SetSequence.fromSetWithValues(new HashSet<SNode>(), ((List<SNode>) BHReflection.invoke0(node, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getImmediateSuperconcepts", null, "hMuxyK2"))));
   }
   @Override
   protected SNode getParent(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU)) {
-      SNode concept = SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU);
-      SNode extendsConcept = SLinkOperations.getTarget(concept, LINKS.extends$9AAt);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$gH)) {
+      SNode concept = SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH);
+      SNode extendsConcept = SLinkOperations.getTarget(concept, LINKS.extends$_Isg);
       if (extendsConcept == null && !(SNodeOperations.is(concept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))) {
         extendsConcept = SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626");
       }
@@ -94,12 +94,12 @@ public class ConceptHierarchyTree extends AbstractHierarchyTree {
     }).where(new NotNullWhereFilter<SModel>());
     Iterable<SNode> concepts = Sequence.fromIterable(structures).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$UN);
+        return SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$KA);
       }
     });
     Sequence.fromIterable(concepts).visitAll(new IVisitor<SNode>() {
       public void visit(final SNode child) {
-        List<SNode> immediate = ((List<SNode>) BHReflection.invoke0(child, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("getImmediateSuperconcepts", null, "hMuxyK2")));
+        List<SNode> immediate = ((List<SNode>) BHReflection.invoke0(child, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getImmediateSuperconcepts", null, "hMuxyK2")));
         ListSequence.fromList(immediate).visitAll(new IVisitor<SNode>() {
           public void visit(SNode parent) {
             Set<SNode> desc = MapSequence.fromMap(myChildrenCache).get(parent);
@@ -115,11 +115,11 @@ public class ConceptHierarchyTree extends AbstractHierarchyTree {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 }

@@ -39,7 +39,7 @@ public final class AddOperationsAnnotation_Intention extends AbstractIntentionDe
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$7I), node);
+    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$nd), node);
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,8 +60,8 @@ public final class AddOperationsAnnotation_Intention extends AbstractIntentionDe
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode newAnottation = SNodeFactoryOperations.createNewNode(CONCEPTS.NodeOperationsContainer$UO, null);
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO), newAnottation);
+      SNode newAnottation = SNodeFactoryOperations.createNewNode(CONCEPTS.NodeOperationsContainer$aj, null);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj), newAnottation);
       SelectionUtil.selectCell(editorContext, newAnottation, "operationCell");
     }
     @Override
@@ -71,7 +71,7 @@ public final class AddOperationsAnnotation_Intention extends AbstractIntentionDe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodesTestCase$7I = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
-    /*package*/ static final SConcept NodeOperationsContainer$UO = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
+    /*package*/ static final SConcept NodesTestCase$nd = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
+    /*package*/ static final SConcept NodeOperationsContainer$aj = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
   }
 }

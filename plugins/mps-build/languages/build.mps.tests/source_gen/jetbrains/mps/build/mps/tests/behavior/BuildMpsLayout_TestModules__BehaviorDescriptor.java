@@ -49,7 +49,7 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static boolean hasModule_id3X9rC2XzJdP(@NotNull SNode __thisNode__, final SNode module) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$31aR)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$V7vE)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) BuildMpsLayout_TestModules_Content__BehaviorDescriptor.contains_id3X9rC2XzJi8.invoke(it, module);
       }
@@ -58,7 +58,7 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     SNode project = artifacts.getProject();
     TemplateQueryContext genContext = builder.getGenContext();
-    Iterable<SNode> originalModules = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$31aR)).translate(new ITranslator2<SNode, SNode>() {
+    Iterable<SNode> originalModules = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (Iterable<SNode>) BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
       }
@@ -67,14 +67,14 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
 
     // fetch required plugins 
     ModulePlugins plugins = new ModulePlugins(project, genContext);
-    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.options$o68B), LINKS.requiredPlugins$msqO)).select(new ISelector<SNode, SNode>() {
+    List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.options$gctq), LINKS.requiredPlugins$eyJB)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.plugin$yz50);
+        return SLinkOperations.getTarget(it, LINKS.plugin$qDpN);
       }
     }).toListSequence();
     plugins.collect(designtimeClosure.getAllModules(), additionalPlugins);
     for (SNode plugin : Sequence.fromIterable(plugins.getDependency())) {
-      SNode pluginArtifact = SNodeOperations.as(artifacts.findArtifact(plugin), CONCEPTS.BuildLayout_Node$kC);
+      SNode pluginArtifact = SNodeOperations.as(artifacts.findArtifact(plugin), CONCEPTS.BuildLayout_Node$Rb);
       if (pluginArtifact != null) {
         builder.add(pluginArtifact);
       }
@@ -85,17 +85,17 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
     for (SNode m : Sequence.fromIterable(modules)) {
       SNode artifact;
       VisibleArtifacts currentArtifacts = artifacts;
-      artifact = SNodeOperations.as(currentArtifacts.findArtifact(m), CONCEPTS.BuildLayout_Node$kC);
+      artifact = SNodeOperations.as(currentArtifacts.findArtifact(m), CONCEPTS.BuildLayout_Node$Rb);
       if (artifact != null) {
         builder.add(artifact);
       }
     }
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$fB) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$iO)) {
-      SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.BuildProject$BF);
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$FZ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$Jc)) {
+      SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.BuildProject$ae);
       if (project != null) {
-        return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, kind, LINKS.parts$b06K, ((int) 0));
+        return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, kind, LINKS.parts$mGDj, ((int) 0));
       }
     }
     return null;
@@ -153,17 +153,17 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modules$31aR = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules");
-    /*package*/ static final SContainmentLink options$o68B = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x5b81705cdfb31570L, "options");
-    /*package*/ static final SContainmentLink requiredPlugins$msqO = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");
-    /*package*/ static final SReferenceLink plugin$yz50 = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
-    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink modules$V7vE = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules");
+    /*package*/ static final SContainmentLink options$gctq = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x5b81705cdfb31570L, "options");
+    /*package*/ static final SContainmentLink requiredPlugins$eyJB = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");
+    /*package*/ static final SReferenceLink plugin$qDpN = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
+    /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
-    /*package*/ static final SConcept BuildMps_Group$iO = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
-    /*package*/ static final SConcept BuildMps_AbstractModule$fB = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SConcept BuildMps_Group$Jc = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
+    /*package*/ static final SConcept BuildMps_AbstractModule$FZ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

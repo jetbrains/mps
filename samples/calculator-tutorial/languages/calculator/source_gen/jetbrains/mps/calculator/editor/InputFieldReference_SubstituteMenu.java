@@ -28,7 +28,7 @@ public class InputFieldReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_i4w2se_a(), CONCEPTS.InputFieldReference$j6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_i4w2se_a(), CONCEPTS.InputFieldReference$fQ));
     result.add(new SMP_Subconcepts_i4w2se_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class InputFieldReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_i4w2se_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.InputFieldReference$j6, LINKS.field$FzJR);
+      super((SAbstractConcept) CONCEPTS.InputFieldReference$fQ, LINKS.field$pMGB);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class InputFieldReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_i4w2se_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.InputFieldReference$j6);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.InputFieldReference$fQ);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class InputFieldReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InputFieldReference$j6 = MetaAdapterFactory.getConcept(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12107017046L, "jetbrains.mps.calculator.structure.InputFieldReference");
+    /*package*/ static final SConcept InputFieldReference$fQ = MetaAdapterFactory.getConcept(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12107017046L, "jetbrains.mps.calculator.structure.InputFieldReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink field$FzJR = MetaAdapterFactory.getReferenceLink(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12107017046L, 0x1210701c618L, "field");
+    /*package*/ static final SReferenceLink field$pMGB = MetaAdapterFactory.getReferenceLink(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627a1L, 0x12107017046L, 0x1210701c618L, "field");
   }
 }

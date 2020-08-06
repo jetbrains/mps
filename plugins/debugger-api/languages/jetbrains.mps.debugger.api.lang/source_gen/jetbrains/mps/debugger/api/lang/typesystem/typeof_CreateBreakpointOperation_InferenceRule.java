@@ -21,16 +21,16 @@ public class typeof_CreateBreakpointOperation_InferenceRule extends AbstractInfe
   }
   public void applyRule(final SNode createBreakpointOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode parent = SNodeOperations.getParent(createBreakpointOperation);
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.DotExpression$6a) && (SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5) != null)) {
+    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.DotExpression$yW) && (SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:31e73d62-e873-4ed6-bd22-16d8721ebfa3(jetbrains.mps.debugger.api.lang.typesystem)", "5365453833390548276", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:31e73d62-e873-4ed6-bd22-16d8721ebfa3(jetbrains.mps.debugger.api.lang.typesystem)", "5365453833390548258", true), (SNode) createDebuggerType_btj441_a1a0c0a0b0b(), false, false, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CreateBreakpointOperation$q$;
+    return CONCEPTS.CreateBreakpointOperation$J4;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,17 +39,17 @@ public class typeof_CreateBreakpointOperation_InferenceRule extends AbstractInfe
     return false;
   }
   private static SNode createDebuggerType_btj441_a1a0c0a0b0b() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DebuggerType$gI);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DebuggerType$_e);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept CreateBreakpointOperation$q$ = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x23a852e9c43bcae9L, "jetbrains.mps.debugger.api.lang.structure.CreateBreakpointOperation");
-    /*package*/ static final SConcept DebuggerType$gI = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, "jetbrains.mps.debugger.api.lang.structure.DebuggerType");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept CreateBreakpointOperation$J4 = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x23a852e9c43bcae9L, "jetbrains.mps.debugger.api.lang.structure.CreateBreakpointOperation");
+    /*package*/ static final SConcept DebuggerType$_e = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, "jetbrains.mps.debugger.api.lang.structure.DebuggerType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

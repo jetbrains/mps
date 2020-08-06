@@ -28,14 +28,14 @@ public class typeof_AspectModelRefExpression_InferenceRule extends AbstractInfer
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(e, LINKS.lang$Axv0);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(e, LINKS.lang$Ckyt);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:2b8cf114-de7a-440d-b955-6b0f15336c9e(jetbrains.mps.lang.slanguage.typesystem)", "6171083915388337549", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:2b8cf114-de7a-440d-b955-6b0f15336c9e(jetbrains.mps.lang.slanguage.typesystem)", "6171083915388336923", true), (SNode) _quotation_createNode_9rmjun_a1a0c0a0b0b(), true, false, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AspectModelRefExpression$2Y;
+    return CONCEPTS.AspectModelRefExpression$6r;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -58,10 +58,10 @@ public class typeof_AspectModelRefExpression_InferenceRule extends AbstractInfer
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lang$Axv0 = MetaAdapterFactory.getContainmentLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x55a418200fd9206aL, 0x55a418200fd9206bL, "lang");
+    /*package*/ static final SContainmentLink lang$Ckyt = MetaAdapterFactory.getContainmentLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x55a418200fd9206aL, 0x55a418200fd9206bL, "lang");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AspectModelRefExpression$2Y = MetaAdapterFactory.getConcept(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x55a418200fd9206aL, "jetbrains.mps.lang.slanguage.structure.AspectModelRefExpression");
+    /*package*/ static final SConcept AspectModelRefExpression$6r = MetaAdapterFactory.getConcept(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x55a418200fd9206aL, "jetbrains.mps.lang.slanguage.structure.AspectModelRefExpression");
   }
 }

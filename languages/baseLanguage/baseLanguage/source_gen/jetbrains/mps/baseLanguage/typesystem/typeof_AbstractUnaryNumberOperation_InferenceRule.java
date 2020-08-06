@@ -24,16 +24,16 @@ public class typeof_AbstractUnaryNumberOperation_InferenceRule extends AbstractI
   }
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.expression$NMtu);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.expression$uRUg);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5885703495931979621", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5885703495931979623", true), (SNode) SLinkOperations.getTarget(_quotation_createNode_3c7buy_a0b0a2a0a1(), LINKS.descriptor$F0hD), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5885703495931979623", true), (SNode) SLinkOperations.getTarget(_quotation_createNode_3c7buy_a0b0a2a0a1(), LINKS.descriptor$M2vT), false, true, _info_12389875345);
     }
     {
-      final SNode exprType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.expression$NMtu), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8115179208171660076", true);
+      final SNode exprType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.expression$uRUg), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8115179208171660076", true);
       typeCheckingContext.whenConcrete(exprType, new Runnable() {
         public void run() {
           {
-            SNode coercedNode_lpfp9b_a0b0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(exprType), CONCEPTS.PrimitiveType$5);
+            SNode coercedNode_lpfp9b_a0b0 = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(exprType), CONCEPTS.PrimitiveType$sR);
             if (coercedNode_lpfp9b_a0b0 != null) {
               {
                 SNode _nodeToCheck_1029348928467 = operation;
@@ -53,7 +53,7 @@ public class typeof_AbstractUnaryNumberOperation_InferenceRule extends AbstractI
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractUnaryNumberOperation$pk;
+    return CONCEPTS.AbstractUnaryNumberOperation$Q6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -70,12 +70,12 @@ public class typeof_AbstractUnaryNumberOperation_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
-    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SContainmentLink expression$uRUg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SReferenceLink descriptor$M2vT = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept AbstractUnaryNumberOperation$pk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, "jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept AbstractUnaryNumberOperation$Q6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, "jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation");
   }
 }

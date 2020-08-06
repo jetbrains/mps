@@ -107,9 +107,9 @@ public class AddSquareBracketsToarrayCreatorWithInitializer extends Transformati
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ArrayType$Yv, null);
-        SLinkOperations.setTarget(result, LINKS.componentType$vfw, SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.componentType$LRKz)));
-        SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(_context.getNode(), LINKS.componentType$LRKz), result);
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ArrayType$rh, null);
+        SLinkOperations.setTarget(result, LINKS.componentType$F$Gi, SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.componentType$sXdl)));
+        SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(_context.getNode(), LINKS.componentType$sXdl), result);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -134,11 +134,11 @@ public class AddSquareBracketsToarrayCreatorWithInitializer extends Transformati
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SContainmentLink componentType$LRKz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink componentType$sXdl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
   }
 }

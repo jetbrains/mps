@@ -21,11 +21,11 @@ public class typeof_GenerationContextOp_PatternRef_InferenceRule extends Abstrac
     {
       SNode _nodeToCheck_1029348928467 = generationContextOp_PatternRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "4589968773278182927", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "4589968773278182934", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(generationContextOp_PatternRef, LINKS.patternVarDecl$ymDM), "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "4589968773278182929", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "4589968773278182934", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(generationContextOp_PatternRef, LINKS.patternVarDecl$Mi3o), "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "4589968773278182929", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GenerationContextOp_NodePatternRef$s9;
+    return CONCEPTS.GenerationContextOp_NodePatternRef$PJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_GenerationContextOp_PatternRef_InferenceRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink patternVarDecl$ymDM = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x3fb2d847d55fc21eL, 0x3fb2d847d55fdcd5L, "patternVarDecl");
+    /*package*/ static final SReferenceLink patternVarDecl$Mi3o = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x3fb2d847d55fc21eL, 0x3fb2d847d55fdcd5L, "patternVarDecl");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_NodePatternRef$s9 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x3fb2d847d55fc21eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_NodePatternRef");
+    /*package*/ static final SConcept GenerationContextOp_NodePatternRef$PJ = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x3fb2d847d55fc21eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_NodePatternRef");
   }
 }

@@ -21,10 +21,10 @@ public class supertypesOf_QueueType_ClassiType_Queue_SubtypingRule extends Subty
   public supertypesOf_QueueType_ClassiType_Queue_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode queueType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_1k31p3_a0a1(SLinkOperations.getTarget(queueType, LINKS.elementType$V7ow));
+    return _quotation_createNode_1k31p3_a0a1(SLinkOperations.getTarget(queueType, LINKS.elementType$_rAN));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.QueueType$4E;
+    return CONCEPTS.QueueType$iX;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,10 +46,10 @@ public class supertypesOf_QueueType_ClassiType_Queue_SubtypingRule extends Subty
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$V7ow = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
+    /*package*/ static final SContainmentLink elementType$_rAN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueueType$4E = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf74491L, "jetbrains.mps.baseLanguage.collections.structure.QueueType");
+    /*package*/ static final SConcept QueueType$iX = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf74491L, "jetbrains.mps.baseLanguage.collections.structure.QueueType");
   }
 }

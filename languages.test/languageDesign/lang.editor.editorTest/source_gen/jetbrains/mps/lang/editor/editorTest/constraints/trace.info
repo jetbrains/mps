@@ -25,9 +25,9 @@
       <node id="2876890010454176878" at="50,131,51,42" concept="1" />
       <node id="2876890010454176877" at="51,42,52,22" concept="6" />
       <node id="2876890010454176877" at="54,0,55,0" concept="7" trace="breakingNode_eo0wxu_a0a0a0a0a1a0a0a0c" />
-      <node id="2876890010454176877" at="57,0,58,0" concept="7" trace="DelTestChildWithUsualReference$j6" />
-      <node id="2876890010454176877" at="58,0,59,0" concept="7" trace="DelTestNodeToReference$k4" />
-      <node id="2876890010454176877" at="62,0,63,0" concept="7" trace="reference$AFI4" />
+      <node id="2876890010454176877" at="57,0,58,0" concept="7" trace="DelTestChildWithUsualReference$3j" />
+      <node id="2876890010454176877" at="58,0,59,0" concept="7" trace="DelTestNodeToReference$4h" />
+      <node id="2876890010454176877" at="62,0,63,0" concept="7" trace="reference$phuh" />
       <node id="2876890010454176877" at="23,0,26,0" concept="0" trace="DelTestChildWithUsualReference_Constraints#()V" />
       <node id="2876890010454176878" at="30,0,34,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="2876890010454176878" at="38,0,42,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -73,9 +73,9 @@
       <node id="2876890010455304541" at="50,131,51,42" concept="1" />
       <node id="2876890010454177077" at="51,42,52,22" concept="6" />
       <node id="2876890010454177077" at="54,0,55,0" concept="7" trace="breakingNode_qe5jpr_a0a0a0a0a1a0a0a0c" />
-      <node id="2876890010454177077" at="57,0,58,0" concept="7" trace="DelTestChildWithSmartReference$j_" />
-      <node id="2876890010454177077" at="58,0,59,0" concept="7" trace="DelTestNodeToReference$k4" />
-      <node id="2876890010454177077" at="62,0,63,0" concept="7" trace="reference$DIGy" />
+      <node id="2876890010454177077" at="57,0,58,0" concept="7" trace="DelTestChildWithSmartReference$3M" />
+      <node id="2876890010454177077" at="58,0,59,0" concept="7" trace="DelTestNodeToReference$4h" />
+      <node id="2876890010454177077" at="62,0,63,0" concept="7" trace="reference$sksJ" />
       <node id="2876890010454177077" at="23,0,26,0" concept="0" trace="DelTestChildWithSmartReference_Constraints#()V" />
       <node id="2876890010455304541" at="30,0,34,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="2876890010455304541" at="38,0,42,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -114,8 +114,8 @@
     <file name="SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints.java">
       <node id="3568961255313560025" at="10,74,11,73" concept="8" />
       <node id="3568961255313560025" at="15,47,16,61" concept="6" />
-      <node id="3568961255313560025" at="20,0,21,0" concept="7" trace="SubstTestAbstractChild_WithDefaultConcreteConcept$Ap" />
-      <node id="3568961255313560025" at="21,0,22,0" concept="7" trace="SubstTestChild_DefaultConcreteConcept$1e" />
+      <node id="3568961255313560025" at="20,0,21,0" concept="7" trace="SubstTestAbstractChild_WithDefaultConcreteConcept$mA" />
+      <node id="3568961255313560025" at="21,0,22,0" concept="7" trace="SubstTestChild_DefaultConcreteConcept$Lr" />
       <node id="3568961255313560025" at="10,0,13,0" concept="0" trace="SubstTestAbstractChild_WithDefaultConcreteConcept_Constraints#()V" />
       <node id="3568961255313560025" at="14,0,18,0" concept="4" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <scope id="3568961255313560025" at="10,74,11,73" />
@@ -137,9 +137,9 @@
       <node id="4151313971380533696" at="50,131,51,42" concept="1" />
       <node id="4151313971380533695" at="51,42,52,22" concept="6" />
       <node id="4151313971380533695" at="54,0,55,0" concept="7" trace="breakingNode_plqm49_a0a0a0a0a1a0a0a0c" />
-      <node id="4151313971380533695" at="57,0,58,0" concept="7" trace="SmartCompletionSimpleRef$IM" />
-      <node id="4151313971380533695" at="58,0,59,0" concept="7" trace="SmartCompletionChildToRef$aO" />
-      <node id="4151313971380533695" at="62,0,63,0" concept="7" trace="reference$LRp0" />
+      <node id="4151313971380533695" at="57,0,58,0" concept="7" trace="SmartCompletionSimpleRef$uZ" />
+      <node id="4151313971380533695" at="58,0,59,0" concept="7" trace="SmartCompletionChildToRef$V1" />
+      <node id="4151313971380533695" at="62,0,63,0" concept="7" trace="reference$$t9d" />
       <node id="4151313971380533695" at="23,0,26,0" concept="0" trace="SmartCompletionSimpleRef_Constraints#()V" />
       <node id="4151313971380533696" at="30,0,34,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="4151313971380533696" at="38,0,42,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -186,10 +186,10 @@
       <node id="4965160547087600887" at="62,131,63,42" concept="1" />
       <node id="4965160547087600886" at="63,42,64,22" concept="6" />
       <node id="4965160547087600886" at="66,0,67,0" concept="7" trace="breakingNode_9n3scc_a0a0a0a0a1a0a0a0c" />
-      <node id="4965160547087600886" at="69,0,70,0" concept="7" trace="NotEditableVarableReference$fC" />
-      <node id="4965160547087600886" at="70,0,71,0" concept="7" trace="VariableDeclarationBlock$uo" />
-      <node id="4965160547087600886" at="71,0,72,0" concept="7" trace="TestBlockList$U1" />
-      <node id="4965160547087600886" at="75,0,76,0" concept="7" trace="variableDeclaration$47O0" />
+      <node id="4965160547087600886" at="69,0,70,0" concept="7" trace="NotEditableVarableReference$ZP" />
+      <node id="4965160547087600886" at="70,0,71,0" concept="7" trace="VariableDeclarationBlock$e_" />
+      <node id="4965160547087600886" at="71,0,72,0" concept="7" trace="TestBlockList$Ee" />
+      <node id="4965160547087600886" at="75,0,76,0" concept="7" trace="variableDeclaration$QH$d" />
       <node id="4965160547087600886" at="28,0,31,0" concept="0" trace="NotEditableVarableReference_Constraints#()V" />
       <node id="6836281137582842940" at="51,93,54,17" concept="3" />
       <node id="4965160547087600887" at="35,0,39,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -239,7 +239,7 @@
   <root nodeRef="r:94b1feee-20bf-48e9-9677-814a5fdcaf90(jetbrains.mps.lang.editor.editorTest.constraints)/6999890265143364697">
     <file name="SmartCompletionParent_Constraints.java">
       <node id="6999890265143364697" at="10,46,11,45" concept="8" />
-      <node id="6999890265143364697" at="15,0,16,0" concept="7" trace="SmartCompletionParent$8p" />
+      <node id="6999890265143364697" at="15,0,16,0" concept="7" trace="SmartCompletionParent$SA" />
       <node id="6999890265143364697" at="10,0,13,0" concept="0" trace="SmartCompletionParent_Constraints#()V" />
       <scope id="6999890265143364697" at="10,46,11,45" />
       <scope id="6999890265143364697" at="10,0,13,0" />
@@ -258,9 +258,9 @@
       <node id="6999890265143364728" at="50,131,51,42" concept="1" />
       <node id="6999890265143364727" at="51,42,52,22" concept="6" />
       <node id="6999890265143364727" at="54,0,55,0" concept="7" trace="breakingNode_8q4a7n_a0a0a0a0a1a0a0a0c" />
-      <node id="6999890265143364727" at="57,0,58,0" concept="7" trace="SmartCompletionSmartRef$BV" />
-      <node id="6999890265143364727" at="58,0,59,0" concept="7" trace="SmartCompletionChildToRef$aO" />
-      <node id="6999890265143364727" at="62,0,63,0" concept="7" trace="reference$tkry" />
+      <node id="6999890265143364727" at="57,0,58,0" concept="7" trace="SmartCompletionSmartRef$o8" />
+      <node id="6999890265143364727" at="58,0,59,0" concept="7" trace="SmartCompletionChildToRef$V1" />
+      <node id="6999890265143364727" at="62,0,63,0" concept="7" trace="reference$fUbJ" />
       <node id="6999890265143364727" at="23,0,26,0" concept="0" trace="SmartCompletionSmartRef_Constraints#()V" />
       <node id="6999890265143364728" at="30,0,34,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="6999890265143364728" at="38,0,42,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -307,10 +307,10 @@
       <node id="2340678293597344725" at="62,131,63,42" concept="1" />
       <node id="7428162988805013921" at="63,42,64,22" concept="6" />
       <node id="7428162988805013921" at="66,0,67,0" concept="7" trace="breakingNode_98f22q_a0a0a0a0a1a0a0a0c" />
-      <node id="7428162988805013921" at="69,0,70,0" concept="7" trace="VariableDeclarationReference$8A" />
-      <node id="7428162988805013921" at="70,0,71,0" concept="7" trace="VariableDeclarationBlock$uo" />
-      <node id="7428162988805013921" at="71,0,72,0" concept="7" trace="TestBlockList$U1" />
-      <node id="7428162988805013921" at="75,0,76,0" concept="7" trace="var$F$j0" />
+      <node id="7428162988805013921" at="69,0,70,0" concept="7" trace="VariableDeclarationReference$SN" />
+      <node id="7428162988805013921" at="70,0,71,0" concept="7" trace="VariableDeclarationBlock$e_" />
+      <node id="7428162988805013921" at="71,0,72,0" concept="7" trace="TestBlockList$Ee" />
+      <node id="7428162988805013921" at="75,0,76,0" concept="7" trace="var$ua3d" />
       <node id="7428162988805013921" at="28,0,31,0" concept="0" trace="VariableDeclarationReference_Constraints#()V" />
       <node id="6836281137582842810" at="51,93,54,17" concept="3" />
       <node id="2340678293597344725" at="35,0,39,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -361,8 +361,8 @@
     <file name="Container_Constraints.java">
       <node id="7789927720474629546" at="10,34,11,33" concept="8" />
       <node id="7789927720474629546" at="15,47,16,43" concept="6" />
-      <node id="7789927720474629546" at="20,0,21,0" concept="7" trace="Container$tb" />
-      <node id="7789927720474629546" at="21,0,22,0" concept="7" trace="SelectableContainer$ix" />
+      <node id="7789927720474629546" at="20,0,21,0" concept="7" trace="Container$do" />
+      <node id="7789927720474629546" at="21,0,22,0" concept="7" trace="SelectableContainer$2I" />
       <node id="7789927720474629546" at="10,0,13,0" concept="0" trace="Container_Constraints#()V" />
       <node id="7789927720474629546" at="14,0,18,0" concept="4" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <scope id="7789927720474629546" at="10,34,11,33" />

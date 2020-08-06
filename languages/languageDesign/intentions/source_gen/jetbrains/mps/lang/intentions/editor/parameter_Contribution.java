@@ -29,7 +29,7 @@ public class parameter_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_bxx1tv_a(), CONCEPTS.IntentionParameter$Xf));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_bxx1tv_a(), CONCEPTS.IntentionParameter$HG));
     return result;
   }
 
@@ -49,11 +49,11 @@ public class parameter_Contribution extends SubstituteMenuBase {
   public class SMP_Concepts_bxx1tv_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(SubstituteMenuContext _context) {
       List<SConcept> parameters = ListSequence.fromList(new ArrayList<SConcept>());
-      boolean inParInt = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ParameterizedIntentionDeclaration$68, false, false) != null;
-      boolean notInApplicable = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.IsApplicableBlock$7$, false, false) == null;
-      boolean notInChildFilterBlock = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ChildFilterFunction$E8, false, false) == null;
+      boolean inParInt = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ParameterizedIntentionDeclaration$Q_, false, false) != null;
+      boolean notInApplicable = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.IsApplicableBlock$S1, false, false) == null;
+      boolean notInChildFilterBlock = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ChildFilterFunction$q_, false, false) == null;
       if (inParInt && notInApplicable && notInChildFilterBlock) {
-        ListSequence.fromList(parameters).addElement(CONCEPTS.IntentionParameter$Xf);
+        ListSequence.fromList(parameters).addElement(CONCEPTS.IntentionParameter$HG);
       }
       return parameters;
     }
@@ -88,9 +88,9 @@ public class parameter_Contribution extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IntentionParameter$Xf = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c8fd57fbL, "jetbrains.mps.lang.intentions.structure.IntentionParameter");
-    /*package*/ static final SConcept ParameterizedIntentionDeclaration$68 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120cd519c2dL, "jetbrains.mps.lang.intentions.structure.ParameterizedIntentionDeclaration");
-    /*package*/ static final SConcept IsApplicableBlock$7$ = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b82b10f5L, "jetbrains.mps.lang.intentions.structure.IsApplicableBlock");
-    /*package*/ static final SConcept ChildFilterFunction$E8 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c1bbL, "jetbrains.mps.lang.intentions.structure.ChildFilterFunction");
+    /*package*/ static final SConcept IntentionParameter$HG = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c8fd57fbL, "jetbrains.mps.lang.intentions.structure.IntentionParameter");
+    /*package*/ static final SConcept ParameterizedIntentionDeclaration$Q_ = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120cd519c2dL, "jetbrains.mps.lang.intentions.structure.ParameterizedIntentionDeclaration");
+    /*package*/ static final SConcept IsApplicableBlock$S1 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b82b10f5L, "jetbrains.mps.lang.intentions.structure.IsApplicableBlock");
+    /*package*/ static final SConcept ChildFilterFunction$q_ = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c1bbL, "jetbrains.mps.lang.intentions.structure.ChildFilterFunction");
   }
 }

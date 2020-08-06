@@ -51,7 +51,7 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
       public void run() {
         result.value = ListSequence.fromList(target).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$UN) || SNodeOperations.isInstanceOf(it, CONCEPTS.DataTypeDeclaration$KQ);
+            return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA) || SNodeOperations.isInstanceOf(it, CONCEPTS.DataTypeDeclaration$AD);
           }
         });
       }
@@ -59,8 +59,8 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
     return result.value;
   }
   public void execute(final MPSProject project, List<SNode> nodesToMove) {
-    final List<SNode> conceptsToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.AbstractConceptDeclaration$UN)).toListSequence();
-    final List<SNode> datatypesToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.DataTypeDeclaration$KQ)).toListSequence();
+    final List<SNode> conceptsToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.AbstractConceptDeclaration$KA)).toListSequence();
+    final List<SNode> datatypesToMove = Sequence.fromIterable(SNodeOperations.ofConcept(nodesToMove, CONCEPTS.DataTypeDeclaration$AD)).toListSequence();
 
     String name = chooseName(conceptsToMove, datatypesToMove);
 
@@ -131,7 +131,7 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DataTypeDeclaration$KQ = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept DataTypeDeclaration$AD = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

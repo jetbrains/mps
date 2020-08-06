@@ -32,11 +32,11 @@ public final class ITestAnnotationsContainer__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static boolean canAddTestAnnotation_id143xXLdhXGe(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    SNode container = SNodeOperations.getNodeAncestor(node, CONCEPTS.ITestAnnotationsContainer$pG, true, false);
+    SNode container = SNodeOperations.getNodeAncestor(node, CONCEPTS.ITestAnnotationsContainer$Db, true, false);
     if ((container == null)) {
       return false;
     }
-    return (boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdi1EE.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.ITestAnnotationsContainer$pG, true, false), node);
+    return (boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdi1EE.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.ITestAnnotationsContainer$Db, true, false), node);
   }
 
   /*package*/ ITestAnnotationsContainer__BehaviorDescriptor() {
@@ -86,6 +86,6 @@ public final class ITestAnnotationsContainer__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITestAnnotationsContainer$pG = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x110387dc4d47c93dL, "jetbrains.mps.lang.test.structure.ITestAnnotationsContainer");
+    /*package*/ static final SInterfaceConcept ITestAnnotationsContainer$Db = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x110387dc4d47c93dL, "jetbrains.mps.lang.test.structure.ITestAnnotationsContainer");
   }
 }

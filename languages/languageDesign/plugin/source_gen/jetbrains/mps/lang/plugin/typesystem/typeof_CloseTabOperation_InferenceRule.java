@@ -22,7 +22,7 @@ public class typeof_CloseTabOperation_InferenceRule extends AbstractInferenceRul
   }
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.componentExpression$zaGB);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.componentExpression$KJDE);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5818192529492111961", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5818192529492111967", true), (SNode) _quotation_createNode_9bbjh5_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -33,7 +33,7 @@ public class typeof_CloseTabOperation_InferenceRule extends AbstractInferenceRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CloseTabOperation$ui;
+    return CONCEPTS.CloseTabOperation$rl;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,10 +56,10 @@ public class typeof_CloseTabOperation_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentExpression$zaGB = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x50be5f478b3541f2L, 0x50be5f478b354bdcL, "componentExpression");
+    /*package*/ static final SContainmentLink componentExpression$KJDE = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x50be5f478b3541f2L, 0x50be5f478b354bdcL, "componentExpression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CloseTabOperation$ui = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x50be5f478b3541f2L, "jetbrains.mps.lang.plugin.structure.CloseTabOperation");
+    /*package*/ static final SConcept CloseTabOperation$rl = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x50be5f478b3541f2L, "jetbrains.mps.lang.plugin.structure.CloseTabOperation");
   }
 }

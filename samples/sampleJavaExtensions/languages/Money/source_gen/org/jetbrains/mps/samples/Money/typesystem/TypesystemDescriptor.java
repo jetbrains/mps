@@ -44,12 +44,12 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       SubtypingRule_Runtime subtypingRule = new Money_extends_java_lang_Object_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
-    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(CONCEPTS.GreaterThanExpression$wR));
-    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(CONCEPTS.GreaterThanOrEqualsExpression$n9));
-    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(CONCEPTS.LessThanExpression$kw));
-    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(CONCEPTS.LessThanOrEqualsExpression$Rc));
-    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_a(CONCEPTS.MinusExpression$E9));
-    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_a(CONCEPTS.PlusExpression$Re));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(CONCEPTS.GreaterThanExpression$XD));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(CONCEPTS.GreaterThanOrEqualsExpression$NV));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(CONCEPTS.LessThanExpression$Li));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_b(CONCEPTS.LessThanOrEqualsExpression$jY));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_a(CONCEPTS.MinusExpression$6V));
+    this.myOverloadedOperationsTypesProviders.add(new CustomOverloadedOperationsTypesProvider_a(CONCEPTS.PlusExpression$k0));
   }
   public static class CustomOverloadedOperationsTypesProvider_b extends OverloadedOperationsTypesProvider {
     public CustomOverloadedOperationsTypesProvider_b(SAbstractConcept concept) {
@@ -129,11 +129,11 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GreaterThanExpression$wR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced38fcfL, "jetbrains.mps.baseLanguage.structure.GreaterThanExpression");
-    /*package*/ static final SConcept GreaterThanOrEqualsExpression$n9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d0fac2cL, "jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression");
-    /*package*/ static final SConcept LessThanExpression$kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced3b82aL, "jetbrains.mps.baseLanguage.structure.LessThanExpression");
-    /*package*/ static final SConcept LessThanOrEqualsExpression$Rc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d53a915L, "jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression");
-    /*package*/ static final SConcept MinusExpression$E9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f5L, "jetbrains.mps.baseLanguage.structure.MinusExpression");
-    /*package*/ static final SConcept PlusExpression$Re = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression");
+    /*package*/ static final SConcept GreaterThanExpression$XD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced38fcfL, "jetbrains.mps.baseLanguage.structure.GreaterThanExpression");
+    /*package*/ static final SConcept GreaterThanOrEqualsExpression$NV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d0fac2cL, "jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression");
+    /*package*/ static final SConcept LessThanExpression$Li = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced3b82aL, "jetbrains.mps.baseLanguage.structure.LessThanExpression");
+    /*package*/ static final SConcept LessThanOrEqualsExpression$jY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d53a915L, "jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression");
+    /*package*/ static final SConcept MinusExpression$6V = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f5L, "jetbrains.mps.baseLanguage.structure.MinusExpression");
+    /*package*/ static final SConcept PlusExpression$k0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression");
   }
 }

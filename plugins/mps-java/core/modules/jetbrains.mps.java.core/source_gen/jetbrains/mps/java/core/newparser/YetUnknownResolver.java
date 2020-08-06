@@ -112,11 +112,11 @@ public class YetUnknownResolver {
     progress.start("Ambiguous concepts...", Sequence.fromIterable(roots).count());
     myResolutionMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
     for (SNode node : Sequence.fromIterable(roots)) {
-      progress.step((SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV) ? ("node: " + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v)) : ""));
-      List<SNode> unknowns = SNodeOperations.getNodeDescendants(node, CONCEPTS.IYetUnresolved$Oi, false, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$Oi});
+      progress.step((SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd) ? ("node: " + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)) : ""));
+      List<SNode> unknowns = SNodeOperations.getNodeDescendants(node, CONCEPTS.IYetUnresolved$h4, false, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$h4});
       for (SNode unk : ListSequence.fromList(unknowns)) {
         final SNode unkNode = unk;
-        final _FunctionTypes._return_P0_E0<? extends SNode> subst = ((_FunctionTypes._return_P0_E0<? extends SNode>) BHReflection.invoke0(unk, CONCEPTS.IYetUnresolved$Oi, SMethodTrimmedId.create("evaluateSubst", null, "73E7sj5sxxG")));
+        final _FunctionTypes._return_P0_E0<? extends SNode> subst = ((_FunctionTypes._return_P0_E0<? extends SNode>) BHReflection.invoke0(unk, CONCEPTS.IYetUnresolved$h4, SMethodTrimmedId.create("evaluateSubst", null, "73E7sj5sxxG")));
         if (subst == null) {
           continue;
         }
@@ -173,11 +173,11 @@ public class YetUnknownResolver {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SInterfaceConcept IYetUnresolved$Oi = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70ea1dc4c5721865L, "jetbrains.mps.baseLanguage.structure.IYetUnresolved");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept IYetUnresolved$h4 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70ea1dc4c5721865L, "jetbrains.mps.baseLanguage.structure.IYetUnresolved");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

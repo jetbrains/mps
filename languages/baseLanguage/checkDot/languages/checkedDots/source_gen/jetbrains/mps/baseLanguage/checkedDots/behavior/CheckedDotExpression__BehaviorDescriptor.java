@@ -37,12 +37,12 @@ public final class CheckedDotExpression__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static boolean hasLocalContextInside_id3bYdGv2TyNM(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.ThisExpression$7A, false, new SAbstractConcept[]{})).isNotEmpty()) {
+    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.ThisExpression$$o, false, new SAbstractConcept[]{})).isNotEmpty()) {
       return true;
     }
-    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.LocalMethodCall$77, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$ItxI), CONCEPTS.InstanceMethodDeclaration$An);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39);
       }
     }).isNotEmpty()) {
       return true;
@@ -108,12 +108,12 @@ public final class CheckedDotExpression__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ThisExpression$7A = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
-    /*package*/ static final SConcept LocalMethodCall$77 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept ThisExpression$$o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
+    /*package*/ static final SConcept LocalMethodCall$zT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

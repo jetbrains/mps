@@ -26,21 +26,21 @@ public class RoutineUniqueness_NonTypesystemRule extends AbstractNonTypesystemRu
   public RoutineUniqueness_NonTypesystemRule() {
   }
   public void applyRule(final SNode routineDefinition, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getString(routineDefinition, PROPS.name$lA7v) == null) {
+    if (SPropertyOperations.getString(routineDefinition, PROPS.name$MnvL) == null) {
       return;
     }
     Iterable<SNode> defs;
-    SNode parentScript = SNodeOperations.getNodeAncestor(routineDefinition, CONCEPTS.Script$1X, false, false);
+    SNode parentScript = SNodeOperations.getNodeAncestor(routineDefinition, CONCEPTS.Script$FS, false, false);
     if (parentScript != null) {
-      defs = ListSequence.fromList(SNodeOperations.getNodeDescendants(parentScript, CONCEPTS.RoutineDefinition$2l, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      defs = ListSequence.fromList(SNodeOperations.getNodeDescendants(parentScript, CONCEPTS.RoutineDefinition$Gg, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getString(routineDefinition, PROPS.name$lA7v).equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
+          return SPropertyOperations.getString(routineDefinition, PROPS.name$MnvL).equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
         }
       });
     } else {
-      defs = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(routineDefinition, CONCEPTS.Library$IO, false, false), LINKS.definitions$Tnq0)).where(new IWhereFilter<SNode>() {
+      defs = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(routineDefinition, CONCEPTS.Library$oJ, false, false), LINKS.definitions$K53V)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getString(routineDefinition, PROPS.name$lA7v).equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
+          return SPropertyOperations.getString(routineDefinition, PROPS.name$MnvL).equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
         }
       });
     }
@@ -52,7 +52,7 @@ public class RoutineUniqueness_NonTypesystemRule extends AbstractNonTypesystemRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RoutineDefinition$2l;
+    return CONCEPTS.RoutineDefinition$Gg;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -62,16 +62,16 @@ public class RoutineUniqueness_NonTypesystemRule extends AbstractNonTypesystemRu
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Script$1X = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
-    /*package*/ static final SConcept RoutineDefinition$2l = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition");
-    /*package*/ static final SConcept Library$IO = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
+    /*package*/ static final SConcept Script$FS = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
+    /*package*/ static final SConcept RoutineDefinition$Gg = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition");
+    /*package*/ static final SConcept Library$oJ = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink definitions$Tnq0 = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, 0x3cfcda239f19d317L, "definitions");
+    /*package*/ static final SContainmentLink definitions$K53V = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, 0x3cfcda239f19d317L, "definitions");
   }
 }

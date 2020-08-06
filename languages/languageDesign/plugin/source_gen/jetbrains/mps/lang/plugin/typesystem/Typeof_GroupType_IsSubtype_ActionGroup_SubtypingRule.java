@@ -21,7 +21,7 @@ public class Typeof_GroupType_IsSubtype_ActionGroup_SubtypingRule extends Subtyp
     return _quotation_createNode_o1uhq5_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GroupType$bu;
+    return CONCEPTS.GroupType$8x;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class Typeof_GroupType_IsSubtype_ActionGroup_SubtypingRule extends Subtyp
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GroupType$bu = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119240f9168L, "jetbrains.mps.lang.plugin.structure.GroupType");
+    /*package*/ static final SConcept GroupType$8x = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119240f9168L, "jetbrains.mps.lang.plugin.structure.GroupType");
   }
 }

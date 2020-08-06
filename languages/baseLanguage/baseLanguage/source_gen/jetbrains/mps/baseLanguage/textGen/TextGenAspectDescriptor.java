@@ -333,25 +333,25 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public void breakdownToUnits(@NotNull TextGenModelOutline outline) {
     for (SNode root : outline.getModel().getRootNodes()) {
-      if (root.getConcept().equals(CONCEPTS.Annotation$Os)) {
+      if (root.getConcept().equals(CONCEPTS.Annotation$he)) {
         String fname = getFileName_Annotation(root);
         String ext = getFileExtension_Annotation(root);
         outline.registerTextUnit(createTextUnit0((ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
-      if (root.getConcept().equals(CONCEPTS.ClassConcept$IY)) {
+      if (root.getConcept().equals(CONCEPTS.ClassConcept$bK)) {
         String fname = getFileName_ClassConcept(root);
         String ext = getFileExtension_ClassConcept(root);
         outline.registerTextUnit(createTextUnit1((ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
-      if (root.getConcept().equals(CONCEPTS.Interface$Kp)) {
+      if (root.getConcept().equals(CONCEPTS.Interface$db)) {
         String fname = getFileName_Interface(root);
         String ext = getFileExtension_Interface(root);
         outline.registerTextUnit(createTextUnit2((ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
-      if (root.getConcept().equals(CONCEPTS.EnumClass$uy)) {
+      if (root.getConcept().equals(CONCEPTS.EnumClass$Vk)) {
         String fname = getFileName_EnumClass(root);
         String ext = getFileExtension_EnumClass(root);
         outline.registerTextUnit(createTextUnit3((ext == null ? fname : (fname + '.' + ext)), root));
@@ -384,26 +384,26 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return "java";
   }
   private static String getPath_Annotation(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$FYwD))) {
-      return SPropertyOperations.getString(node, PROPS.packageName$FYwD).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$n3Xr))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$n3Xr).replace('.', '/');
     }
     return null;
   }
   private static String getPath_ClassConcept(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$FYwD))) {
-      return SPropertyOperations.getString(node, PROPS.packageName$FYwD).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$n3Xr))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$n3Xr).replace('.', '/');
     }
     return null;
   }
   private static String getPath_Interface(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$FYwD))) {
-      return SPropertyOperations.getString(node, PROPS.packageName$FYwD).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$n3Xr))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$n3Xr).replace('.', '/');
     }
     return null;
   }
   private static String getPath_EnumClass(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$FYwD))) {
-      return SPropertyOperations.getString(node, PROPS.packageName$FYwD).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$n3Xr))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$n3Xr).replace('.', '/');
     }
     return null;
   }
@@ -460,13 +460,13 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Annotation$Os = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept Annotation$he = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty packageName$FYwD = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x26be0cf68be19d69L, "packageName");
+    /*package*/ static final SProperty packageName$n3Xr = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x26be0cf68be19d69L, "packageName");
   }
 }

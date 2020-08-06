@@ -30,7 +30,7 @@ public class typeof_Node_IsOperation_InferenceRule extends AbstractInferenceRule
     }
 
     // checking 
-    SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(SLinkOperations.getTarget(op, LINKS.ref$YgpX), SNodeOperations.getModel(op).getRepository());
+    SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(SLinkOperations.getTarget(op, LINKS.ref$yDrt), SNodeOperations.getModel(op).getRepository());
     SNode targetConcept = RulesUtil.closestConceptNode(SNodeOperations.getConcept(target));
 
     final SNode ExpectedType_typevar_3661776679762944983 = typeCheckingContext.createNewRuntimeTypesVariable();
@@ -42,7 +42,7 @@ public class typeof_Node_IsOperation_InferenceRule extends AbstractInferenceRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Node_IsOperation$IL;
+    return CONCEPTS.Node_IsOperation$Kh;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -65,10 +65,10 @@ public class typeof_Node_IsOperation_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ref$YgpX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32d13e7d44145b36L, 0x32d13e7d44145b8cL, "ref");
+    /*package*/ static final SContainmentLink ref$yDrt = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32d13e7d44145b36L, 0x32d13e7d44145b8cL, "ref");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_IsOperation$IL = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32d13e7d44145b36L, "jetbrains.mps.lang.smodel.structure.Node_IsOperation");
+    /*package*/ static final SConcept Node_IsOperation$Kh = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32d13e7d44145b36L, "jetbrains.mps.lang.smodel.structure.Node_IsOperation");
   }
 }

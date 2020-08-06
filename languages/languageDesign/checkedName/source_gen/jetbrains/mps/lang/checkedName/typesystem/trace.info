@@ -23,7 +23,7 @@
       <node id="5003188907305524502" at="19,44,20,31" concept="8" />
       <node id="1628770029971140620" at="23,169,24,141" concept="3" />
       <node id="6646313797834340396" at="26,180,27,158" concept="3" />
-      <node id="1628770029971140613" at="32,0,33,0" concept="9" trace="value$P2m0" />
+      <node id="1628770029971140613" at="32,0,33,0" concept="9" trace="value$w7MM" />
       <node id="1628770029971140613" at="16,0,19,0" concept="1" trace="FixNamingPolicy_QuickFix#()V" />
       <node id="1628770029971140613" at="19,0,22,0" concept="6" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1628770029971140618" at="22,35,25,5" concept="4" />
@@ -56,7 +56,7 @@
       <node id="1628770029971140674" at="14,50,15,136" concept="11" />
       <node id="1628770029971140693" at="17,44,18,88" concept="8" />
       <node id="1628770029971140681" at="20,35,21,287" concept="3" />
-      <node id="1628770029971140674" at="25,0,26,0" concept="9" trace="value$P2m0" />
+      <node id="1628770029971140674" at="25,0,26,0" concept="9" trace="value$w7MM" />
       <node id="1628770029971140674" at="14,0,17,0" concept="1" trace="FixNamingPolicy_literal_once_QuickFix#()V" />
       <node id="1628770029971140674" at="17,0,20,0" concept="6" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="1628770029971140674" at="20,0,23,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -106,7 +106,7 @@
       <node id="3232030656011774138" at="35,63,36,30" concept="7" />
       <node id="3232030656011774138" at="36,30,37,244" concept="3" />
       <node id="3232030656011774138" at="37,244,38,24" concept="8" />
-      <node id="3232030656011773985" at="42,0,43,0" concept="9" trace="PropertyPointerType$EW" />
+      <node id="3232030656011773985" at="42,0,43,0" concept="9" trace="PropertyPointerType$Jt" />
       <node id="3232030656011773985" at="17,0,19,0" concept="1" trace="PropertyPointer_supertypes_SubtypingRule#()V" />
       <node id="3232030656011773985" at="19,0,22,0" concept="6" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3232030656011773985" at="22,0,25,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -184,8 +184,8 @@
       <node id="4844813484172611479" at="73,50,74,42" concept="8" />
       <node id="4844813484172611479" at="76,68,77,102" concept="8" />
       <node id="4844813484172611479" at="79,30,80,17" concept="8" />
-      <node id="4844813484172611479" at="84,0,85,0" concept="9" trace="value$P2m0" />
-      <node id="4844813484172611479" at="88,0,89,0" concept="9" trace="ICheckedNamePolicy$3m" />
+      <node id="4844813484172611479" at="84,0,85,0" concept="9" trace="value$w7MM" />
+      <node id="4844813484172611479" at="88,0,89,0" concept="9" trace="ICheckedNamePolicy$7R" />
       <node id="4844813484172611479" at="25,0,27,0" concept="1" trace="check_NamingPolicy_NonTypesystemRule#()V" />
       <node id="4844813484172611523" at="49,120,52,7" concept="5" />
       <node id="4844813484172611479" at="73,0,76,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -280,8 +280,8 @@
       <node id="4844813484172611585" at="41,63,42,30" concept="7" />
       <node id="4844813484172611585" at="42,30,43,228" concept="3" />
       <node id="4844813484172611585" at="43,228,44,24" concept="8" />
-      <node id="4844813484172611581" at="48,0,49,0" concept="9" trace="nodeExpr$kxUw" />
-      <node id="4844813484172611581" at="52,0,53,0" concept="9" trace="PropertyRefExpression$3P" />
+      <node id="4844813484172611581" at="48,0,49,0" concept="9" trace="nodeExpr$KLZ1" />
+      <node id="4844813484172611581" at="52,0,53,0" concept="9" trace="PropertyRefExpression$8m" />
       <node id="4844813484172611581" at="20,0,22,0" concept="1" trace="typeof_PropertyRefExpression_InferenceRule#()V" />
       <node id="4844813484172611581" at="31,0,34,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4844813484172611581" at="34,0,37,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -342,9 +342,9 @@
       <node id="3232030656011891697" at="41,30,42,248" concept="3" />
       <node id="3232030656011891697" at="42,248,43,207" concept="3" />
       <node id="3232030656011891697" at="43,207,44,24" concept="8" />
-      <node id="4844813484172611593" at="48,0,49,0" concept="9" trace="propertyDeclaration$ky9x" />
-      <node id="4844813484172611593" at="49,0,50,0" concept="9" trace="dataType$Dbgb" />
-      <node id="4844813484172611593" at="53,0,54,0" concept="9" trace="PropertyRefExpression$3P" />
+      <node id="4844813484172611593" at="48,0,49,0" concept="9" trace="propertyDeclaration$KMe2" />
+      <node id="4844813484172611593" at="49,0,50,0" concept="9" trace="dataType$5j5Y" />
+      <node id="4844813484172611593" at="53,0,54,0" concept="9" trace="PropertyRefExpression$8m" />
       <node id="4844813484172611593" at="21,0,23,0" concept="1" trace="typeof_PropertyRefExpression_PropertyRefType_InferenceRule#()V" />
       <node id="4844813484172611593" at="30,0,33,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4844813484172611593" at="33,0,36,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -408,7 +408,7 @@
       <node id="6646313797834455180" at="44,30,45,248" concept="3" />
       <node id="6646313797834455180" at="45,248,46,473" concept="3" />
       <node id="6646313797834455180" at="46,473,47,24" concept="8" />
-      <node id="4844813484172611604" at="51,0,52,0" concept="9" trace="PropertyRefType$gr" />
+      <node id="4844813484172611604" at="51,0,52,0" concept="9" trace="PropertyRefType$kW" />
       <node id="4844813484172611604" at="21,0,23,0" concept="1" trace="typeof_PropertyRefType_isSubtype_PropertyRef_SubtypingRule#()V" />
       <node id="4844813484172611604" at="23,0,26,0" concept="6" trace="getSubOrSuperTypes#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Ljava/util/List;" />
       <node id="4844813484172611604" at="26,0,29,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -463,9 +463,9 @@
       <node id="8697758915834076877" at="37,50,38,53" concept="8" />
       <node id="8697758915834076877" at="40,68,41,102" concept="8" />
       <node id="8697758915834076877" at="43,30,44,17" concept="8" />
-      <node id="8697758915834076877" at="48,0,49,0" concept="9" trace="PropertyPointerType$EW" />
-      <node id="8697758915834076877" at="49,0,50,0" concept="9" trace="PropertyPointerValueOperation$sT" />
-      <node id="8697758915834076877" at="53,0,54,0" concept="9" trace="dataType$K26p" />
+      <node id="8697758915834076877" at="48,0,49,0" concept="9" trace="PropertyPointerType$Jt" />
+      <node id="8697758915834076877" at="49,0,50,0" concept="9" trace="PropertyPointerValueOperation$xq" />
+      <node id="8697758915834076877" at="53,0,54,0" concept="9" trace="dataType$ciaU" />
       <node id="8697758915834076877" at="21,0,23,0" concept="1" trace="typeof_PropertRefValueOperation_InferenceRule#()V" />
       <node id="8697758915834076877" at="37,0,40,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8697758915834076877" at="40,0,43,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

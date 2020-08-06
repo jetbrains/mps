@@ -324,11 +324,11 @@
       <node id="4006994020106798918" at="160,41,161,26" concept="10" />
       <node id="4006994020106709151" at="163,66,164,45" concept="10" />
       <node id="4006994020106710290" at="166,66,167,45" concept="10" />
-      <node id="4006994020106470658" at="171,0,172,0" concept="13" trace="properties$PFKE" />
-      <node id="4006994020106470658" at="175,0,176,0" concept="13" trace="PropertyCollection$cr" />
-      <node id="4006994020106470658" at="176,0,177,0" concept="13" trace="Property$dS" />
-      <node id="4006994020106470658" at="180,0,181,0" concept="13" trace="name$lA7v" />
-      <node id="4006994020106470658" at="181,0,182,0" concept="13" trace="value$MBq2" />
+      <node id="4006994020106470658" at="171,0,172,0" concept="13" trace="properties$$hSY" />
+      <node id="4006994020106470658" at="175,0,176,0" concept="13" trace="PropertyCollection$kJ" />
+      <node id="4006994020106470658" at="176,0,177,0" concept="13" trace="Property$mc" />
+      <node id="4006994020106470658" at="180,0,181,0" concept="13" trace="name$MnvL" />
+      <node id="4006994020106470658" at="181,0,182,0" concept="13" trace="value$xdym" />
       <node id="4006994020107282602" at="120,16,122,11" concept="1" />
       <node id="4006994020106478022" at="52,0,55,0" concept="2" trace="PropertyFilesStubModelDescriptor#(Lorg/jetbrains/mps/openapi/model/SModelReference;Lorg/jetbrains/mps/openapi/persistence/DataSource;)V" />
       <node id="336459899665669531" at="87,0,90,0" concept="8" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />

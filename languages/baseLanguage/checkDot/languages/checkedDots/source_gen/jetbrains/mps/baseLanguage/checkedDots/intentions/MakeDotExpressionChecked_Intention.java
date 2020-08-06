@@ -48,19 +48,19 @@ public final class MakeDotExpressionChecked_Intention extends AbstractIntentionD
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SNodeOperations.isInstanceOf(node, CONCEPTS.CheckedDotExpression$nB) ? "Make Dot Expression Not Checked" : "Make Dot Expression Checked");
+      return (SNodeOperations.isInstanceOf(node, CONCEPTS.CheckedDotExpression$Du) ? "Make Dot Expression Not Checked" : "Make Dot Expression Checked");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.CheckedDotExpression$nB)) {
-        SNode dotExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
-        SLinkOperations.setTarget(dotExpression, LINKS.operand$P1i5, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
-        SLinkOperations.setTarget(dotExpression, LINKS.operation$_mGS, SLinkOperations.getTarget(node, LINKS.operation$_mGS));
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.CheckedDotExpression$Du)) {
+        SNode dotExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$yW, null);
+        SLinkOperations.setTarget(dotExpression, LINKS.operand$w6IR, SLinkOperations.getTarget(node, LINKS.operand$w6IR));
+        SLinkOperations.setTarget(dotExpression, LINKS.operation$gs9E, SLinkOperations.getTarget(node, LINKS.operation$gs9E));
         SNodeOperations.replaceWithAnother(node, dotExpression);
       } else {
-        SNode checkedDot = SNodeFactoryOperations.createNewNode(CONCEPTS.CheckedDotExpression$nB, null);
-        SLinkOperations.setTarget(checkedDot, LINKS.operand$P1i5, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
-        SLinkOperations.setTarget(checkedDot, LINKS.operation$_mGS, SLinkOperations.getTarget(node, LINKS.operation$_mGS));
+        SNode checkedDot = SNodeFactoryOperations.createNewNode(CONCEPTS.CheckedDotExpression$Du, null);
+        SLinkOperations.setTarget(checkedDot, LINKS.operand$w6IR, SLinkOperations.getTarget(node, LINKS.operand$w6IR));
+        SLinkOperations.setTarget(checkedDot, LINKS.operation$gs9E, SLinkOperations.getTarget(node, LINKS.operation$gs9E));
         SNodeOperations.replaceWithAnother(node, checkedDot);
       }
     }
@@ -71,12 +71,12 @@ public final class MakeDotExpressionChecked_Intention extends AbstractIntentionD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CheckedDotExpression$nB = MetaAdapterFactory.getConcept(0x774bf8a062e541e1L, 0xaf63f4812e60e48bL, 0x389ce13592c3023bL, "jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept CheckedDotExpression$Du = MetaAdapterFactory.getConcept(0x774bf8a062e541e1L, 0xaf63f4812e60e48bL, 0x389ce13592c3023bL, "jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

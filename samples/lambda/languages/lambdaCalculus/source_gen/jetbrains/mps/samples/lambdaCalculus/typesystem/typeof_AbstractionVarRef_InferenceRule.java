@@ -21,11 +21,11 @@ public class typeof_AbstractionVarRef_InferenceRule extends AbstractInferenceRul
     {
       SNode _nodeToCheck_1029348928467 = abstractionVarRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "1751004816842783060", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "1751004816842783063", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(abstractionVarRef, LINKS.variable$hOPq), "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "1751004816842783066", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "1751004816842783063", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(abstractionVarRef, LINKS.variable$1fXu), "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "1751004816842783066", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractionVarRef$Na;
+    return CONCEPTS.AbstractionVarRef$Ve;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_AbstractionVarRef_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variable$hOPq = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
+    /*package*/ static final SReferenceLink variable$1fXu = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractionVarRef$Na = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef");
+    /*package*/ static final SConcept AbstractionVarRef$Ve = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL, "jetbrains.mps.samples.lambdaCalculus.structure.AbstractionVarRef");
   }
 }

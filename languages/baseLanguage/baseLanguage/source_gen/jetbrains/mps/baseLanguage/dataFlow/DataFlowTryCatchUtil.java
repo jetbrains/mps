@@ -23,7 +23,7 @@ public class DataFlowTryCatchUtil {
   }
   public static List<SNode> getPossibleCatches(SNode source, List<SNode> catchClauses) {
     List<SNode> result = new ArrayList<SNode>();
-    SNode statement = SNodeOperations.getNodeAncestor(source, CONCEPTS.Statement$ok, false, false);
+    SNode statement = SNodeOperations.getNodeAncestor(source, CONCEPTS.Statement$P6, false, false);
     Set<SNode> uncaughtThrowables = Statement__BehaviorDescriptor.uncaughtThrowables_id4Gt7ANIVAVT.invoke(statement, ((boolean) false));
     for (SNode catchClause : catchClauses) {
       for (SNode caughtType : AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(catchClause)) {
@@ -70,6 +70,6 @@ public class DataFlowTryCatchUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

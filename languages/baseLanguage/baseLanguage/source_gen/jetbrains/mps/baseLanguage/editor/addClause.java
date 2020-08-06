@@ -113,8 +113,8 @@ public class addClause extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$lKBT)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.MultipleCatchClause$U5, null));
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$lKBT)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$Q4F)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.MultipleCatchClause$mR, null));
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$Q4F)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
@@ -139,7 +139,7 @@ public class addClause extends TransformationMenuBase {
   public class TMP_Group_vo3q2g_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$lFtz) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$KUl) == null);
     }
 
     @NotNull
@@ -195,8 +195,8 @@ public class addClause extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.finallyClause$lFtz, null);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$lFtz), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.finallyClause$KUl, null);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$KUl), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -221,11 +221,11 @@ public class addClause extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$lKBT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
-    /*package*/ static final SContainmentLink finallyClause$lFtz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink catchClause$Q4F = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
+    /*package*/ static final SContainmentLink finallyClause$KUl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MultipleCatchClause$U5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, "jetbrains.mps.baseLanguage.structure.MultipleCatchClause");
+    /*package*/ static final SConcept MultipleCatchClause$mR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, "jetbrains.mps.baseLanguage.structure.MultipleCatchClause");
   }
 }

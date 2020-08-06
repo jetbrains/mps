@@ -60,7 +60,7 @@ public class PassByRefExpression_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.PassByRefExpression$7Y) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.PassByRefExpression$$K) {
 
         @NotNull
         @Override
@@ -73,11 +73,11 @@ public class PassByRefExpression_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.PassByRefExpression$7Y));
+      }, CONCEPTS.PassByRefExpression$$K));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PassByRefExpression$7Y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, "jetbrains.mps.baseLanguage.structure.PassByRefExpression");
+    /*package*/ static final SConcept PassByRefExpression$$K = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, "jetbrains.mps.baseLanguage.structure.PassByRefExpression");
   }
 }

@@ -22,7 +22,7 @@ public class typeof_AnnotationInstanceExpression_InferenceRule extends AbstractI
   public typeof_AnnotationInstanceExpression_InferenceRule() {
   }
   public void applyRule(final SNode annotationInstanceExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode annotation = SLinkOperations.getTarget(SLinkOperations.getTarget(annotationInstanceExpression, LINKS.annotationInstance$spQC), LINKS.annotation$lXdy);
+    SNode annotation = SLinkOperations.getTarget(SLinkOperations.getTarget(annotationInstanceExpression, LINKS.annotationInstance$7vjq), LINKS.annotation$12Ek);
     {
       SNode _nodeToCheck_1029348928467 = annotationInstanceExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1188221689320", 0, null);
@@ -30,7 +30,7 @@ public class typeof_AnnotationInstanceExpression_InferenceRule extends AbstractI
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AnnotationInstanceExpression$ty;
+    return CONCEPTS.AnnotationInstanceExpression$Uk;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,11 +47,11 @@ public class typeof_AnnotationInstanceExpression_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotationInstance$spQC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71a2770L, 0x114a71a8526L, "annotationInstance");
-    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotationInstance$7vjq = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71a2770L, 0x114a71a8526L, "annotationInstance");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnnotationInstanceExpression$ty = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71a2770L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceExpression");
+    /*package*/ static final SConcept AnnotationInstanceExpression$Uk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71a2770L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceExpression");
   }
 }

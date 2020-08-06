@@ -28,7 +28,7 @@ public class DelTestChildWithSmartReference_SubstituteMenu extends SubstituteMen
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_f29tzs_a(), CONCEPTS.DelTestChildWithSmartReference$j_));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_f29tzs_a(), CONCEPTS.DelTestChildWithSmartReference$3M));
     result.add(new SMP_Subconcepts_f29tzs_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class DelTestChildWithSmartReference_SubstituteMenu extends SubstituteMen
 
     public SMP_ReferenceScope_f29tzs_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DelTestChildWithSmartReference$j_, LINKS.reference$DIGy);
+      super((SAbstractConcept) CONCEPTS.DelTestChildWithSmartReference$3M, LINKS.reference$sksJ);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class DelTestChildWithSmartReference_SubstituteMenu extends SubstituteMen
   }
   public class SMP_Subconcepts_f29tzs_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DelTestChildWithSmartReference$j_);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DelTestChildWithSmartReference$3M);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class DelTestChildWithSmartReference_SubstituteMenu extends SubstituteMen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DelTestChildWithSmartReference$j_ = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestChildWithSmartReference");
+    /*package*/ static final SConcept DelTestChildWithSmartReference$3M = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, "jetbrains.mps.lang.editor.editorTest.structure.DelTestChildWithSmartReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$DIGy = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, 0x7a6a3ef59ad69e4aL, "reference");
+    /*package*/ static final SReferenceLink reference$sksJ = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x7a6a3ef59ad69dadL, 0x7a6a3ef59ad69e4aL, "reference");
   }
 }

@@ -44,7 +44,7 @@ public class ShowMessage_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_t9syd3_a(), CONCEPTS.ShowMessage$3M));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_t9syd3_a(), CONCEPTS.ShowMessage$2L));
     return result;
   }
 
@@ -84,14 +84,14 @@ public class ShowMessage_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.ShowMessage$3M;
+          return CONCEPTS.ShowMessage$2L;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SNode showMsg = SNodeFactoryOperations.createNewNode(CONCEPTS.ShowMessage$3M, null);
-          SLinkOperations.setTarget(showMsg, LINKS.problem$I8FR, nodeToWrap);
+          SNode showMsg = SNodeFactoryOperations.createNewNode(CONCEPTS.ShowMessage$2L, null);
+          SLinkOperations.setTarget(showMsg, LINKS.problem$CvIq, nodeToWrap);
           return showMsg;
         }
 
@@ -106,7 +106,7 @@ public class ShowMessage_SubstituteMenu extends SubstituteMenuBase {
         }
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-          SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.message$ZrUE), SelectionManager.FIRST_EDITABLE_CELL);
+          SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.message$imTD), SelectionManager.FIRST_EDITABLE_CELL);
         }
       };
     }
@@ -118,17 +118,17 @@ public class ShowMessage_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Problem$3A;
+      return CONCEPTS.Problem$iw;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ShowMessage$3M = MetaAdapterFactory.getConcept(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, "jetbrains.mps.lang.feedback.messages.structure.ShowMessage");
-    /*package*/ static final SInterfaceConcept Problem$3A = MetaAdapterFactory.getInterfaceConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL, "jetbrains.mps.lang.feedback.problem.structure.Problem");
+    /*package*/ static final SConcept ShowMessage$2L = MetaAdapterFactory.getConcept(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, "jetbrains.mps.lang.feedback.messages.structure.ShowMessage");
+    /*package*/ static final SInterfaceConcept Problem$iw = MetaAdapterFactory.getInterfaceConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x573ae5b8b8caf72cL, "jetbrains.mps.lang.feedback.problem.structure.Problem");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink problem$I8FR = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
-    /*package*/ static final SContainmentLink message$ZrUE = MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message");
+    /*package*/ static final SContainmentLink problem$CvIq = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
+    /*package*/ static final SContainmentLink message$imTD = MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message");
   }
 }

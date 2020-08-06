@@ -36,7 +36,7 @@ public class check_ConceptC_NonTypesystemRule extends AbstractNonTypesystemRule_
         matches_umd1d5_a0a = matchingPattern_umd1d5_a0a.match(matchedNode_umd1d5_a0);
         if (matches_umd1d5_a0a) {
           {
-            final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.conceptCProp$UwQ0);
+            final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.conceptCProp$6iek);
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(matchedNode_umd1d5_a0, "error from ConceptC", "r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520611", null, errorTarget);
           }
         }
@@ -44,7 +44,7 @@ public class check_ConceptC_NonTypesystemRule extends AbstractNonTypesystemRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptC$1G;
+    return CONCEPTS.ConceptC$q0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -62,10 +62,10 @@ public class check_ConceptC_NonTypesystemRule extends AbstractNonTypesystemRule_
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptCProp$UwQ0 = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa6L, 0x7aa4e26e6874caa7L, "conceptCProp");
+    /*package*/ static final SProperty conceptCProp$6iek = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa6L, 0x7aa4e26e6874caa7L, "conceptCProp");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptC$1G = MetaAdapterFactory.getConcept(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa6L, "testOverridingRule.structure.ConceptC");
+    /*package*/ static final SConcept ConceptC$q0 = MetaAdapterFactory.getConcept(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa6L, "testOverridingRule.structure.ConceptC");
   }
 }

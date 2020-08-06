@@ -35,7 +35,7 @@ public abstract class AbstractPaletteCreationAction implements PaletteToggleActi
       // todo should pass concept here, not concept node 
       // FIXME the moment there's SConcept, not SNode, #init() down here doesn't need model read any more 
       SAbstractConcept concept = SNodeOperations.asSConcept(((SNode) iconNode));
-      icon = ((SNodeOperations.isInstanceOf(iconNode, CONCEPTS.AbstractConceptDeclaration$UN) && !((mySubstituteAction.isReferentPresentation()))) ? GlobalIconManager.getInstance().getIconFor(concept) : GlobalIconManager.getInstance().getIconFor(iconNode));
+      icon = ((SNodeOperations.isInstanceOf(iconNode, CONCEPTS.AbstractConceptDeclaration$KA) && !((mySubstituteAction.isReferentPresentation()))) ? GlobalIconManager.getInstance().getIconFor(concept) : GlobalIconManager.getInstance().getIconFor(iconNode));
     } else {
       icon = IdeIcons.DEFAULT_ICON;
     }
@@ -64,6 +64,6 @@ public abstract class AbstractPaletteCreationAction implements PaletteToggleActi
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

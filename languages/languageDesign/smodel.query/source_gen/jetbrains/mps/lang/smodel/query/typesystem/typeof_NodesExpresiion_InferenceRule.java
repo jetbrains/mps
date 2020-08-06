@@ -25,7 +25,7 @@ public class typeof_NodesExpresiion_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodesExpression$Ml;
+    return CONCEPTS.NodesExpression$ln;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,6 +44,6 @@ public class typeof_NodesExpresiion_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodesExpression$Ml = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x272b1214886bd08eL, "jetbrains.mps.lang.smodel.query.structure.NodesExpression");
+    /*package*/ static final SConcept NodesExpression$ln = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x272b1214886bd08eL, "jetbrains.mps.lang.smodel.query.structure.NodesExpression");
   }
 }

@@ -26,7 +26,7 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
     // see TemplateContainer#checkAdjacentFragments 
     SNode commonParent = null;
     SContainmentLink commonAggregationLink = null;
-    for (SNode tf : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(consequence, LINKS.contentNode$tkcn), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{})) {
+    for (SNode tf : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(consequence, LINKS.contentNode$QgS3), CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{})) {
       SNode fragmentParent = SNodeOperations.getParent(tf);
       SContainmentLink containmentLink = fragmentParent.getContainmentLink();
       if (commonParent == null) {
@@ -50,7 +50,7 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InlineTemplateWithContext_RuleConsequence$tA;
+    return CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -60,11 +60,11 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink contentNode$tkcn = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
+    /*package*/ static final SContainmentLink contentNode$QgS3 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateFragment$yI = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
-    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence$tA = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
+    /*package*/ static final SConcept TemplateFragment$eq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
+    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence$9i = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
   }
 }

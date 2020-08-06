@@ -43,24 +43,24 @@ public final class InternalAnonymousClass__BehaviorDescriptor extends BaseBHDesc
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUnitName_id4pl5GY7LKmR, getJavaName_id2XVui9ut6Ed, getIndexInContainingClass_id2XVui9ut6EM, getSuperclass_idi3H_lLu, getNestedName_id7q4lzBFjvIX, getFqName_idhEwIO9y, getAnonymousClassPresentation_id2XVui9ut6Db);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.nonStatic$vRvm, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.nonStatic$aWW8, true);
   }
 
   /*package*/ static String getUnitName_id4pl5GY7LKmR(@NotNull SNode __thisNode__) {
     return ((String) InternalAnonymousClass__BehaviorDescriptor.getJavaName_id2XVui9ut6Ed.invoke(__thisNode__));
   }
   /*package*/ static String getJavaName_id2XVui9ut6Ed(@NotNull SNode __thisNode__) {
-    SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, true);
+    SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, true);
     if ((ancestor == null)) {
       return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__);
     }
     return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ancestor) + "$" + ((int) InternalAnonymousClass__BehaviorDescriptor.getIndexInContainingClass_id2XVui9ut6EM.invoke(__thisNode__));
   }
   /*package*/ static int getIndexInContainingClass_id2XVui9ut6EM(@NotNull SNode __thisNode__) {
-    final SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
-    int index = ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(ancestor, new SAbstractConcept[]{CONCEPTS.AnonymousClass$aF, CONCEPTS.InternalAnonymousClass$Lf}, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    final SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
+    int index = ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(ancestor, new SAbstractConcept[]{CONCEPTS.AnonymousClass$Bt, CONCEPTS.InternalAnonymousClass$21}, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.getNodeAncestor(it, CONCEPTS.Classifier$hJ, false, false) == ancestor;
+        return SNodeOperations.getNodeAncestor(it, CONCEPTS.Classifier$Ix, false, false) == ancestor;
       }
     }).indexOf(__thisNode__) + 1;
     return index;
@@ -69,18 +69,18 @@ public final class InternalAnonymousClass__BehaviorDescriptor extends BaseBHDesc
     return _quotation_createNode_bwi1fo_a0a3();
   }
   /*package*/ static String getNestedName_id7q4lzBFjvIX(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
-    return (containingClassifier != null ? InternalAnonymousClass__BehaviorDescriptor.getAnonymousClassPresentation_id2XVui9ut6Db.invoke(__thisNode__, containingClassifier) + Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invoke(containingClassifier) : Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invokeSuper(__thisNode__, CONCEPTS.InternalAnonymousClass$Lf));
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
+    return (containingClassifier != null ? InternalAnonymousClass__BehaviorDescriptor.getAnonymousClassPresentation_id2XVui9ut6Db.invoke(__thisNode__, containingClassifier) + Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invoke(containingClassifier) : Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invokeSuper(__thisNode__, CONCEPTS.InternalAnonymousClass$21));
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
-    return (containingClassifier != null ? InternalAnonymousClass__BehaviorDescriptor.getAnonymousClassPresentation_id2XVui9ut6Db.invoke(__thisNode__, containingClassifier) + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) : INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invokeSuper(__thisNode__, CONCEPTS.InternalAnonymousClass$Lf));
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
+    return (containingClassifier != null ? InternalAnonymousClass__BehaviorDescriptor.getAnonymousClassPresentation_id2XVui9ut6Db.invoke(__thisNode__, containingClassifier) + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) : INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invokeSuper(__thisNode__, CONCEPTS.InternalAnonymousClass$21));
   }
   /*package*/ static String getAnonymousClassPresentation_id2XVui9ut6Db(@NotNull SNode __thisNode__, SNode containingClassifier) {
     String result = "Anonymous in ";
-    SNode containingMethod = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BaseMethodDeclaration$RR, false, false);
+    SNode containingMethod = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD, false, false);
     if (containingMethod != null && SNodeOperations.getParent(containingMethod) == containingClassifier) {
-      result += SPropertyOperations.getString(containingMethod, PROPS.name$lA7v) + "() in ";
+      result += SPropertyOperations.getString(containingMethod, PROPS.name$MnvL) + "() in ";
     }
     return result;
   }
@@ -151,14 +151,14 @@ public final class InternalAnonymousClass__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nonStatic$vRvm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty nonStatic$aWW8 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept InternalAnonymousClass$Lf = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L, "jetbrains.mps.baseLanguageInternal.structure.InternalAnonymousClass");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept InternalAnonymousClass$21 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L, "jetbrains.mps.baseLanguageInternal.structure.InternalAnonymousClass");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 }

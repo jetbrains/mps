@@ -31,7 +31,7 @@ public final class SubstituteMenuPart_AddConcept__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static SNode getOutputConcept_id3mnwiBI8ZE2(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.concept$mLWO);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.concept$r48r);
   }
 
   /*package*/ SubstituteMenuPart_AddConcept__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class SubstituteMenuPart_AddConcept__BehaviorDescriptor extends Bas
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$mLWO = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, 0x9aeec2e0d781773L, "concept");
+    /*package*/ static final SReferenceLink concept$r48r = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab46db2L, 0x9aeec2e0d781773L, "concept");
   }
 }

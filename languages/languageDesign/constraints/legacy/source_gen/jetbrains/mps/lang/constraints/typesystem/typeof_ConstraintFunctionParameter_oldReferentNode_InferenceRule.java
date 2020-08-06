@@ -22,7 +22,7 @@ public class typeof_ConstraintFunctionParameter_oldReferentNode_InferenceRule ex
   public typeof_ConstraintFunctionParameter_oldReferentNode_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode targetConcept = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$JH, false, false), LINKS.applicableLink$WTlX), LINKS.target$TWaS);
+    SNode targetConcept = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$PH, false, false), LINKS.applicableLink$7IrX), LINKS.target$m40F);
     if ((targetConcept == null)) {
       {
         SNode _nodeToCheck_1029348928467 = node;
@@ -38,7 +38,7 @@ public class typeof_ConstraintFunctionParameter_oldReferentNode_InferenceRule ex
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConstraintFunctionParameter_oldReferentNode$S5;
+    return CONCEPTS.ConstraintFunctionParameter_oldReferentNode$Y5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,12 +61,12 @@ public class typeof_ConstraintFunctionParameter_oldReferentNode_InferenceRule ex
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeReferentConstraint$JH = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
-    /*package*/ static final SConcept ConstraintFunctionParameter_oldReferentNode$S5 = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10ed4488befL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_oldReferentNode");
+    /*package*/ static final SConcept NodeReferentConstraint$PH = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
+    /*package*/ static final SConcept ConstraintFunctionParameter_oldReferentNode$Y5 = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10ed4488befL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_oldReferentNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableLink$WTlX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink applicableLink$7IrX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

@@ -40,7 +40,7 @@ public class BLExpression_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_c9dft7_a(), CONCEPTS.BLExpression$iZ));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_c9dft7_a(), CONCEPTS.BLExpression$WS));
     return result;
   }
 
@@ -80,7 +80,7 @@ public class BLExpression_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.BLExpression$iZ;
+          return CONCEPTS.BLExpression$WS;
         }
         @Nullable
         @Override
@@ -113,21 +113,21 @@ public class BLExpression_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   private static SNode createBLExpression_c9dft7_a0a0a(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
-    n0.forChild(LINKS.expression$dgOU).initNode(p0, CONCEPTS.Expression$TP, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BLExpression$WS);
+    n0.forChild(LINKS.expression$A9uN).initNode(p0, CONCEPTS.Expression$mB, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BLExpression$iZ = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept BLExpression$WS = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$dgOU = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
+    /*package*/ static final SContainmentLink expression$A9uN = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
   }
 }

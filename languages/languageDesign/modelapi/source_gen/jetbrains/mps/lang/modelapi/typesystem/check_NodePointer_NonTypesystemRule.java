@@ -36,7 +36,7 @@ public class check_NodePointer_NonTypesystemRule extends AbstractNonTypesystemRu
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodePointer$qL;
+    return CONCEPTS.NodePointer$6k;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,6 +46,6 @@ public class check_NodePointer_NonTypesystemRule extends AbstractNonTypesystemRu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodePointer$qL = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, "jetbrains.mps.lang.modelapi.structure.NodePointer");
+    /*package*/ static final SConcept NodePointer$6k = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, "jetbrains.mps.lang.modelapi.structure.NodePointer");
   }
 }

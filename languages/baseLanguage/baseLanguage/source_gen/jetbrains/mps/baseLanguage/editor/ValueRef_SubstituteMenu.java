@@ -47,18 +47,18 @@ public class ValueRef_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_tudm17_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.GenericLValueExpression$FD)) {
-        return Objects.equals(_context.getLink(), LINKS.assignValueExression$iPFH);
+      if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.GenericLValueExpression$8r)) {
+        return Objects.equals(_context.getLink(), LINKS.assignValueExression$XV8v);
       }
       SNode contextNode = _context.getParentNode();
-      while (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(contextNode), CONCEPTS.GenericLValueExpression$FD))) {
+      while (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(contextNode), CONCEPTS.GenericLValueExpression$8r))) {
         SNode parent = SNodeOperations.getParent(contextNode);
         if ((parent == null)) {
           return false;
         }
         contextNode = parent;
       }
-      return Objects.equals(SNodeOperations.getContainingLink(contextNode), LINKS.assignValueExression$iPFH);
+      return Objects.equals(SNodeOperations.getContainingLink(contextNode), LINKS.assignValueExression$XV8v);
     }
     @NotNull
     @Override
@@ -74,7 +74,7 @@ public class ValueRef_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ValueRef$zw) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ValueRef$i) {
 
         @NotNull
         @Override
@@ -87,16 +87,16 @@ public class ValueRef_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.ValueRef$zw));
+      }, CONCEPTS.ValueRef$i));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenericLValueExpression$FD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, "jetbrains.mps.baseLanguage.structure.GenericLValueExpression");
-    /*package*/ static final SConcept ValueRef$zw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac33aL, "jetbrains.mps.baseLanguage.structure.ValueRef");
+    /*package*/ static final SConcept GenericLValueExpression$8r = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, "jetbrains.mps.baseLanguage.structure.GenericLValueExpression");
+    /*package*/ static final SConcept ValueRef$i = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac33aL, "jetbrains.mps.baseLanguage.structure.ValueRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink assignValueExression$iPFH = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression");
+    /*package*/ static final SContainmentLink assignValueExression$XV8v = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression");
   }
 }

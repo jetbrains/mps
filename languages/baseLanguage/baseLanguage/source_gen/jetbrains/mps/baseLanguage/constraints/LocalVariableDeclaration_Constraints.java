@@ -15,12 +15,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LocalVariableDeclaration_Constraints extends BaseConstraintsDescriptor {
   public LocalVariableDeclaration_Constraints() {
-    super(CONCEPTS.LocalVariableDeclaration$Bf);
+    super(CONCEPTS.LocalVariableDeclaration$41);
   }
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$xrGd, container);
+      super(PROPS.shortDescription$Yd4v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -34,15 +34,15 @@ public class LocalVariableDeclaration_Constraints extends BaseConstraintsDescrip
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.shortDescription$xrGd, new ShortDescription_Property(this));
+    properties.put(PROPS.shortDescription$Yd4v, new ShortDescription_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty shortDescription$Yd4v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 }

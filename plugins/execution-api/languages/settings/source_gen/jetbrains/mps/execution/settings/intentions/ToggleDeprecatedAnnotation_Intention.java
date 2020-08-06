@@ -49,17 +49,17 @@ public final class ToggleDeprecatedAnnotation_Intention extends AbstractIntentio
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$X7)) == null)) {
-        return "Deprecate configuration " + SPropertyOperations.getString(node, PROPS.name$lA7v);
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)) == null)) {
+        return "Deprecate configuration " + SPropertyOperations.getString(node, PROPS.name$MnvL);
       }
       return "Remove deprecated annotation";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$X7)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$X7), CONCEPTS.DeprecatedAnnotation$X7);
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)) == null)) {
+        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW), CONCEPTS.DeprecatedAnnotation$xW);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$X7)));
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)));
       }
     }
     @Override
@@ -69,10 +69,10 @@ public final class ToggleDeprecatedAnnotation_Intention extends AbstractIntentio
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DeprecatedAnnotation$X7 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x7f8de21e263f5819L, "jetbrains.mps.execution.settings.structure.DeprecatedAnnotation");
+    /*package*/ static final SConcept DeprecatedAnnotation$xW = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x7f8de21e263f5819L, "jetbrains.mps.execution.settings.structure.DeprecatedAnnotation");
   }
 }

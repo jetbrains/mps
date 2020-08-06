@@ -28,7 +28,7 @@ public class KeymapRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_evuyo1_a(), CONCEPTS.KeymapRef$6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_evuyo1_a(), CONCEPTS.KeymapRef$X9));
     result.add(new SMP_Subconcepts_evuyo1_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class KeymapRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_evuyo1_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.KeymapRef$6, LINKS.keymap$u030);
+      super((SAbstractConcept) CONCEPTS.KeymapRef$X9, LINKS.keymap$F_03);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class KeymapRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_evuyo1_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.KeymapRef$6);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.KeymapRef$X9);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class KeymapRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept KeymapRef$6 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, "jetbrains.mps.lang.plugin.structure.KeymapRef");
+    /*package*/ static final SConcept KeymapRef$X9 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, "jetbrains.mps.lang.plugin.structure.KeymapRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink keymap$u030 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, 0x498be7ea73fa87fL, "keymap");
+    /*package*/ static final SReferenceLink keymap$F_03 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, 0x498be7ea73fa87fL, "keymap");
   }
 }

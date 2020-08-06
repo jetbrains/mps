@@ -25,7 +25,7 @@ public class typeof_AbsExpression_InferenceRule extends AbstractInferenceRule_Ru
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbsExpression$Z6;
+    return CONCEPTS.AbsExpression$TY;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_AbsExpression_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbsExpression$Z6 = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686e48f9fL, "jetbrains.mps.samples.complex.structure.AbsExpression");
+    /*package*/ static final SConcept AbsExpression$TY = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686e48f9fL, "jetbrains.mps.samples.complex.structure.AbsExpression");
   }
 }

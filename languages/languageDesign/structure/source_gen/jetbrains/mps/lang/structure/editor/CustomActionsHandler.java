@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class CustomActionsHandler {
   /*package*/ static boolean canHandleAbstractConceptDeclarationMemberActions(SNode node, EditorContext editorContext) {
     EditorCell nodeCell = editorContext.getEditorComponent().findNodeCell(node);
-    return nodeCell != null && !(ReadOnlyUtil.isCellOrSelectionReadOnlyInEditor(editorContext.getEditorComponent(), nodeCell)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$UN);
+    return nodeCell != null && !(ReadOnlyUtil.isCellOrSelectionReadOnlyInEditor(editorContext.getEditorComponent(), nodeCell)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$KA);
   }
 
   /*package*/ static boolean backspaceElementFromCollectionAndSetSelection(SNode node, Iterable<SNode> nodes, EditorContext editorContext) {
@@ -66,6 +66,6 @@ public class CustomActionsHandler {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

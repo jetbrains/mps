@@ -21,7 +21,7 @@ public class supertypesOf_SEnumerationType_ClassifierTypeSEnumeration_SubtypingR
     return _quotation_createNode_e142d1_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SEnumerationType$hr;
+    return CONCEPTS.SEnumerationType$iV;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class supertypesOf_SEnumerationType_ClassifierTypeSEnumeration_SubtypingR
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SEnumerationType$hr = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81c423L, "jetbrains.mps.lang.smodel.structure.SEnumerationType");
+    /*package*/ static final SConcept SEnumerationType$iV = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81c423L, "jetbrains.mps.lang.smodel.structure.SEnumerationType");
   }
 }

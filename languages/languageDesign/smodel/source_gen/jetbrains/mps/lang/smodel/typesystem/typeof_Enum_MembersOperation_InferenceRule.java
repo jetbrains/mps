@@ -27,7 +27,7 @@ public class typeof_Enum_MembersOperation_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Enum_MembersOperation$CQ;
+    return CONCEPTS.Enum_MembersOperation$Em;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,6 +47,6 @@ public class typeof_Enum_MembersOperation_InferenceRule extends AbstractInferenc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Enum_MembersOperation$CQ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d68L, "jetbrains.mps.lang.smodel.structure.Enum_MembersOperation");
+    /*package*/ static final SConcept Enum_MembersOperation$Em = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d68L, "jetbrains.mps.lang.smodel.structure.Enum_MembersOperation");
   }
 }

@@ -22,7 +22,7 @@ public class AlternativeType_Delete {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.deleteNode(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.CatchVariable$6W));
+        SNodeOperations.deleteNode(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.CatchVariable$zI));
       }
 
     };
@@ -70,6 +70,6 @@ public class AlternativeType_Delete {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CatchVariable$6W = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44bbb37e796ac72eL, "jetbrains.mps.baseLanguage.structure.CatchVariable");
+    /*package*/ static final SConcept CatchVariable$zI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44bbb37e796ac72eL, "jetbrains.mps.baseLanguage.structure.CatchVariable");
   }
 }

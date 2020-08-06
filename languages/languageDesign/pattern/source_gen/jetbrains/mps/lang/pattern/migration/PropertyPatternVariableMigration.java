@@ -37,21 +37,21 @@ public abstract class PropertyPatternVariableMigration<T> {
       SNode propPatternVariable = getDeclaration(usage);
       SNode propertyDeclaration = PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(propPatternVariable);
 
-      if (!(SPropertyOperations.getBoolean(propPatternVariable, PROPS.stringValueMigrated$4VPS))) {
-        migrateRawValue(usage, SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$Dbgb));
+      if (!(SPropertyOperations.getBoolean(propPatternVariable, PROPS.stringValueMigrated$2KQs))) {
+        migrateRawValue(usage, SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$5j5Y));
         SetSequence.fromSet(myRawValueMigratedPPVDs).addElement(propPatternVariable);
       }
-      if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(propertyDeclaration), CONCEPTS.EnumPropertyMigrationInfo$Yg))) {
-        migrateEnumValue(usage, SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), CONCEPTS.PropertyDeclaration$c5), LINKS.dataType$Dbgb), CONCEPTS.EnumerationDeclaration$rG));
+      if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(propertyDeclaration), CONCEPTS.EnumPropertyMigrationInfo$O3))) {
+        migrateEnumValue(usage, SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), CONCEPTS.PropertyDeclaration$1S), LINKS.dataType$5j5Y), CONCEPTS.EnumerationDeclaration$hv));
         SetSequence.fromSet(myEnumMigratedPPVDs).addElement(propPatternVariable);
       }
     }
 
     for (SNode rawValueMigratedPPVD : SetSequence.fromSet(myRawValueMigratedPPVDs)) {
-      SPropertyOperations.assign(rawValueMigratedPPVD, PROPS.stringValueMigrated$4VPS, true);
+      SPropertyOperations.assign(rawValueMigratedPPVD, PROPS.stringValueMigrated$2KQs, true);
     }
     for (SNode enumMigratedPPVD : SetSequence.fromSet(myEnumMigratedPPVDs)) {
-      SPropertyOperations.assign(enumMigratedPPVD, PROPS.enumUsageMigrated$DjAE, true);
+      SPropertyOperations.assign(enumMigratedPPVD, PROPS.enumUsageMigrated$64YW, true);
     }
     myMigration.optimize();
   }
@@ -73,17 +73,17 @@ public abstract class PropertyPatternVariableMigration<T> {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SReferenceLink dataType$5j5Y = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringValueMigrated$4VPS = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
-    /*package*/ static final SProperty enumUsageMigrated$DjAE = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
+    /*package*/ static final SProperty stringValueMigrated$2KQs = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
+    /*package*/ static final SProperty enumUsageMigrated$64YW = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
-    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
-    /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept EnumerationDeclaration$hv = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo$O3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 }

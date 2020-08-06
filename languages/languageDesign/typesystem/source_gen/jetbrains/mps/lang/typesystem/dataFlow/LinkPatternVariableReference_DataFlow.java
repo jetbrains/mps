@@ -10,10 +10,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LinkPatternVariableReference_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().emitRead(SLinkOperations.getTarget(_context.getNode(), LINKS.patternVarDecl$ORVv), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/7084752438137119322");
+    _context.getBuilder().emitRead(SLinkOperations.getTarget(_context.getNode(), LINKS.patternVarDecl$dIdl), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/7084752438137119322");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink patternVarDecl$ORVv = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d92ad3L, 0x11192da25efL, "patternVarDecl");
+    /*package*/ static final SReferenceLink patternVarDecl$dIdl = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d92ad3L, 0x11192da25efL, "patternVarDecl");
   }
 }

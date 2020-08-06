@@ -60,11 +60,11 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
       addNodeById("6410670351275222996");
       List<SConcept> allConcepts = Sequence.fromIterable(this.getAllNodeOperations()).select(new ISelector<SAbstractConcept, SConcept>() {
         public SConcept select(SAbstractConcept it) {
-          return SNodeOperations.castConcept(it, CONCEPTS.SNodeOperation$o6);
+          return SNodeOperations.castConcept(it, CONCEPTS.SNodeOperation$pA);
         }
       }).toListSequence();
       for (SConcept c : ListSequence.fromList(allConcepts)) {
-        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.SNodeOperation$o6)) {
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.SNodeOperation$pA)) {
           continue;
         }
         boolean toProperty = (boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(c), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843")) || (boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(c), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "4241665505353447573")) || (boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(c), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1084199179703"));
@@ -73,7 +73,7 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
         boolean toSingleLink = (boolean) SNodeOperation__BehaviorDescriptor.applicableToLink_id1653mnvAgvK.invoke(SNodeOperations.asSConcept(c));
         boolean toConceptOrNode = (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)) || (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c));
         Assert.assertTrue(c.getQualifiedName(), this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), toProperty, toModel, toSingleLink, toLinkList, toConceptOrNode)) == 1);
-        Assert.assertTrue(c.getQualifiedName(), SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.AsSConcept$oV) || SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.Node_ConceptMethodCall$l3) || this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)), (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c)))) <= 1);
+        Assert.assertTrue(c.getQualifiedName(), SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.AsSConcept$qr) || SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.Node_ConceptMethodCall$mz) || this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)), (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c)))) <= 1);
       }
     }
     public void test_allConceptsAreIncludedInTest() throws Exception {
@@ -90,7 +90,7 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
     public Iterable<SAbstractConcept> getAllNodeOperations() {
       SNode var6410670351275231787 = getNodeById("6410670351275225853");
       Set<SLanguage> allLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), LanguageRegistry.getInstance(SNodeOperations.getModel(SNodeOperations.cast(getNodeById("6410670351275225853"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfc092b6b77L, "BlockStatement")))).getRepository()).getAllLanguages());
-      return SConceptOperations.getAllSubConcepts(CONCEPTS.SNodeOperation$o6, allLanguages);
+      return SConceptOperations.getAllSubConcepts(CONCEPTS.SNodeOperation$pA, allLanguages);
     }
     public int countFlags(List<Boolean> flags) {
       int result = 0;
@@ -104,8 +104,8 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SNodeOperation$o6 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
-    /*package*/ static final SConcept Node_ConceptMethodCall$l3 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
-    /*package*/ static final SConcept AsSConcept$oV = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4a4d7215f163131L, "jetbrains.mps.lang.smodel.structure.AsSConcept");
+    /*package*/ static final SConcept SNodeOperation$pA = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+    /*package*/ static final SConcept Node_ConceptMethodCall$mz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
+    /*package*/ static final SConcept AsSConcept$qr = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4a4d7215f163131L, "jetbrains.mps.lang.smodel.structure.AsSConcept");
   }
 }

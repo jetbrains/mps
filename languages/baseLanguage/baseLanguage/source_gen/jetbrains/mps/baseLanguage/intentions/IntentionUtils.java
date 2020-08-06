@@ -36,27 +36,27 @@ public class IntentionUtils {
         {
           SNode matchingNode_k79hya_a0a1 = node;
           if (matchingNode_k79hya_a0a1 != null) {
-            matches_k79hya_a0a1 = matchingNode_k79hya_a0a1.getConcept().isSubConceptOf(CONCEPTS.StatementList$TN);
+            matches_k79hya_a0a1 = matchingNode_k79hya_a0a1.getConcept().isSubConceptOf(CONCEPTS.StatementList$m_);
           }
         }
         if (matches_k79hya_a0a1) {
-          return (ListSequence.fromList(SLinkOperations.getChildren(matchedNode_k79hya_a0b, LINKS.statement$pYcS)).count() == 1 ? optimizeNode(ListSequence.fromList(SLinkOperations.getChildren(matchedNode_k79hya_a0b, LINKS.statement$pYcS)).getElement(0)) : null);
+          return (ListSequence.fromList(SLinkOperations.getChildren(matchedNode_k79hya_a0b, LINKS.statement$53DE)).count() == 1 ? optimizeNode(ListSequence.fromList(SLinkOperations.getChildren(matchedNode_k79hya_a0b, LINKS.statement$53DE)).getElement(0)) : null);
         } else {
           boolean matches_k79hya_b0a1 = false;
           {
             SNode matchingNode_k79hya_b0a1 = node;
             if (matchingNode_k79hya_b0a1 != null) {
-              matches_k79hya_b0a1 = matchingNode_k79hya_b0a1.getConcept().isSubConceptOf(CONCEPTS.BlockStatement$1i);
+              matches_k79hya_b0a1 = matchingNode_k79hya_b0a1.getConcept().isSubConceptOf(CONCEPTS.BlockStatement$u4);
             }
           }
           if (matches_k79hya_b0a1) {
-            return optimizeNode(SLinkOperations.getTarget(matchedNode_k79hya_a0b, LINKS.statements$J0D0));
+            return optimizeNode(SLinkOperations.getTarget(matchedNode_k79hya_a0b, LINKS.statements$q65M));
           } else {
             boolean matches_k79hya_c0a1 = false;
             {
               SNode matchingNode_k79hya_c0a1 = node;
               if (matchingNode_k79hya_c0a1 != null) {
-                matches_k79hya_c0a1 = matchingNode_k79hya_c0a1.getConcept().isSubConceptOf(CONCEPTS.Statement$ok);
+                matches_k79hya_c0a1 = matchingNode_k79hya_c0a1.getConcept().isSubConceptOf(CONCEPTS.Statement$P6);
               }
             }
             if (matches_k79hya_c0a1) {
@@ -78,9 +78,9 @@ public class IntentionUtils {
     }
 
     SNode ternaryOperator = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression"));
-    SLinkOperations.setTarget(ternaryOperator, LINKS.condition$GrmW, (SNode) CopyUtil.copy(condition));
-    SLinkOperations.setTarget(ternaryOperator, LINKS.ifTrue$ea$5, (SNode) CopyUtil.copy(diff._0()));
-    SLinkOperations.setTarget(ternaryOperator, LINKS.ifFalse$h5To, (SNode) CopyUtil.copy(diff._1()));
+    SLinkOperations.setTarget(ternaryOperator, LINKS.condition$nwNI, (SNode) CopyUtil.copy(condition));
+    SLinkOperations.setTarget(ternaryOperator, LINKS.ifTrue$Tg0R, (SNode) CopyUtil.copy(diff._0()));
+    SLinkOperations.setTarget(ternaryOperator, LINKS.ifFalse$Wbma, (SNode) CopyUtil.copy(diff._1()));
 
     SNodeOperations.replaceWithAnother(diff._0(), ternaryOperator);
     return statement1;
@@ -102,12 +102,12 @@ public class IntentionUtils {
     return (isDiffCanBeConvertedToTernary(currentDiff) ? currentDiff : null);
   }
   /*package*/ static boolean isDiffCanBeConvertedToTernary(Tuples._2<SNode, SNode> diff) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(diff._0()), CONCEPTS.ExpressionStatement$nm)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(diff._0()), CONCEPTS.ExpressionStatement$O8)) {
       return false;
     }
     // todo[Timur]: I don't think that this code is true 
     SContainmentLink l = diff._0().getContainmentLink();
-    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.TernaryOperatorExpression$HC), SNodeOperations.asSConcept(l.getTargetConcept()));
+    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.TernaryOperatorExpression$aq), SNodeOperations.asSConcept(l.getTargetConcept()));
   }
   @Nullable
   /*package*/ static Tuples._2<SNode, SNode> getDiffNodes(SNode node1, SNode node2) {
@@ -169,87 +169,87 @@ public class IntentionUtils {
 
   public static SNode negateBooleanNodes(SNode node) {
     SNode clone = SNodeOperations.copyNode(node);
-    if (SNodeOperations.isInstanceOf(clone, CONCEPTS.BooleanConstant$Ui)) {
-      SPropertyOperations.set(SNodeOperations.cast(clone, CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90, !(SPropertyOperations.getBoolean(SNodeOperations.cast(clone, CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90)));
+    if (SNodeOperations.isInstanceOf(clone, CONCEPTS.BooleanConstant$n4)) {
+      SPropertyOperations.set(SNodeOperations.cast(clone, CONCEPTS.BooleanConstant$n4), PROPS.value$5y_M, !(SPropertyOperations.getBoolean(SNodeOperations.cast(clone, CONCEPTS.BooleanConstant$n4), PROPS.value$5y_M)));
       return clone;
     }
-    if (SNodeOperations.isInstanceOf(clone, CONCEPTS.NotExpression$oq)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.NotExpression$oq), LINKS.expression$Lq8V);
+    if (SNodeOperations.isInstanceOf(clone, CONCEPTS.NotExpression$Pc)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.NotExpression$Pc), LINKS.expression$sv_H);
     }
-    if (SNodeOperations.isInstanceOf(clone, CONCEPTS.ParenthesizedExpression$vE)) {
+    if (SNodeOperations.isInstanceOf(clone, CONCEPTS.ParenthesizedExpression$Ws)) {
       SNode replacement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
-      SLinkOperations.setTarget(replacement, LINKS.expression$efP0, negateBooleanNodes(SLinkOperations.getTarget(SNodeOperations.cast(clone, CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$efP0)));
-      return (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(replacement, LINKS.expression$efP0), CONCEPTS.ParenthesizedExpression$vE) ? SLinkOperations.getTarget(replacement, LINKS.expression$efP0) : replacement);
+      SLinkOperations.setTarget(replacement, LINKS.expression$TlhM, negateBooleanNodes(SLinkOperations.getTarget(SNodeOperations.cast(clone, CONCEPTS.ParenthesizedExpression$Ws), LINKS.expression$TlhM)));
+      return (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(replacement, LINKS.expression$TlhM), CONCEPTS.ParenthesizedExpression$Ws) ? SLinkOperations.getTarget(replacement, LINKS.expression$TlhM) : replacement);
     }
-    if (SNodeOperations.isInstanceOf(clone, CONCEPTS.BinaryOperation$vf)) {
+    if (SNodeOperations.isInstanceOf(clone, CONCEPTS.BinaryOperation$W1)) {
       SNode replacement;
-      if (SNodeOperations.isInstanceOf(clone, CONCEPTS.EqualsExpression$lT)) {
-        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.NotEqualsExpression$Ib, null);
-      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.NotEqualsExpression$Ib)) {
-        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.EqualsExpression$lT, null);
-      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.GreaterThanExpression$wR)) {
-        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanOrEqualsExpression$Rc, null);
-      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.GreaterThanOrEqualsExpression$n9)) {
-        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanExpression$kw, null);
-      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.LessThanExpression$kw)) {
-        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.GreaterThanOrEqualsExpression$n9, null);
-      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.LessThanOrEqualsExpression$Rc)) {
-        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.GreaterThanExpression$wR, null);
+      if (SNodeOperations.isInstanceOf(clone, CONCEPTS.EqualsExpression$MF)) {
+        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.NotEqualsExpression$aX, null);
+      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.NotEqualsExpression$aX)) {
+        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.EqualsExpression$MF, null);
+      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.GreaterThanExpression$XD)) {
+        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanOrEqualsExpression$jY, null);
+      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.GreaterThanOrEqualsExpression$NV)) {
+        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanExpression$Li, null);
+      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.LessThanExpression$Li)) {
+        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.GreaterThanOrEqualsExpression$NV, null);
+      } else if (SNodeOperations.isInstanceOf(clone, CONCEPTS.LessThanOrEqualsExpression$jY)) {
+        replacement = SNodeFactoryOperations.createNewNode(CONCEPTS.GreaterThanExpression$XD, null);
       } else {
-        SNode notNode = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$oq, null);
-        SLinkOperations.setTarget(notNode, LINKS.expression$Lq8V, clone);
+        SNode notNode = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$Pc, null);
+        SLinkOperations.setTarget(notNode, LINKS.expression$sv_H, clone);
         IntentionUtils.addParensToNotIfNeeded(notNode);
         return notNode;
       }
-      SLinkOperations.setTarget(replacement, LINKS.leftExpression$lndx, SLinkOperations.getTarget(SNodeOperations.cast(clone, CONCEPTS.BinaryOperation$vf), LINKS.leftExpression$lndx));
-      SLinkOperations.setTarget(replacement, LINKS.rightExpression$li3b, SLinkOperations.getTarget(SNodeOperations.cast(clone, CONCEPTS.BinaryOperation$vf), LINKS.rightExpression$li3b));
+      SLinkOperations.setTarget(replacement, LINKS.leftExpression$sEj, SLinkOperations.getTarget(SNodeOperations.cast(clone, CONCEPTS.BinaryOperation$W1), LINKS.leftExpression$sEj));
+      SLinkOperations.setTarget(replacement, LINKS.rightExpression$nvX, SLinkOperations.getTarget(SNodeOperations.cast(clone, CONCEPTS.BinaryOperation$W1), LINKS.rightExpression$nvX));
       return replacement;
     }
-    SNode notNode = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$oq, null);
-    SLinkOperations.setTarget(notNode, LINKS.expression$Lq8V, clone);
+    SNode notNode = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$Pc, null);
+    SLinkOperations.setTarget(notNode, LINKS.expression$sv_H, clone);
     IntentionUtils.addParensToNotIfNeeded(notNode);
     return notNode;
   }
 
   public static void addParensToNotIfNeeded(SNode notExpr) {
     if (PrecedenceUtil.needsParensAroundNotExpression(notExpr)) {
-      SNode childExpr = SLinkOperations.getTarget(notExpr, LINKS.expression$Lq8V);
-      SNode parens = SNodeFactoryOperations.replaceWithNewChild(childExpr, CONCEPTS.ParenthesizedExpression$vE);
-      SLinkOperations.setTarget(parens, LINKS.expression$efP0, childExpr);
+      SNode childExpr = SLinkOperations.getTarget(notExpr, LINKS.expression$sv_H);
+      SNode parens = SNodeFactoryOperations.replaceWithNewChild(childExpr, CONCEPTS.ParenthesizedExpression$Ws);
+      SLinkOperations.setTarget(parens, LINKS.expression$TlhM, childExpr);
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept BlockStatement$1i = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept TernaryOperatorExpression$HC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
-    /*package*/ static final SConcept BooleanConstant$Ui = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
-    /*package*/ static final SConcept NotExpression$oq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
-    /*package*/ static final SConcept EqualsExpression$lT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
-    /*package*/ static final SConcept NotEqualsExpression$Ib = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression");
-    /*package*/ static final SConcept GreaterThanExpression$wR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced38fcfL, "jetbrains.mps.baseLanguage.structure.GreaterThanExpression");
-    /*package*/ static final SConcept LessThanOrEqualsExpression$Rc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d53a915L, "jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression");
-    /*package*/ static final SConcept GreaterThanOrEqualsExpression$n9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d0fac2cL, "jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression");
-    /*package*/ static final SConcept LessThanExpression$kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced3b82aL, "jetbrains.mps.baseLanguage.structure.LessThanExpression");
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept BlockStatement$u4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept TernaryOperatorExpression$aq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept NotExpression$Pc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept EqualsExpression$MF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
+    /*package*/ static final SConcept NotEqualsExpression$aX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression");
+    /*package*/ static final SConcept GreaterThanExpression$XD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced38fcfL, "jetbrains.mps.baseLanguage.structure.GreaterThanExpression");
+    /*package*/ static final SConcept LessThanOrEqualsExpression$jY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d53a915L, "jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression");
+    /*package*/ static final SConcept GreaterThanOrEqualsExpression$NV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c8d0fac2cL, "jetbrains.mps.baseLanguage.structure.GreaterThanOrEqualsExpression");
+    /*package*/ static final SConcept LessThanExpression$Li = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced3b82aL, "jetbrains.mps.baseLanguage.structure.LessThanExpression");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink condition$GrmW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
-    /*package*/ static final SContainmentLink ifTrue$ea$5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
-    /*package*/ static final SContainmentLink ifFalse$h5To = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
-    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statements$q65M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink condition$nwNI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012826fL, "condition");
+    /*package*/ static final SContainmentLink ifTrue$Tg0R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012a1c0L, "ifTrue");
+    /*package*/ static final SContainmentLink ifFalse$Wbma = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, 0x10ef012cedcL, "ifFalse");
+    /*package*/ static final SContainmentLink expression$sv_H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

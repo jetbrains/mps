@@ -125,10 +125,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.left$nE_S;
+      return LINKS.left$jiYj;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.EquationComponent$C$;
+      return CONCEPTS.EquationComponent$Z;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -138,7 +138,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(leftListHandler_388849_b0a.this.getNode(), LINKS.left$nE_S));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(leftListHandler_388849_b0a.this.getNode(), LINKS.left$jiYj));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_1();
@@ -212,7 +212,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.condition$oigW;
+      final SProperty property = PROPS.condition$jUDn;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("no special conditions");
@@ -222,7 +222,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -311,10 +311,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.right$nF3U;
+      return LINKS.right$jjsl;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.EquationComponent$C$;
+      return CONCEPTS.EquationComponent$Z;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -324,7 +324,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(rightListHandler_388849_b2a.this.getNode(), LINKS.right$nF3U));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(rightListHandler_388849_b2a.this.getNode(), LINKS.right$jjsl));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_3();
@@ -390,16 +390,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$nE_S = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
-    /*package*/ static final SContainmentLink right$nF3U = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
+    /*package*/ static final SContainmentLink left$jiYj = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
+    /*package*/ static final SContainmentLink right$jjsl = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EquationComponent$C$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL, "jetbrains.mps.samples.ChemMastery.structure.EquationComponent");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept EquationComponent$Z = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL, "jetbrains.mps.samples.ChemMastery.structure.EquationComponent");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty condition$oigW = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184faba451a7L, "condition");
+    /*package*/ static final SProperty condition$jUDn = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184faba451a7L, "condition");
   }
 }

@@ -80,7 +80,7 @@ public class tuple_member_access_Contribution extends TransformationMenuBase {
   public class TMP_Group_dlrmni_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.IndexedTupleType$15) != null);
+      return (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.IndexedTupleType$6Q) != null);
     }
 
     @NotNull
@@ -96,7 +96,7 @@ public class tuple_member_access_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_dlrmni_a0a(), CONCEPTS.IndexedTupleMemberAccessExpression$cm));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_dlrmni_a0a(), CONCEPTS.IndexedTupleMemberAccessExpression$i7));
     }
     private class TMP_Action_dlrmni_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -136,8 +136,8 @@ public class tuple_member_access_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode mae = SNodeOperations.replaceWithAnother(_context.getNode(), SNodeFactoryOperations.createNewNode(CONCEPTS.IndexedTupleMemberAccessExpression$cm, null));
-          SLinkOperations.setTarget(mae, LINKS.tuple$iJS7, _context.getNode());
+          SNode mae = SNodeOperations.replaceWithAnother(_context.getNode(), SNodeFactoryOperations.createNewNode(CONCEPTS.IndexedTupleMemberAccessExpression$i7, null));
+          SLinkOperations.setTarget(mae, LINKS.tuple$$4XS, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), mae, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -145,7 +145,7 @@ public class tuple_member_access_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.IndexedTupleMemberAccessExpression$cm;
+          return CONCEPTS.IndexedTupleMemberAccessExpression$i7;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -160,7 +160,7 @@ public class tuple_member_access_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.IndexedTupleMemberAccessExpression$cm;
+          SAbstractConcept outputConcept = CONCEPTS.IndexedTupleMemberAccessExpression$i7;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -172,11 +172,11 @@ public class tuple_member_access_Contribution extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IndexedTupleType$15 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
-    /*package*/ static final SConcept IndexedTupleMemberAccessExpression$cm = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleMemberAccessExpression");
+    /*package*/ static final SConcept IndexedTupleType$6Q = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
+    /*package*/ static final SConcept IndexedTupleMemberAccessExpression$i7 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleMemberAccessExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tuple$iJS7 = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple");
+    /*package*/ static final SContainmentLink tuple$$4XS = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071acfb50L, 0x12071ad5056L, "tuple");
   }
 }

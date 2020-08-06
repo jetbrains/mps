@@ -16,19 +16,19 @@ public class ResourceVariable_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     BaseLanguageTextGen.annotations(ctx.getPrimaryInput(), ctx);
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$uWuc));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$a1UY));
     tgs.append(" ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$MnvL));
     tgs.append(" = ");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.initializer$no3R));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.initializer$2twD));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

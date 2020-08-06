@@ -12,7 +12,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SModelLanguageUtil {
   public static SNode findNodeOperationParameter(SNode operation, SAbstractConcept parameterConcept) {
-    for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.parameter$Maw7))) {
+    for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.parameter$mzxB))) {
       if (SNodeOperations.isInstanceOf(parameter, SNodeOperations.asSConcept(parameterConcept))) {
         return parameter;
       }
@@ -21,6 +21,6 @@ public class SModelLanguageUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$Maw7 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter");
+    /*package*/ static final SContainmentLink parameter$mzxB = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, 0x10a61ef5a56L, "parameter");
   }
 }

@@ -22,11 +22,11 @@ public class typeof_AnalyzerFunParameterInput_InferenceRule extends AbstractInfe
     {
       SNode _nodeToCheck_1029348928467 = input;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9177062368042364861", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9177062368042364858", true), (SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(input, CONCEPTS.Analyzer$Q4, false, false), LINKS.latticeElementType$bYxl), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:139daa25-c5a7-4ac9-85a2-eb14d22e8f56(jetbrains.mps.lang.dataFlow.analyzers.typesystem)", "9177062368042364858", true), (SNode) SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(input, CONCEPTS.Analyzer$GL, false, false), LINKS.latticeElementType$o4o2), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AnalyzerFunParameterInput$FO;
+    return CONCEPTS.AnalyzerFunParameterInput$yx;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,11 +36,11 @@ public class typeof_AnalyzerFunParameterInput_InferenceRule extends AbstractInfe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Analyzer$Q4 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer");
-    /*package*/ static final SConcept AnalyzerFunParameterInput$FO = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1dd4d4L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterInput");
+    /*package*/ static final SConcept Analyzer$GL = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer");
+    /*package*/ static final SConcept AnalyzerFunParameterInput$yx = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1dd4d4L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterInput");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink latticeElementType$bYxl = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
+    /*package*/ static final SContainmentLink latticeElementType$o4o2 = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
   }
 }

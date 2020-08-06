@@ -22,11 +22,11 @@ public class typeof_DebuggerReference_InferenceRule extends AbstractInferenceRul
     {
       SNode _nodeToCheck_1029348928467 = debuggerReference;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:31e73d62-e873-4ed6-bd22-16d8721ebfa3(jetbrains.mps.debugger.api.lang.typesystem)", "2526721715665562909", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:31e73d62-e873-4ed6-bd22-16d8721ebfa3(jetbrains.mps.debugger.api.lang.typesystem)", "2526721715665547052", true), (SNode) createDebuggerType_uu2qih_a1a0c0a0b(SPropertyOperations.getString(debuggerReference, PROPS.debuggerName$x6kz)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:31e73d62-e873-4ed6-bd22-16d8721ebfa3(jetbrains.mps.debugger.api.lang.typesystem)", "2526721715665547052", true), (SNode) createDebuggerType_uu2qih_a1a0c0a0b(SPropertyOperations.getString(debuggerReference, PROPS.debuggerName$HZD3)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DebuggerReference$bf;
+    return CONCEPTS.DebuggerReference$vJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,18 +35,18 @@ public class typeof_DebuggerReference_InferenceRule extends AbstractInferenceRul
     return false;
   }
   private static SNode createDebuggerType_uu2qih_a1a0c0a0b(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DebuggerType$gI);
-    n0.setProperty(PROPS.name$kKVn, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DebuggerType$_e);
+    n0.setProperty(PROPS.name$xEfR, p0);
     return n0.getResult();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty debuggerName$x6kz = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, 0xf528808f912d155L, "debuggerName");
-    /*package*/ static final SProperty name$kKVn = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, 0x23a852e9c43c456dL, "name");
+    /*package*/ static final SProperty debuggerName$HZD3 = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, 0xf528808f912d155L, "debuggerName");
+    /*package*/ static final SProperty name$xEfR = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, 0x23a852e9c43c456dL, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DebuggerReference$bf = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference");
-    /*package*/ static final SConcept DebuggerType$gI = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, "jetbrains.mps.debugger.api.lang.structure.DebuggerType");
+    /*package*/ static final SConcept DebuggerReference$vJ = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference");
+    /*package*/ static final SConcept DebuggerType$_e = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, "jetbrains.mps.debugger.api.lang.structure.DebuggerType");
   }
 }

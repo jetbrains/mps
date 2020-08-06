@@ -15,34 +15,34 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class SwitchExpressionPW_PasteWrapper_5 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return CONCEPTS.Statement$ok;
+    return CONCEPTS.Statement$P6;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.EnumSwitchCaseBody$Fk;
+    return CONCEPTS.EnumSwitchCaseBody$GO;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
     return createEnumSwitchCaseBody_StatementList_degi1_a0a0f(ListSequence.fromListAndArray(new ArrayList<SNode>(), sourceNode));
   }
   private static SNode createEnumSwitchCaseBody_StatementList_degi1_a0a0f(Iterable<? extends SNode> p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.EnumSwitchCaseBody_StatementList$Ze);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.EnumSwitchCaseBody_StatementList$I);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.statementList$nvB0).init(CONCEPTS.StatementList$TN);
-      n1.forChild(LINKS.statement$pYcS).initNodeList(p0, CONCEPTS.Statement$ok);
+      SNodeBuilder n1 = n0.forChild(LINKS.statementList$VSCw).init(CONCEPTS.StatementList$m_);
+      n1.forChild(LINKS.statement$53DE).initNodeList(p0, CONCEPTS.Statement$P6);
     }
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept EnumSwitchCaseBody$Fk = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdc60L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody");
-    /*package*/ static final SConcept EnumSwitchCaseBody_StatementList$Ze = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody_StatementList");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept EnumSwitchCaseBody$GO = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdc60L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody");
+    /*package*/ static final SConcept EnumSwitchCaseBody_StatementList$I = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody_StatementList");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$nvB0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statementList$VSCw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

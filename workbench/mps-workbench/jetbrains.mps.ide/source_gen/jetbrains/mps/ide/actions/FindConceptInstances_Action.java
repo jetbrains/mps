@@ -85,7 +85,7 @@ public class FindConceptInstances_Action extends BaseAction {
               @Override
               public FindUsagesOptions getDefaultSearchOptions(String concept) {
                 FindUsagesOptions findUsagesOptions = container.getDefaultSearchOptions(concept);
-                findUsagesOptions.setFindersOptions(new FindersOptions(((String) BHReflection.invoke0(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)", "1197632773078"), CONCEPTS.FinderDeclaration$5E, SMethodTrimmedId.create("getGeneratedClassLongName", CONCEPTS.FinderDeclaration$5E, "hEwIc4S")))));
+                findUsagesOptions.setFindersOptions(new FindersOptions(((String) BHReflection.invoke0(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)", "1197632773078"), CONCEPTS.FinderDeclaration$R8, SMethodTrimmedId.create("getGeneratedClassLongName", CONCEPTS.FinderDeclaration$R8, "hEwIc4S")))));
                 return findUsagesOptions;
               }
             };
@@ -107,14 +107,14 @@ public class FindConceptInstances_Action extends BaseAction {
   private SNode getConceptDeclaration(SNode node, final Map<String, Object> _params) {
     {
       final SNode acd = node;
-      if (SNodeOperations.isInstanceOf(acd, CONCEPTS.AbstractConceptDeclaration$UN)) {
+      if (SNodeOperations.isInstanceOf(acd, CONCEPTS.AbstractConceptDeclaration$KA)) {
         return acd;
       }
     }
     {
       final SNode conceptAspect = node;
-      if (SNodeOperations.isInstanceOf(conceptAspect, CONCEPTS.IConceptAspect$9g)) {
-        return ((SNode) BHReflection.invoke0(conceptAspect, CONCEPTS.IConceptAspect$9g, SMethodTrimmedId.create("getBaseConcept", null, "2hxg_BDjKM8")));
+      if (SNodeOperations.isInstanceOf(conceptAspect, CONCEPTS.IConceptAspect$Z3)) {
+        return ((SNode) BHReflection.invoke0(conceptAspect, CONCEPTS.IConceptAspect$Z3, SMethodTrimmedId.create("getBaseConcept", null, "2hxg_BDjKM8")));
       }
     }
 
@@ -122,8 +122,8 @@ public class FindConceptInstances_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FinderDeclaration$5E = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x116b5695a8dL, "jetbrains.mps.lang.findUsages.structure.FinderDeclaration");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SInterfaceConcept IConceptAspect$9g = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
+    /*package*/ static final SConcept FinderDeclaration$R8 = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x116b5695a8dL, "jetbrains.mps.lang.findUsages.structure.FinderDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept IConceptAspect$Z3 = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
   }
 }

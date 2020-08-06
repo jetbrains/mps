@@ -22,9 +22,9 @@ public class JUnit4MethodWrapper extends AbstractTestWrapper<SNode> {
   private final String myName;
 
   public JUnit4MethodWrapper(@NotNull ITestNodeWrapper testCase, SNode method) {
-    super(method, true, AbstractTestWrapper.isAnnotatedToLaunch(method) || AbstractTestWrapper.needsMPS(SNodeOperations.getNodeAncestor(method, CONCEPTS.ClassConcept$IY, false, false)));
+    super(method, true, AbstractTestWrapper.isAnnotatedToLaunch(method) || AbstractTestWrapper.needsMPS(SNodeOperations.getNodeAncestor(method, CONCEPTS.ClassConcept$bK, false, false)));
     myTestCase = testCase;
-    myName = SPropertyOperations.getString(method, PROPS.name$lA7v);
+    myName = SPropertyOperations.getString(method, PROPS.name$MnvL);
   }
 
   @Override
@@ -44,9 +44,9 @@ public class JUnit4MethodWrapper extends AbstractTestWrapper<SNode> {
   }
 
   public static boolean isJUnit4TestMethod(SNode method) {
-    if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method)) && (SLinkOperations.getTarget(method, LINKS.visibility$jt1o) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe) && (SPropertyOperations.getString(method, PROPS.name$lA7v) != null)) {
+    if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method)) && (SLinkOperations.getTarget(method, LINKS.visibility$Yyua) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) && (SPropertyOperations.getString(method, PROPS.name$MnvL) != null)) {
       boolean hasTestAnnotation = false;
-      for (SNode annotation : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$4YGW))) {
+      for (SNode annotation : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I))) {
         if (SNodeOperations.is(check_lclll2_a0a0b0a0l(annotation), new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Ignore"))) {
           return false;
         }
@@ -60,29 +60,29 @@ public class JUnit4MethodWrapper extends AbstractTestWrapper<SNode> {
   }
   private static SNode check_lclll2_a0a0b0a0l(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.annotation$lXdy);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.annotation$12Ek);
     }
     return null;
   }
   private static SNode check_lclll2_a0a1a1a0a11(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.annotation$lXdy);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.annotation$12Ek);
     }
     return null;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept PublicVisibility$qe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 }

@@ -30,19 +30,19 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.aspect$u4C1), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.aspect$vRFu), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.aspect$5hXd), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.aspect$750E), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.requestedAspect$dPGU), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.requestedAspect$fCKn), PROPS.name$MnvL);
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.lang$Axv0);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.lang$Ckyt);
   }
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
@@ -114,13 +114,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink aspect$u4C1 = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x1c2d7d27ffb53efbL, 0x1c2d7d27ffb53fb8L, "aspect");
-    /*package*/ static final SReferenceLink aspect$5hXd = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x55a418200fd9206aL, 0x55a418200fdd3607L, "aspect");
-    /*package*/ static final SReferenceLink requestedAspect$dPGU = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, 0x7cd422dbfa7b06f8L, "requestedAspect");
-    /*package*/ static final SContainmentLink lang$Axv0 = MetaAdapterFactory.getContainmentLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x55a418200fd9206aL, 0x55a418200fd9206bL, "lang");
+    /*package*/ static final SReferenceLink aspect$vRFu = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x1c2d7d27ffb53efbL, 0x1c2d7d27ffb53fb8L, "aspect");
+    /*package*/ static final SReferenceLink aspect$750E = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x55a418200fd9206aL, 0x55a418200fdd3607L, "aspect");
+    /*package*/ static final SReferenceLink requestedAspect$fCKn = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, 0x7cd422dbfa7b06f8L, "requestedAspect");
+    /*package*/ static final SContainmentLink lang$Ckyt = MetaAdapterFactory.getContainmentLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x55a418200fd9206aL, 0x55a418200fd9206bL, "lang");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

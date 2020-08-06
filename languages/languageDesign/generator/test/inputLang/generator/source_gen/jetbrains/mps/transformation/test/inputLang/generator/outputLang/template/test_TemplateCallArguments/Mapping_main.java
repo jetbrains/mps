@@ -47,7 +47,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948461289"), CONCEPTS.InputNode$JL, true);
+      super(new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948461289"), CONCEPTS.InputNode$SS, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -63,7 +63,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948355377"), CONCEPTS.InputRoot$eR, false, false);
+      super(new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948355377"), CONCEPTS.InputRoot$nY, false, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -74,7 +74,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InputNode$JL = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645a1114eL, "jetbrains.mps.transformation.test.inputLang.structure.InputNode");
-    /*package*/ static final SConcept InputRoot$eR = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, "jetbrains.mps.transformation.test.inputLang.structure.InputRoot");
+    /*package*/ static final SConcept InputNode$SS = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645a1114eL, "jetbrains.mps.transformation.test.inputLang.structure.InputNode");
+    /*package*/ static final SConcept InputRoot$nY = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645953ab3L, "jetbrains.mps.transformation.test.inputLang.structure.InputRoot");
   }
 }

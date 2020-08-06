@@ -35,14 +35,14 @@ public final class OrRegexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    String s = Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.left$g$k9), vars) + "|" + Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.right$bdpJ), vars);
+    String s = Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.left$41WX), vars) + "|" + Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.right$YF2z), vars);
     return (((boolean) OrRegexp__BehaviorDescriptor.inParentheses_id1b8uQvZyDXU.invoke(__thisNode__)) ? Regexp__BehaviorDescriptor.par_idhMuIPHY.invoke(__thisNode__, s) : s);
   }
   /*package*/ static boolean needParentheses_id1b8uQvZynii(@NotNull SNode __thisNode__) {
     return true;
   }
   /*package*/ static boolean inParentheses_id1b8uQvZyDXU(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.SeqRegexp$2i);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.SeqRegexp$F6);
   }
 
   /*package*/ OrRegexp__BehaviorDescriptor() {
@@ -96,11 +96,11 @@ public final class OrRegexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$g$k9 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
-    /*package*/ static final SContainmentLink right$bdpJ = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right");
+    /*package*/ static final SContainmentLink left$41WX = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
+    /*package*/ static final SContainmentLink right$YF2z = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SeqRegexp$2i = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174bc30e7L, "jetbrains.mps.baseLanguage.regexp.structure.SeqRegexp");
+    /*package*/ static final SConcept SeqRegexp$F6 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174bc30e7L, "jetbrains.mps.baseLanguage.regexp.structure.SeqRegexp");
   }
 }

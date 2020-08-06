@@ -29,10 +29,10 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$LjSW), CONCEPTS.InternalMode$O1);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$splI), CONCEPTS.InternalMode$Bu);
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$LkmY);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.rValue$spNK);
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -94,11 +94,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InternalMode$O1 = MetaAdapterFactory.getConcept(0x995a73947f764b8bL, 0xa929c53448708106L, 0x7a89354654722219L, "jetbrains.mps.console.internalCommands.structure.InternalMode");
+    /*package*/ static final SConcept InternalMode$Bu = MetaAdapterFactory.getConcept(0x995a73947f764b8bL, 0xa929c53448708106L, 0x7a89354654722219L, "jetbrains.mps.console.internalCommands.structure.InternalMode");
   }
 }

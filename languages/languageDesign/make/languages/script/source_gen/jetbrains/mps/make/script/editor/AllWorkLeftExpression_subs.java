@@ -46,7 +46,7 @@ public class AllWorkLeftExpression_subs extends SubstituteMenuBase {
   public class SMP_Group_q0pmcw_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BeginWorkStatement$C0) && Objects.equals(LINKS.ofTotal$Ml6Q, _context.getLink());
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BeginWorkStatement$_T) && Objects.equals(LINKS.ofTotal$Hy4J, _context.getLink());
     }
     @NotNull
     @Override
@@ -62,7 +62,7 @@ public class AllWorkLeftExpression_subs extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.AllWorkLeftExpression$m3) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.AllWorkLeftExpression$jW) {
 
         @NotNull
         @Override
@@ -75,16 +75,16 @@ public class AllWorkLeftExpression_subs extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.AllWorkLeftExpression$m3));
+      }, CONCEPTS.AllWorkLeftExpression$jW));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BeginWorkStatement$C0 = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, "jetbrains.mps.make.script.structure.BeginWorkStatement");
-    /*package*/ static final SConcept AllWorkLeftExpression$m3 = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x2dc2243445538ecaL, "jetbrains.mps.make.script.structure.AllWorkLeftExpression");
+    /*package*/ static final SConcept BeginWorkStatement$_T = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, "jetbrains.mps.make.script.structure.BeginWorkStatement");
+    /*package*/ static final SConcept AllWorkLeftExpression$jW = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x2dc2243445538ecaL, "jetbrains.mps.make.script.structure.AllWorkLeftExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ofTotal$Ml6Q = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x29929a95c9f45e7L, "ofTotal");
+    /*package*/ static final SContainmentLink ofTotal$Hy4J = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x29929a95c9f45e7L, "ofTotal");
   }
 }

@@ -53,14 +53,14 @@ public final class SetCopyOutcome_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$lQ)) != null) ? "Remove @CopyOutcome annotation" : "Add @CopyOutcome annotation");
+      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)) != null) ? "Remove @CopyOutcome annotation" : "Add @CopyOutcome annotation");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$lQ)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$lQ)));
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)) != null)) {
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)));
       } else {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$lQ), CONCEPTS.CopyOutcome$lQ);
+        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us), CONCEPTS.CopyOutcome$us);
       }
     }
     @Override
@@ -70,6 +70,6 @@ public final class SetCopyOutcome_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CopyOutcome$lQ = MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome");
+    /*package*/ static final SConcept CopyOutcome$us = MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome");
   }
 }

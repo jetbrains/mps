@@ -86,7 +86,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
   public class TMP_Group_b1erct_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Interface$Kp));
+      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Interface$db));
     }
 
     @NotNull
@@ -142,13 +142,13 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isFinal$zQoy, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isFinal$eVPk, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "finalModifier", -1);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$zQoy));
+          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$eVPk));
         }
 
 
@@ -207,13 +207,13 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isSynchronized$q3tZ, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isSynchronized$58UL, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "synchronizedModifier", -1);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isSynchronized$q3tZ));
+          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isSynchronized$58UL));
         }
 
 
@@ -272,13 +272,13 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isNative$1I9T, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isNative$GNAF, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "nativeModifier", -1);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isNative$1I9T));
+          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isNative$GNAF));
         }
 
 
@@ -338,7 +338,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-        return CONCEPTS.Modifier$Ra;
+        return CONCEPTS.Modifier$jW;
       }
 
 
@@ -358,7 +358,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.IHasModifiers$LF), LINKS.modifiers$m0)).addElement(createdNode);
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(targetNode, CONCEPTS.IHasModifiers$et), LINKS.modifiers$F5MM)).addElement(createdNode);
           SelectionUtil.selectNode(_context.getEditorContext(), createdNode);
         }
 
@@ -388,7 +388,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
   public class TMP_Group_b1erct_c0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(_context.getNode()) && SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.InstanceMethodDeclaration$An);
+      return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(_context.getNode()) && SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.InstanceMethodDeclaration$39);
     }
 
     @NotNull
@@ -427,7 +427,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-        return CONCEPTS.PrivateVisibility$Se;
+        return CONCEPTS.PrivateVisibility$l0;
       }
 
 
@@ -447,7 +447,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          SLinkOperations.setTarget(SNodeOperations.cast(_context.getNode(), CONCEPTS.InstanceMethodDeclaration$An), LINKS.visibility$jt1o, createdNode);
+          SLinkOperations.setTarget(SNodeOperations.cast(_context.getNode(), CONCEPTS.InstanceMethodDeclaration$39), LINKS.visibility$Yyua, createdNode);
         }
 
         @Override
@@ -475,21 +475,21 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept Modifier$Ra = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier");
-    /*package*/ static final SInterfaceConcept IHasModifiers$LF = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Modifier$jW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier");
+    /*package*/ static final SInterfaceConcept IHasModifiers$et = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
-    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
-    /*package*/ static final SProperty isNative$1I9T = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
+    /*package*/ static final SProperty isFinal$eVPk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty isSynchronized$58UL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty isNative$GNAF = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

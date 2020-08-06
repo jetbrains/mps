@@ -21,13 +21,13 @@ public class typeof_BeanPropertyBuilder_InferenceRule extends AbstractInferenceR
   }
   public void applyRule(final SNode builder, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(builder, LINKS.value$NBgB);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(builder, LINKS.value$g8gi);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "2679357232284100456", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "2679357232284100448", true), (SNode) SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(builder, LINKS.setter$L0sw), LINKS.parameter$qsax)).first(), LINKS.type$uWuc), false, true, _info_12389875345);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "2679357232284100448", true), (SNode) SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(builder, LINKS.setter$dxsb), LINKS.parameter$5xBj)).first(), LINKS.type$a1UY), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BeanPropertyBuilder$T;
+    return CONCEPTS.BeanPropertyBuilder$$;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,13 +37,13 @@ public class typeof_BeanPropertyBuilder_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$NBgB = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, 0x252efd34f8a58edaL, "value");
-    /*package*/ static final SReferenceLink setter$L0sw = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, 0x252efd34f8a58ec8L, "setter");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink value$g8gi = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, 0x252efd34f8a58edaL, "value");
+    /*package*/ static final SReferenceLink setter$dxsb = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, 0x252efd34f8a58ec8L, "setter");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BeanPropertyBuilder$T = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, "jetbrains.mps.baseLanguage.builders.structure.BeanPropertyBuilder");
+    /*package*/ static final SConcept BeanPropertyBuilder$$ = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, "jetbrains.mps.baseLanguage.builders.structure.BeanPropertyBuilder");
   }
 }

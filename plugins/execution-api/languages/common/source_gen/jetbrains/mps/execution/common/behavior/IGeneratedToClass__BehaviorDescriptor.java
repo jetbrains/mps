@@ -54,7 +54,7 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
     return IGeneratedToClass__BehaviorDescriptor.getNamespace_id1XgDflG1h$6.invoke(__thisNode__) + "." + IGeneratedToClass__BehaviorDescriptor.getGeneratedClassName_idO$iR4JBsSg.invoke(__thisNode__);
   }
   /*package*/ static String getValidClassName_id2eOtvO7hJjT(@NotNull SNode __thisNode__, @NonNls String name) {
-    return (String) IGeneratedToClass__BehaviorDescriptor.getValidClassName_id3gpm$NHlLi1.invoke(SNodeOperations.asSConcept(CONCEPTS.IGeneratedToClass$3K), name);
+    return (String) IGeneratedToClass__BehaviorDescriptor.getValidClassName_id3gpm$NHlLi1.invoke(SNodeOperations.asSConcept(CONCEPTS.IGeneratedToClass$Cg), name);
   }
   /*package*/ static String getGeneratedClassName_idO$iR4JBsSG(@NotNull SNode __thisNode__, String name) {
     if ((name == null || name.length() == 0)) {
@@ -63,7 +63,7 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
     return IGeneratedToClass__BehaviorDescriptor.getValidClassName_id2eOtvO7hJjT.invoke(__thisNode__, name) + "_" + IGeneratedToClass__BehaviorDescriptor.getSuffix_idO$iR4JBsSb.invoke(__thisNode__);
   }
   /*package*/ static String getBaseName_id3MnZbusxcPI(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
   /*package*/ static String getNamespace_id1XgDflG1h$6(@NotNull SNode __thisNode__) {
     return NodeNameUtil.getNamespace(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__));
@@ -73,7 +73,7 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
     while (result.contains(symbol)) {
       int index = result.indexOf(symbol);
       result = result.replace(symbol, "");
-      result = IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(CONCEPTS.IGeneratedToClass$3K), result, ((int) index));
+      result = IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(CONCEPTS.IGeneratedToClass$Cg), result, ((int) index));
     }
     return result;
   }
@@ -88,7 +88,7 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
     name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a3a52, new _Replacer_mgabp8_a0a0d0z(null));
     // in the beggining 
     name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a5a52, new _Replacer_mgabp8_a0a0f0z(null));
-    return (String) IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(CONCEPTS.IGeneratedToClass$3K), name, ((int) 0));
+    return (String) IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(CONCEPTS.IGeneratedToClass$Cg), name, ((int) 0));
   }
 
   /*package*/ IGeneratedToClass__BehaviorDescriptor() {
@@ -157,10 +157,10 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
   private static final Pattern REGEXP_mgabp8_b0a5a52 = Pattern.compile("^\\W+(\\w)", 0);
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IGeneratedToClass$3K = MetaAdapterFactory.getInterfaceConcept(0x73c1a49099fa4d0dL, 0x8292b8985697c74bL, 0xd244b712f9dcdabL, "jetbrains.mps.execution.common.structure.IGeneratedToClass");
+    /*package*/ static final SInterfaceConcept IGeneratedToClass$Cg = MetaAdapterFactory.getInterfaceConcept(0x73c1a49099fa4d0dL, 0x8292b8985697c74bL, 0xd244b712f9dcdabL, "jetbrains.mps.execution.common.structure.IGeneratedToClass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

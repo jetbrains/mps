@@ -28,7 +28,7 @@ public class PostingRule_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_79mqlp_a(), CONCEPTS.PostingRule$9e));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_79mqlp_a(), CONCEPTS.PostingRule$C5));
     result.add(new SMP_Subconcepts_79mqlp_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class PostingRule_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_79mqlp_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PostingRule$9e, LINKS.account$8KLC);
+      super((SAbstractConcept) CONCEPTS.PostingRule$C5, LINKS.account$M1gv);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class PostingRule_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_79mqlp_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PostingRule$9e);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PostingRule$C5);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class PostingRule_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PostingRule$9e = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc23b0daL, "jetbrains.mps.samples.agreementLanguage.structure.PostingRule");
+    /*package*/ static final SConcept PostingRule$C5 = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc23b0daL, "jetbrains.mps.samples.agreementLanguage.structure.PostingRule");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink account$8KLC = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc23b0daL, 0x102dc289db8L, "account");
+    /*package*/ static final SReferenceLink account$M1gv = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc23b0daL, 0x102dc289db8L, "account");
   }
 }

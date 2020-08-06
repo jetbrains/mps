@@ -44,7 +44,7 @@ public final class UnwrapTryCatch_Intention extends AbstractIntentionDescriptor 
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
     SNode selectedNode = editorContext.getSelectedNode();
     for (SNode ancestor : ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, null, true))) {
-      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.ITryCatchStatement$WV)) {
+      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.ITryCatchStatement$pH)) {
         return Objects.equals(ancestor, node);
       }
     }
@@ -69,21 +69,21 @@ public final class UnwrapTryCatch_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode body = SLinkOperations.getTarget(node, LINKS.body$lFey);
+      SNode body = SLinkOperations.getTarget(node, LINKS.body$KFk);
 
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN)) {
-        final SNode statementList = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN);
-        final Wrappers._int index = new Wrappers._int(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).indexOf(SNodeOperations.cast(node, CONCEPTS.Statement$ok)));
-        ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).removeElementAt(index.value);
-        ListSequence.fromList(SLinkOperations.getChildren(body, LINKS.statement$pYcS)).visitAll(new IVisitor<SNode>() {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.StatementList$m_)) {
+        final SNode statementList = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.StatementList$m_);
+        final Wrappers._int index = new Wrappers._int(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).indexOf(SNodeOperations.cast(node, CONCEPTS.Statement$P6)));
+        ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).removeElementAt(index.value);
+        ListSequence.fromList(SLinkOperations.getChildren(body, LINKS.statement$53DE)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).insertElement(index.value, it);
+            ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).insertElement(index.value, it);
             index.value += 1;
           }
         });
       } else {
-        SNode statement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BlockStatement$1i);
-        SLinkOperations.setTarget(statement, LINKS.statements$J0D0, body);
+        SNode statement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BlockStatement$u4);
+        SLinkOperations.setTarget(statement, LINKS.statements$q65M, body);
       }
     }
     @Override
@@ -93,15 +93,15 @@ public final class UnwrapTryCatch_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITryCatchStatement$WV = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3399756d2c03d422L, "jetbrains.mps.baseLanguage.structure.ITryCatchStatement");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept BlockStatement$1i = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
+    /*package*/ static final SInterfaceConcept ITryCatchStatement$pH = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3399756d2c03d422L, "jetbrains.mps.baseLanguage.structure.ITryCatchStatement");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept BlockStatement$u4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$lFey = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink body$KFk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statements$q65M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
   }
 }

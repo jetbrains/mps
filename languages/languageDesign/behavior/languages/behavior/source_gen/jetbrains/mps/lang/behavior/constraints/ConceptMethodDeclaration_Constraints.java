@@ -31,12 +31,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   public ConceptMethodDeclaration_Constraints() {
-    super(CONCEPTS.ConceptMethodDeclaration$VN);
+    super(CONCEPTS.ConceptMethodDeclaration$N0);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.overriddenMethod$tTw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.overriddenMethod$quKH, this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
@@ -48,14 +48,14 @@ public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescrip
       @Override
       public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         if (newReferentNode != null && referenceNode != null) {
-          for (SNode p : SLinkOperations.getChildren(referenceNode, LINKS.parameter$qsax)) {
+          for (SNode p : SLinkOperations.getChildren(referenceNode, LINKS.parameter$5xBj)) {
             SNodeOperations.deleteNode(p);
           }
-          for (SNode p : SLinkOperations.getChildren(newReferentNode, LINKS.parameter$qsax)) {
-            ListSequence.fromList(SLinkOperations.getChildren(referenceNode, LINKS.parameter$qsax)).addElement(SNodeOperations.copyNode(p));
+          for (SNode p : SLinkOperations.getChildren(newReferentNode, LINKS.parameter$5xBj)) {
+            ListSequence.fromList(SLinkOperations.getChildren(referenceNode, LINKS.parameter$5xBj)).addElement(SNodeOperations.copyNode(p));
           }
-          SPropertyOperations.set(referenceNode, PROPS.name$lA7v, SPropertyOperations.getString(newReferentNode, PROPS.name$lA7v));
-          SLinkOperations.setTarget(referenceNode, LINKS.returnType$qrVw, SNodeOperations.copyNode(SLinkOperations.getTarget(newReferentNode, LINKS.returnType$qrVw)));
+          SPropertyOperations.set(referenceNode, PROPS.name$MnvL, SPropertyOperations.getString(newReferentNode, PROPS.name$MnvL));
+          SLinkOperations.setTarget(referenceNode, LINKS.returnType$5xoi, SNodeOperations.copyNode(SLinkOperations.getTarget(newReferentNode, LINKS.returnType$5xoi)));
         }
       }
       @Override
@@ -72,11 +72,11 @@ public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode concept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ConceptBehavior$8P, true, false), LINKS.concept$45m$);
+            SNode concept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ConceptBehavior$2, true, false), LINKS.concept$u6dL);
             List<SNode> methods = AbstractConceptDeclaration__BehaviorDescriptor.getVirtualConceptMethods_idhEwILHM.invoke(concept);
             return ListScope.forResolvableElements(ListSequence.fromList(methods).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.overriddenMethod$tTw) == null;
+                return SLinkOperations.getTarget(it, LINKS.overriddenMethod$quKH) == null;
               }
             }));
           }
@@ -90,18 +90,18 @@ public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescrip
   private static final SNodePointer breakingNode_sgoqec_a0a0a0a0a4a0a0a0c = new SNodePointer("r:6786d6ee-e5cc-4a77-9efd-65a8dca8b187(jetbrains.mps.lang.behavior.constraints)", "6836281137582780722");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink overriddenMethod$quKH = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink concept$u6dL = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

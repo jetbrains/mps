@@ -47,7 +47,7 @@ public class Editor_TabDescriptor extends RelationDescriptor {
     return ConceptEditorOpenHelper.getBaseNode(node);
   }
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA);
   }
   @Nullable
   public Icon getIcon() {
@@ -65,8 +65,8 @@ public class Editor_TabDescriptor extends RelationDescriptor {
       return nodes;
     }
 
-    ListSequence.fromList(nodes).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("findConceptAspects", CONCEPTS.AbstractConceptDeclaration$UN, "4G9PD8$NvPM"), aspectModel))));
-    return ConceptEditorHelper.sortRootsByConcept(nodes, new SAbstractConcept[]{CONCEPTS.ConceptEditorDeclaration$s6, CONCEPTS.EditorComponentDeclaration$Lb, CONCEPTS.CellKeyMapDeclaration$T9, CONCEPTS.CellActionMapDeclaration$Fh, CONCEPTS.CellMenuComponent$EO, CONCEPTS.StyleSheet$GD});
+    ListSequence.fromList(nodes).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("findConceptAspects", CONCEPTS.AbstractConceptDeclaration$KA, "4G9PD8$NvPM"), aspectModel))));
+    return ConceptEditorHelper.sortRootsByConcept(nodes, new SAbstractConcept[]{CONCEPTS.ConceptEditorDeclaration$BH, CONCEPTS.EditorComponentDeclaration$WM, CONCEPTS.CellKeyMapDeclaration$4K, CONCEPTS.CellActionMapDeclaration$QS, CONCEPTS.CellMenuComponent$Qr, CONCEPTS.StyleSheet$Sg});
   }
   public boolean isSingle() {
     return false;
@@ -79,12 +79,12 @@ public class Editor_TabDescriptor extends RelationDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept ConceptEditorDeclaration$s6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
-    /*package*/ static final SConcept EditorComponentDeclaration$Lb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
-    /*package*/ static final SConcept CellKeyMapDeclaration$T9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
-    /*package*/ static final SConcept CellActionMapDeclaration$Fh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
-    /*package*/ static final SConcept CellMenuComponent$EO = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, "jetbrains.mps.lang.editor.structure.CellMenuComponent");
-    /*package*/ static final SConcept StyleSheet$GD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, "jetbrains.mps.lang.editor.structure.StyleSheet");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptEditorDeclaration$BH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
+    /*package*/ static final SConcept EditorComponentDeclaration$WM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
+    /*package*/ static final SConcept CellKeyMapDeclaration$4K = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
+    /*package*/ static final SConcept CellActionMapDeclaration$QS = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
+    /*package*/ static final SConcept CellMenuComponent$Qr = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7d702058L, "jetbrains.mps.lang.editor.structure.CellMenuComponent");
+    /*package*/ static final SConcept StyleSheet$Sg = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, "jetbrains.mps.lang.editor.structure.StyleSheet");
   }
 }

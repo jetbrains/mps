@@ -31,7 +31,7 @@ public abstract class StaticMemberRefactoringParticipant extends UpdateReference
 
       @Nullable
       public UpdateReferencesParticipantBase.NodeData<UpdateReferencesParticipantBase.NamedNodeReference> beforeMove(SNode nodeToMove) {
-        SNode classifier = SNodeOperations.getNodeAncestor(nodeToMove, CONCEPTS.Classifier$hJ, false, false);
+        SNode classifier = SNodeOperations.getNodeAncestor(nodeToMove, CONCEPTS.Classifier$Ix, false, false);
         if (!(isApplicable(nodeToMove)) || classifier == null) {
           return null;
         }
@@ -39,7 +39,7 @@ public abstract class StaticMemberRefactoringParticipant extends UpdateReference
       }
       @Nullable
       public UpdateReferencesParticipantBase.NodeData<UpdateReferencesParticipantBase.NamedNodeReference> afterMove(SNode movedNode) {
-        SNode classifier = SNodeOperations.getNodeAncestor(movedNode, CONCEPTS.Classifier$hJ, false, false);
+        SNode classifier = SNodeOperations.getNodeAncestor(movedNode, CONCEPTS.Classifier$Ix, false, false);
         UpdateReferencesParticipantBase.NamedNodeReference classifierData = (classifier == null ? null : classifierDataCollector.afterMove(classifier));
         return new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(fieldDataCollector.afterMove(movedNode), classifierData);
       }
@@ -53,39 +53,39 @@ public abstract class StaticMemberRefactoringParticipant extends UpdateReference
     return createClassifierMemberData_io42ml_a0a6(NodeReferenceUtil.makeReflection(finalState.baseData().reference(), finalState.baseData().name()), NodeReferenceUtil.makeReflection(finalState.other().reference(), finalState.other().name()));
   }
   public UpdateReferencesParticipantBase.NodeData<UpdateReferencesParticipantBase.NamedNodeReference> deserializeFinalState(SNode serialized) {
-    UpdateReferencesParticipantBase.NamedNodeReference classifierData = new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.classifierData$SQ3R)), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(serialized, LINKS.classifierData$SQ3R)));
-    return new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.nodeData$SP_P)), SPropertyOperations.getString(SLinkOperations.getTarget(serialized, LINKS.nodeData$SP_P), PROPS.nodeName$Cp3c)), classifierData);
+    UpdateReferencesParticipantBase.NamedNodeReference classifierData = new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.classifierData$_$mB)), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(serialized, LINKS.classifierData$_$mB)));
+    return new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.nodeData$_zS_)), SPropertyOperations.getString(SLinkOperations.getTarget(serialized, LINKS.nodeData$_zS_), PROPS.nodeName$l7lW)), classifierData);
   }
   public UpdateReferencesParticipantBase.NodeData<UpdateReferencesParticipantBase.NamedNodeReference> deserializeInitialState(SNode serialized) {
-    UpdateReferencesParticipantBase.NamedNodeReference classifierData = new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.classifierData$SQ3R)), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(serialized, LINKS.classifierData$SQ3R)));
-    return new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.nodeData$SP_P)), SPropertyOperations.getString(SLinkOperations.getTarget(serialized, LINKS.nodeData$SP_P), PROPS.nodeName$Cp3c)), classifierData);
+    UpdateReferencesParticipantBase.NamedNodeReference classifierData = new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.classifierData$_$mB)), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(serialized, LINKS.classifierData$_$mB)));
+    return new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.nodeData$_zS_)), SPropertyOperations.getString(SLinkOperations.getTarget(serialized, LINKS.nodeData$_zS_), PROPS.nodeName$l7lW)), classifierData);
   }
 
   private static SNode createClassifierMemberData_io42ml_a0a5(SNode p0, SNode p1) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierMemberData$xl);
-    n0.forChild(LINKS.nodeData$SP_P).initNode(p0, CONCEPTS.ReflectionNodeReference$Ue, true);
-    n0.forChild(LINKS.classifierData$SQ3R).initNode(p1, CONCEPTS.ReflectionNodeReference$Ue, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierMemberData$O5);
+    n0.forChild(LINKS.nodeData$_zS_).initNode(p0, CONCEPTS.ReflectionNodeReference$cY, true);
+    n0.forChild(LINKS.classifierData$_$mB).initNode(p1, CONCEPTS.ReflectionNodeReference$cY, true);
     return n0.getResult();
   }
   private static SNode createClassifierMemberData_io42ml_a0a6(SNode p0, SNode p1) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierMemberData$xl);
-    n0.forChild(LINKS.nodeData$SP_P).initNode(p0, CONCEPTS.ReflectionNodeReference$Ue, true);
-    n0.forChild(LINKS.classifierData$SQ3R).initNode(p1, CONCEPTS.ReflectionNodeReference$Ue, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierMemberData$O5);
+    n0.forChild(LINKS.nodeData$_zS_).initNode(p0, CONCEPTS.ReflectionNodeReference$cY, true);
+    n0.forChild(LINKS.classifierData$_$mB).initNode(p1, CONCEPTS.ReflectionNodeReference$cY, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept ClassifierMemberData$xl = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x7e209440ba59c1e7L, "jetbrains.mps.lang.migration.structure.ClassifierMemberData");
-    /*package*/ static final SConcept ReflectionNodeReference$Ue = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, "jetbrains.mps.lang.migration.structure.ReflectionNodeReference");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ClassifierMemberData$O5 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x7e209440ba59c1e7L, "jetbrains.mps.lang.migration.structure.ClassifierMemberData");
+    /*package*/ static final SConcept ReflectionNodeReference$cY = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, "jetbrains.mps.lang.migration.structure.ReflectionNodeReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classifierData$SQ3R = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x7e209440ba59c1e7L, 0x7e209440ba59c1eaL, "classifierData");
-    /*package*/ static final SContainmentLink nodeData$SP_P = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x7e209440ba59c1e7L, 0x7e209440ba59c1e8L, "nodeData");
+    /*package*/ static final SContainmentLink classifierData$_$mB = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x7e209440ba59c1e7L, 0x7e209440ba59c1eaL, "classifierData");
+    /*package*/ static final SContainmentLink nodeData$_zS_ = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x7e209440ba59c1e7L, 0x7e209440ba59c1e8L, "nodeData");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeName$Cp3c = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
+    /*package*/ static final SProperty nodeName$l7lW = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
   }
 }

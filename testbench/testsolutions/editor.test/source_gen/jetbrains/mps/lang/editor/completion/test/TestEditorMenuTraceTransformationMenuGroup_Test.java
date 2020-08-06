@@ -59,9 +59,9 @@ public class TestEditorMenuTraceTransformationMenuGroup_Test extends BaseTransfo
 
           EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
 
-          SNode group = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"), LINKS.sections$CEZb)).first(), LINKS.parts$hQY2), CONCEPTS.TransformationMenuPart_Group$nv)).first();
+          SNode group = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"), LINKS.sections$GXaM)).first(), LINKS.parts$m99D), CONCEPTS.TransformationMenuPart_Group$z6)).first();
 
-          SNodeReference transformAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(group, LINKS.parts$YbJw), CONCEPTS.TransformationMenuPart_Action$36)).first());
+          SNodeReference transformAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(group, LINKS.parts$2tV7), CONCEPTS.TransformationMenuPart_Action$eH)).first());
 
           EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, transformAction, SNodeOperations.getPointer(group), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"));
         }
@@ -71,13 +71,13 @@ public class TestEditorMenuTraceTransformationMenuGroup_Test extends BaseTransfo
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink sections$CEZb = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, 0x16be955f384efffcL, "sections");
-    /*package*/ static final SContainmentLink parts$hQY2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbfL, "parts");
-    /*package*/ static final SContainmentLink parts$YbJw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x671b36136d224047L, 0x671b36136d224048L, "parts");
+    /*package*/ static final SContainmentLink sections$GXaM = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, 0x16be955f384efffcL, "sections");
+    /*package*/ static final SContainmentLink parts$m99D = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbfL, "parts");
+    /*package*/ static final SContainmentLink parts$2tV7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x671b36136d224047L, 0x671b36136d224048L, "parts");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuPart_Group$nv = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x671b36136d224047L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Group");
-    /*package*/ static final SConcept TransformationMenuPart_Action$36 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384f93e6L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Action");
+    /*package*/ static final SConcept TransformationMenuPart_Group$z6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x671b36136d224047L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Group");
+    /*package*/ static final SConcept TransformationMenuPart_Action$eH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384f93e6L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Action");
   }
 }

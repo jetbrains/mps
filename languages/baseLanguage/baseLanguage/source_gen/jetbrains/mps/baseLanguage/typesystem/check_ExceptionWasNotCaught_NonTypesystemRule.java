@@ -44,7 +44,7 @@ public class check_ExceptionWasNotCaught_NonTypesystemRule extends AbstractNonTy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ITryCatchStatement$WV;
+    return CONCEPTS.ITryCatchStatement$pH;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,6 +61,6 @@ public class check_ExceptionWasNotCaught_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITryCatchStatement$WV = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3399756d2c03d422L, "jetbrains.mps.baseLanguage.structure.ITryCatchStatement");
+    /*package*/ static final SInterfaceConcept ITryCatchStatement$pH = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3399756d2c03d422L, "jetbrains.mps.baseLanguage.structure.ITryCatchStatement");
   }
 }

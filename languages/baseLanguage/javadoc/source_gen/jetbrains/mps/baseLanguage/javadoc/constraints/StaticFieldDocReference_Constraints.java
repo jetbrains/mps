@@ -26,12 +26,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StaticFieldDocReference_Constraints extends BaseConstraintsDescriptor {
   public StaticFieldDocReference_Constraints() {
-    super(CONCEPTS.StaticFieldDocReference$Ew);
+    super(CONCEPTS.StaticFieldDocReference$sH);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$v4BQ, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$Ptq3, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -46,9 +46,9 @@ public class StaticFieldDocReference_Constraints extends BaseConstraintsDescript
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forNamedElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.StaticFieldDeclaration$R5)).where(new IWhereFilter<SNode>() {
+            return ListScope.forNamedElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.StaticFieldDeclaration$jR)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.AnonymousClass$aF));
+                return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.AnonymousClass$Bt));
               }
             }));
           }
@@ -62,12 +62,12 @@ public class StaticFieldDocReference_Constraints extends BaseConstraintsDescript
   private static final SNodePointer breakingNode_9aygvv_a0a0a0a0a1a0a0a0c = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "6836281137582741153");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticFieldDocReference$Ew = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5a38b07c2d6d7c7bL, "jetbrains.mps.baseLanguage.javadoc.structure.StaticFieldDocReference");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept StaticFieldDocReference$sH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5a38b07c2d6d7c7bL, "jetbrains.mps.baseLanguage.javadoc.structure.StaticFieldDocReference");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$v4BQ = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, 0x4d316b5973d644c4L, "declaration");
+    /*package*/ static final SReferenceLink declaration$Ptq3 = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, 0x4d316b5973d644c4L, "declaration");
   }
 }

@@ -16,10 +16,10 @@ public class AuthorBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@author ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$6i3F));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$sEPS));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$6i3F = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, 0x4a3c146b7faeeb9aL, "text");
+    /*package*/ static final SProperty text$sEPS = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, 0x4a3c146b7faeeb9aL, "text");
   }
 }

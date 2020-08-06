@@ -23,7 +23,7 @@ public class TestSubstituteSubChildSmartReference_SmartReference extends Substit
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_4colu3_a(), CONCEPTS.TestSubstituteSubChildSmartReference_WithMenu$od));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_4colu3_a(), CONCEPTS.TestSubstituteSubChildSmartReference_WithMenu$CI));
     return result;
   }
 
@@ -44,7 +44,7 @@ public class TestSubstituteSubChildSmartReference_SmartReference extends Substit
 
     public SMP_ReferenceScope_4colu3_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TestSubstituteSubChildSmartReference_WithMenu$od, LINKS.childToReference$SkKD);
+      super((SAbstractConcept) CONCEPTS.TestSubstituteSubChildSmartReference_WithMenu$CI, LINKS.childToReference$QW1a);
     }
     @NotNull
     @Override
@@ -61,10 +61,10 @@ public class TestSubstituteSubChildSmartReference_SmartReference extends Substit
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteSubChildSmartReference_WithMenu$od = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aeL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSubChildSmartReference_WithMenu");
+    /*package*/ static final SConcept TestSubstituteSubChildSmartReference_WithMenu$CI = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aeL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSubChildSmartReference_WithMenu");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink childToReference$SkKD = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aeL, 0x7ce1116e3aa66222L, "childToReference");
+    /*package*/ static final SReferenceLink childToReference$QW1a = MetaAdapterFactory.getReferenceLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aeL, 0x7ce1116e3aa66222L, "childToReference");
   }
 }

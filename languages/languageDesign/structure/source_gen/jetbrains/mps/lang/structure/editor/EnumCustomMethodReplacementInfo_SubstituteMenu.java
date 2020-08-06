@@ -28,7 +28,7 @@ public class EnumCustomMethodReplacementInfo_SubstituteMenu extends SubstituteMe
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_1nlwit_a(), CONCEPTS.EnumCustomMethodReplacementInfo$IH));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_1nlwit_a(), CONCEPTS.EnumCustomMethodReplacementInfo$$w));
     result.add(new SMP_Subconcepts_1nlwit_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class EnumCustomMethodReplacementInfo_SubstituteMenu extends SubstituteMe
 
     public SMP_ReferenceScope_1nlwit_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.EnumCustomMethodReplacementInfo$IH, LINKS.enum$PtdT);
+      super((SAbstractConcept) CONCEPTS.EnumCustomMethodReplacementInfo$$w, LINKS.enum$h_3G);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class EnumCustomMethodReplacementInfo_SubstituteMenu extends SubstituteMe
   }
   public class SMP_Subconcepts_1nlwit_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EnumCustomMethodReplacementInfo$IH);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EnumCustomMethodReplacementInfo$$w);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class EnumCustomMethodReplacementInfo_SubstituteMenu extends SubstituteMe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumCustomMethodReplacementInfo$IH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementInfo");
+    /*package*/ static final SConcept EnumCustomMethodReplacementInfo$$w = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementInfo");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enum$PtdT = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e948L, "enum");
+    /*package*/ static final SReferenceLink enum$h_3G = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e948L, "enum");
   }
 }

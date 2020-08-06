@@ -21,18 +21,18 @@ public class typeof_MoveNodesToNodeExpression_InferenceRule extends AbstractInfe
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.destination$m5Kz);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.destination$S2dc);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "1199621033921", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "1199621033926", true), (SNode) _quotation_createNode_cqgosu_a1a0c0a0b(), false, true, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.roleInTarget$NGhh);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.roleInTarget$lCHU);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "1199621033930", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "1199621033935", true), (SNode) _quotation_createNode_cqgosu_a1a0c0b0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MoveNodesToNodeExpression$N9;
+    return CONCEPTS.MoveNodesToNodeExpression$fM;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,11 +54,11 @@ public class typeof_MoveNodesToNodeExpression_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink destination$m5Kz = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174ee3c478L, 0x1174ee44ac3L, "destination");
-    /*package*/ static final SContainmentLink roleInTarget$NGhh = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174efa95a1L, 0x1174efb2b31L, "roleInTarget");
+    /*package*/ static final SContainmentLink destination$S2dc = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174ee3c478L, 0x1174ee44ac3L, "destination");
+    /*package*/ static final SContainmentLink roleInTarget$lCHU = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174efa95a1L, 0x1174efb2b31L, "roleInTarget");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MoveNodesToNodeExpression$N9 = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174efa95a1L, "jetbrains.mps.lang.refactoring.structure.MoveNodesToNodeExpression");
+    /*package*/ static final SConcept MoveNodesToNodeExpression$fM = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174efa95a1L, "jetbrains.mps.lang.refactoring.structure.MoveNodesToNodeExpression");
   }
 }

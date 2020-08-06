@@ -23,9 +23,9 @@ public class checkNumberOfArgs_NonTypesystemRule extends AbstractNonTypesystemRu
   public checkNumberOfArgs_NonTypesystemRule() {
   }
   public void applyRule(final SNode customConstructorUsage, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode args = SLinkOperations.getTarget(SLinkOperations.getTarget(customConstructorUsage, LINKS.customConstructor$T7GZ), LINKS.arguments$k0CZ);
-    if (SNodeOperations.isInstanceOf(args, CONCEPTS.CustomArgumentClause$2w)) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, CONCEPTS.CustomArgumentClause$2w), LINKS.parameter$qDoX)).count() != ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, LINKS.element$TfFx)).count()) {
+    SNode args = SLinkOperations.getTarget(SLinkOperations.getTarget(customConstructorUsage, LINKS.customConstructor$6$s7), LINKS.arguments$xto7);
+    if (SNodeOperations.isInstanceOf(args, CONCEPTS.CustomArgumentClause$LC)) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(args, CONCEPTS.CustomArgumentClause$LC), LINKS.parameter$C685)).count() != ListSequence.fromList(SLinkOperations.getChildren(customConstructorUsage, LINKS.element$6GqD)).count()) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(customConstructorUsage, "Wrong number of arguments", "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "960932673514559399", null, errorTarget);
@@ -34,7 +34,7 @@ public class checkNumberOfArgs_NonTypesystemRule extends AbstractNonTypesystemRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CustomConstructorUsage$21;
+    return CONCEPTS.CustomConstructorUsage$L9;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,14 +44,14 @@ public class checkNumberOfArgs_NonTypesystemRule extends AbstractNonTypesystemRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink customConstructor$T7GZ = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
-    /*package*/ static final SContainmentLink arguments$k0CZ = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
-    /*package*/ static final SContainmentLink element$TfFx = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element");
-    /*package*/ static final SContainmentLink parameter$qDoX = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
+    /*package*/ static final SReferenceLink customConstructor$6$s7 = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
+    /*package*/ static final SContainmentLink arguments$xto7 = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
+    /*package*/ static final SContainmentLink element$6GqD = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element");
+    /*package*/ static final SContainmentLink parameter$C685 = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomArgumentClause$2w = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause");
-    /*package*/ static final SConcept CustomConstructorUsage$21 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorUsage");
+    /*package*/ static final SConcept CustomArgumentClause$LC = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause");
+    /*package*/ static final SConcept CustomConstructorUsage$L9 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorUsage");
   }
 }

@@ -19,7 +19,7 @@ public class check_NodeMacro_NonTypesystemRule extends AbstractNonTypesystemRule
   public check_NodeMacro_NonTypesystemRule() {
   }
   public void applyRule(final SNode macro, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isAttribute(macro) && SNodeOperations.getNodeAncestor(macro, CONCEPTS.TemplateDeclaration$q0, false, false) != null) {
+    if (SNodeOperations.isAttribute(macro) && SNodeOperations.getNodeAncestor(macro, CONCEPTS.TemplateDeclaration$5G, false, false) != null) {
       if (QueriesUtil.getEnclosing_TemplateFragment(SNodeOperations.getParent(macro)) == null) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -29,7 +29,7 @@ public class check_NodeMacro_NonTypesystemRule extends AbstractNonTypesystemRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodeMacro$Je;
+    return CONCEPTS.NodeMacro$qU;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,7 +39,7 @@ public class check_NodeMacro_NonTypesystemRule extends AbstractNonTypesystemRule
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateDeclaration$q0 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
-    /*package*/ static final SConcept NodeMacro$Je = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+    /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
+    /*package*/ static final SConcept NodeMacro$qU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
   }
 }

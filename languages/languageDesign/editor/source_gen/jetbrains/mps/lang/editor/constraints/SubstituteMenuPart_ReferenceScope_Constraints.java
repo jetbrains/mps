@@ -27,12 +27,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class SubstituteMenuPart_ReferenceScope_Constraints extends BaseConstraintsDescriptor {
   public SubstituteMenuPart_ReferenceScope_Constraints() {
-    super(CONCEPTS.SubstituteMenuPart_ReferenceScope$po);
+    super(CONCEPTS.SubstituteMenuPart_ReferenceScope$$Z);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$yXJL, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$BfVo, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,7 +47,7 @@ public class SubstituteMenuPart_ReferenceScope_Constraints extends BaseConstrain
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode outputConcept = ((_context.getReferenceNode() != null) ? IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(_context.getReferenceNode()) : IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ISubstituteMenu$zI, false, false)));
+            SNode outputConcept = ((_context.getReferenceNode() != null) ? IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(_context.getReferenceNode()) : IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ISubstituteMenu$Jl, false, false)));
 
             return ListScope.forNamedElements(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(outputConcept));
           }
@@ -61,11 +61,11 @@ public class SubstituteMenuPart_ReferenceScope_Constraints extends BaseConstrain
   private static final SNodePointer breakingNode_2ovwuh_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "8428109087107344702");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenuPart_ReferenceScope$po = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope");
-    /*package*/ static final SInterfaceConcept ISubstituteMenu$zI = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
+    /*package*/ static final SConcept SubstituteMenuPart_ReferenceScope$$Z = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope");
+    /*package*/ static final SInterfaceConcept ISubstituteMenu$Jl = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$yXJL = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x74f6a88f89465369L, "reference");
+    /*package*/ static final SReferenceLink reference$BfVo = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x74f6a88f89465369L, "reference");
   }
 }

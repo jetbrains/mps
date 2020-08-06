@@ -50,16 +50,16 @@ public final class StartProcessHandlerStatement__BehaviorDescriptor extends Base
     return ((SNode) StartProcessHandlerStatement__BehaviorDescriptor.getComponentByName_id1ovLDatOkEK.invoke(__thisNode__, "listener"));
   }
   /*package*/ static SNode getComponentByName_id1ovLDatOkEK(@NotNull SNode __thisNode__, final String name) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.tool$$QDj) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.tool$8wlU) == null)) {
       return null;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.tool$$QDj), CONCEPTS.NamedTupleLiteral$lS)) {
-      SNode first = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.tool$$QDj), CONCEPTS.NamedTupleLiteral$lS), LINKS.componentRef$$Ar)).findFirst(new IWhereFilter<SNode>() {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.tool$8wlU), CONCEPTS.NamedTupleLiteral$rD)) {
+      SNode first = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.tool$8wlU), CONCEPTS.NamedTupleLiteral$rD), LINKS.componentRef$hTGc)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.componentDeclaration$5Zu0), PROPS.name$lA7v).equals(name);
+          return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.componentDeclaration$nkzL), PROPS.name$MnvL).equals(name);
         }
       });
-      return SLinkOperations.getTarget(first, LINKS.value$YiNu);
+      return SLinkOperations.getTarget(first, LINKS.value$fBTf);
     }
     return null;
   }
@@ -117,17 +117,17 @@ public final class StartProcessHandlerStatement__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tool$$QDj = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0xd244b712f9d44d1L, 0x161fc6929dcff3a0L, "tool");
-    /*package*/ static final SContainmentLink componentRef$$Ar = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b9676f1L, "componentRef");
-    /*package*/ static final SReferenceLink componentDeclaration$5Zu0 = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration");
-    /*package*/ static final SContainmentLink value$YiNu = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b955a61L, "value");
+    /*package*/ static final SContainmentLink tool$8wlU = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0xd244b712f9d44d1L, 0x161fc6929dcff3a0L, "tool");
+    /*package*/ static final SContainmentLink componentRef$hTGc = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, 0x1209b9676f1L, "componentRef");
+    /*package*/ static final SReferenceLink componentDeclaration$nkzL = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b91a766L, "componentDeclaration");
+    /*package*/ static final SContainmentLink value$fBTf = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b917141L, 0x1209b955a61L, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NamedTupleLiteral$lS = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleLiteral");
+    /*package*/ static final SConcept NamedTupleLiteral$rD = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleLiteral");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

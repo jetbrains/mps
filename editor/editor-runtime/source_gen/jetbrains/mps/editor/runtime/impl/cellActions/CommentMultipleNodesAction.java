@@ -27,9 +27,9 @@ public class CommentMultipleNodesAction extends AbstractCellAction {
       myCanExecute = false;
       return;
     }
-    myNeedToCommentOut = !(SNodeOperations.isInstanceOf(Sequence.fromIterable(myNodes).first(), CONCEPTS.BaseCommentAttribute$Zd));
+    myNeedToCommentOut = !(SNodeOperations.isInstanceOf(Sequence.fromIterable(myNodes).first(), CONCEPTS.BaseCommentAttribute$nv));
     for (SNode node : Sequence.fromIterable(myNodes)) {
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$Zd) && myNeedToCommentOut || !(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$Zd)) && !(myNeedToCommentOut)) {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$nv) && myNeedToCommentOut || !(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$nv)) && !(myNeedToCommentOut)) {
         myCanExecute = false;
         return;
       }
@@ -56,8 +56,8 @@ public class CommentMultipleNodesAction extends AbstractCellAction {
           lastNodeToSelect = commentedNode;
         }
       } else {
-        assert SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$Zd);
-        SNode uncommentedNode = CommentUtil.uncomment(SNodeOperations.cast(node, CONCEPTS.BaseCommentAttribute$Zd));
+        assert SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$nv);
+        SNode uncommentedNode = CommentUtil.uncomment(SNodeOperations.cast(node, CONCEPTS.BaseCommentAttribute$nv));
         if (counter == 0) {
           firstNodeToSelect = uncommentedNode;
         }
@@ -75,6 +75,6 @@ public class CommentMultipleNodesAction extends AbstractCellAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }
 }

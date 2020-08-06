@@ -17,11 +17,11 @@ public class RemoveFinalFromTheMethod_QuickFix extends QuickFix_Runtime {
     return "Remove the 'final' modifier";
   }
   public void execute(SNode node) {
-    assert SPropertyOperations.getBoolean(((SNode) RemoveFinalFromTheMethod_QuickFix.this.getField("conceptMethod")[0]), PROPS.isFinal$zQoy);
-    SPropertyOperations.assign(((SNode) RemoveFinalFromTheMethod_QuickFix.this.getField("conceptMethod")[0]), PROPS.isFinal$zQoy, false);
+    assert SPropertyOperations.getBoolean(((SNode) RemoveFinalFromTheMethod_QuickFix.this.getField("conceptMethod")[0]), PROPS.isFinal$eVPk);
+    SPropertyOperations.assign(((SNode) RemoveFinalFromTheMethod_QuickFix.this.getField("conceptMethod")[0]), PROPS.isFinal$eVPk, false);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty isFinal$eVPk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 }

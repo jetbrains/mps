@@ -48,7 +48,7 @@ public class IntroduceConstant_Action extends BaseAction {
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
       public SNode compute() {
-        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$TP, true, false);
+        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false);
       }
     }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
     if (ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("component")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("component")).findNodeCell(nodeToRefactor)))) {
@@ -104,7 +104,7 @@ public class IntroduceConstant_Action extends BaseAction {
 
     final SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
       public SNode compute() {
-        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$TP, true, false);
+        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false);
       }
     }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
 
@@ -114,9 +114,9 @@ public class IntroduceConstant_Action extends BaseAction {
 
     ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$IY, false)).where(new IWhereFilter<SNode>() {
+        candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$aF));
+            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt));
           }
         }).toListSequence();
       }
@@ -128,7 +128,7 @@ public class IntroduceConstant_Action extends BaseAction {
       classChooser.show();
       ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          desiredTargetClass.value = (classChooser.getResult() != null ? SNodeOperations.as(classChooser.getResult().resolve(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository()), CONCEPTS.ClassConcept$IY) : null);
+          desiredTargetClass.value = (classChooser.getResult() != null ? SNodeOperations.as(classChooser.getResult().resolve(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository()), CONCEPTS.ClassConcept$bK) : null);
         }
       });
     } else {
@@ -152,8 +152,8 @@ public class IntroduceConstant_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 }

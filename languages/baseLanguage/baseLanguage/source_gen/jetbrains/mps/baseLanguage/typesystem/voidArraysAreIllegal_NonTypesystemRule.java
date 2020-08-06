@@ -21,7 +21,7 @@ public class voidArraysAreIllegal_NonTypesystemRule extends AbstractNonTypesyste
   public voidArraysAreIllegal_NonTypesystemRule() {
   }
   public void applyRule(final SNode arrayType, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arrayType, LINKS.componentType$vfw), CONCEPTS.VoidType$aT)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arrayType, LINKS.componentType$F$Gi), CONCEPTS.VoidType$BF)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arrayType, "void array is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4646069078286000769", null, errorTarget);
@@ -29,7 +29,7 @@ public class voidArraysAreIllegal_NonTypesystemRule extends AbstractNonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ArrayType$Yv;
+    return CONCEPTS.ArrayType$rh;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,11 +39,11 @@ public class voidArraysAreIllegal_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
   }
 }

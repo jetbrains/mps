@@ -21,7 +21,7 @@ public class Class_Void_weak_supertypeof_void_SubtypingRule extends SubtypingRul
     return _quotation_createNode_or08yn_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.VoidType$aT;
+    return CONCEPTS.VoidType$BF;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class Class_Void_weak_supertypeof_void_SubtypingRule extends SubtypingRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
   }
 }

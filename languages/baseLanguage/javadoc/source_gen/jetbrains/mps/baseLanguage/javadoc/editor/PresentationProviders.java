@@ -17,21 +17,21 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return "<" + SPropertyOperations.getString(targetNode, PROPS.name$lA7v) + ">";
+      return "<" + SPropertyOperations.getString(targetNode, PROPS.name$MnvL) + ">";
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_mgmaof_a0a0a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return BaseDocReference__BehaviorDescriptor.getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi.invoke(sourceNode, SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.Classifier$hJ)) + SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+      return BaseDocReference__BehaviorDescriptor.getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi.invoke(sourceNode, SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.Classifier$Ix)) + SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_t5duq4_a0a0a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return BaseDocReference__BehaviorDescriptor.getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi.invoke(sourceNode, SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.Classifier$hJ)) + SPropertyOperations.getString(targetNode, PROPS.name$lA7v) + "()";
+      return BaseDocReference__BehaviorDescriptor.getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi.invoke(sourceNode, SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.Classifier$Ix)) + SPropertyOperations.getString(targetNode, PROPS.name$MnvL) + "()";
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_yqqfxo_a0a0a = new IReferentPresentationProvider() {
@@ -45,15 +45,15 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return BaseDocReference__BehaviorDescriptor.getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi.invoke(sourceNode, SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.Classifier$hJ)) + SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+      return BaseDocReference__BehaviorDescriptor.getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi.invoke(sourceNode, SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.Classifier$Ix)) + SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
     }
   };
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

@@ -35,11 +35,11 @@ public final class BuildMps_IdeaPluginModule__BehaviorDescriptor extends BaseBHD
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object object) {
     if (object instanceof SNode) {
       SNode node = (SNode) object;
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$fB)) {
-        return SLinkOperations.getTarget(__thisNode__, LINKS.target$GZN0) == node;
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$FZ)) {
+        return SLinkOperations.getTarget(__thisNode__, LINKS.target$ccfo) == node;
       }
     }
-    return ((boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildMps_IdeaPluginModule$ZA, object));
+    return ((boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildMps_IdeaPluginModule$rY, object));
   }
 
   /*package*/ BuildMps_IdeaPluginModule__BehaviorDescriptor() {
@@ -89,11 +89,11 @@ public final class BuildMps_IdeaPluginModule__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$GZN0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
+    /*package*/ static final SReferenceLink target$ccfo = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_AbstractModule$fB = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
-    /*package*/ static final SConcept BuildMps_IdeaPluginModule$ZA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule");
+    /*package*/ static final SConcept BuildMps_AbstractModule$FZ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
+    /*package*/ static final SConcept BuildMps_IdeaPluginModule$rY = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule");
   }
 }

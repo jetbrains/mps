@@ -98,7 +98,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ReplaceWith_BuildLayout_Node_cellMenu_roxgcf_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.BuildLayout_Node$kC;
+      return CONCEPTS.BuildLayout_Node$Rb;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -106,14 +106,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createRefCell_0() {
-    final SReferenceLink referenceLink = LINKS.target$xZhx;
+    final SReferenceLink referenceLink = LINKS.target$HFO4;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
         EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
           public EditorCell compute() {
             return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
           }
-        }, targetNode, LINKS.target$xZhx);
+        }, targetNode, LINKS.target$HFO4);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_notnull(cell);
@@ -126,13 +126,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     if (editorCell.getSRole() == null) {
       editorCell.setReferenceCell(true);
-      editorCell.setSRole(LINKS.target$xZhx);
+      editorCell.setSRole(LINKS.target$HFO4);
     }
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new ReferenceCellContext(getNode(), getNode(), referenceLink), new SubstituteInfoPartExt[]{new BuildLayout_ImportContent_target_cellMenu_roxgcf_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$7j);
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$v_);
     Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
@@ -210,10 +210,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.selectors$_A7g;
+      return LINKS.selectors$LiDN;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.BuildFileSelector$OL;
+      return CONCEPTS.BuildFileSelector$nk;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -223,7 +223,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(selectorsListHandler_roxgcf_c0.this.getNode(), LINKS.selectors$_A7g));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(selectorsListHandler_roxgcf_c0.this.getNode(), LINKS.selectors$LiDN));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_0();
@@ -275,13 +275,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
-    /*package*/ static final SConcept LinkAttribute$7j = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
-    /*package*/ static final SConcept BuildFileSelector$OL = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a7L, "jetbrains.mps.build.structure.BuildFileSelector");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
+    /*package*/ static final SConcept BuildFileSelector$nk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a7L, "jetbrains.mps.build.structure.BuildFileSelector");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$xZhx = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
-    /*package*/ static final SContainmentLink selectors$_A7g = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x5e395ed30d43f65aL, "selectors");
+    /*package*/ static final SReferenceLink target$HFO4 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x4ddcec86af9fdb55L, "target");
+    /*package*/ static final SContainmentLink selectors$LiDN = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86af9fdb53L, 0x5e395ed30d43f65aL, "selectors");
   }
 }

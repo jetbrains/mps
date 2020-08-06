@@ -24,13 +24,13 @@ public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends Abstra
   public check_ModuleXml_SpecifiesClasspath_NonTypesystemRule() {
   }
   public void applyRule(final SNode n, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.classpathEntries$mK6P)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.classpathEntries$PWzd)).isNotEmpty()) {
       return;
     }
-    SNode containerJar = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(n), CONCEPTS.BuildLayout_Folder$4a)), CONCEPTS.BuildLayout_Jar$CE);
-    if ((containerJar != null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(containerJar, LINKS.children$Z6lh), CONCEPTS.BuildLayout_CompileOutputOf$v7)).isNotEmpty()) {
+    SNode containerJar = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.as(SNodeOperations.getParent(n), CONCEPTS.BuildLayout_Folder$AH)), CONCEPTS.BuildLayout_Jar$bd);
+    if ((containerJar != null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(containerJar, LINKS.children$aMRO), CONCEPTS.BuildLayout_CompileOutputOf$1E)).isNotEmpty()) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.classpathEntries$mK6P);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.classpathEntries$PWzd);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(n, "Module descriptor inside a jar with compiled classes doesn't specify classpath", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "8488591998065913053", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.build.mps.typesystem.SetModuleJarClasspathEntry_QuickFix", false);
@@ -40,7 +40,7 @@ public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildMpsLayout_ModuleXml$8Q;
+    return CONCEPTS.BuildMpsLayout_ModuleXml$_e;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,14 +50,14 @@ public class check_ModuleXml_SpecifiesClasspath_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classpathEntries$mK6P = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries");
-    /*package*/ static final SContainmentLink children$Z6lh = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
+    /*package*/ static final SContainmentLink classpathEntries$PWzd = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, 0x75cd89729fd8ef2bL, "classpathEntries");
+    /*package*/ static final SContainmentLink children$aMRO = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, 0x668c6cfbafac4c8eL, "children");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_Folder$4a = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder");
-    /*package*/ static final SConcept BuildLayout_Jar$CE = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
-    /*package*/ static final SConcept BuildLayout_CompileOutputOf$v7 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x23f6fd361bdcfd24L, "jetbrains.mps.build.structure.BuildLayout_CompileOutputOf");
-    /*package*/ static final SConcept BuildMpsLayout_ModuleXml$8Q = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml");
+    /*package*/ static final SConcept BuildLayout_Folder$AH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder");
+    /*package*/ static final SConcept BuildLayout_Jar$bd = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
+    /*package*/ static final SConcept BuildLayout_CompileOutputOf$1E = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x23f6fd361bdcfd24L, "jetbrains.mps.build.structure.BuildLayout_CompileOutputOf");
+    /*package*/ static final SConcept BuildMpsLayout_ModuleXml$_e = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6a3e160a3efe6274L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml");
   }
 }

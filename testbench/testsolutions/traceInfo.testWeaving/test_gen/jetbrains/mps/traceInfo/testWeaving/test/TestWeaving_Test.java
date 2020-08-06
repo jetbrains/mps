@@ -67,37 +67,41 @@ public class TestWeaving_Test extends BaseTransformationTest {
     }
 
     public void test_weave() throws Exception {
-      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weave$eGzZ), 11);
+      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weave$ef6v), 11);
     }
     public void test_weaveEach() throws Exception {
-      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weaveEach$eGN0), 17);
+      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weaveEach$eflw), 17);
     }
     public void test_weaveMany() throws Exception {
-      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weaveMany$L4F2), 23);
+      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weaveMany$KBdy), 23);
     }
     public void test_weaveEachMany() throws Exception {
-      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weaveEachMany$L4U3), 50);
+      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weaveEachMany$KBsz), 50);
     }
     public void test_weaveInterpreted() throws Exception {
-      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weave$eGzZ), 11);
+      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weave$XdZ3), 11);
     }
     public void test_weaveEachInterpreted() throws Exception {
-      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weaveEach$eGN0), 17);
+      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weaveEach$Xee4), 17);
     }
     public void test_weaveManyInterpreted() throws Exception {
-      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weaveMany$L4F2), 23);
+      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weaveMany$vA66), 23);
     }
     public void test_weaveEachManyInterpreted() throws Exception {
-      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weaveEachMany$L4U3), 50);
+      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weaveEachMany$vAl7), 50);
     }
 
 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink weave$eGzZ = MetaAdapterFactory.getContainmentLink(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64caccL, 0x55da9f701c64f39eL, "weave");
-    /*package*/ static final SContainmentLink weaveEach$eGN0 = MetaAdapterFactory.getContainmentLink(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64caccL, 0x55da9f701c64f39fL, "weaveEach");
-    /*package*/ static final SContainmentLink weaveMany$L4F2 = MetaAdapterFactory.getContainmentLink(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64caccL, 0x55da9f701c68116eL, "weaveMany");
-    /*package*/ static final SContainmentLink weaveEachMany$L4U3 = MetaAdapterFactory.getContainmentLink(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64caccL, 0x55da9f701c68116fL, "weaveEachMany");
+    /*package*/ static final SContainmentLink weave$ef6v = MetaAdapterFactory.getContainmentLink(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64caccL, 0x55da9f701c64f39eL, "weave");
+    /*package*/ static final SContainmentLink weaveEach$eflw = MetaAdapterFactory.getContainmentLink(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64caccL, 0x55da9f701c64f39fL, "weaveEach");
+    /*package*/ static final SContainmentLink weaveMany$KBdy = MetaAdapterFactory.getContainmentLink(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64caccL, 0x55da9f701c68116eL, "weaveMany");
+    /*package*/ static final SContainmentLink weaveEachMany$KBsz = MetaAdapterFactory.getContainmentLink(0xce517356fc9a4e78L, 0x86066e7a36ff0671L, 0x55da9f701c64caccL, 0x55da9f701c68116fL, "weaveEachMany");
+    /*package*/ static final SContainmentLink weave$XdZ3 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c64f39eL, "weave");
+    /*package*/ static final SContainmentLink weaveEach$Xee4 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c64f39fL, "weaveEach");
+    /*package*/ static final SContainmentLink weaveMany$vA66 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c68116eL, "weaveMany");
+    /*package*/ static final SContainmentLink weaveEachMany$vAl7 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c68116fL, "weaveEachMany");
   }
 }

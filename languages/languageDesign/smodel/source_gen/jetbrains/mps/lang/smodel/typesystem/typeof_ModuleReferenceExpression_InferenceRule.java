@@ -26,7 +26,7 @@ public class typeof_ModuleReferenceExpression_InferenceRule extends AbstractInfe
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ModuleReferenceExpression$M3;
+    return CONCEPTS.ModuleReferenceExpression$Nz;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_ModuleReferenceExpression_InferenceRule extends AbstractInfe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModuleReferenceExpression$M3 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, "jetbrains.mps.lang.smodel.structure.ModuleReferenceExpression");
+    /*package*/ static final SConcept ModuleReferenceExpression$Nz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, "jetbrains.mps.lang.smodel.structure.ModuleReferenceExpression");
   }
 }

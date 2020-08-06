@@ -28,10 +28,10 @@ public class typeof_PersistentConfigurationTemplateInitializer_InferenceRule ext
     {
       SNode _nodeToCheck_1029348928467 = configurationTemplateInitializer;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477809", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477818", true), (SNode) createTemplatePersistentConfigurationType_xmb8fa_a1a0c0a0b(SLinkOperations.getTarget(configurationTemplateInitializer, LINKS.template$9Y2w)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477818", true), (SNode) createTemplatePersistentConfigurationType_xmb8fa_a1a0c0a0b(SLinkOperations.getTarget(configurationTemplateInitializer, LINKS.template$YCBl)), _info_12389875345);
     }
-    List<SNode> parameters = SLinkOperations.getChildren(SLinkOperations.getTarget(configurationTemplateInitializer, LINKS.template$9Y2w), LINKS.templateParameter$9XoQ);
-    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(configurationTemplateInitializer, LINKS.parameter$9Yhx)).count(); i++) {
+    List<SNode> parameters = SLinkOperations.getChildren(SLinkOperations.getTarget(configurationTemplateInitializer, LINKS.template$YCBl), LINKS.templateParameter$YBXF);
+    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(configurationTemplateInitializer, LINKS.parameter$YCQm)).count(); i++) {
       if (i >= ListSequence.fromList(parameters).count()) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -40,14 +40,14 @@ public class typeof_PersistentConfigurationTemplateInitializer_InferenceRule ext
         return;
       }
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getChildren(configurationTemplateInitializer, LINKS.parameter$9Yhx).get(i);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getChildren(configurationTemplateInitializer, LINKS.parameter$YCQm).get(i);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477843", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477852", true), (SNode) typeCheckingContext.typeOf(ListSequence.fromList(parameters).getElement(i), "r:e115237b-80f4-4ca3-87d6-2ac891492994(jetbrains.mps.execution.settings.typesystem)", "6981317760235477846", true), false, false, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PersistentConfigurationTemplateInitializer$W5;
+    return CONCEPTS.PersistentConfigurationTemplateInitializer$wU;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,20 +56,20 @@ public class typeof_PersistentConfigurationTemplateInitializer_InferenceRule ext
     return false;
   }
   private static SNode createTemplatePersistentConfigurationType_xmb8fa_a1a0c0a0b(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
-    n0.setReferenceTarget(LINKS.persistentConfiguration$2710, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$Qi);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$QL_P, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$9Y2w = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, 0xd244b712f910117L, "template");
-    /*package*/ static final SContainmentLink templateParameter$9XoQ = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910113L, 0xd244b712f910115L, "templateParameter");
-    /*package*/ static final SContainmentLink parameter$9Yhx = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, 0xd244b712f910118L, "parameter");
-    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink template$YCBl = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, 0xd244b712f910117L, "template");
+    /*package*/ static final SContainmentLink templateParameter$YBXF = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910113L, 0xd244b712f910115L, "templateParameter");
+    /*package*/ static final SContainmentLink parameter$YCQm = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, 0xd244b712f910118L, "parameter");
+    /*package*/ static final SReferenceLink persistentConfiguration$QL_P = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PersistentConfigurationTemplateInitializer$W5 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, "jetbrains.mps.execution.settings.structure.PersistentConfigurationTemplateInitializer");
-    /*package*/ static final SConcept TemplatePersistentConfigurationType$ht = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType");
+    /*package*/ static final SConcept PersistentConfigurationTemplateInitializer$wU = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910116L, "jetbrains.mps.execution.settings.structure.PersistentConfigurationTemplateInitializer");
+    /*package*/ static final SConcept TemplatePersistentConfigurationType$Qi = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType");
   }
 }

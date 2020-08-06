@@ -41,13 +41,13 @@ public final class ReplaceEqualsWithEquality_Intention extends AbstractIntention
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI) == null) {
+    if (SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw) == null) {
       return false;
     }
-    if (SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v) == null) {
+    if (SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL) == null) {
       return false;
     }
-    return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v).equals("equals") && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI), LINKS.parameter$qsax)).count() == 1;
+    return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL).equals("equals") && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw), LINKS.parameter$5xBj)).count() == 1;
   }
   @Override
   public boolean isSurroundWith() {
@@ -68,12 +68,12 @@ public final class ReplaceEqualsWithEquality_Intention extends AbstractIntention
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode leftExpr = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.DotExpression$6a, false, false), LINKS.operand$P1i5);
-      SNode rightExpression = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)).first();
-      SNode equalsExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.EqualsExpression$lT, null);
-      SLinkOperations.setTarget(equalsExpression, LINKS.leftExpression$lndx, leftExpr);
-      SLinkOperations.setTarget(equalsExpression, LINKS.rightExpression$li3b, rightExpression);
-      SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(node, CONCEPTS.DotExpression$6a, false, false), equalsExpression);
+      SNode leftExpr = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.DotExpression$yW, false, false), LINKS.operand$w6IR);
+      SNode rightExpression = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)).first();
+      SNode equalsExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.EqualsExpression$MF, null);
+      SLinkOperations.setTarget(equalsExpression, LINKS.leftExpression$sEj, leftExpr);
+      SLinkOperations.setTarget(equalsExpression, LINKS.rightExpression$nvX, rightExpression);
+      SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(node, CONCEPTS.DotExpression$yW, false, false), equalsExpression);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -82,20 +82,20 @@ public final class ReplaceEqualsWithEquality_Intention extends AbstractIntention
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept EqualsExpression$lT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept EqualsExpression$MF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
   }
 }

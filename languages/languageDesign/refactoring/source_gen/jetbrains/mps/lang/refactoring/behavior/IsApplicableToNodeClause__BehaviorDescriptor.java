@@ -39,8 +39,8 @@ public final class IsApplicableToNodeClause__BehaviorDescriptor extends BaseBHDe
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_SNode$U$);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_SNode$nd);
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -104,7 +104,7 @@ public final class IsApplicableToNodeClause__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept ConceptFunctionParameter_SNode$U$ = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a059eL, "jetbrains.mps.lang.refactoring.structure.ConceptFunctionParameter_SNode");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ConceptFunctionParameter_SNode$nd = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a059eL, "jetbrains.mps.lang.refactoring.structure.ConceptFunctionParameter_SNode");
   }
 }

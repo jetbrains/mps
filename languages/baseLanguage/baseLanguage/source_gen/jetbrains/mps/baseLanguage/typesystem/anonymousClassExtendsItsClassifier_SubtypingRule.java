@@ -27,24 +27,24 @@ public class anonymousClassExtendsItsClassifier_SubtypingRule extends SubtypingR
   public List<SNode> getSubOrSuperTypes(SNode classifierType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
     {
-      SNode matchedNode_q6q799_b0 = SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD);
+      SNode matchedNode_q6q799_b0 = SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr);
       {
         boolean matches_q6q799_a1a = false;
         {
-          SNode matchingNode_q6q799_a1a = SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD);
+          SNode matchingNode_q6q799_a1a = SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr);
           if (matchingNode_q6q799_a1a != null) {
-            matches_q6q799_a1a = matchingNode_q6q799_a1a.getConcept().isSubConceptOf(CONCEPTS.AnonymousClass$aF);
+            matches_q6q799_a1a = matchingNode_q6q799_a1a.getConcept().isSubConceptOf(CONCEPTS.AnonymousClass$Bt);
           }
         }
         if (matches_q6q799_a1a) {
-          ListSequence.fromList(result).addElement(_quotation_createNode_r0kks7_a0a0a0a2a1a1a1(SLinkOperations.getTarget(matchedNode_q6q799_b0, LINKS.classifier$JwxM), SLinkOperations.getChildren(matchedNode_q6q799_b0, LINKS.typeParameter$4gm)));
+          ListSequence.fromList(result).addElement(_quotation_createNode_r0kks7_a0a0a0a2a1a1a1(SLinkOperations.getTarget(matchedNode_q6q799_b0, LINKS.classifier$q_Y$), SLinkOperations.getChildren(matchedNode_q6q799_b0, LINKS.typeParameter$F9H8)));
         }
       }
     }
     return result;
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -68,13 +68,13 @@ public class anonymousClassExtendsItsClassifier_SubtypingRule extends SubtypingR
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink typeParameter$4gm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink typeParameter$F9H8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

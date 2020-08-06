@@ -28,7 +28,7 @@ public class typeof_AddLastElementOperation_InferenceRule extends AbstractInfere
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.argument$l2uw);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.argument$ZmGN);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1227022724675", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1227022724679", true), (SNode) typeCheckingContext.getRepresentative(elementType_typevar_1227022724662), true, true, _info_12389875345);
       }
@@ -40,7 +40,7 @@ public class typeof_AddLastElementOperation_InferenceRule extends AbstractInfere
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AddLastElementOperation$Gj;
+    return CONCEPTS.AddLastElementOperation$UA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,10 +50,10 @@ public class typeof_AddLastElementOperation_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$l2uw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
+    /*package*/ static final SContainmentLink argument$ZmGN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AddLastElementOperation$Gj = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11db0389d32L, "jetbrains.mps.baseLanguage.collections.structure.AddLastElementOperation");
+    /*package*/ static final SConcept AddLastElementOperation$UA = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11db0389d32L, "jetbrains.mps.baseLanguage.collections.structure.AddLastElementOperation");
   }
 }

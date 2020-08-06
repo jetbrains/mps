@@ -56,14 +56,14 @@ public final class AddMethodDocComment_Intention extends AbstractIntentionDescri
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
+      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       DocCommentHelper.addJavadocLangIfMissing(node);
 
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)) != null)) {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx), null);
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)) != null)) {
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), null);
         if (editorContext.getSelectedNode() != node) {
           editorContext.selectWRTFocusPolicy(node);
         }
@@ -71,34 +71,34 @@ public final class AddMethodDocComment_Intention extends AbstractIntentionDescri
         return;
       }
 
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx), SNodeFactoryOperations.createNewNode(CONCEPTS.MethodDocComment$Vx, null));
-      SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)), LINKS.body$udUc, CONCEPTS.CommentLine$vy);
-      SNode firstPart = SNodeFactoryOperations.addNewChild(line, LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), SNodeFactoryOperations.createNewNode(CONCEPTS.MethodDocComment$HI, null));
+      SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
+      SNode firstPart = SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
 
       //  Method parameters 
-      for (SNode parameterDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$qsax))) {
-        SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$w1, null);
-        SLinkOperations.setTarget(paramTag, LINKS.parameter$SzRj, _quotation_createNode_i2k1f8_a0b0j0a(parameterDeclaration));
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)), LINKS.tags$658s)).addElement(paramTag);
+      for (SNode parameterDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj))) {
+        SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$ie, null);
+        SLinkOperations.setTarget(paramTag, LINKS.parameter$eWDw, _quotation_createNode_i2k1f8_a0b0j0a(parameterDeclaration));
+        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD)).addElement(paramTag);
       }
 
       //  Type variables 
-      for (SNode typeVariableDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$6cWB))) {
-        SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$w1, null);
-        SLinkOperations.setTarget(paramTag, LINKS.parameter$SzRj, _quotation_createNode_i2k1f8_a0b0m0a(typeVariableDeclaration));
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)), LINKS.tags$658s)).addElement(paramTag);
+      for (SNode typeVariableDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$Lipp))) {
+        SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$ie, null);
+        SLinkOperations.setTarget(paramTag, LINKS.parameter$eWDw, _quotation_createNode_i2k1f8_a0b0m0a(typeVariableDeclaration));
+        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD)).addElement(paramTag);
       }
 
       //  Thrown exceptions 
-      for (SNode throwsItem : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$X8vM))) {
-        SNode throwsTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ThrowsBlockDocTag$ph, null);
-        SLinkOperations.setTarget(throwsTag, LINKS.exceptionType$LyRf, SNodeOperations.copyNode(throwsItem));
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)), LINKS.tags$658s)).addElement(throwsTag);
+      for (SNode throwsItem : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$CdW$))) {
+        SNode throwsTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ThrowsBlockDocTag$bu, null);
+        SLinkOperations.setTarget(throwsTag, LINKS.exceptionType$7VDs, SNodeOperations.copyNode(throwsItem));
+        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD)).addElement(throwsTag);
       }
 
       //  Return value 
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.returnType$qrVw), CONCEPTS.VoidType$aT))) {
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)), LINKS.tags$658s)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.ReturnBlockDocTag$Ys, null));
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF))) {
+        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.ReturnBlockDocTag$KD, null));
       }
 
       SelectionUtil.selectCell(editorContext, firstPart, SelectionManager.FIRST_CELL);
@@ -124,24 +124,24 @@ public final class AddMethodDocComment_Intention extends AbstractIntentionDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MethodDocComment$Vx = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
-    /*package*/ static final SConcept CommentLine$vy = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
-    /*package*/ static final SConcept TextCommentLinePart$RY = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
-    /*package*/ static final SConcept ParameterBlockDocTag$w1 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, "jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag");
-    /*package*/ static final SConcept ThrowsBlockDocTag$ph = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, "jetbrains.mps.baseLanguage.javadoc.structure.ThrowsBlockDocTag");
-    /*package*/ static final SConcept ReturnBlockDocTag$Ys = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, "jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag");
-    /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept MethodDocComment$HI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
+    /*package*/ static final SConcept CommentLine$hJ = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
+    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept ParameterBlockDocTag$ie = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, "jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag");
+    /*package*/ static final SConcept ThrowsBlockDocTag$bu = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, "jetbrains.mps.baseLanguage.javadoc.structure.ThrowsBlockDocTag");
+    /*package*/ static final SConcept ReturnBlockDocTag$KD = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL, "jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$udUc = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
-    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
-    /*package*/ static final SContainmentLink parameter$SzRj = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, 0x5ed0d79d7dbe86ebL, "parameter");
-    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink exceptionType$LyRf = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, 0x5ed0d79d7dbd76f9L, "exceptionType");
-    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink body$OAGp = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink parameter$eWDw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, 0x5ed0d79d7dbe86ebL, "parameter");
+    /*package*/ static final SContainmentLink tags$stUD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink exceptionType$7VDs = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, 0x5ed0d79d7dbd76f9L, "exceptionType");
+    /*package*/ static final SContainmentLink throwsItem$CdW$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 }

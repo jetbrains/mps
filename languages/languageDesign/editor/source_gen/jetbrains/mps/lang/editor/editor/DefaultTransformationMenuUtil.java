@@ -17,11 +17,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class DefaultTransformationMenuUtil {
 
   public static SNode findDefaultTransformationMenuForConcept(@NotNull SNode concept) {
-    return (SNode) findDefaultMenu(concept, CONCEPTS.TransformationMenu$ZK);
+    return (SNode) findDefaultMenu(concept, CONCEPTS.TransformationMenu$bn);
   }
 
   public static SNode findDefaultSubstituteMenuForConcept(@NotNull SNode concept) {
-    return (SNode) findDefaultMenu(concept, CONCEPTS.SubstituteMenu$v4);
+    return (SNode) findDefaultMenu(concept, CONCEPTS.SubstituteMenu$EF);
   }
 
   private static SNode findDefaultMenu(@NotNull SNode concept, SAbstractConcept menuConcept) {
@@ -33,7 +33,7 @@ public class DefaultTransformationMenuUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenu$ZK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
-    /*package*/ static final SConcept SubstituteMenu$v4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
+    /*package*/ static final SConcept TransformationMenu$bn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
+    /*package*/ static final SConcept SubstituteMenu$EF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
   }
 }

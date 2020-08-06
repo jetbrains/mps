@@ -18,7 +18,7 @@ public class typeof_GetLastOperation_InferenceRule extends AbstractInferenceRule
     RulesFunctions_Collections.setInputElementType(typeCheckingContext, op, op);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetLastOperation$Oe;
+    return CONCEPTS.GetLastOperation$2x;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -28,6 +28,6 @@ public class typeof_GetLastOperation_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetLastOperation$Oe = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10f62ee22c8L, "jetbrains.mps.baseLanguage.collections.structure.GetLastOperation");
+    /*package*/ static final SConcept GetLastOperation$2x = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10f62ee22c8L, "jetbrains.mps.baseLanguage.collections.structure.GetLastOperation");
   }
 }

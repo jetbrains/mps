@@ -33,7 +33,7 @@ public final class ContainerImport__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return String.format("Import %s", (SLinkOperations.getTarget(__thisNode__, LINKS.container$7u$u) == null ? "<none>" : SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.container$7u$u), PROPS.name$lA7v)));
+    return String.format("Import %s", (SLinkOperations.getTarget(__thisNode__, LINKS.container$EWeH) == null ? "<none>" : SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.container$EWeH), PROPS.name$MnvL)));
   }
 
   /*package*/ ContainerImport__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class ContainerImport__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink container$7u$u = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x66302c3c8df72c49L, 0x66302c3c8df72d45L, "container");
+    /*package*/ static final SReferenceLink container$EWeH = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x66302c3c8df72c49L, 0x66302c3c8df72d45L, "container");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -33,7 +33,7 @@ public final class InConceptProblem__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SNode getConcept_idZ2mFAeayoS(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.FeedbackPerConceptRoot$oJ, false, false), LINKS.concept$HGgS);
+    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.FeedbackPerConceptRoot$Vm, false, false), LINKS.concept$NMNv);
   }
 
   /*package*/ InConceptProblem__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class InConceptProblem__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FeedbackPerConceptRoot$oJ = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");
+    /*package*/ static final SConcept FeedbackPerConceptRoot$Vm = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$HGgS = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
+    /*package*/ static final SReferenceLink concept$NMNv = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
   }
 }

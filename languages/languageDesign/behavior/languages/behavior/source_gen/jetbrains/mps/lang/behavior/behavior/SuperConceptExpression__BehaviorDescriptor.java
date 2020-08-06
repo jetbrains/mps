@@ -32,7 +32,7 @@ public final class SuperConceptExpression__BehaviorDescriptor extends BaseBHDesc
 
   @Nullable
   /*package*/ static SNode getSpecifiedSuperConcept_id2k7p7sTvKkb(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.superConcept$xQVw);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.superConcept$VRMH);
   }
 
   /*package*/ SuperConceptExpression__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class SuperConceptExpression__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink superConcept$xQVw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, 0x69a9d7dcb057a7a8L, "superConcept");
+    /*package*/ static final SReferenceLink superConcept$VRMH = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, 0x69a9d7dcb057a7a8L, "superConcept");
   }
 }

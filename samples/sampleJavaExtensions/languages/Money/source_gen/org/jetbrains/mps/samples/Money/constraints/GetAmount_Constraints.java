@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetAmount_Constraints extends BaseConstraintsDescriptor {
   public GetAmount_Constraints() {
-    super(CONCEPTS.GetAmount$i3);
+    super(CONCEPTS.GetAmount$vs);
   }
 
   @Override
@@ -39,17 +39,17 @@ public class GetAmount_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a) && TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), CONCEPTS.MoneyType$DO) != null;
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW) && TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.MoneyType$Rd) != null;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:287f3730-82f2-4e81-b8c8-89838004f6d4(org.jetbrains.mps.samples.Money.constraints)", "1227128029536582866");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetAmount$i3 = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe55913c339L, "org.jetbrains.mps.samples.Money.structure.GetAmount");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept MoneyType$DO = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe55913516aL, "org.jetbrains.mps.samples.Money.structure.MoneyType");
+    /*package*/ static final SConcept GetAmount$vs = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe55913c339L, "org.jetbrains.mps.samples.Money.structure.GetAmount");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept MoneyType$Rd = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe55913516aL, "org.jetbrains.mps.samples.Money.structure.MoneyType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

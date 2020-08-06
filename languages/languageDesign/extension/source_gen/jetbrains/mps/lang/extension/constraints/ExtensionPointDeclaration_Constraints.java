@@ -16,12 +16,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtensionPointDeclaration_Constraints extends BaseConstraintsDescriptor {
   public ExtensionPointDeclaration_Constraints() {
-    super(CONCEPTS.ExtensionPointDeclaration$ap);
+    super(CONCEPTS.ExtensionPointDeclaration$sb);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -29,26 +29,26 @@ public class ExtensionPointDeclaration_Constraints extends BaseConstraintsDescri
     }
     @Override
     public Object getValue(SNode node) {
-      if (SPropertyOperations.getString(node, PROPS.extensionName$pdFY) != null) {
-        return SPropertyOperations.getString(node, PROPS.extensionName$pdFY);
+      if (SPropertyOperations.getString(node, PROPS.extensionName$fXXK) != null) {
+        return SPropertyOperations.getString(node, PROPS.extensionName$fXXK);
       } else {
-        return SPropertyOperations.getString(node, PROPS.name$lA7v);
+        return SPropertyOperations.getString(node, PROPS.name$MnvL);
       }
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtensionPointDeclaration$ap = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, "jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration");
+    /*package*/ static final SConcept ExtensionPointDeclaration$sb = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, "jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty extensionName$pdFY = MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty extensionName$fXXK = MetaAdapterFactory.getProperty(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, 0x520ae19dd2771b96L, "extensionName");
   }
 }

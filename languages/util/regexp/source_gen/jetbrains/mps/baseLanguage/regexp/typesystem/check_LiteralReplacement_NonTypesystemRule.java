@@ -27,7 +27,7 @@ public class check_LiteralReplacement_NonTypesystemRule extends AbstractNonTypes
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.LiteralReplacement$zq;
+    return CONCEPTS.LiteralReplacement$ce;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,6 +37,6 @@ public class check_LiteralReplacement_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LiteralReplacement$zq = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, "jetbrains.mps.baseLanguage.regexp.structure.LiteralReplacement");
+    /*package*/ static final SConcept LiteralReplacement$ce = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, "jetbrains.mps.baseLanguage.regexp.structure.LiteralReplacement");
   }
 }

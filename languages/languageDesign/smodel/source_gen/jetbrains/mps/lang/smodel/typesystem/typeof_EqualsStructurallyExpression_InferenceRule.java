@@ -26,18 +26,18 @@ public class typeof_EqualsStructurallyExpression_InferenceRule extends AbstractI
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1227265510361", true), (SNode) _quotation_createNode_xxjesy_a1a0c0a0b(), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.leftExpression$lndx);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.leftExpression$sEj);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1227265531241", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1227265525218", true), (SNode) _quotation_createNode_xxjesy_a1a0c0b0b(), false, true, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.rightExpression$li3b);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expression, LINKS.rightExpression$nvX);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1227265545383", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1227265539954", true), (SNode) _quotation_createNode_xxjesy_a1a0c0c0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EqualsStructurallyExpression$QW;
+    return CONCEPTS.EqualsStructurallyExpression$Ss;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -65,11 +65,11 @@ public class typeof_EqualsStructurallyExpression_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EqualsStructurallyExpression$QW = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11dbead8683L, "jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression");
+    /*package*/ static final SConcept EqualsStructurallyExpression$Ss = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11dbead8683L, "jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression");
   }
 }

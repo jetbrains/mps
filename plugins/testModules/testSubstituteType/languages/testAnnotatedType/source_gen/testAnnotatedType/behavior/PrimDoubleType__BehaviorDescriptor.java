@@ -32,10 +32,10 @@ public final class PrimDoubleType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode substituteWith_id1hDKT6wB3pH(@NotNull SNode __thisNode__, SNode subs) {
-    if (SNodeOperations.isInstanceOf(subs, CONCEPTS.PrimIntType$to)) {
+    if (SNodeOperations.isInstanceOf(subs, CONCEPTS.PrimIntType$Ur)) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x786549534310b4f5L, "testAnnotatedType.structure.PrimLongType"));
     }
-    if (SNodeOperations.isInstanceOf(subs, CONCEPTS.PrimFloatType$_e)) {
+    if (SNodeOperations.isInstanceOf(subs, CONCEPTS.PrimFloatType$2h)) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09c62e6L, "testAnnotatedType.structure.PrimDoubleType"));
     }
     return subs;
@@ -88,7 +88,7 @@ public final class PrimDoubleType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimIntType$to = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be609eL, "testAnnotatedType.structure.PrimIntType");
-    /*package*/ static final SConcept PrimFloatType$_e = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bdL, "testAnnotatedType.structure.PrimFloatType");
+    /*package*/ static final SConcept PrimIntType$Ur = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be609eL, "testAnnotatedType.structure.PrimIntType");
+    /*package*/ static final SConcept PrimFloatType$2h = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bdL, "testAnnotatedType.structure.PrimFloatType");
   }
 }

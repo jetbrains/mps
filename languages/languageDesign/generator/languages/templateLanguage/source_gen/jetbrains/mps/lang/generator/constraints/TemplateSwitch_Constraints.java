@@ -22,12 +22,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
   public TemplateSwitch_Constraints() {
-    super(CONCEPTS.TemplateSwitch$BT);
+    super(CONCEPTS.TemplateSwitch$j_);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedSwitch$S71p, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedSwitch$h3H5, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -42,7 +42,7 @@ public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.TemplateSwitch$BT);
+            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.TemplateSwitch$j_);
           }
         };
       }
@@ -54,10 +54,10 @@ public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_phmuaq_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "6836281137582788743");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateSwitch$BT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
+    /*package*/ static final SConcept TemplateSwitch$j_ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink modifiedSwitch$S71p = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x1031947e414L, "modifiedSwitch");
+    /*package*/ static final SReferenceLink modifiedSwitch$h3H5 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x1031947e414L, "modifiedSwitch");
   }
 }

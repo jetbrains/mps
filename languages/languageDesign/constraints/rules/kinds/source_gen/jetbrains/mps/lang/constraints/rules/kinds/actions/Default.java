@@ -14,15 +14,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class Default {
   public static class NodeFactory_8018723092206046483 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.setTarget(newNode, LINKS.context$kJBE, SNodeFactoryOperations.createNewNode(CONCEPTS.Context$J, null));
+      SLinkOperations.setTarget(newNode, LINKS.context$axR$, SNodeFactoryOperations.createNewNode(CONCEPTS.Context$Tz, null));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink context$kJBE = MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x28efa98d18cc670aL, "context");
+    /*package*/ static final SContainmentLink context$axR$ = MetaAdapterFactory.getContainmentLink(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, 0x28efa98d18cc670aL, "context");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Context$J = MetaAdapterFactory.getConcept(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, "jetbrains.mps.lang.context.structure.Context");
+    /*package*/ static final SConcept Context$Tz = MetaAdapterFactory.getConcept(0x3ad5badc1d9c461cL, 0xb7b1fa2fcd0a0ae7L, 0x56aefe6c19b93dL, "jetbrains.mps.lang.context.structure.Context");
   }
 }

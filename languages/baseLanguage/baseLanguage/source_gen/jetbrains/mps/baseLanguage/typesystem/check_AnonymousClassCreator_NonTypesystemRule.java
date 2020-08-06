@@ -23,7 +23,7 @@ public class check_AnonymousClassCreator_NonTypesystemRule extends AbstractNonTy
   public check_AnonymousClassCreator_NonTypesystemRule() {
   }
   public void applyRule(final SNode anonymousClassCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonymousClassCreator, LINKS.cls$d4Mk), LINKS.typeParameter$4gm)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonymousClassCreator, LINKS.cls$Saf6), LINKS.typeParameter$F9H8)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         if (!((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(it))) {
           {
@@ -35,7 +35,7 @@ public class check_AnonymousClassCreator_NonTypesystemRule extends AbstractNonTy
     });
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AnonymousClassCreator$N6;
+    return CONCEPTS.AnonymousClassCreator$fS;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,11 +45,11 @@ public class check_AnonymousClassCreator_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cls$d4Mk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
-    /*package*/ static final SContainmentLink typeParameter$4gm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
+    /*package*/ static final SContainmentLink cls$Saf6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, 0x1133e3b8b49L, "cls");
+    /*package*/ static final SContainmentLink typeParameter$F9H8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnonymousClassCreator$N6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, "jetbrains.mps.baseLanguage.structure.AnonymousClassCreator");
+    /*package*/ static final SConcept AnonymousClassCreator$fS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, "jetbrains.mps.baseLanguage.structure.AnonymousClassCreator");
   }
 }

@@ -32,12 +32,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class RefOutOfScopeProblem_Constraints extends BaseConstraintsDescriptor {
   public RefOutOfScopeProblem_Constraints() {
-    super(CONCEPTS.RefOutOfScopeProblem$Zz);
+    super(CONCEPTS.RefOutOfScopeProblem$nG);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.ref$XFpU, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.ref$OhM3, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,14 +52,14 @@ public class RefOutOfScopeProblem_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Iterable<SNode> conceptDeclarationsInSameLanguage = ConstraintsUtilConcepts.getConceptsInSameLanguage(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.AbstractConceptDeclaration$UN);
+            Iterable<SNode> conceptDeclarationsInSameLanguage = ConstraintsUtilConcepts.getConceptsInSameLanguage(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.AbstractConceptDeclaration$KA);
             Iterable<SNode> linkDeclarations = Sequence.fromIterable(conceptDeclarationsInSameLanguage).translate(new ITranslator2<SNode, SNode>() {
               public Iterable<SNode> translate(SNode it) {
-                return SLinkOperations.getChildren(SNodeOperations.cast(it, CONCEPTS.AbstractConceptDeclaration$UN), LINKS.linkDeclaration$yMbs);
+                return SLinkOperations.getChildren(SNodeOperations.cast(it, CONCEPTS.AbstractConceptDeclaration$KA), LINKS.linkDeclaration$YU1f);
               }
             }).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b8L);
+                return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
               }
             });
             Scope scope = new FullyQualifiedNamedElementsScope(linkDeclarations);
@@ -75,16 +75,16 @@ public class RefOutOfScopeProblem_Constraints extends BaseConstraintsDescriptor 
   private static final SNodePointer breakingNode_cqx8be_a0a0a0a0a1a0a0a0c = new SNodePointer("r:bb0a30e0-9916-4d29-97fa-68ace0b06403(jetbrains.mps.lang.feedback.problem.scopes.constraints)", "24399255755754851");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefOutOfScopeProblem$Zz = MetaAdapterFactory.getConcept(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, "jetbrains.mps.lang.feedback.problem.scopes.structure.RefOutOfScopeProblem");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept RefOutOfScopeProblem$nG = MetaAdapterFactory.getConcept(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, "jetbrains.mps.lang.feedback.problem.scopes.structure.RefOutOfScopeProblem");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink ref$XFpU = MetaAdapterFactory.getReferenceLink(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, 0x161a25d49703b44eL, "ref");
-    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SReferenceLink ref$OhM3 = MetaAdapterFactory.getReferenceLink(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, 0x161a25d49703b44eL, "ref");
+    /*package*/ static final SContainmentLink linkDeclaration$YU1f = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 }

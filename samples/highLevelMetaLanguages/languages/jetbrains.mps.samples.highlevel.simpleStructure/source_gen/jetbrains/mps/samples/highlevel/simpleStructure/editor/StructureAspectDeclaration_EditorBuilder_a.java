@@ -91,10 +91,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.concepts$POJ1;
+      return LINKS.concepts$7Joq;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.SimpleConceptDeclaration$ZZ;
+      return CONCEPTS.SimpleConceptDeclaration$Do;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -104,7 +104,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(conceptsListHandler_vq6uem_b1a.this.getNode(), LINKS.concepts$POJ1));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(conceptsListHandler_vq6uem_b1a.this.getNode(), LINKS.concepts$7Joq));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -146,10 +146,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink concepts$POJ1 = MetaAdapterFactory.getContainmentLink(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x346ead2c08cc7fc8L, 0x346ead2c08cc7fd5L, "concepts");
+    /*package*/ static final SContainmentLink concepts$7Joq = MetaAdapterFactory.getContainmentLink(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x346ead2c08cc7fc8L, 0x346ead2c08cc7fd5L, "concepts");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleConceptDeclaration$ZZ = MetaAdapterFactory.getConcept(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x460f3ddb176b0a3cL, "jetbrains.mps.samples.highlevel.simpleStructure.structure.SimpleConceptDeclaration");
+    /*package*/ static final SConcept SimpleConceptDeclaration$Do = MetaAdapterFactory.getConcept(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x460f3ddb176b0a3cL, "jetbrains.mps.samples.highlevel.simpleStructure.structure.SimpleConceptDeclaration");
   }
 }

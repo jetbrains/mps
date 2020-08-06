@@ -38,7 +38,7 @@ public final class MeetType__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder("meet(");
-    List<SNode> nodes = SLinkOperations.getChildren(__thisNode__, LINKS.argument$2bV3);
+    List<SNode> nodes = SLinkOperations.getChildren(__thisNode__, LINKS.argument$r2cT);
     for (SNode arg : nodes) {
       sb.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(arg));
       if (SNodeOperations.getIndexInParent(arg) < ListSequence.fromList(nodes).count() - 1) {
@@ -50,9 +50,9 @@ public final class MeetType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode eraseGenerics_id4qyz6djw13y(@NotNull SNode __thisNode__) {
     SNode copy = SNodeOperations.copyNode(__thisNode__);
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.argument$2bV3)).toListSequence()) {
-      if (SNodeOperations.isInstanceOf(arg, CONCEPTS.IGenericType$$h)) {
-        SNodeOperations.replaceWithAnother(arg, IGenericType__BehaviorDescriptor.eraseGenerics_id4qyz6djw13y.invoke(SNodeOperations.cast(arg, CONCEPTS.IGenericType$$h)));
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.argument$r2cT)).toListSequence()) {
+      if (SNodeOperations.isInstanceOf(arg, CONCEPTS.IGenericType$13)) {
+        SNodeOperations.replaceWithAnother(arg, IGenericType__BehaviorDescriptor.eraseGenerics_id4qyz6djw13y.invoke(SNodeOperations.cast(arg, CONCEPTS.IGenericType$13)));
       }
     }
     return copy;
@@ -107,10 +107,10 @@ public final class MeetType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$2bV3 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+    /*package*/ static final SContainmentLink argument$r2cT = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IGenericType$$h = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
+    /*package*/ static final SInterfaceConcept IGenericType$13 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
   }
 }

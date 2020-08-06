@@ -24,7 +24,7 @@ public class typeof_WatchablesListCreator_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.WatchablesListCreator$Lj;
+    return CONCEPTS.WatchablesListCreator$bJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,12 +33,12 @@ public class typeof_WatchablesListCreator_InferenceRule extends AbstractInferenc
     return false;
   }
   private static SNode createWatchableListType_e5m9au_a1a0c0a0b() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.WatchableListType$LM);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.WatchableListType$ce);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WatchablesListCreator$Lj = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb2L, "jetbrains.mps.debugger.java.customViewers.structure.WatchablesListCreator");
-    /*package*/ static final SConcept WatchableListType$LM = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb3L, "jetbrains.mps.debugger.java.customViewers.structure.WatchableListType");
+    /*package*/ static final SConcept WatchablesListCreator$bJ = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb2L, "jetbrains.mps.debugger.java.customViewers.structure.WatchablesListCreator");
+    /*package*/ static final SConcept WatchableListType$ce = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb3L, "jetbrains.mps.debugger.java.customViewers.structure.WatchableListType");
   }
 }

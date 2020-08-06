@@ -108,12 +108,12 @@
       <node id="1713017043371814023" at="156,91,157,147" concept="6" />
       <node id="1713017043371814023" at="158,14,159,26" concept="6" />
       <node id="1713017043371814023" at="160,17,161,42" concept="1" />
-      <node id="1713017043371814015" at="167,0,168,0" concept="9" trace="variableDeclaration$7WwU" />
-      <node id="1713017043371814015" at="168,0,169,0" concept="9" trace="staticFieldDeclaration$$oOt" />
-      <node id="1713017043371814015" at="172,0,173,0" concept="9" trace="ExtensionStaticFieldDeclaration$sr" />
-      <node id="1713017043371814015" at="173,0,174,0" concept="9" trace="LinkAttribute$7j" />
-      <node id="1713017043371814015" at="174,0,175,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="1713017043371814015" at="178,0,179,0" concept="9" trace="name$lA7v" />
+      <node id="1713017043371814015" at="167,0,168,0" concept="9" trace="variableDeclaration$N1XG" />
+      <node id="1713017043371814015" at="168,0,169,0" concept="9" trace="staticFieldDeclaration$Pk2e" />
+      <node id="1713017043371814015" at="172,0,173,0" concept="9" trace="ExtensionStaticFieldDeclaration$Ec" />
+      <node id="1713017043371814015" at="173,0,174,0" concept="9" trace="LinkAttribute$v_" />
+      <node id="1713017043371814015" at="174,0,175,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="1713017043371814015" at="178,0,179,0" concept="9" trace="name$MnvL" />
       <node id="1713017043371814015" at="44,0,46,0" concept="2" trace="myNode" />
       <node id="1713017043371814021" at="115,0,117,0" concept="2" trace="myNode" />
       <node id="1713017043371814015" at="58,0,61,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -246,7 +246,7 @@
       <node id="1741258697587119676" at="90,70,91,80" concept="5" />
       <node id="1741258697587119676" at="91,80,92,209" concept="6" />
       <node id="1741258697587119676" at="94,86,95,36" concept="6" />
-      <node id="1741258697587119362" at="100,0,101,0" concept="9" trace="Expression$TP" />
+      <node id="1741258697587119362" at="100,0,101,0" concept="9" trace="Expression$mB" />
       <node id="1741258697587119362" at="25,0,28,0" concept="0" trace="Expression_Contribution#()V" />
       <node id="1741258697587119512" at="70,0,73,0" concept="4" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1741258697587119676" at="94,0,97,0" concept="4" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -371,14 +371,14 @@
       <node id="1741258697587119410" at="176,13,177,42" concept="6" />
       <node id="1741258697587119410" at="182,53,183,90" concept="6" />
       <node id="1741258697587119410" at="184,13,185,24" concept="6" />
-      <node id="1741258697587119364" at="194,0,195,0" concept="9" trace="BaseExtensionMethodContainer$b0" />
-      <node id="1741258697587119364" at="195,0,196,0" concept="9" trace="DotExpression$6a" />
-      <node id="1741258697587119364" at="196,0,197,0" concept="9" trace="ExtensionMethodDeclaration$9b" />
-      <node id="1741258697587119364" at="197,0,198,0" concept="9" trace="ExtensionMethodCall$j_" />
-      <node id="1741258697587119364" at="198,0,199,0" concept="9" trace="ThisExtensionExpression$UG" />
-      <node id="1741258697587119364" at="202,0,203,0" concept="9" trace="operation$_mGS" />
-      <node id="1741258697587119364" at="203,0,204,0" concept="9" trace="baseMethodDeclaration$ItxI" />
-      <node id="1741258697587119364" at="204,0,205,0" concept="9" trace="operand$P1i5" />
+      <node id="1741258697587119364" at="194,0,195,0" concept="9" trace="BaseExtensionMethodContainer$oL" />
+      <node id="1741258697587119364" at="195,0,196,0" concept="9" trace="DotExpression$yW" />
+      <node id="1741258697587119364" at="196,0,197,0" concept="9" trace="ExtensionMethodDeclaration$mW" />
+      <node id="1741258697587119364" at="197,0,198,0" concept="9" trace="ExtensionMethodCall$xm" />
+      <node id="1741258697587119364" at="198,0,199,0" concept="9" trace="ThisExtensionExpression$8t" />
+      <node id="1741258697587119364" at="202,0,203,0" concept="9" trace="operation$gs9E" />
+      <node id="1741258697587119364" at="203,0,204,0" concept="9" trace="baseMethodDeclaration$pyYw" />
+      <node id="1741258697587119364" at="204,0,205,0" concept="9" trace="operand$w6IR" />
       <node id="1741258697587119369" at="61,68,64,7" concept="3" />
       <node id="1741258697587119410" at="107,0,110,0" concept="0" trace="SMP_Action_7qarbi_a0a#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1741258697587119410" at="142,0,145,0" concept="4" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
@@ -570,16 +570,16 @@
       <node id="1741258697587119560" at="183,13,184,42" concept="6" />
       <node id="1741258697587119560" at="189,53,190,90" concept="6" />
       <node id="1741258697587119560" at="191,13,192,24" concept="6" />
-      <node id="1741258697587119514" at="201,0,202,0" concept="9" trace="BaseExtensionMethodContainer$b0" />
-      <node id="1741258697587119514" at="202,0,203,0" concept="9" trace="DotExpression$6a" />
-      <node id="1741258697587119514" at="203,0,204,0" concept="9" trace="ExtensionMethodDeclaration$9b" />
-      <node id="1741258697587119514" at="204,0,205,0" concept="9" trace="ClassifierType$IZ" />
-      <node id="1741258697587119514" at="205,0,206,0" concept="9" trace="InstanceMethodCallOperation$1G" />
-      <node id="1741258697587119514" at="206,0,207,0" concept="9" trace="InstanceMethodDeclaration$An" />
-      <node id="1741258697587119514" at="207,0,208,0" concept="9" trace="ThisExtensionExpression$UG" />
-      <node id="1741258697587119514" at="211,0,212,0" concept="9" trace="operation$_mGS" />
-      <node id="1741258697587119514" at="212,0,213,0" concept="9" trace="baseMethodDeclaration$ItxI" />
-      <node id="1741258697587119514" at="213,0,214,0" concept="9" trace="operand$P1i5" />
+      <node id="1741258697587119514" at="201,0,202,0" concept="9" trace="BaseExtensionMethodContainer$oL" />
+      <node id="1741258697587119514" at="202,0,203,0" concept="9" trace="DotExpression$yW" />
+      <node id="1741258697587119514" at="203,0,204,0" concept="9" trace="ExtensionMethodDeclaration$mW" />
+      <node id="1741258697587119514" at="204,0,205,0" concept="9" trace="ClassifierType$bL" />
+      <node id="1741258697587119514" at="205,0,206,0" concept="9" trace="InstanceMethodCallOperation$uu" />
+      <node id="1741258697587119514" at="206,0,207,0" concept="9" trace="InstanceMethodDeclaration$39" />
+      <node id="1741258697587119514" at="207,0,208,0" concept="9" trace="ThisExtensionExpression$8t" />
+      <node id="1741258697587119514" at="211,0,212,0" concept="9" trace="operation$gs9E" />
+      <node id="1741258697587119514" at="212,0,213,0" concept="9" trace="baseMethodDeclaration$pyYw" />
+      <node id="1741258697587119514" at="213,0,214,0" concept="9" trace="operand$w6IR" />
       <node id="1741258697587119519" at="65,68,68,7" concept="3" />
       <node id="1741258697587119560" at="113,0,116,0" concept="0" trace="SMP_Action_ru4l93_a0a#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1741258697587119560" at="148,0,151,0" concept="4" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
@@ -905,14 +905,14 @@
       <node id="1894531970724619134" at="401,63,402,40" concept="1" />
       <node id="1894531970724619134" at="402,40,403,34" concept="1" />
       <node id="1894531970724619134" at="403,34,404,22" concept="6" />
-      <node id="1894531970723323135" at="408,0,409,0" concept="9" trace="typeVariableDeclaration$6cWB" />
-      <node id="1894531970723323135" at="409,0,410,0" concept="9" trace="type$sy7t" />
-      <node id="1894531970723323135" at="410,0,411,0" concept="9" trace="staticFields$u7F4" />
-      <node id="1894531970723323135" at="411,0,412,0" concept="9" trace="methods$Q_J1" />
-      <node id="1894531970723323135" at="415,0,416,0" concept="9" trace="name$lA7v" />
-      <node id="1894531970723323135" at="419,0,420,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="1894531970723323135" at="420,0,421,0" concept="9" trace="ExtensionStaticFieldDeclaration$sr" />
-      <node id="1894531970723323135" at="421,0,422,0" concept="9" trace="ExtensionMethodDeclaration$9b" />
+      <node id="1894531970723323135" at="408,0,409,0" concept="9" trace="typeVariableDeclaration$Lipp" />
+      <node id="1894531970723323135" at="409,0,410,0" concept="9" trace="type$Htle" />
+      <node id="1894531970723323135" at="410,0,411,0" concept="9" trace="staticFields$J2SP" />
+      <node id="1894531970723323135" at="411,0,412,0" concept="9" trace="methods$7wWM" />
+      <node id="1894531970723323135" at="415,0,416,0" concept="9" trace="name$MnvL" />
+      <node id="1894531970723323135" at="419,0,420,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="1894531970723323135" at="420,0,421,0" concept="9" trace="ExtensionStaticFieldDeclaration$Ec" />
+      <node id="1894531970723323135" at="421,0,422,0" concept="9" trace="ExtensionMethodDeclaration$mW" />
       <node id="1894531970723323135" at="51,0,53,0" concept="2" trace="myNode" />
       <node id="1894531970723323135" at="146,0,148,0" concept="2" trace="myNode" />
       <node id="1894531970723323135" at="231,0,233,0" concept="2" trace="myNode" />
@@ -1292,8 +1292,8 @@
       <node id="1713017043371093283" at="210,60,211,40" concept="1" />
       <node id="1713017043371093283" at="211,40,212,34" concept="1" />
       <node id="1713017043371093283" at="212,34,213,22" concept="6" />
-      <node id="1973189701691198687" at="217,0,218,0" concept="9" trace="type$uWuc" />
-      <node id="1973189701691198687" at="218,0,219,0" concept="9" trace="initializer$no3R" />
+      <node id="1973189701691198687" at="217,0,218,0" concept="9" trace="type$a1UY" />
+      <node id="1973189701691198687" at="218,0,219,0" concept="9" trace="initializer$2twD" />
       <node id="1973189701691198687" at="31,0,33,0" concept="2" trace="myNode" />
       <node id="1973189701691198687" at="81,0,83,0" concept="2" trace="myNode" />
       <node id="1973189701691198687" at="152,0,154,0" concept="2" trace="myNode" />
@@ -1522,7 +1522,7 @@
       <node id="6513744873655832108" at="68,70,69,0" concept="8" />
       <node id="6513744873655832108" at="69,0,70,77" concept="7" />
       <node id="6513744873655832109" at="71,69,72,75" concept="1" />
-      <node id="6513744873655832108" at="77,0,78,0" concept="9" trace="throwsItem$X8vM" />
+      <node id="6513744873655832108" at="77,0,78,0" concept="9" trace="throwsItem$CdW$" />
       <node id="6513744873655832109" at="23,0,26,0" concept="4" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1082537205635903121" at="26,77,29,9" concept="3" />
       <node id="6513744873655832108" at="45,74,48,5" concept="3" />
@@ -1842,17 +1842,17 @@
       <node id="7353029842739093498" at="562,60,563,40" concept="1" />
       <node id="7353029842739093498" at="563,40,564,34" concept="1" />
       <node id="7353029842739093498" at="564,34,565,22" concept="6" />
-      <node id="7353029842736914602" at="569,0,570,0" concept="9" trace="typeVariableDeclaration$6cWB" />
-      <node id="7353029842736914602" at="570,0,571,0" concept="9" trace="throwsItem$X8vM" />
-      <node id="7353029842736914602" at="571,0,572,0" concept="9" trace="visibility$jt1o" />
-      <node id="7353029842736914602" at="572,0,573,0" concept="9" trace="returnType$qrVw" />
-      <node id="7353029842736914602" at="573,0,574,0" concept="9" trace="parameter$qsax" />
-      <node id="7353029842736914602" at="574,0,575,0" concept="9" trace="extendedType$r8nJ" />
-      <node id="7353029842736914602" at="578,0,579,0" concept="9" trace="SimpleExtensionMethodsContainer$5i" />
-      <node id="7353029842736914602" at="579,0,580,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="7353029842736914602" at="580,0,581,0" concept="9" trace="ParameterDeclaration$qU" />
-      <node id="7353029842736914602" at="581,0,582,0" concept="9" trace="Type$IG" />
-      <node id="7353029842736914602" at="585,0,586,0" concept="9" trace="name$lA7v" />
+      <node id="7353029842736914602" at="569,0,570,0" concept="9" trace="typeVariableDeclaration$Lipp" />
+      <node id="7353029842736914602" at="570,0,571,0" concept="9" trace="throwsItem$CdW$" />
+      <node id="7353029842736914602" at="571,0,572,0" concept="9" trace="visibility$Yyua" />
+      <node id="7353029842736914602" at="572,0,573,0" concept="9" trace="returnType$5xoi" />
+      <node id="7353029842736914602" at="573,0,574,0" concept="9" trace="parameter$5xBj" />
+      <node id="7353029842736914602" at="574,0,575,0" concept="9" trace="extendedType$G3_w" />
+      <node id="7353029842736914602" at="578,0,579,0" concept="9" trace="SimpleExtensionMethodsContainer$j3" />
+      <node id="7353029842736914602" at="579,0,580,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="7353029842736914602" at="580,0,581,0" concept="9" trace="ParameterDeclaration$RG" />
+      <node id="7353029842736914602" at="581,0,582,0" concept="9" trace="Type$bu" />
+      <node id="7353029842736914602" at="585,0,586,0" concept="9" trace="name$MnvL" />
       <node id="7353029842736914602" at="56,0,58,0" concept="2" trace="myNode" />
       <node id="7353029842736914602" at="112,0,114,0" concept="2" trace="myNode" />
       <node id="7353029842736914602" at="175,0,177,0" concept="2" trace="myNode" />
@@ -2351,12 +2351,12 @@
       <node id="7997068947889415722" at="190,34,191,54" concept="1" />
       <node id="7997068947889415721" at="191,54,192,40" concept="1" />
       <node id="7997068947889415721" at="192,40,193,22" concept="6" />
-      <node id="7460368937329709951" at="197,0,198,0" concept="9" trace="baseMethodDeclaration$ItxI" />
-      <node id="7460368937329709951" at="198,0,199,0" concept="9" trace="extension$LeHP" />
-      <node id="7460368937329709951" at="202,0,203,0" concept="9" trace="ExtensionMethodDeclaration$9b" />
-      <node id="7460368937329709951" at="203,0,204,0" concept="9" trace="LinkAttribute$7j" />
-      <node id="7460368937329709951" at="204,0,205,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="7460368937329709951" at="208,0,209,0" concept="9" trace="name$lA7v" />
+      <node id="7460368937329709951" at="197,0,198,0" concept="9" trace="baseMethodDeclaration$pyYw" />
+      <node id="7460368937329709951" at="198,0,199,0" concept="9" trace="extension$29VA" />
+      <node id="7460368937329709951" at="202,0,203,0" concept="9" trace="ExtensionMethodDeclaration$mW" />
+      <node id="7460368937329709951" at="203,0,204,0" concept="9" trace="LinkAttribute$v_" />
+      <node id="7460368937329709951" at="204,0,205,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="7460368937329709951" at="208,0,209,0" concept="9" trace="name$MnvL" />
       <node id="7460368937329709951" at="46,0,48,0" concept="2" trace="myNode" />
       <node id="7997068947888871706" at="130,0,132,0" concept="2" trace="myNode" />
       <node id="7460368937329709951" at="60,0,63,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -2554,12 +2554,12 @@
       <node id="7685333756920187168" at="164,17,165,42" concept="1" />
       <node id="7685333756920187169" at="169,42,170,144" concept="5" />
       <node id="7685333756920187169" at="170,144,171,22" concept="6" />
-      <node id="7685333756920172915" at="175,0,176,0" concept="9" trace="baseMethodDeclaration$ItxI" />
-      <node id="7685333756920172915" at="176,0,177,0" concept="9" trace="instanceMethodDeclaration$bbIw" />
-      <node id="7685333756920172915" at="180,0,181,0" concept="9" trace="InstanceMethodDeclaration$An" />
-      <node id="7685333756920172915" at="181,0,182,0" concept="9" trace="LinkAttribute$7j" />
-      <node id="7685333756920172915" at="182,0,183,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="7685333756920172915" at="186,0,187,0" concept="9" trace="name$lA7v" />
+      <node id="7685333756920172915" at="175,0,176,0" concept="9" trace="baseMethodDeclaration$pyYw" />
+      <node id="7685333756920172915" at="176,0,177,0" concept="9" trace="instanceMethodDeclaration$s6Wh" />
+      <node id="7685333756920172915" at="180,0,181,0" concept="9" trace="InstanceMethodDeclaration$39" />
+      <node id="7685333756920172915" at="181,0,182,0" concept="9" trace="LinkAttribute$v_" />
+      <node id="7685333756920172915" at="182,0,183,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="7685333756920172915" at="186,0,187,0" concept="9" trace="name$MnvL" />
       <node id="7685333756920172915" at="45,0,47,0" concept="2" trace="myNode" />
       <node id="7685333756920187167" at="120,0,122,0" concept="2" trace="myNode" />
       <node id="7685333756920172915" at="59,0,62,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -2829,12 +2829,12 @@
       <node id="8022092943109427616" at="321,63,322,40" concept="1" />
       <node id="8022092943109427616" at="322,40,323,34" concept="1" />
       <node id="8022092943109427616" at="323,34,324,22" concept="6" />
-      <node id="8022092943109332063" at="328,0,329,0" concept="9" trace="name$lA7v" />
-      <node id="8022092943109332063" at="332,0,333,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="8022092943109332063" at="333,0,334,0" concept="9" trace="ExtensionStaticFieldDeclaration$sr" />
-      <node id="8022092943109332063" at="334,0,335,0" concept="9" trace="ExtensionMethodDeclaration$9b" />
-      <node id="8022092943109332063" at="338,0,339,0" concept="9" trace="staticFields$u7F4" />
-      <node id="8022092943109332063" at="339,0,340,0" concept="9" trace="methods$Q_J1" />
+      <node id="8022092943109332063" at="328,0,329,0" concept="9" trace="name$MnvL" />
+      <node id="8022092943109332063" at="332,0,333,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="8022092943109332063" at="333,0,334,0" concept="9" trace="ExtensionStaticFieldDeclaration$Ec" />
+      <node id="8022092943109332063" at="334,0,335,0" concept="9" trace="ExtensionMethodDeclaration$mW" />
+      <node id="8022092943109332063" at="338,0,339,0" concept="9" trace="staticFields$J2SP" />
+      <node id="8022092943109332063" at="339,0,340,0" concept="9" trace="methods$7wWM" />
       <node id="8022092943109332063" at="47,0,49,0" concept="2" trace="myNode" />
       <node id="8022092943109332063" at="151,0,153,0" concept="2" trace="myNode" />
       <node id="8022092943109332063" at="244,0,246,0" concept="2" trace="myNode" />

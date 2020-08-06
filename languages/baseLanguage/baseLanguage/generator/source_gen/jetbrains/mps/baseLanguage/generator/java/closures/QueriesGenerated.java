@@ -61,7 +61,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ClosuresUtil.hasVariablesUsedInClosure(_context.getNode(), _context);
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    if (!(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Closure$5Q))) {
+    if (!(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Closure$yC))) {
       return ClosuresUtil.hasVariablesUsedInClosure(_context.getNode(), _context);
     }
     return false;
@@ -74,11 +74,11 @@ public class QueriesGenerated extends QueryProviderBase {
     return false;
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
-    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Closure$5Q, false, false) != null;
+    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Closure$yC, false, false) != null;
   }
   public static boolean rule_Condition_0_4(final BaseMappingRuleContext _context) {
-    SNode var = SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$7WwU);
-    if (!((SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(var, CONCEPTS.ParameterDeclaration$qU)))) {
+    SNode var = SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$N1XG);
+    if (!((SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(var, CONCEPTS.ParameterDeclaration$RG)))) {
       return false;
     }
     SNode contextOwner = ClosuresUtil.findEnclosingClosureContextOwner(var);
@@ -88,8 +88,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return false;
   }
   public static boolean rule_Condition_0_5(final BaseMappingRuleContext _context) {
-    SNode var = SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$cjR0);
-    if (SLinkOperations.getTarget(var, LINKS.initializer$no3R) != null) {
+    SNode var = SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$RpjM);
+    if (SLinkOperations.getTarget(var, LINKS.initializer$2twD) != null) {
       SNode contextOwner = ClosuresUtil.findEnclosingClosureContextOwner(var);
       if (contextOwner != null) {
         return ClosuresUtil.isVariableUsedInClosure(contextOwner, var, _context);
@@ -109,13 +109,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createUniqueName("_zClosureContext", null);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
-    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$IY, false, false);
+    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$bK, false, false);
   }
   public static Object referenceMacro_GetReferent_3_1(final ReferenceMacroContext _context) {
     //  alternatively, could have used MAP-SRC to findEnclosingClosureContextOwner and template reference 
@@ -129,7 +129,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static Object referenceMacro_GetReferent_3_2(final ReferenceMacroContext _context) {
-    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$IY, false, false);
+    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$bK, false, false);
   }
   public static Object referenceMacro_GetReferent_3_3(final ReferenceMacroContext _context) {
     // XXX Why not type of argument but cast? 
@@ -142,40 +142,40 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static Object referenceMacro_GetReferent_3_4(final ReferenceMacroContext _context) {
-    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$IY, false, false);
+    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ClassConcept$bK, false, false);
   }
   public static Object referenceMacro_GetReferent_6_0(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode()), "contextOwner_closureContext_variable"), LINKS.localVariableDeclaration$cjR0);
+    return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode()), "contextOwner_closureContext_variable"), LINKS.localVariableDeclaration$RpjM);
   }
   public static Object referenceMacro_GetReferent_6_1(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$7WwU), "variable_closureContext_classField");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$N1XG), "variable_closureContext_classField");
   }
   public static Object referenceMacro_GetReferent_8_0(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode()), "contextOwner_closureContext_variable"), LINKS.localVariableDeclaration$cjR0);
+    return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode()), "contextOwner_closureContext_variable"), LINKS.localVariableDeclaration$RpjM);
   }
   public static Object referenceMacro_GetReferent_8_1(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$cjR0), "variable_closureContext_classField");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$RpjM), "variable_closureContext_classField");
   }
   public static Object referenceMacro_GetReferent_9_0(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode()), "contextOwner_closureContext_variable"), LINKS.localVariableDeclaration$cjR0);
+    return SLinkOperations.getTarget(_context.getOutputNodeByInputNodeAndMappingLabel(ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode()), "contextOwner_closureContext_variable"), LINKS.localVariableDeclaration$RpjM);
   }
   public static Object referenceMacro_GetReferent_9_1(final ReferenceMacroContext _context) {
     return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(_context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "closure_adapterClass"))).first();
   }
   public static Object referenceMacro_GetReferent_10_0(final ReferenceMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.closureParameter$9exM), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.closureParameter$OjY$), PROPS.name$MnvL);
   }
   public static boolean ifMacro_Condition_9_0(final IfMacroContext _context) {
     return ClosuresUtil.hasVariablesUsedInClosure(ClosuresUtil.findEnclosingClosureContextOwner(_context.getNode()), _context);
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.type$uWuc);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.type$a1UY);
   }
   public static SNode sourceNodeQuery_2_0(final SourceSubstituteMacroNodeContext _context) {
     return SNodeOperations.getParent(_context.getNode());
   }
   public static SNode sourceNodeQuery_8_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$cjR0), LINKS.initializer$no3R);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD);
   }
   public static SNode sourceNodeQuery_9_0(final SourceSubstituteMacroNodeContext _context) {
     return QueriesUtil.create_enclosingClassObject(_context.getNode());
@@ -193,7 +193,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _QueriesUtil.getList_ContextOwner_ifMethod_ParmsUsedInClosure(_context.getNode(), _context);
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.statement$pYcS);
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
     return QueriesUtil.getTypeVars_from_Closure_enclosingClass(_context.getNode());
@@ -202,7 +202,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "closure_adapterClass");
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
-    return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Closure$5Q).size() > 0;
+    return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Closure$yC).size() > 0;
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -587,22 +587,22 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Closure$5Q = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Closure$yC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SReferenceLink closureParameter$9exM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c7edba8b3L, 0x10c7edc81a4L, "closureParameter");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink localVariableDeclaration$RpjM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink closureParameter$OjY$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c7edba8b3L, 0x10c7edc81a4L, "closureParameter");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

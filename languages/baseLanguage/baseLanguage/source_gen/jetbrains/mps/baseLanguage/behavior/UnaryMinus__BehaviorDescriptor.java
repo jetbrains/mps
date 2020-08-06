@@ -35,16 +35,16 @@ public final class UnaryMinus__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getSyntacticallyRightSideExpression_id1wHCnsn590i(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.expression$NMtu);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.expression$uRUg);
   }
   /*package*/ static void setSyntacticallyRightSideExpression_id1wHCnsn58ZY(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.expression$NMtu, expr);
+    SLinkOperations.setTarget(__thisNode__, LINKS.expression$uRUg, expr);
   }
   /*package*/ static boolean isCompileTimeConstant_idi1LOPRp(@NotNull SNode __thisNode__) {
-    return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.expression$NMtu));
+    return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.expression$uRUg));
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    Object value = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.expression$NMtu), module);
+    Object value = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.expression$uRUg), module);
     if (value instanceof Byte) {
       return -((Byte) value);
     }
@@ -120,6 +120,6 @@ public final class UnaryMinus__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink expression$uRUg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 }

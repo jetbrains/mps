@@ -24,8 +24,8 @@ public class typeOf_ThrowStatement_InferenceRule extends AbstractInferenceRule_R
   public typeOf_ThrowStatement_InferenceRule() {
   }
   public void applyRule(final SNode throwStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.hasRole(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), LINKS.throwable$T0lV)) {
-      for (SNode thrownType : AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU)), CONCEPTS.CatchClause$hu))) {
+    if (SNodeOperations.hasRole(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), LINKS.throwable$$5MH)) {
+      for (SNode thrownType : AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG)), CONCEPTS.CatchClause$Ig))) {
         {
           SNode _nodeToCheck_1029348928467 = throwStatement;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176896118328", 0, null);
@@ -34,14 +34,14 @@ public class typeOf_ThrowStatement_InferenceRule extends AbstractInferenceRule_R
       }
     } else {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4952749571008340762", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4952749571008340767", true), (SNode) _quotation_createNode_7y699y_a1a0c0a0a0a1(), false, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ThrowStatement$yK;
+    return CONCEPTS.ThrowStatement$Zy;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -65,14 +65,14 @@ public class typeOf_ThrowStatement_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$DFju = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink throwable$T0lV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
+    /*package*/ static final SContainmentLink throwable$kKKg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink throwable$$5MH = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept CatchClause$hu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
-    /*package*/ static final SConcept ThrowStatement$yK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept CatchClause$Ig = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
+    /*package*/ static final SConcept ThrowStatement$Zy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
   }
 }

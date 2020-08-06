@@ -48,7 +48,7 @@ public final class UseIndentLayoutInCollection_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Indent$tI))) {
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Indent$Dl))) {
         return "Use Indent Layout";
       } else {
         return "Use Horizontal Layout";
@@ -56,10 +56,10 @@ public final class UseIndentLayoutInCollection_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Indent$tI))) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.cellLayout$JWT7, CONCEPTS.CellLayout_Indent$tI);
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Indent$Dl))) {
+        SNodeFactoryOperations.setNewChild(node, LINKS.cellLayout$Of4I, CONCEPTS.CellLayout_Indent$Dl);
       } else {
-        SNodeFactoryOperations.setNewChild(node, LINKS.cellLayout$JWT7, CONCEPTS.CellLayout_Horizontal$Ss);
+        SNodeFactoryOperations.setNewChild(node, LINKS.cellLayout$Of4I, CONCEPTS.CellLayout_Horizontal$43);
       }
     }
     @Override
@@ -69,11 +69,11 @@ public final class UseIndentLayoutInCollection_Intention extends AbstractIntenti
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$Of4I = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellLayout_Indent$tI = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
-    /*package*/ static final SConcept CellLayout_Horizontal$Ss = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal");
+    /*package*/ static final SConcept CellLayout_Indent$Dl = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
+    /*package*/ static final SConcept CellLayout_Horizontal$43 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dcf685L, "jetbrains.mps.lang.editor.structure.CellLayout_Horizontal");
   }
 }

@@ -25,7 +25,7 @@ public class typeof_ModelPointer_ResolveOperation_InferenceRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ModelPointer_ResolveOperation$uM;
+    return CONCEPTS.ModelPointer_ResolveOperation$wi;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_ModelPointer_ResolveOperation_InferenceRule extends Abstract
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelPointer_ResolveOperation$uM = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x386b28659aca024aL, "jetbrains.mps.lang.smodel.structure.ModelPointer_ResolveOperation");
+    /*package*/ static final SConcept ModelPointer_ResolveOperation$wi = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x386b28659aca024aL, "jetbrains.mps.lang.smodel.structure.ModelPointer_ResolveOperation");
   }
 }

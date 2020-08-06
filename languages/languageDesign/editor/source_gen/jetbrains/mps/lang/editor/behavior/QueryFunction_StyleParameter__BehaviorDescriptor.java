@@ -41,11 +41,11 @@ public final class QueryFunction_StyleParameter__BehaviorDescriptor extends Base
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_editorContext$k8);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_node$ob);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_editorContext$vJ);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_node$zM);
     if (((boolean) QueryFunction_StyleParameter__BehaviorDescriptor.isSeparatorStyleQuery_id6VCLXpKP7HP.invoke(__thisNode__))) {
-      ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_prevNode$eT);
-      ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_nextNode$Y4);
+      ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_prevNode$qw);
+      ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_nextNode$9F);
     }
     return result;
   }
@@ -57,10 +57,10 @@ public final class QueryFunction_StyleParameter__BehaviorDescriptor extends Base
     if (styleContainer == null) {
       return null;
     }
-    return SNodeOperations.as(SNodeOperations.getParent(styleContainer), CONCEPTS.CellModel_RefNodeList$IL);
+    return SNodeOperations.as(SNodeOperations.getParent(styleContainer), CONCEPTS.CellModel_RefNodeList$Uo);
   }
   /*package*/ static SNode getStyleClassItem_id6VCLXpKPLfS(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.StyleClassItem$Ub);
+    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.StyleClassItem$5M);
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     return _quotation_createNode_evejyl_a0a4();
@@ -128,11 +128,11 @@ public final class QueryFunction_StyleParameter__BehaviorDescriptor extends Base
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunctionParameter_editorContext$k8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
-    /*package*/ static final SConcept ConceptFunctionParameter_node$ob = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10a195cc7c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node");
-    /*package*/ static final SConcept ConceptFunctionParameter_prevNode$eT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee8c7d6704ae9f2L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_prevNode");
-    /*package*/ static final SConcept ConceptFunctionParameter_nextNode$Y4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee8c7d6704ae262L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_nextNode");
-    /*package*/ static final SConcept CellModel_RefNodeList$IL = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList");
-    /*package*/ static final SConcept StyleClassItem$Ub = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b191dc6L, "jetbrains.mps.lang.editor.structure.StyleClassItem");
+    /*package*/ static final SConcept ConceptFunctionParameter_editorContext$vJ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
+    /*package*/ static final SConcept ConceptFunctionParameter_node$zM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10a195cc7c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node");
+    /*package*/ static final SConcept ConceptFunctionParameter_prevNode$qw = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee8c7d6704ae9f2L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_prevNode");
+    /*package*/ static final SConcept ConceptFunctionParameter_nextNode$9F = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ee8c7d6704ae262L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_nextNode");
+    /*package*/ static final SConcept CellModel_RefNodeList$Uo = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList");
+    /*package*/ static final SConcept StyleClassItem$5M = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b191dc6L, "jetbrains.mps.lang.editor.structure.StyleClassItem");
   }
 }

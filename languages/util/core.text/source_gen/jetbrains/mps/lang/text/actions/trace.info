@@ -13,7 +13,7 @@
     <file name="WordHandlers_PastePostProcessor_0.java">
       <node id="7005103847466617115" at="14,50,15,28" concept="2" />
       <node id="7005103847466617184" at="18,49,19,72" concept="0" />
-      <node id="7005103847466617115" at="23,0,24,0" concept="3" trace="Word$AM" />
+      <node id="7005103847466617115" at="23,0,24,0" concept="3" trace="Word$Dn" />
       <node id="7005103847466617115" at="13,0,17,0" concept="1" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7005103847466617115" at="17,0,21,0" concept="1" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="7005103847466617115" at="14,50,15,28" />

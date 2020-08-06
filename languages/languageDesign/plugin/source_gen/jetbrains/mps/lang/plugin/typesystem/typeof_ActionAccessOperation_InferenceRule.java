@@ -26,7 +26,7 @@ public class typeof_ActionAccessOperation_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ActionAccessOperation$Qe;
+    return CONCEPTS.ActionAccessOperation$Nh;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_ActionAccessOperation_InferenceRule extends AbstractInferenc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionAccessOperation$Qe = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d0060cL, "jetbrains.mps.lang.plugin.structure.ActionAccessOperation");
+    /*package*/ static final SConcept ActionAccessOperation$Nh = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d0060cL, "jetbrains.mps.lang.plugin.structure.ActionAccessOperation");
   }
 }

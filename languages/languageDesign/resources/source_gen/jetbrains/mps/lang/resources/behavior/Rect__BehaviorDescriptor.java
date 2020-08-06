@@ -42,19 +42,19 @@ public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
         int centerX = dc.width / 2;
         int centerY = dc.height / 2;
 
-        Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$Zc1Y)));
-        if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$Zhrl) == null)) {
+        Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK)));
+        if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37) == null)) {
           dc.g.setColor(fillColor);
-          dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$vIo0)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$vIo0)) * 2);
+          dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2);
         } else {
           // outer 
-          dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$Zhrl))));
-          dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$vIo0)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$vIo0)) * 2);
+          dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37))));
+          dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2);
 
           // inner 
           int border = 2;
           dc.g.setColor(fillColor);
-          dc.g.fillRect(centerX, centerY, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$vIo0)) - border) * 2, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$vIo0)) - border) * 2);
+          dc.g.fillRect(centerX, centerY, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2);
         }
       }
     });
@@ -107,11 +107,11 @@ public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fillColor$Zc1Y = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
-    /*package*/ static final SContainmentLink borderColor$Zhrl = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
+    /*package*/ static final SContainmentLink fillColor$VwDK = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
+    /*package*/ static final SContainmentLink borderColor$VA37 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty r$vIo0 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r");
+    /*package*/ static final SProperty r$s2ZM = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, 0x26417c37742e0e62L, "r");
   }
 }

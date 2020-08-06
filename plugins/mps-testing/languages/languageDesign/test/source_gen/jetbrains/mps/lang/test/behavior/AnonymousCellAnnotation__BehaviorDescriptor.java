@@ -51,36 +51,36 @@ public final class AnonymousCellAnnotation__BehaviorDescriptor extends BaseBHDes
   /*package*/ static EditorComponent setupSelection_id5g7DxxpaP55(@NotNull SNode __thisNode__, NodeEditorComponent nodeEditorComponent, SNode node, Map<SNode, SNode> map) {
     EditorComponent editorComponent = nodeEditorComponent;
     EditorCell cellWithId;
-    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isInInspector$3JJj)) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isInInspector$WnYM)) {
       editorComponent = AnonymousCellAnnotation__BehaviorDescriptor.setupInspector_id4VoD2D0CSEA.invoke(__thisNode__, node, nodeEditorComponent);
     }
-    cellWithId = editorComponent.findCellWithId(node, SPropertyOperations.getString(__thisNode__, PROPS.cellId$3x40));
+    cellWithId = editorComponent.findCellWithId(node, SPropertyOperations.getString(__thisNode__, PROPS.cellId$W9jv));
     if (cellWithId == null) {
-      throw new RuntimeException(String.format("No cell with id %s found in %s", SPropertyOperations.getString(__thisNode__, PROPS.cellId$3x40), SNodeOperations.getParent(__thisNode__)));
+      throw new RuntimeException(String.format("No cell with id %s found in %s", SPropertyOperations.getString(__thisNode__, PROPS.cellId$W9jv), SNodeOperations.getParent(__thisNode__)));
     }
     AnonymousCellAnnotation__BehaviorDescriptor.setupCaretAndSelection_id7TYU6fNl1yz.invoke(__thisNode__, cellWithId);
     editorComponent.changeSelection(cellWithId);
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.nodeRangeSelectionStart$XOcA) != null) {
-      SNode selectionStart = MapSequence.fromMap(map).get(SLinkOperations.getTarget(__thisNode__, LINKS.nodeRangeSelectionStart$XOcA));
-      SNode selectionEnd = MapSequence.fromMap(map).get(SLinkOperations.getTarget(__thisNode__, LINKS.nodeRangeSelectionEnd$XOrB));
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.nodeRangeSelectionStart$Qss5) != null) {
+      SNode selectionStart = MapSequence.fromMap(map).get(SLinkOperations.getTarget(__thisNode__, LINKS.nodeRangeSelectionStart$Qss5));
+      SNode selectionEnd = MapSequence.fromMap(map).get(SLinkOperations.getTarget(__thisNode__, LINKS.nodeRangeSelectionEnd$QsF6));
       SelectionManager selectionManager = editorComponent.getSelectionManager();
       selectionManager.pushSelection(selectionManager.createRangeSelection(selectionStart, selectionEnd));
     }
     return editorComponent;
   }
   /*package*/ static int getCaretPosition_id5rZKa_fUlry(@NotNull SNode __thisNode__, EditorCell_Label label) {
-    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isLastPosition$lN1r)) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isLastPosition$ergU)) {
       return label.getText().length();
     } else {
-      return SPropertyOperations.getInteger(__thisNode__, PROPS.caretPosition$3xj1);
+      return SPropertyOperations.getInteger(__thisNode__, PROPS.caretPosition$W9yw);
     }
   }
   /*package*/ static void setupCaretAndSelection_id7TYU6fNl1yz(@NotNull SNode __thisNode__, EditorCell cellWithId) {
     if (cellWithId instanceof EditorCell_Label) {
       EditorCell_Label label = (EditorCell_Label) cellWithId;
       label.setCaretPosition(((int) AnonymousCellAnnotation__BehaviorDescriptor.getCaretPosition_id5rZKa_fUlry.invoke(__thisNode__, label)));
-      label.setSelectionStart(SPropertyOperations.getInteger(__thisNode__, PROPS.selectionStart$hNAV));
-      label.setSelectionEnd(SPropertyOperations.getInteger(__thisNode__, PROPS.selectionEnd$hO4X));
+      label.setSelectionStart(SPropertyOperations.getInteger(__thisNode__, PROPS.selectionStart$arQq));
+      label.setSelectionEnd(SPropertyOperations.getInteger(__thisNode__, PROPS.selectionEnd$asks));
     }
   }
   /*package*/ static EditorComponent setupInspector_id4VoD2D0CSEA(@NotNull SNode __thisNode__, SNode node, NodeEditorComponent nodeEditorComponent) {
@@ -149,16 +149,16 @@ public final class AnonymousCellAnnotation__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isInInspector$3JJj = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1b73330fb1241e01L, "isInInspector");
-    /*package*/ static final SProperty cellId$3x40 = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe13L, "cellId");
-    /*package*/ static final SProperty isLastPosition$lN1r = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e3fde6f41L, "isLastPosition");
-    /*package*/ static final SProperty caretPosition$3xj1 = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe14L, "caretPosition");
-    /*package*/ static final SProperty selectionStart$hNAV = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc33L, "selectionStart");
-    /*package*/ static final SProperty selectionEnd$hO4X = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc35L, "selectionEnd");
+    /*package*/ static final SProperty isInInspector$WnYM = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1b73330fb1241e01L, "isInInspector");
+    /*package*/ static final SProperty cellId$W9jv = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe13L, "cellId");
+    /*package*/ static final SProperty isLastPosition$ergU = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e3fde6f41L, "isLastPosition");
+    /*package*/ static final SProperty caretPosition$W9yw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe14L, "caretPosition");
+    /*package*/ static final SProperty selectionStart$arQq = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc33L, "selectionStart");
+    /*package*/ static final SProperty selectionEnd$asks = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc35L, "selectionEnd");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink nodeRangeSelectionStart$XOcA = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9accL, "nodeRangeSelectionStart");
-    /*package*/ static final SReferenceLink nodeRangeSelectionEnd$XOrB = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9acdL, "nodeRangeSelectionEnd");
+    /*package*/ static final SReferenceLink nodeRangeSelectionStart$Qss5 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9accL, "nodeRangeSelectionStart");
+    /*package*/ static final SReferenceLink nodeRangeSelectionEnd$QsF6 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9acdL, "nodeRangeSelectionEnd");
   }
 }

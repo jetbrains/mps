@@ -28,7 +28,7 @@ public class FilteringByNameScope extends Scope {
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     return Sequence.fromIterable(scope.getAvailableElements(prefix)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$nV)) || !(SetSequence.fromSet(filteredNames).contains(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v)));
+        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.INamedConcept$Kd)) || !(SetSequence.fromSet(filteredNames).contains(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)));
       }
     });
   }
@@ -44,8 +44,8 @@ public class FilteringByNameScope extends Scope {
   }
   @Override
   public boolean contains(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV)) {
-      String name = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
+      String name = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
       return !(SetSequence.fromSet(filteredNames).contains(name)) && scope.contains(node);
     } else {
       return scope.contains(node);
@@ -53,10 +53,10 @@ public class FilteringByNameScope extends Scope {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

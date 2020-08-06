@@ -45,14 +45,14 @@ public class WrapNullLiteral extends MigrationScriptBase {
           return scope_nzk9pr_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitLink$Xj, false)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitLink$XR, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.expression$Yys), CONCEPTS.NullLiteral$q4);
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.expression$YNz0), CONCEPTS.NullLiteral$QQ);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode initLink) {
-          SNode nullLiteral = SLinkOperations.getTarget(initLink, LINKS.expression$Yys);
-          SLinkOperations.setTarget(initLink, LINKS.expression$Yys, createNodeBuilderExpression_nzk9pr_a0b0a0a0a0a6(nullLiteral));
+          SNode nullLiteral = SLinkOperations.getTarget(initLink, LINKS.expression$YNz0);
+          SLinkOperations.setTarget(initLink, LINKS.expression$YNz0, createNodeBuilderExpression_nzk9pr_a0b0a0a0a0a6(nullLiteral));
         }
       });
     }
@@ -67,9 +67,9 @@ public class WrapNullLiteral extends MigrationScriptBase {
           return scope_nzk9pr_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NullLiteral$q4, false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NullLiteral$QQ, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.hasRole(it, LINKS.expression$Yys);
+          return SNodeOperations.hasRole(it, LINKS.expression$YNz0);
         }
       }).select(new ISelector<SNode, NotMigratedNode>() {
         public NotMigratedNode select(SNode it) {
@@ -87,20 +87,20 @@ public class WrapNullLiteral extends MigrationScriptBase {
   }
 
   private static SNode createNodeBuilderExpression_nzk9pr_a0b0a0a0a0a6(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderExpression$Ub);
-    n0.forChild(LINKS.expression$4tkx).initNode(p0, CONCEPTS.Expression$TP, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderExpression$UJ);
+    n0.forChild(LINKS.expression$2il5).initNode(p0, CONCEPTS.Expression$mB, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeBuilderInitLink$Xj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
-    /*package*/ static final SConcept NullLiteral$q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
-    /*package*/ static final SConcept NodeBuilderExpression$Ub = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept NodeBuilderInitLink$XR = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
+    /*package*/ static final SConcept NullLiteral$QQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
+    /*package*/ static final SConcept NodeBuilderExpression$UJ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$Yys = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
-    /*package*/ static final SContainmentLink expression$4tkx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, 0x718e3f4cb7a31330L, "expression");
+    /*package*/ static final SContainmentLink expression$YNz0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
+    /*package*/ static final SContainmentLink expression$2il5 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, 0x718e3f4cb7a31330L, "expression");
   }
 }

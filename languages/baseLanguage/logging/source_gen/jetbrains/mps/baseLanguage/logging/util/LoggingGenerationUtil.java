@@ -36,12 +36,12 @@ public final class LoggingGenerationUtil {
   }
 
   public static String generateUniqueFieldName(SNode contextNode, final String baseName) {
-    for (SNode logStatement : ListSequence.fromList(SNodeOperations.getNodeDescendants(contextNode, CONCEPTS.IMessage$PR, false, new SAbstractConcept[]{}))) {
-      Scope scope = ScopeUtils.parentScope(logStatement, CONCEPTS.VariableDeclaration$xe);
+    for (SNode logStatement : ListSequence.fromList(SNodeOperations.getNodeDescendants(contextNode, CONCEPTS.IMessage$D6, false, new SAbstractConcept[]{}))) {
+      Scope scope = ScopeUtils.parentScope(logStatement, CONCEPTS.VariableDeclaration$Y0);
 
       if (Sequence.fromIterable(scope.getAvailableElements(baseName)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.VariableDeclaration$xe)) || baseName.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.VariableDeclaration$xe), PROPS.name$lA7v));
+          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.VariableDeclaration$Y0)) || baseName.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.VariableDeclaration$Y0), PROPS.name$MnvL));
         }
       }).isNotEmpty()) {
         return baseName + "_" + Integer.toString(Math.abs(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(contextNode).hashCode()));
@@ -68,11 +68,11 @@ public final class LoggingGenerationUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SInterfaceConcept IMessage$PR = MetaAdapterFactory.getInterfaceConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5eeb6L, "jetbrains.mps.baseLanguage.logging.structure.IMessage");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SInterfaceConcept IMessage$D6 = MetaAdapterFactory.getInterfaceConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5eeb6L, "jetbrains.mps.baseLanguage.logging.structure.IMessage");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

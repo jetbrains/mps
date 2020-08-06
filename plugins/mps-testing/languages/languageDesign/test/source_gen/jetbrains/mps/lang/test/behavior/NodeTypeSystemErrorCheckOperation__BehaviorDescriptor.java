@@ -50,24 +50,24 @@ public final class NodeTypeSystemErrorCheckOperation__BehaviorDescriptor extends
     return new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.ERROR, NodeTypeSystemErrorCheckOperation__BehaviorDescriptor.getExpectedMessageText_id3q9wAW4tygG.invoke(__thisNode__), ruleRepository, host);
   }
   /*package*/ static String getExpectedMessageText_id3q9wAW4tygG(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$dJQX), PROPS.text$wLjw);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$6o6s), PROPS.text$ppyZ);
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeTypeSystemCheck";
   }
   /*package*/ static boolean canAttachReference_id2wBFdLy7HtS(@NotNull SNode __thisNode__, @NotNull SNode reference) {
-    return SNodeOperations.isInstanceOf(reference, CONCEPTS.AbstractEquationStatement$sp);
+    return SNodeOperations.isInstanceOf(reference, CONCEPTS.AbstractEquationStatement$If);
   }
   /*package*/ static void attachReference_id2wBFdLy8qmn(@NotNull SNode __thisNode__, @NotNull SNode reference) {
     assert ((boolean) IReferenceAttachable__BehaviorDescriptor.canAttachReference_id2wBFdLy7HtS.invoke(__thisNode__, reference));
-    SLinkOperations.setTarget(__thisNode__, LINKS.equationRef$PqXO, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x408630be7237fedfL, "jetbrains.mps.lang.test.structure.TypesystemEquationReference")));
-    SLinkOperations.setTarget(SLinkOperations.getTarget(__thisNode__, LINKS.equationRef$PqXO), LINKS.declaration$w83C, SNodeOperations.cast(reference, CONCEPTS.AbstractEquationStatement$sp));
+    SLinkOperations.setTarget(__thisNode__, LINKS.equationRef$I3dj, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x408630be7237fedfL, "jetbrains.mps.lang.test.structure.TypesystemEquationReference")));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(__thisNode__, LINKS.equationRef$I3dj), LINKS.declaration$oKj7, SNodeOperations.cast(reference, CONCEPTS.AbstractEquationStatement$If));
   }
   /*package*/ static SNode getReference_id7eBNsYUkslm(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.equationRef$PqXO);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.equationRef$I3dj);
   }
   /*package*/ static SNode getReferencedRuleNode_id2wBFdLy8qmt(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(IReferenceAttachable__BehaviorDescriptor.getReference_id7eBNsYUkslm.invoke(__thisNode__), LINKS.declaration$w83C);
+    return SLinkOperations.getTarget(IReferenceAttachable__BehaviorDescriptor.getReference_id7eBNsYUkslm.invoke(__thisNode__), LINKS.declaration$oKj7);
   }
 
   /*package*/ NodeTypeSystemErrorCheckOperation__BehaviorDescriptor() {
@@ -130,16 +130,16 @@ public final class NodeTypeSystemErrorCheckOperation__BehaviorDescriptor extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expectedMessage$dJQX = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
-    /*package*/ static final SContainmentLink equationRef$PqXO = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5f2a921acc5d63aL, 0x408630be723827b3L, "equationRef");
-    /*package*/ static final SReferenceLink declaration$w83C = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
+    /*package*/ static final SContainmentLink expectedMessage$6o6s = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
+    /*package*/ static final SContainmentLink equationRef$I3dj = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5f2a921acc5d63aL, 0x408630be723827b3L, "equationRef");
+    /*package*/ static final SReferenceLink declaration$oKj7 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$wLjw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
+    /*package*/ static final SProperty text$ppyZ = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractEquationStatement$sp = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
+    /*package*/ static final SConcept AbstractEquationStatement$If = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
   }
 }

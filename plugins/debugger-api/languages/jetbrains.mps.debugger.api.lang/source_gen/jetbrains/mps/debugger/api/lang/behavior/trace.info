@@ -207,10 +207,10 @@
       <node id="658365993682200128" at="114,30,115,234" concept="1" />
       <node id="658365993682200128" at="115,234,116,453" concept="1" />
       <node id="658365993682200128" at="116,453,117,24" concept="5" />
-      <node id="3044950653914719163" at="121,0,122,0" concept="6" trace="ConceptFunction$Tt" />
-      <node id="3044950653914719163" at="122,0,123,0" concept="6" trace="ConceptFunctionParameter_DebuggableNode$R4" />
-      <node id="3044950653914719163" at="123,0,124,0" concept="6" trace="ConceptFunctionParameter_Debug_Project$EX" />
-      <node id="3044950653914719163" at="124,0,125,0" concept="6" trace="ConceptFunction_CreateBreakpoint$Nm" />
+      <node id="3044950653914719163" at="121,0,122,0" concept="6" trace="ConceptFunction$mf" />
+      <node id="3044950653914719163" at="122,0,123,0" concept="6" trace="ConceptFunctionParameter_DebuggableNode$b$" />
+      <node id="3044950653914719163" at="123,0,124,0" concept="6" trace="ConceptFunctionParameter_Debug_Project$Zt" />
+      <node id="3044950653914719163" at="124,0,125,0" concept="6" trace="ConceptFunction_CreateBreakpoint$7Q" />
       <node id="3044950653914719163" at="38,0,40,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3044950653914719163" at="56,0,58,0" concept="0" trace="ConceptFunction_CreateBreakpoint__BehaviorDescriptor#()V" />
       <node id="3044950653914719163" at="47,0,50,0" concept="7" trace="getExpectedReturnType_idhEwIGRD#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -325,9 +325,9 @@
       <node id="3104811047188255119" at="101,63,102,30" concept="4" />
       <node id="3104811047188255119" at="102,30,103,230" concept="1" />
       <node id="3104811047188255119" at="103,230,104,24" concept="5" />
-      <node id="3104811047188253888" at="108,0,109,0" concept="6" trace="ConceptFunction$Tt" />
-      <node id="3104811047188253888" at="109,0,110,0" concept="6" trace="ConceptFunctionParameter_Concept$zb" />
-      <node id="3104811047188253888" at="110,0,111,0" concept="6" trace="ConceptFunctionParameter_DebuggableNode$R4" />
+      <node id="3104811047188253888" at="108,0,109,0" concept="6" trace="ConceptFunction$mf" />
+      <node id="3104811047188253888" at="109,0,110,0" concept="6" trace="ConceptFunctionParameter_Concept$RF" />
+      <node id="3104811047188253888" at="110,0,111,0" concept="6" trace="ConceptFunctionParameter_DebuggableNode$b$" />
       <node id="3104811047188253888" at="35,0,37,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3104811047188253888" at="51,0,53,0" concept="0" trace="ConceptFunction_IsApplicableBreakpoint__BehaviorDescriptor#()V" />
       <node id="3104811047188253888" at="38,0,41,0" concept="7" trace="showName_id1653mnvAgry#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />

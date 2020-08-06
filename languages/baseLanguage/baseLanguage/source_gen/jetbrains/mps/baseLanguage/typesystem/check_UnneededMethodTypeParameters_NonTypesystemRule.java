@@ -26,15 +26,15 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
   public check_UnneededMethodTypeParameters_NonTypesystemRule() {
   }
   public void applyRule(final SNode baseMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.typeVariableDeclaration$6cWB)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.typeVariableDeclaration$Lipp)).visitAll(new IVisitor<SNode>() {
       public void visit(final SNode typeVarDeclaration) {
-        boolean unused = ListSequence.fromList(SNodeOperations.getNodeDescendants(baseMethodDeclaration, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+        boolean unused = ListSequence.fromList(SNodeOperations.getNodeDescendants(baseMethodDeclaration, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return ListSequence.fromList(SNodeOperations.getNodeAncestors(it, CONCEPTS.SingleLineComment$jI, false)).isEmpty();
+            return ListSequence.fromList(SNodeOperations.getNodeAncestors(it, CONCEPTS.SingleLineComment$Kw, false)).isEmpty();
           }
         }).all(new IWhereFilter<SNode>() {
           public boolean accept(SNode ref) {
-            return !(Objects.equals(SLinkOperations.getTarget(ref, LINKS.typeVariableDeclaration$6t$W), typeVarDeclaration));
+            return !(Objects.equals(SLinkOperations.getTarget(ref, LINKS.typeVariableDeclaration$Lz1I), typeVarDeclaration));
           }
         });
         if (unused) {
@@ -47,7 +47,7 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
     });
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BaseMethodDeclaration$RR;
+    return CONCEPTS.BaseMethodDeclaration$kD;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -57,13 +57,13 @@ public class check_UnneededMethodTypeParameters_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept SingleLineComment$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept SingleLineComment$Kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 }

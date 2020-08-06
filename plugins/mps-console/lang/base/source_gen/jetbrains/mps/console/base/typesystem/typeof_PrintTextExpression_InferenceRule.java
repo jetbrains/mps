@@ -22,13 +22,13 @@ public class typeof_PrintTextExpression_InferenceRule extends AbstractInferenceR
   }
   public void applyRule(final SNode printTextExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(printTextExpression, LINKS.object$UNYq);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(printTextExpression, LINKS.object$jGCj);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:ae7d1f20-2cfe-46ef-a88a-193353a8b62b(jetbrains.mps.console.base.typesystem)", "7600370246421665039", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:ae7d1f20-2cfe-46ef-a88a-193353a8b62b(jetbrains.mps.console.base.typesystem)", "7600370246421665042", true), (SNode) _quotation_createNode_tqzol9_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PrintTextExpression$5t;
+    return CONCEPTS.PrintTextExpression$Jm;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,10 +45,10 @@ public class typeof_PrintTextExpression_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink object$UNYq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
+    /*package*/ static final SContainmentLink object$jGCj = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrintTextExpression$5t = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x7417cca3eb1feca9L, "jetbrains.mps.console.base.structure.PrintTextExpression");
+    /*package*/ static final SConcept PrintTextExpression$Jm = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x7417cca3eb1feca9L, "jetbrains.mps.console.base.structure.PrintTextExpression");
   }
 }

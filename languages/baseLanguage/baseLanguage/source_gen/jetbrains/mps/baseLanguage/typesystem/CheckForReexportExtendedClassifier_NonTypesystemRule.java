@@ -33,13 +33,13 @@ public class CheckForReexportExtendedClassifier_NonTypesystemRule extends Abstra
   public CheckForReexportExtendedClassifier_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$aF) || SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$uy)) {
+    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk)) {
       return;
     }
     if ((boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(SNodeOperations.getContainingRoot(classifier))) {
       return;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)) {
       return;
     }
     SModel model = classifier.getModel();
@@ -52,7 +52,7 @@ public class CheckForReexportExtendedClassifier_NonTypesystemRule extends Abstra
     Collection<SModule> depsReexport = depManager.getOnlyReexportModules();
     final SModuleReference jdkModuleRef = PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)");
     for (SNode extendedClassifierType : Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(classifier)) {
-      SNode extendedClassifier = SLinkOperations.getTarget(extendedClassifierType, LINKS.classifier$xslD);
+      SNode extendedClassifier = SLinkOperations.getTarget(extendedClassifierType, LINKS.classifier$cxMr);
       if ((extendedClassifier == null)) {
         // broken reference, reported elsewhere, just go on with those valid  
         continue;
@@ -81,7 +81,7 @@ public class CheckForReexportExtendedClassifier_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Classifier$hJ;
+    return CONCEPTS.Classifier$Ix;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -91,14 +91,14 @@ public class CheckForReexportExtendedClassifier_NonTypesystemRule extends Abstra
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

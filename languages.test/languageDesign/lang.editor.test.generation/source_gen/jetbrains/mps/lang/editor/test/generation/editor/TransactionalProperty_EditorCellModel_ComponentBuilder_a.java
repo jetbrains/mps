@@ -92,7 +92,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.theProperty$piFs;
+      final SProperty property = PROPS.theProperty$q6LT;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no theProperty>");
@@ -102,10 +102,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       TestTargetActionMap.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.addKeyMap(new TestTargetKeymap());
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.AbstractCellTest$IY, "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.AbstractCellTest$Pr, "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new TransactionalProperty_generic_cellMenu_vfuuik_a0a0(), new TransactionalProperty_generic_cellMenu_vfuuik_b0a0(), new TransactionalProperty_customReplace_cellMenu_vfuuik_c0a0(), new TransactionalProperty_customReplace_cellMenu_vfuuik_d0a0(), new TransactionalProperty_component_cellMenu_vfuuik_e0a0(), new TransactionalProperty_generic_cellMenu_vfuuik_f0a0(), new TransactionalProperty_theProperty_postfixCellMenu_vfuuik_g0a0(), new TransactionalProperty_theProperty_cellMenu_vfuuik_h0a0(), new ReplaceWith_Constant_cellMenu_vfuuik_i0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -335,7 +335,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public ReplaceWith_Constant_cellMenu_vfuuik_i0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.Constant$x8;
+      return CONCEPTS.Constant$B_;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -344,12 +344,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty theProperty$piFs = MetaAdapterFactory.getProperty(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531aadcccL, 0xbde89531aae3a9L, "theProperty");
+    /*package*/ static final SProperty theProperty$q6LT = MetaAdapterFactory.getProperty(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531aadcccL, 0xbde89531aae3a9L, "theProperty");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractCellTest$IY = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, "jetbrains.mps.lang.editor.test.generation.structure.AbstractCellTest");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept Constant$x8 = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde8953186ee02L, "jetbrains.mps.lang.editor.test.generation.structure.Constant");
+    /*package*/ static final SConcept AbstractCellTest$Pr = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a681a1L, "jetbrains.mps.lang.editor.test.generation.structure.AbstractCellTest");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept Constant$B_ = MetaAdapterFactory.getConcept(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde8953186ee02L, "jetbrains.mps.lang.editor.test.generation.structure.Constant");
   }
 }

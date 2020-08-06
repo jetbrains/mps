@@ -27,9 +27,9 @@ public class check_IMemberOperation_NonTypesystemRule extends AbstractNonTypesys
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode operandType = TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(nodeToCheck));
     {
-      SNode coercedNode_hm5x7h_b0 = TypecheckingFacade.getFromContext().coerceType(operandType, CONCEPTS.BaseClassifierType$Sj);
+      SNode coercedNode_hm5x7h_b0 = TypecheckingFacade.getFromContext().coerceType(operandType, CONCEPTS.BaseClassifierType$S7);
       if (coercedNode_hm5x7h_b0 != null) {
-        if (!(ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_hm5x7h_b0, nodeToCheck)).contains(SLinkOperations.getTarget(nodeToCheck, LINKS.member$shti)))) {
+        if (!(ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_hm5x7h_b0, nodeToCheck)).contains(SLinkOperations.getTarget(nodeToCheck, LINKS.member$oLt6)))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, "Declaration is out of scope", "r:00000000-0000-4000-0000-011c89590371(jetbrains.mps.baseLanguage.classifiers.typesystem)", "1205921883388", null, errorTarget);
@@ -40,7 +40,7 @@ public class check_IMemberOperation_NonTypesystemRule extends AbstractNonTypesys
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IMemberOperation$jb;
+    return CONCEPTS.IMemberOperation$iZ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,11 +50,11 @@ public class check_IMemberOperation_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseClassifierType$Sj = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc77d845L, "jetbrains.mps.baseLanguage.classifiers.structure.BaseClassifierType");
-    /*package*/ static final SInterfaceConcept IMemberOperation$jb = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, "jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation");
+    /*package*/ static final SConcept BaseClassifierType$S7 = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc77d845L, "jetbrains.mps.baseLanguage.classifiers.structure.BaseClassifierType");
+    /*package*/ static final SInterfaceConcept IMemberOperation$iZ = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, "jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SReferenceLink member$oLt6 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
   }
 }

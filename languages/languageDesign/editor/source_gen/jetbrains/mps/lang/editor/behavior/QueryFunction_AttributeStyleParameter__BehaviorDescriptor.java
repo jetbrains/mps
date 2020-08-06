@@ -34,7 +34,7 @@ public final class QueryFunction_AttributeStyleParameter__BehaviorDescriptor ext
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.AttributeStyleClassItem$u_, false, false), LINKS.attribute$L5u$), LINKS.valueType$tOnZ);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.AttributeStyleClassItem$Ec, false, false), LINKS.attribute$PnEb), LINKS.valueType$y6zA);
   }
 
   /*package*/ QueryFunction_AttributeStyleParameter__BehaviorDescriptor() {
@@ -84,11 +84,11 @@ public final class QueryFunction_AttributeStyleParameter__BehaviorDescriptor ext
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AttributeStyleClassItem$u_ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, "jetbrains.mps.lang.editor.structure.AttributeStyleClassItem");
+    /*package*/ static final SConcept AttributeStyleClassItem$Ec = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, "jetbrains.mps.lang.editor.structure.AttributeStyleClassItem");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attribute$L5u$ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0b8d3L, "attribute");
-    /*package*/ static final SContainmentLink valueType$tOnZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
+    /*package*/ static final SReferenceLink attribute$PnEb = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9eae0a402L, 0x3744c0f9eae0b8d3L, "attribute");
+    /*package*/ static final SContainmentLink valueType$y6zA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
   }
 }

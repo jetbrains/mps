@@ -28,7 +28,7 @@ public class BlockInstance_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_mm0rjv_a(), CONCEPTS.BlockInstance$_m));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_mm0rjv_a(), CONCEPTS.BlockInstance$xU));
     result.add(new SMP_Subconcepts_mm0rjv_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class BlockInstance_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_mm0rjv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BlockInstance$_m, LINKS.metaBlock$LKRp);
+      super((SAbstractConcept) CONCEPTS.BlockInstance$xU, LINKS.metaBlock$G_NX);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class BlockInstance_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_mm0rjv_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BlockInstance$_m);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BlockInstance$xU);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class BlockInstance_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BlockInstance$_m = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance");
+    /*package*/ static final SConcept BlockInstance$xU = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink metaBlock$LKRp = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec4404a9L, "metaBlock");
+    /*package*/ static final SReferenceLink metaBlock$G_NX = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec4404a9L, "metaBlock");
   }
 }

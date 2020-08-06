@@ -17,12 +17,12 @@ public class PresentationProviders {
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
       if (SNodeOperations.getContainingRoot(targetNode) != SNodeOperations.getContainingRoot(sourceNode)) {
-        SNode proj = SNodeOperations.as(SNodeOperations.getContainingRoot(targetNode), CONCEPTS.BuildProject$BF);
+        SNode proj = SNodeOperations.as(SNodeOperations.getContainingRoot(targetNode), CONCEPTS.BuildProject$ae);
         if (proj != null) {
-          return SPropertyOperations.getString(proj, PROPS.name$lA7v) + "/" + SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+          return SPropertyOperations.getString(proj, PROPS.name$MnvL) + "/" + SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
         }
       }
-      return SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+      return SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_ulfewq_a0a0a = new IReferentPresentationProvider() {
@@ -30,20 +30,20 @@ public class PresentationProviders {
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
       if (SNodeOperations.getContainingRoot(targetNode) != SNodeOperations.getContainingRoot(sourceNode)) {
-        SNode proj = SNodeOperations.as(SNodeOperations.getContainingRoot(targetNode), CONCEPTS.BuildProject$BF);
+        SNode proj = SNodeOperations.as(SNodeOperations.getContainingRoot(targetNode), CONCEPTS.BuildProject$ae);
         if (proj != null) {
-          return SPropertyOperations.getString(proj, PROPS.name$lA7v) + "/" + SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+          return SPropertyOperations.getString(proj, PROPS.name$MnvL) + "/" + SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
         }
       }
-      return SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+      return SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
     }
   };
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

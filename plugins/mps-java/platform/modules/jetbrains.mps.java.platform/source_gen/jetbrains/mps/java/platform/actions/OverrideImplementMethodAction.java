@@ -41,20 +41,20 @@ public class OverrideImplementMethodAction {
     ModelAccessHelper mah = new ModelAccessHelper(myProject.getModelAccess());
     final SNode contextClassifier = mah.runReadAction(new Computable<SNode>() {
       public SNode compute() {
-        return SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.Classifier$hJ, true, false);
+        return SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.Classifier$Ix, true, false);
       }
     });
     final SNode contextMember = mah.runReadAction(new Computable<SNode>() {
       public SNode compute() {
-        return SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ClassifierMember$9F, true, false);
+        return SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ClassifierMember$At, true, false);
       }
     });
     final SNodeReference[] methods = mah.runReadAction(new Computable<SNodeReference[]>() {
       @Override
       public SNodeReference[] compute() {
-        List<SNode> methodsToImplementAndOverride = ((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$60, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")));
+        List<SNode> methodsToImplementAndOverride = ((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")));
         if (myIsOverride) {
-          ListSequence.fromList(methodsToImplementAndOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$60, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))));
+          ListSequence.fromList(methodsToImplementAndOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))));
         }
         return OverrideImplementMethodsDialog.toNodePointers(OverrideImplementMethodsDialog.sortMethods(contextClassifier, methodsToImplementAndOverride));
       }
@@ -73,19 +73,19 @@ public class OverrideImplementMethodAction {
         public void run() {
           List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
             public SNode select(SNodeReference it) {
-              return SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$RR);
+              return SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD);
             }
           }).toListSequence();
 
           OverrideImplementMethodsHelper helper = new OverrideImplementMethodsHelper(myProject, contextClassifier, contextMember, dialog.isRemoveAttributes(), dialog.isInsertOverrideAnnotation(), dialog.isAddReturn());
-          List<SNode> insertedMethods = helper.insertMethods(selection, SNodeOperations.isInstanceOf(contextClassifier, CONCEPTS.Interface$Kp) && myIsOverride);
+          List<SNode> insertedMethods = helper.insertMethods(selection, SNodeOperations.isInstanceOf(contextClassifier, CONCEPTS.Interface$db) && myIsOverride);
           if (insertedMethods.isEmpty()) {
             return;
           }
           SNode firstMethod = ListSequence.fromList(insertedMethods).first();
           SNode nodeToSelect;
-          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$qspy), LINKS.statement$pYcS)).isNotEmpty()) {
-            nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$qspy), LINKS.statement$pYcS)).first();
+          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).isNotEmpty()) {
+            nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).first();
           } else {
             nodeToSelect = firstMethod;
           }
@@ -97,15 +97,15 @@ public class OverrideImplementMethodAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SInterfaceConcept ClassifierMember$9F = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
-    /*package*/ static final SInterfaceConcept IMemberContainer$60 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SInterfaceConcept IMemberContainer$yM = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

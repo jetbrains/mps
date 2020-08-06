@@ -27,7 +27,7 @@ public class Run_Configuration_TabDescriptor extends RelationDescriptor {
     return null;
   }
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.RunConfiguration$UX);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.RunConfiguration$B$);
   }
   public List<SNode> getNodes(SNode node) {
     List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
@@ -46,6 +46,6 @@ public class Run_Configuration_TabDescriptor extends RelationDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RunConfiguration$UX = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
+    /*package*/ static final SConcept RunConfiguration$B$ = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
   }
 }

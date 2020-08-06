@@ -12,7 +12,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReturnStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$zDGg));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expression$eJ92));
     if (ReturnStatement__BehaviorDescriptor.getReturnJumpTarget_idhSV4OYy.invoke(_context.getNode()) != null) {
       _context.getBuilder().emitJump(_context.getBuilder().after(ReturnStatement__BehaviorDescriptor.getReturnJumpTarget_idhSV4OYy.invoke(_context.getNode())), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1229352005756");
     } else {
@@ -21,6 +21,6 @@ public class ReturnStatement_DataFlow extends DataFlowBuilder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$eJ92 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 }

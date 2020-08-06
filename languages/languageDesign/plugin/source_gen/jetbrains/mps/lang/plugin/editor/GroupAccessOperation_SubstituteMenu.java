@@ -32,7 +32,7 @@ public class GroupAccessOperation_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_5henvu_a(), CONCEPTS.GroupAccessOperation$HL));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_5henvu_a(), CONCEPTS.GroupAccessOperation$EO));
     result.add(new SMP_Subconcepts_5henvu_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class GroupAccessOperation_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_5henvu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.GroupAccessOperation$HL, LINKS.group$2W2Q);
+      super((SAbstractConcept) CONCEPTS.GroupAccessOperation$EO, LINKS.group$gwZT);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class GroupAccessOperation_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_5henvu_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GroupAccessOperation$HL);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GroupAccessOperation$EO);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class GroupAccessOperation_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GroupAccessOperation$HL = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d17d74L, "jetbrains.mps.lang.plugin.structure.GroupAccessOperation");
+    /*package*/ static final SConcept GroupAccessOperation$EO = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d17d74L, "jetbrains.mps.lang.plugin.structure.GroupAccessOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink group$2W2Q = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d17d74L, 0x2c7cd89ac8d17d76L, "group");
+    /*package*/ static final SReferenceLink group$gwZT = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7cd89ac8d17d74L, 0x2c7cd89ac8d17d76L, "group");
   }
 }

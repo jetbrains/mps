@@ -25,9 +25,9 @@
       <node id="1220375669567134075" at="34,0,35,22" concept="5" />
       <node id="1227128029536565005" at="39,128,40,175" concept="5" />
       <node id="1220375669567134075" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="1220375669567134075" at="45,0,46,0" concept="7" trace="ThisEditorNodeExpression$F0" />
-      <node id="1220375669567134075" at="46,0,47,0" concept="7" trace="BLQueryArgument$7_" />
-      <node id="1220375669567134075" at="47,0,48,0" concept="7" trace="ConnectionEndBLQuery$Ri" />
+      <node id="1220375669567134075" at="45,0,46,0" concept="7" trace="ThisEditorNodeExpression$yN" />
+      <node id="1220375669567134075" at="46,0,47,0" concept="7" trace="BLQueryArgument$Zo" />
+      <node id="1220375669567134075" at="47,0,48,0" concept="7" trace="ConnectionEndBLQuery$J5" />
       <node id="1220375669567134075" at="20,0,23,0" concept="0" trace="ThisEditorNodeExpression_Constraints#()V" />
       <node id="1220375669567134075" at="30,0,33,9" concept="2" />
       <node id="1220375669567134075" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -68,8 +68,8 @@
       <node id="1491555030355943098" at="34,0,35,22" concept="5" />
       <node id="1227128029536565017" at="39,128,40,87" concept="5" />
       <node id="1491555030355943098" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="1491555030355943098" at="45,0,46,0" concept="7" trace="FigureParameterMapping$U0" />
-      <node id="1491555030355943098" at="46,0,47,0" concept="7" trace="CellModel_DiagramNode$Ry" />
+      <node id="1491555030355943098" at="45,0,46,0" concept="7" trace="FigureParameterMapping$LN" />
+      <node id="1491555030355943098" at="46,0,47,0" concept="7" trace="CellModel_DiagramNode$Jl" />
       <node id="1491555030355943098" at="20,0,23,0" concept="0" trace="FigureParameterMapping_Constraints#()V" />
       <node id="1491555030355943098" at="30,0,33,9" concept="2" />
       <node id="1491555030355943098" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -111,9 +111,9 @@
       <node id="3748979635598870160" at="50,131,51,42" concept="1" />
       <node id="3748979635598869842" at="51,42,52,22" concept="5" />
       <node id="3748979635598869842" at="54,0,55,0" concept="7" trace="breakingNode_mf0hp0_a0a0a0a0a1a0a0a0c" />
-      <node id="3748979635598869842" at="57,0,58,0" concept="7" trace="PropertyArgument$NK" />
-      <node id="3748979635598869842" at="58,0,59,0" concept="7" trace="PropertyDeclaration$c5" />
-      <node id="3748979635598869842" at="62,0,63,0" concept="7" trace="property$Ey9S" />
+      <node id="3748979635598869842" at="57,0,58,0" concept="7" trace="PropertyArgument$Fz" />
+      <node id="3748979635598869842" at="58,0,59,0" concept="7" trace="PropertyDeclaration$1S" />
+      <node id="3748979635598869842" at="62,0,63,0" concept="7" trace="property$hF1F" />
       <node id="3748979635598869842" at="23,0,26,0" concept="0" trace="PropertyArgument_Constraints#()V" />
       <node id="3748979635598870160" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="3748979635598870160" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -159,9 +159,9 @@
       <node id="3748979635598885880" at="50,131,51,42" concept="1" />
       <node id="3748979635598885879" at="51,42,52,22" concept="5" />
       <node id="3748979635598885879" at="54,0,55,0" concept="7" trace="breakingNode_5lt087_a0a0a0a0a1a0a0a0c" />
-      <node id="3748979635598885879" at="57,0,58,0" concept="7" trace="LinkArgument$sw" />
-      <node id="3748979635598885879" at="58,0,59,0" concept="7" trace="LinkDeclaration$bA" />
-      <node id="3748979635598885879" at="62,0,63,0" concept="7" trace="link$GF0u" />
+      <node id="3748979635598885879" at="57,0,58,0" concept="7" trace="LinkArgument$kj" />
+      <node id="3748979635598885879" at="58,0,59,0" concept="7" trace="LinkDeclaration$1p" />
+      <node id="3748979635598885879" at="62,0,63,0" concept="7" trace="link$jNSh" />
       <node id="3748979635598885879" at="23,0,26,0" concept="0" trace="LinkArgument_Constraints#()V" />
       <node id="3748979635598885880" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="3748979635598885880" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -199,7 +199,7 @@
   <root nodeRef="r:1af2ba06-e725-4940-9c06-d6b80c641b75(jetbrains.mps.lang.editor.diagram.constraints)/5717188120684762327">
     <file name="CellModel_Diagram_Constraints.java">
       <node id="5717188120684762327" at="10,42,11,41" concept="9" />
-      <node id="5717188120684762327" at="15,0,16,0" concept="7" trace="CellModel_Diagram$zA" />
+      <node id="5717188120684762327" at="15,0,16,0" concept="7" trace="CellModel_Diagram$rp" />
       <node id="5717188120684762327" at="10,0,13,0" concept="0" trace="CellModel_Diagram_Constraints#()V" />
       <scope id="5717188120684762327" at="10,42,11,41" />
       <scope id="5717188120684762327" at="10,0,13,0" />
@@ -210,7 +210,7 @@
   <root nodeRef="r:1af2ba06-e725-4940-9c06-d6b80c641b75(jetbrains.mps.lang.editor.diagram.constraints)/5717188120685503707">
     <file name="CellModel_DiagramConnector_Constraints.java">
       <node id="5717188120685503707" at="10,51,11,50" concept="9" />
-      <node id="5717188120685503707" at="15,0,16,0" concept="7" trace="CellModel_DiagramConnector$xL" />
+      <node id="5717188120685503707" at="15,0,16,0" concept="7" trace="CellModel_DiagramConnector$p$" />
       <node id="5717188120685503707" at="10,0,13,0" concept="0" trace="CellModel_DiagramConnector_Constraints#()V" />
       <scope id="5717188120685503707" at="10,51,11,50" />
       <scope id="5717188120685503707" at="10,0,13,0" />
@@ -237,11 +237,11 @@
       <node id="6194248980633825160" at="66,131,67,42" concept="1" />
       <node id="6194248980633825077" at="67,42,68,22" concept="5" />
       <node id="6194248980633825077" at="70,0,71,0" concept="7" trace="breakingNode_s0k26e_a0a0a0a0a1a0a0a0c" />
-      <node id="6194248980633825077" at="73,0,74,0" concept="7" trace="CreationActionReference$34" />
-      <node id="6194248980633825077" at="74,0,75,0" concept="7" trace="CellModel_Diagram$zA" />
-      <node id="6194248980633825077" at="78,0,79,0" concept="7" trace="elementsCreation$F2XG" />
-      <node id="6194248980633825077" at="79,0,80,0" concept="7" trace="elementsCreation$4Q8F" />
-      <node id="6194248980633825077" at="80,0,81,0" concept="7" trace="connectorCreation$FEIz" />
+      <node id="6194248980633825077" at="73,0,74,0" concept="7" trace="CreationActionReference$UR" />
+      <node id="6194248980633825077" at="74,0,75,0" concept="7" trace="CellModel_Diagram$rp" />
+      <node id="6194248980633825077" at="78,0,79,0" concept="7" trace="elementsCreation$ibPv" />
+      <node id="6194248980633825077" at="79,0,80,0" concept="7" trace="elementsCreation$FZ0u" />
+      <node id="6194248980633825077" at="80,0,81,0" concept="7" trace="connectorCreation$iNAm" />
       <node id="6194248980633825077" at="31,0,34,0" concept="0" trace="CreationActionReference_Constraints#()V" />
       <node id="6194248980633825160" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="6194248980633825160" at="46,0,50,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

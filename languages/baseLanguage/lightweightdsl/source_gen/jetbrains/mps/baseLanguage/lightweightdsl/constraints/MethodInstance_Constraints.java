@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MethodInstance_Constraints extends BaseConstraintsDescriptor {
   public MethodInstance_Constraints() {
-    super(CONCEPTS.MethodInstance$XT);
+    super(CONCEPTS.MethodInstance$jE);
   }
 
   @Override
@@ -38,12 +38,12 @@ public class MethodInstance_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ClassConcept$IY) && DSLDescriptorUtil.getDescriptor(SNodeOperations.cast(parentNode, CONCEPTS.ClassConcept$IY)) != null;
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ClassConcept$bK) && DSLDescriptorUtil.getDescriptor(SNodeOperations.cast(parentNode, CONCEPTS.ClassConcept$bK)) != null;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:686da497-9d31-49eb-a30e-63814e3d3c62(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.constraints)", "1227128029536560595");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MethodInstance$XT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept MethodInstance$jE = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

@@ -20,11 +20,11 @@ public class check_VariableAssignedToItself_NonTypesystemRule extends AbstractNo
   public check_VariableAssignedToItself_NonTypesystemRule() {
   }
   public void applyRule(final SNode assignmentExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$LjSW) == null || SLinkOperations.getTarget(assignmentExpression, LINKS.rValue$LkmY) == null) {
+    if (SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$splI) == null || SLinkOperations.getTarget(assignmentExpression, LINKS.rValue$spNK) == null) {
       return;
     }
-    SNode lDeclaration = RulesFunctions_BaseLanguage.getVariableDeclaration(SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$LjSW));
-    SNode rDeclaration = RulesFunctions_BaseLanguage.getVariableDeclaration(SLinkOperations.getTarget(assignmentExpression, LINKS.rValue$LkmY));
+    SNode lDeclaration = RulesFunctions_BaseLanguage.getVariableDeclaration(SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$splI));
+    SNode rDeclaration = RulesFunctions_BaseLanguage.getVariableDeclaration(SLinkOperations.getTarget(assignmentExpression, LINKS.rValue$spNK));
     if (lDeclaration != null && lDeclaration == rDeclaration) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -33,7 +33,7 @@ public class check_VariableAssignedToItself_NonTypesystemRule extends AbstractNo
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AssignmentExpression$rS;
+    return CONCEPTS.AssignmentExpression$SE;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,11 +43,11 @@ public class check_VariableAssignedToItself_NonTypesystemRule extends AbstractNo
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AssignmentExpression$rS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
   }
 }

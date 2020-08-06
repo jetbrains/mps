@@ -46,7 +46,7 @@ public final class ProjectExpression_ConstraintRules extends BaseRulesConstraint
       if (!(isDefined(context))) {
         return null;
       }
-      return (SNode) SNodeOperations.getNodeAncestor(context.getParentNode(), CONCEPTS.ITestable$$d, true, false);
+      return (SNode) SNodeOperations.getNodeAncestor(context.getParentNode(), CONCEPTS.ITestable$Le, true, false);
     }
 
     public static boolean isDefined(@NotNull ContainmentContext context) {
@@ -64,7 +64,7 @@ public final class ProjectExpression_ConstraintRules extends BaseRulesConstraint
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return (Def_TestableAncestor7896212496293587255.getValue(context) != null) && (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(Def_TestableAncestor7896212496293587255.getValue(context)) && !(SNodeOperations.isInstanceOf(Def_TestableAncestor7896212496293587255.getValue(context), CONCEPTS.BTestCase$o9));
+      return (Def_TestableAncestor7896212496293587255.getValue(context) != null) && (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(Def_TestableAncestor7896212496293587255.getValue(context)) && !(SNodeOperations.isInstanceOf(Def_TestableAncestor7896212496293587255.getValue(context), CONCEPTS.BTestCase$_a));
     }
 
     @Override
@@ -78,7 +78,7 @@ public final class ProjectExpression_ConstraintRules extends BaseRulesConstraint
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITestable$$d = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b08a01119L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestable");
-    /*package*/ static final SConcept BTestCase$o9 = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, "jetbrains.mps.baseLanguage.unitTest.structure.BTestCase");
+    /*package*/ static final SInterfaceConcept ITestable$Le = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b08a01119L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestable");
+    /*package*/ static final SConcept BTestCase$_a = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, "jetbrains.mps.baseLanguage.unitTest.structure.BTestCase");
   }
 }

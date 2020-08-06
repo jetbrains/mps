@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LiteralMessageExpression_Constraints extends BaseConstraintsDescriptor {
   public LiteralMessageExpression_Constraints() {
-    super(CONCEPTS.LiteralMessageExpression$Ga);
+    super(CONCEPTS.LiteralMessageExpression$$8);
   }
 
   public static class Message_Property extends BasePropertyConstraintsDescriptor {
     public Message_Property(ConstraintsDescriptor container) {
-      super(PROPS.message$cm50, container);
+      super(PROPS.message$umWY, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,15 +45,15 @@ public class LiteralMessageExpression_Constraints extends BaseConstraintsDescrip
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.message$cm50, new Message_Property(this));
+    properties.put(PROPS.message$umWY, new Message_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LiteralMessageExpression$Ga = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression");
+    /*package*/ static final SConcept LiteralMessageExpression$$8 = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$cm50 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
+    /*package*/ static final SProperty message$umWY = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
   }
 }

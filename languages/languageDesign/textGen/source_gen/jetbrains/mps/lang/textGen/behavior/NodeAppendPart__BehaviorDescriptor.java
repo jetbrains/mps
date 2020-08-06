@@ -31,7 +31,7 @@ public final class NodeAppendPart__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean withIndent_idi0uJgJ6(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.withIndent$q3xV);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.withIndent$mrKt);
   }
 
   /*package*/ NodeAppendPart__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class NodeAppendPart__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty withIndent$q3xV = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, 0x12015341f3eL, "withIndent");
+    /*package*/ static final SProperty withIndent$mrKt = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, 0x12015341f3eL, "withIndent");
   }
 }

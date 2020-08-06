@@ -21,18 +21,18 @@ public class typeof_SLinkListAccess_InferenceRule extends AbstractInferenceRule_
   public typeof_SLinkListAccess_InferenceRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final SNode linkDecl = SLinkOperations.getTarget(op, LINKS.link$iNEw);
+    final SNode linkDecl = SLinkOperations.getTarget(op, LINKS.link$RcG0);
     if (linkDecl == null) {
       return;
     }
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206103745585", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206103737722", true), (SNode) _quotation_createNode_9w5j2j_a1a0c0c0b(SLinkOperations.getTarget(linkDecl, LINKS.target$TWaS)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206103737722", true), (SNode) _quotation_createNode_9w5j2j_a1a0c0c0b(SLinkOperations.getTarget(linkDecl, LINKS.target$m40F)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SLinkListAccess$nk;
+    return CONCEPTS.SLinkListAccess$oO;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,11 +49,11 @@ public class typeof_SLinkListAccess_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$iNEw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink link$RcG0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SLinkListAccess$nk = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, "jetbrains.mps.lang.smodel.structure.SLinkListAccess");
+    /*package*/ static final SConcept SLinkListAccess$oO = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, "jetbrains.mps.lang.smodel.structure.SLinkListAccess");
   }
 }

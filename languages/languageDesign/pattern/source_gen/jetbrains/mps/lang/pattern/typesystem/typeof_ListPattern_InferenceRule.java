@@ -40,7 +40,7 @@ public class typeof_ListPattern_InferenceRule extends AbstractInferenceRule_Runt
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ListPattern$O4;
+    return CONCEPTS.ListPattern$1B;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -63,6 +63,6 @@ public class typeof_ListPattern_InferenceRule extends AbstractInferenceRule_Runt
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ListPattern$O4 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108aa36731aL, "jetbrains.mps.lang.pattern.structure.ListPattern");
+    /*package*/ static final SConcept ListPattern$1B = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108aa36731aL, "jetbrains.mps.lang.pattern.structure.ListPattern");
   }
 }

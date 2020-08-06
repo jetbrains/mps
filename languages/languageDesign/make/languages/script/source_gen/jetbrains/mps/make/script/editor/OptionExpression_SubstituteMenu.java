@@ -28,7 +28,7 @@ public class OptionExpression_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_w5p9hx_a(), CONCEPTS.OptionExpression$BN));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_w5p9hx_a(), CONCEPTS.OptionExpression$_G));
     result.add(new SMP_Subconcepts_w5p9hx_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class OptionExpression_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_w5p9hx_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.OptionExpression$BN, LINKS.option$UNTw);
+      super((SAbstractConcept) CONCEPTS.OptionExpression$_G, LINKS.option$Q0Rp);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class OptionExpression_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_w5p9hx_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OptionExpression$BN);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OptionExpression$_G);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class OptionExpression_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OptionExpression$BN = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7b2L, "jetbrains.mps.make.script.structure.OptionExpression");
+    /*package*/ static final SConcept OptionExpression$_G = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7b2L, "jetbrains.mps.make.script.structure.OptionExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink option$UNTw = MetaAdapterFactory.getReferenceLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7b2L, 0x70276038dc4d7b3L, "option");
+    /*package*/ static final SReferenceLink option$Q0Rp = MetaAdapterFactory.getReferenceLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7b2L, 0x70276038dc4d7b3L, "option");
   }
 }

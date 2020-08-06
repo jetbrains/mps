@@ -45,7 +45,7 @@ public final class DependentTypeDescriptor__BehaviorDescriptor extends BaseBHDes
   }
   /*package*/ static SNode getType_id3geGFOI14GE(@NotNull SNode __thisNode__, SNode node) {
     try {
-      String className = DSLDescriptor__BehaviorDescriptor.getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLDescriptor$dS, false, false));
+      String className = DSLDescriptor__BehaviorDescriptor.getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLDescriptor$zD, false, false));
       SModule classModule = __thisNode__.getModel().getModule();
       Method[] methods = ClassLoaderManager.getInstance().getClass(classModule, className).getMethods();
       for (Method m : methods) {
@@ -61,10 +61,10 @@ public final class DependentTypeDescriptor__BehaviorDescriptor extends BaseBHDes
     }
   }
   /*package*/ static String getGeneratedMethodName_id2dmnr4$zcCR(@NotNull SNode __thisNode__) {
-    if ((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterDescriptor$fO, false, false) != null)) {
-      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$hh, false, false), PROPS.name$lA7v) + "_" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterDescriptor$fO, false, false), PROPS.name$lA7v) + "_type";
+    if ((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterDescriptor$__, false, false) != null)) {
+      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$B2, false, false), PROPS.name$MnvL) + "_" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterDescriptor$__, false, false), PROPS.name$MnvL) + "_type";
     } else {
-      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$hh, false, false), PROPS.name$lA7v) + "_ret";
+      return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$B2, false, false), PROPS.name$MnvL) + "_ret";
     }
   }
 
@@ -118,25 +118,25 @@ public final class DependentTypeDescriptor__BehaviorDescriptor extends BaseBHDes
     return CONCEPT;
   }
   private static SNode createDependentTypeInstance_anu5lw_a0a0(SNode p0, SNode p1) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DependentTypeInstance$to);
-    n0.setReferenceTarget(LINKS.decl$fIG0, p0);
-    n0.setReferenceTarget(LINKS.point$Dc$v, p1);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DependentTypeInstance$N9);
+    n0.setReferenceTarget(LINKS.decl$HI1L, p0);
+    n0.setReferenceTarget(LINKS.point$7bUg, p1);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DSLDescriptor$dS = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
-    /*package*/ static final SConcept MethodDescriptor$hh = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor");
-    /*package*/ static final SConcept ParameterDescriptor$fO = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ParameterDescriptor");
-    /*package*/ static final SConcept DependentTypeInstance$to = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DependentTypeInstance");
+    /*package*/ static final SConcept DSLDescriptor$zD = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
+    /*package*/ static final SConcept MethodDescriptor$B2 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor");
+    /*package*/ static final SConcept ParameterDescriptor$__ = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ParameterDescriptor");
+    /*package*/ static final SConcept DependentTypeInstance$N9 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DependentTypeInstance");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$fIG0 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x340eb2bd2e03d16cL, "decl");
-    /*package*/ static final SReferenceLink point$Dc$v = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x7e420dcd0899aa0eL, "point");
+    /*package*/ static final SReferenceLink decl$HI1L = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x340eb2bd2e03d16cL, "decl");
+    /*package*/ static final SReferenceLink point$7bUg = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d16bL, 0x7e420dcd0899aa0eL, "point");
   }
 }

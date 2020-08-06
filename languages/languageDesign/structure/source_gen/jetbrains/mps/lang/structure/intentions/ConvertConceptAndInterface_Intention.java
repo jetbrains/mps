@@ -40,7 +40,7 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ConceptDeclaration$qU) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.InterfaceConceptDeclaration$MT);
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ConceptDeclaration$gH) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.InterfaceConceptDeclaration$CG);
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,21 +57,21 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU) ? "Convert to Interface" : "Convert to Concept");
+      return (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$gH) ? "Convert to Interface" : "Convert to Concept");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode created = null;
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU)) {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$gH)) {
         SNode icd = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"));
         ConceptConversionHelper.copy(node, icd);
-        ListSequence.fromList(SLinkOperations.getChildren(icd, LINKS.extends$V2F7)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$2tZf)));
+        ListSequence.fromList(SLinkOperations.getChildren(icd, LINKS.extends$nawU)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), LINKS.implements$u_P2)));
         // what to do with concept's "extends"? Copy to implements? 
         created = icd;
       } else {
         SNode cd = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
         ConceptConversionHelper.copy(node, cd);
-        ListSequence.fromList(SLinkOperations.getChildren(cd, LINKS.implements$2tZf)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$V2F7)));
+        ListSequence.fromList(SLinkOperations.getChildren(cd, LINKS.implements$u_P2)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU)));
         created = cd;
       }
       SNodeOperations.deleteNode(node);
@@ -85,12 +85,12 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SContainmentLink extends$nawU = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SContainmentLink implements$u_P2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
   }
 }

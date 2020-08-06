@@ -35,8 +35,8 @@ public final class CustomCondition__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
-    ListSequence.fromList(result).addElement(CONCEPTS.ParameterCondition_ConceptFunctionParameter$CE);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.ParameterCondition_ConceptFunctionParameter$_H);
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -98,7 +98,7 @@ public final class CustomCondition__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept ParameterCondition_ConceptFunctionParameter$CE = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4cdc1c9014f52fa7L, "jetbrains.mps.lang.plugin.structure.ParameterCondition_ConceptFunctionParameter");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ParameterCondition_ConceptFunctionParameter$_H = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4cdc1c9014f52fa7L, "jetbrains.mps.lang.plugin.structure.ParameterCondition_ConceptFunctionParameter");
   }
 }

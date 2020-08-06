@@ -63,7 +63,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
   public class SMP_Group_8p1vjw_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ConstructorDeclaration$5U, true, false) != null;
+      return SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ConstructorDeclaration$yG, true, false) != null;
     }
     @NotNull
     @Override
@@ -79,7 +79,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_8p1vjw_a0(), CONCEPTS.ThisConstructorInvocation$XM), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_8p1vjw_b0(), CONCEPTS.SuperConstructorInvocation$48));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_8p1vjw_a0(), CONCEPTS.ThisConstructorInvocation$q$), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_8p1vjw_b0(), CONCEPTS.SuperConstructorInvocation$wU));
     }
     private class SMP_Param_8p1vjw_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -101,7 +101,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        SNode thisConcept = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ClassConcept$IY, false, false);
+        SNode thisConcept = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ClassConcept$bK, false, false);
         return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(thisConcept);
       }
       private class SMP_Action_8p1vjw_a0a extends SingleItemSubstituteMenuPart {
@@ -137,7 +137,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.ThisConstructorInvocation$XM, context);
+            super(CONCEPTS.ThisConstructorInvocation$q$, context);
             _context = context;
           }
 
@@ -148,11 +148,11 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ThisConstructorInvocation$XM, null);
-            SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$ItxI, myParameterObject);
-            if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.ThisConstructorInvocation$XM)) {
-              for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getCurrentTargetNode(), CONCEPTS.ThisConstructorInvocation$XM), LINKS.actualArgument$ItKJ))) {
-                ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$ItKJ)).addElement(argument);
+            SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ThisConstructorInvocation$q$, null);
+            SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$pyYw, myParameterObject);
+            if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.ThisConstructorInvocation$q$)) {
+              for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getCurrentTargetNode(), CONCEPTS.ThisConstructorInvocation$q$), LINKS.actualArgument$pzdx))) {
+                ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$pzdx)).addElement(argument);
               }
             }
             return newNode;
@@ -164,7 +164,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.ThisConstructorInvocation$XM, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.ThisConstructorInvocation$q$, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -182,7 +182,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getDescriptionText(@NotNull String pattern) {
-            return CONCEPTS.ThisConstructorInvocation$XM.getShortDescription();
+            return CONCEPTS.ThisConstructorInvocation$q$.getShortDescription();
           }
         }
       }
@@ -208,10 +208,10 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        SNode thisConcept = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ClassConcept$IY, false, false);
-        SNode superClass = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(thisConcept, LINKS.superclass$7jGM), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
+        SNode thisConcept = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ClassConcept$bK, false, false);
+        SNode superClass = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(thisConcept, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
         if (superClass == null) {
-          superClass = SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_8p1vjw_a0a0a0c0a1a(), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
+          superClass = SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_8p1vjw_a0a0a0c0a1a(), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
         }
         return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superClass);
       }
@@ -248,7 +248,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.SuperConstructorInvocation$48, context);
+            super(CONCEPTS.SuperConstructorInvocation$wU, context);
             _context = context;
           }
 
@@ -259,11 +259,11 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SuperConstructorInvocation$48, null);
-            SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$ItxI, myParameterObject);
-            if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.SuperConstructorInvocation$48)) {
-              for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getCurrentTargetNode(), CONCEPTS.SuperConstructorInvocation$48), LINKS.actualArgument$ItKJ))) {
-                ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$ItKJ)).addElement(argument);
+            SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SuperConstructorInvocation$wU, null);
+            SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$pyYw, myParameterObject);
+            if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.SuperConstructorInvocation$wU)) {
+              for (SNode argument : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_context.getCurrentTargetNode(), CONCEPTS.SuperConstructorInvocation$wU), LINKS.actualArgument$pzdx))) {
+                ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$pzdx)).addElement(argument);
               }
             }
             return newNode;
@@ -275,7 +275,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.SuperConstructorInvocation$48, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.SuperConstructorInvocation$wU, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -293,7 +293,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getDescriptionText(@NotNull String pattern) {
-            return CONCEPTS.SuperConstructorInvocation$48.getShortDescription();
+            return CONCEPTS.SuperConstructorInvocation$wU.getShortDescription();
           }
         }
       }
@@ -309,16 +309,16 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept ThisConstructorInvocation$XM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1127b878882L, "jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation");
-    /*package*/ static final SConcept SuperConstructorInvocation$48 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept ThisConstructorInvocation$q$ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1127b878882L, "jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation");
+    /*package*/ static final SConcept SuperConstructorInvocation$wU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

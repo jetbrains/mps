@@ -35,11 +35,11 @@ public final class XmlElement__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static boolean isMultiline_id7HilnpQ3Ckr(@NotNull SNode __thisNode__) {
     boolean multiline = false;
-    for (SNode n : SLinkOperations.getChildren(__thisNode__, LINKS.content$DWs3)) {
-      if (SNodeOperations.isInstanceOf(n, CONCEPTS.XmlBaseElement$oX)) {
+    for (SNode n : SLinkOperations.getChildren(__thisNode__, LINKS.content$zkQy)) {
+      if (SNodeOperations.isInstanceOf(n, CONCEPTS.XmlBaseElement$Ns)) {
         multiline = true;
-      } else if (SNodeOperations.isInstanceOf(n, CONCEPTS.XmlComment$Ct)) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.XmlComment$Ct), LINKS.lines$bdqa)).count() > 1) {
+      } else if (SNodeOperations.isInstanceOf(n, CONCEPTS.XmlComment$2W)) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.XmlComment$2W), LINKS.lines$4_OD)).count() > 1) {
           multiline = true;
         }
       } else if ((n != null) && (SNodeOperations.getPrevSibling(n) != null)) {
@@ -95,12 +95,12 @@ public final class XmlElement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlBaseElement$oX = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486dL, "jetbrains.mps.core.xml.structure.XmlBaseElement");
-    /*package*/ static final SConcept XmlComment$Ct = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, "jetbrains.mps.core.xml.structure.XmlComment");
+    /*package*/ static final SConcept XmlBaseElement$Ns = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486dL, "jetbrains.mps.core.xml.structure.XmlBaseElement");
+    /*package*/ static final SConcept XmlComment$2W = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, "jetbrains.mps.core.xml.structure.XmlComment");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$bdqa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
-    /*package*/ static final SContainmentLink content$DWs3 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
+    /*package*/ static final SContainmentLink lines$4_OD = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
+    /*package*/ static final SContainmentLink content$zkQy = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
   }
 }

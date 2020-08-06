@@ -16,18 +16,18 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public abstract class Comments {
   public static void commentLine(SNode line, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    for (SNode el : SLinkOperations.getChildren(line, LINKS.elements$cK1w)) {
-      if (SNodeOperations.isInstanceOf(el, CONCEPTS.Word$AM)) {
-        SNode word = SNodeOperations.cast(el, CONCEPTS.Word$AM);
-        tgs.append(SPropertyOperations.getString(word, PROPS.value$bjp0));
-        if (isNotEmptyString(SPropertyOperations.getString(word, PROPS.url$wboS))) {
+    for (SNode el : SLinkOperations.getChildren(line, LINKS.elements$_j45)) {
+      if (SNodeOperations.isInstanceOf(el, CONCEPTS.Word$Dn)) {
+        SNode word = SNodeOperations.cast(el, CONCEPTS.Word$Dn);
+        tgs.append(SPropertyOperations.getString(word, PROPS.value$zQr_));
+        if (isNotEmptyString(SPropertyOperations.getString(word, PROPS.url$SIrt))) {
           tgs.append(" (");
-          tgs.append(SPropertyOperations.getString(word, PROPS.url$wboS));
+          tgs.append(SPropertyOperations.getString(word, PROPS.url$SIrt));
           tgs.append(")");
         }
         tgs.append(" ");
       }
-      if (SNodeOperations.isInstanceOf(el, CONCEPTS.NodeWrapperElement$9z)) {
+      if (SNodeOperations.isInstanceOf(el, CONCEPTS.NodeWrapperElement$c8)) {
         tgs.append("<node>");
       }
     }
@@ -37,16 +37,16 @@ public abstract class Comments {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept NodeWrapperElement$9z = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept NodeWrapperElement$c8 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

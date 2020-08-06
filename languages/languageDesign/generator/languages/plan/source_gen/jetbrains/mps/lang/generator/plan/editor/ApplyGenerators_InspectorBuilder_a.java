@@ -68,10 +68,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_34tr3z_a3a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.withExtended$209J);
+    return SPropertyOperations.getBoolean(myNode, PROPS.withExtended$Vq9q);
   }
   private boolean nodeCondition_34tr3z_a4a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.withPriorityRules$MGxI);
+    return SPropertyOperations.getBoolean(myNode, PROPS.withPriorityRules$G6xp);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "Apply specified generators directly, regardless of generator's language presence");
@@ -101,14 +101,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.withExtended$209J;
+      final SProperty property = PROPS.withExtended$Vq9q;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no withExtended>");
       editorCell.setCellId("property_withExtended");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -139,14 +139,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.withPriorityRules$MGxI;
+      final SProperty property = PROPS.withPriorityRules$G6xp;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no withPriorityRules>");
       editorCell.setCellId("property_withPriorityRules");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -172,11 +172,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty withExtended$209J = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xc11e5088a799353L, "withExtended");
-    /*package*/ static final SProperty withPriorityRules$MGxI = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xf738996443c35afL, "withPriorityRules");
+    /*package*/ static final SProperty withExtended$Vq9q = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xc11e5088a799353L, "withExtended");
+    /*package*/ static final SProperty withPriorityRules$G6xp = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xf738996443c35afL, "withPriorityRules");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

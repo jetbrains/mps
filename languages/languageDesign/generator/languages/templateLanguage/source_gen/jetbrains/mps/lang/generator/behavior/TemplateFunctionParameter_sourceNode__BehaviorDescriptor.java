@@ -32,7 +32,7 @@ public final class TemplateFunctionParameter_sourceNode__BehaviorDescriptor exte
 
   /*package*/ static boolean needConceptFunction_idhZKliUO(@NotNull SNode __thisNode__) {
     // we could use this cf parameter in ITemplateCall argument expressions 
-    return (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ITemplateCall$uv, false, false) == null);
+    return (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ITemplateCall$ab, false, false) == null);
   }
 
   /*package*/ TemplateFunctionParameter_sourceNode__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class TemplateFunctionParameter_sourceNode__BehaviorDescriptor exte
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITemplateCall$uv = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall");
+    /*package*/ static final SInterfaceConcept ITemplateCall$ab = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall");
   }
 }

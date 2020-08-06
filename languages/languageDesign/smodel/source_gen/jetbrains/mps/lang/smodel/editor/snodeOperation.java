@@ -67,37 +67,37 @@ public class snodeOperation extends SubstituteMenuBase {
       appTypesInfo = new Computable<ApplicableTypesInfo>() {
         public ApplicableTypesInfo compute() {
           ApplicableTypesInfo result = new ApplicableTypesInfo();
-          if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$6a))) {
+          if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$yW))) {
             // according to GroupMenuPart, variables are initialized *before* group condition is checked. 
             // Guess, could be null return value here, but doesn't seem to hurt to keep non-null value.  
             return result;
           }
-          SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
+          SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
           SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(leftExpression);
-          SNode operation = SLinkOperations.getTarget(SNodeOperations.as(leftExpression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS);
-          SNode linkAccess = SNodeOperations.as(operation, CONCEPTS.ILinkAccess$3K);
+          SNode operation = SLinkOperations.getTarget(SNodeOperations.as(leftExpression, CONCEPTS.DotExpression$yW), LINKS.operation$gs9E);
+          SNode linkAccess = SNodeOperations.as(operation, CONCEPTS.ILinkAccess$5g);
           result.myLinkAccess = linkAccess;
           if ((linkAccess != null) && (boolean) ILinkAccess__BehaviorDescriptor.isSingularCardinality_id3vpu_siOTrf.invoke(linkAccess)) {
-            if (TypecheckingFacade.getFromContext().coerceType(leftType, CONCEPTS.ConceptNodeType$7y) != null) {
+            if (TypecheckingFacade.getFromContext().coerceType(leftType, CONCEPTS.ConceptNodeType$92) != null) {
               result.myLinkToConcept = true;
             }
           }
           // is concept ? 
-          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.ConceptNodeType$7y) != null) {
+          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.ConceptNodeType$92) != null) {
             result.myToConcept = true;
           }
-          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SConceptType$nF) != null) {
+          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SConceptType$pb) != null) {
             result.myToSConcept = true;
           }
           // is node ? 
-          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SNodeType$gn) != null) {
+          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SNodeType$hR) != null) {
             result.myToNode = true;
           }
           // is smodel ? 
-          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SModelType$II) != null) {
+          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SModelType$Ke) != null) {
             result.myToModel = true;
           }
-          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SEnumerationMemberType$rH) != null) {
+          if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SEnumerationMemberType$td) != null) {
             result.myToEnumMember = true;
           }
           return result;
@@ -106,7 +106,7 @@ public class snodeOperation extends SubstituteMenuBase {
     }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$6a);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$yW);
     }
     @NotNull
     @Override
@@ -126,20 +126,20 @@ public class snodeOperation extends SubstituteMenuBase {
     }
     public class SMP_Subconcepts_o4406x_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SNodeOperation$o6).stream().filter(new Predicate<SAbstractConcept>() {
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SNodeOperation$pA).stream().filter(new Predicate<SAbstractConcept>() {
           public boolean test(SAbstractConcept concept) {
             return filterConcept(_context, concept);
           }
         }).collect(Collectors.toList());
       }
       private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-        SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
+        SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
         SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(leftExpression);
-        if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.AsSConcept$oV)) {
+        if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.AsSConcept$qr)) {
           {
-            SNode coercedNode_o4406x_a0c0a0a = TypecheckingFacade.getFromContext().coerceType(leftType, CONCEPTS.SNodeType$gn);
+            SNode coercedNode_o4406x_a0c0a0a = TypecheckingFacade.getFromContext().coerceType(leftType, CONCEPTS.SNodeType$hR);
             if (coercedNode_o4406x_a0c0a0a != null) {
-              return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(coercedNode_o4406x_a0c0a0a, LINKS.concept$gpfa), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1169125787135"));
+              return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(coercedNode_o4406x_a0c0a0a, LINKS.concept$OMgE), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1169125787135"));
             } else {
             }
           }
@@ -148,15 +148,15 @@ public class snodeOperation extends SubstituteMenuBase {
         if (linkAccess != null) {
           if ((boolean) ILinkAccess__BehaviorDescriptor.isAggregation_id3vpu_siOTrm.invoke(linkAccess)) {
             //  some operations are only applicable to reference links 
-            if (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Link_SetTargetPointerOperation$59)) {
+            if (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Link_SetTargetPointerOperation$6D)) {
               return false;
             }
           } else {
             //  some operations are only applicable to aggregation links 
-            if (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Link_SetNewChildOperation$I5)) {
+            if (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Link_SetNewChildOperation$J_)) {
               return false;
             }
-            if (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Node_DetachOperation$_q)) {
+            if (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Node_DetachOperation$AU)) {
               return false;
             }
           }
@@ -164,13 +164,13 @@ public class snodeOperation extends SubstituteMenuBase {
 
         SConcept parameterOp = (SConcept) concept;
         SNode leftOperation = null;
-        if (SNodeOperations.isInstanceOf(leftExpression, CONCEPTS.DotExpression$6a)) {
-          leftOperation = SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS);
+        if (SNodeOperations.isInstanceOf(leftExpression, CONCEPTS.DotExpression$yW)) {
+          leftOperation = SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, CONCEPTS.DotExpression$yW), LINKS.operation$gs9E);
         }
         // --- 
         if (leftOperation != null) {
-          if (SNodeOperations.isInstanceOf(leftOperation, CONCEPTS.SPropertyAccess$bD)) {
-            SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(leftOperation, CONCEPTS.SPropertyAccess$bD), LINKS.property$lTMY), LINKS.dataType$Dbgb);
+          if (SNodeOperations.isInstanceOf(leftOperation, CONCEPTS.SPropertyAccess$d9)) {
+            SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(leftOperation, CONCEPTS.SPropertyAccess$d9), LINKS.property$UiOu), LINKS.dataType$5j5Y);
             if ((boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(parameterOp), dataType)) {
               return true;
             }
@@ -205,7 +205,7 @@ public class snodeOperation extends SubstituteMenuBase {
         }
         // is enum member ? 
         if (appTypesInfo.myToEnumMember) {
-          return SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Node_IsNullOperation$$B) || SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Node_IsNotNullOperation$r_);
+          return SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Node_IsNullOperation$A7) || SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Node_IsNotNullOperation$t5);
         }
         return false;
       }
@@ -229,28 +229,28 @@ public class snodeOperation extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SInterfaceConcept ILinkAccess$3K = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x37d97a5712d396cbL, "jetbrains.mps.lang.smodel.structure.ILinkAccess");
-    /*package*/ static final SConcept ConceptNodeType$7y = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, "jetbrains.mps.lang.smodel.structure.ConceptNodeType");
-    /*package*/ static final SConcept SConceptType$nF = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
-    /*package*/ static final SConcept SNodeType$gn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
-    /*package*/ static final SConcept SModelType$II = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a2d94c0cdL, "jetbrains.mps.lang.smodel.structure.SModelType");
-    /*package*/ static final SConcept SEnumerationMemberType$rH = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, "jetbrains.mps.lang.smodel.structure.SEnumerationMemberType");
-    /*package*/ static final SConcept SNodeOperation$o6 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
-    /*package*/ static final SConcept AsSConcept$oV = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4a4d7215f163131L, "jetbrains.mps.lang.smodel.structure.AsSConcept");
-    /*package*/ static final SConcept Link_SetTargetPointerOperation$59 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, "jetbrains.mps.lang.smodel.structure.Link_SetTargetPointerOperation");
-    /*package*/ static final SConcept Link_SetNewChildOperation$I5 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, "jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation");
-    /*package*/ static final SConcept Node_DetachOperation$_q = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11dfede6ec0L, "jetbrains.mps.lang.smodel.structure.Node_DetachOperation");
-    /*package*/ static final SConcept SPropertyAccess$bD = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");
-    /*package*/ static final SConcept Node_IsNotNullOperation$r_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110e123bce7L, "jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation");
-    /*package*/ static final SConcept Node_IsNullOperation$$B = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110e0974e46L, "jetbrains.mps.lang.smodel.structure.Node_IsNullOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SInterfaceConcept ILinkAccess$5g = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x37d97a5712d396cbL, "jetbrains.mps.lang.smodel.structure.ILinkAccess");
+    /*package*/ static final SConcept ConceptNodeType$92 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, "jetbrains.mps.lang.smodel.structure.ConceptNodeType");
+    /*package*/ static final SConcept SConceptType$pb = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
+    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept SModelType$Ke = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a2d94c0cdL, "jetbrains.mps.lang.smodel.structure.SModelType");
+    /*package*/ static final SConcept SEnumerationMemberType$td = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, "jetbrains.mps.lang.smodel.structure.SEnumerationMemberType");
+    /*package*/ static final SConcept SNodeOperation$pA = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+    /*package*/ static final SConcept AsSConcept$qr = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4a4d7215f163131L, "jetbrains.mps.lang.smodel.structure.AsSConcept");
+    /*package*/ static final SConcept Link_SetTargetPointerOperation$6D = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, "jetbrains.mps.lang.smodel.structure.Link_SetTargetPointerOperation");
+    /*package*/ static final SConcept Link_SetNewChildOperation$J_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, "jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation");
+    /*package*/ static final SConcept Node_DetachOperation$AU = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11dfede6ec0L, "jetbrains.mps.lang.smodel.structure.Node_DetachOperation");
+    /*package*/ static final SConcept SPropertyAccess$d9 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");
+    /*package*/ static final SConcept Node_IsNotNullOperation$t5 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110e123bce7L, "jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation");
+    /*package*/ static final SConcept Node_IsNullOperation$A7 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110e0974e46L, "jetbrains.mps.lang.smodel.structure.Node_IsNullOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
-    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
-    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink concept$OMgE = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink property$UiOu = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink dataType$5j5Y = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 }

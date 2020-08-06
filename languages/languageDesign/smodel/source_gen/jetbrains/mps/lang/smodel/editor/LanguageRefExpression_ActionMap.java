@@ -23,10 +23,10 @@ public class LanguageRefExpression_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.languageId$XvFx))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.languageId$xSH1))) {
           return;
         }
-        SLinkOperations.setNewChild(node, LINKS.languageId$XvFx, null);
+        SLinkOperations.setNewChild(node, LINKS.languageId$xSH1, null);
       }
 
     };
@@ -74,6 +74,6 @@ public class LanguageRefExpression_ActionMap {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink languageId$XvFx = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, 0x312abca18ab995e2L, "languageId");
+    /*package*/ static final SContainmentLink languageId$xSH1 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, 0x312abca18ab995e2L, "languageId");
   }
 }

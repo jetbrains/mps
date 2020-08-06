@@ -16,19 +16,19 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      if (SNodeOperations.getNodeAncestor(sourceNode, CONCEPTS.XMLSAXNodeRule$AV, true, false) != SNodeOperations.getParent(targetNode)) {
-        SNode nodeRule = SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.XMLSAXNodeRule$AV);
-        return ((nodeRule == null ? "<unknown>" : SPropertyOperations.getString(nodeRule, PROPS.name$lA7v))) + "." + SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+      if (SNodeOperations.getNodeAncestor(sourceNode, CONCEPTS.XMLSAXNodeRule$VS, true, false) != SNodeOperations.getParent(targetNode)) {
+        SNode nodeRule = SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.XMLSAXNodeRule$VS);
+        return ((nodeRule == null ? "<unknown>" : SPropertyOperations.getString(nodeRule, PROPS.name$MnvL))) + "." + SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
       }
-      return SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+      return SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
     }
   };
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXNodeRule$AV = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRule");
+    /*package*/ static final SConcept XMLSAXNodeRule$VS = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRule");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

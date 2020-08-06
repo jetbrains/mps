@@ -74,9 +74,9 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       return UpdateResult.CANCELLED;
     }
 
-    Iterable<SNode> classifiers = ListSequence.fromList(SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.Classifier$hJ, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> classifiers = ListSequence.fromList(SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassConcept$IY) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$Kp);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db);
       }
     });
 
@@ -105,13 +105,13 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       StringBuilder tooltip = new StringBuilder();
       int messageCounter = 0;
       Set<SNode> baseMethods = finder.getBaseMethods(overridingMethod);
-      boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))) || SetSequence.fromSet(baseMethods).where(new IWhereFilter<SNode>() {
+      boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))) || SetSequence.fromSet(baseMethods).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))));
+          return !(((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))));
         }
       }).isNotEmpty();
       for (SNode baseMethod : SetSequence.fromSet(baseMethods)) {
-        SNode baseClassifier = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), CONCEPTS.Classifier$hJ);
+        SNode baseClassifier = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), CONCEPTS.Classifier$Ix);
         tooltip.append((overrides ? "Overrides" : "Implements"));
         tooltip.append(" method in '");
         tooltip.append(getClassifierPresentation(baseClassifier));
@@ -131,7 +131,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
     if (ListSequence.fromList(derivedClassifiers).isEmpty()) {
       return;
     }
-    boolean isInterface = SNodeOperations.isInstanceOf(container, CONCEPTS.Interface$Kp);
+    boolean isInterface = SNodeOperations.isInstanceOf(container, CONCEPTS.Interface$db);
     StringBuffer superClassifierTooltip = new StringBuffer();
     if (ListSequence.fromList(derivedClassifiers).count() > MAX_MESSAGE_NUMBER) {
       superClassifierTooltip.append((isInterface ? "Has implementations" : "Has subclasses"));
@@ -140,8 +140,8 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       for (SNode subClassifier : ListSequence.fromList(derivedClassifiers)) {
         superClassifierTooltip.append(TOOLTIP_INDENT);
         superClassifierTooltip.append(getClassifierPresentation(subClassifier));
-        if (SNodeOperations.isInstanceOf(subClassifier, CONCEPTS.EnumClass$uy)) {
-          for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(subClassifier, CONCEPTS.EnumClass$uy), LINKS.enumConstant$JnOa))) {
+        if (SNodeOperations.isInstanceOf(subClassifier, CONCEPTS.EnumClass$Vk)) {
+          for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(subClassifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW))) {
             superClassifierTooltip.append(TOOLTIP_INDENT);
             superClassifierTooltip.append(getEnumConstantPresentation(enumConstant));
           }
@@ -151,22 +151,22 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
     SetSequence.fromSet(messages).addElement(new SubclassedClassifierEditorMessage(container, this, superClassifierTooltip.toString(), isInterface));
 
     Map<String, Set<SNode>> nameToMethodsMap = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
-    for (SNode method : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(container, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$hJ, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
+    for (SNode method : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(container, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return OverridingMethodsCalculator.canBeOverridden(it);
       }
     })) {
-      SetSequence.fromSet(OverridingMethodsCalculator.safeGet(nameToMethodsMap, SPropertyOperations.getString(method, PROPS.name$lA7v))).addElement(method);
+      SetSequence.fromSet(OverridingMethodsCalculator.safeGet(nameToMethodsMap, SPropertyOperations.getString(method, PROPS.name$MnvL))).addElement(method);
     }
     if (MapSequence.fromMap(nameToMethodsMap).isEmpty()) {
       return;
     }
     Map<SNode, Set<SNode>> overridenToOverridingMethodsMap = createOverridenToOverridingMethodsMap(nameToMethodsMap, derivedClassifiers);
     for (SNode overridenMethod : SetSequence.fromSet(MapSequence.fromMap(overridenToOverridingMethodsMap).keySet())) {
-      if (SPropertyOperations.getBoolean(overridenMethod, PROPS.isFinal$zQoy)) {
+      if (SPropertyOperations.getBoolean(overridenMethod, PROPS.isFinal$eVPk)) {
         continue;
       }
-      boolean overriden = !(((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))));
+      boolean overriden = !(((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))));
       StringBuffer tooltip = new StringBuffer("Is ");
       tooltip.append((overriden ? "overridden" : "implemented"));
       tooltip.append(" in");
@@ -193,13 +193,13 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
           return OverridingMethodsCalculator.canOverride(it);
         }
       })) {
-        Set<SNode> similarMethods = MapSequence.fromMap(nameToMethodsMap).get(SPropertyOperations.getString(derivedClassifierMethod, PROPS.name$lA7v));
+        Set<SNode> similarMethods = MapSequence.fromMap(nameToMethodsMap).get(SPropertyOperations.getString(derivedClassifierMethod, PROPS.name$MnvL));
         if (similarMethods == null) {
           continue;
         }
         SNode overridenMethod = SetSequence.fromSet(similarMethods).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("hasSameSignature", CONCEPTS.BaseMethodDeclaration$RR, "hEwIB0z"), derivedClassifierMethod));
+            return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("hasSameSignature", CONCEPTS.BaseMethodDeclaration$kD, "hEwIB0z"), derivedClassifierMethod));
           }
         });
         if (overridenMethod != null) {
@@ -208,7 +208,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
           if (SetSequence.fromSet(overridingMethods).count() > MAX_MESSAGE_NUMBER) {
             SetSequence.fromSet(similarMethods).removeElement(overridenMethod);
             if (SetSequence.fromSet(similarMethods).isEmpty()) {
-              MapSequence.fromMap(nameToMethodsMap).removeKey(SPropertyOperations.getString(derivedClassifierMethod, PROPS.name$lA7v));
+              MapSequence.fromMap(nameToMethodsMap).removeKey(SPropertyOperations.getString(derivedClassifierMethod, PROPS.name$MnvL));
               if (MapSequence.fromMap(nameToMethodsMap).isEmpty()) {
                 return result;
               }
@@ -238,22 +238,22 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
             SNode parent = childEvent.getParent();
             String childRole = childEvent.getChildRole();
             // Class or Interface was added/removed 
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.Interface$Kp) || SNodeOperations.isInstanceOf(child, CONCEPTS.ClassConcept$IY) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClass$aF) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClassCreator$N6)) {
+            if (SNodeOperations.isInstanceOf(child, CONCEPTS.Interface$db) || SNodeOperations.isInstanceOf(child, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClassCreator$fS)) {
               return true;
             }
             // method was added/removed from containing Classifier 
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(parent, CONCEPTS.Classifier$hJ)) {
+            if (SNodeOperations.isInstanceOf(child, CONCEPTS.InstanceMethodDeclaration$39) && SNodeOperations.isInstanceOf(parent, CONCEPTS.Classifier$Ix)) {
               return true;
             }
             // one of extendedInterface/superclass/implementedInterface child elements was added/removed 
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.ClassifierType$IZ) && (LINKS.extendedInterface$a$v2.getName().equals(childRole) || LINKS.superclass$7jGM.getName().equals(childRole) || LINKS.implementedInterface$KoQU.getName().equals(childRole))) {
+            if (SNodeOperations.isInstanceOf(child, CONCEPTS.ClassifierType$bL) && (LINKS.extendedInterface$PDVO.getName().equals(childRole) || LINKS.superclass$Mp9$.getName().equals(childRole) || LINKS.implementedInterface$rujG.getName().equals(childRole))) {
               return true;
             }
             // parameter was added/removed 
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.ParameterDeclaration$qU) && LINKS.parameter$qsax.getName().equals(childRole)) {
+            if (SNodeOperations.isInstanceOf(child, CONCEPTS.ParameterDeclaration$RG) && LINKS.parameter$5xBj.getName().equals(childRole)) {
               return true;
             }
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.Type$IG) && isParameterType(child)) {
+            if (SNodeOperations.isInstanceOf(child, CONCEPTS.Type$bu) && isParameterType(child)) {
               return true;
             }
           }
@@ -262,20 +262,20 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
             SReference reference = referenceEvent.getReference();
             SNode sourceNode = reference.getSourceNode();
             SReferenceLink referenceRole = reference.getLink();
-            if (LINKS.classifier$xslD.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.ClassifierType$IZ) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(sourceNode), CONCEPTS.Classifier$hJ))) {
+            if (LINKS.classifier$cxMr.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.ClassifierType$bL) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(sourceNode), CONCEPTS.Classifier$Ix))) {
               return true;
             }
-            if (LINKS.classifier$JwxM.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AnonymousClass$aF)) {
+            if (LINKS.classifier$q_Y$.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AnonymousClass$Bt)) {
               return true;
             }
-            if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.Type$IG) && isParameterType(sourceNode)) {
+            if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.Type$bu) && isParameterType(sourceNode)) {
               return true;
             }
           }
           if (event instanceof SModelPropertyEvent) {
             SModelPropertyEvent propertyEvent = (SModelPropertyEvent) event;
             SNode node = propertyEvent.getNode();
-            if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$RR)) {
+            if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD)) {
               return true;
             }
           }
@@ -286,63 +286,63 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
   }
 
   private String getPresentation(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$hJ)) {
-      return getClassifierPresentation(SNodeOperations.cast(node, CONCEPTS.Classifier$hJ));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix)) {
+      return getClassifierPresentation(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix));
     }
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.EnumConstantDeclaration$ma)) {
-      return getEnumConstantPresentation(SNodeOperations.cast(node, CONCEPTS.EnumConstantDeclaration$ma));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.EnumConstantDeclaration$MW)) {
+      return getEnumConstantPresentation(SNodeOperations.cast(node, CONCEPTS.EnumConstantDeclaration$MW));
     }
-    return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+    return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
   }
 
   private String getClassifierPresentation(SNode classifier) {
-    return ((String) (String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) (String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
   }
 
   private String getEnumConstantPresentation(SNode enumConstantDeclaration) {
-    return ((String) (String) BHReflection.invoke0(enumConstantDeclaration, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) (String) BHReflection.invoke0(enumConstantDeclaration, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
   }
 
   private static boolean isParameterType(SNode type) {
     SNode parent = SNodeOperations.getParent(type);
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ParameterDeclaration$qU)) {
+    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ParameterDeclaration$RG)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.Type$IG)) {
+    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.Type$bu)) {
       return isParameterType(parent);
     }
     return false;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept AnonymousClassCreator$N6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, "jetbrains.mps.baseLanguage.structure.AnonymousClassCreator");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept AnonymousClassCreator$fS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, "jetbrains.mps.baseLanguage.structure.AnonymousClassCreator");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink enumConstant$qtgW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$eVPk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 }

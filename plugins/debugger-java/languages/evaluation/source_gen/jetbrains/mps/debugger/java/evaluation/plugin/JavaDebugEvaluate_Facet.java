@@ -130,9 +130,9 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
                       if (evaluator.value != null) {
                         try {
                           assert SNodeOperations.getModel(evaluator.value) != null;
-                          SNode evaluateMethod = ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator.value, CONCEPTS.InstanceMethodDeclaration$An, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
+                          SNode evaluateMethod = ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator.value, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
                             public boolean accept(SNode it) {
-                              return "evaluate".equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
+                              return "evaluate".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
                             }
                           });
                           TransformatorBuilder.getInstance().build(evaluateMethod, true).transformEvaluator();
@@ -395,10 +395,10 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

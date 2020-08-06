@@ -51,7 +51,7 @@ public class RenameImplementingMethodsParticipant extends RefactoringParticipant
   }
   public List<RefactoringParticipant.Option> getAvailableOptions(SNodeReference initialState, SRepository repository) {
     SNode renamingNode = initialState.resolve(repository);
-    if (SNodeOperations.isInstanceOf(renamingNode, CONCEPTS.BaseMethodDeclaration$RR)) {
+    if (SNodeOperations.isInstanceOf(renamingNode, CONCEPTS.BaseMethodDeclaration$kD)) {
       return ListSequence.fromListAndArray(new ArrayList<RefactoringParticipant.Option>(), OPTION);
     } else {
       return ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
@@ -63,10 +63,10 @@ public class RenameImplementingMethodsParticipant extends RefactoringParticipant
       return ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, String>>());
     }
     SNode renamingNode = initialState.resolve(repository);
-    if (!(SNodeOperations.isInstanceOf(renamingNode, CONCEPTS.BaseMethodDeclaration$RR))) {
+    if (!(SNodeOperations.isInstanceOf(renamingNode, CONCEPTS.BaseMethodDeclaration$kD))) {
       return ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, String>>());
     }
-    SNode method = SNodeOperations.cast(renamingNode, CONCEPTS.BaseMethodDeclaration$RR);
+    SNode method = SNodeOperations.cast(renamingNode, CONCEPTS.BaseMethodDeclaration$kD);
     List<RefactoringParticipant.Change<SNodeReference, String>> result = ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, String>>());
     for (final SNode node : ListSequence.fromList(MethodRefactoringUtils.findOverridingMethods(searchScope, method, progressMonitor))) {
       final SearchResults searchResults = new SearchResults(SetSequence.fromSetAndArray(new HashSet<SNode>(), node), ListSequence.fromListAndArray(new ArrayList<SearchResult<SNode>>(), new SearchResult<SNode>(node, "overriding method")));
@@ -79,7 +79,7 @@ public class RenameImplementingMethodsParticipant extends RefactoringParticipant
         public void confirm(final String finalState, SRepository repository, RefactoringSession refactoringSession) {
           refactoringSession.registerChange(new Runnable() {
             public void run() {
-              SPropertyOperations.assign(node, PROPS.name$lA7v, finalState);
+              SPropertyOperations.assign(node, PROPS.name$MnvL, finalState);
             }
           });
         }
@@ -89,10 +89,10 @@ public class RenameImplementingMethodsParticipant extends RefactoringParticipant
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

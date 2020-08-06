@@ -32,14 +32,14 @@ public final class OperationDeclaration__BehaviorDescriptor extends BaseBHDescri
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isReturnsVoid_idhX_$1pM, getPresentation_idhEwIMiw);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.returnType$qrVw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
+    SLinkOperations.setTarget(__thisNode__, LINKS.returnType$5xoi, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
   }
 
   /*package*/ static boolean isReturnsVoid_idhX_$1pM(@NotNull SNode __thisNode__) {
     return true;
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.operationName$kBy6);
+    return SPropertyOperations.getString(__thisNode__, PROPS.operationName$gZKC);
   }
 
   /*package*/ OperationDeclaration__BehaviorDescriptor() {
@@ -91,10 +91,10 @@ public final class OperationDeclaration__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty operationName$kBy6 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b80e9d3L, 0x11f5fdf3bedL, "operationName");
+    /*package*/ static final SProperty operationName$gZKC = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b80e9d3L, 0x11f5fdf3bedL, "operationName");
   }
 }

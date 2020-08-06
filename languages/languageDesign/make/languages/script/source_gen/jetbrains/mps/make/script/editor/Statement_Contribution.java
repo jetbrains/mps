@@ -69,7 +69,7 @@ public class Statement_Contribution extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.make.script.editor.ResultStatement_subs");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Statement$ok;
+      return CONCEPTS.Statement$P6;
     }
   }
   public class SMP_Include_zhpsb4_b extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -93,7 +93,7 @@ public class Statement_Contribution extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.make.script.editor.ReportFeedbackStatement_subs");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Statement$ok;
+      return CONCEPTS.Statement$P6;
     }
   }
   public class SMP_Include_zhpsb4_c extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -117,11 +117,11 @@ public class Statement_Contribution extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.make.script.editor.ProgressStatement_subs");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Statement$ok;
+      return CONCEPTS.Statement$P6;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

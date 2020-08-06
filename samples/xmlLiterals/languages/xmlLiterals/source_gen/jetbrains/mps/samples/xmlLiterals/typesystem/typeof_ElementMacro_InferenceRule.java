@@ -22,13 +22,13 @@ public class typeof_ElementMacro_InferenceRule extends AbstractInferenceRule_Run
   }
   public void applyRule(final SNode macro, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(macro, LINKS.expression$fUX_);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(macro, LINKS.expression$vf4$);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:0264c2b0-f115-4504-b39f-f4dbddf68df1(jetbrains.mps.samples.xmlLiterals.typesystem)", "9152904044274518151", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:0264c2b0-f115-4504-b39f-f4dbddf68df1(jetbrains.mps.samples.xmlLiterals.typesystem)", "9152904044274518143", true), (SNode) _quotation_createNode_uze9ii_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ElementMacro$N_;
+    return CONCEPTS.ElementMacro$U$;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,10 +45,10 @@ public class typeof_ElementMacro_InferenceRule extends AbstractInferenceRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$fUX_ = MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, 0x7f05a5bbee380870L, "expression");
+    /*package*/ static final SContainmentLink expression$vf4$ = MetaAdapterFactory.getContainmentLink(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, 0x7f05a5bbee380870L, "expression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ElementMacro$N_ = MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, "jetbrains.mps.samples.xmlLiterals.structure.ElementMacro");
+    /*package*/ static final SConcept ElementMacro$U$ = MetaAdapterFactory.getConcept(0xa1896bc34f5b4a31L, 0xb78bb65514f8d0e5L, 0x7f05a5bbee38086aL, "jetbrains.mps.samples.xmlLiterals.structure.ElementMacro");
   }
 }

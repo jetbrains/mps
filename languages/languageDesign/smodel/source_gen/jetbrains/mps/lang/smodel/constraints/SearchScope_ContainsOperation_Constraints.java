@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SearchScope_ContainsOperation_Constraints extends BaseConstraintsDescriptor {
   public SearchScope_ContainsOperation_Constraints() {
-    super(CONCEPTS.SearchScope_ContainsOperation$lm);
+    super(CONCEPTS.SearchScope_ContainsOperation$mQ);
   }
 
   @Override
@@ -39,20 +39,20 @@ public class SearchScope_ContainsOperation_Constraints extends BaseConstraintsDe
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (!(SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a))) {
+    if (!(SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW))) {
       return false;
     }
-    return SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), CONCEPTS.SearchScopeType$ZY);
+    return SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.SearchScopeType$1u);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)", "1227128029536563520");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SearchScope_ContainsOperation$lm = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11c536d2503L, "jetbrains.mps.lang.smodel.structure.SearchScope_ContainsOperation");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept SearchScopeType$ZY = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11c52ebfbe2L, "jetbrains.mps.lang.smodel.structure.SearchScopeType");
+    /*package*/ static final SConcept SearchScope_ContainsOperation$mQ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11c536d2503L, "jetbrains.mps.lang.smodel.structure.SearchScope_ContainsOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SearchScopeType$1u = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11c52ebfbe2L, "jetbrains.mps.lang.smodel.structure.SearchScopeType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

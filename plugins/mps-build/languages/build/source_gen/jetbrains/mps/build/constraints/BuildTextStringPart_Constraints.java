@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildTextStringPart_Constraints extends BaseConstraintsDescriptor {
   public BuildTextStringPart_Constraints() {
-    super(CONCEPTS.BuildTextStringPart$xk);
+    super(CONCEPTS.BuildTextStringPart$3R);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -34,12 +34,12 @@ public class BuildTextStringPart_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(node, PROPS.text$aaWn);
+      return SPropertyOperations.getString(node, PROPS.text$lRuU);
     }
   }
   public static class Text_Property extends BasePropertyConstraintsDescriptor {
     public Text_Property(ConstraintsDescriptor container) {
-      super(PROPS.text$aaWn, container);
+      super(PROPS.text$lRuU, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -65,17 +65,17 @@ public class BuildTextStringPart_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
-    properties.put(PROPS.text$aaWn, new Text_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
+    properties.put(PROPS.text$lRuU, new Text_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildTextStringPart$xk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
+    /*package*/ static final SConcept BuildTextStringPart$3R = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty text$lRuU = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 }

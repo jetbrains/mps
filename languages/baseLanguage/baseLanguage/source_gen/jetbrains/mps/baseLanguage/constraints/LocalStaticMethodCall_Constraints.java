@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LocalStaticMethodCall_Constraints extends BaseConstraintsDescriptor {
   public LocalStaticMethodCall_Constraints() {
-    super(CONCEPTS.LocalStaticMethodCall$$D);
+    super(CONCEPTS.LocalStaticMethodCall$1r);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$pyYw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class LocalStaticMethodCall_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return MigrationScopes.forMethods(CONCEPTS.StaticMethodDeclaration$eX, _context.getContextNode(), _context.getContainmentLink(), _context.getPosition());
+            return MigrationScopes.forMethods(CONCEPTS.StaticMethodDeclaration$FJ, _context.getContextNode(), _context.getContainmentLink(), _context.getPosition());
           }
         };
       }
@@ -53,11 +53,11 @@ public class LocalStaticMethodCall_Constraints extends BaseConstraintsDescriptor
   private static final SNodePointer breakingNode_f512af_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643745");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalStaticMethodCall$$D = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110e4207559L, "jetbrains.mps.baseLanguage.structure.LocalStaticMethodCall");
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept LocalStaticMethodCall$1r = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110e4207559L, "jetbrains.mps.baseLanguage.structure.LocalStaticMethodCall");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

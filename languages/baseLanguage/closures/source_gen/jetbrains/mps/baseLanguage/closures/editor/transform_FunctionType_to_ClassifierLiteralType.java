@@ -78,7 +78,7 @@ public class transform_FunctionType_to_ClassifierLiteralType extends Transformat
   public class TMP_Group_f0n48v_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())), CONCEPTS.FunctionType$ig);
+      return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())), CONCEPTS.FunctionType$9U);
     }
 
     @NotNull
@@ -94,7 +94,7 @@ public class transform_FunctionType_to_ClassifierLiteralType extends Transformat
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_f0n48v_a0a(), CONCEPTS.ClosureLiteralType$J1));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_f0n48v_a0a(), CONCEPTS.ClosureLiteralType$AF));
     }
     private class TMP_Action_f0n48v_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -135,14 +135,14 @@ public class transform_FunctionType_to_ClassifierLiteralType extends Transformat
         @Override
         public void execute(@NotNull String pattern) {
           SNode ft = _context.getNode();
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.replaceWithAnother(_context.getNode(), _quotation_createNode_f0n48v_a0a0b0a0a0(SLinkOperations.getChildren(ft, LINKS.parameterType$Ix$U), SLinkOperations.getTarget(ft, LINKS.resultType$maWY), SLinkOperations.getChildren(ft, LINKS.throwsType$TUQv))), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.replaceWithAnother(_context.getNode(), _quotation_createNode_f0n48v_a0a0b0a0a0(SLinkOperations.getChildren(ft, LINKS.parameterType$qJs$), SLinkOperations.getTarget(ft, LINKS.resultType$2oOC), SLinkOperations.getChildren(ft, LINKS.throwsType$A8I9))), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.ClosureLiteralType$J1;
+          return CONCEPTS.ClosureLiteralType$AF;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -157,7 +157,7 @@ public class transform_FunctionType_to_ClassifierLiteralType extends Transformat
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.ClosureLiteralType$J1;
+          SAbstractConcept outputConcept = CONCEPTS.ClosureLiteralType$AF;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -194,13 +194,13 @@ public class transform_FunctionType_to_ClassifierLiteralType extends Transformat
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FunctionType$ig = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
-    /*package*/ static final SConcept ClosureLiteralType$J1 = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0xe8770ba07b68051L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteralType");
+    /*package*/ static final SConcept FunctionType$9U = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
+    /*package*/ static final SConcept ClosureLiteralType$AF = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0xe8770ba07b68051L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteralType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$Ix$U = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
-    /*package*/ static final SContainmentLink resultType$maWY = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType");
-    /*package*/ static final SContainmentLink throwsType$TUQv = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType");
+    /*package*/ static final SContainmentLink parameterType$qJs$ = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
+    /*package*/ static final SContainmentLink resultType$2oOC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType");
+    /*package*/ static final SContainmentLink throwsType$A8I9 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x11ad99d9c36L, "throwsType");
   }
 }

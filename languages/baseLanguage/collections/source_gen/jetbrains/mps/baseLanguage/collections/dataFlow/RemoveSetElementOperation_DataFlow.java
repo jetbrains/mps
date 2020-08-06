@@ -11,10 +11,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RemoveSetElementOperation_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.argument$tr71));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.argument$7Jlk));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$tr71 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L, 0x11d968cfea4L, "argument");
+    /*package*/ static final SContainmentLink argument$7Jlk = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L, 0x11d968cfea4L, "argument");
   }
 }

@@ -27,7 +27,7 @@ public class SEnumOperations {
   @Deprecated
   @ToRemove(version = 19.1)
   public static List<SNode> getEnumMembers(SNode enumm) {
-    return SLinkOperations.getChildren(enumm, LINKS.member$1eS1);
+    return SLinkOperations.getChildren(enumm, LINKS.member$tmHO);
   }
   @Deprecated
   @ToRemove(version = 19.1)
@@ -37,35 +37,35 @@ public class SEnumOperations {
   @Deprecated
   @ToRemove(version = 19.1)
   public static String getEnumMemberName(SNode member) {
-    return ((String) BHReflection.invoke0(member, CONCEPTS.EnumerationMemberDeclaration_Old$vn, SMethodTrimmedId.create("getName", CONCEPTS.EnumerationMemberDeclaration_Old$vn, "i2ZRO7Q")));
+    return ((String) BHReflection.invoke0(member, CONCEPTS.EnumerationMemberDeclaration_Old$la, SMethodTrimmedId.create("getName", CONCEPTS.EnumerationMemberDeclaration_Old$la, "i2ZRO7Q")));
   }
   @Deprecated
   @ToRemove(version = 19.1)
   public static String getEnumMemberValue(SNode member) {
-    return SPropertyOperations.getString(member, PROPS.internalValue$_gAE);
+    return SPropertyOperations.getString(member, PROPS.internalValue$1ost);
   }
   @Deprecated
   @ToRemove(version = 19.1)
   public static String getEnumMemberPresentation(SNode member) {
-    return SPropertyOperations.getString(member, PROPS.externalValue$_gPF);
+    return SPropertyOperations.getString(member, PROPS.externalValue$1oFu);
   }
   @Deprecated
   @ToRemove(version = 19.1)
   public static int getDefaultEnumMemberIndex(SNode enumm) {
-    if (SPropertyOperations.getBoolean(enumm, PROPS.hasNoDefaultMember$M06k)) {
+    if (SPropertyOperations.getBoolean(enumm, PROPS.hasNoDefaultMember$e7W7)) {
       return -1;
     }
-    if ((SLinkOperations.getTarget(enumm, LINKS.defaultMember$szLC) == null)) {
+    if ((SLinkOperations.getTarget(enumm, LINKS.defaultMember$SFBr) == null)) {
       return 0;
     }
-    return SNodeOperations.getIndexInParent(SLinkOperations.getTarget(enumm, LINKS.defaultMember$szLC));
+    return SNodeOperations.getIndexInParent(SLinkOperations.getTarget(enumm, LINKS.defaultMember$SFBr));
   }
   @Deprecated
   @ToRemove(version = 19.1)
   public static SNode enumMemberForName(SNode enumm, final String name) {
-    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$1eS1)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$tmHO)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ((String) BHReflection.invoke0(it, CONCEPTS.EnumerationMemberDeclaration_Old$vn, SMethodTrimmedId.create("getName", CONCEPTS.EnumerationMemberDeclaration_Old$vn, "i2ZRO7Q"))).equals(name);
+        return ((String) BHReflection.invoke0(it, CONCEPTS.EnumerationMemberDeclaration_Old$la, SMethodTrimmedId.create("getName", CONCEPTS.EnumerationMemberDeclaration_Old$la, "i2ZRO7Q"))).equals(name);
       }
     });
   }
@@ -73,11 +73,11 @@ public class SEnumOperations {
   @ToRemove(version = 19.1)
   public static SNode enumMemberForValue(SNode enumm, final String value) {
     if (value == null) {
-      return ((SNode) BHReflection.invoke0(enumm, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll, SMethodTrimmedId.create("getDefaultMember", CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll, "hEwIM$p")));
+      return ((SNode) BHReflection.invoke0(enumm, CONCEPTS.EnumerationDataTypeDeclaration_Old$B8, SMethodTrimmedId.create("getDefaultMember", CONCEPTS.EnumerationDataTypeDeclaration_Old$B8, "hEwIM$p")));
     }
-    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$1eS1)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.member$tmHO)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.internalValue$_gAE).equals(value);
+        return SPropertyOperations.getString(it, PROPS.internalValue$1ost).equals(value);
       }
     });
   }
@@ -175,18 +175,18 @@ public class SEnumOperations {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$1eS1 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
-    /*package*/ static final SReferenceLink defaultMember$szLC = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
+    /*package*/ static final SContainmentLink member$tmHO = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc32151efeL, "member");
+    /*package*/ static final SReferenceLink defaultMember$SFBr = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0xfc3640a77dL, "defaultMember");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationMemberDeclaration_Old$vn = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old");
-    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$Ll = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
+    /*package*/ static final SConcept EnumerationMemberDeclaration_Old$la = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration_Old");
+    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$B8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty internalValue$_gAE = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
-    /*package*/ static final SProperty externalValue$_gPF = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
-    /*package*/ static final SProperty hasNoDefaultMember$M06k = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
+    /*package*/ static final SProperty internalValue$1ost = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06663L, "internalValue");
+    /*package*/ static final SProperty externalValue$1oFu = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc321331b2L, 0xfc5ee06664L, "externalValue");
+    /*package*/ static final SProperty hasNoDefaultMember$e7W7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, 0x11a35a5efdaL, "hasNoDefaultMember");
   }
 }

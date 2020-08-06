@@ -41,13 +41,13 @@ public final class QueueType__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getAbstractCreators_id6A07P3f4z36(@NotNull SNode __thisNode__, SModel targetModel) {
     List<SNode> res = new ArrayList<SNode>();
-    ListSequence.fromList(res).addElement(_quotation_createNode_1g15wz_a0a1a0(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$V7ow)));
-    ListSequence.fromList(res).addElement(_quotation_createNode_1g15wz_a0a2a0(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$V7ow)));
+    ListSequence.fromList(res).addElement(_quotation_createNode_1g15wz_a0a1a0(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$_rAN)));
+    ListSequence.fromList(res).addElement(_quotation_createNode_1g15wz_a0a2a0(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$_rAN)));
     ListSequence.fromList(res).addSequence(Sequence.fromIterable(CustomContainersUtil.containerCreators(targetModel, __thisNode__)));
     return res;
   }
   /*package*/ static boolean canBeCoerced_id476YRQvP9l3(@NotNull SNode __thisNode__, SAbstractConcept c) {
-    if (CONCEPTS.LinkedListType$bW.equals(c) || CONCEPTS.ListType$z$.equals(c) || CONCEPTS.StackType$pL.equals(c) || CONCEPTS.SetType$1N.equals(c) || CONCEPTS.SortedSetType$Tt.equals(c) || CONCEPTS.MapType$2H.equals(c) || CONCEPTS.SortedMapType$oG.equals(c)) {
+    if (CONCEPTS.LinkedListType$qf.equals(c) || CONCEPTS.ListType$LR.equals(c) || CONCEPTS.StackType$C4.equals(c) || CONCEPTS.SetType$g6.equals(c) || CONCEPTS.SortedSetType$7K.equals(c) || CONCEPTS.MapType$h0.equals(c) || CONCEPTS.SortedMapType$AZ.equals(c)) {
       return false;
     }
     return true;
@@ -124,16 +124,16 @@ public final class QueueType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$V7ow = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
+    /*package*/ static final SContainmentLink elementType$_rAN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LinkedListType$bW = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e9a0b9a890137e9L, "jetbrains.mps.baseLanguage.collections.structure.LinkedListType");
-    /*package*/ static final SConcept ListType$z$ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
-    /*package*/ static final SConcept StackType$pL = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x5e6446aa46ee5eecL, "jetbrains.mps.baseLanguage.collections.structure.StackType");
-    /*package*/ static final SConcept SetType$1N = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
-    /*package*/ static final SConcept SortedSetType$Tt = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c482dd1aL, "jetbrains.mps.baseLanguage.collections.structure.SortedSetType");
-    /*package*/ static final SConcept MapType$2H = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType");
-    /*package*/ static final SConcept SortedMapType$oG = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4067207L, "jetbrains.mps.baseLanguage.collections.structure.SortedMapType");
+    /*package*/ static final SConcept LinkedListType$qf = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e9a0b9a890137e9L, "jetbrains.mps.baseLanguage.collections.structure.LinkedListType");
+    /*package*/ static final SConcept ListType$LR = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    /*package*/ static final SConcept StackType$C4 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x5e6446aa46ee5eecL, "jetbrains.mps.baseLanguage.collections.structure.StackType");
+    /*package*/ static final SConcept SetType$g6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    /*package*/ static final SConcept SortedSetType$7K = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c482dd1aL, "jetbrains.mps.baseLanguage.collections.structure.SortedSetType");
+    /*package*/ static final SConcept MapType$h0 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType");
+    /*package*/ static final SConcept SortedMapType$AZ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4067207L, "jetbrains.mps.baseLanguage.collections.structure.SortedMapType");
   }
 }

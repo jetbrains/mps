@@ -31,19 +31,19 @@ public class check_LightQuotationNode_multipleInitializers_NonTypesystemRule ext
   public check_LightQuotationNode_multipleInitializers_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    InitializerPolicy checkPolicy = INodeBuilderContainer__BehaviorDescriptor.getCheckPolicy_id4XAkAubwHns.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.INodeBuilderContainer$cS, false, false));
+    InitializerPolicy checkPolicy = INodeBuilderContainer__BehaviorDescriptor.getCheckPolicy_id4XAkAubwHns.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.INodeBuilderContainer$ds, false, false));
     if (checkPolicy == null) {
       return;
     }
-    for (final SNode link : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(node, LINKS.concept$zz_s)))) {
-      List<SNode> linkInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$LrAn)).where(new IWhereFilter<SNode>() {
+    for (final SNode link : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
+      List<SNode> linkInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$Xj) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx) == link;
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == link;
         }
       }).toListSequence();
       if (ListSequence.fromList(linkInitializers).count() > 1) {
         for (SNode initializer : ListSequence.fromList(linkInitializers)) {
-          String string = "multiple initializers for single cardinality role `" + SPropertyOperations.getString(link, PROPS.role$nkts) + "'";
+          String string = "multiple initializers for single cardinality role `" + SPropertyOperations.getString(link, PROPS.role$Nsjf) + "'";
           switch (checkPolicy.reportDuplicatedContainmentLink(node, link)) {
             case ERROR:
               {
@@ -61,15 +61,15 @@ public class check_LightQuotationNode_multipleInitializers_NonTypesystemRule ext
         }
       }
     }
-    for (final SNode referenceLink : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(SLinkOperations.getTarget(node, LINKS.concept$zz_s)))) {
-      List<SNode> linkInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$LrAn)).where(new IWhereFilter<SNode>() {
+    for (final SNode referenceLink : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
+      List<SNode> linkInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$Xj) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx) == referenceLink;
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == referenceLink;
         }
       }).toListSequence();
       if (ListSequence.fromList(linkInitializers).count() > 1) {
         for (SNode initializer : ListSequence.fromList(linkInitializers)) {
-          String message = "multiple reference initializers for role `" + SPropertyOperations.getString(referenceLink, PROPS.role$nkts) + "'";
+          String message = "multiple reference initializers for role `" + SPropertyOperations.getString(referenceLink, PROPS.role$Nsjf) + "'";
           switch (checkPolicy.reportDuplicatedReferenceLink(node, referenceLink)) {
             case ERROR:
               {
@@ -87,15 +87,15 @@ public class check_LightQuotationNode_multipleInitializers_NonTypesystemRule ext
         }
       }
     }
-    for (final SNode property : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(node, LINKS.concept$zz_s)))) {
-      List<SNode> propInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$LrAn)).where(new IWhereFilter<SNode>() {
+    for (final SNode property : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
+      List<SNode> propInitializers = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitProperty$wV) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitProperty$wV), LINKS.property$Ktw) == property;
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitProperty$xv) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitProperty$xv), LINKS.property$Y_u4) == property;
         }
       }).toListSequence();
       if (ListSequence.fromList(propInitializers).count() > 1) {
         for (SNode initializer : ListSequence.fromList(propInitializers)) {
-          String message = "multiple property initializers for role `" + SPropertyOperations.getString(property, PROPS.name$lA7v) + "'";
+          String message = "multiple property initializers for role `" + SPropertyOperations.getString(property, PROPS.name$MnvL) + "'";
           switch (checkPolicy.reportDuplicatedProperty(node, property)) {
             case ERROR:
               {
@@ -115,7 +115,7 @@ public class check_LightQuotationNode_multipleInitializers_NonTypesystemRule ext
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodeBuilderNode$RN;
+    return CONCEPTS.NodeBuilderNode$Sn;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -125,21 +125,21 @@ public class check_LightQuotationNode_multipleInitializers_NonTypesystemRule ext
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INodeBuilderContainer$cS = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0xe04f17ec2c78d3eL, "jetbrains.mps.lang.quotation.structure.INodeBuilderContainer");
-    /*package*/ static final SConcept NodeBuilderInitLink$Xj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
-    /*package*/ static final SConcept NodeBuilderInitProperty$wV = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
-    /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
+    /*package*/ static final SInterfaceConcept INodeBuilderContainer$ds = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0xe04f17ec2c78d3eL, "jetbrains.mps.lang.quotation.structure.INodeBuilderContainer");
+    /*package*/ static final SConcept NodeBuilderInitLink$XR = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
+    /*package*/ static final SConcept NodeBuilderInitProperty$xv = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
+    /*package*/ static final SConcept NodeBuilderNode$Sn = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink values$LrAn = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
-    /*package*/ static final SReferenceLink link$XYSx = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
-    /*package*/ static final SReferenceLink concept$zz_s = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
-    /*package*/ static final SReferenceLink property$Ktw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
+    /*package*/ static final SContainmentLink values$JgAV = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
+    /*package*/ static final SReferenceLink link$VNT5 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
+    /*package*/ static final SReferenceLink concept$xoA0 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
+    /*package*/ static final SReferenceLink property$Y_u4 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$Nsjf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

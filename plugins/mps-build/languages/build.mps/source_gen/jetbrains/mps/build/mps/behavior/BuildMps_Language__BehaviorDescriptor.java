@@ -34,11 +34,11 @@ public final class BuildMps_Language__BehaviorDescriptor extends BaseBHDescripto
 
   @Deprecated
   /*package*/ static SNode getGenerator_id1kfMLj5Jhus(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.generator$lsok) != null)) {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.generator$lsok);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.generator$OCOG) != null)) {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.generator$OCOG);
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(__thisNode__), CONCEPTS.BuildMps_Generator$ru)) {
-      return SNodeOperations.cast(SNodeOperations.getNextSibling(__thisNode__), CONCEPTS.BuildMps_Generator$ru);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(__thisNode__), CONCEPTS.BuildMps_Generator$RQ)) {
+      return SNodeOperations.cast(SNodeOperations.getNextSibling(__thisNode__), CONCEPTS.BuildMps_Generator$RQ);
     }
     return null;
   }
@@ -90,10 +90,10 @@ public final class BuildMps_Language__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink generator$lsok = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
+    /*package*/ static final SContainmentLink generator$OCOG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_Generator$ru = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
+    /*package*/ static final SConcept BuildMps_Generator$RQ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
   }
 }

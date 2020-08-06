@@ -17,10 +17,10 @@ public class FixRefCellReadOnly_QuickFix extends QuickFix_Runtime {
     return "Make Read-Only";
   }
   public void execute(SNode node) {
-    SPropertyOperations.assign(((SNode) FixRefCellReadOnly_QuickFix.this.getField("propCell")[0]), PROPS.readOnly$qX3w, true);
+    SPropertyOperations.assign(((SNode) FixRefCellReadOnly_QuickFix.this.getField("propCell")[0]), PROPS.readOnly$vff7, true);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty readOnly$qX3w = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly");
+    /*package*/ static final SProperty readOnly$vff7 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly");
   }
 }

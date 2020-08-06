@@ -37,14 +37,14 @@ public class TupleIntefaceUtils {
     List<Property> mutators = ListSequence.fromList(new ArrayList<Property>());
     int ignored = 0;
     for (SNode method : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(myIntefaceNode))) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).isEmpty() && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.VoidType$aT))) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty() && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF))) {
         ListSequence.fromList(accessors).addElement(new Property(method));
-      } else if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count() == 1 && MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).toListSequence().first())) {
+      } else if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).toListSequence().first())) {
         // matchNodes(RETURNTYPE, FIRST PARAMETER) (sic!) we use tuples in a way that we want set(X) to return X for immediate use 
         ListSequence.fromList(mutators).addElement(new Property(method));
-      } else if ("equals".equals(SPropertyOperations.getString(method, PROPS.name$lA7v)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.BooleanType$8G)) {
+      } else if ("equals".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.BooleanType$_u)) {
         ignored++;
-      } else if ("hashCode".equals(SPropertyOperations.getString(method, PROPS.name$lA7v)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.IntegerType$Eo)) {
+      } else if ("hashCode".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty() && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.IntegerType$7a)) {
         ignored++;
       }
     }
@@ -87,23 +87,23 @@ public class TupleIntefaceUtils {
     /*package*/ SNode type;
     public Property(SNode method) {
       isFinal = true;
-      name = SPropertyOperations.getString(method, PROPS.name$lA7v);
-      type = SLinkOperations.getTarget(method, LINKS.returnType$qrVw);
+      name = SPropertyOperations.getString(method, PROPS.name$MnvL);
+      type = SLinkOperations.getTarget(method, LINKS.returnType$5xoi);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
-    /*package*/ static final SConcept BooleanType$8G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
-    /*package*/ static final SConcept IntegerType$Eo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept BooleanType$_u = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
+    /*package*/ static final SConcept IntegerType$7a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -48,27 +48,27 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static void detachAllErrorOperations_id4QaU5oI0Q4j(@NotNull SNode __thisNode__) {
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$TBZE)).removeWhere(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).removeWhere(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractNodeRuleCheckOperation$Z8);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractNodeRuleCheckOperation$eB);
       }
     });
   }
   /*package*/ static void createNodeAndAttachReference_idnMEi6H8iBO(@NotNull SNode __thisNode__, @Nullable SNode reference, NodeReportItem reporter) {
     NodeRuleFactory factory = new NodeRuleFactory(reporter);
     SNode newNode = factory.createNodeFromRuleMsg(reference);
-    if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.IReferenceAttachable$C$)) {
-      SNode node = SNodeOperations.cast(newNode, CONCEPTS.IReferenceAttachable$C$);
+    if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.IReferenceAttachable$S3)) {
+      SNode node = SNodeOperations.cast(newNode, CONCEPTS.IReferenceAttachable$S3);
       if (reference != null && (boolean) IReferenceAttachable__BehaviorDescriptor.canAttachReference_id2wBFdLy7HtS.invoke(node, reference)) {
         IReferenceAttachable__BehaviorDescriptor.attachReference_id2wBFdLy8qmn.invoke(node, reference);
       }
     }
     // only local 
     if (PathManager.isFromSources()) {
-      SLinkOperations.setTarget(newNode, LINKS.expectedMessage$dJQX, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, "jetbrains.mps.lang.test.structure.ExpectedMessageContainer")));
-      SPropertyOperations.assign(SLinkOperations.getTarget(newNode, LINKS.expectedMessage$dJQX), PROPS.text$wLjw, reporter.getMessage());
+      SLinkOperations.setTarget(newNode, LINKS.expectedMessage$6o6s, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, "jetbrains.mps.lang.test.structure.ExpectedMessageContainer")));
+      SPropertyOperations.assign(SLinkOperations.getTarget(newNode, LINKS.expectedMessage$6o6s), PROPS.text$ppyZ, reporter.getMessage());
     }
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$TBZE)).addElement(newNode);
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).addElement(newNode);
   }
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, final NodeReportItem reportItem) {
     final Wrappers._T<ComponentHost> host = new Wrappers._T<ComponentHost>(null);
@@ -77,7 +77,7 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
     if (project != null) {
       host.value = project.getPlatform();
     }
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$TBZE)).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) NodeCheckOperation__BehaviorDescriptor.expectsErrorsInside_id77$odk0vlBj.invoke(it, reportItem, repository, host.value);
       }
@@ -137,16 +137,16 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeOperations$TBZE = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
-    /*package*/ static final SContainmentLink expectedMessage$dJQX = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
+    /*package*/ static final SContainmentLink nodeOperations$Mgf9 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
+    /*package*/ static final SContainmentLink expectedMessage$6o6s = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractNodeRuleCheckOperation$Z8 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, "jetbrains.mps.lang.test.structure.AbstractNodeRuleCheckOperation");
-    /*package*/ static final SInterfaceConcept IReferenceAttachable$C$ = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2827acdc621ed3acL, "jetbrains.mps.lang.test.structure.IReferenceAttachable");
+    /*package*/ static final SConcept AbstractNodeRuleCheckOperation$eB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, "jetbrains.mps.lang.test.structure.AbstractNodeRuleCheckOperation");
+    /*package*/ static final SInterfaceConcept IReferenceAttachable$S3 = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2827acdc621ed3acL, "jetbrains.mps.lang.test.structure.IReferenceAttachable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$wLjw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
+    /*package*/ static final SProperty text$ppyZ = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
   }
 }

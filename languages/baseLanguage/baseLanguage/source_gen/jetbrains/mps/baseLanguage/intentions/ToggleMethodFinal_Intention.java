@@ -42,7 +42,7 @@ public final class ToggleMethodFinal_Intention extends AbstractIntentionDescript
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConstructorDeclaration$5U) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$Kp)) {
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConstructorDeclaration$yG) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$db)) {
       return false;
     }
     if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node)) {
@@ -52,10 +52,10 @@ public final class ToggleMethodFinal_Intention extends AbstractIntentionDescript
     if (contextNode == null) {
       return true;
     }
-    List<SNode> includingStatementLists = SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.StatementList$TN, true);
+    List<SNode> includingStatementLists = SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.StatementList$m_, true);
     Iterable<SNode> includingBodies = ListSequence.fromList(includingStatementLists).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.hasRole(it, LINKS.body$qspy);
+        return SNodeOperations.hasRole(it, LINKS.body$5xQk);
       }
     });
     return Sequence.fromIterable(includingBodies).isEmpty();
@@ -75,12 +75,12 @@ public final class ToggleMethodFinal_Intention extends AbstractIntentionDescript
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String methodName = SPropertyOperations.getString(node, PROPS.name$lA7v);
-      return (SPropertyOperations.getBoolean(node, PROPS.isFinal$zQoy) ? "Make '" + methodName + "' Not Final" : "Make '" + methodName + "' Final");
+      String methodName = SPropertyOperations.getString(node, PROPS.name$MnvL);
+      return (SPropertyOperations.getBoolean(node, PROPS.isFinal$eVPk) ? "Make '" + methodName + "' Not Final" : "Make '" + methodName + "' Final");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.isFinal$zQoy, !(SPropertyOperations.getBoolean(node, PROPS.isFinal$zQoy)));
+      SPropertyOperations.assign(node, PROPS.isFinal$eVPk, !(SPropertyOperations.getBoolean(node, PROPS.isFinal$eVPk)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -89,17 +89,17 @@ public final class ToggleMethodFinal_Intention extends AbstractIntentionDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$eVPk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 }

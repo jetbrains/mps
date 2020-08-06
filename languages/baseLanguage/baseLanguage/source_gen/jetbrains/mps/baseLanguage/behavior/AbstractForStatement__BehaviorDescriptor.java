@@ -38,14 +38,14 @@ public final class AbstractForStatement__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
-      if (ScopeUtils.comeFrom(LINKS.body$wVZ$, __thisNode__, child)) {
-        return Scopes.forVariables(kind, SLinkOperations.getTarget(__thisNode__, LINKS.variable$4Igk), ScopeUtils.lazyParentScope(__thisNode__, kind));
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$Y0)) {
+      if (ScopeUtils.comeFrom(LINKS.body$c1sm, __thisNode__, child)) {
+        return Scopes.forVariables(kind, SLinkOperations.getTarget(__thisNode__, LINKS.variable$JNH6), ScopeUtils.lazyParentScope(__thisNode__, kind));
       } else {
         return ScopeUtils.lazyParentScope(__thisNode__, kind);
       }
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.AbstractForStatement$1G, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.AbstractForStatement$uu, kind, child));
   }
 
   /*package*/ AbstractForStatement__BehaviorDescriptor() {
@@ -95,12 +95,12 @@ public final class AbstractForStatement__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept AbstractForStatement$1G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, "jetbrains.mps.baseLanguage.structure.AbstractForStatement");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept AbstractForStatement$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, "jetbrains.mps.baseLanguage.structure.AbstractForStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink body$c1sm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
   }
 }

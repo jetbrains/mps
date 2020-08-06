@@ -26,11 +26,11 @@ public class DeleteDefault {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode method = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, false, false);
+        SNode method = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$kD, false, false);
         SNodeOperations.deleteNode(node);
         if (method != null) {
           if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(method))) {
-            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$qspy), LINKS.statement$pYcS)).clear();
+            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).clear();
           }
           editorContext.selectWRTFocusPolicy(method);
         }
@@ -44,11 +44,11 @@ public class DeleteDefault {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode method = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, false, false);
+        SNode method = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$kD, false, false);
         SNodeOperations.deleteNode(node);
         if (method != null) {
           if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(method))) {
-            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$qspy), LINKS.statement$pYcS)).clear();
+            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).clear();
           }
           editorContext.selectWRTFocusPolicy(method);
         }
@@ -103,11 +103,11 @@ public class DeleteDefault {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

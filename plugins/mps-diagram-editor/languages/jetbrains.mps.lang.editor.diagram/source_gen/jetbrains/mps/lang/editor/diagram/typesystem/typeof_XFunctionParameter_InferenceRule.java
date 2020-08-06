@@ -25,7 +25,7 @@ public class typeof_XFunctionParameter_InferenceRule extends AbstractInferenceRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.XFunctionParameter$jV;
+    return CONCEPTS.XFunctionParameter$bI;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_XFunctionParameter_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XFunctionParameter$jV = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x76f1cb20ba7a0ee2L, "jetbrains.mps.lang.editor.diagram.structure.XFunctionParameter");
+    /*package*/ static final SConcept XFunctionParameter$bI = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x76f1cb20ba7a0ee2L, "jetbrains.mps.lang.editor.diagram.structure.XFunctionParameter");
   }
 }

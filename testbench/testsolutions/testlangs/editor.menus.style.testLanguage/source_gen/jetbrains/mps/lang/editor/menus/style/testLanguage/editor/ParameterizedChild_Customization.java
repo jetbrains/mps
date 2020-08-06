@@ -31,7 +31,7 @@ public class ParameterizedChild_Customization implements EditorMenuItemCustomize
   private static class ParameterizedChild_CustomizationSpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemCreatingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ChildParameterizedSubstituteMenu$ow).matchesContext(context) && getCompletionItemInformation(context) != null;
+      return new EditorMenuItemCreatingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ChildParameterizedSubstituteMenu$cV).matchesContext(context) && getCompletionItemInformation(context) != null;
     }
 
 
@@ -62,6 +62,6 @@ public class ParameterizedChild_Customization implements EditorMenuItemCustomize
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept TestCompletionCustomization_ChildParameterizedSubstituteMenu$ow = MetaAdapterFactory.getInterfaceConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b4fee9L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildParameterizedSubstituteMenu");
+    /*package*/ static final SInterfaceConcept TestCompletionCustomization_ChildParameterizedSubstituteMenu$cV = MetaAdapterFactory.getInterfaceConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b4fee9L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildParameterizedSubstituteMenu");
   }
 }

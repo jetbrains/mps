@@ -24,7 +24,7 @@ public class check_outputport_NonTypesystemRule extends AbstractNonTypesystemRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.OutputPort$ZS;
+    return CONCEPTS.OutputPort$Ws;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,6 +34,6 @@ public class check_outputport_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OutputPort$ZS = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702fbfL, "jetbrains.mps.testHybridEditor.structure.OutputPort");
+    /*package*/ static final SConcept OutputPort$Ws = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702fbfL, "jetbrains.mps.testHybridEditor.structure.OutputPort");
   }
 }

@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Raise_Constraints extends BaseConstraintsDescriptor {
   public Raise_Constraints() {
-    super(CONCEPTS.Raise$7a);
+    super(CONCEPTS.Raise$Hj);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.event$p3_0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.event$kBb9, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class Raise_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.Event$H_);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.Event$jI);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -54,11 +54,11 @@ public class Raise_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_l5zdox_a0a0a0a0a1a0a0a0c = new SNodePointer("r:c9acaf76-5e77-4b59-ae68-703975aa4649(jetbrains.mps.samples.StateChart.constraints)", "3314463010038801851");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Raise$7a = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a70L, "jetbrains.mps.samples.StateChart.structure.Raise");
-    /*package*/ static final SConcept Event$H_ = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a3L, "jetbrains.mps.samples.StateChart.structure.Event");
+    /*package*/ static final SConcept Raise$Hj = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a70L, "jetbrains.mps.samples.StateChart.structure.Raise");
+    /*package*/ static final SConcept Event$jI = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a3L, "jetbrains.mps.samples.StateChart.structure.Event");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink event$p3_0 = MetaAdapterFactory.getReferenceLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a70L, 0x5e8f0d038ab26a71L, "event");
+    /*package*/ static final SReferenceLink event$kBb9 = MetaAdapterFactory.getReferenceLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26a70L, 0x5e8f0d038ab26a71L, "event");
   }
 }

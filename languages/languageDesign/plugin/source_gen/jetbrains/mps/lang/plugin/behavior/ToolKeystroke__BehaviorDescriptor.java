@@ -35,10 +35,10 @@ public final class ToolKeystroke__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getKeymap_idqbzkx4pM3M(@NotNull SNode __thisNode__) {
-    return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.keymap$N9u5));
+    return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.keymap$Ir8));
   }
   /*package*/ static String getKeystroke_idqbzkx4pLZr(@NotNull SNode __thisNode__) {
-    return (String) KeyMapKeystroke__BehaviorDescriptor.getKeyStroke_idhEwIlzu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.keystroke$PgrI));
+    return (String) KeyMapKeystroke__BehaviorDescriptor.getKeyStroke_idhEwIlzu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.keystroke$2PoL));
   }
 
   /*package*/ ToolKeystroke__BehaviorDescriptor() {
@@ -90,10 +90,10 @@ public final class ToolKeystroke__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty keymap$N9u5 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap");
+    /*package*/ static final SProperty keymap$Ir8 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keystroke$PgrI = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b76126L, "keystroke");
+    /*package*/ static final SContainmentLink keystroke$2PoL = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b76126L, "keystroke");
   }
 }

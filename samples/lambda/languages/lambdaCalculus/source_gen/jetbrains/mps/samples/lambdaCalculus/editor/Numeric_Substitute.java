@@ -29,7 +29,7 @@ public class Numeric_Substitute extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6g51gm_a(), CONCEPTS.NumericConstant$so));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6g51gm_a(), CONCEPTS.NumericConstant$$s));
     return result;
   }
 
@@ -74,7 +74,7 @@ public class Numeric_Substitute extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.NumericConstant$so, context);
+        super(CONCEPTS.NumericConstant$$s, context);
         _context = context;
       }
 
@@ -85,8 +85,8 @@ public class Numeric_Substitute extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.NumericConstant$so, null);
-        SPropertyOperations.assign(result, PROPS.value$Ej7l, Integer.parseInt(pattern));
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.NumericConstant$$s, null);
+        SPropertyOperations.assign(result, PROPS.value$pIfp, Integer.parseInt(pattern));
         return result;
       }
 
@@ -106,10 +106,10 @@ public class Numeric_Substitute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NumericConstant$so = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dd5L, "jetbrains.mps.samples.lambdaCalculus.structure.NumericConstant");
+    /*package*/ static final SConcept NumericConstant$$s = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dd5L, "jetbrains.mps.samples.lambdaCalculus.structure.NumericConstant");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Ej7l = MetaAdapterFactory.getProperty(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dd5L, 0x37d11ba7d7ee2dd6L, "value");
+    /*package*/ static final SProperty value$pIfp = MetaAdapterFactory.getProperty(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dd5L, 0x37d11ba7d7ee2dd6L, "value");
   }
 }

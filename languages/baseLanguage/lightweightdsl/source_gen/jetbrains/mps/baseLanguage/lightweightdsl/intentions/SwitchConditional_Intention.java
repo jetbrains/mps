@@ -49,16 +49,16 @@ public final class SwitchConditional_Intention extends AbstractIntentionDescript
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Make " + (((SLinkOperations.getTarget(node, LINKS.condition$$nd) == null) ? "Conditional" : "Non-Conditional"));
+      return "Make " + (((SLinkOperations.getTarget(node, LINKS.condition$uzGY) == null) ? "Conditional" : "Non-Conditional"));
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((SLinkOperations.getTarget(node, LINKS.condition$$nd) != null)) {
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.condition$$nd));
+      if ((SLinkOperations.getTarget(node, LINKS.condition$uzGY) != null)) {
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.condition$uzGY));
         return;
       }
 
-      SLinkOperations.setTarget(node, LINKS.condition$$nd, _quotation_createNode_8jtetl_a0c0a());
+      SLinkOperations.setTarget(node, LINKS.condition$uzGY, _quotation_createNode_8jtetl_a0c0a());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -84,6 +84,6 @@ public final class SwitchConditional_Intention extends AbstractIntentionDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$$nd = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, 0x1c6f8dad3c495fe9L, "condition");
+    /*package*/ static final SContainmentLink condition$uzGY = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, 0x1c6f8dad3c495fe9L, "condition");
   }
 }

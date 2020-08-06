@@ -23,12 +23,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CustomOperatorUsage_Constraints extends BaseConstraintsDescriptor {
   public CustomOperatorUsage_Constraints() {
-    super(CONCEPTS.CustomOperatorUsage$2Y);
+    super(CONCEPTS.CustomOperatorUsage$Hd);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.operator$jAql, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.operator$R44$, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -43,7 +43,7 @@ public class CustomOperatorUsage_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(CustomOperatorUsage__BehaviorDescriptor.getVisibleCustomOperators_idZogSShiOAT.invoke(SNodeOperations.asSConcept(CONCEPTS.CustomOperatorUsage$2Y), SNodeOperations.getModel(_context.getContextNode())));
+            return ListScope.forResolvableElements(CustomOperatorUsage__BehaviorDescriptor.getVisibleCustomOperators_idZogSShiOAT.invoke(SNodeOperations.asSConcept(CONCEPTS.CustomOperatorUsage$Hd), SNodeOperations.getModel(_context.getContextNode())));
           }
         };
       }
@@ -55,10 +55,10 @@ public class CustomOperatorUsage_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_r9ipxt_a0a0a0a0a1a0a0a0c = new SNodePointer("r:9b7a7baa-7b52-4b41-8293-5aa14d41220f(jetbrains.mps.baseLanguage.overloadedOperators.constraints)", "6836281137582776353");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomOperatorUsage$2Y = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, "jetbrains.mps.baseLanguage.overloadedOperators.structure.CustomOperatorUsage");
+    /*package*/ static final SConcept CustomOperatorUsage$Hd = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, "jetbrains.mps.baseLanguage.overloadedOperators.structure.CustomOperatorUsage");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink operator$jAql = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, 0x15c86fdc60847670L, "operator");
+    /*package*/ static final SReferenceLink operator$R44$ = MetaAdapterFactory.getReferenceLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x15c86fdc6084766fL, 0x15c86fdc60847670L, "operator");
   }
 }

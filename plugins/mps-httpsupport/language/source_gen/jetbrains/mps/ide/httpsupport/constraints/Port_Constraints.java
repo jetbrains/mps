@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Port_Constraints extends BaseConstraintsDescriptor {
   public Port_Constraints() {
-    super(CONCEPTS.Port$bl);
+    super(CONCEPTS.Port$OX);
   }
 
   public static class PortNumber_Property extends BasePropertyConstraintsDescriptor {
     public PortNumber_Property(ConstraintsDescriptor container) {
-      super(PROPS.portNumber$4_Ew, container);
+      super(PROPS.portNumber$ZMk8, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,15 +45,15 @@ public class Port_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.portNumber$4_Ew, new PortNumber_Property(this));
+    properties.put(PROPS.portNumber$ZMk8, new PortNumber_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Port$bl = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L, "jetbrains.mps.ide.httpsupport.structure.Port");
+    /*package*/ static final SConcept Port$OX = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L, "jetbrains.mps.ide.httpsupport.structure.Port");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty portNumber$4_Ew = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L, 0x6f2759b7139c32c3L, "portNumber");
+    /*package*/ static final SProperty portNumber$ZMk8 = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L, 0x6f2759b7139c32c3L, "portNumber");
   }
 }

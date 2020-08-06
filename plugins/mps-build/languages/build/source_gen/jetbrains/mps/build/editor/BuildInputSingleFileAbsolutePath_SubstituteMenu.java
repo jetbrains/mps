@@ -50,7 +50,7 @@ public class BuildInputSingleFileAbsolutePath_SubstituteMenu extends SubstituteM
 
   public class SMP_Subconcepts_n2gsvi_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildInputSingleFileAbsolutePath$W2);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildInputSingleFileAbsolutePath$u_);
     }
     @NotNull
     @Override
@@ -88,7 +88,7 @@ public class BuildInputSingleFileAbsolutePath_SubstituteMenu extends SubstituteM
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.BuildInputSingleFileAbsolutePath$W2) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.BuildInputSingleFileAbsolutePath$u_) {
 
         @NotNull
         @Override
@@ -101,11 +101,11 @@ public class BuildInputSingleFileAbsolutePath_SubstituteMenu extends SubstituteM
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.BuildInputSingleFileAbsolutePath$W2));
+      }, CONCEPTS.BuildInputSingleFileAbsolutePath$u_));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildInputSingleFileAbsolutePath$W2 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x72b7d8e699d63212L, "jetbrains.mps.build.structure.BuildInputSingleFileAbsolutePath");
+    /*package*/ static final SConcept BuildInputSingleFileAbsolutePath$u_ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x72b7d8e699d63212L, "jetbrains.mps.build.structure.BuildInputSingleFileAbsolutePath");
   }
 }

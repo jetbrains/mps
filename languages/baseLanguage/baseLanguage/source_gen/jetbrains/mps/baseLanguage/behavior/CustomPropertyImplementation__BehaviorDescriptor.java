@@ -31,7 +31,7 @@ public final class CustomPropertyImplementation__BehaviorDescriptor extends Base
   }
 
   /*package*/ static boolean hasSetter_idhEwIUA2(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.setAccessor$h0eM) != null);
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.setAccessor$W5F$) != null);
   }
 
   /*package*/ CustomPropertyImplementation__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class CustomPropertyImplementation__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink setAccessor$h0eM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, 0x117bd9b26faL, "setAccessor");
+    /*package*/ static final SContainmentLink setAccessor$W5F$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, 0x117bd9b26faL, "setAccessor");
   }
 }

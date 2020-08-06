@@ -37,13 +37,13 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public void breakdownToUnits(@NotNull TextGenModelOutline outline) {
     for (SNode root : outline.getModel().getRootNodes()) {
-      if (root.getConcept().equals(CONCEPTS.File$A_)) {
+      if (root.getConcept().equals(CONCEPTS.File$RS)) {
         String fname = getFileName_File(root);
         String ext = getFileExtension_File(root);
         outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
         continue;
       }
-      if (root.getConcept().equals(CONCEPTS.File2$ws)) {
+      if (root.getConcept().equals(CONCEPTS.File2$LJ)) {
         String fname = getFileName_File2(root);
         String ext = getFileExtension_File2(root);
         outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), getPath_File2(root), root);
@@ -55,25 +55,25 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return node.getName();
   }
   private static String getFileName_File2(SNode node) {
-    return FileUtil.getNameWithoutExtension(SPropertyOperations.getString(node, PROPS.name$lA7v));
+    return FileUtil.getNameWithoutExtension(SPropertyOperations.getString(node, PROPS.name$MnvL));
   }
   private static String getFileExtension_File(SNode node) {
     return null;
   }
   private static String getFileExtension_File2(SNode node) {
-    return FileUtil.getExtension(SPropertyOperations.getString(node, PROPS.name$lA7v));
+    return FileUtil.getExtension(SPropertyOperations.getString(node, PROPS.name$MnvL));
   }
   private static String getPath_File2(SNode node) {
-    return SPropertyOperations.getString(node, PROPS.path$ngG2);
+    return SPropertyOperations.getString(node, PROPS.path$CPXl);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept File$A_ = MetaAdapterFactory.getConcept(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x3b29e241360a2058L, "jetbrains.mps.samples.files.structure.File");
-    /*package*/ static final SConcept File2$ws = MetaAdapterFactory.getConcept(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x32e7e3e1f3d0e288L, "jetbrains.mps.samples.files.structure.File2");
+    /*package*/ static final SConcept File$RS = MetaAdapterFactory.getConcept(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x3b29e241360a2058L, "jetbrains.mps.samples.files.structure.File");
+    /*package*/ static final SConcept File2$LJ = MetaAdapterFactory.getConcept(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x32e7e3e1f3d0e288L, "jetbrains.mps.samples.files.structure.File2");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty path$ngG2 = MetaAdapterFactory.getProperty(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x32e7e3e1f3d0e288L, 0x32e7e3e1f3d0e28bL, "path");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty path$CPXl = MetaAdapterFactory.getProperty(0x9e34de6fa11f4866L, 0xa52c3e2e545d3d90L, 0x32e7e3e1f3d0e288L, 0x32e7e3e1f3d0e28bL, "path");
   }
 }

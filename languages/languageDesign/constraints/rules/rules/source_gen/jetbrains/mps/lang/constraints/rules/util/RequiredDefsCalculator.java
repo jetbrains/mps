@@ -37,18 +37,18 @@ public final class RequiredDefsCalculator {
       return MapSequence.fromMap(myMemorized).get(member);
     }
     MapSequence.fromMap(myMemorized).put(member, ListSequence.fromList(new ArrayList<SNode>()));
-    final List<SNode> usedDefs = SNodeOperations.getNodeDescendants(member, CONCEPTS.TypedDefReference$7f, false, new SAbstractConcept[]{});
-    Iterable<SNode> defsDeclWithApplicabilityOrCustomCell = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SLinkOperations.collect(usedDefs, LINKS.declaration$VTET)).distinct(), CONCEPTS.DefForRule$Hm)).where(new IWhereFilter<SNode>() {
+    final List<SNode> usedDefs = SNodeOperations.getNodeDescendants(member, CONCEPTS.TypedDefReference$yw, false, new SAbstractConcept[]{});
+    Iterable<SNode> defsDeclWithApplicabilityOrCustomCell = Sequence.fromIterable(SNodeOperations.ofConcept(Sequence.fromIterable(SLinkOperations.collect(usedDefs, LINKS.declaration$xU6a)).distinct(), CONCEPTS.DefForRule$_k)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         List<SNode> calculate0 = calculate0(it);
-        return (SLinkOperations.getTarget(it, LINKS.condition$KuIg) != null) || ListSequence.fromList(calculate0).isNotEmpty();
+        return (SLinkOperations.getTarget(it, LINKS.condition$h$Ae) != null) || ListSequence.fromList(calculate0).isNotEmpty();
       }
     });
     final List<SNode> requiredDefs = Sequence.fromIterable(defsDeclWithApplicabilityOrCustomCell).select(new ISelector<SNode, SNode>() {
       public SNode select(final SNode def) {
         return ListSequence.fromList(usedDefs).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode ref) {
-            return SLinkOperations.getTarget(ref, LINKS.declaration$VTET) == def;
+            return SLinkOperations.getTarget(ref, LINKS.declaration$xU6a) == def;
           }
         }).first();
       }
@@ -58,12 +58,12 @@ public final class RequiredDefsCalculator {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypedDefReference$7f = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference");
-    /*package*/ static final SConcept DefForRule$Hm = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, "jetbrains.mps.lang.constraints.rules.structure.DefForRule");
+    /*package*/ static final SConcept TypedDefReference$yw = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference");
+    /*package*/ static final SConcept DefForRule$_k = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L, "jetbrains.mps.lang.constraints.rules.structure.DefForRule");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$VTET = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
-    /*package*/ static final SContainmentLink condition$KuIg = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL, 0x6e175e60d98b9c4cL, "condition");
+    /*package*/ static final SReferenceLink declaration$xU6a = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
+    /*package*/ static final SContainmentLink condition$h$Ae = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL, 0x6e175e60d98b9c4cL, "condition");
   }
 }

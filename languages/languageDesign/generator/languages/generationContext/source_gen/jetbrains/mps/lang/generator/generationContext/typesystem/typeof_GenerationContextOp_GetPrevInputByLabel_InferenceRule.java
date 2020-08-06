@@ -24,11 +24,11 @@ public class typeof_GenerationContextOp_GetPrevInputByLabel_InferenceRule extend
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1217882185560", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1217882185571", true), (SNode) _quotation_createNode_kzkuni_a1a0c0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$1liw), LINKS.sourceConcept$BVhC)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "1217882185571", true), (SNode) _quotation_createNode_kzkuni_a1a0c0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$hgG6), LINKS.sourceConcept$RXk)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GenerationContextOp_GetPrevInputByLabel$E_;
+    return CONCEPTS.GenerationContextOp_GetPrevInputByLabel$4b;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,11 +45,11 @@ public class typeof_GenerationContextOp_GetPrevInputByLabel_InferenceRule extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink label$1liw = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8f6c38c2L, 0x11b8f6c38c3L, "label");
-    /*package*/ static final SReferenceLink sourceConcept$BVhC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
+    /*package*/ static final SReferenceLink label$hgG6 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8f6c38c2L, 0x11b8f6c38c3L, "label");
+    /*package*/ static final SReferenceLink sourceConcept$RXk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_GetPrevInputByLabel$E_ = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8f6c38c2L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetPrevInputByLabel");
+    /*package*/ static final SConcept GenerationContextOp_GetPrevInputByLabel$4b = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8f6c38c2L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetPrevInputByLabel");
   }
 }

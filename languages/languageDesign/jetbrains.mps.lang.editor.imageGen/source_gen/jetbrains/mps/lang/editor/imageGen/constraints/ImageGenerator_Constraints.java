@@ -16,12 +16,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ImageGenerator_Constraints extends BaseConstraintsDescriptor {
   public ImageGenerator_Constraints() {
-    super(CONCEPTS.ImageGenerator$pF);
+    super(CONCEPTS.ImageGenerator$Ng);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -29,22 +29,22 @@ public class ImageGenerator_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      return "Image_" + SPropertyOperations.getString(node, PROPS.fileName$eHsz);
+      return "Image_" + SPropertyOperations.getString(node, PROPS.fileName$tsQ8);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ImageGenerator$pF = MetaAdapterFactory.getConcept(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, "jetbrains.mps.lang.editor.imageGen.structure.ImageGenerator");
+    /*package*/ static final SConcept ImageGenerator$Ng = MetaAdapterFactory.getConcept(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, "jetbrains.mps.lang.editor.imageGen.structure.ImageGenerator");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty fileName$eHsz = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x20c051df23a9da87L, "fileName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty fileName$tsQ8 = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x20c051df23a9da87L, "fileName");
   }
 }

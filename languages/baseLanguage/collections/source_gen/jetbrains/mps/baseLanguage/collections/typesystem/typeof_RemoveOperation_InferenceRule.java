@@ -33,7 +33,7 @@ public class typeof_RemoveOperation_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RemoveOperation$P;
+    return CONCEPTS.RemoveOperation$f8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -60,6 +60,6 @@ public class typeof_RemoveOperation_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RemoveOperation$P = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120becad360L, "jetbrains.mps.baseLanguage.collections.structure.RemoveOperation");
+    /*package*/ static final SConcept RemoveOperation$f8 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120becad360L, "jetbrains.mps.baseLanguage.collections.structure.RemoveOperation");
   }
 }

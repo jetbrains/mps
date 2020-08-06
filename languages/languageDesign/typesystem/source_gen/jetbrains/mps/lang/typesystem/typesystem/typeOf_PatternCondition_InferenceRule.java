@@ -22,11 +22,11 @@ public class typeOf_PatternCondition_InferenceRule extends AbstractInferenceRule
     {
       SNode _nodeToCheck_1029348928467 = paternCondition;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1223981204949", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1223981204954", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(paternCondition, LINKS.pattern$XKpc), "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1175521901932", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1223981204954", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(paternCondition, LINKS.pattern$mAF2), "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1175521901932", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PatternCondition$hM;
+    return CONCEPTS.PatternCondition$zC;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,10 +36,10 @@ public class typeOf_PatternCondition_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink pattern$XKpc = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
+    /*package*/ static final SContainmentLink pattern$mAF2 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternCondition$hM = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, "jetbrains.mps.lang.typesystem.structure.PatternCondition");
+    /*package*/ static final SConcept PatternCondition$zC = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, "jetbrains.mps.lang.typesystem.structure.PatternCondition");
   }
 }

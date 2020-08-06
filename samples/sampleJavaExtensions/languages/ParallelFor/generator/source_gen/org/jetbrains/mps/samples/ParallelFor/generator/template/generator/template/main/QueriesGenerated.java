@@ -48,13 +48,13 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$7WwU), CONCEPTS.ParallelLoopVariable$H9);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$N1XG), CONCEPTS.ParallelLoopVariable$2L);
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(ContinueStatement__BehaviorDescriptor.getLoop_idhEwIA0E.invoke(_context.getNode()), CONCEPTS.ParallelFor$GE);
+    return SNodeOperations.isInstanceOf(ContinueStatement__BehaviorDescriptor.getLoop_idhEwIA0E.invoke(_context.getNode()), CONCEPTS.ParallelFor$2i);
   }
   public static boolean rule_Condition_4_0(final BaseMappingRuleContext _context) {
-    return TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.ArrayType$Yv) != null;
+    return TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.ArrayType$rh) != null;
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     return _context.createUniqueName("latch", null);
@@ -63,14 +63,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createUniqueName("exceptions", null);
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
-    if (!(SPropertyOperations.getBoolean(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$cpRM), PROPS.isFinal$_qt3))) {
-      _context.showErrorMessage(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$cpRM), "The loop variable must be final");
+    if (!(SPropertyOperations.getBoolean(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$q6dq), PROPS.isFinal$gvTP))) {
+      _context.showErrorMessage(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$q6dq), "The loop variable must be final");
     }
 
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$cpRM), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$q6dq), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getInteger(_context.getNode(), PROPS.numberOfThreads$z3SX);
+    return SPropertyOperations.getInteger(_context.getNode(), PROPS.numberOfThreads$KKe_);
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     return _context.getNode();
@@ -79,40 +79,40 @@ public class QueriesGenerated extends QueryProviderBase {
     return "localA";
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
-    return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.nowait$302I));
+    return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.nowait$gGom));
   }
   public static boolean ifMacro_Condition_1_1(final IfMacroContext _context) {
-    return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.nowait$302I));
+    return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.nowait$gGom));
   }
   public static boolean ifMacro_Condition_1_2(final IfMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$CcyW) == null;
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$PSS$) == null;
   }
   public static boolean ifMacro_Condition_1_3(final IfMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$CcyW) != null;
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$PSS$) != null;
   }
   public static boolean ifMacro_Condition_1_4(final IfMacroContext _context) {
-    return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.nowait$302I));
+    return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.nowait$gGom));
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.inputSequence$Y8uT);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.inputSequence$bOOx);
   }
   public static SNode sourceNodeQuery_1_1(final SourceSubstituteMacroNodeContext _context) {
-    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$cpRM));
+    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$q6dq));
   }
   public static SNode sourceNodeQuery_1_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$CcyW);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.threadPool$PSS$);
   }
   public static SNode sourceNodeQuery_1_3(final SourceSubstituteMacroNodeContext _context) {
-    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$cpRM));
+    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.loopVariable$q6dq));
   }
   public static SNode sourceNodeQuery_1_4(final SourceSubstituteMacroNodeContext _context) {
-    return SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.inputSequence$Y8uT));
+    return SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.inputSequence$bOOx));
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.body$wVZ$), LINKS.statement$pYcS);
+    return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.body$c1sm), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_1_1(final SourceSubstituteMacroNodesContext _context) {
-    return SetSequence.fromSet(StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.body$wVZ$), ((boolean) false))).where(new IWhereFilter<SNode>() {
+    return SetSequence.fromSet(StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.body$c1sm), ((boolean) false))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.is(it, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~RuntimeException")));
       }
@@ -340,24 +340,24 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink loopVariable$cpRM = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e8810c2L, "loopVariable");
-    /*package*/ static final SContainmentLink threadPool$CcyW = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
-    /*package*/ static final SContainmentLink inputSequence$Y8uT = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence");
-    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink loopVariable$q6dq = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e8810c2L, "loopVariable");
+    /*package*/ static final SContainmentLink threadPool$PSS$ = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
+    /*package*/ static final SContainmentLink inputSequence$bOOx = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence");
+    /*package*/ static final SContainmentLink body$c1sm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParallelLoopVariable$H9 = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770abL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelLoopVariable");
-    /*package*/ static final SConcept ParallelFor$GE = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor");
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept ParallelLoopVariable$2L = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770abL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelLoopVariable");
+    /*package*/ static final SConcept ParallelFor$2i = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty numberOfThreads$z3SX = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x8c9905a80efd03cL, 0x8c9905a80efd045L, "numberOfThreads");
-    /*package*/ static final SProperty nowait$302I = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x74391c966b0f1304L, "nowait");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty numberOfThreads$KKe_ = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x8c9905a80efd03cL, 0x8c9905a80efd045L, "numberOfThreads");
+    /*package*/ static final SProperty nowait$gGom = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x74391c966b0f1304L, "nowait");
   }
 }

@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InferenceRule_Constraints extends BaseConstraintsDescriptor {
   public InferenceRule_Constraints() {
-    super(CONCEPTS.InferenceRule$Ad);
+    super(CONCEPTS.InferenceRule$S3);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class InferenceRule_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "1227088438466");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InferenceRule$Ad = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
+    /*package*/ static final SConcept InferenceRule$S3 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
   }
 }

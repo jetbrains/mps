@@ -49,7 +49,7 @@ public class TextEditorHelper {
   }
 
   public static void insertLineIntoLines(SNode currentLine, SNode currentNode, SNode lineToInsert) {
-    SNode restOfLine = Line__BehaviorDescriptor.split_id1YnOZxANc9P.invoke(currentLine, SNodeOperations.as(currentNode, CONCEPTS.TextElement$Ue));
+    SNode restOfLine = Line__BehaviorDescriptor.split_id1YnOZxANc9P.invoke(currentLine, SNodeOperations.as(currentNode, CONCEPTS.TextElement$WN));
     if ((restOfLine != null) && !((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(restOfLine))) {
       SNodeOperations.insertNextSiblingChild(currentLine, restOfLine);
     }
@@ -57,6 +57,6 @@ public class TextEditorHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextElement$Ue = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
   }
 }

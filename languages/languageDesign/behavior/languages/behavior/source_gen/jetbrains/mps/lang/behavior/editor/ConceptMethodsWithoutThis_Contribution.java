@@ -63,7 +63,7 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
   public class SMP_Group_lcxjkp_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return false && SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.ConceptMethodDeclaration$VN, CONCEPTS.ConceptConstructorDeclaration$wi}, true, false) != null;
+      return false && SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.ConceptMethodDeclaration$N0, CONCEPTS.ConceptConstructorDeclaration$nv}, true, false) != null;
     }
     @NotNull
     @Override
@@ -79,7 +79,7 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_lcxjkp_a0(), CONCEPTS.DotExpression$6a));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_lcxjkp_a0(), CONCEPTS.DotExpression$yW));
     }
     private class SMP_Param_lcxjkp_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -101,8 +101,8 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        SNode behavior = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ConceptBehavior$8P, true, false);
-        return AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(SLinkOperations.getTarget(behavior, LINKS.concept$45m$), _context.getParentNode());
+        SNode behavior = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ConceptBehavior$2, true, false);
+        return AbstractConceptDeclaration__BehaviorDescriptor.getVisibleConceptMethods_idwrIPXhfIPX.invoke(SLinkOperations.getTarget(behavior, LINKS.concept$u6dL), _context.getParentNode());
       }
       private class SMP_Action_lcxjkp_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;
@@ -137,7 +137,7 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.DotExpression$6a, context);
+            super(CONCEPTS.DotExpression$yW, context);
             _context = context;
           }
 
@@ -148,11 +148,11 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
-            SNodeFactoryOperations.setNewChild(expr, LINKS.operand$P1i5, CONCEPTS.ThisNodeExpression$BO);
-            SNode call = SNodeFactoryOperations.createNewNode(CONCEPTS.Node_ConceptMethodCall$l3, null);
-            SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$ItxI, myParameterObject);
-            SLinkOperations.setTarget(expr, LINKS.operation$_mGS, call);
+            SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$yW, null);
+            SNodeFactoryOperations.setNewChild(expr, LINKS.operand$w6IR, CONCEPTS.ThisNodeExpression$v1);
+            SNode call = SNodeFactoryOperations.createNewNode(CONCEPTS.Node_ConceptMethodCall$mz, null);
+            SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$pyYw, myParameterObject);
+            SLinkOperations.setTarget(expr, LINKS.operation$gs9E, call);
             return expr;
           }
 
@@ -162,7 +162,7 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.DotExpression$6a, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.DotExpression$yW, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -195,18 +195,18 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
-    /*package*/ static final SConcept ConceptConstructorDeclaration$wi = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
-    /*package*/ static final SConcept ThisNodeExpression$BO = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");
-    /*package*/ static final SConcept Node_ConceptMethodCall$l3 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptConstructorDeclaration$nv = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept ThisNodeExpression$v1 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");
+    /*package*/ static final SConcept Node_ConceptMethodCall$mz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink concept$u6dL = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

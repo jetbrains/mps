@@ -30,7 +30,7 @@ public class MethodsScope extends Scope {
   public MethodsScope(Iterable<SNode> methods, Map<SNode, SNode> typeByTypeVariable) {
     nameToMethods = MapSequence.fromMap(new HashMap<String, List<SNode>>());
     for (SNode method : Sequence.fromIterable(methods)) {
-      String name = SPropertyOperations.getString(method, PROPS.name$lA7v);
+      String name = SPropertyOperations.getString(method, PROPS.name$MnvL);
       if (name != null) {
         if (MapSequence.fromMap(nameToMethods).containsKey(name)) {
           ListSequence.fromList(MapSequence.fromMap(nameToMethods).get(name)).addElement(method);
@@ -61,15 +61,15 @@ public class MethodsScope extends Scope {
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$kD), PROPS.name$MnvL);
   }
   @Override
   public boolean contains(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$RR))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD))) {
       return false;
     }
-    String name = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR), PROPS.name$lA7v);
-    return MapSequence.fromMap(nameToMethods).containsKey(name) && ListSequence.fromList(MapSequence.fromMap(nameToMethods).get(name)).contains(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR));
+    String name = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$kD), PROPS.name$MnvL);
+    return MapSequence.fromMap(nameToMethods).containsKey(name) && ListSequence.fromList(MapSequence.fromMap(nameToMethods).get(name)).contains(SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$kD));
   }
   @Nullable
   @Override
@@ -81,10 +81,10 @@ public class MethodsScope extends Scope {
     if (methods.size() == 1) {
       return ListSequence.fromList(methods).first();
     }
-    if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.IMethodCall$ln))) {
+    if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.IMethodCall$M9))) {
       return null;
     }
-    List<SNode> actualArguments = SLinkOperations.getChildren((SNodeOperations.cast(contextNode, CONCEPTS.IMethodCall$ln)), LINKS.actualArgument$ItKJ);
+    List<SNode> actualArguments = SLinkOperations.getChildren((SNodeOperations.cast(contextNode, CONCEPTS.IMethodCall$M9)), LINKS.actualArgument$pzdx);
 
     methods = MethodResolveUtil.selectByParmCount(methods, actualArguments);
     if (methods.size() == 1) {
@@ -101,20 +101,20 @@ public class MethodsScope extends Scope {
   }
   private static Map<SNode, SNode> calcTypeBindings(SNode classifierType) {
     SNode classifier = IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifierType);
-    return ((classifier != null) ? MethodResolveUtil.getTypesByTypeVars(SNodeOperations.cast(classifier, CONCEPTS.Classifier$hJ), IClassifierType__BehaviorDescriptor.getTypeParameters_id6r77ob2URYe.invoke(classifierType)) : new HashMap<SNode, SNode>());
+    return ((classifier != null) ? MethodResolveUtil.getTypesByTypeVars(SNodeOperations.cast(classifier, CONCEPTS.Classifier$Ix), IClassifierType__BehaviorDescriptor.getTypeParameters_id6r77ob2URYe.invoke(classifierType)) : new HashMap<SNode, SNode>());
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

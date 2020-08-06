@@ -21,7 +21,7 @@ public class typeof_EditorNodeExpression_InferenceRule extends AbstractInference
   public typeof_EditorNodeExpression_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode editorComponent = SNodeOperations.cast(SNodeOperations.getContainingRoot(node), CONCEPTS.BaseEditorComponent$Sy);
+    SNode editorComponent = SNodeOperations.cast(SNodeOperations.getContainingRoot(node), CONCEPTS.BaseEditorComponent$49);
     if (editorComponent != null) {
       {
         SNode _nodeToCheck_1029348928467 = node;
@@ -31,7 +31,7 @@ public class typeof_EditorNodeExpression_InferenceRule extends AbstractInference
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ThisEditorNodeExpression$F0;
+    return CONCEPTS.ThisEditorNodeExpression$yN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -48,7 +48,7 @@ public class typeof_EditorNodeExpression_InferenceRule extends AbstractInference
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseEditorComponent$Sy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, "jetbrains.mps.lang.editor.structure.BaseEditorComponent");
-    /*package*/ static final SConcept ThisEditorNodeExpression$F0 = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x2cd0b06754b27e2fL, "jetbrains.mps.lang.editor.diagram.structure.ThisEditorNodeExpression");
+    /*package*/ static final SConcept BaseEditorComponent$49 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, "jetbrains.mps.lang.editor.structure.BaseEditorComponent");
+    /*package*/ static final SConcept ThisEditorNodeExpression$yN = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x2cd0b06754b27e2fL, "jetbrains.mps.lang.editor.diagram.structure.ThisEditorNodeExpression");
   }
 }

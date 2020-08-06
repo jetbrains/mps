@@ -28,7 +28,7 @@ public class DropRootRule_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_tkfh39_a(), CONCEPTS.DropRootRule$d7));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_tkfh39_a(), CONCEPTS.DropRootRule$SN));
     result.add(new SMP_Subconcepts_tkfh39_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class DropRootRule_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_tkfh39_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DropRootRule$d7, LINKS.applicableConcept$YaXN);
+      super((SAbstractConcept) CONCEPTS.DropRootRule$SN, LINKS.applicableConcept$n7Dv);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class DropRootRule_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_tkfh39_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DropRootRule$d7);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DropRootRule$SN);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class DropRootRule_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DropRootRule$d7 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11c0acf58efL, "jetbrains.mps.lang.generator.structure.DropRootRule");
+    /*package*/ static final SConcept DropRootRule$SN = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11c0acf58efL, "jetbrains.mps.lang.generator.structure.DropRootRule");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$YaXN = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11c0acf58efL, 0x11c0ad36598L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$n7Dv = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11c0acf58efL, 0x11c0ad36598L, "applicableConcept");
   }
 }

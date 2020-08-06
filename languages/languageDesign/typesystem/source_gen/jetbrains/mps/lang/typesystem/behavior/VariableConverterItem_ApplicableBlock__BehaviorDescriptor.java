@@ -35,11 +35,11 @@ public final class VariableConverterItem_ApplicableBlock__BehaviorDescriptor ext
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_var$FQ);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_ContextNode$in);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_Role$WS);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_isAggregation$wc);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_var$XG);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_ContextNode$$d);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_Role$eI);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_isAggregation$M2);
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -101,10 +101,10 @@ public final class VariableConverterItem_ApplicableBlock__BehaviorDescriptor ext
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept ConceptFunctionParameter_var$FQ = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e07431ba7L, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_var");
-    /*package*/ static final SConcept ConceptFunctionParameter_ContextNode$in = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e078ffb82L, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_ContextNode");
-    /*package*/ static final SConcept ConceptFunctionParameter_Role$WS = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e078e410eL, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_Role");
-    /*package*/ static final SConcept ConceptFunctionParameter_isAggregation$wc = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e078ecdbdL, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_isAggregation");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ConceptFunctionParameter_var$XG = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e07431ba7L, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_var");
+    /*package*/ static final SConcept ConceptFunctionParameter_ContextNode$$d = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e078ffb82L, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_ContextNode");
+    /*package*/ static final SConcept ConceptFunctionParameter_Role$eI = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e078e410eL, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_Role");
+    /*package*/ static final SConcept ConceptFunctionParameter_isAggregation$M2 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e078ecdbdL, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_isAggregation");
   }
 }

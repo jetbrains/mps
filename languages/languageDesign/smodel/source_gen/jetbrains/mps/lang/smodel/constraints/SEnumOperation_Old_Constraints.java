@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SEnumOperation_Old_Constraints extends BaseConstraintsDescriptor {
   public SEnumOperation_Old_Constraints() {
-    super(CONCEPTS.SEnumOperation_Old$gv);
+    super(CONCEPTS.SEnumOperation_Old$hZ);
   }
 
   @Override
@@ -38,12 +38,12 @@ public class SEnumOperation_Old_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.SEnumOperationInvocation$$b);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.SEnumOperationInvocation$_F);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)", "1227128029536563490");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept SEnumOperation_Old$gv = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37273dL, "jetbrains.mps.lang.smodel.structure.SEnumOperation_Old");
-    /*package*/ static final SConcept SEnumOperationInvocation$$b = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, "jetbrains.mps.lang.smodel.structure.SEnumOperationInvocation");
+    /*package*/ static final SInterfaceConcept SEnumOperation_Old$hZ = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37273dL, "jetbrains.mps.lang.smodel.structure.SEnumOperation_Old");
+    /*package*/ static final SConcept SEnumOperationInvocation$_F = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, "jetbrains.mps.lang.smodel.structure.SEnumOperationInvocation");
   }
 }

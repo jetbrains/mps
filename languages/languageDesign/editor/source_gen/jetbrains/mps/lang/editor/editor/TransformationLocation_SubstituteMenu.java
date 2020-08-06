@@ -60,7 +60,7 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
       super.initialize(_context);
       condition = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.locations$hQw0);
+          return Objects.equals(_context.getLink(), LINKS.locations$m8FB);
         }
       }.compute();
     }
@@ -99,13 +99,13 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_fvfxl9_a0a(), CONCEPTS.TransformationLocation$2W));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_fvfxl9_a0a(), CONCEPTS.TransformationLocation$ez));
       }
       public class SMP_Concepts_fvfxl9_a0a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(SubstituteMenuContext _context) {
-          Iterable<SConcept> result = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationLocation$2W, _context.getParentNode(), LINKS.locations$hQw0, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
+          Iterable<SConcept> result = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationLocation$ez, _context.getParentNode(), LINKS.locations$m8FB, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
             public SConcept select(SAbstractConcept it) {
-              return SNodeOperations.castConcept(it, CONCEPTS.TransformationLocation$2W);
+              return SNodeOperations.castConcept(it, CONCEPTS.TransformationLocation$ez);
             }
           });
           return Sequence.fromIterable(result).toListSequence();
@@ -163,7 +163,7 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
       }
       public class SMP_Subconcepts_fvfxl9_a1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TransformationLocation$2W);
+          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TransformationLocation$ez);
         }
         @NotNull
         @Override
@@ -186,10 +186,10 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink locations$hQw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
+    /*package*/ static final SContainmentLink locations$m8FB = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationLocation$2W = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation");
+    /*package*/ static final SConcept TransformationLocation$ez = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa6L, "jetbrains.mps.lang.editor.structure.TransformationLocation");
   }
 }

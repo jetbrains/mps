@@ -32,10 +32,10 @@
       <node id="1227128029536582722" at="78,128,79,76" concept="5" />
       <node id="7943979732673275737" at="81,0,82,0" concept="7" trace="canBeChildBreakingPoint" />
       <node id="7943979732673275737" at="82,0,83,0" concept="7" trace="breakingNode_fz49k4_a0a0a0a0a1a0a0a0d" />
-      <node id="7943979732673275737" at="85,0,86,0" concept="7" trace="EventReference$2D" />
-      <node id="7943979732673275737" at="86,0,87,0" concept="7" trace="Transition$O7" />
-      <node id="7943979732673275737" at="90,0,91,0" concept="7" trace="event$u1kw" />
-      <node id="7943979732673275737" at="91,0,92,0" concept="7" trace="events$CMf1" />
+      <node id="7943979732673275737" at="85,0,86,0" concept="7" trace="EventReference$dP" />
+      <node id="7943979732673275737" at="86,0,87,0" concept="7" trace="Transition$Zj" />
+      <node id="7943979732673275737" at="90,0,91,0" concept="7" trace="event$qnvG" />
+      <node id="7943979732673275737" at="91,0,92,0" concept="7" trace="events$_8qd" />
       <node id="7943979732673275737" at="33,0,36,0" concept="0" trace="EventReference_Constraints#()V" />
       <node id="7943979732673275737" at="43,0,46,9" concept="2" />
       <node id="7943979732673275737" at="78,0,81,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -101,8 +101,8 @@
       <node id="7943979732673457901" at="34,0,35,22" concept="5" />
       <node id="1227128029536582715" at="39,128,40,78" concept="5" />
       <node id="7943979732673457901" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="7943979732673457901" at="45,0,46,0" concept="7" trace="AbstractStateMachineElement$ma" />
-      <node id="7943979732673457901" at="46,0,47,0" concept="7" trace="StateMachine$$0" />
+      <node id="7943979732673457901" at="45,0,46,0" concept="7" trace="AbstractStateMachineElement$xm" />
+      <node id="7943979732673457901" at="46,0,47,0" concept="7" trace="StateMachine$Jc" />
       <node id="7943979732673457901" at="20,0,23,0" concept="0" trace="AbstractStateMachineElement_Constraints#()V" />
       <node id="7943979732673457901" at="30,0,33,9" concept="2" />
       <node id="7943979732673457901" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -150,10 +150,10 @@
       <node id="1227128029536582708" at="78,128,79,76" concept="5" />
       <node id="7943979732673497617" at="81,0,82,0" concept="7" trace="canBeChildBreakingPoint" />
       <node id="7943979732673497617" at="82,0,83,0" concept="7" trace="breakingNode_fj6pw8_a0a0a0a0a1a0a0a0d" />
-      <node id="7943979732673497617" at="85,0,86,0" concept="7" trace="StateReference$1F" />
-      <node id="7943979732673497617" at="86,0,87,0" concept="7" trace="Transition$O7" />
-      <node id="7943979732673497617" at="90,0,91,0" concept="7" trace="state$u0Pw" />
-      <node id="7943979732673497617" at="91,0,92,0" concept="7" trace="states$CMH3" />
+      <node id="7943979732673497617" at="85,0,86,0" concept="7" trace="StateReference$cR" />
+      <node id="7943979732673497617" at="86,0,87,0" concept="7" trace="Transition$Zj" />
+      <node id="7943979732673497617" at="90,0,91,0" concept="7" trace="state$qn0G" />
+      <node id="7943979732673497617" at="91,0,92,0" concept="7" trace="states$_8Sf" />
       <node id="7943979732673497617" at="33,0,36,0" concept="0" trace="StateReference_Constraints#()V" />
       <node id="7943979732673497617" at="43,0,46,9" concept="2" />
       <node id="7943979732673497617" at="78,0,81,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

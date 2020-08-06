@@ -33,7 +33,7 @@ public class DropEnumPropertyMigrationAttribute_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SNode node = event.getData(MPSCommonDataKeys.NODE);
-    return (AttributeOperations.getAttribute(SNodeOperations.getNodeAncestor(node, CONCEPTS.PropertyDeclaration$c5, true, false), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$Yg)) != null);
+    return (AttributeOperations.getAttribute(SNodeOperations.getNodeAncestor(node, CONCEPTS.PropertyDeclaration$1S, true, false), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3)) != null);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -55,7 +55,7 @@ public class DropEnumPropertyMigrationAttribute_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     SNode node = event.getData(MPSCommonDataKeys.NODE);
-    SNode migrationInfoAttribute = AttributeOperations.getAttribute(SNodeOperations.getNodeAncestor(node, CONCEPTS.PropertyDeclaration$c5, true, false), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$Yg));
+    SNode migrationInfoAttribute = AttributeOperations.getAttribute(SNodeOperations.getNodeAncestor(node, CONCEPTS.PropertyDeclaration$1S, true, false), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3));
 
     int result = Messages.showOkCancelDialog("<html>Enum Property migration's attribute is required for migration of projects that might depend on containing language. Consider keeping the attribute until the moment when all dependent projects should be migrated.</html>", "Drop Enum Property Migration's Attribute", "Drop Attribute", "Cancel", null);
 
@@ -65,7 +65,7 @@ public class DropEnumPropertyMigrationAttribute_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
-    /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo$O3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 }

@@ -31,14 +31,14 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
         {
           SNode matchingNode_n3qbw2_a0a = binaryOperation;
           if (matchingNode_n3qbw2_a0a != null) {
-            matches_n3qbw2_a0a = matchingNode_n3qbw2_a0a.getConcept().isSubConceptOf(CONCEPTS.MulExpression$8_);
+            matches_n3qbw2_a0a = matchingNode_n3qbw2_a0a.getConcept().isSubConceptOf(CONCEPTS.MulExpression$_n);
           }
         }
         if (matches_n3qbw2_a0a) {
-          if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx)), CONCEPTS.MatrixType$qA) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)), CONCEPTS.MatrixType$qA)) {
-            int lc = SPropertyOperations.getInteger(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx)), CONCEPTS.MatrixType$qA), PROPS.columns$bkBE);
-            int rr = SPropertyOperations.getInteger(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)), CONCEPTS.MatrixType$qA), PROPS.rows$bkoD);
-            if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$lndx)), CONCEPTS.MatrixType$qA) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$li3b)), CONCEPTS.MatrixType$qA)) {
+          if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$sEj)), CONCEPTS.MatrixType$cY) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$nvX)), CONCEPTS.MatrixType$cY)) {
+            int lc = SPropertyOperations.getInteger(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$sEj)), CONCEPTS.MatrixType$cY), PROPS.columns$STq2);
+            int rr = SPropertyOperations.getInteger(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$nvX)), CONCEPTS.MatrixType$cY), PROPS.rows$STb1);
+            if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$sEj)), CONCEPTS.MatrixType$cY) && SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$nvX)), CONCEPTS.MatrixType$cY)) {
               if (lc != 0 && rr != 0 && rr != lc) {
                 {
                   final MessageTarget errorTarget = new NodeMessageTarget();
@@ -52,7 +52,7 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
           {
             SNode matchingNode_n3qbw2_b0a = binaryOperation;
             if (matchingNode_n3qbw2_b0a != null) {
-              matches_n3qbw2_b0a = matchingNode_n3qbw2_b0a.getConcept().isSubConceptOf(CONCEPTS.PlusExpression$Re);
+              matches_n3qbw2_b0a = matchingNode_n3qbw2_b0a.getConcept().isSubConceptOf(CONCEPTS.PlusExpression$k0);
             }
           }
           if (matches_n3qbw2_b0a) {
@@ -67,7 +67,7 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
             {
               SNode matchingNode_n3qbw2_c0a = binaryOperation;
               if (matchingNode_n3qbw2_c0a != null) {
-                matches_n3qbw2_c0a = matchingNode_n3qbw2_c0a.getConcept().isSubConceptOf(CONCEPTS.MinusExpression$E9);
+                matches_n3qbw2_c0a = matchingNode_n3qbw2_c0a.getConcept().isSubConceptOf(CONCEPTS.MinusExpression$6V);
               }
             }
             if (matches_n3qbw2_c0a) {
@@ -84,7 +84,7 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BinaryOperation$vf;
+    return CONCEPTS.BinaryOperation$W1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -94,20 +94,20 @@ public class check_dimensions_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MulExpression$8_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfe476b758fL, "jetbrains.mps.baseLanguage.structure.MulExpression");
-    /*package*/ static final SConcept MatrixType$qA = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType");
-    /*package*/ static final SConcept PlusExpression$Re = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression");
-    /*package*/ static final SConcept MinusExpression$E9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f5L, "jetbrains.mps.baseLanguage.structure.MinusExpression");
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept MulExpression$_n = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfe476b758fL, "jetbrains.mps.baseLanguage.structure.MulExpression");
+    /*package*/ static final SConcept MatrixType$cY = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType");
+    /*package*/ static final SConcept PlusExpression$k0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression");
+    /*package*/ static final SConcept MinusExpression$6V = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f5L, "jetbrains.mps.baseLanguage.structure.MinusExpression");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty columns$bkBE = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
-    /*package*/ static final SProperty rows$bkoD = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
+    /*package*/ static final SProperty columns$STq2 = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
+    /*package*/ static final SProperty rows$STb1 = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
   }
 }

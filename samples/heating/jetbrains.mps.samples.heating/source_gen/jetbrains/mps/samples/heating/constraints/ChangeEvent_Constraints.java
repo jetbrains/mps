@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ChangeEvent_Constraints extends BaseConstraintsDescriptor {
   public ChangeEvent_Constraints() {
-    super(CONCEPTS.ChangeEvent$Gi);
+    super(CONCEPTS.ChangeEvent$WH);
   }
 
   public static class Temperature_Property extends BasePropertyConstraintsDescriptor {
     public Temperature_Property(ConstraintsDescriptor container) {
-      super(PROPS.temperature$BY7y, container);
+      super(PROPS.temperature$7jnX, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,15 +45,15 @@ public class ChangeEvent_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.temperature$BY7y, new Temperature_Property(this));
+    properties.put(PROPS.temperature$7jnX, new Temperature_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChangeEvent$Gi = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, "jetbrains.mps.samples.heating.structure.ChangeEvent");
+    /*package*/ static final SConcept ChangeEvent$WH = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, "jetbrains.mps.samples.heating.structure.ChangeEvent");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty temperature$BY7y = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, 0x4644aa4ce08aec70L, "temperature");
+    /*package*/ static final SProperty temperature$7jnX = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L, 0x4644aa4ce08aec70L, "temperature");
   }
 }

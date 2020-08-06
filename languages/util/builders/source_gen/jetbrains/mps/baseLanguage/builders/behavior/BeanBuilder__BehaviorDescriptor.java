@@ -38,10 +38,10 @@ public final class BeanBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getCreatorExpression_id67LR$5LQRIR(@NotNull SNode __thisNode__, SNode parentRef) {
-    return _quotation_createNode_ef9w03_a0a0(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$ItKJ), SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI));
+    return _quotation_createNode_ef9w03_a0a0(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$pzdx), SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw));
   }
   /*package*/ static SNode getResultType_id67LR$5LQPoF(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_ef9w03_a0a1(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI)), CONCEPTS.ClassConcept$IY));
+    return _quotation_createNode_ef9w03_a0a1(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw)), CONCEPTS.ClassConcept$bK));
   }
 
   /*package*/ BeanBuilder__BehaviorDescriptor() {
@@ -117,11 +117,11 @@ public final class BeanBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

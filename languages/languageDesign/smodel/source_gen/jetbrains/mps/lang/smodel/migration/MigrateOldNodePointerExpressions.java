@@ -50,11 +50,11 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
           return scope_5d7h7i_a0e_0;
         }
       };
-      for (SNode node : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$1$, false))) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)).isNotEmpty()) {
-          AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$E1), createReviewMigration_old_5d7h7i_a0a0a0a0a0a6());
+      for (SNode node : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$34, false))) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).isNotEmpty()) {
+          AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j), createReviewMigration_old_5d7h7i_a0a0a0a0a0a6());
         } else {
-          SNode replacement = createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(NodePointerMigrations.nodeIdentityForNamedNode(SLinkOperations.getTarget(node, LINKS.referentNode$VwM0)));
+          SNode replacement = createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(NodePointerMigrations.nodeIdentityForNamedNode(SLinkOperations.getTarget(node, LINKS.referentNode$vTNw)));
           if (!(NodePointerMigrations.isSafeToReplace(node))) {
             replacement = createSemanticDowncastExpression_5d7h7i_a0a0b0a0a0a0a6(replacement);
           }
@@ -73,7 +73,7 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
           return scope_5d7h7i_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$1$, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$34, false)).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
         public DeprecatedConceptNotMigratedProblem select(SNode it) {
           return new DeprecatedConceptNotMigratedProblem(it);
         }
@@ -85,40 +85,40 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
   }
 
   private static SNode createReviewMigration_old_5d7h7i_a0a0a0a0a0a6() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ReviewMigration_old$E1);
-    n0.setProperty(PROPS.readableId$scJA, "MigrateOldNodePointerExpressions");
-    n0.setProperty(PROPS.reasonShort$DWK1, "Couldn't migrate node with attributes");
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ReviewMigration_old$2j);
+    n0.setProperty(PROPS.readableId$SY7S, "MigrateOldNodePointerExpressions");
+    n0.setProperty(PROPS.reasonShort$6I8j, "Couldn't migrate node with attributes");
     return n0.getResult();
   }
   private static SNode createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
-    n0.forChild(LINKS.ref$GPtX).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$Fo);
+    n0.forChild(LINKS.ref$hevt).initNode(p0, CONCEPTS.NodeIdentity$8R, true);
     return n0.getResult();
   }
   private static SNode createSemanticDowncastExpression_5d7h7i_a0a0b0a0a0a0a6(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SemanticDowncastExpression$us);
-    n0.forChild(LINKS.leftExpression$rxtC).initNode(p0, CONCEPTS.Expression$TP, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SemanticDowncastExpression$vW);
+    n0.forChild(LINKS.leftExpression$ZUv8).initNode(p0, CONCEPTS.Expression$mB, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReviewMigration_old$E1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, "jetbrains.mps.lang.core.structure.ReviewMigration_old");
-    /*package*/ static final SConcept NodePointerExpression_Old$1$ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression_Old");
-    /*package*/ static final SConcept NodePointerExpression$DS = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression");
-    /*package*/ static final SInterfaceConcept NodeIdentity$tk = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
-    /*package*/ static final SConcept SemanticDowncastExpression$us = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, "jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept ReviewMigration_old$2j = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, "jetbrains.mps.lang.core.structure.ReviewMigration_old");
+    /*package*/ static final SConcept NodePointerExpression_Old$34 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression_Old");
+    /*package*/ static final SConcept NodePointerExpression$Fo = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression");
+    /*package*/ static final SInterfaceConcept NodeIdentity$8R = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
+    /*package*/ static final SConcept SemanticDowncastExpression$vW = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, "jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SReferenceLink referentNode$VwM0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x195fd0576ac9bb4aL, "referentNode");
-    /*package*/ static final SContainmentLink ref$GPtX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
-    /*package*/ static final SContainmentLink leftExpression$rxtC = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, 0x10aaf6f6e81L, "leftExpression");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SReferenceLink referentNode$vTNw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x195fd0576ac9bb4aL, "referentNode");
+    /*package*/ static final SContainmentLink ref$hevt = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
+    /*package*/ static final SContainmentLink leftExpression$ZUv8 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, 0x10aaf6f6e81L, "leftExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty readableId$scJA = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e9f6eaL, "readableId");
-    /*package*/ static final SProperty reasonShort$DWK1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
+    /*package*/ static final SProperty readableId$SY7S = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e9f6eaL, "readableId");
+    /*package*/ static final SProperty reasonShort$6I8j = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
   }
 }

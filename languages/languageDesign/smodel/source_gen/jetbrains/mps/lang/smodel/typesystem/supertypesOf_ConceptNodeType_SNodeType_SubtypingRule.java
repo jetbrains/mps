@@ -22,9 +22,9 @@ public class supertypesOf_ConceptNodeType_SNodeType_SubtypingRule extends Subtyp
   public supertypesOf_ConceptNodeType_SNodeType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode conceptType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode concept = SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$gN0r);
+    SNode concept = SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$Pc1V);
     if (concept != null) {
-      if (SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$qU) && !(SNodeOperations.is(concept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))) {
+      if (SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$gH) && !(SNodeOperations.is(concept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))) {
         return _quotation_createNode_aqm90v_a0a0a1a1();
       }
       // commented out because: 
@@ -35,7 +35,7 @@ public class supertypesOf_ConceptNodeType_SNodeType_SubtypingRule extends Subtyp
     return _quotation_createNode_aqm90v_a2a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptNodeType$7y;
+    return CONCEPTS.ConceptNodeType$92;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -59,11 +59,11 @@ public class supertypesOf_ConceptNodeType_SNodeType_SubtypingRule extends Subtyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaraton$gN0r = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink conceptDeclaraton$Pc1V = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, 0x112da284156L, "conceptDeclaraton");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept ConceptNodeType$7y = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, "jetbrains.mps.lang.smodel.structure.ConceptNodeType");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept ConceptNodeType$92 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110f9b63680L, "jetbrains.mps.lang.smodel.structure.ConceptNodeType");
   }
 }

@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConfigurationFromExecutorReference_Constraints extends BaseConstraintsDescriptor {
   public ConfigurationFromExecutorReference_Constraints() {
-    super(CONCEPTS.ConfigurationFromExecutorReference$mM);
+    super(CONCEPTS.ConfigurationFromExecutorReference$3p);
   }
 
   @Override
@@ -46,7 +46,7 @@ public class ConfigurationFromExecutorReference_Constraints extends BaseConstrai
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -54,27 +54,27 @@ public class ConfigurationFromExecutorReference_Constraints extends BaseConstrai
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(ConfigurationFromExecutorReference__BehaviorDescriptor.getExecutor_id6LlKjXrML19.invoke(node), PROPS.configurationName$t6JX);
+      return SPropertyOperations.getString(ConfigurationFromExecutorReference__BehaviorDescriptor.getExecutor_id6LlKjXrML19.invoke(node), PROPS.configurationName$Ks$);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(parentNode), CONCEPTS.AbstractRunConfigurationExecutor$YM);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(parentNode), CONCEPTS.AbstractRunConfigurationExecutor$Fp);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:d6e5159c-3299-41f5-8a8a-81b5b79d5073(jetbrains.mps.execution.configurations.constraints)", "1227128029536565993");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConfigurationFromExecutorReference$mM = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bcac62fL, "jetbrains.mps.execution.configurations.structure.ConfigurationFromExecutorReference");
-    /*package*/ static final SConcept AbstractRunConfigurationExecutor$YM = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
+    /*package*/ static final SConcept ConfigurationFromExecutorReference$3p = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bcac62fL, "jetbrains.mps.execution.configurations.structure.ConfigurationFromExecutorReference");
+    /*package*/ static final SConcept AbstractRunConfigurationExecutor$Fp = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty configurationName$t6JX = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x1acdeec3ca0ad49cL, "configurationName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty configurationName$Ks$ = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x1acdeec3ca0ad49cL, "configurationName");
   }
 }

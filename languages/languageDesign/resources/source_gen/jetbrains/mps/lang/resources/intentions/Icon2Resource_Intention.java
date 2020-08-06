@@ -51,8 +51,8 @@ public final class Icon2Resource_Intention extends AbstractIntentionDescriptor i
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode icon = SLinkOperations.getTarget(node, LINKS.icon$SiRx);
-      SLinkOperations.setTarget(SNodeOperations.replaceWithNewChild(node, CONCEPTS.IconResourceExpression$eJ), LINKS.icon$_jjk, icon);
+      SNode icon = SLinkOperations.getTarget(node, LINKS.icon$OBvj);
+      SLinkOperations.setTarget(SNodeOperations.replaceWithNewChild(node, CONCEPTS.IconResourceExpression$Qx), LINKS.icon$xBV6, icon);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -61,11 +61,11 @@ public final class Icon2Resource_Intention extends AbstractIntentionDescriptor i
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink icon$SiRx = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c3L, 0x7c8b08a50a39c6c5L, "icon");
-    /*package*/ static final SContainmentLink icon$_jjk = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x52fb86deea79455eL, 0x52fb86deea79b940L, "icon");
+    /*package*/ static final SContainmentLink icon$OBvj = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c3L, 0x7c8b08a50a39c6c5L, "icon");
+    /*package*/ static final SContainmentLink icon$xBV6 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x52fb86deea79455eL, 0x52fb86deea79b940L, "icon");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IconResourceExpression$eJ = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x52fb86deea79455eL, "jetbrains.mps.lang.resources.structure.IconResourceExpression");
+    /*package*/ static final SConcept IconResourceExpression$Qx = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x52fb86deea79455eL, "jetbrains.mps.lang.resources.structure.IconResourceExpression");
   }
 }

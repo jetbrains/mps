@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Require_Constraints extends BaseConstraintsDescriptor {
   public Require_Constraints() {
-    super(CONCEPTS.Require$oh);
+    super(CONCEPTS.Require$2c);
   }
 
   @Override
@@ -54,7 +54,7 @@ public class Require_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.library$Th3P, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.library$JYHK, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -69,15 +69,15 @@ public class Require_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            final Iterable<SNode> libraries = ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Library$IO)).where(new IWhereFilter<SNode>() {
+            final Iterable<SNode> libraries = ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Library$oJ)).where(new IWhereFilter<SNode>() {
               public boolean accept(final SNode library) {
-                return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$1X, true, false), CONCEPTS.Require$oh, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+                return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), CONCEPTS.Require$2c, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
                   public boolean accept(SNode it) {
                     return it != _context.getContextNode();
                   }
                 }).select(new ISelector<SNode, SNode>() {
                   public SNode select(SNode it) {
-                    return SLinkOperations.getTarget(it, LINKS.library$Th3P);
+                    return SLinkOperations.getTarget(it, LINKS.library$JYHK);
                   }
                 }).all(new IWhereFilter<SNode>() {
                   public boolean accept(SNode it) {
@@ -96,19 +96,19 @@ public class Require_Constraints extends BaseConstraintsDescriptor {
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.CommandList$Mn) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentNode), CONCEPTS.Script$1X);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.CommandList$si) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentNode), CONCEPTS.Script$FS);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:6c66d6ce-c8f4-4daf-92c4-a518b78006a8(jetbrains.mps.samples.Kaja.constraints)", "1227128029536582786");
   private static final SNodePointer breakingNode_iz8172_a0a0a0a0a1a0a0a0d = new SNodePointer("r:6c66d6ce-c8f4-4daf-92c4-a518b78006a8(jetbrains.mps.samples.Kaja.constraints)", "6836281137582849297");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Require$oh = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, "jetbrains.mps.samples.Kaja.structure.Require");
-    /*package*/ static final SConcept Library$IO = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
-    /*package*/ static final SConcept Script$1X = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
-    /*package*/ static final SConcept CommandList$Mn = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList");
+    /*package*/ static final SConcept Require$2c = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, "jetbrains.mps.samples.Kaja.structure.Require");
+    /*package*/ static final SConcept Library$oJ = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
+    /*package*/ static final SConcept Script$FS = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
+    /*package*/ static final SConcept CommandList$si = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink library$Th3P = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, 0x3cfcda239f1a104aL, "library");
+    /*package*/ static final SReferenceLink library$JYHK = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, 0x3cfcda239f1a104aL, "library");
   }
 }

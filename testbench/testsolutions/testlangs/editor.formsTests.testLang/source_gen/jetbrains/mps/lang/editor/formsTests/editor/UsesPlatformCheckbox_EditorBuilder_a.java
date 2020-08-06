@@ -59,7 +59,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_7xa7wl_a0a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.property$nzxw);
+    return SPropertyOperations.getBoolean(myNode, PROPS.property$_BOL);
   }
   private EditorCell createImage_0() {
     EditorCell_Image editorCell = fromImageCellProvider0();
@@ -89,6 +89,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty property$nzxw = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x61552ecc953bf2a9L, 0x61552ecc953bf2aaL, "property");
+    /*package*/ static final SProperty property$_BOL = MetaAdapterFactory.getProperty(0xafb9a5fdbc5d4169L, 0xa22542d8823d623aL, 0x61552ecc953bf2a9L, 0x61552ecc953bf2aaL, "property");
   }
 }

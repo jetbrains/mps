@@ -23,11 +23,11 @@ public class typeof_OperationAssignmentExpression_InferenceRule extends Abstract
   }
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      final SNode leftType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.lValue$LjSW), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4957392803029437247", true);
+      final SNode leftType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.lValue$splI), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4957392803029437247", true);
       typeCheckingContext.whenConcrete(leftType, new Runnable() {
         public void run() {
           {
-            final SNode rightType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.rValue$LkmY), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4957392803029437241", true);
+            final SNode rightType = typeCheckingContext.typeOf(SLinkOperations.getTarget(operation, LINKS.rValue$spNK), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4957392803029437241", true);
             typeCheckingContext.whenConcrete(rightType, new Runnable() {
               public void run() {
                 SNode opType = typeCheckingContext.getOverloadedOperationType(operation, typeCheckingContext.getExpandedNode(leftType), typeCheckingContext.getExpandedNode(rightType), new IRuleConflictWarningProducer() {
@@ -56,7 +56,7 @@ public class typeof_OperationAssignmentExpression_InferenceRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.OperationAssignmentExpression$Ue;
+    return CONCEPTS.OperationAssignmentExpression$n0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -66,11 +66,11 @@ public class typeof_OperationAssignmentExpression_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OperationAssignmentExpression$Ue = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44cc327d2ca5cb08L, "jetbrains.mps.baseLanguage.structure.OperationAssignmentExpression");
+    /*package*/ static final SConcept OperationAssignmentExpression$n0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44cc327d2ca5cb08L, "jetbrains.mps.baseLanguage.structure.OperationAssignmentExpression");
   }
 }

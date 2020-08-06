@@ -29,14 +29,14 @@ public class check_TransformationFeaturesAreAvailable_NonTypesystemRule extends 
   public check_TransformationFeaturesAreAvailable_NonTypesystemRule() {
   }
   public void applyRule(final SNode part, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode section = SNodeOperations.getNodeAncestor(part, CONCEPTS.TransformationMenuSection$H0, true, false);
+    SNode section = SNodeOperations.getNodeAncestor(part, CONCEPTS.TransformationMenuSection$SB, true, false);
     if (section != null) {
-      final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, LINKS.locations$hQw0)).translate(new ITranslator2<SNode, SConcept>() {
+      final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, LINKS.locations$m8FB)).translate(new ITranslator2<SNode, SConcept>() {
         public Iterable<SConcept> translate(SNode it) {
           return (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getAvailableFeatures_id1A4kJjlZ$rL.invoke(it);
         }
       });
-      ListSequence.fromList(SLinkOperations.getChildren(part, LINKS.features$VYBA)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(SLinkOperations.getChildren(part, LINKS.features$gNd)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(Sequence.fromIterable(availableFeatures).contains(SNodeOperations.getConcept(it)));
         }
@@ -51,7 +51,7 @@ public class check_TransformationFeaturesAreAvailable_NonTypesystemRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IExtensibleTransformationMenuPart$sZ;
+    return CONCEPTS.IExtensibleTransformationMenuPart$CA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,12 +61,12 @@ public class check_TransformationFeaturesAreAvailable_NonTypesystemRule extends 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuSection$H0 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, "jetbrains.mps.lang.editor.structure.TransformationMenuSection");
-    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$sZ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
+    /*package*/ static final SConcept TransformationMenuSection$SB = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, "jetbrains.mps.lang.editor.structure.TransformationMenuSection");
+    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$CA = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink locations$hQw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
-    /*package*/ static final SContainmentLink features$VYBA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
+    /*package*/ static final SContainmentLink locations$m8FB = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
+    /*package*/ static final SContainmentLink features$gNd = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
   }
 }

@@ -22,11 +22,11 @@ public class typeOf_applicableNodeReference_InferenceRule extends AbstractInfere
     {
       SNode _nodeToCheck_1029348928467 = applicableNodeRef;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1223981205079", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1223981205084", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(applicableNodeRef, LINKS.applicableNode$eBEr), "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1175522385423", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1223981205084", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(applicableNodeRef, LINKS.applicableNode$BtWh), "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1175522385423", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ApplicableNodeReference$VP;
+    return CONCEPTS.ApplicableNodeReference$dF;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,10 +36,10 @@ public class typeOf_applicableNodeReference_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableNode$eBEr = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, 0x1117e9f2a5aL, "applicableNode");
+    /*package*/ static final SReferenceLink applicableNode$BtWh = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, 0x1117e9f2a5aL, "applicableNode");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ApplicableNodeReference$VP = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, "jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference");
+    /*package*/ static final SConcept ApplicableNodeReference$dF = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, "jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference");
   }
 }

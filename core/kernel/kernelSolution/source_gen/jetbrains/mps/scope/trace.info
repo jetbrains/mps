@@ -195,10 +195,10 @@
       <node id="3734116213129936141" at="115,29,116,22" concept="9" />
       <node id="3734116213129936144" at="117,5,118,0" concept="11" />
       <node id="3734116213129936147" at="118,0,119,40" concept="9" />
-      <node id="3734116213129862372" at="123,0,124,0" concept="12" trace="ScopeProvider$M8" />
-      <node id="3734116213129862372" at="124,0,125,0" concept="12" trace="NodeAttribute$8K" />
-      <node id="3734116213129862372" at="125,0,126,0" concept="12" trace="BaseConcept$Sz" />
-      <node id="3734116213129862372" at="129,0,130,0" concept="12" trace="smodelAttribute$jXFL" />
+      <node id="3734116213129862372" at="123,0,124,0" concept="12" trace="ScopeProvider$aq" />
+      <node id="3734116213129862372" at="124,0,125,0" concept="12" trace="NodeAttribute$x2" />
+      <node id="3734116213129862372" at="125,0,126,0" concept="12" trace="BaseConcept$gP" />
+      <node id="3734116213129862372" at="129,0,130,0" concept="12" trace="smodelAttribute$KJ43" />
       <node id="3734116213129862374" at="22,0,24,0" concept="1" trace="Scope#()V" />
       <node id="3734116213129862467" at="51,0,53,0" concept="7" trace="resolve#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3734116213129862484" at="63,0,65,0" concept="7" trace="getReferenceText#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -411,11 +411,11 @@
       <node id="3812912149866383575" at="111,77,112,127" concept="3" />
       <node id="3812912149866391797" at="114,64,115,29" concept="9" />
       <node id="3812912149866394651" at="116,9,117,149" concept="9" />
-      <node id="5455284157994035575" at="123,0,124,0" concept="12" trace="INamedConcept$nV" />
-      <node id="5455284157994035575" at="124,0,125,0" concept="12" trace="IResolveInfo$c2" />
-      <node id="5455284157994035575" at="125,0,126,0" concept="12" trace="BaseConcept$Sz" />
-      <node id="5455284157994035575" at="129,0,130,0" concept="12" trace="name$lA7v" />
-      <node id="5455284157994035575" at="130,0,131,0" concept="12" trace="resolveInfo$TaKS" />
+      <node id="5455284157994035575" at="123,0,124,0" concept="12" trace="INamedConcept$Kd" />
+      <node id="5455284157994035575" at="124,0,125,0" concept="12" trace="IResolveInfo$$k" />
+      <node id="5455284157994035575" at="125,0,126,0" concept="12" trace="BaseConcept$gP" />
+      <node id="5455284157994035575" at="129,0,130,0" concept="12" trace="name$MnvL" />
+      <node id="5455284157994035575" at="130,0,131,0" concept="12" trace="resolveInfo$lW9a" />
       <node id="1131199179929677553" at="29,10,31,5" concept="0" />
       <node id="5455284157994035752" at="42,14,44,9" concept="0" />
       <node id="2324039957962422759" at="54,31,57,7" concept="6" />
@@ -559,8 +559,8 @@
       <node id="7149567160619392149" at="47,72,48,122" concept="8" />
       <node id="7149567160619423762" at="48,122,49,90" concept="9" />
       <node id="7149567160619392066" at="50,12,51,34" concept="9" />
-      <node id="7149567160619391740" at="56,0,57,0" concept="12" trace="INamedConcept$nV" />
-      <node id="7149567160619391740" at="60,0,61,0" concept="12" trace="name$lA7v" />
+      <node id="7149567160619391740" at="56,0,57,0" concept="12" trace="INamedConcept$Kd" />
+      <node id="7149567160619391740" at="60,0,61,0" concept="12" trace="name$MnvL" />
       <node id="7149567160619392036" at="50,10,52,5" concept="0" />
       <node id="7149567160619424033" at="30,0,33,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7149567160619391742" at="23,0,27,0" concept="1" trace="FilteringByNameScope#(Ljava/util/Set;Ljetbrains/mps/scope/Scope;)V" />
@@ -663,8 +663,8 @@
       <node id="8401916545537277854" at="87,5,88,18" concept="9" />
       <node id="8401916545537277537" at="90,0,91,0" concept="7" trace="getName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="7440942041679192720" at="94,42,95,118" concept="9" />
-      <node id="8401916545537277014" at="101,0,102,0" concept="12" trace="INamedConcept$nV" />
-      <node id="8401916545537277014" at="105,0,106,0" concept="12" trace="name$lA7v" />
+      <node id="8401916545537277014" at="101,0,102,0" concept="12" trace="INamedConcept$Kd" />
+      <node id="8401916545537277014" at="105,0,106,0" concept="12" trace="name$MnvL" />
       <node id="8401916545537277664" at="38,65,41,7" concept="6" />
       <node id="8401916545537277721" at="42,39,45,9" concept="6" />
       <node id="8401916545537277750" at="54,65,57,7" concept="6" />

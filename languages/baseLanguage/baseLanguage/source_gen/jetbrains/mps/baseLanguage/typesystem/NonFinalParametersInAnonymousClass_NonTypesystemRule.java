@@ -24,9 +24,9 @@ public class NonFinalParametersInAnonymousClass_NonTypesystemRule extends Abstra
   public NonFinalParametersInAnonymousClass_NonTypesystemRule() {
   }
   public void applyRule(final SNode variableReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU)) {
-      SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU);
-      if ((declaration != null) && !(SPropertyOperations.getBoolean(declaration, PROPS.isFinal$_qt3))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG)) {
+      SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(variableReference, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG);
+      if ((declaration != null) && !(SPropertyOperations.getBoolean(declaration, PROPS.isFinal$gvTP))) {
         if (!((boolean) VariableReference__BehaviorDescriptor.isParameterOfThisMethod_idi3dhek3.invoke(variableReference))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
@@ -37,7 +37,7 @@ public class NonFinalParametersInAnonymousClass_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.VariableReference$sQ;
+    return CONCEPTS.VariableReference$TC;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,15 +47,15 @@ public class NonFinalParametersInAnonymousClass_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

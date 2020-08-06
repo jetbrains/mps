@@ -13,10 +13,10 @@ public class TypeVariableReference_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.typeVariableDeclaration$6t$W), ctx);
+    BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.typeVariableDeclaration$Lz1I), ctx);
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
   }
 }

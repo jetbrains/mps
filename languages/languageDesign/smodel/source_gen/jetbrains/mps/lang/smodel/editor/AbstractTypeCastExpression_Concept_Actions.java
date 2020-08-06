@@ -27,10 +27,10 @@ public class AbstractTypeCastExpression_Concept_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if ((SLinkOperations.getTarget(node, LINKS.conceptArgument$LjQ1) == null) || SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.conceptArgument$LjQ1)).isAbstract()) {
-          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.leftExpression$TTPz));
+        if ((SLinkOperations.getTarget(node, LINKS.conceptArgument$lGRx) == null) || SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.conceptArgument$lGRx)).isAbstract()) {
+          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.leftExpression$uiR3));
         } else {
-          SNodeFactoryOperations.setNewChild(node, LINKS.conceptArgument$LjQ1, null);
+          SNodeFactoryOperations.setNewChild(node, LINKS.conceptArgument$lGRx, null);
         }
       }
 
@@ -79,7 +79,7 @@ public class AbstractTypeCastExpression_Concept_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$TTPz = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
-    /*package*/ static final SContainmentLink conceptArgument$LjQ1 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument");
+    /*package*/ static final SContainmentLink leftExpression$uiR3 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67cd19L, "leftExpression");
+    /*package*/ static final SContainmentLink conceptArgument$lGRx = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument");
   }
 }

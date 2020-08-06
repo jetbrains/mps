@@ -18,7 +18,7 @@ public class typeof_TemplateFunctionParameter_sourceNode_InferenceRule extends A
     QueriesUtil.equate_templateFunction_inputNodeType(typeCheckingContext, sourceNode, typeCheckingContext.typeOf(sourceNode, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1206286439885", true));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TemplateFunctionParameter_sourceNode$A8;
+    return CONCEPTS.TemplateFunctionParameter_sourceNode$hO;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -28,6 +28,6 @@ public class typeof_TemplateFunctionParameter_sourceNode_InferenceRule extends A
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateFunctionParameter_sourceNode$A8 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
+    /*package*/ static final SConcept TemplateFunctionParameter_sourceNode$hO = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
   }
 }

@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AssertEquals_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expected$QV5r));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.actual$QVks));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.expected$QBis));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.actual$QBxt));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expected$QV5r = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd44L, "expected");
-    /*package*/ static final SContainmentLink actual$QVks = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd45L, "actual");
+    /*package*/ static final SContainmentLink expected$QBis = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd44L, "expected");
+    /*package*/ static final SContainmentLink actual$QBxt = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd45L, "actual");
   }
 }

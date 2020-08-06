@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubtreeStatisticsTarget_Constraints extends BaseConstraintsDescriptor {
   public SubtreeStatisticsTarget_Constraints() {
-    super(CONCEPTS.SubtreeStatisticsTarget$hz);
+    super(CONCEPTS.SubtreeStatisticsTarget$5l);
   }
 
   @Override
@@ -36,12 +36,12 @@ public class SubtreeStatisticsTarget_Constraints extends BaseConstraintsDescript
     };
   }
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
-    return childConcept != CONCEPTS.NodeRefExpression$au;
+    return childConcept != CONCEPTS.NodeRefExpression$bY;
   }
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:64807243-49b2-422a-a08f-a5df76bf508d(jetbrains.mps.console.ideCommands.constraints)", "1227128029536564661");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubtreeStatisticsTarget$hz = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, "jetbrains.mps.console.ideCommands.structure.SubtreeStatisticsTarget");
-    /*package*/ static final SConcept NodeRefExpression$au = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11be716563cL, "jetbrains.mps.lang.smodel.structure.NodeRefExpression");
+    /*package*/ static final SConcept SubtreeStatisticsTarget$5l = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, "jetbrains.mps.console.ideCommands.structure.SubtreeStatisticsTarget");
+    /*package*/ static final SConcept NodeRefExpression$bY = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11be716563cL, "jetbrains.mps.lang.smodel.structure.NodeRefExpression");
   }
 }

@@ -29,11 +29,11 @@ public class check_ListAntiquotation_NonTypesystemRule extends AbstractNonTypesy
         {
           SNode matchingNode_5jb8fe_a1a = SNodeOperations.getParent(annotatedNode);
           if (matchingNode_5jb8fe_a1a != null) {
-            matches_5jb8fe_a1a = matchingNode_5jb8fe_a1a.getConcept().isSubConceptOf(CONCEPTS.Quotation$UL);
+            matches_5jb8fe_a1a = matchingNode_5jb8fe_a1a.getConcept().isSubConceptOf(CONCEPTS.Quotation$Vl);
           }
         }
         if (matches_5jb8fe_a1a) {
-          if (SLinkOperations.getTarget(matchedNode_5jb8fe_b0, LINKS.quotedNode$2tow) == annotatedNode) {
+          if (SLinkOperations.getTarget(matchedNode_5jb8fe_b0, LINKS.quotedNode$ip4) == annotatedNode) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(listAntiquotation, "list antiquotation should not be used on a quoted node itself", "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "1202840835255", null, errorTarget);
@@ -44,7 +44,7 @@ public class check_ListAntiquotation_NonTypesystemRule extends AbstractNonTypesy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ListAntiquotation$Xc;
+    return CONCEPTS.ListAntiquotation$XK;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,11 +54,11 @@ public class check_ListAntiquotation_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Quotation$UL = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
-    /*package*/ static final SConcept ListAntiquotation$Xc = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
+    /*package*/ static final SConcept Quotation$Vl = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
+    /*package*/ static final SConcept ListAntiquotation$XK = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink quotedNode$2tow = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
+    /*package*/ static final SContainmentLink quotedNode$ip4 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
   }
 }

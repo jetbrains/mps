@@ -17,24 +17,24 @@ public class InternalPartialFieldReference_TextGen extends TextGenDescriptorBase
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$JOZs) != null)) {
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$JOZs), CONCEPTS.InternalThisExpression$XS))) {
-        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$JOZs));
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$1zge) != null)) {
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$1zge), CONCEPTS.InternalThisExpression$eE))) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.instance$1zge));
         tgs.append(".");
       }
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fieldName$TaFJ));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fieldName$aSWx));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink instance$JOZs = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd6bbc3L, "instance");
+    /*package*/ static final SContainmentLink instance$1zge = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd6bbc3L, "instance");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InternalThisExpression$XS = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1180ebdd5b4L, "jetbrains.mps.baseLanguageInternal.structure.InternalThisExpression");
+    /*package*/ static final SConcept InternalThisExpression$eE = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1180ebdd5b4L, "jetbrains.mps.baseLanguageInternal.structure.InternalThisExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fieldName$TaFJ = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd65055L, "fieldName");
+    /*package*/ static final SProperty fieldName$aSWx = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1122dd58737L, 0x1122dd65055L, "fieldName");
   }
 }

@@ -36,7 +36,7 @@ public final class Node_GetDescendantsOperation__BehaviorDescriptor extends Base
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id6ALWH9fQysn(@NotNull SAbstractConcept __thisConcept__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.OperationParm_ConceptList$lK, CONCEPTS.OperationParm_StopConceptList$Ff, CONCEPTS.OperationParm_Concept$Vf, CONCEPTS.OperationParm_Inclusion$d);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.OperationParm_ConceptList$ng, CONCEPTS.OperationParm_StopConceptList$GJ, CONCEPTS.OperationParm_Concept$WJ, CONCEPTS.OperationParm_Inclusion$1H);
   }
 
   /*package*/ Node_GetDescendantsOperation__BehaviorDescriptor() {
@@ -88,9 +88,9 @@ public final class Node_GetDescendantsOperation__BehaviorDescriptor extends Base
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OperationParm_ConceptList$lK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList");
-    /*package*/ static final SConcept OperationParm_StopConceptList$Ff = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, "jetbrains.mps.lang.smodel.structure.OperationParm_StopConceptList");
-    /*package*/ static final SConcept OperationParm_Concept$Vf = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61caab68L, "jetbrains.mps.lang.smodel.structure.OperationParm_Concept");
-    /*package*/ static final SConcept OperationParm_Inclusion$d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion");
+    /*package*/ static final SConcept OperationParm_ConceptList$ng = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList");
+    /*package*/ static final SConcept OperationParm_StopConceptList$GJ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x190735f308e2250bL, "jetbrains.mps.lang.smodel.structure.OperationParm_StopConceptList");
+    /*package*/ static final SConcept OperationParm_Concept$WJ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61caab68L, "jetbrains.mps.lang.smodel.structure.OperationParm_Concept");
+    /*package*/ static final SConcept OperationParm_Inclusion$1H = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion");
   }
 }

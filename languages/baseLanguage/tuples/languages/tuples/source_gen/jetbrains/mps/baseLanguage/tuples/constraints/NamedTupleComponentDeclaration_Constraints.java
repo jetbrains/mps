@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NamedTupleComponentDeclaration_Constraints extends BaseConstraintsDescriptor {
   public NamedTupleComponentDeclaration_Constraints() {
-    super(CONCEPTS.NamedTupleComponentDeclaration$lm);
+    super(CONCEPTS.NamedTupleComponentDeclaration$r7);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NamedTupleComponentDeclaration$lm = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration");
+    /*package*/ static final SConcept NamedTupleComponentDeclaration$r7 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration");
   }
 }

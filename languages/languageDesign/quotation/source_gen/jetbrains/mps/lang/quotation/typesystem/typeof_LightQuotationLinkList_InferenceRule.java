@@ -25,21 +25,21 @@ public class typeof_LightQuotationLinkList_InferenceRule extends AbstractInferen
   public typeof_LightQuotationLinkList_InferenceRule() {
   }
   public void applyRule(final SNode list, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final SNode lval = SNodeOperations.as(SNodeOperations.getParent(list), CONCEPTS.NodeBuilderInitLink$Xj);
-    ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.nodes$OEOw)).visitAll(new IVisitor<SNode>() {
+    final SNode lval = SNodeOperations.as(SNodeOperations.getParent(list), CONCEPTS.NodeBuilderInitLink$XR);
+    ListSequence.fromList(SLinkOperations.getChildren(list, LINKS.nodes$MvP4)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         if (!(typeCheckingContext.isSingleTypeComputation())) {
           {
             SNode _nodeToCheck_1029348928467 = it;
             EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "8182547171709952709", 0, null);
-            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "8182547171709952688", true), (SNode) _quotation_createNode_ttlvyh_a1a0c0a0a0a0a1a1(SLinkOperations.getTarget(SLinkOperations.getTarget(lval, LINKS.link$XYSx), LINKS.target$TWaS)), true, true, _info_12389875345);
+            typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "8182547171709952688", true), (SNode) _quotation_createNode_ttlvyh_a1a0c0a0a0a0a1a1(SLinkOperations.getTarget(SLinkOperations.getTarget(lval, LINKS.link$VNT5), LINKS.target$m40F)), true, true, _info_12389875345);
           }
         }
       }
     });
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodeBuilderList$lD;
+    return CONCEPTS.NodeBuilderList$md;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,13 +56,13 @@ public class typeof_LightQuotationLinkList_InferenceRule extends AbstractInferen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeBuilderInitLink$Xj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
-    /*package*/ static final SConcept NodeBuilderList$lD = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, "jetbrains.mps.lang.quotation.structure.NodeBuilderList");
+    /*package*/ static final SConcept NodeBuilderInitLink$XR = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
+    /*package*/ static final SConcept NodeBuilderList$md = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, "jetbrains.mps.lang.quotation.structure.NodeBuilderList");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodes$OEOw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
-    /*package*/ static final SReferenceLink link$XYSx = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink nodes$MvP4 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
+    /*package*/ static final SReferenceLink link$VNT5 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

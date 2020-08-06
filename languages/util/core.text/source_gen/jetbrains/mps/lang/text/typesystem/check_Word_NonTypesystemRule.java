@@ -22,10 +22,10 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
   public check_Word_NonTypesystemRule() {
   }
   public void applyRule(final SNode word, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(word, PROPS.value$bjp0))) {
+    if (isEmptyString(SPropertyOperations.getString(word, PROPS.value$zQr_))) {
       return;
     }
-    if (SPropertyOperations.getString(word, PROPS.value$bjp0).contains(" ")) {
+    if (SPropertyOperations.getString(word, PROPS.value$zQr_).contains(" ")) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(word, "Words should not contain spaces", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "4338813632905423080", null, errorTarget);
@@ -35,8 +35,8 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
         }
       }
     } else {
-      if ((SPropertyOperations.getString(word, PROPS.value$bjp0).matches("[a-zA-Z]+://.+"))) {
-        if (isEmptyString(SPropertyOperations.getString(word, PROPS.url$wboS))) {
+      if ((SPropertyOperations.getString(word, PROPS.value$zQr_).matches("[a-zA-Z]+://.+"))) {
+        if (isEmptyString(SPropertyOperations.getString(word, PROPS.url$SIrt))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(word, "This word can be turned into a link", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "7260264510303289199", null, errorTarget);
@@ -45,7 +45,7 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
           }
-        } else if (!(Objects.equals(SPropertyOperations.getString(word, PROPS.url$wboS), SPropertyOperations.getString(word, PROPS.value$bjp0)))) {
+        } else if (!(Objects.equals(SPropertyOperations.getString(word, PROPS.url$SIrt), SPropertyOperations.getString(word, PROPS.value$zQr_)))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(word, "The text and the associated url differ.", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "7260264510303272851", null, errorTarget);
@@ -59,7 +59,7 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Word$AM;
+    return CONCEPTS.Word$Dn;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -72,11 +72,11 @@ public class check_Word_NonTypesystemRule extends AbstractNonTypesystemRule_Runt
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 }

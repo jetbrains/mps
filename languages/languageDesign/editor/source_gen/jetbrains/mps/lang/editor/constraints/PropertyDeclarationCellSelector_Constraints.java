@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyDeclarationCellSelector_Constraints extends BaseConstraintsDescriptor {
   public PropertyDeclarationCellSelector_Constraints() {
-    super(CONCEPTS.PropertyDeclarationCellSelector$M4);
+    super(CONCEPTS.PropertyDeclarationCellSelector$XF);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyDeclaration$R7lG, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyDeclaration$Vpxj, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class PropertyDeclarationCellSelector_Constraints extends BaseConstraints
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.PropertyDeclaration$c5);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.PropertyDeclaration$1S);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -54,11 +54,11 @@ public class PropertyDeclarationCellSelector_Constraints extends BaseConstraints
   private static final SNodePointer breakingNode_f6obta_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "4510086454767561022");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyDeclarationCellSelector$M4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector");
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept PropertyDeclarationCellSelector$XF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyDeclaration$R7lG = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, 0x3e970bbc311db51fL, "propertyDeclaration");
+    /*package*/ static final SReferenceLink propertyDeclaration$Vpxj = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, 0x3e970bbc311db51fL, "propertyDeclaration");
   }
 }

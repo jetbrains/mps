@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RoutineDefinition_Constraints extends BaseConstraintsDescriptor {
   public RoutineDefinition_Constraints() {
-    super(CONCEPTS.RoutineDefinition$2l);
+    super(CONCEPTS.RoutineDefinition$Gg);
   }
 
   @Override
@@ -37,14 +37,14 @@ public class RoutineDefinition_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.CommandList$Mn) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentNode), CONCEPTS.Script$1X)) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Library$IO);
+    return (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.CommandList$si) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentNode), CONCEPTS.Script$FS)) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Library$oJ);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:6c66d6ce-c8f4-4daf-92c4-a518b78006a8(jetbrains.mps.samples.Kaja.constraints)", "1227128029536582766");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RoutineDefinition$2l = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition");
-    /*package*/ static final SConcept Script$1X = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
-    /*package*/ static final SConcept CommandList$Mn = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList");
-    /*package*/ static final SConcept Library$IO = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
+    /*package*/ static final SConcept RoutineDefinition$Gg = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition");
+    /*package*/ static final SConcept Script$FS = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
+    /*package*/ static final SConcept CommandList$si = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList");
+    /*package*/ static final SConcept Library$oJ = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
   }
 }

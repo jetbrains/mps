@@ -44,18 +44,18 @@ public final class ExternalViewFigure__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.FieldDeclaration$Ps) && SLinkOperations.getTarget(__thisNode__, LINKS.classifier$YFfM) != null) {
-      return Scopes.forVariables(CONCEPTS.FieldDeclaration$Ps, Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$YFfM)))).where(new IWhereFilter<SNode>() {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.FieldDeclaration$ie) && SLinkOperations.getTarget(__thisNode__, LINKS.classifier$HHUi) != null) {
+      return Scopes.forVariables(CONCEPTS.FieldDeclaration$ie, Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$HHUi)))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.FieldDeclaration$Ps);
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.FieldDeclaration$ie);
         }
       }).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.FieldDeclaration$Ps);
+          return SNodeOperations.cast(it, CONCEPTS.FieldDeclaration$ie);
         }
       }), new EmptyScope());
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child));
   }
 
   /*package*/ ExternalViewFigure__BehaviorDescriptor() {
@@ -105,11 +105,11 @@ public final class ExternalViewFigure__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SInterfaceConcept ScopeProvider$M8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$YFfM = MetaAdapterFactory.getReferenceLink(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f7493c2L, 0x1e3b9cbb9f7493f7L, "classifier");
+    /*package*/ static final SReferenceLink classifier$HHUi = MetaAdapterFactory.getReferenceLink(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f7493c2L, 0x1e3b9cbb9f7493f7L, "classifier");
   }
 }

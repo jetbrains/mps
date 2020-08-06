@@ -32,7 +32,7 @@ public final class TransformationMenuPart_Intention__BehaviorDescriptor extends 
   }
 
   /*package*/ static List<SConcept> getAdditionalFeatureParameters_id6kJcyCQ_bk0(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.QueryFunctionParameter_IntentionExecutable$jf);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.QueryFunctionParameter_IntentionExecutable$oG);
   }
 
   /*package*/ TransformationMenuPart_Intention__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class TransformationMenuPart_Intention__BehaviorDescriptor extends 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryFunctionParameter_IntentionExecutable$jf = MetaAdapterFactory.getConcept(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x2241a13dab46cce9L, "jetbrains.mps.lang.editor.menus.extras.structure.QueryFunctionParameter_IntentionExecutable");
+    /*package*/ static final SConcept QueryFunctionParameter_IntentionExecutable$oG = MetaAdapterFactory.getConcept(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x2241a13dab46cce9L, "jetbrains.mps.lang.editor.menus.extras.structure.QueryFunctionParameter_IntentionExecutable");
   }
 }

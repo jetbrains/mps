@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Rule_Constraints extends BaseConstraintsDescriptor {
   public Rule_Constraints() {
-    super(CONCEPTS.Rule$Wr);
+    super(CONCEPTS.Rule$N8);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class Rule_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:73c9a355-2bf0-4466-8a7d-8b8d8a945cd4(jetbrains.mps.lang.dataFlow.analyzers.constraints)", "8337746954995822393");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Rule$Wr = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Rule");
+    /*package*/ static final SConcept Rule$N8 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Rule");
   }
 }

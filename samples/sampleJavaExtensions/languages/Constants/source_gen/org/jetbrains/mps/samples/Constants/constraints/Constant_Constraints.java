@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Constant_Constraints extends BaseConstraintsDescriptor {
   public Constant_Constraints() {
-    super(CONCEPTS.Constant$9C);
+    super(CONCEPTS.Constant$Ym);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Constant$9C = MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, "org.jetbrains.mps.samples.Constants.structure.Constant");
+    /*package*/ static final SConcept Constant$Ym = MetaAdapterFactory.getConcept(0xd40d465dded40d0L, 0x8d4c2c6d177f60d7L, 0x14be6cdec1861419L, "org.jetbrains.mps.samples.Constants.structure.Constant");
   }
 }

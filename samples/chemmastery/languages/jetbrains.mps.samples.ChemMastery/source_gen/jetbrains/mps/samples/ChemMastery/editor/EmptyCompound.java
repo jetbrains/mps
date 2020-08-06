@@ -92,7 +92,7 @@ public class EmptyCompound extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.EquationComponent$C$;
+      return CONCEPTS.EquationComponent$Z;
     }
 
 
@@ -113,7 +113,7 @@ public class EmptyCompound extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
-        if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.cardinalityVisible$c5Xl)) {
+        if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.cardinalityVisible$7IlK)) {
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL, -1);
         } else {
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_EDITABLE_CELL, -1);
@@ -144,10 +144,10 @@ public class EmptyCompound extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EquationComponent$C$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL, "jetbrains.mps.samples.ChemMastery.structure.EquationComponent");
+    /*package*/ static final SConcept EquationComponent$Z = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL, "jetbrains.mps.samples.ChemMastery.structure.EquationComponent");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$c5Xl = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinalityVisible$7IlK = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
   }
 }

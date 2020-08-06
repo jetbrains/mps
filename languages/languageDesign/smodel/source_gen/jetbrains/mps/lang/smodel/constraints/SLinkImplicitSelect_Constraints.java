@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
   public SLinkImplicitSelect_Constraints() {
-    super(CONCEPTS.SLinkImplicitSelect$rc);
+    super(CONCEPTS.SLinkImplicitSelect$sG);
   }
 
   @Override
@@ -55,7 +55,7 @@ public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$7AMw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$FZO0, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -70,7 +70,7 @@ public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), new Pattern_f4oi2a_a0a0a0a0a0b0a0a0b0a0a0a3(_quotation_createNode_f4oi2a_a0b0a0a0a0a0b0a0a0b0a0a0a3())), LINKS.elementType$655u), CONCEPTS.SNodeType$gn), LINKS.concept$gpfa)));
+            return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), new Pattern_f4oi2a_a0a0a0a0a0b0a0a0b0a0a0a3(_quotation_createNode_f4oi2a_a0b0a0a0a0a0b0a0a0b0a0a0a3())), LINKS.elementType$KpjL), CONCEPTS.SNodeType$hR), LINKS.concept$OMgE)));
           }
         };
       }
@@ -80,7 +80,7 @@ public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), new Pattern_f4oi2a_a0a0a0e(_quotation_createNode_f4oi2a_a0b0a0a0e())) != null);
+    return (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), new Pattern_f4oi2a_a0a0a0e(_quotation_createNode_f4oi2a_a0b0a0a0e())) != null);
   }
   private static SNode _quotation_createNode_f4oi2a_a0b0a0a0a0a0b0a0a0b0a0a0a3() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -106,15 +106,15 @@ public class SLinkImplicitSelect_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_f4oi2a_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)", "6836281137582798918");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SLinkImplicitSelect$rc = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x316f884c72a4157dL, "jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept SNodeType$gn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept SLinkImplicitSelect$sG = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x316f884c72a4157dL, "jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$7AMw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x316f884c72a4157dL, 0x316f884c72a41783L, "link");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
-    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink link$FZO0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x316f884c72a4157dL, 0x316f884c72a41783L, "link");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink elementType$KpjL = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SReferenceLink concept$OMgE = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 }

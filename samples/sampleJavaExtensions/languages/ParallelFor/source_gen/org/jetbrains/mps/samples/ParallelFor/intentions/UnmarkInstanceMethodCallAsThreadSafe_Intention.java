@@ -41,7 +41,7 @@ public final class UnmarkInstanceMethodCallAsThreadSafe_Intention extends Abstra
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.operation$_mGS), CONCEPTS.InstanceMethodCallOperation$1G) && AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$T7)) != null;
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu) && AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null;
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
     return SNodeOperations.getParent(childNode) == node;
@@ -65,7 +65,7 @@ public final class UnmarkInstanceMethodCallAsThreadSafe_Intention extends Abstra
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$T7), null);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ), null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -74,11 +74,11 @@ public final class UnmarkInstanceMethodCallAsThreadSafe_Intention extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodCallOperation$1G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
-    /*package*/ static final SConcept ThreadSafe$T7 = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe");
+    /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept ThreadSafe$eJ = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe");
   }
 }

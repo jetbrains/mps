@@ -26,7 +26,7 @@ public class typeof_SynchronizedStatement_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SynchronizedStatement$E$;
+    return CONCEPTS.SynchronizedStatement$7m;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_SynchronizedStatement_InferenceRule extends AbstractInferenc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SynchronizedStatement$E$ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1106df1d8d8L, "jetbrains.mps.baseLanguage.structure.SynchronizedStatement");
+    /*package*/ static final SConcept SynchronizedStatement$7m = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1106df1d8d8L, "jetbrains.mps.baseLanguage.structure.SynchronizedStatement");
   }
 }

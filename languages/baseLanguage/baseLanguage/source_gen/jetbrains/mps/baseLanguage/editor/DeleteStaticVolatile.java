@@ -22,7 +22,7 @@ public class DeleteStaticVolatile {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.isVolatile$In3y, false);
+        SPropertyOperations.assign(node, PROPS.isVolatile$pswk, false);
         CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, false);
       }
 
@@ -34,7 +34,7 @@ public class DeleteStaticVolatile {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.isVolatile$In3y, false);
+        SPropertyOperations.assign(node, PROPS.isVolatile$pswk, false);
         CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, true);
       }
 
@@ -87,6 +87,6 @@ public class DeleteStaticVolatile {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isVolatile$In3y = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491b12fL, "isVolatile");
+    /*package*/ static final SProperty isVolatile$pswk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491b12fL, "isVolatile");
   }
 }

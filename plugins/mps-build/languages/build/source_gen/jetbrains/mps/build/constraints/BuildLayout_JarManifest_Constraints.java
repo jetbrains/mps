@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildLayout_JarManifest_Constraints extends BaseConstraintsDescriptor {
   public BuildLayout_JarManifest_Constraints() {
-    super(CONCEPTS.BuildLayout_JarManifest$Ns);
+    super(CONCEPTS.BuildLayout_JarManifest$lZ);
   }
 
   @Override
@@ -39,10 +39,10 @@ public class BuildLayout_JarManifest_Constraints extends BaseConstraintsDescript
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildLayout_Jar$CE)) {
+    if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildLayout_Jar$bd)) {
       return ListSequence.fromList(SNodeOperations.getPrevSiblings(node, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_JarManifest$Ns);
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_JarManifest$lZ);
         }
       }).isEmpty();
     }
@@ -51,7 +51,7 @@ public class BuildLayout_JarManifest_Constraints extends BaseConstraintsDescript
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:5076fdb3-19c3-4563-aa26-7ace7591e78d(jetbrains.mps.build.constraints)", "1227128029536580357");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_JarManifest$Ns = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, "jetbrains.mps.build.structure.BuildLayout_JarManifest");
-    /*package*/ static final SConcept BuildLayout_Jar$CE = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
+    /*package*/ static final SConcept BuildLayout_JarManifest$lZ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, "jetbrains.mps.build.structure.BuildLayout_JarManifest");
+    /*package*/ static final SConcept BuildLayout_Jar$bd = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
   }
 }

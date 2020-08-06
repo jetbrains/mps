@@ -42,18 +42,18 @@ public class TextStyles_StyleSheet {
     }
 
     private Color _StyleParameter_QueryFunction_vsrnlz_a0a() {
-      if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(getNode(), CONCEPTS.Word$AM), PROPS.url$wboS))) {
+      if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(getNode(), CONCEPTS.Word$Dn), PROPS.url$SIrt))) {
         return MPSColors.BLUE;
       }
       return MPSColors.BLACK;
     }
     private int _StyleParameter_QueryFunction_vsrnlz_a1a() {
-      SNode word = SNodeOperations.as(getNode(), CONCEPTS.Word$AM);
-      if (SPropertyOperations.getBoolean(word, PROPS.bold$w4Os) && (SPropertyOperations.getBoolean(word, PROPS.italic$w5xv))) {
+      SNode word = SNodeOperations.as(getNode(), CONCEPTS.Word$Dn);
+      if (SPropertyOperations.getBoolean(word, PROPS.bold$SBR1) && (SPropertyOperations.getBoolean(word, PROPS.italic$SC$4))) {
         return MPSFonts.BOLD_ITALIC;
-      } else if (SPropertyOperations.getBoolean(word, PROPS.bold$w4Os)) {
+      } else if (SPropertyOperations.getBoolean(word, PROPS.bold$SBR1)) {
         return MPSFonts.BOLD;
-      } else if (SPropertyOperations.getBoolean(word, PROPS.italic$w5xv)) {
+      } else if (SPropertyOperations.getBoolean(word, PROPS.italic$SC$4)) {
         return MPSFonts.ITALIC;
       }
       return MPSFonts.PLAIN;
@@ -64,12 +64,12 @@ public class TextStyles_StyleSheet {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
-    /*package*/ static final SProperty italic$w5xv = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
-    /*package*/ static final SProperty bold$w4Os = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
+    /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty italic$SC$4 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
+    /*package*/ static final SProperty bold$SBR1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
   }
 }

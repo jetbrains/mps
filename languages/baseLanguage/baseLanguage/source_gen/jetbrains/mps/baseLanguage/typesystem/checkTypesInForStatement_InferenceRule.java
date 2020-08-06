@@ -21,13 +21,13 @@ public class checkTypesInForStatement_InferenceRule extends AbstractInferenceRul
   }
   public void applyRule(final SNode forStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(forStatement, LINKS.condition$PxqS);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(forStatement, LINKS.condition$wARE);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5915179142332709362", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5915179142332709358", true), (SNode) _quotation_createNode_34h6jd_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ForStatement$Y9;
+    return CONCEPTS.ForStatement$qV;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,10 +43,10 @@ public class checkTypesInForStatement_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$PxqS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");
+    /*package*/ static final SContainmentLink condition$wARE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ForStatement$Y9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+    /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
   }
 }

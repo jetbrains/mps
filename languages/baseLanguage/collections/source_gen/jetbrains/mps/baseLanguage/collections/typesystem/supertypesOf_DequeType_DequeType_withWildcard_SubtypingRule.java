@@ -20,7 +20,7 @@ public class supertypesOf_DequeType_DequeType_withWildcard_SubtypingRule extends
     return _quotation_createNode_jf1pf8_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DequeType$X6;
+    return CONCEPTS.DequeType$bp;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,6 +42,6 @@ public class supertypesOf_DequeType_DequeType_withWildcard_SubtypingRule extends
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DequeType$X6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e99e9ab97de7711L, "jetbrains.mps.baseLanguage.collections.structure.DequeType");
+    /*package*/ static final SConcept DequeType$bp = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e99e9ab97de7711L, "jetbrains.mps.baseLanguage.collections.structure.DequeType");
   }
 }

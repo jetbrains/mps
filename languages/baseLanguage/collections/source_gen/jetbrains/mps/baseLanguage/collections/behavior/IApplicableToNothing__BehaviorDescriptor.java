@@ -75,7 +75,7 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
     return result;
   }
   /*package*/ static boolean hasApplicableTypes_id1QUKo_K_4f7(@NotNull SAbstractConcept __thisConcept__, SAbstractConcept concept) {
-    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IApplicableToNothing$4O) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.IApplicableToNothing$4O));
+    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IApplicableToNothing$j7) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.IApplicableToNothing$j7));
   }
   /*package*/ static SNode expectedOperandType_id5xvLnyYzY1Q(@NotNull SNode __thisNode__, SNode elementType) {
     SNode jt = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"));
@@ -85,7 +85,7 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
         if (ListSequence.fromList(SNodeOperations.getChildren(rt)).isNotEmpty()) {
           SNodeOperations.replaceWithAnother(ListSequence.fromList(SNodeOperations.getChildren(rt)).first(), SNodeOperations.copyNode(elementType));
         }
-        ListSequence.fromList(SLinkOperations.getChildren(jt, LINKS.argument$lCgz)).addElement(rt);
+        ListSequence.fromList(SLinkOperations.getChildren(jt, LINKS.argument$Iuyp)).addElement(rt);
       }
     }
     return jt;
@@ -142,10 +142,10 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IApplicableToNothing$4O = MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eaf6L, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToNothing");
+    /*package*/ static final SInterfaceConcept IApplicableToNothing$j7 = MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eaf6L, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToNothing");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$lCgz = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SContainmentLink argument$Iuyp = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
   }
 }

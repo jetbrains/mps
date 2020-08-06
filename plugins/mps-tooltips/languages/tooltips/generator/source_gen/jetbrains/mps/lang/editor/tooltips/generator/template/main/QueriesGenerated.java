@@ -48,27 +48,27 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_3_0(final CreateRootRuleContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Tooltip$RB)).isNotEmpty();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Tooltip$vF)).isNotEmpty();
   }
   public static boolean rule_Condition_3_0(final BaseMappingRuleContext _context) {
-    return SNodeOperations.hasRole(_context.getNode(), LINKS.tooltipCell$LOVX) && !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.AuxEditorCellWithRefToGeneratedHint$Ys));
+    return SNodeOperations.hasRole(_context.getNode(), LINKS.tooltipCell$kz$1) && !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.AuxEditorCellWithRefToGeneratedHint$Aw));
   }
   public static boolean rule_Condition_3_1(final BaseMappingRuleContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.tooltip$D_gS) != null);
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.tooltip$cjSW) != null);
   }
   public static boolean rule_Condition_3_2(final BaseMappingRuleContext _context) {
-    return SNodeOperations.hasRole(_context.getNode(), LINKS.tooltipCell$LOVX) && (SLinkOperations.getTarget(_context.getNode(), LINKS.tooltip$D_gS) != null);
+    return SNodeOperations.hasRole(_context.getNode(), LINKS.tooltipCell$kz$1) && (SLinkOperations.getTarget(_context.getNode(), LINKS.tooltip$cjSW) != null);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    SNode popup = SLinkOperations.getTarget(_context.getNode(), LINKS.tooltipCell$LOVX);
-    if (!(SNodeOperations.isInstanceOf(popup, CONCEPTS.AuxEditorCellWithRefToGeneratedHint$Ys))) {
+    SNode popup = SLinkOperations.getTarget(_context.getNode(), LINKS.tooltipCell$kz$1);
+    if (!(SNodeOperations.isInstanceOf(popup, CONCEPTS.AuxEditorCellWithRefToGeneratedHint$Aw))) {
       _context.showErrorMessage(_context.getNode(), "Internal contract of the generator is broken: tooltip must be of Aux concept");
       return null;
     }
-    return ConceptEditorHintDeclaration__BehaviorDescriptor.getQualifiedName_id59ZEGVRaGvv.invoke(SLinkOperations.getTarget(SNodeOperations.cast(popup, CONCEPTS.AuxEditorCellWithRefToGeneratedHint$Ys), LINKS.hint$I37y));
+    return ConceptEditorHintDeclaration__BehaviorDescriptor.getQualifiedName_id59ZEGVRaGvv.invoke(SLinkOperations.getTarget(SNodeOperations.cast(popup, CONCEPTS.AuxEditorCellWithRefToGeneratedHint$Aw), LINKS.hint$gLJA));
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.lazy$cIh8);
+    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.lazy$JsTc);
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
     return (String) EditorCellModel__BehaviorDescriptor.getFactoryMethodName_idhHfE2BD.invoke(_context.getNode(), _context);
@@ -77,31 +77,31 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createUniqueName("tooltipHint", _context.getNode());
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$oVtj), "cellFactory.factoryMethod");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$VE5n), "cellFactory.factoryMethod");
   }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CellModel_Tooltip$RB), "Hint");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CellModel_Tooltip$vF), "Hint");
   }
   public static Object referenceMacro_GetReferent_3_1(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.hint$I37y);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.hint$gLJA);
   }
   public static Object referenceMacro_GetReferent_4_0(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.hint$I37y);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.hint$gLJA);
   }
   public static Object referenceMacro_GetReferent_4_1(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.AbstractComponent$Ng), LINKS.conceptDeclaration$Dtb8);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.AbstractComponent$YR), LINKS.conceptDeclaration$HJmJ);
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$oVtj);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$VE5n);
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
     return _context.getNode();
   }
   public static SNode sourceNodeQuery_4_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.tooltip$D_gS);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.tooltip$cjSW);
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Tooltip$RB);
+    return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.CellModel_Tooltip$vF);
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -339,20 +339,20 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_Tooltip$RB = MetaAdapterFactory.getConcept(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, "jetbrains.mps.lang.editor.tooltips.structure.CellModel_Tooltip");
-    /*package*/ static final SConcept AuxEditorCellWithRefToGeneratedHint$Ys = MetaAdapterFactory.getConcept(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, "jetbrains.mps.lang.editor.tooltips.structure.AuxEditorCellWithRefToGeneratedHint");
-    /*package*/ static final SConcept AbstractComponent$Ng = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
+    /*package*/ static final SConcept CellModel_Tooltip$vF = MetaAdapterFactory.getConcept(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, "jetbrains.mps.lang.editor.tooltips.structure.CellModel_Tooltip");
+    /*package*/ static final SConcept AuxEditorCellWithRefToGeneratedHint$Aw = MetaAdapterFactory.getConcept(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, "jetbrains.mps.lang.editor.tooltips.structure.AuxEditorCellWithRefToGeneratedHint");
+    /*package*/ static final SConcept AbstractComponent$YR = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tooltipCell$LOVX = MetaAdapterFactory.getContainmentLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, 0x35cfce3215bf1834L, "tooltipCell");
-    /*package*/ static final SContainmentLink tooltip$D_gS = MetaAdapterFactory.getContainmentLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, 0x955054acf64dc63L, "tooltip");
-    /*package*/ static final SReferenceLink hint$I37y = MetaAdapterFactory.getReferenceLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, 0x35cfce3215b85a20L, "hint");
-    /*package*/ static final SContainmentLink visibleCell$oVtj = MetaAdapterFactory.getContainmentLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, 0x7f7a04fd2c64819dL, "visibleCell");
-    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SContainmentLink tooltipCell$kz$1 = MetaAdapterFactory.getContainmentLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, 0x35cfce3215bf1834L, "tooltipCell");
+    /*package*/ static final SContainmentLink tooltip$cjSW = MetaAdapterFactory.getContainmentLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, 0x955054acf64dc63L, "tooltip");
+    /*package*/ static final SReferenceLink hint$gLJA = MetaAdapterFactory.getReferenceLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, 0x35cfce3215b85a20L, "hint");
+    /*package*/ static final SContainmentLink visibleCell$VE5n = MetaAdapterFactory.getContainmentLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, 0x7f7a04fd2c64819dL, "visibleCell");
+    /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty lazy$cIh8 = MetaAdapterFactory.getProperty(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, 0x42ab886dda92b1ebL, "lazy");
+    /*package*/ static final SProperty lazy$JsTc = MetaAdapterFactory.getProperty(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, 0x42ab886dda92b1ebL, "lazy");
   }
 }

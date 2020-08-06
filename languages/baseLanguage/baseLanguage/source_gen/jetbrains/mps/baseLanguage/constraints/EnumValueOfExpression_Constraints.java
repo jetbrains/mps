@@ -15,12 +15,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumValueOfExpression_Constraints extends BaseConstraintsDescriptor {
   public EnumValueOfExpression_Constraints() {
-    super(CONCEPTS.EnumValueOfExpression$Bn);
+    super(CONCEPTS.EnumValueOfExpression$49);
   }
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$xrGd, container);
+      super(PROPS.shortDescription$Yd4v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -34,15 +34,15 @@ public class EnumValueOfExpression_Constraints extends BaseConstraintsDescriptor
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.shortDescription$xrGd, new ShortDescription_Property(this));
+    properties.put(PROPS.shortDescription$Yd4v, new ShortDescription_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumValueOfExpression$Bn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, "jetbrains.mps.baseLanguage.structure.EnumValueOfExpression");
+    /*package*/ static final SConcept EnumValueOfExpression$49 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, "jetbrains.mps.baseLanguage.structure.EnumValueOfExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty shortDescription$Yd4v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 }

@@ -75,7 +75,7 @@ public class ConceptDeclaration_ext_1_RTransform_Menu extends TransformationMenu
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.ConceptDeclaration$qU, "jetbrains.mps.lang.structure.editor.addFinal");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.ConceptDeclaration$gH, "jetbrains.mps.lang.structure.editor.addFinal");
     }
 
   }
@@ -98,12 +98,12 @@ public class ConceptDeclaration_ext_1_RTransform_Menu extends TransformationMenu
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.ConceptDeclaration$qU, "jetbrains.mps.lang.structure.editor.addAbstract");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.ConceptDeclaration$gH, "jetbrains.mps.lang.structure.editor.addAbstract");
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 }

@@ -20,22 +20,22 @@ public class XmlWhitespace_TextGen extends TextGenDescriptorBase {
     boolean needNewLine = (boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(ctx.getPrimaryInput());
     if (!(needNewLine)) {
       SNode left = SNodeOperations.getPrevSibling(ctx.getPrimaryInput());
-      if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlPrologElement$KD)) {
-        needNewLine = (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlPrologElement$KD));
+      if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlPrologElement$b8)) {
+        needNewLine = (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlPrologElement$b8));
       }
     }
     if (needNewLine) {
       tgs.newLine();
       tgs.indent();
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$iwgW));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$bSFr));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept XmlPrologElement$KD = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3bd0e5L, "jetbrains.mps.core.xml.structure.XmlPrologElement");
+    /*package*/ static final SInterfaceConcept XmlPrologElement$b8 = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3bd0e5L, "jetbrains.mps.core.xml.structure.XmlPrologElement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$iwgW = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value");
+    /*package*/ static final SProperty value$bSFr = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, 0x4890619bb3ff9b53L, "value");
   }
 }

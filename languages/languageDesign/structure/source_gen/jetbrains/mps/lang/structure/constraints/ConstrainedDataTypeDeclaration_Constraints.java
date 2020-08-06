@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConstrainedDataTypeDeclaration_Constraints extends BaseConstraintsDescriptor {
   public ConstrainedDataTypeDeclaration_Constraints() {
-    super(CONCEPTS.ConstrainedDataTypeDeclaration$Mu);
+    super(CONCEPTS.ConstrainedDataTypeDeclaration$Ch);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class ConstrainedDataTypeDeclaration_Constraints extends BaseConstraintsD
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "1227087700408");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstrainedDataTypeDeclaration$Mu = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, "jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration");
+    /*package*/ static final SConcept ConstrainedDataTypeDeclaration$Ch = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, "jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration");
   }
 }

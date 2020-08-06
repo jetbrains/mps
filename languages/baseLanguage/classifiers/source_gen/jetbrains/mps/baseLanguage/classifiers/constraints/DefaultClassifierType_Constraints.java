@@ -30,12 +30,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class DefaultClassifierType_Constraints extends BaseConstraintsDescriptor {
   public DefaultClassifierType_Constraints() {
-    super(CONCEPTS.DefaultClassifierType$iz);
+    super(CONCEPTS.DefaultClassifierType$in);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$5aH4, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$1EGS, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,10 +50,10 @@ public class DefaultClassifierType_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            List<SNode> classifiers = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.IClassifier$Cb);
+            List<SNode> classifiers = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.IClassifier$BZ);
             classifiers = ListSequence.fromList(classifiers).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(IClassifier__BehaviorDescriptor.createType_idhEwJimy.invoke(it))), CONCEPTS.DefaultClassifierType$iz);
+                return SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(IClassifier__BehaviorDescriptor.createType_idhEwJimy.invoke(it))), CONCEPTS.DefaultClassifierType$in);
               }
             }).toListSequence();
             return ListScope.forResolvableElements(classifiers);
@@ -68,11 +68,11 @@ public class DefaultClassifierType_Constraints extends BaseConstraintsDescriptor
   private static final SNodePointer breakingNode_8s7bhl_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c8959036e(jetbrains.mps.baseLanguage.classifiers.constraints)", "6836281137582646385");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultClassifierType$iz = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierType");
-    /*package*/ static final SInterfaceConcept IClassifier$Cb = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
+    /*package*/ static final SConcept DefaultClassifierType$in = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierType");
+    /*package*/ static final SInterfaceConcept IClassifier$BZ = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$5aH4 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL, 0x118bc796c90L, "classifier");
+    /*package*/ static final SReferenceLink classifier$1EGS = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL, 0x118bc796c90L, "classifier");
   }
 }

@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BwfFileSet_Constraints extends BaseConstraintsDescriptor {
   public BwfFileSet_Constraints() {
-    super(CONCEPTS.BwfFileSet$Db);
+    super(CONCEPTS.BwfFileSet$8N);
   }
 
   @Override
@@ -38,13 +38,13 @@ public class BwfFileSet_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.XmlElement$Pm) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.BwfPathReference$gi);
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.XmlElement$fP) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.BwfPathReference$JU);
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:8c3c79a2-2377-4680-a62f-78d39fdded56(jetbrains.mps.build.workflow.constraints)", "1227128029536580189");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfFileSet$Db = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, "jetbrains.mps.build.workflow.structure.BwfFileSet");
-    /*package*/ static final SConcept BwfPathReference$gi = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, "jetbrains.mps.build.workflow.structure.BwfPathReference");
-    /*package*/ static final SConcept XmlElement$Pm = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
+    /*package*/ static final SConcept BwfFileSet$8N = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, "jetbrains.mps.build.workflow.structure.BwfFileSet");
+    /*package*/ static final SConcept BwfPathReference$JU = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL, "jetbrains.mps.build.workflow.structure.BwfPathReference");
+    /*package*/ static final SConcept XmlElement$fP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
   }
 }

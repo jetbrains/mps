@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StartProcessHandlerStatement_Constraints extends BaseConstraintsDescriptor {
   public StartProcessHandlerStatement_Constraints() {
-    super(CONCEPTS.StartProcessHandlerStatement$34);
+    super(CONCEPTS.StartProcessHandlerStatement$JF);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class StartProcessHandlerStatement_Constraints extends BaseConstraintsDes
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:d6e5159c-3299-41f5-8a8a-81b5b79d5073(jetbrains.mps.execution.configurations.constraints)", "1227128029536566029");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StartProcessHandlerStatement$34 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0xd244b712f9d44d1L, "jetbrains.mps.execution.configurations.structure.StartProcessHandlerStatement");
+    /*package*/ static final SConcept StartProcessHandlerStatement$JF = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0xd244b712f9d44d1L, "jetbrains.mps.execution.configurations.structure.StartProcessHandlerStatement");
   }
 }

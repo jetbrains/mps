@@ -108,14 +108,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.uuid$UrzD;
+      final SProperty property = PROPS.uuid$pC01;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no uuid>");
       editorCell.setCellId("property_uuid");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -181,10 +181,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.extends$puzT;
+      return LINKS.extends$SF0h;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.BuildMps_DevKitRef$iR;
+      return CONCEPTS.BuildMps_DevKitRef$Jf;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -194,7 +194,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(extendsListHandler_pa0pfb_b1a0.this.getNode(), LINKS.extends$puzT));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(extendsListHandler_pa0pfb_b1a0.this.getNode(), LINKS.extends$SF0h));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -278,10 +278,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.exports$nj57;
+      return LINKS.exports$Qvxv;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.BuildMps_DevKitExport$xp;
+      return CONCEPTS.BuildMps_DevKitExport$XL;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -291,7 +291,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(exportsListHandler_pa0pfb_d1a0.this.getNode(), LINKS.exports$nj57));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(exportsListHandler_pa0pfb_d1a0.this.getNode(), LINKS.exports$Qvxv));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_4();
@@ -342,17 +342,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty uuid$UrzD = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
+    /*package*/ static final SProperty uuid$pC01 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept BuildMps_DevKitRef$iR = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2313aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitRef");
-    /*package*/ static final SConcept BuildMps_DevKitExport$xp = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d23143L, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExport");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept BuildMps_DevKitRef$Jf = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2313aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitRef");
+    /*package*/ static final SConcept BuildMps_DevKitExport$XL = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d23143L, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExport");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extends$puzT = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d23142L, "extends");
-    /*package*/ static final SContainmentLink exports$nj57 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d29d82L, "exports");
+    /*package*/ static final SContainmentLink extends$SF0h = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d23142L, "extends");
+    /*package*/ static final SContainmentLink exports$Qvxv = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d29d82L, "exports");
   }
 }

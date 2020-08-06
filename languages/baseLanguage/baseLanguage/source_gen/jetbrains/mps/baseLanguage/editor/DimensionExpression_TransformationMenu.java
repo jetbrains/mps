@@ -65,7 +65,7 @@ public class DimensionExpression_TransformationMenu extends TransformationMenuBa
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.DimensionExpression$ei)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.DimensionExpression$F4)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -145,7 +145,7 @@ public class DimensionExpression_TransformationMenu extends TransformationMenuBa
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.DimensionExpression$ei, null);
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.DimensionExpression$F4, null);
         SNodeOperations.insertNextSiblingChild(_context.getNode(), result);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -171,6 +171,6 @@ public class DimensionExpression_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DimensionExpression$ei = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4b2dfdaL, "jetbrains.mps.baseLanguage.structure.DimensionExpression");
+    /*package*/ static final SConcept DimensionExpression$F4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4b2dfdaL, "jetbrains.mps.baseLanguage.structure.DimensionExpression");
   }
 }

@@ -21,13 +21,13 @@ public class PrimitiveTypesInInstanceOfNotAllowed_NonTypesystemRule extends Abst
   public PrimitiveTypesInInstanceOfNotAllowed_NonTypesystemRule() {
   }
   public void applyRule(final SNode instanceOfExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$do7a), CONCEPTS.PrimitiveType$5)))) {
+    if (!(!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$StzW), CONCEPTS.PrimitiveType$sR)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(instanceOfExpression, "primitive types in instanceof are not allowed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1260930188116719807", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InstanceOfExpression$JG;
+    return CONCEPTS.InstanceOfExpression$cu;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,11 +37,11 @@ public class PrimitiveTypesInInstanceOfNotAllowed_NonTypesystemRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classType$do7a = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
+    /*package*/ static final SContainmentLink classType$StzW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept InstanceOfExpression$JG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept InstanceOfExpression$cu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
   }
 }

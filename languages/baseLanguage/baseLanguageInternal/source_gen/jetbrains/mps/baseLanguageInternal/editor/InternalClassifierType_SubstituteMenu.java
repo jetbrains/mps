@@ -34,7 +34,7 @@ public class InternalClassifierType_SubstituteMenu extends SubstituteMenuBase {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Group_88em4w_a());
     result.add(new SMP_Subconcepts_88em4w_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InternalClassifierType$bm) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InternalClassifierType$s8) {
 
       @NotNull
       @Override
@@ -47,7 +47,7 @@ public class InternalClassifierType_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.InternalClassifierType$bm));
+    }, CONCEPTS.InternalClassifierType$s8));
     return result;
   }
 
@@ -67,7 +67,7 @@ public class InternalClassifierType_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_88em4w_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassConcept$IY) && (Objects.equals(_context.getLink(), LINKS.superclass$7jGM) || Objects.equals(_context.getLink(), LINKS.implementedInterface$KoQU)) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Interface$Kp) && Objects.equals(_context.getLink(), LINKS.extendedInterface$a$v2);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassConcept$bK) && (Objects.equals(_context.getLink(), LINKS.superclass$Mp9$) || Objects.equals(_context.getLink(), LINKS.implementedInterface$rujG)) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Interface$db) && Objects.equals(_context.getLink(), LINKS.extendedInterface$PDVO);
     }
     @NotNull
     @Override
@@ -83,7 +83,7 @@ public class InternalClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InternalClassifierType$bm) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InternalClassifierType$s8) {
 
         @NotNull
         @Override
@@ -96,12 +96,12 @@ public class InternalClassifierType_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.InternalClassifierType$bm));
+      }, CONCEPTS.InternalClassifierType$s8));
     }
   }
   public class SMP_Subconcepts_88em4w_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.InternalClassifierType$bm);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.InternalClassifierType$s8);
     }
     @NotNull
     @Override
@@ -122,14 +122,14 @@ public class InternalClassifierType_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InternalClassifierType$bm = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1118e558c6dL, "jetbrains.mps.baseLanguageInternal.structure.InternalClassifierType");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept InternalClassifierType$s8 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1118e558c6dL, "jetbrains.mps.baseLanguageInternal.structure.InternalClassifierType");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
   }
 }

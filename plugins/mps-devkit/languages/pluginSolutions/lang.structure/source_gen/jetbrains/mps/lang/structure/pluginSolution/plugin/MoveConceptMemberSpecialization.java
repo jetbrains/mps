@@ -17,12 +17,12 @@ public abstract class MoveConceptMemberSpecialization<T extends SConceptFeature>
   public abstract String getMemberKindPlural();
   @Override
   public void updateMigrationDescription(SNode initialMoveRoot, SNode finalMoveRoot, LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder) {
-    ListSequence.fromList(migrationBuilder.myDescription.memberArgs).addElement(SPropertyOperations.getString(SNodeOperations.cast(finalMoveRoot, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v));
+    ListSequence.fromList(migrationBuilder.myDescription.memberArgs).addElement(SPropertyOperations.getString(SNodeOperations.cast(finalMoveRoot, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
     if (ListSequence.fromList(migrationBuilder.myDescription.conceptArgs).isNotEmpty()) {
       // link are moved together with concepts 
       return;
     }
-    String targetConceptName = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getContainingRoot(finalMoveRoot), CONCEPTS.AbstractConceptDeclaration$UN), PROPS.name$lA7v);
+    String targetConceptName = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getContainingRoot(finalMoveRoot), CONCEPTS.AbstractConceptDeclaration$KA), PROPS.name$MnvL);
     if (ListSequence.fromList(migrationBuilder.myDescription.memberArgs).count() == 1) {
       migrationBuilder.myDescription.description = String.format("Move %s `%s` to concept `%s`", getMemberKind(), ListSequence.fromList(migrationBuilder.myDescription.memberArgs).first(), targetConceptName);
     } else {
@@ -31,11 +31,11 @@ public abstract class MoveConceptMemberSpecialization<T extends SConceptFeature>
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -42,7 +42,7 @@ public class Migrate_ReplaceChild_Params extends MigrationScriptBase {
           return scope_s09h5g_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellMenuPart_ReplaceChild_defaultConceptOfChild$jv, false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellMenuPart_ReplaceChild_defaultConceptOfChild$v6, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_s09h5g_a0a0a0a0a0a0g(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x306b0e1228f7e93aL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultChildConcept"))));
         }
@@ -73,6 +73,6 @@ public class Migrate_ReplaceChild_Params extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellMenuPart_ReplaceChild_defaultConceptOfChild$jv = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa4bf8b2L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultConceptOfChild");
+    /*package*/ static final SConcept CellMenuPart_ReplaceChild_defaultConceptOfChild$v6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa4bf8b2L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultConceptOfChild");
   }
 }

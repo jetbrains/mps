@@ -31,10 +31,10 @@ public class DeleteParenthesisRight_Action {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        int unmatchedLeftParens = ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl)) != null) ? SPropertyOperations.getInteger(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl)), PROPS.count$zWw) : 0);
-        int unmatchedRightParens = ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq)) != null) ? SPropertyOperations.getInteger(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq)), PROPS.count$zWw) : 0);
+        int unmatchedLeftParens = ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)) != null) ? SPropertyOperations.getInteger(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)), PROPS.count$FDpi) : 0);
+        int unmatchedRightParens = ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) != null) ? SPropertyOperations.getInteger(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)), PROPS.count$FDpi) : 0);
 
-        SNode replacing = SLinkOperations.getTarget(node, LINKS.expression$efP0);
+        SNode replacing = SLinkOperations.getTarget(node, LINKS.expression$TlhM);
         if (replacing == null) {
           SNodeOperations.deleteNode(node);
           return;
@@ -104,15 +104,15 @@ public class DeleteParenthesisRight_Action {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IncompleteLeftParen$yl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen");
-    /*package*/ static final SConcept IncompleteRightParen$rq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen");
+    /*package*/ static final SConcept IncompleteLeftParen$Z7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen");
+    /*package*/ static final SConcept IncompleteRightParen$Sc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty count$zWw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xede3fe8510255edL, 0xede3fe8510255eeL, "count");
+    /*package*/ static final SProperty count$FDpi = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xede3fe8510255edL, 0xede3fe8510255eeL, "count");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

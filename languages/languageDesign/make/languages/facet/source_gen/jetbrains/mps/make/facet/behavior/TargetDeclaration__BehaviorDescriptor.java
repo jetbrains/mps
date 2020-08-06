@@ -37,14 +37,14 @@ public final class TargetDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode facetDeclaration_id6O0kUTrtki6(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.FacetDeclaration$al);
+    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.FacetDeclaration$Nd);
   }
   /*package*/ static String getTargetFqName_idLXloLaM9s9(@NotNull SNode __thisNode__) {
-    String ffqn = FacetDeclaration__BehaviorDescriptor.getFacetFqName_id1ExXGqkc_QX.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.FacetDeclaration$al));
-    return (ffqn != null ? ffqn + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) : SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
+    String ffqn = FacetDeclaration__BehaviorDescriptor.getFacetFqName_id1ExXGqkc_QX.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.FacetDeclaration$Nd));
+    return (ffqn != null ? ffqn + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) : SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
   }
   /*package*/ static String classifierName_id3ZSHU3pg$b_(@NotNull SNode __thisNode__) {
-    return IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(TargetDeclaration__BehaviorDescriptor.facetDeclaration_id6O0kUTrtki6.invoke(__thisNode__)) + ".Target_" + NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
+    return IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(TargetDeclaration__BehaviorDescriptor.facetDeclaration_id6O0kUTrtki6.invoke(__thisNode__)) + ".Target_" + NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
   }
 
   /*package*/ TargetDeclaration__BehaviorDescriptor() {
@@ -98,10 +98,10 @@ public final class TargetDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FacetDeclaration$al = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
+    /*package*/ static final SConcept FacetDeclaration$Nd = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

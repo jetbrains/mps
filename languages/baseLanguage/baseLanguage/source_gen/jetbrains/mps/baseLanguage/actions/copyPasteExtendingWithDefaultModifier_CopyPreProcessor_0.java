@@ -18,43 +18,43 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class copyPasteExtendingWithDefaultModifier_CopyPreProcessor_0 implements CopyPreProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InstanceMethodDeclaration$An;
+    return CONCEPTS.InstanceMethodDeclaration$39;
   }
   @Override
   public void preProcessNode(SNode copy, SNode original) {
     SNode methodParent = SNodeOperations.getParent(original);
-    if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Classifier$hJ)) {
-      if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Interface$Kp)) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$m0)).all(new IWhereFilter<SNode>() {
+    if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Classifier$Ix)) {
+      if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Interface$db)) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$F5MM)).all(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$Z2));
+            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO));
           }
         })) {
-          SPropertyOperations.assign(copy, PROPS.isAbstract$gogN, true);
+          SPropertyOperations.assign(copy, PROPS.isAbstract$VtH_, true);
         } else {
-          ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$m0)).removeWhere(new IWhereFilter<SNode>() {
+          ListSequence.fromList(SLinkOperations.getChildren(copy, LINKS.modifiers$F5MM)).removeWhere(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$Z2);
+              return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO);
             }
           });
-          SPropertyOperations.assign(copy, PROPS.isAbstract$gogN, false);
+          SPropertyOperations.assign(copy, PROPS.isAbstract$VtH_, false);
         }
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept DefaultModifier$Z2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept DefaultModifier$rO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 }

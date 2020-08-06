@@ -48,13 +48,13 @@ public final class PatternBuilderClassifierMember__BehaviorDescriptor extends Ba
     return true;
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PatternBuilderVariable$In)) {
-      return new NamedElementsScope(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$F$0y)));
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PatternBuilderVariable$VU)) {
+      return new NamedElementsScope(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$JWe5)));
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child));
   }
   /*package*/ static String getGeneratedName_id6SIgReParNN(@NotNull SNode __thisNode__) {
-    return NameUtil.capitalize(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) + "_Pattern";
+    return NameUtil.capitalize(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) + "_Pattern";
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
     ClassifierSignature signature = new ClassifierSignature(PatternBuilderClassifierMember__BehaviorDescriptor.getGeneratedName_id6SIgReParNN.invoke(__thisNode__));
@@ -116,15 +116,15 @@ public final class PatternBuilderClassifierMember__BehaviorDescriptor extends Ba
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink pattern$F$0y = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, 0x50f8d1ebd50bbeb3L, "pattern");
+    /*package*/ static final SContainmentLink pattern$JWe5 = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, 0x50f8d1ebd50bbeb3L, "pattern");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept PatternBuilderVariable$In = MetaAdapterFactory.getInterfaceConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa6106eL, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariable");
-    /*package*/ static final SInterfaceConcept ScopeProvider$M8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
+    /*package*/ static final SInterfaceConcept PatternBuilderVariable$VU = MetaAdapterFactory.getInterfaceConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa6106eL, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariable");
+    /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

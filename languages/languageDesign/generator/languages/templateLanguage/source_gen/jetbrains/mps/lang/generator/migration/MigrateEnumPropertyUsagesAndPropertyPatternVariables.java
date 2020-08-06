@@ -50,11 +50,11 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
         }
       };
       EnumExpressionsMigration migration = new EnumExpressionsMigration();
-      for (SNode propertyMacro : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyMacro$wt, false))) {
+      for (SNode propertyMacro : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyMacro$c9, false))) {
         SNode newProperty = migration.migrateEnumPropertyAttribute(propertyMacro);
         if (newProperty != null) {
-          SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$Dbgb), CONCEPTS.EnumerationDeclaration$rG);
-          migration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyMacro, LINKS.propertyValueFunction$IV_T));
+          SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$5j5Y), CONCEPTS.EnumerationDeclaration$hv);
+          migration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyMacro, LINKS.propertyValueFunction$7Sh_));
         }
       }
       migration.optimize();
@@ -62,11 +62,11 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
       new PropertyPatternVariableMigration<SNode>() {
         @Override
         protected Iterable<SNode> getUsagesToMigrate() {
-          return CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.TemplateArgumentPropertyPatternRefExpression$PN, false);
+          return CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.TemplateArgumentPropertyPatternRefExpression$xv, false);
         }
         @Override
         protected SNode getDeclaration(SNode usage) {
-          return SLinkOperations.getTarget(usage, LINKS.propertyPattern$foN1);
+          return SLinkOperations.getTarget(usage, LINKS.propertyPattern$CluH);
         }
         @Override
         protected void migrateRawValue(SNode usage, SNode datatype) {
@@ -89,9 +89,9 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
           return scope_sag2ow_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyMacro$wt, false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyMacro$c9, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it)), CONCEPTS.EnumPropertyMigrationInfo$Yg);
+          return SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(it)), CONCEPTS.EnumPropertyMigrationInfo$O3);
         }
       }).select(new ISelector<SNode, UsageOfMigrateNodeNotMigratedProblem>() {
         public UsageOfMigrateNodeNotMigratedProblem select(SNode it) {
@@ -109,15 +109,15 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
 
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dataType$Dbgb = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
-    /*package*/ static final SContainmentLink propertyValueFunction$IV_T = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, 0x10fe3b4023fL, "propertyValueFunction");
-    /*package*/ static final SReferenceLink propertyPattern$foN1 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
+    /*package*/ static final SReferenceLink dataType$5j5Y = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
+    /*package*/ static final SContainmentLink propertyValueFunction$7Sh_ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, 0x10fe3b4023fL, "propertyValueFunction");
+    /*package*/ static final SReferenceLink propertyPattern$CluH = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
-    /*package*/ static final SConcept PropertyMacro$wt = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, "jetbrains.mps.lang.generator.structure.PropertyMacro");
-    /*package*/ static final SConcept TemplateArgumentPropertyPatternRefExpression$PN = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPropertyPatternRefExpression");
-    /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+    /*package*/ static final SConcept EnumerationDeclaration$hv = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
+    /*package*/ static final SConcept PropertyMacro$c9 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, "jetbrains.mps.lang.generator.structure.PropertyMacro");
+    /*package*/ static final SConcept TemplateArgumentPropertyPatternRefExpression$xv = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPropertyPatternRefExpression");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo$O3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 }

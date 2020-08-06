@@ -46,7 +46,7 @@ public class Data_Flow_TabDescriptor extends RelationDescriptor {
     return ConceptEditorOpenHelper.getBaseNode(node);
   }
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA);
   }
   @Nullable
   public Icon getIcon() {
@@ -63,21 +63,21 @@ public class Data_Flow_TabDescriptor extends RelationDescriptor {
     if (aspectModel == null) {
       return nodes;
     }
-    ListSequence.fromList(nodes).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("findConceptAspects", CONCEPTS.AbstractConceptDeclaration$UN, "4G9PD8$NvPM"), aspectModel))));
+    ListSequence.fromList(nodes).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("findConceptAspects", CONCEPTS.AbstractConceptDeclaration$KA, "4G9PD8$NvPM"), aspectModel))));
     return nodes;
   }
   public boolean isSingle() {
     return false;
   }
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.DataFlowBuilderDeclaration$ZP);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.DataFlowBuilderDeclaration$NP);
   }
   public SNode createAspect(final SNode node, final SConcept concept) {
-    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.DATA_FLOW, node, SNodeFactoryOperations.createNewNode(CONCEPTS.DataFlowBuilderDeclaration$ZP, null));
+    return ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.DATA_FLOW, node, SNodeFactoryOperations.createNewNode(CONCEPTS.DataFlowBuilderDeclaration$NP, null));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept DataFlowBuilderDeclaration$ZP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept DataFlowBuilderDeclaration$NP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
   }
 }

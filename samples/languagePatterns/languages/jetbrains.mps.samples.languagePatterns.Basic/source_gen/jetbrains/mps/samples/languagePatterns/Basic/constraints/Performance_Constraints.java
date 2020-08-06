@@ -26,12 +26,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Performance_Constraints extends BaseConstraintsDescriptor {
   public Performance_Constraints() {
-    super(CONCEPTS.Performance$Fi);
+    super(CONCEPTS.Performance$QQ);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.singer$iPD0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.singer$ApO$, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,9 +47,9 @@ public class Performance_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
 
-            SNode surroundingConcert = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Concert$6k, true, false);
+            SNode surroundingConcert = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Concert$hS, true, false);
 
-            List<SNode> performersAtTheConcert = SLinkOperations.getChildren(surroundingConcert, LINKS.performers$fe$z);
+            List<SNode> performersAtTheConcert = SLinkOperations.getChildren(surroundingConcert, LINKS.performers$yMK7);
 
             return ListScope.forNamedElements(performersAtTheConcert);
           }
@@ -63,12 +63,12 @@ public class Performance_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_lq51rn_a0a0a0a0a1a0a0a0c = new SNodePointer("r:7e1c7518-df7a-4f22-84b2-a5e68261264a(jetbrains.mps.samples.languagePatterns.Basic.constraints)", "6836281137582847667");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Performance$Fi = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, "jetbrains.mps.samples.languagePatterns.Basic.structure.Performance");
-    /*package*/ static final SConcept Concert$6k = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, "jetbrains.mps.samples.languagePatterns.Basic.structure.Concert");
+    /*package*/ static final SConcept Performance$QQ = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, "jetbrains.mps.samples.languagePatterns.Basic.structure.Performance");
+    /*package*/ static final SConcept Concert$hS = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, "jetbrains.mps.samples.languagePatterns.Basic.structure.Concert");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink singer$iPD0 = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, 0x34c8853ae7895ce2L, "singer");
-    /*package*/ static final SContainmentLink performers$fe$z = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, 0x34c8853ae7895c8bL, "performers");
+    /*package*/ static final SReferenceLink singer$ApO$ = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895ce1L, 0x34c8853ae7895ce2L, "singer");
+    /*package*/ static final SContainmentLink performers$yMK7 = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae7895c45L, 0x34c8853ae7895c8bL, "performers");
   }
 }

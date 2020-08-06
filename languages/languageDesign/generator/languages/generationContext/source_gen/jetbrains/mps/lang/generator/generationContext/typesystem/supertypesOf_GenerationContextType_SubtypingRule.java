@@ -21,7 +21,7 @@ public class supertypesOf_GenerationContextType_SubtypingRule extends SubtypingR
     return _quotation_createNode_uev2l9_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GenerationContextType$zO;
+    return CONCEPTS.GenerationContextType$Xq;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class supertypesOf_GenerationContextType_SubtypingRule extends SubtypingR
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextType$zO = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e1L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextType");
+    /*package*/ static final SConcept GenerationContextType$Xq = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e1L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextType");
   }
 }

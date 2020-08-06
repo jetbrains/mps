@@ -32,7 +32,7 @@ public final class GroupType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<SNode> getMembers_idhEwINC$(@NotNull SNode __thisNode__, SNode contextNode) {
-    return IClassifier__BehaviorDescriptor.getMembers_idhEwJink.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.actionGroup$l_Y1), contextNode);
+    return IClassifier__BehaviorDescriptor.getMembers_idhEwJink.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.actionGroup$zaV4), contextNode);
   }
 
   /*package*/ GroupType__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class GroupType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink actionGroup$l_Y1 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119240f9168L, 0x119240f916aL, "actionGroup");
+    /*package*/ static final SReferenceLink actionGroup$zaV4 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119240f9168L, 0x119240f916aL, "actionGroup");
   }
 }

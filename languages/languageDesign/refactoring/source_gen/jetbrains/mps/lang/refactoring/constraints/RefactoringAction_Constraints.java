@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class RefactoringAction_Constraints extends BaseConstraintsDescriptor {
   public RefactoringAction_Constraints() {
-    super(CONCEPTS.RefactoringAction$YI);
+    super(CONCEPTS.RefactoringAction$rn);
   }
 
   @Override
@@ -38,12 +38,12 @@ public class RefactoringAction_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.DoRefactorClause$lc, true, false) != null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.DoRefactorClause$LP, true, false) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590313(jetbrains.mps.lang.refactoring.constraints)", "1227128029536563249");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept RefactoringAction$YI = MetaAdapterFactory.getInterfaceConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x2cfffca8ff395f2fL, "jetbrains.mps.lang.refactoring.structure.RefactoringAction");
-    /*package*/ static final SConcept DoRefactorClause$lc = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x114ff4a9da3L, "jetbrains.mps.lang.refactoring.structure.DoRefactorClause");
+    /*package*/ static final SInterfaceConcept RefactoringAction$rn = MetaAdapterFactory.getInterfaceConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x2cfffca8ff395f2fL, "jetbrains.mps.lang.refactoring.structure.RefactoringAction");
+    /*package*/ static final SConcept DoRefactorClause$LP = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x114ff4a9da3L, "jetbrains.mps.lang.refactoring.structure.DoRefactorClause");
   }
 }

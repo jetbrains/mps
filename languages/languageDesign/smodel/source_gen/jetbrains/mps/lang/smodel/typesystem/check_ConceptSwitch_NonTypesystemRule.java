@@ -22,13 +22,13 @@ public class check_ConceptSwitch_NonTypesystemRule extends AbstractNonTypesystem
   public check_ConceptSwitch_NonTypesystemRule() {
   }
   public void applyRule(final SNode switchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$1EmR);
+    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$A3on);
     if (arg == null) {
       return;
     }
     SNode argType = TypecheckingFacade.getFromContext().getTypeOf(arg);
 
-    if (!((SNodeOperations.isInstanceOf(argType, CONCEPTS.SConceptType$nF)))) {
+    if (!((SNodeOperations.isInstanceOf(argType, CONCEPTS.SConceptType$pb)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arg, "Argument of concept switch should be of type concept<>", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "5944356402132966789", null, errorTarget);
@@ -36,7 +36,7 @@ public class check_ConceptSwitch_NonTypesystemRule extends AbstractNonTypesystem
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptSwitchStatement$9V;
+    return CONCEPTS.ConceptSwitchStatement$br;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,11 +46,11 @@ public class check_ConceptSwitch_NonTypesystemRule extends AbstractNonTypesystem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$1EmR = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, 0x527e98a73771f430L, "expression");
+    /*package*/ static final SContainmentLink expression$A3on = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, 0x527e98a73771f430L, "expression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SConceptType$nF = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
-    /*package*/ static final SConcept ConceptSwitchStatement$9V = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement");
+    /*package*/ static final SConcept SConceptType$pb = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
+    /*package*/ static final SConcept ConceptSwitchStatement$br = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement");
   }
 }

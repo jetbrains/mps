@@ -27,8 +27,8 @@ public class checkCircularCustomization_NonTypesystemRule extends AbstractNonTyp
   public void applyRule(final SNode dailyPlan, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode plan = dailyPlan;
     List<SNode> visitedPlans = new ArrayList<SNode>();
-    while ((SLinkOperations.getTarget(plan, LINKS.customizes$TgmQ) != null)) {
-      plan = SLinkOperations.getTarget(SLinkOperations.getTarget(plan, LINKS.customizes$TgmQ), LINKS.target$M6U0);
+    while ((SLinkOperations.getTarget(plan, LINKS.customizes$o_Bh) != null)) {
+      plan = SLinkOperations.getTarget(SLinkOperations.getTarget(plan, LINKS.customizes$o_Bh), LINKS.target$hsar);
       if (Objects.equals(plan, dailyPlan)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -43,7 +43,7 @@ public class checkCircularCustomization_NonTypesystemRule extends AbstractNonTyp
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DailyPlan$jq;
+    return CONCEPTS.DailyPlan$zP;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -53,11 +53,11 @@ public class checkCircularCustomization_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customizes$TgmQ = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
-    /*package*/ static final SReferenceLink target$M6U0 = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
+    /*package*/ static final SContainmentLink customizes$o_Bh = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
+    /*package*/ static final SReferenceLink target$hsar = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DailyPlan$jq = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, "jetbrains.mps.samples.heating.structure.DailyPlan");
+    /*package*/ static final SConcept DailyPlan$zP = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, "jetbrains.mps.samples.heating.structure.DailyPlan");
   }
 }

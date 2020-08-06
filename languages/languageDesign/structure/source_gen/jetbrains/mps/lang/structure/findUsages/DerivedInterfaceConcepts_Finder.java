@@ -36,7 +36,7 @@ public class DerivedInterfaceConcepts_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.InterfaceConceptDeclaration$MT;
+    return CONCEPTS.InterfaceConceptDeclaration$CG;
   }
 
   @Override
@@ -52,8 +52,8 @@ public class DerivedInterfaceConcepts_Finder extends GeneratedFinder {
             SNode nodeParam = (SNode) searchResult.getObject();
             new _FunctionTypes._void_P1_E0<SNode>() {
               public void invoke(SNode nodeUsage) {
-                if (SNodeOperations.hasRole(nodeUsage, LINKS.extends$V2F7)) {
-                  SNode foundIntfc = SNodeOperations.cast(SNodeOperations.getParent(nodeUsage), CONCEPTS.InterfaceConceptDeclaration$MT);
+                if (SNodeOperations.hasRole(nodeUsage, LINKS.extends$nawU)) {
+                  SNode foundIntfc = SNodeOperations.cast(SNodeOperations.getParent(nodeUsage), CONCEPTS.InterfaceConceptDeclaration$CG);
                   callback.onUsageFound(createSingleResult(foundIntfc));
                   QueueSequence.fromQueue(queue).addLastElement(foundIntfc);
                 }
@@ -79,10 +79,10 @@ public class DerivedInterfaceConcepts_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SContainmentLink extends$nawU = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
   }
 }

@@ -37,7 +37,7 @@ public class check_DataFlowBuilderDeclaration_modeUniqueness_NonTypesystemRule e
   }
   public void applyRule(final SNode builder, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Language containingLanguage = as_46aqev_a0a0a1(SNodeOperations.getModel(builder).getModule(), Language.class);
-    if (containingLanguage == null || SLinkOperations.getTarget(builder, LINKS.conceptDeclaration$_Dk3) == null) {
+    if (containingLanguage == null || SLinkOperations.getTarget(builder, LINKS.conceptDeclaration$vN83) == null) {
       return;
     }
 
@@ -45,16 +45,16 @@ public class check_DataFlowBuilderDeclaration_modeUniqueness_NonTypesystemRule e
     Map<SNode, List<SNode>> duplicatingDeclarations = MapSequence.fromMap(new HashMap<SNode, List<SNode>>());
     SModel dataFlowModel = SModuleOperations.getAspect(containingLanguage, "dataFlow");
     if (dataFlowModel != null) {
-      List<SNode> roots = SModelOperations.roots(dataFlowModel, CONCEPTS.DataFlowBuilderDeclaration$ZP);
+      List<SNode> roots = SModelOperations.roots(dataFlowModel, CONCEPTS.DataFlowBuilderDeclaration$NP);
       for (SNode root : ListSequence.fromList(roots)) {
-        if (root == builder || SLinkOperations.getTarget(root, LINKS.conceptDeclaration$_Dk3) != SLinkOperations.getTarget(builder, LINKS.conceptDeclaration$_Dk3)) {
+        if (root == builder || SLinkOperations.getTarget(root, LINKS.conceptDeclaration$vN83) != SLinkOperations.getTarget(builder, LINKS.conceptDeclaration$vN83)) {
           continue;
         }
-        if (ListSequence.fromList(SLinkOperations.getChildren(builder, LINKS.modes$S9of)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.modes$S9of)).isEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(builder, LINKS.modes$Mjcf)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.modes$Mjcf)).isEmpty()) {
           MapSequence.fromMap(duplicatingDeclarations).put(root, ListSequence.fromList(new ArrayList<SNode>()));
         } else {
-          for (SNode myMode : ListSequence.fromList(SLinkOperations.getChildren(builder, LINKS.modes$S9of))) {
-            if (ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.modes$S9of)).select(new ISelector<SNode, SConcept>() {
+          for (SNode myMode : ListSequence.fromList(SLinkOperations.getChildren(builder, LINKS.modes$Mjcf))) {
+            if (ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.modes$Mjcf)).select(new ISelector<SNode, SConcept>() {
               public SConcept select(SNode it) {
                 return SNodeOperations.getConcept(it);
               }
@@ -87,7 +87,7 @@ public class check_DataFlowBuilderDeclaration_modeUniqueness_NonTypesystemRule e
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DataFlowBuilderDeclaration$ZP;
+    return CONCEPTS.DataFlowBuilderDeclaration$NP;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -100,11 +100,11 @@ public class check_DataFlowBuilderDeclaration_modeUniqueness_NonTypesystemRule e
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$_Dk3 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink modes$S9of = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x6e8db6877fd04efbL, "modes");
+    /*package*/ static final SReferenceLink conceptDeclaration$vN83 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink modes$Mjcf = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x6e8db6877fd04efbL, "modes");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DataFlowBuilderDeclaration$ZP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
+    /*package*/ static final SConcept DataFlowBuilderDeclaration$NP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
   }
 }

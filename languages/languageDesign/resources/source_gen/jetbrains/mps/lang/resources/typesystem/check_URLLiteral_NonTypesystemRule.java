@@ -17,13 +17,13 @@ public class check_URLLiteral_NonTypesystemRule extends AbstractNonTypesystemRul
   public check_URLLiteral_NonTypesystemRule() {
   }
   public void applyRule(final SNode url, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(url, PROPS.url$uAd3))) {
+    if (isEmptyString(SPropertyOperations.getString(url, PROPS.url$qUOP))) {
       return;
     }
-    URLCheckUtil.check(typeCheckingContext, url, SPropertyOperations.getString(url, PROPS.url$uAd3));
+    URLCheckUtil.check(typeCheckingContext, url, SPropertyOperations.getString(url, PROPS.url$qUOP));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BaseURLLiteral$ZV;
+    return CONCEPTS.BaseURLLiteral$BH;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,10 +36,10 @@ public class check_URLLiteral_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty url$uAd3 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, 0x4197d5560e6a38f3L, "url");
+    /*package*/ static final SProperty url$qUOP = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, 0x4197d5560e6a38f3L, "url");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseURLLiteral$ZV = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, "jetbrains.mps.lang.resources.structure.BaseURLLiteral");
+    /*package*/ static final SConcept BaseURLLiteral$BH = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, "jetbrains.mps.lang.resources.structure.BaseURLLiteral");
   }
 }

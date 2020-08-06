@@ -57,11 +57,11 @@ public final class AlterStatementListContainer_Intention extends AbstractIntenti
     return list;
   }
   private List<SAbstractConcept> parameter(final SNode node, final EditorContext editorContext) {
-    List<SAbstractConcept> list = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.IfStatement$pi, CONCEPTS.WhileStatement$9K, CONCEPTS.DoWhileStatement$GB, CONCEPTS.ForStatement$Y9, CONCEPTS.ForeachStatement$oA, CONCEPTS.ForEachStatement$Dx);
+    List<SAbstractConcept> list = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.IfStatement$Q4, CONCEPTS.WhileStatement$Ay, CONCEPTS.DoWhileStatement$9p, CONCEPTS.ForStatement$qV, CONCEPTS.ForeachStatement$Po, CONCEPTS.ForEachStatement$RO);
     ListSequence.fromList(list).removeElement(SNodeOperations.getConcept(node));
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ForeachStatement$oA) || SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachStatement$Dx)) {
-      ListSequence.fromList(list).removeElement(CONCEPTS.ForeachStatement$oA);
-      ListSequence.fromList(list).removeElement(CONCEPTS.ForEachStatement$Dx);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ForeachStatement$Po) || SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachStatement$RO)) {
+      ListSequence.fromList(list).removeElement(CONCEPTS.ForeachStatement$Po);
+      ListSequence.fromList(list).removeElement(CONCEPTS.ForEachStatement$RO);
     }
     return list;
   }
@@ -73,12 +73,12 @@ public final class AlterStatementListContainer_Intention extends AbstractIntenti
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String targetName;
-      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(myParameter), CONCEPTS.ForEachStatement$Dx)) {
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(myParameter), CONCEPTS.ForEachStatement$RO)) {
         targetName = "'for (var in iterable)'";
-      } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(myParameter), CONCEPTS.ForeachStatement$oA)) {
+      } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(myParameter), CONCEPTS.ForeachStatement$Po)) {
         targetName = "'for (Type var: iterable)'";
       } else {
-        targetName = myParameter.getConceptAlias() + ((SConceptOperations.isExactly(SNodeOperations.asSConcept(myParameter), CONCEPTS.DoWhileStatement$GB) ? "-While" : ""));
+        targetName = myParameter.getConceptAlias() + ((SConceptOperations.isExactly(SNodeOperations.asSConcept(myParameter), CONCEPTS.DoWhileStatement$9p) ? "-While" : ""));
       }
       targetName += " statement";
       targetName = "Change to " + targetName;
@@ -101,11 +101,11 @@ public final class AlterStatementListContainer_Intention extends AbstractIntenti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept WhileStatement$9K = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
-    /*package*/ static final SConcept DoWhileStatement$GB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, "jetbrains.mps.baseLanguage.structure.DoWhileStatement");
-    /*package*/ static final SConcept ForStatement$Y9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
-    /*package*/ static final SConcept ForeachStatement$oA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
-    /*package*/ static final SConcept ForEachStatement$Dx = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept WhileStatement$Ay = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
+    /*package*/ static final SConcept DoWhileStatement$9p = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, "jetbrains.mps.baseLanguage.structure.DoWhileStatement");
+    /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+    /*package*/ static final SConcept ForeachStatement$Po = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
+    /*package*/ static final SConcept ForEachStatement$RO = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement");
   }
 }

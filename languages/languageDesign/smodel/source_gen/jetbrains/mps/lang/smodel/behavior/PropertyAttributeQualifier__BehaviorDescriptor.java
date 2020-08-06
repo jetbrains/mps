@@ -31,7 +31,7 @@ public final class PropertyAttributeQualifier__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static SNode getTargetConcept_id5zEkxuKhyRq(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.attributeConcept$2Gkw);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.attributeConcept$B5m0);
   }
 
   /*package*/ PropertyAttributeQualifier__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class PropertyAttributeQualifier__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attributeConcept$2Gkw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c9b9L, 0x58ea5217b045c9baL, "attributeConcept");
+    /*package*/ static final SReferenceLink attributeConcept$B5m0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c9b9L, 0x58ea5217b045c9baL, "attributeConcept");
   }
 }

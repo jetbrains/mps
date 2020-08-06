@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class VarVariableDeclaration_Constraints extends BaseConstraintsDescriptor {
   public VarVariableDeclaration_Constraints() {
-    super(CONCEPTS.VarVariableDeclaration$Of);
+    super(CONCEPTS.VarVariableDeclaration$pa);
   }
 
   @Override
@@ -39,19 +39,19 @@ public class VarVariableDeclaration_Constraints extends BaseConstraintsDescripto
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.type$uWuc) && childNode != null) {
-      return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.VarType$lr);
+    if (Objects.equals(link, LINKS.type$a1UY) && childNode != null) {
+      return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.VarType$Um);
     }
     return true;
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:0944faf1-7722-484f-9a37-701b1951c563(jetbrains.mps.baseLanguage.varVariable.constraints)", "6735953169133489389");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VarVariableDeclaration$Of = MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x11ff0aa3699L, "jetbrains.mps.baseLanguage.varVariable.structure.VarVariableDeclaration");
-    /*package*/ static final SConcept VarType$lr = MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x112353ac52dL, "jetbrains.mps.baseLanguage.varVariable.structure.VarType");
+    /*package*/ static final SConcept VarVariableDeclaration$pa = MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x11ff0aa3699L, "jetbrains.mps.baseLanguage.varVariable.structure.VarVariableDeclaration");
+    /*package*/ static final SConcept VarType$Um = MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x112353ac52dL, "jetbrains.mps.baseLanguage.varVariable.structure.VarType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

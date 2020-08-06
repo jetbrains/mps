@@ -23,7 +23,7 @@ public class check_CellActionMapImportPresent_NonTypesystemRule extends Abstract
   public check_CellActionMapImportPresent_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellActionMapImport, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    CheckingResult result = CellActionMapImportSelector__BehaviorDescriptor.checkPresenceOfImportee_id3XXPjz_qqny.invoke(SLinkOperations.getTarget(cellActionMapImport, LINKS.selector$duQg), SLinkOperations.getTarget(cellActionMapImport, LINKS.cellActionMap$w6kw));
+    CheckingResult result = CellActionMapImportSelector__BehaviorDescriptor.checkPresenceOfImportee_id3XXPjz_qqny.invoke(SLinkOperations.getTarget(cellActionMapImport, LINKS.selector$hL1R), SLinkOperations.getTarget(cellActionMapImport, LINKS.cellActionMap$$ow7));
     if (!(result.isOK())) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -32,7 +32,7 @@ public class check_CellActionMapImportPresent_NonTypesystemRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellActionMapImport$hk;
+    return CONCEPTS.CellActionMapImport$sV;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,11 +42,11 @@ public class check_CellActionMapImportPresent_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink selector$duQg = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x4f883d04113872dbL, "selector");
-    /*package*/ static final SReferenceLink cellActionMap$w6kw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
+    /*package*/ static final SContainmentLink selector$hL1R = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x4f883d04113872dbL, "selector");
+    /*package*/ static final SReferenceLink cellActionMap$$ow7 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellActionMapImport$hk = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, "jetbrains.mps.lang.editor.structure.CellActionMapImport");
+    /*package*/ static final SConcept CellActionMapImport$sV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, "jetbrains.mps.lang.editor.structure.CellActionMapImport");
   }
 }

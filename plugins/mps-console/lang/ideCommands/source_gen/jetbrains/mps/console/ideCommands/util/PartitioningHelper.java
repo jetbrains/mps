@@ -83,8 +83,8 @@ public class PartitioningHelper {
       List<Pair<String, TemplateMappingConfiguration>> strings = GenerationPartitioningUtil.toStrings(mappingSet);
       for (Pair<String, TemplateMappingConfiguration> string : strings) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x360b134fc0467d73L, "jetbrains.mps.console.ideCommands.structure.ClickableGenerator"));
-        SPropertyOperations.assign(node, PROPS.moduleId$Hftx, PersistenceFacade.getInstance().asString(string.o2.getModel().getModule().getModuleReference().getModuleId()));
-        SPropertyOperations.assign(node, PROPS.text$DQEz, string.o1);
+        SPropertyOperations.assign(node, PROPS.moduleId$fyhj, PersistenceFacade.getInstance().asString(string.o2.getModel().getModule().getModuleReference().getModuleId()));
+        SPropertyOperations.assign(node, PROPS.text$2Jks, string.o1);
         console.addText(indentString);
         console.addText(" ");
         console.addNode(node);
@@ -191,7 +191,7 @@ public class PartitioningHelper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$Hftx = MetaAdapterFactory.getProperty(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x360b134fc0467d73L, 0x360b134fc0525d7fL, "moduleId");
-    /*package*/ static final SProperty text$DQEz = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L, 0x360b134fc047ce2aL, "text");
+    /*package*/ static final SProperty moduleId$fyhj = MetaAdapterFactory.getProperty(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x360b134fc0467d73L, 0x360b134fc0525d7fL, "moduleId");
+    /*package*/ static final SProperty text$2Jks = MetaAdapterFactory.getProperty(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x2095ece53bb9f5b0L, 0x360b134fc047ce2aL, "text");
   }
 }

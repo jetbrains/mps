@@ -23,13 +23,13 @@ public class check_NonStaticInnerClassCreation_NonTypesystemRule extends Abstrac
   public check_NonStaticInnerClassCreation_NonTypesystemRule() {
   }
   public void applyRule(final SNode classCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(classCreator), CONCEPTS.NestedNewExpression$79) || (boolean) Classifier__BehaviorDescriptor.canInstantiateIn_id610WLfjPjne.invoke(SLinkOperations.getTarget(IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(classCreator), LINKS.classifier$xslD), classCreator))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(classCreator), CONCEPTS.NestedNewExpression$zV) || (boolean) Classifier__BehaviorDescriptor.canInstantiateIn_id610WLfjPjne.invoke(SLinkOperations.getTarget(IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(classCreator), LINKS.classifier$cxMr), classCreator))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classCreator, "Can't instantiate here", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6935810692634467390", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClassCreator$yU;
+    return CONCEPTS.ClassCreator$ZG;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,11 +39,11 @@ public class check_NonStaticInnerClassCreation_NonTypesystemRule extends Abstrac
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NestedNewExpression$79 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
-    /*package*/ static final SConcept ClassCreator$yU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+    /*package*/ static final SConcept NestedNewExpression$zV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
+    /*package*/ static final SConcept ClassCreator$ZG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

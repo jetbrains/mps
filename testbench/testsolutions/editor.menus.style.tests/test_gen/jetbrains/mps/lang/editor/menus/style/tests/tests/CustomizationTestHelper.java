@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
         for (String text : matchingTexts) {
           list.add(createAction(editorComponent, text, new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SPropertyOperations.assign(parent, PROPS.stringProperty$R6$8, text);
+              SPropertyOperations.assign(parent, PROPS.stringProperty$OUoz, text);
               return parent;
             }
           }));
@@ -54,7 +54,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
         for (final SEnumerationLiteral member : ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_Enum")))) {
           list.add(createAction(editorComponent, member.getPresentation(), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SPropertyOperations.assignEnum(parent, PROPS.customActionEnumProperty$3_rP, member);
+              SPropertyOperations.assignEnum(parent, PROPS.customActionEnumProperty$1pgg, member);
               return parent;
             }
           }));
@@ -68,10 +68,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return new AbstractNodeSubstituteInfo(editorComponent.getEditorContext()) {
       protected List<SubstituteAction> createActions() {
         ArrayList<SubstituteAction> list = new ArrayList<SubstituteAction>();
-        for (final SNode child : (Iterable<SNode>) ModelConstraints.getReferenceDescriptor(currentNode, LINKS.customActionReference$rr9e).getScope().getAvailableElements("")) {
-          list.add(new NodeSubstituteActionWrapper(createAction(editorComponent, SPropertyOperations.getString(child, PROPS.name$lA7v), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
+        for (final SNode child : (Iterable<SNode>) ModelConstraints.getReferenceDescriptor(currentNode, LINKS.customActionReference$peXD).getScope().getAvailableElements("")) {
+          list.add(new NodeSubstituteActionWrapper(createAction(editorComponent, SPropertyOperations.getString(child, PROPS.name$MnvL), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SLinkOperations.setTarget(parent, LINKS.customActionReference$rr9e, child);
+              SLinkOperations.setTarget(parent, LINKS.customActionReference$peXD, child);
               return parent;
             }
           })) {
@@ -91,12 +91,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return new AbstractNodeSubstituteInfo(editorComponent.getEditorContext()) {
       protected List<SubstituteAction> createActions() {
         ArrayList<SubstituteAction> list = new ArrayList<SubstituteAction>();
-        for (final SConcept concept : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.TestCompletionCustomization_ContextMatcherChildInMatchingLink$7q, SNodeOperations.getModel(parentNode))).subtract(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.TestCompletionCustomization_ContextMatcherChildInMatchingLink$7q)))) {
+        for (final SConcept concept : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.TestCompletionCustomization_ContextMatcherChildInMatchingLink$VP, SNodeOperations.getModel(parentNode))).subtract(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.TestCompletionCustomization_ContextMatcherChildInMatchingLink$VP)))) {
           SubstituteAction action = new NodeSubstituteActionWrapper(createAction(editorComponent, SConceptOperations.conceptAlias(concept), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
             public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
               SNode newInstance = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(concept));
               if (currentChild == null) {
-                ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.customActionChildInMatchingLink$uCcS)).addElement(newInstance);
+                ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.customActionChildInMatchingLink$ss1j)).addElement(newInstance);
               } else {
                 SNodeOperations.replaceWithAnother(currentChild, newInstance);
               }
@@ -163,27 +163,27 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       }
       public SNode substitute(@Nullable EditorContext editorContext, String pattern) {
         SNode parent = getSourceNode();
-        while (!(SNodeOperations.isInstanceOf(parent, CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$5W))) {
+        while (!(SNodeOperations.isInstanceOf(parent, CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$Un))) {
           parent = SNodeOperations.getParent(parent);
         }
-        return substitute.invoke(editorContext, pattern, text, SNodeOperations.cast(parent, CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$5W));
+        return substitute.invoke(editorContext, pattern, text, SNodeOperations.cast(parent, CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$Un));
       }
     };
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty stringProperty$R6$8 = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x406156e80eef1d16L, "stringProperty");
-    /*package*/ static final SProperty customActionEnumProperty$3_rP = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931270eaL, "customActionEnumProperty");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty stringProperty$OUoz = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x406156e80eef1d16L, "stringProperty");
+    /*package*/ static final SProperty customActionEnumProperty$1pgg = MetaAdapterFactory.getProperty(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931270eaL, "customActionEnumProperty");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink customActionReference$rr9e = MetaAdapterFactory.getReferenceLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb93127264L, "customActionReference");
-    /*package*/ static final SContainmentLink customActionChildInMatchingLink$uCcS = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931272b0L, "customActionChildInMatchingLink");
+    /*package*/ static final SReferenceLink customActionReference$peXD = MetaAdapterFactory.getReferenceLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb93127264L, "customActionReference");
+    /*package*/ static final SContainmentLink customActionChildInMatchingLink$ss1j = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931272b0L, "customActionChildInMatchingLink");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestCompletionCustomization_ContextMatcherChildInMatchingLink$7q = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink");
-    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher$5W = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
+    /*package*/ static final SConcept TestCompletionCustomization_ContextMatcherChildInMatchingLink$VP = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink");
+    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher$Un = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
   }
 }

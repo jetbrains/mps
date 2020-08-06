@@ -50,7 +50,7 @@ public final class ProblemPointsToKindRoot__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ProblemKind$14)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ProblemKind$fY)) {
       SNode node = __thisNode__;
       SModel model = (SNodeOperations.asNode(SNodeOperations.getConcept(node))).getModel();
       if (model == null) {
@@ -71,7 +71,7 @@ public final class ProblemPointsToKindRoot__BehaviorDescriptor extends BaseBHDes
       }
       return new ModelsScope(Sequence.<SModel>singleton(feedbackModel), true, kind);
     }
-    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.kind$ebY0), LINKS.context$DQst), kind, child);
+    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.kind$EscU), LINKS.context$66Fn), kind, child);
   }
 
   /*package*/ ProblemPointsToKindRoot__BehaviorDescriptor() {
@@ -121,11 +121,11 @@ public final class ProblemPointsToKindRoot__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ProblemKind$14 = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, "jetbrains.mps.lang.feedback.problem.structure.ProblemKind");
+    /*package*/ static final SConcept ProblemKind$fY = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, "jetbrains.mps.lang.feedback.problem.structure.ProblemKind");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink kind$ebY0 = MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, 0x6b178cfa773dc73bL, "kind");
-    /*package*/ static final SContainmentLink context$DQst = MetaAdapterFactory.getContainmentLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, 0x56aefe6c1b000dL, "context");
+    /*package*/ static final SReferenceLink kind$EscU = MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, 0x6b178cfa773dc73bL, "kind");
+    /*package*/ static final SContainmentLink context$66Fn = MetaAdapterFactory.getContainmentLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, 0x56aefe6c1b000dL, "context");
   }
 }

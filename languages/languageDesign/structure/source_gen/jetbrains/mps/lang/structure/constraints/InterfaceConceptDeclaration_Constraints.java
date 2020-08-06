@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InterfaceConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   public InterfaceConceptDeclaration_Constraints() {
-    super(CONCEPTS.InterfaceConceptDeclaration$MT);
+    super(CONCEPTS.InterfaceConceptDeclaration$CG);
   }
 
   @Override
@@ -38,7 +38,7 @@ public class InterfaceConceptDeclaration_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.InterfaceConceptDeclaration$MT);
+            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.InterfaceConceptDeclaration$CG);
           }
         };
       }
@@ -66,6 +66,6 @@ public class InterfaceConceptDeclaration_Constraints extends BaseConstraintsDesc
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "1227087672328");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 }

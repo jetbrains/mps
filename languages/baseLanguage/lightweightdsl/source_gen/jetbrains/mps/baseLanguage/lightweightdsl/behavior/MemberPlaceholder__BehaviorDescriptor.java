@@ -31,7 +31,7 @@ public final class MemberPlaceholder__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getDeclaration_id7T23sO8vZuR(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.decl$euzy);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.decl$GtTj);
   }
 
   /*package*/ MemberPlaceholder__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class MemberPlaceholder__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$euzy = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
+    /*package*/ static final SReferenceLink decl$GtTj = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d7db2L, 0x59e9926e840d7db5L, "decl");
   }
 }

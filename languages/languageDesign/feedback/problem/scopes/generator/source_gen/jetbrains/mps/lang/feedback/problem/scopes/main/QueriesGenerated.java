@@ -24,7 +24,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static SNode sourceNodeQuery_2_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.ref$XFpU);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.ref$OhM3);
   }
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
@@ -57,6 +57,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink ref$XFpU = MetaAdapterFactory.getReferenceLink(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, 0x161a25d49703b44eL, "ref");
+    /*package*/ static final SReferenceLink ref$OhM3 = MetaAdapterFactory.getReferenceLink(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, 0x161a25d49703b44eL, "ref");
   }
 }

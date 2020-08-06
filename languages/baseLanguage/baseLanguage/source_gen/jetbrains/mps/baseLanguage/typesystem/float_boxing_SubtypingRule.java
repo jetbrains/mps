@@ -21,7 +21,7 @@ public class float_boxing_SubtypingRule extends SubtypingRule_Runtime implements
     return _quotation_createNode_1ae1j_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.FloatType$1B;
+    return CONCEPTS.FloatType$up;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class float_boxing_SubtypingRule extends SubtypingRule_Runtime implements
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FloatType$1B = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType");
+    /*package*/ static final SConcept FloatType$up = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType");
   }
 }

@@ -66,7 +66,7 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ClassConcept$IY)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ClassConcept$bK)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -148,7 +148,7 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isStatic$oR9L, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isStatic$3WAz, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "classKeyword", 0);
         }
 
@@ -175,7 +175,7 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_bz24q3_b1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$$2bN));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$f7C_));
     }
 
     @NotNull
@@ -231,7 +231,7 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isFinal$$2bN, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.isFinal$f7C_, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "classKeyword", 0);
         }
 
@@ -258,7 +258,7 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_bz24q3_c1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstractClass$e4_b));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.abstractClass$Ta1X));
     }
 
     @NotNull
@@ -314,7 +314,7 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.abstractClass$e4_b, true);
+          SPropertyOperations.set(_context.getNode(), PROPS.abstractClass$Ta1X, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "classKeyword", 0);
         }
 
@@ -340,12 +340,12 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isStatic$oR9L = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic");
-    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
-    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty isStatic$3WAz = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic");
+    /*package*/ static final SProperty isFinal$f7C_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

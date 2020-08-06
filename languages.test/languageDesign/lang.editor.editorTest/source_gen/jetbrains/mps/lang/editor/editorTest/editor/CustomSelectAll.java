@@ -25,7 +25,7 @@ public class CustomSelectAll {
       public void execute_internal(final EditorContext editorContext, SNode node) {
         SelectUpUtil.executeWhile(editorContext, new BooleanSupplier() {
           public boolean getAsBoolean() {
-            return !(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0).isInstanceOfConcept(CONCEPTS.SelectableCustomizedContainer$3T));
+            return !(editorContext.getSelectionManager().getSelection().getSelectedNodes().get(0).isInstanceOfConcept(CONCEPTS.SelectableCustomizedContainer$O6));
           }
         });
       }
@@ -82,6 +82,6 @@ public class CustomSelectAll {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SelectableCustomizedContainer$3T = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x75a0f7b242cdb65bL, "jetbrains.mps.lang.editor.editorTest.structure.SelectableCustomizedContainer");
+    /*package*/ static final SConcept SelectableCustomizedContainer$O6 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x75a0f7b242cdb65bL, "jetbrains.mps.lang.editor.editorTest.structure.SelectableCustomizedContainer");
   }
 }

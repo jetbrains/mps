@@ -39,7 +39,7 @@ public class Switch_customStatement extends TemplateSwitchBase implements Templa
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "8371596541809088657"), CONCEPTS.CustomStatement$K4, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "8371596541809088657"), CONCEPTS.CustomStatement$dI, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -57,7 +57,7 @@ public class Switch_customStatement extends TemplateSwitchBase implements Templa
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "8371596541809090603"), CONCEPTS.CustomStatement$K4, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "8371596541809090603"), CONCEPTS.CustomStatement$dI, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -76,6 +76,6 @@ public class Switch_customStatement extends TemplateSwitchBase implements Templa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomStatement$K4 = MetaAdapterFactory.getConcept(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x2535e9813339efcaL, "jetbrains.mps.transformation.test.outputLang.structure.CustomStatement");
+    /*package*/ static final SConcept CustomStatement$dI = MetaAdapterFactory.getConcept(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x2535e9813339efcaL, "jetbrains.mps.transformation.test.outputLang.structure.CustomStatement");
   }
 }

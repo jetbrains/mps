@@ -75,7 +75,7 @@ public class ifStatement extends TransformationMenuBase {
   public class TMP_Group_dmkm09_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$InyY) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) == null);
     }
 
     @NotNull
@@ -160,8 +160,8 @@ public class ifStatement extends TransformationMenuBase {
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.ifFalseStatement$InyY, CONCEPTS.BlockStatement$1i);
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$InyY), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+            SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.ifFalseStatement$psZK, CONCEPTS.BlockStatement$u4);
+            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 
 
@@ -252,7 +252,7 @@ public class ifStatement extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode elseIf = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.elsifClauses$ZQja, null);
+          SNode elseIf = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.elsifClauses$EVJW, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), elseIf, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -278,11 +278,11 @@ public class ifStatement extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-    /*package*/ static final SContainmentLink elsifClauses$ZQja = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
+    /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink elsifClauses$EVJW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BlockStatement$1i = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
+    /*package*/ static final SConcept BlockStatement$u4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
   }
 }

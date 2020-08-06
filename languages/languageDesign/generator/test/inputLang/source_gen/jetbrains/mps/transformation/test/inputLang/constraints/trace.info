@@ -23,9 +23,9 @@
       <node id="3315811491560252602" at="50,131,51,42" concept="1" />
       <node id="3315811491560252601" at="51,42,52,22" concept="4" />
       <node id="3315811491560252601" at="54,0,55,0" concept="5" trace="breakingNode_3tjqgh_a0a0a0a0a1a0a0a0c" />
-      <node id="3315811491560252601" at="57,0,58,0" concept="5" trace="RefTestParamRef$TB" />
-      <node id="3315811491560252601" at="58,0,59,0" concept="5" trace="RefTestParam$G3" />
-      <node id="3315811491560252601" at="62,0,63,0" concept="5" trace="declaration$tWNw" />
+      <node id="3315811491560252601" at="57,0,58,0" concept="5" trace="RefTestParamRef$2I" />
+      <node id="3315811491560252601" at="58,0,59,0" concept="5" trace="RefTestParam$Pa" />
+      <node id="3315811491560252601" at="62,0,63,0" concept="5" trace="declaration$YvWB" />
       <node id="3315811491560252601" at="23,0,26,0" concept="0" trace="RefTestParamRef_Constraints#()V" />
       <node id="3315811491560252602" at="30,0,34,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="3315811491560252602" at="38,0,42,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -71,9 +71,9 @@
       <node id="5934496548013477091" at="50,131,51,42" concept="1" />
       <node id="5934496548013477090" at="51,42,52,22" concept="4" />
       <node id="5934496548013477090" at="54,0,55,0" concept="5" trace="breakingNode_7egrx9_a0a0a0a0a1a0a0a0c" />
-      <node id="5934496548013477090" at="57,0,58,0" concept="5" trace="RefTestMethodCall$U_" />
-      <node id="5934496548013477090" at="58,0,59,0" concept="5" trace="RefTestMethod$F5" />
-      <node id="5934496548013477090" at="62,0,63,0" concept="5" trace="method$tXiw" />
+      <node id="5934496548013477090" at="57,0,58,0" concept="5" trace="RefTestMethodCall$3G" />
+      <node id="5934496548013477090" at="58,0,59,0" concept="5" trace="RefTestMethod$Oc" />
+      <node id="5934496548013477090" at="62,0,63,0" concept="5" trace="method$YwrB" />
       <node id="5934496548013477090" at="23,0,26,0" concept="0" trace="RefTestMethodCall_Constraints#()V" />
       <node id="5934496548013477091" at="30,0,34,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="5934496548013477091" at="38,0,42,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

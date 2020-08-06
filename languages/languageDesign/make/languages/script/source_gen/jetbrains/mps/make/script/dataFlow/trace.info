@@ -12,8 +12,8 @@
     <file name="BeginWorkStatement_DataFlow.java">
       <node id="187226666892820026" at="13,60,14,108" concept="0" />
       <node id="187226666892820035" at="14,108,15,107" concept="0" />
-      <node id="187226666892820023" at="19,0,20,0" concept="2" trace="expected$MkRP" />
-      <node id="187226666892820023" at="20,0,21,0" concept="2" trace="ofTotal$Ml6Q" />
+      <node id="187226666892820023" at="19,0,20,0" concept="2" trace="expected$HxPI" />
+      <node id="187226666892820023" at="20,0,21,0" concept="2" trace="ofTotal$Hy4J" />
       <node id="187226666892820023" at="13,0,17,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="187226666892820025" at="13,60,15,107" />
       <scope id="187226666892820023" at="13,0,17,0">
@@ -27,8 +27,8 @@
     <file name="AdvanceWorkStatement_DataFlow.java">
       <node id="187226666892820046" at="13,60,14,106" concept="0" />
       <node id="532238834071743791" at="14,106,15,107" concept="0" />
-      <node id="187226666892820043" at="19,0,20,0" concept="2" trace="amount$MGfV" />
-      <node id="187226666892820043" at="20,0,21,0" concept="2" trace="comment$A4zA" />
+      <node id="187226666892820043" at="19,0,20,0" concept="2" trace="amount$HTdO" />
+      <node id="187226666892820043" at="20,0,21,0" concept="2" trace="comment$xhxv" />
       <node id="187226666892820043" at="13,0,17,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="187226666892820045" at="13,60,15,107" />
       <scope id="187226666892820043" at="13,0,17,0">
@@ -41,7 +41,7 @@
   <root nodeRef="r:0dda786b-09f8-475b-be83-f5140c0f0fe6(jetbrains.mps.make.script.dataFlow)/4629164904928073861">
     <file name="OutputResources_DataFlow.java">
       <node id="4629164904928091775" at="13,60,14,108" concept="0" />
-      <node id="4629164904928073861" at="18,0,19,0" concept="2" trace="resource$oqjX" />
+      <node id="4629164904928073861" at="18,0,19,0" concept="2" trace="resource$jBhQ" />
       <node id="4629164904928073861" at="13,0,16,0" concept="1" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="4629164904928073863" at="13,60,14,108" />
       <scope id="4629164904928073861" at="13,0,16,0">

@@ -113,7 +113,7 @@ public class Binaries_Facet extends IFacet.Stub {
                       final IFile outputDir = Target_make.vars(pa.global()).pathToFile().invoke(SModelOperations.getOutputLocation(model).getPath());
                       Iterable<Tuples._2<IFile, byte[]>> generatedBinaryFiles;
                       try {
-                        generatedBinaryFiles = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.nodes(model, CONCEPTS.Resource$CE)).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {
+                        generatedBinaryFiles = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.nodes(model, CONCEPTS.Resource$gs)).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {
                           public Iterable<Tuples._2<IFile, byte[]>> translate(SNode it) {
                             return (List<Tuples._2<IFile, byte[]>>) Resource__BehaviorDescriptor.generate_id7Mb2akaesv8.invoke(it, outputDir);
                           }
@@ -227,6 +227,6 @@ public class Binaries_Facet extends IFacet.Stub {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept Resource$CE = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6caL, "jetbrains.mps.lang.resources.structure.Resource");
+    /*package*/ static final SInterfaceConcept Resource$gs = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6caL, "jetbrains.mps.lang.resources.structure.Resource");
   }
 }

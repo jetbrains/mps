@@ -29,7 +29,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSource_JavaOptions_Constraints extends BaseConstraintsDescriptor {
   public BuildSource_JavaOptions_Constraints() {
-    super(CONCEPTS.BuildSource_JavaOptions$u6);
+    super(CONCEPTS.BuildSource_JavaOptions$D);
   }
 
   @Override
@@ -49,7 +49,7 @@ public class BuildSource_JavaOptions_Constraints extends BaseConstraintsDescript
   }
   public static class OptionsName_Property extends BasePropertyConstraintsDescriptor {
     public OptionsName_Property(ConstraintsDescriptor container) {
-      super(PROPS.optionsName$FJ30, container);
+      super(PROPS.optionsName$Rr_z, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -71,25 +71,25 @@ public class BuildSource_JavaOptions_Constraints extends BaseConstraintsDescript
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.optionsName$FJ30, new OptionsName_Property(this));
+    properties.put(PROPS.optionsName$Rr_z, new OptionsName_Property(this));
     return properties;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildProject$BF) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.BuildProject$BF), LINKS.plugins$qK6k), CONCEPTS.BuildJavaPlugin$IO)).isNotEmpty() || (boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(parentNode);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildProject$ae) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.BuildProject$ae), LINKS.plugins$AsCR), CONCEPTS.BuildJavaPlugin$hn)).isNotEmpty() || (boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(parentNode);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:5076fdb3-19c3-4563-aa26-7ace7591e78d(jetbrains.mps.build.constraints)", "1227128029536580431");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaOptions$u6 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, "jetbrains.mps.build.structure.BuildSource_JavaOptions");
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
-    /*package*/ static final SConcept BuildJavaPlugin$IO = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin");
+    /*package*/ static final SConcept BuildSource_JavaOptions$D = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, "jetbrains.mps.build.structure.BuildSource_JavaOptions");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildJavaPlugin$hn = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty optionsName$FJ30 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c3L, "optionsName");
+    /*package*/ static final SProperty optionsName$Rr_z = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c3L, "optionsName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink plugins$qK6k = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
+    /*package*/ static final SContainmentLink plugins$AsCR = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
   }
 }

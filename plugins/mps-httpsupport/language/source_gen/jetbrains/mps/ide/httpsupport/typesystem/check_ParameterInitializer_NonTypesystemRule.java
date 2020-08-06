@@ -25,7 +25,7 @@ public class check_ParameterInitializer_NonTypesystemRule extends AbstractNonTyp
   public void applyRule(final SNode parameterInitializer, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(ListSequence.fromList(SNodeOperations.getAllSiblings(parameterInitializer, false)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(check_5fnl8h_a0a0a0a0a0b(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ParameterInitializer$Et), LINKS.parameter$Ilew), parameterInitializer));
+        return !(check_5fnl8h_a0a0a0a0a0b(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ParameterInitializer$k5), LINKS.parameter$DxS8), parameterInitializer));
       }
     }))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
@@ -33,7 +33,7 @@ public class check_ParameterInitializer_NonTypesystemRule extends AbstractNonTyp
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ParameterInitializer$Et;
+    return CONCEPTS.ParameterInitializer$k5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,16 +43,16 @@ public class check_ParameterInitializer_NonTypesystemRule extends AbstractNonTyp
   }
   private static boolean check_5fnl8h_a0a0a0a0a0b(SNode checkedDotOperand, SNode parameterInitializer) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.equals(SLinkOperations.getTarget(parameterInitializer, LINKS.parameter$Ilew));
+      return checkedDotOperand.equals(SLinkOperations.getTarget(parameterInitializer, LINKS.parameter$DxS8));
     }
     return false;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParameterInitializer$Et = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, "jetbrains.mps.ide.httpsupport.structure.ParameterInitializer");
+    /*package*/ static final SConcept ParameterInitializer$k5 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, "jetbrains.mps.ide.httpsupport.structure.ParameterInitializer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$Ilew = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, 0x4027f9073ff5cf18L, "parameter");
+    /*package*/ static final SReferenceLink parameter$DxS8 = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5cf17L, 0x4027f9073ff5cf18L, "parameter");
   }
 }

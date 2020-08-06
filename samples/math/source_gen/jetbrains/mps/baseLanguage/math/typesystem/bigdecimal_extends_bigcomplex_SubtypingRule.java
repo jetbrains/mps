@@ -19,7 +19,7 @@ public class bigdecimal_extends_bigcomplex_SubtypingRule extends SubtypingRule_R
     return SNodeOperations.copyNode(MathTypeUtil.qBigComplex);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BigDecimalType$kr;
+    return CONCEPTS.BigDecimalType$6N;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -29,6 +29,6 @@ public class bigdecimal_extends_bigcomplex_SubtypingRule extends SubtypingRule_R
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BigDecimalType$kr = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12009449465L, "jetbrains.mps.baseLanguage.math.structure.BigDecimalType");
+    /*package*/ static final SConcept BigDecimalType$6N = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12009449465L, "jetbrains.mps.baseLanguage.math.structure.BigDecimalType");
   }
 }

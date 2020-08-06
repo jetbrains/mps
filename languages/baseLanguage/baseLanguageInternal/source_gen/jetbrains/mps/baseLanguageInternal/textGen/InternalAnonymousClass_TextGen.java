@@ -23,11 +23,11 @@ public class InternalAnonymousClass_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createUnitInfo();
-    BaseLangInternal.className(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fqClassName$KDRv), ctx.getPrimaryInput(), ctx);
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$Dpkz)).isNotEmpty()) {
+    BaseLangInternal.className(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fqClassName$2o8h), ctx.getPrimaryInput(), ctx);
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$V7_l)).isNotEmpty()) {
       tgs.append("<");
       {
-        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$Dpkz);
+        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$V7_l);
         final SNode lastItem = Sequence.fromIterable(collection).last();
         for (SNode item : collection) {
           tgs.appendNode(item);
@@ -40,7 +40,7 @@ public class InternalAnonymousClass_TextGen extends TextGenDescriptorBase {
     }
     tgs.append("(");
     {
-      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.constructorArgument$Dp5y);
+      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.constructorArgument$V7mk);
       final SNode lastItem = Sequence.fromIterable(collection).last();
       for (SNode item : collection) {
         tgs.appendNode(item);
@@ -53,20 +53,20 @@ public class InternalAnonymousClass_TextGen extends TextGenDescriptorBase {
     tgs.append(" ");
     BaseClassConceptTextGen.membersWithBrackets(ctx.getPrimaryInput(), false, ctx);
     if (tgs.needPositions()) {
-      tgs.fillUnitInfo(UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.UnitConcept$lf)));
+      tgs.fillUnitInfo(UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.UnitConcept$1g)));
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fqClassName$KDRv = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L, 0x2f7b79225e7468e5L, "fqClassName");
+    /*package*/ static final SProperty fqClassName$2o8h = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L, 0x2f7b79225e7468e5L, "fqClassName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeParameter$Dpkz = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L, 0x2f7b79225e74680dL, "typeParameter");
-    /*package*/ static final SContainmentLink constructorArgument$Dp5y = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L, 0x2f7b79225e74680cL, "constructorArgument");
+    /*package*/ static final SContainmentLink typeParameter$V7_l = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L, 0x2f7b79225e74680dL, "typeParameter");
+    /*package*/ static final SContainmentLink constructorArgument$V7mk = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L, 0x2f7b79225e74680cL, "constructorArgument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept UnitConcept$lf = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept");
+    /*package*/ static final SInterfaceConcept UnitConcept$1g = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept");
   }
 }

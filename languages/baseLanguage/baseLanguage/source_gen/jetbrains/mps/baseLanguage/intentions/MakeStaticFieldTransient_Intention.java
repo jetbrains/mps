@@ -45,11 +45,11 @@ public final class MakeStaticFieldTransient_Intention extends AbstractIntentionD
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.isTransient$8jX_) ? "Make Field Not Transient" : "Make Field Transient");
+      return (SPropertyOperations.getBoolean(node, PROPS.isTransient$Npqn) ? "Make Field Not Transient" : "Make Field Transient");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.isTransient$8jX_, !(SPropertyOperations.getBoolean(node, PROPS.isTransient$8jX_)));
+      SPropertyOperations.assign(node, PROPS.isTransient$Npqn, !(SPropertyOperations.getBoolean(node, PROPS.isTransient$Npqn)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -58,6 +58,6 @@ public final class MakeStaticFieldTransient_Intention extends AbstractIntentionD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isTransient$8jX_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491ae1aL, "isTransient");
+    /*package*/ static final SProperty isTransient$Npqn = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491ae1aL, "isTransient");
   }
 }

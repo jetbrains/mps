@@ -25,19 +25,19 @@ public class collection_covariant_extends_InequationReplacementRule extends Abst
   public collection_covariant_extends_InequationReplacementRule() {
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.elementType$V7ow), CONCEPTS.WildCardType$29))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.elementType$_rAN), CONCEPTS.WildCardType$uV))) {
       {
         SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7886927014685056868", 0, null);
         _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$V7ow), (SNode) SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(supertype, LINKS.elementType$V7ow), CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0), false, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$_rAN), (SNode) SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(supertype, LINKS.elementType$_rAN), CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM), false, true, _info_12389875345);
       }
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.elementType$V7ow), CONCEPTS.WildCardType$29))) {
-      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$V7ow), (SNode) SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(supertype, LINKS.elementType$V7ow), CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0));
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(supertype, LINKS.elementType$_rAN), CONCEPTS.WildCardType$uV))) {
+      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$_rAN), (SNode) SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(supertype, LINKS.elementType$_rAN), CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM));
     }
     return result_14532009;
   }
@@ -87,12 +87,12 @@ public class collection_covariant_extends_InequationReplacementRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$V7ow = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
-    /*package*/ static final SContainmentLink bound$xdz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
+    /*package*/ static final SContainmentLink elementType$_rAN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
+    /*package*/ static final SContainmentLink bound$ciZM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UpperBoundType$r6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
-    /*package*/ static final SConcept WildCardType$29 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept UpperBoundType$RS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
+    /*package*/ static final SConcept WildCardType$uV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
   }
 }

@@ -43,8 +43,8 @@ public final class ContainmentLinkId__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SContainmentLink getLink_id7jb4LXp8VrU(@NotNull SNode __thisNode__) {
-    SAbstractConcept lc = ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptIdentity$bPSw));
-    String ln = SPropertyOperations.getString(__thisNode__, PROPS.linkName$bQmy);
+    SAbstractConcept lc = ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptIdentity$KeU0));
+    String ln = SPropertyOperations.getString(__thisNode__, PROPS.linkName$Kfo2);
     if (lc == null || ln == null) {
       return null;
     }
@@ -52,26 +52,26 @@ public final class ContainmentLinkId__BehaviorDescriptor extends BaseBHDescripto
     return MetaAdapterFactory.getContainmentLink(lc, lid, ln);
   }
   /*package*/ static void setLink_id5e7X3XCLq_K(@NotNull SNode __thisNode__, @NotNull SNode link) {
-    if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$p6Up), 0xfc6f4e95b9L))) {
+    if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc), 0xfc6f4e95b9L))) {
       throw new IllegalArgumentException();
     }
     SContainmentLinkId lid = MetaIdByDeclaration.getLinkId(link);
-    SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ConceptId$5a);
-    ConceptId__BehaviorDescriptor.setConcept_id5e7X3XCIPOJ.invoke(cid, SNodeOperations.cast(SNodeOperations.getParent(link), CONCEPTS.AbstractConceptDeclaration$UN));
-    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$bPSw, cid);
-    SPropertyOperations.assign(__thisNode__, PROPS.linkName$bQmy, SPropertyOperations.getString(link, PROPS.role$nkts));
-    SPropertyOperations.assign(__thisNode__, PROPS.linkId$bQ7x, Long.toString(lid.getIdValue(), Character.MAX_RADIX));
+    SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ConceptId$6E);
+    ConceptId__BehaviorDescriptor.setConcept_id5e7X3XCIPOJ.invoke(cid, SNodeOperations.cast(SNodeOperations.getParent(link), CONCEPTS.AbstractConceptDeclaration$KA));
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$KeU0, cid);
+    SPropertyOperations.assign(__thisNode__, PROPS.linkName$Kfo2, SPropertyOperations.getString(link, PROPS.role$Nsjf));
+    SPropertyOperations.assign(__thisNode__, PROPS.linkId$Kf91, Long.toString(lid.getIdValue(), Character.MAX_RADIX));
   }
   /*package*/ static void setLink_id7jb4LXp8VsD(@NotNull SNode __thisNode__, @NotNull SContainmentLink link) {
     SContainmentLinkId lid = MetaIdHelper.getAggregation(link);
-    SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ConceptId$5a);
+    SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ConceptId$6E);
     ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(cid, link.getOwner());
-    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$bPSw, cid);
-    SPropertyOperations.assign(__thisNode__, PROPS.linkName$bQmy, link.getName());
-    SPropertyOperations.assign(__thisNode__, PROPS.linkId$bQ7x, Long.toString(lid.getIdValue(), Character.MAX_RADIX));
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$KeU0, cid);
+    SPropertyOperations.assign(__thisNode__, PROPS.linkName$Kfo2, link.getName());
+    SPropertyOperations.assign(__thisNode__, PROPS.linkId$Kf91, Long.toString(lid.getIdValue(), Character.MAX_RADIX));
   }
   /*package*/ static long getIdValue_id7jb4LXp8Vts(@NotNull SNode __thisNode__) {
-    return Long.parseLong(SPropertyOperations.getString(__thisNode__, PROPS.linkId$bQ7x), Character.MAX_RADIX);
+    return Long.parseLong(SPropertyOperations.getString(__thisNode__, PROPS.linkId$Kf91), Character.MAX_RADIX);
   }
 
   /*package*/ ContainmentLinkId__BehaviorDescriptor() {
@@ -129,18 +129,18 @@ public final class ContainmentLinkId__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink conceptIdentity$bPSw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, 0x74cb131f5923b6e8L, "conceptIdentity");
+    /*package*/ static final SContainmentLink conceptIdentity$KeU0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, 0x74cb131f5923b6e8L, "conceptIdentity");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty linkName$bQmy = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, 0x74cb131f5923b6eaL, "linkName");
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty linkId$bQ7x = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, 0x74cb131f5923b6e9L, "linkId");
+    /*package*/ static final SProperty linkName$Kfo2 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, 0x74cb131f5923b6eaL, "linkName");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty role$Nsjf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty linkId$Kf91 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, 0x74cb131f5923b6e9L, "linkId");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptId$5a = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptId$6E = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

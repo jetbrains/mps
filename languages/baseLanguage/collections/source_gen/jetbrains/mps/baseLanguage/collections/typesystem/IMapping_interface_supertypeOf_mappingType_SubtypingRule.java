@@ -21,10 +21,10 @@ public class IMapping_interface_supertypeOf_mappingType_SubtypingRule extends Su
   public IMapping_interface_supertypeOf_mappingType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode mappingType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_chrt0k_a0a1(SLinkOperations.getTarget(mappingType, LINKS.keyType$kcUJ), SLinkOperations.getTarget(mappingType, LINKS.valueType$WC_S));
+    return _quotation_createNode_chrt0k_a0a1(SLinkOperations.getTarget(mappingType, LINKS.keyType$Yx92), SLinkOperations.getTarget(mappingType, LINKS.valueType$AWOb));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MappingType$8Z;
+    return CONCEPTS.MappingType$ni;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,11 +51,11 @@ public class IMapping_interface_supertypeOf_mappingType_SubtypingRule extends Su
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keyType$kcUJ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e3925L, "keyType");
-    /*package*/ static final SContainmentLink valueType$WC_S = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e4f44L, "valueType");
+    /*package*/ static final SContainmentLink keyType$Yx92 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e3925L, "keyType");
+    /*package*/ static final SContainmentLink valueType$AWOb = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, 0x120cf0e4f44L, "valueType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MappingType$8Z = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, "jetbrains.mps.baseLanguage.collections.structure.MappingType");
+    /*package*/ static final SConcept MappingType$ni = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, "jetbrains.mps.baseLanguage.collections.structure.MappingType");
   }
 }

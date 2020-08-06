@@ -24,11 +24,11 @@ public class check_AssertStatementInsideEditorTestCase_NonTypesystemRule extends
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode current = node;
     SNode parent = SNodeOperations.getParent(node);
-    while (parent != null && !(SNodeOperations.isInstanceOf(parent, CONCEPTS.IStatementListContainer$4L))) {
+    while (parent != null && !(SNodeOperations.isInstanceOf(parent, CONCEPTS.IStatementListContainer$xz))) {
       current = parent;
       parent = SNodeOperations.getParent(parent);
     }
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.EditorTestCase$qk) && Objects.equals(current.getContainmentLink(), LINKS.code$kB6K)) {
+    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.EditorTestCase$DN) && Objects.equals(current.getContainmentLink(), LINKS.code$dfmf)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "This is a usual Java assert statement. For testing with JUnit use assert constructions from jetbrains.mps.baseLanguage.unitTest", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "8396091035812119723", null, errorTarget);
@@ -36,7 +36,7 @@ public class check_AssertStatementInsideEditorTestCase_NonTypesystemRule extends
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AssertStatement$c7;
+    return CONCEPTS.AssertStatement$CT;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,12 +46,12 @@ public class check_AssertStatementInsideEditorTestCase_NonTypesystemRule extends
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
-    /*package*/ static final SConcept EditorTestCase$qk = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase");
-    /*package*/ static final SConcept AssertStatement$c7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement");
+    /*package*/ static final SInterfaceConcept IStatementListContainer$xz = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
+    /*package*/ static final SConcept EditorTestCase$DN = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase");
+    /*package*/ static final SConcept AssertStatement$CT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink code$kB6K = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314cad13L, "code");
+    /*package*/ static final SContainmentLink code$dfmf = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, 0x11e314cad13L, "code");
   }
 }

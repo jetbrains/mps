@@ -24,10 +24,10 @@
       <node id="6237653430913421368" at="33,141,34,96" concept="1" />
       <node id="6237653430913464483" at="36,39,37,89" concept="5" />
       <node id="6237653430913464565" at="40,38,41,112" concept="5" />
-      <node id="6237653430913268254" at="47,0,48,0" concept="6" trace="shortcutChange$zt21" />
-      <node id="6237653430913268254" at="48,0,49,0" concept="6" trace="action$jfMa" />
-      <node id="6237653430913268254" at="52,0,53,0" concept="6" trace="ParameterizedShortcutChange$V3" />
-      <node id="6237653430913268254" at="56,0,57,0" concept="6" trace="name$lA7v" />
+      <node id="6237653430913268254" at="47,0,48,0" concept="6" trace="shortcutChange$L1Z4" />
+      <node id="6237653430913268254" at="48,0,49,0" concept="6" trace="action$wOJd" />
+      <node id="6237653430913268254" at="52,0,53,0" concept="6" trace="ParameterizedShortcutChange$S6" />
+      <node id="6237653430913268254" at="56,0,57,0" concept="6" trace="name$MnvL" />
       <node id="6237653430913268254" at="23,0,25,0" concept="0" trace="SortKeymapMembers#()V" />
       <node id="6237653430913268254" at="25,0,28,0" concept="3" trace="getRefactoringTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget;" />
       <node id="6237653430913268254" at="28,0,31,0" concept="3" trace="getUserFriendlyName#()Ljava/lang/String;" />
@@ -69,7 +69,7 @@
       <node id="6237653430913268258" at="20,64,21,96" concept="5" />
       <node id="6237653430913268258" at="24,51,25,19" concept="5" />
       <node id="6237653430913268258" at="26,5,27,16" concept="5" />
-      <node id="6237653430913268258" at="31,0,32,0" concept="6" trace="KeymapChangesDeclaration$TA" />
+      <node id="6237653430913268258" at="31,0,32,0" concept="6" trace="KeymapChangesDeclaration$QD" />
       <node id="6237653430913268258" at="12,0,14,0" concept="0" trace="SortKeymapMembers_Target#()V" />
       <node id="6237653430913268258" at="14,0,17,0" concept="3" trace="getTarget#()Ljetbrains/mps/refactoring/framework/IRefactoringTarget/TargetType;" />
       <node id="6237653430913268258" at="17,0,20,0" concept="3" trace="allowMultipleTargets#()Z" />

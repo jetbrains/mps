@@ -30,7 +30,7 @@ public class typeof_ContainsAllOperation_InferenceRule extends AbstractInference
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_e50h9w_a0a0c0c0b(typeCheckingContext.getRepresentative(ELEMENT_TYPE_typevar_6126991172893688513)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "6126991172893688522", true), false, true, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.argument$l2uw);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.argument$ZmGN);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120494", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_e50h9w_a0a0c0d0b(typeCheckingContext.getRepresentative(ARG_ELEMENT_TYPE_typevar_6126991172893688543)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "6126991172893688530", true), false, true, _info_12389875345);
     }
@@ -48,7 +48,7 @@ public class typeof_ContainsAllOperation_InferenceRule extends AbstractInference
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ContainsAllOperation$C5;
+    return CONCEPTS.ContainsAllOperation$Qo;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -86,10 +86,10 @@ public class typeof_ContainsAllOperation_InferenceRule extends AbstractInference
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$l2uw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
+    /*package*/ static final SContainmentLink argument$ZmGN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7818f71827244b5L, 0x7818f71827244b6L, "argument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ContainsAllOperation$C5 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x5507720272481451L, "jetbrains.mps.baseLanguage.collections.structure.ContainsAllOperation");
+    /*package*/ static final SConcept ContainsAllOperation$Qo = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x5507720272481451L, "jetbrains.mps.baseLanguage.collections.structure.ContainsAllOperation");
   }
 }

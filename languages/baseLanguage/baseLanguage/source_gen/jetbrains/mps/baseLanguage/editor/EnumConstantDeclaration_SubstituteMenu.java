@@ -28,7 +28,7 @@ public class EnumConstantDeclaration_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_w0k4s1_a(), CONCEPTS.EnumConstantDeclaration$ma));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_w0k4s1_a(), CONCEPTS.EnumConstantDeclaration$MW));
     result.add(new SMP_Subconcepts_w0k4s1_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class EnumConstantDeclaration_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_w0k4s1_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.EnumConstantDeclaration$ma, LINKS.baseMethodDeclaration$ItxI);
+      super((SAbstractConcept) CONCEPTS.EnumConstantDeclaration$MW, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class EnumConstantDeclaration_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_w0k4s1_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EnumConstantDeclaration$ma);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EnumConstantDeclaration$MW);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class EnumConstantDeclaration_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

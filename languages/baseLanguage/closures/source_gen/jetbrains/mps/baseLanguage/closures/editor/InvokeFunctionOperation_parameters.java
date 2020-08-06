@@ -18,7 +18,7 @@ public class InvokeFunctionOperation_parameters implements ParametersInformation
   public InvokeFunctionOperation_parameters() {
   }
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    return Sequence.<SNode>singleton(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(node)), CONCEPTS.FunctionType$ig));
+    return Sequence.<SNode>singleton(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(node)), CONCEPTS.FunctionType$9U));
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     styledText.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(parameterObject));
@@ -28,6 +28,6 @@ public class InvokeFunctionOperation_parameters implements ParametersInformation
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FunctionType$ig = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
+    /*package*/ static final SConcept FunctionType$9U = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
   }
 }

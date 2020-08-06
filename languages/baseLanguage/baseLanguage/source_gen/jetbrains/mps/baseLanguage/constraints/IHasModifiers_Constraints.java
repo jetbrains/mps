@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IHasModifiers_Constraints extends BaseConstraintsDescriptor {
   public IHasModifiers_Constraints() {
-    super(CONCEPTS.IHasModifiers$LF);
+    super(CONCEPTS.IHasModifiers$et);
   }
 
   @Override
@@ -41,8 +41,8 @@ public class IHasModifiers_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAParent(SNode node, final SNode childNode, final SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.modifiers$m0)) {
-      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$m0)).all(new IWhereFilter<SNode>() {
+    if (Objects.equals(link, LINKS.modifiers$F5MM)) {
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.modifiers$F5MM)).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(it, childNode) || !(Objects.equals(SNodeOperations.getConcept(it), childConcept));
         }
@@ -53,10 +53,10 @@ public class IHasModifiers_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "4125212090848267569");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IHasModifiers$LF = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers");
+    /*package*/ static final SInterfaceConcept IHasModifiers$et = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 }

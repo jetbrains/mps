@@ -25,7 +25,7 @@ public class typeof_Node_GetReferencesOperation_InferenceRule extends AbstractIn
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Node_GetReferencesOperation$Wg;
+    return CONCEPTS.Node_GetReferencesOperation$XK;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,6 +44,6 @@ public class typeof_Node_GetReferencesOperation_InferenceRule extends AbstractIn
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_GetReferencesOperation$Wg = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x798c0d67da9045abL, "jetbrains.mps.lang.smodel.structure.Node_GetReferencesOperation");
+    /*package*/ static final SConcept Node_GetReferencesOperation$XK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x798c0d67da9045abL, "jetbrains.mps.lang.smodel.structure.Node_GetReferencesOperation");
   }
 }

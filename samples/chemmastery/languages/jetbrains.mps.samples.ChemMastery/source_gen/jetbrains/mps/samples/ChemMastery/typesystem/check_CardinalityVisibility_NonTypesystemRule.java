@@ -21,7 +21,7 @@ public class check_CardinalityVisibility_NonTypesystemRule extends AbstractNonTy
   public check_CardinalityVisibility_NonTypesystemRule() {
   }
   public void applyRule(final SNode compoundComponentWithCardinality, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getInteger(compoundComponentWithCardinality, PROPS.cardinality$ZAK0) == 1 && SPropertyOperations.getBoolean(compoundComponentWithCardinality, PROPS.cardinalityVisible$ZAZ1)) {
+    if (SPropertyOperations.getInteger(compoundComponentWithCardinality, PROPS.cardinality$Vf8r) == 1 && SPropertyOperations.getBoolean(compoundComponentWithCardinality, PROPS.cardinalityVisible$Vfns)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(compoundComponentWithCardinality, "Cardinality of 1 does not need to be shown", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "6567999678834799886", null, errorTarget);
@@ -33,7 +33,7 @@ public class check_CardinalityVisibility_NonTypesystemRule extends AbstractNonTy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CompoundComponentWithCardinality$dw;
+    return CONCEPTS.CompoundComponentWithCardinality$_V;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,11 +43,11 @@ public class check_CardinalityVisibility_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$ZAZ1 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$ZAK0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$Vfns = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$Vf8r = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompoundComponentWithCardinality$dw = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality");
+    /*package*/ static final SConcept CompoundComponentWithCardinality$_V = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality");
   }
 }

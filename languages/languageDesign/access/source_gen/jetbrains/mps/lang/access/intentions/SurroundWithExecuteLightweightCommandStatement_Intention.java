@@ -54,13 +54,13 @@ public final class SurroundWithExecuteLightweightCommandStatement_Intention exte
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode readActionStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ExecuteLightweightCommandStatement$9R, null);
+      SNode readActionStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ExecuteLightweightCommandStatement$8$, null);
       List<SNode> selectedNodes = editorContext.getSelectedNodes();
       SNodeOperations.insertNextSiblingChild(node, readActionStatement);
       for (SNode selectedNode : ListSequence.fromList(selectedNodes)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(readActionStatement, LINKS.commandClosureLiteral$gXbw), LINKS.body$e5Do), LINKS.statement$pYcS)).addElement(SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.Statement$ok, true, false));
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(readActionStatement, LINKS.commandClosureLiteral$Lead), LINKS.body$Ujx2), LINKS.statement$53DE)).addElement(SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.Statement$P6, true, false));
       }
-      editorContext.select(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(readActionStatement, LINKS.commandClosureLiteral$gXbw), LINKS.body$e5Do), LINKS.statement$pYcS)).first());
+      editorContext.select(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(readActionStatement, LINKS.commandClosureLiteral$Lead), LINKS.body$Ujx2), LINKS.statement$53DE)).first());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -69,13 +69,13 @@ public final class SurroundWithExecuteLightweightCommandStatement_Intention exte
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExecuteLightweightCommandStatement$9R = MetaAdapterFactory.getConcept(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea215L, "jetbrains.mps.lang.access.structure.ExecuteLightweightCommandStatement");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept ExecuteLightweightCommandStatement$8$ = MetaAdapterFactory.getConcept(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea215L, "jetbrains.mps.lang.access.structure.ExecuteLightweightCommandStatement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commandClosureLiteral$gXbw = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x7c8b08a50a3ea20bL, "commandClosureLiteral");
-    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink commandClosureLiteral$Lead = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x7c8b08a50a3ea20bL, "commandClosureLiteral");
+    /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

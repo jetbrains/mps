@@ -24,7 +24,7 @@ public class ConstraintsRoot2_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.block$kgLw)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesBlock")));
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.block$zsJD)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesBlock")));
       }
 
     };
@@ -72,6 +72,6 @@ public class ConstraintsRoot2_ActionMap {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink block$kgLw = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8dbL, "block");
+    /*package*/ static final SContainmentLink block$zsJD = MetaAdapterFactory.getContainmentLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8dbL, "block");
   }
 }

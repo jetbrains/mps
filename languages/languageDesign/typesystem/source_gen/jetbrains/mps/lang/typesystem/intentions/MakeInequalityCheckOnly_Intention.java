@@ -45,7 +45,7 @@ public final class MakeInequalityCheckOnly_Intention extends AbstractIntentionDe
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if (SPropertyOperations.getBoolean(node, PROPS.checkOnly$DWc_)) {
+      if (SPropertyOperations.getBoolean(node, PROPS.checkOnly$2Mur)) {
         return "Make Inequality Not Check Only ";
       } else {
         return "Make Inequality Check Only ";
@@ -53,7 +53,7 @@ public final class MakeInequalityCheckOnly_Intention extends AbstractIntentionDe
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.checkOnly$DWc_, !(SPropertyOperations.getBoolean(node, PROPS.checkOnly$DWc_)));
+      SPropertyOperations.set(node, PROPS.checkOnly$2Mur, !(SPropertyOperations.getBoolean(node, PROPS.checkOnly$2Mur)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -62,6 +62,6 @@ public final class MakeInequalityCheckOnly_Intention extends AbstractIntentionDe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty checkOnly$DWc_ = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
+    /*package*/ static final SProperty checkOnly$2Mur = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
   }
 }

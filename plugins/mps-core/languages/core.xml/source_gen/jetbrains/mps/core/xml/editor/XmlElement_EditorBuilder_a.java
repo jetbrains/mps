@@ -89,7 +89,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_vc3gub_a2a() {
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.attributes$604n)).isNotEmpty();
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.attributes$ZouQ)).isNotEmpty();
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<");
@@ -105,7 +105,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.tagName$60jo;
+      final SProperty property = PROPS.tagName$ZoHR;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no tagName>");
@@ -114,10 +114,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       new xmlTagNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       style.set(StyleAttributes.MATCHING_LABEL, "xmltag");
       editorCell.getStyle().putAll(style);
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.XmlElement$Pm, "jetbrains.mps.core.xml.editor.transform_ElementAttributes_XmlElement_ext_1"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.XmlElement$fP, "jetbrains.mps.core.xml.editor.transform_ElementAttributes_XmlElement_ext_1"));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -164,10 +164,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.attributes$604n;
+      return LINKS.attributes$ZouQ;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.XmlBaseAttribute$PP;
+      return CONCEPTS.XmlBaseAttribute$gk;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -177,7 +177,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(attributesListHandler_vc3gub_a2a.this.getNode(), LINKS.attributes$604n));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(attributesListHandler_vc3gub_a2a.this.getNode(), LINKS.attributes$ZouQ));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -229,7 +229,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_vc3gub_a3a() {
-    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.content$DWs3)).isEmpty() && SPropertyOperations.getBoolean(myNode, PROPS.shortEmptyNotation$HKi0);
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.content$zkQy)).isEmpty() && SPropertyOperations.getBoolean(myNode, PROPS.shortEmptyNotation$B8Gv);
   }
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
@@ -333,10 +333,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.content$DWs3;
+      return LINKS.content$zkQy;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.XmlContent$nZ;
+      return CONCEPTS.XmlContent$Mu;
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
       return nodeFactory();
@@ -352,7 +352,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(contentListHandler_vc3gub_b0a0d0.this.getNode(), LINKS.content$DWs3));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(contentListHandler_vc3gub_b0a0d0.this.getNode(), LINKS.content$zkQy));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -457,10 +457,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.content$DWs3;
+      return LINKS.content$zkQy;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.XmlContent$nZ;
+      return CONCEPTS.XmlContent$Mu;
     }
     public SNode createNodeToInsert(EditorContext editorContext) {
       return nodeFactory();
@@ -476,7 +476,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(contentListHandler_vc3gub_b0a0a3a.this.getNode(), LINKS.content$DWs3));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(contentListHandler_vc3gub_b0a0a3a.this.getNode(), LINKS.content$zkQy));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_6();
@@ -539,7 +539,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        return SPropertyOperations.getString(myNode, PROPS.tagName$60jo);
+        return SPropertyOperations.getString(myNode, PROPS.tagName$ZoHR);
       }
     }, myNode);
     editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -565,19 +565,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink attributes$604n = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
-    /*package*/ static final SContainmentLink content$DWs3 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
+    /*package*/ static final SContainmentLink attributes$ZouQ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
+    /*package*/ static final SContainmentLink content$zkQy = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
-    /*package*/ static final SProperty shortEmptyNotation$HKi0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
+    /*package*/ static final SProperty tagName$ZoHR = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty shortEmptyNotation$B8Gv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlElement$Pm = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept XmlBaseAttribute$PP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b3L, "jetbrains.mps.core.xml.structure.XmlBaseAttribute");
-    /*package*/ static final SConcept XmlContent$nZ = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL, "jetbrains.mps.core.xml.structure.XmlContent");
+    /*package*/ static final SConcept XmlElement$fP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept XmlBaseAttribute$gk = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b3L, "jetbrains.mps.core.xml.structure.XmlBaseAttribute");
+    /*package*/ static final SConcept XmlContent$Mu = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL, "jetbrains.mps.core.xml.structure.XmlContent");
   }
 }

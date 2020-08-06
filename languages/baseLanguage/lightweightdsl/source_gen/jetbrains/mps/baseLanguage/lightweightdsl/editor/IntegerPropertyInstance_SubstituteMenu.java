@@ -28,7 +28,7 @@ public class IntegerPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8aj7s_a(), CONCEPTS.IntegerPropertyInstance$h1));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8aj7s_a(), CONCEPTS.IntegerPropertyInstance$AM));
     result.add(new SMP_Subconcepts_8aj7s_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class IntegerPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_8aj7s_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.IntegerPropertyInstance$h1, LINKS.decl$ySo$);
+      super((SAbstractConcept) CONCEPTS.IntegerPropertyInstance$AM, LINKS.decl$RIl);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class IntegerPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_8aj7s_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.IntegerPropertyInstance$h1);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.IntegerPropertyInstance$AM);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class IntegerPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IntegerPropertyInstance$h1 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec5L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.IntegerPropertyInstance");
+    /*package*/ static final SConcept IntegerPropertyInstance$AM = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec5L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.IntegerPropertyInstance");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$ySo$ = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl");
+    /*package*/ static final SReferenceLink decl$RIl = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl");
   }
 }

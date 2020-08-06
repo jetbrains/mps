@@ -40,7 +40,7 @@ public final class CreateScript_Intention extends AbstractIntentionDescriptor im
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.mappingScript$dXkv) == null);
+    return (SLinkOperations.getTarget(node, LINKS.mappingScript$AU0b) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -61,12 +61,12 @@ public final class CreateScript_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode script = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.MappingScript$D9, null);
-      SPropertyOperations.set(script, PROPS.name$lA7v, "script");
-      if (SNodeOperations.hasRole(node, LINKS.preMappingScript$5G5F)) {
-        SPropertyOperations.setEnum(script, PROPS.scriptKind$HhK_, 0x1165f07f3c2L, "pre_processing");
+      SNode script = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.MappingScript$kP, null);
+      SPropertyOperations.set(script, PROPS.name$MnvL, "script");
+      if (SNodeOperations.hasRole(node, LINKS.preMappingScript$uCLn)) {
+        SPropertyOperations.setEnum(script, PROPS.scriptKind$6esh, 0x1165f07f3c2L, "pre_processing");
       }
-      SLinkOperations.setTarget(node, LINKS.mappingScript$dXkv, script);
+      SLinkOperations.setTarget(node, LINKS.mappingScript$AU0b, script);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -75,16 +75,16 @@ public final class CreateScript_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink mappingScript$dXkv = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript");
-    /*package*/ static final SContainmentLink preMappingScript$5G5F = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597a610dL, "preMappingScript");
+    /*package*/ static final SReferenceLink mappingScript$AU0b = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript");
+    /*package*/ static final SContainmentLink preMappingScript$uCLn = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x116597a610dL, "preMappingScript");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MappingScript$D9 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, "jetbrains.mps.lang.generator.structure.MappingScript");
+    /*package*/ static final SConcept MappingScript$kP = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, "jetbrains.mps.lang.generator.structure.MappingScript");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty scriptKind$HhK_ = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, 0x1165f0cf1aaL, "scriptKind");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty scriptKind$6esh = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1165958fcd6L, 0x1165f0cf1aaL, "scriptKind");
   }
 }

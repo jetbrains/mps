@@ -37,22 +37,22 @@ public final class LambdaAbstraction__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getInnerBody_id4pfsEnSN_z2(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.body$u5mW), CONCEPTS.LambdaAbstraction$h5)) {
-      return LambdaAbstraction__BehaviorDescriptor.getInnerBody_id4pfsEnSN_z2.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.body$u5mW), CONCEPTS.LambdaAbstraction$h5));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.body$dwv0), CONCEPTS.LambdaAbstraction$p9)) {
+      return LambdaAbstraction__BehaviorDescriptor.getInnerBody_id4pfsEnSN_z2.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.body$dwv0), CONCEPTS.LambdaAbstraction$p9));
     }
-    return SLinkOperations.getTarget(__thisNode__, LINKS.body$u5mW);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.body$dwv0);
   }
   /*package*/ static List<SNode> getAllVariables_id4pfsEnSNEj7(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
     // Is it OK to create lists recursively? 
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.variable$tXBr)));
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.body$u5mW), CONCEPTS.LambdaAbstraction$h5)) {
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(LambdaAbstraction__BehaviorDescriptor.getAllVariables_id4pfsEnSNEj7.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.body$u5mW), CONCEPTS.LambdaAbstraction$h5))));
+    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.variable$doJv)));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.body$dwv0), CONCEPTS.LambdaAbstraction$p9)) {
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(LambdaAbstraction__BehaviorDescriptor.getAllVariables_id4pfsEnSNEj7.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.body$dwv0), CONCEPTS.LambdaAbstraction$p9))));
     }
     return result;
   }
   /*package*/ static List<SNode> getVariables_id7M_MU5__$7C(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.variable$tXBr);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.variable$doJv);
   }
 
   /*package*/ LambdaAbstraction__BehaviorDescriptor() {
@@ -106,11 +106,11 @@ public final class LambdaAbstraction__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$u5mW = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, 0x37d11ba7d7ee2dc5L, "body");
-    /*package*/ static final SContainmentLink variable$tXBr = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, 0x37d11ba7d7ee2db9L, "variable");
+    /*package*/ static final SContainmentLink body$dwv0 = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, 0x37d11ba7d7ee2dc5L, "body");
+    /*package*/ static final SContainmentLink variable$doJv = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, 0x37d11ba7d7ee2db9L, "variable");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LambdaAbstraction$h5 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaAbstraction");
+    /*package*/ static final SConcept LambdaAbstraction$p9 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7eccf80L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaAbstraction");
   }
 }

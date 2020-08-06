@@ -31,7 +31,7 @@ public final class Text__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<SNode> getLines_id6GJhO0n1Xys(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.lines$y1jy);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.lines$U$m7);
   }
 
   /*package*/ Text__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class Text__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$y1jy = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink lines$U$m7 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
   }
 }

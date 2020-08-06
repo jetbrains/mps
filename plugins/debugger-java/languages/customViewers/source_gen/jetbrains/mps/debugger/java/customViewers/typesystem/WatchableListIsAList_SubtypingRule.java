@@ -21,7 +21,7 @@ public class WatchableListIsAList_SubtypingRule extends SubtypingRule_Runtime im
     return _quotation_createNode_ucp7lt_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.WatchableListType$LM;
+    return CONCEPTS.WatchableListType$ce;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class WatchableListIsAList_SubtypingRule extends SubtypingRule_Runtime im
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WatchableListType$LM = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb3L, "jetbrains.mps.debugger.java.customViewers.structure.WatchableListType");
+    /*package*/ static final SConcept WatchableListType$ce = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x19926b3196c33bb3L, "jetbrains.mps.debugger.java.customViewers.structure.WatchableListType");
   }
 }

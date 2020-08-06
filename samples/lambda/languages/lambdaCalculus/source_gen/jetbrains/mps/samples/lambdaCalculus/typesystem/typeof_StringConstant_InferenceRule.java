@@ -25,7 +25,7 @@ public class typeof_StringConstant_InferenceRule extends AbstractInferenceRule_R
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StringConstant$g_;
+    return CONCEPTS.StringConstant$oD;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_StringConstant_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StringConstant$g_ = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dc8L, "jetbrains.mps.samples.lambdaCalculus.structure.StringConstant");
+    /*package*/ static final SConcept StringConstant$oD = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dc8L, "jetbrains.mps.samples.lambdaCalculus.structure.StringConstant");
   }
 }

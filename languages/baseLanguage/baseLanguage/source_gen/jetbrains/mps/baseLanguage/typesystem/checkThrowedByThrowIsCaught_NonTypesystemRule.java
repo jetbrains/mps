@@ -25,15 +25,15 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   }
   public void applyRule(final SNode throwStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Iterable<SNode> thrownTypes;
-    if (SNodeOperations.hasRole(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), LINKS.throwable$T0lV)) {
-      thrownTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU)), CONCEPTS.CatchClause$hu));
+    if (SNodeOperations.hasRole(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), LINKS.throwable$$5MH)) {
+      thrownTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG)), CONCEPTS.CatchClause$Ig));
     } else {
-      thrownTypes = SNodeOperations.ofConcept(Sequence.<SNode>singleton(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(throwStatement, LINKS.throwable$DFju))), CONCEPTS.Type$IG);
+      thrownTypes = SNodeOperations.ofConcept(Sequence.<SNode>singleton(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg))), CONCEPTS.Type$bu);
     }
     RulesFunctions_BaseLanguage.check(typeCheckingContext, SetSequence.fromSetWithValues(new HashSet<SNode>(), thrownTypes), throwStatement);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ThrowStatement$yK;
+    return CONCEPTS.ThrowStatement$Zy;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,15 +43,15 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$DFju = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink throwable$T0lV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
+    /*package*/ static final SContainmentLink throwable$kKKg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink throwable$$5MH = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept CatchClause$hu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept ThrowStatement$yK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept CatchClause$Ig = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept ThrowStatement$Zy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
   }
 }

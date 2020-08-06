@@ -38,16 +38,16 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.AssignmentExpression$rS;
+        return CONCEPTS.AssignmentExpression$SE;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.SLinkAccess$NO), LINKS.link$Z5Np), PROPS.metaClass$p6Up), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.rValue$LkmY), CONCEPTS.AbstractNodeRefExpression$Kz);
+        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.SLinkAccess$Pk), LINKS.link$zuOT), PROPS.metaClass$PeKc), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.rValue$spNK), CONCEPTS.AbstractNodeRefExpression$M3);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode linkAccessExpression = SLinkOperations.getTarget(node, LINKS.lValue$LjSW);
-        SNode targetNodeIdentity = NodePointerMigrations.toNodeIdentity(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rValue$LkmY), CONCEPTS.AbstractNodeRefExpression$Kz));
+        SNode linkAccessExpression = SLinkOperations.getTarget(node, LINKS.lValue$splI);
+        SNode targetNodeIdentity = NodePointerMigrations.toNodeIdentity(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rValue$spNK), CONCEPTS.AbstractNodeRefExpression$M3));
         SNode replacement = createDotExpression_y8o86o_a0c0a4(linkAccessExpression, targetNodeIdentity);
         SNodeOperations.replaceWithAnother(node, replacement);
       }
@@ -67,15 +67,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.Link_SetTargetOperation$KR;
+        return CONCEPTS.Link_SetTargetOperation$Mn;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(node), CONCEPTS.SLinkAccess$NO), LINKS.link$Z5Np), PROPS.metaClass$p6Up), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.linkTarget$Torw), CONCEPTS.AbstractNodeRefExpression$Kz);
+        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(node), CONCEPTS.SLinkAccess$Pk), LINKS.link$zuOT), PROPS.metaClass$PeKc), 0xfc6f4e95b8L) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.linkTarget$tLt0), CONCEPTS.AbstractNodeRefExpression$M3);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode targetNodeIdentity = NodePointerMigrations.toNodeIdentity(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.linkTarget$Torw), CONCEPTS.AbstractNodeRefExpression$Kz));
+        SNode targetNodeIdentity = NodePointerMigrations.toNodeIdentity(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.linkTarget$tLt0), CONCEPTS.AbstractNodeRefExpression$M3));
         SNode replacement = createLink_SetTargetPointerOperation_y8o86o_a0b0a5(targetNodeIdentity);
         SNodeOperations.replaceWithAnother(node, replacement);
       }
@@ -95,15 +95,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.EqualsExpression$lT;
+        return CONCEPTS.EqualsExpression$MF;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
+        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -121,15 +121,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.EqualsExpression$lT;
+        return CONCEPTS.EqualsExpression$MF;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
+        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -147,15 +147,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NotEqualsExpression$Ib;
+        return CONCEPTS.NotEqualsExpression$aX;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
+        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -173,15 +173,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NotEqualsExpression$Ib;
+        return CONCEPTS.NotEqualsExpression$aX;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
+        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -199,15 +199,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NPEEqualsExpression$dK;
+        return CONCEPTS.NPEEqualsExpression$Ey;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
+        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -225,15 +225,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NPEEqualsExpression$dK;
+        return CONCEPTS.NPEEqualsExpression$Ey;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
+        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -251,15 +251,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NPENotEqualsExpression$dt;
+        return CONCEPTS.NPENotEqualsExpression$Ef;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
+        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -277,15 +277,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NPENotEqualsExpression$dt;
+        return CONCEPTS.NPENotEqualsExpression$Ef;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
+        return NodePointerMigrations.isValidForEquality(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -305,16 +305,16 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.AssignmentExpression$rS;
+        return CONCEPTS.AssignmentExpression$SE;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.lValue$LjSW), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.SLinkAccess$NO), LINKS.link$Z5Np), PROPS.metaClass$p6Up), 0xfc6f4e95b8L) && NodePointerMigrations.isQuotationSuitForNodePointer(SLinkOperations.getTarget(node, LINKS.rValue$LkmY));
+        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.SLinkAccess$Pk), LINKS.link$zuOT), PROPS.metaClass$PeKc), 0xfc6f4e95b8L) && NodePointerMigrations.isQuotationSuitForNodePointer(SLinkOperations.getTarget(node, LINKS.rValue$spNK));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode linkAccessExpression = SLinkOperations.getTarget(node, LINKS.lValue$LjSW);
-        SNode targetNodeIdentity = NodePointerMigrations.quotationToNodeIdentity(SLinkOperations.getTarget(node, LINKS.rValue$LkmY));
+        SNode linkAccessExpression = SLinkOperations.getTarget(node, LINKS.lValue$splI);
+        SNode targetNodeIdentity = NodePointerMigrations.quotationToNodeIdentity(SLinkOperations.getTarget(node, LINKS.rValue$spNK));
         SNode replacement = createDotExpression_y8o86o_a0c0a91(linkAccessExpression, targetNodeIdentity);
         SNodeOperations.replaceWithAnother(node, replacement);
       }
@@ -334,15 +334,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.Link_SetTargetOperation$KR;
+        return CONCEPTS.Link_SetTargetOperation$Mn;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(node), CONCEPTS.SLinkAccess$NO), LINKS.link$Z5Np), PROPS.metaClass$p6Up), 0xfc6f4e95b8L) && NodePointerMigrations.isQuotationSuitForNodePointer(SLinkOperations.getTarget(node, LINKS.linkTarget$Torw));
+        return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(node), CONCEPTS.SLinkAccess$Pk), LINKS.link$zuOT), PROPS.metaClass$PeKc), 0xfc6f4e95b8L) && NodePointerMigrations.isQuotationSuitForNodePointer(SLinkOperations.getTarget(node, LINKS.linkTarget$tLt0));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode targetNodeIdentity = NodePointerMigrations.quotationToNodeIdentity(SLinkOperations.getTarget(node, LINKS.linkTarget$Torw));
+        SNode targetNodeIdentity = NodePointerMigrations.quotationToNodeIdentity(SLinkOperations.getTarget(node, LINKS.linkTarget$tLt0));
         SNode replacement = createLink_SetTargetPointerOperation_y8o86o_a0b0a02(targetNodeIdentity);
         SNodeOperations.replaceWithAnother(node, replacement);
       }
@@ -362,15 +362,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.EqualsExpression$lT;
+        return CONCEPTS.EqualsExpression$MF;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
+        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -388,15 +388,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.EqualsExpression$lT;
+        return CONCEPTS.EqualsExpression$MF;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
+        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -415,15 +415,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NotEqualsExpression$Ib;
+        return CONCEPTS.NotEqualsExpression$aX;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
+        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -441,15 +441,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NotEqualsExpression$Ib;
+        return CONCEPTS.NotEqualsExpression$aX;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
+        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -468,15 +468,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NPEEqualsExpression$dK;
+        return CONCEPTS.NPEEqualsExpression$Ey;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
+        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -494,15 +494,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NPEEqualsExpression$dK;
+        return CONCEPTS.NPEEqualsExpression$Ey;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
+        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -521,15 +521,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NPENotEqualsExpression$dt;
+        return CONCEPTS.NPENotEqualsExpression$Ef;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
+        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), SLinkOperations.getTarget(node, LINKS.rightExpression$li3b)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -547,15 +547,15 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.NPENotEqualsExpression$dt;
+        return CONCEPTS.NPENotEqualsExpression$Ef;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
+        return NodePointerMigrations.isValidForEquality_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), SLinkOperations.getTarget(node, LINKS.leftExpression$lndx)));
+        SNodeOperations.replaceWithAnother(node, NodePointerMigrations.getNotEqualityReplacement_Quotation(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), SLinkOperations.getTarget(node, LINKS.leftExpression$sEj)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -576,7 +576,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.DotExpression$6a;
+        return CONCEPTS.DotExpression$yW;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -602,7 +602,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.DotExpression$6a;
+        return CONCEPTS.DotExpression$yW;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -630,7 +630,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.DotExpression$6a;
+        return CONCEPTS.DotExpression$yW;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -656,7 +656,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.DotExpression$6a;
+        return CONCEPTS.DotExpression$yW;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -680,76 +680,76 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c89590300(jetbrains.mps.lang.smodel.scripts)/1693197062082143330");
   }
   private static SNode createDotExpression_y8o86o_a0c0a4(SNode p0, SNode p1) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
-    n0.forChild(LINKS.operand$P1i5).initNode(p0, CONCEPTS.Expression$TP, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
+    n0.forChild(LINKS.operand$w6IR).initNode(p0, CONCEPTS.Expression$mB, true);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.operation$_mGS).init(CONCEPTS.Link_SetTargetPointerOperation$59);
+      SNodeBuilder n1 = n0.forChild(LINKS.operation$gs9E).init(CONCEPTS.Link_SetTargetPointerOperation$6D);
       {
-        SNodeBuilder n2 = n1.forChild(LINKS.linkTarget$32$w).init(CONCEPTS.NodePointerArg_Identity$5_);
-        n2.forChild(LINKS.ref$lIU6).initNode(p1, CONCEPTS.NodeIdentity$tk, true);
+        SNodeBuilder n2 = n1.forChild(LINKS.linkTarget$BrA0).init(CONCEPTS.NodePointerArg_Identity$75);
+        n2.forChild(LINKS.ref$U7VA).initNode(p1, CONCEPTS.NodeIdentity$8R, true);
       }
     }
     return n0.getResult();
   }
   private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a5(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$59);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$6D);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.linkTarget$32$w).init(CONCEPTS.NodePointerArg_Identity$5_);
-      n1.forChild(LINKS.ref$lIU6).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.linkTarget$BrA0).init(CONCEPTS.NodePointerArg_Identity$75);
+      n1.forChild(LINKS.ref$U7VA).initNode(p0, CONCEPTS.NodeIdentity$8R, true);
     }
     return n0.getResult();
   }
   private static SNode createDotExpression_y8o86o_a0c0a91(SNode p0, SNode p1) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
-    n0.forChild(LINKS.operand$P1i5).initNode(p0, CONCEPTS.Expression$TP, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
+    n0.forChild(LINKS.operand$w6IR).initNode(p0, CONCEPTS.Expression$mB, true);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.operation$_mGS).init(CONCEPTS.Link_SetTargetPointerOperation$59);
+      SNodeBuilder n1 = n0.forChild(LINKS.operation$gs9E).init(CONCEPTS.Link_SetTargetPointerOperation$6D);
       {
-        SNodeBuilder n2 = n1.forChild(LINKS.linkTarget$32$w).init(CONCEPTS.NodePointerArg_Identity$5_);
-        n2.forChild(LINKS.ref$lIU6).initNode(p1, CONCEPTS.NodeIdentity$tk, true);
+        SNodeBuilder n2 = n1.forChild(LINKS.linkTarget$BrA0).init(CONCEPTS.NodePointerArg_Identity$75);
+        n2.forChild(LINKS.ref$U7VA).initNode(p1, CONCEPTS.NodeIdentity$8R, true);
       }
     }
     return n0.getResult();
   }
   private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a02(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$59);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$6D);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.linkTarget$32$w).init(CONCEPTS.NodePointerArg_Identity$5_);
-      n1.forChild(LINKS.ref$lIU6).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.linkTarget$BrA0).init(CONCEPTS.NodePointerArg_Identity$75);
+      n1.forChild(LINKS.ref$U7VA).initNode(p0, CONCEPTS.NodeIdentity$8R, true);
     }
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AssignmentExpression$rS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
-    /*package*/ static final SConcept AbstractNodeRefExpression$Kz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x319fd776da5d8e3cL, "jetbrains.mps.lang.smodel.structure.AbstractNodeRefExpression");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept SLinkAccess$NO = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, "jetbrains.mps.lang.smodel.structure.SLinkAccess");
-    /*package*/ static final SConcept Link_SetTargetOperation$KR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1099887af60L, "jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation");
-    /*package*/ static final SConcept EqualsExpression$lT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
-    /*package*/ static final SConcept NotEqualsExpression$Ib = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression");
-    /*package*/ static final SConcept NPEEqualsExpression$dK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47dc0e3bL, "jetbrains.mps.baseLanguage.structure.NPEEqualsExpression");
-    /*package*/ static final SConcept NPENotEqualsExpression$dt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47db1c91L, "jetbrains.mps.baseLanguage.structure.NPENotEqualsExpression");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept Link_SetTargetPointerOperation$59 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, "jetbrains.mps.lang.smodel.structure.Link_SetTargetPointerOperation");
-    /*package*/ static final SConcept NodePointerArg_Identity$5_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, "jetbrains.mps.lang.smodel.structure.NodePointerArg_Identity");
-    /*package*/ static final SInterfaceConcept NodeIdentity$tk = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
+    /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept AbstractNodeRefExpression$M3 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x319fd776da5d8e3cL, "jetbrains.mps.lang.smodel.structure.AbstractNodeRefExpression");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SLinkAccess$Pk = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, "jetbrains.mps.lang.smodel.structure.SLinkAccess");
+    /*package*/ static final SConcept Link_SetTargetOperation$Mn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1099887af60L, "jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation");
+    /*package*/ static final SConcept EqualsExpression$MF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
+    /*package*/ static final SConcept NotEqualsExpression$aX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression");
+    /*package*/ static final SConcept NPEEqualsExpression$Ey = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47dc0e3bL, "jetbrains.mps.baseLanguage.structure.NPEEqualsExpression");
+    /*package*/ static final SConcept NPENotEqualsExpression$Ef = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47db1c91L, "jetbrains.mps.baseLanguage.structure.NPENotEqualsExpression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Link_SetTargetPointerOperation$6D = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, "jetbrains.mps.lang.smodel.structure.Link_SetTargetPointerOperation");
+    /*package*/ static final SConcept NodePointerArg_Identity$75 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, "jetbrains.mps.lang.smodel.structure.NodePointerArg_Identity");
+    /*package*/ static final SInterfaceConcept NodeIdentity$8R = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink link$Z5Np = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, 0x108f974549cL, "link");
-    /*package*/ static final SContainmentLink linkTarget$Torw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1099887af60L, 0x1099887af61L, "linkTarget");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink linkTarget$32$w = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, 0xd13da596bcfef4fL, "linkTarget");
-    /*package*/ static final SContainmentLink ref$lIU6 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
+    /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink link$zuOT = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, 0x108f974549cL, "link");
+    /*package*/ static final SContainmentLink linkTarget$tLt0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1099887af60L, 0x1099887af61L, "linkTarget");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink linkTarget$BrA0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, 0xd13da596bcfef4fL, "linkTarget");
+    /*package*/ static final SContainmentLink ref$U7VA = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 }

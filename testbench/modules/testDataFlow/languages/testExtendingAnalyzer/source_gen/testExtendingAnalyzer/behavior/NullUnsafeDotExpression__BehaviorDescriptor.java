@@ -33,10 +33,10 @@ public final class NullUnsafeDotExpression__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static boolean isLegalAsStatement_idi26MfYG(@NotNull SNode __thisNode__) {
-    return ((boolean) Expression__BehaviorDescriptor.isLegalAsStatement_idi26MfYG.invokeSuper(__thisNode__, CONCEPTS.NullUnsafeDotExpression$Uj));
+    return ((boolean) Expression__BehaviorDescriptor.isLegalAsStatement_idi26MfYG.invokeSuper(__thisNode__, CONCEPTS.NullUnsafeDotExpression$fT));
   }
   /*package*/ static boolean allowsNullOperand_id3Yy2P0QQESt(@NotNull SNode __thisNode__) {
-    return ((boolean) DotExpression__BehaviorDescriptor.allowsNullOperand_id3Yy2P0QQESt.invokeSuper(__thisNode__, CONCEPTS.NullUnsafeDotExpression$Uj));
+    return ((boolean) DotExpression__BehaviorDescriptor.allowsNullOperand_id3Yy2P0QQESt.invokeSuper(__thisNode__, CONCEPTS.NullUnsafeDotExpression$fT));
   }
 
   /*package*/ NullUnsafeDotExpression__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class NullUnsafeDotExpression__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NullUnsafeDotExpression$Uj = MetaAdapterFactory.getConcept(0x3ac033a0bffa48e3L, 0xa843a40cbdd89859L, 0x13ac54c0e557da2eL, "testExtendingAnalyzer.structure.NullUnsafeDotExpression");
+    /*package*/ static final SConcept NullUnsafeDotExpression$fT = MetaAdapterFactory.getConcept(0x3ac033a0bffa48e3L, 0xa843a40cbdd89859L, 0x13ac54c0e557da2eL, "testExtendingAnalyzer.structure.NullUnsafeDotExpression");
   }
 }

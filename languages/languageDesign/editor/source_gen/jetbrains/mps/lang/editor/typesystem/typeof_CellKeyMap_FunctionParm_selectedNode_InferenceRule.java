@@ -22,7 +22,7 @@ public class typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule extends A
   public typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule() {
   }
   public void applyRule(final SNode cellKeyMap_FunctionParm_selectedNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellKeyMap_FunctionParm_selectedNode, CONCEPTS.CellKeyMapDeclaration$T9, false, false), LINKS.applicableConcept$Lbkf);
+    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(cellKeyMap_FunctionParm_selectedNode, CONCEPTS.CellKeyMapDeclaration$4K, false, false), LINKS.applicableConcept$PtvQ);
     {
       SNode _nodeToCheck_1029348928467 = cellKeyMap_FunctionParm_selectedNode;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1223982086188", 0, null);
@@ -30,7 +30,7 @@ public class typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule extends A
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellKeyMap_FunctionParm_selectedNode$4A;
+    return CONCEPTS.CellKeyMap_FunctionParm_selectedNode$gd;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,11 +47,11 @@ public class typeof_CellKeyMap_FunctionParm_selectedNode_InferenceRule extends A
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellKeyMapDeclaration$T9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
-    /*package*/ static final SConcept CellKeyMap_FunctionParm_selectedNode$4A = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee0bL, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNode");
+    /*package*/ static final SConcept CellKeyMapDeclaration$4K = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
+    /*package*/ static final SConcept CellKeyMap_FunctionParm_selectedNode$gd = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x13781fdf13caee0bL, "jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$Lbkf = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x1094c452c15L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$PtvQ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x1094c452c15L, "applicableConcept");
   }
 }

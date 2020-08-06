@@ -7,8 +7,8 @@
     <file name="NamingUtil.java">
       <node id="8999016044020863395" at="14,56,15,102" concept="0" />
       <node id="8999016044020765181" at="18,60,19,112" concept="0" />
-      <node id="8999016044020743942" at="23,0,24,0" concept="1" trace="name$lA7v" />
-      <node id="8999016044020743942" at="27,0,28,0" concept="1" trace="SimpleLanguageAspectDescriptor$nT" />
+      <node id="8999016044020743942" at="23,0,24,0" concept="1" trace="name$MnvL" />
+      <node id="8999016044020743942" at="27,0,28,0" concept="1" trace="SimpleLanguageAspectDescriptor$ac" />
       <node id="8999016044020744019" at="14,0,17,0" concept="2" trace="getDescriptorName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="8999016044020765218" at="18,0,21,0" concept="2" trace="getAspectDescriptor#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="8999016044020744025" at="14,56,15,102" />

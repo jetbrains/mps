@@ -27,14 +27,14 @@ public class typeof_AbstractOperationArguments_InferenceRule extends AbstractInf
   }
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> argumentTypes = AbstractStyledTextOperation__BehaviorDescriptor.getOperationArgumentType_id5GZRL5t2d36.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(operation)));
-    if (ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.actualArgument$qCVm)).count() != ListSequence.fromList(argumentTypes).count()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.actualArgument$uV6X)).count() != ListSequence.fromList(argumentTypes).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(operation, "Wrong number of arguments", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6050628152418938611", null, errorTarget);
       }
     } else {
       {
-        Iterator<SNode> argument_it = ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.actualArgument$qCVm)).iterator();
+        Iterator<SNode> argument_it = ListSequence.fromList(SLinkOperations.getChildren(operation, LINKS.actualArgument$uV6X)).iterator();
         Iterator<SNode> type_it = ListSequence.fromList(argumentTypes).iterator();
         SNode argument_var;
         SNode type_var;
@@ -51,7 +51,7 @@ public class typeof_AbstractOperationArguments_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractStyledTextOperation$7y;
+    return CONCEPTS.AbstractStyledTextOperation$j9;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,10 +61,10 @@ public class typeof_AbstractOperationArguments_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$qCVm = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ee423fc2ad10eceL, 0x3ee423fc2ad10ed0L, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$uV6X = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ee423fc2ad10eceL, 0x3ee423fc2ad10ed0L, "actualArgument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractStyledTextOperation$7y = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ee423fc2ad10eceL, "jetbrains.mps.lang.editor.structure.AbstractStyledTextOperation");
+    /*package*/ static final SConcept AbstractStyledTextOperation$j9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ee423fc2ad10eceL, "jetbrains.mps.lang.editor.structure.AbstractStyledTextOperation");
   }
 }

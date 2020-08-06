@@ -24,19 +24,19 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class MethodToClassifierMethod_PasteWrapper_0 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return CONCEPTS.StaticMethodDeclaration$eX;
+    return CONCEPTS.StaticMethodDeclaration$FJ;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.DefaultClassifierMethodDeclaration$ZH;
+    return CONCEPTS.DefaultClassifierMethodDeclaration$Zx;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
     Map<SNode, SNode> paramMapping = MapSequence.fromMap(new HashMap<SNode, SNode>());
-    List<SNode> typeParam = CopyUtil.copy(SLinkOperations.getChildren(sourceNode, LINKS.typeVariableDeclaration$6cWB), paramMapping);
-    List<SNode> types = CopyUtil.copy(SLinkOperations.getChildren(sourceNode, LINKS.parameter$qsax), paramMapping);
-    List<SNode> body = CopyUtil.copy(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceNode, LINKS.body$qspy), LINKS.statement$pYcS), paramMapping);
-    return _quotation_createNode_sqg5bj_a4a0a(types, SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.visibility$jt1o)), SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.returnType$qrVw)), body, SPropertyOperations.getString(sourceNode, PROPS.name$lA7v), typeParam);
+    List<SNode> typeParam = CopyUtil.copy(SLinkOperations.getChildren(sourceNode, LINKS.typeVariableDeclaration$Lipp), paramMapping);
+    List<SNode> types = CopyUtil.copy(SLinkOperations.getChildren(sourceNode, LINKS.parameter$5xBj), paramMapping);
+    List<SNode> body = CopyUtil.copy(SLinkOperations.getChildren(SLinkOperations.getTarget(sourceNode, LINKS.body$5xQk), LINKS.statement$53DE), paramMapping);
+    return _quotation_createNode_sqg5bj_a4a0a(types, SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.visibility$Yyua)), SNodeOperations.copyNode(SLinkOperations.getTarget(sourceNode, LINKS.returnType$5xoi)), body, SPropertyOperations.getString(sourceNode, PROPS.name$MnvL), typeParam);
   }
   private static SNode _quotation_createNode_sqg5bj_a4a0a(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5, Object parameter_6) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -84,20 +84,20 @@ public final class MethodToClassifierMethod_PasteWrapper_0 implements PasteWrapp
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SConcept DefaultClassifierMethodDeclaration$ZH = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept DefaultClassifierMethodDeclaration$Zx = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

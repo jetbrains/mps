@@ -27,7 +27,7 @@ public class typeOf_ConceptFunctionParameter_InferenceRule extends AbstractInfer
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptFunctionParameter$sy;
+    return CONCEPTS.ConceptFunctionParameter$Tk;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,6 +37,6 @@ public class typeOf_ConceptFunctionParameter_InferenceRule extends AbstractInfer
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunctionParameter$sy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
+    /*package*/ static final SConcept ConceptFunctionParameter$Tk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
   }
 }

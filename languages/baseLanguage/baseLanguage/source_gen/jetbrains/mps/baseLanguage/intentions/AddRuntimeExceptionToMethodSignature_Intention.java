@@ -45,27 +45,27 @@ public final class AddRuntimeExceptionToMethodSignature_Intention extends Abstra
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
     // check that this is done in a method 
-    SNode methodDecl = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, false, false);
+    SNode methodDecl = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$kD, false, false);
     if (methodDecl == null) {
       return false;
     }
     // get exception type 
-    final SNode exceptionType = (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.throwable$DFju)), CONCEPTS.ClassifierType$IZ));
+    final SNode exceptionType = (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.throwable$kKKg)), CONCEPTS.ClassifierType$bL));
     if (exceptionType == null) {
       return false;
     }
-    SNode exceptionJavaType = (SNode) SLinkOperations.getTarget(exceptionType, LINKS.classifier$xslD);
+    SNode exceptionJavaType = (SNode) SLinkOperations.getTarget(exceptionType, LINKS.classifier$cxMr);
     if (exceptionJavaType == null) {
       return false;
     }
     // check it's instance of RuntimeException 
-    if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(exceptionJavaType, (SNode) SLinkOperations.getTarget(_quotation_createNode_7gg82q_a0a0a0j0a(), LINKS.classifier$xslD)))) {
+    if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(exceptionJavaType, (SNode) SLinkOperations.getTarget(_quotation_createNode_7gg82q_a0a0a0j0a(), LINKS.classifier$cxMr)))) {
       return false;
     }
     // check if it's not thrown by a method yet 
-    if (ListSequence.fromList(SLinkOperations.getChildren(methodDecl, LINKS.throwsItem$X8vM)).where(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(methodDecl, LINKS.throwsItem$CdW$)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$IZ) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD) == SLinkOperations.getTarget(exceptionType, LINKS.classifier$xslD);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$bL) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) == SLinkOperations.getTarget(exceptionType, LINKS.classifier$cxMr);
       }
     }).isNotEmpty()) {
       return false;
@@ -91,8 +91,8 @@ public final class AddRuntimeExceptionToMethodSignature_Intention extends Abstra
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode methodDecl = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$RR, false, false);
-      ListSequence.fromList(SLinkOperations.getChildren(methodDecl, LINKS.throwsItem$X8vM)).addElement(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.throwable$DFju)), CONCEPTS.Type$IG));
+      SNode methodDecl = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$kD, false, false);
+      ListSequence.fromList(SLinkOperations.getChildren(methodDecl, LINKS.throwsItem$CdW$)).addElement(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.throwable$kKKg)), CONCEPTS.Type$bu));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -108,14 +108,14 @@ public final class AddRuntimeExceptionToMethodSignature_Intention extends Abstra
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwable$DFju = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink throwable$kKKg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink throwsItem$CdW$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
   }
 }

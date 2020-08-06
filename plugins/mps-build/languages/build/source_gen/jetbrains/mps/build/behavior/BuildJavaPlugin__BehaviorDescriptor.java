@@ -51,41 +51,41 @@ public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Scope getProjectStructureScope_id3fifI_xCJOQ(@NotNull SNode __thisNode__, final SAbstractConcept kind) {
-    if (kind == CONCEPTS.BuildSource_JavaOptions$u6) {
-      return ScopeUtil.where(new SimpleRoleScope(SNodeOperations.getParent(__thisNode__), LINKS.parts$b06K, CONCEPTS.BuildSource_JavaOptions$u6) {
+    if (kind == CONCEPTS.BuildSource_JavaOptions$D) {
+      return ScopeUtil.where(new SimpleRoleScope(SNodeOperations.getParent(__thisNode__), LINKS.parts$mGDj, CONCEPTS.BuildSource_JavaOptions$D) {
         @Override
         public String getName(SNode jo) {
-          String optionsName = SPropertyOperations.getString(SNodeOperations.cast(jo, CONCEPTS.BuildSource_JavaOptions$u6), PROPS.optionsName$FJ30);
+          String optionsName = SPropertyOperations.getString(SNodeOperations.cast(jo, CONCEPTS.BuildSource_JavaOptions$D), PROPS.optionsName$Rr_z);
           return ((optionsName == null || optionsName.length() == 0) ? "<default options>" : optionsName);
         }
       }, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode node) {
-          return isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BuildSource_JavaOptions$u6), PROPS.optionsName$FJ30));
+          return isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BuildSource_JavaOptions$D), PROPS.optionsName$Rr_z));
         }
       });
     }
 
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_JavaModule$h5) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_JavaLibrary$zR)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_JavaModule$NC) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_JavaLibrary$6q)) {
       Iterable<DescendantsScope> forAllVisible = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), ((boolean) false))).select(new ISelector<SNode, DescendantsScope>() {
         public DescendantsScope select(SNode it) {
-          return DescendantsScope.forNamedElements(it, LINKS.parts$b06K, kind);
+          return DescendantsScope.forNamedElements(it, LINKS.parts$mGDj, kind);
         }
       });
-      Iterable<DescendantsScope> forThis = Sequence.<DescendantsScope>singleton(DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$b06K, kind));
+      Iterable<DescendantsScope> forThis = Sequence.<DescendantsScope>singleton(DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$mGDj, kind));
       return new CompositeScope(Sequence.fromIterable(forAllVisible).concat(Sequence.fromIterable(forThis)).toGenericArray(DescendantsScope.class));
     }
 
     return null;
   }
   /*package*/ static Scope getLayoutScope_id13YBgBBRSOA(@NotNull SNode __thisNode__, SAbstractConcept kind) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_CompilablePart$w$)) {
-      return DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$b06K, kind);
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_CompilablePart$37)) {
+      return DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$mGDj, kind);
     }
 
     return null;
   }
   /*package*/ static Iterable<SNode> getImportedLibraries_id3zFnP6MwWdL(@NotNull SNode __thisNode__) {
-    return Sequence.<SNode>singleton(SLinkOperations.getTarget(createBwfTaskLibraryDependency_bn484n_a0a0a0c(), LINKS.target$aoew));
+    return Sequence.<SNode>singleton(SLinkOperations.getTarget(createBwfTaskLibraryDependency_bn484n_a0a0a0c(), LINKS.target$UbI8));
   }
 
   /*package*/ BuildJavaPlugin__BehaviorDescriptor() {
@@ -139,8 +139,8 @@ public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor 
   }
   private static SNode createBwfTaskLibraryDependency_bn484n_a0a0a0c() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BwfTaskLibraryDependency$Kt);
-    n0.setReference(LINKS.target$aoew, new SNodePointer(facade.createModelReference("r:dc6ee11b-0a41-4208-a099-65b1a11fb3ff(jetbrains.mps.build.workflow.preset.java)"), facade.createNodeId("7306485738221408314")));
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BwfTaskLibraryDependency$g5);
+    n0.setReference(LINKS.target$UbI8, new SNodePointer(facade.createModelReference("r:dc6ee11b-0a41-4208-a099-65b1a11fb3ff(jetbrains.mps.build.workflow.preset.java)"), facade.createNodeId("7306485738221408314")));
     return n0.getResult();
   }
   private static boolean isNotEmptyString(String str) {
@@ -148,19 +148,19 @@ public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaOptions$u6 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, "jetbrains.mps.build.structure.BuildSource_JavaOptions");
-    /*package*/ static final SConcept BuildSource_JavaModule$h5 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, "jetbrains.mps.build.structure.BuildSource_JavaModule");
-    /*package*/ static final SConcept BuildSource_JavaLibrary$zR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, "jetbrains.mps.build.structure.BuildSource_JavaLibrary");
-    /*package*/ static final SInterfaceConcept BuildSource_CompilablePart$w$ = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x23f6fd361bdcfd27L, "jetbrains.mps.build.structure.BuildSource_CompilablePart");
-    /*package*/ static final SConcept BwfTaskLibraryDependency$Kt = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, "jetbrains.mps.build.workflow.structure.BwfTaskLibraryDependency");
+    /*package*/ static final SConcept BuildSource_JavaOptions$D = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, "jetbrains.mps.build.structure.BuildSource_JavaOptions");
+    /*package*/ static final SConcept BuildSource_JavaModule$NC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, "jetbrains.mps.build.structure.BuildSource_JavaModule");
+    /*package*/ static final SConcept BuildSource_JavaLibrary$6q = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, "jetbrains.mps.build.structure.BuildSource_JavaLibrary");
+    /*package*/ static final SInterfaceConcept BuildSource_CompilablePart$37 = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x23f6fd361bdcfd27L, "jetbrains.mps.build.structure.BuildSource_CompilablePart");
+    /*package*/ static final SConcept BwfTaskLibraryDependency$g5 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, "jetbrains.mps.build.workflow.structure.BwfTaskLibraryDependency");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty optionsName$FJ30 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c3L, "optionsName");
+    /*package*/ static final SProperty optionsName$Rr_z = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c3L, "optionsName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
-    /*package*/ static final SReferenceLink target$aoew = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target");
+    /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SReferenceLink target$UbI8 = MetaAdapterFactory.getReferenceLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L, 0x6565da1147260538L, "target");
   }
 }

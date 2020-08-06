@@ -41,7 +41,7 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LiteralMessageExpression$Ga) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LiteralMessageExpression$$8) {
 
       @NotNull
       @Override
@@ -54,8 +54,8 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.LiteralMessageExpression$Ga));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_6s2f6n_b(), CONCEPTS.CombinedMessageExpression$e_));
+    }, CONCEPTS.LiteralMessageExpression$$8));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_6s2f6n_b(), CONCEPTS.CombinedMessageExpression$6z));
     return result;
   }
 
@@ -95,7 +95,7 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.CombinedMessageExpression$e_;
+          return CONCEPTS.CombinedMessageExpression$6z;
         }
         @Nullable
         @Override
@@ -128,24 +128,24 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.MessageExpression$FF;
+      return CONCEPTS.MessageExpression$zD;
     }
   }
   private static SNode createCombinedMessageExpression_6s2f6n_a0a0b(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$6z);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.part$2Bxx).initNode(p0, CONCEPTS.MessageExpression$FF, false);
+      SNodeBuilder n1 = n0.forChild(LINKS.part$kCpv).initNode(p0, CONCEPTS.MessageExpression$zD, false);
     }
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LiteralMessageExpression$Ga = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression");
-    /*package*/ static final SConcept CombinedMessageExpression$e_ = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");
-    /*package*/ static final SConcept MessageExpression$FF = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc4L, "jetbrains.mps.lang.messages.structure.MessageExpression");
+    /*package*/ static final SConcept LiteralMessageExpression$$8 = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression");
+    /*package*/ static final SConcept CombinedMessageExpression$6z = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");
+    /*package*/ static final SConcept MessageExpression$zD = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc4L, "jetbrains.mps.lang.messages.structure.MessageExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$2Bxx = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
+    /*package*/ static final SContainmentLink part$kCpv = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
   }
 }

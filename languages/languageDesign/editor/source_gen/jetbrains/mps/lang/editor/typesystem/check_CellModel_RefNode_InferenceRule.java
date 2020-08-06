@@ -24,8 +24,8 @@ public class check_CellModel_RefNode_InferenceRule extends AbstractInferenceRule
   public check_CellModel_RefNode_InferenceRule() {
   }
   public void applyRule(final SNode refNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode lnk = SLinkOperations.getTarget(refNode, LINKS.relationDeclaration$_K5_);
-    if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(lnk, PROPS.metaClass$p6Up), 0xfc6f4e95b9L))) {
+    SNode lnk = SLinkOperations.getTarget(refNode, LINKS.relationDeclaration$E2hc);
+    if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(lnk, PROPS.metaClass$PeKc), 0xfc6f4e95b9L))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(refNode, "aggregation link expected", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1180280667546", null, errorTarget);
     }
@@ -35,7 +35,7 @@ public class check_CellModel_RefNode_InferenceRule extends AbstractInferenceRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellModel_RefNode$Ox;
+    return CONCEPTS.CellModel_RefNode$8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,14 +45,14 @@ public class check_CellModel_RefNode_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_RefNode$Ox = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, "jetbrains.mps.lang.editor.structure.CellModel_RefNode");
+    /*package*/ static final SConcept CellModel_RefNode$8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, "jetbrains.mps.lang.editor.structure.CellModel_RefNode");
   }
 }

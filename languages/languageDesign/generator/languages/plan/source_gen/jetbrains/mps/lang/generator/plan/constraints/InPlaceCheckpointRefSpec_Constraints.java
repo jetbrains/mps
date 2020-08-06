@@ -26,12 +26,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class InPlaceCheckpointRefSpec_Constraints extends BaseConstraintsDescriptor {
   public InPlaceCheckpointRefSpec_Constraints() {
-    super(CONCEPTS.InPlaceCheckpointRefSpec$Hr);
+    super(CONCEPTS.InPlaceCheckpointRefSpec$H6);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.checkpoint$bs6R, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.checkpoint$4Q6y, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,12 +47,12 @@ public class InPlaceCheckpointRefSpec_Constraints extends BaseConstraintsDescrip
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // reference checkpoint steps with in-place cp declaration only 
-            return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.Checkpoint$g)) {
+            return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.Checkpoint$ZV)) {
               @Override
               public boolean isExcluded(SNode node) {
                 // node == contextNode is neccessary to avoid cycle when there's already a cp step with in-place declaration, 
                 // and we ask for replacement - do not suggest itself as possible replacement, wrapped into InPlaceCheckpointRefSpec 
-                return node == _context.getContextNode() || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.Checkpoint$g), LINKS.cpSpec$_H$M), CONCEPTS.InPlaceCheckpointSpec$q7));
+                return node == _context.getContextNode() || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.Checkpoint$ZV), LINKS.cpSpec$v7$t), CONCEPTS.InPlaceCheckpointSpec$pM));
               }
             };
           }
@@ -66,13 +66,13 @@ public class InPlaceCheckpointRefSpec_Constraints extends BaseConstraintsDescrip
   private static final SNodePointer breakingNode_we7ldp_a0a0a0a0a1a0a0a0c = new SNodePointer("r:e831e054-7bbb-4c7b-aebf-31582c0dfa61(jetbrains.mps.lang.generator.plan.constraints)", "3750601816081741688");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InPlaceCheckpointRefSpec$Hr = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec");
-    /*package*/ static final SConcept Checkpoint$g = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint");
-    /*package*/ static final SConcept InPlaceCheckpointSpec$q7 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec");
+    /*package*/ static final SConcept InPlaceCheckpointRefSpec$H6 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec");
+    /*package*/ static final SConcept Checkpoint$ZV = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint");
+    /*package*/ static final SConcept InPlaceCheckpointSpec$pM = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7ca161L, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointSpec");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink checkpoint$bs6R = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
-    /*package*/ static final SContainmentLink cpSpec$_H$M = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
+    /*package*/ static final SReferenceLink checkpoint$4Q6y = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
+    /*package*/ static final SContainmentLink cpSpec$v7$t = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
   }
 }

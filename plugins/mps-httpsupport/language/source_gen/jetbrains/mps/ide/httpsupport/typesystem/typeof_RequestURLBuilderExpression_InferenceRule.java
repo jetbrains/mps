@@ -25,7 +25,7 @@ public class typeof_RequestURLBuilderExpression_InferenceRule extends AbstractIn
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RequestURLBuilderExpression$JC;
+    return CONCEPTS.RequestURLBuilderExpression$pg;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_RequestURLBuilderExpression_InferenceRule extends AbstractIn
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequestURLBuilderExpression$JC = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, "jetbrains.mps.ide.httpsupport.structure.RequestURLBuilderExpression");
+    /*package*/ static final SConcept RequestURLBuilderExpression$pg = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, "jetbrains.mps.ide.httpsupport.structure.RequestURLBuilderExpression");
   }
 }

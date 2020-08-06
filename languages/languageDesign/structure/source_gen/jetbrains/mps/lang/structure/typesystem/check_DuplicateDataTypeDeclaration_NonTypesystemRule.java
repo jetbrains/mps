@@ -26,7 +26,7 @@ public class check_DuplicateDataTypeDeclaration_NonTypesystemRule extends Abstra
   public check_DuplicateDataTypeDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode dataTypeDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final String name = SPropertyOperations.getString(dataTypeDeclaration, PROPS.name$lA7v);
+    final String name = SPropertyOperations.getString(dataTypeDeclaration, PROPS.name$MnvL);
     if ((name == null || name.length() == 0)) {
       return;
     }
@@ -34,9 +34,9 @@ public class check_DuplicateDataTypeDeclaration_NonTypesystemRule extends Abstra
       return;
     }
 
-    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dataTypeDeclaration), CONCEPTS.INamedConcept$nV)).any(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dataTypeDeclaration), CONCEPTS.INamedConcept$Kd)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(Objects.equals(it, dataTypeDeclaration)) && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$lA7v));
+        return !(Objects.equals(it, dataTypeDeclaration)) && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$MnvL));
       }
     })) {
       {
@@ -46,7 +46,7 @@ public class check_DuplicateDataTypeDeclaration_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DataTypeDeclaration$KQ;
+    return CONCEPTS.DataTypeDeclaration$AD;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,11 +56,11 @@ public class check_DuplicateDataTypeDeclaration_NonTypesystemRule extends Abstra
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SConcept DataTypeDeclaration$KQ = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept DataTypeDeclaration$AD = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
   }
 }

@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NamedTupleType_Constraints extends BaseConstraintsDescriptor {
   public NamedTupleType_Constraints() {
-    super(CONCEPTS.NamedTupleType$$b);
+    super(CONCEPTS.NamedTupleType$DW);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$xslD, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classifier$cxMr, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -53,10 +53,10 @@ public class NamedTupleType_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_rcfzhs_a0a0a0a0a1a0a0a0c = new SNodePointer("r:3d04bd03-b6d9-4be1-8a52-d7b756e1d85b(jetbrains.mps.baseLanguage.tuples.constraints)", "6836281137582777066");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NamedTupleType$$b = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
+    /*package*/ static final SConcept NamedTupleType$DW = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

@@ -40,11 +40,11 @@ public final class ExecuteBlock__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_node$W5);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_editorContext$di);
-    if ((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterizedIntentionDeclaration$68, false, false) != null)) {
-      ListSequence.fromList(result).addElement(CONCEPTS.IntentionParameter$Xf);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_node$Gy);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_editorContext$eI);
+    if ((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterizedIntentionDeclaration$Q_, false, false) != null)) {
+      ListSequence.fromList(result).addElement(CONCEPTS.IntentionParameter$HG);
     }
     return result;
   }
@@ -109,10 +109,10 @@ public final class ExecuteBlock__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept ConceptFunctionParameter_node$W5 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b83c562eL, "jetbrains.mps.lang.intentions.structure.ConceptFunctionParameter_node");
-    /*package*/ static final SConcept ConceptFunctionParameter_editorContext$di = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x11601f73f7aL, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_editorContext");
-    /*package*/ static final SConcept IntentionParameter$Xf = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c8fd57fbL, "jetbrains.mps.lang.intentions.structure.IntentionParameter");
-    /*package*/ static final SConcept ParameterizedIntentionDeclaration$68 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120cd519c2dL, "jetbrains.mps.lang.intentions.structure.ParameterizedIntentionDeclaration");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ConceptFunctionParameter_node$Gy = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b83c562eL, "jetbrains.mps.lang.intentions.structure.ConceptFunctionParameter_node");
+    /*package*/ static final SConcept ConceptFunctionParameter_editorContext$eI = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x11601f73f7aL, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_editorContext");
+    /*package*/ static final SConcept IntentionParameter$HG = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c8fd57fbL, "jetbrains.mps.lang.intentions.structure.IntentionParameter");
+    /*package*/ static final SConcept ParameterizedIntentionDeclaration$Q_ = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120cd519c2dL, "jetbrains.mps.lang.intentions.structure.ParameterizedIntentionDeclaration");
   }
 }

@@ -30,10 +30,10 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$Ua)) != null;
+    return AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS)) != null;
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     return _context.getNode();
@@ -128,10 +128,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExportAsImage$Ua = MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage");
+    /*package*/ static final SConcept ExportAsImage$xS = MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

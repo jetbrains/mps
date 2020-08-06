@@ -28,8 +28,8 @@ public class typeof_NamedTupleComponentAccessOperation_InferenceRule extends Abs
   }
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> PTYPES = new ArrayList<SNode>();
-    SNode tupleDecl = SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(operation, LINKS.component$v1PW)), CONCEPTS.NamedTupleDeclaration$51);
-    for (SNode tvr : ListSequence.fromList(SLinkOperations.getChildren(tupleDecl, LINKS.typeVariableDeclaration$6cWB))) {
+    SNode tupleDecl = SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(operation, LINKS.component$KmVH)), CONCEPTS.NamedTupleDeclaration$aM);
+    for (SNode tvr : ListSequence.fromList(SLinkOperations.getChildren(tupleDecl, LINKS.typeVariableDeclaration$Lipp))) {
       final SNode PTYPE_typevar_1239974367138 = typeCheckingContext.createNewRuntimeTypesVariable();
       ListSequence.fromList(PTYPES).addElement(typeCheckingContext.getRepresentative(PTYPE_typevar_1239974367138));
     }
@@ -38,16 +38,16 @@ public class typeof_NamedTupleComponentAccessOperation_InferenceRule extends Abs
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "3862929002918414716", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "3862929002918414718", true), (SNode) _quotation_createNode_kga4po_a1a0c0d0b(tupleDecl, PTYPES), false, false, _info_12389875345);
     }
-    SNode opType = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(operation, LINKS.component$v1PW), LINKS.type$9fyo));
-    if (SNodeOperations.isInstanceOf(opType, CONCEPTS.TypeVariableReference$vZ)) {
-      int idx = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(SNodeOperations.cast(opType, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$6t$W));
+    SNode opType = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(operation, LINKS.component$KmVH), LINKS.type$q$C9));
+    if (SNodeOperations.isInstanceOf(opType, CONCEPTS.TypeVariableReference$WL)) {
+      int idx = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(SNodeOperations.cast(opType, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I));
       opType = ListSequence.fromList(PTYPES).getElement(idx);
     } else {
-      List<SNode> variableReferences = SNodeOperations.getNodeDescendants(opType, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{});
+      List<SNode> variableReferences = SNodeOperations.getNodeDescendants(opType, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{});
       List<SNode> tvrs = new ArrayList<SNode>();
       ListSequence.fromList(tvrs).addSequence(ListSequence.fromList(variableReferences));
       for (SNode tvr : tvrs) {
-        int idx = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(tvr, LINKS.typeVariableDeclaration$6t$W));
+        int idx = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(tvr, LINKS.typeVariableDeclaration$Lz1I));
         if (idx < ListSequence.fromList(PTYPES).count()) {
           SNodeOperations.replaceWithAnother(tvr, ListSequence.fromList(PTYPES).getElement(idx));
         }
@@ -60,7 +60,7 @@ public class typeof_NamedTupleComponentAccessOperation_InferenceRule extends Abs
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NamedTupleComponentAccessOperation$zP;
+    return CONCEPTS.NamedTupleComponentAccessOperation$DA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -84,15 +84,15 @@ public class typeof_NamedTupleComponentAccessOperation_InferenceRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink component$v1PW = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL, 0x1209c84fd08L, "component");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink type$9fyo = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x12095c0134fL, "type");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink component$KmVH = MetaAdapterFactory.getReferenceLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL, 0x1209c84fd08L, "component");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink type$q$C9 = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x12095c0134fL, "type");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NamedTupleDeclaration$51 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration");
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept NamedTupleComponentAccessOperation$zP = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentAccessOperation");
+    /*package*/ static final SConcept NamedTupleDeclaration$aM = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept NamedTupleComponentAccessOperation$DA = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209c84a4eaL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentAccessOperation");
   }
 }

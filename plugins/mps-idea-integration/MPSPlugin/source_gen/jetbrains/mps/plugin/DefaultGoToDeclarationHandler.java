@@ -32,10 +32,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     assert SwingUtilities.isEventDispatchThread();
     assert p.getModelAccess().canRead();
 
-    boolean isClassifier = SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$hJ);
-    boolean isConstructor = SNodeOperations.isInstanceOf(node, CONCEPTS.ConstructorDeclaration$5U);
-    boolean isMethod = SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$RR) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$hJ);
-    boolean isField = (SNodeOperations.isInstanceOf(node, CONCEPTS.FieldDeclaration$Ps) || SNodeOperations.isInstanceOf(node, CONCEPTS.StaticFieldDeclaration$R5)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$hJ);
+    boolean isClassifier = SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix);
+    boolean isConstructor = SNodeOperations.isInstanceOf(node, CONCEPTS.ConstructorDeclaration$yG);
+    boolean isMethod = SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix);
+    boolean isField = (SNodeOperations.isInstanceOf(node, CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(node, CONCEPTS.StaticFieldDeclaration$jR)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix);
     return isClassifier || isConstructor || isMethod || isField;
   }
 
@@ -43,35 +43,35 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     assert SwingUtilities.isEventDispatchThread();
     assert p.getModelAccess().canRead();
 
-    boolean isClassifier = SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$hJ);
-    boolean isConstructor = SNodeOperations.isInstanceOf(node, CONCEPTS.ConstructorDeclaration$5U);
-    boolean isMethod = SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$RR) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$hJ);
-    boolean isField = (SNodeOperations.isInstanceOf(node, CONCEPTS.FieldDeclaration$Ps) || SNodeOperations.isInstanceOf(node, CONCEPTS.StaticFieldDeclaration$R5)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$hJ);
+    boolean isClassifier = SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix);
+    boolean isConstructor = SNodeOperations.isInstanceOf(node, CONCEPTS.ConstructorDeclaration$yG);
+    boolean isMethod = SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix);
+    boolean isField = (SNodeOperations.isInstanceOf(node, CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(node, CONCEPTS.StaticFieldDeclaration$jR)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix);
     assert isClassifier || isConstructor || isMethod || isField;
 
     if (isClassifier) {
-      final String fqName = ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$hJ), CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+      final String fqName = ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
       return open(new _FunctionTypes._void_P1_E1<IProjectHandler, RemoteException>() {
         public void invoke(IProjectHandler h) throws RemoteException {
           h.openClass(fqName);
         }
       }, p);
     } else {
-      SNode classifier = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Classifier$hJ);
+      SNode classifier = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix);
       assert classifier != null;
 
-      final String classifierName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+      final String classifierName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
       if (isMethod) {
-        SNode method = SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$RR);
-        final String methodName = SPropertyOperations.getString(method, PROPS.name$lA7v);
-        final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count();
+        SNode method = SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$kD);
+        final String methodName = SPropertyOperations.getString(method, PROPS.name$MnvL);
+        final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count();
         return open(new _FunctionTypes._void_P1_E1<IProjectHandler, RemoteException>() {
           public void invoke(IProjectHandler h) throws RemoteException {
             h.openMethod(classifierName, methodName, paramCount);
           }
         }, p);
       } else if (isConstructor) {
-        final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$5U), LINKS.parameter$qsax)).count();
+        final int paramCount = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$yG), LINKS.parameter$5xBj)).count();
         return open(new _FunctionTypes._void_P1_E1<IProjectHandler, RemoteException>() {
           public void invoke(IProjectHandler h) throws RemoteException {
             h.openConstructor(classifierName, paramCount);
@@ -114,19 +114,19 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

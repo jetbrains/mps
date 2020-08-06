@@ -28,7 +28,7 @@ public class TestModuleManifestRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_dh67c9_a(), CONCEPTS.TestModuleManifestRef$M9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_dh67c9_a(), CONCEPTS.TestModuleManifestRef$Oo));
     result.add(new SMP_Subconcepts_dh67c9_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class TestModuleManifestRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_dh67c9_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TestModuleManifestRef$M9, LINKS.manifest$5p4w);
+      super((SAbstractConcept) CONCEPTS.TestModuleManifestRef$Oo, LINKS.manifest$GA6J);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class TestModuleManifestRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_dh67c9_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TestModuleManifestRef$M9);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TestModuleManifestRef$Oo);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class TestModuleManifestRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestModuleManifestRef$M9 = MetaAdapterFactory.getConcept(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc684499788c1c4L, "jetbrains.mps.build.mps.testManifest.structure.TestModuleManifestRef");
+    /*package*/ static final SConcept TestModuleManifestRef$Oo = MetaAdapterFactory.getConcept(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc684499788c1c4L, "jetbrains.mps.build.mps.testManifest.structure.TestModuleManifestRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink manifest$5p4w = MetaAdapterFactory.getReferenceLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc684499788c1c4L, 0x2dc684499788c1c5L, "manifest");
+    /*package*/ static final SReferenceLink manifest$GA6J = MetaAdapterFactory.getReferenceLink(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc684499788c1c4L, 0x2dc684499788c1c5L, "manifest");
   }
 }

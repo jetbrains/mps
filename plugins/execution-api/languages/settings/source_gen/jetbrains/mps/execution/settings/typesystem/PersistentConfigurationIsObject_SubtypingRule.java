@@ -21,7 +21,7 @@ public class PersistentConfigurationIsObject_SubtypingRule extends SubtypingRule
     return _quotation_createNode_eyuyy6_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PersistentConfigurationType$e2;
+    return CONCEPTS.PersistentConfigurationType$MR;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class PersistentConfigurationIsObject_SubtypingRule extends SubtypingRule
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PersistentConfigurationType$e2 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
+    /*package*/ static final SConcept PersistentConfigurationType$MR = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
   }
 }

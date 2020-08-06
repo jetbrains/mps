@@ -47,14 +47,14 @@ public final class AddRemovePresenceAnnotation_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$6k)) == null) ? "Add Presence Annotation" : "Remove Presence Annotation");
+      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn)) == null) ? "Add Presence Annotation" : "Remove Presence Annotation");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$6k)) == null)) {
-        SNode sa = AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$6k), CONCEPTS.SubstituteAnnotation$6k);
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn)) == null)) {
+        SNode sa = AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn), CONCEPTS.SubstituteAnnotation$zn);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$6k)));
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn)));
       }
     }
     @Override
@@ -64,6 +64,6 @@ public final class AddRemovePresenceAnnotation_Intention extends AbstractIntenti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteAnnotation$6k = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation");
+    /*package*/ static final SConcept SubstituteAnnotation$zn = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL, "testAnnotatedType.structure.SubstituteAnnotation");
   }
 }

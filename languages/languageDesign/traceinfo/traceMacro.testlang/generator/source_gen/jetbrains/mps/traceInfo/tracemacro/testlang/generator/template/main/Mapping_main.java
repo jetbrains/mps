@@ -40,7 +40,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:75f95d80-1d60-4222-8b1e-a09f089fee3e(jetbrains.mps.traceInfo.tracemacro.testlang.generator.template.main@generator)", "7980748436587788165"), CONCEPTS.GeneratedForeach$5d, false);
+      super(new SNodePointer("r:75f95d80-1d60-4222-8b1e-a09f089fee3e(jetbrains.mps.traceInfo.tracemacro.testlang.generator.template.main@generator)", "7980748436587788165"), CONCEPTS.GeneratedForeach$_A, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -94,7 +94,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule1() {
-      super(new SNodePointer("r:75f95d80-1d60-4222-8b1e-a09f089fee3e(jetbrains.mps.traceInfo.tracemacro.testlang.generator.template.main@generator)", "7980748436587793686"), CONCEPTS.ForEachVariableReference$q$, false);
+      super(new SNodePointer("r:75f95d80-1d60-4222-8b1e-a09f089fee3e(jetbrains.mps.traceInfo.tracemacro.testlang.generator.template.main@generator)", "7980748436587793686"), CONCEPTS.ForEachVariableReference$CR, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -122,7 +122,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private static final SNodePointer propertyMacro_ief6mt_c0a0c0a0f0d0c0b3 = new SNodePointer("r:75f95d80-1d60-4222-8b1e-a09f089fee3e(jetbrains.mps.traceInfo.tracemacro.testlang.generator.template.main@generator)", "7980748436587793602");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GeneratedForeach$5d = MetaAdapterFactory.getConcept(0x140c4818bfbc4850L, 0xbf7ce3d80739a03cL, 0x6ec1506b5491b782L, "jetbrains.mps.traceInfo.tracemacro.testlang.structure.GeneratedForeach");
-    /*package*/ static final SConcept ForEachVariableReference$q$ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference");
+    /*package*/ static final SConcept GeneratedForeach$_A = MetaAdapterFactory.getConcept(0x140c4818bfbc4850L, 0xbf7ce3d80739a03cL, 0x6ec1506b5491b782L, "jetbrains.mps.traceInfo.tracemacro.testlang.structure.GeneratedForeach");
+    /*package*/ static final SConcept ForEachVariableReference$CR = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference");
   }
 }

@@ -46,18 +46,18 @@
       <node id="1241280061046780069" at="63,50,64,66" concept="9" />
       <node id="1241280061046780069" at="66,68,67,102" concept="9" />
       <node id="1241280061046780069" at="69,30,70,17" concept="9" />
-      <node id="1241280061046780069" at="74,0,75,0" concept="12" trace="BuildMpsLayout_ModuleJars$mB" />
-      <node id="1241280061046780069" at="75,0,76,0" concept="12" trace="BuildMpsLayout_ModuleXml$8Q" />
-      <node id="1241280061046780069" at="76,0,77,0" concept="12" trace="BuildMps_Module$j$" />
-      <node id="1241280061046780069" at="77,0,78,0" concept="12" trace="BuildMps_ModuleDependencyJar$qY" />
-      <node id="1241280061046780069" at="78,0,79,0" concept="12" trace="BuildMps_ModuleDependencyOnJavaModule$mo" />
-      <node id="1241280061046780069" at="79,0,80,0" concept="12" trace="BuildMpsLayout_ModuleXml_CustomJarLocation$Ef" />
-      <node id="1241280061046780069" at="83,0,84,0" concept="12" trace="module$NFyx" />
-      <node id="1241280061046780069" at="84,0,85,0" concept="12" trace="module$3$r0" />
-      <node id="1241280061046780069" at="85,0,86,0" concept="12" trace="path$XP7w" />
-      <node id="1241280061046780069" at="86,0,87,0" concept="12" trace="path$3Hv0" />
-      <node id="1241280061046780069" at="87,0,88,0" concept="12" trace="javaLibLocation$Ha0N" />
-      <node id="1241280061046780069" at="91,0,92,0" concept="12" trace="name$lA7v" />
+      <node id="1241280061046780069" at="74,0,75,0" concept="12" trace="BuildMpsLayout_ModuleJars$MZ" />
+      <node id="1241280061046780069" at="75,0,76,0" concept="12" trace="BuildMpsLayout_ModuleXml$_e" />
+      <node id="1241280061046780069" at="76,0,77,0" concept="12" trace="BuildMps_Module$JW" />
+      <node id="1241280061046780069" at="77,0,78,0" concept="12" trace="BuildMps_ModuleDependencyJar$Rm" />
+      <node id="1241280061046780069" at="78,0,79,0" concept="12" trace="BuildMps_ModuleDependencyOnJavaModule$MK" />
+      <node id="1241280061046780069" at="79,0,80,0" concept="12" trace="BuildMpsLayout_ModuleXml_CustomJarLocation$6B" />
+      <node id="1241280061046780069" at="83,0,84,0" concept="12" trace="module$iRYT" />
+      <node id="1241280061046780069" at="84,0,85,0" concept="12" trace="module$yKRo" />
+      <node id="1241280061046780069" at="85,0,86,0" concept="12" trace="path$t1zS" />
+      <node id="1241280061046780069" at="86,0,87,0" concept="12" trace="path$yTVo" />
+      <node id="1241280061046780069" at="87,0,88,0" concept="12" trace="javaLibLocation$cmtb" />
+      <node id="1241280061046780069" at="91,0,92,0" concept="12" trace="name$MnvL" />
       <node id="1241280061046780069" at="30,0,32,0" concept="1" trace="check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule#()V" />
       <node id="1241280061046782901" at="34,158,37,5" concept="6" />
       <node id="1241280061046793532" at="37,5,40,5" concept="6" />
@@ -138,13 +138,13 @@
       <node id="1392391688313307201" at="56,50,57,43" concept="9" />
       <node id="1392391688313307201" at="59,68,60,102" concept="9" />
       <node id="1392391688313307201" at="62,30,63,17" concept="9" />
-      <node id="1392391688313307201" at="67,0,68,0" concept="12" trace="target$GZN0" />
-      <node id="1392391688313307201" at="68,0,69,0" concept="12" trace="content$EGEh" />
-      <node id="1392391688313307201" at="69,0,70,0" concept="12" trace="group$V$Jw" />
-      <node id="1392391688313307201" at="70,0,71,0" concept="12" trace="modules$g9q0" />
-      <node id="1392391688313307201" at="74,0,75,0" concept="12" trace="BuildMps_IdeaPluginModule$ZA" />
-      <node id="1392391688313307201" at="75,0,76,0" concept="12" trace="BuildMps_IdeaPluginGroup$9v" />
-      <node id="1392391688313307201" at="76,0,77,0" concept="12" trace="BuildMps_IdeaPlugin$X0" />
+      <node id="1392391688313307201" at="67,0,68,0" concept="12" trace="target$ccfo" />
+      <node id="1392391688313307201" at="68,0,69,0" concept="12" trace="content$9T6D" />
+      <node id="1392391688313307201" at="69,0,70,0" concept="12" trace="group$qLbS" />
+      <node id="1392391688313307201" at="70,0,71,0" concept="12" trace="modules$JlQo" />
+      <node id="1392391688313307201" at="74,0,75,0" concept="12" trace="BuildMps_IdeaPluginModule$rY" />
+      <node id="1392391688313307201" at="75,0,76,0" concept="12" trace="BuildMps_IdeaPluginGroup$_R" />
+      <node id="1392391688313307201" at="76,0,77,0" concept="12" trace="BuildMps_IdeaPlugin$po" />
       <node id="1392391688313307201" at="25,0,27,0" concept="1" trace="check_IdeaPlugin_Dependencies_NonTypesystemRule#()V" />
       <node id="3562028609769848948" at="27,119,30,5" concept="6" />
       <node id="1392391688313364665" at="44,45,47,7" concept="5" />
@@ -229,16 +229,16 @@
       <node id="1392391688313364749" at="61,30,62,179" concept="3" />
       <node id="1392391688313364888" at="63,14,64,102" concept="3" />
       <node id="1392391688313364972" at="65,7,66,22" concept="3" />
-      <node id="1392391688313307204" at="71,0,72,0" concept="12" trace="content$EGEh" />
-      <node id="1392391688313307204" at="72,0,73,0" concept="12" trace="target$GZN0" />
-      <node id="1392391688313307204" at="73,0,74,0" concept="12" trace="group$V$Jw" />
-      <node id="1392391688313307204" at="74,0,75,0" concept="12" trace="modules$g9q0" />
-      <node id="1392391688313307204" at="75,0,76,0" concept="12" trace="target$Hl9U" />
-      <node id="1392391688313307204" at="76,0,77,0" concept="12" trace="dependencies$EoHW" />
-      <node id="1392391688313307204" at="80,0,81,0" concept="12" trace="BuildMps_IdeaPluginModule$ZA" />
-      <node id="1392391688313307204" at="81,0,82,0" concept="12" trace="BuildMps_IdeaPluginGroup$9v" />
-      <node id="1392391688313307204" at="82,0,83,0" concept="12" trace="BuildMps_Module$j$" />
-      <node id="1392391688313307204" at="86,0,87,0" concept="12" trace="name$lA7v" />
+      <node id="1392391688313307204" at="71,0,72,0" concept="12" trace="content$9T6D" />
+      <node id="1392391688313307204" at="72,0,73,0" concept="12" trace="target$ccfo" />
+      <node id="1392391688313307204" at="73,0,74,0" concept="12" trace="group$qLbS" />
+      <node id="1392391688313307204" at="74,0,75,0" concept="12" trace="modules$JlQo" />
+      <node id="1392391688313307204" at="75,0,76,0" concept="12" trace="target$cxAi" />
+      <node id="1392391688313307204" at="76,0,77,0" concept="12" trace="dependencies$9_ak" />
+      <node id="1392391688313307204" at="80,0,81,0" concept="12" trace="BuildMps_IdeaPluginModule$rY" />
+      <node id="1392391688313307204" at="81,0,82,0" concept="12" trace="BuildMps_IdeaPluginGroup$_R" />
+      <node id="1392391688313307204" at="82,0,83,0" concept="12" trace="BuildMps_Module$JW" />
+      <node id="1392391688313307204" at="86,0,87,0" concept="12" trace="name$MnvL" />
       <node id="1392391688313364886" at="63,12,65,7" concept="0" />
       <node id="1392391688313307206" at="25,0,28,0" concept="1" trace="IdeaPluginDependenciesHelper#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1392391688313364159" at="33,62,36,5" concept="6" />
@@ -319,7 +319,7 @@
       <node id="153860590141649072" at="35,50,36,40" concept="9" />
       <node id="153860590141649072" at="38,68,39,102" concept="9" />
       <node id="153860590141649072" at="41,30,42,17" concept="9" />
-      <node id="153860590141649072" at="46,0,47,0" concept="12" trace="BuildMps_TipsMps$5H" />
+      <node id="153860590141649072" at="46,0,47,0" concept="12" trace="BuildMps_TipsMps$y5" />
       <node id="153860590141649072" at="21,0,23,0" concept="1" trace="check_BuildMps_TipsMps_NonTypesystemRule#()V" />
       <node id="153860590141659063" at="25,0,28,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="153860590141649072" at="35,0,38,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -407,9 +407,9 @@
       <node id="2531699772406302326" at="125,50,126,36" concept="9" />
       <node id="2531699772406302326" at="128,68,129,102" concept="9" />
       <node id="2531699772406302326" at="131,30,132,17" concept="9" />
-      <node id="2531699772406302326" at="136,0,137,0" concept="12" trace="parts$b06K" />
-      <node id="2531699772406302326" at="140,0,141,0" concept="12" trace="BuildMps_DevKit$QO" />
-      <node id="2531699772406302326" at="141,0,142,0" concept="12" trace="BuildProject$BF" />
+      <node id="2531699772406302326" at="136,0,137,0" concept="12" trace="parts$mGDj" />
+      <node id="2531699772406302326" at="140,0,141,0" concept="12" trace="BuildMps_DevKit$jc" />
+      <node id="2531699772406302326" at="141,0,142,0" concept="12" trace="BuildProject$ae" />
       <node id="2531699772406302326" at="43,0,45,0" concept="1" trace="check_ModulesImport_NonTypesystemRule#()V" />
       <node id="8757919848289155923" at="45,125,48,5" concept="6" />
       <node id="7141285424006610508" at="63,38,66,9" concept="6" />
@@ -534,8 +534,8 @@
       <node id="4278635856200790177" at="32,5,33,0" concept="11" />
       <node id="7141285424007807580" at="33,0,34,108" concept="8" />
       <node id="7141285424007799702" at="34,108,35,86" concept="3" />
-      <node id="2531699772406320928" at="39,0,40,0" concept="12" trace="BuildMps_AbstractModule$fB" />
-      <node id="2531699772406320928" at="40,0,41,0" concept="12" trace="BuildProject$BF" />
+      <node id="2531699772406320928" at="39,0,40,0" concept="12" trace="BuildMps_AbstractModule$FZ" />
+      <node id="2531699772406320928" at="40,0,41,0" concept="12" trace="BuildProject$ae" />
       <node id="2531699772406320928" at="17,0,20,0" concept="1" trace="ReloadRequired_QuickFix#()V" />
       <node id="2531699772406320928" at="20,0,23,0" concept="7" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="2531699772406321037" at="24,81,27,5" concept="6" />
@@ -570,10 +570,10 @@
       <node id="3570488090016225011" at="37,50,38,43" concept="9" />
       <node id="3570488090016225011" at="40,68,41,102" concept="9" />
       <node id="3570488090016225011" at="43,30,44,17" concept="9" />
-      <node id="3570488090016225011" at="48,0,49,0" concept="12" trace="BuildProject$BF" />
-      <node id="3570488090016225011" at="49,0,50,0" concept="12" trace="BuildLayout_Node$kC" />
-      <node id="3570488090016225011" at="50,0,51,0" concept="12" trace="BuildMps_IdeaPlugin$X0" />
-      <node id="3570488090016225011" at="54,0,55,0" concept="12" trace="layout$fqCX" />
+      <node id="3570488090016225011" at="48,0,49,0" concept="12" trace="BuildProject$ae" />
+      <node id="3570488090016225011" at="49,0,50,0" concept="12" trace="BuildLayout_Node$Rb" />
+      <node id="3570488090016225011" at="50,0,51,0" concept="12" trace="BuildMps_IdeaPlugin$po" />
+      <node id="3570488090016225011" at="54,0,55,0" concept="12" trace="layout$r7bw" />
       <node id="3570488090016225011" at="23,0,25,0" concept="1" trace="IdeaPluginIsInLayout_NonTypesystemRule#()V" />
       <node id="3570488090016260557" at="27,211,30,7" concept="6" />
       <node id="3570488090016225011" at="37,0,40,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -646,11 +646,11 @@
       <node id="3890521992564783739" at="60,68,61,102" concept="9" />
       <node id="3890521992564783739" at="63,30,64,17" concept="9" />
       <node id="1209930566741172562" at="66,52,67,44" concept="9" />
-      <node id="3890521992564783739" at="71,0,72,0" concept="12" trace="sources$RG$V" />
-      <node id="3890521992564783739" at="75,0,76,0" concept="12" trace="BuildMps_ModuleResources$lI" />
-      <node id="3890521992564783739" at="76,0,77,0" concept="12" trace="BuildProject$BF" />
-      <node id="3890521992564783739" at="77,0,78,0" concept="12" trace="BuildMps_Module$j$" />
-      <node id="3890521992564783739" at="81,0,82,0" concept="12" trace="uuid$UrzD" />
+      <node id="3890521992564783739" at="71,0,72,0" concept="12" trace="sources$mT1j" />
+      <node id="3890521992564783739" at="75,0,76,0" concept="12" trace="BuildMps_ModuleResources$M6" />
+      <node id="3890521992564783739" at="76,0,77,0" concept="12" trace="BuildProject$ae" />
+      <node id="3890521992564783739" at="77,0,78,0" concept="12" trace="BuildMps_Module$JW" />
+      <node id="3890521992564783739" at="81,0,82,0" concept="12" trace="uuid$pC01" />
       <node id="3890521992564783739" at="29,0,31,0" concept="1" trace="check_IfModuleUsesResources_NonTypesystemRule#()V" />
       <node id="3890521992564783752" at="31,124,34,5" concept="6" />
       <node id="6066541231570428431" at="34,5,37,5" concept="6" />
@@ -713,15 +713,15 @@
       <node id="3890521992564903132" at="25,78,26,168" concept="8" />
       <node id="3890521992564881759" at="26,168,27,176" concept="3" />
       <node id="3890521992564904927" at="27,176,28,169" concept="3" />
-      <node id="3890521992564878833" at="32,0,33,0" concept="12" trace="BuildMps_Module$j$" />
-      <node id="3890521992564878833" at="33,0,34,0" concept="12" trace="BuildMps_ModuleResources$lI" />
-      <node id="3890521992564878833" at="34,0,35,0" concept="12" trace="BuildFileIncludesSelector$LC" />
-      <node id="3890521992564878833" at="38,0,39,0" concept="12" trace="sources$RG$V" />
-      <node id="3890521992564878833" at="39,0,40,0" concept="12" trace="files$ZER0" />
-      <node id="3890521992564878833" at="40,0,41,0" concept="12" trace="dir$2pT1" />
-      <node id="3890521992564878833" at="41,0,42,0" concept="12" trace="path$NMkf" />
-      <node id="3890521992564878833" at="42,0,43,0" concept="12" trace="selectors$5H35" />
-      <node id="3890521992564878833" at="46,0,47,0" concept="12" trace="pattern$ip31" />
+      <node id="3890521992564878833" at="32,0,33,0" concept="12" trace="BuildMps_Module$JW" />
+      <node id="3890521992564878833" at="33,0,34,0" concept="12" trace="BuildMps_ModuleResources$M6" />
+      <node id="3890521992564878833" at="34,0,35,0" concept="12" trace="BuildFileIncludesSelector$kb" />
+      <node id="3890521992564878833" at="38,0,39,0" concept="12" trace="sources$mT1j" />
+      <node id="3890521992564878833" at="39,0,40,0" concept="12" trace="files$uRjo" />
+      <node id="3890521992564878833" at="40,0,41,0" concept="12" trace="dir$e6r$" />
+      <node id="3890521992564878833" at="41,0,42,0" concept="12" trace="path$iYKB" />
+      <node id="3890521992564878833" at="42,0,43,0" concept="12" trace="selectors$hp_C" />
+      <node id="3890521992564878833" at="46,0,47,0" concept="12" trace="pattern$u5_$" />
       <node id="3890521992564878833" at="18,0,21,0" concept="1" trace="addModuleResources_QuickFix#()V" />
       <node id="3890521992564878833" at="21,0,24,0" concept="7" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="3890521992564878833" at="24,0,30,0" concept="7" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -760,8 +760,8 @@
       <node id="4278635856200826398" at="32,50,33,52" concept="9" />
       <node id="4278635856200826398" at="35,68,36,102" concept="9" />
       <node id="4278635856200826398" at="38,30,39,17" concept="9" />
-      <node id="4278635856200826398" at="43,0,44,0" concept="12" trace="path$3Hv0" />
-      <node id="4278635856200826398" at="47,0,48,0" concept="12" trace="BuildMps_ModuleDependencyJar$qY" />
+      <node id="4278635856200826398" at="43,0,44,0" concept="12" trace="path$yTVo" />
+      <node id="4278635856200826398" at="47,0,48,0" concept="12" trace="BuildMps_ModuleDependencyJar$Rm" />
       <node id="4278635856200826398" at="21,0,23,0" concept="1" trace="check_BuildMps_ModuleDependencyJar_NonTypesystemRule#()V" />
       <node id="4278635856200826398" at="32,0,35,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4278635856200826398" at="35,0,38,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -814,9 +814,9 @@
       <node id="4297162197627140688" at="40,50,41,49" concept="9" />
       <node id="4297162197627140688" at="43,68,44,102" concept="9" />
       <node id="4297162197627140688" at="46,30,47,17" concept="9" />
-      <node id="4297162197627140688" at="51,0,52,0" concept="12" trace="BuildProject$BF" />
-      <node id="4297162197627140688" at="52,0,53,0" concept="12" trace="BuildMps_GeneratorOptions$9K" />
-      <node id="4297162197627140688" at="56,0,57,0" concept="12" trace="parts$b06K" />
+      <node id="4297162197627140688" at="51,0,52,0" concept="12" trace="BuildProject$ae" />
+      <node id="4297162197627140688" at="52,0,53,0" concept="12" trace="BuildMps_GeneratorOptions$A8" />
+      <node id="4297162197627140688" at="56,0,57,0" concept="12" trace="parts$mGDj" />
       <node id="4297162197627140688" at="23,0,25,0" concept="1" trace="check_BuildMps_GeneratorOptions_NonTypesystemRule#()V" />
       <node id="4297162197627200512" at="29,0,32,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="4297162197627140688" at="40,0,43,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -880,9 +880,9 @@
       <node id="5730480978702364605" at="49,68,50,102" concept="9" />
       <node id="5730480978702364605" at="52,30,53,17" concept="9" />
       <node id="5730480978702452188" at="55,55,56,43" concept="9" />
-      <node id="5730480978702364605" at="60,0,61,0" concept="12" trace="name$lA7v" />
-      <node id="5730480978702364605" at="64,0,65,0" concept="12" trace="BuildLayout_Jar$CE" />
-      <node id="5730480978702364605" at="65,0,66,0" concept="12" trace="BuildMps_TipsPackage$2r" />
+      <node id="5730480978702364605" at="60,0,61,0" concept="12" trace="name$MnvL" />
+      <node id="5730480978702364605" at="64,0,65,0" concept="12" trace="BuildLayout_Jar$bd" />
+      <node id="5730480978702364605" at="65,0,66,0" concept="12" trace="BuildMps_TipsPackage$uN" />
       <node id="5730480978702364605" at="23,0,25,0" concept="1" trace="check_BuildMps_TipsBundle_NonTypesystemRule#()V" />
       <node id="6437930869738282347" at="35,0,38,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="5730480978702364605" at="46,0,49,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -953,8 +953,8 @@
       <node id="685435297876944318" at="35,50,36,45" concept="9" />
       <node id="685435297876944318" at="38,68,39,102" concept="9" />
       <node id="685435297876944318" at="41,30,42,17" concept="9" />
-      <node id="685435297876944318" at="46,0,47,0" concept="12" trace="packagingType$tC3w" />
-      <node id="685435297876944318" at="50,0,51,0" concept="12" trace="BuildMpsLayout_Plugin$JV" />
+      <node id="685435297876944318" at="46,0,47,0" concept="12" trace="packagingType$WOvS" />
+      <node id="685435297876944318" at="50,0,51,0" concept="12" trace="BuildMpsLayout_Plugin$cj" />
       <node id="685435297876944318" at="21,0,23,0" concept="1" trace="check_PackagingTypeIsSet_NonTypesystemRule#()V" />
       <node id="685435297876944318" at="35,0,38,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="685435297876944318" at="38,0,41,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -996,8 +996,8 @@
     <file name="SetPackagingTypeToAuto_QuickFix.java">
       <node id="685435297876952856" at="16,44,17,128" concept="14" />
       <node id="685435297876952878" at="19,35,20,319" concept="3" />
-      <node id="685435297876952856" at="24,0,25,0" concept="12" trace="BuildMpsLayout_Plugin$JV" />
-      <node id="685435297876952856" at="28,0,29,0" concept="12" trace="packagingType$tC3w" />
+      <node id="685435297876952856" at="24,0,25,0" concept="12" trace="BuildMpsLayout_Plugin$cj" />
+      <node id="685435297876952856" at="28,0,29,0" concept="12" trace="packagingType$WOvS" />
       <node id="685435297876952856" at="16,0,19,0" concept="1" trace="SetPackagingTypeToAuto_QuickFix#()V" />
       <node id="685435297876952856" at="19,0,22,0" concept="7" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="685435297876952856" at="16,44,17,128" />
@@ -1034,13 +1034,13 @@
       <node id="7323166234199650228" at="66,68,67,102" concept="9" />
       <node id="7323166234199650228" at="69,30,70,17" concept="9" />
       <node id="5730480978698270867" at="72,52,73,44" concept="9" />
-      <node id="7323166234199650228" at="77,0,78,0" concept="12" trace="BuildMps_Tips$aF" />
-      <node id="7323166234199650228" at="78,0,79,0" concept="12" trace="BuildProject$BF" />
-      <node id="7323166234199650228" at="79,0,80,0" concept="12" trace="BuildMps_TipsPackage$2r" />
-      <node id="7323166234199650228" at="83,0,84,0" concept="12" trace="name$lA7v" />
-      <node id="7323166234199650228" at="87,0,88,0" concept="12" trace="imports$yVer" />
-      <node id="7323166234199650228" at="88,0,89,0" concept="12" trace="layout$fqCX" />
-      <node id="7323166234199650228" at="89,0,90,0" concept="12" trace="tips$jqe8" />
+      <node id="7323166234199650228" at="77,0,78,0" concept="12" trace="BuildMps_Tips$B3" />
+      <node id="7323166234199650228" at="78,0,79,0" concept="12" trace="BuildProject$ae" />
+      <node id="7323166234199650228" at="79,0,80,0" concept="12" trace="BuildMps_TipsPackage$uN" />
+      <node id="7323166234199650228" at="83,0,84,0" concept="12" trace="name$MnvL" />
+      <node id="7323166234199650228" at="87,0,88,0" concept="12" trace="imports$27EN" />
+      <node id="7323166234199650228" at="88,0,89,0" concept="12" trace="layout$r7bw" />
+      <node id="7323166234199650228" at="89,0,90,0" concept="12" trace="tips$MAEw" />
       <node id="7323166234199650228" at="27,0,29,0" concept="1" trace="check_MpsTips_NonTypesystemRule#()V" />
       <node id="5730480978698270860" at="31,0,34,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7323166234199733147" at="36,0,39,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -1131,9 +1131,9 @@
       <node id="8046287930334195844" at="37,50,38,45" concept="9" />
       <node id="8046287930334195844" at="40,68,41,102" concept="9" />
       <node id="8046287930334195844" at="43,30,44,17" concept="9" />
-      <node id="8046287930334195844" at="48,0,49,0" concept="12" trace="solution$a5kA" />
-      <node id="8046287930334195844" at="49,0,50,0" concept="12" trace="path$RPeP" />
-      <node id="8046287930334195844" at="53,0,54,0" concept="12" trace="BuildMps_TipsSolution$Do" />
+      <node id="8046287930334195844" at="48,0,49,0" concept="12" trace="solution$DhKY" />
+      <node id="8046287930334195844" at="49,0,50,0" concept="12" trace="path$n1Fd" />
+      <node id="8046287930334195844" at="53,0,54,0" concept="12" trace="BuildMps_TipsSolution$5K" />
       <node id="8046287930334195844" at="21,0,23,0" concept="1" trace="check_BuildMps_TipsSolution_NonTypesystemRule#()V" />
       <node id="8046287930334195844" at="37,0,40,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8046287930334195844" at="40,0,43,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -1193,12 +1193,12 @@
       <node id="8488591998065875962" at="42,50,43,48" concept="9" />
       <node id="8488591998065875962" at="45,68,46,102" concept="9" />
       <node id="8488591998065875962" at="48,30,49,17" concept="9" />
-      <node id="8488591998065875962" at="53,0,54,0" concept="12" trace="classpathEntries$mK6P" />
-      <node id="8488591998065875962" at="54,0,55,0" concept="12" trace="children$Z6lh" />
-      <node id="8488591998065875962" at="58,0,59,0" concept="12" trace="BuildLayout_Folder$4a" />
-      <node id="8488591998065875962" at="59,0,60,0" concept="12" trace="BuildLayout_Jar$CE" />
-      <node id="8488591998065875962" at="60,0,61,0" concept="12" trace="BuildLayout_CompileOutputOf$v7" />
-      <node id="8488591998065875962" at="61,0,62,0" concept="12" trace="BuildMpsLayout_ModuleXml$8Q" />
+      <node id="8488591998065875962" at="53,0,54,0" concept="12" trace="classpathEntries$PWzd" />
+      <node id="8488591998065875962" at="54,0,55,0" concept="12" trace="children$aMRO" />
+      <node id="8488591998065875962" at="58,0,59,0" concept="12" trace="BuildLayout_Folder$AH" />
+      <node id="8488591998065875962" at="59,0,60,0" concept="12" trace="BuildLayout_Jar$bd" />
+      <node id="8488591998065875962" at="60,0,61,0" concept="12" trace="BuildLayout_CompileOutputOf$1E" />
+      <node id="8488591998065875962" at="61,0,62,0" concept="12" trace="BuildMpsLayout_ModuleXml$_e" />
       <node id="8488591998065875962" at="24,0,26,0" concept="1" trace="check_ModuleXml_SpecifiesClasspath_NonTypesystemRule#()V" />
       <node id="8488591998065885828" at="26,114,29,5" concept="6" />
       <node id="8488591998065875962" at="42,0,45,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1246,9 +1246,9 @@
       <node id="8488591998065970651" at="20,44,21,62" concept="9" />
       <node id="8488591998065944888" at="23,35,24,85" concept="8" />
       <node id="8488591998065941154" at="24,85,25,128" concept="3" />
-      <node id="8488591998065935471" at="29,0,30,0" concept="12" trace="BuildMpsLayout_ModuleXml$8Q" />
-      <node id="8488591998065935471" at="33,0,34,0" concept="12" trace="classpathEntries$mK6P" />
-      <node id="8488591998065935471" at="37,0,38,0" concept="12" trace="path$TAA2" />
+      <node id="8488591998065935471" at="29,0,30,0" concept="12" trace="BuildMpsLayout_ModuleXml$_e" />
+      <node id="8488591998065935471" at="33,0,34,0" concept="12" trace="classpathEntries$PWzd" />
+      <node id="8488591998065935471" at="37,0,38,0" concept="12" trace="path$oN2q" />
       <node id="8488591998065935471" at="17,0,20,0" concept="1" trace="SetModuleJarClasspathEntry_QuickFix#()V" />
       <node id="8488591998065935471" at="20,0,23,0" concept="7" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="8488591998065935471" at="23,0,27,0" concept="7" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />

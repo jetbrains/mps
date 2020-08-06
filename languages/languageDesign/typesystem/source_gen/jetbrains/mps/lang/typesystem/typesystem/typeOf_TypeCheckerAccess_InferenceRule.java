@@ -26,7 +26,7 @@ public class typeOf_TypeCheckerAccess_InferenceRule extends AbstractInferenceRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TypeCheckerAccessExpression$Sv;
+    return CONCEPTS.TypeCheckerAccessExpression$al;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeOf_TypeCheckerAccess_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeCheckerAccessExpression$Sv = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111b6ea6b9bL, "jetbrains.mps.lang.typesystem.structure.TypeCheckerAccessExpression");
+    /*package*/ static final SConcept TypeCheckerAccessExpression$al = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111b6ea6b9bL, "jetbrains.mps.lang.typesystem.structure.TypeCheckerAccessExpression");
   }
 }

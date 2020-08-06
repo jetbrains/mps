@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnvironmentExpression_Constraints extends BaseConstraintsDescriptor {
   public EnvironmentExpression_Constraints() {
-    super(CONCEPTS.EnvironmentExpression$Xe);
+    super(CONCEPTS.EnvironmentExpression$DP);
   }
 
   @Override
@@ -37,13 +37,13 @@ public class EnvironmentExpression_Constraints extends BaseConstraintsDescriptor
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ExecuteBeforeTask_ConceptFunction$jR, true, false) != null) || (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ExecuteConfiguration_Function$UI, true, false) != null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ExecuteBeforeTask_ConceptFunction$u, true, false) != null) || (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ExecuteConfiguration_Function$Bl, true, false) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:d6e5159c-3299-41f5-8a8a-81b5b79d5073(jetbrains.mps.execution.configurations.constraints)", "1227128029536566009");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnvironmentExpression$Xe = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x7664b739387f64L, "jetbrains.mps.execution.configurations.structure.EnvironmentExpression");
-    /*package*/ static final SConcept ExecuteConfiguration_Function$UI = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5532ce3cbd91002cL, "jetbrains.mps.execution.configurations.structure.ExecuteConfiguration_Function");
-    /*package*/ static final SConcept ExecuteBeforeTask_ConceptFunction$jR = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x220f4a2c4aff4248L, "jetbrains.mps.execution.configurations.structure.ExecuteBeforeTask_ConceptFunction");
+    /*package*/ static final SConcept EnvironmentExpression$DP = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x7664b739387f64L, "jetbrains.mps.execution.configurations.structure.EnvironmentExpression");
+    /*package*/ static final SConcept ExecuteConfiguration_Function$Bl = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5532ce3cbd91002cL, "jetbrains.mps.execution.configurations.structure.ExecuteConfiguration_Function");
+    /*package*/ static final SConcept ExecuteBeforeTask_ConceptFunction$u = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x220f4a2c4aff4248L, "jetbrains.mps.execution.configurations.structure.ExecuteBeforeTask_ConceptFunction");
   }
 }

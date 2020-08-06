@@ -77,7 +77,7 @@ public class InferenceRule_ApplySideTransforms extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.InferenceRule$Ad, "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.InferenceRule$S3, "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction");
     }
 
   }
@@ -100,7 +100,7 @@ public class InferenceRule_ApplySideTransforms extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.InferenceRule$Ad, "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.InferenceRule$S3, "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction");
     }
 
     @Nullable
@@ -111,6 +111,6 @@ public class InferenceRule_ApplySideTransforms extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InferenceRule$Ad = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
+    /*package*/ static final SConcept InferenceRule$S3 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
   }
 }

@@ -49,10 +49,10 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, ConsoleStream console) {
     SRepository repo = context.getProject().getRepository();
     SModel model;
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$4GVQ) != null)) {
-      model = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$4GVQ)).resolve(repo);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$AZJC) != null)) {
+      model = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$AZJC)).resolve(repo);
     } else {
-      model = ModelReference__BehaviorDescriptor.getModel_id67MRmR$z8Z2.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.targetModelOld$XlGg), repo);
+      model = ModelReference__BehaviorDescriptor.getModel_id67MRmR$z8Z2.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.targetModelOld$vCw2), repo);
     }
     if (model == null) {
       return;
@@ -68,7 +68,7 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
 
     PartitioningHelper helper = new PartitioningHelper(messagesView, console);
     ModelGenerationPlan gp;
-    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.ignoreExternalPlan$5Q1q)) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.ignoreExternalPlan$C8Pc)) {
       gp = new GenerationPlan(model);
       if (externalPlan != null) {
         console.addText("Model has alternative plan configured externally, ignored\n");
@@ -143,11 +143,11 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targetModel$4GVQ = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
-    /*package*/ static final SContainmentLink targetModelOld$XlGg = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x61f2dd6de47f867aL, "targetModelOld");
+    /*package*/ static final SContainmentLink targetModel$AZJC = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
+    /*package*/ static final SContainmentLink targetModelOld$vCw2 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x61f2dd6de47f867aL, "targetModelOld");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty ignoreExternalPlan$5Q1q = MetaAdapterFactory.getProperty(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x2c510b378f8ce5ddL, "ignoreExternalPlan");
+    /*package*/ static final SProperty ignoreExternalPlan$C8Pc = MetaAdapterFactory.getProperty(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x2c510b378f8ce5ddL, "ignoreExternalPlan");
   }
 }

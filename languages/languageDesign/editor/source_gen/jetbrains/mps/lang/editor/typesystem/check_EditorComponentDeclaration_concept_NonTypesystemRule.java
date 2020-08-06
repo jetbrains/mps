@@ -23,30 +23,30 @@ public class check_EditorComponentDeclaration_concept_NonTypesystemRule extends 
   public check_EditorComponentDeclaration_concept_NonTypesystemRule() {
   }
   public void applyRule(final SNode editorComponentDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(editorComponentDeclaration, LINKS.conceptDeclaration$Dtb8) == null) {
-      if (!(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$H8ro) != null)) {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$Dtb8);
+    if (SLinkOperations.getTarget(editorComponentDeclaration, LINKS.conceptDeclaration$HJmJ) == null) {
+      if (!(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$LqAZ) != null)) {
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$HJmJ);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorComponentDeclaration, "Concept declaration should be specified", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "147073787666675127", null, errorTarget);
       }
-      if (SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$H8ro) != null) {
-        if (!(ListSequence.fromList(SLinkOperations.getChildren(editorComponentDeclaration, LINKS.contextHints$ZUpZ)).isNotEmpty())) {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.contextHints$ZUpZ);
+      if (SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$LqAZ) != null) {
+        if (!(ListSequence.fromList(SLinkOperations.getChildren(editorComponentDeclaration, LINKS.contextHints$4c_A)).isNotEmpty())) {
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.contextHints$4c_A);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorComponentDeclaration, "Either additional \"applicable in context\" condition or more specific \" applicable concept\" should be specified in overriding editor component", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "147073787667024251", null, errorTarget);
         }
       }
       return;
     }
 
-    SNode overridenEditorConceptDeclaration = SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$H8ro), LINKS.editorComponent$M9L3), LINKS.conceptDeclaration$Dtb8);
+    SNode overridenEditorConceptDeclaration = SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.overridenEditorComponent$LqAZ), LINKS.editorComponent$QrWE), LINKS.conceptDeclaration$HJmJ);
     if (overridenEditorConceptDeclaration != null) {
-      if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.conceptDeclaration$Dtb8), overridenEditorConceptDeclaration))) {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$Dtb8);
+      if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(editorComponentDeclaration, LINKS.conceptDeclaration$HJmJ), overridenEditorConceptDeclaration))) {
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.conceptDeclaration$HJmJ);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(editorComponentDeclaration, "Specified applicable concept is not subconcept of applicable concept specified in overriden editor", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "294197224123710838", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EditorComponentDeclaration$Lb;
+    return CONCEPTS.EditorComponentDeclaration$WM;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,13 +56,13 @@ public class check_EditorComponentDeclaration_concept_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
-    /*package*/ static final SContainmentLink overridenEditorComponent$H8ro = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
-    /*package*/ static final SContainmentLink contextHints$ZUpZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x65fc2f4f98189976L, "contextHints");
-    /*package*/ static final SReferenceLink editorComponent$M9L3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, 0x619d95571435e249L, "editorComponent");
+    /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SContainmentLink overridenEditorComponent$LqAZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
+    /*package*/ static final SContainmentLink contextHints$4c_A = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x65fc2f4f98189976L, "contextHints");
+    /*package*/ static final SReferenceLink editorComponent$QrWE = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, 0x619d95571435e249L, "editorComponent");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorComponentDeclaration$Lb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
+    /*package*/ static final SConcept EditorComponentDeclaration$WM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
   }
 }

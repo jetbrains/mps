@@ -47,10 +47,10 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static boolean isTemplate_idO$iR4J$g8G(@NotNull SNode __thisNode__) {
-    return TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc), createTemplatePersistentConfigurationType_ex141d_b0a0a0());
+    return TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, LINKS.type$a1UY), createTemplatePersistentConfigurationType_ex141d_b0a0a0());
   }
   /*package*/ static String getAccessorName_idO$iR4J$g8R(@NotNull SNode __thisNode__) {
-    String name = PersistentPropertyDeclaration__BehaviorDescriptor.removeMyPrefixInternal_idO$iR4J$g9N.invoke(SNodeOperations.asSConcept(CONCEPTS.PersistentPropertyDeclaration$Xy), SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
+    String name = PersistentPropertyDeclaration__BehaviorDescriptor.removeMyPrefixInternal_idO$iR4J$g9N.invoke(SNodeOperations.asSConcept(CONCEPTS.PersistentPropertyDeclaration$yn), SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
     return name.substring(0, 1).toUpperCase() + name.substring(1);
   }
   /*package*/ static boolean isInitializable_idhEwJfMK(@NotNull SNode __thisNode__) {
@@ -66,7 +66,7 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
   }
   /*package*/ static SNode getTemplate_idO$iR4J$gak(@NotNull SNode __thisNode__) {
     assert ((boolean) PersistentPropertyDeclaration__BehaviorDescriptor.isTemplate_idO$iR4J$g8G.invoke(__thisNode__));
-    return SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(__thisNode__, LINKS.type$uWuc), CONCEPTS.TemplatePersistentConfigurationType$ht), LINKS.persistentConfiguration$2710);
+    return SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(__thisNode__, LINKS.type$a1UY), CONCEPTS.TemplatePersistentConfigurationType$Qi), LINKS.persistentConfiguration$QL_P);
   }
   /*package*/ static String addMyPrefix_id5uxO0H8rOhC(@NotNull SAbstractConcept __thisConcept__, String name) {
     String prefix = "my";
@@ -87,7 +87,7 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
     return name;
   }
   /*package*/ static String removeMyPrefix_idO$iR4J$g8k(@NotNull SAbstractConcept __thisConcept__, String name) {
-    name = PersistentPropertyDeclaration__BehaviorDescriptor.removeMyPrefixInternal_idO$iR4J$g9N.invoke(SNodeOperations.asSConcept(CONCEPTS.PersistentPropertyDeclaration$Xy), name);
+    name = PersistentPropertyDeclaration__BehaviorDescriptor.removeMyPrefixInternal_idO$iR4J$g9N.invoke(SNodeOperations.asSConcept(CONCEPTS.PersistentPropertyDeclaration$yn), name);
     return name.substring(0, 1).toLowerCase() + name.substring(1);
   }
 
@@ -153,21 +153,21 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
     return CONCEPT;
   }
   private static SNode createTemplatePersistentConfigurationType_ex141d_b0a0a0() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$Qi);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink persistentConfiguration$QL_P = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PersistentPropertyDeclaration$Xy = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910119L, "jetbrains.mps.execution.settings.structure.PersistentPropertyDeclaration");
-    /*package*/ static final SConcept TemplatePersistentConfigurationType$ht = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType");
+    /*package*/ static final SConcept PersistentPropertyDeclaration$yn = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910119L, "jetbrains.mps.execution.settings.structure.PersistentPropertyDeclaration");
+    /*package*/ static final SConcept TemplatePersistentConfigurationType$Qi = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

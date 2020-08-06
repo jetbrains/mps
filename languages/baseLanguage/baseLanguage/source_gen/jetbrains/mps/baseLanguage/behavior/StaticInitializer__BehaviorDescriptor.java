@@ -36,7 +36,7 @@ public final class StaticInitializer__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
-    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.StaticInitializer$dH));
+    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.StaticInitializer$Ev));
     markIcons.add(BLIconMarks.STATIC);
     return markIcons;
   }
@@ -103,6 +103,6 @@ public final class StaticInitializer__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticInitializer$dH = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");
+    /*package*/ static final SConcept StaticInitializer$Ev = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");
   }
 }

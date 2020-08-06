@@ -109,14 +109,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.constraintsKind$KsD1;
+      final SProperty property = PROPS.constraintsKind$_7dQ;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no constraintsKind>");
       editorCell.setCellId("property_constraintsKind");
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new GridBagConstraints_constraintsKind_cellMenu_snw1l8_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -167,7 +167,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new orderSingleRoleHandler_snw1l8_e0(myNode, LINKS.order$Wdib, getEditorContext());
+    SingleRoleCellProvider provider = new orderSingleRoleHandler_snw1l8_e0(myNode, LINKS.order$KRR0, getEditorContext());
     return provider.createCell();
   }
   private static class orderSingleRoleHandler_snw1l8_e0 extends SingleRoleCellProvider {
@@ -187,8 +187,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.order$Wdib, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.order$Wdib, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.order$KRR0, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.order$KRR0, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -200,13 +200,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.order$Wdib);
+        editorCell.setSRole(LINKS.order$KRR0);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.order$Wdib));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.order$KRR0));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_order");
@@ -232,14 +232,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty constraintsKind$KsD1 = MetaAdapterFactory.getProperty(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x25c8b83a7e4bb488L, 0x25c8b83a7e4bb48aL, "constraintsKind");
+    /*package*/ static final SProperty constraintsKind$_7dQ = MetaAdapterFactory.getProperty(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x25c8b83a7e4bb488L, 0x25c8b83a7e4bb48aL, "constraintsKind");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink order$Wdib = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x25c8b83a7e4bb488L, 0x25c8b83a7e4e6246L, "order");
+    /*package*/ static final SContainmentLink order$KRR0 = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x25c8b83a7e4bb488L, 0x25c8b83a7e4e6246L, "order");
   }
 }

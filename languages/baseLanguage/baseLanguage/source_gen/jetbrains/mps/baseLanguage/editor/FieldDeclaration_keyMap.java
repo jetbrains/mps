@@ -52,7 +52,7 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.FieldDeclaration$Ps))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.FieldDeclaration$ie))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -62,13 +62,13 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode classConcept = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false);
+      SNode classConcept = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
       return (classConcept != null) && !((boolean) FieldDeclaration__BehaviorDescriptor.hasGetter_idhEwIcYw.invoke(node, classConcept));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode g;
-      g = _quotation_createNode_bsktda_a0b0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.type$uWuc)), node, FieldDeclaration__BehaviorDescriptor.getGetterName_idhEwIcY6.invoke(node));
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false), LINKS.member$6v_r)).addElement(g);
+      g = _quotation_createNode_bsktda_a0b0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.type$a1UY)), node, FieldDeclaration__BehaviorDescriptor.getGetterName_idhEwIcY6.invoke(node));
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false), LINKS.member$L_2d)).addElement(g);
     }
     public String getKeyStroke() {
       return "alt INSERT";
@@ -124,7 +124,7 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.FieldDeclaration$Ps))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.FieldDeclaration$ie))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -134,13 +134,13 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode classConcept = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false);
+      SNode classConcept = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
       return (classConcept != null) && !((boolean) FieldDeclaration__BehaviorDescriptor.hasSetter_idhEwIcZv.invoke(node, classConcept));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode s;
-      s = _quotation_createNode_bsktda_a0b0a1(node, FieldDeclaration__BehaviorDescriptor.getSetterName_idhEwIcZl.invoke(node), SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.type$uWuc)), SPropertyOperations.getString(node, PROPS.name$lA7v));
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false), LINKS.member$6v_r)).addElement(s);
+      s = _quotation_createNode_bsktda_a0b0a1(node, FieldDeclaration__BehaviorDescriptor.getSetterName_idhEwIcZl.invoke(node), SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.type$a1UY)), SPropertyOperations.getString(node, PROPS.name$MnvL));
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false), LINKS.member$L_2d)).addElement(s);
     }
     public String getKeyStroke() {
       return "alt INSERT";
@@ -193,16 +193,16 @@ public class FieldDeclaration_keyMap extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

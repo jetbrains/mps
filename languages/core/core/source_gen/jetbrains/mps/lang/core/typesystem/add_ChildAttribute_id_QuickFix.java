@@ -18,11 +18,11 @@ public class add_ChildAttribute_id_QuickFix extends QuickFix_Runtime {
     return "Add id to child attribute";
   }
   public void execute(SNode node) {
-    SNode childAttribute = SNodeOperations.as(node, CONCEPTS.ChildAttribute$XQ);
+    SNode childAttribute = SNodeOperations.as(node, CONCEPTS.ChildAttribute$m8);
     ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(childAttribute, ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(childAttribute));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildAttribute$XQ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
   }
 }

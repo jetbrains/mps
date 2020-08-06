@@ -31,12 +31,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class PrivateFieldReferenceOperation_Constraints extends BaseConstraintsDescriptor {
   public PrivateFieldReferenceOperation_Constraints() {
-    super(CONCEPTS.PrivateFieldReferenceOperation$fI);
+    super(CONCEPTS.PrivateFieldReferenceOperation$xF);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.fieldDeclaration$229u, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.fieldDeclaration$H7Ag, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -53,19 +53,19 @@ public class PrivateFieldReferenceOperation_Constraints extends BaseConstraintsD
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
             // fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type 
-            if (!(SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.DotExpression$6a))) {
+            if (!(SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.DotExpression$yW))) {
               return new EmptyScope();
             }
-            SNode instance = SLinkOperations.getTarget(SNodeOperations.as(enclosingNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
+            SNode instance = SLinkOperations.getTarget(SNodeOperations.as(enclosingNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
 
-            final SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(instance), CONCEPTS.ClassifierType$IZ);
-            if ((SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD) == null)) {
+            final SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(instance), CONCEPTS.ClassifierType$bL);
+            if ((SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr) == null)) {
               return new EmptyScope();
             }
 
             Iterable<SNode> privateFields = (Iterable<SNode>) Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.FieldDeclaration$Ps);
+                return SNodeOperations.isInstanceOf(it, CONCEPTS.FieldDeclaration$ie);
               }
             }).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
@@ -84,15 +84,15 @@ public class PrivateFieldReferenceOperation_Constraints extends BaseConstraintsD
   private static final SNodePointer breakingNode_cgwyr9_a0a0a0a0a1a0a0a0c = new SNodePointer("r:c8ec5cc5-f63f-40c3-ab3e-3fbb9a638ceb(jetbrains.mps.debugger.java.privateMembers.constraints)", "6836281137582821925");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrivateFieldReferenceOperation$fI = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x5eb820f649bb5379L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateFieldReferenceOperation");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept PrivateFieldReferenceOperation$xF = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x5eb820f649bb5379L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateFieldReferenceOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink fieldDeclaration$H7Ag = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

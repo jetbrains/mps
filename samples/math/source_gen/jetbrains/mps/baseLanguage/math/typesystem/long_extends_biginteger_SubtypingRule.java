@@ -19,7 +19,7 @@ public class long_extends_biginteger_SubtypingRule extends SubtypingRule_Runtime
     return SNodeOperations.copyNode(MathTypeUtil.qBigInteger);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.LongType$Db;
+    return CONCEPTS.LongType$5X;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -29,6 +29,6 @@ public class long_extends_biginteger_SubtypingRule extends SubtypingRule_Runtime
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LongType$Db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f3L, "jetbrains.mps.baseLanguage.structure.LongType");
+    /*package*/ static final SConcept LongType$5X = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f3L, "jetbrains.mps.baseLanguage.structure.LongType");
   }
 }

@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumerationMemberDeclaration_Constraints extends BaseConstraintsDescriptor {
   public EnumerationMemberDeclaration_Constraints() {
-    super(CONCEPTS.EnumerationMemberDeclaration$Am);
+    super(CONCEPTS.EnumerationMemberDeclaration$s9);
   }
 
   public static class MemberId_Property extends BasePropertyConstraintsDescriptor {
     public MemberId_Property(ConstraintsDescriptor container) {
-      super(PROPS.memberId$lO88, container);
+      super(PROPS.memberId$LVXV, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -53,15 +53,15 @@ public class EnumerationMemberDeclaration_Constraints extends BaseConstraintsDes
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.memberId$lO88, new MemberId_Property(this));
+    properties.put(PROPS.memberId$LVXV, new MemberId_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationMemberDeclaration$Am = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
+    /*package*/ static final SConcept EnumerationMemberDeclaration$s9 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty memberId$lO88 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
+    /*package*/ static final SProperty memberId$LVXV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
   }
 }

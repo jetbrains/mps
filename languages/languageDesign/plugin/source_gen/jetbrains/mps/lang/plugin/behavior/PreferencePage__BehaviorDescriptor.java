@@ -36,12 +36,12 @@ public final class PreferencePage__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getGeneratedName_idhI3nUHP(@NotNull SNode __thisNode__) {
-    String componentName = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PreferencesComponentDeclaration$6j, false, false), PROPS.name$lA7v);
-    String pageName = NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
+    String componentName = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PreferencesComponentDeclaration$3m, false, false), PROPS.name$MnvL);
+    String pageName = NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
     return componentName + "_" + pageName + "_PreferencesPage";
   }
   /*package*/ static PropertyReference getPropertyToCheck_id4cWf37B8oYh(@NotNull SNode __thisNode__) {
-    return new PropertyReference(__thisNode__, PROPS.name$lA7v);
+    return new PropertyReference(__thisNode__, PROPS.name$MnvL);
   }
 
   /*package*/ PreferencePage__BehaviorDescriptor() {
@@ -93,10 +93,10 @@ public final class PreferencePage__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PreferencesComponentDeclaration$6j = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c44c226fL, "jetbrains.mps.lang.plugin.structure.PreferencesComponentDeclaration");
+    /*package*/ static final SConcept PreferencesComponentDeclaration$3m = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c44c226fL, "jetbrains.mps.lang.plugin.structure.PreferencesComponentDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

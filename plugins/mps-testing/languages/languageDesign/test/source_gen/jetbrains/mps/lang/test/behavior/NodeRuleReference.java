@@ -32,11 +32,11 @@ public class NodeRuleReference {
   }
 
   private boolean isConstraints() {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(ruleNode), CONCEPTS.ConceptConstraints$St);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(ruleNode), CONCEPTS.ConceptConstraints$Yt);
   }
 
   public boolean isReportStatement() {
-    return SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.AbstractReportStatement$Qn);
+    return SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.AbstractReportStatement$8d);
   }
 
   private boolean isMessageStatement() {
@@ -44,7 +44,7 @@ public class NodeRuleReference {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptConstraints$St = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
-    /*package*/ static final SConcept AbstractReportStatement$Qn = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, "jetbrains.mps.lang.typesystem.structure.AbstractReportStatement");
+    /*package*/ static final SConcept ConceptConstraints$Yt = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
+    /*package*/ static final SConcept AbstractReportStatement$8d = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, "jetbrains.mps.lang.typesystem.structure.AbstractReportStatement");
   }
 }

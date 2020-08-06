@@ -41,7 +41,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_c11kxs_a(), CONCEPTS.OldIconReference$Bd));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_c11kxs_a(), CONCEPTS.OldIconReference$eZ));
     return result;
   }
 
@@ -78,7 +78,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.OldIconDeclaration$pD);
+      return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.OldIconDeclaration$1r);
     }
     private class SMP_Action_c11kxs_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -113,7 +113,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.OldIconReference$Bd, context);
+          super(CONCEPTS.OldIconReference$eZ, context);
           _context = context;
         }
 
@@ -133,7 +133,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.OldIconReference$Bd, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.OldIconReference$eZ, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -154,7 +154,7 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SConceptOperations.conceptAlias(CONCEPTS.OldIconReference$Bd) + "<" + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + ">";
+          return SConceptOperations.conceptAlias(CONCEPTS.OldIconReference$eZ) + "<" + SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL) + ">";
         }
       }
     }
@@ -169,11 +169,11 @@ public class IconResourceReference_subs_Contribution extends SubstituteMenuBase 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OldIconReference$Bd = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, "jetbrains.mps.lang.resources.structure.OldIconReference");
-    /*package*/ static final SConcept OldIconDeclaration$pD = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c0L, "jetbrains.mps.lang.resources.structure.OldIconDeclaration");
+    /*package*/ static final SConcept OldIconReference$eZ = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c7L, "jetbrains.mps.lang.resources.structure.OldIconReference");
+    /*package*/ static final SConcept OldIconDeclaration$1r = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c0L, "jetbrains.mps.lang.resources.structure.OldIconDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

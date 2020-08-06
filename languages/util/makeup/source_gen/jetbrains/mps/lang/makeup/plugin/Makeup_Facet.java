@@ -110,12 +110,12 @@ public class Makeup_Facet extends IFacet.Stub {
                   public void run() {
                     for (TextUnit tu : generatedTextUnits) {
                       SNode startNode = tu.getStartNode();
-                      SNode annotationCopy = AttributeOperations.getAttribute(startNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$lQ));
+                      SNode annotationCopy = AttributeOperations.getAttribute(startNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us));
                       if ((annotationCopy == null)) {
                         continue;
                       }
                       // TODO process macro/property values in the location, but assume it's absolute path for now 
-                      String destination = SPropertyOperations.getString(annotationCopy, PROPS.location$7aV0);
+                      String destination = SPropertyOperations.getString(annotationCopy, PROPS.location$Jy3A);
                       if ((destination == null || destination.length() == 0)) {
                         continue;
                       }
@@ -216,10 +216,10 @@ public class Makeup_Facet extends IFacet.Stub {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CopyOutcome$lQ = MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome");
+    /*package*/ static final SConcept CopyOutcome$us = MetaAdapterFactory.getConcept(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, "jetbrains.mps.lang.makeup.structure.CopyOutcome");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty location$7aV0 = MetaAdapterFactory.getProperty(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, 0x10f9f9812b8fca94L, "location");
+    /*package*/ static final SProperty location$Jy3A = MetaAdapterFactory.getProperty(0xedf22a442bc4e5dL, 0x954f06aaaf51df00L, 0x10f9f9812b8fca93L, 0x10f9f9812b8fca94L, "location");
   }
 }

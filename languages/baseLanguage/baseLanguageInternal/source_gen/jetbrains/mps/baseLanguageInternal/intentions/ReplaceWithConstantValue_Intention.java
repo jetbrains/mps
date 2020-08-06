@@ -51,9 +51,9 @@ public final class ReplaceWithConstantValue_Intention extends AbstractIntentionD
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode fieldDecl = SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU);
-      SNode constantValue = SNodeOperations.replaceWithNewChild(node, CONCEPTS.ConstantValue$$C);
-      SLinkOperations.setTarget(constantValue, LINKS.constant$XMk0, fieldDecl);
+      SNode fieldDecl = SLinkOperations.getTarget(node, LINKS.variableDeclaration$N1XG);
+      SNode constantValue = SNodeOperations.replaceWithNewChild(node, CONCEPTS.ConstantValue$Pq);
+      SLinkOperations.setTarget(constantValue, LINKS.constant$fw$M, fieldDecl);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -62,11 +62,11 @@ public final class ReplaceWithConstantValue_Intention extends AbstractIntentionD
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink constant$XMk0 = MetaAdapterFactory.getReferenceLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x16007da97856bd8aL, 0x16007da97856bd8bL, "constant");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink constant$fw$M = MetaAdapterFactory.getReferenceLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x16007da97856bd8aL, 0x16007da97856bd8bL, "constant");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstantValue$$C = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x16007da97856bd8aL, "jetbrains.mps.baseLanguageInternal.structure.ConstantValue");
+    /*package*/ static final SConcept ConstantValue$Pq = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x16007da97856bd8aL, "jetbrains.mps.baseLanguageInternal.structure.ConstantValue");
   }
 }

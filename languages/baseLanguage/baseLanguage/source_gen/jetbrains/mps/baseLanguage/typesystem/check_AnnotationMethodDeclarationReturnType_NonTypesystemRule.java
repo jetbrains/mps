@@ -21,14 +21,14 @@ public class check_AnnotationMethodDeclarationReturnType_NonTypesystemRule exten
   public check_AnnotationMethodDeclarationReturnType_NonTypesystemRule() {
   }
   public void applyRule(final SNode annotationMethodDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode returnType = SLinkOperations.getTarget(annotationMethodDeclaration, LINKS.returnType$qrVw);
+    SNode returnType = SLinkOperations.getTarget(annotationMethodDeclaration, LINKS.returnType$5xoi);
     if (!((boolean) AnnotationMethodDeclaration__BehaviorDescriptor.isGoodReturnType_id5JI19Xbr7EK.invoke(annotationMethodDeclaration, returnType))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(returnType, "invalid type for annotation member", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6624237184120343376", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AnnotationMethodDeclaration$C2;
+    return CONCEPTS.AnnotationMethodDeclaration$4O;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,10 +38,10 @@ public class check_AnnotationMethodDeclarationReturnType_NonTypesystemRule exten
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnnotationMethodDeclaration$C2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration");
+    /*package*/ static final SConcept AnnotationMethodDeclaration$4O = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration");
   }
 }

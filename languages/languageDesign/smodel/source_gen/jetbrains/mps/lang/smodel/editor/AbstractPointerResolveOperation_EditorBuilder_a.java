@@ -60,7 +60,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "resolve");
     editorCell.setCellId("Constant_takvqj_a0");
-    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.AbstractPointerResolveOperation$jG));
+    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.AbstractPointerResolveOperation$lc));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
@@ -75,7 +75,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new repositoryArgSingleRoleHandler_takvqj_c0(myNode, LINKS.repositoryArg$bPpU, getEditorContext());
+    SingleRoleCellProvider provider = new repositoryArgSingleRoleHandler_takvqj_c0(myNode, LINKS.repositoryArg$Kerq, getEditorContext());
     return provider.createCell();
   }
   private static class repositoryArgSingleRoleHandler_takvqj_c0 extends SingleRoleCellProvider {
@@ -95,8 +95,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.repositoryArg$bPpU, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.repositoryArg$bPpU, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.repositoryArg$Kerq, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.repositoryArg$Kerq, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -108,13 +108,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.repositoryArg$bPpU);
+        editorCell.setSRole(LINKS.repositoryArg$Kerq);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.repositoryArg$bPpU));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.repositoryArg$Kerq));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_repositoryArg");
@@ -140,10 +140,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractPointerResolveOperation$jG = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x386b28659aca029dL, "jetbrains.mps.lang.smodel.structure.AbstractPointerResolveOperation");
+    /*package*/ static final SConcept AbstractPointerResolveOperation$lc = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x386b28659aca029dL, "jetbrains.mps.lang.smodel.structure.AbstractPointerResolveOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink repositoryArg$bPpU = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x386b28659aca029dL, 0x32a2de94092b191fL, "repositoryArg");
+    /*package*/ static final SContainmentLink repositoryArg$Kerq = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x386b28659aca029dL, 0x32a2de94092b191fL, "repositoryArg");
   }
 }

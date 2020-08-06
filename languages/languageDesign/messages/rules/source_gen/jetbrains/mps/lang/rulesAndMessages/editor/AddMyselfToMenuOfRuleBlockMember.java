@@ -67,11 +67,11 @@ public class AddMyselfToMenuOfRuleBlockMember extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.RuleWithMessage$jq;
+      return CONCEPTS.RuleWithMessage$9Q;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RuleWithMessage$jq = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage");
+    /*package*/ static final SConcept RuleWithMessage$9Q = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce67L, "jetbrains.mps.lang.rulesAndMessages.structure.RuleWithMessage");
   }
 }

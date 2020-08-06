@@ -28,7 +28,7 @@ public class QuickFixArgumentReference_SubstituteMenu extends SubstituteMenuBase
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2byk7t_a(), CONCEPTS.QuickFixArgumentReference$zj));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2byk7t_a(), CONCEPTS.QuickFixArgumentReference$P9));
     result.add(new SMP_Subconcepts_2byk7t_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class QuickFixArgumentReference_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_2byk7t_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.QuickFixArgumentReference$zj, LINKS.quickFixArgument$8m$P);
+      super((SAbstractConcept) CONCEPTS.QuickFixArgumentReference$P9, LINKS.quickFixArgument$xcQF);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class QuickFixArgumentReference_SubstituteMenu extends SubstituteMenuBase
   }
   public class SMP_Subconcepts_2byk7t_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.QuickFixArgumentReference$zj);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.QuickFixArgumentReference$P9);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class QuickFixArgumentReference_SubstituteMenu extends SubstituteMenuBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QuickFixArgumentReference$zj = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, "jetbrains.mps.lang.typesystem.structure.QuickFixArgumentReference");
+    /*package*/ static final SConcept QuickFixArgumentReference$P9 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, "jetbrains.mps.lang.typesystem.structure.QuickFixArgumentReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink quickFixArgument$8m$P = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, 0x11b3683c00aL, "quickFixArgument");
+    /*package*/ static final SReferenceLink quickFixArgument$xcQF = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L, 0x11b3683c00aL, "quickFixArgument");
   }
 }

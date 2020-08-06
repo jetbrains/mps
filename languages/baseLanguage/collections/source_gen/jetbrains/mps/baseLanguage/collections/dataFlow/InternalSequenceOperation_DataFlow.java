@@ -11,10 +11,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InternalSequenceOperation_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.closure$cZg5));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.closure$Rjuo));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink closure$cZg5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
+    /*package*/ static final SContainmentLink closure$Rjuo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
   }
 }

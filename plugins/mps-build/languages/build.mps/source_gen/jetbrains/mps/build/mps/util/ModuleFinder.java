@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ModuleFinder {
   public static Iterable<SNode> findModules(Iterable<SNode> modules, final TemplateQueryContext genContext, final SNode node) {
-    final SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(node), CONCEPTS.BuildProject$BF);
+    final SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(node), CONCEPTS.BuildProject$ae);
     if (project == null) {
       genContext.showErrorMessage(node, "no context project defined");
       return ListSequence.fromList(new ArrayList<SNode>());
@@ -32,12 +32,12 @@ public class ModuleFinder {
         // similar code is in BuildMps_Module.fetchDependencies() behavior (at least). 
         SNode layoutNode = helper.getArtifact(module);
         if (layoutNode == null) {
-          genContext.showErrorMessage(node, "mps module " + SPropertyOperations.getString(module, PROPS.name$lA7v) + " was not found in the layout of `" + SPropertyOperations.getString(project, PROPS.name$lA7v) + "'");
+          genContext.showErrorMessage(node, "mps module " + SPropertyOperations.getString(module, PROPS.name$MnvL) + " was not found in the layout of `" + SPropertyOperations.getString(project, PROPS.name$MnvL) + "'");
           return null;
         }
         String val = BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invoke(layoutNode, helper, module);
         if (val == null) {
-          genContext.showErrorMessage(node, "no location for module" + SPropertyOperations.getString(module, PROPS.name$lA7v));
+          genContext.showErrorMessage(node, "no location for module" + SPropertyOperations.getString(module, PROPS.name$MnvL));
           return null;
         }
         return val;
@@ -57,18 +57,18 @@ public class ModuleFinder {
     });
   }
   private static SNode createGeneratorInternal_String_8pqt49_a0a0a0e0a(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$cg);
-    n0.setProperty(PROPS.path$TAA2, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);
+    n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
-    /*package*/ static final SConcept GeneratorInternal_String$cg = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, "jetbrains.mps.build.mps.structure.GeneratorInternal_String");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept GeneratorInternal_String$CC = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, "jetbrains.mps.build.mps.structure.GeneratorInternal_String");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty path$TAA2 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, 0xd94b027412f0827L, "path");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty path$oN2q = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xd94b027412f0824L, 0xd94b027412f0827L, "path");
   }
 }

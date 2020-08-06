@@ -22,12 +22,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ThisConstructorInvocation_Constraints extends BaseConstraintsDescriptor {
   public ThisConstructorInvocation_Constraints() {
-    super(CONCEPTS.ThisConstructorInvocation$XM);
+    super(CONCEPTS.ThisConstructorInvocation$q$);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$pyYw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -42,7 +42,7 @@ public class ThisConstructorInvocation_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.ThisConstructorKind$9l);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.ThisConstructorKind$A7);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -55,11 +55,11 @@ public class ThisConstructorInvocation_Constraints extends BaseConstraintsDescri
   private static final SNodePointer breakingNode_b9bub5_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "7898359107948137647");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ThisConstructorInvocation$XM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1127b878882L, "jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation");
-    /*package*/ static final SInterfaceConcept ThisConstructorKind$9l = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x216400b63b3173a4L, "jetbrains.mps.baseLanguage.structure.ThisConstructorKind");
+    /*package*/ static final SConcept ThisConstructorInvocation$q$ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1127b878882L, "jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation");
+    /*package*/ static final SInterfaceConcept ThisConstructorKind$A7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x216400b63b3173a4L, "jetbrains.mps.baseLanguage.structure.ThisConstructorKind");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

@@ -66,7 +66,7 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
       super.initialize(_context);
       condition = new Computable<Boolean>() {
         public Boolean compute() {
-          return Objects.equals(_context.getLink(), LINKS.features$VYBA);
+          return Objects.equals(_context.getLink(), LINKS.features$gNd);
         }
       }.compute();
     }
@@ -105,19 +105,19 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_97h82d_a0a(), CONCEPTS.TransformationFeature$2t));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_97h82d_a0a(), CONCEPTS.TransformationFeature$e4));
       }
       public class SMP_Concepts_97h82d_a0a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(SubstituteMenuContext _context) {
-          SNode section = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TransformationMenuSection$H0, true, false);
-          final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, LINKS.locations$hQw0)).translate(new ITranslator2<SNode, SConcept>() {
+          SNode section = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.TransformationMenuSection$SB, true, false);
+          final Iterable<SConcept> availableFeatures = ListSequence.fromList(SLinkOperations.getChildren(section, LINKS.locations$m8FB)).translate(new ITranslator2<SNode, SConcept>() {
             public Iterable<SConcept> translate(SNode it) {
               return (Collection<SConcept>) TransformationLocation__BehaviorDescriptor.getAvailableFeatures_id1A4kJjlZ$rL.invoke(it);
             }
           });
-          Iterable<SConcept> concepts = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationFeature$2t, _context.getParentNode(), LINKS.features$VYBA, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
+          Iterable<SConcept> concepts = Sequence.fromIterable(TransformationMenuActionsUtil.getSubconceptsWithCurrentChildConceptsExcluded(CONCEPTS.TransformationFeature$e4, _context.getParentNode(), LINKS.features$gNd, _context.getCurrentTargetNode())).select(new ISelector<SAbstractConcept, SConcept>() {
             public SConcept select(SAbstractConcept it) {
-              return SNodeOperations.castConcept(it, CONCEPTS.TransformationFeature$2t);
+              return SNodeOperations.castConcept(it, CONCEPTS.TransformationFeature$e4);
             }
           });
           if (section != null) {
@@ -182,7 +182,7 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
       }
       public class SMP_Subconcepts_97h82d_a1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TransformationFeature$2t);
+          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TransformationFeature$e4);
         }
         @NotNull
         @Override
@@ -205,12 +205,12 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink features$VYBA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
-    /*package*/ static final SContainmentLink locations$hQw0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
+    /*package*/ static final SContainmentLink features$gNd = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
+    /*package*/ static final SContainmentLink locations$m8FB = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, 0x6ec02d9918b4efbdL, "locations");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationFeature$2t = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L, "jetbrains.mps.lang.editor.structure.TransformationFeature");
-    /*package*/ static final SConcept TransformationMenuSection$H0 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, "jetbrains.mps.lang.editor.structure.TransformationMenuSection");
+    /*package*/ static final SConcept TransformationFeature$e4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c45559defb64aa5L, "jetbrains.mps.lang.editor.structure.TransformationFeature");
+    /*package*/ static final SConcept TransformationMenuSection$SB = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6ec02d9918b4efbcL, "jetbrains.mps.lang.editor.structure.TransformationMenuSection");
   }
 }

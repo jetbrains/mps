@@ -39,9 +39,9 @@ public final class PreferencePageIsModifiedBlock__BehaviorDescriptor extends Bas
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_Project$pj);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_PreferencePage_component$_h);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_Project$mm);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_PreferencePage_component$yk);
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -105,8 +105,8 @@ public final class PreferencePageIsModifiedBlock__BehaviorDescriptor extends Bas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept ConceptFunctionParameter_Project$pj = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11aa1691a43L, "jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_Project");
-    /*package*/ static final SConcept ConceptFunctionParameter_PreferencePage_component$_h = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119e2cb827fL, "jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_PreferencePage_component");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ConceptFunctionParameter_Project$mm = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11aa1691a43L, "jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_Project");
+    /*package*/ static final SConcept ConceptFunctionParameter_PreferencePage_component$yk = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119e2cb827fL, "jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_PreferencePage_component");
   }
 }

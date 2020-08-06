@@ -54,13 +54,13 @@ public final class ConvertLinkSetToAssignment_Intention extends AbstractIntentio
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode lValue = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(node);
-      SNode rValue = SLinkOperations.getTarget(node, LINKS.linkTarget$Torw);
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.linkTarget$Torw));
+      SNode rValue = SLinkOperations.getTarget(node, LINKS.linkTarget$tLt0);
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.linkTarget$tLt0));
       SNode dotExpression = IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(node);
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(dotExpression, LINKS.operand$P1i5));
-      SNode assignment = SNodeFactoryOperations.createNewNode(CONCEPTS.AssignmentExpression$rS, null);
-      SLinkOperations.setTarget(assignment, LINKS.lValue$LjSW, lValue);
-      SLinkOperations.setTarget(assignment, LINKS.rValue$LkmY, rValue);
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR));
+      SNode assignment = SNodeFactoryOperations.createNewNode(CONCEPTS.AssignmentExpression$SE, null);
+      SLinkOperations.setTarget(assignment, LINKS.lValue$splI, lValue);
+      SLinkOperations.setTarget(assignment, LINKS.rValue$spNK, rValue);
       SNodeOperations.replaceWithAnother(dotExpression, assignment);
     }
     @Override
@@ -70,13 +70,13 @@ public final class ConvertLinkSetToAssignment_Intention extends AbstractIntentio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink linkTarget$Torw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1099887af60L, 0x1099887af61L, "linkTarget");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink linkTarget$tLt0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1099887af60L, 0x1099887af61L, "linkTarget");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AssignmentExpression$rS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
   }
 }

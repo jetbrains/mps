@@ -26,7 +26,7 @@ public class RulesBlock_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_ovhw0h_a(), CONCEPTS.RulesBlock$2N));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_ovhw0h_a(), CONCEPTS.RulesBlock$W));
     return result;
   }
 
@@ -47,7 +47,7 @@ public class RulesBlock_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_ovhw0h_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.RulesBlock$2N, LINKS.kind$UxCx);
+      super((SAbstractConcept) CONCEPTS.RulesBlock$W, LINKS.kind$9HAE);
     }
     @NotNull
     @Override
@@ -94,10 +94,10 @@ public class RulesBlock_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RulesBlock$2N = MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesBlock");
+    /*package*/ static final SConcept RulesBlock$W = MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesBlock");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink kind$UxCx = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
+    /*package*/ static final SReferenceLink kind$9HAE = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
   }
 }

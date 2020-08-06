@@ -29,8 +29,8 @@ public class BinaryOperation_Symbol_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode newExpression = (SLinkOperations.getTarget(node, LINKS.rightExpression$li3b) != null ? SLinkOperations.getTarget(node, LINKS.rightExpression$li3b) : SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
-        SNode toDelete = (SLinkOperations.getTarget(node, LINKS.leftExpression$lndx) != null ? SLinkOperations.getTarget(node, LINKS.leftExpression$lndx) : SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
+        SNode newExpression = (SLinkOperations.getTarget(node, LINKS.rightExpression$nvX) != null ? SLinkOperations.getTarget(node, LINKS.rightExpression$nvX) : SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
+        SNode toDelete = (SLinkOperations.getTarget(node, LINKS.leftExpression$sEj) != null ? SLinkOperations.getTarget(node, LINKS.leftExpression$sEj) : SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
         if (DeletionApproverUtil.approve(editorContext, toDelete)) {
           return;
         }
@@ -49,8 +49,8 @@ public class BinaryOperation_Symbol_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode newExpression = (SLinkOperations.getTarget(node, LINKS.leftExpression$lndx) != null ? SLinkOperations.getTarget(node, LINKS.leftExpression$lndx) : SLinkOperations.getTarget(node, LINKS.rightExpression$li3b));
-        SNode toDelete = (SLinkOperations.getTarget(node, LINKS.rightExpression$li3b) != null ? SLinkOperations.getTarget(node, LINKS.rightExpression$li3b) : SLinkOperations.getTarget(node, LINKS.leftExpression$lndx));
+        SNode newExpression = (SLinkOperations.getTarget(node, LINKS.leftExpression$sEj) != null ? SLinkOperations.getTarget(node, LINKS.leftExpression$sEj) : SLinkOperations.getTarget(node, LINKS.rightExpression$nvX));
+        SNode toDelete = (SLinkOperations.getTarget(node, LINKS.rightExpression$nvX) != null ? SLinkOperations.getTarget(node, LINKS.rightExpression$nvX) : SLinkOperations.getTarget(node, LINKS.leftExpression$sEj));
         if (DeletionApproverUtil.approve(editorContext, toDelete)) {
           return;
         }
@@ -107,7 +107,7 @@ public class BinaryOperation_Symbol_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 }

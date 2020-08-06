@@ -29,11 +29,11 @@ public class ConceptEditorOpenHelper {
       return null;
     }
     SNode baseNode = null;
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN)) {
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
       return null;
     }
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.IConceptAspect$9g)) {
-      baseNode = ((SNode) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.IConceptAspect$9g), CONCEPTS.IConceptAspect$9g, SMethodTrimmedId.create("getBaseConcept", null, "2hxg_BDjKM8")));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.IConceptAspect$Z3)) {
+      baseNode = ((SNode) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.IConceptAspect$Z3), CONCEPTS.IConceptAspect$Z3, SMethodTrimmedId.create("getBaseConcept", null, "2hxg_BDjKM8")));
     }
     if (baseNode == null) {
       baseNode = findBaseNodeMultiTab(node);
@@ -59,10 +59,10 @@ public class ConceptEditorOpenHelper {
     }
   }
   private static boolean canOpen(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA))) {
       return false;
     }
-    if (SModelUtil.getDeclaringLanguage(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$UN)) == null) {
+    if (SModelUtil.getDeclaringLanguage(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA)) == null) {
       return false;
     }
     return true;
@@ -70,9 +70,9 @@ public class ConceptEditorOpenHelper {
   private static SNode findBaseNodeMultiTab(SNode node) {
     SNode baseNode = null;
     if (jetbrains.mps.util.SNodeOperations.isRoot(node)) {
-      SNode annotation = AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8));
-      if ((annotation != null) && (SLinkOperations.getTarget(annotation, LINKS.applicableConcept$oE3h) != null)) {
-        baseNode = SLinkOperations.getTarget(annotation, LINKS.applicableConcept$oE3h);
+      SNode annotation = AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O));
+      if ((annotation != null) && (SLinkOperations.getTarget(annotation, LINKS.applicableConcept$LAIX) != null)) {
+        baseNode = SLinkOperations.getTarget(annotation, LINKS.applicableConcept$LAIX);
       }
     }
     if ((baseNode == null)) {
@@ -93,12 +93,12 @@ public class ConceptEditorOpenHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SInterfaceConcept IConceptAspect$9g = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
-    /*package*/ static final SConcept RootTemplateAnnotation$u8 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept IConceptAspect$Z3 = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
+    /*package*/ static final SConcept RootTemplateAnnotation$9O = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$oE3h = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$LAIX = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
   }
 }

@@ -39,7 +39,7 @@ public final class ReplaceConceptIsWithConceptEquals_Intention extends AbstractI
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.conceptArgument$WLnT), CONCEPTS.RefConcept_Reference$GN);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.conceptArgument$xapp), CONCEPTS.RefConcept_Reference$Ij);
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,8 +60,8 @@ public final class ReplaceConceptIsWithConceptEquals_Intention extends AbstractI
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode conceptList = SNodeFactoryOperations.createNewNode(CONCEPTS.OperationParm_ConceptList$lK, null);
-      SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(conceptList, LINKS.concept$5b71)).first(), LINKS.concept$otA2, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.conceptArgument$WLnT), CONCEPTS.RefConcept_Reference$GN), LINKS.conceptDeclaration$uXNB));
+      SNode conceptList = SNodeFactoryOperations.createNewNode(CONCEPTS.OperationParm_ConceptList$ng, null);
+      SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(conceptList, LINKS.concept$D$8x)).first(), LINKS.concept$WQBy, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.conceptArgument$xapp), CONCEPTS.RefConcept_Reference$Ij), LINKS.conceptDeclaration$3mP7));
       SNodeOperations.replaceWithAnother(node, conceptList);
     }
     @Override
@@ -71,14 +71,14 @@ public final class ReplaceConceptIsWithConceptEquals_Intention extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink conceptArgument$WLnT = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61caab68L, 0x1191b4a4d54L, "conceptArgument");
-    /*package*/ static final SContainmentLink concept$5b71 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, 0x10cd05bec73L, "concept");
-    /*package*/ static final SReferenceLink concept$otA2 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept");
-    /*package*/ static final SReferenceLink conceptDeclaration$uXNB = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink conceptArgument$xapp = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61caab68L, 0x1191b4a4d54L, "conceptArgument");
+    /*package*/ static final SContainmentLink concept$D$8x = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, 0x10cd05bec73L, "concept");
+    /*package*/ static final SReferenceLink concept$WQBy = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL, 0x10cd05d18efL, "concept");
+    /*package*/ static final SReferenceLink conceptDeclaration$3mP7 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefConcept_Reference$GN = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference");
-    /*package*/ static final SConcept OperationParm_ConceptList$lK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList");
+    /*package*/ static final SConcept RefConcept_Reference$Ij = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference");
+    /*package*/ static final SConcept OperationParm_ConceptList$ng = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList");
   }
 }

@@ -35,7 +35,7 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
   public MyConnectorCreationAction(DiagramCell diagramCell) {
     myDiagramCell = diagramCell;
     myText = "Connector";
-    SAbstractConcept concept = CONCEPTS.ConnectorInstance$$$;
+    SAbstractConcept concept = CONCEPTS.ConnectorInstance$x8;
     myIcon = GlobalIconManager.getInstance().getIconFor(concept);
   }
   protected ViewTrait getTrait() {
@@ -64,7 +64,7 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
           final Wrappers._boolean result = new Wrappers._boolean(false);
           repo.getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              if (connectionInfo.isValid() && SNodeOperations.isInstanceOf(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$_m) && connectionInfo.getFromId() instanceof SNode && SNodeOperations.isInstanceOf(connectionInfo.getToNode(), CONCEPTS.BlockInstance$_m) && connectionInfo.getToId() instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) connectionInfo.getToId())), LINKS.inMetaPorts$Gnpk)) {
+              if (connectionInfo.isValid() && SNodeOperations.isInstanceOf(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$xU) && connectionInfo.getFromId() instanceof SNode && SNodeOperations.isInstanceOf(connectionInfo.getToNode(), CONCEPTS.BlockInstance$xU) && connectionInfo.getToId() instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) connectionInfo.getToId())), LINKS.inMetaPorts$BclS)) {
                 result.value = true;
               }
             }
@@ -75,13 +75,13 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
           repo.getModelAccess().executeCommand(new Runnable() {
             public void run() {
               SNode connectorInstance = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance"));
-              SLinkOperations.setTarget(connectorInstance, LINKS.source$w7NQ, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
-              SLinkOperations.setTarget(connectorInstance, LINKS.target$yASs, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$w7NQ), LINKS.block$dzcf, SNodeOperations.cast(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$_m));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$w7NQ), LINKS.metaPort$dzrg, ((SNode) connectionInfo.getFromId()));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$yASs), LINKS.block$dzcf, SNodeOperations.cast(connectionInfo.getToNode(), CONCEPTS.BlockInstance$_m));
-              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$yASs), LINKS.metaPort$dzrg, ((SNode) connectionInfo.getToId()));
-              ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newConnectors$Lu3s)).addElement(connectorInstance);
+              SLinkOperations.setTarget(connectorInstance, LINKS.source$qWKq, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
+              SLinkOperations.setTarget(connectorInstance, LINKS.target$trP0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, "jetbrains.mps.testHybridEditor.structure.ConnectorEndInstance")));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$qWKq), LINKS.block$8o8N, SNodeOperations.cast(connectionInfo.getFromNode(), CONCEPTS.BlockInstance$xU));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.source$qWKq), LINKS.metaPort$8onO, ((SNode) connectionInfo.getFromId()));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$trP0), LINKS.block$8o8N, SNodeOperations.cast(connectionInfo.getToNode(), CONCEPTS.BlockInstance$xU));
+              SLinkOperations.setTarget(SLinkOperations.getTarget(connectorInstance, LINKS.target$trP0), LINKS.metaPort$8onO, ((SNode) connectionInfo.getToId()));
+              ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newConnectors$Gj00)).addElement(connectorInstance);
             }
           });
           event.consume();
@@ -110,16 +110,16 @@ public class MyConnectorCreationAction implements PaletteToggleAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConnectorInstance$$$ = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance");
-    /*package*/ static final SConcept BlockInstance$_m = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance");
+    /*package*/ static final SConcept ConnectorInstance$x8 = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance");
+    /*package*/ static final SConcept BlockInstance$xU = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inMetaPorts$Gnpk = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts");
-    /*package*/ static final SContainmentLink source$w7NQ = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source");
-    /*package*/ static final SContainmentLink target$yASs = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target");
-    /*package*/ static final SReferenceLink block$dzcf = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block");
-    /*package*/ static final SReferenceLink metaPort$dzrg = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bdL, "metaPort");
-    /*package*/ static final SContainmentLink newConnectors$Lu3s = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec4425e0L, "newConnectors");
+    /*package*/ static final SContainmentLink inMetaPorts$BclS = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x20a804e2ec410486L, "inMetaPorts");
+    /*package*/ static final SContainmentLink source$qWKq = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source");
+    /*package*/ static final SContainmentLink target$trP0 = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target");
+    /*package*/ static final SReferenceLink block$8o8N = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block");
+    /*package*/ static final SReferenceLink metaPort$8onO = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bdL, "metaPort");
+    /*package*/ static final SContainmentLink newConnectors$Gj00 = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec4425e0L, "newConnectors");
   }
 }

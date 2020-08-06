@@ -26,12 +26,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
   public ScopesExpectedNode_Constraints() {
-    super(CONCEPTS.ScopesExpectedNode$8Q);
+    super(CONCEPTS.ScopesExpectedNode$ol);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.ref$Z5qB, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.ref$RHE6, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,10 +47,10 @@ public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
-            if (!(SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.ScopesTest$Ea))) {
+            if (!(SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.ScopesTest$TD))) {
               return null;
             }
-            SNode scopesTest = SNodeOperations.cast(enclosingNode, CONCEPTS.ScopesTest$Ea);
+            SNode scopesTest = SNodeOperations.cast(enclosingNode, CONCEPTS.ScopesTest$TD);
             ModelPlusImportedScope modelPlusImportedScope = new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, check_1jj8js_c0a0d0b0a0a0b0a0a0a2(check_1jj8js_a2a0a3a1a0a0a1a0a0a0c(ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(scopesTest))));
             return modelPlusImportedScope;
           }
@@ -76,11 +76,11 @@ public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_1jj8js_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)", "6836281137582846233");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ScopesExpectedNode$8Q = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, "jetbrains.mps.lang.test.structure.ScopesExpectedNode");
-    /*package*/ static final SConcept ScopesTest$Ea = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest");
+    /*package*/ static final SConcept ScopesExpectedNode$ol = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, "jetbrains.mps.lang.test.structure.ScopesExpectedNode");
+    /*package*/ static final SConcept ScopesTest$TD = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink ref$Z5qB = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, 0x383e5e55de89bc1fL, "ref");
+    /*package*/ static final SReferenceLink ref$RHE6 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, 0x383e5e55de89bc1fL, "ref");
   }
 }

@@ -48,14 +48,14 @@ public final class AnnotateToDocument_Intention extends AbstractIntentionDescrip
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$Mg))).isEmpty() ? "Document" : "Remove documentation");
+      return (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3))).isEmpty() ? "Document" : "Remove documentation");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$Mg))).isEmpty()) {
-        SNodeFactoryOperations.addNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$Mg), CONCEPTS.DocumentedNodeAnnotation$Mg);
+      if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3))).isEmpty()) {
+        SNodeFactoryOperations.addNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3), CONCEPTS.DocumentedNodeAnnotation$C3);
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$Mg), null);
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3), null);
       }
     }
     @Override
@@ -65,6 +65,6 @@ public final class AnnotateToDocument_Intention extends AbstractIntentionDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DocumentedNodeAnnotation$Mg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0ea9L, "jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation");
+    /*package*/ static final SConcept DocumentedNodeAnnotation$C3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0ea9L, "jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation");
   }
 }

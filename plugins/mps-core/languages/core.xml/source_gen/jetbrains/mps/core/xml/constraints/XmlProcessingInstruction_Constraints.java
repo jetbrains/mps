@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlProcessingInstruction_Constraints extends BaseConstraintsDescriptor {
   public XmlProcessingInstruction_Constraints() {
-    super(CONCEPTS.XmlProcessingInstruction$B0);
+    super(CONCEPTS.XmlProcessingInstruction$1v);
   }
 
   public static class Target_Property extends BasePropertyConstraintsDescriptor {
     public Target_Property(ConstraintsDescriptor container) {
-      super(PROPS.target$Yjw0, container);
+      super(PROPS.target$RFUv, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,15 +45,15 @@ public class XmlProcessingInstruction_Constraints extends BaseConstraintsDescrip
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.target$Yjw0, new Target_Property(this));
+    properties.put(PROPS.target$RFUv, new Target_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlProcessingInstruction$B0 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, "jetbrains.mps.core.xml.structure.XmlProcessingInstruction");
+    /*package*/ static final SConcept XmlProcessingInstruction$1v = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, "jetbrains.mps.core.xml.structure.XmlProcessingInstruction");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty target$Yjw0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494876L, "target");
+    /*package*/ static final SProperty target$RFUv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494875L, 0x5c842a42c5494876L, "target");
   }
 }

@@ -28,7 +28,7 @@ public class FinderReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_1x2yrt_a(), CONCEPTS.FinderReference$Qq));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_1x2yrt_a(), CONCEPTS.FinderReference$BS));
     result.add(new SMP_Subconcepts_1x2yrt_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class FinderReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_1x2yrt_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.FinderReference$Qq, LINKS.finder$r0KA);
+      super((SAbstractConcept) CONCEPTS.FinderReference$BS, LINKS.finder$C0y4);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class FinderReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_1x2yrt_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.FinderReference$Qq);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.FinderReference$BS);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class FinderReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FinderReference$Qq = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e195fL, "jetbrains.mps.lang.findUsages.structure.FinderReference");
+    /*package*/ static final SConcept FinderReference$BS = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e195fL, "jetbrains.mps.lang.findUsages.structure.FinderReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink finder$r0KA = MetaAdapterFactory.getReferenceLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e195fL, 0x643a39f7c0869a50L, "finder");
+    /*package*/ static final SReferenceLink finder$C0y4 = MetaAdapterFactory.getReferenceLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e195fL, 0x643a39f7c0869a50L, "finder");
   }
 }

@@ -38,9 +38,9 @@ public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends Migratio
           return scope_65f75z_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptMethodDeclaration$VN, false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptMethodDeclaration$N0, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          it.setProperty(PROPS.isPrivate$uny, null);
+          it.setProperty(PROPS.isPrivate$qveJ, null);
         }
       });
     }
@@ -50,10 +50,10 @@ public class Remove_ConceptMethodDeclaration_IsPrivate_Property extends Migratio
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isPrivate$uny = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480581L, "isPrivate");
+    /*package*/ static final SProperty isPrivate$qveJ = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480581L, "isPrivate");
   }
 }

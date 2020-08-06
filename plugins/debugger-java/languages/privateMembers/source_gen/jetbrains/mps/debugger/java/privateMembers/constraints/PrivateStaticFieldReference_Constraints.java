@@ -29,12 +29,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PrivateStaticFieldReference_Constraints extends BaseConstraintsDescriptor {
   public PrivateStaticFieldReference_Constraints() {
-    super(CONCEPTS.PrivateStaticFieldReference$6t);
+    super(CONCEPTS.PrivateStaticFieldReference$oq);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$7WwU, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$N1XG, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,14 +49,14 @@ public class PrivateStaticFieldReference_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            if (!(SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.PrivateStaticFieldReference$6t))) {
+            if (!(SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.PrivateStaticFieldReference$oq))) {
               return new EmptyScope();
             }
-            SNode instance = SNodeOperations.as(_context.getContextNode(), CONCEPTS.PrivateStaticFieldReference$6t);
+            SNode instance = SNodeOperations.as(_context.getContextNode(), CONCEPTS.PrivateStaticFieldReference$oq);
 
-            Iterable<SNode> staticMembers = (Iterable<SNode>) Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SLinkOperations.getTarget(instance, LINKS.classifier$WKxm)))).where(new IWhereFilter<SNode>() {
+            Iterable<SNode> staticMembers = (Iterable<SNode>) Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SLinkOperations.getTarget(instance, LINKS.classifier$BPY8)))).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$R5);
+                return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$jR);
               }
             });
             return new NamedElementsScope(staticMembers);
@@ -72,12 +72,12 @@ public class PrivateStaticFieldReference_Constraints extends BaseConstraintsDesc
   private static final SNodePointer breakingNode_em3o18_a0a0a0a0a1a0a0a0c = new SNodePointer("r:c8ec5cc5-f63f-40c3-ab3e-3fbb9a638ceb(jetbrains.mps.debugger.java.privateMembers.constraints)", "6836281137582821828");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrivateStaticFieldReference$6t = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x3900f3d0fb5b36c9L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateStaticFieldReference");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept PrivateStaticFieldReference$oq = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x3900f3d0fb5b36c9L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateStaticFieldReference");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classifier$BPY8 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 }

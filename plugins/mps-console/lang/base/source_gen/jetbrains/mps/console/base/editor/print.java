@@ -77,9 +77,9 @@ public class print extends TransformationMenuBase {
   public class TMP_Group_vtzrq_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$ok, true, false) != null)) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$ok, true, false), CONCEPTS.ExpressionStatement$nm);
-      } else if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$iZ, true, false) != null)) {
+      if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$P6, true, false) != null)) {
+        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$P6, true, false), CONCEPTS.ExpressionStatement$O8);
+      } else if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$WS, true, false) != null)) {
         return true;
       } else {
         return false;
@@ -122,15 +122,15 @@ public class print extends TransformationMenuBase {
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-        return CONCEPTS.AbstractPrintExpression$cC;
+        return CONCEPTS.AbstractPrintExpression$Qx;
       }
 
       @Override
       protected SNode getTargetNode(TransformationMenuContext _context) {
-        if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$ok, true, false) != null)) {
-          return SNodeOperations.as(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$ok, true, false), CONCEPTS.ExpressionStatement$nm);
-        } else if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$iZ, true, false) != null)) {
-          return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$iZ, true, false);
+        if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$P6, true, false) != null)) {
+          return SNodeOperations.as(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$P6, true, false), CONCEPTS.ExpressionStatement$O8);
+        } else if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$WS, true, false) != null)) {
+          return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$WS, true, false);
         } else {
           return null;
         }
@@ -153,15 +153,15 @@ public class print extends TransformationMenuBase {
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
           SNode expressionToReplace;
-          if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$ok, true, false) != null)) {
-            expressionToReplace = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$ok, true, false), CONCEPTS.ExpressionStatement$nm), LINKS.expression$qFF0);
-          } else if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$iZ, true, false) != null)) {
-            expressionToReplace = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$iZ, true, false), LINKS.expression$dgOU);
+          if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$P6, true, false) != null)) {
+            expressionToReplace = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$P6, true, false), CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
+          } else if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$WS, true, false) != null)) {
+            expressionToReplace = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BLExpression$WS, true, false), LINKS.expression$A9uN);
           } else {
             throw new IllegalStateException();
           }
           SNodeOperations.replaceWithAnother(expressionToReplace, createdNode);
-          SLinkOperations.setTarget(createdNode, LINKS.object$UNYq, expressionToReplace);
+          SLinkOperations.setTarget(createdNode, LINKS.object$jGCj, expressionToReplace);
         }
 
         @Override
@@ -189,15 +189,15 @@ public class print extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept BLExpression$iZ = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression");
-    /*package*/ static final SConcept AbstractPrintExpression$cC = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, "jetbrains.mps.console.base.structure.AbstractPrintExpression");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept BLExpression$WS = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression");
+    /*package*/ static final SConcept AbstractPrintExpression$Qx = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, "jetbrains.mps.console.base.structure.AbstractPrintExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink expression$dgOU = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
-    /*package*/ static final SContainmentLink object$UNYq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$A9uN = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
+    /*package*/ static final SContainmentLink object$jGCj = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
   }
 }

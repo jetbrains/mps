@@ -18,7 +18,7 @@ public class typeof_LocalPropertyReference_InferenceRule extends AbstractInferen
   public typeof_LocalPropertyReference_InferenceRule() {
   }
   public void applyRule(final SNode propertyReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode property = SLinkOperations.getTarget(propertyReference, LINKS.property$G280);
+    SNode property = SLinkOperations.getTarget(propertyReference, LINKS.property$n7$M);
     if ((property != null)) {
       {
         SNode _nodeToCheck_1029348928467 = propertyReference;
@@ -28,7 +28,7 @@ public class typeof_LocalPropertyReference_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.LocalPropertyReference$4g;
+    return CONCEPTS.LocalPropertyReference$x2;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,10 +38,10 @@ public class typeof_LocalPropertyReference_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$G280 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property");
+    /*package*/ static final SReferenceLink property$n7$M = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalPropertyReference$4g = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, "jetbrains.mps.baseLanguage.structure.LocalPropertyReference");
+    /*package*/ static final SConcept LocalPropertyReference$x2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, "jetbrains.mps.baseLanguage.structure.LocalPropertyReference");
   }
 }

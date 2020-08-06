@@ -23,12 +23,12 @@ public class typeof_ParallelFor_InferenceRule extends AbstractInferenceRule_Runt
   }
   public void applyRule(final SNode parallelFor, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(parallelFor, LINKS.threadPool$CcyW);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(parallelFor, LINKS.threadPool$PSS$);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "4659204813808532920", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "4659204813808501251", true), (SNode) _quotation_createNode_68f1fp_a1a0c0a0b(), false, false, _info_12389875345);
     }
-    SNode variable = SLinkOperations.getTarget(parallelFor, LINKS.loopVariable$cpRM);
-    SNode inputSequence = SLinkOperations.getTarget(parallelFor, LINKS.inputSequence$Y8uT);
+    SNode variable = SLinkOperations.getTarget(parallelFor, LINKS.loopVariable$q6dq);
+    SNode inputSequence = SLinkOperations.getTarget(parallelFor, LINKS.inputSequence$bOOx);
     if ((inputSequence != null) && (variable != null)) {
       final SNode elementType_typevar_1184771826645 = typeCheckingContext.createNewRuntimeTypesVariable();
       {
@@ -44,7 +44,7 @@ public class typeof_ParallelFor_InferenceRule extends AbstractInferenceRule_Runt
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ParallelFor$GE;
+    return CONCEPTS.ParallelFor$2i;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -83,12 +83,12 @@ public class typeof_ParallelFor_InferenceRule extends AbstractInferenceRule_Runt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink threadPool$CcyW = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
-    /*package*/ static final SContainmentLink loopVariable$cpRM = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e8810c2L, "loopVariable");
-    /*package*/ static final SContainmentLink inputSequence$Y8uT = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence");
+    /*package*/ static final SContainmentLink threadPool$PSS$ = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x40a8d217b6d881feL, "threadPool");
+    /*package*/ static final SContainmentLink loopVariable$q6dq = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e8810c2L, "loopVariable");
+    /*package*/ static final SContainmentLink inputSequence$bOOx = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParallelFor$GE = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor");
+    /*package*/ static final SConcept ParallelFor$2i = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor");
   }
 }

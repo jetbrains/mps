@@ -25,7 +25,7 @@ public class typeof_CommandPartLengthOperation_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CommandPartLengthOperation$z5;
+    return CONCEPTS.CommandPartLengthOperation$9L;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_CommandPartLengthOperation_InferenceRule extends AbstractInf
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CommandPartLengthOperation$z5 = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x166dfef127134569L, "jetbrains.mps.execution.commands.structure.CommandPartLengthOperation");
+    /*package*/ static final SConcept CommandPartLengthOperation$9L = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x166dfef127134569L, "jetbrains.mps.execution.commands.structure.CommandPartLengthOperation");
   }
 }

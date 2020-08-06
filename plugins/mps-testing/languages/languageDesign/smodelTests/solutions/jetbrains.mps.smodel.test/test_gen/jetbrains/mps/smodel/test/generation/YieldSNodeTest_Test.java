@@ -48,7 +48,7 @@ __switch__:
                     case 2:
                       this._2__yield_6gh6m3_a0a0a0a_it = Sequence.fromIterable(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_6gh6m3_a0a0a0a0a0a0(), _quotation_createNode_6gh6m3_b0a0a0a0a0a0())).select(new ISelector<SNode, SNode>() {
                         public SNode select(SNode it) {
-                          return SNodeOperations.as(it, CONCEPTS.Statement$ok);
+                          return SNodeOperations.as(it, CONCEPTS.Statement$P6);
                         }
                       })).iterator();
                     case 3:
@@ -65,7 +65,7 @@ __switch__:
                       return true;
                     case 5:
                       this.__CP__ = 1;
-                      this.yield(SNodeOperations.cast(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement")), CONCEPTS.Statement$ok));
+                      this.yield(SNodeOperations.cast(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement")), CONCEPTS.Statement$P6));
                       return true;
                     case 0:
                       this.__CP__ = 2;
@@ -104,7 +104,7 @@ __switch__:
                       assert false : "Internal error";
                       return false;
                     case 2:
-                      this._2__yield_6gh6m3_a0a0a0c_it = Sequence.fromIterable(SLinkOperations.collectMany(ListSequence.fromList(new ArrayList<SNode>()), LINKS.statement$pYcS)).iterator();
+                      this._2__yield_6gh6m3_a0a0a0c_it = Sequence.fromIterable(SLinkOperations.collectMany(ListSequence.fromList(new ArrayList<SNode>()), LINKS.statement$53DE)).iterator();
                     case 3:
                       if (!(this._2__yield_6gh6m3_a0a0a0c_it.hasNext())) {
                         this.__CP__ = 5;
@@ -160,7 +160,7 @@ __switch__:
                     case 2:
                       this._2__yield_6gh6m3_a0a0a0e_it = Sequence.fromIterable(ListSequence.fromList(ListSequence.fromList(new ArrayList<SNode>())).translate(new ITranslator2<SNode, SNode>() {
                         public Iterable<SNode> translate(SNode it) {
-                          return AttributeOperations.getChildNodesAndAttributes(it, LINKS.statement$pYcS);
+                          return AttributeOperations.getChildNodesAndAttributes(it, LINKS.statement$53DE);
                         }
                       })).iterator();
                     case 3:
@@ -240,10 +240,10 @@ __switch__:
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

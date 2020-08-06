@@ -45,7 +45,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
     Iterable<SModel> models = m.getModels();
     Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, CONCEPTS.ClassifierDocComment$$4);
+        return SModelOperations.nodes(model, CONCEPTS.ClassifierDocComment$mh);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -54,7 +54,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
     });
     Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, CONCEPTS.MethodDocComment$Vx);
+        return SModelOperations.nodes(model, CONCEPTS.MethodDocComment$HI);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -63,7 +63,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
     });
     Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, CONCEPTS.FieldDocComment$I8);
+        return SModelOperations.nodes(model, CONCEPTS.FieldDocComment$wl);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -72,7 +72,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
     });
     Sequence.fromIterable(models).ofType(SModel.class).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel model) {
-        return SModelOperations.nodes(model, CONCEPTS.BaseDocComment$pH);
+        return SModelOperations.nodes(model, CONCEPTS.BaseDocComment$bU);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -91,85 +91,85 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
         }
       };
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ClassifierDocComment$$4, false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ClassifierDocComment$mh, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.param$_Mh1)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.param$Wb3e)).isNotEmpty();
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.param$_Mh1);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.param$Wb3e);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$Vx, false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$HI, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.param$ruNO)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.param$LRA1)).isNotEmpty();
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.param$ruNO);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.param$LRA1);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$Vx, false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$HI, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.throwsTag$UuyH)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.throwsTag$gRkU)).isNotEmpty();
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.throwsTag$UuyH);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.throwsTag$gRkU);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$Vx, false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MethodDocComment$HI, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.return$UFdz) != null);
+          return (SLinkOperations.getTarget(it, LINKS.return$h3ZK) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.return$UFdz);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.return$h3ZK);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$pH, false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.deprecated$rJyD) != null);
+          return (SLinkOperations.getTarget(it, LINKS.deprecated$M8kQ) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.deprecated$rJyD);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.deprecated$M8kQ);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$pH, false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.author$YRxD)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.author$lgjQ)).isNotEmpty();
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.author$YRxD);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.author$lgjQ);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$pH, false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.since$rHrw)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.since$M6dH)).isNotEmpty();
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.since$rHrw);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.since$M6dH);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$pH, false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.version$rHEx)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.version$M6sI)).isNotEmpty();
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.version$rHEx);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.version$M6sI);
         }
       }));
-      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$pH, false)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(result).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BaseDocComment$bU, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.see$mKP3)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.see$H9Bg)).isNotEmpty();
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.see$mKP3);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedContainmentLink(it, LINKS.see$H9Bg);
         }
       }));
       return result;
@@ -180,21 +180,21 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierDocComment$$4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
-    /*package*/ static final SConcept MethodDocComment$Vx = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
-    /*package*/ static final SConcept FieldDocComment$I8 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
-    /*package*/ static final SConcept BaseDocComment$pH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+    /*package*/ static final SConcept ClassifierDocComment$mh = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
+    /*package*/ static final SConcept MethodDocComment$HI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
+    /*package*/ static final SConcept FieldDocComment$wl = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
+    /*package*/ static final SConcept BaseDocComment$bU = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink param$_Mh1 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param");
-    /*package*/ static final SContainmentLink param$ruNO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
-    /*package*/ static final SContainmentLink throwsTag$UuyH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
-    /*package*/ static final SContainmentLink return$UFdz = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
-    /*package*/ static final SContainmentLink deprecated$rJyD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated");
-    /*package*/ static final SContainmentLink author$YRxD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author");
-    /*package*/ static final SContainmentLink since$rHrw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
-    /*package*/ static final SContainmentLink version$rHEx = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version");
-    /*package*/ static final SContainmentLink see$mKP3 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x1ec532ec252df7ddL, "see");
+    /*package*/ static final SContainmentLink param$Wb3e = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param");
+    /*package*/ static final SContainmentLink param$LRA1 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
+    /*package*/ static final SContainmentLink throwsTag$gRkU = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
+    /*package*/ static final SContainmentLink return$h3ZK = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
+    /*package*/ static final SContainmentLink deprecated$M8kQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated");
+    /*package*/ static final SContainmentLink author$lgjQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author");
+    /*package*/ static final SContainmentLink since$M6dH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
+    /*package*/ static final SContainmentLink version$M6sI = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version");
+    /*package*/ static final SContainmentLink see$H9Bg = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x1ec532ec252df7ddL, "see");
   }
 }

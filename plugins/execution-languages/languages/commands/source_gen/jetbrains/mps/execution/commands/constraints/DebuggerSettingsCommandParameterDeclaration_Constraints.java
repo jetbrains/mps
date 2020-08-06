@@ -17,12 +17,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DebuggerSettingsCommandParameterDeclaration_Constraints extends BaseConstraintsDescriptor {
   public DebuggerSettingsCommandParameterDeclaration_Constraints() {
-    super(CONCEPTS.DebuggerSettingsCommandParameterDeclaration$x3);
+    super(CONCEPTS.DebuggerSettingsCommandParameterDeclaration$7J);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -36,15 +36,15 @@ public class DebuggerSettingsCommandParameterDeclaration_Constraints extends Bas
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DebuggerSettingsCommandParameterDeclaration$x3 = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x75aadb0d4e61a576L, "jetbrains.mps.execution.commands.structure.DebuggerSettingsCommandParameterDeclaration");
+    /*package*/ static final SConcept DebuggerSettingsCommandParameterDeclaration$7J = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x75aadb0d4e61a576L, "jetbrains.mps.execution.commands.structure.DebuggerSettingsCommandParameterDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

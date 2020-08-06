@@ -29,12 +29,12 @@ public class check_ClassifierMethodsHierarchy_NonTypesystemRule extends Abstract
     // [node to check + node to report to] -- hack to work with enum constant declarations 
     // I think that it must be solved if we pull up all the traversing code to IMemberContainer (or smth like this) 
     List<Pair<SNode, SNode>> toCheck = ListSequence.fromList(new ArrayList<Pair<SNode, SNode>>());
-    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$uy) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$uy), LINKS.enumConstant$JnOa)).isNotEmpty()) {
-      ListSequence.fromList(toCheck).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$uy), LINKS.enumConstant$JnOa)).select(new ISelector<SNode, Pair<SNode, SNode>>() {
+    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).isNotEmpty()) {
+      ListSequence.fromList(toCheck).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).select(new ISelector<SNode, Pair<SNode, SNode>>() {
         public Pair<SNode, SNode> select(SNode it) {
           SNode dummyAnonymous = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"));
-          SLinkOperations.setTarget(dummyAnonymous, LINKS.classifier$JwxM, classifier);
-          ListSequence.fromList(SLinkOperations.getChildren(dummyAnonymous, LINKS.member$6v_r)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.method$IB2H)).select(new ISelector<SNode, SNode>() {
+          SLinkOperations.setTarget(dummyAnonymous, LINKS.classifier$q_Y$, classifier);
+          ListSequence.fromList(SLinkOperations.getChildren(dummyAnonymous, LINKS.member$L_2d)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.method$pGvv)).select(new ISelector<SNode, SNode>() {
             public SNode select(SNode it) {
               return SNodeOperations.copyNode(it);
             }
@@ -59,7 +59,7 @@ public class check_ClassifierMethodsHierarchy_NonTypesystemRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Classifier$hJ;
+    return CONCEPTS.Classifier$Ix;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -69,14 +69,14 @@ public class check_ClassifierMethodsHierarchy_NonTypesystemRule extends Abstract
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink method$IB2H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
+    /*package*/ static final SContainmentLink enumConstant$qtgW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink method$pGvv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
   }
 }

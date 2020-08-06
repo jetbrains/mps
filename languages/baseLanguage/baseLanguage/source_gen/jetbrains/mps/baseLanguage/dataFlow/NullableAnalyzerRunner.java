@@ -76,8 +76,8 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
         if (instruction instanceof nullInstruction) {
           nullableState = NullableState.NULL;
         }
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableReference$sQ)) {
-          node = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableReference$TC)) {
+          node = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
         }
         if (node != null) {
           result.put(node, nullableState);
@@ -86,8 +86,8 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
       if (instruction instanceof WriteInstruction) {
         WriteInstruction write = (WriteInstruction) instruction;
         SNode value = (SNode) write.getValue();
-        if (SNodeOperations.isInstanceOf(value, CONCEPTS.VariableReference$sQ)) {
-          value = SLinkOperations.getTarget(SNodeOperations.cast(value, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU);
+        if (SNodeOperations.isInstanceOf(value, CONCEPTS.VariableReference$TC)) {
+          value = SLinkOperations.getTarget(SNodeOperations.cast(value, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
         }
         NullableState valueState = result.get(value);
         if (valueState == null) {
@@ -112,10 +112,10 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

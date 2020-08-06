@@ -60,7 +60,7 @@ public final class AddLetterToName_Intention extends AbstractIntentionDescriptor
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.plusAssignStringProp(node, PROPS.name$lA7v, myParameter);
+      SPropertyOperations.plusAssignStringProp(node, PROPS.name$MnvL, myParameter);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -72,6 +72,6 @@ public final class AddLetterToName_Intention extends AbstractIntentionDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

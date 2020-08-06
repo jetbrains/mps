@@ -31,7 +31,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class StateReference_Constraints extends BaseConstraintsDescriptor {
   public StateReference_Constraints() {
-    super(CONCEPTS.StateReference$1F);
+    super(CONCEPTS.StateReference$cR);
   }
 
   @Override
@@ -51,7 +51,7 @@ public class StateReference_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.state$u0Pw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.state$qn0G, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -66,7 +66,7 @@ public class StateReference_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(AbstractStateMachineElement__BehaviorDescriptor.getStateMachine_id6SYFRDkTQVW.invoke(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.Transition$O7)), LINKS.states$CMH3));
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(AbstractStateMachineElement__BehaviorDescriptor.getStateMachine_id6SYFRDkTQVW.invoke(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.Transition$Zj)), LINKS.states$_8Sf));
           }
         };
       }
@@ -76,18 +76,18 @@ public class StateReference_Constraints extends BaseConstraintsDescriptor {
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Transition$O7);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Transition$Zj);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:3337c730-5e29-47e4-8453-e911897300b4(jetbrains.mps.samples.multipleProjections.stateMachine.constraints)", "1227128029536582706");
   private static final SNodePointer breakingNode_fj6pw8_a0a0a0a0a1a0a0a0d = new SNodePointer("r:3337c730-5e29-47e4-8453-e911897300b4(jetbrains.mps.samples.multipleProjections.stateMachine.constraints)", "6836281137582848524");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StateReference$1F = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8457444L, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.StateReference");
-    /*package*/ static final SConcept Transition$O7 = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.Transition");
+    /*package*/ static final SConcept StateReference$cR = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8457444L, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.StateReference");
+    /*package*/ static final SConcept Transition$Zj = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c845743dL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.Transition");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink state$u0Pw = MetaAdapterFactory.getReferenceLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8457444L, 0xa99ffe1c8457445L, "state");
-    /*package*/ static final SContainmentLink states$CMH3 = MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L, 0xa99ffe1c8456ba5L, "states");
+    /*package*/ static final SReferenceLink state$qn0G = MetaAdapterFactory.getReferenceLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8457444L, 0xa99ffe1c8457445L, "state");
+    /*package*/ static final SContainmentLink states$_8Sf = MetaAdapterFactory.getContainmentLink(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L, 0xa99ffe1c8456ba5L, "states");
   }
 }

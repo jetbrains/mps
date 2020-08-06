@@ -11,13 +11,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InstanceMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   public InstanceMethodDeclaration_Constraints() {
-    super(CONCEPTS.InstanceMethodDeclaration$An);
+    super(CONCEPTS.InstanceMethodDeclaration$39);
   }
   public IconResource getInstanceIcon(SNode node) {
     return ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node) ? IconContainer.RESOURCE_a0a0a : null);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 }

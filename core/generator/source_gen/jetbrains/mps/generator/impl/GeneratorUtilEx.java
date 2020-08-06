@@ -24,34 +24,34 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @GeneratedClass(node = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/894226751621690778", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
 public final class GeneratorUtilEx {
   public static String getMappingName_NodeMacro(SNode node, String defaultValue) {
-    SNode mappingLabel = SLinkOperations.getTarget(node, LINKS.mappingLabel$Uf98);
-    String mappingName = (mappingLabel != null ? SPropertyOperations.getString(mappingLabel, PROPS.name$lA7v) : null);
+    SNode mappingLabel = SLinkOperations.getTarget(node, LINKS.mappingLabel$jbOO);
+    String mappingName = (mappingLabel != null ? SPropertyOperations.getString(mappingLabel, PROPS.name$MnvL) : null);
     if (mappingName == null) {
       return defaultValue;
     }
     return mappingName;
   }
   public static String getMappingName_TemplateFragment(SNode node, String defaultValue) {
-    SNode ld = SLinkOperations.getTarget(node, LINKS.labelDeclaration$rV47);
+    SNode ld = SLinkOperations.getTarget(node, LINKS.labelDeclaration$ORJN);
     if (ld == null) {
       return defaultValue;
     }
-    String v = SPropertyOperations.getString(ld, PROPS.name$lA7v);
+    String v = SPropertyOperations.getString(ld, PROPS.name$MnvL);
     return (v == null ? defaultValue : v);
   }
   public static String getPatternVariableName(SNode ref) {
-    return ((String) BHReflection.invoke0(ref, CONCEPTS.TemplateArgumentPatternRef$xU, SMethodTrimmedId.create("getVariableName", null, "2x5YKzmc1bX")));
+    return ((String) BHReflection.invoke0(ref, CONCEPTS.TemplateArgumentPatternRef$dA, SMethodTrimmedId.create("getVariableName", null, "2x5YKzmc1bX")));
   }
   public static List<SNode> getTemplateFragments(@NotNull SNode template) {
     List<SNode> templateFragments = new ArrayList<SNode>();
     LinkedList<SNode> queue = new LinkedList<SNode>();
     queue.addFirst(template);
-    final SConcept conceptTemplateFragment = CONCEPTS.TemplateFragment$yI;
+    final SConcept conceptTemplateFragment = CONCEPTS.TemplateFragment$eq;
     while (!(queue.isEmpty())) {
       SNode subnode = queue.removeFirst();
       // do not look for TemplateFragments in subnode's children as TFs couldn't be nested 
       boolean tfFound = false;
-      for (SNode attr : SLinkOperations.getChildren(subnode, LINKS.smodelAttribute$jXFL)) {
+      for (SNode attr : SLinkOperations.getChildren(subnode, LINKS.smodelAttribute$KJ43)) {
         if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(attr)), SNodeOperations.asSConcept(conceptTemplateFragment))) {
           templateFragments.add((SNode) attr);
           tfFound = true;
@@ -75,78 +75,78 @@ public final class GeneratorUtilEx {
    * @return true if expression is not simple enough to get evaluated in runtime without actual Java code generated
    */
   public static boolean shallGenerateFunctionToEvaluate(SNode expr) {
-    if (SNodeOperations.isInstanceOf(expr, CONCEPTS.TypeHintExpression$Yp)) {
+    if (SNodeOperations.isInstanceOf(expr, CONCEPTS.TypeHintExpression$fb)) {
       // Some Expressions (e.g. genContext.variable) get wrapped with TypeHintExpression at startup (see AddTypeHints script), 
       // therefore, we shall look into original expression, instead. 
       // Indeed, at the moment we don't handle here any of expressions that are replaced with TypeHintExpression (i.e. GenerationContextOp operations) 
       //  nevertheless, I feel important to prevent future errors, i.e. when this function report different result during codegen (with TypeHintExpr) and at runtime (no TypeHintExpr). 
-      expr = SLinkOperations.getTarget(SNodeOperations.as(expr, CONCEPTS.TypeHintExpression$Yp), LINKS.expression$h6HL);
+      expr = SLinkOperations.getTarget(SNodeOperations.as(expr, CONCEPTS.TypeHintExpression$fb), LINKS.expression$yOYz);
     }
     // For generated templates, assumptions here shall match switch_Argument, 
     // for interpreted, TemplateCall#toExpressionRuntime 
-    if (SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentQueryExpression$jI)) {
+    if (SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentQueryExpression$Zq)) {
       return true;
     }
-    boolean customProcessing = SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentVariableRefExpression$mg);
-    customProcessing |= SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentPatternRef$xU);
-    customProcessing |= SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentParameterExpression$SR);
-    customProcessing |= SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentVarRefExpression2$mg);
+    boolean customProcessing = SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentVariableRefExpression$1W);
+    customProcessing |= SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentPatternRef$dA);
+    customProcessing |= SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentParameterExpression$$z);
+    customProcessing |= SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentVarRefExpression2$1W);
     // XXX generated templates are fine with genContext operations, however, there's no support for these in TemplateCall#toExpressionRuntime() yet. 
     // I'd need a switch by GenerationContextOp_Base subconcepts that get translated into respective TemplateContext call. 
     if (customProcessing) {
       return false;
     }
-    boolean literal = SNodeOperations.isInstanceOf(expr, CONCEPTS.NullLiteral$q4);
-    literal |= SNodeOperations.isInstanceOf(expr, CONCEPTS.BooleanConstant$Ui);
-    literal |= SNodeOperations.isInstanceOf(expr, CONCEPTS.IntegerConstant$mo);
-    literal |= SNodeOperations.isInstanceOf(expr, CONCEPTS.StringLiteral$4G);
+    boolean literal = SNodeOperations.isInstanceOf(expr, CONCEPTS.NullLiteral$QQ);
+    literal |= SNodeOperations.isInstanceOf(expr, CONCEPTS.BooleanConstant$n4);
+    literal |= SNodeOperations.isInstanceOf(expr, CONCEPTS.IntegerConstant$Na);
+    literal |= SNodeOperations.isInstanceOf(expr, CONCEPTS.StringLiteral$xu);
     return !(literal);
   }
 
   public static Object evaluateExpression(SNode expr) {
-    if (SNodeOperations.isInstanceOf(expr, CONCEPTS.BooleanConstant$Ui)) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(expr, CONCEPTS.BooleanConstant$Ui), PROPS.value$qt90);
-    } else if (SNodeOperations.isInstanceOf(expr, CONCEPTS.IntegerConstant$mo)) {
-      return SPropertyOperations.getInteger(SNodeOperations.cast(expr, CONCEPTS.IntegerConstant$mo), PROPS.value$Cbc0);
-    } else if (SNodeOperations.isInstanceOf(expr, CONCEPTS.StringLiteral$4G)) {
-      return SPropertyOperations.getString(SNodeOperations.cast(expr, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0);
-    } else if (SNodeOperations.isInstanceOf(expr, CONCEPTS.NullLiteral$q4)) {
+    if (SNodeOperations.isInstanceOf(expr, CONCEPTS.BooleanConstant$n4)) {
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(expr, CONCEPTS.BooleanConstant$n4), PROPS.value$5y_M);
+    } else if (SNodeOperations.isInstanceOf(expr, CONCEPTS.IntegerConstant$Na)) {
+      return SPropertyOperations.getInteger(SNodeOperations.cast(expr, CONCEPTS.IntegerConstant$Na), PROPS.value$jgCM);
+    } else if (SNodeOperations.isInstanceOf(expr, CONCEPTS.StringLiteral$xu)) {
+      return SPropertyOperations.getString(SNodeOperations.cast(expr, CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
+    } else if (SNodeOperations.isInstanceOf(expr, CONCEPTS.NullLiteral$QQ)) {
       return null;
     }
     throw new IllegalArgumentException();
   }
 
   public static void dispatchRuleConsequence(@NotNull SNode ruleConsequence, @NotNull ConsequenceDispatch dispatch) {
-    if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.TemplateDeclarationReference$bd)) {
+    if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.TemplateDeclarationReference$QT)) {
       dispatch.templateDeclarationReference(ruleConsequence);
-    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.InlineTemplateWithContext_RuleConsequence$tA)) {
+    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i)) {
       dispatch.inlineTemplateWithContext(ruleConsequence);
-    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.InlineTemplate_RuleConsequence$Mt)) {
+    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.InlineTemplate_RuleConsequence$u9)) {
       dispatch.inlineTemplate(ruleConsequence);
-    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.InlineSwitch_RuleConsequence$lz)) {
+    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.InlineSwitch_RuleConsequence$1f)) {
       dispatch.inlineSwitch(ruleConsequence);
-    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.WeaveEach_RuleConsequence$M2)) {
+    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.WeaveEach_RuleConsequence$tI)) {
       dispatch.weaveEach(ruleConsequence);
-    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.AbandonInput_RuleConsequence$GS)) {
+    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.AbandonInput_RuleConsequence$o$)) {
       dispatch.abandonInput(ruleConsequence);
-    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.DismissTopMappingRule$gK)) {
+    } else if (SNodeOperations.isInstanceOf(ruleConsequence, CONCEPTS.DismissTopMappingRule$Ws)) {
       dispatch.dismissTopRule(ruleConsequence);
     } else {
       dispatch.unknown(ruleConsequence);
     }
   }
   public static String getGeneratorMessage_text(SNode generatorMessage) {
-    return SPropertyOperations.getString(generatorMessage, PROPS.messageText$J0Jz);
+    return SPropertyOperations.getString(generatorMessage, PROPS.messageText$7Xrf);
   }
   public static DismissTopMappingRuleException.MessageType getGeneratorMessage_kind(SNode generatorMessage) {
     if (generatorMessage == null) {
       // this is how it used to be, although to me default to warn/info might be better 
       return null;
     }
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, PROPS.messageType$6jJu), 0x11055c831d8L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, PROPS.messageType$vgra), 0x11055c831d8L)) {
       return DismissTopMappingRuleException.MessageType.error;
     } else
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, PROPS.messageType$6jJu), 0x11055c81594L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, PROPS.messageType$vgra), 0x11055c81594L)) {
       return DismissTopMappingRuleException.MessageType.warning;
     } else {
       return DismissTopMappingRuleException.MessageType.info;
@@ -164,39 +164,39 @@ public final class GeneratorUtilEx {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink mappingLabel$Uf98 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
-    /*package*/ static final SReferenceLink labelDeclaration$rV47 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration");
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink expression$h6HL = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, 0x117637931bcL, "expression");
+    /*package*/ static final SReferenceLink mappingLabel$jbOO = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
+    /*package*/ static final SReferenceLink labelDeclaration$ORJN = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink expression$yOYz = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, 0x117637931bcL, "expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
-    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
-    /*package*/ static final SProperty messageText$J0Jz = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c67157L, "messageText");
-    /*package*/ static final SProperty messageType$6jJu = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c93e57L, "messageType");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$jgCM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty messageText$7Xrf = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c67157L, "messageText");
+    /*package*/ static final SProperty messageType$vgra = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c63121L, 0x11055c93e57L, "messageType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateArgumentPatternRef$xU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a07e5L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPatternRef");
-    /*package*/ static final SConcept TemplateFragment$yI = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
-    /*package*/ static final SConcept TypeHintExpression$Yp = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, "jetbrains.mps.baseLanguageInternal.structure.TypeHintExpression");
-    /*package*/ static final SConcept TemplateArgumentQueryExpression$jI = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x380132d742e8ccb0L, "jetbrains.mps.lang.generator.structure.TemplateArgumentQueryExpression");
-    /*package*/ static final SConcept TemplateArgumentVariableRefExpression$mg = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, "jetbrains.mps.lang.generator.structure.TemplateArgumentVariableRefExpression");
-    /*package*/ static final SConcept TemplateArgumentParameterExpression$SR = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, "jetbrains.mps.lang.generator.structure.TemplateArgumentParameterExpression");
-    /*package*/ static final SConcept TemplateArgumentVarRefExpression2$mg = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2");
-    /*package*/ static final SConcept NullLiteral$q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
-    /*package*/ static final SConcept BooleanConstant$Ui = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
-    /*package*/ static final SConcept IntegerConstant$mo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
-    /*package*/ static final SConcept StringLiteral$4G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
-    /*package*/ static final SConcept TemplateDeclarationReference$bd = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference");
-    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence$tA = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
-    /*package*/ static final SConcept InlineTemplate_RuleConsequence$Mt = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence");
-    /*package*/ static final SConcept InlineSwitch_RuleConsequence$lz = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, "jetbrains.mps.lang.generator.structure.InlineSwitch_RuleConsequence");
-    /*package*/ static final SConcept WeaveEach_RuleConsequence$M2 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, "jetbrains.mps.lang.generator.structure.WeaveEach_RuleConsequence");
-    /*package*/ static final SConcept AbandonInput_RuleConsequence$GS = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1180b1792dbL, "jetbrains.mps.lang.generator.structure.AbandonInput_RuleConsequence");
-    /*package*/ static final SConcept DismissTopMappingRule$gK = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013931abdL, "jetbrains.mps.lang.generator.structure.DismissTopMappingRule");
+    /*package*/ static final SConcept TemplateArgumentPatternRef$dA = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a07e5L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPatternRef");
+    /*package*/ static final SConcept TemplateFragment$eq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
+    /*package*/ static final SConcept TypeHintExpression$fb = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, "jetbrains.mps.baseLanguageInternal.structure.TypeHintExpression");
+    /*package*/ static final SConcept TemplateArgumentQueryExpression$Zq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x380132d742e8ccb0L, "jetbrains.mps.lang.generator.structure.TemplateArgumentQueryExpression");
+    /*package*/ static final SConcept TemplateArgumentVariableRefExpression$1W = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3d6f2506d88aa028L, "jetbrains.mps.lang.generator.structure.TemplateArgumentVariableRefExpression");
+    /*package*/ static final SConcept TemplateArgumentParameterExpression$$z = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, "jetbrains.mps.lang.generator.structure.TemplateArgumentParameterExpression");
+    /*package*/ static final SConcept TemplateArgumentVarRefExpression2$1W = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2");
+    /*package*/ static final SConcept NullLiteral$QQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept IntegerConstant$Na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
+    /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    /*package*/ static final SConcept TemplateDeclarationReference$QT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference");
+    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence$9i = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
+    /*package*/ static final SConcept InlineTemplate_RuleConsequence$u9 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence");
+    /*package*/ static final SConcept InlineSwitch_RuleConsequence$1f = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, "jetbrains.mps.lang.generator.structure.InlineSwitch_RuleConsequence");
+    /*package*/ static final SConcept WeaveEach_RuleConsequence$tI = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, "jetbrains.mps.lang.generator.structure.WeaveEach_RuleConsequence");
+    /*package*/ static final SConcept AbandonInput_RuleConsequence$o$ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1180b1792dbL, "jetbrains.mps.lang.generator.structure.AbandonInput_RuleConsequence");
+    /*package*/ static final SConcept DismissTopMappingRule$Ws = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013931abdL, "jetbrains.mps.lang.generator.structure.DismissTopMappingRule");
   }
 }

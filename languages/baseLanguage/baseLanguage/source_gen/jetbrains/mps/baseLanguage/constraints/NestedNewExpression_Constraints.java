@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NestedNewExpression_Constraints extends BaseConstraintsDescriptor {
   public NestedNewExpression_Constraints() {
-    super(CONCEPTS.NestedNewExpression$79);
+    super(CONCEPTS.NestedNewExpression$zV);
   }
 
   @Override
@@ -55,11 +55,11 @@ public class NestedNewExpression_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (boolean) NestedNewExpression__BehaviorDescriptor.doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx.invoke(SNodeOperations.asSConcept(CONCEPTS.NestedNewExpression$79), parentNode);
+    return (boolean) NestedNewExpression__BehaviorDescriptor.doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx.invoke(SNodeOperations.asSConcept(CONCEPTS.NestedNewExpression$zV), parentNode);
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.creator$Wnha)) {
-      return Objects.equals(childConcept, CONCEPTS.DefaultClassCreator$sQ) || Objects.equals(childConcept, CONCEPTS.ClassCreator$yU) || (Objects.equals(childConcept, CONCEPTS.AnonymousClassCreator$N6));
+    if (Objects.equals(link, LINKS.creator$BsHW)) {
+      return Objects.equals(childConcept, CONCEPTS.DefaultClassCreator$TC) || Objects.equals(childConcept, CONCEPTS.ClassCreator$ZG) || (Objects.equals(childConcept, CONCEPTS.AnonymousClassCreator$fS));
     }
     return true;
   }
@@ -67,13 +67,13 @@ public class NestedNewExpression_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1227128029536558509");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NestedNewExpression$79 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
-    /*package*/ static final SConcept DefaultClassCreator$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
-    /*package*/ static final SConcept ClassCreator$yU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
-    /*package*/ static final SConcept AnonymousClassCreator$N6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, "jetbrains.mps.baseLanguage.structure.AnonymousClassCreator");
+    /*package*/ static final SConcept NestedNewExpression$zV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
+    /*package*/ static final SConcept DefaultClassCreator$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
+    /*package*/ static final SConcept ClassCreator$ZG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+    /*package*/ static final SConcept AnonymousClassCreator$fS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1133e3b449aL, "jetbrains.mps.baseLanguage.structure.AnonymousClassCreator");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SContainmentLink creator$BsHW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
   }
 }

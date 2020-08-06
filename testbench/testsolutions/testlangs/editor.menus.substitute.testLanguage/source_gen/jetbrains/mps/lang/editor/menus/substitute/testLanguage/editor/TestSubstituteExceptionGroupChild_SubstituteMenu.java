@@ -30,7 +30,7 @@ public class TestSubstituteExceptionGroupChild_SubstituteMenu extends Substitute
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Group_o94mr0_a());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_o94mr0_b(), CONCEPTS.TestSubstituteExceptionGroupChild$JO));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_o94mr0_b(), CONCEPTS.TestSubstituteExceptionGroupChild$l));
     return result;
   }
 
@@ -66,7 +66,7 @@ public class TestSubstituteExceptionGroupChild_SubstituteMenu extends Substitute
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_o94mr0_a0(), CONCEPTS.TestSubstituteExceptionGroupChild$JO));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_o94mr0_a0(), CONCEPTS.TestSubstituteExceptionGroupChild$l));
     }
     private class SMP_Action_o94mr0_a0 extends SingleItemSubstituteMenuPart {
 
@@ -96,7 +96,7 @@ public class TestSubstituteExceptionGroupChild_SubstituteMenu extends Substitute
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.TestSubstituteExceptionGroupChild$JO, context);
+          super(CONCEPTS.TestSubstituteExceptionGroupChild$l, context);
           _context = context;
         }
 
@@ -150,7 +150,7 @@ public class TestSubstituteExceptionGroupChild_SubstituteMenu extends Substitute
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TestSubstituteExceptionGroupChild$JO, context);
+        super(CONCEPTS.TestSubstituteExceptionGroupChild$l, context);
         _context = context;
       }
 
@@ -177,6 +177,6 @@ public class TestSubstituteExceptionGroupChild_SubstituteMenu extends Substitute
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteExceptionGroupChild$JO = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb581f203L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionGroupChild");
+    /*package*/ static final SConcept TestSubstituteExceptionGroupChild$l = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb581f203L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionGroupChild");
   }
 }

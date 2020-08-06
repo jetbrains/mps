@@ -44,12 +44,12 @@ public class StyleAttributeSetHiddenThenUnhideTest_Test extends BaseTransformati
       initEditorComponent("23293207023146610", "");
       getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          SNode root = SNodeOperations.cast(getEditorComponent().getEditedNode(), CONCEPTS.NodeContainer$3D);
-          SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$ZSma)).getElement(0);
-          SNode hidden = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$ZSma)).getElement(1);
-          SNode hiddenLeaf = ListSequence.fromList(SLinkOperations.getChildren(hidden, LINKS.node$ZSma)).getElement(0);
-          SNode unapply = ListSequence.fromList(SLinkOperations.getChildren(hidden, LINKS.node$ZSma)).getElement(1);
-          SNode unapplyLeaf = ListSequence.fromList(SLinkOperations.getChildren(unapply, LINKS.node$ZSma)).getElement(0);
+          SNode root = SNodeOperations.cast(getEditorComponent().getEditedNode(), CONCEPTS.NodeContainer$kH);
+          SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(0);
+          SNode hidden = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(1);
+          SNode hiddenLeaf = ListSequence.fromList(SLinkOperations.getChildren(hidden, LINKS.node$4FBe)).getElement(0);
+          SNode unapply = ListSequence.fromList(SLinkOperations.getChildren(hidden, LINKS.node$4FBe)).getElement(1);
+          SNode unapplyLeaf = ListSequence.fromList(SLinkOperations.getChildren(unapply, LINKS.node$4FBe)).getElement(0);
 
           Assert.assertEquals(getEditorComponent().findNodeCell(root).getStyle().get(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-inherited-attribute")), "Priority");
           Assert.assertEquals(getEditorComponent().findNodeCell(leaf).getStyle().get(StyleAttributes.getInstance().<String>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-inherited-attribute")), "Priority");
@@ -63,10 +63,10 @@ public class StyleAttributeSetHiddenThenUnhideTest_Test extends BaseTransformati
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeContainer$3D = MetaAdapterFactory.getConcept(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, "jetbrains.mps.lang.editor.styleTests.structure.NodeContainer");
+    /*package*/ static final SConcept NodeContainer$kH = MetaAdapterFactory.getConcept(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, "jetbrains.mps.lang.editor.styleTests.structure.NodeContainer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$ZSma = MetaAdapterFactory.getContainmentLink(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, 0x74e28664f05605aeL, "node");
+    /*package*/ static final SContainmentLink node$4FBe = MetaAdapterFactory.getContainmentLink(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL, 0x74e28664f05605aeL, "node");
   }
 }

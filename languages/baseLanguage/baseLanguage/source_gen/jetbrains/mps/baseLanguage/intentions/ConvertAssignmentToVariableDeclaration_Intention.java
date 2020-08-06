@@ -40,14 +40,14 @@ public final class ConvertAssignmentToVariableDeclaration_Intention extends Abst
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
       return false;
     }
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.AssignmentExpression$rS))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.AssignmentExpression$SE))) {
       return false;
     }
-    SNode assignment = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AssignmentExpression$rS);
-    return (boolean) AssignmentExpression__BehaviorDescriptor.canConvertToLocalVariableDeclaration_idhLFstkU.invoke(assignment) && SLinkOperations.getTarget(assignment, LINKS.lValue$LjSW) == node;
+    SNode assignment = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AssignmentExpression$SE);
+    return (boolean) AssignmentExpression__BehaviorDescriptor.canConvertToLocalVariableDeclaration_idhLFstkU.invoke(assignment) && SLinkOperations.getTarget(assignment, LINKS.lValue$splI) == node;
   }
   @Override
   public boolean isSurroundWith() {
@@ -68,7 +68,7 @@ public final class ConvertAssignmentToVariableDeclaration_Intention extends Abst
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode assignment = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AssignmentExpression$rS);
+      SNode assignment = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AssignmentExpression$SE);
       EditorCell selectedCell = editorContext.getSelectedCell();
       String suggestedName = null;
       if (selectedCell instanceof EditorCell_Label) {
@@ -87,12 +87,12 @@ public final class ConvertAssignmentToVariableDeclaration_Intention extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept AssignmentExpression$rS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
   }
 }

@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_ReferencePresentation_Constraints extends BaseConstraintsDescriptor {
   public CellModel_ReferencePresentation_Constraints() {
-    super(CONCEPTS.CellModel_ReferencePresentation$Wr);
+    super(CONCEPTS.CellModel_ReferencePresentation$82);
   }
 
   @Override
@@ -37,8 +37,8 @@ public class CellModel_ReferencePresentation_Constraints extends BaseConstraints
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    SNode ancestorRef = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.CellModel_RefCell$VD, true, false);
-    SNode ancestorList = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.CellModel_ListWithRole$Pv, true, false);
+    SNode ancestorRef = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.CellModel_RefCell$7g, true, false);
+    SNode ancestorList = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.CellModel_ListWithRole$16, true, false);
     if ((ancestorRef == null)) {
       return false;
     }
@@ -50,8 +50,8 @@ public class CellModel_ReferencePresentation_Constraints extends BaseConstraints
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "1227128029536561261");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_ReferencePresentation$Wr = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation");
-    /*package*/ static final SConcept CellModel_RefCell$VD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
-    /*package*/ static final SConcept CellModel_ListWithRole$Pv = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, "jetbrains.mps.lang.editor.structure.CellModel_ListWithRole");
+    /*package*/ static final SConcept CellModel_ReferencePresentation$82 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation");
+    /*package*/ static final SConcept CellModel_RefCell$7g = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
+    /*package*/ static final SConcept CellModel_ListWithRole$16 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, "jetbrains.mps.lang.editor.structure.CellModel_ListWithRole");
   }
 }

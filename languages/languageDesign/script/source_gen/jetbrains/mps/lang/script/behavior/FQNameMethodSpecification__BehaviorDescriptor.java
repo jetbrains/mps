@@ -31,7 +31,7 @@ public final class FQNameMethodSpecification__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static String getPresentation_id6SPCoQxKXmj(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.snodeId$rqKY);
+    return SPropertyOperations.getString(__thisNode__, PROPS.snodeId$n_lK);
   }
 
   /*package*/ FQNameMethodSpecification__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class FQNameMethodSpecification__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty snodeId$rqKY = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, 0x1fcdfeb518d2fe29L, "snodeId");
+    /*package*/ static final SProperty snodeId$n_lK = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b412e3L, 0x1fcdfeb518d2fe29L, "snodeId");
   }
 }

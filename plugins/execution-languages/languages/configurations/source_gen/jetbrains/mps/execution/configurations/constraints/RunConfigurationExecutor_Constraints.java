@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RunConfigurationExecutor_Constraints extends BaseConstraintsDescriptor {
   public RunConfigurationExecutor_Constraints() {
-    super(CONCEPTS.RunConfigurationExecutor$pj);
+    super(CONCEPTS.RunConfigurationExecutor$5U);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RunConfigurationExecutor$pj = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor");
+    /*package*/ static final SConcept RunConfigurationExecutor$5U = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, "jetbrains.mps.execution.configurations.structure.RunConfigurationExecutor");
   }
 }

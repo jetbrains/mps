@@ -21,11 +21,11 @@ public class typeof_SimpleBuilderParameterReference_InferenceRule extends Abstra
     {
       SNode _nodeToCheck_1029348928467 = reference;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "901357770590752903", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "901357770590752900", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(reference, LINKS.parameter$Rzv0), "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "901357770590752908", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "901357770590752900", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(reference, LINKS.parameter$k4uF), "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "901357770590752908", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SimpleBuilderParameterReference$6Y;
+    return CONCEPTS.SimpleBuilderParameterReference$6D;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_SimpleBuilderParameterReference_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$Rzv0 = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9029ce4L, 0x4b4c01fdd9029ce5L, "parameter");
+    /*package*/ static final SReferenceLink parameter$k4uF = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9029ce4L, 0x4b4c01fdd9029ce5L, "parameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleBuilderParameterReference$6Y = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9029ce4L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderParameterReference");
+    /*package*/ static final SConcept SimpleBuilderParameterReference$6D = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9029ce4L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderParameterReference");
   }
 }

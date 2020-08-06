@@ -22,24 +22,24 @@ public class typeof_AnnotationInstanceValue_InferenceRule extends AbstractInfere
   public typeof_AnnotationInstanceValue_InferenceRule() {
   }
   public void applyRule(final SNode annotationInstanceValue, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode type = SLinkOperations.getTarget(SLinkOperations.getTarget(annotationInstanceValue, LINKS.key$wMU9), LINKS.returnType$qrVw);
-    if (SNodeOperations.isInstanceOf(type, CONCEPTS.ArrayType$Yv)) {
-      SNode elementType = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw);
+    SNode type = SLinkOperations.getTarget(SLinkOperations.getTarget(annotationInstanceValue, LINKS.key$bSmV), LINKS.returnType$5xoi);
+    if (SNodeOperations.isInstanceOf(type, CONCEPTS.ArrayType$rh)) {
+      SNode elementType = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ArrayType$rh), LINKS.componentType$F$Gi);
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(annotationInstanceValue, LINKS.value$j1V$);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(annotationInstanceValue, LINKS.value$Y7om);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4177787410910106416", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4177787410910106418", true), (SNode) _quotation_createNode_2fsed6_a1a0c0b0b0b(type, elementType), false, true, _info_12389875345);
       }
     } else {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(annotationInstanceValue, LINKS.value$j1V$);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(annotationInstanceValue, LINKS.value$Y7om);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1188221827926", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1188221904889", true), (SNode) type, false, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AnnotationInstanceValue$sl;
+    return CONCEPTS.AnnotationInstanceValue$T7;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -65,14 +65,14 @@ public class typeof_AnnotationInstanceValue_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink key$wMU9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SContainmentLink value$j1V$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71c0fc4L, "value");
+    /*package*/ static final SReferenceLink key$bSmV = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink value$Y7om = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71c0fc4L, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
-    /*package*/ static final SConcept AnnotationInstanceValue$sl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept AnnotationInstanceValue$T7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue");
   }
 }

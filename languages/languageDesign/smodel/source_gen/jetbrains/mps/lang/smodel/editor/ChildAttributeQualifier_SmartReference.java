@@ -27,7 +27,7 @@ public class ChildAttributeQualifier_SmartReference extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_82wwvv_a(), CONCEPTS.ChildAttributeQualifier$N));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_82wwvv_a(), CONCEPTS.ChildAttributeQualifier$2j));
     return result;
   }
 
@@ -48,7 +48,7 @@ public class ChildAttributeQualifier_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_82wwvv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ChildAttributeQualifier$N, LINKS.attributeConcept$CwCx);
+      super((SAbstractConcept) CONCEPTS.ChildAttributeQualifier$2j, LINKS.attributeConcept$cTE1);
     }
     @NotNull
     @Override
@@ -95,10 +95,10 @@ public class ChildAttributeQualifier_SmartReference extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildAttributeQualifier$N = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, "jetbrains.mps.lang.smodel.structure.ChildAttributeQualifier");
+    /*package*/ static final SConcept ChildAttributeQualifier$2j = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, "jetbrains.mps.lang.smodel.structure.ChildAttributeQualifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attributeConcept$CwCx = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, 0x9d98713f24a0e5dL, "attributeConcept");
+    /*package*/ static final SReferenceLink attributeConcept$cTE1 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, 0x9d98713f24a0e5dL, "attributeConcept");
   }
 }

@@ -66,7 +66,7 @@ public class BuildSourceMacroRelativePath_TransformationMenu extends Transformat
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BuildSourceMacroRelativePath$C$)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BuildSourceMacroRelativePath$b7)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -90,7 +90,7 @@ public class BuildSourceMacroRelativePath_TransformationMenu extends Transformat
   public class TMP_Group_dh81t5_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.compositePart$ZDgp) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.compositePart$blMW) == null);
     }
 
     @NotNull
@@ -146,7 +146,7 @@ public class BuildSourceMacroRelativePath_TransformationMenu extends Transformat
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.compositePart$ZDgp, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.compositePart$blMW, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -172,10 +172,10 @@ public class BuildSourceMacroRelativePath_TransformationMenu extends Transformat
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSourceMacroRelativePath$C$ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath");
+    /*package*/ static final SConcept BuildSourceMacroRelativePath$b7 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SContainmentLink compositePart$blMW = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
   }
 }

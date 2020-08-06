@@ -18,20 +18,20 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class CheckUtil {
   @CheckingMethod
   public static void checkCustomMemberConcept(final TypeCheckingContext typeCheckingContext, SNode toCheck, SNode parent) {
-    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(toCheck, LINKS.cncpt$gpR2), parent)) {
+    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(toCheck, LINKS.cncpt$IpcN), parent)) {
       return;
     }
     {
-      final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.cncpt$gpR2);
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(toCheck, "custom member should be a subconcept of " + SPropertyOperations.getString(parent, PROPS.name$lA7v), "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "6647275119336521250", null, errorTarget);
+      final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.cncpt$IpcN);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(toCheck, "custom member should be a subconcept of " + SPropertyOperations.getString(parent, PROPS.name$MnvL), "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "6647275119336521250", null, errorTarget);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cncpt$gpR2 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt");
+    /*package*/ static final SReferenceLink cncpt$IpcN = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

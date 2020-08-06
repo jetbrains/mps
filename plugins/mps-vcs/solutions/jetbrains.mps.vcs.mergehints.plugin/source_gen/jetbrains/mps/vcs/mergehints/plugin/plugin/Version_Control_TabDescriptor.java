@@ -45,7 +45,7 @@ public class Version_Control_TabDescriptor extends RelationDescriptor {
     return null;
   }
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA);
   }
   @Nullable
   public Icon getIcon() {
@@ -69,11 +69,11 @@ public class Version_Control_TabDescriptor extends RelationDescriptor {
       return nodes;
     }
 
-    ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.roots(vcsModel, CONCEPTS.VCSHints$JZ)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.roots(vcsModel, CONCEPTS.VCSHints$kA)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.concepts$jnZw)).any(new IWhereFilter<SNode>() {
+        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.concepts$nb$7)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.cncpt$qo3X) == node;
+            return SLinkOperations.getTarget(it, LINKS.cncpt$ubC$) == node;
           }
         });
       }
@@ -84,7 +84,7 @@ public class Version_Control_TabDescriptor extends RelationDescriptor {
     return false;
   }
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.VCSHints$JZ);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.VCSHints$kA);
   }
   public SNode createAspect(final SNode node, final SConcept concept) {
     SModule module = SNodeOperations.getModel(node).getModule();
@@ -111,24 +111,24 @@ public class Version_Control_TabDescriptor extends RelationDescriptor {
 
     assert aspectModel != null;
     SNode hints = SModelOperations.createNewRootNode(aspectModel, MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, "jetbrains.mps.vcs.mergehints.structure.VCSHints"));
-    SPropertyOperations.assign(hints, PROPS.name$lA7v, SPropertyOperations.getString(node, PROPS.name$lA7v) + "_Hints");
-    SNode conceptHint = SLinkOperations.addNewChild(hints, LINKS.concepts$jnZw, null);
-    SLinkOperations.setTarget(conceptHint, LINKS.cncpt$qo3X, node);
+    SPropertyOperations.assign(hints, PROPS.name$MnvL, SPropertyOperations.getString(node, PROPS.name$MnvL) + "_Hints");
+    SNode conceptHint = SLinkOperations.addNewChild(hints, LINKS.concepts$nb$7, null);
+    SLinkOperations.setTarget(conceptHint, LINKS.cncpt$ubC$, node);
 
     return hints;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept VCSHints$JZ = MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, "jetbrains.mps.vcs.mergehints.structure.VCSHints");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept VCSHints$kA = MetaAdapterFactory.getConcept(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, "jetbrains.mps.vcs.mergehints.structure.VCSHints");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink concepts$jnZw = MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, 0x39744cf955c648faL, "concepts");
-    /*package*/ static final SReferenceLink cncpt$qo3X = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
+    /*package*/ static final SContainmentLink concepts$nb$7 = MetaAdapterFactory.getContainmentLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648f9L, 0x39744cf955c648faL, "concepts");
+    /*package*/ static final SReferenceLink cncpt$ubC$ = MetaAdapterFactory.getReferenceLink(0x37e03aa1728949bcL, 0x826930de5eceec76L, 0x39744cf955c648fcL, 0x39744cf955c649b5L, "cncpt");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

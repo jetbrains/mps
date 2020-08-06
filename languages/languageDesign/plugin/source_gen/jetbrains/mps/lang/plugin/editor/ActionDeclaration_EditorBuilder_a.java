@@ -135,7 +135,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$lA7v;
+      final SProperty property = PROPS.name$MnvL;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -145,7 +145,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -214,10 +214,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private boolean nodeCondition_6wnsz8_a0b1a0() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.outsideCommandExecution$E2Bu);
+    return SPropertyOperations.getBoolean(myNode, PROPS.outsideCommandExecution$RB$x);
   }
   private boolean nodeCondition_6wnsz8_a1b1a0() {
-    return !(SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.requiredAccess$G27E), 0x6782cab5d9442837L)) || !(SPropertyOperations.getBoolean(myNode, PROPS.outsideCommandExecution$E2Bu));
+    return !(SEnumOperations.isMember(SPropertyOperations.getEnum(myNode, PROPS.requiredAccess$TB4H), 0x6782cab5d9442837L)) || !(SPropertyOperations.getBoolean(myNode, PROPS.outsideCommandExecution$RB$x));
   }
   private EditorCell createCollection_6() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
@@ -238,14 +238,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.outsideCommandExecution$E2Bu;
+      final SProperty property = PROPS.outsideCommandExecution$RB$x;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no outsideCommandExecution>");
       editorCell.setCellId("property_outsideCommandExecution");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -279,14 +279,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createProperty_2() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.requiredAccess$G27E;
+      final SProperty property = PROPS.requiredAccess$TB4H;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no requiredAccess>");
       editorCell.setCellId("property_requiredAccess");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -338,10 +338,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.places$5lX7;
+      return LINKS.places$iUUa;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ActionPlaceSpecification$TQ;
+      return CONCEPTS.ActionPlaceSpecification$QT;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -351,7 +351,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(placesListHandler_6wnsz8_b2b1a0.this.getNode(), LINKS.places$5lX7));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(placesListHandler_6wnsz8_b2b1a0.this.getNode(), LINKS.places$iUUa));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -442,14 +442,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createProperty_3() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.caption$6w$m;
+      final SProperty property = PROPS.caption$k5xp;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no caption>");
       editorCell.setCellId("property_caption");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -486,14 +486,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createProperty_4() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.mnemonic$$zY7;
+      final SProperty property = PROPS.mnemonic$M8Va;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("<no mnemonic>");
       editorCell.setCellId("property_mnemonic");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -527,14 +527,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createProperty_5() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.description$$1fe;
+      final SProperty property = PROPS.description$LAch;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, true), myNode);
       editorCell.setDefaultText("<no description>");
       editorCell.setCellId("property_description");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -569,7 +569,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new iconSingleRoleHandler_6wnsz8_b3e1b0a(myNode, LINKS.icon$$0In, getEditorContext());
+    SingleRoleCellProvider provider = new iconSingleRoleHandler_6wnsz8_b3e1b0a(myNode, LINKS.icon$L_Fq, getEditorContext());
     return provider.createCell();
   }
   private static class iconSingleRoleHandler_6wnsz8_b3e1b0a extends SingleRoleCellProvider {
@@ -589,8 +589,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.icon$$0In, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.icon$$0In, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.icon$L_Fq, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.icon$L_Fq, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -602,13 +602,13 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.icon$$0In);
+        editorCell.setSRole(LINKS.icon$L_Fq);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.icon$$0In));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.icon$L_Fq));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_icon");
@@ -673,10 +673,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.constructionParameter$RNtA;
+      return LINKS.constructionParameter$5oqD;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ActionConstructionParameterDeclaration$AK;
+      return CONCEPTS.ActionConstructionParameterDeclaration$zN;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -686,7 +686,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(constructionParameterListHandler_6wnsz8_b7b1a0.this.getNode(), LINKS.constructionParameter$RNtA));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(constructionParameterListHandler_6wnsz8_b7b1a0.this.getNode(), LINKS.constructionParameter$5oqD));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -787,7 +787,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createProperty_6() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.isAlwaysVisible$YmUe;
+      final SProperty property = PROPS.isAlwaysVisible$bVRh;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no isAlwaysVisible>");
@@ -797,7 +797,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -858,10 +858,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.parameter$qze;
+      return LINKS.parameter$dZwh;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ActionParameter$ec;
+      return CONCEPTS.ActionParameter$bf;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -871,7 +871,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(parameterListHandler_6wnsz8_b01b1a0.this.getNode(), LINKS.parameter$qze));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(parameterListHandler_6wnsz8_b01b1a0.this.getNode(), LINKS.parameter$dZwh));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -921,7 +921,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new updateBlockSingleRoleHandler_6wnsz8_m1b0a(myNode, LINKS.updateBlock$ih_f, getEditorContext());
+    SingleRoleCellProvider provider = new updateBlockSingleRoleHandler_6wnsz8_m1b0a(myNode, LINKS.updateBlock$vQyi, getEditorContext());
     return provider.createCell();
   }
   private static class updateBlockSingleRoleHandler_6wnsz8_m1b0a extends SingleRoleCellProvider {
@@ -941,8 +941,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.updateBlock$ih_f, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.updateBlock$ih_f, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.updateBlock$vQyi, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.updateBlock$vQyi, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -954,13 +954,13 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.updateBlock$ih_f);
+        editorCell.setSRole(LINKS.updateBlock$vQyi);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.updateBlock$ih_f));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.updateBlock$vQyi));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_updateBlock");
@@ -985,7 +985,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new executeFunctionSingleRoleHandler_6wnsz8_o1b0a(myNode, LINKS.executeFunction$GyGI, getEditorContext());
+    SingleRoleCellProvider provider = new executeFunctionSingleRoleHandler_6wnsz8_o1b0a(myNode, LINKS.executeFunction$U7DL, getEditorContext());
     return provider.createCell();
   }
   private static class executeFunctionSingleRoleHandler_6wnsz8_o1b0a extends SingleRoleCellProvider {
@@ -1005,8 +1005,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.executeFunction$GyGI, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.executeFunction$GyGI, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.executeFunction$U7DL, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.executeFunction$U7DL, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -1018,13 +1018,13 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.executeFunction$GyGI);
+        editorCell.setSRole(LINKS.executeFunction$U7DL);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.executeFunction$GyGI));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.executeFunction$U7DL));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_executeFunction");
@@ -1088,10 +1088,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.methodDeclaration$RMlc;
+      return LINKS.methodDeclaration$5nif;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.DefaultClassifierMethodDeclaration$ZH;
+      return CONCEPTS.DefaultClassifierMethodDeclaration$Zx;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -1101,7 +1101,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(methodDeclarationListHandler_6wnsz8_s1b0a.this.getNode(), LINKS.methodDeclaration$RMlc));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(methodDeclarationListHandler_6wnsz8_s1b0a.this.getNode(), LINKS.methodDeclaration$5nif));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -1162,30 +1162,30 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty outsideCommandExecution$E2Bu = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11a070b6efeL, "outsideCommandExecution");
-    /*package*/ static final SProperty requiredAccess$G27E = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x6782cab5d94428a3L, "requiredAccess");
-    /*package*/ static final SProperty caption$6w$m = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1189e8d9a59L, "caption");
-    /*package*/ static final SProperty mnemonic$$zY7 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b1742d216L, "mnemonic");
-    /*package*/ static final SProperty description$$1fe = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11a7cb78588L, "description");
-    /*package*/ static final SProperty isAlwaysVisible$YmUe = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1190fbf3301L, "isAlwaysVisible");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty outsideCommandExecution$RB$x = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11a070b6efeL, "outsideCommandExecution");
+    /*package*/ static final SProperty requiredAccess$TB4H = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x6782cab5d94428a3L, "requiredAccess");
+    /*package*/ static final SProperty caption$k5xp = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1189e8d9a59L, "caption");
+    /*package*/ static final SProperty mnemonic$M8Va = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b1742d216L, "mnemonic");
+    /*package*/ static final SProperty description$LAch = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11a7cb78588L, "description");
+    /*package*/ static final SProperty isAlwaysVisible$bVRh = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1190fbf3301L, "isAlwaysVisible");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SInterfaceConcept ActionPlaceSpecification$TQ = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x57ad0f5134202ecL, "jetbrains.mps.lang.plugin.structure.ActionPlaceSpecification");
-    /*package*/ static final SConcept ActionConstructionParameterDeclaration$AK = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11daf6d2bdcL, "jetbrains.mps.lang.plugin.structure.ActionConstructionParameterDeclaration");
-    /*package*/ static final SInterfaceConcept ActionParameter$ec = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, "jetbrains.mps.lang.plugin.structure.ActionParameter");
-    /*package*/ static final SConcept DefaultClassifierMethodDeclaration$ZH = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SInterfaceConcept ActionPlaceSpecification$QT = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x57ad0f5134202ecL, "jetbrains.mps.lang.plugin.structure.ActionPlaceSpecification");
+    /*package*/ static final SConcept ActionConstructionParameterDeclaration$zN = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11daf6d2bdcL, "jetbrains.mps.lang.plugin.structure.ActionConstructionParameterDeclaration");
+    /*package*/ static final SInterfaceConcept ActionParameter$bf = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, "jetbrains.mps.lang.plugin.structure.ActionParameter");
+    /*package*/ static final SConcept DefaultClassifierMethodDeclaration$Zx = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink places$5lX7 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x57ad0f5134202edL, "places");
-    /*package*/ static final SContainmentLink icon$$0In = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x7c92abce86abbd8fL, "icon");
-    /*package*/ static final SContainmentLink constructionParameter$RNtA = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
-    /*package*/ static final SContainmentLink parameter$qze = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b737b91a4L, "parameter");
-    /*package*/ static final SContainmentLink updateBlock$ih_f = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1181d58b8d3L, "updateBlock");
-    /*package*/ static final SContainmentLink executeFunction$GyGI = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1181d5cc406L, "executeFunction");
-    /*package*/ static final SContainmentLink methodDeclaration$RMlc = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x118c255bfb5L, "methodDeclaration");
+    /*package*/ static final SContainmentLink places$iUUa = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x57ad0f5134202edL, "places");
+    /*package*/ static final SContainmentLink icon$L_Fq = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x7c92abce86abbd8fL, "icon");
+    /*package*/ static final SContainmentLink constructionParameter$5oqD = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
+    /*package*/ static final SContainmentLink parameter$dZwh = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b737b91a4L, "parameter");
+    /*package*/ static final SContainmentLink updateBlock$vQyi = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1181d58b8d3L, "updateBlock");
+    /*package*/ static final SContainmentLink executeFunction$U7DL = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1181d5cc406L, "executeFunction");
+    /*package*/ static final SContainmentLink methodDeclaration$5nif = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x118c255bfb5L, "methodDeclaration");
   }
 }

@@ -52,9 +52,9 @@ public final class SwitchToNullUnsafe_Intention extends AbstractIntentionDescrip
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.NullUnsafeDotExpression$Uj, null);
-      SLinkOperations.setTarget(result, LINKS.operand$P1i5, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
-      SLinkOperations.setTarget(result, LINKS.operation$_mGS, SLinkOperations.getTarget(node, LINKS.operation$_mGS));
+      SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.NullUnsafeDotExpression$fT, null);
+      SLinkOperations.setTarget(result, LINKS.operand$w6IR, SLinkOperations.getTarget(node, LINKS.operand$w6IR));
+      SLinkOperations.setTarget(result, LINKS.operation$gs9E, SLinkOperations.getTarget(node, LINKS.operation$gs9E));
       SNodeOperations.replaceWithAnother(node, result);
     }
     @Override
@@ -64,11 +64,11 @@ public final class SwitchToNullUnsafe_Intention extends AbstractIntentionDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NullUnsafeDotExpression$Uj = MetaAdapterFactory.getConcept(0x3ac033a0bffa48e3L, 0xa843a40cbdd89859L, 0x13ac54c0e557da2eL, "testExtendingAnalyzer.structure.NullUnsafeDotExpression");
+    /*package*/ static final SConcept NullUnsafeDotExpression$fT = MetaAdapterFactory.getConcept(0x3ac033a0bffa48e3L, 0xa843a40cbdd89859L, 0x13ac54c0e557da2eL, "testExtendingAnalyzer.structure.NullUnsafeDotExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class WithStatement_Constraints extends BaseConstraintsDescriptor {
   public WithStatement_Constraints() {
-    super(CONCEPTS.WithStatement$8M);
+    super(CONCEPTS.WithStatement$FO);
   }
 
   @Override
@@ -38,12 +38,12 @@ public class WithStatement_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.QueryExpressionScopeProvider$25, true, false) == null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.QueryExpressionScopeProvider$_7, true, false) == null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:aef526b1-5019-472a-a761-72ac88ef58a4(jetbrains.mps.lang.smodel.query.constraints)", "1252437031490219344");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WithStatement$8M = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL, "jetbrains.mps.lang.smodel.query.structure.WithStatement");
-    /*package*/ static final SInterfaceConcept QueryExpressionScopeProvider$25 = MetaAdapterFactory.getInterfaceConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x7057c6c02678c07L, "jetbrains.mps.lang.smodel.query.structure.QueryExpressionScopeProvider");
+    /*package*/ static final SConcept WithStatement$FO = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3ac2ae2c0bcf368bL, "jetbrains.mps.lang.smodel.query.structure.WithStatement");
+    /*package*/ static final SInterfaceConcept QueryExpressionScopeProvider$_7 = MetaAdapterFactory.getInterfaceConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x7057c6c02678c07L, "jetbrains.mps.lang.smodel.query.structure.QueryExpressionScopeProvider");
   }
 }

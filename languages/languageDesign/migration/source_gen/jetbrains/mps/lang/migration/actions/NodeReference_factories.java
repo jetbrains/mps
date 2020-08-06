@@ -19,25 +19,25 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class NodeReference_factories {
   public static class NodeFactory_2864063292004380727 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.DirectNodeReference$W$)) {
-        SPropertyOperations.assign(newNode, PROPS.nodeId$Upv, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$W$), LINKS.target$rL_Z).getNodeId().toString());
-        SPropertyOperations.assign(newNode, PROPS.modelRef$MDY, PersistenceFacade.getInstance().asString(SModelOperations.getPointer(SNodeOperations.getModel(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$W$), LINKS.target$rL_Z)))));
-        SPropertyOperations.assign(newNode, PROPS.nodeName$Cp3c, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$W$), LINKS.target$rL_Z)));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.DirectNodeReference$fk)) {
+        SPropertyOperations.assign(newNode, PROPS.nodeId$HCGf, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$fk), LINKS.target$8vSJ).getNodeId().toString());
+        SPropertyOperations.assign(newNode, PROPS.modelRef$HwWI, PersistenceFacade.getInstance().asString(SModelOperations.getPointer(SNodeOperations.getModel(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$fk), LINKS.target$8vSJ)))));
+        SPropertyOperations.assign(newNode, PROPS.nodeName$l7lW, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.DirectNodeReference$fk), LINKS.target$8vSJ)));
       }
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeId$Upv = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f44fL, "nodeId");
-    /*package*/ static final SProperty modelRef$MDY = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f443L, "modelRef");
-    /*package*/ static final SProperty nodeName$Cp3c = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
+    /*package*/ static final SProperty nodeId$HCGf = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f44fL, "nodeId");
+    /*package*/ static final SProperty modelRef$HwWI = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f443L, "modelRef");
+    /*package*/ static final SProperty nodeName$l7lW = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x27bf3263be23f0dfL, 0x27bf3263be23f299L, "nodeName");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DirectNodeReference$W$ = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, "jetbrains.mps.lang.migration.structure.DirectNodeReference");
+    /*package*/ static final SConcept DirectNodeReference$fk = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, "jetbrains.mps.lang.migration.structure.DirectNodeReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$rL_Z = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, 0x67236d4a58303a10L, "target");
+    /*package*/ static final SReferenceLink target$8vSJ = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, 0x67236d4a58303a10L, "target");
   }
 }

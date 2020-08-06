@@ -31,7 +31,7 @@ public class check_TestIsCompiledAndLoadedByMPS_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ITestCase$uo;
+    return CONCEPTS.ITestCase$Fp;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,6 +47,6 @@ public class check_TestIsCompiledAndLoadedByMPS_NonTypesystemRule extends Abstra
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITestCase$uo = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
+    /*package*/ static final SInterfaceConcept ITestCase$Fp = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
   }
 }

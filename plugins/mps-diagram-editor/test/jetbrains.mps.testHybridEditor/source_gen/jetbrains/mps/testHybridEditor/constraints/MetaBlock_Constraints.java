@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MetaBlock_Constraints extends BaseConstraintsDescriptor {
   public MetaBlock_Constraints() {
-    super(CONCEPTS.MetaBlock$4z);
+    super(CONCEPTS.MetaBlock$17);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MetaBlock$4z = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, "jetbrains.mps.testHybridEditor.structure.MetaBlock");
+    /*package*/ static final SConcept MetaBlock$17 = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, "jetbrains.mps.testHybridEditor.structure.MetaBlock");
   }
 }

@@ -28,7 +28,7 @@ public class XMLSAXChildRule_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_em1jvd_a(), CONCEPTS.XMLSAXChildRule$v));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_em1jvd_a(), CONCEPTS.XMLSAXChildRule$ls));
     result.add(new SMP_Subconcepts_em1jvd_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class XMLSAXChildRule_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_em1jvd_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.XMLSAXChildRule$v, LINKS.rule$h_RS);
+      super((SAbstractConcept) CONCEPTS.XMLSAXChildRule$ls, LINKS.rule$zMcP);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class XMLSAXChildRule_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_em1jvd_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.XMLSAXChildRule$v);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.XMLSAXChildRule$ls);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class XMLSAXChildRule_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXChildRule$v = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, "jetbrains.mps.core.xml.sax.structure.XMLSAXChildRule");
+    /*package*/ static final SConcept XMLSAXChildRule$ls = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, "jetbrains.mps.core.xml.sax.structure.XMLSAXChildRule");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink rule$h_RS = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0x1f6c736337b5e2dcL, "rule");
+    /*package*/ static final SReferenceLink rule$zMcP = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0x1f6c736337b5e2dcL, "rule");
   }
 }

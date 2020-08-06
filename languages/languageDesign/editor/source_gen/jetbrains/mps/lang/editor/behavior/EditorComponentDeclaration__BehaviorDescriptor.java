@@ -38,25 +38,25 @@ public final class EditorComponentDeclaration__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$HJmJ);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8, baseConcept);
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$HJmJ, baseConcept);
   }
   /*package*/ static SNode getConceptDeclaration_id67EYkym$wx3(@NotNull SNode __thisNode__) {
     return EditorComponentDeclaration__BehaviorDescriptor.getConceptDeclaration_id7c58AbNVkhZ.invoke(__thisNode__, SetSequence.fromSet(new HashSet<SNode>()));
   }
   /*package*/ static SNode getConceptDeclaration_id7c58AbNVkhZ(@NotNull SNode __thisNode__, Set<SNode> visitedEditorComponents) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8) != null) {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8);
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$HJmJ) != null) {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$HJmJ);
     }
 
     if (SetSequence.fromSet(visitedEditorComponents).contains(__thisNode__)) {
       return null;
     }
     SetSequence.fromSet(visitedEditorComponents).addElement(__thisNode__);
-    if (SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.overridenEditorComponent$H8ro), LINKS.editorComponent$M9L3) != null) {
-      return EditorComponentDeclaration__BehaviorDescriptor.getConceptDeclaration_id7c58AbNVkhZ.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.overridenEditorComponent$H8ro), LINKS.editorComponent$M9L3), visitedEditorComponents);
+    if (SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.overridenEditorComponent$LqAZ), LINKS.editorComponent$QrWE) != null) {
+      return EditorComponentDeclaration__BehaviorDescriptor.getConceptDeclaration_id7c58AbNVkhZ.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.overridenEditorComponent$LqAZ), LINKS.editorComponent$QrWE), visitedEditorComponents);
     }
     return null;
   }
@@ -115,8 +115,8 @@ public final class EditorComponentDeclaration__BehaviorDescriptor extends BaseBH
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
-    /*package*/ static final SContainmentLink overridenEditorComponent$H8ro = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
-    /*package*/ static final SReferenceLink editorComponent$M9L3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, 0x619d95571435e249L, "editorComponent");
+    /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SContainmentLink overridenEditorComponent$LqAZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
+    /*package*/ static final SReferenceLink editorComponent$QrWE = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L, 0x619d95571435e249L, "editorComponent");
   }
 }

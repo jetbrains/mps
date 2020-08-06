@@ -26,7 +26,7 @@ public class typeof_BaseStringOperation_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BaseStringOperation$9s;
+    return CONCEPTS.BaseStringOperation$Ae;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,6 +42,6 @@ public class typeof_BaseStringOperation_InferenceRule extends AbstractInferenceR
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseStringOperation$9s = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47dc8da1L, "jetbrains.mps.baseLanguage.structure.BaseStringOperation");
+    /*package*/ static final SConcept BaseStringOperation$Ae = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47dc8da1L, "jetbrains.mps.baseLanguage.structure.BaseStringOperation");
   }
 }

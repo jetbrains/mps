@@ -34,14 +34,14 @@ public final class AbstractOutputConceptContainerTransformationMenuPart__Behavio
   }
 
   /*package*/ static SNode getOutputConcept_id3mnwiBI8ZE2(@NotNull SNode __thisNode__) {
-    SNode outputConceptReference = SLinkOperations.getTarget(__thisNode__, LINKS.outputConceptReference$FBjr);
+    SNode outputConceptReference = SLinkOperations.getTarget(__thisNode__, LINKS.outputConceptReference$JTv2);
     if ((outputConceptReference == null)) {
       return null;
     }
-    if ((SLinkOperations.getTarget(outputConceptReference, LINKS.concept$aYM0) != null)) {
-      return SLinkOperations.getTarget(outputConceptReference, LINKS.concept$aYM0);
+    if ((SLinkOperations.getTarget(outputConceptReference, LINKS.concept$fgXB) != null)) {
+      return SLinkOperations.getTarget(outputConceptReference, LINKS.concept$fgXB);
     }
-    return IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ITransformationMenu$lF, false, false));
+    return IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ITransformationMenu$xi, false, false));
   }
 
   /*package*/ AbstractOutputConceptContainerTransformationMenuPart__BehaviorDescriptor() {
@@ -91,11 +91,11 @@ public final class AbstractOutputConceptContainerTransformationMenuPart__Behavio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink outputConceptReference$FBjr = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc214L, 0xbb2f315607dd080L, "outputConceptReference");
-    /*package*/ static final SReferenceLink concept$aYM0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc1f1L, 0xbb2f315607dc1f2L, "concept");
+    /*package*/ static final SContainmentLink outputConceptReference$JTv2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc214L, 0xbb2f315607dd080L, "outputConceptReference");
+    /*package*/ static final SReferenceLink concept$fgXB = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xbb2f315607dc1f1L, 0xbb2f315607dc1f2L, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITransformationMenu$lF = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
+    /*package*/ static final SInterfaceConcept ITransformationMenu$xi = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
   }
 }

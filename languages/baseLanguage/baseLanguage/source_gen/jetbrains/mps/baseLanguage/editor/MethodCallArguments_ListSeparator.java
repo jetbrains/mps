@@ -41,7 +41,7 @@ public class MethodCallArguments_ListSeparator extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Expression$TP))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Expression$mB))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -55,8 +55,8 @@ public class MethodCallArguments_ListSeparator extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode argument = MethodArgumentsUtil.getMethodArgumentAncestor(node);
-      SNode newArgument = SNodeFactoryOperations.insertNewNextSiblingChild(argument, CONCEPTS.Expression$TP);
-      MethodResolveUtil.replaceFromEditor(SNodeOperations.cast(SNodeOperations.getParent(argument), CONCEPTS.IMethodCall$ln));
+      SNode newArgument = SNodeFactoryOperations.insertNewNextSiblingChild(argument, CONCEPTS.Expression$mB);
+      MethodResolveUtil.replaceFromEditor(SNodeOperations.cast(SNodeOperations.getParent(argument), CONCEPTS.IMethodCall$M9));
       SelectionUtil.selectNode(editorContext, newArgument);
     }
     public String getKeyStroke() {
@@ -65,7 +65,7 @@ public class MethodCallArguments_ListSeparator extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

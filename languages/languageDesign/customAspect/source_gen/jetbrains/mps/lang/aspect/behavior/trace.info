@@ -97,9 +97,9 @@
       <node id="3323697319248376112" at="81,14,82,58" concept="9" />
       <node id="3323697319248376112" at="88,48,89,22" concept="5" />
       <node id="3323697319248376112" at="94,40,95,19" concept="5" />
-      <node id="3323697319248376112" at="99,0,100,0" concept="6" trace="member$6v_r" />
-      <node id="3323697319248376112" at="100,0,101,0" concept="6" trace="decl$owrI" />
-      <node id="3323697319248376112" at="104,0,105,0" concept="6" trace="MethodInstance$XT" />
+      <node id="3323697319248376112" at="99,0,100,0" concept="6" trace="member$L_2d" />
+      <node id="3323697319248376112" at="100,0,101,0" concept="6" trace="decl$QvLv" />
+      <node id="3323697319248376112" at="104,0,105,0" concept="6" trace="MethodInstance$jE" />
       <node id="3323697319248376112" at="36,0,38,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3323697319248376112" at="50,0,52,0" concept="0" trace="LanguageAspectDescriptor__BehaviorDescriptor#()V" />
       <node id="19209059688914840" at="41,0,44,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

@@ -24,9 +24,9 @@ public class check_AnonymousClassHasConstructorDeclaration_NonTypesystemRule ext
   public check_AnonymousClassHasConstructorDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode anonymousClass, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode constructorDeclaration = SLinkOperations.getTarget(anonymousClass, LINKS.baseMethodDeclaration$ItxI);
+    SNode constructorDeclaration = SLinkOperations.getTarget(anonymousClass, LINKS.baseMethodDeclaration$pyYw);
     if ((constructorDeclaration == null)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$JwxM), CONCEPTS.ClassConcept$IY) && Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$JwxM), CONCEPTS.ClassConcept$IY))).isEmpty()) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$), CONCEPTS.ClassConcept$bK) && Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$), CONCEPTS.ClassConcept$bK))).isEmpty()) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(anonymousClass, "no method declaration", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7340437691575753017", null, errorTarget);
@@ -41,7 +41,7 @@ public class check_AnonymousClassHasConstructorDeclaration_NonTypesystemRule ext
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AnonymousClass$aF;
+    return CONCEPTS.AnonymousClass$Bt;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,12 +51,12 @@ public class check_AnonymousClassHasConstructorDeclaration_NonTypesystemRule ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 }

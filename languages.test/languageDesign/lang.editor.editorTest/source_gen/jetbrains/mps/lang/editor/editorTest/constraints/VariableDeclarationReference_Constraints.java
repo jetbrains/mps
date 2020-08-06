@@ -26,12 +26,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class VariableDeclarationReference_Constraints extends BaseConstraintsDescriptor {
   public VariableDeclarationReference_Constraints() {
-    super(CONCEPTS.VariableDeclarationReference$8A);
+    super(CONCEPTS.VariableDeclarationReference$SN);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.var$F$j0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.var$ua3d, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,10 +47,10 @@ public class VariableDeclarationReference_Constraints extends BaseConstraintsDes
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
-            for (SNode block : SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.TestBlockList$U1, true)) {
+            for (SNode block : SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.TestBlockList$Ee, true)) {
               for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(block))) {
-                if (SNodeOperations.isInstanceOf(child, CONCEPTS.VariableDeclarationBlock$uo)) {
-                  ListSequence.fromList(result).addElement(SNodeOperations.cast(child, CONCEPTS.VariableDeclarationBlock$uo));
+                if (SNodeOperations.isInstanceOf(child, CONCEPTS.VariableDeclarationBlock$e_)) {
+                  ListSequence.fromList(result).addElement(SNodeOperations.cast(child, CONCEPTS.VariableDeclarationBlock$e_));
                 }
               }
             }
@@ -66,12 +66,12 @@ public class VariableDeclarationReference_Constraints extends BaseConstraintsDes
   private static final SNodePointer breakingNode_98f22q_a0a0a0a0a1a0a0a0c = new SNodePointer("r:94b1feee-20bf-48e9-9677-814a5fdcaf90(jetbrains.mps.lang.editor.editorTest.constraints)", "6836281137582842797");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclarationReference$8A = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2444dad137fa9b5cL, "jetbrains.mps.lang.editor.editorTest.structure.VariableDeclarationReference");
-    /*package*/ static final SConcept VariableDeclarationBlock$uo = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2444dad137f90ed1L, "jetbrains.mps.lang.editor.editorTest.structure.VariableDeclarationBlock");
-    /*package*/ static final SConcept TestBlockList$U1 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x3361ce1b17d62dbbL, "jetbrains.mps.lang.editor.editorTest.structure.TestBlockList");
+    /*package*/ static final SConcept VariableDeclarationReference$SN = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2444dad137fa9b5cL, "jetbrains.mps.lang.editor.editorTest.structure.VariableDeclarationReference");
+    /*package*/ static final SConcept VariableDeclarationBlock$e_ = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2444dad137f90ed1L, "jetbrains.mps.lang.editor.editorTest.structure.VariableDeclarationBlock");
+    /*package*/ static final SConcept TestBlockList$Ee = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x3361ce1b17d62dbbL, "jetbrains.mps.lang.editor.editorTest.structure.TestBlockList");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink var$F$j0 = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2444dad137fa9b5cL, 0x2444dad137fa9b5dL, "var");
+    /*package*/ static final SReferenceLink var$ua3d = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2444dad137fa9b5cL, 0x2444dad137fa9b5dL, "var");
   }
 }

@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InsertElementOperation_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.index$grGq));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.element$GfkT));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.index$UJUH));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.element$mzzc));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink index$grGq = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, 0x11d5cc2f695L, "index");
-    /*package*/ static final SContainmentLink element$GfkT = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, 0x11d5cc2b50dL, "element");
+    /*package*/ static final SContainmentLink index$UJUH = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, 0x11d5cc2f695L, "index");
+    /*package*/ static final SContainmentLink element$mzzc = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, 0x11d5cc2b50dL, "element");
   }
 }

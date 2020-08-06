@@ -19,24 +19,24 @@ public class TextUtil {
   }
   public static void fixText(SModel model) {
     // get all strings from the model 
-    List<SNode> strings = SModelOperations.nodes(model, CONCEPTS.StringLiteral$4G);
+    List<SNode> strings = SModelOperations.nodes(model, CONCEPTS.StringLiteral$xu);
     // get all MPS strings 
     Iterable<SNode> mpses = ListSequence.fromList(strings).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.value$P2m0).startsWith("MPS");
+        return SPropertyOperations.getString(it, PROPS.value$w7MM).startsWith("MPS");
       }
     });
     for (SNode mps : Sequence.fromIterable(mpses)) {
       // convert "MPS" --> "JetBrains MPS" 
-      SPropertyOperations.assign(mps, PROPS.value$P2m0, "JetBrains " + SPropertyOperations.getString(mps, PROPS.value$P2m0));
+      SPropertyOperations.assign(mps, PROPS.value$w7MM, "JetBrains " + SPropertyOperations.getString(mps, PROPS.value$w7MM));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StringLiteral$4G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

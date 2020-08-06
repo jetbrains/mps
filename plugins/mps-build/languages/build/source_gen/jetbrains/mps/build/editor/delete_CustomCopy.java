@@ -26,7 +26,7 @@ public class delete_CustomCopy {
         if (DeletionApproverUtil.approve(editorContext, node, "handlers")) {
           return;
         }
-        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BuildLayout_Copy$7_);
+        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BuildLayout_Copy$E8);
       }
 
     };
@@ -74,6 +74,6 @@ public class delete_CustomCopy {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_Copy$7_ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy");
+    /*package*/ static final SConcept BuildLayout_Copy$E8 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy");
   }
 }

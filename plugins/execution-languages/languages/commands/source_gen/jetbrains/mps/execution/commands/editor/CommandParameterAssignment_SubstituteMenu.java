@@ -28,7 +28,7 @@ public class CommandParameterAssignment_SubstituteMenu extends SubstituteMenuBas
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_hj1tk6_a(), CONCEPTS.CommandParameterAssignment$p9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_hj1tk6_a(), CONCEPTS.CommandParameterAssignment$ZP));
     result.add(new SMP_Subconcepts_hj1tk6_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class CommandParameterAssignment_SubstituteMenu extends SubstituteMenuBas
 
     public SMP_ReferenceScope_hj1tk6_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.CommandParameterAssignment$p9, LINKS.parameterDeclaration$lc$w);
+      super((SAbstractConcept) CONCEPTS.CommandParameterAssignment$ZP, LINKS.parameterDeclaration$Zibc);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class CommandParameterAssignment_SubstituteMenu extends SubstituteMenuBas
   }
   public class SMP_Subconcepts_hj1tk6_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CommandParameterAssignment$p9);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CommandParameterAssignment$ZP);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class CommandParameterAssignment_SubstituteMenu extends SubstituteMenuBas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CommandParameterAssignment$p9 = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, "jetbrains.mps.execution.commands.structure.CommandParameterAssignment");
+    /*package*/ static final SConcept CommandParameterAssignment$ZP = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, "jetbrains.mps.execution.commands.structure.CommandParameterAssignment");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameterDeclaration$lc$w = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, 0xbe3a0d5ba1a2be5L, "parameterDeclaration");
+    /*package*/ static final SReferenceLink parameterDeclaration$Zibc = MetaAdapterFactory.getReferenceLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be4L, 0xbe3a0d5ba1a2be5L, "parameterDeclaration");
   }
 }

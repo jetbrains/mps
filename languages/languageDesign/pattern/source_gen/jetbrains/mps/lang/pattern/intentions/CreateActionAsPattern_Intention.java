@@ -61,8 +61,8 @@ public final class CreateActionAsPattern_Intention extends AbstractIntentionDesc
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode currentNode = editorContext.getSelectedNode();
-      SNodeFactoryOperations.setNewAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$Jg), CONCEPTS.ActionAsPattern$TP);
-      SPropertyOperations.assign(AttributeOperations.getAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$Jg)), PROPS.varName$gu0l, "action_var_" + currentNode.getNodeId().toString());
+      SNodeFactoryOperations.setNewAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$WN), CONCEPTS.ActionAsPattern$7o);
+      SPropertyOperations.assign(AttributeOperations.getAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$WN)), PROPS.varName$kQdS, "action_var_" + currentNode.getNodeId().toString());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -71,11 +71,11 @@ public final class CreateActionAsPattern_Intention extends AbstractIntentionDesc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AsPattern$Jg = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb478dL, "jetbrains.mps.lang.pattern.structure.AsPattern");
-    /*package*/ static final SConcept ActionAsPattern$TP = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L, "jetbrains.mps.lang.pattern.structure.ActionAsPattern");
+    /*package*/ static final SConcept AsPattern$WN = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb478dL, "jetbrains.mps.lang.pattern.structure.AsPattern");
+    /*package*/ static final SConcept ActionAsPattern$7o = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L, "jetbrains.mps.lang.pattern.structure.ActionAsPattern");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty varName$gu0l = MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, 0x108a9cb4794L, "varName");
+    /*package*/ static final SProperty varName$kQdS = MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, 0x108a9cb4794L, "varName");
   }
 }

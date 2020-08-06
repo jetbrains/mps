@@ -79,10 +79,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.members$61zw;
+      return LINKS.members$Eq_0;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.EnumMemberReference$9_;
+      return CONCEPTS.EnumMemberReference$b5;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -92,7 +92,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(membersListHandler_euwpj7_a0.this.getNode(), LINKS.members$61zw));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(membersListHandler_euwpj7_a0.this.getNode(), LINKS.members$Eq_0));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -152,7 +152,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new bodySingleRoleHandler_euwpj7_c0(myNode, LINKS.body$tjtn, getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_euwpj7_c0(myNode, LINKS.body$1GuR, getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_euwpj7_c0 extends SingleRoleCellProvider {
@@ -172,8 +172,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.body$tjtn, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.body$tjtn, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.body$1GuR, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.body$1GuR, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -185,13 +185,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.body$tjtn);
+        editorCell.setSRole(LINKS.body$1GuR);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.body$tjtn));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.body$1GuR));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_body");
@@ -208,11 +208,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink members$61zw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1d75e4L, "members");
-    /*package*/ static final SContainmentLink body$tjtn = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
+    /*package*/ static final SContainmentLink members$Eq_0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1d75e4L, "members");
+    /*package*/ static final SContainmentLink body$1GuR = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumMemberReference$9_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference");
+    /*package*/ static final SConcept EnumMemberReference$b5 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference");
   }
 }

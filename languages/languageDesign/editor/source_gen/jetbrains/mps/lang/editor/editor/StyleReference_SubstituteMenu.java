@@ -28,7 +28,7 @@ public class StyleReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_3y4dr_a(), CONCEPTS.StyleReference$ms));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_3y4dr_a(), CONCEPTS.StyleReference$y3));
     result.add(new SMP_Subconcepts_3y4dr_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class StyleReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_3y4dr_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.StyleReference$ms, LINKS.style$vKsp);
+      super((SAbstractConcept) CONCEPTS.StyleReference$y3, LINKS.style$$2C0);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class StyleReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_3y4dr_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.StyleReference$ms);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.StyleReference$y3);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class StyleReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StyleReference$ms = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1edbd2fbL, "jetbrains.mps.lang.editor.structure.StyleReference");
+    /*package*/ static final SConcept StyleReference$y3 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1edbd2fbL, "jetbrains.mps.lang.editor.structure.StyleReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink style$vKsp = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1edbd2fbL, 0x7e9b10ab1edbd57eL, "style");
+    /*package*/ static final SReferenceLink style$$2C0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1edbd2fbL, 0x7e9b10ab1edbd57eL, "style");
   }
 }

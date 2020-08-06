@@ -51,7 +51,7 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
       BreakpointCreator creator = new BreakpointCreator(null, null);
       creator.canCreate(new _FunctionTypes._return_P2_E0<Boolean, SAbstractConcept, SNode>() {
         public Boolean invoke(SAbstractConcept concept, SNode debuggableNode) {
-          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.Statement$ok)) {
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.Statement$P6)) {
             return true;
           }
           return false;
@@ -78,10 +78,10 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
       BreakpointCreator creator = new BreakpointCreator(null, null);
       creator.canCreate(new _FunctionTypes._return_P2_E0<Boolean, SAbstractConcept, SNode>() {
         public Boolean invoke(SAbstractConcept concept, SNode debuggableNode) {
-          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.FieldDeclaration$Ps)) {
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.FieldDeclaration$ie)) {
             return true;
           }
-          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.StaticFieldDeclaration$R5)) {
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.StaticFieldDeclaration$jR)) {
             return true;
           }
           return false;
@@ -122,8 +122,8 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 }

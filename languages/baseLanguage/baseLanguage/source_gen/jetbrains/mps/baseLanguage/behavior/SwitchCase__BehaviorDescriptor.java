@@ -35,9 +35,9 @@ public final class SwitchCase__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void collectUncaughtThrowables_id3JrbGEZ6KoZ(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     if (!(ignoreMayBeThrowables)) {
-      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$ok), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.expression$bKRk));
+      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.expression$QQk6));
     }
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$qFOU), throwables, ((boolean) ignoreMayBeThrowables));
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$5LhG), throwables, ((boolean) ignoreMayBeThrowables));
   }
 
   /*package*/ SwitchCase__BehaviorDescriptor() {
@@ -88,11 +88,11 @@ public final class SwitchCase__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$bKRk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
-    /*package*/ static final SContainmentLink body$qFOU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
+    /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
+    /*package*/ static final SContainmentLink body$5LhG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
   }
 }

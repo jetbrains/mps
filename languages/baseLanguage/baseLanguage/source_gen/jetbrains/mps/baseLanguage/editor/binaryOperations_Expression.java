@@ -78,7 +78,7 @@ public class binaryOperations_Expression extends TransformationMenuBase {
   public class TMP_Group_bai4z9_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.BinaryOperation$vf));
+      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.BinaryOperation$W1));
     }
 
     @NotNull
@@ -117,7 +117,7 @@ public class binaryOperations_Expression extends TransformationMenuBase {
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-        return CONCEPTS.BinaryOperation$vf;
+        return CONCEPTS.BinaryOperation$W1;
       }
 
 
@@ -166,7 +166,7 @@ public class binaryOperations_Expression extends TransformationMenuBase {
   public class TMP_Group_bai4z9_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.BinaryOperation$vf));
+      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.BinaryOperation$W1));
     }
 
     @NotNull
@@ -205,7 +205,7 @@ public class binaryOperations_Expression extends TransformationMenuBase {
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-        return CONCEPTS.BinaryOperation$vf;
+        return CONCEPTS.BinaryOperation$W1;
       }
 
 
@@ -253,6 +253,6 @@ public class binaryOperations_Expression extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 }

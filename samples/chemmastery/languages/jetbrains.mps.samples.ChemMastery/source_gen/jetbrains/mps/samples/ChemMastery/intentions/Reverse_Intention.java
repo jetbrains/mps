@@ -53,11 +53,11 @@ public final class Reverse_Intention extends AbstractIntentionDescriptor impleme
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       List<SNode> t = new ArrayList<SNode>();
-      ListSequence.fromList(t).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.right$nF3U)));
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.right$nF3U)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.right$nF3U)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.left$nE_S)));
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.left$nE_S)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.left$nE_S)).addSequence(ListSequence.fromList(t));
+      ListSequence.fromList(t).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.right$jjsl)));
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.right$jjsl)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.right$jjsl)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.left$jiYj)));
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.left$jiYj)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.left$jiYj)).addSequence(ListSequence.fromList(t));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -66,7 +66,7 @@ public final class Reverse_Intention extends AbstractIntentionDescriptor impleme
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink right$nF3U = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
-    /*package*/ static final SContainmentLink left$nE_S = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
+    /*package*/ static final SContainmentLink right$jjsl = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
+    /*package*/ static final SContainmentLink left$jiYj = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
   }
 }

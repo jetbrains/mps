@@ -25,8 +25,8 @@
       <node id="474718489010717748" at="34,0,35,22" concept="5" />
       <node id="474718489010718207" at="39,128,40,70" concept="5" />
       <node id="474718489010717748" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="474718489010717748" at="45,0,46,0" concept="7" trace="TextElement$Ue" />
-      <node id="474718489010717748" at="46,0,47,0" concept="7" trace="Line$w3" />
+      <node id="474718489010717748" at="45,0,46,0" concept="7" trace="TextElement$WN" />
+      <node id="474718489010717748" at="46,0,47,0" concept="7" trace="Line$yC" />
       <node id="474718489010717748" at="20,0,23,0" concept="0" trace="TextElement_Constraints#()V" />
       <node id="474718489010717748" at="30,0,33,9" concept="2" />
       <node id="474718489010717748" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

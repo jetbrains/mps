@@ -23,14 +23,14 @@ public class checkAbstractClassDefaultCreators_NonTypesystemRule extends Abstrac
   public checkAbstractClassDefaultCreators_NonTypesystemRule() {
   }
   public void applyRule(final SNode defaultClassCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode classifier = SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$uIr0);
-    if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$e4_b)))) {
+    SNode classifier = SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$9NRM);
+    if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(defaultClassCreator, "can't instantiate an abstract class", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2560657505941258685", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DefaultClassCreator$sQ;
+    return CONCEPTS.DefaultClassCreator$TC;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,15 +40,15 @@ public class checkAbstractClassDefaultCreators_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SReferenceLink classifier$9NRM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept DefaultClassCreator$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept DefaultClassCreator$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

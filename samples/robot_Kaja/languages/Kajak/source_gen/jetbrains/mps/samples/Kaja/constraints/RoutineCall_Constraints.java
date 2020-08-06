@@ -31,12 +31,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class RoutineCall_Constraints extends BaseConstraintsDescriptor {
   public RoutineCall_Constraints() {
-    super(CONCEPTS.RoutineCall$GX);
+    super(CONCEPTS.RoutineCall$mS);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.definition$SqZ9, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.definition$J8D4, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,15 +51,15 @@ public class RoutineCall_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            final CompositeScope scope = new CompositeScope(SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$1X, true, false), LINKS.definitions$geG6), SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Library$IO, true, false), LINKS.definitions$Tnq0), ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$1X, true, false), LINKS.body$U29_), LINKS.commands$Gpbw)).where(new IWhereFilter<SNode>() {
+            final CompositeScope scope = new CompositeScope(SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), LINKS.definitions$6Wm1), SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Library$oJ, true, false), LINKS.definitions$K53V), ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), LINKS.body$KJNw), LINKS.commands$z6Pr)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.RoutineDefinition$2l);
+                return SNodeOperations.isInstanceOf(it, CONCEPTS.RoutineDefinition$Gg);
               }
             })));
 
-            ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$1X, true, false), CONCEPTS.Require$oh, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+            ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$FS, true, false), CONCEPTS.Require$2c, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {
-                scope.addScope(SimpleRoleScope.forNamedElements(SLinkOperations.getTarget(it, LINKS.library$Th3P), LINKS.definitions$Tnq0));
+                scope.addScope(SimpleRoleScope.forNamedElements(SLinkOperations.getTarget(it, LINKS.library$JYHK), LINKS.definitions$K53V));
               }
             });
             return scope;
@@ -74,19 +74,19 @@ public class RoutineCall_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_b5nlto_a0a0a0a0a1a0a0a0c = new SNodePointer("r:6c66d6ce-c8f4-4daf-92c4-a518b78006a8(jetbrains.mps.samples.Kaja.constraints)", "6836281137582849360");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RoutineCall$GX = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, "jetbrains.mps.samples.Kaja.structure.RoutineCall");
-    /*package*/ static final SConcept Script$1X = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
-    /*package*/ static final SConcept Library$IO = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
-    /*package*/ static final SConcept RoutineDefinition$2l = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition");
-    /*package*/ static final SConcept Require$oh = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, "jetbrains.mps.samples.Kaja.structure.Require");
+    /*package*/ static final SConcept RoutineCall$mS = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, "jetbrains.mps.samples.Kaja.structure.RoutineCall");
+    /*package*/ static final SConcept Script$FS = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
+    /*package*/ static final SConcept Library$oJ = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
+    /*package*/ static final SConcept RoutineDefinition$Gg = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition");
+    /*package*/ static final SConcept Require$2c = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, "jetbrains.mps.samples.Kaja.structure.Require");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink definition$SqZ9 = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, 0x2de971c785ede3ccL, "definition");
-    /*package*/ static final SContainmentLink definitions$geG6 = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, 0x2de971c785ed6f78L, "definitions");
-    /*package*/ static final SContainmentLink definitions$Tnq0 = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, 0x3cfcda239f19d317L, "definitions");
-    /*package*/ static final SContainmentLink body$U29_ = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, 0x2d523c5e4cc4574cL, "body");
-    /*package*/ static final SContainmentLink commands$Gpbw = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
-    /*package*/ static final SReferenceLink library$Th3P = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, 0x3cfcda239f1a104aL, "library");
+    /*package*/ static final SReferenceLink definition$J8D4 = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, 0x2de971c785ede3ccL, "definition");
+    /*package*/ static final SContainmentLink definitions$6Wm1 = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, 0x2de971c785ed6f78L, "definitions");
+    /*package*/ static final SContainmentLink definitions$K53V = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, 0x3cfcda239f19d317L, "definitions");
+    /*package*/ static final SContainmentLink body$KJNw = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, 0x2d523c5e4cc4574cL, "body");
+    /*package*/ static final SContainmentLink commands$z6Pr = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
+    /*package*/ static final SReferenceLink library$JYHK = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f1a1049L, 0x3cfcda239f1a104aL, "library");
   }
 }

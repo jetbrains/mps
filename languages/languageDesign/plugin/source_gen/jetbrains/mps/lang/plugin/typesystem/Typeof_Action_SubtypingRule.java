@@ -21,7 +21,7 @@ public class Typeof_Action_SubtypingRule extends SubtypingRule_Runtime implement
     return _quotation_createNode_mjowdo_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ActionType$$7;
+    return CONCEPTS.ActionType$xa;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class Typeof_Action_SubtypingRule extends SubtypingRule_Runtime implement
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionType$$7 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118c26632a3L, "jetbrains.mps.lang.plugin.structure.ActionType");
+    /*package*/ static final SConcept ActionType$xa = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118c26632a3L, "jetbrains.mps.lang.plugin.structure.ActionType");
   }
 }

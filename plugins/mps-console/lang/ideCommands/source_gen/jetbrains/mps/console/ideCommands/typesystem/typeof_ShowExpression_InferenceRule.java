@@ -32,12 +32,12 @@ public class typeof_ShowExpression_InferenceRule extends AbstractInferenceRule_R
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7600370246417176148", true), (SNode) _quotation_createNode_jy8svg_a1a0c0a0b(), _info_12389875345);
     }
     {
-      final SNode argType = typeCheckingContext.typeOf(SLinkOperations.getTarget(showExpression, LINKS.object$3J4i), "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750029968337", true);
+      final SNode argType = typeCheckingContext.typeOf(SLinkOperations.getTarget(showExpression, LINKS.object$A1S4), "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "7989807750029968337", true);
       typeCheckingContext.whenConcrete(argType, new Runnable() {
         public void run() {
           if (!(ShowingKind.getKind(typeCheckingContext.getExpandedNode(argType)) != null)) {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showExpression, LINKS.object$3J4i), "#show is applicable only to sequences of " + Sequence.fromIterable(Sequence.fromArray(ShowingKind.values())).select(new ISelector<ShowingKind, String>() {
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(showExpression, LINKS.object$A1S4), "#show is applicable only to sequences of " + Sequence.fromIterable(Sequence.fromArray(ShowingKind.values())).select(new ISelector<ShowingKind, String>() {
               public String select(ShowingKind it) {
                 return it.getKindLabel();
               }
@@ -48,7 +48,7 @@ public class typeof_ShowExpression_InferenceRule extends AbstractInferenceRule_R
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ShowExpression$Es;
+    return CONCEPTS.ShowExpression$ue;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -64,10 +64,10 @@ public class typeof_ShowExpression_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink object$3J4i = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x75bb0160f191d79fL, 0x6979f0787b81e875L, "object");
+    /*package*/ static final SContainmentLink object$A1S4 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x75bb0160f191d79fL, 0x6979f0787b81e875L, "object");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ShowExpression$Es = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x75bb0160f191d79fL, "jetbrains.mps.console.ideCommands.structure.ShowExpression");
+    /*package*/ static final SConcept ShowExpression$ue = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x75bb0160f191d79fL, "jetbrains.mps.console.ideCommands.structure.ShowExpression");
   }
 }

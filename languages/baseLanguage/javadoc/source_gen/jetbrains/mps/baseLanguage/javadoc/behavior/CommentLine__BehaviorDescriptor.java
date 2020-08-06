@@ -39,19 +39,19 @@ public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static NodeCaretPair tryMergeToRight_idooaTF_3fF3(@NotNull SNode __thisNode__, int index) {
-    if (index >= 0 && index + 1 < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$w5LD)).count() && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$w5LD)).getElement(index), CONCEPTS.TextCommentLinePart$RY) && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$w5LD)).getElement(index + 1), CONCEPTS.TextCommentLinePart$RY)) {
-      SNode leftPart = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$w5LD)).getElement(index), CONCEPTS.TextCommentLinePart$RY);
-      int offset = SPropertyOperations.getString(leftPart, PROPS.text$OrZ0).length();
-      SNode rightPart = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$w5LD)).getElement(index + 1), CONCEPTS.TextCommentLinePart$RY);
-      String text = ((isEmptyString(SPropertyOperations.getString(leftPart, PROPS.text$OrZ0)) ? "" : SPropertyOperations.getString(leftPart, PROPS.text$OrZ0))) + ((isEmptyString(SPropertyOperations.getString(rightPart, PROPS.text$OrZ0)) ? "" : SPropertyOperations.getString(rightPart, PROPS.text$OrZ0)));
-      SPropertyOperations.assign(leftPart, PROPS.text$OrZ0, text);
+    if (index >= 0 && index + 1 < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).count() && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index), CONCEPTS.TextCommentLinePart$Eb) && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index + 1), CONCEPTS.TextCommentLinePart$Eb)) {
+      SNode leftPart = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index), CONCEPTS.TextCommentLinePart$Eb);
+      int offset = SPropertyOperations.getString(leftPart, PROPS.text$aOLd).length();
+      SNode rightPart = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index + 1), CONCEPTS.TextCommentLinePart$Eb);
+      String text = ((isEmptyString(SPropertyOperations.getString(leftPart, PROPS.text$aOLd)) ? "" : SPropertyOperations.getString(leftPart, PROPS.text$aOLd))) + ((isEmptyString(SPropertyOperations.getString(rightPart, PROPS.text$aOLd)) ? "" : SPropertyOperations.getString(rightPart, PROPS.text$aOLd)));
+      SPropertyOperations.assign(leftPart, PROPS.text$aOLd, text);
       SNodeOperations.deleteNode(rightPart);
       return new NodeCaretPair(leftPart, offset);
     }
     return null;
   }
   /*package*/ static String buildCommentText_id7Qt73fl2z8k(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$w5LD)).foldLeft("", new ILeftCombinator<SNode, String>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).foldLeft("", new ILeftCombinator<SNode, String>() {
       public String combine(String s, SNode it) {
         return s + CommentLinePart__BehaviorDescriptor.buildCommentText_id7Qt73fl2F3N.invoke(it);
       }
@@ -110,14 +110,14 @@ public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextCommentLinePart$RY = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$aOLd = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

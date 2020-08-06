@@ -45,23 +45,23 @@ public class DebugMappingsBuilder {
   }
 
   public SNode build(@NotNull SModel checkpointModel, GeneratorMappings mappings) {
-    SNode rv = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_Mappings$om);
+    SNode rv = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_Mappings$42);
     ArrayList<String> availableLabels = new ArrayList<String>(mappings.getAvailableLabels());
     Collections.sort(availableLabels);
     for (String label : availableLabels) {
-      SNode labelEntry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_LabelEntry$Vm);
-      SPropertyOperations.assign(labelEntry, PROPS.label$60C0, label);
-      ListSequence.fromList(SLinkOperations.getChildren(rv, LINKS.labels$S280)).addElement(labelEntry);
+      SNode labelEntry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_LabelEntry$B2);
+      SPropertyOperations.assign(labelEntry, PROPS.label$uXjG, label);
+      ListSequence.fromList(SLinkOperations.getChildren(rv, LINKS.labels$gYNG)).addElement(labelEntry);
       List<SNode> keys = mappings.getSortedMappingKeys(label);
       for (SNode keyInputNode : keys) {
-        SNode entry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeMapEntry$6Y);
-        ListSequence.fromList(SLinkOperations.getChildren(labelEntry, LINKS.entries$6162)).addElement(entry);
+        SNode entry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeMapEntry$ME);
+        ListSequence.fromList(SLinkOperations.getChildren(labelEntry, LINKS.entries$uXLI)).addElement(entry);
         assert keyInputNode != null;
-        SLinkOperations.setNewChild(entry, LINKS.inputNode$qf_h, null);
-        SNode inputNodeIdentity = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.TrivialNodeId$s2);
-        SNode inputNodeConceptIdentity = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.ConceptId$5a);
-        BHReflection.invoke0(inputNodeConceptIdentity, CONCEPTS.ConceptId$5a, SMethodTrimmedId.create("setConcept", CONCEPTS.ConceptId$5a, "5ZE7FBYYR6j"), keyInputNode.getConcept());
-        SLinkOperations.setTarget(inputNodeIdentity, LINKS.cncpt$9yrT, inputNodeConceptIdentity);
+        SLinkOperations.setNewChild(entry, LINKS.inputNode$NcgX, null);
+        SNode inputNodeIdentity = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.TrivialNodeId$7I);
+        SNode inputNodeConceptIdentity = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.ConceptId$6E);
+        BHReflection.invoke0(inputNodeConceptIdentity, CONCEPTS.ConceptId$6E, SMethodTrimmedId.create("setConcept", CONCEPTS.ConceptId$6E, "5ZE7FBYYR6j"), keyInputNode.getConcept());
+        SLinkOperations.setTarget(inputNodeIdentity, LINKS.cncpt$yv7_, inputNodeConceptIdentity);
         // keyInputNode comes from one of transient models, and we need to replace it with a 'stable' version, exposed in a CP (or initial) model 
         // XXX what if keyInputNode IS from CP model, wouldn't that give us wrong origin (the one from previous trace)? 
         //     Indeed, this makes sense only as long as we use user objects to pass origin value (TT object is essentially stateless), and copy these 
@@ -69,20 +69,20 @@ public class DebugMappingsBuilder {
         //     (though still valid - in case node id of a CP node matches nodeid of some irrelevant transient one). Would be great if we can tell if keyInputNode 
         //     comes from a transient, external or CP model. FIXME I still need to deal with 'foreign' nodes as ML keys, and then I could decide better what to do here. 
         SNodeId inputNodeId = (myOriginTrace.hasOrigin(keyInputNode) ? myOriginTrace.getOrigin(keyInputNode) : keyInputNode.getNodeId());
-        SPropertyOperations.assign(inputNodeIdentity, PROPS.nodeId$hjSp, inputNodeId.toString());
-        SLinkOperations.setTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$qf_h), LINKS.node$fP7V, inputNodeIdentity);
-        SPropertyOperations.assign(SLinkOperations.getTarget(entry, LINKS.inputNode$qf_h), PROPS.presentation$iq1u, keyInputNode.getPresentation());
+        SPropertyOperations.assign(inputNodeIdentity, PROPS.nodeId$Eg$5, inputNodeId.toString());
+        SLinkOperations.setTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.node$CLNB, inputNodeIdentity);
+        SPropertyOperations.assign(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), PROPS.presentation$FmHa, keyInputNode.getPresentation());
         SModel inputNodeModel = keyInputNode.getModel();
         // in fact, inputNodeModel when keyInputNode is from the same model is unlikely to be checkpoint, we need its counterpart 
         // from myOriginTrace's checkpoint model, but I have no idea how to get one here. 
         if (inputNodeModel != null && (isCheckpointModel(inputNodeModel) || !(inputNodeModel instanceof TransientSModel))) {
           // no reason to save reference to a model that would be disposed and eventually break the reference 
-          SPropertyOperations.assign(SLinkOperations.getTarget(entry, LINKS.inputNode$qf_h), PROPS.modelName$i8He, inputNodeModel.getName().getValue());
+          SPropertyOperations.assign(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), PROPS.modelName$F5oU, inputNodeModel.getName().getValue());
           // The problem with direct reference is that I need to respect change in model reference for persisted CP model if it changes 
-          SLinkOperations.setTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$qf_h), LINKS.nodePtr$ipkr, keyInputNode);
+          SLinkOperations.setTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.nodePtr$Fm07, keyInputNode);
         }
         SNodeReference origin = TracingUtil.getInput(keyInputNode);
-        SLinkOperations.setTarget(entry, LINKS.inputOrigin$mLMX, (origin == null ? null : origin.resolve(myRepo)));
+        SLinkOperations.setTarget(entry, LINKS.inputOrigin$JIuD, (origin == null ? null : origin.resolve(myRepo)));
         Collection<SNode> c;
         Object valueOutputNode = mappings.getMappings(label).get(keyInputNode);
         if (valueOutputNode instanceof SNode) {
@@ -94,23 +94,23 @@ public class DebugMappingsBuilder {
           c = Collections.emptyList();
         }
         for (SNode n : CollectionSequence.fromCollection(c)) {
-          SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$mu);
-          SLinkOperations.setTarget(r, LINKS.node$mFf0, substituteOutputNode(checkpointModel, n));
-          ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$mFty)).addElement(r);
+          SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
+          SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, n));
+          ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).addElement(r);
         }
       }
     }
     for (String label : mappings.getConditionalRootLabels()) {
-      SNode labelEntry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_LabelEntry$Vm);
-      SPropertyOperations.assign(labelEntry, PROPS.label$60C0, label);
-      ListSequence.fromList(SLinkOperations.getChildren(rv, LINKS.labels$S280)).addElement(labelEntry);
+      SNode labelEntry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_LabelEntry$B2);
+      SPropertyOperations.assign(labelEntry, PROPS.label$uXjG, label);
+      ListSequence.fromList(SLinkOperations.getChildren(rv, LINKS.labels$gYNG)).addElement(labelEntry);
       for (SNode cr : mappings.getConditionalRoots(label)) {
-        SNode entry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeMapEntry$6Y);
-        SPropertyOperations.assign(entry, PROPS.isNewRoot$$9i, true);
-        ListSequence.fromList(SLinkOperations.getChildren(labelEntry, LINKS.entries$6162)).addElement(entry);
-        SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$mu);
-        SLinkOperations.setTarget(r, LINKS.node$mFf0, substituteOutputNode(checkpointModel, cr));
-        ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$mFty)).addElement(r);
+        SNode entry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeMapEntry$ME);
+        SPropertyOperations.assign(entry, PROPS.isNewRoot$pwOY, true);
+        ListSequence.fromList(SLinkOperations.getChildren(labelEntry, LINKS.entries$uXLI)).addElement(entry);
+        SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
+        SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, cr));
+        ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).addElement(r);
       }
     }
     return rv;
@@ -143,31 +143,31 @@ public class DebugMappingsBuilder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GeneratorDebug_Mappings$om = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings");
-    /*package*/ static final SConcept GeneratorDebug_LabelEntry$Vm = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry");
-    /*package*/ static final SConcept GeneratorDebug_NodeMapEntry$6Y = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry");
-    /*package*/ static final SConcept TrivialNodeId$s2 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, "jetbrains.mps.lang.generator.structure.TrivialNodeId");
-    /*package*/ static final SConcept ConceptId$5a = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
-    /*package*/ static final SConcept GeneratorDebug_NodeRef$mu = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef");
+    /*package*/ static final SConcept GeneratorDebug_Mappings$42 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings");
+    /*package*/ static final SConcept GeneratorDebug_LabelEntry$B2 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry");
+    /*package*/ static final SConcept GeneratorDebug_NodeMapEntry$ME = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry");
+    /*package*/ static final SConcept TrivialNodeId$7I = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, "jetbrains.mps.lang.generator.structure.TrivialNodeId");
+    /*package*/ static final SConcept ConceptId$6E = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
+    /*package*/ static final SConcept GeneratorDebug_NodeRef$2a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$60C0 = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810e9L, "label");
-    /*package*/ static final SProperty nodeId$hjSp = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x7d58bd9fd9b64468L, "nodeId");
-    /*package*/ static final SProperty presentation$iq1u = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f702L, "presentation");
-    /*package*/ static final SProperty modelName$i8He = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a9989481dbL, "modelName");
-    /*package*/ static final SProperty isNewRoot$$9i = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x511a0d44c7f45537L, "isNewRoot");
+    /*package*/ static final SProperty label$uXjG = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810e9L, "label");
+    /*package*/ static final SProperty nodeId$Eg$5 = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x7d58bd9fd9b64468L, "nodeId");
+    /*package*/ static final SProperty presentation$FmHa = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f702L, "presentation");
+    /*package*/ static final SProperty modelName$F5oU = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a9989481dbL, "modelName");
+    /*package*/ static final SProperty isNewRoot$pwOY = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x511a0d44c7f45537L, "isNewRoot");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink labels$S280 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, 0x35a02f6bfc9806c5L, "labels");
-    /*package*/ static final SContainmentLink entries$6162 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810ebL, "entries");
-    /*package*/ static final SContainmentLink inputNode$qf_h = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x509c00a99889f77eL, "inputNode");
-    /*package*/ static final SContainmentLink cncpt$9yrT = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x76c27c67a4605f07L, "cncpt");
-    /*package*/ static final SContainmentLink node$fP7V = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f0aeL, "node");
-    /*package*/ static final SReferenceLink nodePtr$ipkr = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f6ffL, "nodePtr");
-    /*package*/ static final SReferenceLink inputOrigin$mLMX = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806dbL, "inputOrigin");
-    /*package*/ static final SReferenceLink node$mFf0 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, 0x35a02f6bfc9806d3L, "node");
-    /*package*/ static final SContainmentLink outputNode$mFty = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806d5L, "outputNode");
+    /*package*/ static final SContainmentLink labels$gYNG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, 0x35a02f6bfc9806c5L, "labels");
+    /*package*/ static final SContainmentLink entries$uXLI = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810ebL, "entries");
+    /*package*/ static final SContainmentLink inputNode$NcgX = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x509c00a99889f77eL, "inputNode");
+    /*package*/ static final SContainmentLink cncpt$yv7_ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x76c27c67a4605f07L, "cncpt");
+    /*package*/ static final SContainmentLink node$CLNB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f0aeL, "node");
+    /*package*/ static final SReferenceLink nodePtr$Fm07 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f6ffL, "nodePtr");
+    /*package*/ static final SReferenceLink inputOrigin$JIuD = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806dbL, "inputOrigin");
+    /*package*/ static final SReferenceLink node$JBUG = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, 0x35a02f6bfc9806d3L, "node");
+    /*package*/ static final SContainmentLink outputNode$JC9e = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806d5L, "outputNode");
   }
 }

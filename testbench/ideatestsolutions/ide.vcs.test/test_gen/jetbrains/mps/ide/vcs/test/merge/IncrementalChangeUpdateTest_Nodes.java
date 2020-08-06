@@ -68,7 +68,7 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
   public void testPropertyChange() {
     testChanges(new Runnable() {
       public void run() {
-        SPropertyOperations.assign(getTestRoot(), PROPS.name$lA7v, "RenamedRoot");
+        SPropertyOperations.assign(getTestRoot(), PROPS.name$MnvL, "RenamedRoot");
       }
     });
   }
@@ -77,7 +77,7 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
   public void changeReference() {
     testChanges(new Runnable() {
       public void run() {
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(getTestMethod1(), LINKS.returnType$qrVw), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
+        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(getTestMethod1(), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
       }
     });
   }
@@ -86,7 +86,7 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
   public void addChild() {
     testChanges(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
-        return SLinkOperations.setTarget(getTestRoot(), LINKS.superclass$7jGM, _quotation_createNode_2k50sb_a0a0a0a0o());
+        return SLinkOperations.setTarget(getTestRoot(), LINKS.superclass$Mp9$, _quotation_createNode_2k50sb_a0a0a0a0o());
       }
     }));
   }
@@ -96,9 +96,9 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
     testChanges(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
         SNode testRoot = getTestRoot();
-        ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$KoQU)).addElement(_quotation_createNode_2k50sb_a0a1a0a0a61());
-        ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$KoQU)).addElement(_quotation_createNode_2k50sb_a0a2a0a0a61());
-        return ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$KoQU)).addElement(_quotation_createNode_2k50sb_a0a3a0a0a61());
+        ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a1a0a0a61());
+        ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a2a0a0a61());
+        return ListSequence.fromList(SLinkOperations.getChildren(testRoot, LINKS.implementedInterface$rujG)).addElement(_quotation_createNode_2k50sb_a0a3a0a0a61());
       }
     }));
   }
@@ -107,7 +107,7 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
   public void addNodeAttribute() {
     testChanges(new Runnable() {
       public void run() {
-        AttributeOperations.createAndSetAttrbiute(getTestRoot(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$Kc), CONCEPTS.ReviewMigration$Kc);
+        AttributeOperations.createAndSetAttrbiute(getTestRoot(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), CONCEPTS.ReviewMigration$8u);
       }
     });
   }
@@ -115,7 +115,7 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
   public void addChildAttribute() {
     testChanges(new Runnable() {
       public void run() {
-        ChangesTestUtil.addCommentedMethod(getTestRoot(), ListSequence.fromList(SLinkOperations.getChildren(getTestRoot(), LINKS.member$6v_r)).first());
+        ChangesTestUtil.addCommentedMethod(getTestRoot(), ListSequence.fromList(SLinkOperations.getChildren(getTestRoot(), LINKS.member$L_2d)).first());
       }
     });
   }
@@ -132,7 +132,7 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
   public void removeChildAttribute() {
     testChanges(new Runnable() {
       public void run() {
-        SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(getTestCommentedMethod()), CONCEPTS.BaseCommentAttribute$Zd));
+        SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(getTestCommentedMethod()), CONCEPTS.BaseCommentAttribute$nv));
       }
     });
   }
@@ -158,15 +158,15 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
     testChanges(new Runnable() {
       public void run() {
         SNode method = getTestMethod1();
-        assert ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$qspy), LINKS.statement$pYcS)).count() > 2;
-        SNode firstStmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$qspy), LINKS.statement$pYcS)).first();
+        assert ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).count() > 2;
+        SNode firstStmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).first();
         SNodeOperations.insertNextSiblingChild(SNodeOperations.getNextSibling(firstStmt), firstStmt);
       }
     });
   }
   private static SNode createClassConcept_2k50sb_a0a0a0a0a8() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
-    n0.setProperty(PROPS.name$lA7v, "NewRoot");
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$bK);
+    n0.setProperty(PROPS.name$MnvL, "NewRoot");
     return n0.getResult();
   }
   private static SNode _quotation_createNode_2k50sb_a0a0a0a0o() {
@@ -199,23 +199,23 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept ReviewMigration$Kc = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration");
-    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ReviewMigration$8u = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

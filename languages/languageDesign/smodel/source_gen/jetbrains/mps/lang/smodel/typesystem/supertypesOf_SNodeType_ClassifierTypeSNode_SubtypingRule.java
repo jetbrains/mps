@@ -21,7 +21,7 @@ public class supertypesOf_SNodeType_ClassifierTypeSNode_SubtypingRule extends Su
     return _quotation_createNode_rz0oei_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SNodeType$gn;
+    return CONCEPTS.SNodeType$hR;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class supertypesOf_SNodeType_ClassifierTypeSNode_SubtypingRule extends Su
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SNodeType$gn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
   }
 }

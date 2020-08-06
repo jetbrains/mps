@@ -74,7 +74,7 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
   public class TMP_Group_oz3m5g_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$R5);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$jR);
     }
 
     @NotNull
@@ -90,7 +90,7 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_oz3m5g_a0a(), CONCEPTS.StaticFieldDeclaration$R5), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_oz3m5g_b0a(), CONCEPTS.StaticFieldDeclaration$R5));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_oz3m5g_a0a(), CONCEPTS.StaticFieldDeclaration$jR), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_oz3m5g_b0a(), CONCEPTS.StaticFieldDeclaration$jR));
     }
     private class TMP_Action_oz3m5g_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -130,16 +130,16 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$R5);
-          SPropertyOperations.set(field, PROPS.isTransient$8jX_, true);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$R5), "transientModifier", -1);
+          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$jR);
+          SPropertyOperations.set(field, PROPS.isTransient$Npqn, true);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$jR), "transientModifier", -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.StaticFieldDeclaration$R5;
+          return CONCEPTS.StaticFieldDeclaration$jR;
         }
 
 
@@ -150,7 +150,7 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.StaticFieldDeclaration$R5;
+          SAbstractConcept outputConcept = CONCEPTS.StaticFieldDeclaration$jR;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -197,16 +197,16 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$R5);
-          SPropertyOperations.set(field, PROPS.isVolatile$In3y, true);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$R5), "volatileModifier", -1);
+          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$jR);
+          SPropertyOperations.set(field, PROPS.isVolatile$pswk, true);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.StaticFieldDeclaration$jR), "volatileModifier", -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.StaticFieldDeclaration$R5;
+          return CONCEPTS.StaticFieldDeclaration$jR;
         }
 
 
@@ -217,7 +217,7 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.StaticFieldDeclaration$R5;
+          SAbstractConcept outputConcept = CONCEPTS.StaticFieldDeclaration$jR;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -229,11 +229,11 @@ public class AddStaticFieldModifiersOnTypes extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isTransient$8jX_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491ae1aL, "isTransient");
-    /*package*/ static final SProperty isVolatile$In3y = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491b12fL, "isVolatile");
+    /*package*/ static final SProperty isTransient$Npqn = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491ae1aL, "isTransient");
+    /*package*/ static final SProperty isVolatile$pswk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491b12fL, "isVolatile");
   }
 }

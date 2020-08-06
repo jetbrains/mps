@@ -60,7 +60,7 @@ public class XmlDeclaration_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.XmlDeclaration$A$) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.XmlDeclaration$13) {
 
         @NotNull
         @Override
@@ -73,11 +73,11 @@ public class XmlDeclaration_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.XmlDeclaration$A$));
+      }, CONCEPTS.XmlDeclaration$13));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlDeclaration$A$ = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x4890619bb401ef6eL, "jetbrains.mps.core.xml.structure.XmlDeclaration");
+    /*package*/ static final SConcept XmlDeclaration$13 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x4890619bb401ef6eL, "jetbrains.mps.core.xml.structure.XmlDeclaration");
   }
 }

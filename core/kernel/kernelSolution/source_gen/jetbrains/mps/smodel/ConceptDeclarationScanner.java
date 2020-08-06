@@ -50,20 +50,20 @@ public class ConceptDeclarationScanner {
 
   public ConceptDeclarationScanner scan(SModel m) {
     List<SNode> roots = SModelOperations.roots(m, null);
-    for (SNode cd : SNodeOperations.ofConcept(roots, CONCEPTS.ConceptDeclaration$qU)) {
-      SNode ex = SLinkOperations.getTarget(cd, LINKS.extends$9AAt);
+    for (SNode cd : SNodeOperations.ofConcept(roots, CONCEPTS.ConceptDeclaration$gH)) {
+      SNode ex = SLinkOperations.getTarget(cd, LINKS.extends$_Isg);
       // ex could be null if no explicit BaseConcept in super 
       if (ex != null && SNodeOperations.getModel(ex) != m) {
         myExternalConcepts.add(ex);
       }
-      for (SNode icd : SLinkOperations.collect(SLinkOperations.getChildren(cd, LINKS.implements$2tZf), LINKS.intfc$7Eer)) {
+      for (SNode icd : SLinkOperations.collect(SLinkOperations.getChildren(cd, LINKS.implements$u_P2), LINKS.intfc$zM4e)) {
         if (SNodeOperations.getModel(icd) != m) {
           myExternalIfaces.add(icd);
         }
       }
     }
-    for (SNode icd : SNodeOperations.ofConcept(roots, CONCEPTS.InterfaceConceptDeclaration$MT)) {
-      for (SNode iface : SLinkOperations.collect(SLinkOperations.getChildren(icd, LINKS.extends$V2F7), LINKS.intfc$7Eer)) {
+    for (SNode icd : SNodeOperations.ofConcept(roots, CONCEPTS.InterfaceConceptDeclaration$CG)) {
+      for (SNode iface : SLinkOperations.collect(SLinkOperations.getChildren(icd, LINKS.extends$nawU), LINKS.intfc$zM4e)) {
         if (SNodeOperations.getModel(iface) != m) {
           myExternalIfaces.add(iface);
         }
@@ -111,14 +111,14 @@ public class ConceptDeclarationScanner {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink implements$u_P2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink extends$nawU = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 }

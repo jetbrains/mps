@@ -29,16 +29,16 @@ public final class MigrateFloatConstants_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.FloatingPointConstant$AA;
+        return CONCEPTS.FloatingPointConstant$3o;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SPropertyOperations.getString(node, PROPS.value$ZImm) != null && (SPropertyOperations.getString(node, PROPS.value$ZImm).endsWith("f") || SPropertyOperations.getString(node, PROPS.value$ZImm).endsWith("F"));
+        return SPropertyOperations.getString(node, PROPS.value$ENN8) != null && (SPropertyOperations.getString(node, PROPS.value$ENN8).endsWith("f") || SPropertyOperations.getString(node, PROPS.value$ENN8).endsWith("F"));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode f = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.FloatingPointFloatConstant$pv);
-        SPropertyOperations.assign(f, PROPS.value$DcYx, SPropertyOperations.getString(node, PROPS.value$ZImm));
+        SNode f = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.FloatingPointFloatConstant$Qh);
+        SPropertyOperations.assign(f, PROPS.value$kirj, SPropertyOperations.getString(node, PROPS.value$ENN8));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -54,12 +54,12 @@ public final class MigrateFloatConstants_MigrationScript extends BaseMigrationSc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FloatingPointConstant$AA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant");
-    /*package*/ static final SConcept FloatingPointFloatConstant$pv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, "jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant");
+    /*package*/ static final SConcept FloatingPointConstant$3o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant");
+    /*package*/ static final SConcept FloatingPointFloatConstant$Qh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, "jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ZImm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value");
-    /*package*/ static final SProperty value$DcYx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
+    /*package*/ static final SProperty value$ENN8 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value");
+    /*package*/ static final SProperty value$kirj = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
   }
 }

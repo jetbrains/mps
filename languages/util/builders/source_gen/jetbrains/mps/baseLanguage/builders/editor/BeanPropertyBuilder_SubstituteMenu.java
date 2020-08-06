@@ -69,12 +69,12 @@ public class BeanPropertyBuilder_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.builders.editor.BeanPropertyBuilder_SmartReference");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.BeanPropertyBuilder$T;
+      return CONCEPTS.BeanPropertyBuilder$$;
     }
   }
   public class SMP_Subconcepts_6b09j5_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BeanPropertyBuilder$T);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BeanPropertyBuilder$$);
     }
     @NotNull
     @Override
@@ -95,6 +95,6 @@ public class BeanPropertyBuilder_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BeanPropertyBuilder$T = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, "jetbrains.mps.baseLanguage.builders.structure.BeanPropertyBuilder");
+    /*package*/ static final SConcept BeanPropertyBuilder$$ = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x252efd34f8a58ec7L, "jetbrains.mps.baseLanguage.builders.structure.BeanPropertyBuilder");
   }
 }

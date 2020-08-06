@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class LiteralReplacement_Constraints extends BaseConstraintsDescriptor {
   public LiteralReplacement_Constraints() {
-    super(CONCEPTS.LiteralReplacement$zq);
+    super(CONCEPTS.LiteralReplacement$ce);
   }
 
   public static class Text_Property extends BasePropertyConstraintsDescriptor {
     public Text_Property(ConstraintsDescriptor container) {
-      super(PROPS.text$F715, container);
+      super(PROPS.text$u$DT, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,15 +45,15 @@ public class LiteralReplacement_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.text$F715, new Text_Property(this));
+    properties.put(PROPS.text$u$DT, new Text_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LiteralReplacement$zq = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, "jetbrains.mps.baseLanguage.regexp.structure.LiteralReplacement");
+    /*package*/ static final SConcept LiteralReplacement$ce = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, "jetbrains.mps.baseLanguage.regexp.structure.LiteralReplacement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$F715 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, 0x34ae970c192b203bL, "text");
+    /*package*/ static final SProperty text$u$DT = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, 0x34ae970c192b203bL, "text");
   }
 }

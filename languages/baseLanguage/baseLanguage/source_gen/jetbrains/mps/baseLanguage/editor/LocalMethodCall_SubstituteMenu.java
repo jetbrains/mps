@@ -28,7 +28,7 @@ public class LocalMethodCall_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_l7m7k7_a(), CONCEPTS.LocalMethodCall$77));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_l7m7k7_a(), CONCEPTS.LocalMethodCall$zT));
     result.add(new SMP_Subconcepts_l7m7k7_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class LocalMethodCall_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_l7m7k7_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.LocalMethodCall$77, LINKS.baseMethodDeclaration$ItxI);
+      super((SAbstractConcept) CONCEPTS.LocalMethodCall$zT, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class LocalMethodCall_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_l7m7k7_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LocalMethodCall$77);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LocalMethodCall$zT);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class LocalMethodCall_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalMethodCall$77 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
+    /*package*/ static final SConcept LocalMethodCall$zT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

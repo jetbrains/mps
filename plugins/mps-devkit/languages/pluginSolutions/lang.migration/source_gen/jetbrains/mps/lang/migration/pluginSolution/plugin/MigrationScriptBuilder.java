@@ -26,7 +26,7 @@ public class MigrationScriptBuilder {
 
   private MigrationScriptBuilder(Language language) {
     SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(language);
-    myScript = SNodeFactoryOperations.createNewRootNode(migrationModel, CONCEPTS.MigrationScript$u3, null);
+    myScript = SNodeFactoryOperations.createNewRootNode(migrationModel, CONCEPTS.MigrationScript$KN, null);
   }
 
   public static MigrationScriptBuilder createMigrationScript(Language language) {
@@ -34,7 +34,7 @@ public class MigrationScriptBuilder {
   }
 
   public MigrationScriptBuilder setName(String name) {
-    SPropertyOperations.assign(myScript, PROPS.name$lA7v, name);
+    SPropertyOperations.assign(myScript, PROPS.name$MnvL, name);
     return this;
   }
 
@@ -48,7 +48,7 @@ public class MigrationScriptBuilder {
   }
 
   public MigrationScriptBuilder appendExecuteStatements(Iterable<SNode> statements) {
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getExecuteMethod(), LINKS.body$qspy), LINKS.statement$pYcS)).addSequence(Sequence.fromIterable(statements));
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getExecuteMethod(), LINKS.body$5xQk), LINKS.statement$53DE)).addSequence(Sequence.fromIterable(statements));
     return this;
   }
 
@@ -62,7 +62,7 @@ public class MigrationScriptBuilder {
   }
 
   public SNode getExecuteMethodModuleParameter() {
-    return ListSequence.fromList(SLinkOperations.getChildren(getExecuteMethod(), LINKS.parameter$qsax)).first();
+    return ListSequence.fromList(SLinkOperations.getChildren(getExecuteMethod(), LINKS.parameter$5xBj)).first();
   }
 
   public SNode getScript() {
@@ -70,16 +70,16 @@ public class MigrationScriptBuilder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MigrationScript$u3 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript");
+    /*package*/ static final SConcept MigrationScript$KN = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

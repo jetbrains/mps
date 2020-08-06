@@ -54,7 +54,7 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_25qe7z_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.JavaModifier$nA).stream().filter(new Predicate<SAbstractConcept>() {
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.JavaModifier$Oo).stream().filter(new Predicate<SAbstractConcept>() {
         public boolean test(SAbstractConcept concept) {
           return filterConcept(_context, concept);
         }
@@ -65,10 +65,10 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
       // in order for the descendant modifiers to work properly (if we are using the subconcepts construction) 
       // this is totally about the case of wrapping this substitute menu into a transformation menu -- 
       // because of that I cannot put it simply into the constraints aspect 
-      if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IHasModifiers$LF))) {
+      if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IHasModifiers$et))) {
         return true;
       }
-      List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.IHasModifiers$LF), LINKS.modifiers$m0);
+      List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.IHasModifiers$et), LINKS.modifiers$F5MM);
       return ListSequence.fromList(modifiers).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(Objects.equals(SNodeOperations.getConcept(it), concept));
@@ -94,11 +94,11 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept JavaModifier$nA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1027dd744a287198L, "jetbrains.mps.baseLanguage.structure.JavaModifier");
-    /*package*/ static final SInterfaceConcept IHasModifiers$LF = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers");
+    /*package*/ static final SConcept JavaModifier$Oo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1027dd744a287198L, "jetbrains.mps.baseLanguage.structure.JavaModifier");
+    /*package*/ static final SInterfaceConcept IHasModifiers$et = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 }

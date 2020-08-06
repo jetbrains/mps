@@ -40,14 +40,14 @@ public final class NodeUnreachable__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node, @Nullable ComponentHost host) {
-    NodeDataFlowCheckerUtil.checkDataFlow(SNodeOperations.getNodeAncestor(node, CONCEPTS.StatementList$TN, false, false));
+    NodeDataFlowCheckerUtil.checkDataFlow(SNodeOperations.getNodeAncestor(node, CONCEPTS.StatementList$m_, false, false));
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeUnreachableCheck";
   }
   /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository ruleRepository, @Nullable ComponentHost host) {
     SNode ruleNode = NodeCheckerUtil.getRuleNodeFromReporter(reportItem, ruleRepository);
-    return ruleNode == SNodeOperations.getParent(SNodeOperations.as(SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831871708494"), ruleRepository), CONCEPTS.ReportErrorStatementAnnotation$ka));
+    return ruleNode == SNodeOperations.getParent(SNodeOperations.as(SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831871708494"), ruleRepository), CONCEPTS.ReportErrorStatementAnnotation$A0));
   }
 
   /*package*/ NodeUnreachable__BehaviorDescriptor() {
@@ -102,7 +102,7 @@ public final class NodeUnreachable__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept ReportErrorStatementAnnotation$ka = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6ee9803e48223f2eL, "jetbrains.mps.lang.typesystem.structure.ReportErrorStatementAnnotation");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept ReportErrorStatementAnnotation$A0 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6ee9803e48223f2eL, "jetbrains.mps.lang.typesystem.structure.ReportErrorStatementAnnotation");
   }
 }

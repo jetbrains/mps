@@ -35,8 +35,8 @@ public final class RefTestMethod__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.RefTestParam$G3)) {
-      return SimpleRoleScope.forNamedElements(__thisNode__, LINKS.params$uBhO);
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.RefTestParam$Pa)) {
+      return SimpleRoleScope.forNamedElements(__thisNode__, LINKS.params$ZaqV);
     }
     return null;
   }
@@ -88,10 +88,10 @@ public final class RefTestMethod__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink params$uBhO = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfeL, 0x2e0420fbd0995e40L, "params");
+    /*package*/ static final SContainmentLink params$ZaqV = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfeL, 0x2e0420fbd0995e40L, "params");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefTestParam$G3 = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995e00L, "jetbrains.mps.transformation.test.inputLang.structure.RefTestParam");
+    /*package*/ static final SConcept RefTestParam$Pa = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995e00L, "jetbrains.mps.transformation.test.inputLang.structure.RefTestParam");
   }
 }

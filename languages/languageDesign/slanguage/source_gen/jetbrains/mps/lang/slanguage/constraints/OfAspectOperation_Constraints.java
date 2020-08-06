@@ -27,12 +27,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OfAspectOperation_Constraints extends BaseConstraintsDescriptor {
   public OfAspectOperation_Constraints() {
-    super(CONCEPTS.OfAspectOperation$9s);
+    super(CONCEPTS.OfAspectOperation$cT);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.requestedAspect$dPGU, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.requestedAspect$fCKn, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,7 +52,7 @@ public class OfAspectOperation_Constraints extends BaseConstraintsDescriptor {
               public SModel select(SModule it) {
                 return SModuleOperations.getAspect(it, "plugin");
               }
-            }), true, LINKS.requestedAspect$dPGU.getTargetConcept());
+            }), true, LINKS.requestedAspect$fCKn.getTargetConcept());
           }
         };
       }
@@ -64,10 +64,10 @@ public class OfAspectOperation_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_srl38n_a0a0a0a0a1a0a0a0c = new SNodePointer("r:7cb61723-da55-40c7-a0cb-26259e0e760b(jetbrains.mps.lang.slanguage.constraints)", "6836281137582820753");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OfAspectOperation$9s = MetaAdapterFactory.getConcept(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, "jetbrains.mps.lang.slanguage.structure.OfAspectOperation");
+    /*package*/ static final SConcept OfAspectOperation$cT = MetaAdapterFactory.getConcept(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, "jetbrains.mps.lang.slanguage.structure.OfAspectOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink requestedAspect$dPGU = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, 0x7cd422dbfa7b06f8L, "requestedAspect");
+    /*package*/ static final SReferenceLink requestedAspect$fCKn = MetaAdapterFactory.getReferenceLink(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, 0x7cd422dbfa7b06f8L, "requestedAspect");
   }
 }

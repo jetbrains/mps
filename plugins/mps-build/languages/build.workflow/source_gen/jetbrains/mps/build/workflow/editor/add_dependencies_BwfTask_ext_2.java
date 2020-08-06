@@ -72,7 +72,7 @@ public class add_dependencies_BwfTask_ext_2 extends TransformationMenuBase {
   public class TMP_Group_1tk1c9_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$P7X5)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$$VsH)).isEmpty();
     }
 
     @NotNull
@@ -128,7 +128,7 @@ public class add_dependencies_BwfTask_ext_2 extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$P7X5)).addElement(SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfTaskDependency$zp));
+          ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$$VsH)).addElement(SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfTaskDependency$31));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -154,10 +154,10 @@ public class add_dependencies_BwfTask_ext_2 extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dependencies$P7X5 = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L, 0x2670d5989d5ace5eL, "dependencies");
+    /*package*/ static final SContainmentLink dependencies$$VsH = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L, 0x2670d5989d5ace5eL, "dependencies");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfTaskDependency$zp = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L, "jetbrains.mps.build.workflow.structure.BwfTaskDependency");
+    /*package*/ static final SConcept BwfTaskDependency$31 = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L, "jetbrains.mps.build.workflow.structure.BwfTaskDependency");
   }
 }

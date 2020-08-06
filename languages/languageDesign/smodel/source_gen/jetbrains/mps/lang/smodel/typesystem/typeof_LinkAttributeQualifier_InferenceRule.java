@@ -22,13 +22,13 @@ public class typeof_LinkAttributeQualifier_InferenceRule extends AbstractInferen
   }
   public void applyRule(final SNode linkAttributeQualifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(linkAttributeQualifier, LINKS.linkQualifier$VpKk);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(linkAttributeQualifier, LINKS.linkQualifier$vMLO);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "4568673663674451834", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "4568673663674451836", true), (SNode) _quotation_createNode_61o386_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.LinkAttributeQualifier$pJ;
+    return CONCEPTS.LinkAttributeQualifier$rf;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,10 +45,10 @@ public class typeof_LinkAttributeQualifier_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink linkQualifier$VpKk = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, 0x58ea5217b045be92L, "linkQualifier");
+    /*package*/ static final SContainmentLink linkQualifier$vMLO = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, 0x58ea5217b045be92L, "linkQualifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LinkAttributeQualifier$pJ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, "jetbrains.mps.lang.smodel.structure.LinkAttributeQualifier");
+    /*package*/ static final SConcept LinkAttributeQualifier$rf = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045b9b7L, "jetbrains.mps.lang.smodel.structure.LinkAttributeQualifier");
   }
 }

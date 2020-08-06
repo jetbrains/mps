@@ -75,7 +75,7 @@ public class addClause_DEPRECATED extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.TryCatchStatement$x5, "jetbrains.mps.baseLanguage.editor.convertToTry_TryCatchStatement_DEPRECATED");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.TryCatchStatement$XR, "jetbrains.mps.baseLanguage.editor.convertToTry_TryCatchStatement_DEPRECATED");
     }
 
   }
@@ -98,12 +98,12 @@ public class addClause_DEPRECATED extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.TryCatchStatement$x5, "jetbrains.mps.baseLanguage.editor.tryCatch_TryCatchStatement_DEPRECATED");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.TryCatchStatement$XR, "jetbrains.mps.baseLanguage.editor.tryCatch_TryCatchStatement_DEPRECATED");
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+    /*package*/ static final SConcept TryCatchStatement$XR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
   }
 }

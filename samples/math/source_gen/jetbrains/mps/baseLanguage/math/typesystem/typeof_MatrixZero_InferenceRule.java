@@ -23,7 +23,7 @@ public class typeof_MatrixZero_InferenceRule extends AbstractInferenceRule_Runti
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MatrixZero$rX;
+    return CONCEPTS.MatrixZero$el;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,6 +33,6 @@ public class typeof_MatrixZero_InferenceRule extends AbstractInferenceRule_Runti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MatrixZero$rX = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x36700251396ecb7bL, "jetbrains.mps.baseLanguage.math.structure.MatrixZero");
+    /*package*/ static final SConcept MatrixZero$el = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x36700251396ecb7bL, "jetbrains.mps.baseLanguage.math.structure.MatrixZero");
   }
 }

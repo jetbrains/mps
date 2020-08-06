@@ -34,7 +34,7 @@ public class typeof_KeyAccessOperation_InferenceRule extends AbstractInferenceRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.KeyAccessOperation$Ua;
+    return CONCEPTS.KeyAccessOperation$8t;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -60,6 +60,6 @@ public class typeof_KeyAccessOperation_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept KeyAccessOperation$Ua = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120e6f85873L, "jetbrains.mps.baseLanguage.collections.structure.KeyAccessOperation");
+    /*package*/ static final SConcept KeyAccessOperation$8t = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120e6f85873L, "jetbrains.mps.baseLanguage.collections.structure.KeyAccessOperation");
   }
 }

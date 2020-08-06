@@ -28,7 +28,7 @@ public class SPropertyAccess_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_zbkghy_a(), CONCEPTS.SPropertyAccess$bD));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_zbkghy_a(), CONCEPTS.SPropertyAccess$d9));
     result.add(new SMP_Subconcepts_zbkghy_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class SPropertyAccess_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_zbkghy_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.SPropertyAccess$bD, LINKS.property$lTMY);
+      super((SAbstractConcept) CONCEPTS.SPropertyAccess$d9, LINKS.property$UiOu);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class SPropertyAccess_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_zbkghy_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SPropertyAccess$bD);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SPropertyAccess$d9);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class SPropertyAccess_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SPropertyAccess$bD = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");
+    /*package*/ static final SConcept SPropertyAccess$d9 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink property$UiOu = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
   }
 }

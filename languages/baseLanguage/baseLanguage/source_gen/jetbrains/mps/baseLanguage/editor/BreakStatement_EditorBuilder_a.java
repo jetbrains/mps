@@ -94,10 +94,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_xk0l2m_a1a() {
-    return !(SPropertyOperations.hasValue(myNode, PROPS.label$IMss, null));
+    return !(SPropertyOperations.hasValue(myNode, PROPS.label$pRTe, null));
   }
   private boolean nodeCondition_xk0l2m_a2a() {
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.loopLabelReference$UQUI)).isNotEmpty();
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.loopLabelReference$_Wnw)).isNotEmpty();
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "break");
@@ -105,7 +105,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     Style style = new StyleImpl();
     new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.BreakStatement$w0));
+    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.BreakStatement$WM));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
@@ -122,7 +122,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.label$IMss;
+      final SProperty property = PROPS.label$pRTe;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no label>");
@@ -135,7 +135,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       BreakStatement_Actions.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new BreakStatement_generic_cellMenu_xk0l2m_a0a1a(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -155,7 +155,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.AbstractLoopStatement$wH, false)).translate(new ITranslator2<SNode, String>() {
+      return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.AbstractLoopStatement$Xv, false)).translate(new ITranslator2<SNode, String>() {
         public Iterable<String> translate(final SNode it) {
           return new Iterable<String>() {
             public Iterator<String> iterator() {
@@ -170,7 +170,7 @@ __switch__:
                         assert false : "Internal error";
                         return false;
                       case 2:
-                        if (!(SPropertyOperations.hasValue(it, PROPS.label$Gzgx, null))) {
+                        if (!(SPropertyOperations.hasValue(it, PROPS.label$nCHj, null))) {
                           this.__CP__ = 3;
                           break;
                         }
@@ -178,7 +178,7 @@ __switch__:
                         break;
                       case 4:
                         this.__CP__ = 1;
-                        this.yield(SPropertyOperations.getString(it, PROPS.label$Gzgx));
+                        this.yield(SPropertyOperations.getString(it, PROPS.label$nCHj));
                         return true;
                       case 0:
                         this.__CP__ = 2;
@@ -202,7 +202,7 @@ __switch__:
       this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.label$IMss, parameterObject);
+      SPropertyOperations.set(node, PROPS.label$pRTe, parameterObject);
     }
     public boolean isReferentPresentation() {
       return false;
@@ -223,7 +223,7 @@ __switch__:
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new loopLabelReferenceSingleRoleHandler_xk0l2m_a2a(myNode, LINKS.loopLabelReference$UQUI, getEditorContext());
+    SingleRoleCellProvider provider = new loopLabelReferenceSingleRoleHandler_xk0l2m_a2a(myNode, LINKS.loopLabelReference$_Wnw, getEditorContext());
     return provider.createCell();
   }
   private static class loopLabelReferenceSingleRoleHandler_xk0l2m_a2a extends SingleRoleCellProvider {
@@ -243,8 +243,8 @@ __switch__:
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.loopLabelReference$UQUI, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.loopLabelReference$UQUI, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.loopLabelReference$_Wnw, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.loopLabelReference$_Wnw, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -256,7 +256,7 @@ __switch__:
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.loopLabelReference$UQUI);
+        editorCell.setSRole(LINKS.loopLabelReference$_Wnw);
       }
       Style style = new StyleImpl();
       new VariableNameStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
@@ -265,7 +265,7 @@ __switch__:
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.loopLabelReference$UQUI));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.loopLabelReference$_Wnw));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_loopLabelReference");
@@ -291,17 +291,17 @@ __switch__:
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$IMss = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x11745bfb2d8L, "label");
-    /*package*/ static final SProperty label$Gzgx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
+    /*package*/ static final SProperty label$pRTe = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x11745bfb2d8L, "label");
+    /*package*/ static final SProperty label$nCHj = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink loopLabelReference$UQUI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference");
+    /*package*/ static final SContainmentLink loopLabelReference$_Wnw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BreakStatement$w0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept AbstractLoopStatement$wH = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
+    /*package*/ static final SConcept BreakStatement$WM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept AbstractLoopStatement$Xv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
   }
 }

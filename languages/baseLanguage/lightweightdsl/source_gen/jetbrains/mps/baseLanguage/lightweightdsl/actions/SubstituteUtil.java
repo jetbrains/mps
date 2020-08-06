@@ -16,11 +16,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubstituteUtil {
   public static Iterable<SNode> getMembers2Substitute(SAbstractConcept memberConcept, SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK))) {
       return Collections.emptyList();
     }
 
-    final SNode classNode = SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY);
+    final SNode classNode = SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK);
     SNode descr = DSLDescriptorUtil.getDescriptor(classNode);
     if (descr == null) {
       return Collections.emptyList();
@@ -37,11 +37,11 @@ public class SubstituteUtil {
   }
 
   public static Iterable<SNode> getAllMembers(SAbstractConcept memberConcept, SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK))) {
       return Collections.emptyList();
     }
 
-    SNode classNode = SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY);
+    SNode classNode = SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK);
     SNode descr = DSLDescriptorUtil.getDescriptor(classNode);
     if (descr == null) {
       return Collections.emptyList();
@@ -51,6 +51,6 @@ public class SubstituteUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

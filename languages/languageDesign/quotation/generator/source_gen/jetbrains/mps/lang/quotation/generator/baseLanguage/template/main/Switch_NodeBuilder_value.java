@@ -61,7 +61,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100533166"), CONCEPTS.NodeBuilderInitProperty$wV, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100533166"), CONCEPTS.NodeBuilderInitProperty$xv, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -155,7 +155,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5448983161241874563"), CONCEPTS.NodeBuilderInitProperty$wV, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5448983161241874563"), CONCEPTS.NodeBuilderInitProperty$xv, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -244,7 +244,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule2 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100636918"), CONCEPTS.NodeBuilderInitLink$Xj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100636918"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -422,7 +422,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule3 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule3() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100816962"), CONCEPTS.NodeBuilderInitLink$Xj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100816962"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -501,7 +501,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule4 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule4() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "3883255117205035015"), CONCEPTS.NodeBuilderInitLink$Xj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "3883255117205035015"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -575,7 +575,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule5 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule5() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5448983161210278497"), CONCEPTS.NodeBuilderInitLink$Xj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5448983161210278497"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -658,7 +658,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule6 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule6() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101641161"), CONCEPTS.NodeBuilderInitLink$Xj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101641161"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -796,7 +796,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule7 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule7() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101119833"), CONCEPTS.NodeBuilderInitLink$Xj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101119833"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -908,7 +908,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   }
   /*package*/ static final class ReductionRule8 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule8() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101425578"), CONCEPTS.NodeBuilderInitLink$Xj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101425578"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -1076,7 +1076,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
   private static final SNodePointer templateSwitchNodeNoInput_zg3v4g_a0a0c0d0f0c0b0b0c0c41 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101501092");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeBuilderInitProperty$wV = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
-    /*package*/ static final SConcept NodeBuilderInitLink$Xj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
+    /*package*/ static final SConcept NodeBuilderInitProperty$xv = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
+    /*package*/ static final SConcept NodeBuilderInitLink$XR = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
   }
 }

@@ -71,7 +71,7 @@ public class map_creator_add_initializer extends TransformationMenuBase {
   public class TMP_Group_f7kaav_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$BtXo) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$hMbF) == null);
     }
 
     @NotNull
@@ -127,7 +127,7 @@ public class map_creator_add_initializer extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.initializer$BtXo, null);
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.initializer$hMbF, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -157,6 +157,6 @@ public class map_creator_add_initializer extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$BtXo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x118f24c9eb0L, "initializer");
+    /*package*/ static final SContainmentLink initializer$hMbF = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL, 0x118f24c9eb0L, "initializer");
   }
 }

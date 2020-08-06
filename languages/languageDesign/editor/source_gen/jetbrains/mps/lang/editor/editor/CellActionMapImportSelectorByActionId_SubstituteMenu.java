@@ -34,7 +34,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_qe8s2c_a(), CONCEPTS.CellActionMapImportSelectorByActionId$fx));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_qe8s2c_a(), CONCEPTS.CellActionMapImportSelectorByActionId$r8));
     return result;
   }
 
@@ -106,7 +106,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.CellActionMapImportSelectorByActionId$fx, context);
+          super(CONCEPTS.CellActionMapImportSelectorByActionId$r8, context);
           _context = context;
         }
 
@@ -117,8 +117,8 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.CellActionMapImportSelectorByActionId$fx, null);
-          SPropertyOperations.assignEnum(result, PROPS.actionId$td9R, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, "jetbrains.mps.lang.editor.structure.CellActionId"), SEnumOperations.getMemberName0(myParameterObject)));
+          SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.CellActionMapImportSelectorByActionId$r8, null);
+          SPropertyOperations.assignEnum(result, PROPS.actionId$xvlu, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951993667L, "jetbrains.mps.lang.editor.structure.CellActionId"), SEnumOperations.getMemberName0(myParameterObject)));
 
           return result;
         }
@@ -129,7 +129,7 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.CellActionMapImportSelectorByActionId$fx, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.CellActionMapImportSelectorByActionId$r8, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -152,10 +152,10 @@ public class CellActionMapImportSelectorByActionId_SubstituteMenu extends Substi
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellActionMapImportSelectorByActionId$fx = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId");
+    /*package*/ static final SConcept CellActionMapImportSelectorByActionId$r8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, "jetbrains.mps.lang.editor.structure.CellActionMapImportSelectorByActionId");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty actionId$td9R = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, 0x4f883d0411451706L, "actionId");
+    /*package*/ static final SProperty actionId$xvlu = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4f883d0411451703L, 0x4f883d0411451706L, "actionId");
   }
 }

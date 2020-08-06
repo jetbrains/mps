@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Compound_Constraints extends BaseConstraintsDescriptor {
   public Compound_Constraints() {
-    super(CONCEPTS.Compound$6W);
+    super(CONCEPTS.Compound$vn);
   }
 
   public static class Cardinality_Property extends BasePropertyConstraintsDescriptor {
     public Cardinality_Property(ConstraintsDescriptor container) {
-      super(PROPS.cardinality$yzu0, container);
+      super(PROPS.cardinality$ubQr, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,15 +45,15 @@ public class Compound_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.cardinality$yzu0, new Cardinality_Property(this));
+    properties.put(PROPS.cardinality$ubQr, new Cardinality_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Compound$6W = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
+    /*package*/ static final SConcept Compound$vn = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinality$yzu0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
+    /*package*/ static final SProperty cardinality$ubQr = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
   }
 }

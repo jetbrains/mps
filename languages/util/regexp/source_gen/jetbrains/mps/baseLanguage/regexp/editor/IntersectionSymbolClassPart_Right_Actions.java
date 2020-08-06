@@ -24,10 +24,10 @@ public class IntersectionSymbolClassPart_Right_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.right$kGVY))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.right$8a$M))) {
           return;
         }
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.left$$IBe));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.left$ocg2));
       }
 
     };
@@ -75,7 +75,7 @@ public class IntersectionSymbolClassPart_Right_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink right$kGVY = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e2e56cL, "right");
-    /*package*/ static final SContainmentLink left$$IBe = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e34d8eL, "left");
+    /*package*/ static final SContainmentLink right$8a$M = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e2e56cL, "right");
+    /*package*/ static final SContainmentLink left$ocg2 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e34d8eL, "left");
   }
 }

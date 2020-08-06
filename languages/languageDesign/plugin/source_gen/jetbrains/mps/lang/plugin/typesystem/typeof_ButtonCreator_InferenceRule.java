@@ -28,14 +28,14 @@ public class typeof_ButtonCreator_InferenceRule extends AbstractInferenceRule_Ru
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.action$hZKa);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(creator, LINKS.action$v$Hd);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "9011731583464286489", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "9011731583464286495", true), (SNode) _quotation_createNode_i5ms8h_a1a0c0a0b0b(), true, false, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ButtonCreator$LW;
+    return CONCEPTS.ButtonCreator$IZ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -59,10 +59,10 @@ public class typeof_ButtonCreator_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink action$hZKa = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1b97d211bb0207afL, 0x1b97d211bb020854L, "action");
+    /*package*/ static final SContainmentLink action$v$Hd = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1b97d211bb0207afL, 0x1b97d211bb020854L, "action");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ButtonCreator$LW = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1b97d211bb0207afL, "jetbrains.mps.lang.plugin.structure.ButtonCreator");
+    /*package*/ static final SConcept ButtonCreator$IZ = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1b97d211bb0207afL, "jetbrains.mps.lang.plugin.structure.ButtonCreator");
   }
 }

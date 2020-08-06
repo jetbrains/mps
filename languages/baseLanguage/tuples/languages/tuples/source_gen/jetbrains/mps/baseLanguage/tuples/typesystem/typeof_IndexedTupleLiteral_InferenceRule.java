@@ -25,7 +25,7 @@ public class typeof_IndexedTupleLiteral_InferenceRule extends AbstractInferenceR
   }
   public void applyRule(final SNode tuple, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> memberTypes = ListSequence.fromList(new ArrayList<SNode>());
-    for (SNode mbr : SLinkOperations.getChildren(tuple, LINKS.component$dehX)) {
+    for (SNode mbr : SLinkOperations.getChildren(tuple, LINKS.component$uznI)) {
       ListSequence.fromList(memberTypes).addElement(typeCheckingContext.typeOf(mbr, "r:e119dbbd-3529-4067-8bad-6b9edd79d0b6(jetbrains.mps.baseLanguage.tuples.typesystem)", "974579920306587589", true));
     }
     {
@@ -35,7 +35,7 @@ public class typeof_IndexedTupleLiteral_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IndexedTupleLiteral$PE;
+    return CONCEPTS.IndexedTupleLiteral$Vr;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -58,10 +58,10 @@ public class typeof_IndexedTupleLiteral_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink component$dehX = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, 0x1207171832eL, "component");
+    /*package*/ static final SContainmentLink component$uznI = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, 0x1207171832eL, "component");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IndexedTupleLiteral$PE = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleLiteral");
+    /*package*/ static final SConcept IndexedTupleLiteral$Vr = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12071708c13L, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleLiteral");
   }
 }

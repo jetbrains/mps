@@ -62,7 +62,7 @@ public final class CreateListPattern_Intention extends AbstractIntentionDescript
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode currentNode = editorContext.getSelectedNode();
       List<SNode> siblings = SNodeOperations.getAllSiblings(currentNode, false);
-      SNodeFactoryOperations.setNewAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$Jg), CONCEPTS.ListPattern$O4);
+      SNodeFactoryOperations.setNewAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$WN), CONCEPTS.ListPattern$1B);
       for (SNode sibling : siblings) {
         SNodeOperations.deleteNode(sibling);
       }
@@ -74,7 +74,7 @@ public final class CreateListPattern_Intention extends AbstractIntentionDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AsPattern$Jg = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb478dL, "jetbrains.mps.lang.pattern.structure.AsPattern");
-    /*package*/ static final SConcept ListPattern$O4 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108aa36731aL, "jetbrains.mps.lang.pattern.structure.ListPattern");
+    /*package*/ static final SConcept AsPattern$WN = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb478dL, "jetbrains.mps.lang.pattern.structure.AsPattern");
+    /*package*/ static final SConcept ListPattern$1B = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108aa36731aL, "jetbrains.mps.lang.pattern.structure.ListPattern");
   }
 }

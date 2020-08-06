@@ -39,9 +39,9 @@ public class RemoveNodeConceptMethodCallDirectCallProperty extends MigrationScri
           return scope_l3gfem_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Node_ConceptMethodCall$l3, false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Node_ConceptMethodCall$mz, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.directCall$cBq6);
+          SPropertyOperations.remove(it, PROPS.directCall$L0rA);
         }
       });
     }
@@ -51,10 +51,10 @@ public class RemoveNodeConceptMethodCallDirectCallProperty extends MigrationScri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_ConceptMethodCall$l3 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
+    /*package*/ static final SConcept Node_ConceptMethodCall$mz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty directCall$cBq6 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, 0x27990abcdcff2f1dL, "directCall");
+    /*package*/ static final SProperty directCall$L0rA = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, 0x27990abcdcff2f1dL, "directCall");
   }
 }

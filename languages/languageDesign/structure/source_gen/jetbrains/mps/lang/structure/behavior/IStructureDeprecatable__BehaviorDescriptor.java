@@ -36,19 +36,19 @@ public final class IStructureDeprecatable__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean isDeprecated_idhOwoPtR(@NotNull SNode __thisNode__) {
-    return (AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8)) != null);
+    return (AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)) != null);
   }
   /*package*/ static String getMessage_idhP43_8K(@NotNull SNode __thisNode__) {
     StringBuilder result = new StringBuilder();
     result.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(__thisNode__));
     result.append(" is deprecated");
-    if (SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8)), PROPS.build$V1II) != null) {
+    if (SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)), PROPS.build$n9$x) != null) {
       result.append(" since build ");
-      result.append(SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8)), PROPS.build$V1II));
+      result.append(SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)), PROPS.build$n9$x));
     }
-    if (SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8)), PROPS.comment$upfl) != null) {
+    if (SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)), PROPS.comment$Ux58) != null) {
       result.append(" (");
-      result.append(SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8)), PROPS.comment$upfl));
+      result.append(SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)), PROPS.comment$Ux58));
       result.append(")");
     }
     return result.toString();
@@ -103,11 +103,11 @@ public final class IStructureDeprecatable__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DeprecatedNodeAnnotation$I8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation");
+    /*package*/ static final SConcept DeprecatedNodeAnnotation$zV = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty build$V1II = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec75203L, "build");
-    /*package*/ static final SProperty comment$upfl = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec760e8L, "comment");
+    /*package*/ static final SProperty build$n9$x = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec75203L, "build");
+    /*package*/ static final SProperty comment$Ux58 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, 0x11d3ec760e8L, "comment");
   }
 }

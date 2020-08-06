@@ -27,14 +27,14 @@ public class typeof_UsagesExpression_InferenceRule extends AbstractInferenceRule
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expr, LINKS.node$HMK0);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expr, LINKS.node$3j2);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "473081947995054364", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "473081947995054370", true), (SNode) _quotation_createNode_qth3vr_a1a0c0a0b0b(), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.UsagesExpression$_w;
+    return CONCEPTS.UsagesExpression$8y;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -59,10 +59,10 @@ public class typeof_UsagesExpression_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink node$HMK0 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x75bb0160f191d6ebL, 0x75bb0160f191d6ecL, "node");
+    /*package*/ static final SContainmentLink node$3j2 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x75bb0160f191d6ebL, 0x75bb0160f191d6ecL, "node");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UsagesExpression$_w = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x75bb0160f191d6ebL, "jetbrains.mps.lang.smodel.query.structure.UsagesExpression");
+    /*package*/ static final SConcept UsagesExpression$8y = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x75bb0160f191d6ebL, "jetbrains.mps.lang.smodel.query.structure.UsagesExpression");
   }
 }

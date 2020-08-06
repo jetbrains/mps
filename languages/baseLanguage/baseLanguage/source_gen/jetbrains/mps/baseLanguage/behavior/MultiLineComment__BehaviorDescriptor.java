@@ -35,17 +35,17 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getLines_id6GJhO0n1Xys);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$EksD)).isEmpty()) {
-      SNode line = SNodeFactoryOperations.addNewChild(__thisNode__, LINKS.lines$EksD, null);
-      ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$cK1w)).clear();
-      SNode w = SNodeFactoryOperations.addNewChild(line, LINKS.elements$cK1w, CONCEPTS.Word$AM);
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$lpTr)).isEmpty()) {
+      SNode line = SNodeFactoryOperations.addNewChild(__thisNode__, LINKS.lines$lpTr, null);
+      ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).clear();
+      SNode w = SNodeFactoryOperations.addNewChild(line, LINKS.elements$_j45, CONCEPTS.Word$Dn);
     }
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.LocalVariableDeclaration$Bf)) {
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.StatementList$TN)) {
-        return Scope.getScope(SNodeOperations.getParent(__thisNode__), ListSequence.fromList(SNodeOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.StatementList$TN))).last(), kind);
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.LocalVariableDeclaration$41)) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.StatementList$m_)) {
+        return Scope.getScope(SNodeOperations.getParent(__thisNode__), ListSequence.fromList(SNodeOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.StatementList$m_))).last(), kind);
       } else {
         return null;
       }
@@ -53,7 +53,7 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
     return null;
   }
   /*package*/ static List<SNode> getLines_id6GJhO0n1Xys(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.lines$EksD);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.lines$lpTr);
   }
 
   /*package*/ MultiLineComment__BehaviorDescriptor() {
@@ -105,13 +105,13 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$EksD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink lines$lpTr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }
 }

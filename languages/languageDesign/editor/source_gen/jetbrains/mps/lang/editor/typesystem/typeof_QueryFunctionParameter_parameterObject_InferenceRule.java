@@ -24,7 +24,7 @@ public class typeof_QueryFunctionParameter_parameterObject_InferenceRule extends
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.QueryFunctionParameter_parameterObject$LM;
+    return CONCEPTS.QueryFunctionParameter_parameterObject$Xp;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,6 +34,6 @@ public class typeof_QueryFunctionParameter_parameterObject_InferenceRule extends
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryFunctionParameter_parameterObject$LM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a903acc3L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_parameterObject");
+    /*package*/ static final SConcept QueryFunctionParameter_parameterObject$Xp = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a903acc3L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_parameterObject");
   }
 }

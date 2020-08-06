@@ -39,7 +39,7 @@ public class check_UnknownNew_NonTypesystemRule extends AbstractNonTypesystemRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.UnknownNew$nY;
+    return CONCEPTS.UnknownNew$OK;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,6 +49,6 @@ public class check_UnknownNew_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UnknownNew$nY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, "jetbrains.mps.baseLanguage.structure.UnknownNew");
+    /*package*/ static final SConcept UnknownNew$OK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, "jetbrains.mps.baseLanguage.structure.UnknownNew");
   }
 }

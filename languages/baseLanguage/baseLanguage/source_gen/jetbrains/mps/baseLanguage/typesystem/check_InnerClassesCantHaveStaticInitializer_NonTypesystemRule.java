@@ -23,7 +23,7 @@ public class check_InnerClassesCantHaveStaticInitializer_NonTypesystemRule exten
   public check_InnerClassesCantHaveStaticInitializer_NonTypesystemRule() {
   }
   public void applyRule(final SNode staticInitializer, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(staticInitializer))), CONCEPTS.ClassConcept$IY)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(staticInitializer))), CONCEPTS.ClassConcept$bK)) {
       SNode classConcept = (SNode) SNodeOperations.getParent(staticInitializer);
       if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(classConcept) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classConcept))) {
         {
@@ -40,7 +40,7 @@ public class check_InnerClassesCantHaveStaticInitializer_NonTypesystemRule exten
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StaticInitializer$dH;
+    return CONCEPTS.StaticInitializer$Ev;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,7 +50,7 @@ public class check_InnerClassesCantHaveStaticInitializer_NonTypesystemRule exten
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept StaticInitializer$dH = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept StaticInitializer$Ev = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");
   }
 }

@@ -24,11 +24,11 @@ public class typeof_EnumValuesExpression_InferenceRule extends AbstractInference
     {
       SNode _nodeToCheck_1029348928467 = expression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1224574964063", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1224574958606", true), (SNode) _quotation_createNode_pii9m7_a1a0c0a0b(SLinkOperations.getTarget(expression, LINKS.enumClass$aHek)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1224574958606", true), (SNode) _quotation_createNode_pii9m7_a1a0c0a0b(SLinkOperations.getTarget(expression, LINKS.enumClass$PMF6)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EnumValuesExpression$xP;
+    return CONCEPTS.EnumValuesExpression$YB;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -48,10 +48,10 @@ public class typeof_EnumValuesExpression_InferenceRule extends AbstractInference
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumClass$aHek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, 0x11d1e4bf6afL, "enumClass");
+    /*package*/ static final SReferenceLink enumClass$PMF6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, 0x11d1e4bf6afL, "enumClass");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumValuesExpression$xP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, "jetbrains.mps.baseLanguage.structure.EnumValuesExpression");
+    /*package*/ static final SConcept EnumValuesExpression$YB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, "jetbrains.mps.baseLanguage.structure.EnumValuesExpression");
   }
 }

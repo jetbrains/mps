@@ -35,14 +35,14 @@ public class typeof_AllOperation_InferenceRule extends AbstractInferenceRule_Run
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.closure$cZg5);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.closure$Rjuo);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235566876918", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1235566876927", true), (SNode) _quotation_createNode_49xx2t_a1a0c0a0d0b(typeCheckingContext.getRepresentative(elementType_typevar_1235566876897)), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AllOperation$fM;
+    return CONCEPTS.AllOperation$u5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -83,10 +83,10 @@ public class typeof_AllOperation_InferenceRule extends AbstractInferenceRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink closure$cZg5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
+    /*package*/ static final SContainmentLink closure$Rjuo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AllOperation$fM = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11fad85a8f5L, "jetbrains.mps.baseLanguage.collections.structure.AllOperation");
+    /*package*/ static final SConcept AllOperation$u5 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11fad85a8f5L, "jetbrains.mps.baseLanguage.collections.structure.AllOperation");
   }
 }

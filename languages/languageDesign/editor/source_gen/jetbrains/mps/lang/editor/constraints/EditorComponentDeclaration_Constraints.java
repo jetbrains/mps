@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EditorComponentDeclaration_Constraints extends BaseConstraintsDescriptor {
   public EditorComponentDeclaration_Constraints() {
-    super(CONCEPTS.EditorComponentDeclaration$Lb);
+    super(CONCEPTS.EditorComponentDeclaration$WM);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class EditorComponentDeclaration_Constraints extends BaseConstraintsDescr
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "1227090208782");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorComponentDeclaration$Lb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
+    /*package*/ static final SConcept EditorComponentDeclaration$WM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
   }
 }

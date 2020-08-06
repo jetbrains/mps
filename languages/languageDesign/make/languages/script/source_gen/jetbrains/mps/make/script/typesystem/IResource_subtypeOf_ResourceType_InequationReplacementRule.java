@@ -24,23 +24,23 @@ public class IResource_subtypeOf_ResourceType_InequationReplacementRule extends 
   public IResource_subtypeOf_ResourceType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    SNode clazz = SLinkOperations.getTarget(subtype, LINKS.classifier$xslD);
-    return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(clazz, SLinkOperations.getTarget(_quotation_createNode_8mf0ny_a0a0b0b(), LINKS.classifier$xslD));
+    SNode clazz = SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr);
+    return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(clazz, SLinkOperations.getTarget(_quotation_createNode_8mf0ny_a0a0b0b(), LINKS.classifier$cxMr));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    if ((SLinkOperations.getTarget(supertype, LINKS.classifierType$XIf1) != null)) {
+    if ((SLinkOperations.getTarget(supertype, LINKS.classifierType$SVcU) != null)) {
       {
         SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "4630580602658616655", 0, null);
         _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-        typeCheckingContext.createLessThanInequality((SNode) subtype, (SNode) SLinkOperations.getTarget(supertype, LINKS.classifierType$XIf1), false, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) subtype, (SNode) SLinkOperations.getTarget(supertype, LINKS.classifierType$SVcU), false, false, _info_12389875345);
       }
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    if ((SLinkOperations.getTarget(supertype, LINKS.classifierType$XIf1) != null)) {
-      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isStrongSubtype((SNode) subtype, (SNode) SLinkOperations.getTarget(supertype, LINKS.classifierType$XIf1));
+    if ((SLinkOperations.getTarget(supertype, LINKS.classifierType$SVcU) != null)) {
+      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isStrongSubtype((SNode) subtype, (SNode) SLinkOperations.getTarget(supertype, LINKS.classifierType$SVcU));
     }
     return result_14532009;
   }
@@ -55,10 +55,10 @@ public class IResource_subtypeOf_ResourceType_InequationReplacementRule extends 
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.ResourceType$uY;
+    return CONCEPTS.ResourceType$sR;
   }
   private static SNode _quotation_createNode_8mf0ny_a0a0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -69,12 +69,12 @@ public class IResource_subtypeOf_ResourceType_InequationReplacementRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink classifierType$XIf1 = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, 0x2dead7037d3bef52L, "classifierType");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink classifierType$SVcU = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, 0x2dead7037d3bef52L, "classifierType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept ResourceType$uY = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, "jetbrains.mps.make.script.structure.ResourceType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ResourceType$sR = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, "jetbrains.mps.make.script.structure.ResourceType");
   }
 }

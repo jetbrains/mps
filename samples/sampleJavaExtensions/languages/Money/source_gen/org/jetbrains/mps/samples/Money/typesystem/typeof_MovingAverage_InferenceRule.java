@@ -26,7 +26,7 @@ public class typeof_MovingAverage_InferenceRule extends AbstractInferenceRule_Ru
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MovingAverage$qm;
+    return CONCEPTS.MovingAverage$BJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,6 +46,6 @@ public class typeof_MovingAverage_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MovingAverage$qm = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f480b1c19aL, "org.jetbrains.mps.samples.Money.structure.MovingAverage");
+    /*package*/ static final SConcept MovingAverage$BJ = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f480b1c19aL, "org.jetbrains.mps.samples.Money.structure.MovingAverage");
   }
 }

@@ -25,12 +25,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class NodePointerExpression_Old_Constraints extends BaseConstraintsDescriptor {
   public NodePointerExpression_Old_Constraints() {
-    super(CONCEPTS.NodePointerExpression_Old$1$);
+    super(CONCEPTS.NodePointerExpression_Old$34);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referentNode$VwM0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referentNode$vTNw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,7 +45,7 @@ public class NodePointerExpression_Old_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), !(SPropertyOperations.getBoolean(_context.getReferenceNode(), PROPS.includeNonRoot$WiVM)), CONCEPTS.INamedConcept$nV);
+            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), !(SPropertyOperations.getBoolean(_context.getReferenceNode(), PROPS.includeNonRoot$wFXi)), CONCEPTS.INamedConcept$Kd);
           }
         };
       }
@@ -57,15 +57,15 @@ public class NodePointerExpression_Old_Constraints extends BaseConstraintsDescri
   private static final SNodePointer breakingNode_pssh0p_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)", "6836281137582800519");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodePointerExpression_Old$1$ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression_Old");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept NodePointerExpression_Old$34 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression_Old");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink referentNode$VwM0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x195fd0576ac9bb4aL, "referentNode");
+    /*package*/ static final SReferenceLink referentNode$vTNw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x195fd0576ac9bb4aL, "referentNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty includeNonRoot$WiVM = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x7c1f84a957591e85L, "includeNonRoot");
+    /*package*/ static final SProperty includeNonRoot$wFXi = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x195fd0576ac9bb49L, 0x7c1f84a957591e85L, "includeNonRoot");
   }
 }

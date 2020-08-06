@@ -54,7 +54,7 @@ public final class BooleanQuery_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((SLinkOperations.getTarget(node, LINKS.query$GgiI) == null)) {
+      if ((SLinkOperations.getTarget(node, LINKS.query$Kyul) == null)) {
         return "Add Query";
       } else {
         return "Remove Query";
@@ -62,10 +62,10 @@ public final class BooleanQuery_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((SLinkOperations.getTarget(node, LINKS.query$GgiI) == null)) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.query$GgiI, null);
+      if ((SLinkOperations.getTarget(node, LINKS.query$Kyul) == null)) {
+        SNodeFactoryOperations.setNewChild(node, LINKS.query$Kyul, null);
       } else {
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$GgiI));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$Kyul));
       }
     }
     @Override
@@ -75,6 +75,6 @@ public final class BooleanQuery_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$GgiI = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x11cd79149a9L, "query");
+    /*package*/ static final SContainmentLink query$Kyul = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x11cd79149a9L, "query");
   }
 }

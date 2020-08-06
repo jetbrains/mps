@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AllConstant_Constraints extends BaseConstraintsDescriptor {
   public AllConstant_Constraints() {
-    super(CONCEPTS.AllConstant$$f);
+    super(CONCEPTS.AllConstant$My);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class AllConstant_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.TakeOperation$VZ);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.TakeOperation$ai);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590328(jetbrains.mps.baseLanguage.collections.constraints)", "1227128029536560162");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AllConstant$$f = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12031a066ecL, "jetbrains.mps.baseLanguage.collections.structure.AllConstant");
-    /*package*/ static final SConcept TakeOperation$VZ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x111083dd9b7L, "jetbrains.mps.baseLanguage.collections.structure.TakeOperation");
+    /*package*/ static final SConcept AllConstant$My = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12031a066ecL, "jetbrains.mps.baseLanguage.collections.structure.AllConstant");
+    /*package*/ static final SConcept TakeOperation$ai = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x111083dd9b7L, "jetbrains.mps.baseLanguage.collections.structure.TakeOperation");
   }
 }

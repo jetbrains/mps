@@ -28,7 +28,7 @@ public class NativeTypedNodeDef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_lvcjtg_a(), CONCEPTS.NativeTypedNodeDef$qx));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_lvcjtg_a(), CONCEPTS.NativeTypedNodeDef$PM));
     return result;
   }
 
@@ -49,7 +49,7 @@ public class NativeTypedNodeDef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_lvcjtg_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.NativeTypedNodeDef$qx, LINKS.conceptParameter$ET9S);
+      super((SAbstractConcept) CONCEPTS.NativeTypedNodeDef$PM, LINKS.conceptParameter$gT_9);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class NativeTypedNodeDef_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return "node<" + SPropertyOperations.getString(referencedNode, PROPS.name$lA7v) + ">";
+        return "node<" + SPropertyOperations.getString(referencedNode, PROPS.name$MnvL) + ">";
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -96,14 +96,14 @@ public class NativeTypedNodeDef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NativeTypedNodeDef$qx = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef");
+    /*package*/ static final SConcept NativeTypedNodeDef$PM = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptParameter$ET9S = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, 0x46263286da99433L, "conceptParameter");
+    /*package*/ static final SReferenceLink conceptParameter$gT_9 = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, 0x46263286da99433L, "conceptParameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

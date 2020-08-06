@@ -19,30 +19,30 @@ public class RemoveUnusedAssignment_QuickFix extends QuickFix_Runtime {
     return "Remove unused assignment";
   }
   public void execute(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.AssignmentExpression$rS)) {
-      SNode assignmentExpression = SNodeOperations.cast(node, CONCEPTS.AssignmentExpression$rS);
-      SNode lValue = SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$LjSW);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.AssignmentExpression$SE)) {
+      SNode assignmentExpression = SNodeOperations.cast(node, CONCEPTS.AssignmentExpression$SE);
+      SNode lValue = SLinkOperations.getTarget(assignmentExpression, LINKS.lValue$splI);
       SNodeOperations.replaceWithAnother(assignmentExpression, lValue);
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(lValue), CONCEPTS.ExpressionStatement$nm)) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(lValue), CONCEPTS.ExpressionStatement$O8)) {
         SNodeOperations.deleteNode(SNodeOperations.getParent(lValue));
       }
     }
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.LocalVariableDeclaration$Bf)) {
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.LocalVariableDeclaration$Bf), LINKS.initializer$no3R));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.LocalVariableDeclaration$41)) {
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD));
     }
-    if (SNodeOperations.hasRole(node, LINKS.initializer$no3R)) {
+    if (SNodeOperations.hasRole(node, LINKS.initializer$2twD)) {
       SNodeOperations.deleteNode(node);
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AssignmentExpression$rS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

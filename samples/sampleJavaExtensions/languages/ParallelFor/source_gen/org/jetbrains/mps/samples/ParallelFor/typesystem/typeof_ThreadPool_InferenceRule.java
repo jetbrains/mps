@@ -26,7 +26,7 @@ public class typeof_ThreadPool_InferenceRule extends AbstractInferenceRule_Runti
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ThreadPool$Ub;
+    return CONCEPTS.ThreadPool$fN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_ThreadPool_InferenceRule extends AbstractInferenceRule_Runti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ThreadPool$Ub = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x8c9905a80efd03cL, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadPool");
+    /*package*/ static final SConcept ThreadPool$fN = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x8c9905a80efd03cL, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadPool");
   }
 }

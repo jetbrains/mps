@@ -28,12 +28,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDescriptor {
   public CellModel_HierarchycalTable_Constraints() {
-    super(CONCEPTS.CellModel_HierarchycalTable$Ax);
+    super(CONCEPTS.CellModel_HierarchycalTable$aJ);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.headerRowLinkDeclaration$31hm, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.headerRowLinkDeclaration$TTP$, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -57,7 +57,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.rowsLinkDeclaration$31wn, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.rowsLinkDeclaration$TU4_, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -81,7 +81,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d2 = new BaseReferenceConstraintsDescriptor(LINKS.cellsInRowLinkDeclaration$31Jo, this) {
+    BaseReferenceConstraintsDescriptor d2 = new BaseReferenceConstraintsDescriptor(LINKS.cellsInRowLinkDeclaration$TUjA, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -96,10 +96,10 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            if ((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$31wn) == null)) {
+            if ((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$TU4_) == null)) {
               return null;
             }
-            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$31wn), LINKS.target$TWaS))).where(new IWhereFilter<SNode>() {
+            return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$TU4_), LINKS.target$m40F))).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it));
               }
@@ -119,13 +119,13 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
   private static final SNodePointer breakingNode_6tiwsq_a0a0a0a0a1a0a0c0c = new SNodePointer("r:a310da22-eca6-4f58-b266-8f97a737583f(jetbrains.mps.lang.editor.table.constraints)", "6836281137582842406");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_HierarchycalTable$Ax = MetaAdapterFactory.getConcept(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, "jetbrains.mps.lang.editor.table.structure.CellModel_HierarchycalTable");
+    /*package*/ static final SConcept CellModel_HierarchycalTable$aJ = MetaAdapterFactory.getConcept(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, "jetbrains.mps.lang.editor.table.structure.CellModel_HierarchycalTable");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink headerRowLinkDeclaration$31hm = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d11L, "headerRowLinkDeclaration");
-    /*package*/ static final SReferenceLink rowsLinkDeclaration$31wn = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d12L, "rowsLinkDeclaration");
-    /*package*/ static final SReferenceLink cellsInRowLinkDeclaration$31Jo = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d13L, "cellsInRowLinkDeclaration");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink headerRowLinkDeclaration$TTP$ = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d11L, "headerRowLinkDeclaration");
+    /*package*/ static final SReferenceLink rowsLinkDeclaration$TU4_ = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d12L, "rowsLinkDeclaration");
+    /*package*/ static final SReferenceLink cellsInRowLinkDeclaration$TUjA = MetaAdapterFactory.getReferenceLink(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, 0x5643e6bf317e9d13L, "cellsInRowLinkDeclaration");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

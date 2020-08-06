@@ -28,7 +28,7 @@ public class DropAttributeRule_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_pc9jmv_a(), CONCEPTS.DropAttributeRule$EX));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_pc9jmv_a(), CONCEPTS.DropAttributeRule$mD));
     result.add(new SMP_Subconcepts_pc9jmv_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class DropAttributeRule_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_pc9jmv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DropAttributeRule$EX, LINKS.applicableConcept$IlWy);
+      super((SAbstractConcept) CONCEPTS.DropAttributeRule$mD, LINKS.applicableConcept$7iCe);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class DropAttributeRule_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_pc9jmv_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DropAttributeRule$EX);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DropAttributeRule$mD);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class DropAttributeRule_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DropAttributeRule$EX = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, "jetbrains.mps.lang.generator.structure.DropAttributeRule");
+    /*package*/ static final SConcept DropAttributeRule$mD = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, "jetbrains.mps.lang.generator.structure.DropAttributeRule");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$IlWy = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, 0x67b585b44f4d943eL, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$7iCe = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, 0x67b585b44f4d943eL, "applicableConcept");
   }
 }

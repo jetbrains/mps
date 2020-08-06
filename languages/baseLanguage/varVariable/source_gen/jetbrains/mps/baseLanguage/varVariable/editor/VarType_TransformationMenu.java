@@ -92,7 +92,7 @@ public class VarType_TransformationMenu extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.Type$IG;
+      return CONCEPTS.Type$bu;
     }
 
 
@@ -112,8 +112,8 @@ public class VarType_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        if (SNodeOperations.hasRole(_context.getNode(), LINKS.type$uWuc) && SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getNode()))), CONCEPTS.VarVariableDeclaration$Of)) {
-          SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(_context.getNode()), CONCEPTS.LocalVariableDeclaration$Bf), LINKS.type$uWuc, createdNode);
+        if (SNodeOperations.hasRole(_context.getNode(), LINKS.type$a1UY) && SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(_context.getNode()))), CONCEPTS.VarVariableDeclaration$pa)) {
+          SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(_context.getNode()), CONCEPTS.LocalVariableDeclaration$41), LINKS.type$a1UY, createdNode);
         } else {
           SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
         }
@@ -143,12 +143,12 @@ public class VarType_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept VarVariableDeclaration$Of = MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x11ff0aa3699L, "jetbrains.mps.baseLanguage.varVariable.structure.VarVariableDeclaration");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept VarVariableDeclaration$pa = MetaAdapterFactory.getConcept(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x11ff0aa3699L, "jetbrains.mps.baseLanguage.varVariable.structure.VarVariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

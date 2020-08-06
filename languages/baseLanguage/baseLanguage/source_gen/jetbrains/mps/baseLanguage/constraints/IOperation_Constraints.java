@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class IOperation_Constraints extends BaseConstraintsDescriptor {
   public IOperation_Constraints() {
-    super(CONCEPTS.IOperation$No);
+    super(CONCEPTS.IOperation$ga);
   }
 
   @Override
@@ -39,16 +39,16 @@ public class IOperation_Constraints extends BaseConstraintsDescriptor {
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     //  an operation can only be 'operation' child in DotExpression 
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a) && (link == LINKS.operation$_mGS);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW) && (link == LINKS.operation$gs9E);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1227128029536558606");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IOperation$No = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L, "jetbrains.mps.baseLanguage.structure.IOperation");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SInterfaceConcept IOperation$ga = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L, "jetbrains.mps.baseLanguage.structure.IOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

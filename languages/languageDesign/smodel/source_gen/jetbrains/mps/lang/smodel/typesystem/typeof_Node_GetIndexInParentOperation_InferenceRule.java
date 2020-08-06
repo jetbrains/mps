@@ -25,7 +25,7 @@ public class typeof_Node_GetIndexInParentOperation_InferenceRule extends Abstrac
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Node_GetIndexInParentOperation$Oz;
+    return CONCEPTS.Node_GetIndexInParentOperation$Q3;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_Node_GetIndexInParentOperation_InferenceRule extends Abstrac
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_GetIndexInParentOperation$Oz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1128be3ca6aL, "jetbrains.mps.lang.smodel.structure.Node_GetIndexInParentOperation");
+    /*package*/ static final SConcept Node_GetIndexInParentOperation$Q3 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1128be3ca6aL, "jetbrains.mps.lang.smodel.structure.Node_GetIndexInParentOperation");
   }
 }

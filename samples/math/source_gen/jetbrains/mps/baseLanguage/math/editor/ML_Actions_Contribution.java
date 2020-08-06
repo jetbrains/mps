@@ -32,7 +32,7 @@ public class ML_Actions_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6cdm61_a(), CONCEPTS.MatrixConstructor$8L));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6cdm61_a(), CONCEPTS.MatrixConstructor$V9));
     return result;
   }
 
@@ -77,7 +77,7 @@ public class ML_Actions_Contribution extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.MatrixConstructor$8L, context);
+        super(CONCEPTS.MatrixConstructor$V9, context);
         _context = context;
       }
 
@@ -88,8 +88,8 @@ public class ML_Actions_Contribution extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode n = SNodeFactoryOperations.createNewNode(CONCEPTS.MatrixConstructor$8L, null);
-        SPropertyOperations.assign(n, PROPS.column$OZuf, true);
+        SNode n = SNodeFactoryOperations.createNewNode(CONCEPTS.MatrixConstructor$V9, null);
+        SPropertyOperations.assign(n, PROPS.column$y$gB, true);
         return n;
       }
 
@@ -111,10 +111,10 @@ public class ML_Actions_Contribution extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MatrixConstructor$8L = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor");
+    /*package*/ static final SConcept MatrixConstructor$V9 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty column$OZuf = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
+    /*package*/ static final SProperty column$y$gB = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
   }
 }

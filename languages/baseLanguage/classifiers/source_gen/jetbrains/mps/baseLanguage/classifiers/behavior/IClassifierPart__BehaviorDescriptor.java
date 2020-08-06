@@ -36,8 +36,8 @@ public final class IClassifierPart__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static List<SNode> getMembers_idhEwIfO7(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
     for (SNode child : SNodeOperations.getChildren(__thisNode__)) {
-      if (SNodeOperations.isInstanceOf(child, CONCEPTS.IMember$zE)) {
-        ListSequence.fromList(result).addElement(SNodeOperations.cast(child, CONCEPTS.IMember$zE));
+      if (SNodeOperations.isInstanceOf(child, CONCEPTS.IMember$zu)) {
+        ListSequence.fromList(result).addElement(SNodeOperations.cast(child, CONCEPTS.IMember$zu));
       }
     }
     return result;
@@ -90,6 +90,6 @@ public final class IClassifierPart__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMember$zE = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6becc0L, "jetbrains.mps.baseLanguage.classifiers.structure.IMember");
+    /*package*/ static final SInterfaceConcept IMember$zu = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6becc0L, "jetbrains.mps.baseLanguage.classifiers.structure.IMember");
   }
 }

@@ -39,7 +39,7 @@ public final class AttachSmartReferenceAttribute_Intention extends AbstractInten
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).isNotEmpty() && (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$Lg)) == null);
+    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).isNotEmpty() && (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,9 +60,9 @@ public final class AttachSmartReferenceAttribute_Intention extends AbstractInten
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$Lg), CONCEPTS.SmartReferenceAttribute$Lg);
+      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3), CONCEPTS.SmartReferenceAttribute$B3);
       if (ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).count() == 1) {
-        SLinkOperations.setTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$Lg)), LINKS.charactersticReference$BT$4, ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).first());
+        SLinkOperations.setTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)), LINKS.charactersticReference$41pR, ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).first());
       }
     }
     @Override
@@ -72,10 +72,10 @@ public final class AttachSmartReferenceAttribute_Intention extends AbstractInten
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SmartReferenceAttribute$Lg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute");
+    /*package*/ static final SConcept SmartReferenceAttribute$B3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink charactersticReference$BT$4 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference");
+    /*package*/ static final SReferenceLink charactersticReference$41pR = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference");
   }
 }

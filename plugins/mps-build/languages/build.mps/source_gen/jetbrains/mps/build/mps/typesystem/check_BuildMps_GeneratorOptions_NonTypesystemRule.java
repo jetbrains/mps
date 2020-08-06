@@ -23,11 +23,11 @@ public class check_BuildMps_GeneratorOptions_NonTypesystemRule extends AbstractN
   public check_BuildMps_GeneratorOptions_NonTypesystemRule() {
   }
   public void applyRule(final SNode genOpts, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(genOpts), CONCEPTS.BuildProject$BF)) {
-      SNode bp = SNodeOperations.cast(SNodeOperations.getParent(genOpts), CONCEPTS.BuildProject$BF);
-      if (ListSequence.fromList(SLinkOperations.getChildren(bp, LINKS.parts$b06K)).where(new IWhereFilter<SNode>() {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(genOpts), CONCEPTS.BuildProject$ae)) {
+      SNode bp = SNodeOperations.cast(SNodeOperations.getParent(genOpts), CONCEPTS.BuildProject$ae);
+      if (ListSequence.fromList(SLinkOperations.getChildren(bp, LINKS.parts$mGDj)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_GeneratorOptions$9K) && it != genOpts;
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_GeneratorOptions$A8) && it != genOpts;
         }
       }).isNotEmpty()) {
         {
@@ -38,7 +38,7 @@ public class check_BuildMps_GeneratorOptions_NonTypesystemRule extends AbstractN
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildMps_GeneratorOptions$9K;
+    return CONCEPTS.BuildMps_GeneratorOptions$A8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -48,11 +48,11 @@ public class check_BuildMps_GeneratorOptions_NonTypesystemRule extends AbstractN
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
-    /*package*/ static final SConcept BuildMps_GeneratorOptions$9K = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorOptions");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMps_GeneratorOptions$A8 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3ba296405b6f3b1bL, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorOptions");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
   }
 }

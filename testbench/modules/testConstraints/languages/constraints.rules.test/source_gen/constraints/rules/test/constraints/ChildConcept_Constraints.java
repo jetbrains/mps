@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ChildConcept_Constraints extends BaseConstraintsDescriptor {
   public ChildConcept_Constraints() {
-    super(CONCEPTS.ChildConcept$We);
+    super(CONCEPTS.ChildConcept$v);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildConcept$We = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rules.test.structure.ChildConcept");
+    /*package*/ static final SConcept ChildConcept$v = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rules.test.structure.ChildConcept");
   }
 }

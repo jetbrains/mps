@@ -46,31 +46,31 @@ public final class PropertyDescriptor__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static SNode create_id7ay_HjIOVVe(@NotNull SNode __thisNode__, SModel futureModel) {
     SNode res;
-    if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isString_idhKtFRO6.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$hcaF))) {
+    if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isString_idhKtFRO6.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Jbws))) {
       SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100d04L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.StringPropertyInstance"));
-      SLinkOperations.setTarget(node, LINKS.type$uWuc, _quotation_createNode_j9hr46_a0b0b0a());
+      SLinkOperations.setTarget(node, LINKS.type$a1UY, _quotation_createNode_j9hr46_a0b0b0a());
       res = node;
-    } else if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isBoolean_idhKtG1tp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$hcaF))) {
+    } else if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isBoolean_idhKtG1tp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Jbws))) {
       SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec3L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.BooleanPropertyInstance"));
-      SLinkOperations.setTarget(node, LINKS.type$uWuc, _quotation_createNode_j9hr46_a0b0a1a0());
+      SLinkOperations.setTarget(node, LINKS.type$a1UY, _quotation_createNode_j9hr46_a0b0a1a0());
       res = node;
-    } else if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isInteger_idhKtFYCF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$hcaF))) {
+    } else if ((boolean) PrimitiveDataTypeDeclaration__BehaviorDescriptor.isInteger_idhKtFYCF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Jbws))) {
       SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec5L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.IntegerPropertyInstance"));
-      SLinkOperations.setTarget(node, LINKS.type$uWuc, _quotation_createNode_j9hr46_a0b0b1a0());
+      SLinkOperations.setTarget(node, LINKS.type$a1UY, _quotation_createNode_j9hr46_a0b0b1a0());
       res = node;
     } else {
-      throw new IllegalStateException(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$hcaF)));
+      throw new IllegalStateException(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Jbws)));
     }
 
-    SPropertyOperations.assign(res, PROPS.name$lA7v, SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
-    SLinkOperations.setTarget(res, LINKS.decl$ySo$, __thisNode__);
+    SPropertyOperations.assign(res, PROPS.name$MnvL, SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
+    SLinkOperations.setTarget(res, LINKS.decl$RIl, __thisNode__);
 
     return res;
   }
   /*package*/ static Iterable<SNode> find_id2gzehMfi1$l(@NotNull final SNode __thisNode__, SNode cls) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$6v_r), CONCEPTS.PropertyInstance$LJ)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), CONCEPTS.PropertyInstance$7w)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.decl$ySo$) == __thisNode__;
+        return SLinkOperations.getTarget(it, LINKS.decl$RIl) == __thisNode__;
       }
     });
   }
@@ -142,17 +142,17 @@ public final class PropertyDescriptor__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink type$hcaF = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, 0x478b68dcf4b1763fL, "type");
-    /*package*/ static final SReferenceLink decl$ySo$ = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink type$Jbws = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, 0x478b68dcf4b1763fL, "type");
+    /*package*/ static final SReferenceLink decl$RIl = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyInstance$LJ = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyInstance");
+    /*package*/ static final SConcept PropertyInstance$7w = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyInstance");
   }
 }

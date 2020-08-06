@@ -34,8 +34,8 @@
       <node id="1225206150541" at="35,50,36,35" concept="7" />
       <node id="1225206150541" at="38,68,39,102" concept="7" />
       <node id="1225206150541" at="41,30,42,17" concept="7" />
-      <node id="1225206150541" at="46,0,47,0" concept="10" trace="IDeprecatable$EE" />
-      <node id="1225206150541" at="47,0,48,0" concept="10" trace="BaseConcept$Sz" />
+      <node id="1225206150541" at="46,0,47,0" concept="10" trace="IDeprecatable$2W" />
+      <node id="1225206150541" at="47,0,48,0" concept="10" trace="BaseConcept$gP" />
       <node id="1225206150541" at="22,0,24,0" concept="1" trace="check_DeprecatedReference_NonTypesystemRule#()V" />
       <node id="1225206150541" at="35,0,38,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1225206150541" at="38,0,41,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -166,8 +166,8 @@
       <node id="3813199577742747459" at="41,50,42,48" concept="7" />
       <node id="3813199577742747459" at="44,68,45,102" concept="7" />
       <node id="3813199577742747459" at="47,30,48,17" concept="7" />
-      <node id="3813199577742747459" at="52,0,53,0" concept="10" trace="filter$kXgf" />
-      <node id="3813199577742747459" at="56,0,57,0" concept="10" trace="SuppressErrorsAnnotation$gJ" />
+      <node id="3813199577742747459" at="52,0,53,0" concept="10" trace="filter$LICx" />
+      <node id="3813199577742747459" at="56,0,57,0" concept="10" trace="SuppressErrorsAnnotation$D1" />
       <node id="3813199577742747459" at="22,0,24,0" concept="1" trace="check_SuppressErrorsAnnotation_NonTypesystemRule#()V" />
       <node id="3813199577742747459" at="41,0,44,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3813199577742747459" at="44,0,47,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -238,7 +238,7 @@
       <node id="4673934238696234536" at="17,44,18,39" concept="7" />
       <node id="4673934238696234522" at="20,35,21,80" concept="6" />
       <node id="4673934238696234527" at="21,80,22,163" concept="2" />
-      <node id="4673934238696234519" at="26,0,27,0" concept="10" trace="ChildAttribute$XQ" />
+      <node id="4673934238696234519" at="26,0,27,0" concept="10" trace="ChildAttribute$m8" />
       <node id="4673934238696234519" at="14,0,17,0" concept="1" trace="add_ChildAttribute_id_QuickFix#()V" />
       <node id="4673934238696234519" at="17,0,20,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="4673934238696234519" at="20,0,24,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -270,12 +270,12 @@
     <file name="typeof_TypeAnnotated_InferenceRule.java">
       <node id="5259630923505771313" at="22,5,23,55" concept="6" />
       <node id="5259630923505771313" at="23,55,24,200" concept="6" />
-      <node id="5259630923505771313" at="24,200,25,330" concept="2" />
+      <node id="5259630923505771313" at="24,200,25,329" concept="2" />
       <node id="5259630923505770740" at="28,50,29,37" concept="7" />
       <node id="5259630923505770740" at="31,68,32,102" concept="7" />
       <node id="5259630923505770740" at="34,30,35,17" concept="7" />
-      <node id="5259630923505770740" at="39,0,40,0" concept="10" trace="annotation$zr50" />
-      <node id="5259630923505770740" at="43,0,44,0" concept="10" trace="TypeAnnotated$Qa" />
+      <node id="5259630923505770740" at="39,0,40,0" concept="10" trace="annotation$cti" />
+      <node id="5259630923505770740" at="43,0,44,0" concept="10" trace="TypeAnnotated$es" />
       <node id="5259630923505770740" at="19,0,21,0" concept="1" trace="typeof_TypeAnnotated_InferenceRule#()V" />
       <node id="5259630923505770740" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5259630923505770740" at="31,0,34,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -287,7 +287,7 @@
       <scope id="5259630923505770740" at="31,68,32,102" />
       <scope id="5259630923505770740" at="34,30,35,17" />
       <scope id="5259630923505770740" at="19,0,21,0" />
-      <scope id="5259630923505771313" at="22,5,25,330">
+      <scope id="5259630923505771313" at="22,5,25,329">
         <var name="_info_12389875345" id="5259630923505771313" />
         <var name="_nodeToCheck_1029348928467" id="5259630923505771313" />
       </scope>
@@ -335,8 +335,8 @@
       <node id="5394253938403289886" at="67,50,68,41" concept="7" />
       <node id="5394253938403289886" at="70,68,71,102" concept="7" />
       <node id="5394253938403289886" at="73,30,74,17" concept="7" />
-      <node id="5394253938403289886" at="78,0,79,0" concept="10" trace="propertyId$Hwkv" />
-      <node id="5394253938403289886" at="82,0,83,0" concept="10" trace="PropertyAttribute$jT" />
+      <node id="5394253938403289886" at="78,0,79,0" concept="10" trace="propertyId$ahGL" />
+      <node id="5394253938403289886" at="82,0,83,0" concept="10" trace="PropertyAttribute$Gb" />
       <node id="5394253938403289886" at="26,0,28,0" concept="1" trace="check_PropertyAttribute_NonTypesystemRule#()V" />
       <node id="5394253938404357483" at="41,0,44,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/language/SProperty;)Z" />
       <node id="5394253938403289886" at="67,0,70,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -438,9 +438,9 @@
       <node id="5394253938404192056" at="73,50,74,37" concept="7" />
       <node id="5394253938404192056" at="76,68,77,102" concept="7" />
       <node id="5394253938404192056" at="79,30,80,17" concept="7" />
-      <node id="5394253938404192056" at="84,0,85,0" concept="10" trace="smodelAttribute$jXFL" />
-      <node id="5394253938404192056" at="88,0,89,0" concept="10" trace="linkId$ooiU" />
-      <node id="5394253938404192056" at="92,0,93,0" concept="10" trace="LinkAttribute$7j" />
+      <node id="5394253938404192056" at="84,0,85,0" concept="10" trace="smodelAttribute$KJ43" />
+      <node id="5394253938404192056" at="88,0,89,0" concept="10" trace="linkId$P9Fc" />
+      <node id="5394253938404192056" at="92,0,93,0" concept="10" trace="LinkAttribute$v_" />
       <node id="5394253938404192056" at="28,0,30,0" concept="1" trace="check_LinkAttribute_NonTypesystemRule#()V" />
       <node id="8519076342981057643" at="31,150,34,5" concept="4" />
       <node id="5394253938404275996" at="47,0,50,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/language/SReferenceLink;)Z" />
@@ -521,8 +521,8 @@
       <node id="5394253938404233184" at="19,44,20,178" concept="7" />
       <node id="5394253938404231139" at="22,35,23,86" concept="6" />
       <node id="5394253938404221505" at="23,86,24,178" concept="2" />
-      <node id="5394253938404215446" at="28,0,29,0" concept="10" trace="PropertyAttribute$jT" />
-      <node id="5394253938404215446" at="32,0,33,0" concept="10" trace="name_DebugInfo$cCRy" />
+      <node id="5394253938404215446" at="28,0,29,0" concept="10" trace="PropertyAttribute$Gb" />
+      <node id="5394253938404215446" at="32,0,33,0" concept="10" trace="name_DebugInfo$DqfO" />
       <node id="5394253938404215446" at="16,0,19,0" concept="1" trace="fix_PropertyAttribute_name_QuickFix#()V" />
       <node id="5394253938404215446" at="19,0,22,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="5394253938404215446" at="22,0,26,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -549,8 +549,8 @@
       <node id="5394253938404329129" at="19,44,20,166" concept="7" />
       <node id="5394253938404329111" at="22,35,23,78" concept="6" />
       <node id="5394253938404329116" at="23,78,24,162" concept="2" />
-      <node id="5394253938404329108" at="28,0,29,0" concept="10" trace="LinkAttribute$7j" />
-      <node id="5394253938404329108" at="32,0,33,0" concept="10" trace="role_DebugInfo$cCrV" />
+      <node id="5394253938404329108" at="28,0,29,0" concept="10" trace="LinkAttribute$v_" />
+      <node id="5394253938404329108" at="32,0,33,0" concept="10" trace="role_DebugInfo$DpOd" />
       <node id="5394253938404329108" at="16,0,19,0" concept="1" trace="fix_LinkAttribute_name_QuickFix#()V" />
       <node id="5394253938404329108" at="19,0,22,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="5394253938404329108" at="22,0,26,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -576,7 +576,7 @@
       <node id="5394253938404408058" at="14,55,15,129" concept="11" />
       <node id="5394253938404408072" at="17,44,18,187" concept="7" />
       <node id="5394253938404408061" at="20,35,21,37" concept="2" />
-      <node id="5394253938404408058" at="25,0,26,0" concept="10" trace="PropertyAttribute$jT" />
+      <node id="5394253938404408058" at="25,0,26,0" concept="10" trace="PropertyAttribute$Gb" />
       <node id="5394253938404408058" at="14,0,17,0" concept="1" trace="RemoveUndeclaredPropertyAttribute_QuickFix#()V" />
       <node id="5394253938404408058" at="17,0,20,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="5394253938404408058" at="20,0,23,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -599,7 +599,7 @@
       <node id="5394253938404455484" at="14,51,15,129" concept="11" />
       <node id="5394253938404455493" at="17,44,18,176" concept="7" />
       <node id="5394253938404455487" at="20,35,21,37" concept="2" />
-      <node id="5394253938404455484" at="25,0,26,0" concept="10" trace="LinkAttribute$7j" />
+      <node id="5394253938404455484" at="25,0,26,0" concept="10" trace="LinkAttribute$v_" />
       <node id="5394253938404455484" at="14,0,17,0" concept="1" trace="RemoveUndeclaredLinkAttribute_QuickFix#()V" />
       <node id="5394253938404455484" at="17,0,20,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="5394253938404455484" at="20,0,23,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -623,8 +623,8 @@
       <node id="6063712545515840185" at="19,44,20,167" concept="7" />
       <node id="6063712545515840167" at="22,35,23,79" concept="6" />
       <node id="6063712545515840173" at="23,79,24,162" concept="2" />
-      <node id="6063712545515840164" at="28,0,29,0" concept="10" trace="ChildAttribute$XQ" />
-      <node id="6063712545515840164" at="32,0,33,0" concept="10" trace="role_DebugInfo$M0yX" />
+      <node id="6063712545515840164" at="28,0,29,0" concept="10" trace="ChildAttribute$m8" />
+      <node id="6063712545515840164" at="32,0,33,0" concept="10" trace="role_DebugInfo$eLVf" />
       <node id="6063712545515840164" at="16,0,19,0" concept="1" trace="fix_ChildAttribute_name_QuickFix#()V" />
       <node id="6063712545515840164" at="19,0,22,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="6063712545515840164" at="22,0,26,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -673,8 +673,8 @@
       <node id="709746936026611097" at="68,50,69,38" concept="7" />
       <node id="709746936026611097" at="71,68,72,102" concept="7" />
       <node id="709746936026611097" at="74,30,75,17" concept="7" />
-      <node id="709746936026611097" at="79,0,80,0" concept="10" trace="linkId$M5Wk" />
-      <node id="709746936026611097" at="83,0,84,0" concept="10" trace="ChildAttribute$XQ" />
+      <node id="709746936026611097" at="79,0,80,0" concept="10" trace="linkId$eRkA" />
+      <node id="709746936026611097" at="83,0,84,0" concept="10" trace="ChildAttribute$m8" />
       <node id="709746936026611097" at="27,0,29,0" concept="1" trace="check_ChildAttribute_NonTypesystemRule#()V" />
       <node id="709746936026611121" at="42,0,45,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="709746936026611097" at="68,0,71,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -761,7 +761,7 @@
       <node id="7283836008113024215" at="29,50,30,35" concept="7" />
       <node id="7283836008113024215" at="32,68,33,102" concept="7" />
       <node id="7283836008113024215" at="35,30,36,17" concept="7" />
-      <node id="7283836008113024215" at="40,0,41,0" concept="10" trace="BaseConcept$Sz" />
+      <node id="7283836008113024215" at="40,0,41,0" concept="10" trace="BaseConcept$gP" />
       <node id="7283836008113024215" at="19,0,21,0" concept="1" trace="check_InstanceOfAbstract_NonTypesystemRule#()V" />
       <node id="7283836008113024215" at="29,0,32,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7283836008113024215" at="32,0,35,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -812,7 +812,7 @@
       <node id="7881641160411813452" at="36,50,37,35" concept="7" />
       <node id="7881641160411813452" at="39,68,40,102" concept="7" />
       <node id="7881641160411813452" at="42,30,43,17" concept="7" />
-      <node id="7881641160411813452" at="47,0,48,0" concept="10" trace="BaseConcept$Sz" />
+      <node id="7881641160411813452" at="47,0,48,0" concept="10" trace="BaseConcept$gP" />
       <node id="7881641160411813452" at="21,0,23,0" concept="1" trace="check_InstanceOfExperimental_NonTypesystemRule#()V" />
       <node id="7881641160411813459" at="24,95,27,5" concept="4" />
       <node id="7881641160411813452" at="36,0,39,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -867,7 +867,7 @@
       <node id="8524227390952646882" at="36,50,37,35" concept="7" />
       <node id="8524227390952646882" at="39,68,40,102" concept="7" />
       <node id="8524227390952646882" at="42,30,43,17" concept="7" />
-      <node id="8524227390952646882" at="47,0,48,0" concept="10" trace="BaseConcept$Sz" />
+      <node id="8524227390952646882" at="47,0,48,0" concept="10" trace="BaseConcept$gP" />
       <node id="8524227390952646882" at="21,0,23,0" concept="1" trace="check_InstanceOfDeprecated_NonTypesystemRule#()V" />
       <node id="6301062378819453726" at="24,87,27,5" concept="4" />
       <node id="8524227390952646882" at="36,0,39,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -910,7 +910,7 @@
       <node id="8689990658168040117" at="17,44,18,38" concept="7" />
       <node id="8689990658168040100" at="20,35,21,78" concept="6" />
       <node id="8689990658168040105" at="21,78,22,161" concept="2" />
-      <node id="8689990658168040097" at="26,0,27,0" concept="10" trace="LinkAttribute$7j" />
+      <node id="8689990658168040097" at="26,0,27,0" concept="10" trace="LinkAttribute$v_" />
       <node id="8689990658168040097" at="14,0,17,0" concept="1" trace="add_LinkAttribute_id_QuickFix#()V" />
       <node id="8689990658168040097" at="17,0,20,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="8689990658168040097" at="20,0,24,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -936,7 +936,7 @@
       <node id="8689990658168058734" at="17,44,18,42" concept="7" />
       <node id="8689990658168058720" at="20,35,21,86" concept="6" />
       <node id="8689990658168058725" at="21,86,22,185" concept="2" />
-      <node id="8689990658168058717" at="26,0,27,0" concept="10" trace="PropertyAttribute$jT" />
+      <node id="8689990658168058717" at="26,0,27,0" concept="10" trace="PropertyAttribute$Gb" />
       <node id="8689990658168058717" at="14,0,17,0" concept="1" trace="add_PropertyAttribute_id_QuickFix#()V" />
       <node id="8689990658168058717" at="17,0,20,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="8689990658168058717" at="20,0,24,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />

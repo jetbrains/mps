@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public abstract class ElementCreator {
   public static void byElement(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    SNode element = SLinkOperations.getTarget(node, LINKS.rootElement$pEFx);
+    SNode element = SLinkOperations.getTarget(node, LINKS.rootElement$65B2);
     Element result = ElementCreator.createElement(element, ctx);
     Document document = new Document();
     document.setRootElement(result);
@@ -37,22 +37,22 @@ public abstract class ElementCreator {
   }
   protected static Element createElement(SNode element, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    Element result = new Element(SPropertyOperations.getString(element, PROPS.name$lA7v));
-    for (SNode attribute : SLinkOperations.getChildren(element, LINKS.attribute$pFb0)) {
-      if (SPropertyOperations.getString(attribute, PROPS.value$prr1) != null) {
-        result.setAttribute(SPropertyOperations.getString(attribute, PROPS.name$lA7v), SPropertyOperations.getString(attribute, PROPS.value$prr1));
+    Element result = new Element(SPropertyOperations.getString(element, PROPS.name$MnvL));
+    for (SNode attribute : SLinkOperations.getChildren(element, LINKS.attribute$666x)) {
+      if (SPropertyOperations.getString(attribute, PROPS.value$5Qmy) != null) {
+        result.setAttribute(SPropertyOperations.getString(attribute, PROPS.name$MnvL), SPropertyOperations.getString(attribute, PROPS.value$5Qmy));
       }
     }
     boolean first = true;
-    for (SNode part : SLinkOperations.getChildren(element, LINKS.content$pFq1)) {
-      if (SNodeOperations.isInstanceOf(part, CONCEPTS.Text$$p)) {
+    for (SNode part : SLinkOperations.getChildren(element, LINKS.content$66ly)) {
+      if (SNodeOperations.isInstanceOf(part, CONCEPTS.Text$vU)) {
         if (!(first)) {
           result.addContent("\n");
         }
-        result.addContent(SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.Text$$p), PROPS.text$pMcw));
+        result.addContent(SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.Text$vU), PROPS.text$6d81));
       }
-      if (SNodeOperations.isInstanceOf(part, CONCEPTS.Element$mm)) {
-        result.addContent(ElementCreator.createElement(SNodeOperations.cast(part, CONCEPTS.Element$mm), ctx));
+      if (SNodeOperations.isInstanceOf(part, CONCEPTS.Element$hR)) {
+        result.addContent(ElementCreator.createElement(SNodeOperations.cast(part, CONCEPTS.Element$hR), ctx));
       }
       first = false;
     }
@@ -60,19 +60,19 @@ public abstract class ElementCreator {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rootElement$pEFx = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, 0x11d45f8a8b8L, "rootElement");
-    /*package*/ static final SContainmentLink attribute$pFb0 = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8baL, "attribute");
-    /*package*/ static final SContainmentLink content$pFq1 = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8bbL, "content");
+    /*package*/ static final SContainmentLink rootElement$65B2 = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b6L, 0x11d45f8a8b8L, "rootElement");
+    /*package*/ static final SContainmentLink attribute$666x = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8baL, "attribute");
+    /*package*/ static final SContainmentLink content$66ly = MetaAdapterFactory.getContainmentLink(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, 0x11d45f8a8bbL, "content");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$prr1 = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value");
-    /*package*/ static final SProperty text$pMcw = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, 0x11d45f8a8c2L, "text");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty value$5Qmy = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8a1L, 0x11d45f8a8a3L, "value");
+    /*package*/ static final SProperty text$6d81 = MetaAdapterFactory.getProperty(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, 0x11d45f8a8c2L, "text");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Text$$p = MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, "jetbrains.mps.sampleXML.structure.Text");
-    /*package*/ static final SConcept Element$mm = MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, "jetbrains.mps.sampleXML.structure.Element");
+    /*package*/ static final SConcept Text$vU = MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8c1L, "jetbrains.mps.sampleXML.structure.Text");
+    /*package*/ static final SConcept Element$hR = MetaAdapterFactory.getConcept(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8b9L, "jetbrains.mps.sampleXML.structure.Element");
   }
 }

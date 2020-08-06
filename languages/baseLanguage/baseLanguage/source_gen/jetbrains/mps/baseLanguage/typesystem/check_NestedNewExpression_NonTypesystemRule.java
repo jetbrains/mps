@@ -23,7 +23,7 @@ public class check_NestedNewExpression_NonTypesystemRule extends AbstractNonType
   public void applyRule(final SNode nestedNewExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NestedNewExpression$79;
+    return CONCEPTS.NestedNewExpression$zV;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,6 +33,6 @@ public class check_NestedNewExpression_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NestedNewExpression$79 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
+    /*package*/ static final SConcept NestedNewExpression$zV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
   }
 }

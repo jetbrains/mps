@@ -75,7 +75,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
   public class TMP_Group_ohj0iz_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$ie);
     }
 
     @NotNull
@@ -91,7 +91,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ohj0iz_a0a(), CONCEPTS.FieldDeclaration$Ps), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ohj0iz_b0a(), CONCEPTS.FieldDeclaration$Ps), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ohj0iz_c0a(), CONCEPTS.FieldDeclaration$Ps));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ohj0iz_a0a(), CONCEPTS.FieldDeclaration$ie), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ohj0iz_b0a(), CONCEPTS.FieldDeclaration$ie), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ohj0iz_c0a(), CONCEPTS.FieldDeclaration$ie));
     }
     private class TMP_Action_ohj0iz_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -131,16 +131,16 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps);
-          SPropertyOperations.set(field, PROPS.isTransient$4Yfs, true);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps), "transientModifier", -1);
+          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$ie);
+          SPropertyOperations.set(field, PROPS.isTransient$K3Ge, true);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$ie), "transientModifier", -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.FieldDeclaration$Ps;
+          return CONCEPTS.FieldDeclaration$ie;
         }
 
 
@@ -151,7 +151,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.FieldDeclaration$Ps;
+          SAbstractConcept outputConcept = CONCEPTS.FieldDeclaration$ie;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -198,16 +198,16 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps);
-          SPropertyOperations.set(field, PROPS.isVolatile$2Bfn, true);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps), "volatileModifier", -1);
+          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$ie);
+          SPropertyOperations.set(field, PROPS.isVolatile$HGG9, true);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$ie), "volatileModifier", -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.FieldDeclaration$Ps;
+          return CONCEPTS.FieldDeclaration$ie;
         }
 
 
@@ -218,7 +218,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.FieldDeclaration$Ps;
+          SAbstractConcept outputConcept = CONCEPTS.FieldDeclaration$ie;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -265,8 +265,8 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$Ps);
-          SNode staticField = SNodeFactoryOperations.replaceWithNewChild(field, CONCEPTS.StaticFieldDeclaration$R5);
+          SNode field = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.FieldDeclaration$ie);
+          SNode staticField = SNodeFactoryOperations.replaceWithNewChild(field, CONCEPTS.StaticFieldDeclaration$jR);
           MemberDeclarationRefactoringUtil.rewireFieldReferences(field, staticField);
 
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), staticField, "staticModifier", -1);
@@ -277,7 +277,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.FieldDeclaration$Ps;
+          return CONCEPTS.FieldDeclaration$ie;
         }
 
 
@@ -288,7 +288,7 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.FieldDeclaration$Ps;
+          SAbstractConcept outputConcept = CONCEPTS.FieldDeclaration$ie;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -300,12 +300,12 @@ public class AddFieldModifiersOnTypes extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isTransient$4Yfs = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient");
-    /*package*/ static final SProperty isVolatile$2Bfn = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
+    /*package*/ static final SProperty isTransient$K3Ge = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient");
+    /*package*/ static final SProperty isVolatile$HGG9 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
   }
 }

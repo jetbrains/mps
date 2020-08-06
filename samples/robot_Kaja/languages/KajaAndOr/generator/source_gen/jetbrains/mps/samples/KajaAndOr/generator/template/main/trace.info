@@ -37,8 +37,8 @@
       <node id="1904811872814327663" at="49,103,50,80" concept="7" />
       <node id="1904811872814327663" at="50,80,51,245" concept="7" />
       <node id="1904811872814327663" at="51,245,52,20" concept="8" />
-      <node id="1904811872814327578" at="57,0,58,0" concept="10" trace="And$hB" />
-      <node id="1904811872814327578" at="58,0,59,0" concept="10" trace="Or$l6" />
+      <node id="1904811872814327578" at="57,0,58,0" concept="10" trace="And$pu" />
+      <node id="1904811872814327578" at="58,0,59,0" concept="10" trace="Or$sX" />
       <node id="1904811872814327601" at="34,0,37,0" concept="1" trace="ReductionRule0#()V" />
       <node id="1904811872814327663" at="45,0,48,0" concept="1" trace="ReductionRule1#()V" />
       <node id="1904811872814327578" at="25,0,29,0" concept="1" trace="Mapping_main#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />

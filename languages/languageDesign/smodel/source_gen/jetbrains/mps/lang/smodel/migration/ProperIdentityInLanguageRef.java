@@ -49,18 +49,18 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
           return scope_4t4wzo_a0e_0;
         }
       };
-      for (SNode lre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$Oe, false)).where(new IWhereFilter<SNode>() {
+      for (SNode lre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$PI, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.languageId$XvFx), CONCEPTS.LanguageIdentityBySourceModule$RC);
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8);
         }
       })) {
-        SNode moduleId = SNodeOperations.cast(SLinkOperations.getTarget(lre, LINKS.languageId$XvFx), CONCEPTS.LanguageIdentityBySourceModule$RC);
-        if (ListSequence.fromList(AttributeOperations.getAttributeList(moduleId, new IAttributeDescriptor.AllAttributes())).isNotEmpty() || ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$aLb5), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
+        SNode moduleId = SNodeOperations.cast(SLinkOperations.getTarget(lre, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8);
+        if (ListSequence.fromList(AttributeOperations.getAttributeList(moduleId, new IAttributeDescriptor.AllAttributes())).isNotEmpty() || ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$Jac_), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
           // likely, some generator macros that require human intervention to get them fixed properly 
           continue;
         }
-        SModuleReference mref = ModuleIdentity__BehaviorDescriptor.getModuleReference_idnJmxU5cSSU.invoke(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$aLb5));
-        SNode langId = SNodeOperations.replaceWithNewChild(SLinkOperations.getTarget(lre, LINKS.languageId$XvFx), CONCEPTS.LanguageId$Tn);
+        SModuleReference mref = ModuleIdentity__BehaviorDescriptor.getModuleReference_idnJmxU5cSSU.invoke(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$Jac_));
+        SNode langId = SNodeOperations.replaceWithNewChild(SLinkOperations.getTarget(lre, LINKS.languageId$xSH1), CONCEPTS.LanguageId$UR);
         LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(langId, MetaAdapterFactory.getLanguage(mref));
       }
     }
@@ -75,13 +75,13 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
           return scope_4t4wzo_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$Oe, false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LanguageRefExpression$PI, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.languageId$XvFx), CONCEPTS.LanguageIdentityBySourceModule$RC);
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8);
         }
       }).select(new ISelector<SNode, DeprecatedConceptNotMigratedProblem>() {
         public DeprecatedConceptNotMigratedProblem select(SNode it) {
-          return new DeprecatedConceptNotMigratedProblem(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.languageId$XvFx), CONCEPTS.LanguageIdentityBySourceModule$RC), LINKS.moduleReference$aLb5));
+          return new DeprecatedConceptNotMigratedProblem(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8), LINKS.moduleReference$Jac_));
         }
       });
     }
@@ -91,13 +91,13 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink languageId$XvFx = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, 0x312abca18ab995e2L, "languageId");
-    /*package*/ static final SContainmentLink moduleReference$aLb5 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, 0x2246d35517e858e9L, "moduleReference");
+    /*package*/ static final SContainmentLink languageId$xSH1 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, 0x312abca18ab995e2L, "languageId");
+    /*package*/ static final SContainmentLink moduleReference$Jac_ = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, 0x2246d35517e858e9L, "moduleReference");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LanguageIdentityBySourceModule$RC = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, "jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule");
-    /*package*/ static final SConcept LanguageId$Tn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
-    /*package*/ static final SConcept LanguageRefExpression$Oe = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, "jetbrains.mps.lang.smodel.structure.LanguageRefExpression");
+    /*package*/ static final SConcept LanguageIdentityBySourceModule$T8 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, "jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule");
+    /*package*/ static final SConcept LanguageId$UR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
+    /*package*/ static final SConcept LanguageRefExpression$PI = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, "jetbrains.mps.lang.smodel.structure.LanguageRefExpression");
   }
 }

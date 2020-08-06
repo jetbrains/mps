@@ -21,11 +21,11 @@ public class typeof_CustomConstructor_InferenceRule extends AbstractInferenceRul
     {
       SNode _nodeToCheck_1029348928467 = customConstructor;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "7085790726146868032", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "7085790726146868029", true), (SNode) SLinkOperations.getTarget(customConstructor, LINKS.returnType$bOAr), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:c19fbfce-5c58-4528-8b93-60edfa062cac(jetbrains.mps.baseLanguage.constructors.typesystem)", "7085790726146868029", true), (SNode) SLinkOperations.getTarget(customConstructor, LINKS.returnType$phlz), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CustomConstructor$$1;
+    return CONCEPTS.CustomConstructor$j9;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_CustomConstructor_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$bOAr = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e013L, "returnType");
+    /*package*/ static final SContainmentLink returnType$phlz = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e013L, "returnType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomConstructor$$1 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructor");
+    /*package*/ static final SConcept CustomConstructor$j9 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructor");
   }
 }

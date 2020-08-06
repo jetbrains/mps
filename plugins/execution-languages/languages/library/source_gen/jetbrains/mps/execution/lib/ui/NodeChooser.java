@@ -100,8 +100,8 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
 
     // XXX why not node.getFqName or node/.getPresentation? 
     String nodeName;
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV)) {
-      nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
+      nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
     } else {
       nodeName = node.getNodeId().toString();
     }
@@ -113,10 +113,10 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

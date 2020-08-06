@@ -109,14 +109,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       private void initModelDescriptorNode(ModelTreeNode node, SModel descriptor) {
         SModel sModel = descriptor;
-        for (SNode nextRoot : Sequence.fromIterable(ModelTreeBuilder.sortChildNodes(ListSequence.fromList(SModelOperations.roots(sModel, CONCEPTS.BaseConcept$Sz)).where(new IWhereFilter<SNode>() {
+        for (SNode nextRoot : Sequence.fromIterable(ModelTreeBuilder.sortChildNodes(ListSequence.fromList(SModelOperations.roots(sModel, CONCEPTS.BaseConcept$gP)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return isAcceptable(it);
           }
         })))) {
           ModelTreeNode modelRootTreeNode = ModelTreeBuilder.createSNodeTreeNode(nextRoot);
           modelRootTreeNode.setLeafPosition(true);
-          ModelTreeBuilder.insertChildSNodeTreeNode(node, modelRootTreeNode, SPropertyOperations.getString(nextRoot, PROPS.virtualPackage$dz_3));
+          ModelTreeBuilder.insertChildSNodeTreeNode(node, modelRootTreeNode, SPropertyOperations.getString(nextRoot, PROPS.virtualPackage$EkXl));
         }
 
         notifyNodeStructureChanged(node);
@@ -151,10 +151,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

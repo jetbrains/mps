@@ -15,26 +15,26 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class wrappers_PasteWrapper_0 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return CONCEPTS.BuildInputFileSet$VW;
+    return CONCEPTS.BuildInputFileSet$uv;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.BuildLayout_Node$kC;
+    return CONCEPTS.BuildLayout_Node$Rb;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
-    SNode cp = SModelOperations.createNewNode(SNodeOperations.getModel(sourceNode), null, CONCEPTS.BuildLayout_Copy$7_);
-    SLinkOperations.setTarget(cp, LINKS.fileset$ie0O, sourceNode);
+    SNode cp = SModelOperations.createNewNode(SNodeOperations.getModel(sourceNode), null, CONCEPTS.BuildLayout_Copy$E8);
+    SLinkOperations.setTarget(cp, LINKS.fileset$tUzn, sourceNode);
     return cp;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildInputFileSet$VW = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9216cebL, "jetbrains.mps.build.structure.BuildInputFileSet");
-    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
-    /*package*/ static final SConcept BuildLayout_Copy$7_ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy");
+    /*package*/ static final SConcept BuildInputFileSet$uv = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9216cebL, "jetbrains.mps.build.structure.BuildInputFileSet");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SConcept BuildLayout_Copy$E8 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fileset$ie0O = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink fileset$tUzn = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
   }
 }

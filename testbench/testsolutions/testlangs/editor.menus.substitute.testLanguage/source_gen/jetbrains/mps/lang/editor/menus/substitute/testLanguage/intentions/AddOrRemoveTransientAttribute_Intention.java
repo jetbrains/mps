@@ -47,7 +47,7 @@ public final class AddOrRemoveTransientAttribute_Intention extends AbstractInten
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$L8)) == null)) {
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D)) == null)) {
         return "Add Transient Attribute";
       } else {
         return "Remove Transient Attribute";
@@ -55,10 +55,10 @@ public final class AddOrRemoveTransientAttribute_Intention extends AbstractInten
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$L8)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$L8), CONCEPTS.TestSubstituteAttribute_TransparentEditor$L8);
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D)) == null)) {
+        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D), CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$L8)));
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D)));
       }
     }
     @Override
@@ -68,6 +68,6 @@ public final class AddOrRemoveTransientAttribute_Intention extends AbstractInten
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteAttribute_TransparentEditor$L8 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d5L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_TransparentEditor");
+    /*package*/ static final SConcept TestSubstituteAttribute_TransparentEditor$1D = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d5L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteAttribute_TransparentEditor");
   }
 }

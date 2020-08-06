@@ -81,7 +81,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$lA7v;
+      final SProperty property = PROPS.name$MnvL;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -91,7 +91,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -133,10 +133,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.extends$HFCu;
+      return LINKS.extends$OHQI;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.PrimitiveTypeRef$bm;
+      return CONCEPTS.PrimitiveTypeRef$pA;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -146,7 +146,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(extendsListHandler_7ntfj2_d0.this.getNode(), LINKS.extends$HFCu));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(extendsListHandler_7ntfj2_d0.this.getNode(), LINKS.extends$OHQI));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -201,15 +201,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept PrimitiveTypeRef$bm = MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeRef");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept PrimitiveTypeRef$pA = MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extends$HFCu = MetaAdapterFactory.getContainmentLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, 0x10de9cae1d0L, "extends");
+    /*package*/ static final SContainmentLink extends$OHQI = MetaAdapterFactory.getContainmentLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, 0x10de9cae1d0L, "extends");
   }
 }

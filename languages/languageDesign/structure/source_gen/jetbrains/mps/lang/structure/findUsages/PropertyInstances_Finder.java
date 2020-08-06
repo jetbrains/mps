@@ -32,14 +32,14 @@ public class PropertyInstances_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.PropertyDeclaration$c5;
+    return CONCEPTS.PropertyDeclaration$1S;
   }
 
   @Override
   protected void doFind0(@NotNull SNode node, SearchScope scope, IFinder.FindCallback callback, ProgressMonitor monitor) {
     try {
-      String role = SPropertyOperations.getString(node, PROPS.name$lA7v);
-      SNode conceptDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$UN, false, false);
+      String role = SPropertyOperations.getString(node, PROPS.name$MnvL);
+      SNode conceptDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$KA, false, false);
       if (!((conceptDeclaration == null))) {
         for (SNode instance : FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", conceptDeclaration, scope, monitor)) {
           String property = SNodeAccessUtil.getProperty(instance, role);
@@ -65,11 +65,11 @@ public class PropertyInstances_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

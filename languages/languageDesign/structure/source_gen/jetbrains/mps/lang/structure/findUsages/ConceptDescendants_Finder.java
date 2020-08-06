@@ -40,14 +40,14 @@ public class ConceptDescendants_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.AbstractConceptDeclaration$UN;
+    return CONCEPTS.AbstractConceptDeclaration$KA;
   }
 
   @Override
   protected void doFind0(@NotNull SNode node, SearchScope scope, final IFinder.FindCallback callback, final ProgressMonitor monitor) {
     monitor.start(getDescription(), 2);
     try {
-      boolean isIntfc = SNodeOperations.isInstanceOf(node, CONCEPTS.InterfaceConceptDeclaration$MT);
+      boolean isIntfc = SNodeOperations.isInstanceOf(node, CONCEPTS.InterfaceConceptDeclaration$CG);
       if (isIntfc) {
         FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
           public void onUsageFound(@NotNull SearchResult<?> searchResult) {
@@ -90,7 +90,7 @@ public class ConceptDescendants_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 }

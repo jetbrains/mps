@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class RunConfigurationSource_Constraints extends BaseConstraintsDescriptor {
   public RunConfigurationSource_Constraints() {
-    super(CONCEPTS.RunConfigurationSource$UL);
+    super(CONCEPTS.RunConfigurationSource$Bo);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class RunConfigurationSource_Constraints extends BaseConstraintsDescripto
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.RunConfigurationProducerPart$Ow);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.RunConfigurationProducerPart$x7);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:d6e5159c-3299-41f5-8a8a-81b5b79d5073(jetbrains.mps.execution.configurations.constraints)", "1227128029536566002");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RunConfigurationSource$UL = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84af96L, "jetbrains.mps.execution.configurations.structure.RunConfigurationSource");
-    /*package*/ static final SConcept RunConfigurationProducerPart$Ow = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducerPart");
+    /*package*/ static final SConcept RunConfigurationSource$Bo = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84af96L, "jetbrains.mps.execution.configurations.structure.RunConfigurationSource");
+    /*package*/ static final SConcept RunConfigurationProducerPart$x7 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cda6L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducerPart");
   }
 }

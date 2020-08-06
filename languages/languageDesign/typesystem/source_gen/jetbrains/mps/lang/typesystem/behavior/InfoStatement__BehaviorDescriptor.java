@@ -38,14 +38,14 @@ public final class InfoStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void attachNewMessageAnnotation_id7nf9pEwlup1(@NotNull SNode __thisNode__) {
-    SNode newAnnotation = SNodeFactoryOperations.createNewNode(CONCEPTS.InfoStatementAnnotation$vM, null);
-    AttributeOperations.setAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$sq), newAnnotation);
+    SNode newAnnotation = SNodeFactoryOperations.createNewNode(CONCEPTS.InfoStatementAnnotation$LC, null);
+    AttributeOperations.setAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig), newAnnotation);
   }
   /*package*/ static String getName_id1oFBbRehoLP(@NotNull SNode __thisNode__) {
-    if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$sq)) != null)) {
-      return SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$sq)), PROPS.name$lA7v);
+    if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig)) != null)) {
+      return SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig)), PROPS.name$MnvL);
     } else {
-      String nameGenerated = MessageStatementUtil.generateNameFromExpression(SLinkOperations.getTarget(__thisNode__, LINKS.infoText$Cduv));
+      String nameGenerated = MessageStatementUtil.generateNameFromExpression(SLinkOperations.getTarget(__thisNode__, LINKS.infoText$13Kl));
       if (nameGenerated != null && nameGenerated.length() > MessageStatementUtil.MIN_LENGTH) {
         return nameGenerated;
       }
@@ -103,15 +103,15 @@ public final class InfoStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InfoStatementAnnotation$vM = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6ee9803e48223f31L, "jetbrains.mps.lang.typesystem.structure.InfoStatementAnnotation");
-    /*package*/ static final SConcept MessageStatementAnnotation$sq = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2bb0fe622a9eb078L, "jetbrains.mps.lang.typesystem.structure.MessageStatementAnnotation");
+    /*package*/ static final SConcept InfoStatementAnnotation$LC = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x6ee9803e48223f31L, "jetbrains.mps.lang.typesystem.structure.InfoStatementAnnotation");
+    /*package*/ static final SConcept MessageStatementAnnotation$Ig = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2bb0fe622a9eb078L, "jetbrains.mps.lang.typesystem.structure.MessageStatementAnnotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink infoText$Cduv = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11d2965916bL, 0x11d2966036aL, "infoText");
+    /*package*/ static final SContainmentLink infoText$13Kl = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11d2965916bL, 0x11d2966036aL, "infoText");
   }
 }

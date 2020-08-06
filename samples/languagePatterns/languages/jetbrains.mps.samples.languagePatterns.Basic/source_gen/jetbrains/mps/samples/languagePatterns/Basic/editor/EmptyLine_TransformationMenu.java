@@ -109,7 +109,7 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.LineStyle$6A;
+      return CONCEPTS.LineStyle$ia;
     }
 
 
@@ -129,9 +129,9 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        SNode cmd = SNodeFactoryOperations.createNewNode(CONCEPTS.IncompleteCommand$Ck, null);
+        SNode cmd = SNodeFactoryOperations.createNewNode(CONCEPTS.IncompleteCommand$NS, null);
         SNodeOperations.replaceWithAnother(_context.getNode(), cmd);
-        SLinkOperations.setTarget(cmd, LINKS.lineStyle$UJ57, createdNode);
+        SLinkOperations.setTarget(cmd, LINKS.lineStyle$ejgF, createdNode);
         _context.getEditorContext().selectWRTFocusPolicy(cmd);
       }
 
@@ -159,11 +159,11 @@ public class EmptyLine_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LineStyle$6A = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666fc54L, "jetbrains.mps.samples.languagePatterns.Basic.structure.LineStyle");
-    /*package*/ static final SConcept IncompleteCommand$Ck = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x7d09f66a13005410L, "jetbrains.mps.samples.languagePatterns.Basic.structure.IncompleteCommand");
+    /*package*/ static final SConcept LineStyle$ia = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb2666fc54L, "jetbrains.mps.samples.languagePatterns.Basic.structure.LineStyle");
+    /*package*/ static final SConcept IncompleteCommand$NS = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x7d09f66a13005410L, "jetbrains.mps.samples.languagePatterns.Basic.structure.IncompleteCommand");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lineStyle$UJ57 = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
+    /*package*/ static final SContainmentLink lineStyle$ejgF = MetaAdapterFactory.getContainmentLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x313e78bb265d1022L, 0x313e78bb26670129L, "lineStyle");
   }
 }

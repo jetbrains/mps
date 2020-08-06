@@ -42,9 +42,9 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kfxouf_a(), CONCEPTS.DebuggerReference$bf));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kfxouf_a(), CONCEPTS.DebuggerReference$vJ));
     result.add(new SMP_Subconcepts_kfxouf_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.DebuggerReference$bf) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.DebuggerReference$vJ) {
 
       @NotNull
       @Override
@@ -57,7 +57,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.DebuggerReference$bf));
+    }, CONCEPTS.DebuggerReference$vJ));
     return result;
   }
 
@@ -133,7 +133,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.DebuggerReference$bf, context);
+          super(CONCEPTS.DebuggerReference$vJ, context);
           _context = context;
         }
 
@@ -144,8 +144,8 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode debuggerReference = SNodeFactoryOperations.createNewNode(CONCEPTS.DebuggerReference$bf, null);
-          SPropertyOperations.set(debuggerReference, PROPS.debuggerName$x6kz, myParameterObject);
+          SNode debuggerReference = SNodeFactoryOperations.createNewNode(CONCEPTS.DebuggerReference$vJ, null);
+          SPropertyOperations.set(debuggerReference, PROPS.debuggerName$HZD3, myParameterObject);
           return debuggerReference;
         }
 
@@ -155,7 +155,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.DebuggerReference$bf, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.DebuggerReference$vJ, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -178,7 +178,7 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_kfxouf_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DebuggerReference$bf);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DebuggerReference$vJ);
     }
     @NotNull
     @Override
@@ -199,10 +199,10 @@ public class DebuggerReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DebuggerReference$bf = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference");
+    /*package*/ static final SConcept DebuggerReference$vJ = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty debuggerName$x6kz = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, 0xf528808f912d155L, "debuggerName");
+    /*package*/ static final SProperty debuggerName$HZD3 = MetaAdapterFactory.getProperty(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, 0xf528808f912d155L, "debuggerName");
   }
 }

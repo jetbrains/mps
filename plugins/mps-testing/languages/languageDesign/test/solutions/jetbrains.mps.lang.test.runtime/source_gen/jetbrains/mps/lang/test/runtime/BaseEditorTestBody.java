@@ -137,7 +137,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private CellReference findCellReference(SNode node) {
-    List<SNode> annotations = SNodeOperations.getNodeDescendants(node, CONCEPTS.AnonymousCellAnnotation$28, false, new SAbstractConcept[]{});
+    List<SNode> annotations = SNodeOperations.getNodeDescendants(node, CONCEPTS.AnonymousCellAnnotation$hB, false, new SAbstractConcept[]{});
     if (ListSequence.fromList(annotations).isEmpty()) {
       return null;
     }
@@ -419,6 +419,6 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnonymousCellAnnotation$28 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
+    /*package*/ static final SConcept AnonymousCellAnnotation$hB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
   }
 }

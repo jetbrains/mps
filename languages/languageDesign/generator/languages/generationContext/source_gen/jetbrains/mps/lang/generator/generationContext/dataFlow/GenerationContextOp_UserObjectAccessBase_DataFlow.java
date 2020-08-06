@@ -11,10 +11,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GenerationContextOp_UserObjectAccessBase_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.userKey$qqkh));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.userKey$ElHR));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink userKey$qqkh = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8fe60348L, 0x11b8ff121e8L, "userKey");
+    /*package*/ static final SContainmentLink userKey$ElHR = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b8fe60348L, 0x11b8ff121e8L, "userKey");
   }
 }

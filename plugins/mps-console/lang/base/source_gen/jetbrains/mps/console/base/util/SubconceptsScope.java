@@ -51,7 +51,7 @@ public abstract class SubconceptsScope extends Scope {
       }
     }).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$UN);
+        return SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$KA);
       }
     });
     Iterable<SNode> subConcepts = Sequence.fromIterable(allConcepts).where(new IWhereFilter<SNode>() {
@@ -86,10 +86,10 @@ public abstract class SubconceptsScope extends Scope {
   }
   @Nullable
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN)) || !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$UN), concept))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) || !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), concept))) {
       return null;
     }
-    String result = getName(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$UN));
+    String result = getName(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA));
     for (SNode n : Sequence.fromIterable(getAvailableElements(null))) {
       if (n == node) {
         continue;
@@ -104,6 +104,6 @@ public abstract class SubconceptsScope extends Scope {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

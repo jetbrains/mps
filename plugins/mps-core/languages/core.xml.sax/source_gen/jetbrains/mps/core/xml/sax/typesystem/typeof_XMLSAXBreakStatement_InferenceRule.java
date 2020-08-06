@@ -20,16 +20,16 @@ public class typeof_XMLSAXBreakStatement_InferenceRule extends AbstractInference
   public typeof_XMLSAXBreakStatement_InferenceRule() {
   }
   public void applyRule(final SNode stmt, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(stmt, LINKS.result$hpdx) != null)) {
+    if ((SLinkOperations.getTarget(stmt, LINKS.result$z_yu) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(stmt, LINKS.result$hpdx);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(stmt, LINKS.result$z_yu);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140565", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140578", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(stmt, CONCEPTS.XMLSAXParser$Sn, true, false), LINKS.root$ksqx), LINKS.type$kjtw), false, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140578", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(stmt, CONCEPTS.XMLSAXParser$dk, true, false), LINKS.root$ACJu), LINKS.type$AvMt), false, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.XMLSAXBreakStatement$LX;
+    return CONCEPTS.XMLSAXBreakStatement$6U;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,13 +39,13 @@ public class typeof_XMLSAXBreakStatement_InferenceRule extends AbstractInference
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink result$hpdx = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, 0x1f6c736337b5e2d1L, "result");
-    /*package*/ static final SReferenceLink root$ksqx = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e303L, "root");
-    /*package*/ static final SContainmentLink type$kjtw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
+    /*package*/ static final SContainmentLink result$z_yu = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, 0x1f6c736337b5e2d1L, "result");
+    /*package*/ static final SReferenceLink root$ACJu = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e303L, "root");
+    /*package*/ static final SContainmentLink type$AvMt = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXParser$Sn = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, "jetbrains.mps.core.xml.sax.structure.XMLSAXParser");
-    /*package*/ static final SConcept XMLSAXBreakStatement$LX = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, "jetbrains.mps.core.xml.sax.structure.XMLSAXBreakStatement");
+    /*package*/ static final SConcept XMLSAXParser$dk = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, "jetbrains.mps.core.xml.sax.structure.XMLSAXParser");
+    /*package*/ static final SConcept XMLSAXBreakStatement$6U = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cfL, "jetbrains.mps.core.xml.sax.structure.XMLSAXBreakStatement");
   }
 }

@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TemplateArgumentVarRefExpression2_Constraints extends BaseConstraintsDescriptor {
   public TemplateArgumentVarRefExpression2_Constraints() {
-    super(CONCEPTS.TemplateArgumentVarRefExpression2$mg);
+    super(CONCEPTS.TemplateArgumentVarRefExpression2$1W);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.vardecl$fb80, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.vardecl$C7NG, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class TemplateArgumentVarRefExpression2_Constraints extends BaseConstrain
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.VarDeclaration$SX);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.VarDeclaration$$D);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -54,11 +54,11 @@ public class TemplateArgumentVarRefExpression2_Constraints extends BaseConstrain
   private static final SNodePointer breakingNode_5nbkev_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "1048903277991450453");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateArgumentVarRefExpression2$mg = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2");
-    /*package*/ static final SConcept VarDeclaration$SX = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration");
+    /*package*/ static final SConcept TemplateArgumentVarRefExpression2$1W = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2");
+    /*package*/ static final SConcept VarDeclaration$$D = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink vardecl$fb80 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl");
+    /*package*/ static final SReferenceLink vardecl$C7NG = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, 0xe8e73f9584aee10L, "vardecl");
   }
 }

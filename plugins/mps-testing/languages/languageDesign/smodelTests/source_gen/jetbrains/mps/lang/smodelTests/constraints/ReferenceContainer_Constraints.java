@@ -23,12 +23,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ReferenceContainer_Constraints extends BaseConstraintsDescriptor {
   public ReferenceContainer_Constraints() {
-    super(CONCEPTS.ReferenceContainer$DU);
+    super(CONCEPTS.ReferenceContainer$rR);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.root$7kX0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.root$cBIX, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -43,12 +43,12 @@ public class ReferenceContainer_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Root$mF));
+            return ListScope.forResolvableElements(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Root$8C));
           }
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.rightChild$9N5y, this) {
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.rightChild$f5Rv, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -63,12 +63,12 @@ public class ReferenceContainer_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Child$jL));
+            return ListScope.forResolvableElements(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Child$5I));
           }
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d2 = new BaseReferenceConstraintsDescriptor(LINKS.leftChild$9MQx, this) {
+    BaseReferenceConstraintsDescriptor d2 = new BaseReferenceConstraintsDescriptor(LINKS.leftChild$f5Cu, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -83,7 +83,7 @@ public class ReferenceContainer_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Child$jL));
+            return ListScope.forResolvableElements(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Child$5I));
           }
         };
       }
@@ -99,14 +99,14 @@ public class ReferenceContainer_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_5tia2e_a0a0a0a0a1a0a0c0c = new SNodePointer("r:c3114115-c401-467f-8766-388ee2aa9908(jetbrains.mps.lang.smodelTests.constraints)", "6836281137582843704");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReferenceContainer$DU = MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x798c0d67da965ac6L, "jetbrains.mps.lang.smodelTests.structure.ReferenceContainer");
-    /*package*/ static final SConcept Root$mF = MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fc5L, "jetbrains.mps.lang.smodelTests.structure.Root");
-    /*package*/ static final SConcept Child$jL = MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child");
+    /*package*/ static final SConcept ReferenceContainer$rR = MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x798c0d67da965ac6L, "jetbrains.mps.lang.smodelTests.structure.ReferenceContainer");
+    /*package*/ static final SConcept Root$8C = MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fc5L, "jetbrains.mps.lang.smodelTests.structure.Root");
+    /*package*/ static final SConcept Child$5I = MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink root$7kX0 = MetaAdapterFactory.getReferenceLink(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x798c0d67da965ac6L, 0x798c0d67da965ac7L, "root");
-    /*package*/ static final SReferenceLink rightChild$9N5y = MetaAdapterFactory.getReferenceLink(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x798c0d67da965ac6L, 0x798c0d67da965ac9L, "rightChild");
-    /*package*/ static final SReferenceLink leftChild$9MQx = MetaAdapterFactory.getReferenceLink(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x798c0d67da965ac6L, 0x798c0d67da965ac8L, "leftChild");
+    /*package*/ static final SReferenceLink root$cBIX = MetaAdapterFactory.getReferenceLink(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x798c0d67da965ac6L, 0x798c0d67da965ac7L, "root");
+    /*package*/ static final SReferenceLink rightChild$f5Rv = MetaAdapterFactory.getReferenceLink(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x798c0d67da965ac6L, 0x798c0d67da965ac9L, "rightChild");
+    /*package*/ static final SReferenceLink leftChild$f5Cu = MetaAdapterFactory.getReferenceLink(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x798c0d67da965ac6L, 0x798c0d67da965ac8L, "leftChild");
   }
 }

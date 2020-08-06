@@ -35,9 +35,9 @@ public final class QueryFunctionParameter_SubstituteMenu_CreatedNode__BehaviorDe
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    SNode action = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.SubstituteMenuPart$$W, false, false);
-    if (action != null && SNodeOperations.isInstanceOf(action, CONCEPTS.IMenuPartWithOutputConcept$Tt)) {
-      SNode outputConcept = IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(SNodeOperations.cast(action, CONCEPTS.IMenuPartWithOutputConcept$Tt));
+    SNode action = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.SubstituteMenuPart$Kz, false, false);
+    if (action != null && SNodeOperations.isInstanceOf(action, CONCEPTS.IMenuPartWithOutputConcept$54)) {
+      SNode outputConcept = IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(SNodeOperations.cast(action, CONCEPTS.IMenuPartWithOutputConcept$54));
       if (outputConcept != null) {
         return _quotation_createNode_2yhl6z_a0a1a1a0(outputConcept);
       }
@@ -105,7 +105,7 @@ public final class QueryFunctionParameter_SubstituteMenu_CreatedNode__BehaviorDe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenuPart$$W = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart");
-    /*package*/ static final SInterfaceConcept IMenuPartWithOutputConcept$Tt = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x35978129ee23fa76L, "jetbrains.mps.lang.editor.structure.IMenuPartWithOutputConcept");
+    /*package*/ static final SConcept SubstituteMenuPart$Kz = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5c03050cab4546aL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart");
+    /*package*/ static final SInterfaceConcept IMenuPartWithOutputConcept$54 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x35978129ee23fa76L, "jetbrains.mps.lang.editor.structure.IMenuPartWithOutputConcept");
   }
 }

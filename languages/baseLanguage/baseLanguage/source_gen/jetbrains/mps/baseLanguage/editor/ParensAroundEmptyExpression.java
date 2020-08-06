@@ -56,7 +56,7 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
   public class SMP_Group_z82rnb_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return Objects.equals(SNodeOperations.getConcept(_context.getCurrentTargetNode()), CONCEPTS.Expression$TP);
+      return Objects.equals(SNodeOperations.getConcept(_context.getCurrentTargetNode()), CONCEPTS.Expression$mB);
     }
     @NotNull
     @Override
@@ -72,7 +72,7 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_z82rnb_a0(), CONCEPTS.ParenthesizedExpression$vE));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_z82rnb_a0(), CONCEPTS.ParenthesizedExpression$Ws));
     }
     private class SMP_Action_z82rnb_a0 extends SingleItemSubstituteMenuPart {
 
@@ -102,7 +102,7 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.ParenthesizedExpression$vE, context);
+          super(CONCEPTS.ParenthesizedExpression$Ws, context);
           _context = context;
         }
 
@@ -113,16 +113,16 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode parens = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$vE, null);
+          SNode parens = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$Ws, null);
           String intent = pattern.substring(1);
           if (intent.equals("(")) {
-            SNodeFactoryOperations.setNewChild(parens, LINKS.expression$efP0, CONCEPTS.ParenthesizedExpression$vE);
+            SNodeFactoryOperations.setNewChild(parens, LINKS.expression$TlhM, CONCEPTS.ParenthesizedExpression$Ws);
           } else if (!(intent.equals(")"))) {
-            SNode constant = SLinkOperations.setTarget(parens, LINKS.expression$efP0, SNodeFactoryOperations.createNewNode(CONCEPTS.IntegerConstant$mo, null));
+            SNode constant = SLinkOperations.setTarget(parens, LINKS.expression$TlhM, SNodeFactoryOperations.createNewNode(CONCEPTS.IntegerConstant$Na, null));
             int value;
             try {
               value = Integer.parseInt(intent);
-              SPropertyOperations.set(constant, PROPS.value$Cbc0, value);
+              SPropertyOperations.set(constant, PROPS.value$jgCM, value);
             } catch (NumberFormatException e) {
             }
           }
@@ -172,7 +172,7 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_z82rnb_a1(), CONCEPTS.NotExpression$oq));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_z82rnb_a1(), CONCEPTS.NotExpression$Pc));
     }
     private class SMP_Action_z82rnb_a1 extends SingleItemSubstituteMenuPart {
 
@@ -202,7 +202,7 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.NotExpression$oq, context);
+          super(CONCEPTS.NotExpression$Pc, context);
           _context = context;
         }
 
@@ -213,8 +213,8 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode notExpr = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$oq, null);
-          SNode parens = SNodeFactoryOperations.setNewChild(notExpr, LINKS.expression$Lq8V, CONCEPTS.ParenthesizedExpression$vE);
+          SNode notExpr = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$Pc, null);
+          SNode parens = SNodeFactoryOperations.setNewChild(notExpr, LINKS.expression$sv_H, CONCEPTS.ParenthesizedExpression$Ws);
           return notExpr;
         }
 
@@ -232,18 +232,18 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
-    /*package*/ static final SConcept IntegerConstant$mo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
-    /*package*/ static final SConcept NotExpression$oq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept IntegerConstant$Na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
+    /*package*/ static final SConcept NotExpression$Pc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$sv_H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Cbc0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
+    /*package*/ static final SProperty value$jgCM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
   }
 }

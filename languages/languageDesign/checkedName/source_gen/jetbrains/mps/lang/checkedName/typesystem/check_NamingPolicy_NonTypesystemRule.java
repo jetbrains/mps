@@ -27,7 +27,7 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     String warningMessage = "Naming policies violated: " + "all words except prepositions, articles and particles should be capitalized";
     for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(node)) {
-      if (!(NameUtil.satisfiesPartNamingPolicy(SPropertyOperations.getString(s, PROPS.value$P2m0)))) {
+      if (!(NameUtil.satisfiesPartNamingPolicy(SPropertyOperations.getString(s, PROPS.value$w7MM)))) {
         String myWarning = warningMessage + ".";
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -71,7 +71,7 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ICheckedNamePolicy$3m;
+    return CONCEPTS.ICheckedNamePolicy$7R;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -81,10 +81,10 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ICheckedNamePolicy$3m = MetaAdapterFactory.getInterfaceConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, "jetbrains.mps.lang.checkedName.structure.ICheckedNamePolicy");
+    /*package*/ static final SInterfaceConcept ICheckedNamePolicy$7R = MetaAdapterFactory.getInterfaceConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, "jetbrains.mps.lang.checkedName.structure.ICheckedNamePolicy");
   }
 }

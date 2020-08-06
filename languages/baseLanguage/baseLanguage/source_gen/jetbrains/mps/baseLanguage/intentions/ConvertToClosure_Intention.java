@@ -41,18 +41,18 @@ public final class ConvertToClosure_Intention extends AbstractIntentionDescripto
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode newExpression = SNodeOperations.getNodeAncestor(node, CONCEPTS.GenericNewExpression$ev, false, false);
+    SNode newExpression = SNodeOperations.getNodeAncestor(node, CONCEPTS.GenericNewExpression$Fh, false, false);
     if ((newExpression == null)) {
       return false;
     }
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$S9))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$kV))) {
       return false;
     }
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$S9), LINKS.actualArgument$ItKJ)).contains(newExpression))) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$kV), LINKS.actualArgument$pzdx)).contains(newExpression))) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$JwxM), CONCEPTS.Interface$Kp)) {
-      SNode parentInterface = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$JwxM), CONCEPTS.Interface$Kp);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$q_Y$), CONCEPTS.Interface$db)) {
+      SNode parentInterface = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$q_Y$), CONCEPTS.Interface$db);
       return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(parentInterface)).count() == 1;
     }
     return false;
@@ -76,13 +76,13 @@ public final class ConvertToClosure_Intention extends AbstractIntentionDescripto
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode closureLiteral = SNodeFactoryOperations.createNewNode(CONCEPTS.ClosureLiteral$zJ, null);
+      SNode closureLiteral = SNodeFactoryOperations.createNewNode(CONCEPTS.ClosureLiteral$rp, null);
       if (Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(node)).isNotEmpty()) {
-        SLinkOperations.setTarget(closureLiteral, LINKS.body$e5Do, SLinkOperations.getTarget(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(node)).first(), LINKS.body$qspy));
+        SLinkOperations.setTarget(closureLiteral, LINKS.body$Ujx2, SLinkOperations.getTarget(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(node)).first(), LINKS.body$5xQk));
       }
-      SNode method = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$JwxM), CONCEPTS.Interface$Kp))).first();
-      ListSequence.fromList(SLinkOperations.getChildren(closureLiteral, LINKS.parameter$uR6p)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)));
-      SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(node, CONCEPTS.GenericNewExpression$ev, false, false), closureLiteral);
+      SNode method = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$q_Y$), CONCEPTS.Interface$db))).first();
+      ListSequence.fromList(SLinkOperations.getChildren(closureLiteral, LINKS.parameter$b4Y3)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)));
+      SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(node, CONCEPTS.GenericNewExpression$Fh, false, false), closureLiteral);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -91,18 +91,18 @@ public final class ConvertToClosure_Intention extends AbstractIntentionDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenericNewExpression$ev = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
-    /*package*/ static final SConcept BaseMethodCall$S9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c78301acL, "jetbrains.mps.baseLanguage.structure.BaseMethodCall");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClosureLiteral$zJ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept GenericNewExpression$Fh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
+    /*package*/ static final SConcept BaseMethodCall$kV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c78301acL, "jetbrains.mps.baseLanguage.structure.BaseMethodCall");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink parameter$uR6p = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink parameter$b4Y3 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

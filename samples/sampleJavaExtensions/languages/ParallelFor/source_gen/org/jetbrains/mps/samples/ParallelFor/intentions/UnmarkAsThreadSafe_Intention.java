@@ -39,10 +39,10 @@ public final class UnmarkAsThreadSafe_Intention extends AbstractIntentionDescrip
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$T7)) != null;
+    return AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null;
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(childNode, CONCEPTS.ThreadSafe$T7);
+    return SNodeOperations.isInstanceOf(childNode, CONCEPTS.ThreadSafe$eJ);
   }
   @Override
   public boolean isSurroundWith() {
@@ -63,7 +63,7 @@ public final class UnmarkAsThreadSafe_Intention extends AbstractIntentionDescrip
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$T7), null);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ), null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -72,6 +72,6 @@ public final class UnmarkAsThreadSafe_Intention extends AbstractIntentionDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ThreadSafe$T7 = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe");
+    /*package*/ static final SConcept ThreadSafe$eJ = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe");
   }
 }

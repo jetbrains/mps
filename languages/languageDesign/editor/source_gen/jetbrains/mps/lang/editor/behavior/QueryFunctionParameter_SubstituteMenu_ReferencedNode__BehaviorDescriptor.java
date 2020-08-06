@@ -36,7 +36,7 @@ public final class QueryFunctionParameter_SubstituteMenu_ReferencedNode__Behavio
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_groy2r_a0a0(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.SubstituteMenuPart_ReferenceScope$po, false, false), LINKS.reference$yXJL), LINKS.target$TWaS));
+    return _quotation_createNode_groy2r_a0a0(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.SubstituteMenuPart_ReferenceScope$$Z, false, false), LINKS.reference$BfVo), LINKS.target$m40F));
   }
 
   /*package*/ QueryFunctionParameter_SubstituteMenu_ReferencedNode__BehaviorDescriptor() {
@@ -93,11 +93,11 @@ public final class QueryFunctionParameter_SubstituteMenu_ReferencedNode__Behavio
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenuPart_ReferenceScope$po = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope");
+    /*package*/ static final SConcept SubstituteMenuPart_ReferenceScope$$Z = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink reference$yXJL = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x74f6a88f89465369L, "reference");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink reference$BfVo = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x74f6a88f89465369L, "reference");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

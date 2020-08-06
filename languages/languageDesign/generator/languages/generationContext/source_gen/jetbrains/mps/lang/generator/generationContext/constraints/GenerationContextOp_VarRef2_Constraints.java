@@ -28,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDescriptor {
   public GenerationContextOp_VarRef2_Constraints() {
-    super(CONCEPTS.GenerationContextOp_VarRef2$D1);
+    super(CONCEPTS.GenerationContextOp_VarRef2$2B);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.vardecl$hkww, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.vardecl$xfU6, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,8 +52,8 @@ public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDesc
             SNode contextNode = _context.getContextNode();
             List<SNode> vars = new ArrayList<SNode>();
             while ((contextNode != null)) {
-              if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.VarMacro2$J_)) {
-                ListSequence.fromList(vars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.VarMacro2$J_), LINKS.variables$htEz)));
+              if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.VarMacro2$rh)) {
+                ListSequence.fromList(vars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.VarMacro2$rh), LINKS.variables$Eqmf)));
               }
               contextNode = Scope.parent(contextNode);
             }
@@ -69,12 +69,12 @@ public class GenerationContextOp_VarRef2_Constraints extends BaseConstraintsDesc
   private static final SNodePointer breakingNode_uv4m3v_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902ee(jetbrains.mps.lang.generator.generationContext.constraints)", "5121314058278954391");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_VarRef2$D1 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2");
-    /*package*/ static final SConcept VarMacro2$J_ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2");
+    /*package*/ static final SConcept GenerationContextOp_VarRef2$2B = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2");
+    /*package*/ static final SConcept VarMacro2$rh = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, "jetbrains.mps.lang.generator.structure.VarMacro2");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink vardecl$hkww = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, 0xe8e73f957fd5247L, "vardecl");
-    /*package*/ static final SContainmentLink variables$htEz = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables");
+    /*package*/ static final SReferenceLink vardecl$xfU6 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, 0xe8e73f957fd5247L, "vardecl");
+    /*package*/ static final SContainmentLink variables$Eqmf = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables");
   }
 }

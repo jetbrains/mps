@@ -19,15 +19,15 @@ public class SimplifyNotExpression_QuickFix extends QuickFix_Runtime {
     return "Simplify Not Expression";
   }
   public void execute(SNode node) {
-    SNode constant = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BooleanConstant$Ui);
-    SPropertyOperations.assign(constant, PROPS.value$qt90, !(((Boolean) SimplifyNotExpression_QuickFix.this.getField("value")[0])));
+    SNode constant = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BooleanConstant$n4);
+    SPropertyOperations.assign(constant, PROPS.value$5y_M, !(((Boolean) SimplifyNotExpression_QuickFix.this.getField("value")[0])));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BooleanConstant$Ui = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

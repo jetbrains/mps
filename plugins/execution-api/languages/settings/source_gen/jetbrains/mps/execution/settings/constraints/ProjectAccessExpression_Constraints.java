@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ProjectAccessExpression_Constraints extends BaseConstraintsDescriptor {
   public ProjectAccessExpression_Constraints() {
-    super(CONCEPTS.ProjectAccessExpression$Nz);
+    super(CONCEPTS.ProjectAccessExpression$oo);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class ProjectAccessExpression_Constraints extends BaseConstraintsDescript
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.CheckProperties_Function$dx, false, false) != null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.CheckProperties_Function$Mm, false, false) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:26cd452e-c5c2-4d47-ad13-dda4362e8616(jetbrains.mps.execution.settings.constraints)", "1227128029536565580");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ProjectAccessExpression$Nz = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x6a8d96ff82b02f8L, "jetbrains.mps.execution.settings.structure.ProjectAccessExpression");
-    /*package*/ static final SConcept CheckProperties_Function$dx = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910125L, "jetbrains.mps.execution.settings.structure.CheckProperties_Function");
+    /*package*/ static final SConcept ProjectAccessExpression$oo = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x6a8d96ff82b02f8L, "jetbrains.mps.execution.settings.structure.ProjectAccessExpression");
+    /*package*/ static final SConcept CheckProperties_Function$Mm = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910125L, "jetbrains.mps.execution.settings.structure.CheckProperties_Function");
   }
 }

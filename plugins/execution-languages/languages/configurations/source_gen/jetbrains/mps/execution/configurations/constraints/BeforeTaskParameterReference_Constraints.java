@@ -29,7 +29,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BeforeTaskParameterReference_Constraints extends BaseConstraintsDescriptor {
   public BeforeTaskParameterReference_Constraints() {
-    super(CONCEPTS.BeforeTaskParameterReference$zy);
+    super(CONCEPTS.BeforeTaskParameterReference$g9);
   }
 
   @Override
@@ -49,7 +49,7 @@ public class BeforeTaskParameterReference_Constraints extends BaseConstraintsDes
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$7WwU, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$N1XG, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -64,7 +64,7 @@ public class BeforeTaskParameterReference_Constraints extends BaseConstraintsDes
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.BeforeTaskParameter$s_);
+            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.BeforeTaskParameter$9c);
 
           }
         };
@@ -75,18 +75,18 @@ public class BeforeTaskParameterReference_Constraints extends BaseConstraintsDes
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(parentNode), CONCEPTS.BeforeTask$Gg);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(parentNode), CONCEPTS.BeforeTask$oR);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:d6e5159c-3299-41f5-8a8a-81b5b79d5073(jetbrains.mps.execution.configurations.constraints)", "1227128029536566041");
   private static final SNodePointer breakingNode_xor3la_a0a0a0a0a1a0a0a0d = new SNodePointer("r:d6e5159c-3299-41f5-8a8a-81b5b79d5073(jetbrains.mps.execution.configurations.constraints)", "6836281137582836931");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BeforeTaskParameterReference$zy = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781fd3c0L, "jetbrains.mps.execution.configurations.structure.BeforeTaskParameterReference");
-    /*package*/ static final SConcept BeforeTaskParameter$s_ = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f8014L, "jetbrains.mps.execution.configurations.structure.BeforeTaskParameter");
-    /*package*/ static final SConcept BeforeTask$Gg = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x61a8be33d403b7bfL, "jetbrains.mps.execution.configurations.structure.BeforeTask");
+    /*package*/ static final SConcept BeforeTaskParameterReference$g9 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781fd3c0L, "jetbrains.mps.execution.configurations.structure.BeforeTaskParameterReference");
+    /*package*/ static final SConcept BeforeTaskParameter$9c = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f8014L, "jetbrains.mps.execution.configurations.structure.BeforeTaskParameter");
+    /*package*/ static final SConcept BeforeTask$oR = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x61a8be33d403b7bfL, "jetbrains.mps.execution.configurations.structure.BeforeTask");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

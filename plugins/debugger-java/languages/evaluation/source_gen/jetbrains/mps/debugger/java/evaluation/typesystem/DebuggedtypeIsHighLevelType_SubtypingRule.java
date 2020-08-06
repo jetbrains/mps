@@ -17,10 +17,10 @@ public class DebuggedtypeIsHighLevelType_SubtypingRule extends SubtypingRule_Run
   public DebuggedtypeIsHighLevelType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode debuggedType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return SLinkOperations.getTarget(debuggedType, LINKS.highType$qdhx);
+    return SLinkOperations.getTarget(debuggedType, LINKS.highType$CzqX);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DebuggedType$q5;
+    return CONCEPTS.DebuggedType$zx;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -30,10 +30,10 @@ public class DebuggedtypeIsHighLevelType_SubtypingRule extends SubtypingRule_Run
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink highType$qdhx = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25edaL, "highType");
+    /*package*/ static final SContainmentLink highType$CzqX = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, 0x3f11b1341fa25edaL, "highType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DebuggedType$q5 = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType");
+    /*package*/ static final SConcept DebuggedType$zx = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType");
   }
 }

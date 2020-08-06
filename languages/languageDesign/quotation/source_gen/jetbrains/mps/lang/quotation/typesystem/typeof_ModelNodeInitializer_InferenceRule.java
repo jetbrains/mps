@@ -23,21 +23,21 @@ public class typeof_ModelNodeInitializer_InferenceRule extends AbstractInference
   public void applyRule(final SNode modelNodeInitializer, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelNodeInitializer, LINKS.modelToCreate$K8bw);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelNodeInitializer, LINKS.modelToCreate$HXc4);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "7191184120224050936", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "7191184120224050939", true), (SNode) _quotation_createNode_fqufb1_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelNodeInitializer, LINKS.nodeId$K8qx);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelNodeInitializer, LINKS.nodeId$HXr5);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "7191184120224051126", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "7191184120224051129", true), (SNode) _quotation_createNode_fqufb1_a1a0c0a0b0b(), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ModelNodeInitializer$gn;
+    return CONCEPTS.ModelNodeInitializer$gV;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,11 +61,11 @@ public class typeof_ModelNodeInitializer_InferenceRule extends AbstractInference
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modelToCreate$K8bw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da106fL, "modelToCreate");
-    /*package*/ static final SContainmentLink nodeId$K8qx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da1070L, "nodeId");
+    /*package*/ static final SContainmentLink modelToCreate$HXc4 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da106fL, "modelToCreate");
+    /*package*/ static final SContainmentLink nodeId$HXr5 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da1070L, "nodeId");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelNodeInitializer$gn = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, "jetbrains.mps.lang.quotation.structure.ModelNodeInitializer");
+    /*package*/ static final SConcept ModelNodeInitializer$gV = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, "jetbrains.mps.lang.quotation.structure.ModelNodeInitializer");
   }
 }

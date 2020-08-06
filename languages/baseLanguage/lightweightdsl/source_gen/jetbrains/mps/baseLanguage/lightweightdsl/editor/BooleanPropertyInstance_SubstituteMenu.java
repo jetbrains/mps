@@ -28,7 +28,7 @@ public class BooleanPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_dxbbg3_a(), CONCEPTS.BooleanPropertyInstance$g3));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_dxbbg3_a(), CONCEPTS.BooleanPropertyInstance$_O));
     result.add(new SMP_Subconcepts_dxbbg3_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class BooleanPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_dxbbg3_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BooleanPropertyInstance$g3, LINKS.decl$ySo$);
+      super((SAbstractConcept) CONCEPTS.BooleanPropertyInstance$_O, LINKS.decl$RIl);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class BooleanPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_dxbbg3_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BooleanPropertyInstance$g3);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BooleanPropertyInstance$_O);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class BooleanPropertyInstance_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BooleanPropertyInstance$g3 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec3L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.BooleanPropertyInstance");
+    /*package*/ static final SConcept BooleanPropertyInstance$_O = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec3L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.BooleanPropertyInstance");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink decl$ySo$ = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl");
+    /*package*/ static final SReferenceLink decl$RIl = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9151L, 0x772497abf2e77969L, "decl");
   }
 }

@@ -31,7 +31,7 @@ public class typeof_PutAllOperation_InferenceRule extends AbstractInferenceRule_
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.map$qMIU);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.map$56Xd);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240907008336", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240907000627", true), (SNode) _quotation_createNode_fb8qny_a1a0c0a0d0b(typeCheckingContext.getRepresentative(KEY_typevar_1240906967388), typeCheckingContext.getRepresentative(VALUE_typevar_1240906971637)), true, true, _info_12389875345);
       }
@@ -43,7 +43,7 @@ public class typeof_PutAllOperation_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PutAllOperation$ly;
+    return CONCEPTS.PutAllOperation$zP;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -91,10 +91,10 @@ public class typeof_PutAllOperation_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink map$qMIU = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120ebcea0f9L, 0x120ebd0f530L, "map");
+    /*package*/ static final SContainmentLink map$56Xd = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120ebcea0f9L, 0x120ebd0f530L, "map");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PutAllOperation$ly = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120ebcea0f9L, "jetbrains.mps.baseLanguage.collections.structure.PutAllOperation");
+    /*package*/ static final SConcept PutAllOperation$zP = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120ebcea0f9L, "jetbrains.mps.baseLanguage.collections.structure.PutAllOperation");
   }
 }

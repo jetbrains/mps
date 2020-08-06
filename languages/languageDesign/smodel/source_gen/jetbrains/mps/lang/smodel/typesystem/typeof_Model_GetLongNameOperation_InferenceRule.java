@@ -25,7 +25,7 @@ public class typeof_Model_GetLongNameOperation_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Model_GetLongNameOperation$us;
+    return CONCEPTS.Model_GetLongNameOperation$vW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_Model_GetLongNameOperation_InferenceRule extends AbstractInf
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Model_GetLongNameOperation$us = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11a3152e18bL, "jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation");
+    /*package*/ static final SConcept Model_GetLongNameOperation$vW = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11a3152e18bL, "jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation");
   }
 }

@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DeprecatedBlockDocTag_Constraints extends BaseConstraintsDescriptor {
   public DeprecatedBlockDocTag_Constraints() {
-    super(CONCEPTS.DeprecatedBlockDocTag$ma);
+    super(CONCEPTS.DeprecatedBlockDocTag$8n);
   }
 
   @Override
@@ -41,20 +41,20 @@ public class DeprecatedBlockDocTag_Constraints extends BaseConstraintsDescriptor
     };
   }
   private static boolean staticCanBeAChild(final SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(parentNode, CONCEPTS.BaseDocComment$pH), LINKS.tags$658s)).all(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(parentNode, CONCEPTS.BaseDocComment$bU), LINKS.tags$stUD)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$ma)) || Objects.equals(it, node);
+        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.DeprecatedBlockDocTag$8n)) || Objects.equals(it, node);
       }
     });
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "1227128029536560255");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DeprecatedBlockDocTag$ma = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
-    /*package*/ static final SConcept BaseDocComment$pH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+    /*package*/ static final SConcept DeprecatedBlockDocTag$8n = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
+    /*package*/ static final SConcept BaseDocComment$bU = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink tags$stUD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
   }
 }

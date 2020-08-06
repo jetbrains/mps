@@ -45,11 +45,11 @@ public class Removing_IDontSubstituteByDefault extends MigrationScriptBase {
           return scope_c264be_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$qU, false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$gH, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          List<SNode> toRemove = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.implements$2tZf)).where(new IWhereFilter<SNode>() {
+          List<SNode> toRemove = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.implements$u_P2)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SLinkOperations.hasPointer(it, LINKS.intfc$7Eer, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1835621062190663819"));
+              return SLinkOperations.hasPointer(it, LINKS.intfc$zM4e, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1835621062190663819"));
             }
           }).toListSequence();
           ListSequence.fromList(toRemove).visitAll(new IVisitor<SNode>() {
@@ -59,11 +59,11 @@ public class Removing_IDontSubstituteByDefault extends MigrationScriptBase {
           });
         }
       });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.InterfaceConceptDeclaration$MT, false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.InterfaceConceptDeclaration$CG, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          List<SNode> toRemove = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.extends$V2F7)).where(new IWhereFilter<SNode>() {
+          List<SNode> toRemove = ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.extends$nawU)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SLinkOperations.hasPointer(it, LINKS.intfc$7Eer, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1835621062190663819"));
+              return SLinkOperations.hasPointer(it, LINKS.intfc$zM4e, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1835621062190663819"));
             }
           }).toListSequence();
           ListSequence.fromList(toRemove).visitAll(new IVisitor<SNode>() {
@@ -80,13 +80,13 @@ public class Removing_IDontSubstituteByDefault extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SContainmentLink implements$u_P2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink extends$nawU = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
   }
 }

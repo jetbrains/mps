@@ -20,7 +20,7 @@ public class check_QuerySegment_NonTypesystemRule extends AbstractNonTypesystemR
   public check_QuerySegment_NonTypesystemRule() {
   }
   public void applyRule(final SNode querySegment, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(querySegment, PROPS.segment$8ZtI))) {
+    if (isEmptyString(SPropertyOperations.getString(querySegment, PROPS.segment$4c7m))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(querySegment, "Empty segmnet", "r:c79f1d68-0099-426e-a3a4-72db4a9f1693(jetbrains.mps.ide.httpsupport.typesystem)", "6040064942662332637", null, errorTarget);
@@ -28,7 +28,7 @@ public class check_QuerySegment_NonTypesystemRule extends AbstractNonTypesystemR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.QuerySegment$Ur;
+    return CONCEPTS.QuerySegment$$3;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,10 +41,10 @@ public class check_QuerySegment_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty segment$8ZtI = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed8L, 0x53d29f104face44fL, "segment");
+    /*package*/ static final SProperty segment$4c7m = MetaAdapterFactory.getProperty(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed8L, 0x53d29f104face44fL, "segment");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QuerySegment$Ur = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed8L, "jetbrains.mps.ide.httpsupport.structure.QuerySegment");
+    /*package*/ static final SConcept QuerySegment$$3 = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed8L, "jetbrains.mps.ide.httpsupport.structure.QuerySegment");
   }
 }

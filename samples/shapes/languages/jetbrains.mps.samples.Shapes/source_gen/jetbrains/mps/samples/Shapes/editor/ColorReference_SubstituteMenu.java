@@ -28,7 +28,7 @@ public class ColorReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_j87eyw_a(), CONCEPTS.ColorReference$CB));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_j87eyw_a(), CONCEPTS.ColorReference$aK));
     result.add(new SMP_Subconcepts_j87eyw_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class ColorReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_j87eyw_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ColorReference$CB, LINKS.target$6bEz);
+      super((SAbstractConcept) CONCEPTS.ColorReference$aK, LINKS.target$hpcG);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class ColorReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_j87eyw_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ColorReference$CB);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ColorReference$aK);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class ColorReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ColorReference$CB = MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x3a2b0182df2201afL, "jetbrains.mps.samples.Shapes.structure.ColorReference");
+    /*package*/ static final SConcept ColorReference$aK = MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x3a2b0182df2201afL, "jetbrains.mps.samples.Shapes.structure.ColorReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$6bEz = MetaAdapterFactory.getReferenceLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x3a2b0182df2201afL, 0x3a2b0182df22029aL, "target");
+    /*package*/ static final SReferenceLink target$hpcG = MetaAdapterFactory.getReferenceLink(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x3a2b0182df2201afL, 0x3a2b0182df22029aL, "target");
   }
 }

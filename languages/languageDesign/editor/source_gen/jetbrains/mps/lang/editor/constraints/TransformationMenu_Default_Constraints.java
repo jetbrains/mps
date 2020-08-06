@@ -18,12 +18,12 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class TransformationMenu_Default_Constraints extends BaseConstraintsDescriptor {
   public TransformationMenu_Default_Constraints() {
-    super(CONCEPTS.TransformationMenu_Default$In);
+    super(CONCEPTS.TransformationMenu_Default$TY);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -31,25 +31,25 @@ public class TransformationMenu_Default_Constraints extends BaseConstraintsDescr
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$VYS3), PROPS.name$lA7v) + "_TransformationMenu";
+      return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$h3E), PROPS.name$MnvL) + "_TransformationMenu";
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenu_Default$In = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
+    /*package*/ static final SConcept TransformationMenu_Default$TY = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$h3E = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
   }
 }

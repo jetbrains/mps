@@ -34,12 +34,12 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void drawShape_idW6XMzE_hbz(@NotNull SNode __thisNode__, Graphics graphics) {
-    Shape__BehaviorDescriptor.drawShape_idW6XMzE_hbz.invokeSuper(__thisNode__, CONCEPTS.Circle$yH, graphics);
-    graphics.drawOval(SPropertyOperations.getInteger(__thisNode__, PROPS.x$lhmw), SPropertyOperations.getInteger(__thisNode__, PROPS.y$lhOy), SPropertyOperations.getInteger(__thisNode__, PROPS.radius$lix_), SPropertyOperations.getInteger(__thisNode__, PROPS.radius$lix_));
+    Shape__BehaviorDescriptor.drawShape_idW6XMzE_hbz.invokeSuper(__thisNode__, CONCEPTS.Circle$4Q, graphics);
+    graphics.drawOval(SPropertyOperations.getInteger(__thisNode__, PROPS.x$wuSD), SPropertyOperations.getInteger(__thisNode__, PROPS.y$wvmF), SPropertyOperations.getInteger(__thisNode__, PROPS.radius$ww3I), SPropertyOperations.getInteger(__thisNode__, PROPS.radius$ww3I));
   }
   /*package*/ static void drawShapeAt_id3u6SZi0POQS(@NotNull SNode __thisNode__, Graphics graphics, int x, int y) {
-    Shape__BehaviorDescriptor.drawShapeAt_id3u6SZi0POQS.invokeSuper(__thisNode__, CONCEPTS.Circle$yH, graphics, ((int) x), ((int) y));
-    graphics.drawOval(x, y, SPropertyOperations.getInteger(__thisNode__, PROPS.radius$lix_), SPropertyOperations.getInteger(__thisNode__, PROPS.radius$lix_));
+    Shape__BehaviorDescriptor.drawShapeAt_id3u6SZi0POQS.invokeSuper(__thisNode__, CONCEPTS.Circle$4Q, graphics, ((int) x), ((int) y));
+    graphics.drawOval(x, y, SPropertyOperations.getInteger(__thisNode__, PROPS.radius$ww3I), SPropertyOperations.getInteger(__thisNode__, PROPS.radius$ww3I));
   }
 
   /*package*/ Circle__BehaviorDescriptor() {
@@ -93,12 +93,12 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Circle$yH = MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, "jetbrains.mps.samples.Shapes.structure.Circle");
+    /*package*/ static final SConcept Circle$4Q = MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, "jetbrains.mps.samples.Shapes.structure.Circle");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty x$lhmw = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc199L, "x");
-    /*package*/ static final SProperty y$lhOy = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19bL, "y");
-    /*package*/ static final SProperty radius$lix_ = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius");
+    /*package*/ static final SProperty x$wuSD = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc199L, "x");
+    /*package*/ static final SProperty y$wvmF = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19bL, "y");
+    /*package*/ static final SProperty radius$ww3I = MetaAdapterFactory.getProperty(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fc198L, 0x51dcaa29974fc19eL, "radius");
   }
 }

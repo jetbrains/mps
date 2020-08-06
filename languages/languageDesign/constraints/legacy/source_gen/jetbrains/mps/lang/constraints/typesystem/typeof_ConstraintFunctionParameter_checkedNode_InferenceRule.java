@@ -23,15 +23,15 @@ public class typeof_ConstraintFunctionParameter_checkedNode_InferenceRule extend
   public typeof_ConstraintFunctionParameter_checkedNode_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$JH, false, false) != null)) {
-      SNode constraint = SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$JH, false, false);
+    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$PH, false, false) != null)) {
+      SNode constraint = SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$PH, false, false);
       {
         SNode _nodeToCheck_1029348928467 = node;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "2990203945683059391", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "2990203945683059402", true), (SNode) _quotation_createNode_98w0k3_a1a0c0b0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(constraint, LINKS.applicableLink$WTlX), LINKS.target$TWaS)), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "2990203945683059402", true), (SNode) _quotation_createNode_98w0k3_a1a0c0b0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(constraint, LINKS.applicableLink$7IrX), LINKS.target$m40F)), _info_12389875345);
       }
-    } else if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeDefaultSearchScope$Vj, false, false) != null)) {
-      SNode defaultScope = SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeDefaultSearchScope$Vj, false, false);
+    } else if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeDefaultSearchScope$1j, false, false) != null)) {
+      SNode defaultScope = SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeDefaultSearchScope$1j, false, false);
       {
         SNode _nodeToCheck_1029348928467 = node;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "2990203945683059428", 0, null);
@@ -46,7 +46,7 @@ public class typeof_ConstraintFunctionParameter_checkedNode_InferenceRule extend
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConstraintFunctionParameter_checkedNode$SM;
+    return CONCEPTS.ConstraintFunctionParameter_checkedNode$YM;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -76,13 +76,13 @@ public class typeof_ConstraintFunctionParameter_checkedNode_InferenceRule extend
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeReferentConstraint$JH = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
-    /*package*/ static final SConcept NodeDefaultSearchScope$Vj = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10dead47852L, "jetbrains.mps.lang.constraints.structure.NodeDefaultSearchScope");
-    /*package*/ static final SConcept ConstraintFunctionParameter_checkedNode$SM = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x297f56a5546902a8L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_checkedNode");
+    /*package*/ static final SConcept NodeReferentConstraint$PH = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
+    /*package*/ static final SConcept NodeDefaultSearchScope$1j = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10dead47852L, "jetbrains.mps.lang.constraints.structure.NodeDefaultSearchScope");
+    /*package*/ static final SConcept ConstraintFunctionParameter_checkedNode$YM = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x297f56a5546902a8L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_checkedNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableLink$WTlX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink applicableLink$7IrX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

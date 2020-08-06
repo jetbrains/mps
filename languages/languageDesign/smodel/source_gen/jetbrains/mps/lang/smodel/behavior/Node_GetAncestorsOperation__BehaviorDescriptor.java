@@ -36,7 +36,7 @@ public final class Node_GetAncestorsOperation__BehaviorDescriptor extends BaseBH
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id6ALWH9fQysn(@NotNull SAbstractConcept __thisConcept__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.OperationParm_Concept$Vf, CONCEPTS.OperationParm_ConceptList$lK, CONCEPTS.OperationParm_Inclusion$d);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.OperationParm_Concept$WJ, CONCEPTS.OperationParm_ConceptList$ng, CONCEPTS.OperationParm_Inclusion$1H);
   }
 
   /*package*/ Node_GetAncestorsOperation__BehaviorDescriptor() {
@@ -88,8 +88,8 @@ public final class Node_GetAncestorsOperation__BehaviorDescriptor extends BaseBH
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OperationParm_Concept$Vf = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61caab68L, "jetbrains.mps.lang.smodel.structure.OperationParm_Concept");
-    /*package*/ static final SConcept OperationParm_ConceptList$lK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList");
-    /*package*/ static final SConcept OperationParm_Inclusion$d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion");
+    /*package*/ static final SConcept OperationParm_Concept$WJ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61caab68L, "jetbrains.mps.lang.smodel.structure.OperationParm_Concept");
+    /*package*/ static final SConcept OperationParm_ConceptList$ng = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05bec71L, "jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList");
+    /*package*/ static final SConcept OperationParm_Inclusion$1H = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion");
   }
 }

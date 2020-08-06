@@ -13,26 +13,26 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class VariableReferenceUtil {
   public static boolean referencesPointToSameVariableDeclaration(SNode left, SNode right) {
-    return SNodeOperations.isInstanceOf(left, CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(right, CONCEPTS.VariableReference$sQ) && Objects.equals(VariableReferenceUtil.getVariableDeclarationAtEndOfChain(SNodeOperations.cast(left, CONCEPTS.VariableReference$sQ)), VariableReferenceUtil.getVariableDeclarationAtEndOfChain(SNodeOperations.cast(right, CONCEPTS.VariableReference$sQ)));
+    return SNodeOperations.isInstanceOf(left, CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(right, CONCEPTS.VariableReference$TC) && Objects.equals(VariableReferenceUtil.getVariableDeclarationAtEndOfChain(SNodeOperations.cast(left, CONCEPTS.VariableReference$TC)), VariableReferenceUtil.getVariableDeclarationAtEndOfChain(SNodeOperations.cast(right, CONCEPTS.VariableReference$TC)));
   }
   public static SNode getVariableDeclarationAtEndOfChain(SNode ref) {
     if (ref == null) {
       return null;
     }
-    SNode declaration = SLinkOperations.getTarget(ref, LINKS.variableDeclaration$7WwU);
-    if (declaration != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.initializer$no3R), CONCEPTS.VariableReference$sQ)) {
-      return getVariableDeclarationAtEndOfChain(SNodeOperations.cast(SLinkOperations.getTarget(declaration, LINKS.initializer$no3R), CONCEPTS.VariableReference$sQ));
+    SNode declaration = SLinkOperations.getTarget(ref, LINKS.variableDeclaration$N1XG);
+    if (declaration != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD), CONCEPTS.VariableReference$TC)) {
+      return getVariableDeclarationAtEndOfChain(SNodeOperations.cast(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD), CONCEPTS.VariableReference$TC));
     } else {
       return declaration;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

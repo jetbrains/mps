@@ -33,7 +33,7 @@ public final class IndentLayoutWrapAnchorStyleClassItem__BehaviorDescriptor exte
   }
 
   /*package*/ static boolean isApplicableForLayout_iditlittOTie(@NotNull SAbstractConcept __thisConcept__, SConcept layoutConcept) {
-    return CONCEPTS.CellLayout_Indent$tI.equals(layoutConcept);
+    return CONCEPTS.CellLayout_Indent$Dl.equals(layoutConcept);
   }
   /*package*/ static StyleAttribute<Boolean> getStyleAttribute_id3a0zHG4tjdX(@NotNull SNode __thisNode__) {
     return StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR;
@@ -88,6 +88,6 @@ public final class IndentLayoutWrapAnchorStyleClassItem__BehaviorDescriptor exte
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellLayout_Indent$tI = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
+    /*package*/ static final SConcept CellLayout_Indent$Dl = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
   }
 }

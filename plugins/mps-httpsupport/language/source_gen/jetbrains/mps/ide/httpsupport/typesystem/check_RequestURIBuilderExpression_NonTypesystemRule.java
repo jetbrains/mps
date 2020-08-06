@@ -24,9 +24,9 @@ public class check_RequestURIBuilderExpression_NonTypesystemRule extends Abstrac
   public check_RequestURIBuilderExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode requestURIBuilderExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$EI79) != null) {
+    if (SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$_UKL) != null) {
       final Iterable<SNode> initializedParameters = RequestURLBuilderExpression__BehaviorDescriptor.getInitializedParameters_id40BYgt09_iZ.invoke(requestURIBuilderExpression);
-      boolean allRequiredParams = Sequence.fromIterable(RequestHandler__BehaviorDescriptor.getRequieredParameters_id40BYgsZXRLw.invoke(SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$EI79))).all(new IWhereFilter<SNode>() {
+      boolean allRequiredParams = Sequence.fromIterable(RequestHandler__BehaviorDescriptor.getRequieredParameters_id40BYgsZXRLw.invoke(SLinkOperations.getTarget(requestURIBuilderExpression, LINKS.requestHandler$_UKL))).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Sequence.fromIterable(initializedParameters).contains(it);
         }
@@ -39,7 +39,7 @@ public class check_RequestURIBuilderExpression_NonTypesystemRule extends Abstrac
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RequestURLBuilderExpression$JC;
+    return CONCEPTS.RequestURLBuilderExpression$pg;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,10 +49,10 @@ public class check_RequestURIBuilderExpression_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink requestHandler$EI79 = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, 0x4027f9073ff5cebeL, "requestHandler");
+    /*package*/ static final SReferenceLink requestHandler$_UKL = MetaAdapterFactory.getReferenceLink(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, 0x4027f9073ff5cebeL, "requestHandler");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequestURLBuilderExpression$JC = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, "jetbrains.mps.ide.httpsupport.structure.RequestURLBuilderExpression");
+    /*package*/ static final SConcept RequestURLBuilderExpression$pg = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L, "jetbrains.mps.ide.httpsupport.structure.RequestURLBuilderExpression");
   }
 }

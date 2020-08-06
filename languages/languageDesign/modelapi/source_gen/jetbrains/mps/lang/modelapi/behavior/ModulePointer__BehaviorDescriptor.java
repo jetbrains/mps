@@ -37,18 +37,18 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode create_id1Bs_61$mIAC(@NotNull SAbstractConcept __thisConcept__, SModel where, SModuleReference moduleRef) {
-    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModulePointer$rJ);
-    SPropertyOperations.assign(rv, PROPS.moduleId$7VKI, PersistenceFacade.getInstance().asString(moduleRef.getModuleId()));
-    SPropertyOperations.assign(rv, PROPS.moduleName$XstC, moduleRef.getModuleName());
+    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModulePointer$7i);
+    SPropertyOperations.assign(rv, PROPS.moduleId$2ksh, PersistenceFacade.getInstance().asString(moduleRef.getModuleId()));
+    SPropertyOperations.assign(rv, PROPS.moduleName$RP9b, moduleRef.getModuleName());
     return rv;
   }
   /*package*/ static SModuleReference toModuleReference_id1Bs_61$mqDd(@NotNull SNode __thisNode__) {
     PersistenceFacade pf = PersistenceFacade.getInstance();
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$7VKI))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$2ksh))) {
       return null;
     }
     try {
-      return pf.createModuleReference(pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$7VKI)), SPropertyOperations.getString(__thisNode__, PROPS.moduleName$XstC));
+      return pf.createModuleReference(pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$2ksh)), SPropertyOperations.getString(__thisNode__, PROPS.moduleName$RP9b));
     } catch (IllegalArgumentException e) {
       return null;
     }
@@ -106,11 +106,11 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModulePointer$rJ = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
+    /*package*/ static final SConcept ModulePointer$7i = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$7VKI = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
-    /*package*/ static final SProperty moduleName$XstC = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
+    /*package*/ static final SProperty moduleId$2ksh = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
+    /*package*/ static final SProperty moduleName$RP9b = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
   }
 }

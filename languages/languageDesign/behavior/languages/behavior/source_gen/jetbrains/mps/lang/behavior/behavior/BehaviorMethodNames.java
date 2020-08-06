@@ -36,10 +36,10 @@ public class BehaviorMethodNames {
   }
 
   private static String getMethodName(SNode method) {
-    return SPropertyOperations.getString(method, PROPS.name$lA7v) + "_" + method.getNodeId().toString();
+    return SPropertyOperations.getString(method, PROPS.name$MnvL) + "_" + method.getNodeId().toString();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

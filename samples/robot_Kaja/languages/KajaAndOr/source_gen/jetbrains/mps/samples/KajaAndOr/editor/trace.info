@@ -49,8 +49,8 @@
       <node id="1412244050168669831" at="69,70,70,0" concept="10" />
       <node id="1412244050168669831" at="70,0,71,77" concept="9" />
       <node id="1412244050168675336" at="72,60,73,66" concept="2" />
-      <node id="1412244050168669831" at="78,0,79,0" concept="11" trace="left$QsIo" />
-      <node id="1412244050168669831" at="79,0,80,0" concept="11" trace="right$QsXp" />
+      <node id="1412244050168669831" at="78,0,79,0" concept="11" trace="left$uKQf" />
+      <node id="1412244050168669831" at="79,0,80,0" concept="11" trace="right$uL5g" />
       <node id="1412244050168675336" at="23,0,26,0" concept="6" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1241246198917492175" at="26,77,29,9" concept="5" />
       <node id="1412244050168669831" at="46,74,49,5" concept="5" />
@@ -138,8 +138,8 @@
       <node id="1412244050169717137" at="69,70,70,0" concept="10" />
       <node id="1412244050169717137" at="70,0,71,77" concept="9" />
       <node id="1412244050169717138" at="72,60,73,66" concept="2" />
-      <node id="1412244050169717137" at="78,0,79,0" concept="11" trace="right$QsXp" />
-      <node id="1412244050169717137" at="79,0,80,0" concept="11" trace="left$QsIo" />
+      <node id="1412244050169717137" at="78,0,79,0" concept="11" trace="right$uL5g" />
+      <node id="1412244050169717137" at="79,0,80,0" concept="11" trace="left$uKQf" />
       <node id="1412244050169717138" at="23,0,26,0" concept="6" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1241246198917897165" at="26,77,29,9" concept="5" />
       <node id="1412244050169717137" at="46,74,49,5" concept="5" />
@@ -242,7 +242,7 @@
       <node id="1741258697587098604" at="142,11,143,22" concept="8" />
       <node id="1741258697587098655" at="147,64,148,53" concept="8" />
       <node id="1741258697587098689" at="152,67,153,45" concept="8" />
-      <node id="1741258697587098602" at="161,0,162,0" concept="11" trace="LogicalOperator$29" />
+      <node id="1741258697587098602" at="161,0,162,0" concept="11" trace="LogicalOperator$a0" />
       <node id="1741258697587098611" at="76,0,79,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/language/SConcept;)Z" />
       <node id="1741258697587098604" at="83,0,86,0" concept="1" trace="SMP_Action_vciz2d_a0#(Lorg/jetbrains/mps/openapi/language/SConcept;)V" />
       <node id="1741258697587098604" at="118,0,121,0" concept="6" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
@@ -439,10 +439,10 @@
       <node id="1741258697587184671" at="269,159,270,48" concept="7" />
       <node id="1741258697587184671" at="270,48,271,305" concept="7" />
       <node id="1741258697587184671" at="272,116,273,58" concept="2" />
-      <node id="1741258697587184584" at="282,0,283,0" concept="11" trace="And$hB" />
-      <node id="1741258697587184584" at="283,0,284,0" concept="11" trace="Or$l6" />
-      <node id="1741258697587184584" at="287,0,288,0" concept="11" trace="right$QsXp" />
-      <node id="1741258697587184584" at="288,0,289,0" concept="11" trace="left$QsIo" />
+      <node id="1741258697587184584" at="282,0,283,0" concept="11" trace="And$pu" />
+      <node id="1741258697587184584" at="283,0,284,0" concept="11" trace="Or$sX" />
+      <node id="1741258697587184584" at="287,0,288,0" concept="11" trace="right$uL5g" />
+      <node id="1741258697587184584" at="288,0,289,0" concept="11" trace="left$uKQf" />
       <node id="1741258697587184635" at="152,16,154,11" concept="0" />
       <node id="1741258697587184584" at="46,0,49,0" concept="1" trace="AndOrTransforms_LogicalExpression_ext_2_Contribution#()V" />
       <node id="1741258697587184586" at="70,156,73,5" concept="5" />
@@ -702,10 +702,10 @@
       <node id="1741258697587184758" at="175,159,176,73" concept="7" />
       <node id="1741258697587184758" at="176,73,177,305" concept="7" />
       <node id="1741258697587184758" at="178,116,179,58" concept="2" />
-      <node id="1741258697587184752" at="188,0,189,0" concept="11" trace="LogicalExpression$Sy" />
-      <node id="1741258697587184752" at="189,0,190,0" concept="11" trace="LogicalOperator$29" />
-      <node id="1741258697587184752" at="193,0,194,0" concept="11" trace="left$QsIo" />
-      <node id="1741258697587184752" at="194,0,195,0" concept="11" trace="right$QsXp" />
+      <node id="1741258697587184752" at="188,0,189,0" concept="11" trace="LogicalExpression$yt" />
+      <node id="1741258697587184752" at="189,0,190,0" concept="11" trace="LogicalOperator$a0" />
+      <node id="1741258697587184752" at="193,0,194,0" concept="11" trace="left$uKQf" />
+      <node id="1741258697587184752" at="194,0,195,0" concept="11" trace="right$uL5g" />
       <node id="1741258697587184752" at="49,0,52,0" concept="1" trace="AndOrTransforms_Looking_Contribution#()V" />
       <node id="1741258697587184754" at="73,156,76,5" concept="5" />
       <node id="1741258697587184767" at="92,0,95,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/language/SConcept;)Z" />
@@ -881,10 +881,10 @@
       <node id="1741258697587184842" at="175,159,176,73" concept="7" />
       <node id="1741258697587184842" at="176,73,177,305" concept="7" />
       <node id="1741258697587184842" at="178,116,179,58" concept="2" />
-      <node id="1741258697587184836" at="188,0,189,0" concept="11" trace="LogicalExpression$Sy" />
-      <node id="1741258697587184836" at="189,0,190,0" concept="11" trace="LogicalOperator$29" />
-      <node id="1741258697587184836" at="193,0,194,0" concept="11" trace="left$QsIo" />
-      <node id="1741258697587184836" at="194,0,195,0" concept="11" trace="right$QsXp" />
+      <node id="1741258697587184836" at="188,0,189,0" concept="11" trace="LogicalExpression$yt" />
+      <node id="1741258697587184836" at="189,0,190,0" concept="11" trace="LogicalOperator$a0" />
+      <node id="1741258697587184836" at="193,0,194,0" concept="11" trace="left$uKQf" />
+      <node id="1741258697587184836" at="194,0,195,0" concept="11" trace="right$uL5g" />
       <node id="1741258697587184836" at="49,0,52,0" concept="1" trace="AndOrTransforms_Contribution#()V" />
       <node id="1741258697587184838" at="73,156,76,5" concept="5" />
       <node id="1741258697587184851" at="92,0,95,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/language/SConcept;)Z" />
@@ -1112,10 +1112,10 @@
       <node id="1904811872814253597" at="223,227,224,34" concept="2" />
       <node id="1904811872814253597" at="224,34,225,71" concept="2" />
       <node id="1904811872814253597" at="225,71,226,22" concept="8" />
-      <node id="1904811872814253787" at="230,0,231,0" concept="11" trace="LogicalExpression$Sy" />
-      <node id="1904811872814253787" at="231,0,232,0" concept="11" trace="LogicalOperator$29" />
-      <node id="1904811872814253787" at="235,0,236,0" concept="11" trace="left$QsIo" />
-      <node id="1904811872814253787" at="236,0,237,0" concept="11" trace="right$QsXp" />
+      <node id="1904811872814253787" at="230,0,231,0" concept="11" trace="LogicalExpression$yt" />
+      <node id="1904811872814253787" at="231,0,232,0" concept="11" trace="LogicalOperator$a0" />
+      <node id="1904811872814253787" at="235,0,236,0" concept="11" trace="left$uKQf" />
+      <node id="1904811872814253787" at="236,0,237,0" concept="11" trace="right$uL5g" />
       <node id="1904811872814253787" at="43,0,45,0" concept="3" trace="myNode" />
       <node id="1904811872814253787" at="89,0,91,0" concept="3" trace="myNode" />
       <node id="642541832606587452" at="151,0,153,0" concept="1" trace="ReplaceWith_LogicalOperator_cellMenu_iyfdbj_a0c0#()V" />

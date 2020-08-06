@@ -18,16 +18,16 @@ public class typeof_StyleAttributeDeclaration_InferenceRule extends AbstractInfe
   public typeof_StyleAttributeDeclaration_InferenceRule() {
   }
   public void applyRule(final SNode styleAttributeDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(styleAttributeDeclaration, LINKS.defaultValue$AUBL) != null)) {
+    if ((SLinkOperations.getTarget(styleAttributeDeclaration, LINKS.defaultValue$FcNo) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(styleAttributeDeclaration, LINKS.defaultValue$AUBL);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(styleAttributeDeclaration, LINKS.defaultValue$FcNo);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8714766435263585139", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8714766435263583333", true), (SNode) SLinkOperations.getTarget(styleAttributeDeclaration, LINKS.valueType$tOnZ), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8714766435263583333", true), (SNode) SLinkOperations.getTarget(styleAttributeDeclaration, LINKS.valueType$y6zA), _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StyleAttributeDeclaration$8S;
+    return CONCEPTS.StyleAttributeDeclaration$kv;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,11 +37,11 @@ public class typeof_StyleAttributeDeclaration_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultValue$AUBL = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea545afbL, "defaultValue");
-    /*package*/ static final SContainmentLink valueType$tOnZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
+    /*package*/ static final SContainmentLink defaultValue$FcNo = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea545afbL, "defaultValue");
+    /*package*/ static final SContainmentLink valueType$y6zA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StyleAttributeDeclaration$8S = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, "jetbrains.mps.lang.editor.structure.StyleAttributeDeclaration");
+    /*package*/ static final SConcept StyleAttributeDeclaration$kv = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, "jetbrains.mps.lang.editor.structure.StyleAttributeDeclaration");
   }
 }

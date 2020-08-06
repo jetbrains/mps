@@ -27,7 +27,7 @@ public class LookRegexp_Actions {
         if (DeletionApproverUtil.approve(editorContext, node, "ALIAS_EDITOR_COMPONENT")) {
           return;
         }
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.regexp$mA9P));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.regexp$a3MD));
       }
 
     };
@@ -75,6 +75,6 @@ public class LookRegexp_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink regexp$mA9P = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de32185L, 0x1118de377b8L, "regexp");
+    /*package*/ static final SContainmentLink regexp$a3MD = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de32185L, 0x1118de377b8L, "regexp");
   }
 }

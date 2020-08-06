@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyPatternVariableReference_Constraints extends BaseConstraintsDescriptor {
   public PropertyPatternVariableReference_Constraints() {
-    super(CONCEPTS.PropertyPatternVariableReference$wp);
+    super(CONCEPTS.PropertyPatternVariableReference$N9);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$n_Pt, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$4k8d, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class PropertyPatternVariableReference_Constraints extends BaseConstraint
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.PropertyPatternVariableDeclaration$Xj);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.PropertyPatternVariableDeclaration$aQ);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -54,11 +54,11 @@ public class PropertyPatternVariableReference_Constraints extends BaseConstraint
   private static final SNodePointer breakingNode_g13cad_a0a0a0a0a1a0a0a0c = new SNodePointer("r:973d936b-3327-48c9-8c54-368bfb7ea31c(jetbrains.mps.lang.migration.constraints)", "3220955710218374757");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyPatternVariableReference$wp = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2cb3222730cfcbccL, "jetbrains.mps.lang.migration.structure.PropertyPatternVariableReference");
-    /*package*/ static final SConcept PropertyPatternVariableDeclaration$Xj = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
+    /*package*/ static final SConcept PropertyPatternVariableReference$N9 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2cb3222730cfcbccL, "jetbrains.mps.lang.migration.structure.PropertyPatternVariableReference");
+    /*package*/ static final SConcept PropertyPatternVariableDeclaration$aQ = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$n_Pt = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2cb3222730cfcbccL, 0x2cb3222730cfe469L, "declaration");
+    /*package*/ static final SReferenceLink declaration$4k8d = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2cb3222730cfcbccL, 0x2cb3222730cfe469L, "declaration");
   }
 }

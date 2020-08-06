@@ -34,7 +34,7 @@ public class typeof_MapClearOperation_InferenceRule extends AbstractInferenceRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MapClearOperation$4R;
+    return CONCEPTS.MapClearOperation$ja;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -66,6 +66,6 @@ public class typeof_MapClearOperation_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MapClearOperation$4R = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11962b7f964L, "jetbrains.mps.baseLanguage.collections.structure.MapClearOperation");
+    /*package*/ static final SConcept MapClearOperation$ja = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11962b7f964L, "jetbrains.mps.baseLanguage.collections.structure.MapClearOperation");
   }
 }

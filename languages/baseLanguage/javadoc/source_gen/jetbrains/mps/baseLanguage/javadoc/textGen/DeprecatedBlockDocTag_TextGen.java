@@ -16,10 +16,10 @@ public class DeprecatedBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@deprecated ");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.text$PDPJ));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.text$c2BW));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$PDPJ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
+    /*package*/ static final SContainmentLink text$c2BW = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
   }
 }

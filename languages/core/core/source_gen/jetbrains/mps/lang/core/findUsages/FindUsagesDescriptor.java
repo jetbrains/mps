@@ -30,11 +30,11 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
 
   @Override
   public void init(FinderRegistry reg) {
-    reg.add(CONCEPTS.BaseConcept$Sz, 0, "IdentityFinder");
-    reg.add(CONCEPTS.BaseConcept$Sz, 1, "NodeAndDescendantsUsages");
+    reg.add(CONCEPTS.BaseConcept$gP, 0, "IdentityFinder");
+    reg.add(CONCEPTS.BaseConcept$gP, 1, "NodeAndDescendantsUsages");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

@@ -46,24 +46,24 @@ public final class XMLSAXNodeCreator__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    SNode rule = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.XMLSAXNodeRule$AV, false, false);
+    SNode rule = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.XMLSAXNodeRule$VS, false, false);
     return (SNode) XMLSAXNodeRule__BehaviorDescriptor.getType_id1XGsQcRHufH.invoke(rule);
   }
   /*package*/ static boolean showName_id1653mnvAgry(@NotNull SAbstractConcept __thisConcept__) {
     return true;
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.XMLSAXAttributeRule$K1)) {
-      SNode node = SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.XMLSAXNodeRule$AV);
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.XMLSAXAttributeRule$4Y)) {
+      SNode node = SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.XMLSAXNodeRule$VS);
       if (node == null) {
         return new EmptyScope();
       }
-      return SimpleRoleScope.forNamedElements(node, LINKS.attrs$kjGx);
+      return SimpleRoleScope.forNamedElements(node, LINKS.attrs$Aw1u);
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.XMLSAXNodeCreator$vY, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.XMLSAXNodeCreator$OV, kind, child));
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
-    List<SNode> result = IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invokeSuper(__thisNode__, CONCEPTS.XMLSAXNodeCreator$vY);
+    List<SNode> result = IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invokeSuper(__thisNode__, CONCEPTS.XMLSAXNodeCreator$OV);
     ListSequence.fromList(result).addSequence(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_uorgh9_a0a0a1a3())));
     return result;
   }
@@ -128,12 +128,12 @@ public final class XMLSAXNodeCreator__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXNodeRule$AV = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRule");
-    /*package*/ static final SConcept XMLSAXAttributeRule$K1 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cbL, "jetbrains.mps.core.xml.sax.structure.XMLSAXAttributeRule");
-    /*package*/ static final SConcept XMLSAXNodeCreator$vY = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2efL, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeCreator");
+    /*package*/ static final SConcept XMLSAXNodeRule$VS = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRule");
+    /*package*/ static final SConcept XMLSAXAttributeRule$4Y = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2cbL, "jetbrains.mps.core.xml.sax.structure.XMLSAXAttributeRule");
+    /*package*/ static final SConcept XMLSAXNodeCreator$OV = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2efL, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeCreator");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink attrs$kjGx = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f4L, "attrs");
+    /*package*/ static final SContainmentLink attrs$Aw1u = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f4L, "attrs");
   }
 }

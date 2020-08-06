@@ -11,11 +11,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Conditions {
   public void checkTypeOfNode(SNode node) {
-    boolean b = SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$pi);
-    boolean b2 = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfStatement$pi), LINKS.condition$qL$l), CONCEPTS.BooleanConstant$Ui);
+    boolean b = SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$Q4);
+    boolean b2 = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfStatement$Q4), LINKS.condition$5R17), CONCEPTS.BooleanConstant$n4);
   }
   public void checkRoleAndTypeOfDirectParent(SNode node) {
-    boolean b = SNodeOperations.hasRole(node, LINKS.condition$qL$l);
+    boolean b = SNodeOperations.hasRole(node, LINKS.condition$5R17);
   }
   public boolean checkIsNull(SNode node) {
     if ((node == null)) {
@@ -26,11 +26,11 @@ public class Conditions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept BooleanConstant$Ui = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
   }
 }

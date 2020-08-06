@@ -31,7 +31,7 @@ public final class ThisConstructorInvocation__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$bK, false, false);
     return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classConcept);
   }
 
@@ -82,6 +82,6 @@ public final class ThisConstructorInvocation__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

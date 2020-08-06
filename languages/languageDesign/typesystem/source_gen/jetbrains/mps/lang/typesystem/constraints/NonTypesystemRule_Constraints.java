@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NonTypesystemRule_Constraints extends BaseConstraintsDescriptor {
   public NonTypesystemRule_Constraints() {
-    super(CONCEPTS.NonTypesystemRule$cw);
+    super(CONCEPTS.NonTypesystemRule$um);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class NonTypesystemRule_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "1227088613158");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NonTypesystemRule$cw = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule");
+    /*package*/ static final SConcept NonTypesystemRule$um = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule");
   }
 }

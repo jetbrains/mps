@@ -24,11 +24,11 @@ public class check_CallPrivateFunction_NonTypesystemRule extends AbstractNonType
   public check_CallPrivateFunction_NonTypesystemRule() {
   }
   public void applyRule(final SNode privateFunctionCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode baseMethodDeclaration = SLinkOperations.getTarget(privateFunctionCall, LINKS.function$Il2z);
+    SNode baseMethodDeclaration = SLinkOperations.getTarget(privateFunctionCall, LINKS.function$EHh5);
     boolean b = true;
-    List<SNode> parameterDeclarations = SLinkOperations.getChildren(baseMethodDeclaration, LINKS.parameter$qsax);
-    List<SNode> actualArguments = SLinkOperations.getChildren(privateFunctionCall, LINKS.parameter$HrsK);
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).last(), LINKS.type$uWuc), CONCEPTS.VariableArityType$jT)) {
+    List<SNode> parameterDeclarations = SLinkOperations.getChildren(baseMethodDeclaration, LINKS.parameter$5xBj);
+    List<SNode> actualArguments = SLinkOperations.getChildren(privateFunctionCall, LINKS.parameter$DNFi);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF)) {
       b = ListSequence.fromList(parameterDeclarations).count() - 1 <= ListSequence.fromList(actualArguments).count();
     } else {
       b = ListSequence.fromList(parameterDeclarations).count() == ListSequence.fromList(actualArguments).count();
@@ -39,14 +39,14 @@ public class check_CallPrivateFunction_NonTypesystemRule extends AbstractNonType
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(privateFunctionCall, "wrong number of parameters", "r:f568ac81-f20d-491c-8e81-330fbdff24e6(jetbrains.mps.lang.textGen.typesystem)", "1234529496730", null, errorTarget);
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.typeVariableDeclaration$6cWB)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(baseMethodDeclaration, LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
       for (SNode actual : actualArguments) {
         typeCheckingContext.addDependencyForCurrent(actual);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.UtilityMethodCall$y7;
+    return CONCEPTS.UtilityMethodCall$KD;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,15 +56,15 @@ public class check_CallPrivateFunction_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink function$Il2z = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, 0x11f6fac17ecL, "function");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink parameter$HrsK = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, 0x11f6fac4585L, "parameter");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink function$EHh5 = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, 0x11f6fac17ecL, "function");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink parameter$DNFi = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, 0x11f6fac4585L, "parameter");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableArityType$jT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
-    /*package*/ static final SConcept UtilityMethodCall$y7 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, "jetbrains.mps.lang.textGen.structure.UtilityMethodCall");
+    /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept UtilityMethodCall$KD = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f6faa8c98L, "jetbrains.mps.lang.textGen.structure.UtilityMethodCall");
   }
 }

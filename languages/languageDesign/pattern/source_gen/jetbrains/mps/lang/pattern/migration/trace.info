@@ -40,12 +40,12 @@
       <node id="2025969025281550620" at="63,80,64,76" concept="1" />
       <node id="2025969025285419325" at="67,77,68,63" concept="1" />
       <node id="2025969025285437622" at="71,79,72,65" concept="1" />
-      <node id="2025969025281435739" at="76,0,77,0" concept="10" trace="dataType$Dbgb" />
-      <node id="2025969025281435739" at="80,0,81,0" concept="10" trace="stringValueMigrated$4VPS" />
-      <node id="2025969025281435739" at="81,0,82,0" concept="10" trace="enumUsageMigrated$DjAE" />
-      <node id="2025969025281435739" at="85,0,86,0" concept="10" trace="PropertyDeclaration$c5" />
-      <node id="2025969025281435739" at="86,0,87,0" concept="10" trace="EnumerationDeclaration$rG" />
-      <node id="2025969025281435739" at="87,0,88,0" concept="10" trace="EnumPropertyMigrationInfo$Yg" />
+      <node id="2025969025281435739" at="76,0,77,0" concept="10" trace="dataType$5j5Y" />
+      <node id="2025969025281435739" at="80,0,81,0" concept="10" trace="stringValueMigrated$2KQs" />
+      <node id="2025969025281435739" at="81,0,82,0" concept="10" trace="enumUsageMigrated$64YW" />
+      <node id="2025969025281435739" at="85,0,86,0" concept="10" trace="PropertyDeclaration$1S" />
+      <node id="2025969025281435739" at="86,0,87,0" concept="10" trace="EnumerationDeclaration$hv" />
+      <node id="2025969025281435739" at="87,0,88,0" concept="10" trace="EnumPropertyMigrationInfo$O3" />
       <node id="2025969025281217727" at="49,0,52,5" concept="3" />
       <node id="2025969025281239604" at="52,5,55,5" concept="3" />
       <node id="2025969025281527239" at="59,0,62,0" concept="5" trace="upgradeRawValueType#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -131,9 +131,9 @@
       <node id="2025969025282084889" at="75,70,76,149" concept="7" />
       <node id="2025969025282055420" at="78,10,79,17" concept="7" />
       <node id="7197495090341025862" at="82,51,83,147" concept="7" />
-      <node id="7197495090341025862" at="88,0,89,0" concept="10" trace="PropertyPatternVariableDeclaration$Xj" />
-      <node id="7197495090341025862" at="89,0,90,0" concept="10" trace="EnumPropertyMigrationInfo$Yg" />
-      <node id="7197495090341025862" at="93,0,94,0" concept="10" trace="stringValueMigrated$4VPS" />
+      <node id="7197495090341025862" at="88,0,89,0" concept="10" trace="PropertyPatternVariableDeclaration$aQ" />
+      <node id="7197495090341025862" at="89,0,90,0" concept="10" trace="EnumPropertyMigrationInfo$O3" />
+      <node id="7197495090341025862" at="93,0,94,0" concept="10" trace="stringValueMigrated$2KQs" />
       <node id="7197495090341025862" at="31,0,34,0" concept="5" trace="getCaption#()Ljava/lang/String;" />
       <node id="7197495090341025862" at="42,0,45,0" concept="5" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <node id="2025969025281994432" at="51,0,54,0" concept="5" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />

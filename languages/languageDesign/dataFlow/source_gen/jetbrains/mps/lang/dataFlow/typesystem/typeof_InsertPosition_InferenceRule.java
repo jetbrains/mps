@@ -21,13 +21,13 @@ public class typeof_InsertPosition_InferenceRule extends AbstractInferenceRule_R
   }
   public void applyRule(final SNode insertPosition, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(insertPosition, LINKS.instruction$poam);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(insertPosition, LINKS.instruction$jxYm);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959037a(jetbrains.mps.lang.dataFlow.typesystem)", "1823319949748892463", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959037a(jetbrains.mps.lang.dataFlow.typesystem)", "1823319949748871124", true), (SNode) _quotation_createNode_src0b7_a1a0c0a0b(), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InsertPosition$SX;
+    return CONCEPTS.InsertPosition$GX;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,10 +43,10 @@ public class typeof_InsertPosition_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink instruction$poam = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, 0x75c73261efe5e689L, "instruction");
+    /*package*/ static final SContainmentLink instruction$jxYm = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, 0x75c73261efe5e689L, "instruction");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InsertPosition$SX = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, "jetbrains.mps.lang.dataFlow.structure.InsertPosition");
+    /*package*/ static final SConcept InsertPosition$GX = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x75c73261efe5e666L, "jetbrains.mps.lang.dataFlow.structure.InsertPosition");
   }
 }

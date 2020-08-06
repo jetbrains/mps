@@ -92,7 +92,7 @@ public class TextCommentLinePart_ApplySideTransforms extends TransformationMenuB
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.TextCommentLinePart$RY);
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.TextCommentLinePart$Eb);
     }
 
     @Nullable
@@ -103,6 +103,6 @@ public class TextCommentLinePart_ApplySideTransforms extends TransformationMenuB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextCommentLinePart$RY = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
   }
 }

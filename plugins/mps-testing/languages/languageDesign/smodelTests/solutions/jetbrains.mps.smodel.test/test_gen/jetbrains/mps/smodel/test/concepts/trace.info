@@ -44,12 +44,12 @@
       <node id="5302237107384229502" at="81,65,82,108" concept="1" />
       <node id="5302237107384317212" at="82,108,83,118" concept="1" />
       <node id="5302237107384209108" at="83,118,84,131" concept="1" />
-      <node id="359299525883788095" at="91,0,92,0" concept="8" trace="INamedConcept$nV" />
-      <node id="359299525883788095" at="92,0,93,0" concept="8" trace="BaseConcept$Sz" />
-      <node id="359299525883788095" at="93,0,94,0" concept="8" trace="ImplementationWithStubPart$pf" />
-      <node id="359299525883788095" at="94,0,95,0" concept="8" trace="ImplementationPart$ps" />
-      <node id="359299525883788095" at="95,0,96,0" concept="8" trace="Attribute$RJ" />
-      <node id="359299525883788095" at="96,0,97,0" concept="8" trace="NodeAttribute$8K" />
+      <node id="359299525883788095" at="91,0,92,0" concept="8" trace="INamedConcept$Kd" />
+      <node id="359299525883788095" at="92,0,93,0" concept="8" trace="BaseConcept$gP" />
+      <node id="359299525883788095" at="93,0,94,0" concept="8" trace="ImplementationWithStubPart$Lx" />
+      <node id="359299525883788095" at="94,0,95,0" concept="8" trace="ImplementationPart$LI" />
+      <node id="359299525883788095" at="95,0,96,0" concept="8" trace="Attribute$g1" />
+      <node id="359299525883788095" at="96,0,97,0" concept="8" trace="NodeAttribute$x2" />
       <node id="359299525883788095" at="25,0,27,0" concept="8" trace="ourParamCache" />
       <node id="359299525883788095" at="27,0,29,0" concept="2" trace="myWithCommandRule" />
       <node id="359299525883788095" at="30,0,33,0" concept="0" trace="SConceptHierarchy_Test#()V" />
@@ -102,11 +102,11 @@
       <node id="5375498624329234440" at="48,43,49,53" concept="4" />
       <node id="5375498624329568615" at="49,53,50,112" concept="4" />
       <node id="5375498624329581434" at="50,112,51,34" concept="1" />
-      <node id="6410670351276877495" at="55,0,56,0" concept="8" trace="BaseConcept$Sz" />
-      <node id="6410670351276877495" at="56,0,57,0" concept="8" trace="ExpressionStatement$nm" />
-      <node id="6410670351276877495" at="57,0,58,0" concept="8" trace="Statement$ok" />
-      <node id="6410670351276877495" at="58,0,59,0" concept="8" trace="INamedAspect$HH" />
-      <node id="6410670351276877495" at="59,0,60,0" concept="8" trace="INamedConcept$nV" />
+      <node id="6410670351276877495" at="55,0,56,0" concept="8" trace="BaseConcept$gP" />
+      <node id="6410670351276877495" at="56,0,57,0" concept="8" trace="ExpressionStatement$O8" />
+      <node id="6410670351276877495" at="57,0,58,0" concept="8" trace="Statement$P6" />
+      <node id="6410670351276877495" at="58,0,59,0" concept="8" trace="INamedAspect$zw" />
+      <node id="6410670351276877495" at="59,0,60,0" concept="8" trace="INamedConcept$Kd" />
       <node id="6410670351276886922" at="23,0,26,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
       <node id="6410670351276893368" at="27,0,30,0" concept="3" trace="select#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <node id="6410670351277075013" at="37,0,40,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />

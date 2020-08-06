@@ -23,7 +23,7 @@ public class typeof_InsertElementOperation_InferenceRule extends AbstractInferen
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.index$grGq);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.index$UJUH);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225622529097", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225622519598", true), (SNode) _quotation_createNode_fjdk84_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -35,7 +35,7 @@ public class typeof_InsertElementOperation_InferenceRule extends AbstractInferen
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.element$GfkT);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.element$mzzc);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225622627558", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225622545086", true), (SNode) typeCheckingContext.getRepresentative(elementType_typevar_1225625140805), true, true, _info_12389875345);
       }
@@ -47,7 +47,7 @@ public class typeof_InsertElementOperation_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InsertElementOperation$e;
+    return CONCEPTS.InsertElementOperation$ex;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -63,11 +63,11 @@ public class typeof_InsertElementOperation_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink index$grGq = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, 0x11d5cc2f695L, "index");
-    /*package*/ static final SContainmentLink element$GfkT = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, 0x11d5cc2b50dL, "element");
+    /*package*/ static final SContainmentLink index$UJUH = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, 0x11d5cc2f695L, "index");
+    /*package*/ static final SContainmentLink element$mzzc = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, 0x11d5cc2b50dL, "element");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InsertElementOperation$e = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, "jetbrains.mps.baseLanguage.collections.structure.InsertElementOperation");
+    /*package*/ static final SConcept InsertElementOperation$ex = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d5cc25c8fL, "jetbrains.mps.baseLanguage.collections.structure.InsertElementOperation");
   }
 }

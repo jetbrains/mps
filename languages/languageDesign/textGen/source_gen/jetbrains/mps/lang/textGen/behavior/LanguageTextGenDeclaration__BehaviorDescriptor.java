@@ -47,21 +47,21 @@ public final class LanguageTextGenDeclaration__BehaviorDescriptor extends BaseBH
     List<SNode> result = new ArrayList<SNode>();
     List<SNode> list = LanguageTextGenDeclaration__BehaviorDescriptor.getBaseTextGenComponents_idhXYGUL$.invoke(__thisNode__, new ArrayList<SNode>(), __thisNode__);
     for (SNode baseTextGen : list) {
-      for (SNode func : SLinkOperations.getChildren(baseTextGen, LINKS.operation$2yg6)) {
-        if (SPropertyOperations.getString(func, PROPS.name$lA7v) != null) {
+      for (SNode func : SLinkOperations.getChildren(baseTextGen, LINKS.operation$YUuC)) {
+        if (SPropertyOperations.getString(func, PROPS.name$MnvL) != null) {
           ListSequence.fromList(result).addElement(func);
         }
       }
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(baseTextGen, LINKS.operation$2yg6)));
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(baseTextGen, LINKS.operation$YUuC)));
     }
     return result;
   }
   /*package*/ static List<SNode> getAvailableFunctions_idhXYGUKO(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    List<SNode> list = LanguageTextGenDeclaration__BehaviorDescriptor.getBaseTextGenComponents_idhXYGUL$.invoke(__thisNode__, new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.baseTextGen$AWao));
+    List<SNode> list = LanguageTextGenDeclaration__BehaviorDescriptor.getBaseTextGenComponents_idhXYGUL$.invoke(__thisNode__, new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.baseTextGen$zkoU));
     for (SNode baseTextGen : list) {
-      for (SNode func : SLinkOperations.getChildren(baseTextGen, LINKS.function$CsLu)) {
-        if (SPropertyOperations.getString(func, PROPS.name$lA7v) != null) {
+      for (SNode func : SLinkOperations.getChildren(baseTextGen, LINKS.function$$P00)) {
+        if (SPropertyOperations.getString(func, PROPS.name$MnvL) != null) {
           ListSequence.fromList(result).addElement(func);
         }
       }
@@ -70,10 +70,10 @@ public final class LanguageTextGenDeclaration__BehaviorDescriptor extends BaseBH
   }
   /*package*/ static List<SNode> getBaseTextGenComponents_idhXYGUL$(@NotNull SNode __thisNode__, List<SNode> list, SNode node) {
     ListSequence.fromList(list).addElement(node);
-    if ((SLinkOperations.getTarget(node, LINKS.baseTextGen$AWao) == null) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.baseTextGen$AWao), CONCEPTS.LanguageTextGenDeclaration$8b))) {
+    if ((SLinkOperations.getTarget(node, LINKS.baseTextGen$zkoU) == null) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.baseTextGen$zkoU), CONCEPTS.LanguageTextGenDeclaration$mH))) {
       return list;
     } else {
-      return LanguageTextGenDeclaration__BehaviorDescriptor.getBaseTextGenComponents_idhXYGUL$.invoke(__thisNode__, list, (SNode) SLinkOperations.getTarget(node, LINKS.baseTextGen$AWao));
+      return LanguageTextGenDeclaration__BehaviorDescriptor.getBaseTextGenComponents_idhXYGUL$.invoke(__thisNode__, list, (SNode) SLinkOperations.getTarget(node, LINKS.baseTextGen$zkoU));
     }
   }
 
@@ -130,16 +130,16 @@ public final class LanguageTextGenDeclaration__BehaviorDescriptor extends BaseBH
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$2yg6 = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f4b821fc5L, "operation");
-    /*package*/ static final SReferenceLink baseTextGen$AWao = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f7eb142ecL, "baseTextGen");
-    /*package*/ static final SContainmentLink function$CsLu = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f6f8860bdL, "function");
+    /*package*/ static final SContainmentLink operation$YUuC = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f4b821fc5L, "operation");
+    /*package*/ static final SReferenceLink baseTextGen$zkoU = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f7eb142ecL, "baseTextGen");
+    /*package*/ static final SContainmentLink function$$P00 = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f6f8860bdL, "function");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LanguageTextGenDeclaration$8b = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
+    /*package*/ static final SConcept LanguageTextGenDeclaration$mH = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
   }
 }

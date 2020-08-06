@@ -64,7 +64,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_z8oglp_a0() {
-    return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.SConceptOperation$9b));
+    return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.SConceptOperation$aF));
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
@@ -78,7 +78,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ReplaceWith_SConceptOperation_cellMenu_z8oglp_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.SConceptOperation$9b;
+      return CONCEPTS.SConceptOperation$aF;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -92,6 +92,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SConceptOperation$9b = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation");
+    /*package*/ static final SConcept SConceptOperation$aF = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation");
   }
 }

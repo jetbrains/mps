@@ -24,11 +24,11 @@ public class DeleteFinalInStaticField {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$Kp)) {
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$db)) {
           editorContext.flushEvents();
           return;
         }
-        SPropertyOperations.assign(node, PROPS.isFinal$_qt3, false);
+        SPropertyOperations.assign(node, PROPS.isFinal$gvTP, false);
         CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, false);
       }
 
@@ -40,11 +40,11 @@ public class DeleteFinalInStaticField {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$Kp)) {
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$db)) {
           editorContext.flushEvents();
           return;
         }
-        SPropertyOperations.assign(node, PROPS.isFinal$_qt3, false);
+        SPropertyOperations.assign(node, PROPS.isFinal$gvTP, false);
         CursorFocusUtils.setCursorAfterModifierDeleted(editorContext, node, true);
       }
 
@@ -97,10 +97,10 @@ public class DeleteFinalInStaticField {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

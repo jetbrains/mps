@@ -49,7 +49,7 @@ public class Switch_switch_toConceptNameStringExpr extends TemplateSwitchBase im
   }
   /*package*/ static final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206660441769"), CONCEPTS.PoundExpression$zj, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206660441769"), CONCEPTS.PoundExpression$$N, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -75,7 +75,7 @@ public class Switch_switch_toConceptNameStringExpr extends TemplateSwitchBase im
   }
   /*package*/ static final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206653830020"), CONCEPTS.RefConcept_Reference$GN, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206653830020"), CONCEPTS.RefConcept_Reference$Ij, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -92,7 +92,7 @@ public class Switch_switch_toConceptNameStringExpr extends TemplateSwitchBase im
   private static final SNodePointer propertyMacro_thr6xb_c0a0c0a0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1206653862744");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PoundExpression$zj = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");
-    /*package*/ static final SConcept RefConcept_Reference$GN = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference");
+    /*package*/ static final SConcept PoundExpression$$N = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");
+    /*package*/ static final SConcept RefConcept_Reference$Ij = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference");
   }
 }

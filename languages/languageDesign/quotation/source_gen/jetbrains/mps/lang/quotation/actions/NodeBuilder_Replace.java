@@ -18,9 +18,9 @@ public class NodeBuilder_Replace {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode sampleBuilderNode = sampleNode;
-        if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$RN)) {
-          SLinkOperations.setTarget(newNode, LINKS.concept$zz_s, SLinkOperations.getTarget(sampleBuilderNode, LINKS.concept$zz_s));
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.values$LrAn)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sampleBuilderNode, LINKS.values$LrAn)));
+        if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$Sn)) {
+          SLinkOperations.setTarget(newNode, LINKS.concept$xoA0, SLinkOperations.getTarget(sampleBuilderNode, LINKS.concept$xoA0));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.values$JgAV)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sampleBuilderNode, LINKS.values$JgAV)));
         }
       }
     }
@@ -29,20 +29,20 @@ public class NodeBuilder_Replace {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode sampleBuilderNode = sampleNode;
-        if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$RN)) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.nodes$OEOw)).addElement(sampleBuilderNode);
+        if (SNodeOperations.isInstanceOf(sampleBuilderNode, CONCEPTS.NodeBuilderNode$Sn)) {
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.nodes$MvP4)).addElement(sampleBuilderNode);
         }
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
+    /*package*/ static final SConcept NodeBuilderNode$Sn = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$zz_s = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
-    /*package*/ static final SContainmentLink values$LrAn = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
-    /*package*/ static final SContainmentLink nodes$OEOw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
+    /*package*/ static final SReferenceLink concept$xoA0 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
+    /*package*/ static final SContainmentLink values$JgAV = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
+    /*package*/ static final SContainmentLink nodes$MvP4 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
   }
 }

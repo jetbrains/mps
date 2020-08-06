@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionTestSidetransformTestContainer_Constraints extends BaseConstraintsDescriptor {
   public ActionTestSidetransformTestContainer_Constraints() {
-    super(CONCEPTS.ActionTestSidetransformTestContainer$YM);
+    super(CONCEPTS.ActionTestSidetransformTestContainer$fB);
   }
 
   @Override
@@ -38,10 +38,10 @@ public class ActionTestSidetransformTestContainer_Constraints extends BaseConstr
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (childConcept == CONCEPTS.ActionTestSidetransformChild1$Zx && link == LINKS.abstractChildConstrained$KoqI) {
+    if (childConcept == CONCEPTS.ActionTestSidetransformChild1$gm && link == LINKS.abstractChildConstrained$oWFz) {
       return false;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw) && link == LINKS.anotherAbstractChildConstrained$cxe4) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl) && link == LINKS.anotherAbstractChildConstrained$P5uT) {
       return false;
     }
 
@@ -50,13 +50,13 @@ public class ActionTestSidetransformTestContainer_Constraints extends BaseConstr
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:51315b9d-b515-42e5-b0a0-21c0544c81b4(jetbrains.mps.lang.actions.testLanguage.constraints)", "1227128029536583770");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestSidetransformTestContainer$YM = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformTestContainer");
-    /*package*/ static final SConcept ActionTestSidetransformChild1$Zx = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x44969b12b8c94c1bL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformChild1");
-    /*package*/ static final SConcept ActionTestSidetransformAnotherChildCommonSuperConcept$hw = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefcaa0dd0L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAnotherChildCommonSuperConcept");
+    /*package*/ static final SConcept ActionTestSidetransformTestContainer$fB = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformTestContainer");
+    /*package*/ static final SConcept ActionTestSidetransformChild1$gm = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x44969b12b8c94c1bL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformChild1");
+    /*package*/ static final SConcept ActionTestSidetransformAnotherChildCommonSuperConcept$yl = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefcaa0dd0L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAnotherChildCommonSuperConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink abstractChildConstrained$KoqI = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, 0x44969b12b8d87e51L, "abstractChildConstrained");
-    /*package*/ static final SContainmentLink anotherAbstractChildConstrained$cxe4 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, 0x2c35cefefca5514fL, "anotherAbstractChildConstrained");
+    /*package*/ static final SContainmentLink abstractChildConstrained$oWFz = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, 0x44969b12b8d87e51L, "abstractChildConstrained");
+    /*package*/ static final SContainmentLink anotherAbstractChildConstrained$P5uT = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade381e5L, 0x2c35cefefca5514fL, "anotherAbstractChildConstrained");
   }
 }

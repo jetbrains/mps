@@ -21,13 +21,13 @@ public class typeof_Message_InferenceRule extends AbstractInferenceRule_Runtime 
   }
   public void applyRule(final SNode message, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(message, LINKS.message$FDXV);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(message, LINKS.message$FmaW);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:2b2539c5-00c8-487d-9567-ecc2b9274c7b(jetbrains.mps.baseLanguage.unitTest.typesystem)", "2032731141110265660", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:2b2539c5-00c8-487d-9567-ecc2b9274c7b(jetbrains.mps.baseLanguage.unitTest.typesystem)", "2032731141110265662", true), (SNode) _quotation_createNode_t8mumf_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Message$SJ;
+    return CONCEPTS.Message$5K;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,10 +43,10 @@ public class typeof_Message_InferenceRule extends AbstractInferenceRule_Runtime 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$FDXV = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5064e8fL, 0x110e50678bdL, "message");
+    /*package*/ static final SContainmentLink message$FmaW = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5064e8fL, 0x110e50678bdL, "message");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Message$SJ = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5064e8fL, "jetbrains.mps.baseLanguage.unitTest.structure.Message");
+    /*package*/ static final SConcept Message$5K = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5064e8fL, "jetbrains.mps.baseLanguage.unitTest.structure.Message");
   }
 }

@@ -78,51 +78,51 @@ public class CreateConceptFromUsageHelper {
     // created is different from "method!=null", differs in case ex does not execute passed closure 
     boolean created = false;
     final Wrappers._T<SNode> createdConcept = new Wrappers._T<SNode>(null);
-    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$bA) && cell.isErrorState() && cell.getSRole().equals(LINKS.target$TWaS)) {
+    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$1p) && cell.isErrorState() && cell.getSRole().equals(LINKS.target$m40F)) {
       created = true;
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           SNode cncpt = createConcept(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.LinkDeclaration$bA), LINKS.target$TWaS, cncpt);
+          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.LinkDeclaration$1p), LINKS.target$m40F, cncpt);
           createdConcept.value = cncpt;
         }
       });
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptReference$Yh)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptReference$O4)) {
       // ref concept already created, but no reference is set 
       created = true;
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           SNode intfc = createConceptInterface(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptReference$Yh), LINKS.intfc$7Eer, intfc);
+          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptReference$O4), LINKS.intfc$zM4e, intfc);
           createdConcept.value = intfc;
         }
       });
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$qU) && cell.isErrorState() && cell.getSRole().equals(LINKS.implements$2tZf)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && cell.getSRole().equals(LINKS.implements$u_P2)) {
       // ref concept not yet created, but no reference is set 
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode intfc = createConceptInterface(conceptName);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$2tZf)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(intfc));
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$gH), LINKS.implements$u_P2)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(intfc));
           return createdConcept.value = intfc;
         }
       }));
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$qU) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$9AAt)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$_Isg)) {
       created = true;
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           SNode cncpt = createConcept(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$9AAt, cncpt);
+          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg, cncpt);
           createdConcept.value = cncpt;
         }
       });
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$MT) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$V2F7)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$CG) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$nawU)) {
       // ref concept not yet created, but no reference is set 
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode intfc = createConceptInterface(conceptName);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$V2F7)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(intfc));
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(intfc));
           return createdConcept.value = intfc;
         }
       }));
@@ -168,42 +168,42 @@ public class CreateConceptFromUsageHelper {
     public abstract void exec(_FunctionTypes._void_P0_E0 r);
   }
   private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
-    n0.setReferenceTarget(LINKS.intfc$7Eer, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$O4);
+    n0.setReferenceTarget(LINKS.intfc$zM4e, p0);
     return n0.getResult();
   }
   private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
-    n0.setReferenceTarget(LINKS.intfc$7Eer, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$O4);
+    n0.setReferenceTarget(LINKS.intfc$zM4e, p0);
     return n0.getResult();
   }
   private static SNode createConceptDeclaration_yye2ek_a0a0n(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConceptDeclaration$qU);
-    n0.setProperty(PROPS.name$lA7v, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConceptDeclaration$gH);
+    n0.setProperty(PROPS.name$MnvL, p0);
     return n0.getResult();
   }
   private static SNode createInterfaceConceptDeclaration_yye2ek_a0a0o(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptDeclaration$MT);
-    n0.setProperty(PROPS.name$lA7v, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptDeclaration$CG);
+    n0.setProperty(PROPS.name$MnvL, p0);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
-    /*package*/ static final SConcept InterfaceConceptReference$Yh = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, "jetbrains.mps.lang.structure.structure.InterfaceConceptReference");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept LinkDeclaration$1p = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
+    /*package*/ static final SConcept InterfaceConceptReference$O4 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, "jetbrains.mps.lang.structure.structure.InterfaceConceptReference");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink implements$u_P2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink extends$nawU = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

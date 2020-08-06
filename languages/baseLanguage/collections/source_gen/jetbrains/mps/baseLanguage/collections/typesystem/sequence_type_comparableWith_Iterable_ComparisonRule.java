@@ -37,7 +37,7 @@ public class sequence_type_comparableWith_Iterable_ComparisonRule extends Compar
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.SequenceType$n9;
+    return CONCEPTS.SequenceType$_s;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -54,6 +54,6 @@ public class sequence_type_comparableWith_Iterable_ComparisonRule extends Compar
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SequenceType$n9 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
+    /*package*/ static final SConcept SequenceType$_s = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
   }
 }

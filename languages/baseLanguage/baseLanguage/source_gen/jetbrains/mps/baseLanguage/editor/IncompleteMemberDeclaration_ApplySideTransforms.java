@@ -77,7 +77,7 @@ public class IncompleteMemberDeclaration_ApplySideTransforms extends Transformat
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.IncompleteMemberDeclaration$QW);
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.IncompleteMemberDeclaration$jI);
     }
 
   }
@@ -100,7 +100,7 @@ public class IncompleteMemberDeclaration_ApplySideTransforms extends Transformat
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.IncompleteMemberDeclaration$QW);
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.IncompleteMemberDeclaration$jI);
     }
 
     @Nullable
@@ -111,6 +111,6 @@ public class IncompleteMemberDeclaration_ApplySideTransforms extends Transformat
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IncompleteMemberDeclaration$QW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
+    /*package*/ static final SConcept IncompleteMemberDeclaration$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
   }
 }

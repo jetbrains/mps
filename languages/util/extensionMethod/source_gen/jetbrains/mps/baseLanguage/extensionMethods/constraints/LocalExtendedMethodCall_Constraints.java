@@ -40,7 +40,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class LocalExtendedMethodCall_Constraints extends BaseConstraintsDescriptor {
   public LocalExtendedMethodCall_Constraints() {
-    super(CONCEPTS.LocalExtendedMethodCall$nt);
+    super(CONCEPTS.LocalExtendedMethodCall$_e);
   }
 
   @Override
@@ -60,7 +60,7 @@ public class LocalExtendedMethodCall_Constraints extends BaseConstraintsDescript
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$pyYw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -76,10 +76,10 @@ public class LocalExtendedMethodCall_Constraints extends BaseConstraintsDescript
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
-            if (SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.StaticMethodDeclaration$eX, false, false) != null) {
+            if (SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.StaticMethodDeclaration$FJ, false, false) != null) {
               return ListScope.forResolvableElements(result);
             }
-            SNode classifier = ExtensionMethodDeclaration__BehaviorDescriptor.getClassifier_id6EBM_lhz9HU.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ExtensionMethodDeclaration$9b, false, false));
+            SNode classifier = ExtensionMethodDeclaration__BehaviorDescriptor.getClassifier_id6EBM_lhz9HU.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ExtensionMethodDeclaration$mW, false, false));
             if (classifier == null) {
               return ListScope.forResolvableElements(result);
             }
@@ -89,15 +89,15 @@ public class LocalExtendedMethodCall_Constraints extends BaseConstraintsDescript
               Iterable<SNode> methods = Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier), (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))));
 
               for (SNode method : methods) {
-                if (!(SetSequence.fromSet(names).contains(SPropertyOperations.getString(method, PROPS.name$lA7v)))) {
+                if (!(SetSequence.fromSet(names).contains(SPropertyOperations.getString(method, PROPS.name$MnvL)))) {
                   ListSequence.fromList(result).addElement(method);
                 }
               }
               for (SNode method : methods) {
-                SetSequence.fromSet(names).addElement(SPropertyOperations.getString(method, PROPS.name$lA7v));
+                SetSequence.fromSet(names).addElement(SPropertyOperations.getString(method, PROPS.name$MnvL));
               }
 
-              classifier = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$hJ, false, false);
+              classifier = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$Ix, false, false);
             }
             return ListScope.forResolvableElements(result);
           }
@@ -109,23 +109,23 @@ public class LocalExtendedMethodCall_Constraints extends BaseConstraintsDescript
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ExtensionMethodDeclaration$9b, true, false) != null;
+    return SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ExtensionMethodDeclaration$mW, true, false) != null;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:8a519067-4481-4fce-a84b-d7a47e974dd7(jetbrains.mps.baseLanguage.extensionMethods.constraints)", "1227128029536564039");
   private static final SNodePointer breakingNode_rxyf25_a0a0a0a0a1a0a0a0d = new SNodePointer("r:8a519067-4481-4fce-a84b-d7a47e974dd7(jetbrains.mps.baseLanguage.extensionMethods.constraints)", "6836281137582818946");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalExtendedMethodCall$nt = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6aa7ca55518b9170L, "jetbrains.mps.baseLanguage.extensionMethods.structure.LocalExtendedMethodCall");
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SConcept ExtensionMethodDeclaration$9b = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept LocalExtendedMethodCall$_e = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6aa7ca55518b9170L, "jetbrains.mps.baseLanguage.extensionMethods.structure.LocalExtendedMethodCall");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept ExtensionMethodDeclaration$mW = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

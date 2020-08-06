@@ -22,7 +22,7 @@ public class DefaultPropertyImplementation2Custom {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CustomPropertyImplementation$9G);
+        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CustomPropertyImplementation$Au);
       }
 
     };
@@ -70,6 +70,6 @@ public class DefaultPropertyImplementation2Custom {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomPropertyImplementation$9G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation");
+    /*package*/ static final SConcept CustomPropertyImplementation$Au = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation");
   }
 }

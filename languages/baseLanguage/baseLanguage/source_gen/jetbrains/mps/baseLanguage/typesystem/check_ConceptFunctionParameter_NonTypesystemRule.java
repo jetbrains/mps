@@ -25,8 +25,8 @@ public class check_ConceptFunctionParameter_NonTypesystemRule extends AbstractNo
   public check_ConceptFunctionParameter_NonTypesystemRule() {
   }
   public void applyRule(final SNode parameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode conceptFunction = SNodeOperations.getNodeAncestor(parameter, CONCEPTS.ConceptFunction$Tt, false, false, true);
-    if (SNodeOperations.isInstanceOf(conceptFunction, CONCEPTS.Closure$5Q)) {
+    SNode conceptFunction = SNodeOperations.getNodeAncestor(parameter, CONCEPTS.ConceptFunction$mf, false, false, true);
+    if (SNodeOperations.isInstanceOf(conceptFunction, CONCEPTS.Closure$yC)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "concept function parameter can not be used in closure", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1197313614703", null, errorTarget);
@@ -47,7 +47,7 @@ public class check_ConceptFunctionParameter_NonTypesystemRule extends AbstractNo
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptFunctionParameter$sy;
+    return CONCEPTS.ConceptFunctionParameter$Tk;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -57,8 +57,8 @@ public class check_ConceptFunctionParameter_NonTypesystemRule extends AbstractNo
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept Closure$5Q = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
-    /*package*/ static final SConcept ConceptFunctionParameter$sy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept Closure$yC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
+    /*package*/ static final SConcept ConceptFunctionParameter$Tk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
   }
 }

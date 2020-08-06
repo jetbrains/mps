@@ -40,13 +40,13 @@ public final class CellModel_Property__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static String getRoleForCell_idhGPLstu(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$_K5_), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$E2hc), PROPS.name$MnvL);
   }
   /*package*/ static SNode getFeatureForCell_id4YnqLFjkxyn(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$_K5_);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$E2hc);
   }
   /*package*/ static String getDefaultCellId_id3VYF6qfIQs_(@NotNull SNode __thisNode__) {
-    return CellIdManager.createPropertyId(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$_K5_), PROPS.name$lA7v));
+    return CellIdManager.createPropertyId(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$E2hc), PROPS.name$MnvL));
   }
   /*package*/ static String getOpeningText_idhKxU$w9(@NotNull SNode __thisNode__) {
     return "{";
@@ -120,10 +120,10 @@ public final class CellModel_Property__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

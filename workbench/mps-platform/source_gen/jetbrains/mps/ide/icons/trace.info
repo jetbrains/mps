@@ -142,7 +142,7 @@
       <node id="1315815304216192775" at="229,7,230,18" concept="8" />
       <node id="1315815304216192827" at="231,5,232,51" concept="2" />
       <node id="1315815304216192833" at="232,51,233,16" concept="8" />
-      <node id="1315815304215925444" at="237,0,238,0" concept="11" trace="BaseConcept$Sz" />
+      <node id="1315815304215925444" at="237,0,238,0" concept="11" trace="BaseConcept$gP" />
       <node id="1315815304215974161" at="96,12,98,7" concept="0" />
       <node id="6478603752171481302" at="53,0,56,0" concept="1" trace="BaseIconManager#(Ljetbrains/mps/smodel/language/ConceptRegistry;)V" />
       <node id="1315815304215972093" at="69,76,72,5" concept="5" />

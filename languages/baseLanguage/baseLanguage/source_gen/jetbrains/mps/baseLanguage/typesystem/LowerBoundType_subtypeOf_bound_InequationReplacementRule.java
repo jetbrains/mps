@@ -50,7 +50,7 @@ public class LowerBoundType_subtypeOf_bound_InequationReplacementRule extends Ab
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110dae9d53dL, "LowerBoundType");
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.Type$IG;
+    return CONCEPTS.Type$bu;
   }
   private static SNode _quotation_createNode_ap69b7_a0a0a0a0g() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -63,6 +63,6 @@ public class LowerBoundType_subtypeOf_bound_InequationReplacementRule extends Ab
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

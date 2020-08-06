@@ -28,7 +28,7 @@ public class GeneratorInternal_IWorkflowParticipantReference_SubstituteMenu exte
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_4td9tv_a(), CONCEPTS.GeneratorInternal_IWorkflowParticipantReference$s4));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_4td9tv_a(), CONCEPTS.GeneratorInternal_IWorkflowParticipantReference$YB));
     result.add(new SMP_Subconcepts_4td9tv_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class GeneratorInternal_IWorkflowParticipantReference_SubstituteMenu exte
 
     public SMP_ReferenceScope_4td9tv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.GeneratorInternal_IWorkflowParticipantReference$s4, LINKS.participant$re20);
+      super((SAbstractConcept) CONCEPTS.GeneratorInternal_IWorkflowParticipantReference$YB, LINKS.participant$AU$z);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class GeneratorInternal_IWorkflowParticipantReference_SubstituteMenu exte
   }
   public class SMP_Subconcepts_4td9tv_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GeneratorInternal_IWorkflowParticipantReference$s4);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GeneratorInternal_IWorkflowParticipantReference$YB);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class GeneratorInternal_IWorkflowParticipantReference_SubstituteMenu exte
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GeneratorInternal_IWorkflowParticipantReference$s4 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c860be1bc5cc1c8L, "jetbrains.mps.build.structure.GeneratorInternal_IWorkflowParticipantReference");
+    /*package*/ static final SConcept GeneratorInternal_IWorkflowParticipantReference$YB = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c860be1bc5cc1c8L, "jetbrains.mps.build.structure.GeneratorInternal_IWorkflowParticipantReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink participant$re20 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c860be1bc5cc1c8L, 0x5c860be1bc5cc1c9L, "participant");
+    /*package*/ static final SReferenceLink participant$AU$z = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c860be1bc5cc1c8L, 0x5c860be1bc5cc1c9L, "participant");
   }
 }

@@ -21,11 +21,11 @@ public class typeof_WhenConcreteVariableReference_InferenceRule extends Abstract
     {
       SNode _nodeToCheck_1029348928467 = nodeToCheck;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762759668", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762761609", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(nodeToCheck, LINKS.whenConcreteVar$J1QP), "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762764972", false), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762761609", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(nodeToCheck, LINKS.whenConcreteVar$7S8F), "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1205762764972", false), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.WhenConcreteVariableReference$4s;
+    return CONCEPTS.WhenConcreteVariableReference$mi;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_WhenConcreteVariableReference_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink whenConcreteVar$J1QP = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
+    /*package*/ static final SReferenceLink whenConcreteVar$7S8F = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WhenConcreteVariableReference$4s = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, "jetbrains.mps.lang.typesystem.structure.WhenConcreteVariableReference");
+    /*package*/ static final SConcept WhenConcreteVariableReference$mi = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, "jetbrains.mps.lang.typesystem.structure.WhenConcreteVariableReference");
   }
 }

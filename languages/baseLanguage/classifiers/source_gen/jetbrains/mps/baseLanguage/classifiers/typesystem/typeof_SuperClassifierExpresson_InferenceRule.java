@@ -36,7 +36,7 @@ public class typeof_SuperClassifierExpresson_InferenceRule extends AbstractInfer
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SuperClassifierExpresson$RS;
+    return CONCEPTS.SuperClassifierExpresson$RG;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,6 +46,6 @@ public class typeof_SuperClassifierExpresson_InferenceRule extends AbstractInfer
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SuperClassifierExpresson$RS = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11b74b0357cL, "jetbrains.mps.baseLanguage.classifiers.structure.SuperClassifierExpresson");
+    /*package*/ static final SConcept SuperClassifierExpresson$RG = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x11b74b0357cL, "jetbrains.mps.baseLanguage.classifiers.structure.SuperClassifierExpresson");
   }
 }

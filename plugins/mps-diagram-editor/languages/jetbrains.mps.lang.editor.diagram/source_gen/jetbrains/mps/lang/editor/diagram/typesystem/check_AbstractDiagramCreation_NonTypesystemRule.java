@@ -24,23 +24,23 @@ public class check_AbstractDiagramCreation_NonTypesystemRule extends AbstractNon
   public check_AbstractDiagramCreation_NonTypesystemRule() {
   }
   public void applyRule(final SNode abstractDiagramCreation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$$MXx), CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$$MXx), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.SLinkListAccess$nk)))) {
+    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$bVPk), CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$bVPk), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.SLinkListAccess$oO)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$$MXx), "Use DotExpression to point to the containment LinkDeclaration", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "8570854907291359968", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$bVPk), "Use DotExpression to point to the containment LinkDeclaration", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "8570854907291359968", null, errorTarget);
       }
     } else {
-      SNode containmentLink = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$$MXx), CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.SLinkListAccess$nk), LINKS.link$iNEw);
-      if (SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$$TiW) != null && SLinkOperations.getTarget(containmentLink, LINKS.target$TWaS) != null && !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$$TiW), SLinkOperations.getTarget(containmentLink, LINKS.target$TWaS)))) {
+      SNode containmentLink = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.query$bVPk), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.SLinkListAccess$oO), LINKS.link$RcG0);
+      if (SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$c2aJ) != null && SLinkOperations.getTarget(containmentLink, LINKS.target$m40F) != null && !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$c2aJ), SLinkOperations.getTarget(containmentLink, LINKS.target$m40F)))) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.concept$$TiW);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractDiagramCreation, "Only subconcept of containment link target contept (" + SLinkOperations.getTarget(containmentLink, LINKS.target$TWaS) + ") can be used here.", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725875172", null, errorTarget);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.concept$c2aJ);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractDiagramCreation, "Only subconcept of containment link target contept (" + SLinkOperations.getTarget(containmentLink, LINKS.target$m40F) + ") can be used here.", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725875172", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractDiagramCreation$DH;
+    return CONCEPTS.AbstractDiagramCreation$xw;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,16 +50,16 @@ public class check_AbstractDiagramCreation_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$$MXx = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, 0x120f760a0439bb2bL, "query");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink link$iNEw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
-    /*package*/ static final SReferenceLink concept$$TiW = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, 0x120f760a0439bb31L, "concept");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink query$bVPk = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, 0x120f760a0439bb2bL, "query");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink link$RcG0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, 0x108f974c962L, "link");
+    /*package*/ static final SReferenceLink concept$c2aJ = MetaAdapterFactory.getReferenceLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, 0x120f760a0439bb31L, "concept");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept SLinkListAccess$nk = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, "jetbrains.mps.lang.smodel.structure.SLinkListAccess");
-    /*package*/ static final SConcept AbstractDiagramCreation$DH = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, "jetbrains.mps.lang.editor.diagram.structure.AbstractDiagramCreation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SLinkListAccess$oO = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f970c119L, "jetbrains.mps.lang.smodel.structure.SLinkListAccess");
+    /*package*/ static final SConcept AbstractDiagramCreation$xw = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x120f760a04397296L, "jetbrains.mps.lang.editor.diagram.structure.AbstractDiagramCreation");
   }
 }

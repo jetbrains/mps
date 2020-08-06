@@ -39,7 +39,7 @@ public final class SpecifyMessageForNodeReferent_Intention extends AbstractInten
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(SNodeOperations.getModel(node)), CONCEPTS.Language$jx);
+    return SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(SNodeOperations.getModel(node)), CONCEPTS.Language$yT);
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,8 +60,8 @@ public final class SpecifyMessageForNodeReferent_Intention extends AbstractInten
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode problem = SNodeFactoryOperations.createNewNode(CONCEPTS.RefOutOfScopeProblem$Zz, null);
-      SLinkOperations.setTarget(problem, LINKS.ref$XFpU, SLinkOperations.getTarget(node, LINKS.applicableLink$WTlX));
+      SNode problem = SNodeFactoryOperations.createNewNode(CONCEPTS.RefOutOfScopeProblem$nG, null);
+      SLinkOperations.setTarget(problem, LINKS.ref$OhM3, SLinkOperations.getTarget(node, LINKS.applicableLink$7IrX));
       new MessageIntentionHelper(problem, NodeReferentConstraint__BehaviorDescriptor.getApplicableConcept_idhEwIMWq.invoke(node)).addProblemCustomization(node, editorContext);
     }
     @Override
@@ -71,12 +71,12 @@ public final class SpecifyMessageForNodeReferent_Intention extends AbstractInten
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Language$jx = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
-    /*package*/ static final SConcept RefOutOfScopeProblem$Zz = MetaAdapterFactory.getConcept(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, "jetbrains.mps.lang.feedback.problem.scopes.structure.RefOutOfScopeProblem");
+    /*package*/ static final SConcept Language$yT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
+    /*package*/ static final SConcept RefOutOfScopeProblem$nG = MetaAdapterFactory.getConcept(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, "jetbrains.mps.lang.feedback.problem.scopes.structure.RefOutOfScopeProblem");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink ref$XFpU = MetaAdapterFactory.getReferenceLink(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, 0x161a25d49703b44eL, "ref");
-    /*package*/ static final SReferenceLink applicableLink$WTlX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
+    /*package*/ static final SReferenceLink ref$OhM3 = MetaAdapterFactory.getReferenceLink(0xfeec32f9bc8f4da8L, 0x8efd7f3f9dd4101bL, 0x161a25d49703afdbL, 0x161a25d49703b44eL, "ref");
+    /*package*/ static final SReferenceLink applicableLink$7IrX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
   }
 }

@@ -30,12 +30,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ExtractStaticInnerClassCreator_Constraints extends BaseConstraintsDescriptor {
   public ExtractStaticInnerClassCreator_Constraints() {
-    super(CONCEPTS.ExtractStaticInnerClassCreator$cT);
+    super(CONCEPTS.ExtractStaticInnerClassCreator$tF);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$ItxI, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseMethodDeclaration$pyYw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -52,9 +52,9 @@ public class ExtractStaticInnerClassCreator_Constraints extends BaseConstraintsD
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> res = new ArrayList<SNode>();
             SNode context = _context.getContextNode();
-            for (SNode n : SNodeOperations.getNodeAncestors(context, CONCEPTS.ExtractStaticInnerClassExpression$2p, false)) {
-              if ((SLinkOperations.getTarget(n, LINKS.innerClass$oxcw) != null)) {
-                ListSequence.fromList(res).addSequence(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SLinkOperations.getTarget(n, LINKS.innerClass$oxcw))));
+            for (SNode n : SNodeOperations.getNodeAncestors(context, CONCEPTS.ExtractStaticInnerClassExpression$jb, false)) {
+              if ((SLinkOperations.getTarget(n, LINKS.innerClass$Efti) != null)) {
+                ListSequence.fromList(res).addSequence(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SLinkOperations.getTarget(n, LINKS.innerClass$Efti))));
               }
             }
             return ListScope.forResolvableElements(res);
@@ -69,12 +69,12 @@ public class ExtractStaticInnerClassCreator_Constraints extends BaseConstraintsD
   private static final SNodePointer breakingNode_4gp7p5_a0a0a0a0a1a0a0a0c = new SNodePointer("r:1ce54900-c35b-4aa5-b24f-b47c871a6d6f(jetbrains.mps.baseLanguageInternal.constraints)", "6836281137582645204");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtractStaticInnerClassCreator$cT = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x50cc34ef144c9181L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassCreator");
-    /*package*/ static final SConcept ExtractStaticInnerClassExpression$2p = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassExpression");
+    /*package*/ static final SConcept ExtractStaticInnerClassCreator$tF = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x50cc34ef144c9181L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassCreator");
+    /*package*/ static final SConcept ExtractStaticInnerClassExpression$jb = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink innerClass$oxcw = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, 0x6b63d4344723dac9L, "innerClass");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink innerClass$Efti = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x6b63d4344723dac8L, 0x6b63d4344723dac9L, "innerClass");
   }
 }

@@ -22,18 +22,18 @@ public class typeof_LogLowLevelStatement_InferenceRule extends AbstractInference
   }
   public void applyRule(final SNode statement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(statement, LINKS.message$AI9y);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(statement, LINKS.message$TfWL);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:442e757f-3943-44c0-b891-38385748fec8(jetbrains.mps.baseLanguage.logging.typesystem)", "6863923094758803731", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:442e757f-3943-44c0-b891-38385748fec8(jetbrains.mps.baseLanguage.logging.typesystem)", "6863923094758803736", true), (SNode) _quotation_createNode_6djzrz_a1a0c0a0b(), false, false, _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(statement, LINKS.throwable$AIB$);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(statement, LINKS.throwable$TgqN);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:442e757f-3943-44c0-b891-38385748fec8(jetbrains.mps.baseLanguage.logging.typesystem)", "2034914114981264789", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:442e757f-3943-44c0-b891-38385748fec8(jetbrains.mps.baseLanguage.logging.typesystem)", "2034914114981264794", true), (SNode) _quotation_createNode_6djzrz_a1a0c0b0b(), false, false, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.LogLowLevelStatement$g1;
+    return CONCEPTS.LogLowLevelStatement$3g;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -57,11 +57,11 @@ public class typeof_LogLowLevelStatement_InferenceRule extends AbstractInference
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$AI9y = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
-    /*package*/ static final SContainmentLink throwable$AIB$ = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
+    /*package*/ static final SContainmentLink message$TfWL = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
+    /*package*/ static final SContainmentLink throwable$TgqN = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LogLowLevelStatement$g1 = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
+    /*package*/ static final SConcept LogLowLevelStatement$3g = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
   }
 }

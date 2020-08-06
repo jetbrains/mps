@@ -30,7 +30,7 @@ public class XmlText_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_cbaruy_a(), CONCEPTS.XmlText$ZE));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_cbaruy_a(), CONCEPTS.XmlText$q9));
     return result;
   }
 
@@ -75,7 +75,7 @@ public class XmlText_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.XmlText$ZE, context);
+        super(CONCEPTS.XmlText$q9, context);
         _context = context;
       }
 
@@ -86,8 +86,8 @@ public class XmlText_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlText$ZE, null);
-        SPropertyOperations.assign(val, PROPS.value$ds10, pattern);
+        SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlText$q9, null);
+        SPropertyOperations.assign(val, PROPS.value$6Orv, pattern);
         return val;
       }
 
@@ -110,10 +110,10 @@ public class XmlText_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlText$ZE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, "jetbrains.mps.core.xml.structure.XmlText");
+    /*package*/ static final SConcept XmlText$q9 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, "jetbrains.mps.core.xml.structure.XmlText");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ds10 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
+    /*package*/ static final SProperty value$6Orv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
   }
 }

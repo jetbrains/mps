@@ -25,7 +25,7 @@ public class UnaryRegexp_Regexp_actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode nn = SLinkOperations.getTarget(node, LINKS.regexp$LlDC);
+        SNode nn = SLinkOperations.getTarget(node, LINKS.regexp$$Nis);
         SNodeOperations.replaceWithAnother(node, nn);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, nn, SelectionManager.LAST_CELL, -1);
       }
@@ -75,6 +75,6 @@ public class UnaryRegexp_Regexp_actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink regexp$LlDC = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
+    /*package*/ static final SContainmentLink regexp$$Nis = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
   }
 }

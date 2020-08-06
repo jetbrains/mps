@@ -57,7 +57,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
   public class SMP_Group_y5n1eq_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), CONCEPTS.EnumeratorType$Hf) != null);
+      return (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.EnumeratorType$Vy) != null);
     }
     @NotNull
     @Override
@@ -73,11 +73,11 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_y5n1eq_a0(), CONCEPTS.IOperation$No));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_y5n1eq_a0(), CONCEPTS.IOperation$ga));
     }
     public class SMP_Concepts_y5n1eq_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractEnumeratorOperation$1F, _context.getModel())).where(new IWhereFilter<SConcept>() {
+        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractEnumeratorOperation$fY, _context.getModel())).where(new IWhereFilter<SConcept>() {
           public boolean accept(SConcept it) {
             return it instanceof SConcept && !(((SConcept) it).isAbstract());
           }
@@ -120,7 +120,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
   public class SMP_Group_y5n1eq_b extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), CONCEPTS.IteratorType$QR) != null);
+      return (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.IteratorType$5a) != null);
     }
     @NotNull
     @Override
@@ -136,11 +136,11 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_y5n1eq_a1(), CONCEPTS.IOperation$No));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_y5n1eq_a1(), CONCEPTS.IOperation$ga));
     }
     public class SMP_Concepts_y5n1eq_a1 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractIteratorOperation$cw, _context.getModel())).where(new IWhereFilter<SConcept>() {
+        return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.AbstractIteratorOperation$qN, _context.getModel())).where(new IWhereFilter<SConcept>() {
           public boolean accept(SConcept it) {
             return it instanceof SConcept && !(((SConcept) it).isAbstract());
           }
@@ -183,7 +183,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
   public class SMP_Group_y5n1eq_c extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5)), CONCEPTS.ContainerIteratorType$1O) != null);
+      return (TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.ContainerIteratorType$g7) != null);
     }
     @NotNull
     @Override
@@ -199,7 +199,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.RemoveOperation$P) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.RemoveOperation$f8) {
 
         @NotNull
         @Override
@@ -212,22 +212,22 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.RemoveOperation$P));
+      }, CONCEPTS.RemoveOperation$f8));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept EnumeratorType$Hf = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12020864111L, "jetbrains.mps.baseLanguage.collections.structure.EnumeratorType");
-    /*package*/ static final SInterfaceConcept IOperation$No = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L, "jetbrains.mps.baseLanguage.structure.IOperation");
-    /*package*/ static final SConcept AbstractEnumeratorOperation$1F = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12020925ee9L, "jetbrains.mps.baseLanguage.collections.structure.AbstractEnumeratorOperation");
-    /*package*/ static final SConcept IteratorType$QR = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ed2b158L, "jetbrains.mps.baseLanguage.collections.structure.IteratorType");
-    /*package*/ static final SConcept AbstractIteratorOperation$cw = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201f00ef75L, "jetbrains.mps.baseLanguage.collections.structure.AbstractIteratorOperation");
-    /*package*/ static final SConcept ContainerIteratorType$1O = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120bec64a7eL, "jetbrains.mps.baseLanguage.collections.structure.ContainerIteratorType");
-    /*package*/ static final SConcept RemoveOperation$P = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120becad360L, "jetbrains.mps.baseLanguage.collections.structure.RemoveOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept EnumeratorType$Vy = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12020864111L, "jetbrains.mps.baseLanguage.collections.structure.EnumeratorType");
+    /*package*/ static final SInterfaceConcept IOperation$ga = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L, "jetbrains.mps.baseLanguage.structure.IOperation");
+    /*package*/ static final SConcept AbstractEnumeratorOperation$fY = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12020925ee9L, "jetbrains.mps.baseLanguage.collections.structure.AbstractEnumeratorOperation");
+    /*package*/ static final SConcept IteratorType$5a = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ed2b158L, "jetbrains.mps.baseLanguage.collections.structure.IteratorType");
+    /*package*/ static final SConcept AbstractIteratorOperation$qN = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201f00ef75L, "jetbrains.mps.baseLanguage.collections.structure.AbstractIteratorOperation");
+    /*package*/ static final SConcept ContainerIteratorType$g7 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120bec64a7eL, "jetbrains.mps.baseLanguage.collections.structure.ContainerIteratorType");
+    /*package*/ static final SConcept RemoveOperation$f8 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120becad360L, "jetbrains.mps.baseLanguage.collections.structure.RemoveOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

@@ -12,7 +12,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public final class WordHandlers_PastePostProcessor_0 implements PastePostProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Word$AM;
+    return CONCEPTS.Word$Dn;
   }
   @Override
   public void postProcessNode(SNode pastedNode) {
@@ -20,6 +20,6 @@ public final class WordHandlers_PastePostProcessor_0 implements PastePostProcess
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 }

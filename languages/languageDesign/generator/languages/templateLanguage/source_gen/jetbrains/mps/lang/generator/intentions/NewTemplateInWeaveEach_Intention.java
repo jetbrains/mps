@@ -44,7 +44,7 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.templateCall$M_Ae) == null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Weaving_MappingRule$Iv);
+    return (SLinkOperations.getTarget(node, LINKS.templateCall$byhU) == null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Weaving_MappingRule$qb);
   }
   @Override
   public boolean isSurroundWith() {
@@ -65,33 +65,33 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Weaving_MappingRule$Iv), LINKS.applicableConcept$ksFC);
+      SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Weaving_MappingRule$qb), LINKS.applicableConcept$Hpnk);
       String name = CreateFromUsageUtil.getText(editorContext);
       if (name == null || name.length() == 0) {
         name = "weave_";
         if (applicableConcept != null) {
-          name += SPropertyOperations.getString(applicableConcept, PROPS.name$lA7v);
+          name += SPropertyOperations.getString(applicableConcept, PROPS.name$MnvL);
         }
       }
-      SNode t = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.TemplateDeclaration$q0, null);
-      SPropertyOperations.set(t, PROPS.name$lA7v, name);
-      SLinkOperations.setTarget(t, LINKS.applicableConcept$mVNP, applicableConcept);
+      SNode t = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.TemplateDeclaration$5G, null);
+      SPropertyOperations.set(t, PROPS.name$MnvL, name);
+      SLinkOperations.setTarget(t, LINKS.applicableConcept$JSvx, applicableConcept);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
       //  initialize 'content node' 
-      SNode ownerRule = SNodeOperations.getNodeAncestor(node, CONCEPTS.Weaving_MappingRule$Iv, false, false);
-      SNode contextNodeType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(ownerRule, CONCEPTS.Weaving_MappingRule$Iv), LINKS.contextNodeQuery$T$Sz));
-      if (SNodeOperations.isInstanceOf(contextNodeType, CONCEPTS.SNodeType$gn)) {
-        SNode contextNodeConcept = SLinkOperations.getTarget(SNodeOperations.cast(contextNodeType, CONCEPTS.SNodeType$gn), LINKS.concept$gpfa);
+      SNode ownerRule = SNodeOperations.getNodeAncestor(node, CONCEPTS.Weaving_MappingRule$qb, false, false);
+      SNode contextNodeType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(ownerRule, CONCEPTS.Weaving_MappingRule$qb), LINKS.contextNodeQuery$ix$f));
+      if (SNodeOperations.isInstanceOf(contextNodeType, CONCEPTS.SNodeType$hR)) {
+        SNode contextNodeConcept = SLinkOperations.getTarget(SNodeOperations.cast(contextNodeType, CONCEPTS.SNodeType$hR), LINKS.concept$OMgE);
         if (!(SNodeOperations.is(contextNodeConcept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))) {
-          if (!(SNodeOperations.isInstanceOf(contextNodeConcept, CONCEPTS.InterfaceConceptDeclaration$MT))) {
-            SLinkOperations.setTarget(t, LINKS.contentNode$fTrL, SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(contextNodeConcept), null));
+          if (!(SNodeOperations.isInstanceOf(contextNodeConcept, CONCEPTS.InterfaceConceptDeclaration$CG))) {
+            SLinkOperations.setTarget(t, LINKS.contentNode$CQ7t, SNodeFactoryOperations.createNewNode(SNodeFactoryOperations.asInstanceConcept(contextNodeConcept), null));
           }
         }
       }
       //  make reference 
-      SLinkOperations.setNewChild(node, LINKS.templateCall$M_Ae, null);
-      SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.templateCall$M_Ae), LINKS.template$B9Tq, t);
-      SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(node, LINKS.templateCall$M_Ae), SelectionManager.FIRST_EDITABLE_CELL);
+      SLinkOperations.setNewChild(node, LINKS.templateCall$byhU, null);
+      SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.templateCall$byhU), LINKS.template$6_6, t);
+      SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(node, LINKS.templateCall$byhU), SelectionManager.FIRST_EDITABLE_CELL);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -100,23 +100,23 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Weaving_MappingRule$Iv = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, "jetbrains.mps.lang.generator.structure.Weaving_MappingRule");
-    /*package*/ static final SConcept TemplateDeclaration$q0 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
-    /*package*/ static final SConcept SNodeType$gn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept Weaving_MappingRule$qb = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, "jetbrains.mps.lang.generator.structure.Weaving_MappingRule");
+    /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
+    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink templateCall$M_Ae = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall");
-    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
-    /*package*/ static final SReferenceLink applicableConcept$mVNP = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
-    /*package*/ static final SContainmentLink contextNodeQuery$T$Sz = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, 0x113d0a12fc5L, "contextNodeQuery");
-    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
-    /*package*/ static final SContainmentLink contentNode$fTrL = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
-    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink templateCall$byhU = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall");
+    /*package*/ static final SReferenceLink applicableConcept$Hpnk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$JSvx = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
+    /*package*/ static final SContainmentLink contextNodeQuery$ix$f = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, 0x113d0a12fc5L, "contextNodeQuery");
+    /*package*/ static final SReferenceLink concept$OMgE = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SContainmentLink contentNode$CQ7t = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+    /*package*/ static final SReferenceLink template$6_6 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

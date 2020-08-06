@@ -38,7 +38,7 @@ public class ConceptEditorContextHints_hintKeymap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ConceptEditorContextHints$aY))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ConceptEditorContextHints$m_))) {
         return false;
       }
       return true;
@@ -48,7 +48,7 @@ public class ConceptEditorContextHints_hintKeymap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.hints$htjW, null);
+      SNodeFactoryOperations.addNewChild(node, LINKS.hints$lJvz, null);
     }
     public String getKeyStroke() {
       return " letter or digit";
@@ -56,10 +56,10 @@ public class ConceptEditorContextHints_hintKeymap extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptEditorContextHints$aY = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints");
+    /*package*/ static final SConcept ConceptEditorContextHints$m_ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink hints$htjW = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, 0x527faacef4e379fbL, "hints");
+    /*package*/ static final SContainmentLink hints$lJvz = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, 0x527faacef4e379fbL, "hints");
   }
 }

@@ -21,11 +21,11 @@ public class typeof_SimpleBuilderParameter_InferenceRule extends AbstractInferen
     {
       SNode _nodeToCheck_1029348928467 = parameter;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "901357770590755909", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "901357770590755906", true), (SNode) SLinkOperations.getTarget(parameter, LINKS.type$CzMw), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:35ef73a5-9726-4c66-9d79-f51c95cc08d6(jetbrains.mps.baseLanguage.builders.typesystem)", "901357770590755906", true), (SNode) SLinkOperations.getTarget(parameter, LINKS.type$54Mb), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SimpleBuilderParameter$7_;
+    return CONCEPTS.SimpleBuilderParameter$7g;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_SimpleBuilderParameter_InferenceRule extends AbstractInferen
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$CzMw = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9010958L, 0x4b4c01fdd9010959L, "type");
+    /*package*/ static final SContainmentLink type$54Mb = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9010958L, 0x4b4c01fdd9010959L, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleBuilderParameter$7_ = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9010958L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderParameter");
+    /*package*/ static final SConcept SimpleBuilderParameter$7g = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9010958L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderParameter");
   }
 }

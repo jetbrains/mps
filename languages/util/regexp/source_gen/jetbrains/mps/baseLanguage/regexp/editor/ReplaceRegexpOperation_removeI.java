@@ -26,7 +26,7 @@ public class ReplaceRegexpOperation_removeI {
       public void execute_internal(EditorContext editorContext, SNode node) {
         EditorCell current = editorContext.getSelectedCell();
         EditorCell toSelect = CellTraversalUtil.getPrevLeaf(current, CellConditions.SELECTABLE);
-        SPropertyOperations.assign(node, PROPS.caseInsensitive$c$g, false);
+        SPropertyOperations.assign(node, PROPS.caseInsensitive$NEd4, false);
         editorContext.getEditorComponent().changeSelection(toSelect);
       }
 
@@ -75,6 +75,6 @@ public class ReplaceRegexpOperation_removeI {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty caseInsensitive$c$g = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee68L, "caseInsensitive");
+    /*package*/ static final SProperty caseInsensitive$NEd4 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee68L, "caseInsensitive");
   }
 }

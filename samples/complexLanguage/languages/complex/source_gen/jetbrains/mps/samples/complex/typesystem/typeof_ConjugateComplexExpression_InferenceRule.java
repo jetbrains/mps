@@ -25,7 +25,7 @@ public class typeof_ConjugateComplexExpression_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConjugateComplexExpression$Pt;
+    return CONCEPTS.ConjugateComplexExpression$Kl;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_ConjugateComplexExpression_InferenceRule extends AbstractInf
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConjugateComplexExpression$Pt = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x116901f57f4L, "jetbrains.mps.samples.complex.structure.ConjugateComplexExpression");
+    /*package*/ static final SConcept ConjugateComplexExpression$Kl = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x116901f57f4L, "jetbrains.mps.samples.complex.structure.ConjugateComplexExpression");
   }
 }

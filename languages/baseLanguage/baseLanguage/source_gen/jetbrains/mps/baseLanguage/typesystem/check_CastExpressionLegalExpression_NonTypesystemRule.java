@@ -24,10 +24,10 @@ public class check_CastExpressionLegalExpression_NonTypesystemRule extends Abstr
   public void applyRule(final SNode castExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(!(PrecedenceUtil.needsParensInsideCastExpression(castExpression)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(castExpression, LINKS.expression$izU1), "Cast expression applied to an operation of a lower priority. The expression should be wrapped in parentheses or re-balanced", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "481464699803970958", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(castExpression, LINKS.expression$XDmN), "Cast expression applied to an operation of a lower priority. The expression should be wrapped in parentheses or re-balanced", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "481464699803970958", null, errorTarget);
       {
         BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.wrapCastExpressionInParentheses_QuickFix", false);
-        intentionProvider.putArgument("expression", SLinkOperations.getTarget(castExpression, LINKS.expression$izU1));
+        intentionProvider.putArgument("expression", SLinkOperations.getTarget(castExpression, LINKS.expression$XDmN));
         _reporter_2309309498.addIntentionProvider(intentionProvider);
       }
       {
@@ -38,7 +38,7 @@ public class check_CastExpressionLegalExpression_NonTypesystemRule extends Abstr
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CastExpression$7m;
+    return CONCEPTS.CastExpression$$8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -48,10 +48,10 @@ public class check_CastExpressionLegalExpression_NonTypesystemRule extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink expression$XDmN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CastExpression$7m = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
+    /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
   }
 }

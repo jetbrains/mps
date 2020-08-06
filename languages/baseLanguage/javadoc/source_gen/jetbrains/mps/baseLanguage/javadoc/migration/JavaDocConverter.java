@@ -12,29 +12,29 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class JavaDocConverter {
   public static void convertTags(SNode comment) {
     convertCommonTags(comment);
-    if ((SLinkOperations.getTarget(comment, LINKS.deprecated$rJyD) != null)) {
-      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(SLinkOperations.getTarget(comment, LINKS.deprecated$rJyD));
+    if ((SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ) != null)) {
+      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ));
     }
   }
   private static void convertCommonTags(final SNode comment) {
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.author$YRxD)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.author$lgjQ)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(it);
+        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
       }
     });
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.since$rHrw)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.since$M6dH)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(it);
+        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
       }
     });
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.version$rHEx)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.version$M6sI)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(it);
+        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
       }
     });
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.see$mKP3)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.see$H9Bg)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(it);
+        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
       }
     });
   }
@@ -43,45 +43,45 @@ public class JavaDocConverter {
   }
   public static void convertMethodTags(final SNode comment) {
     convertCommonTags(comment);
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.param$ruNO)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.param$LRA1)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(it);
+        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
       }
     });
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.throwsTag$UuyH)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.throwsTag$gRkU)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(it);
+        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
       }
     });
-    if ((SLinkOperations.getTarget(comment, LINKS.deprecated$rJyD) != null)) {
-      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(SLinkOperations.getTarget(comment, LINKS.deprecated$rJyD));
+    if ((SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ) != null)) {
+      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ));
     }
-    if ((SLinkOperations.getTarget(comment, LINKS.return$UFdz) != null)) {
-      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(SLinkOperations.getTarget(comment, LINKS.return$UFdz));
+    if ((SLinkOperations.getTarget(comment, LINKS.return$h3ZK) != null)) {
+      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(SLinkOperations.getTarget(comment, LINKS.return$h3ZK));
     }
   }
   public static void convertClassifierTags(final SNode comment) {
     convertCommonTags(comment);
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.param$_Mh1)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.param$Wb3e)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(it);
+        ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(it);
       }
     });
-    if ((SLinkOperations.getTarget(comment, LINKS.deprecated$rJyD) != null)) {
-      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$658s)).addElement(SLinkOperations.getTarget(comment, LINKS.deprecated$rJyD));
+    if ((SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ) != null)) {
+      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).addElement(SLinkOperations.getTarget(comment, LINKS.deprecated$M8kQ));
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
-    /*package*/ static final SContainmentLink deprecated$rJyD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated");
-    /*package*/ static final SContainmentLink author$YRxD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author");
-    /*package*/ static final SContainmentLink since$rHrw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
-    /*package*/ static final SContainmentLink version$rHEx = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version");
-    /*package*/ static final SContainmentLink see$mKP3 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x1ec532ec252df7ddL, "see");
-    /*package*/ static final SContainmentLink param$ruNO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
-    /*package*/ static final SContainmentLink throwsTag$UuyH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
-    /*package*/ static final SContainmentLink return$UFdz = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
-    /*package*/ static final SContainmentLink param$_Mh1 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param");
+    /*package*/ static final SContainmentLink tags$stUD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink deprecated$M8kQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96bL, "deprecated");
+    /*package*/ static final SContainmentLink author$lgjQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author");
+    /*package*/ static final SContainmentLink since$M6dH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f962L, "since");
+    /*package*/ static final SContainmentLink version$M6sI = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f963L, "version");
+    /*package*/ static final SContainmentLink see$H9Bg = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x1ec532ec252df7ddL, "see");
+    /*package*/ static final SContainmentLink param$LRA1 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
+    /*package*/ static final SContainmentLink throwsTag$gRkU = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
+    /*package*/ static final SContainmentLink return$h3ZK = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
+    /*package*/ static final SContainmentLink param$Wb3e = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param");
   }
 }

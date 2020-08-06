@@ -20,7 +20,7 @@ public class check_ExplicitBond_NonTypesystemRule extends AbstractNonTypesystemR
   public check_ExplicitBond_NonTypesystemRule() {
   }
   public void applyRule(final SNode dash, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SNodeOperations.getPrevSibling(dash) == null) || (SNodeOperations.getNextSibling(dash) == null) || SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(dash), CONCEPTS.ExplicitBond$Lh) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(dash), CONCEPTS.ExplicitBond$Lh)) {
+    if ((SNodeOperations.getPrevSibling(dash) == null) || (SNodeOperations.getNextSibling(dash) == null) || SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(dash), CONCEPTS.ExplicitBond$9G) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(dash), CONCEPTS.ExplicitBond$9G)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dash, "A bond (-) must be connecting two elements.", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "3123291046851157167", null, errorTarget);
@@ -32,7 +32,7 @@ public class check_ExplicitBond_NonTypesystemRule extends AbstractNonTypesystemR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ExplicitBond$Lh;
+    return CONCEPTS.ExplicitBond$9G;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,6 +42,6 @@ public class check_ExplicitBond_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExplicitBond$Lh = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L, "jetbrains.mps.samples.ChemMastery.structure.ExplicitBond");
+    /*package*/ static final SConcept ExplicitBond$9G = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L, "jetbrains.mps.samples.ChemMastery.structure.ExplicitBond");
   }
 }

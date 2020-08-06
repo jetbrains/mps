@@ -35,14 +35,14 @@ public final class IVisible__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static IconResource getVisibilityIcon_id4mxbjAOAG0d(@NotNull SNode __thisNode__) {
     IconResource defaultIcon = BLIconMarks.PLOCAL;
-    SNode visibility = SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o);
-    if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PublicVisibility$qe)) {
+    SNode visibility = SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua);
+    if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PublicVisibility$R0)) {
       return BLIconMarks.PUBLIC;
     }
-    if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PrivateVisibility$l0)) {
       return BLIconMarks.PRIVATE;
     }
-    if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.ProtectedVisibility$OD)) {
+    if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.ProtectedVisibility$hr)) {
       return BLIconMarks.PROTECTED;
     }
     return defaultIcon;
@@ -95,12 +95,12 @@ public final class IVisible__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PublicVisibility$qe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-    /*package*/ static final SConcept ProtectedVisibility$OD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility");
+    /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept ProtectedVisibility$hr = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility");
   }
 }

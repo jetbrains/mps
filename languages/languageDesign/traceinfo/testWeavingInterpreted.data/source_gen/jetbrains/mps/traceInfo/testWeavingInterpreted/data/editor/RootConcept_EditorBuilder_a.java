@@ -77,14 +77,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$lA7v;
+      final SProperty property = PROPS.name$MnvL;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
       editorCell.setCellId("property_name");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -137,10 +137,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.weave$eGzZ;
+      return LINKS.weave$XdZ3;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ChildConceptWeave$F$;
+      return CONCEPTS.ChildConceptWeave$6C;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -150,7 +150,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weaveListHandler_aw3qer_b2a.this.getNode(), LINKS.weave$eGzZ));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weaveListHandler_aw3qer_b2a.this.getNode(), LINKS.weave$XdZ3));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -228,10 +228,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.weaveEach$eGN0;
+      return LINKS.weaveEach$Xee4;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ChildConceptWeaveEach$EA;
+      return CONCEPTS.ChildConceptWeaveEach$5E;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -241,7 +241,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weaveEachListHandler_aw3qer_b4a.this.getNode(), LINKS.weaveEach$eGN0));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weaveEachListHandler_aw3qer_b4a.this.getNode(), LINKS.weaveEach$Xee4));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -319,10 +319,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.weaveMany$L4F2;
+      return LINKS.weaveMany$vA66;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ChildConceptWeaveMany$Pu;
+      return CONCEPTS.ChildConceptWeaveMany$gy;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -332,7 +332,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weaveManyListHandler_aw3qer_b6a.this.getNode(), LINKS.weaveMany$L4F2));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weaveManyListHandler_aw3qer_b6a.this.getNode(), LINKS.weaveMany$vA66));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -410,10 +410,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.weaveEachMany$L4U3;
+      return LINKS.weaveEachMany$vAl7;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ChildConceptWeaveEachMany$4v;
+      return CONCEPTS.ChildConceptWeaveEachMany$vz;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -423,7 +423,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weaveEachManyListHandler_aw3qer_b8a.this.getNode(), LINKS.weaveEachMany$L4U3));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(weaveEachManyListHandler_aw3qer_b8a.this.getNode(), LINKS.weaveEachMany$vAl7));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -465,21 +465,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept ChildConceptWeave$F$ = MetaAdapterFactory.getConcept(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64f39cL, "jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.ChildConceptWeave");
-    /*package*/ static final SConcept ChildConceptWeaveEach$EA = MetaAdapterFactory.getConcept(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64f39aL, "jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.ChildConceptWeaveEach");
-    /*package*/ static final SConcept ChildConceptWeaveMany$Pu = MetaAdapterFactory.getConcept(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c681159L, "jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.ChildConceptWeaveMany");
-    /*package*/ static final SConcept ChildConceptWeaveEachMany$4v = MetaAdapterFactory.getConcept(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c681163L, "jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.ChildConceptWeaveEachMany");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept ChildConceptWeave$6C = MetaAdapterFactory.getConcept(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64f39cL, "jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.ChildConceptWeave");
+    /*package*/ static final SConcept ChildConceptWeaveEach$5E = MetaAdapterFactory.getConcept(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64f39aL, "jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.ChildConceptWeaveEach");
+    /*package*/ static final SConcept ChildConceptWeaveMany$gy = MetaAdapterFactory.getConcept(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c681159L, "jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.ChildConceptWeaveMany");
+    /*package*/ static final SConcept ChildConceptWeaveEachMany$vz = MetaAdapterFactory.getConcept(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c681163L, "jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.ChildConceptWeaveEachMany");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink weave$eGzZ = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c64f39eL, "weave");
-    /*package*/ static final SContainmentLink weaveEach$eGN0 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c64f39fL, "weaveEach");
-    /*package*/ static final SContainmentLink weaveMany$L4F2 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c68116eL, "weaveMany");
-    /*package*/ static final SContainmentLink weaveEachMany$L4U3 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c68116fL, "weaveEachMany");
+    /*package*/ static final SContainmentLink weave$XdZ3 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c64f39eL, "weave");
+    /*package*/ static final SContainmentLink weaveEach$Xee4 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c64f39fL, "weaveEach");
+    /*package*/ static final SContainmentLink weaveMany$vA66 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c68116eL, "weaveMany");
+    /*package*/ static final SContainmentLink weaveEachMany$vAl7 = MetaAdapterFactory.getContainmentLink(0xffafcf63cbe64e5cL, 0x9717541f01743ac7L, 0x55da9f701c64caccL, 0x55da9f701c68116fL, "weaveEachMany");
   }
 }

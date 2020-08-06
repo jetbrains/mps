@@ -25,8 +25,8 @@ public class DefaultPropertyImplementation2CustomSetter {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode replaceWithNewInitialized = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CustomSetterPropertyImplementation$E1);
-        SNodeFactoryOperations.setNewChild(replaceWithNewInitialized, LINKS.setAccessor$1uFz, null);
+        SNode replaceWithNewInitialized = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CustomSetterPropertyImplementation$6N);
+        SNodeFactoryOperations.setNewChild(replaceWithNewInitialized, LINKS.setAccessor$G$8l, null);
       }
 
     };
@@ -37,10 +37,10 @@ public class DefaultPropertyImplementation2CustomSetter {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.defaultSetAccessor$eVK7))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.defaultSetAccessor$U1cT))) {
           return;
         }
-        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CustomSetterPropertyImplementation$E1);
+        SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.CustomSetterPropertyImplementation$6N);
       }
 
     };
@@ -92,11 +92,11 @@ public class DefaultPropertyImplementation2CustomSetter {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomSetterPropertyImplementation$E1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
+    /*package*/ static final SConcept CustomSetterPropertyImplementation$6N = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink setAccessor$1uFz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
-    /*package*/ static final SContainmentLink defaultSetAccessor$eVK7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e16fe6eaL, "defaultSetAccessor");
+    /*package*/ static final SContainmentLink setAccessor$G$8l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
+    /*package*/ static final SContainmentLink defaultSetAccessor$U1cT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, 0x117e16fe6eaL, "defaultSetAccessor");
   }
 }

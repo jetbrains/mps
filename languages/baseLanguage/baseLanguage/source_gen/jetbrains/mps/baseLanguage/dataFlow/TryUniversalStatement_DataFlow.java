@@ -17,18 +17,18 @@ public class TryUniversalStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     _FunctionTypes._void_P0_E0 tryBody = new _FunctionTypes._void_P0_E0() {
       public void invoke() {
-        for (SNode resource : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.resource$Abww))) {
+        for (SNode resource : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.resource$hgXi))) {
           _context.getBuilder().build((SNode) resource);
         }
-        for (SNode c : SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$lKBT)) {
+        for (SNode c : SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$Q4F)) {
           _context.getBuilder().emitIfJump(_context.getBuilder().before(c), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984471");
         }
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$lFey));
-        for (final Instruction instruction : _context.getBuilder().getInstructionsFor(SLinkOperations.getTarget(_context.getNode(), LINKS.body$lFey))) {
+        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$KFk));
+        for (final Instruction instruction : _context.getBuilder().getInstructionsFor(SLinkOperations.getTarget(_context.getNode(), LINKS.body$KFk))) {
           if (InstructionUtil.isRet(instruction) || InstructionUtil.isJump(instruction) || InstructionUtil.isNop(instruction)) {
             continue;
           }
-          for (final SNode catchClause : DataFlowTryCatchUtil.getPossibleCatches((SNode) InstructionUtil.getSource(instruction), SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$lKBT))) {
+          for (final SNode catchClause : DataFlowTryCatchUtil.getPossibleCatches((SNode) InstructionUtil.getSource(instruction), SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$Q4F))) {
             _context.getBuilder().emitMayBeUnreachable(new Runnable() {
               public void run() {
                 _context.getBuilder().emitIfJump(_context.getBuilder().before(catchClause), _context.getBuilder().insertAfter(instruction), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984504");
@@ -41,7 +41,7 @@ public class TryUniversalStatement_DataFlow extends DataFlowBuilder {
             _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984523");
           }
         });
-        for (SNode c : SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$lKBT)) {
+        for (SNode c : SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$Q4F)) {
           _context.getBuilder().build((SNode) c);
           _context.getBuilder().emitMayBeUnreachable(new Runnable() {
             public void run() {
@@ -52,11 +52,11 @@ public class TryUniversalStatement_DataFlow extends DataFlowBuilder {
         _context.getBuilder().emitLabel("afterCatches");
       }
     };
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$lFtz) != null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$KUl) != null)) {
       _context.getBuilder().emitTry("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984467");
       tryBody.invoke();
       _context.getBuilder().emitFinally("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984467");
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$lFtz));
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$KUl));
       _context.getBuilder().emitEndTry("r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984467");
     } else {
       tryBody.invoke();
@@ -64,9 +64,9 @@ public class TryUniversalStatement_DataFlow extends DataFlowBuilder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resource$Abww = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
-    /*package*/ static final SContainmentLink catchClause$lKBT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
-    /*package*/ static final SContainmentLink body$lFey = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
-    /*package*/ static final SContainmentLink finallyClause$lFtz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink resource$hgXi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
+    /*package*/ static final SContainmentLink catchClause$Q4F = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
+    /*package*/ static final SContainmentLink body$KFk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
+    /*package*/ static final SContainmentLink finallyClause$KUl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
   }
 }

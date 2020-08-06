@@ -41,7 +41,7 @@ public final class MergeStringConcatenation_Intention extends AbstractIntentionD
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), CONCEPTS.StringLiteral$4G) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), CONCEPTS.StringLiteral$4G);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), CONCEPTS.StringLiteral$xu) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), CONCEPTS.StringLiteral$xu);
   }
   @Override
   public boolean isSurroundWith() {
@@ -62,10 +62,10 @@ public final class MergeStringConcatenation_Intention extends AbstractIntentionD
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode stringLiteral = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.StringLiteral$4G);
-      String left = SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.leftExpression$lndx), CONCEPTS.StringLiteral$4G), PROPS.value$P2m0);
-      String right = SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rightExpression$li3b), CONCEPTS.StringLiteral$4G), PROPS.value$P2m0);
-      SPropertyOperations.set(stringLiteral, PROPS.value$P2m0, left + right);
+      SNode stringLiteral = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.StringLiteral$xu);
+      String left = SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
+      String right = SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rightExpression$nvX), CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
+      SPropertyOperations.set(stringLiteral, PROPS.value$w7MM, left + right);
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, stringLiteral, "*" + CellIdManager.createPropertyId("value"), left.length());
     }
     @Override
@@ -75,15 +75,15 @@ public final class MergeStringConcatenation_Intention extends AbstractIntentionD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StringLiteral$4G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

@@ -24,7 +24,7 @@ public class typeof_KeyMapKeystroke_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.KeyMapKeystroke$7H;
+    return CONCEPTS.KeyMapKeystroke$4K;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,12 +33,12 @@ public class typeof_KeyMapKeystroke_InferenceRule extends AbstractInferenceRule_
     return false;
   }
   private static SNode createKeyStrokeType_wqs68h_a1a0c0a0b() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.KeyStrokeType$48);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.KeyStrokeType$1b);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept KeyMapKeystroke$7H = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
-    /*package*/ static final SConcept KeyStrokeType$48 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x7a5e2454bfcdad14L, "jetbrains.mps.lang.plugin.structure.KeyStrokeType");
+    /*package*/ static final SConcept KeyMapKeystroke$4K = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
+    /*package*/ static final SConcept KeyStrokeType$1b = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x7a5e2454bfcdad14L, "jetbrains.mps.lang.plugin.structure.KeyStrokeType");
   }
 }

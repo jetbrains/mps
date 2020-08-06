@@ -44,37 +44,37 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void merge_id1YnOZxALrLu(@NotNull SNode __thisNode__, SNode other) {
-    Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(__thisNode__, other, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$cK1w)).last());
+    Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(__thisNode__, other, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).last());
   }
   /*package*/ static void merge_id1YnOZxAMHtO(@NotNull SNode __thisNode__, SNode other, SNode position) {
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$cK1w)).contains(position))) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).contains(position))) {
       return;
     }
 
     final Wrappers._T<SNode> currentPosition = new Wrappers._T<SNode>(position);
-    ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$cK1w)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode element) {
         currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
       }
     });
-    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$cK1w)).isNotEmpty() && isEmptyString(trim_chdj22_a0a0e0m(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Word$AM), PROPS.value$bjp0)))) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).isNotEmpty() && isEmptyString(trim_chdj22_a0a0e0m(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Word$Dn), PROPS.value$zQr_)))) {
       SNodeOperations.deleteNode(position);
     }
   }
   /*package*/ static SNode split_id1YnOZxANc9P(@NotNull SNode __thisNode__, SNode afterPosition) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$cK1w)).contains(afterPosition))) {
-      SLinkOperations.addNewChild(result, LINKS.elements$cK1w, CONCEPTS.Word$AM);
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).contains(afterPosition))) {
+      SLinkOperations.addNewChild(result, LINKS.elements$_j45, CONCEPTS.Word$Dn);
       return result;
     }
 
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.elements$cK1w)).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(afterPosition, false), CONCEPTS.TextElement$Ue)));
+    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.elements$_j45)).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(afterPosition, false), CONCEPTS.TextElement$WN)));
     return result;
   }
   /*package*/ static boolean isEmptyLine_id1YnOZxAO76B(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$cK1w)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$cK1w)).all(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Word$AM) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.value$bjp0));
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn) && isEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.value$zQr_));
       }
     });
   }
@@ -140,15 +140,15 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept TextElement$Ue = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

@@ -15,12 +15,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FunctionMethodDeclaration_Constraints extends BaseConstraintsDescriptor {
   public FunctionMethodDeclaration_Constraints() {
-    super(CONCEPTS.FunctionMethodDeclaration$m$);
+    super(CONCEPTS.FunctionMethodDeclaration$ee);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -33,7 +33,7 @@ public class FunctionMethodDeclaration_Constraints extends BaseConstraintsDescri
   }
   public static class IsAbstract_Property extends BasePropertyConstraintsDescriptor {
     public IsAbstract_Property(ConstraintsDescriptor container) {
-      super(PROPS.isAbstract$gogN, container);
+      super(PROPS.isAbstract$VtH_, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -47,17 +47,17 @@ public class FunctionMethodDeclaration_Constraints extends BaseConstraintsDescri
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
-    properties.put(PROPS.isAbstract$gogN, new IsAbstract_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
+    properties.put(PROPS.isAbstract$VtH_, new IsAbstract_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FunctionMethodDeclaration$m$ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x42d79e63a78a7784L, "jetbrains.mps.baseLanguage.closures.structure.FunctionMethodDeclaration");
+    /*package*/ static final SConcept FunctionMethodDeclaration$ee = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x42d79e63a78a7784L, "jetbrains.mps.baseLanguage.closures.structure.FunctionMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

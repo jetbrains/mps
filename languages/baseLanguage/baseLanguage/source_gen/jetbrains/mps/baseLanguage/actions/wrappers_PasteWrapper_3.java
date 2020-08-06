@@ -14,26 +14,26 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class wrappers_PasteWrapper_3 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return CONCEPTS.LocalVariableDeclaration$Bf;
+    return CONCEPTS.LocalVariableDeclaration$41;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.Statement$ok;
+    return CONCEPTS.Statement$P6;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
-    SNode statement = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$BI, null);
-    SLinkOperations.setTarget(statement, LINKS.localVariableDeclaration$cjR0, sourceNode);
+    SNode statement = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$4w, null);
+    SLinkOperations.setTarget(statement, LINKS.localVariableDeclaration$RpjM, sourceNode);
     return statement;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept LocalVariableDeclarationStatement$BI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SContainmentLink localVariableDeclaration$RpjM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
   }
 }

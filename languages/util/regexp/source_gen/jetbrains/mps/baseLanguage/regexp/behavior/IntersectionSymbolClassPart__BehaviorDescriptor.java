@@ -31,7 +31,7 @@ public final class IntersectionSymbolClassPart__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static String getRepresentation_id75Jea4IEZbM(@NotNull SNode __thisNode__) {
-    return SymbolClassRegexpAndPart__BehaviorDescriptor.getRepresentation_id75Jea4IEZbM.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.left$$IBe)) + "&&" + SymbolClassRegexpAndPart__BehaviorDescriptor.getRepresentation_id75Jea4IEZbM.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.right$kGVY));
+    return SymbolClassRegexpAndPart__BehaviorDescriptor.getRepresentation_id75Jea4IEZbM.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.left$ocg2)) + "&&" + SymbolClassRegexpAndPart__BehaviorDescriptor.getRepresentation_id75Jea4IEZbM.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.right$8a$M));
   }
 
   /*package*/ IntersectionSymbolClassPart__BehaviorDescriptor() {
@@ -81,7 +81,7 @@ public final class IntersectionSymbolClassPart__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$$IBe = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e34d8eL, "left");
-    /*package*/ static final SContainmentLink right$kGVY = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e2e56cL, "right");
+    /*package*/ static final SContainmentLink left$ocg2 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e34d8eL, "left");
+    /*package*/ static final SContainmentLink right$8a$M = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c0ef7f429L, 0x11c22e2e56cL, "right");
   }
 }

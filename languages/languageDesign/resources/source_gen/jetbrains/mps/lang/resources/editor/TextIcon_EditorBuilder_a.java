@@ -120,7 +120,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.iconId$WEru;
+      final SProperty property = PROPS.iconId$SZ3g;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no iconId>");
@@ -130,7 +130,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -191,10 +191,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.layers$t67R;
+      return LINKS.layers$pqJD;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.IconLayerDescription$uG;
+      return CONCEPTS.IconLayerDescription$6u;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -204,7 +204,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(layersListHandler_u5g1fn_b1a.this.getNode(), LINKS.layers$t67R));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(layersListHandler_u5g1fn_b1a.this.getNode(), LINKS.layers$pqJD));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -257,15 +257,15 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty iconId$WEru = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId");
+    /*package*/ static final SProperty iconId$SZ3g = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SInterfaceConcept IconLayerDescription$uG = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, "jetbrains.mps.lang.resources.structure.IconLayerDescription");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SInterfaceConcept IconLayerDescription$6u = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, "jetbrains.mps.lang.resources.structure.IconLayerDescription");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink layers$t67R = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers");
+    /*package*/ static final SContainmentLink layers$pqJD = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers");
   }
 }

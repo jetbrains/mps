@@ -33,7 +33,7 @@ public class StaticMethodDeclaration_SubstituteMenu extends SubstituteMenuBase {
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Subconcepts_dfg1om_a());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.StaticMethodDeclaration$eX) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.StaticMethodDeclaration$FJ) {
 
       @NotNull
       @Override
@@ -46,7 +46,7 @@ public class StaticMethodDeclaration_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.StaticMethodDeclaration$eX));
+    }, CONCEPTS.StaticMethodDeclaration$FJ));
     result.add(new SMP_Include_dfg1om_c());
     return result;
   }
@@ -66,7 +66,7 @@ public class StaticMethodDeclaration_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_dfg1om_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.StaticMethodDeclaration$eX);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.StaticMethodDeclaration$FJ);
     }
     @NotNull
     @Override
@@ -106,11 +106,11 @@ public class StaticMethodDeclaration_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.StaticMethodDeclarationPsvmTemplate");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.StaticMethodDeclaration$eX;
+      return CONCEPTS.StaticMethodDeclaration$FJ;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
   }
 }

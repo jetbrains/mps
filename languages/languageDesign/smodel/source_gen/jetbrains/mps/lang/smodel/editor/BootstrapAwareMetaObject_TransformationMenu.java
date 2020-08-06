@@ -63,7 +63,7 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BootstrapAwareMetaObject$px)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BootstrapAwareMetaObject$r1)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -87,7 +87,7 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
   public class TMP_Group_t8aodl_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.bootstrap$7TKz));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.bootstrap$GiM3));
     }
 
     @NotNull
@@ -143,7 +143,7 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.bootstrap$7TKz, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.bootstrap$GiM3, true);
         }
 
 
@@ -168,10 +168,10 @@ public class BootstrapAwareMetaObject_TransformationMenu extends TransformationM
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept BootstrapAwareMetaObject$px = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, "jetbrains.mps.lang.smodel.structure.BootstrapAwareMetaObject");
+    /*package*/ static final SInterfaceConcept BootstrapAwareMetaObject$r1 = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, "jetbrains.mps.lang.smodel.structure.BootstrapAwareMetaObject");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty bootstrap$7TKz = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, 0x2399a1550482726bL, "bootstrap");
+    /*package*/ static final SProperty bootstrap$GiM3 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2399a155048244c5L, 0x2399a1550482726bL, "bootstrap");
   }
 }

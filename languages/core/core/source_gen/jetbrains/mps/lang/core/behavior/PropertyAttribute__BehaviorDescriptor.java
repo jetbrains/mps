@@ -43,26 +43,26 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SProperty getProperty_id1avfQ4BBzOo(@NotNull SNode __thisNode__) {
-    String nonEmptyName = (SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$cCRy) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$cCRy));
+    String nonEmptyName = (SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$DqfO) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$DqfO));
     try {
-      return MetaAdapterFactory.getProperty(SPropertyId.deserialize(SPropertyOperations.getString(__thisNode__, PROPS.propertyId$Hwkv)), nonEmptyName);
+      return MetaAdapterFactory.getProperty(SPropertyId.deserialize(SPropertyOperations.getString(__thisNode__, PROPS.propertyId$ahGL)), nonEmptyName);
     } catch (RuntimeException e) {
       return null;
     }
   }
   /*package*/ static void setProperty_id6Gg5Klvu8CV(@NotNull SNode __thisNode__, SProperty metaProperty) {
-    SPropertyOperations.assign(__thisNode__, PROPS.name_DebugInfo$cCRy, metaProperty.getName());
-    SPropertyOperations.assign(__thisNode__, PROPS.propertyId$Hwkv, MetaIdHelper.getProperty(metaProperty).serialize());
-    SPropertyOperations.assign(__thisNode__, PROPS.enumUsageMigrated$DjAE, metaProperty.getType() instanceof SEnumeration);
+    SPropertyOperations.assign(__thisNode__, PROPS.name_DebugInfo$DqfO, metaProperty.getName());
+    SPropertyOperations.assign(__thisNode__, PROPS.propertyId$ahGL, MetaIdHelper.getProperty(metaProperty).serialize());
+    SPropertyOperations.assign(__thisNode__, PROPS.enumUsageMigrated$64YW, metaProperty.getType() instanceof SEnumeration);
   }
   /*package*/ static SNode getPropertyDeclaration_id121FNPYBLc9(@NotNull SNode __thisNode__) {
     SProperty property = PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(__thisNode__);
     SNode propertyDeclaration = (SNode) property.getDeclarationNode();
     if (property.getType() instanceof SEnumeration) {
-      if (SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$DjAE) && SNodeOperations.hasRole(propertyDeclaration, LINKS.oldProperty$v6pv)) {
-        propertyDeclaration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), CONCEPTS.PropertyDeclaration$c5);
-      } else if (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$DjAE)) && SNodeOperations.hasRole(propertyDeclaration, LINKS.propertyDeclaration$yMqt) && (AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$Yg)) != null)) {
-        propertyDeclaration = SLinkOperations.getTarget(AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$Yg)), LINKS.oldProperty$v6pv);
+      if (SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$64YW) && SNodeOperations.hasRole(propertyDeclaration, LINKS.oldProperty$Vefi)) {
+        propertyDeclaration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), CONCEPTS.PropertyDeclaration$1S);
+      } else if (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$64YW)) && SNodeOperations.hasRole(propertyDeclaration, LINKS.propertyDeclaration$YUgg) && (AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3)) != null)) {
+        propertyDeclaration = SLinkOperations.getTarget(AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3)), LINKS.oldProperty$Vefi);
       }
     }
     return propertyDeclaration;
@@ -72,7 +72,7 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
     if (l.isValid()) {
       return l.getName();
     }
-    return (SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$cCRy) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$cCRy));
+    return (SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$DqfO) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$DqfO));
   }
 
   /*package*/ PropertyAttribute__BehaviorDescriptor() {
@@ -129,18 +129,18 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name_DebugInfo$cCRy = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x18649a5c82123515L, "name_DebugInfo");
-    /*package*/ static final SProperty propertyId$Hwkv = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x129f3f61278d556dL, "propertyId");
-    /*package*/ static final SProperty enumUsageMigrated$DjAE = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
+    /*package*/ static final SProperty name_DebugInfo$DqfO = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x18649a5c82123515L, "name_DebugInfo");
+    /*package*/ static final SProperty propertyId$ahGL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x129f3f61278d556dL, "propertyId");
+    /*package*/ static final SProperty enumUsageMigrated$64YW = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x1081af3d7e9d6a2fL, "enumUsageMigrated");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
-    /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo$O3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink oldProperty$v6pv = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty");
-    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink oldProperty$Vefi = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, 0x5a14f1035942a5b6L, "oldProperty");
+    /*package*/ static final SContainmentLink propertyDeclaration$YUgg = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
   }
 }

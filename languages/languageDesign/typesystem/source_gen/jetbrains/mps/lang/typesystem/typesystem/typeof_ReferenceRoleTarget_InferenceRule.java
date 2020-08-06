@@ -22,13 +22,13 @@ public class typeof_ReferenceRoleTarget_InferenceRule extends AbstractInferenceR
   }
   public void applyRule(final SNode target, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(target, LINKS.referenceRole$EH8a);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(target, LINKS.referenceRole$3zq0);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1227107530966", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1227107523687", true), (SNode) _quotation_createNode_wtshzh_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ReferenceRoleTarget$PJ;
+    return CONCEPTS.ReferenceRoleTarget$7_;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,10 +45,10 @@ public class typeof_ReferenceRoleTarget_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink referenceRole$EH8a = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db54de8fdL, 0x11db54e3613L, "referenceRole");
+    /*package*/ static final SContainmentLink referenceRole$3zq0 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db54de8fdL, 0x11db54e3613L, "referenceRole");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReferenceRoleTarget$PJ = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db54de8fdL, "jetbrains.mps.lang.typesystem.structure.ReferenceRoleTarget");
+    /*package*/ static final SConcept ReferenceRoleTarget$7_ = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db54de8fdL, "jetbrains.mps.lang.typesystem.structure.ReferenceRoleTarget");
   }
 }

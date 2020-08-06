@@ -10,10 +10,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class WhenConcreteVariableReference_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().emitRead(SLinkOperations.getTarget(_context.getNode(), LINKS.whenConcreteVar$J1QP), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/7084752438137128887");
+    _context.getBuilder().emitRead(SLinkOperations.getTarget(_context.getNode(), LINKS.whenConcreteVar$7S8F), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/7084752438137128887");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink whenConcreteVar$J1QP = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
+    /*package*/ static final SReferenceLink whenConcreteVar$7S8F = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
   }
 }

@@ -26,8 +26,8 @@ public class BlockActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        for (SNode connector : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Diagram$k$), LINKS.newConnectors$Lu3s))) {
-          if (Objects.equals(check_dpv54c_a0a0a0a1a0a0a1(SLinkOperations.getTarget(connector, LINKS.source$w7NQ)), node) || Objects.equals(check_dpv54c_a0a0a0a1a0a0a1_0(SLinkOperations.getTarget(connector, LINKS.target$yASs)), node)) {
+        for (SNode connector : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Diagram$h8), LINKS.newConnectors$Gj00))) {
+          if (Objects.equals(check_dpv54c_a0a0a0a1a0a0a1(SLinkOperations.getTarget(connector, LINKS.source$qWKq)), node) || Objects.equals(check_dpv54c_a0a0a0a1a0a0a1_0(SLinkOperations.getTarget(connector, LINKS.target$trP0)), node)) {
             SNodeOperations.deleteNode(connector);
           }
         }
@@ -79,25 +79,25 @@ public class BlockActionMap {
   }
   private static SNode check_dpv54c_a0a0a0a1a0a0a1(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.block$dzcf);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.block$8o8N);
     }
     return null;
   }
   private static SNode check_dpv54c_a0a0a0a1a0a0a1_0(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.block$dzcf);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.block$8o8N);
     }
     return null;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink source$w7NQ = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source");
-    /*package*/ static final SContainmentLink target$yASs = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target");
-    /*package*/ static final SContainmentLink newConnectors$Lu3s = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec4425e0L, "newConnectors");
-    /*package*/ static final SReferenceLink block$dzcf = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block");
+    /*package*/ static final SContainmentLink source$qWKq = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c0L, "source");
+    /*package*/ static final SContainmentLink target$trP0 = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, 0x49664459198225c6L, "target");
+    /*package*/ static final SContainmentLink newConnectors$Gj00 = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec4425e0L, "newConnectors");
+    /*package*/ static final SReferenceLink block$8o8N = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x4966445919822461L, 0x49664459198225bcL, "block");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Diagram$k$ = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, "jetbrains.mps.testHybridEditor.structure.Diagram");
+    /*package*/ static final SConcept Diagram$h8 = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, "jetbrains.mps.testHybridEditor.structure.Diagram");
   }
 }

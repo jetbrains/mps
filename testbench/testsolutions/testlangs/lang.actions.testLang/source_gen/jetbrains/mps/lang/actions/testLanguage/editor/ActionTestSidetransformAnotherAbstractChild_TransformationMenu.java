@@ -67,7 +67,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ActionTestSidetransformAnotherAbstractChild$f9)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ActionTestSidetransformAnotherAbstractChild$vY)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -83,10 +83,10 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_qh3wu9_a1(), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_qh3wu9_a1(), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl));
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_qh3wu9_a2(), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_qh3wu9_a2(), CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl));
     }
     return result;
   }
@@ -102,7 +102,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw, _context.getModel())).where(new IWhereFilter<SConcept>() {
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl, _context.getModel())).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return !(it.isAbstract());
         }
@@ -169,7 +169,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw;
+          return CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl;
         }
 
 
@@ -180,7 +180,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw;
+          SAbstractConcept outputConcept = CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -201,7 +201,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw, _context.getModel())).where(new IWhereFilter<SConcept>() {
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl, _context.getModel())).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return !(it.isAbstract());
         }
@@ -268,7 +268,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw;
+          return CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl;
         }
 
 
@@ -279,7 +279,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$hw;
+          SAbstractConcept outputConcept = CONCEPTS.ActionTestSidetransformAnotherChildCommonSuperConcept$yl;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -294,7 +294,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestSidetransformAnotherAbstractChild$f9 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefca54d96L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAnotherAbstractChild");
-    /*package*/ static final SConcept ActionTestSidetransformAnotherChildCommonSuperConcept$hw = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefcaa0dd0L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAnotherChildCommonSuperConcept");
+    /*package*/ static final SConcept ActionTestSidetransformAnotherAbstractChild$vY = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefca54d96L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAnotherAbstractChild");
+    /*package*/ static final SConcept ActionTestSidetransformAnotherChildCommonSuperConcept$yl = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefcaa0dd0L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAnotherChildCommonSuperConcept");
   }
 }

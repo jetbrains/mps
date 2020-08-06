@@ -26,19 +26,19 @@ public class DeleteCondition {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode condition;
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$pi)) {
-          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfStatement$pi), LINKS.condition$qL$l);
-        } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.WhileStatement$9K)) {
-          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.WhileStatement$9K), LINKS.condition$5$S0);
-        } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.DoWhileStatement$GB)) {
-          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DoWhileStatement$GB), LINKS.condition$fJMm);
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$Q4)) {
+          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IfStatement$Q4), LINKS.condition$5R17);
+        } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.WhileStatement$Ay)) {
+          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.WhileStatement$Ay), LINKS.condition$KEkM);
+        } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.DoWhileStatement$9p)) {
+          condition = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.DoWhileStatement$9p), LINKS.condition$UPf8);
         } else {
           return;
         }
         if (DeletionApproverUtil.approve(editorContext, condition)) {
           return;
         }
-        SNodeOperations.replaceWithNewChild(condition, CONCEPTS.Expression$TP);
+        SNodeOperations.replaceWithNewChild(condition, CONCEPTS.Expression$mB);
         editorContext.selectWRTFocusPolicy(node);
       }
 
@@ -87,15 +87,15 @@ public class DeleteCondition {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept WhileStatement$9K = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
-    /*package*/ static final SConcept DoWhileStatement$GB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, "jetbrains.mps.baseLanguage.structure.DoWhileStatement");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept WhileStatement$Ay = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
+    /*package*/ static final SConcept DoWhileStatement$9p = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, "jetbrains.mps.baseLanguage.structure.DoWhileStatement");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink condition$5$S0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, 0xfaa4bf0f30L, "condition");
-    /*package*/ static final SContainmentLink condition$fJMm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, 0x11232679422L, "condition");
+    /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink condition$KEkM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, 0xfaa4bf0f30L, "condition");
+    /*package*/ static final SContainmentLink condition$UPf8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, 0x11232679422L, "condition");
   }
 }

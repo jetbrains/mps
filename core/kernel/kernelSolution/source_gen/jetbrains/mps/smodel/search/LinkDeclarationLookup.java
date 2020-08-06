@@ -50,9 +50,9 @@ public final class LinkDeclarationLookup {
     }
     final String linkName = link.getName();
     // with findOverride() we have checked links with specializedLink!=null, only plain LD left to check 
-    return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$UN, "hEwILKK")))).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$KA, "hEwILKK")))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(it, LINKS.specializedLink$FRN0) == null) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), linkName);
+        return (SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) == null) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), linkName);
       }
     });
   }
@@ -65,7 +65,7 @@ public final class LinkDeclarationLookup {
   public SAbstractConcept getMostSpecificLinkTarget(SAbstractLink link) {
     SNode override = findOverride(link);
     if (override != null) {
-      return SNodeOperations.asSConcept(SLinkOperations.getTarget(override, LINKS.target$TWaS));
+      return SNodeOperations.asSConcept(SLinkOperations.getTarget(override, LINKS.target$m40F));
     }
     return link.getTargetConcept();
   }
@@ -88,17 +88,17 @@ public final class LinkDeclarationLookup {
     // SAbstractLink is always the "base"/persistence one; the one that could be specialized in a subconcept 
     // getLinkDeclarations gives most specific LD instance if there are few specialization, that's why the first one to match is fine (assuming no unrelated links with the same name) 
     final String linkName = link.getName();
-    for (SNode ld : ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$UN, "hEwILKK")))).where(new IWhereFilter<SNode>() {
+    for (SNode ld : ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$KA, "hEwILKK")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.specializedLink$FRN0) != null;
+        return SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) != null;
       }
     })) {
       // specializedLink may point to another LD with specializedLink 
-      SNode sl = SLinkOperations.getTarget(ld, LINKS.specializedLink$FRN0);
-      while (SLinkOperations.getTarget(sl, LINKS.specializedLink$FRN0) != null) {
-        sl = SLinkOperations.getTarget(sl, LINKS.specializedLink$FRN0);
+      SNode sl = SLinkOperations.getTarget(ld, LINKS.specializedLink$7ZCN);
+      while (SLinkOperations.getTarget(sl, LINKS.specializedLink$7ZCN) != null) {
+        sl = SLinkOperations.getTarget(sl, LINKS.specializedLink$7ZCN);
       }
-      if (Objects.equals(SPropertyOperations.getString(sl, PROPS.name$lA7v), linkName)) {
+      if (Objects.equals(SPropertyOperations.getString(sl, PROPS.name$MnvL), linkName)) {
         return ld;
       }
     }
@@ -106,15 +106,15 @@ public final class LinkDeclarationLookup {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink specializedLink$FRN0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink specializedLink$7ZCN = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

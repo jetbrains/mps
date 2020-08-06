@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ControlAbstractionContainer_Constraints extends BaseConstraintsDescriptor {
   public ControlAbstractionContainer_Constraints() {
-    super(CONCEPTS.ControlAbstractionContainer$Tj);
+    super(CONCEPTS.ControlAbstractionContainer$KX);
   }
 
   @Override
@@ -44,6 +44,6 @@ public class ControlAbstractionContainer_Constraints extends BaseConstraintsDesc
   private static final SNodePointer breakingNode_vhsk47_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590334(jetbrains.mps.baseLanguage.closures.constraints)", "6836281137582647130");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ControlAbstractionContainer$Tj = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11e49db3870L, "jetbrains.mps.baseLanguage.closures.structure.ControlAbstractionContainer");
+    /*package*/ static final SConcept ControlAbstractionContainer$KX = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11e49db3870L, "jetbrains.mps.baseLanguage.closures.structure.ControlAbstractionContainer");
   }
 }

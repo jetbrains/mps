@@ -34,7 +34,7 @@ public final class ExpressionPatternProvider__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static List<SNode> getVariables_id2r4rhgaEVoa(@NotNull SNode __thisNode__) {
-    return (List<SNode>) PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.expression$6qRw), CONCEPTS.QualifiedPatternReference$kN), LINKS.pattern$aSk1), LINKS.pattern$F$0y));
+    return (List<SNode>) PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.expression$aN53), CONCEPTS.QualifiedPatternReference$ym), LINKS.pattern$fgx$), LINKS.pattern$JWe5));
   }
 
   /*package*/ ExpressionPatternProvider__BehaviorDescriptor() {
@@ -84,12 +84,12 @@ public final class ExpressionPatternProvider__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$6qRw = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
-    /*package*/ static final SReferenceLink pattern$aSk1 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398d4L, "pattern");
-    /*package*/ static final SContainmentLink pattern$F$0y = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, 0x50f8d1ebd50bbeb3L, "pattern");
+    /*package*/ static final SContainmentLink expression$aN53 = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
+    /*package*/ static final SReferenceLink pattern$fgx$ = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398d4L, "pattern");
+    /*package*/ static final SContainmentLink pattern$JWe5 = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, 0x50f8d1ebd50bbeb3L, "pattern");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QualifiedPatternReference$kN = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, "jetbrains.mps.lang.pattern.structure.QualifiedPatternReference");
+    /*package*/ static final SConcept QualifiedPatternReference$ym = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, "jetbrains.mps.lang.pattern.structure.QualifiedPatternReference");
   }
 }

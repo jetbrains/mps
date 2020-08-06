@@ -25,7 +25,7 @@ public class typeof_EscapeOperation_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EscapeOperation$_A;
+    return CONCEPTS.EscapeOperation$2o;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_EscapeOperation_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EscapeOperation$_A = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x144805fc3e36da43L, "jetbrains.mps.baseLanguage.structure.EscapeOperation");
+    /*package*/ static final SConcept EscapeOperation$2o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x144805fc3e36da43L, "jetbrains.mps.baseLanguage.structure.EscapeOperation");
   }
 }

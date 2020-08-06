@@ -12,7 +12,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959036f(jetbrains.mps.baseLanguage.classifiers.dataFlow)/1216898711583">
     <file name="DefaultClassifierMethodCallOperation_DataFlow.java">
       <node id="1216898780187" at="14,103,15,52" concept="0" />
-      <node id="1216898711583" at="20,0,21,0" concept="3" trace="actualArgument$S0lI" />
+      <node id="1216898711583" at="20,0,21,0" concept="3" trace="actualArgument$Owly" />
       <node id="1216898735883" at="13,60,16,5" concept="1" />
       <node id="1216898711583" at="13,0,18,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1216898735887" at="14,103,15,52" />

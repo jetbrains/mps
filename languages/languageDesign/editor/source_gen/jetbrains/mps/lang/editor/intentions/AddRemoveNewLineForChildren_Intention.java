@@ -41,12 +41,12 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_Collection$CD)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$CD), LINKS.cellLayout$JWT7), CONCEPTS.CellLayout_Indent$tI)) {
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_Collection$Og)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$Og), LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Indent$Dl)) {
         return true;
       }
-    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_RefNodeList$IL)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$IL), LINKS.cellLayout$VF9j), CONCEPTS.CellLayout_Indent$tI)) {
+    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_RefNodeList$Uo)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$Uo), LINKS.cellLayout$ZXkU), CONCEPTS.CellLayout_Indent$Dl)) {
         return true;
       }
     }
@@ -67,7 +67,7 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$SG)).isEmpty()) {
+      if (ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$4j)).isEmpty()) {
         return "Add New Line for Children";
       } else {
         return "Remove New Line for Children";
@@ -75,12 +75,12 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$SG)).isEmpty()) {
-        SNode styleItem = SNodeFactoryOperations.createNewNode(CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$SG, null);
-        SPropertyOperations.assign(styleItem, PROPS.flag$3Afb, true);
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$AYO2)).addElement(styleItem);
+      if (ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$4j)).isEmpty()) {
+        SNode styleItem = SNodeFactoryOperations.createNewNode(CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$4j, null);
+        SPropertyOperations.assign(styleItem, PROPS.flag$7SqM, true);
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.styleItem$FgZD)).addElement(styleItem);
       } else {
-        SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$SG)).first());
+        SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$4j)).first());
       }
     }
     @Override
@@ -90,19 +90,19 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_Collection$CD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
-    /*package*/ static final SConcept CellLayout_Indent$tI = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
-    /*package*/ static final SConcept CellModel_RefNodeList$IL = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList");
-    /*package*/ static final SConcept IndentLayoutNewLineChildrenStyleClassItem$SG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120194c6bfdL, "jetbrains.mps.lang.editor.structure.IndentLayoutNewLineChildrenStyleClassItem");
+    /*package*/ static final SConcept CellModel_Collection$Og = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
+    /*package*/ static final SConcept CellLayout_Indent$Dl = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
+    /*package*/ static final SConcept CellModel_RefNodeList$Uo = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList");
+    /*package*/ static final SConcept IndentLayoutNewLineChildrenStyleClassItem$4j = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120194c6bfdL, "jetbrains.mps.lang.editor.structure.IndentLayoutNewLineChildrenStyleClassItem");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$JWT7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink cellLayout$VF9j = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
-    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink cellLayout$Of4I = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$ZXkU = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
+    /*package*/ static final SContainmentLink styleItem$FgZD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty flag$3Afb = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
+    /*package*/ static final SProperty flag$7SqM = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
   }
 }

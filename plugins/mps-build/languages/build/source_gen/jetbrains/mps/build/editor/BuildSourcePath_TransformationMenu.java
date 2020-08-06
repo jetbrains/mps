@@ -52,7 +52,7 @@ public class BuildSourcePath_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BuildSourcePath$ua)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BuildSourcePath$H)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -91,7 +91,7 @@ public class BuildSourcePath_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.BuildSourcePath$ua, "jetbrains.mps.build.editor.add_reexport_BuildSourcePath");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.BuildSourcePath$H, "jetbrains.mps.build.editor.add_reexport_BuildSourcePath");
     }
 
   }
@@ -114,12 +114,12 @@ public class BuildSourcePath_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.BuildSourcePath$ua, "jetbrains.mps.build.editor.transform_CompositePath_BuildSourcePath");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.BuildSourcePath$H, "jetbrains.mps.build.editor.transform_CompositePath_BuildSourcePath");
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSourcePath$ua = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath");
+    /*package*/ static final SConcept BuildSourcePath$H = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath");
   }
 }

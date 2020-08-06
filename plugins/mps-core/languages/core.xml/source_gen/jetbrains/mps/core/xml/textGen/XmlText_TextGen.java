@@ -20,22 +20,22 @@ public class XmlText_TextGen extends TextGenDescriptorBase {
     boolean needNewLine = (boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(ctx.getPrimaryInput());
     if (!(needNewLine)) {
       SNode left = SNodeOperations.getPrevSibling(ctx.getPrimaryInput());
-      if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlContent$nZ)) {
-        needNewLine = (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlContent$nZ));
+      if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlContent$Mu)) {
+        needNewLine = (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlContent$Mu));
       }
     }
     if (needNewLine) {
       tgs.newLine();
       tgs.indent();
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$ds10));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$6Orv));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlContent$nZ = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL, "jetbrains.mps.core.xml.structure.XmlContent");
+    /*package*/ static final SConcept XmlContent$Mu = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL, "jetbrains.mps.core.xml.structure.XmlContent");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$ds10 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
+    /*package*/ static final SProperty value$6Orv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value");
   }
 }

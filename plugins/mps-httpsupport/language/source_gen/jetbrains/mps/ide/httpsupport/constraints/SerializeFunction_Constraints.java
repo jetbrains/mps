@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SerializeFunction_Constraints extends BaseConstraintsDescriptor {
   public SerializeFunction_Constraints() {
-    super(CONCEPTS.SerializeFunction$HY);
+    super(CONCEPTS.SerializeFunction$nA);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class SerializeFunction_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParameterConverterDeclaration$QQ);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParameterConverterDeclaration$wu);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)", "1227128029536566369");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SerializeFunction$HY = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe838a4f9L, "jetbrains.mps.ide.httpsupport.structure.SerializeFunction");
-    /*package*/ static final SConcept ParameterConverterDeclaration$QQ = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, "jetbrains.mps.ide.httpsupport.structure.ParameterConverterDeclaration");
+    /*package*/ static final SConcept SerializeFunction$nA = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe838a4f9L, "jetbrains.mps.ide.httpsupport.structure.SerializeFunction");
+    /*package*/ static final SConcept ParameterConverterDeclaration$wu = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8385046L, "jetbrains.mps.ide.httpsupport.structure.ParameterConverterDeclaration");
   }
 }

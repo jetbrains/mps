@@ -19,17 +19,17 @@ public class typeof_SmartDisposeClosureParameterDeclaration_InferenceRule extend
   public typeof_SmartDisposeClosureParameterDeclaration_InferenceRule() {
   }
   public void applyRule(final SNode declaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode tab = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.AddTabOperation$P, false, false);
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(declaration), CONCEPTS.ClosureLiteral$zJ) && tab != null) {
+    SNode tab = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.AddTabOperation$XS, false, false);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(declaration), CONCEPTS.ClosureLiteral$rp) && tab != null) {
       {
         SNode _nodeToCheck_1029348928467 = declaration;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "485694842828666182", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "485694842828666177", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(SNodeOperations.cast(tab, CONCEPTS.AddTabOperation$P), LINKS.tab$3X05), "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "485694842828666194", true), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "485694842828666177", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(SNodeOperations.cast(tab, CONCEPTS.AddTabOperation$XS), LINKS.tab$hxX8), "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "485694842828666194", true), _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SmartDisposeClosureParameterDeclaration$PR;
+    return CONCEPTS.SmartDisposeClosureParameterDeclaration$MU;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,12 +39,12 @@ public class typeof_SmartDisposeClosureParameterDeclaration_InferenceRule extend
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AddTabOperation$P = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x51d51510f17237b8L, "jetbrains.mps.lang.plugin.structure.AddTabOperation");
-    /*package*/ static final SConcept ClosureLiteral$zJ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
-    /*package*/ static final SConcept SmartDisposeClosureParameterDeclaration$PR = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6bd88e2e00aae68L, "jetbrains.mps.lang.plugin.structure.SmartDisposeClosureParameterDeclaration");
+    /*package*/ static final SConcept AddTabOperation$XS = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x51d51510f17237b8L, "jetbrains.mps.lang.plugin.structure.AddTabOperation");
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept SmartDisposeClosureParameterDeclaration$MU = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6bd88e2e00aae68L, "jetbrains.mps.lang.plugin.structure.SmartDisposeClosureParameterDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tab$3X05 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x51d51510f17237b8L, 0x6902a1ec28a66248L, "tab");
+    /*package*/ static final SContainmentLink tab$hxX8 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x51d51510f17237b8L, 0x6902a1ec28a66248L, "tab");
   }
 }

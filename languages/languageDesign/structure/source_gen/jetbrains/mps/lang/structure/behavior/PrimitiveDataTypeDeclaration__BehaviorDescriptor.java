@@ -37,22 +37,22 @@ public final class PrimitiveDataTypeDeclaration__BehaviorDescriptor extends Base
   }
 
   /*package*/ static SNode toBaseLanguageType_idhEwI9ym(@NotNull SNode __thisNode__) {
-    if (Primitives.INTEGER_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v))) {
+    if (Primitives.INTEGER_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL))) {
       return _quotation_createNode_qjn9ch_a0a0a0();
     }
-    if (Primitives.BOOLEAN_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v))) {
+    if (Primitives.BOOLEAN_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL))) {
       return _quotation_createNode_qjn9ch_a0a1a0();
     }
     return _quotation_createNode_qjn9ch_a2a0();
   }
   /*package*/ static boolean isString_idhKtFRO6(@NotNull SNode __thisNode__) {
-    return Primitives.STRING_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
+    return Primitives.STRING_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
   }
   /*package*/ static boolean isInteger_idhKtFYCF(@NotNull SNode __thisNode__) {
-    return Primitives.INTEGER_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
+    return Primitives.INTEGER_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
   }
   /*package*/ static boolean isBoolean_idhKtG1tp(@NotNull SNode __thisNode__) {
-    return Primitives.BOOLEAN_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
+    return Primitives.BOOLEAN_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
   }
 
   /*package*/ PrimitiveDataTypeDeclaration__BehaviorDescriptor() {
@@ -126,6 +126,6 @@ public final class PrimitiveDataTypeDeclaration__BehaviorDescriptor extends Base
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

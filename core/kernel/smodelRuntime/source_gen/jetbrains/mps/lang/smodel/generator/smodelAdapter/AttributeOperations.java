@@ -77,7 +77,7 @@ public class AttributeOperations {
     return Sequence.fromIterable(children).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         if (isChildAttribute(it)) {
-          return Objects.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf"))), link);
+          return Objects.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf"))), link);
         } else {
           return Objects.equals(SNodeOperations.getContainingLink(it), link);
         }
@@ -91,14 +91,14 @@ public class AttributeOperations {
 
 
   private static Iterable<SNode> getAttributes(SNode node, final IAttributeDescriptor descriptor) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return descriptor.match(it);
       }
     });
   }
   public static SNode addAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
-    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)).addElement(value);
+    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).addElement(value);
     descriptor.update(value);
     return value;
   }
@@ -119,56 +119,56 @@ public class AttributeOperations {
     if (role == null) {
       return false;
     }
-    return role.equals(LINKS.smodelAttribute$jXFL);
+    return role.equals(LINKS.smodelAttribute$KJ43);
   }
 
   public static boolean isNodeAttribute(SNode node) {
-    return isAttribute(node) && SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.NodeAttribute$8K);
+    return isAttribute(node) && SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.NodeAttribute$x2);
   }
   public static boolean isPropertyAttribute(SNode node) {
-    return isAttribute(node) && SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.PropertyAttribute$jT);
+    return isAttribute(node) && SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.PropertyAttribute$Gb);
   }
   public static boolean isLinkAttribute(SNode node) {
-    return isAttribute(node) && SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.LinkAttribute$7j);
+    return isAttribute(node) && SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.LinkAttribute$v_);
   }
   public static boolean isChildAttribute(SNode node) {
-    return isAttribute(node) && SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.ChildAttribute$XQ);
+    return isAttribute(node) && SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.ChildAttribute$m8);
   }
   public static List<SNode> getAllAttributes(SNode node) {
-    return SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL);
+    return SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43);
   }
   public static Iterable<SNode> getNodeAttributes(SNode node) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.NodeAttribute$8K);
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.NodeAttribute$x2);
   }
   public static Iterable<SNode> getPropertyAttributes(SNode node, final SProperty property) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.PropertyAttribute$jT)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.PropertyAttribute$Gb)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$jT, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$jT, "1avfQ4BBzOo"))), property);
+        return Objects.equals(((SProperty) BHReflection.invoke0(it, CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo"))), property);
       }
     });
   }
   public static Iterable<SNode> getLinkAttributes(SNode node, final SReferenceLink link) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.LinkAttribute$7j)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.LinkAttribute$v_)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$7j, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$7j, "1avfQ4BEFo6"))), link);
+        return Objects.equals(((SReferenceLink) BHReflection.invoke0(it, CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6"))), link);
       }
     });
   }
   public static Iterable<SNode> getChildAttributes(SNode node, final SContainmentLink link) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.ChildAttribute$XQ)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf"))), link);
+        return Objects.equals(((SContainmentLink) BHReflection.invoke0(it, CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf"))), link);
       }
     });
   }
   public static boolean hasPropertyAttributes(SNode node) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.PropertyAttribute$jT)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.PropertyAttribute$Gb)).isNotEmpty();
   }
   public static boolean hasLinkAttributes(SNode node) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.LinkAttribute$7j)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.LinkAttribute$v_)).isNotEmpty();
   }
   public static boolean hasChildAttributes(SNode node) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL), CONCEPTS.ChildAttribute$XQ)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).isNotEmpty();
   }
   public static class AttributeList extends AbstractMutableChildrenList {
     private SNode myNode;
@@ -184,7 +184,7 @@ public class AttributeOperations {
     }
     @Override
     protected void insertBefore(SNode node, SNode anchor) {
-      assert SNodeOperations.isInstanceOf(anchor, CONCEPTS.Attribute$RJ);
+      assert SNodeOperations.isInstanceOf(anchor, CONCEPTS.Attribute$g1);
       SNodeOperations.insertPrevSiblingChild(anchor, node);
       myDescriptor.update(node);
     }
@@ -197,7 +197,7 @@ public class AttributeOperations {
 
     @Override
     protected void addFirst(SNode node) {
-      ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.smodelAttribute$jXFL)).insertElement(0, SNodeOperations.cast(node, CONCEPTS.Attribute$RJ));
+      ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.smodelAttribute$KJ43)).insertElement(0, SNodeOperations.cast(node, CONCEPTS.Attribute$g1));
       myDescriptor.update(node);
     }
 
@@ -210,7 +210,7 @@ public class AttributeOperations {
       if (n.getParent() != myNode) {
         return false;
       }
-      if (!((SNodeOperations.isInstanceOf(n, CONCEPTS.Attribute$RJ)))) {
+      if (!((SNodeOperations.isInstanceOf(n, CONCEPTS.Attribute$g1)))) {
         return false;
       }
 
@@ -220,14 +220,14 @@ public class AttributeOperations {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildAttribute$XQ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
-    /*package*/ static final SConcept NodeAttribute$8K = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L, "jetbrains.mps.lang.core.structure.NodeAttribute");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept LinkAttribute$7j = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
-    /*package*/ static final SConcept Attribute$RJ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept NodeAttribute$x2 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L, "jetbrains.mps.lang.core.structure.NodeAttribute");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
+    /*package*/ static final SConcept Attribute$g1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

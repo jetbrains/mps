@@ -27,18 +27,18 @@ public class typeof_ConsoleCreator_InferenceRule extends AbstractInferenceRule_R
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "1594211126127774354", true), (SNode) createConsoleType_c6o0kc_a1a0c0a0b(), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(consoleCreator, LINKS.project$QID6);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(consoleCreator, LINKS.project$qolH);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "1594211126127774951", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "1594211126127774943", true), (SNode) _quotation_createNode_c6o0kc_a1a0c0b0b(), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(consoleCreator, LINKS.viewer$QIS7);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(consoleCreator, LINKS.viewer$qo$I);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "1594211126127774970", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "1594211126127774962", true), (SNode) _quotation_createNode_c6o0kc_a1a0c0c0b(), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConsoleCreator$DG;
+    return CONCEPTS.ConsoleCreator$mj;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,7 +47,7 @@ public class typeof_ConsoleCreator_InferenceRule extends AbstractInferenceRule_R
     return false;
   }
   private static SNode createConsoleType_c6o0kc_a1a0c0a0b() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConsoleType$J4);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConsoleType$rF);
     return n0.getResult();
   }
   private static SNode _quotation_createNode_c6o0kc_a1a0c0b0b() {
@@ -65,12 +65,12 @@ public class typeof_ConsoleCreator_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink project$QID6 = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd24a8aL, 0x161fc6929dd24ccdL, "project");
-    /*package*/ static final SContainmentLink viewer$QIS7 = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd24a8aL, 0x161fc6929dd24cceL, "viewer");
+    /*package*/ static final SContainmentLink project$qolH = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd24a8aL, 0x161fc6929dd24ccdL, "project");
+    /*package*/ static final SContainmentLink viewer$qo$I = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd24a8aL, 0x161fc6929dd24cceL, "viewer");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConsoleCreator$DG = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd24a8aL, "jetbrains.mps.execution.configurations.structure.ConsoleCreator");
-    /*package*/ static final SConcept ConsoleType$J4 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd1ac93L, "jetbrains.mps.execution.configurations.structure.ConsoleType");
+    /*package*/ static final SConcept ConsoleCreator$mj = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd24a8aL, "jetbrains.mps.execution.configurations.structure.ConsoleCreator");
+    /*package*/ static final SConcept ConsoleType$rF = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd1ac93L, "jetbrains.mps.execution.configurations.structure.ConsoleType");
   }
 }

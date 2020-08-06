@@ -41,7 +41,7 @@ public class InsertAnEmptyCommentLine extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.BaseDocComment$pH))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.BaseDocComment$bU))) {
         return false;
       }
       return true;
@@ -51,9 +51,9 @@ public class InsertAnEmptyCommentLine extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode line = SNodeFactoryOperations.createNewNode(CONCEPTS.CommentLine$vy, null);
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.BaseDocComment$pH), LINKS.body$udUc)).addElement(line);
-      SNodeFactoryOperations.addNewChild(line, LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY);
+      SNode line = SNodeFactoryOperations.createNewNode(CONCEPTS.CommentLine$hJ, null);
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.BaseDocComment$bU), LINKS.body$OAGp)).addElement(line);
+      SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
     }
     public String getKeyStroke() {
       return " non-space char";
@@ -61,13 +61,13 @@ public class InsertAnEmptyCommentLine extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseDocComment$pH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
-    /*package*/ static final SConcept CommentLine$vy = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
-    /*package*/ static final SConcept TextCommentLinePart$RY = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept BaseDocComment$bU = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+    /*package*/ static final SConcept CommentLine$hJ = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
+    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$udUc = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
-    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink body$OAGp = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 }

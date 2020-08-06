@@ -28,7 +28,7 @@ public class CommandHolderRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_ckvqv2_a(), CONCEPTS.CommandHolderRef$vj));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_ckvqv2_a(), CONCEPTS.CommandHolderRef$9c));
     result.add(new SMP_Subconcepts_ckvqv2_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class CommandHolderRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_ckvqv2_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.CommandHolderRef$vj, LINKS.target$VJDw);
+      super((SAbstractConcept) CONCEPTS.CommandHolderRef$9c, LINKS.target$kCjp);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class CommandHolderRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_ckvqv2_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CommandHolderRef$vj);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CommandHolderRef$9c);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class CommandHolderRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CommandHolderRef$vj = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, "jetbrains.mps.console.base.structure.CommandHolderRef");
+    /*package*/ static final SConcept CommandHolderRef$9c = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, "jetbrains.mps.console.base.structure.CommandHolderRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$VJDw = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, 0x4fe9275cea077232L, "target");
+    /*package*/ static final SReferenceLink target$kCjp = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, 0x4fe9275cea077232L, "target");
   }
 }

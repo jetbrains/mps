@@ -52,11 +52,11 @@ public final class AddTestReferenceAnnotation_Intention extends AbstractIntentio
     }
 
     SNode referentNode = EditingUtil.getEditedLinkReferentNode(cell);
-    if (referentNode == null || AttributeOperations.getAttribute(referentNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAnnotataion$fM, ref)) != null) {
+    if (referentNode == null || AttributeOperations.getAttribute(referentNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAnnotataion$ZZ, ref)) != null) {
       return false;
     }
 
-    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$7I), node);
+    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$nd), node);
   }
   @Override
   public boolean isSurroundWith() {
@@ -80,7 +80,7 @@ public final class AddTestReferenceAnnotation_Intention extends AbstractIntentio
       EditorCell cell = editorContext.getSelectedCell();
       SNode referentNode = EditingUtil.getEditedLinkReferentNode(cell);
       SReferenceLink ref = EditingUtil.getEditedLink(cell);
-      SNode result = SNodeFactoryOperations.setNewAttribute(referentNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAnnotataion$fM, ref), CONCEPTS.ReferenceAnnotataion$fM);
+      SNode result = SNodeFactoryOperations.setNewAttribute(referentNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAnnotataion$ZZ, ref), CONCEPTS.ReferenceAnnotataion$ZZ);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -89,7 +89,7 @@ public final class AddTestReferenceAnnotation_Intention extends AbstractIntentio
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReferenceAnnotataion$fM = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6a48144fa856f460L, "jetbrains.mps.lang.editor.editorTest.structure.ReferenceAnnotataion");
-    /*package*/ static final SConcept NodesTestCase$7I = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
+    /*package*/ static final SConcept ReferenceAnnotataion$ZZ = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6a48144fa856f460L, "jetbrains.mps.lang.editor.editorTest.structure.ReferenceAnnotataion");
+    /*package*/ static final SConcept NodesTestCase$nd = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 }

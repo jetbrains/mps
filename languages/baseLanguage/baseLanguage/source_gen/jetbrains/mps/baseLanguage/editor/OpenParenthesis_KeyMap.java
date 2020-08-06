@@ -41,7 +41,7 @@ public class OpenParenthesis_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ParenthesizedExpression$vE))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ParenthesizedExpression$Ws))) {
         return false;
       }
       return true;
@@ -76,7 +76,7 @@ public class OpenParenthesis_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ParenthesizedExpression$vE))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ParenthesizedExpression$Ws))) {
         return false;
       }
       return true;
@@ -94,6 +94,6 @@ public class OpenParenthesis_KeyMap extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 }

@@ -28,7 +28,7 @@ public class MathSymbolIndexReference_SubstituteMenu extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_kbkb4f_a(), CONCEPTS.MathSymbolIndexReference$$d));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_kbkb4f_a(), CONCEPTS.MathSymbolIndexReference$m_));
     result.add(new SMP_Subconcepts_kbkb4f_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class MathSymbolIndexReference_SubstituteMenu extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_kbkb4f_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.MathSymbolIndexReference$$d, LINKS.indexRef$8_ip);
+      super((SAbstractConcept) CONCEPTS.MathSymbolIndexReference$m_, LINKS.indexRef$Qa4L);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class MathSymbolIndexReference_SubstituteMenu extends SubstituteMenuBase 
   }
   public class SMP_Subconcepts_kbkb4f_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MathSymbolIndexReference$$d);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MathSymbolIndexReference$m_);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class MathSymbolIndexReference_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MathSymbolIndexReference$$d = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, "jetbrains.mps.baseLanguage.math.structure.MathSymbolIndexReference");
+    /*package*/ static final SConcept MathSymbolIndexReference$m_ = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, "jetbrains.mps.baseLanguage.math.structure.MathSymbolIndexReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink indexRef$8_ip = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, 0x11fe0d95bdfL, "indexRef");
+    /*package*/ static final SReferenceLink indexRef$Qa4L = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, 0x11fe0d95bdfL, "indexRef");
   }
 }

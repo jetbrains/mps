@@ -22,7 +22,7 @@ public class check_UnknownNameRef_NonTypesystemRule extends AbstractNonTypesyste
   public check_UnknownNameRef_NonTypesystemRule() {
   }
   public void applyRule(final SNode unkName, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(unkName)), CONCEPTS.UnknownNameRef$vZ))) {
+    if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(unkName)), CONCEPTS.UnknownNameRef$WL))) {
       // it's subconcept, leave the work to them 
       return;
     }
@@ -46,7 +46,7 @@ public class check_UnknownNameRef_NonTypesystemRule extends AbstractNonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.UnknownNameRef$vZ;
+    return CONCEPTS.UnknownNameRef$WL;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,6 +56,6 @@ public class check_UnknownNameRef_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UnknownNameRef$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x759937a5973279b7L, "jetbrains.mps.baseLanguage.structure.UnknownNameRef");
+    /*package*/ static final SConcept UnknownNameRef$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x759937a5973279b7L, "jetbrains.mps.baseLanguage.structure.UnknownNameRef");
   }
 }

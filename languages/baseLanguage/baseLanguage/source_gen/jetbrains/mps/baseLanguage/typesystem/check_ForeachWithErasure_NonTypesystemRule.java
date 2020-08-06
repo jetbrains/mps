@@ -27,11 +27,11 @@ public class check_ForeachWithErasure_NonTypesystemRule extends AbstractNonTypes
   public check_ForeachWithErasure_NonTypesystemRule() {
   }
   public void applyRule(final SNode foreachStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode iterableType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$FCTY));
-    if (SNodeOperations.isInstanceOf(iterableType, CONCEPTS.ArrayType$Yv)) {
+    SNode iterableType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$mImK));
+    if (SNodeOperations.isInstanceOf(iterableType, CONCEPTS.ArrayType$rh)) {
       return;
     }
-    if ((SLinkOperations.getTarget(foreachStatement, LINKS.variable$4Igk) == null)) {
+    if ((SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6) == null)) {
       return;
     }
     {
@@ -39,19 +39,19 @@ public class check_ForeachWithErasure_NonTypesystemRule extends AbstractNonTypes
       SNode coercedNode_gn1qzs_d0 = TypecheckingFacade.getFromContext().coerceType(iterableType, pattern_gn1qzs_d0);
       if (coercedNode_gn1qzs_d0 != null) {
       } else {
-        SNode variableType = SLinkOperations.getTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$4Igk), LINKS.type$uWuc);
+        SNode variableType = SLinkOperations.getTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6), LINKS.type$a1UY);
         // not an iterable or an erasure 
         if (!((MatchingUtil.matchNodes(variableType, _quotation_createNode_aftnu9_a0a0c0a2a3a1())))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError((variableType != null ? variableType : SLinkOperations.getTarget(foreachStatement, LINKS.variable$4Igk)), "java.lang.Object expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4312449433287189198", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError((variableType != null ? variableType : SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6)), "java.lang.Object expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4312449433287189198", null, errorTarget);
           }
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ForeachStatement$oA;
+    return CONCEPTS.ForeachStatement$Po;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -78,13 +78,13 @@ public class check_ForeachWithErasure_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink iterable$FCTY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
-    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink iterable$mImK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
-    /*package*/ static final SConcept ForeachStatement$oA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept ForeachStatement$Po = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
   }
 }

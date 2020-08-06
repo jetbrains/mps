@@ -19,7 +19,7 @@ public final class TestsUtil {
   }
 
   public static String getProjectPath(SModel model) {
-    String projectPath = TestInfo__BehaviorDescriptor.getProjectPath_id4qWC2JVrBcn.invoke(SNodeOperations.asSConcept(CONCEPTS.TestInfo$TV), model);
+    String projectPath = TestInfo__BehaviorDescriptor.getProjectPath_id4qWC2JVrBcn.invoke(SNodeOperations.asSConcept(CONCEPTS.TestInfo$9q), model);
     if (projectPath != null) {
       return NameUtil.escapeString(projectPath);
     }
@@ -33,11 +33,11 @@ public final class TestsUtil {
    */
   @Deprecated
   public static String getTestBodyClassName(SNode testCase) {
-    return ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(testCase) + "$" + NodesTestCase__BehaviorDescriptor.getTestBodyName_idhOw0ICJ.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$7I));
+    return ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(testCase) + "$" + NodesTestCase__BehaviorDescriptor.getTestBodyName_idhOw0ICJ.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$nd));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestInfo$TV = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
-    /*package*/ static final SConcept NodesTestCase$7I = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
+    /*package*/ static final SConcept TestInfo$9q = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
+    /*package*/ static final SConcept NodesTestCase$nd = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 }

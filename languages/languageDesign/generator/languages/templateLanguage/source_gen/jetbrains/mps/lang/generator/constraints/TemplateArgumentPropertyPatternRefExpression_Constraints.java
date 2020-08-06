@@ -29,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TemplateArgumentPropertyPatternRefExpression_Constraints extends BaseConstraintsDescriptor {
   public TemplateArgumentPropertyPatternRefExpression_Constraints() {
-    super(CONCEPTS.TemplateArgumentPropertyPatternRefExpression$PN);
+    super(CONCEPTS.TemplateArgumentPropertyPatternRefExpression$xv);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyPattern$foN1, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyPattern$CluH, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,9 +50,9 @@ public class TemplateArgumentPropertyPatternRefExpression_Constraints extends Ba
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
-            SNode rule = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.PatternReduction_MappingRule$g5, false, false);
-            if ((rule != null) && (SLinkOperations.getTarget(rule, LINKS.pattern$wkGb) != null)) {
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(rule, LINKS.pattern$wkGb), CONCEPTS.PropertyPatternVariableDeclaration$Xj, false, new SAbstractConcept[]{})));
+            SNode rule = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.PatternReduction_MappingRule$VL, false, false);
+            if ((rule != null) && (SLinkOperations.getTarget(rule, LINKS.pattern$ThnR) != null)) {
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(rule, LINKS.pattern$ThnR), CONCEPTS.PropertyPatternVariableDeclaration$aQ, false, new SAbstractConcept[]{})));
             }
             return ListScope.forResolvableElements(result);
           }
@@ -66,13 +66,13 @@ public class TemplateArgumentPropertyPatternRefExpression_Constraints extends Ba
   private static final SNodePointer breakingNode_d101zz_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "6836281137582788083");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateArgumentPropertyPatternRefExpression$PN = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPropertyPatternRefExpression");
-    /*package*/ static final SConcept PatternReduction_MappingRule$g5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, "jetbrains.mps.lang.generator.structure.PatternReduction_MappingRule");
-    /*package*/ static final SConcept PropertyPatternVariableDeclaration$Xj = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
+    /*package*/ static final SConcept TemplateArgumentPropertyPatternRefExpression$xv = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPropertyPatternRefExpression");
+    /*package*/ static final SConcept PatternReduction_MappingRule$VL = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, "jetbrains.mps.lang.generator.structure.PatternReduction_MappingRule");
+    /*package*/ static final SConcept PropertyPatternVariableDeclaration$aQ = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyPattern$foN1 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
-    /*package*/ static final SContainmentLink pattern$wkGb = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, 0x190d31fe6a13891aL, "pattern");
+    /*package*/ static final SReferenceLink propertyPattern$CluH = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
+    /*package*/ static final SContainmentLink pattern$ThnR = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, 0x190d31fe6a13891aL, "pattern");
   }
 }

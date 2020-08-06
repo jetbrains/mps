@@ -24,7 +24,7 @@ public class check_UpperBoundType_NonTypesystemRule extends AbstractNonTypesyste
   public check_UpperBoundType_NonTypesystemRule() {
   }
   public void applyRule(final SNode upperBoundType, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(upperBoundType, LINKS.bound$xdz0), CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(SLinkOperations.getTarget(upperBoundType, LINKS.bound$xdz0), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(upperBoundType, LINKS.bound$ciZM), CONCEPTS.ClassifierType$bL) && SLinkOperations.hasPointer(SNodeOperations.cast(SLinkOperations.getTarget(upperBoundType, LINKS.bound$ciZM), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(upperBoundType, "Wildcard type argument '?' explicitly extends java.lang.Object", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2298236629740276241", null, errorTarget);
@@ -36,7 +36,7 @@ public class check_UpperBoundType_NonTypesystemRule extends AbstractNonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.UpperBoundType$r6;
+    return CONCEPTS.UpperBoundType$RS;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,12 +46,12 @@ public class check_UpperBoundType_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$xdz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink bound$ciZM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept UpperBoundType$r6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept UpperBoundType$RS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
   }
 }

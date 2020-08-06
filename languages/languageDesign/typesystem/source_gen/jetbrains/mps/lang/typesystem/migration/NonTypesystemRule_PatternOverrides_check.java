@@ -50,11 +50,11 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
         }
       };
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
-      for (SNode rule : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NonTypesystemRule$cw, false))) {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.applicableNode$uxMM), CONCEPTS.PatternCondition$hM)) {
+      for (SNode rule : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NonTypesystemRule$um, false))) {
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.applicableNode$Ro4C), CONCEPTS.PatternCondition$zC)) {
           ListSequence.fromList(result).addElement(new MigrateManually("Checking rule with pattern condition. Use intention to move pattern inside the rule body.", rule));
         }
-        if (SPropertyOperations.getBoolean(rule, PROPS.overrides$sqyj)) {
+        if (SPropertyOperations.getBoolean(rule, PROPS.overrides$PgO9)) {
           ListSequence.fromList(result).addElement(new MigrateManually("Rule with 'overrides' flag without explicitly enumerating rules to override", rule));
         }
       }
@@ -66,15 +66,15 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SContainmentLink applicableNode$Ro4C = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternCondition$hM = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, "jetbrains.mps.lang.typesystem.structure.PatternCondition");
-    /*package*/ static final SConcept NonTypesystemRule$cw = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule");
+    /*package*/ static final SConcept PatternCondition$zC = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, "jetbrains.mps.lang.typesystem.structure.PatternCondition");
+    /*package*/ static final SConcept NonTypesystemRule$um = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty overrides$sqyj = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
+    /*package*/ static final SProperty overrides$PgO9 = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
   }
 }

@@ -22,15 +22,15 @@ public class typeof_NodeParameter_InferenceRule extends AbstractInferenceRule_Ru
   public typeof_NodeParameter_InferenceRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode builder = SNodeOperations.getNodeAncestor(nodeToCheck, CONCEPTS.DataFlowBuilderDeclaration$ZP, true, false);
+    SNode builder = SNodeOperations.getNodeAncestor(nodeToCheck, CONCEPTS.DataFlowBuilderDeclaration$NP, true, false);
     {
       SNode _nodeToCheck_1029348928467 = nodeToCheck;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959037a(jetbrains.mps.lang.dataFlow.typesystem)", "1206443478602", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959037a(jetbrains.mps.lang.dataFlow.typesystem)", "1206443475036", true), (SNode) _quotation_createNode_x08ckn_a1a0c0b0b(SLinkOperations.getTarget(builder, LINKS.conceptDeclaration$_Dk3)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959037a(jetbrains.mps.lang.dataFlow.typesystem)", "1206443475036", true), (SNode) _quotation_createNode_x08ckn_a1a0c0b0b(SLinkOperations.getTarget(builder, LINKS.conceptDeclaration$vN83)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodeParameter$XN;
+    return CONCEPTS.NodeParameter$LN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,11 +47,11 @@ public class typeof_NodeParameter_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DataFlowBuilderDeclaration$ZP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
-    /*package*/ static final SConcept NodeParameter$XN = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e597667fL, "jetbrains.mps.lang.dataFlow.structure.NodeParameter");
+    /*package*/ static final SConcept DataFlowBuilderDeclaration$NP = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, "jetbrains.mps.lang.dataFlow.structure.DataFlowBuilderDeclaration");
+    /*package*/ static final SConcept NodeParameter$LN = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e597667fL, "jetbrains.mps.lang.dataFlow.structure.NodeParameter");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$_Dk3 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$vN83 = MetaAdapterFactory.getReferenceLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e58cd635L, 0x118e58d76a0L, "conceptDeclaration");
   }
 }

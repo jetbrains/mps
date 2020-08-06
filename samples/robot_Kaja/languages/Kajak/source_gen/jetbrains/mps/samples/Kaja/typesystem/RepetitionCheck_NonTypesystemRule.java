@@ -23,11 +23,11 @@ public class RepetitionCheck_NonTypesystemRule extends AbstractNonTypesystemRule
   public RepetitionCheck_NonTypesystemRule() {
   }
   public void applyRule(final SNode command, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SNodeOperations.isInstanceOf(command, CONCEPTS.RoutineCall$GX) || SNodeOperations.isInstanceOf(command, CONCEPTS.Step$zR) || SNodeOperations.isInstanceOf(command, CONCEPTS.LeftTurn$xm) || SNodeOperations.isInstanceOf(command, CONCEPTS.Drop$X4) || SNodeOperations.isInstanceOf(command, CONCEPTS.Pick$4v)))) {
+    if (!((SNodeOperations.isInstanceOf(command, CONCEPTS.RoutineCall$mS) || SNodeOperations.isInstanceOf(command, CONCEPTS.Step$dM) || SNodeOperations.isInstanceOf(command, CONCEPTS.LeftTurn$bh) || SNodeOperations.isInstanceOf(command, CONCEPTS.Drop$AZ) || SNodeOperations.isInstanceOf(command, CONCEPTS.Pick$Iq)))) {
       return;
     }
     if (Objects.equals(SNodeOperations.getConcept(command), SNodeOperations.getConcept(SNodeOperations.getNextSibling(command)))) {
-      if (SNodeOperations.isInstanceOf(command, CONCEPTS.RoutineCall$GX) && SLinkOperations.getTarget(SNodeOperations.cast(command, CONCEPTS.RoutineCall$GX), LINKS.definition$SqZ9) != SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getNextSibling(command), CONCEPTS.RoutineCall$GX), LINKS.definition$SqZ9)) {
+      if (SNodeOperations.isInstanceOf(command, CONCEPTS.RoutineCall$mS) && SLinkOperations.getTarget(SNodeOperations.cast(command, CONCEPTS.RoutineCall$mS), LINKS.definition$J8D4) != SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getNextSibling(command), CONCEPTS.RoutineCall$mS), LINKS.definition$J8D4)) {
         return;
       }
       {
@@ -41,7 +41,7 @@ public class RepetitionCheck_NonTypesystemRule extends AbstractNonTypesystemRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractCommand$3T;
+    return CONCEPTS.AbstractCommand$HO;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,15 +51,15 @@ public class RepetitionCheck_NonTypesystemRule extends AbstractNonTypesystemRule
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RoutineCall$GX = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, "jetbrains.mps.samples.Kaja.structure.RoutineCall");
-    /*package*/ static final SConcept Step$zR = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45762L, "jetbrains.mps.samples.Kaja.structure.Step");
-    /*package*/ static final SConcept LeftTurn$xm = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9f8bL, "jetbrains.mps.samples.Kaja.structure.LeftTurn");
-    /*package*/ static final SConcept Drop$X4 = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f79f27L, "jetbrains.mps.samples.Kaja.structure.Drop");
-    /*package*/ static final SConcept Pick$4v = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f85f1dL, "jetbrains.mps.samples.Kaja.structure.Pick");
-    /*package*/ static final SConcept AbstractCommand$3T = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL, "jetbrains.mps.samples.Kaja.structure.AbstractCommand");
+    /*package*/ static final SConcept RoutineCall$mS = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, "jetbrains.mps.samples.Kaja.structure.RoutineCall");
+    /*package*/ static final SConcept Step$dM = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45762L, "jetbrains.mps.samples.Kaja.structure.Step");
+    /*package*/ static final SConcept LeftTurn$bh = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9f8bL, "jetbrains.mps.samples.Kaja.structure.LeftTurn");
+    /*package*/ static final SConcept Drop$AZ = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f79f27L, "jetbrains.mps.samples.Kaja.structure.Drop");
+    /*package*/ static final SConcept Pick$Iq = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x58e59ea713f85f1dL, "jetbrains.mps.samples.Kaja.structure.Pick");
+    /*package*/ static final SConcept AbstractCommand$HO = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL, "jetbrains.mps.samples.Kaja.structure.AbstractCommand");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink definition$SqZ9 = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, 0x2de971c785ede3ccL, "definition");
+    /*package*/ static final SReferenceLink definition$J8D4 = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, 0x2de971c785ede3ccL, "definition");
   }
 }

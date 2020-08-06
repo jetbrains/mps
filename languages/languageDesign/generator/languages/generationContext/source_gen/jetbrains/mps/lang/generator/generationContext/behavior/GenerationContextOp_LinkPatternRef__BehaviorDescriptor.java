@@ -32,10 +32,10 @@ public final class GenerationContextOp_LinkPatternRef__BehaviorDescriptor extend
   }
 
   /*package*/ static SNode getTarget_id1xCtdgeTQHC(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.linkPatternVar$9Z1z);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.linkPatternVar$pUr9);
   }
   /*package*/ static void setTarget_id1xCtdgeUoP5(@NotNull SNode __thisNode__, SNode target) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.linkPatternVar$9Z1z, null);
+    SLinkOperations.setTarget(__thisNode__, LINKS.linkPatternVar$pUr9, null);
   }
 
   /*package*/ GenerationContextOp_LinkPatternRef__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class GenerationContextOp_LinkPatternRef__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink linkPatternVar$9Z1z = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c757L, 0x186874d40ed9c75bL, "linkPatternVar");
+    /*package*/ static final SReferenceLink linkPatternVar$pUr9 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c757L, 0x186874d40ed9c75bL, "linkPatternVar");
   }
 }

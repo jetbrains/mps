@@ -26,7 +26,7 @@ public class typeof_Variable_InferenceRule extends AbstractInferenceRule_Runtime
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Variable$Mz;
+    return CONCEPTS.Variable$UB;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,6 +36,6 @@ public class typeof_Variable_InferenceRule extends AbstractInferenceRule_Runtime
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Variable$Mz = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b12L, "jetbrains.mps.samples.lambdaCalculus.structure.Variable");
+    /*package*/ static final SConcept Variable$UB = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b12L, "jetbrains.mps.samples.lambdaCalculus.structure.Variable");
   }
 }

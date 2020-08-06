@@ -225,16 +225,16 @@ public class RunMigrationScriptsDialog extends JDialog {
       final SRepository repo = myProject.getRepository();
       repo.getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          SNode sn = SNodeOperations.cast(ListSequence.fromList(myScripts).getElement(row).resolve(repo), CONCEPTS.MigrationScript$c5);
+          SNode sn = SNodeOperations.cast(ListSequence.fromList(myScripts).getElement(row).resolve(repo), CONCEPTS.MigrationScript$KR);
           if (column == 0) {
             result.value = mySelectedScriptIds.contains(SNodeOperations.getPointer(sn));
           } else if (column == 1) {
-            result.value = "  " + SPropertyOperations.getString(sn, PROPS.title$a1qJ);
+            result.value = "  " + SPropertyOperations.getString(sn, PROPS.title$6bZx);
           } else if (column == 2) {
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(sn, PROPS.type$RlL6), 0x498b4f71ee081152L)) {
-              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$RlL6)) + " (" + SPropertyOperations.getString(sn, PROPS.toBuild$Rmf8) + ")";
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(sn, PROPS.type$NwlS), 0x498b4f71ee081152L)) {
+              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$NwlS)) + " (" + SPropertyOperations.getString(sn, PROPS.toBuild$NwNU) + ")";
             } else {
-              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$RlL6));
+              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$NwlS));
             }
           } else if (column == 3) {
             result.value = SNodeOperations.getModel(sn).getModule().getModuleName();
@@ -432,12 +432,12 @@ public class RunMigrationScriptsDialog extends JDialog {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MigrationScript$c5 = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript");
+    /*package*/ static final SConcept MigrationScript$KR = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty title$a1qJ = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x11225f2354aL, "title");
-    /*package*/ static final SProperty toBuild$Rmf8 = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081155L, "toBuild");
-    /*package*/ static final SProperty type$RlL6 = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type");
+    /*package*/ static final SProperty title$6bZx = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x11225f2354aL, "title");
+    /*package*/ static final SProperty toBuild$NwNU = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081155L, "toBuild");
+    /*package*/ static final SProperty type$NwlS = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x498b4f71ee081153L, "type");
   }
 }

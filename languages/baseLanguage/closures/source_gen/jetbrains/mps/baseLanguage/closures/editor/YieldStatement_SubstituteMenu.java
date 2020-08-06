@@ -51,7 +51,7 @@ public class YieldStatement_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_i2hqa3_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      SNode anc = SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.ClosureLiteral$zJ}, true, false);
+      SNode anc = SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.ClosureLiteral$rp}, true, false);
       return anc != null;
     }
     @NotNull
@@ -68,7 +68,7 @@ public class YieldStatement_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_i2hqa3_a0(), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.YieldStatement$ER) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_i2hqa3_a0(), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.YieldStatement$yx) {
 
         @NotNull
         @Override
@@ -81,11 +81,11 @@ public class YieldStatement_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.YieldStatement$ER));
+      }, CONCEPTS.YieldStatement$yx));
     }
     public class SMP_Subconcepts_i2hqa3_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.YieldStatement$ER);
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.YieldStatement$yx);
       }
       @NotNull
       @Override
@@ -107,7 +107,7 @@ public class YieldStatement_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClosureLiteral$zJ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
-    /*package*/ static final SConcept YieldStatement$ER = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11797183e82L, "jetbrains.mps.baseLanguage.closures.structure.YieldStatement");
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept YieldStatement$yx = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11797183e82L, "jetbrains.mps.baseLanguage.closures.structure.YieldStatement");
   }
 }

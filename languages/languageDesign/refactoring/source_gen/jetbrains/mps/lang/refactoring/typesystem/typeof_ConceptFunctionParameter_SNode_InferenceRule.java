@@ -20,11 +20,11 @@ public class typeof_ConceptFunctionParameter_SNode_InferenceRule extends Abstrac
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "5697951647051826660", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "5697951647051826656", true), (SNode) typeCheckingContext.typeOf(SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeTarget$Oa, false, false), "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "5697951647051827732", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "5697951647051826656", true), (SNode) typeCheckingContext.typeOf(SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeTarget$gN, false, false), "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "5697951647051827732", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptFunctionParameter_SNode$U$;
+    return CONCEPTS.ConceptFunctionParameter_SNode$nd;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,7 +34,7 @@ public class typeof_ConceptFunctionParameter_SNode_InferenceRule extends Abstrac
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeTarget$Oa = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget");
-    /*package*/ static final SConcept ConceptFunctionParameter_SNode$U$ = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a059eL, "jetbrains.mps.lang.refactoring.structure.ConceptFunctionParameter_SNode");
+    /*package*/ static final SConcept NodeTarget$gN = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget");
+    /*package*/ static final SConcept ConceptFunctionParameter_SNode$nd = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a059eL, "jetbrains.mps.lang.refactoring.structure.ConceptFunctionParameter_SNode");
   }
 }

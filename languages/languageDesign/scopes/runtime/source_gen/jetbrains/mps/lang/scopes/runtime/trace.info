@@ -389,7 +389,7 @@
       <node id="467175318509926267" at="81,31,82,18" concept="8" />
       <node id="467175318509926282" at="84,62,85,19" concept="8" />
       <node id="467175318509926286" at="86,5,87,38" concept="8" />
-      <node id="5815802410604953815" at="91,0,92,0" concept="11" trace="INamedConcept$nV" />
+      <node id="5815802410604953815" at="91,0,92,0" concept="11" trace="INamedConcept$Kd" />
       <node id="5151813541030601300" at="39,57,42,7" concept="5" />
       <node id="4143990013474874081" at="50,0,53,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="4143990013474874137" at="55,0,58,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

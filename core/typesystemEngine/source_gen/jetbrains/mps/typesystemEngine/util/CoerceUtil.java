@@ -26,10 +26,10 @@ public final class CoerceUtil {
     if (concept == null) {
       return true;
     }
-    return (SNodeOperations.isInstanceOf(type, CONCEPTS.Type$IG) ? ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(type, CONCEPTS.Type$IG), CONCEPTS.Type$IG, SMethodTrimmedId.create("canBeCoerced", null, "476YRQvP9l3"), concept)) : true);
+    return (SNodeOperations.isInstanceOf(type, CONCEPTS.Type$bu) ? ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(type, CONCEPTS.Type$bu), CONCEPTS.Type$bu, SMethodTrimmedId.create("canBeCoerced", null, "476YRQvP9l3"), concept)) : true);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

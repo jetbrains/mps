@@ -14,31 +14,31 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class blExpression_PasteWrapper_2 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return CONCEPTS.BLExpression$iZ;
+    return CONCEPTS.BLExpression$WS;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.Statement$ok;
+    return CONCEPTS.Statement$P6;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
-    return createExpressionStatement_sma98h_a0a0c(SLinkOperations.getTarget(sourceNode, LINKS.expression$dgOU));
+    return createExpressionStatement_sma98h_a0a0c(SLinkOperations.getTarget(sourceNode, LINKS.expression$A9uN));
   }
   private static SNode createExpressionStatement_sma98h_a0a0c(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$nm);
-    n0.forChild(LINKS.expression$qFF0).initNode(p0, CONCEPTS.Expression$TP, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$O8);
+    n0.forChild(LINKS.expression$5L7M).initNode(p0, CONCEPTS.Expression$mB, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BLExpression$iZ = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept BLExpression$WS = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$dgOU = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$A9uN = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 }

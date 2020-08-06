@@ -28,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ApplicableNodeReference_Constraints extends BaseConstraintsDescriptor {
   public ApplicableNodeReference_Constraints() {
-    super(CONCEPTS.ApplicableNodeReference$bj);
+    super(CONCEPTS.ApplicableNodeReference$20);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableNode$k_Dw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.applicableNode$wFwd, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,9 +49,9 @@ public class ApplicableNodeReference_Constraints extends BaseConstraintsDescript
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
-            SNode rule = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Rule$Wr, true, false);
-            if (rule != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.condition$3eym), CONCEPTS.ConceptCondition$v1)) {
-              ListSequence.fromList(result).addElement(SNodeOperations.cast(SLinkOperations.getTarget(rule, LINKS.condition$3eym), CONCEPTS.ConceptCondition$v1));
+            SNode rule = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Rule$N8, true, false);
+            if (rule != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(rule, LINKS.condition$fkp3), CONCEPTS.ConceptCondition$lI)) {
+              ListSequence.fromList(result).addElement(SNodeOperations.cast(SLinkOperations.getTarget(rule, LINKS.condition$fkp3), CONCEPTS.ConceptCondition$lI));
             }
             return ListScope.forResolvableElements(result);
           }
@@ -65,13 +65,13 @@ public class ApplicableNodeReference_Constraints extends BaseConstraintsDescript
   private static final SNodePointer breakingNode_b5wqlc_a0a0a0a0a1a0a0a0c = new SNodePointer("r:73c9a355-2bf0-4466-8a7d-8b8d8a945cd4(jetbrains.mps.lang.dataFlow.analyzers.constraints)", "6836281137582779543");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ApplicableNodeReference$bj = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x449938e788f30110L, "jetbrains.mps.lang.dataFlow.analyzers.structure.ApplicableNodeReference");
-    /*package*/ static final SConcept Rule$Wr = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Rule");
-    /*package*/ static final SConcept ConceptCondition$v1 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x449938e788e9b9deL, "jetbrains.mps.lang.dataFlow.analyzers.structure.ConceptCondition");
+    /*package*/ static final SConcept ApplicableNodeReference$20 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x449938e788f30110L, "jetbrains.mps.lang.dataFlow.analyzers.structure.ApplicableNodeReference");
+    /*package*/ static final SConcept Rule$N8 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Rule");
+    /*package*/ static final SConcept ConceptCondition$lI = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x449938e788e9b9deL, "jetbrains.mps.lang.dataFlow.analyzers.structure.ConceptCondition");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableNode$k_Dw = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x449938e788f30110L, 0x449938e788f30111L, "applicableNode");
-    /*package*/ static final SContainmentLink condition$3eym = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, 0x2e25b6b7919dd956L, "condition");
+    /*package*/ static final SReferenceLink applicableNode$wFwd = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x449938e788f30110L, 0x449938e788f30111L, "applicableNode");
+    /*package*/ static final SContainmentLink condition$fkp3 = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, 0x2e25b6b7919dd956L, "condition");
   }
 }

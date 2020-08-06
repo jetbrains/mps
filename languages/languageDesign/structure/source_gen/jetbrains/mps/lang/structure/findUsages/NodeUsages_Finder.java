@@ -24,7 +24,7 @@ public class NodeUsages_Finder extends GeneratedFinder {
   }
   @Override
   public boolean isUsedByDefault(SNode node) {
-    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN));
+    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA));
   }
   @Override
   public String getDescription() {
@@ -36,7 +36,7 @@ public class NodeUsages_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.BaseConcept$Sz;
+    return CONCEPTS.BaseConcept$gP;
   }
 
   @Override
@@ -65,7 +65,7 @@ public class NodeUsages_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

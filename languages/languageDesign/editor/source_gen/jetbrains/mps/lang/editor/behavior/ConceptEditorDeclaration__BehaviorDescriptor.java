@@ -38,15 +38,15 @@ public final class ConceptEditorDeclaration__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$HJmJ);
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$Dtb8, baseConcept);
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptDeclaration$HJmJ, baseConcept);
   }
   /*package*/ static boolean isApplicable_id6NcFj35FbEV(@NotNull SNode __thisNode__, SNode candidate) {
     List<SNode> createdEditors = AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(candidate, LanguageAspect.EDITOR);
     for (SNode createdEditor : createdEditors) {
-      if (SNodeOperations.isInstanceOf(createdEditor, CONCEPTS.ConceptEditorDeclaration$s6)) {
+      if (SNodeOperations.isInstanceOf(createdEditor, CONCEPTS.ConceptEditorDeclaration$BH)) {
         return false;
       }
     }
@@ -115,10 +115,10 @@ public final class ConceptEditorDeclaration__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptEditorDeclaration$s6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
+    /*package*/ static final SConcept ConceptEditorDeclaration$BH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
   }
 }

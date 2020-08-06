@@ -22,21 +22,21 @@ public class typeof_DoneWorkStatement_InferenceRule extends AbstractInferenceRul
   public void applyRule(final SNode dws, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(dws, LINKS.amount$MGfV);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(dws, LINKS.amount$HTdO);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "187226666892740048", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "187226666892740040", true), (SNode) _quotation_createNode_e2h6xu_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
-    if ((SLinkOperations.getTarget(dws, LINKS.comment$A4zA) != null)) {
+    if ((SLinkOperations.getTarget(dws, LINKS.comment$xhxv) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(dws, LINKS.comment$A4zA);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(dws, LINKS.comment$xhxv);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "1906791586424054403", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:b90ae0cf-6b91-458a-92d0-e5bf2ada7de4(jetbrains.mps.make.script.typesystem)", "1906791586424054395", true), (SNode) _quotation_createNode_e2h6xu_a1a0c0a0b0b(), false, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AdvanceWorkStatement$CY;
+    return CONCEPTS.AdvanceWorkStatement$AR;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -58,11 +58,11 @@ public class typeof_DoneWorkStatement_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink amount$MGfV = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6984L, 0x29929a95c9f34d4L, "amount");
-    /*package*/ static final SContainmentLink comment$A4zA = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6984L, 0x1a7648d86181bc00L, "comment");
+    /*package*/ static final SContainmentLink amount$HTdO = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6984L, 0x29929a95c9f34d4L, "amount");
+    /*package*/ static final SContainmentLink comment$xhxv = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6984L, 0x1a7648d86181bc00L, "comment");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AdvanceWorkStatement$CY = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6984L, "jetbrains.mps.make.script.structure.AdvanceWorkStatement");
+    /*package*/ static final SConcept AdvanceWorkStatement$AR = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6984L, "jetbrains.mps.make.script.structure.AdvanceWorkStatement");
   }
 }

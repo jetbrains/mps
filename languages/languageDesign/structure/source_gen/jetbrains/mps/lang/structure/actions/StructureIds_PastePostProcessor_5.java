@@ -13,18 +13,18 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public final class StructureIds_PastePostProcessor_5 implements PastePostProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EnumerationMemberDeclaration$Am;
+    return CONCEPTS.EnumerationMemberDeclaration$s9;
   }
   @Override
   public void postProcessNode(SNode pastedNode) {
-    SNode e = SNodeOperations.as(SNodeOperations.getContainingRoot(pastedNode), CONCEPTS.EnumerationDeclaration$rG);
+    SNode e = SNodeOperations.as(SNodeOperations.getContainingRoot(pastedNode), CONCEPTS.EnumerationDeclaration$hv);
     if (e != null) {
       ConceptIdSetter.processEnumMember(pastedNode, e);
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationMemberDeclaration$Am = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
-    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
+    /*package*/ static final SConcept EnumerationMemberDeclaration$s9 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
+    /*package*/ static final SConcept EnumerationDeclaration$hv = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
   }
 }

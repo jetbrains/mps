@@ -27,14 +27,14 @@ public class ApproveDeleteOperation_CellSelectorReference_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(CONCEPTS.AbstractCellSelector$$5), SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.cellSelector$rz$9))))) {
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(CONCEPTS.AbstractCellSelector$JG), SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.cellSelector$vPJK))))) {
           if (DeletionApproverUtil.approve(editorContext, node, "cellSelector")) {
             return;
           }
-          SLinkOperations.setTarget(node, LINKS.cellSelector$rz$9, null);
+          SLinkOperations.setTarget(node, LINKS.cellSelector$vPJK, null);
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "closingBracket", 0);
         } else {
-          SLinkOperations.setTarget(node, LINKS.cellSelector$rz$9, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
+          SLinkOperations.setTarget(node, LINKS.cellSelector$vPJK, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
         }
       }
 
@@ -83,10 +83,10 @@ public class ApproveDeleteOperation_CellSelectorReference_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cellSelector$rz$9 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, 0x7c9cb4f2b6826b88L, "cellSelector");
+    /*package*/ static final SContainmentLink cellSelector$vPJK = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, 0x7c9cb4f2b6826b88L, "cellSelector");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractCellSelector$$5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
+    /*package*/ static final SConcept AbstractCellSelector$JG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
   }
 }

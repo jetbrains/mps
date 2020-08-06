@@ -30,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionParameterReference_Constraints extends BaseConstraintsDescriptor {
   public ActionParameterReference_Constraints() {
-    super(CONCEPTS.ActionParameterReference$X6);
+    super(CONCEPTS.ActionParameterReference$U9);
   }
 
   @Override
@@ -50,7 +50,7 @@ public class ActionParameterReference_Constraints extends BaseConstraintsDescrip
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$7WwU, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$N1XG, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -65,8 +65,8 @@ public class ActionParameterReference_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode sc = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ParameterizedShortcutChange$V3, true, false);
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(SLinkOperations.getTarget(sc, LINKS.action$jfMa), LINKS.constructionParameter$RNtA));
+            SNode sc = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ParameterizedShortcutChange$S6, true, false);
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(SLinkOperations.getTarget(sc, LINKS.action$wOJd), LINKS.constructionParameter$5oqD));
           }
         };
       }
@@ -76,19 +76,19 @@ public class ActionParameterReference_Constraints extends BaseConstraintsDescrip
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ParameterizedShortcutChange$V3, true, false) != null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ParameterizedShortcutChange$S6, true, false) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "1227128029536562251");
   private static final SNodePointer breakingNode_ikwodz_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "6836281137582794953");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionParameterReference$X6 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1947b3e0f0959deeL, "jetbrains.mps.lang.plugin.structure.ActionParameterReference");
-    /*package*/ static final SConcept ParameterizedShortcutChange$V3 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e096c3aL, "jetbrains.mps.lang.plugin.structure.ParameterizedShortcutChange");
+    /*package*/ static final SConcept ActionParameterReference$U9 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1947b3e0f0959deeL, "jetbrains.mps.lang.plugin.structure.ActionParameterReference");
+    /*package*/ static final SConcept ParameterizedShortcutChange$S6 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e096c3aL, "jetbrains.mps.lang.plugin.structure.ParameterizedShortcutChange");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink action$jfMa = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L, 0x55f30a5d1e096c76L, "action");
-    /*package*/ static final SContainmentLink constructionParameter$RNtA = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink action$wOJd = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L, 0x55f30a5d1e096c76L, "action");
+    /*package*/ static final SContainmentLink constructionParameter$5oqD = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
   }
 }

@@ -38,55 +38,55 @@ public class NodeDataFlowCheckerUtil {
     Set<Instruction> unreachable = program.getUnreachableInstructions();
     AnalysisResult<VarSet> initialized = program.analyze(new InitializedVariablesAnalyzer());
     AnalysisResult<VarSet> live = program.analyze(new LivenessAnalyzer());
-    for (SNode child : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.BaseConcept$Sz, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    for (SNode child : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.BaseConcept$gP, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO)) != null);
+        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) != null);
       }
     })) {
-      assert AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO)) != null;
-      SNode container = AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO));
-      for (SNode operation : SLinkOperations.getChildren(container, LINKS.nodeOperations$TBZE)) {
+      assert AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) != null;
+      SNode container = AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj));
+      for (SNode operation : SLinkOperations.getChildren(container, LINKS.nodeOperations$Mgf9)) {
         if (ListSequence.fromList(instructions).isNotEmpty()) {
           instruction = program.getInstructionsFor(child).get(0);
         } else {
           continue;
         }
 
-        if (SNodeOperations.isInstanceOf(operation, CONCEPTS.NodeReachable$3f)) {
+        if (SNodeOperations.isInstanceOf(operation, CONCEPTS.NodeReachable$iI)) {
           Assert.assertFalse("instruction <" + instruction + "> is unreachable", SetSequence.fromSet(unreachable).contains(instruction));
         }
 
-        if (SNodeOperations.isInstanceOf(operation, CONCEPTS.NodeUnreachable$YN)) {
+        if (SNodeOperations.isInstanceOf(operation, CONCEPTS.NodeUnreachable$ei)) {
           Assert.assertTrue("instruction <" + instruction + "> is reachable", SetSequence.fromSet(unreachable).contains(instruction));
         }
 
-        if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableInitialized$3y)) {
+        if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableInitialized$j1)) {
           Set<Object> vars = (Set<Object>) initialized.get(instruction);
-          SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$3y), LINKS.var$pNcf);
-          Assert.assertTrue("variable <" + var + "> is not initialized", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$7WwU)));
+          SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$j1), LINKS.var$irrI);
+          Assert.assertTrue("variable <" + var + "> is not initialized", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
         }
 
-        if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableAlive$cg)) {
+        if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableAlive$rJ)) {
           Set<Object> vars = (Set<Object>) live.get(instruction);
-          SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$3y), LINKS.var$pNcf);
-          Assert.assertTrue("variable <" + var + "> is not alive", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$7WwU)));
+          SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$j1), LINKS.var$irrI);
+          Assert.assertTrue("variable <" + var + "> is not alive", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
         }
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeOperationsContainer$UO = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
-    /*package*/ static final SConcept NodeReachable$3f = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b02f9eeb8L, "jetbrains.mps.lang.test.structure.NodeReachable");
-    /*package*/ static final SConcept NodeUnreachable$YN = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b082d1cb9L, "jetbrains.mps.lang.test.structure.NodeUnreachable");
-    /*package*/ static final SConcept VariableInitialized$3y = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0843a235L, "jetbrains.mps.lang.test.structure.VariableInitialized");
-    /*package*/ static final SConcept VariableAlive$cg = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b086b4872L, "jetbrains.mps.lang.test.structure.VariableAlive");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept NodeOperationsContainer$aj = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
+    /*package*/ static final SConcept NodeReachable$iI = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b02f9eeb8L, "jetbrains.mps.lang.test.structure.NodeReachable");
+    /*package*/ static final SConcept NodeUnreachable$ei = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b082d1cb9L, "jetbrains.mps.lang.test.structure.NodeUnreachable");
+    /*package*/ static final SConcept VariableInitialized$j1 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0843a235L, "jetbrains.mps.lang.test.structure.VariableInitialized");
+    /*package*/ static final SConcept VariableAlive$rJ = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b086b4872L, "jetbrains.mps.lang.test.structure.VariableAlive");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink nodeOperations$TBZE = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
-    /*package*/ static final SContainmentLink var$pNcf = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0843a235L, 0x11b0843f269L, "var");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink nodeOperations$Mgf9 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
+    /*package*/ static final SContainmentLink var$irrI = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0843a235L, 0x11b0843f269L, "var");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

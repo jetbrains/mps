@@ -25,12 +25,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MathSymbolIndexReference_Constraints extends BaseConstraintsDescriptor {
   public MathSymbolIndexReference_Constraints() {
-    super(CONCEPTS.MathSymbolIndexReference$$d);
+    super(CONCEPTS.MathSymbolIndexReference$m_);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.indexRef$8_ip, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.indexRef$Qa4L, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,7 +45,7 @@ public class MathSymbolIndexReference_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode ms = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MathSymbol$FB, true, false);
+            SNode ms = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MathSymbol$tZ, true, false);
             List<SNode> msi = MathSymbol__BehaviorDescriptor.getEmptyIndexList_idi0Okz4g.invoke(ms);
             MathSymbol__BehaviorDescriptor.getVisibleIndices_idhZx_LLY.invoke(ms, (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), msi);
             return ListScope.forResolvableElements(msi);
@@ -60,11 +60,11 @@ public class MathSymbolIndexReference_Constraints extends BaseConstraintsDescrip
   private static final SNodePointer breakingNode_cdbkmw_a0a0a0a0a1a0a0a0c = new SNodePointer("r:d37b3f1e-89c7-4936-a6de-207bf5ae7643(jetbrains.mps.baseLanguage.math.constraints)", "6836281137582848029");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MathSymbolIndexReference$$d = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, "jetbrains.mps.baseLanguage.math.structure.MathSymbolIndexReference");
-    /*package*/ static final SConcept MathSymbol$FB = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, "jetbrains.mps.baseLanguage.math.structure.MathSymbol");
+    /*package*/ static final SConcept MathSymbolIndexReference$m_ = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, "jetbrains.mps.baseLanguage.math.structure.MathSymbolIndexReference");
+    /*package*/ static final SConcept MathSymbol$tZ = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, "jetbrains.mps.baseLanguage.math.structure.MathSymbol");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink indexRef$8_ip = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, 0x11fe0d95bdfL, "indexRef");
+    /*package*/ static final SReferenceLink indexRef$Qa4L = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0d91491L, 0x11fe0d95bdfL, "indexRef");
   }
 }

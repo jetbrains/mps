@@ -89,7 +89,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new bodySingleRoleHandler_k2ibe6_c0(myNode, LINKS.body$I$eg, getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_k2ibe6_c0(myNode, LINKS.body$pDF2, getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_k2ibe6_c0 extends SingleRoleCellProvider {
@@ -109,8 +109,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.body$I$eg, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.body$I$eg, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.body$pDF2, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.body$pDF2, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -122,7 +122,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.body$I$eg);
+        editorCell.setSRole(LINKS.body$pDF2);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
@@ -132,7 +132,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.body$I$eg));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.body$pDF2));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_body");
@@ -155,7 +155,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     TryCatchStatement_DeleteBodyEndingBrace_DEPRECATED.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.TryCatchStatement$x5));
+    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.TryCatchStatement$XR));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
@@ -185,10 +185,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.catchClause$yGV3;
+      return LINKS.catchClause$dMnP;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.CatchClause$hu;
+      return CONCEPTS.CatchClause$Ig;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -198,7 +198,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(catchClauseListHandler_k2ibe6_e0.this.getNode(), LINKS.catchClause$yGV3));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(catchClauseListHandler_k2ibe6_e0.this.getNode(), LINKS.catchClause$dMnP));
       try {
         EditorCell emptyCell = null;
         emptyCell = createError_0();
@@ -240,19 +240,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private EditorCell createError_0() {
       EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "<catch>");
       editorCell.setCellId("Error_k2ibe6_a4a");
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.TryCatchStatement$x5, "jetbrains.mps.baseLanguage.editor.addClause_DEPRECATED"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.TryCatchStatement$XR, "jetbrains.mps.baseLanguage.editor.addClause_DEPRECATED"));
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
       return editorCell;
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$I$eg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
-    /*package*/ static final SContainmentLink catchClause$yGV3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
+    /*package*/ static final SContainmentLink body$pDF2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
+    /*package*/ static final SContainmentLink catchClause$dMnP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
-    /*package*/ static final SConcept CatchClause$hu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
+    /*package*/ static final SConcept TryCatchStatement$XR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+    /*package*/ static final SConcept CatchClause$Ig = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
   }
 }

@@ -37,7 +37,7 @@ public class DebuggerIsDebugger_ComparisonRule extends ComparisonRule_Runtime {
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.DebuggerType$gI;
+    return CONCEPTS.DebuggerType$_e;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -51,6 +51,6 @@ public class DebuggerIsDebugger_ComparisonRule extends ComparisonRule_Runtime {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DebuggerType$gI = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, "jetbrains.mps.debugger.api.lang.structure.DebuggerType");
+    /*package*/ static final SConcept DebuggerType$_e = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912bd83L, "jetbrains.mps.debugger.api.lang.structure.DebuggerType");
   }
 }

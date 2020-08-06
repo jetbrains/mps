@@ -40,13 +40,13 @@ public class AddProducer_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     final SNode nodeFinal = event.getData(MPSCommonDataKeys.NODE);
-    boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.RunConfigurationProducer$Ul)).any(new IWhereFilter<SNode>() {
+    boolean exists = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(nodeFinal), CONCEPTS.RunConfigurationProducer$AW)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$9psU), LINKS.persistentConfiguration$2710) == nodeFinal;
+        return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.configuration$H39x), LINKS.persistentConfiguration$QL_P) == nodeFinal;
       }
     });
     setEnabledState(event.getPresentation(), !(exists));
-    event.getPresentation().setText("Create Producer for " + SPropertyOperations.getString(nodeFinal, PROPS.name$lA7v));
+    event.getPresentation().setText("Create Producer for " + SPropertyOperations.getString(nodeFinal, PROPS.name$MnvL));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -55,7 +55,7 @@ public class AddProducer_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.RunConfiguration$UX))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.RunConfiguration$B$))) {
         node = null;
       }
       if (node == null) {
@@ -72,26 +72,26 @@ public class AddProducer_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SNode producer = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.RunConfigurationProducer$Ul, null);
-    SLinkOperations.setTarget(SLinkOperations.setNewChild(producer, LINKS.configuration$9psU, CONCEPTS.PersistentConfigurationType$e2), LINKS.persistentConfiguration$2710, event.getData(MPSCommonDataKeys.NODE));
-    SPropertyOperations.set(producer, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$dz_3));
+    SNode producer = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.RunConfigurationProducer$AW, null);
+    SLinkOperations.setTarget(SLinkOperations.setNewChild(producer, LINKS.configuration$H39x, CONCEPTS.PersistentConfigurationType$MR), LINKS.persistentConfiguration$QL_P, event.getData(MPSCommonDataKeys.NODE));
+    SPropertyOperations.set(producer, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl));
     SModelOperations.addRootNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), producer);
     NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), producer, true, false);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RunConfigurationProducer$Ul = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer");
-    /*package*/ static final SConcept RunConfiguration$UX = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
-    /*package*/ static final SConcept PersistentConfigurationType$e2 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
+    /*package*/ static final SConcept RunConfigurationProducer$AW = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer");
+    /*package*/ static final SConcept RunConfiguration$B$ = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
+    /*package*/ static final SConcept PersistentConfigurationType$MR = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink configuration$9psU = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
-    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SContainmentLink configuration$H39x = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, 0x3c97fcb79c84a8efL, "configuration");
+    /*package*/ static final SReferenceLink persistentConfiguration$QL_P = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

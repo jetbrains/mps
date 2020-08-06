@@ -21,16 +21,16 @@ public class check_BaseAssignmentExpression_NonTypesystemRule extends AbstractNo
   public check_BaseAssignmentExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode assignment, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(assignment, LINKS.lValue$LjSW) == null)) {
+    if ((SLinkOperations.getTarget(assignment, LINKS.lValue$splI) == null)) {
       return;
     }
-    if (!((boolean) Expression__BehaviorDescriptor.isLValue_idhEwJgmE.invoke(SLinkOperations.getTarget(assignment, LINKS.lValue$LjSW)))) {
+    if (!((boolean) Expression__BehaviorDescriptor.isLValue_idhEwJgmE.invoke(SLinkOperations.getTarget(assignment, LINKS.lValue$splI)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(assignment, LINKS.lValue$LjSW), "unexpected in left part or assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1175519229331", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(assignment, LINKS.lValue$splI), "unexpected in left part or assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1175519229331", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BaseAssignmentExpression$oO;
+    return CONCEPTS.BaseAssignmentExpression$PA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,10 +40,10 @@ public class check_BaseAssignmentExpression_NonTypesystemRule extends AbstractNo
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseAssignmentExpression$oO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
+    /*package*/ static final SConcept BaseAssignmentExpression$PA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
   }
 }

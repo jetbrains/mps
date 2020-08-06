@@ -66,7 +66,7 @@ public class arrayBrackets extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_qphyqq_a0(), CONCEPTS.ArrayType$Yv));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_qphyqq_a0(), CONCEPTS.ArrayType$rh));
     }
     return result;
   }
@@ -109,9 +109,9 @@ public class arrayBrackets extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ArrayType$Yv, null);
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ArrayType$rh, null);
         SNodeOperations.replaceWithAnother(_context.getNode(), result);
-        SLinkOperations.setTarget(result, LINKS.componentType$vfw, _context.getNode());
+        SLinkOperations.setTarget(result, LINKS.componentType$F$Gi, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -119,7 +119,7 @@ public class arrayBrackets extends TransformationMenuBase {
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.ArrayType$Yv;
+        return CONCEPTS.ArrayType$rh;
       }
       @Override
       public String getShortDescriptionText(@NotNull String pattern) {
@@ -134,7 +134,7 @@ public class arrayBrackets extends TransformationMenuBase {
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.ArrayType$Yv;
+        SAbstractConcept outputConcept = CONCEPTS.ArrayType$rh;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -145,10 +145,10 @@ public class arrayBrackets extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 }

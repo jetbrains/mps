@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModelReference_Constraints extends BaseConstraintsDescriptor {
   public ModelReference_Constraints() {
-    super(CONCEPTS.ModelReference$m9);
+    super(CONCEPTS.ModelReference$9V);
   }
 
   @Override
@@ -39,13 +39,13 @@ public class ModelReference_Constraints extends BaseConstraintsDescriptor {
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SAbstractConcept c = SNodeOperations.getConcept(parentNode);
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.ModelStatisticsTarget$HL) || SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.ShowGenPlan$yv);
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.ModelStatisticsTarget$xz) || SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.ShowGenPlan$mh);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:64807243-49b2-422a-a08f-a5df76bf508d(jetbrains.mps.console.ideCommands.constraints)", "1227128029536564669");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelReference$m9 = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x6c8954f469900928L, "jetbrains.mps.console.ideCommands.structure.ModelReference");
-    /*package*/ static final SConcept ModelStatisticsTarget$HL = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a5cad96L, "jetbrains.mps.console.ideCommands.structure.ModelStatisticsTarget");
-    /*package*/ static final SConcept ShowGenPlan$yv = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan");
+    /*package*/ static final SConcept ModelReference$9V = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x6c8954f469900928L, "jetbrains.mps.console.ideCommands.structure.ModelReference");
+    /*package*/ static final SConcept ModelStatisticsTarget$xz = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x67f2bafb7a5cad96L, "jetbrains.mps.console.ideCommands.structure.ModelStatisticsTarget");
+    /*package*/ static final SConcept ShowGenPlan$mh = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, "jetbrains.mps.console.ideCommands.structure.ShowGenPlan");
   }
 }

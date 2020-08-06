@@ -25,7 +25,7 @@ public class typeof_MoneyIsZeroMethodCall_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MoneyIsZeroMethodCall$2V;
+    return CONCEPTS.MoneyIsZeroMethodCall$vD;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_MoneyIsZeroMethodCall_InferenceRule extends AbstractInferenc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MoneyIsZeroMethodCall$2V = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11483863450L, "jetbrains.mps.baseLanguage.money.structure.MoneyIsZeroMethodCall");
+    /*package*/ static final SConcept MoneyIsZeroMethodCall$vD = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11483863450L, "jetbrains.mps.baseLanguage.money.structure.MoneyIsZeroMethodCall");
   }
 }

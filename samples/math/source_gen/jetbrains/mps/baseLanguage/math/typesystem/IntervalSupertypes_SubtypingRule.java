@@ -21,10 +21,10 @@ public class IntervalSupertypes_SubtypingRule extends SubtypingRule_Runtime impl
   public IntervalSupertypes_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode intervalType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_7ws3t7_a0a1(SLinkOperations.getTarget(intervalType, LINKS.elementType$$940));
+    return _quotation_createNode_7ws3t7_a0a1(SLinkOperations.getTarget(intervalType, LINKS.elementType$hHQo));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IntervalType$i8;
+    return CONCEPTS.IntervalType$4w;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,10 +46,10 @@ public class IntervalSupertypes_SubtypingRule extends SubtypingRule_Runtime impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$$940 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb8483972L, 0x11fb8483973L, "elementType");
+    /*package*/ static final SContainmentLink elementType$hHQo = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb8483972L, 0x11fb8483973L, "elementType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IntervalType$i8 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb8483972L, "jetbrains.mps.baseLanguage.math.structure.IntervalType");
+    /*package*/ static final SConcept IntervalType$4w = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fb8483972L, "jetbrains.mps.baseLanguage.math.structure.IntervalType");
   }
 }

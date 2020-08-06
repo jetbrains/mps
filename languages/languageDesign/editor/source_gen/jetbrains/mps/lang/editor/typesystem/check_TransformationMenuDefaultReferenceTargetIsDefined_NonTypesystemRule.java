@@ -22,15 +22,15 @@ public class check_TransformationMenuDefaultReferenceTargetIsDefined_NonTypesyst
   public check_TransformationMenuDefaultReferenceTargetIsDefined_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.transformationMenu$YcQK), CONCEPTS.TransformationMenuReference_Default$h5) && (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.transformationMenu$YcQK), CONCEPTS.TransformationMenuReference_Default$h5), LINKS.concept$g1C5) == null)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.transformationMenu$2v2n), CONCEPTS.TransformationMenuReference_Default$sG) && (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.transformationMenu$2v2n), CONCEPTS.TransformationMenuReference_Default$sG), LINKS.concept$kjNG) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(node, LINKS.transformationMenu$YcQK), "Target concept should be defined", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "3011610118025464274", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(node, LINKS.transformationMenu$2v2n), "Target concept should be defined", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "3011610118025464274", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EditorCellModel$5c;
+    return CONCEPTS.EditorCellModel$gN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,12 +40,12 @@ public class check_TransformationMenuDefaultReferenceTargetIsDefined_NonTypesyst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink transformationMenu$YcQK = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x3a52dff8e5ebd740L, "transformationMenu");
-    /*package*/ static final SReferenceLink concept$g1C5 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
+    /*package*/ static final SContainmentLink transformationMenu$2v2n = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x3a52dff8e5ebd740L, "transformationMenu");
+    /*package*/ static final SReferenceLink concept$kjNG = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuReference_Default$h5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff0cL, "jetbrains.mps.lang.editor.structure.TransformationMenuReference_Default");
-    /*package*/ static final SConcept EditorCellModel$5c = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
+    /*package*/ static final SConcept TransformationMenuReference_Default$sG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff0cL, "jetbrains.mps.lang.editor.structure.TransformationMenuReference_Default");
+    /*package*/ static final SConcept EditorCellModel$gN = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
   }
 }

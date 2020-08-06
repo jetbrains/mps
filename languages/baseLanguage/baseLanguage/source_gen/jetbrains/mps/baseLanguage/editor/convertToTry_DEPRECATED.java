@@ -81,7 +81,7 @@ public class convertToTry_DEPRECATED extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode parent = SNodeOperations.getParent(_context.getNode());
-      return SNodeOperations.isInstanceOf(parent, CONCEPTS.TryCatchStatement$x5) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parent, CONCEPTS.TryCatchStatement$x5), LINKS.catchClause$yGV3)).last() == _context.getNode();
+      return SNodeOperations.isInstanceOf(parent, CONCEPTS.TryCatchStatement$XR) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parent, CONCEPTS.TryCatchStatement$XR), LINKS.catchClause$dMnP)).last() == _context.getNode();
     }
 
     @NotNull
@@ -97,7 +97,7 @@ public class convertToTry_DEPRECATED extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_cikf02_a0a(), CONCEPTS.TryCatchStatement$x5));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_cikf02_a0a(), CONCEPTS.TryCatchStatement$XR));
     }
     private class TMP_Action_cikf02_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -137,23 +137,23 @@ public class convertToTry_DEPRECATED extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode node = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.TryCatchStatement$x5);
-          SNode tryStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.TryFinallyStatement$Vw, null);
-          SNode body = SLinkOperations.getTarget(node, LINKS.body$I$eg);
-          SLinkOperations.setTarget(tryStatement, LINKS.body$1aAh, body);
-          for (SNode catchClause : SLinkOperations.getChildren(node, LINKS.catchClause$yGV3)) {
-            ListSequence.fromList(SLinkOperations.getChildren(tryStatement, LINKS.catchClause$EvoR)).addElement(catchClause);
+          SNode node = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.TryCatchStatement$XR);
+          SNode tryStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.TryFinallyStatement$oi, null);
+          SNode body = SLinkOperations.getTarget(node, LINKS.body$pDF2);
+          SLinkOperations.setTarget(tryStatement, LINKS.body$Gg33, body);
+          for (SNode catchClause : SLinkOperations.getChildren(node, LINKS.catchClause$dMnP)) {
+            ListSequence.fromList(SLinkOperations.getChildren(tryStatement, LINKS.catchClause$l$PD)).addElement(catchClause);
           }
-          SNodeFactoryOperations.setNewChild(tryStatement, LINKS.finallyBody$8W3M, null);
+          SNodeFactoryOperations.setNewChild(tryStatement, LINKS.finallyBody$O1w$, null);
           SNodeOperations.replaceWithAnother(node, tryStatement);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$8W3M), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$O1w$), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.TryCatchStatement$x5;
+          return CONCEPTS.TryCatchStatement$XR;
         }
 
 
@@ -164,7 +164,7 @@ public class convertToTry_DEPRECATED extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.TryCatchStatement$x5;
+          SAbstractConcept outputConcept = CONCEPTS.TryCatchStatement$XR;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -176,15 +176,15 @@ public class convertToTry_DEPRECATED extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
-    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
+    /*package*/ static final SConcept TryCatchStatement$XR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+    /*package*/ static final SConcept TryFinallyStatement$oi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$yGV3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
-    /*package*/ static final SContainmentLink body$I$eg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
-    /*package*/ static final SContainmentLink body$1aAh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
-    /*package*/ static final SContainmentLink catchClause$EvoR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
-    /*package*/ static final SContainmentLink finallyBody$8W3M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody");
+    /*package*/ static final SContainmentLink catchClause$dMnP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
+    /*package*/ static final SContainmentLink body$pDF2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
+    /*package*/ static final SContainmentLink body$Gg33 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
+    /*package*/ static final SContainmentLink catchClause$l$PD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
+    /*package*/ static final SContainmentLink finallyBody$O1w$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody");
   }
 }

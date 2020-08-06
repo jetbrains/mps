@@ -26,13 +26,13 @@ public class ArrayCreatorWithInitializers_Delete_Brackets {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode componentType = SLinkOperations.getTarget(node, LINKS.componentType$LRKz);
-        if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ArrayType$Yv)) {
-          SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.componentType$LRKz), SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw));
+        SNode componentType = SLinkOperations.getTarget(node, LINKS.componentType$sXdl);
+        if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ArrayType$rh)) {
+          SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.componentType$sXdl), SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.ArrayType$rh), LINKS.componentType$F$Gi));
         } else {
-          SNode classCreator = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.DefaultClassCreator$sQ);
-          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.componentType$LRKz), CONCEPTS.ClassifierType$IZ)) {
-            SLinkOperations.setTarget(classCreator, LINKS.classifier$uIr0, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.componentType$LRKz), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD));
+          SNode classCreator = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.DefaultClassCreator$TC);
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.componentType$sXdl), CONCEPTS.ClassifierType$bL)) {
+            SLinkOperations.setTarget(classCreator, LINKS.classifier$9NRM, SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.componentType$sXdl), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr));
           }
         }
       }
@@ -82,15 +82,15 @@ public class ArrayCreatorWithInitializers_Delete_Brackets {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$LRKz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SReferenceLink classifier$uIr0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink componentType$sXdl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01cf3c4L, "componentType");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SReferenceLink classifier$9NRM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
-    /*package*/ static final SConcept DefaultClassCreator$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept DefaultClassCreator$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

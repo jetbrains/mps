@@ -92,7 +92,7 @@ public class WildCardType_ApplySideTransforms extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.WildCardType$29);
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.WildCardType$uV);
     }
 
     @Nullable
@@ -103,6 +103,6 @@ public class WildCardType_ApplySideTransforms extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WildCardType$29 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept WildCardType$uV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
   }
 }

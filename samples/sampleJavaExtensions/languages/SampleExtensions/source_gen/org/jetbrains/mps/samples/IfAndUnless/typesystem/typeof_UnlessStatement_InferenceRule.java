@@ -21,13 +21,13 @@ public class typeof_UnlessStatement_InferenceRule extends AbstractInferenceRule_
   }
   public void applyRule(final SNode us, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(us, LINKS.condition$tEvw);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(us, LINKS.condition$$N9Y);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:7da49c71-e19f-4b55-806c-76b351ee48dd(org.jetbrains.mps.samples.IfAndUnless.typesystem)", "393299394024664269", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:7da49c71-e19f-4b55-806c-76b351ee48dd(org.jetbrains.mps.samples.IfAndUnless.typesystem)", "393299394024664266", true), (SNode) _quotation_createNode_at9c8i_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.UnlessStatement$kZ;
+    return CONCEPTS.UnlessStatement$Zt;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,10 +43,10 @@ public class typeof_UnlessStatement_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$tEvw = MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0x57547b70f36dc0dL, 0x57547b70f36dc0eL, "condition");
+    /*package*/ static final SContainmentLink condition$$N9Y = MetaAdapterFactory.getContainmentLink(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0x57547b70f36dc0dL, 0x57547b70f36dc0eL, "condition");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UnlessStatement$kZ = MetaAdapterFactory.getConcept(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0x57547b70f36dc0dL, "org.jetbrains.mps.samples.IfAndUnless.structure.UnlessStatement");
+    /*package*/ static final SConcept UnlessStatement$Zt = MetaAdapterFactory.getConcept(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0x57547b70f36dc0dL, "org.jetbrains.mps.samples.IfAndUnless.structure.UnlessStatement");
   }
 }

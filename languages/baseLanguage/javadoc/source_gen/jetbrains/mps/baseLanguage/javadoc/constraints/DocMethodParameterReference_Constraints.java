@@ -24,12 +24,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DocMethodParameterReference_Constraints extends BaseConstraintsDescriptor {
   public DocMethodParameterReference_Constraints() {
-    super(CONCEPTS.DocMethodParameterReference$2E);
+    super(CONCEPTS.DocMethodParameterReference$OR);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.param$Sy1$, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.param$eUNL, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -44,7 +44,7 @@ public class DocMethodParameterReference_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BaseMethodDeclaration$RR, false, false), LINKS.parameter$qsax));
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BaseMethodDeclaration$kD, false, false), LINKS.parameter$5xBj));
           }
         };
       }
@@ -56,12 +56,12 @@ public class DocMethodParameterReference_Constraints extends BaseConstraintsDesc
   private static final SNodePointer breakingNode_ne7gs9_a0a0a0a0a1a0a0a0c = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "6836281137582775711");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DocMethodParameterReference$2E = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d8L, "jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept DocMethodParameterReference$OR = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d8L, "jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink param$Sy1$ = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink param$eUNL = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 }

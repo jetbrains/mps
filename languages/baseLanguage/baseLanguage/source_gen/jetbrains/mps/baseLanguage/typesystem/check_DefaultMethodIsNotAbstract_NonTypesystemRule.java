@@ -23,11 +23,11 @@ public class check_DefaultMethodIsNotAbstract_NonTypesystemRule extends Abstract
   }
   public void applyRule(final SNode modifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode parent = SNodeOperations.getParent(modifier);
-    if (!(SNodeOperations.isInstanceOf(parent, CONCEPTS.InstanceMethodDeclaration$An))) {
+    if (!(SNodeOperations.isInstanceOf(parent, CONCEPTS.InstanceMethodDeclaration$39))) {
       return;
     }
-    SNode method = SNodeOperations.cast(parent, CONCEPTS.InstanceMethodDeclaration$An);
-    if (SPropertyOperations.getBoolean(method, PROPS.isAbstract$gogN)) {
+    SNode method = SNodeOperations.cast(parent, CONCEPTS.InstanceMethodDeclaration$39);
+    if (SPropertyOperations.getBoolean(method, PROPS.isAbstract$VtH_)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "The 'abstract' and 'default' modifiers are not allowed together", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1557757632988466920", null, errorTarget);
@@ -45,7 +45,7 @@ public class check_DefaultMethodIsNotAbstract_NonTypesystemRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DefaultModifier$Z2;
+    return CONCEPTS.DefaultModifier$rO;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -55,11 +55,11 @@ public class check_DefaultMethodIsNotAbstract_NonTypesystemRule extends Abstract
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept DefaultModifier$Z2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept DefaultModifier$rO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

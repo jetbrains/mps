@@ -42,7 +42,7 @@ public class FunctionType_subtypeOf_Object_InequationReplacementRule extends Abs
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.FunctionType$ig;
+    return CONCEPTS.FunctionType$9U;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -56,6 +56,6 @@ public class FunctionType_subtypeOf_Object_InequationReplacementRule extends Abs
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FunctionType$ig = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
+    /*package*/ static final SConcept FunctionType$9U = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
   }
 }

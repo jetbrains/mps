@@ -38,7 +38,7 @@ public final class SplitIntoDeclarationAndAssignment_Intention extends AbstractI
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.initializer$no3R) != null);
+    return (SLinkOperations.getTarget(node, LINKS.initializer$2twD) != null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -59,12 +59,12 @@ public final class SplitIntoDeclarationAndAssignment_Intention extends AbstractI
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode eStatement = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), CONCEPTS.ExpressionStatement$nm, null);
-      SNode assignment = SNodeFactoryOperations.setNewChild(eStatement, LINKS.expression$qFF0, CONCEPTS.AssignmentExpression$rS);
-      SLinkOperations.setTarget(assignment, LINKS.rValue$LkmY, SLinkOperations.getTarget(node, LINKS.initializer$no3R));
-      SNode local = SLinkOperations.setNewChild(assignment, LINKS.lValue$LjSW, CONCEPTS.VariableReference$sQ);
-      SLinkOperations.setTarget(local, LINKS.variableDeclaration$7WwU, node);
-      SNodeOperations.insertNextSiblingChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.Statement$ok, false, false), eStatement);
+      SNode eStatement = SNodeFactoryOperations.createNewNode(SNodeOperations.getModel(node), CONCEPTS.ExpressionStatement$O8, null);
+      SNode assignment = SNodeFactoryOperations.setNewChild(eStatement, LINKS.expression$5L7M, CONCEPTS.AssignmentExpression$SE);
+      SLinkOperations.setTarget(assignment, LINKS.rValue$spNK, SLinkOperations.getTarget(node, LINKS.initializer$2twD));
+      SNode local = SLinkOperations.setNewChild(assignment, LINKS.lValue$splI, CONCEPTS.VariableReference$TC);
+      SLinkOperations.setTarget(local, LINKS.variableDeclaration$N1XG, node);
+      SNodeOperations.insertNextSiblingChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.Statement$P6, false, false), eStatement);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -73,17 +73,17 @@ public final class SplitIntoDeclarationAndAssignment_Intention extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept AssignmentExpression$rS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

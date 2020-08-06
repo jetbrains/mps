@@ -17,16 +17,16 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TypeCalculator {
   public static SNode calculateType(SNode point) {
-    SNode typeNode = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$MV, true, false), LINKS.forConcept$AhHB);
+    SNode typeNode = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$zo, true, false), LINKS.forConcept$Mnu4);
     return (typeNode == null ? _quotation_createNode_5htwxq_a0b0a() : _quotation_createNode_5htwxq_a0b0a_0(typeNode));
   }
 
   public static SNode parameterType(SNode point) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905"), SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$MV, true, false))).first(), CONCEPTS.Parameter$6h), LINKS.parameterType$4IW0);
+    return SLinkOperations.getTarget(SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905"), SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$zo, true, false))).first(), CONCEPTS.Parameter$QI), LINKS.parameterType$gOGt);
   }
 
   public static boolean isParametrized(SNode point) {
-    return (Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905"), SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$MV, true, false))).first() != null);
+    return (Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905"), SNodeOperations.getNodeAncestor(point, CONCEPTS.Intention$zo, true, false))).first() != null);
   }
   private static SNode _quotation_createNode_5htwxq_a0b0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -43,12 +43,12 @@ public class TypeCalculator {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Intention$MV = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, "jetbrains.mps.lang.intentions.structure.Intention");
-    /*package*/ static final SConcept Parameter$6h = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x6688b42d39674b7aL, "jetbrains.mps.lang.intentions.structure.Parameter");
+    /*package*/ static final SConcept Intention$zo = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, "jetbrains.mps.lang.intentions.structure.Intention");
+    /*package*/ static final SConcept Parameter$QI = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x6688b42d39674b7aL, "jetbrains.mps.lang.intentions.structure.Parameter");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink forConcept$AhHB = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x10d005a50b96761L, "forConcept");
-    /*package*/ static final SContainmentLink parameterType$4IW0 = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x6688b42d39674b7aL, 0x6688b42d39674f90L, "parameterType");
+    /*package*/ static final SReferenceLink forConcept$Mnu4 = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x71ffad1474b12a0bL, 0x10d005a50b96761L, "forConcept");
+    /*package*/ static final SContainmentLink parameterType$gOGt = MetaAdapterFactory.getContainmentLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x6688b42d39674b7aL, 0x6688b42d39674f90L, "parameterType");
   }
 }

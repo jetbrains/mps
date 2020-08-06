@@ -49,7 +49,7 @@ public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDe
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$sQ)) != null)) {
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)) != null)) {
         return "remove default node attribute";
       } else {
         return "add default node attribute";
@@ -57,11 +57,11 @@ public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDe
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$sQ)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$sQ)));
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)) != null)) {
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)));
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$sQ), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aee1L, "testDefaultEditor.structure.DefaultNodeAttribute")));
-        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$sQ)), "const");
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aee1L, "testDefaultEditor.structure.DefaultNodeAttribute")));
+        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)), "const");
       }
     }
     @Override
@@ -71,6 +71,6 @@ public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultNodeAttribute$sQ = MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aee1L, "testDefaultEditor.structure.DefaultNodeAttribute");
+    /*package*/ static final SConcept DefaultNodeAttribute$_u = MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aee1L, "testDefaultEditor.structure.DefaultNodeAttribute");
   }
 }

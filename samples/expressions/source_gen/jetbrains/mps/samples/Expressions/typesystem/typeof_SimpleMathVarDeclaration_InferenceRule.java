@@ -21,11 +21,11 @@ public class typeof_SimpleMathVarDeclaration_InferenceRule extends AbstractInfer
     {
       SNode _nodeToCheck_1029348928467 = declaration;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467209343325", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467209343329", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(declaration, LINKS.initializer$pF5B), "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467209343398", true), false, true, _info_12389875345);
+      typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467209343329", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(declaration, LINKS.initializer$WcQ4), "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "2073504467209343398", true), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SimpleMathVarDeclaration$It;
+    return CONCEPTS.SimpleMathVarDeclaration$uU;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_SimpleMathVarDeclaration_InferenceRule extends AbstractInfer
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$pF5B = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832ccbfL, 0x1cc69153b832cd14L, "initializer");
+    /*package*/ static final SContainmentLink initializer$WcQ4 = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832ccbfL, 0x1cc69153b832cd14L, "initializer");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleMathVarDeclaration$It = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832ccbfL, "jetbrains.mps.samples.Expressions.structure.SimpleMathVarDeclaration");
+    /*package*/ static final SConcept SimpleMathVarDeclaration$uU = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832ccbfL, "jetbrains.mps.samples.Expressions.structure.SimpleMathVarDeclaration");
   }
 }

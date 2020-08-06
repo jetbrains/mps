@@ -25,7 +25,7 @@ public class typeof_ComeFromExpression_InferenceRule extends AbstractInferenceRu
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ComeFromExpression$3V;
+    return CONCEPTS.ComeFromExpression$4V;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_ComeFromExpression_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ComeFromExpression$3V = MetaAdapterFactory.getConcept(0xd8f591ec4d864af2L, 0x9f92a9e93c803ffaL, 0x701a981462928bdfL, "jetbrains.mps.lang.scopes.structure.ComeFromExpression");
+    /*package*/ static final SConcept ComeFromExpression$4V = MetaAdapterFactory.getConcept(0xd8f591ec4d864af2L, 0x9f92a9e93c803ffaL, 0x701a981462928bdfL, "jetbrains.mps.lang.scopes.structure.ComeFromExpression");
   }
 }

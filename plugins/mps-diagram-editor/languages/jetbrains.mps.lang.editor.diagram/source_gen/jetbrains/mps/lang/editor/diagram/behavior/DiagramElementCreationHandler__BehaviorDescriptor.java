@@ -36,9 +36,9 @@ public final class DiagramElementCreationHandler__BehaviorDescriptor extends Bas
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
-    ListSequence.fromList(result).addElement(CONCEPTS.NodeFunctionParameter$7O);
-    ListSequence.fromList(result).addElement(CONCEPTS.XFunctionParameter$jV);
-    ListSequence.fromList(result).addElement(CONCEPTS.YFunctionParameter$4r);
+    ListSequence.fromList(result).addElement(CONCEPTS.NodeFunctionParameter$ZB);
+    ListSequence.fromList(result).addElement(CONCEPTS.XFunctionParameter$bI);
+    ListSequence.fromList(result).addElement(CONCEPTS.YFunctionParameter$We);
     return result;
 
   }
@@ -101,8 +101,8 @@ public final class DiagramElementCreationHandler__BehaviorDescriptor extends Bas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeFunctionParameter$7O = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x76f1cb20ba7a0edeL, "jetbrains.mps.lang.editor.diagram.structure.NodeFunctionParameter");
-    /*package*/ static final SConcept XFunctionParameter$jV = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x76f1cb20ba7a0ee2L, "jetbrains.mps.lang.editor.diagram.structure.XFunctionParameter");
-    /*package*/ static final SConcept YFunctionParameter$4r = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x76f1cb20ba7a0ed7L, "jetbrains.mps.lang.editor.diagram.structure.YFunctionParameter");
+    /*package*/ static final SConcept NodeFunctionParameter$ZB = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x76f1cb20ba7a0edeL, "jetbrains.mps.lang.editor.diagram.structure.NodeFunctionParameter");
+    /*package*/ static final SConcept XFunctionParameter$bI = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x76f1cb20ba7a0ee2L, "jetbrains.mps.lang.editor.diagram.structure.XFunctionParameter");
+    /*package*/ static final SConcept YFunctionParameter$We = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x76f1cb20ba7a0ed7L, "jetbrains.mps.lang.editor.diagram.structure.YFunctionParameter");
   }
 }

@@ -88,14 +88,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$lA7v;
+      final SProperty property = PROPS.name$MnvL;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
       editorCell.setCellId("property_name");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -137,10 +137,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.properties$sOoi;
+      return LINKS.properties$IJ1F;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.SimplePropertyDeclaration$XI;
+      return CONCEPTS.SimplePropertyDeclaration$B7;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -150,7 +150,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(propertiesListHandler_rbdmqs_d0a.this.getNode(), LINKS.properties$sOoi));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(propertiesListHandler_rbdmqs_d0a.this.getNode(), LINKS.properties$IJ1F));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -217,15 +217,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept SimplePropertyDeclaration$XI = MetaAdapterFactory.getConcept(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x346ead2c08cc7faeL, "jetbrains.mps.samples.highlevel.simpleStructure.structure.SimplePropertyDeclaration");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept SimplePropertyDeclaration$B7 = MetaAdapterFactory.getConcept(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x346ead2c08cc7faeL, "jetbrains.mps.samples.highlevel.simpleStructure.structure.SimplePropertyDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink properties$sOoi = MetaAdapterFactory.getContainmentLink(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x460f3ddb176b0a3cL, 0x346ead2c08cc8029L, "properties");
+    /*package*/ static final SContainmentLink properties$IJ1F = MetaAdapterFactory.getContainmentLink(0xbaa9238b36da4ccbL, 0xa76b8ad70e222183L, 0x460f3ddb176b0a3cL, 0x346ead2c08cc8029L, "properties");
   }
 }

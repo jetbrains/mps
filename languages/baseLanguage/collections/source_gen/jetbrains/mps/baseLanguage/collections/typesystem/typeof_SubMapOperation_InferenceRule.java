@@ -31,14 +31,14 @@ public class typeof_SubMapOperation_InferenceRule extends AbstractInferenceRule_
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.fromKey$DeM7);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.fromKey$jz0q);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240358108", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240358112", true), (SNode) typeCheckingContext.getRepresentative(KEY_TYPE_typevar_1240240358091), true, true, _info_12389875345);
       }
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.toKey$Oyqj);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.toKey$uQCA);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240364211", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240364215", true), (SNode) typeCheckingContext.getRepresentative(KEY_TYPE_typevar_1240240358091), true, true, _info_12389875345);
       }
@@ -50,7 +50,7 @@ public class typeof_SubMapOperation_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SubMapOperation$$k;
+    return CONCEPTS.SubMapOperation$MB;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -92,11 +92,11 @@ public class typeof_SubMapOperation_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fromKey$DeM7 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4139de2L, 0x120c414e7c9L, "fromKey");
-    /*package*/ static final SContainmentLink toKey$Oyqj = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4139de2L, 0x120c414ffdaL, "toKey");
+    /*package*/ static final SContainmentLink fromKey$jz0q = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4139de2L, 0x120c414e7c9L, "fromKey");
+    /*package*/ static final SContainmentLink toKey$uQCA = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4139de2L, 0x120c414ffdaL, "toKey");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubMapOperation$$k = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4139de2L, "jetbrains.mps.baseLanguage.collections.structure.SubMapOperation");
+    /*package*/ static final SConcept SubMapOperation$MB = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4139de2L, "jetbrains.mps.baseLanguage.collections.structure.SubMapOperation");
   }
 }

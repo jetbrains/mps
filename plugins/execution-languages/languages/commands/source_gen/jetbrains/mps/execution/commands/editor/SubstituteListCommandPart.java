@@ -29,8 +29,8 @@ public class SubstituteListCommandPart extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5b7y1v_a(), CONCEPTS.ListCommandPart$QJ));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5b7y1v_b(), CONCEPTS.ListCommandPart$QJ));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5b7y1v_a(), CONCEPTS.ListCommandPart$tr));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5b7y1v_b(), CONCEPTS.ListCommandPart$tr));
     return result;
   }
 
@@ -75,7 +75,7 @@ public class SubstituteListCommandPart extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.ListCommandPart$QJ, context);
+        super(CONCEPTS.ListCommandPart$tr, context);
         _context = context;
       }
 
@@ -87,7 +87,7 @@ public class SubstituteListCommandPart extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, "jetbrains.mps.execution.commands.structure.ListCommandPart"));
-        SLinkOperations.setNewChild(node, LINKS.list$EVAx, null);
+        SLinkOperations.setNewChild(node, LINKS.list$l1dd, null);
         return node;
       }
 
@@ -135,7 +135,7 @@ public class SubstituteListCommandPart extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.ListCommandPart$QJ, context);
+        super(CONCEPTS.ListCommandPart$tr, context);
         _context = context;
       }
 
@@ -147,7 +147,7 @@ public class SubstituteListCommandPart extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, "jetbrains.mps.execution.commands.structure.ListCommandPart"));
-        SLinkOperations.addNewChild(node, LINKS.items$rIWZ, null);
+        SLinkOperations.addNewChild(node, LINKS.items$5OzF, null);
         return node;
       }
 
@@ -169,11 +169,11 @@ public class SubstituteListCommandPart extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ListCommandPart$QJ = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, "jetbrains.mps.execution.commands.structure.ListCommandPart");
+    /*package*/ static final SConcept ListCommandPart$tr = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, "jetbrains.mps.execution.commands.structure.ListCommandPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink list$EVAx = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x5f50ed14026999cbL, "list");
-    /*package*/ static final SContainmentLink items$rIWZ = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x1e16a75f45341377L, "items");
+    /*package*/ static final SContainmentLink list$l1dd = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x5f50ed14026999cbL, "list");
+    /*package*/ static final SContainmentLink items$5OzF = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x1e16a75f45341377L, "items");
   }
 }

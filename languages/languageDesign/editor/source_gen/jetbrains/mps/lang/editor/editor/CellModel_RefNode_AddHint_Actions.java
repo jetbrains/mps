@@ -23,7 +23,7 @@ public class CellModel_RefNode_AddHint_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SLinkOperations.setTarget(node, LINKS.addHints$7upa, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, "jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification")));
+        SLinkOperations.setTarget(node, LINKS.addHints$bK$L, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, "jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification")));
       }
 
     };
@@ -34,7 +34,7 @@ public class CellModel_RefNode_AddHint_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SLinkOperations.setTarget(node, LINKS.addHints$7upa, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, "jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification")));
+        SLinkOperations.setTarget(node, LINKS.addHints$bK$L, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3ae0865e9a712712L, "jetbrains.mps.lang.editor.structure.ExplicitHintsSpecification")));
       }
 
     };
@@ -86,6 +86,6 @@ public class CellModel_RefNode_AddHint_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink addHints$7upa = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, 0x51568a5db0d45e0fL, "addHints");
+    /*package*/ static final SContainmentLink addHints$bK$L = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, 0x51568a5db0d45e0fL, "addHints");
   }
 }

@@ -63,18 +63,18 @@ public class ErrorReportHelper {
       public Iterable<SNode> translate(SNode ancestor) {
         if (SNodeOperations.getParent(ancestor) == null) {
           return Sequence.fromIterable(Collections.<SNode>emptyList());
-        } else if (SNodeOperations.hasRole(ancestor, LINKS.smodelAttribute$jXFL)) {
+        } else if (SNodeOperations.hasRole(ancestor, LINKS.smodelAttribute$KJ43)) {
           return Sequence.<SNode>singleton(SNodeOperations.getParent(ancestor));
         } else {
           return ListSequence.fromList(getNodeAttributes(SNodeOperations.getParent(ancestor))).concat(Sequence.fromIterable(Sequence.<SNode>singleton(SNodeOperations.getParent(ancestor))));
         }
       }
     }));
-    return Sequence.fromIterable(SNodeOperations.ofConcept(possibleAncestors, CONCEPTS.ISuppressErrors$2l)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(possibleAncestors, CONCEPTS.ISuppressErrors$qB)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode attr) {
         boolean res = false;
         try {
-          res = ((boolean) (Boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$2l, SMethodTrimmedId.create("suppress", null, "3612de_vrfV"), reportItem));
+          res = ((boolean) (Boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$qB, SMethodTrimmedId.create("suppress", null, "3612de_vrfV"), reportItem));
         } catch (Throwable t) {
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Exception while invoking #suppress() on node " + node, t);
@@ -95,10 +95,10 @@ public class ErrorReportHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ISuppressErrors$2l = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors");
+    /*package*/ static final SInterfaceConcept ISuppressErrors$qB = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors");
   }
 }

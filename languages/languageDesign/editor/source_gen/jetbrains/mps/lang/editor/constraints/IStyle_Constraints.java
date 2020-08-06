@@ -37,7 +37,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IStyle_Constraints extends BaseConstraintsDescriptor {
   public IStyle_Constraints() {
-    super(CONCEPTS.IStyle$2$);
+    super(CONCEPTS.IStyle$eb);
   }
 
   @Override
@@ -71,7 +71,7 @@ public class IStyle_Constraints extends BaseConstraintsDescriptor {
               }
             }).translate(new ITranslator2<SModel, SNode>() {
               public Iterable<SNode> translate(SModel it) {
-                return SModelOperations.nodes(((SModel) it), CONCEPTS.IStyle$2$);
+                return SModelOperations.nodes(((SModel) it), CONCEPTS.IStyle$eb);
               }
             });
 
@@ -84,6 +84,6 @@ public class IStyle_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_56bmov_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "6836281137582783666");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IStyle$2$ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1f5847b8L, "jetbrains.mps.lang.editor.structure.IStyle");
+    /*package*/ static final SInterfaceConcept IStyle$eb = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1f5847b8L, "jetbrains.mps.lang.editor.structure.IStyle");
   }
 }

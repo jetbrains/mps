@@ -37,7 +37,7 @@ public class map_type_comparableWith_Map_ComparisonRule extends ComparisonRule_R
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.MapType$2H;
+    return CONCEPTS.MapType$h0;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -57,6 +57,6 @@ public class map_type_comparableWith_Map_ComparisonRule extends ComparisonRule_R
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MapType$2H = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType");
+    /*package*/ static final SConcept MapType$h0 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType");
   }
 }

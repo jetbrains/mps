@@ -27,7 +27,7 @@ public class menuForSubstitutingInIf extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.IfStatement$pi) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.IfStatement$Q4) {
 
       @NotNull
       @Override
@@ -40,7 +40,7 @@ public class menuForSubstitutingInIf extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.IfStatement$pi));
+    }, CONCEPTS.IfStatement$Q4));
     result.add(new SMP_Subconcepts_nw4afl_b());
     return result;
   }
@@ -60,7 +60,7 @@ public class menuForSubstitutingInIf extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_nw4afl_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.IfStatement$pi);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.IfStatement$Q4);
     }
     @NotNull
     @Override
@@ -81,6 +81,6 @@ public class menuForSubstitutingInIf extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

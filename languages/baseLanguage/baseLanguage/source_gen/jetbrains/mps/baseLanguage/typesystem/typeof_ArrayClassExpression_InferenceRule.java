@@ -25,11 +25,11 @@ public class typeof_ArrayClassExpression_InferenceRule extends AbstractInference
     {
       SNode _nodeToCheck_1029348928467 = arrayClassExpression;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1251851371723517333", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1251851371723517335", true), (SNode) _quotation_createNode_zh2v1_a1a0c0a0b(SLinkOperations.getTarget(arrayClassExpression, LINKS.arrayType$12i0)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1251851371723517335", true), (SNode) _quotation_createNode_zh2v1_a1a0c0a0b(SLinkOperations.getTarget(arrayClassExpression, LINKS.arrayType$G7IM)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ArrayClassExpression$4$;
+    return CONCEPTS.ArrayClassExpression$xm;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -52,10 +52,10 @@ public class typeof_ArrayClassExpression_InferenceRule extends AbstractInference
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink arrayType$12i0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
+    /*package*/ static final SContainmentLink arrayType$G7IM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArrayClassExpression$4$ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, "jetbrains.mps.baseLanguage.structure.ArrayClassExpression");
+    /*package*/ static final SConcept ArrayClassExpression$xm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, "jetbrains.mps.baseLanguage.structure.ArrayClassExpression");
   }
 }

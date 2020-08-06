@@ -59,7 +59,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
         StringBuffer buffer = new StringBuffer("(");
-        for (int i = 1; i < SPropertyOperations.getInteger(myNode, PROPS.count$zWw); i++) {
+        for (int i = 1; i < SPropertyOperations.getInteger(myNode, PROPS.count$FDpi); i++) {
           buffer.append("(");
         }
         return buffer.toString();
@@ -88,7 +88,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_tlxkur_a1a() {
-    return !(SNodeOperations.getConcept(SNodeOperations.cast(SNodeOperations.getParent(myNode), CONCEPTS.Expression$TP)).isAbstract());
+    return !(SNodeOperations.getConcept(SNodeOperations.cast(SNodeOperations.getParent(myNode), CONCEPTS.Expression$mB)).isAbstract());
   }
   private EditorCell createAttributedNodeCell_0() {
     EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
@@ -103,10 +103,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty count$zWw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xede3fe8510255edL, 0xede3fe8510255eeL, "count");
+    /*package*/ static final SProperty count$FDpi = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xede3fe8510255edL, 0xede3fe8510255eeL, "count");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

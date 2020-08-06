@@ -30,7 +30,7 @@ public class ListElementAccessExpression_delete_brackets {
         if (DeletionApproverUtil.approve(editorContext, node, "accessCollection")) {
           return;
         }
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.list$9Pvw));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.list$O9HN));
       }
 
     };
@@ -78,6 +78,6 @@ public class ListElementAccessExpression_delete_brackets {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink list$9Pvw = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621460b5L, "list");
+    /*package*/ static final SContainmentLink list$O9HN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, 0x11d621460b5L, "list");
   }
 }

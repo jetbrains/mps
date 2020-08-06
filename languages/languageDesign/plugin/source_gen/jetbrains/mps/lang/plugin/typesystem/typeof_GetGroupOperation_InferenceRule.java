@@ -26,7 +26,7 @@ public class typeof_GetGroupOperation_InferenceRule extends AbstractInferenceRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetGroupOperation$KF;
+    return CONCEPTS.GetGroupOperation$HI;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_GetGroupOperation_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetGroupOperation$KF = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119b4514b56L, "jetbrains.mps.lang.plugin.structure.GetGroupOperation");
+    /*package*/ static final SConcept GetGroupOperation$HI = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119b4514b56L, "jetbrains.mps.lang.plugin.structure.GetGroupOperation");
   }
 }

@@ -35,7 +35,7 @@
       <node id="1213877255427" at="75,14,76,58" concept="10" />
       <node id="1213877255427" at="82,48,83,22" concept="6" />
       <node id="1213877255427" at="88,40,89,19" concept="6" />
-      <node id="1213877255427" at="93,0,94,0" concept="7" trace="IMember$zE" />
+      <node id="1213877255427" at="93,0,94,0" concept="7" trace="IMember$zu" />
       <node id="1213877255427" at="33,0,35,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877255427" at="46,0,48,0" concept="0" trace="IClassifierPart__BehaviorDescriptor#()V" />
       <node id="1213877255445" at="38,67,41,7" concept="3" />
@@ -118,7 +118,7 @@
       <node id="1213877274999" at="66,14,67,58" concept="10" />
       <node id="1213877274999" at="73,48,74,22" concept="6" />
       <node id="1213877274999" at="79,40,80,19" concept="6" />
-      <node id="1213877274999" at="84,0,85,0" concept="7" trace="classifier$5aH4" />
+      <node id="1213877274999" at="84,0,85,0" concept="7" trace="classifier$1EGS" />
       <node id="1213877274999" at="30,0,32,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877274999" at="37,0,39,0" concept="0" trace="DefaultClassifierType__BehaviorDescriptor#()V" />
       <node id="1213877274999" at="33,0,36,0" concept="8" trace="getMembers_idhEwINC$#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
@@ -212,8 +212,8 @@
       <node id="1213877352964" at="107,14,108,58" concept="10" />
       <node id="1213877352964" at="114,48,115,22" concept="6" />
       <node id="1213877352964" at="120,40,121,19" concept="6" />
-      <node id="1213877352964" at="125,0,126,0" concept="7" trace="member$shti" />
-      <node id="1213877352964" at="129,0,130,0" concept="7" trace="IClassifier$Cb" />
+      <node id="1213877352964" at="125,0,126,0" concept="7" trace="member$oLt6" />
+      <node id="1213877352964" at="129,0,130,0" concept="7" trace="IClassifier$BZ" />
       <node id="1213877352964" at="40,0,42,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877352964" at="68,0,70,0" concept="0" trace="IMember__BehaviorDescriptor#()V" />
       <node id="1213877352964" at="43,0,46,0" concept="8" trace="getVisiblity_idhEwIBC5#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -461,8 +461,8 @@
       <node id="1213877480555" at="89,14,90,58" concept="10" />
       <node id="1213877480555" at="96,48,97,22" concept="6" />
       <node id="1213877480555" at="102,40,103,19" concept="6" />
-      <node id="1213877480555" at="107,0,108,0" concept="7" trace="visibility$jt1o" />
-      <node id="1213877480555" at="111,0,112,0" concept="7" trace="DefaultClassifierMethodCallOperation$9K" />
+      <node id="1213877480555" at="107,0,108,0" concept="7" trace="visibility$Yyua" />
+      <node id="1213877480555" at="111,0,112,0" concept="7" trace="DefaultClassifierMethodCallOperation$9$" />
       <node id="1213877480555" at="38,0,40,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877480555" at="54,0,56,0" concept="0" trace="DefaultClassifierMethodDeclaration__BehaviorDescriptor#()V" />
       <node id="1213877480555" at="41,0,44,0" concept="8" trace="getVisiblity_idhEwIBC5#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -561,8 +561,8 @@
       <node id="1213877512818" at="83,14,84,58" concept="10" />
       <node id="1213877512818" at="90,48,91,22" concept="6" />
       <node id="1213877512818" at="96,40,97,19" concept="6" />
-      <node id="1213877512818" at="101,0,102,0" concept="7" trace="classifier$Jeu5" />
-      <node id="1213877512818" at="105,0,106,0" concept="7" trace="IClassifier$Cb" />
+      <node id="1213877512818" at="101,0,102,0" concept="7" trace="classifier$FItT" />
+      <node id="1213877512818" at="105,0,106,0" concept="7" trace="IClassifier$BZ" />
       <node id="1213877512818" at="35,0,37,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877512818" at="52,0,54,0" concept="0" trace="ThisClassifierExpression__BehaviorDescriptor#()V" />
       <node id="1218739994704" at="38,81,41,5" concept="3" />
@@ -692,18 +692,18 @@
       <node id="1213877527939" at="167,14,168,58" concept="10" />
       <node id="1213877527939" at="174,48,175,22" concept="6" />
       <node id="1213877527939" at="180,40,181,19" concept="6" />
-      <node id="1213877527939" at="185,0,186,0" concept="7" trace="classifier$5aH4" />
-      <node id="1213877527939" at="186,0,187,0" concept="7" trace="member$shti" />
-      <node id="1213877527939" at="187,0,188,0" concept="7" trace="actualArgument$S0lI" />
-      <node id="1213877527939" at="188,0,189,0" concept="7" trace="operand$P1i5" />
-      <node id="1213877527939" at="189,0,190,0" concept="7" trace="operation$_mGS" />
-      <node id="1213877527939" at="193,0,194,0" concept="7" trace="IClassifierPart$U9" />
-      <node id="1213877527939" at="194,0,195,0" concept="7" trace="PublicVisibility$qe" />
-      <node id="1213877527939" at="195,0,196,0" concept="7" trace="IClassifier$Cb" />
-      <node id="1213877527939" at="196,0,197,0" concept="7" trace="PrivateVisibility$Se" />
-      <node id="1213877527939" at="197,0,198,0" concept="7" trace="ProtectedVisibility$OD" />
-      <node id="1213877527939" at="198,0,199,0" concept="7" trace="IMember$zE" />
-      <node id="1213877527939" at="199,0,200,0" concept="7" trace="DefaultClassifierMethodDeclaration$ZH" />
+      <node id="1213877527939" at="185,0,186,0" concept="7" trace="classifier$1EGS" />
+      <node id="1213877527939" at="186,0,187,0" concept="7" trace="member$oLt6" />
+      <node id="1213877527939" at="187,0,188,0" concept="7" trace="actualArgument$Owly" />
+      <node id="1213877527939" at="188,0,189,0" concept="7" trace="operand$w6IR" />
+      <node id="1213877527939" at="189,0,190,0" concept="7" trace="operation$gs9E" />
+      <node id="1213877527939" at="193,0,194,0" concept="7" trace="IClassifierPart$TX" />
+      <node id="1213877527939" at="194,0,195,0" concept="7" trace="PublicVisibility$R0" />
+      <node id="1213877527939" at="195,0,196,0" concept="7" trace="IClassifier$BZ" />
+      <node id="1213877527939" at="196,0,197,0" concept="7" trace="PrivateVisibility$l0" />
+      <node id="1213877527939" at="197,0,198,0" concept="7" trace="ProtectedVisibility$hr" />
+      <node id="1213877527939" at="198,0,199,0" concept="7" trace="IMember$zu" />
+      <node id="1213877527939" at="199,0,200,0" concept="7" trace="DefaultClassifierMethodDeclaration$Zx" />
       <node id="1213877527939" at="47,0,49,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877527939" at="126,0,128,0" concept="0" trace="IClassifier__BehaviorDescriptor#()V" />
       <node id="1213877527939" at="55,0,58,0" concept="8" trace="createSuperType_idhHOGPWW#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -882,8 +882,8 @@
       <node id="1214047465024" at="75,14,76,58" concept="10" />
       <node id="1214047465024" at="82,48,83,22" concept="6" />
       <node id="1214047465024" at="88,40,89,19" concept="6" />
-      <node id="1214047465024" at="93,0,94,0" concept="7" trace="visibility$jt1o" />
-      <node id="1214047465024" at="97,0,98,0" concept="7" trace="DefaultClassifierFieldAccessOperation$tO" />
+      <node id="1214047465024" at="93,0,94,0" concept="7" trace="visibility$Yyua" />
+      <node id="1214047465024" at="97,0,98,0" concept="7" trace="DefaultClassifierFieldAccessOperation$tC" />
       <node id="1214047465024" at="34,0,36,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1214047465024" at="44,0,46,0" concept="0" trace="DefaultClassifierFieldDeclaration__BehaviorDescriptor#()V" />
       <node id="1214047465024" at="37,0,40,0" concept="8" trace="getVisiblity_idhEwIBC5#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -964,7 +964,7 @@
       <node id="1217434042657" at="66,14,67,58" concept="10" />
       <node id="1217434042657" at="73,48,74,22" concept="6" />
       <node id="1217434042657" at="79,40,80,19" concept="6" />
-      <node id="1217434042657" at="84,0,85,0" concept="7" trace="IClassifier$Cb" />
+      <node id="1217434042657" at="84,0,85,0" concept="7" trace="IClassifier$BZ" />
       <node id="1217434042657" at="30,0,32,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1217434042657" at="37,0,39,0" concept="0" trace="SuperClassifierExpresson__BehaviorDescriptor#()V" />
       <node id="1217434042657" at="33,0,36,0" concept="8" trace="getClassifier_idhHOIkvz#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />

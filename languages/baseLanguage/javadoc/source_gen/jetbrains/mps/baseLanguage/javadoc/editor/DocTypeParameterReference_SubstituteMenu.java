@@ -28,7 +28,7 @@ public class DocTypeParameterReference_SubstituteMenu extends SubstituteMenuBase
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_jz6j6a_a(), CONCEPTS.DocTypeParameterReference$47));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_jz6j6a_a(), CONCEPTS.DocTypeParameterReference$Qk));
     return result;
   }
 
@@ -49,7 +49,7 @@ public class DocTypeParameterReference_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_jz6j6a_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DocTypeParameterReference$47, LINKS.param$Sy1$);
+      super((SAbstractConcept) CONCEPTS.DocTypeParameterReference$Qk, LINKS.param$eUNL);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class DocTypeParameterReference_SubstituteMenu extends SubstituteMenuBase
       }
       @Override
       public String getMatchingText(String pattern) {
-        return "<" + SPropertyOperations.getString(referencedNode, PROPS.name$lA7v) + ">";
+        return "<" + SPropertyOperations.getString(referencedNode, PROPS.name$MnvL) + ">";
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -96,14 +96,14 @@ public class DocTypeParameterReference_SubstituteMenu extends SubstituteMenuBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DocTypeParameterReference$47 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86dbL, "jetbrains.mps.baseLanguage.javadoc.structure.DocTypeParameterReference");
+    /*package*/ static final SConcept DocTypeParameterReference$Qk = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86dbL, "jetbrains.mps.baseLanguage.javadoc.structure.DocTypeParameterReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink param$Sy1$ = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param");
+    /*package*/ static final SReferenceLink param$eUNL = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

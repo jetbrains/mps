@@ -23,73 +23,73 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class Default {
   public static class NodeFactory_8656797459614949039 implements NodeFactory {
     public void setup(final SNode newNode, final SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ForEachStatement$Dx)) {
-        SLinkOperations.setTarget(newNode, LINKS.body$wVZ$, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.body$wVZ$));
-        SLinkOperations.addNewChild(newNode, LINKS.forEach$kHDy, null);
-        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$kHDy)).first(), LINKS.input$kNHx, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.inputSequence$k4so));
-        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$kHDy)).first(), LINKS.variable$lhww, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea18L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariable")));
-        SPropertyOperations.assign(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$kHDy)).first(), LINKS.variable$lhww), PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.variable$uoVW), PROPS.name$lA7v));
-        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$wVZ$), CONCEPTS.ForEachVariableReference$q$, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ForEachStatement$RO)) {
+        SLinkOperations.setTarget(newNode, LINKS.body$c1sm, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$RO), LINKS.body$c1sm));
+        SLinkOperations.addNewChild(newNode, LINKS.forEach$Z1RP, null);
+        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$Z1RP)).first(), LINKS.input$Z7VO, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$RO), LINKS.inputSequence$YoEF));
+        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea18L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariable")));
+        SPropertyOperations.assign(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN), PROPS.name$MnvL, SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$RO), LINKS.variable$8Haf), PROPS.name$MnvL));
+        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$c1sm), CONCEPTS.ForEachVariableReference$CR, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.variable$CM6j) == SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$Dx), LINKS.variable$uoVW);
+            return SLinkOperations.getTarget(it, LINKS.variable$j6kA) == SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ForEachStatement$RO), LINKS.variable$8Haf);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            SNodeOperations.replaceWithAnother(it, createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$kHDy)).first(), LINKS.variable$lhww)));
+            SNodeOperations.replaceWithAnother(it, createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN)));
           }
         });
       }
     }
     private static SNode createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SNode p0) {
-      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MultiForEachVariableReference$PW);
-      n0.setReferenceTarget(LINKS.variable$ljVz, p0);
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MultiForEachVariableReference$4f);
+      n0.setReferenceTarget(LINKS.variable$ZC9Q, p0);
       return n0.getResult();
     }
   }
   public static class NodeFactory_8656797459614853042 implements NodeFactory {
     public void setup(final SNode newNode, final SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.MultiForEachStatement$LZ)) {
-        SLinkOperations.setTarget(newNode, LINKS.body$wVZ$, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.body$wVZ$));
-        SLinkOperations.setTarget(newNode, LINKS.inputSequence$k4so, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.forEach$kHDy)).first(), LINKS.input$kNHx));
-        SLinkOperations.setTarget(newNode, LINKS.variable$uoVW, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable")));
-        SPropertyOperations.assign(SLinkOperations.getTarget(newNode, LINKS.variable$uoVW), PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.forEach$kHDy)).first(), LINKS.variable$lhww), PROPS.name$lA7v));
-        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$wVZ$), CONCEPTS.MultiForEachVariableReference$PW, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.MultiForEachStatement$i)) {
+        SLinkOperations.setTarget(newNode, LINKS.body$c1sm, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$i), LINKS.body$c1sm));
+        SLinkOperations.setTarget(newNode, LINKS.inputSequence$YoEF, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$i), LINKS.forEach$Z1RP)).first(), LINKS.input$Z7VO));
+        SLinkOperations.setTarget(newNode, LINKS.variable$8Haf, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable")));
+        SPropertyOperations.assign(SLinkOperations.getTarget(newNode, LINKS.variable$8Haf), PROPS.name$MnvL, SPropertyOperations.getString(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$i), LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN), PROPS.name$MnvL));
+        ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(newNode, LINKS.body$c1sm), CONCEPTS.MultiForEachVariableReference$4f, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.variable$ljVz) == SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$LZ), LINKS.forEach$kHDy)).first(), LINKS.variable$lhww);
+            return SLinkOperations.getTarget(it, LINKS.variable$ZC9Q) == SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(sampleNode, CONCEPTS.MultiForEachStatement$i), LINKS.forEach$Z1RP)).first(), LINKS.variable$Z_IN);
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            SNodeOperations.replaceWithAnother(it, createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SLinkOperations.getTarget(newNode, LINKS.variable$uoVW)));
+            SNodeOperations.replaceWithAnother(it, createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SLinkOperations.getTarget(newNode, LINKS.variable$8Haf)));
           }
         });
       }
     }
     private static SNode createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SNode p0) {
-      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ForEachVariableReference$q$);
-      n0.setReferenceTarget(LINKS.variable$CM6j, p0);
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ForEachVariableReference$CR);
+      n0.setReferenceTarget(LINKS.variable$j6kA, p0);
       return n0.getResult();
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ForEachStatement$Dx = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement");
-    /*package*/ static final SConcept ForEachVariableReference$q$ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference");
-    /*package*/ static final SConcept MultiForEachVariableReference$PW = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x731a0dad81895f16L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariableReference");
-    /*package*/ static final SConcept MultiForEachStatement$LZ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachStatement");
+    /*package*/ static final SConcept ForEachStatement$RO = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement");
+    /*package*/ static final SConcept ForEachVariableReference$CR = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference");
+    /*package*/ static final SConcept MultiForEachVariableReference$4f = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x731a0dad81895f16L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariableReference");
+    /*package*/ static final SConcept MultiForEachStatement$i = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$wVZ$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
-    /*package*/ static final SContainmentLink forEach$kHDy = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, 0x7d7db8f4181fea16L, "forEach");
-    /*package*/ static final SContainmentLink input$kNHx = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea17L, "input");
-    /*package*/ static final SContainmentLink inputSequence$k4so = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
-    /*package*/ static final SContainmentLink variable$lhww = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea42L, "variable");
-    /*package*/ static final SContainmentLink variable$uoVW = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
-    /*package*/ static final SReferenceLink variable$CM6j = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
-    /*package*/ static final SReferenceLink variable$ljVz = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x731a0dad81895f16L, 0x731a0dad818984f5L, "variable");
+    /*package*/ static final SContainmentLink body$c1sm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink forEach$Z1RP = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fe9f2L, 0x7d7db8f4181fea16L, "forEach");
+    /*package*/ static final SContainmentLink input$Z7VO = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea17L, "input");
+    /*package*/ static final SContainmentLink inputSequence$YoEF = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
+    /*package*/ static final SContainmentLink variable$Z_IN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea42L, "variable");
+    /*package*/ static final SContainmentLink variable$8Haf = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
+    /*package*/ static final SReferenceLink variable$j6kA = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6fa5c3L, 0x10cac7007baL, "variable");
+    /*package*/ static final SReferenceLink variable$ZC9Q = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x731a0dad81895f16L, 0x731a0dad818984f5L, "variable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

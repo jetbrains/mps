@@ -42,7 +42,7 @@ public class SequenceCreator_add_initializer extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.SequenceCreator$d9))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.SequenceCreator$rs))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -52,10 +52,10 @@ public class SequenceCreator_add_initializer extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return (SLinkOperations.getTarget(node, LINKS.initializer$cI7_) == null);
+      return (SLinkOperations.getTarget(node, LINKS.initializer$R2lS) == null);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.setNewChild(node, LINKS.initializer$cI7_, CONCEPTS.ClosureLiteral$zJ);
+      SNodeFactoryOperations.setNewChild(node, LINKS.initializer$R2lS, CONCEPTS.ClosureLiteral$rp);
     }
     public String getKeyStroke() {
       return " ENTER";
@@ -63,11 +63,11 @@ public class SequenceCreator_add_initializer extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SequenceCreator$d9 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, "jetbrains.mps.baseLanguage.collections.structure.SequenceCreator");
-    /*package*/ static final SConcept ClosureLiteral$zJ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept SequenceCreator$rs = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, "jetbrains.mps.baseLanguage.collections.structure.SequenceCreator");
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$cI7_ = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer");
+    /*package*/ static final SContainmentLink initializer$R2lS = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L, 0x11d14ca1317L, "initializer");
   }
 }

@@ -39,10 +39,10 @@ public final class QuickFixSetSelectionBlock__BehaviorDescriptor extends BaseBHD
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_Selection$lg);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_EditorContext$TT);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_node$_T);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_Selection$B6);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_EditorContext$bJ);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_node$RJ);
     return result;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -106,9 +106,9 @@ public final class QuickFixSetSelectionBlock__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept ConceptFunctionParameter_Selection$lg = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x611e7dc14a69a014L, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_Selection");
-    /*package*/ static final SConcept ConceptFunctionParameter_EditorContext$TT = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x335fe1d0b7494cfcL, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_EditorContext");
-    /*package*/ static final SConcept ConceptFunctionParameter_node$_T = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3618c300L, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_node");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ConceptFunctionParameter_Selection$B6 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x611e7dc14a69a014L, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_Selection");
+    /*package*/ static final SConcept ConceptFunctionParameter_EditorContext$bJ = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x335fe1d0b7494cfcL, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_EditorContext");
+    /*package*/ static final SConcept ConceptFunctionParameter_node$RJ = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3618c300L, "jetbrains.mps.lang.typesystem.structure.ConceptFunctionParameter_node");
   }
 }

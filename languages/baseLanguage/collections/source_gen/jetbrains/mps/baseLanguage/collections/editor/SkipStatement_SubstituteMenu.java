@@ -51,9 +51,9 @@ public class SkipStatement_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_yf7yw4_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      SNode cl = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ClosureLiteral$zJ, true, false);
+      SNode cl = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ClosureLiteral$rp, true, false);
       SNode parent = SNodeOperations.getParent(cl);
-      return (cl != null) && (SNodeOperations.isInstanceOf(parent, CONCEPTS.VisitAllOperation$fD) || SNodeOperations.isInstanceOf(parent, CONCEPTS.TranslateOperation$sk));
+      return (cl != null) && (SNodeOperations.isInstanceOf(parent, CONCEPTS.VisitAllOperation$tW) || SNodeOperations.isInstanceOf(parent, CONCEPTS.TranslateOperation$EB));
     }
     @NotNull
     @Override
@@ -69,7 +69,7 @@ public class SkipStatement_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.SkipStatement$he) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.SkipStatement$vx) {
 
         @NotNull
         @Override
@@ -82,11 +82,11 @@ public class SkipStatement_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.SkipStatement$he), new SMP_Subconcepts_yf7yw4_b0());
+      }, CONCEPTS.SkipStatement$vx), new SMP_Subconcepts_yf7yw4_b0());
     }
     public class SMP_Subconcepts_yf7yw4_b0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SkipStatement$he);
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SkipStatement$vx);
       }
       @NotNull
       @Override
@@ -108,9 +108,9 @@ public class SkipStatement_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClosureLiteral$zJ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
-    /*package*/ static final SConcept TranslateOperation$sk = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x117d06362dcL, "jetbrains.mps.baseLanguage.collections.structure.TranslateOperation");
-    /*package*/ static final SConcept VisitAllOperation$fD = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188e700c31L, "jetbrains.mps.baseLanguage.collections.structure.VisitAllOperation");
-    /*package*/ static final SConcept SkipStatement$he = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d16b423daL, "jetbrains.mps.baseLanguage.collections.structure.SkipStatement");
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept TranslateOperation$EB = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x117d06362dcL, "jetbrains.mps.baseLanguage.collections.structure.TranslateOperation");
+    /*package*/ static final SConcept VisitAllOperation$tW = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188e700c31L, "jetbrains.mps.baseLanguage.collections.structure.VisitAllOperation");
+    /*package*/ static final SConcept SkipStatement$vx = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d16b423daL, "jetbrains.mps.baseLanguage.collections.structure.SkipStatement");
   }
 }

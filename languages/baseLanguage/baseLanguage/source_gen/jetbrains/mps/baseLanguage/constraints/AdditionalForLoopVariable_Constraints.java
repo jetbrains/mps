@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AdditionalForLoopVariable_Constraints extends BaseConstraintsDescriptor {
   public AdditionalForLoopVariable_Constraints() {
-    super(CONCEPTS.AdditionalForLoopVariable$KW);
+    super(CONCEPTS.AdditionalForLoopVariable$dI);
   }
 
   @Override
@@ -38,16 +38,16 @@ public class AdditionalForLoopVariable_Constraints extends BaseConstraintsDescri
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ForStatement$Y9) && (SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.ForStatement$Y9), LINKS.variable$4Igk) != null);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ForStatement$qV) && (SLinkOperations.getTarget(SNodeOperations.cast(parentNode, CONCEPTS.ForStatement$qV), LINKS.variable$JNH6) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1227128029536558482");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AdditionalForLoopVariable$KW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable");
-    /*package*/ static final SConcept ForStatement$Y9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+    /*package*/ static final SConcept AdditionalForLoopVariable$dI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable");
+    /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
   }
 }

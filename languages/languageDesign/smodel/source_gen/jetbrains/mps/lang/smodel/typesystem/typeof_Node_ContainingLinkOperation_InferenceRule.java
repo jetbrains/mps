@@ -26,7 +26,7 @@ public class typeof_Node_ContainingLinkOperation_InferenceRule extends AbstractI
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Node_ContainingLinkOperation$zh;
+    return CONCEPTS.Node_ContainingLinkOperation$$L;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_Node_ContainingLinkOperation_InferenceRule extends AbstractI
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_ContainingLinkOperation$zh = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x68251cf9dbe13ffcL, "jetbrains.mps.lang.smodel.structure.Node_ContainingLinkOperation");
+    /*package*/ static final SConcept Node_ContainingLinkOperation$$L = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x68251cf9dbe13ffcL, "jetbrains.mps.lang.smodel.structure.Node_ContainingLinkOperation");
   }
 }

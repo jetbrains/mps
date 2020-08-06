@@ -52,7 +52,7 @@ public class FindInstancesByCondition_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("node", node);
@@ -68,7 +68,7 @@ public class FindInstancesByCondition_Action extends BaseAction {
     DialogConsoleTab tab = tool.getCurrentEditableTab();
     SNode command = _quotation_createNode_flklsf_a0c0a(((SNode) MapSequence.fromMap(_params).get("node")));
     tab.insertCommand(command);
-    tab.selectNode(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(tab.getRoot(), LINKS.commandHolder$p0_z), CONCEPTS.ClosureLiteral$zJ, false, new SAbstractConcept[]{})).first(), LINKS.body$e5Do));
+    tab.selectNode(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(tab.getRoot(), LINKS.commandHolder$LTfs), CONCEPTS.ClosureLiteral$rp, false, new SAbstractConcept[]{})).first(), LINKS.body$Ujx2));
   }
   private static SNode _quotation_createNode_flklsf_a0c0a(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -117,12 +117,12 @@ public class FindInstancesByCondition_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept ClosureLiteral$zJ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commandHolder$p0_z = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder");
-    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink commandHolder$LTfs = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder");
+    /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
   }
 }
