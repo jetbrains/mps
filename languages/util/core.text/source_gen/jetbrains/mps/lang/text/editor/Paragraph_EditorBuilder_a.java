@@ -165,7 +165,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
       EmptyParagraphActions.setCellActions(editorCell, myNode, getEditorContext());
-      editorCell.addKeyMap(new EmptyParagraphKeys());
       editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.Paragraph$V6, "jetbrains.mps.lang.text.editor.EmptyParagraphMenu"));
       editorCell.setDefaultText("");
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));

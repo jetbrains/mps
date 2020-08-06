@@ -34,9 +34,6 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import java.util.Objects;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -184,12 +181,6 @@ public class Letter_TransformationMenu extends TransformationMenuBase {
         SNode l = SNodeFactoryOperations.createNewNode(CONCEPTS.Letter$hC, _context.getNode());
         SPropertyOperations.assign(l, PROPS.value$$$QO, pattern);
         SNodeOperations.insertNextSiblingChild(_context.getNode(), l);
-
-        // A workaround to allow spaces to be inserted into an empty line 
-        if (pattern.startsWith(" ") && ListSequence.fromList(SNodeOperations.getAllSiblings(l, false)).count() == 1 && Objects.equals(SPropertyOperations.getString(_context.getNode(), PROPS.value$$$QO), "\u001B")) {
-          SNodeOperations.deleteNode(_context.getNode());
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), l, SelectionManager.LAST_CELL, -1);
-        }
       }
 
 
