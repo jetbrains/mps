@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-2mwv9ellgsrugy9858edtt0dq1gfc7c">
-  <files names="ConvertToParagraphs_Intention.java:InsertNodeWrapper_Intention.java:IntentionsDescriptor.java" />
+<product version="3" modelHash="3p8d4nnm1rv5ddp1s0845j251kv2e6h">
+  <files names="ConvertToParagraphs_Intention.java:InsertNodeWrapperOnEmptyLine_Intention.java:InsertNodeWrapper_Intention.java:IntentionsDescriptor.java" />
 </product>
 

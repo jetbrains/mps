@@ -86,6 +86,9 @@
       <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
         <child id="1180636770616" name="createdType" index="3zrR0E" />
       </concept>
+      <concept id="1139867745658" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithNewOperation" flags="nn" index="1_qnLN">
+        <reference id="1139867957129" name="concept" index="1_rbq0" />
+      </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -272,6 +275,32 @@
                 </node>
               </node>
               <node concept="3GX2aA" id="6n6K0Pj6IbY" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="2S6QgY" id="42XXCka3hJy">
+    <property role="3GE5qa" value="textual" />
+    <property role="TrG5h" value="InsertNodeWrapperOnEmptyLine" />
+    <ref role="2ZfgGC" to="zqge:1v077Wg3Chb" resolve="EmptyParagraphLetter" />
+    <node concept="2S6ZIM" id="42XXCka3hJz" role="2ZfVej">
+      <node concept="3clFbS" id="42XXCka3hJ$" role="2VODD2">
+        <node concept="3clFbF" id="42XXCka3hJ_" role="3cqZAp">
+          <node concept="Xl_RD" id="42XXCka3hJA" role="3clFbG">
+            <property role="Xl_RC" value="Insert Node Wrapper" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="42XXCka3hJB" role="2ZfgGD">
+      <node concept="3clFbS" id="42XXCka3hJC" role="2VODD2">
+        <node concept="3clFbF" id="42XXCka3i2p" role="3cqZAp">
+          <node concept="2OqwBi" id="42XXCka3iaB" role="3clFbG">
+            <node concept="2Sf5sV" id="42XXCka3i2o" role="2Oq$k0" />
+            <node concept="1_qnLN" id="42XXCka3ikb" role="2OqNvi">
+              <ref role="1_rbq0" to="zqge:2MpFNjy3sHf" resolve="NodeWrapperTextualElement" />
             </node>
           </node>
         </node>
