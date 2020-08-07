@@ -23,6 +23,8 @@ import com.intellij.openapi.actionSystem.ActionPopupMenu;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.THashMap;
 import jetbrains.mps.ide.actions.MPSActions;
@@ -178,6 +180,12 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     myBackgroundPainters.add(new BackgroundWithFoldingLinePainter(this, myRightToLeft));
     mySelectedCellAreaPainter = new SelectedCellAreaPainter(this, myRightToLeft);
     myBackgroundPainters.add(mySelectedCellAreaPainter);
+
+    if (ApplicationManager.getApplication() != null) {
+      ApplicationManager.getApplication().getMessageBus().connect().subscribe(
+          EditorColorsManager.TOPIC, scheme -> LeftEditorHighlighter.this.setBackground(EditorSettings.getInstance().getLeftHighlighterBackgroundColor())
+      );
+    }
   }
 
   public void selectionChanged() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package jetbrains.mps.ide.editor;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.ColorKey;
-import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
@@ -40,21 +40,22 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColorsListener {
+public class StyleRegistryIdeaImpl extends StyleRegistry {
   private static final Logger LOG = LogManager.getLogger(StyleRegistryIdeaImpl.class);
 
   private final static int colorIterationSteps = 5;
   private final static int colorIterationDelta = 50;
 
-  private final EditorColorsManager myColorsManager;
   private final Map<String, String> myIDEAStylesMapping = new HashMap<>();
   private final Map<Pair<Color, Color>, Color> my2DarkColorsMapping = new HashMap<>();
 
-  public StyleRegistryIdeaImpl(EditorColorsManager colorsManager) {
-    myColorsManager = colorsManager;
+  public StyleRegistryIdeaImpl() {
     ourInstance = this;
     fillIdeaMappings();
     fillColorMappings();
+    ApplicationManager.getApplication().getMessageBus().connect().subscribe(
+        EditorColorsManager.TOPIC, scheme -> StyleRegistryIdeaImpl.this.clearCache()
+    );
   }
 
   @Override
@@ -225,14 +226,9 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements EditorColors
     myIDEAStylesMapping.put(mpsKey, ideaKey);
   }
 
-  @Override
-  public void globalSchemeChange(EditorColorsScheme scheme) {
-    clearCache();
-  }
-
   @NotNull
   private EditorColorsScheme getColorsScheme() {
-    return myColorsManager.getGlobalScheme();
+    return EditorColorsManager.getInstance().getGlobalScheme();
   }
 
   private class StyleRegistryMappingKeyException extends Exception {

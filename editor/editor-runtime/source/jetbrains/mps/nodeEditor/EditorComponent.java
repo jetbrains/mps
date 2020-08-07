@@ -552,6 +552,17 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     attachListeners();
     enablePasteFromHistory();
 
+    if (ApplicationManager.getApplication() != null) {
+      ApplicationManager.getApplication().getMessageBus().connect().subscribe(
+          EditorColorsManager.TOPIC, scheme -> {
+            if (!EditorComponent.this.isDisposed()) {
+              EditorComponent.this.update();
+              EditorComponent.this.setBackground(StyleRegistry.getInstance().getEditorBackground());
+            }
+          }
+      );
+    }
+
     if (configuration.withUI) {
       createUI(configuration);
     }
@@ -2137,7 +2148,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
     turnOnAliasingIfPossible(g);
 
-    g.setColor(getBackground());
+    g.setColor(StyleRegistry.getInstance().getEditorBackground());
     Rectangle bounds = g.getClipBounds();
 
     g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);

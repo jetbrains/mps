@@ -24,8 +24,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class SelectedCellAreaPainter extends BackgroundWithFoldingLinePainter {
-
-  private final Color myBgColor = EditorSettings.getInstance().getCaretRowColor();
   private int myY = -1;
   private int myHeight = 0;
 
@@ -52,7 +50,8 @@ public class SelectedCellAreaPainter extends BackgroundWithFoldingLinePainter {
 
   @Override
   public void paint(Graphics g) {
-    paint(g, myY, myHeight, myBgColor, myBgColor);
+    final Color caretRowColor = EditorSettings.getInstance().getCaretRowColor();
+    paint(g, myY, myHeight, caretRowColor, caretRowColor);
   }
 
   @Override
