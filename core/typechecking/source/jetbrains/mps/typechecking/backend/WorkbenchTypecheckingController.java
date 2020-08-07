@@ -69,13 +69,13 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
   protected void sessionReleased(@NotNull TypecheckingSessionImpl session) {
     if (session.flags().getRoot() != null && session.flags().isIncremental()) {
       SNodeHandle key = new SNodeHandle(session.flags().getRoot());
-      if (!myRootSessions.containsKey(key)) {
-        throw new IllegalArgumentException("Unknown session: " + session);
-      }
-      if (myRootSessions.get(key).decUsages() <= 0) {
+      TypecheckingSessionImpl knownSession = myRootSessions.get(key);
+      if (session != knownSession) {
+        LOG.error("Uknown session: " + session, new IllegalArgumentException());
+
+      } else if (session.decUsages() <= 0) {
         myRootSessions.remove(key).dispose();
       }
-
     } else {
       super.sessionReleased(session);
     }
