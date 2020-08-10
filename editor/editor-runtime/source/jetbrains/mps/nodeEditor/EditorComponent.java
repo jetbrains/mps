@@ -382,7 +382,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myCommandContext = createCommandContext();
     myUpdater = createUpdater(myCommandContext);
     myHighlightManager = new NodeHighlightManager(this);
-    myMessageHandler = new EditorMessagesPanel(ProjectHelper.toIdeaProject(ProjectHelper.getProject(repository)));
+    myMessageHandler = new EditorMessagesPanel(this);
 
     if (ApplicationManager.getApplication() != null && ApplicationManager.getApplication().getComponent(MPSCoreComponents.class) != null) {
       myClassLoaderManager = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getClassLoaderManager();

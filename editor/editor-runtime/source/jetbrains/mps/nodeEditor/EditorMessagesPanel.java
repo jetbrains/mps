@@ -25,8 +25,6 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.MessageKind;
-import jetbrains.mps.openapi.navigation.EditorNavigator;
-import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -47,14 +45,14 @@ import java.util.Map;
 
 class EditorMessagesPanel extends JPanel implements IMessageHandler {
 
-  private final Project myProject;
-  private final MPSProject myMPSProject;
+  private final EditorComponent myEditorComponent;
+  private final jetbrains.mps.project.Project myMPSProject;
   private final Map<SNodeId, JComponent> reportedNodes = new HashMap<>();
   private final JPanel myErrorsPanel = new JPanel();
 
-  EditorMessagesPanel(Project project) {
-    this.myProject = project;
-    this.myMPSProject = ProjectHelper.fromIdeaProject(project);
+  EditorMessagesPanel(@NotNull EditorComponent editorComponent) {
+    this.myEditorComponent = editorComponent;
+    this.myMPSProject = ProjectHelper.getProject(myEditorComponent.getRepository());
   }
 
   @Override
@@ -76,17 +74,23 @@ class EditorMessagesPanel extends JPanel implements IMessageHandler {
     errorReport.setBackground(LightColors.RED);
     JLabel text = new JLabel(msg.getText());
     errorReport.add(text);
-    if (myProject != null) {
+    if (myMPSProject != null) {
       HyperlinkLabel goToNode = new HyperlinkLabel("Go To Node");
-      goToNode.addHyperlinkListener(hyperlinkEvent -> new EditorNavigator(myMPSProject).shallFocus(true).shallSelect(true).open(node));
-      HyperlinkLabel stackTrace = new HyperlinkLabel("Stacktrace");
-      stackTrace.addHyperlinkListener(hyperlinkEvent -> {
-        StringWriter w = new StringWriter();
-        msg.getException().printStackTrace(new PrintWriter(w));
-        AnalyzeStacktraceUtil.addConsole(myProject, null, "<Stacktrace>", w.toString());
-      });
+      goToNode.addHyperlinkListener(hyperlinkEvent -> myMPSProject.getModelAccess().runReadInEDT(() -> {
+        myEditorComponent.selectNode(node.resolve(myEditorComponent.getRepository()));
+        myEditorComponent.requestFocus();
+      }));
       errorReport.add(goToNode);
-      errorReport.add(stackTrace);
+      Project ideaProject = ProjectHelper.toIdeaProject(myMPSProject);
+      if (ideaProject != null) {
+        HyperlinkLabel stackTrace = new HyperlinkLabel("Stacktrace");
+        stackTrace.addHyperlinkListener(hyperlinkEvent -> {
+          StringWriter w = new StringWriter();
+          msg.getException().printStackTrace(new PrintWriter(w));
+          AnalyzeStacktraceUtil.addConsole(ideaProject, null, "<Stacktrace>", w.toString());
+        });
+        errorReport.add(stackTrace);
+      }
     }
     HyperlinkLabel dismiss = new HyperlinkLabel("Dismiss");
     dismiss.addHyperlinkListener(hyperlinkEvent -> removeReport(node.getNodeId()));
